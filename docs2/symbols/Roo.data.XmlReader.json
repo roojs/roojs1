@@ -1,0 +1,129 @@
+{
+  "name" : "Roo.data.XmlReader",
+  "augments" : [
+    "Roo.data.DataReader"
+  ],
+  "desc" : "Data reader class to create an Array of {@link Roo.data.Record} objects from an XML document\nbased on mappings in a provided Roo.data.Record constructor.<br><br>\n<p>\n<em>Note that in order for the browser to parse a returned XML document, the Content-Type\nheader in the HTTP response must be set to \"text/xml\".</em>\n<p>\nExample code:\n<pre><code>\nvar RecordDef = Roo.data.Record.create([\n   {name: 'name', mapping: 'name'},     // \"mapping\" property not needed if it's the same as \"name\"\n   {name: 'occupation'}                 // This field will use \"occupation\" as the mapping.\n]);\nvar myReader = new Roo.data.XmlReader({\n   totalRecords: \"results\", // The element which contains the total dataset size (optional)\n   record: \"row\",           // The repeated element which contains row information\n   id: \"id\"                 // The element within the row that provides an ID for the record (optional)\n}, RecordDef);\n</code></pre>\n<p>\nThis would consume an XML file like this:\n<pre><code>\n&lt;?xml?>\n&lt;dataset>\n &lt;results>2&lt;/results>\n &lt;row>\n   &lt;id>1&lt;/id>\n   &lt;name>Bill&lt;/name>\n   &lt;occupation>Gardener&lt;/occupation>\n &lt;/row>\n &lt;row>\n   &lt;id>2&lt;/id>\n   &lt;name>Ben&lt;/name>\n   &lt;occupation>Horticulturalist&lt;/occupation>\n &lt;/row>\n&lt;/dataset>\n</code></pre>",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+    {
+      "name" : "id",
+      "type" : "String",
+      "desc" : "The DomQuery path relative from the record element to the element that contains\na record identifier value.",
+      "memberOf" : "Roo.data.XmlReader",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "success",
+      "type" : "String",
+      "desc" : "The DomQuery path to the success attribute used by forms.",
+      "memberOf" : "Roo.data.XmlReader",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "record",
+      "type" : "String",
+      "desc" : "The DomQuery path to the repeated element which contains record information.",
+      "memberOf" : "Roo.data.XmlReader",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "totalRecords",
+      "type" : "String",
+      "desc" : "The DomQuery path from which to retrieve the total number of records\nin the dataset. This is only needed if the whole dataset is not passed in one go, but is being\npaged from the remote server.",
+      "memberOf" : "Roo.data.XmlReader",
+      "values" : [
+      ]
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "read",
+      "desc" : "This method is only used by a DataProxy which has retrieved data from a remote server.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.XmlReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "response",
+          "type" : "Object",
+          "desc" : "The XHR object which contains the parsed XML document.  The response is expected\nto contain a method called 'responseXML' that returns an XML document object.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "records A data block which is used by an {@link Roo.data.Store} as\na cache of Roo.data.Records."
+        }
+      ]
+    },
+    {
+      "name" : "readRecords",
+      "desc" : "Create a data block containing Roo.data.Records from an XML document.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.XmlReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "doc",
+          "type" : "Object",
+          "desc" : "A parsed XML document.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "records A data block which is used by an {@link Roo.data.Store} as\na cache of Roo.data.Records."
+        }
+      ]
+    },
+    {
+      "name" : "newRow",
+      "desc" : "Create an empty record",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.DataReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "(optional) - overlay some values",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.data.Record",
+          "desc" : "record created."
+        }
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

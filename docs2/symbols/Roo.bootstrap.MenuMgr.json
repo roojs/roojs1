@@ -1,0 +1,53 @@
+{
+  "name" : "Roo.bootstrap.MenuMgr",
+  "augments" : [
+  ],
+  "desc" : "Provides a common registry of all menu items on a page so that they can be easily accessed by id.",
+  "isSingleton" : true,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "hideAll",
+      "desc" : "Hides all menus that are currently visible",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.MenuMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "get",
+      "desc" : "Returns a {@link Roo.menu.Menu} object",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.MenuMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "menu",
+          "type" : "String/Object",
+          "desc" : "The string menu id, an existing menu object reference, or a Menu config that will\nbe used to generate and return a new Menu instance.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

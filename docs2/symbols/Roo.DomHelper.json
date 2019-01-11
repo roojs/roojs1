@@ -1,0 +1,331 @@
+{
+  "name" : "Roo.DomHelper",
+  "augments" : [
+  ],
+  "desc" : "Utility class for working with DOM and/or Templates. It transparently supports using HTML fragments or DOM.\nFor more information see <a href=\"http://web.archive.org/web/20071221063734/http://www.jackslocum.com/blog/2006/10/06/domhelper-create-elements-using-dom-html-fragments-or-templates/\">this blog post with examples</a>.",
+  "isSingleton" : true,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "insertHtml",
+      "desc" : "Inserts an HTML fragment into the Dom",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomHelper",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "where",
+          "type" : "String",
+          "desc" : "Where to insert the html in relation to el - beforeBegin, afterBegin, beforeEnd, afterEnd.",
+          "isOptional" : false
+        },
+        {
+          "name" : "el",
+          "type" : "HTMLElement",
+          "desc" : "The context element",
+          "isOptional" : false
+        },
+        {
+          "name" : "html",
+          "type" : "String",
+          "desc" : "The HTML fragmenet",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement",
+          "desc" : "The new node"
+        }
+      ]
+    },
+    {
+      "name" : "createTemplate",
+      "desc" : "Creates a new Roo.DomHelper.Template from the Dom object spec",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomHelper",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The Dom object spec (and children)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.DomHelper.Template",
+          "desc" : "The new template"
+        }
+      ]
+    },
+    {
+      "name" : "insertAfter",
+      "desc" : "Creates new Dom element(s) and inserts them after el",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomHelper",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The context element",
+          "isOptional" : false
+        },
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The Dom object spec (and children)",
+          "isOptional" : false
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The new node"
+        }
+      ]
+    },
+    {
+      "name" : "insertFirst",
+      "desc" : "Creates new Dom element(s) and inserts them as the first child of el",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomHelper",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The context element",
+          "isOptional" : false
+        },
+        {
+          "name" : "o",
+          "type" : "Object/String",
+          "desc" : "The Dom object spec (and children) or raw HTML blob",
+          "isOptional" : false
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The new node"
+        }
+      ]
+    },
+    {
+      "name" : "append",
+      "desc" : "Creates new Dom element(s) and appends them to el",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomHelper",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The context element",
+          "isOptional" : false
+        },
+        {
+          "name" : "o",
+          "type" : "Object/String",
+          "desc" : "The Dom object spec (and children) or raw HTML blob",
+          "isOptional" : false
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The new node"
+        }
+      ]
+    },
+    {
+      "name" : "applyStyles",
+      "desc" : "Applies a style specification to an element",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomHelper",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement",
+          "desc" : "The element to apply styles to",
+          "isOptional" : false
+        },
+        {
+          "name" : "styles",
+          "type" : "String/Object/Function",
+          "desc" : "A style specification string eg \"width:100px\", or object in the form {width:\"100px\"}, or\na function which returns such a specification.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "markup",
+      "desc" : "Returns the markup for the passed Element(s) config",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomHelper",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The Dom object spec (and children)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "overwrite",
+      "desc" : "Creates new Dom element(s) and overwrites the contents of el with them",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomHelper",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The context element",
+          "isOptional" : false
+        },
+        {
+          "name" : "o",
+          "type" : "Object/String",
+          "desc" : "The Dom object spec (and children) or raw HTML blob",
+          "isOptional" : false
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The new node"
+        }
+      ]
+    },
+    {
+      "name" : "insertBefore",
+      "desc" : "Creates new Dom element(s) and inserts them before el",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.DomHelper",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The context element",
+          "isOptional" : false
+        },
+        {
+          "name" : "o",
+          "type" : "Object/String",
+          "desc" : "The Dom object spec (and children) or raw HTML blob",
+          "isOptional" : false
+        },
+        {
+          "name" : "returnElement",
+          "type" : "Boolean",
+          "desc" : "(optional) true to return a Roo.Element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "HTMLElement/Roo.Element",
+          "desc" : "The new node"
+        }
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

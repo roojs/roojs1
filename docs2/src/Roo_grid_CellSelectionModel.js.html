@@ -1,0 +1,312 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/grid/CellSelectionModel.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.grid.CellSelectionModel
+ * @extends Roo.grid.AbstractSelectionModel
+ * This class provides the basic implementation for cell selection in a grid.
+ * @constructor
+ * @param {Object} config The object containing the configuration of this model.
+ * @cfg {Boolean} enter_is_tab Enter behaves the same as tab. (eg. goes to next cell) default: false
+ */
+</span><span class="jsdoc-var">Roo.grid.CellSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.selection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+	     * @event beforerowselect
+	     * Fires before a cell is selected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected row index
+	     * @param {Number} colIndex The selected cell index
+	     */
+	    </span><span class="jsdoc-string">&quot;beforecellselect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event cellselect
+	     * Fires when a cell is selected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected row index
+	     * @param {Number} colIndex The selected cell index
+	     */
+	    </span><span class="jsdoc-string">&quot;cellselect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event selectionchange
+	     * Fires when the active selection changes.
+	     * @param {SelectionModel} this
+	     * @param {Object} selection null for no selection or an object (o) with two properties
+	        &lt;ul&gt;
+	        &lt;li&gt;o.record: the record object for the row the selection is in&lt;/li&gt;
+	        &lt;li&gt;o.cell: An array of [rowIndex, columnIndex]&lt;/li&gt;
+	        &lt;/ul&gt;
+	     */
+	    </span><span class="jsdoc-string">&quot;selectionchange&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event tabend
+	     * Fires when the tab (or enter) was pressed on the last editable cell
+	     * You can use this to trigger add new row.
+	     * @param {SelectionModel} this
+	     */
+	    </span><span class="jsdoc-string">&quot;tabend&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+         </span><span class="jsdoc-comment">/**
+	     * @event beforeeditnext
+	     * Fires before the next editable sell is made active
+	     * You can use this to skip to another cell or fire the tabend
+	     *    if you set cell to false
+	     * @param {Object} eventdata object : { cell : [ row, col ] } 
+	     */
+	    </span><span class="jsdoc-string">&quot;beforeeditnext&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">Roo.grid.CellSelectionModel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.grid.CellSelectionModel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.grid.AbstractSelectionModel</span><span class="jsdoc-syntax">,  {
+
+    </span><span class="jsdoc-var">enter_is_tab</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/** @ignore */
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.grid.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;keydown&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;keypress&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleKeyDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.view</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">view.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;refresh&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewChange</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">view.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;rowupdated&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRowUpdated</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">view.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforerowremoved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">view.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforerowsinserted&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.grid.isEditor</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.grid.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeedit&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.beforeEdit</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+    },
+
+	</span><span class="jsdoc-comment">//private
+    </span><span class="jsdoc-var">beforeEdit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e.column</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e.record</span><span class="jsdoc-syntax">);
+    },
+
+	</span><span class="jsdoc-comment">//private
+    </span><span class="jsdoc-var">onRowUpdated </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selection </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.selection.record </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">v.onCellSelect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.selection.cell</span><span class="jsdoc-syntax">[1]);
+        }
+    },
+
+	</span><span class="jsdoc-comment">//private
+    </span><span class="jsdoc-var">onViewChange </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    },
+
+	</span><span class="jsdoc-comment">/**
+	 * Returns the currently selected cell,.
+	 * @return {Array} The selected cell (row, column) or null if none selected.
+	 */
+    </span><span class="jsdoc-var">getSelectedCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.selection </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.selection.cell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Clears all selections.
+     * @param {Boolean} true to prevent the gridview from being notified about the change.
+     */
+    </span><span class="jsdoc-var">clearSelections </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">preventNotify</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selection</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">preventNotify </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.grid.view.onCellDeselect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s.cell</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">s.cell</span><span class="jsdoc-syntax">[1]);
+            }
+            </span><span class="jsdoc-var">this.selection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;selectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true if there is a selection.
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">hasSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.selection </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/** @ignore */
+    </span><span class="jsdoc-var">handleMouseDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isLocked</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        };
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v.findRowIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v.findCellIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Selects a cell.
+     * @param {Number} rowIndex
+     * @param {Number} collIndex
+     */
+    </span><span class="jsdoc-var">select </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">preventViewNotify</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">preventFocus</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">/*internal*/ </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforecellselect&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.grid.dataSource.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.selection </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">record </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]
+            };
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">preventViewNotify</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">v.onCellSelect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">preventFocus </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">v.focusCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">);
+                }
+            }
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;cellselect&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;selectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.selection</span><span class="jsdoc-syntax">);
+        }
+    },
+
+	</span><span class="jsdoc-comment">//private
+    </span><span class="jsdoc-var">isSelectable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cm</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">cm.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/** @ignore */
+    </span><span class="jsdoc-var">handleKeyDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">//Roo.log('Cell Sel Model handleKeyDown');
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.isNavKeyPress</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selection</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.walkCells</span><span class="jsdoc-syntax">(0, 0, 1, </span><span class="jsdoc-var">this.isSelectable</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">[1]);
+            }
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">walk </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">step</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">g.walkCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">step</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sm.isSelectable</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">sm</span><span class="jsdoc-syntax">);
+        };
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.cell</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.cell</span><span class="jsdoc-syntax">[1];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">;
+
+
+
+        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.TAB</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-comment">// handled by onEditorKey
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g.isEditor </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">g.editing</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">-1, -1);
+                } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">+1, 1);
+                }
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.DOWN</span><span class="jsdoc-syntax">:
+               </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">+1, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, 1);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.UP</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">-1, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, -1);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.RIGHT</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">+1, 1);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.LEFT</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">-1, -1);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.ENTER</span><span class="jsdoc-syntax">:
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g.isEditor </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">g.editing</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-var">g.startEditing</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+                   </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+                   </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+
+
+             </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+        };
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">[1]);
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+
+        }
+    },
+
+    </span><span class="jsdoc-var">acceptsNav </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cm</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">cm.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">cm.isCellEditable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">/**
+     * Selects a cell.
+     * @param {Number} field (not used) - as it's normally used as a listener
+     * @param {Number} e - event - fake it by using
+     *
+     * var e = Roo.EventObjectImpl.prototype;
+     * e.keyCode = e.TAB
+     *
+     * 
+     */
+    </span><span class="jsdoc-var">onEditorKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">(),
+            </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">ed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.activeEditor</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">forward </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">///Roo.log('onEditorKey' + k);
+
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enter_is_tab </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.ENTER</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.TAB</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.TAB</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.walkCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ed.col</span><span class="jsdoc-syntax">-1, -1, </span><span class="jsdoc-var">this.acceptsNav</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.walkCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ed.col</span><span class="jsdoc-syntax">+1, 1, </span><span class="jsdoc-var">this.acceptsNav</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">forward </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+
+        } </span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.ENTER </span><span class="jsdoc-syntax">&amp;&amp;  !</span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">ed.completeEdit</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.walkCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ed.col</span><span class="jsdoc-syntax">+1, 1, </span><span class="jsdoc-var">this.acceptsNav</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+		} </span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.ESC</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">ed.cancelEdit</span><span class="jsdoc-syntax">();
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ecall </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">forward </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">forward </span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeeditnext'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ecall </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ecall.cell</span><span class="jsdoc-syntax">;
+			</span><span class="jsdoc-var">forward </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ecall.forward</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-comment">//Roo.log('next cell after edit');
+            </span><span class="jsdoc-var">g.startEditing.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">[1]]);
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">forward</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// tabbed past last
+            </span><span class="jsdoc-var">this.fireEvent.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">'tabend'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">]);
+        }
+    }
+});</span></code></body></html>

@@ -1,0 +1,595 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/bootstrap/BezierSignature.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+*    This script refer to:
+*    Title: Signature Pad
+*    Author: szimek
+*    Availability: https://github.com/szimek/signature_pad
+**/
+
+/**
+ * @class Roo.bootstrap.BezierSignature
+ * @extends Roo.bootstrap.Component
+ * Bootstrap BezierSignature class
+ * 
+ * @constructor
+ * Create a new BezierSignature
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.BezierSignature </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.BezierSignature.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-string">&quot;resize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.BezierSignature</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+
+    </span><span class="jsdoc-var">curve_data</span><span class="jsdoc-syntax">: [],
+
+    </span><span class="jsdoc-var">is_empty</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">mouse_btn_down</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg(int) canvas height
+     */
+    </span><span class="jsdoc-var">canvas_height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'200px'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg(float or function) Radius of a single dot.
+     */
+    </span><span class="jsdoc-var">dot_size</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg(float) Minimum width of a line. Defaults to 0.5.
+     */
+    </span><span class="jsdoc-var">min_width</span><span class="jsdoc-syntax">: 0.5,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg(float) Maximum width of a line. Defaults to 2.5.
+     */
+    </span><span class="jsdoc-var">max_width</span><span class="jsdoc-syntax">: 2.5,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg(integer) Draw the next point at most once per every x milliseconds. Set it to 0 to turn off throttling. Defaults to 16.
+     */
+    </span><span class="jsdoc-var">throttle</span><span class="jsdoc-syntax">: 16,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg(integer) Add the next point only if the previous one is farther than x pixels. Defaults to 5.
+     */
+    </span><span class="jsdoc-var">min_distance</span><span class="jsdoc-syntax">: 5,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg(string) Color used to clear the background. Can be any color format accepted by context.fillStyle. Defaults to &quot;rgba(0,0,0,0)&quot; (transparent black). Use a non-transparent color e.g. &quot;rgb(255,255,255)&quot; (opaque white) if you'd like to save signatures as JPEG images.
+     */
+    </span><span class="jsdoc-var">bg_color</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rgba(0, 0, 0, 0)'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg(string) Color used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to &quot;black&quot;.
+     */
+    </span><span class="jsdoc-var">dot_color</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'black'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg(float) Weight used to modify new velocity based on the previous velocity. Defaults to 0.7.
+     */
+    </span><span class="jsdoc-var">velocity_filter_weight</span><span class="jsdoc-syntax">: 0.7,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg(function) Callback when stroke begin.
+     */
+    </span><span class="jsdoc-var">onBegin</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg(function) Callback when stroke end.
+     */
+    </span><span class="jsdoc-var">onEnd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'roo-signature column'</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">col_sizes </span><span class="jsdoc-syntax">= [
+            </span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'xs'
+        </span><span class="jsdoc-syntax">];
+
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">col_sizes.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col_sizes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]]) {
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot; col-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">col_sizes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]+</span><span class="jsdoc-string">&quot;-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col_sizes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]];
+            }
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-signature-body'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'canvas'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-signature-body-canvas'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.canvas_height</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.canvas_width
+                        </span><span class="jsdoc-syntax">}
+                    ]
+                },
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'file'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display: none'
+                </span><span class="jsdoc-syntax">}
+            ]
+        };
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.bootstrap.BezierSignature.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">canvas </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasEl</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-comment">// mouse &amp;&amp; touch event swapping...
+        </span><span class="jsdoc-var">canvas.dom.style.touchAction </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">canvas.dom.style.msTouchAction </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.mouse_btn_down </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">canvas.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this._handleMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">canvas.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousemove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this._handleMouseMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'html'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this._handleMouseUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window.PointerEvent</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">canvas.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pointerdown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this._handleMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">canvas.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pointermove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this._handleMouseMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'html'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pointerup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this._handleMouseUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ontouchstart' </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">canvas.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this._handleTouchStart</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">canvas.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchmove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this._handleTouchMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">canvas.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchend'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this._handleTouchEnd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">Roo.EventManager.onWindowResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// file input event
+        </span><span class="jsdoc-var">this.fileEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.uploadImage</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.clear</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">resize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">canvas </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasElCtx</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">img_data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ctx.getImageData</span><span class="jsdoc-syntax">(0, 0, </span><span class="jsdoc-var">canvas.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">canvas.height</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// setting canvas width will clean img data
+        </span><span class="jsdoc-var">canvas.width </span><span class="jsdoc-syntax">= 0;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.getComputedStyle </span><span class="jsdoc-syntax">?
+            </span><span class="jsdoc-var">getComputedStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.el.dom.currentStyle</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">padding_left </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">style.paddingLeft</span><span class="jsdoc-syntax">) || 0;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">padding_right </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">style.paddingRight</span><span class="jsdoc-syntax">) || 0;
+
+        </span><span class="jsdoc-var">canvas.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom.clientWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">padding_left </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">padding_right</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">ctx.putImageData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img_data</span><span class="jsdoc-syntax">, 0, 0);
+    },
+
+    </span><span class="jsdoc-var">_handleMouseDown</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.browserEvent.which </span><span class="jsdoc-syntax">=== 1) {
+            </span><span class="jsdoc-var">this.mouse_btn_down </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.strokeBegin</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">_handleMouseMove</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mouse_btn_down</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.strokeMoveUpdate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">_handleMouseUp</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.browserEvent.which </span><span class="jsdoc-syntax">=== 1 &amp;&amp; </span><span class="jsdoc-var">this.mouse_btn_down</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.mouse_btn_down </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.strokeEnd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">_handleTouchStart</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.browserEvent.targetTouches.length </span><span class="jsdoc-syntax">=== 1) {
+            </span><span class="jsdoc-comment">// var touch = e.browserEvent.changedTouches[0];
+            // this.strokeBegin(touch);
+
+             </span><span class="jsdoc-var">this.strokeBegin</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// assume e catching the correct xy...
+        </span><span class="jsdoc-syntax">}
+    },
+
+    </span><span class="jsdoc-var">_handleTouchMove</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">// var touch = event.targetTouches[0];
+        // _this._strokeMoveUpdate(touch);
+        </span><span class="jsdoc-var">this.strokeMoveUpdate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">_handleTouchEnd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">wasCanvasTouched </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.target </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">this.canvasEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wasCanvasTouched</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-comment">// var touch = event.changedTouches[0];
+            // _this._strokeEnd(touch);
+            </span><span class="jsdoc-var">this.strokeEnd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">reset</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">this._lastPoints </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this._lastVelocity </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this._lastWidth </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.min_width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.max_width</span><span class="jsdoc-syntax">) / 2;
+        </span><span class="jsdoc-var">this.canvasElCtx</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.fillStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dot_color</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">strokeMoveUpdate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.strokeUpdate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.throttle</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.throttle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.strokeUpdate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.throttle</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.strokeUpdate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">strokeBegin</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newPointGroup </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dot_color</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">: []
+        };
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.onBegin </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.onBegin</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">this.curve_data.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newPointGroup</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.reset</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.strokeUpdate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">strokeUpdate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rect </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.getBoundingClientRect</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">point </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">this.Point</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.xy</span><span class="jsdoc-syntax">[0] - </span><span class="jsdoc-var">rect.left</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e.xy</span><span class="jsdoc-syntax">[1] - </span><span class="jsdoc-var">rect.top</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lastPointGroup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.curve_data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.curve_data.length </span><span class="jsdoc-syntax">- 1];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lastPoints </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">lastPointGroup.points</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lastPoint </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">lastPoints.length </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">lastPoints</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">lastPoints.length </span><span class="jsdoc-syntax">- 1];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isLastPointTooClose </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">lastPoint
+            </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">point.distanceTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lastPoint</span><span class="jsdoc-syntax">) &lt;= </span><span class="jsdoc-var">this.min_distance
+            </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">color </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">lastPointGroup.color</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">lastPoint </span><span class="jsdoc-syntax">|| !(</span><span class="jsdoc-var">lastPoint </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">isLastPointTooClose</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">curve </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addPoint</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">point</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">lastPoint</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.drawDot</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">point</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">point</span><span class="jsdoc-syntax">});
+            }
+            </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">curve</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.drawCurve</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">curve</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">curve</span><span class="jsdoc-syntax">});
+            }
+            </span><span class="jsdoc-var">lastPoints.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">time</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">point.time</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">point.x</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">point.y
+            </span><span class="jsdoc-syntax">});
+        }
+    },
+
+    </span><span class="jsdoc-var">strokeEnd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.strokeUpdate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.onEnd </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.onEnd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">addPoint</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">point</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_lastPoints </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this._lastPoints</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">_lastPoints.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">point</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_lastPoints.length </span><span class="jsdoc-syntax">&gt; 2) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_lastPoints.length </span><span class="jsdoc-syntax">=== 3) {
+                </span><span class="jsdoc-var">_lastPoints.unshift</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_lastPoints</span><span class="jsdoc-syntax">[0]);
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">widths </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.calculateCurveWidths</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_lastPoints</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-var">_lastPoints</span><span class="jsdoc-syntax">[2]);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">curve </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.Bezier.fromPoints</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_lastPoints</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">widths</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">_lastPoints.shift</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">curve</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">calculateCurveWidths</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">startPoint</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">endPoint</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">velocity </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.velocity_filter_weight </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">endPoint.velocityFrom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">startPoint</span><span class="jsdoc-syntax">) +
+            (1 - </span><span class="jsdoc-var">this.velocity_filter_weight</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">this._lastVelocity</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.max_width </span><span class="jsdoc-syntax">/ (</span><span class="jsdoc-var">velocity </span><span class="jsdoc-syntax">+ 1), </span><span class="jsdoc-var">this.min_width</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">widths </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">newWidth</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this._lastWidth
+        </span><span class="jsdoc-syntax">};
+
+        </span><span class="jsdoc-var">this._lastVelocity </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">velocity</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this._lastWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">newWidth</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">widths</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">drawDot</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_a</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">color </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_a.color</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">point </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_a.point</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasElCtx</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.dot_size </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'function' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.dot_size</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.dot_size</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">ctx.beginPath</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.drawCurveSegment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">point.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">point.y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ctx.closePath</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">ctx.fillStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">ctx.fill</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">drawCurve</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_a</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">color </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_a.color</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">curve </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_a.curve</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasElCtx</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">widthDelta </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">curve.endWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">curve.startWidth</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">drawSteps </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">curve.length</span><span class="jsdoc-syntax">()) * 2;
+        </span><span class="jsdoc-var">ctx.beginPath</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">ctx.fillStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">color</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">drawSteps</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">drawSteps</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ttt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tt </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">u </span><span class="jsdoc-syntax">= 1 - </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">uu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">u </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">u</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">uuu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">uu </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">u</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">uuu </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">curve.startPoint.x</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= 3 * </span><span class="jsdoc-var">uu </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">curve.control1.x</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= 3 * </span><span class="jsdoc-var">u </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">tt </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">curve.control2.x</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">ttt </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">curve.endPoint.x</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">uuu </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">curve.startPoint.y</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= 3 * </span><span class="jsdoc-var">uu </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">curve.control1.y</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= 3 * </span><span class="jsdoc-var">u </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">tt </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">curve.control2.y</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">ttt </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">curve.endPoint.y</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">curve.startWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ttt </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">widthDelta</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.drawCurveSegment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">ctx.closePath</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">ctx.fill</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">drawCurveSegment</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasElCtx</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">ctx.moveTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ctx.arc</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, 0, 2 * </span><span class="jsdoc-var">Math.PI</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.is_empty </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">clear</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasElCtx</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">canvas </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">ctx.fillStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bg_color</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">ctx.clearRect</span><span class="jsdoc-syntax">(0, 0, </span><span class="jsdoc-var">canvas.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">canvas.height</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ctx.fillRect</span><span class="jsdoc-syntax">(0, 0, </span><span class="jsdoc-var">canvas.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">canvas.height</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.curve_data </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.reset</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.is_empty </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">fileEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">canvasEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'canvas'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">canvasElCtx</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'canvas'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.getContext</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'2d'</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">getImage</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.is_empty</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-comment">// encryption ?
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.canvasEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.toDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'image/'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">, 1);
+    },
+
+    </span><span class="jsdoc-var">drawFromImage</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img_src</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">img </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Image</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">img.onload </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-var">this.canvasElCtx</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.drawImage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">, 0, 0);
+        }</span><span class="jsdoc-var">.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">img.src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">img_src</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.is_empty </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">selectImage</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.fileEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.click</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">uploadImage</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FileReader</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">reader.onload </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">img </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Image</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">img.onload </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                </span><span class="jsdoc-var">this.reset</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.canvasElCtx</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.drawImage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">, 0, 0);
+            }</span><span class="jsdoc-var">.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">img.src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.target.result</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-var">.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">reader.readAsDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.target.files</span><span class="jsdoc-syntax">[0]);
+    },
+
+    </span><span class="jsdoc-comment">// Bezier Point Constructor
+    </span><span class="jsdoc-var">Point</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">Point</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">time</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Date.now</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">Point.prototype.distanceTo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.sqrt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">start.x</span><span class="jsdoc-syntax">, 2) + </span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">start.y</span><span class="jsdoc-syntax">, 2));
+        };
+        </span><span class="jsdoc-var">Point.prototype.equals </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">other</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.x </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">other.x </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.y </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">other.y </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">other.time</span><span class="jsdoc-syntax">;
+        };
+        </span><span class="jsdoc-var">Point.prototype.velocityFrom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">start.time
+            </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.distanceTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">) / (</span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">start.time</span><span class="jsdoc-syntax">)
+            : 0;
+        };
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Point</span><span class="jsdoc-syntax">;
+    }()),
+
+
+    </span><span class="jsdoc-comment">// Bezier Constructor
+    </span><span class="jsdoc-var">Bezier</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">Bezier</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">startPoint</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">control2</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">control1</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">endPoint</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">startWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">endWidth</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.startPoint </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">startPoint</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.control2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">control2</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.control1 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">control1</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.endPoint </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">endPoint</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.startWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">startWidth</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.endWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">endWidth</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">Bezier.fromPoints </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">widths</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.calculateControlPoints</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">[2], </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.c2</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c3 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.calculateControlPoints</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">[2], </span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">[3], </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.c1</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Bezier</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-var">c2</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c3</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">points</span><span class="jsdoc-syntax">[2], </span><span class="jsdoc-var">widths.start</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">widths.end</span><span class="jsdoc-syntax">);
+        };
+        </span><span class="jsdoc-var">Bezier.calculateControlPoints </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s1</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s2</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s3</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dx1 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s1.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">s2.x</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dy1 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s1.y </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">s2.y</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dx2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s2.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">s3.x</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dy2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s2.y </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">s3.y</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m1 </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">s1.x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">s2.x</span><span class="jsdoc-syntax">) / 2.0, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">s1.y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">s2.y</span><span class="jsdoc-syntax">) / 2.0 };
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m2 </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">s2.x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">s3.x</span><span class="jsdoc-syntax">) / 2.0, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">s2.y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">s3.y</span><span class="jsdoc-syntax">) / 2.0 };
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">l1 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.sqrt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dx1 </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">dx1 </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">dy1 </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">dy1</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">l2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.sqrt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dx2 </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">dx2 </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">dy2 </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">dy2</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dxm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m1.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">m2.x</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dym </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m1.y </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">m2.y</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">l2 </span><span class="jsdoc-syntax">/ (</span><span class="jsdoc-var">l1 </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">l2</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">m2.x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">dxm </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">m2.y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">dym </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s2.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">cm.x</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ty </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s2.y </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">cm.y</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">c1</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">scope.Point</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m1.x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">tx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">m1.y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ty</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">c2</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">scope.Point</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m2.x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">tx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">m2.y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ty</span><span class="jsdoc-syntax">)
+            };
+        };
+        </span><span class="jsdoc-var">Bezier.prototype.length </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">steps </span><span class="jsdoc-syntax">= 10;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">length </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">px</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">py</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">steps</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">steps</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.point</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.startPoint.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.control1.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.control2.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.endPoint.x</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.point</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.startPoint.y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.control1.y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.control2.y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.endPoint.y</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt; 0) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xdiff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cx </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">px</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ydiff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cy </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">py</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">length </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">Math.sqrt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xdiff </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">xdiff </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ydiff </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">ydiff</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-var">px </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cx</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">py </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cy</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">;
+        };
+        </span><span class="jsdoc-var">Bezier.prototype.point </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c1</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c2</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">* (1.0 - </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) * (1.0 - </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) * (1.0 - </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">))
+            + (3.0 * </span><span class="jsdoc-var">c1 </span><span class="jsdoc-syntax">* (1.0 - </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) * (1.0 - </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">)
+            + (3.0 * </span><span class="jsdoc-var">c2 </span><span class="jsdoc-syntax">* (1.0 - </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">)
+            + (</span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+        };
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Bezier</span><span class="jsdoc-syntax">;
+    }()),
+
+    </span><span class="jsdoc-var">throttle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">wait</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wait </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">void </span><span class="jsdoc-syntax">0) { </span><span class="jsdoc-var">wait </span><span class="jsdoc-syntax">= 250; }
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">previous </span><span class="jsdoc-syntax">= 0;
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">timeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">;
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">storedContext</span><span class="jsdoc-syntax">;
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">storedArgs</span><span class="jsdoc-syntax">;
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">later </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+          </span><span class="jsdoc-var">previous </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.now</span><span class="jsdoc-syntax">();
+          </span><span class="jsdoc-var">timeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+          </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fn.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">storedContext</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">storedArgs</span><span class="jsdoc-syntax">);
+          </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">timeout</span><span class="jsdoc-syntax">) {
+              </span><span class="jsdoc-var">storedContext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+              </span><span class="jsdoc-var">storedArgs </span><span class="jsdoc-syntax">= [];
+          }
+      };
+      </span><span class="jsdoc-keyword">return function </span><span class="jsdoc-var">wrapper</span><span class="jsdoc-syntax">() {
+          </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">args </span><span class="jsdoc-syntax">= [];
+          </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">_i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">arguments.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">_i</span><span class="jsdoc-syntax">++) {
+              </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">_i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">_i</span><span class="jsdoc-syntax">];
+          }
+          </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">now </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.now</span><span class="jsdoc-syntax">();
+          </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">remaining </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">wait </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">now </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">previous</span><span class="jsdoc-syntax">);
+          </span><span class="jsdoc-var">storedContext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+          </span><span class="jsdoc-var">storedArgs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">args</span><span class="jsdoc-syntax">;
+          </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">remaining </span><span class="jsdoc-syntax">&lt;= 0 || </span><span class="jsdoc-var">remaining </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">wait</span><span class="jsdoc-syntax">) {
+              </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">timeout</span><span class="jsdoc-syntax">) {
+                  </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">timeout</span><span class="jsdoc-syntax">);
+                  </span><span class="jsdoc-var">timeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+              }
+              </span><span class="jsdoc-var">previous </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">now</span><span class="jsdoc-syntax">;
+              </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fn.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">storedContext</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">storedArgs</span><span class="jsdoc-syntax">);
+              </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">timeout</span><span class="jsdoc-syntax">) {
+                  </span><span class="jsdoc-var">storedContext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+                  </span><span class="jsdoc-var">storedArgs </span><span class="jsdoc-syntax">= [];
+              }
+          }
+          </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">timeout</span><span class="jsdoc-syntax">) {
+              </span><span class="jsdoc-var">timeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">later</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">remaining</span><span class="jsdoc-syntax">);
+          }
+          </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">;
+      };
+  }
+
+});
+
+
+
+ </span></code></body></html>

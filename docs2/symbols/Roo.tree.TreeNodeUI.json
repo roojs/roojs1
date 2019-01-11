@@ -1,0 +1,15 @@
+{
+  "name" : "Roo.tree.TreeNodeUI",
+  "augments" : [
+  ],
+  "desc" : "The TreeNode UI implementation is separate from the\ntree implementation. Unless you are customizing the tree UI,\nyou should never have to use this directly.",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}

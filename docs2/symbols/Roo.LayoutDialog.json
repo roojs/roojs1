@@ -1,0 +1,1395 @@
+{
+  "name" : "Roo.LayoutDialog",
+  "augments" : [
+    "Roo.BasicDialog",
+    "Roo.util.Observable"
+  ],
+  "desc" : "Dialog which provides adjustments for working with a layout in a Dialog.\nAdd your necessary layout config options to the dialog's config.<br>\nExample usage (including a nested layout):\n<pre><code>\nif(!dialog){\n    dialog = new Roo.LayoutDialog(\"download-dlg\", {\n        modal: true,\n        width:600,\n        height:450,\n        shadow:true,\n        minWidth:500,\n        minHeight:350,\n        autoTabs:true,\n        proxyDrag:true,\n        // layout config merges with the dialog config\n        center:{\n            tabPosition: \"top\",\n            alwaysShowTabs: true\n        }\n    });\n    dialog.addKeyListener(27, dialog.hide, dialog);\n    dialog.setDefaultButton(dialog.addButton(\"Close\", dialog.hide, dialog));\n    dialog.addButton(\"Build It!\", this.getDownload, this);\n\n    // we can even add nested layouts\n    var innerLayout = new Roo.BorderLayout(\"dl-inner\", {\n        east: {\n            initialSize: 200,\n            autoScroll:true,\n            split:true\n        },\n        center: {\n            autoScroll:true\n        }\n    });\n    innerLayout.beginUpdate();\n    innerLayout.add(\"east\", new Roo.ContentPanel(\"dl-details\"));\n    innerLayout.add(\"center\", new Roo.ContentPanel(\"selection-panel\"));\n    innerLayout.endUpdate(true);\n\n    var layout = dialog.getLayout();\n    layout.beginUpdate();\n    layout.add(\"center\", new Roo.ContentPanel(\"standard-panel\",\n                        {title: \"Download the Source\", fitToFrame:true}));\n    layout.add(\"center\", new Roo.NestedLayoutPanel(innerLayout,\n               {title: \"Build your own roo.js\"}));\n    layout.getRegion(\"center\").showPanel(sp);\n    layout.endUpdate();\n}\n</code></pre>",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "y",
+      "type" : "Number",
+      "desc" : "The default top page coordinate of the dialog (defaults to center screen)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "modal",
+      "type" : "Boolean",
+      "desc" : "True to show the dialog modally, preventing user interaction with the rest of the page (defaults to false)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "animateTarget",
+      "type" : "String/Element",
+      "desc" : "Id or element from which the dialog should animate while opening\n(defaults to null with no animation)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "shadow",
+      "type" : "Boolean/String",
+      "desc" : "True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\" for bottom-right\nshadow (defaults to false)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "autoScroll",
+      "type" : "Boolean",
+      "desc" : "True to allow the dialog body contents to overflow and display scrollbars (defaults to false)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "collapsible",
+      "type" : "Boolean",
+      "desc" : "False to remove the built-in top-right corner collapse button (defaults to true)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "autoTabs",
+      "type" : "Boolean",
+      "desc" : "If true, all elements with class 'x-dlg-tab' will get automatically converted to tabs (defaults to false)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "shadowOffset",
+      "type" : "Number",
+      "desc" : "The number of pixels to offset the shadow if displayed (defaults to 5)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "buttons",
+      "type" : "Array",
+      "desc" : "Array of buttons",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "minButtonWidth",
+      "type" : "Number",
+      "desc" : "Minimum width of all dialog buttons (defaults to 75)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "title",
+      "type" : "String",
+      "desc" : "Default text to display in the title bar (defaults to null)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "minWidth",
+      "type" : "Number",
+      "desc" : "The minimum allowable width for a resizable dialog (defaults to 200)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "buttonAlign",
+      "type" : "String",
+      "desc" : "Valid values are \"left,\" \"center\" and \"right\" (defaults to \"right\")",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "autoCreate",
+      "type" : "Boolean/DomHelper",
+      "desc" : "True to auto create from scratch, or using a DomHelper Object (defaults to false)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "minHeight",
+      "type" : "Number",
+      "desc" : "The minimum allowable height for a resizable dialog (defaults to 80)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "proxyDrag",
+      "type" : "Boolean",
+      "desc" : "True to drag a lightweight proxy element rather than the dialog itself, used when\ndraggable = true (defaults to false)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "shim",
+      "type" : "Boolean",
+      "desc" : "True to create an iframe shim that prevents selects from showing through (defaults to false)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "width",
+      "type" : "Number",
+      "desc" : "Width of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "constraintoviewport",
+      "type" : "Boolean",
+      "desc" : "True to keep the dialog constrained within the visible viewport boundaries (defaults to true)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "syncHeightBeforeShow",
+      "type" : "Boolean",
+      "desc" : "True to cause the dimensions to be recalculated before the dialog is shown (defaults to false)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "tabTag",
+      "type" : "String",
+      "desc" : "The tag name of tab elements, used when autoTabs = true (defaults to 'div')",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "resizable",
+      "type" : "Boolean",
+      "desc" : "False to disable manual dialog resizing (defaults to true)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "closable",
+      "type" : "Boolean",
+      "desc" : "False to remove the built-in top-right corner close button (defaults to true)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "fixedcenter",
+      "type" : "Boolean",
+      "desc" : "True to ensure that anytime the dialog is shown or resized it gets centered (defaults to false)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "height",
+      "type" : "Number",
+      "desc" : "Height of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "resizeHandles",
+      "type" : "String",
+      "desc" : "Which resize handles to display - see the {@link Roo.Resizable} handles config\nproperty for valid values (defaults to 'all')",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "x",
+      "type" : "Number",
+      "desc" : "The default left page coordinate of the dialog (defaults to center screen)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "draggable",
+      "type" : "Boolean",
+      "desc" : "False to disable dragging of the dialog within the viewport (defaults to true)",
+      "memberOf" : "Roo.BasicDialog",
+      "values" : [
+      ]
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "addxtype",
+      "desc" : "Add an xtype element (actually adds to the layout.)",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.LayoutDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "xdata xtype object data."
+        }
+      ]
+    },
+    {
+      "name" : "getLayout",
+      "desc" : "Get the BorderLayout for this dialog",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.LayoutDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BorderLayout",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "endUpdate",
+      "desc" : "Ends update of the layout <strike>and resets display to none</strike>. Use standard beginUpdate/endUpdate on the layout.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.LayoutDialog",
+      "example" : "",
+      "deprecated" : "This has been deprecated: ",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "beginUpdate",
+      "desc" : "Begins an update of the layout <strike>and sets display to block and visibility to hidden</strike>. Use standard beginUpdate/endUpdate on the layout.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.LayoutDialog",
+      "example" : "",
+      "deprecated" : "This has been deprecated: ",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "expand",
+      "desc" : "Expands a collapsed dialog back to its normal state.  Equivalent to the user\nclicking the expand dialog button.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "alignTo",
+      "desc" : "Aligns the dialog to the specified element",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "element",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "The element to align to.",
+          "isOptional" : false
+        },
+        {
+          "name" : "position",
+          "type" : "String",
+          "desc" : "The position to align to (see {@link Roo.Element#alignTo} for more details).",
+          "isOptional" : false
+        },
+        {
+          "name" : "offsets",
+          "type" : "Array",
+          "desc" : "(optional) Offset the positioning by [x, y]",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "setTitle",
+      "desc" : "Sets the dialog title text",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "The title text to display",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "isVisible",
+      "desc" : "Returns true if the dialog is visible",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "resizeTo",
+      "desc" : "Resizes the dialog.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "width",
+          "type" : "Number",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "height",
+          "type" : "Number",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "center",
+      "desc" : "Centers this dialog in the viewport",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "collapse",
+      "desc" : "Collapses the dialog to its minimized state (only the title bar is visible).\nEquivalent to the user clicking the collapse dialog button.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "initTabs",
+      "desc" : "Reinitializes the tabs component, clearing out old tabs and finding new ones.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.TabPanel",
+          "desc" : "The tabs component"
+        }
+      ]
+    },
+    {
+      "name" : "toFront",
+      "desc" : "Brings this dialog to the front of any other visible dialogs",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "moveTo",
+      "desc" : "Moves the dialog's top-left corner to the specified point",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "x",
+          "type" : "Number",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "y",
+          "type" : "Number",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "hide",
+      "desc" : "Hides the dialog.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "callback",
+          "type" : "Function",
+          "desc" : "(optional) Function to call when the dialog is hidden",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "destroy",
+      "desc" : "Destroys this dialog and all its supporting elements (including any tabs, shim,\nshadow, proxy, mask, etc.)  Also removes all event listeners.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "removeEl",
+          "type" : "Boolean",
+          "desc" : "(optional) true to remove the element from the DOM",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "show",
+      "desc" : "Shows the dialog.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "animateTarget",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "(optional) Reset the animation target",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "anchorTo",
+      "desc" : "Anchors an element to another element and realigns it when the window is resized.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "element",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "The element to align to.",
+          "isOptional" : false
+        },
+        {
+          "name" : "position",
+          "type" : "String",
+          "desc" : "The position to align to (see {@link Roo.Element#alignTo} for more details)",
+          "isOptional" : false
+        },
+        {
+          "name" : "offsets",
+          "type" : "Array",
+          "desc" : "(optional) Offset the positioning by [x, y]",
+          "isOptional" : false
+        },
+        {
+          "name" : "monitorScroll",
+          "type" : "Boolean/Number",
+          "desc" : "(optional) true to monitor body scroll and reposition. If this parameter\nis a number, it is used as the buffer delay (defaults to 50ms).",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "addButton",
+      "desc" : "Adds a button to the footer section of the dialog.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "config",
+          "type" : "String/Object",
+          "desc" : "A string becomes the button text, an object can either be a Button config\nobject or a valid Roo.DomHelper element config",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The function called when the button is clicked",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope of the handler function (accepts position as a property)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Button",
+          "desc" : "The new button"
+        }
+      ]
+    },
+    {
+      "name" : "addKeyListener",
+      "desc" : "Adds a key listener for when this dialog is displayed.  This allows you to hook in a function that will be\nexecuted in response to a particular key being pressed while the dialog is active.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "key",
+          "type" : "Number/Array/Object",
+          "desc" : "Either the numeric key code, array of key codes or an object with the following options:\n                                 {key: (number or array), shift: (true/false), ctrl: (true/false), alt: (true/false)}",
+          "isOptional" : false
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope of the function",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "focus",
+      "desc" : "Focuses the dialog.  If a defaultButton is set, it will receive focus, otherwise the\ndialog itself will receive focus.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "getTabs",
+      "desc" : "Returns the TabPanel component (creates it if it doesn't exist).\nNote: If you wish to simply check for the existence of tabs without creating them,\ncheck for a null 'tabs' property.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.TabPanel",
+          "desc" : "The tabs component"
+        }
+      ]
+    },
+    {
+      "name" : "setDefaultButton",
+      "desc" : "Sets the default button to be focused when the dialog is displayed.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "btn",
+          "type" : "Roo.BasicDialog.Button",
+          "desc" : "The button object returned by {@link #addButton}",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "toBack",
+      "desc" : "Sends this dialog to the back (under) of any other visible dialogs",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "setContentSize",
+      "desc" : "Resizes the dialog to fit the specified content size.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "width",
+          "type" : "Number",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "height",
+          "type" : "Number",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "restoreState",
+      "desc" : "Restores the previous state of the dialog if Roo.state is configured.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.BasicDialog",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "getEl",
+      "desc" : "Returns the element for this dialog",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The underlying dialog Element"
+        }
+      ]
+    },
+    {
+      "name" : "purgeListeners",
+      "desc" : "Removes all listeners for this object",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "on",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "un",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "addEvents",
+      "desc" : "Used to define events on this Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "releaseCapture",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "removeListener",
+      "desc" : "Removes a listener",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "fireEvent",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
+    },
+    {
+      "name" : "hasListener",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
+    },
+    {
+      "name" : "capture",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture",
+          "isOptional" : false
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "addListener",
+      "desc" : "Appends an event handler to this component",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.util.Observable",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    }
+  ],
+  "events" : [
+    {
+      "name" : "move",
+      "desc" : "Fires when this dialog is moved by the user.",
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.BasicDialog",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "x",
+          "type" : "Number",
+          "desc" : "The new page X",
+          "isOptional" : false
+        },
+        {
+          "name" : "y",
+          "type" : "Number",
+          "desc" : "The new page Y",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "resize",
+      "desc" : "Fires when this dialog is resized by the user.",
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.BasicDialog",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "width",
+          "type" : "Number",
+          "desc" : "The new width",
+          "isOptional" : false
+        },
+        {
+          "name" : "height",
+          "type" : "Number",
+          "desc" : "The new height",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "beforehide",
+      "desc" : "Fires before this dialog is hidden.",
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.BasicDialog",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "beforeshow",
+      "desc" : "Fires before this dialog is shown.",
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.BasicDialog",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "hide",
+      "desc" : "Fires when this dialog is hidden.",
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.BasicDialog",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "show",
+      "desc" : "Fires when this dialog is shown.",
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.BasicDialog",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "keydown",
+      "desc" : "Fires when a key is pressed",
+      "memberOf" : "Roo.BasicDialog",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.BasicDialog",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    }
+  ]
+}

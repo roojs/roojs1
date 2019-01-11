@@ -1,0 +1,31 @@
+{
+  "name" : "Roo.lib.Ajax",
+  "augments" : [
+  ],
+  "desc" : "",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "request",
+      "desc" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.lib.Ajax",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "name" : "Array",
+  "augments" : [
+  ],
+  "desc" : "",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : true,
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "indexOf",
+      "desc" : "Checks whether or not the specified object exists in the array.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Array",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The object to check for",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The index of o in the array (or -1 if it is not found)"
+        }
+      ]
+    },
+    {
+      "name" : "map",
+      "desc" : "Map (JS 1.6 compatibility)",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Array",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "function",
+          "type" : "Function",
+          "desc" : "to call",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "remove",
+      "desc" : "Removes the specified object from the array.  If the object is not found nothing happens.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Array",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The object to remove",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

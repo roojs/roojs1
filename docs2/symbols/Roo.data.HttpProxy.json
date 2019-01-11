@@ -1,0 +1,232 @@
+{
+  "name" : "Roo.data.HttpProxy",
+  "augments" : [
+    "Roo.data.DataProxy"
+  ],
+  "desc" : "An implementation of {@link Roo.data.DataProxy} that reads a data object from an {@link Roo.data.Connection} object\nconfigured to reference a certain URL.<br><br>\n<p>\n<em>Note that this class cannot be used to retrieve data from a domain other than the domain\nfrom which the running page was served.<br><br>\n<p>\nFor cross-domain access to remote data, use an {@link Roo.data.ScriptTagProxy}.</em><br><br>\n<p>\nBe aware that to enable the browser to parse an XML document, the server must set\nthe Content-Type header in the HTTP response to \"text/xml\".",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+    {
+      "name" : "method",
+      "type" : "String",
+      "desc" : "(Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)",
+      "memberOf" : "Roo.data.HttpProxy",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "timeout",
+      "type" : "Number",
+      "desc" : "(Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)",
+      "memberOf" : "Roo.data.HttpProxy",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "autoAbort",
+      "type" : "Boolean",
+      "desc" : "(Optional) Whether this request should abort any pending requests. (defaults to false)",
+      "memberOf" : "Roo.data.HttpProxy",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "url",
+      "type" : "String",
+      "desc" : "(Optional) The default URL to be used for requests to the server. (defaults to undefined)",
+      "memberOf" : "Roo.data.HttpProxy",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "extraParams",
+      "type" : "Object",
+      "desc" : "(Optional) An object containing properties which are used as\nextra parameters to each request made by this object. (defaults to undefined)",
+      "memberOf" : "Roo.data.HttpProxy",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "disableCaching",
+      "type" : "Boolean",
+      "desc" : "(Optional) True to add a unique cache-buster param to GET requests. (defaults to true)",
+      "memberOf" : "Roo.data.HttpProxy",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "defaultHeaders",
+      "type" : "Object",
+      "desc" : "(Optional) An object containing request headers which are added\n to each request made by this object. (defaults to undefined)",
+      "memberOf" : "Roo.data.HttpProxy",
+      "values" : [
+      ]
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "getConnection",
+      "desc" : "Return the {@link Roo.data.Connection} object being used by this Proxy.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.HttpProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Connection",
+          "desc" : "The Connection object. This object may be used to subscribe to events on\na finer-grained basis than the DataProxy events."
+        }
+      ]
+    },
+    {
+      "name" : "load",
+      "desc" : "Load data from the configured {@link Roo.data.Connection}, read the data object into\na block of Roo.data.Records using the passed {@link Roo.data.DataReader} implementation, and\nprocess that block using the passed callback.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.HttpProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "params",
+          "type" : "Object",
+          "desc" : "An object containing properties which are to be used as HTTP parameters\nfor the request to the remote server.",
+          "isOptional" : false
+        },
+        {
+          "name" : "reader",
+          "type" : "Roo.data.DataReader",
+          "desc" : "The Reader object which converts the data\nobject into a block of Roo.data.Records.",
+          "isOptional" : false
+        },
+        {
+          "name" : "callback",
+          "type" : "Function",
+          "desc" : "The function into which to pass the block of Roo.data.Records.\nThe function must be passed <ul>\n<li>The Record block object</li>\n<li>The \"arg\" argument from the load function</li>\n<li>A boolean success indicator</li>\n</ul>",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "The scope in which to call the callback",
+          "isOptional" : false
+        },
+        {
+          "name" : "arg",
+          "type" : "Object",
+          "desc" : "An optional argument which is passed to the callback as its second parameter.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    }
+  ],
+  "events" : [
+    {
+      "name" : "load",
+      "desc" : "Fires before the load method's callback is called.",
+      "memberOf" : "Roo.data.DataProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "This",
+          "type" : "Object",
+          "desc" : "DataProxy object.",
+          "isOptional" : false
+        },
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The data object.",
+          "isOptional" : false
+        },
+        {
+          "name" : "arg",
+          "type" : "Object",
+          "desc" : "The callback argument object passed to the load function.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "beforeload",
+      "desc" : "Fires before a network request is made to retrieve a data object.",
+      "memberOf" : "Roo.data.DataProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "This",
+          "type" : "Object",
+          "desc" : "DataProxy object.",
+          "isOptional" : false
+        },
+        {
+          "name" : "params",
+          "type" : "Object",
+          "desc" : "The params parameter to the load function.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "loadexception",
+      "desc" : "Fires if an Exception occurs during data retrieval.",
+      "memberOf" : "Roo.data.DataProxy",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "This",
+          "type" : "Object",
+          "desc" : "DataProxy object.",
+          "isOptional" : false
+        },
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "The data object.",
+          "isOptional" : false
+        },
+        {
+          "name" : "arg",
+          "type" : "Object",
+          "desc" : "The callback argument object passed to the load function.",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Object",
+          "desc" : "The Exception.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    }
+  ]
+}

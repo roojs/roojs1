@@ -1,0 +1,103 @@
+{
+  "name" : "Roo.form.VTypes",
+  "augments" : [
+  ],
+  "desc" : "Overridable validation definitions. The validations provided are basic and intended to be easily customizable and extended.",
+  "isSingleton" : true,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "email'",
+      "desc" : "The function used to validate email addresses",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.form.VTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The email address",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "url'",
+      "desc" : "The function used to validate URLs",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.form.VTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The URL",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "alpha'",
+      "desc" : "The function used to validate alpha values",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.form.VTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The value",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "alphanum'",
+      "desc" : "The function used to validate alphanumeric values",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.form.VTypes",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "String",
+          "desc" : "The value",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

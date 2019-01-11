@@ -1,0 +1,137 @@
+{
+  "name" : "Roo.data.JsonReader",
+  "augments" : [
+    "Roo.data.DataReader"
+  ],
+  "desc" : "Data reader class to create an Array of Roo.data.Record objects from a JSON response\nbased on mappings in a provided Roo.data.Record constructor.\n\nThe default behaviour of a store is to send ?_requestMeta=1, unless the class has recieved 'metaData' property\nin the reply previously. \n\n<p>\nExample code:\n<pre><code>\nvar RecordDef = Roo.data.Record.create([\n    {name: 'name', mapping: 'name'},     // \"mapping\" property not needed if it's the same as \"name\"\n    {name: 'occupation'}                 // This field will use \"occupation\" as the mapping.\n]);\nvar myReader = new Roo.data.JsonReader({\n    totalProperty: \"results\",    // The property which contains the total dataset size (optional)\n    root: \"rows\",                // The property which contains an Array of row objects\n    id: \"id\"                     // The property within each row object that provides an ID for the record (optional)\n}, RecordDef);\n</code></pre>\n<p>\nThis would consume a JSON file like this:\n<pre><code>\n{ 'results': 2, 'rows': [\n    { 'id': 1, 'name': 'Bill', occupation: 'Gardener' },\n    { 'id': 2, 'name': 'Ben', occupation: 'Horticulturalist' } ]\n}\n</code></pre>",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+    {
+      "name" : "id",
+      "type" : "String",
+      "desc" : "Name of the property within a row object that contains a record identifier value.",
+      "memberOf" : "Roo.data.JsonReader",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "fields",
+      "type" : "Array",
+      "desc" : "Array of field definition objects",
+      "memberOf" : "Roo.data.JsonReader",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "root",
+      "type" : "String",
+      "desc" : "name of the property which contains the Array of row objects.",
+      "memberOf" : "Roo.data.JsonReader",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "successProperty",
+      "type" : "String",
+      "desc" : "Name of the property from which to retrieve the success attribute used by forms.",
+      "memberOf" : "Roo.data.JsonReader",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "totalProperty",
+      "type" : "String",
+      "desc" : "Name of the property from which to retrieve the total number of records\nin the dataset. This is only needed if the whole dataset is not passed in one go, but is being\npaged from the remote server.",
+      "memberOf" : "Roo.data.JsonReader",
+      "values" : [
+      ]
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "readRecords",
+      "desc" : "Create a data block containing Roo.data.Records from an XML document.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.JsonReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "An object which contains an Array of row objects in the property specified\nin the config as 'root, and optionally a property, specified in the config as 'totalProperty'\nwhich contains the total size of the dataset.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "data A data block which is used by an Roo.data.Store object as\na cache of Roo.data.Records."
+        }
+      ]
+    },
+    {
+      "name" : "read",
+      "desc" : "This method is only used by a DataProxy which has retrieved data from a remote server.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.JsonReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "response",
+          "type" : "Object",
+          "desc" : "The XHR object which contains the JSON data in its responseText.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "data A data block which is used by an Roo.data.Store object as\na cache of Roo.data.Records."
+        }
+      ]
+    },
+    {
+      "name" : "newRow",
+      "desc" : "Create an empty record",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.DataReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "(optional) - overlay some values",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.data.Record",
+          "desc" : "record created."
+        }
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

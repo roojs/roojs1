@@ -1,0 +1,15 @@
+{
+  "name" : "Roo.util.DelayedTask",
+  "augments" : [
+  ],
+  "desc" : "Provides a convenient method of performing setTimeout where a new\ntimeout cancels the old timeout. An example would be performing validation on a keypress.\nYou can use this class to buffer\nthe keypress events for a certain number of milliseconds, and perform only if they stop\nfor that amount of time.",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}

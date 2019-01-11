@@ -1,0 +1,79 @@
+{
+  "name" : "Roo.form.HtmlEditor.ToolbarStandard",
+  "augments" : [
+  ],
+  "desc" : "Basic Toolbar\n\nUsage:\n\n new Roo.form.HtmlEditor({\n    ....\n    toolbars : [\n        new Roo.form.HtmlEditorToolbar1({\n            disable : { fonts: 1 , format: 1, ..., ... , ...],\n            btns : [ .... ]\n        })\n    }",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+    {
+      "name" : "createLinkText",
+      "type" : "String",
+      "desc" : "The default text for the create link prompt",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "btns",
+      "type" : "Array",
+      "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "defaultFont",
+      "type" : "String",
+      "desc" : "default font to use.",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "defaultLinkValue",
+      "type" : "String",
+      "desc" : "The default value for the create link prompt (defaults to http:/ /)",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "fontFamilies",
+      "type" : "Array",
+      "desc" : "An array of available font families",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "disable",
+      "type" : "Object",
+      "desc" : "List of elements to disable..",
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
+      "values" : [
+      ]
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "updateToolbar",
+      "desc" : "Protected method that will not generally be called directly. It triggers\na toolbar update by reading the markup state of the current selection in the editor.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

@@ -1,0 +1,728 @@
+{
+  "name" : "Roo.dd.DragDropMgr",
+  "augments" : [
+  ],
+  "desc" : "DragDropMgr is a singleton that tracks the element interaction for\nall DragDrop items in the window.  Generally, you will not call\nthis class directly, but it does have helper methods that could\nbe useful in your DragDrop implementations.",
+  "isSingleton" : true,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "isDragDrop",
+      "desc" : "Utility function to determine if a given element has been\nregistered as a drag drop item.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "the element id to check",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "true if this element is a DragDrop item,\nfalse otherwise"
+        }
+      ]
+    },
+    {
+      "name" : "getRelated",
+      "desc" : "Returns the drag and drop instances that are in all groups the\npassed in instance belongs to.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "p_oDD",
+          "type" : "DragDrop",
+          "desc" : "the obj to get related data for",
+          "isOptional" : false
+        },
+        {
+          "name" : "bTargetsOnly",
+          "type" : "boolean",
+          "desc" : "if true, only return targetable objs",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "DragDrop[]",
+          "desc" : "the related instances"
+        }
+      ]
+    },
+    {
+      "name" : "getScrollLeft",
+      "desc" : "Gets the scrollLeft",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "int",
+          "desc" : "the document's scrollTop"
+        }
+      ]
+    },
+    {
+      "name" : "regDragDrop",
+      "desc" : "Each DragDrop instance must be registered with the DragDropMgr.\nThis is executed in DragDrop.init()",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "oDD",
+          "type" : "DragDrop",
+          "desc" : "the DragDrop object to register",
+          "isOptional" : false
+        },
+        {
+          "name" : "sGroup",
+          "type" : "String",
+          "desc" : "the name of the group this element belongs to",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "handleWasClicked",
+      "desc" : "Recursively searches the immediate parent and all child nodes for\nthe handle element in order to determine wheter or not it was\nclicked.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "",
+          "desc" : "the html element to inspect",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "refreshCache",
+      "desc" : "Refreshes the cache of the top-left and bottom-right points of the\ndrag and drop objects in the specified group(s).  This is in the\nformat that is stored in the drag and drop instance, so typical\nusage is:\n<code>\nRoo.dd.DragDropMgr.refreshCache(ddinstance.groups);\n</code>\nAlternatively:\n<code>\nRoo.dd.DragDropMgr.refreshCache({group1:true, group2:true});\n</code>",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "groups",
+          "type" : "Object",
+          "desc" : "an associative array of groups to refresh",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "getCss",
+      "desc" : "Returns the style property for the DOM element (i.e.,\ndocument.getElById(id).style)",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "This has been deprecated: use Roo.getDom instead",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "the id of the elment to get",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The style property of the element"
+        }
+      ]
+    },
+    {
+      "name" : "swapNode",
+      "desc" : "Swap two nodes.  In IE, we use the native method, for others we\nemulate the IE behavior",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "n1",
+          "type" : "",
+          "desc" : "the first node to swap",
+          "isOptional" : false
+        },
+        {
+          "name" : "n2",
+          "type" : "",
+          "desc" : "the other node to swap",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "stopEvent",
+      "desc" : "Utility to stop event propagation and event default, if these\nfeatures are turned on.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "the event as returned by this.getEvent()",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "lock",
+      "desc" : "Lock all drag and drop functionality",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "moveToEl",
+      "desc" : "Sets the x/y position of an element to the location of the\ntarget element.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "moveEl",
+          "type" : "HTMLElement",
+          "desc" : "The element to move",
+          "isOptional" : false
+        },
+        {
+          "name" : "targetEl",
+          "type" : "HTMLElement",
+          "desc" : "The position reference element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "unlock",
+      "desc" : "Unlock all drag and drop functionality",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "getDDById",
+      "desc" : "Returns the DragDrop instance for a given id",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "the id of the DragDrop object",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "DragDrop",
+          "desc" : "the drag drop object, null if it is not found"
+        }
+      ]
+    },
+    {
+      "name" : "isLegalTarget",
+      "desc" : "Returns true if the specified dd target is a legal target for\nthe specifice drag obj",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "the",
+          "type" : "DragDrop",
+          "desc" : "drag obj",
+          "isOptional" : false
+        },
+        {
+          "name" : "the",
+          "type" : "DragDrop",
+          "desc" : "target",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "true if the target is a legal target for the\ndd obj"
+        }
+      ]
+    },
+    {
+      "name" : "isTypeOfDD",
+      "desc" : "My goal is to be able to transparently determine if an object is\ntypeof DragDrop, and the exact subclass of DragDrop.  typeof\nreturns \"object\", oDD.constructor.toString() always returns\n\"DragDrop\" and not the name of the subclass.  So for now it just\nevaluates a well-known variable in DragDrop.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "the",
+          "type" : "Object",
+          "desc" : "object to evaluate",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "true if typeof oDD = DragDrop"
+        }
+      ]
+    },
+    {
+      "name" : "startDrag",
+      "desc" : "Fired when either the drag pixel threshol or the mousedown hold\ntime threshold has been met.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "x",
+          "type" : "",
+          "desc" : "{int} the X position of the original mousedown",
+          "isOptional" : false
+        },
+        {
+          "name" : "y",
+          "type" : "",
+          "desc" : "{int} the Y position of the original mousedown",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "getStyle",
+      "desc" : "Returns the specified element style property",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "This has been deprecated: use Roo.lib.Dom.getStyle",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "HTMLElement",
+          "desc" : "the element",
+          "isOptional" : false
+        },
+        {
+          "name" : "styleProp",
+          "type" : "string",
+          "desc" : "the style property",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "string",
+          "desc" : "The value of the style property"
+        }
+      ]
+    },
+    {
+      "name" : "getPosX",
+      "desc" : "Returns the X position of an html element",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "This has been deprecated: use Roo.lib.Dom.getX instead",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "",
+          "desc" : "the element for which to get the position",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "int",
+          "desc" : "the X coordinate"
+        }
+      ]
+    },
+    {
+      "name" : "getPosY",
+      "desc" : "Returns the Y position of an html element",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "This has been deprecated: use Roo.lib.Dom.getY instead",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "",
+          "desc" : "the element for which to get the position",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "int",
+          "desc" : "the Y coordinate"
+        }
+      ]
+    },
+    {
+      "name" : "isLocked",
+      "desc" : "Is drag and drop locked?",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "True if drag and drop is locked, false otherwise."
+        }
+      ]
+    },
+    {
+      "name" : "getBestMatch",
+      "desc" : "Helper function for getting the best match from the list of drag\nand drop objects returned by the drag and drop events when we are\nin INTERSECT mode.  It returns either the first object that the\ncursor is over, or the object that has the greatest overlap with\nthe dragged element.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "dds",
+          "type" : "DragDrop[]",
+          "desc" : "The array of drag and drop objects\ntargeted",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "DragDrop",
+          "desc" : "The best single match"
+        }
+      ]
+    },
+    {
+      "name" : "getLocation",
+      "desc" : "Returns a Region object containing the drag and drop element's position\nand size, including the padding configured for it",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "oDD",
+          "type" : "DragDrop",
+          "desc" : "the drag and drop object to get the\n                      location for",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.lib.Region",
+          "desc" : "a Region object representing the total area\n                            the element occupies, including any padding\n                            the instance is configured for."
+        }
+      ]
+    },
+    {
+      "name" : "isHandle",
+      "desc" : "Utility function to determine if a given element has been\nregistered as a drag drop handle for the given Drag Drop object.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "the element id to check",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "true if this element is a DragDrop handle, false\notherwise"
+        }
+      ]
+    },
+    {
+      "name" : "getScrollTop",
+      "desc" : "Gets the scrollTop",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "int",
+          "desc" : "the document's scrollTop"
+        }
+      ]
+    },
+    {
+      "name" : "numericSort",
+      "desc" : "Numeric array sort function",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "regHandle",
+      "desc" : "Each DragDrop handle element must be registered.  This is done\nautomatically when executing DragDrop.setHandleElId()",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "sDDId",
+          "type" : "String",
+          "desc" : "the DragDrop id this element is a handle for",
+          "isOptional" : false
+        },
+        {
+          "name" : "sHandleId",
+          "type" : "String",
+          "desc" : "the id of the element that is the drag\nhandle",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "getElement",
+      "desc" : "Returns the actual DOM element",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "This has been deprecated: use Roo.getDom instead",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "the id of the elment to get",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The element"
+        }
+      ]
+    },
+    {
+      "name" : "verifyEl",
+      "desc" : "This checks to make sure an element exists and is in the DOM.  The\nmain purpose is to handle cases where innerHTML is used to remove\ndrag and drop objects from the DOM.  IE provides an 'unspecified\nerror' when trying to access the offsetParent of such an element",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.dd.DragDropMgr",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "HTMLElement",
+          "desc" : "the element to check",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "boolean",
+          "desc" : "true if the element looks usable"
+        }
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

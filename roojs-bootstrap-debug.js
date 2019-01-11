@@ -2060,13 +2060,13 @@ Roo.bootstrap.Menu = function(config){
     this.addEvents({
         /**
          * @event beforeshow
-         * Fires before this menu is displayed
+         * Fires before this menu is displayed (return false to block)
          * @param {Roo.menu.Menu} this
          */
         beforeshow : true,
         /**
          * @event beforehide
-         * Fires before this menu is hidden
+         * Fires before this menu is hidden (return false to block)
          * @param {Roo.menu.Menu} this
          */
         beforehide : true,
@@ -2288,12 +2288,17 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      * the element (defaults to this.defaultAlign)
      * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
      */
-    show : function(el, pos, parentMenu){
-        this.parentMenu = parentMenu;
+    show : function(el, pos, parentMenu)
+    {
+        if (false === this.fireEvent("beforeshow", this)) {
+	    Roo.log("show canceled");
+	    return;
+	}
+	this.parentMenu = parentMenu;
         if(!this.el){
             this.render();
         }
-        this.fireEvent("beforeshow", this);
+        
         this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
     },
      /**
@@ -2356,10 +2361,13 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     hide : function(deep)
     {
-        
+        if (false === this.fireEvent("beforehide", this)) {
+	    Roo.log("hide canceled");
+	    return;
+	}
         this.hideMenuItems();
         if(this.el && this.isVisible()){
-            this.fireEvent("beforehide", this);
+           
             if(this.activeItem){
                 this.activeItem.deactivate();
                 this.activeItem = null;
@@ -2426,16 +2434,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if (!this.el) { 
             return;
         }
-        //$(backdrop).remove()
+        
         this.el.select('.open',true).each(function(aa) {
             
             aa.removeClass('open');
-          //var parent = getParent($(this))
-          //var relatedTarget = { relatedTarget: this }
-          
-           //$parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
-          //if (e.isDefaultPrevented()) return
-           //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
+         
         });
     },
     addxtypeChild : function (tree, cntr) {
@@ -3936,7 +3939,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     getChildContainer : function()
     {
-        if (this.el.select('.collapse').getCount()) {
+        if (this.el && this.el.select('.collapse').getCount()) {
             return this.el.select('.collapse',true).first();
         }
         
@@ -5125,7 +5128,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             e.preventDefault();
         }
         
-        this.fireEvent('click', this);
+        this.fireEvent('click', this, e);
     },
     
     disable : function()
@@ -12379,7 +12382,7 @@ Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
         params = params || {};
         var result;
         try {
-            result = reader.readRecords(this.data);
+            result = reader.readRecords(params.data ? params.data :this.data);
         }catch(e){
             this.fireEvent("loadexception", this, arg, null, e);
             callback.call(scope, null, arg, false);
@@ -12991,12 +12994,16 @@ var myReader = new Roo.data.ArrayReader({
  * Create a new JsonReader
  * @param {Object} meta Metadata configuration options.
  * @param {Object} recordType Either an Array of field definition objects
+ * @cfg {Array} fields Array of field definition objects
+ * @cfg {String} id Name of the property within a row object that contains a record identifier value.
  * as specified to {@link Roo.data.Record#create},
  * or an {@link Roo.data.Record} object
  * created using {@link Roo.data.Record#create}.
  */
 Roo.data.ArrayReader = function(meta, recordType){
-    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType);
+    
+     
+    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 
 Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {

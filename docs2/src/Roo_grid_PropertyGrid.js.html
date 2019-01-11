@@ -1,0 +1,280 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/grid/PropertyGrid.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+
+
+</span><span class="jsdoc-var">Roo.grid.PropertyRecord </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.data.Record.create</span><span class="jsdoc-syntax">([
+    {</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">},  </span><span class="jsdoc-string">'value'
+</span><span class="jsdoc-syntax">]);
+
+
+</span><span class="jsdoc-var">Roo.grid.PropertyStore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">source</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">this.grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.data.Store</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-var">recordType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.grid.PropertyRecord
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'update'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onUpdate</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">source</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.setSource</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">source</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">Roo.grid.PropertyStore.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.grid.PropertyStore</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">setSource </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.source </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.store.removeAll</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isEditableValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">])){
+                </span><span class="jsdoc-var">data.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.PropertyRecord</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]}, </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">));
+            }
+        }
+        </span><span class="jsdoc-var">this.store.loadRecords</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">}, {}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">onUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">Roo.data.Record.EDIT</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">record.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oldValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">record.modified</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.grid.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforepropertychange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.source</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oldValue</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.source</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">record.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">record.commit</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.grid.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'propertychange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.source</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oldValue</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">record.reject</span><span class="jsdoc-syntax">();
+            }
+        }
+    },
+
+    </span><span class="jsdoc-var">getProperty </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.store.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">isEditableValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">val </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.source</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.store.getById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.set</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">getSource </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.source</span><span class="jsdoc-syntax">;
+    }
+});
+
+</span><span class="jsdoc-var">Roo.grid.PropertyColumnModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">this.grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.grid</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">g.PropertyColumnModel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [
+        {</span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.nameText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sortable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">},
+        {</span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valueText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">resizable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">}
+    ]);
+    </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.bselect </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, {
+        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'display:none'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-grid-editor'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">children</span><span class="jsdoc-syntax">: [
+            {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'option'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'true'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'true'</span><span class="jsdoc-syntax">},
+            {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'option'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'false'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'false'</span><span class="jsdoc-syntax">}
+        ]
+    });
+    </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bselect</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.editors </span><span class="jsdoc-syntax">= {
+        </span><span class="jsdoc-string">'date' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">g.GridEditor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">f.DateField</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">selectOnFocus</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">})),
+        </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">g.GridEditor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">f.TextField</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">selectOnFocus</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">})),
+        </span><span class="jsdoc-string">'number' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">g.GridEditor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">f.NumberField</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">selectOnFocus</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'text-align:left;'</span><span class="jsdoc-syntax">})),
+        </span><span class="jsdoc-string">'int' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">g.GridEditor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">f.NumberField</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">selectOnFocus</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">allowDecimals</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'text-align:left;'</span><span class="jsdoc-syntax">})),
+        </span><span class="jsdoc-string">'boolean' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">g.GridEditor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">f.Field</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this.bselect</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">selectOnFocus</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">}))
+    };
+    </span><span class="jsdoc-var">this.renderCellDelegate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.renderCell.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.renderPropDelegate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.renderProp.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.grid.PropertyColumnModel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.grid.ColumnModel</span><span class="jsdoc-syntax">, {
+
+
+    </span><span class="jsdoc-var">nameText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Name'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">valueText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Value'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">dateFormat </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'m/j/Y'</span><span class="jsdoc-syntax">,
+
+
+    </span><span class="jsdoc-var">renderDate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dateVal</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dateVal.dateFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dateFormat</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">renderBool </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bVal</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">bVal </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'true' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'false'</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">isCellEditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">colIndex </span><span class="jsdoc-syntax">== 1;
+    },
+
+    </span><span class="jsdoc-var">getRenderer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">== 1 ?
+            </span><span class="jsdoc-var">this.renderCellDelegate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.renderPropDelegate</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">renderProp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getPropertyName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">renderCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">rv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.renderDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'boolean'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">rv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.renderBool</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.util.Format.htmlEncode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rv</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">getPropertyName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.propertyNames</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">pn </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">pn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">] ? </span><span class="jsdoc-var">pn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getCellEditor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store.getProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">];
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.grid.customEditors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.editors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.grid.customEditors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">]];
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.grid.customEditors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.grid.customEditors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">];
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.editors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'date'</span><span class="jsdoc-syntax">];
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.editors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">];
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'boolean'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.editors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'boolean'</span><span class="jsdoc-syntax">];
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.editors</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">];
+        }
+    }
+});
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.grid.PropertyGrid
+ * @extends Roo.grid.EditorGrid
+ * This class represents the  interface of a component based property grid control.
+ * &lt;br&gt;&lt;br&gt;Usage:&lt;pre&gt;&lt;code&gt;
+ var grid = new Roo.grid.PropertyGrid(&quot;my-container-id&quot;, {
+      
+ });
+ // set any options
+ grid.render();
+ * &lt;/code&gt;&lt;/pre&gt;
+  
+ * @constructor
+ * @param {String/HTMLElement/Roo.Element} container The element into which this grid will be rendered -
+ * The container MUST have some type of size defined for the grid to fill. The container will be
+ * automatically set to position relative if it isn't already.
+ * @param {Object} config A config object that sets properties on this grid.
+ */
+</span><span class="jsdoc-var">Roo.grid.PropertyGrid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">|| {};
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.PropertyStore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.PropertyColumnModel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">store.store.sort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ASC'</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.grid.PropertyGrid.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">store.store</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">cm</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cm</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">enableColLock</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">enableColumnMove</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">stripeRows</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">trackMouseOver</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">clicksToEdit</span><span class="jsdoc-syntax">:1
+    }, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">));
+    </span><span class="jsdoc-var">this.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-props-grid'</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.lastEditRow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'columnresize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onColumnResize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+         </span><span class="jsdoc-comment">/**
+	     * @event beforepropertychange
+	     * Fires before a property changes (return false to stop?)
+	     * @param {Roo.grid.PropertyGrid} grid property grid? (check could be store)
+	     * @param {String} id Record Id
+	     * @param {String} newval New Value
+         * @param {String} oldval Old Value
+	     */
+        </span><span class="jsdoc-string">&quot;beforepropertychange&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event propertychange
+	     * Fires after a property changes
+	     * @param {Roo.grid.PropertyGrid} grid property grid? (check could be store)
+	     * @param {String} id Record Id
+	     * @param {String} newval New Value
+         * @param {String} oldval Old Value
+	     */
+        </span><span class="jsdoc-string">&quot;propertychange&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.customEditors </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.customEditors </span><span class="jsdoc-syntax">|| {};
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.grid.PropertyGrid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.grid.EditorGrid</span><span class="jsdoc-syntax">, {
+
+     </span><span class="jsdoc-comment">/**
+     * @cfg {Object} customEditors map of colnames=&gt; custom editors.
+     * the custom editor can be one of the standard ones (date|string|number|int|boolean), or a
+     * grid editor eg. Roo.grid.GridEditor(new Roo.form.TextArea({selectOnFocus:true})),
+     * false disables editing of the field.
+	 */
+
+      /**
+     * @cfg {Object} propertyNames map of property Names to their displayed value
+	 */
+
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.grid.PropertyGrid.superclass.render.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.autoSize.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">autoSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.grid.PropertyGrid.superclass.autoSize.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.view.fitColumns</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-var">onColumnResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.colModel.setColumnWidth</span><span class="jsdoc-syntax">(1, </span><span class="jsdoc-var">this.container.getWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)-</span><span class="jsdoc-var">this.colModel.getColumnWidth</span><span class="jsdoc-syntax">(0));
+        </span><span class="jsdoc-var">this.autoSize</span><span class="jsdoc-syntax">();
+    },
+    </span><span class="jsdoc-comment">/**
+     * Sets the data for the Grid
+     * accepts a Key =&gt; Value object of all the elements avaiable.
+     * @param {Object} data  to appear in grid.
+     */
+    </span><span class="jsdoc-var">setSource </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">source</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.store.setSource</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">source</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//this.autoSize();
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-comment">/**
+     * Gets all the data from the grid.
+     * @return {Object} data  data stored in grid
+     */
+    </span><span class="jsdoc-var">getSource </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.store.getSource</span><span class="jsdoc-syntax">();
+    }
+});</span></code></body></html>

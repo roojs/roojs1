@@ -1,0 +1,310 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/form/Layout.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.form.Layout
+ * @extends Roo.Component
+ * Creates a container for layout and rendering of fields in an {@link Roo.form.Form}.
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.Layout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xitems </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">xitems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-var">Roo.form.Layout.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.stack </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xitems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.Layout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Component</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String/Object} autoCreate
+     * A DomHelper element spec used to autocreate the layout (defaults to {tag: 'div', cls: 'x-form-ct'})
+     */
+    /**
+     * @cfg {String/Object/Function} style
+     * A style specification string, e.g. &quot;width:100px&quot;, or object in the form {width:&quot;100px&quot;}, or
+     * a function which returns such a specification.
+     */
+    /**
+     * @cfg {String} labelAlign
+     * Valid values are &quot;left,&quot; &quot;top&quot; and &quot;right&quot; (defaults to &quot;left&quot;)
+     */
+    /**
+     * @cfg {Number} labelWidth
+     * Fixed width in pixels of all field labels (defaults to undefined)
+     */
+    /**
+     * @cfg {Boolean} clear
+     * True to add a clearing element at the end of this layout, equivalent to CSS clear: both (defaults to true)
+     */
+    </span><span class="jsdoc-var">clear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} labelSeparator
+     * The separator to use after field labels (defaults to ':')
+     */
+    </span><span class="jsdoc-var">labelSeparator </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} hideLabels
+     * True to suppress the display of field labels in this layout (defaults to false)
+     */
+    </span><span class="jsdoc-var">hideLabels </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">defaultAutoCreate </span><span class="jsdoc-syntax">: {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-ct'</span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">isLayout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// from markup
+            </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{  </span><span class="jsdoc-comment">// generate
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getAutoCreate</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ct.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.style</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.applyStyles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.style</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelAlign</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-form-label-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.labelAlign</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hideLabels</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.labelStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;display:none&quot;</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.elementStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;padding-left:0;&quot;</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.labelStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width:&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;px;&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.elementStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;padding-left:&quot;</span><span class="jsdoc-syntax">+((</span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.labelPad </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'number' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.labelPad </span><span class="jsdoc-syntax">: 5))+</span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">&quot;;&quot;</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.labelStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width:auto;&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.elementStyle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;padding-left:0;&quot;</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stack </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.stack</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">slen </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">stack.length</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">slen </span><span class="jsdoc-syntax">&gt; 0){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.fieldTpl</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-string">'&lt;div class=&quot;x-form-item {5}&quot;&gt;'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'&lt;label for=&quot;{0}&quot; style=&quot;{2}&quot;&gt;{1}{4}&lt;/label&gt;'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'&lt;div class=&quot;x-form-element&quot; id=&quot;x-form-el-{0}&quot; style=&quot;{3}&quot;&gt;'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'&lt;/div&gt;&lt;div class=&quot;x-form-clear-left&quot;&gt;&lt;/div&gt;'
+                </span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">t.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">t.compile</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">Roo.form.Layout.prototype.fieldTpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">slen</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.isFormField</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.renderField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">this.renderComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                }
+            }
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.clear</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-form-clear'</span><span class="jsdoc-syntax">});
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">renderField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">f.fieldEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fieldTpl.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, [
+               </span><span class="jsdoc-var">f.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//0
+               </span><span class="jsdoc-var">f.fieldLabel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//1
+               </span><span class="jsdoc-var">f.labelStyle</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">this.labelStyle</span><span class="jsdoc-syntax">||</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//2
+               </span><span class="jsdoc-var">this.elementStyle</span><span class="jsdoc-syntax">||</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//3
+               </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">f.labelSeparator </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.labelSeparator </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">f.labelSeparator</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//4
+               </span><span class="jsdoc-var">f.itemCls</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">this.itemCls</span><span class="jsdoc-syntax">||</span><span class="jsdoc-string">''  </span><span class="jsdoc-comment">//5
+       </span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getPrevSibling</span><span class="jsdoc-syntax">());
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">renderComponent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">c.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.isLayout </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">());
+    },
+    </span><span class="jsdoc-comment">/**
+     * Adds a object form elements (using the xtype property as the factory method.)
+     * Valid xtypes are:  TextField, TextArea .... Button, Layout, FieldSet, Column
+     * @param {Object} config 
+     */
+    </span><span class="jsdoc-var">addxtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// create the lement.
+        </span><span class="jsdoc-var">o.form </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.form</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.form.allItems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fe</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.stack.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fe</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fe.isFormField</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.form.items.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fe</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">fe</span><span class="jsdoc-syntax">;
+    }
+});
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.form.Column
+ * @extends Roo.form.Layout
+ * Creates a column container for layout and rendering of fields in an {@link Roo.form.Form}.
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.Column </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.Column.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.Column</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.Layout</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number/String} width
+     * The fixed width of the column in pixels or CSS value (defaults to &quot;auto&quot;)
+     */
+    /**
+     * @cfg {String/Object} autoCreate
+     * A DomHelper element spec used to autocreate the column (defaults to {tag: 'div', cls: 'x-form-ct x-form-column'})
+     */
+
+    // private
+    </span><span class="jsdoc-var">defaultAutoCreate </span><span class="jsdoc-syntax">: {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-ct x-form-column'</span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.form.Column.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">);
+        }
+    }
+});
+
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.form.Row
+ * @extends Roo.form.Layout
+ * Creates a row container for layout and rendering of fields in an {@link Roo.form.Form}.
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+
+
+</span><span class="jsdoc-var">Roo.form.Row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.Row.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.Row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.Layout</span><span class="jsdoc-syntax">, {
+      </span><span class="jsdoc-comment">/**
+     * @cfg {Number/String} width
+     * The fixed width of the column in pixels or CSS value (defaults to &quot;auto&quot;)
+     */
+    /**
+     * @cfg {Number/String} height
+     * The fixed height of the column in pixels or CSS value (defaults to &quot;auto&quot;)
+     */
+    </span><span class="jsdoc-var">defaultAutoCreate </span><span class="jsdoc-syntax">: {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-form-ct x-form-row'</span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">padWidth </span><span class="jsdoc-syntax">: 20,
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">//console.log('row render');
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.rowTpl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-string">'&lt;div class=&quot;x-form-item {5}&quot; style=&quot;float:left;width:{6}px&quot;&gt;'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'&lt;label for=&quot;{0}&quot; style=&quot;{2}&quot;&gt;{1}{4}&lt;/label&gt;'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'&lt;div class=&quot;x-form-element&quot; id=&quot;x-form-el-{0}&quot; style=&quot;{3}&quot;&gt;'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'&lt;/div&gt;'
+            </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">t.disableFormats </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">t.compile</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">Roo.form.Layout.prototype.rowTpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.fieldTpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.rowTpl</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">//console.log('lw' + this.labelWidth +', la:' + this.labelAlign);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">labelWidth </span><span class="jsdoc-syntax">= 100;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">labelWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.labelWidth
+            </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-var">this.padWidth </span><span class="jsdoc-syntax">=  20 + </span><span class="jsdoc-var">labelWidth</span><span class="jsdoc-syntax">;
+
+        }
+
+        </span><span class="jsdoc-var">Roo.form.Column.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.height</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">renderField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">f.fieldEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.fieldTpl.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, [
+               </span><span class="jsdoc-var">f.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">f.fieldLabel</span><span class="jsdoc-syntax">,
+               </span><span class="jsdoc-var">f.labelStyle</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">this.labelStyle</span><span class="jsdoc-syntax">||</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+               </span><span class="jsdoc-var">this.elementStyle</span><span class="jsdoc-syntax">||</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+               </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">f.labelSeparator </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.labelSeparator </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">f.labelSeparator</span><span class="jsdoc-syntax">,
+               </span><span class="jsdoc-var">f.itemCls</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">this.itemCls</span><span class="jsdoc-syntax">||</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+               </span><span class="jsdoc-var">f.width </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">f.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.padWidth </span><span class="jsdoc-syntax">: 160 + </span><span class="jsdoc-var">this.padWidth
+       </span><span class="jsdoc-syntax">],</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    }
+});
+
+
+</span><span class="jsdoc-comment">/**
+ * @class Roo.form.FieldSet
+ * @extends Roo.form.Layout
+ * Creates a fieldset container for layout and rendering of fields in an {@link Roo.form.Form}.
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.FieldSet </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.FieldSet.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.FieldSet</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.Layout</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} legend
+     * The text to display as the legend for the FieldSet (defaults to '')
+     */
+    /**
+     * @cfg {String/Object} autoCreate
+     * A DomHelper element spec used to autocreate the fieldset (defaults to {tag: 'fieldset', cn: {tag:'legend'}})
+     */
+
+    // private
+    </span><span class="jsdoc-var">defaultAutoCreate </span><span class="jsdoc-syntax">: {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fieldset'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'legend'</span><span class="jsdoc-syntax">}},
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.form.FieldSet.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.legend</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setLegend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.legend</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">setLegend </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'legend'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+        }
+    }
+});</span></code></body></html>

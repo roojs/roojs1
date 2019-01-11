@@ -1,0 +1,15 @@
+{
+  "name" : "Roo.UpdateManager.defaults",
+  "augments" : [
+  ],
+  "desc" : "The defaults collection enables customizing the default properties of UpdateManager",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}

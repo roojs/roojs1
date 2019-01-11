@@ -1,0 +1,58 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/tree/TreeDragZone.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+
+</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.dd.DragZone</span><span class="jsdoc-syntax">){
+</span><span class="jsdoc-var">Roo.tree.TreeDragZone </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.tree.TreeDragZone.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tree.getTreeEl</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.tree </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.tree.TreeDragZone</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.dd.DragZone</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">ddGroup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;TreeDD&quot;</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">onBeforeDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.node</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">n.draggable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">n.disabled</span><span class="jsdoc-syntax">;
+    },
+
+
+    </span><span class="jsdoc-var">onInitDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dragData</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.tree.getSelectionModel</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.node</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.proxy.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">data.node.ui.appendDDGhost</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.proxy.ghost.dom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.tree.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;startdrag&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data.node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">getRepairXY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">data.node.ui.getDDRepairXY</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">onEndDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.tree.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;enddrag&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data.node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+
+
+    },
+
+    </span><span class="jsdoc-var">onValidDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.tree.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;dragdrop&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dragData.node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.hideProxy</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">beforeInvalidDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">// this scrolls the original position back into view
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tree.getSelectionModel</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">sm.clearSelections</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">sm.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dragData.node</span><span class="jsdoc-syntax">);
+    }
+});
+}</span></code></body></html>

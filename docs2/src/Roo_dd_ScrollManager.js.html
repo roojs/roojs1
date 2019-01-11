@@ -1,0 +1,187 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/dd/ScrollManager.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+
+/**
+ * @class Roo.dd.ScrollManager
+ * Provides automatic scrolling of overflow regions in the page during drag operations.&lt;br&gt;&lt;br&gt;
+ * &lt;b&gt;Note: This class uses &quot;Point Mode&quot; and is untested in &quot;Intersect Mode&quot;.&lt;/b&gt;
+ * @singleton
+ */
+</span><span class="jsdoc-var">Roo.dd.ScrollManager </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ddm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.dd.DragDropMgr</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">els </span><span class="jsdoc-syntax">= {};
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dragEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">proc </span><span class="jsdoc-syntax">= {};
+
+
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">onStop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">dragEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">clearProc</span><span class="jsdoc-syntax">();
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">triggerRefresh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ddm.dragCurrent</span><span class="jsdoc-syntax">){
+             </span><span class="jsdoc-var">ddm.refreshCache</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ddm.dragCurrent.groups</span><span class="jsdoc-syntax">);
+        }
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">doScroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ddm.dragCurrent</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.dd.ScrollManager</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dds.animate</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">proc.el.scroll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">proc.dir</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dds.increment</span><span class="jsdoc-syntax">)){
+                    </span><span class="jsdoc-var">triggerRefresh</span><span class="jsdoc-syntax">();
+                }
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">proc.el.scroll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">proc.dir</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dds.increment</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dds.animDuration</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">triggerRefresh</span><span class="jsdoc-syntax">);
+            }
+        }
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clearProc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">proc.id</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">proc.id</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">proc.id </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">proc.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">proc.dir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">startProc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">){
+         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll startproc'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">clearProc</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">proc.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">proc.dir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">proc.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.dd.ScrollManager.frequency</span><span class="jsdoc-syntax">);
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">onFire </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isDrop</span><span class="jsdoc-syntax">){
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isDrop </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">ddm.dragCurrent</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.dd.ScrollManager</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dragEl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">dragEl </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">ddm.dragCurrent</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">dragEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ddm.dragCurrent</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">// refresh regions on drag start
+            </span><span class="jsdoc-var">dds.refreshCache</span><span class="jsdoc-syntax">();
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Event.getXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.lib.Point</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1]);
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el._region</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">r.contains</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">el.isScrollable</span><span class="jsdoc-syntax">()){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.bottom </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">pt.y </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">dds.thresh</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">proc.el </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">startProc</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;down&quot;</span><span class="jsdoc-syntax">);
+                    }
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.right </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">pt.x </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">dds.thresh</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">proc.el </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">startProc</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;left&quot;</span><span class="jsdoc-syntax">);
+                    }
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt.y </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">r.top </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">dds.thresh</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">proc.el </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">startProc</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;up&quot;</span><span class="jsdoc-syntax">);
+                    }
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pt.x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">r.left </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">dds.thresh</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">proc.el </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">startProc</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;right&quot;</span><span class="jsdoc-syntax">);
+                    }
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+            }
+        }
+        </span><span class="jsdoc-var">clearProc</span><span class="jsdoc-syntax">();
+    };
+
+    </span><span class="jsdoc-var">ddm.fireEvents </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ddm.fireEvents.createSequence</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">onFire</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ddm</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">ddm.stopDrag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ddm.stopDrag.createSequence</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">onStop</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ddm</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">/**
+         * Registers new overflow element(s) to auto scroll
+         * @param {String/HTMLElement/Element/Array} el The id of or the element to be scrolled or an array of either
+         */
+        </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                	</span><span class="jsdoc-var">this.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                }
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">el.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">Roo.dd.ScrollManager.els </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Unregisters overflow element(s) so they are no longer scrolled
+         * @param {String/HTMLElement/Element/Array} el The id of or the element to be removed or an array of either
+         */
+        </span><span class="jsdoc-var">unregister </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                	</span><span class="jsdoc-var">this.unregister</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                }
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">el.id</span><span class="jsdoc-syntax">];
+            }
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * The number of pixels from the edge of a container the pointer needs to be to 
+         * trigger scrolling (defaults to 25)
+         * @type Number
+         */
+        </span><span class="jsdoc-var">thresh </span><span class="jsdoc-syntax">: 25,
+
+        </span><span class="jsdoc-comment">/**
+         * The number of pixels to scroll in each scroll increment (defaults to 50)
+         * @type Number
+         */
+        </span><span class="jsdoc-var">increment </span><span class="jsdoc-syntax">: 100,
+
+        </span><span class="jsdoc-comment">/**
+         * The frequency of scrolls in milliseconds (defaults to 500)
+         * @type Number
+         */
+        </span><span class="jsdoc-var">frequency </span><span class="jsdoc-syntax">: 500,
+
+        </span><span class="jsdoc-comment">/**
+         * True to animate the scroll (defaults to true)
+         * @type Boolean
+         */
+        </span><span class="jsdoc-var">animate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * The animation duration in seconds - 
+         * MUST BE less than Roo.dd.ScrollManager.frequency! (defaults to .4)
+         * @type Number
+         */
+        </span><span class="jsdoc-var">animDuration</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">.4</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * Manually trigger a cache refresh.
+         */
+        </span><span class="jsdoc-var">refreshCache </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// for people extending the object prototype
+                    </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">._region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.getRegion</span><span class="jsdoc-syntax">();
+                }
+            }
+        }
+    };
+}();</span></code></body></html>

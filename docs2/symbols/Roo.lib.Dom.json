@@ -1,0 +1,15 @@
+{
+  "name" : "Roo.lib.Dom",
+  "augments" : [
+  ],
+  "desc" : "Dom utils (from YIU afaik)",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}

@@ -41,3 +41,9 @@ roojspacker -t roojs-doc.js -T roojs-doc-debug.js -i buildSDK/dependancy_doc.txt
 seed ../gnome.introspection-doc-generator/jsdocbuild.js --baseDir ../roojs1 \
    --target ../roojs1/docs --conf ../roojs1/buildSDK/jsdoc.cfg.json \
    --cacheDirectory /tmp/roocache/
+
+#new version?? - under testing...
+roojspacker -i buildSDK/dependancy_core.txt  -i buildSDK/dependancy_ui.txt  \
+    -i buildSDK/dependancy_bootstrap.txt -i buildSDK/dependancy_calendar.txt \
+   --doc-target=docs2 -D
+

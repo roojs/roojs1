@@ -1,0 +1,36 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/data/JsonStore.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+/**
+ * @extends Roo.data.Store
+ * @class Roo.data.JsonStore
+ * Small helper class to make creating Stores for JSON data easier. &lt;br/&gt;
+&lt;pre&gt;&lt;code&gt;
+var store = new Roo.data.JsonStore({
+    url: 'get-images.php',
+    root: 'images',
+    fields: ['name', 'url', {name:'size', type: 'float'}, {name:'lastmod', type:'date'}]
+});
+&lt;/code&gt;&lt;/pre&gt;
+ * &lt;b&gt;Note: Although they are not listed, this class inherits all of the config options of Store,
+ * JsonReader and HttpProxy (unless inline data is provided).&lt;/b&gt;
+ * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @constructor
+ * @param {Object} config
+ */
+</span><span class="jsdoc-var">Roo.data.JsonStore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.data.JsonStore.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, {
+        </span><span class="jsdoc-var">proxy</span><span class="jsdoc-syntax">: !</span><span class="jsdoc-var">c.data </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.data.HttpProxy</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c.url</span><span class="jsdoc-syntax">}) : </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">reader</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.data.JsonReader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c.fields</span><span class="jsdoc-syntax">)
+    }));
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.data.JsonStore</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data.Store</span><span class="jsdoc-syntax">);</span></code></body></html>

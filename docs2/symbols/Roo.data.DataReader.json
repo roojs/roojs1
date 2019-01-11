@@ -1,0 +1,42 @@
+{
+  "name" : "Roo.data.DataReader",
+  "augments" : [
+  ],
+  "desc" : "Base class for reading structured data from a data source.  This class is intended to be\nextended (see {Roo.data.ArrayReader}, {Roo.data.JsonReader} and {Roo.data.XmlReader}) and should not be created directly.",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "config" : [
+  ],
+  "methods" : [
+    {
+      "name" : "newRow",
+      "desc" : "Create an empty record",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.DataReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "(optional) - overlay some values",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.data.Record",
+          "desc" : "record created."
+        }
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

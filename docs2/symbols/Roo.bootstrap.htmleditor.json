@@ -1,0 +1,15 @@
+{
+  "name" : "Roo.bootstrap.htmleditor",
+  "augments" : [
+  ],
+  "desc" : "",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}
