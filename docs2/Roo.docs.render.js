@@ -207,7 +207,7 @@ Roo.docs.render  = {
     {
         
             if (!params.length) return "()";
-            var Link = this.Link;
+            var linkSymbol = this.linkSymbol;
             var signature = "("	+
                 params.filter(
                     function($) {
@@ -220,7 +220,7 @@ Roo.docs.render  = {
                         return "" +
                             ($.isOptional ? "[" : "") +
                             (($.type) ? 
-                                linkSymbo(
+                                linkSymbol(
                                     (typeof($.type) == 'object' ) ? 'Function' : $.type
                                 )) + " " :  ""
                             )   + 
