@@ -280,6 +280,6 @@ Roo.docs.template  = {
     },
     linkSymbol : function(str)
     {
-        return '<span class=\"fixedFont\"><a href="#' + str + '">' + str + '</a></a>';
+        return '<span class=\"fixedFont\"><a href="#' + str + '">' + str + '</a></span>';
     }
 }
