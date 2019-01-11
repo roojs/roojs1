@@ -90,81 +90,12 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
     listeners : {
      show : function (_self)
       {
-          if(_this.data.buttonText){
-              _this.acceptBtn.setText(_this.data.buttonText);
-          }
+        //  if(_this.data.buttonText){
+          //    _this.acceptBtn.setText(_this.data.buttonText);
+         // }
           
-          if(_this.data.titleType) {
-              _this.dialog.titleEl.dom.innerHTML = this['_'+_this.data.titleType];
-          }
-          
-          if(_this.data.btnType) {
-              _this.acceptBtn.setText(this['_'+_this.data.btnType]);
-              _this.acceptBtn['_'+_this.data.btnType] = this['_'+_this.data.btnType];
-          }
-          
-          if(_this.data.cls){
-              _this.dialog.el.addClass(_this.data.cls);
-          }
-          
-          if(_this.data.declaration){
-              
-              Roo.Ajax.request({
-                  url : baseURL + '/Roo/DeclarationsRender/' + _this.data.declaration,
-                  method : 'GET',
-                  mask : 'Loading...',
-                  success : function(res) {
-                      
-                      _this.terms_body.el.dom.innerHTML = res.responseText;
-                      
-                      _this.dialog.init();
-                      
-                      (function() {
-                          _this.dialog.resize();
-                      }).defer(10);
-                  }
-              });
-              
-          }
-          
-          if(_this.data.nickname){
-              
-              new Pman.Request({
-                  url: baseURL + '/Roo/Coba_declarations.php',
-                  method : 'GET',
-                  mask : 'Loading...',
-                  params : {
-                      _nickname : _this.data.nickname
-                  },
-                  success : function(res) {
-                      
-                      if(typeof(_this.data.title) == 'undefined') {
-                          
-                          _this.dialog.titleEl.dom.innerHTML = res.data.title;
-                      }
-                      
-                      _this.terms_body.el.dom.innerHTML = res.data.content;
-                      
-                      _this.dialog.init();
-                      
-                      (function() {
-                          _this.dialog.resize();
-                      }).defer(10);
-                  }
-              });
-              
-          }
-          
-          if(_this.data.title){
-              _this.dialog.titleEl.dom.innerHTML = _this.data.title;
-          }
-          
-          _this.download_btn.hide();
-          
-          if(_this.data.allow_download) {
-              
-              _this.download_btn.show();
-          }
+           
+         
           
           _this.dialog.el.setStyle('zIndex', '10002');
           
