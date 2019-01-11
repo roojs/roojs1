@@ -37,7 +37,7 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
   var _this = this;
   this.dialog = Roo.factory({
     xtype : 'Modal',
-    fit_content : true,
+    fitwindow : true,
     max_width : 900,
     title : _this._strings['89babd10371e21bb9eaf39937de7c656'] /* View Source */,
     listeners : {

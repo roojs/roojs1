@@ -14,8 +14,8 @@
    "listeners" : {
     "show" : "function (_self)\n{\n  //  if(_this.data.buttonText){\n    //    _this.acceptBtn.setText(_this.data.buttonText);\n   // }\n    \n     \n   \n    \n    _this.dialog.el.setStyle('zIndex', '10002');\n    \n}"
    },
-   "string fit_content" : true,
    "xtype" : "Modal",
+   "Boolean fitwindow" : true,
    "int max_width" : 900,
    "$ xns" : "Roo.bootstrap",
    "String title" : "View Source",
