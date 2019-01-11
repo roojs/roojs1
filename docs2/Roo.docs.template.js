@@ -114,9 +114,9 @@ Roo.docs.template  = {
             output+= '<div class="short">'+this.resolveLinks(this.summarize(member.desc)) +'</div>';
         } else  {
             //ctor
-	    output+= '<div class="short">Create a new '+data.alias +'</div>';
+	    output+= '<div class="short">Create a new '+member.memberOf +'</div>';
         }
-	data +='<div class="long">';
+	output +='<div class="long">';
         if (!member.isConstructor) {
             output+= this.resolveLinks(member.desc) +'</div>';
             if (member.example.length) {
@@ -124,7 +124,7 @@ Roo.docs.template  = {
             }
         } else {
             //ctor
-            output+= 'Create a new '+data.alias ;
+            output+= 'Create a new '+member.memberOf ;
         }
         if (member.params.length) {
         
