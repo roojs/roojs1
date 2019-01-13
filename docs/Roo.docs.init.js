@@ -312,14 +312,39 @@ Roo.docs.init = {
         
         for(var i = 0; i < tree.cn.length; i++) {
             // make a container..
-            var container = Roo.factory({
-                title : tree.cn[i].name,
+            var treei = tree.cn[i];
+            var ctree = {
+                title : treei.name,
                 xtype : 'Container',
                 panel : 'info',
                 xns : Roo.bootstrap,
-            })
+                md:3.
+                items : [];
+            };
+            for(var i = 0; i < treei.cn.length; i++) {
+                // another container..
+                   var ctreei = {
+                        title : treei.name,
+                        xtype : 'Container',
+                        panel : 'primary',
+                        xns : Roo.bootstrap,
+                        md:3.
+                        items : [
+                             
+                                xtype : 'Element',
+                                tag :'ul',
+                               
+                                xns : Roo.bootstrap,
+                               
+                        ];
+                    };
+                    ctree.items[0].push(ctreei);
             
+            
+            Roo.docs.introBody.addxtypeChild(ctree);
         }
+        
+        
         
     }
     
