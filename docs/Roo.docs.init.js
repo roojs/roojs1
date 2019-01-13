@@ -330,16 +330,17 @@ Roo.docs.init = {
                         xns : Roo.bootstrap,
                         md:3,
                         items : [
-                             
+                             {
                                 xtype : 'Element',
                                 tag :'ul',
                                
                                 xns : Roo.bootstrap,
                                 items : []
-                               
+                             }
                         ];
                     };
                     ctree.items[0].push(ctreei);
+                    var ctreep = ctree.items[0].cn;
             
             
             Roo.docs.introBody.addxtypeChild(ctree);
