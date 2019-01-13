@@ -322,7 +322,7 @@ Roo.docs.init = {
                 items : []
             };
             for(var ii = 0; ii < treei.cn.length; ii++) {
-                var treeii = treei[ii]
+                var treeii = treei[ii];
                 // another container..
                var ctreei = {
                     title : treeii.name,
@@ -341,7 +341,6 @@ Roo.docs.init = {
                     ]
                 };
                 ctree.items[0].push(ctreei);
-                var ctreep = ctree.items[0].cn;
                 for(var iii = 0; iii < treei.cn.length; iii++) {
                     var treeiii = ctreeii[iii];
                     var ll = treeiii.name.match(/^(\w+)\s*(.*)/);
