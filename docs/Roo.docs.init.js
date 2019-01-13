@@ -353,10 +353,10 @@ Roo.docs.init = {
                 for(var iii = 0; iii < treeii.cn.length; iii++) {
                     var treeiii = treeii.cn[iii];
                     var ll = treeiii.name.match(/^(\S+)\s*(.*)$/);
-                    Roo.log(treeiii.name);
-                    if (treeiii.name == 'Example') {
+                    //Roo.log(treeiii.name);
+                    if (treeiii.name == 'Examples') {
                         for (var j =0;j< treeiii.cn.length; j++) {
-                            var exs = treeiii.cn[i].name.match(a.match(/^\[([^\]]+)\](.*)$/));
+                            var exs = treeiii.cn[i].name.match(/^\[([^\]]+)\](.*)$/);
                             footer += '"<li><a href="../' + exs[1] + '">'+exs[2] + '</a></li>';
                         }
                         continue;
