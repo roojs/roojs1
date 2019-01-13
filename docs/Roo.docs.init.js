@@ -349,7 +349,7 @@ Roo.docs.init = {
                 ctree.items[0].items.push(ctreei);
                 for(var iii = 0; iii < treeii.cn.length; iii++) {
                     var treeiii = treeii.cn[iii];
-                    var ll = treeiii.name.match(/^(\S+)\s*(.*)/);
+                    var ll = treeiii.name.match(/^(\S+)\s*(.*)$/);
         
 
                     ctreeii = {
@@ -366,7 +366,7 @@ Roo.docs.init = {
                                 {
                                    xtype : 'Element',
                                     tag : 'span',
-                                    html : ll ? ' - ' + ll[2] : '',
+                                    html : ll && ll[2].length ? ' - ' + ll[2] : '',
                                     xns : Roo.bootstrap 
                                 }
                             ]
