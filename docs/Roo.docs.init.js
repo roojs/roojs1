@@ -321,10 +321,11 @@ Roo.docs.init = {
                 md:3,
                 items : []
             };
-            for(var i = 0; i < treei.cn.length; i++) {
+            for(var ii = 0; ii < treei.cn.length; ii++) {
+                    var treeii = treei[ii]
                 // another container..
                    var ctreei = {
-                        title : treei.name,
+                        title : treeii.name,
                         xtype : 'Container',
                         panel : 'primary',
                         xns : Roo.bootstrap,
@@ -337,10 +338,19 @@ Roo.docs.init = {
                                 xns : Roo.bootstrap,
                                 items : []
                              }
-                        ];
+                        ]
                     };
                     ctree.items[0].push(ctreei);
                     var ctreep = ctree.items[0].cn;
+                    for(var iii = 0; iii < treei.cn.length; iii++) {
+                        var ctreeii = ctreeii[iii];
+                        
+                        
+                    }
+            
+            
+            
+            
             
             
             Roo.docs.introBody.addxtypeChild(ctree);
