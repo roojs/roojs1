@@ -365,8 +365,8 @@ Roo.docs.init = {
                                 },
                                 {
                                    xtype : 'Element',
-                                    type : html,
-                                    html : ll ? ll[2] : treeiii.name,
+                                    type : 'span',
+                                    html : ll ? ll[2] : '',
                                     xns : Roo.bootstrap 
                                 }
                             ]
