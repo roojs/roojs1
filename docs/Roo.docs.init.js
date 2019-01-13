@@ -391,6 +391,7 @@ Roo.docs.init = {
                     
                 }
                 if (footer.length) {
+                    Roo.log(footer);
                     ctreei.footer = '<h3>Examples:</h3><ul>'+footer +'</ul>';
                 }
         
