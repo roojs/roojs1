@@ -359,6 +359,7 @@ Roo.docs.init = {
                             var exs = treeiii.cn[i].name.match(a.match(/^\[([^\]]+)\](.*)$/));
                             footer += '"<li><a href="../' + exs[1] + '">'+exs[2] + '</a></li>';
                         }
+                        continue;
                         
                         
                     }
