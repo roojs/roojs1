@@ -2,6 +2,8 @@ RooJS1 Documentation Contents
 Roo - Core Class - Essential Reading
 
 Core Libraries
+    Core Class
+        Roo essentail reading - get, search elements etc.
     Dom / CSS / Text
         Roo.util.CSS
         Roo.util.Format Various Text Formating / Encoding
