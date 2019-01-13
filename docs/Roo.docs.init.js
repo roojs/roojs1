@@ -353,7 +353,7 @@ Roo.docs.init = {
                 for(var iii = 0; iii < treeii.cn.length; iii++) {
                     var treeiii = treeii.cn[iii];
                     var ll = treeiii.name.match(/^(\S+)\s*(.*)$/);
-                    
+                    Roo.log(treeiii.name);
                     if (treeiii.name == 'Example') {
                         for (var j =0;j< treeiii.cn.length; j++) {
                             var exs = treeiii.cn[i].name.match(a.match(/^\[([^\]]+)\](.*)$/));
