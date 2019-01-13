@@ -325,7 +325,7 @@ Roo.docs.init = {
                 var treeii = treei.cn[ii];
                 // another container..
                var ctreei = {
-                    title : treeii.name,
+                    header : treeii.name,
                     xtype : 'Container',
                     panel : 'primary',
                     xns : Roo.bootstrap,
