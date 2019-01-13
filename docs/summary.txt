@@ -94,6 +94,12 @@ Core Libraries
         Roo.Editor
         Roo.Toolbar.Item
 
+Widgets Bootstrap
+
+
+
+
+
 Widgets (Classic Roo)
  
     Windows and Dialogs
