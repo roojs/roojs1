@@ -359,7 +359,7 @@ Roo.docs.init = {
                             items : [
                                 {
                                    xtype : 'Link',
-                                    href : ll ? ll[1] : treeiii.name ,
+                                    href : '#' + ( ll ? ll[1] : treeiii.name ) ,
                                     html : ll ? ll[2] : treeiii.name,
                                     xns : Roo.bootstrap 
                                 },
