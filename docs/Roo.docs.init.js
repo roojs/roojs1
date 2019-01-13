@@ -362,7 +362,7 @@ Roo.docs.init = {
                             
                             
                     };
-                    ctreei.items.cn.push(ctreeii);
+                    ctreei.items.push(ctreeii);
                     
                 }
         
