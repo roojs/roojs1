@@ -354,7 +354,7 @@ Roo.docs.init = {
                     var treeiii = treeii.cn[iii];
                     var ll = treeiii.name.match(/^(\S+)\s*(.*)$/);
                     
-                    if (treeiii == 'Example') {
+                    if (treeiii.name == 'Example') {
                         for (var j =0;j< treeiii.cn.length; j++) {
                             var exs = treeiii.cn[i].name.match(a.match(/^\[([^\]]+)\](.*)$/));
                             footer += '"<li><a href="../' + exs[1] + '">'+exs[2] + '</a></li>';
