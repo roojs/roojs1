@@ -185,8 +185,8 @@ Widgets (Classic Roo)
         Roo.Toolbar.Spacer
         Roo.Toolbar.SplitButton
         Roo.Toolbar.TextItem
-    Examples
-        [examples/menu/menus.html]Toolbar / Menus example ( Minor css tweaking needed)
+        Examples
+            [examples/menu/menus.html]Toolbar / Menus example ( Minor css tweaking needed)
     View / Layers
         Roo.JsonView
         Roo.Layer
