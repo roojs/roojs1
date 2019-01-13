@@ -1,5 +1,4 @@
-RooJS1 Documentation Contents
-Roo - Core Class - Essential Reading
+
 
 Core Libraries
     Core Class
