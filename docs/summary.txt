@@ -103,9 +103,9 @@ Widgets (Classic Roo)
         Roo.MessageBox
         Examples
             [examples/dialog/hello.html] Simple Hello World
-            <li><a href="../examples/dialog/layout.html" >Dialog with Layout</a></li>
-            <li><a href="../examples/dialog/msg-box.html" >Various Standard Message Boxes</a></li>
-            <li><a href="../examples/dialog/blog.html" >Simple Blog Post interface</a></li>
+            [examples/dialog/layout.html]Dialog with Layout
+            [examples/dialog/msg-box.html]Various Standard Message Boxes
+            [examples/dialog/blog.html]Simple Blog Post interface
     Buttons
         Roo.Button
         Roo.SplitButton
@@ -132,13 +132,13 @@ Widgets (Classic Roo)
         Roo.form.VTypes Various types of Validation for form elements.
         Roo.DatePicker Date Picker (not really a form element...)
         Examples
-            <li><a href="../examples/form/dynamic.html" >Dynamic Forms</a></li>
-            <li><a href="../examples/form/combos.html" >Combox boxes</a></li>
-            <li><a href="../examples/form/htmledit.html" >HTML editor example</a></li>
-            <li><a href="../examples/form/custom.html" >Custom</a> -  Autocomplete example - (Broken until we sort out a Json callback for trac)</li>
-            <li><a href="../examples/form/forum-search.html" >Search forum</a> - (Broken until we sort out a Json callback for trac)</li>
-            <li><a href="../examples/form/xml-form.html" >Form from/to xml</a> </li>            
-            <li><a href="../examples/form/fck.html" >FCK editor example</a></li>
+            [examples/form/dynamic.html]Dynamic Forms
+            [examples/form/combos.html]Combox boxes
+            [examples/form/htmledit.html]HTML editor example
+            [examples/form/custom.html]Custom-  Autocomplete example - (Broken until we sort out a Json callback for trac)
+            [examples/form/forum-search.html]Search forum  - (Broken until we sort out a Json callback for trac)
+            [examples/form/xml-form.html]Form from/to xml            
+            [examples/form/fck.html]FCK editor example
     Tree
         Roo.tree.TreePanel
         Roo.tree.TreeEditor
@@ -150,10 +150,10 @@ Widgets (Classic Roo)
         Roo.tree.DefaultSelectionModel
         Roo.tree.MultiSelectionModel
         Examples
-            <li><a href="../examples/tree/two-trees.html" >Two Trees</a> (need to rename it!)</li>
-            <li><a href="../examples/tree/reorder.html" >Re-orderable Trees</a></li>
-            <li><a href="../examples/tree/dependency.html" >The Roo Dependancy tree</a> (needs some css tidy up.)</li>
-            <li><a href="../examples/tree/organizer.html" >Organizer</a> (needs some css tidy up.)</li>
+            [examples/tree/two-trees.html]Two Trees</a> (need to rename it!)</li>
+            [examples/tree/reorder.html]Re-orderable Trees
+            [examples/tree/dependency.html]The Roo Dependancy tree</a> (needs some css tidy up.)</li>
+            [examples/tree/organizer.html]Organizer</a> (needs some css tidy up.)</li>
     Grid
         Roo.grid.GridPanel
         Roo.grid.CellSelectionModel
@@ -165,11 +165,11 @@ Widgets (Classic Roo)
         Roo.grid.GridView
         Roo.PagingToolbar
         Examples
-            Grid from Array
-            Property Grid
-            Grid from HTML markup IE: css broken
-            Paging Grid FF: minor tidy up req, IE: Broken slightly when scrolling.
-            Editable Grid
+            [examples/grid/array-grid.html]Grid from Array
+            [examples/grid/custom-grid.html]Property Grid
+            [examples/grid/from-markup.html]Grid from HTML markup< (IE: css broken)
+            [examples/grid/paging.html]Paging Grid - FF: minor tidy up req, IE: Broken slightly when scrolling.
+            [examples/grid/edit-grid.html]Editable Grid
     Menu / Toolbars
         Roo.menu.CheckItem
         Roo.menu.ColorItem
@@ -187,13 +187,13 @@ Widgets (Classic Roo)
         Roo.Toolbar.SplitButton
         Roo.Toolbar.TextItem
     Examples
-        Toolbar / Menus example Minor css tweaking needed
+        [examples/menu/menus.html]Toolbar / Menus example ( Minor css tweaking needed)
     View / Layers
         Roo.JsonView
         Roo.Layer
         Roo.View
         Examples
-            Image Chooser
+            [examples/view/chooser.html]Image Chooser</a>  </li>
     Layout / Tabs
         Roo.BasicLayoutRegion
         Roo.BorderRegion
@@ -206,8 +206,8 @@ Widgets (Classic Roo)
         Roo.TabPanel
         Roo.TabPanelItem
         Examples
-            Simple Layout
-            Nested Layout
-            Complex Layout Broken - needs converting to Roo JS
-            Basic Tabs (borders broken on tab boxes)
-            Advanced Tabs (dynamic adding of tabs)
+            [examples/layout/simple.html]Simple Layout
+            [examples/layout/nested.html]Nested Layout
+            [examples/layout/complex.html]Complex Layout ( Broken - needs converting to Roo JS)
+            [examples/tabs/tabs.html]Basic Tabs  (borders broken on tab boxes)
+            [examples/tabs/tabs-adv.html]Advanced Tabs(dynamic adding of tabs)
