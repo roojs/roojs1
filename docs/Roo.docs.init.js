@@ -366,7 +366,7 @@ Roo.docs.init = {
                                 {
                                    xtype : 'Element',
                                     tag : 'span',
-                                    html : ll ? ll[2] : '',
+                                    html : ll ? ' - ' + ll[2] : '',
                                     xns : Roo.bootstrap 
                                 }
                             ]
