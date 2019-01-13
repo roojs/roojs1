@@ -393,7 +393,7 @@ Roo.docs.init = {
                 }
                 if (footer.length) {
                     Roo.log("footer:"+  footer);
-                    ctreei.footer = '<h3>Examples:</h3><ul>'+footer +'</ul>';
+                    ctreei.footer = '<h5>Examples:</h5><ul>'+footer +'</ul>';
                 }
         
             }
