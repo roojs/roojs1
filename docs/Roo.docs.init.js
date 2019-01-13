@@ -322,51 +322,52 @@ Roo.docs.init = {
                 items : []
             };
             for(var ii = 0; ii < treei.cn.length; ii++) {
-                    var treeii = treei[ii]
+                var treeii = treei[ii]
                 // another container..
-                   var ctreei = {
-                        title : treeii.name,
-                        xtype : 'Container',
-                        panel : 'primary',
-                        xns : Roo.bootstrap,
-                        md:3,
-                        items : [
-                             {
-                                xtype : 'Element',
-                                tag :'ul',
-                               
-                                xns : Roo.bootstrap,
-                                items : []
-                             }
-                        ]
+               var ctreei = {
+                    title : treeii.name,
+                    xtype : 'Container',
+                    panel : 'primary',
+                    xns : Roo.bootstrap,
+                    md:3,
+                    items : [
+                         {
+                            xtype : 'Element',
+                            tag :'ul',
+                           
+                            xns : Roo.bootstrap,
+                            items : []
+                         }
+                    ]
+                };
+                ctree.items[0].push(ctreei);
+                var ctreep = ctree.items[0].cn;
+                for(var iii = 0; iii < treei.cn.length; iii++) {
+                    var treeiii = ctreeii[iii];
+                    var ll = = treeiii.name.match(/^(\w+)\s*(.*)/);
+        
+
+                    ctreeii = {
+                            xtype : 'Element',
+                            tag :'li',
+                            xns : Roo.bootstrap,
+                            cn : [
+                                {
+                                   xtype : 'Link',
+                                    href : ll ? ll[1] : treeiii.name ,
+                                    html : ll ? ll[2] : treeiii.name,
+                                    xns : Roo.bootstrap 
+                                }
+                            ]
+                            
+                            
+                            
                     };
-                    ctree.items[0].push(ctreei);
-                    var ctreep = ctree.items[0].cn;
-                    for(var iii = 0; iii < treei.cn.length; iii++) {
-                        var treeiii = ctreeii[iii];
-                         var ll = = treeiii.name.match(/^(\S+)\s*(\S*)/);
-            
-            var sml = sm ? sm[1].length: 0;
-            Roo.log(sml);
-                        ctreeii = {
-                                xtype : 'Element',
-                                tag :'li',
-                                xns : Roo.bootstrap,
-                                cn : [
-                                    {
-                                       xtype : 'Link',
-                                        href :#,
-                                        xns : Roo.bootstrap 
-                                    }
-                                ]
-                                html : treeiii.name,
-                                
-                                
-                             }
-                        ctreei.items[0].cn.push(ctreeii)
-                        
-                    }
-            
+                    ctreei.items[0].cn.push(ctreeii);
+                    
+                }
+        
+            }
             
             
             
