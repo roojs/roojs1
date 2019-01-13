@@ -181,8 +181,10 @@ Roo.docs.init = {
         Roo.docs.doc_body_content.hide();
         this.currentClass = cls.name;
         if (!cls.is_class) {
+            Roo.docs.introBody.show();
             return;
         }
+        Roo.docs.introBody.hide();
         Roo.docs.doc_body_content.show();
         Roo.Ajax.request({
             url : 'symbols/' + cls.name + '.json',
