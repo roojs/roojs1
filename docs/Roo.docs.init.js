@@ -349,7 +349,7 @@ Roo.docs.init = {
                     ]
                 };
                 ctree.items[0].items.push(ctreei);
-                footer = '';
+                var footer = '';
                 for(var iii = 0; iii < treeii.cn.length; iii++) {
                     var treeiii = treeii.cn[iii];
                     var ll = treeiii.name.match(/^(\S+)\s*(.*)$/);
@@ -389,6 +389,9 @@ Roo.docs.init = {
                     };
                     ctreei.items.push(ctreeii);
                     
+                }
+                if (footer.length) {
+                    ctreei.footer = '<h3>Examples:</h3><ul>'+footer +'</ul>';
                 }
         
             }
