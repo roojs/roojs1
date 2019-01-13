@@ -350,7 +350,7 @@ Roo.docs.init = {
                             xtype : 'Element',
                             tag :'li',
                             xns : Roo.bootstrap,
-                            cn : [
+                            items : [
                                 {
                                    xtype : 'Link',
                                     href : ll ? ll[1] : treeiii.name ,
