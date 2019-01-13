@@ -318,8 +318,8 @@ Roo.docs.init = {
                 xtype : 'Container',
                 panel : 'info',
                 xns : Roo.bootstrap,
-                md:3.
-                items : [];
+                md:3,
+                items : []
             };
             for(var i = 0; i < treei.cn.length; i++) {
                 // another container..
@@ -328,13 +328,14 @@ Roo.docs.init = {
                         xtype : 'Container',
                         panel : 'primary',
                         xns : Roo.bootstrap,
-                        md:3.
+                        md:3,
                         items : [
                              
                                 xtype : 'Element',
                                 tag :'ul',
                                
                                 xns : Roo.bootstrap,
+                                items : []
                                
                         ];
                     };
