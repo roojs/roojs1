@@ -314,7 +314,7 @@ Roo.docs.init = {
             // make a container..
             var treei = tree.cn[i];
             var ctree = {
-                title : treei.name,
+                header : treei.name,
                 xtype : 'Container',
                 panel : 'info',
                 xns : Roo.bootstrap,
