@@ -96,7 +96,177 @@ Core Libraries
 
 Widgets Bootstrap
 
+    Basic
+        Roo.bootstrap.Body Page container
+        Roo.bootstrap.Component Generic base class for most elements
+        Roo.bootstrap.Element Generic Div tag use 'tag' for span or other..
 
+
+    Buttons
+        Roo.bootstrap.ButtonGroup
+        Roo.bootstrap.Button
+
+    Layout 
+        Roo.bootstrap.Column
+        Roo.bootstrap.Container Panel Jumbo
+
+    Html
+        Roo.bootstrap.Img  Images
+        Roo.bootstrap.Link  Links (A href/name)
+        Roo.bootstrap.Header (Headers)
+
+    Menus
+        Roo.bootstrap.MenuMgr
+        Roo.bootstrap.Menu
+        Roo.bootstrap.MenuItem
+        Roo.bootstrap.MenuSeparator
+
+    Dialogs
+        Roo.bootstrap.Modal
+        Roo.bootstrap.MessageBox
+
+    Navigation Bars 
+        Roo.bootstrap.Navbar
+        Roo.bootstrap.NavSimplebar
+        Roo.bootstrap.NavHeaderbar
+        Roo.bootstrap.NavSidebar
+        Roo.bootstrap.NavGroup
+        Roo.bootstrap.NavItem
+        Roo.bootstrap.NavSidebarItem
+
+
+        Roo.bootstrap.Row
+
+       
+        Roo.bootstrap.Pagination
+        Roo.bootstrap.PaginationItem
+        Roo.bootstrap.Slider
+
+        Roo.grid.ColumnModel
+        Roo.LoadMask
+        Roo.bootstrap.Table
+        Roo.bootstrap.TableCell
+        Roo.bootstrap.TableRow
+        Roo.bootstrap.TableBody
+
+        Roo.form.Action
+        Roo.bootstrap.Form
+        Roo.form.VTypes
+        Roo.bootstrap.Input
+        Roo.bootstrap.TextArea
+        Roo.bootstrap.TriggerField
+
+        Roo.data.SortTypes
+        Roo.data.Record
+        Roo.data.Store
+        Roo.data.SimpleStore
+        Roo.data.JsonStore
+        Roo.data.Field
+        Roo.data.DataReader
+        Roo.data.DataProxy
+        Roo.data.MemoryProxy
+        Roo.data.HttpProxy
+        Roo.data.ScriptTagProxy
+        Roo.data.JsonReader
+        Roo.data.ArrayReader
+
+        Roo.bootstrap.ComboBox
+        Roo.View
+
+
+        Roo.bootstrap.Calendar
+        Roo.bootstrap.Popover
+
+        Roo.bootstrap.Progress
+        Roo.bootstrap.ProgressBar
+
+        Roo.bootstrap.TabGroup
+        Roo.bootstrap.TabPanel
+
+        Roo.bootstrap.DateField
+        Roo.bootstrap.TimeField
+        Roo.bootstrap.MonthField
+
+        Roo.bootstrap.CheckBox
+        Roo.bootstrap.Radio
+        Roo.bootstrap.SecurePass
+
+        Roo.HtmlEditorCore
+        Roo.bootstrap.HtmlEditor
+        Roo.bootstrap.htmleditor.ToolbarStandard
+
+        Roo.bootstrap.Table.AbstractSelectionModel
+        Roo.bootstrap.Table.RowSelectionModel
+
+        Roo.bootstrap.PagingToolbar
+        Roo.bootstrap.MessageBar
+
+        Roo.bootstrap.Graph
+        Roo.bootstrap.dash.NumberBox
+        Roo.bootstrap.dash.TabBox
+        Roo.bootstrap.dash.TabPane
+
+        Roo.bootstrap.menu.Menu
+        Roo.bootstrap.menu.Item
+        Roo.bootstrap.menu.Separator
+
+
+        Roo.bootstrap.Tooltip
+        Roo.bootstrap.LocationPicker
+
+        Roo.bootstrap.Alert
+
+        Roo.bootstrap.UploadCropbox
+        Roo.bootstrap.DocumentManager
+        Roo.bootstrap.DocumentViewer
+
+        Roo.bootstrap.NavProgressBar
+        Roo.bootstrap.NavProgressItem
+
+        Roo.bootstrap.FieldLabel
+
+        Roo.bootstrap.DateSplitField
+
+        Roo.bootstrap.LayoutMasonry
+        Roo.bootstrap.LayoutMasonryAuto
+        Roo.bootstrap.MasonryBrick
+        Roo.bootstrap.Brick
+
+        Roo.bootstrap.NumberField
+
+        Roo.bootstrap.DocumentSlider
+
+        Roo.bootstrap.RadioSet
+
+        Roo.bootstrap.SplitBar
+
+        Roo.bootstrap.layout.layout-ns
+        Roo.bootstrap.layout.Manager
+        Roo.bootstrap.layout.Border
+        Roo.bootstrap.layout.Basic
+        Roo.bootstrap.layout.Region
+        Roo.bootstrap.layout.Split
+        Roo.bootstrap.layout.Center
+        Roo.bootstrap.layout.North
+        Roo.bootstrap.layout.South
+        Roo.bootstrap.layout.East
+        Roo.bootstrap.layout.West
+
+
+
+        Roo.bootstrap.panel.panel-ns
+        Roo.bootstrap.panel.Content
+        Roo.bootstrap.panel.Grid
+        Roo.bootstrap.panel.Nest
+        Roo.bootstrap.panel.Tabs
+        Roo.bootstrap.panel.TabItem
+
+        Roo.bootstrap.PhoneInputData
+        Roo.bootstrap.PhoneInput
+
+        Roo.bootstrap.MoneyField
+
+        Roo.bootstrap.BezierSignature
 
 
 
