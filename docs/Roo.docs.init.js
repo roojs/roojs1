@@ -318,7 +318,7 @@ Roo.docs.init = {
                 xtype : 'Column',
                 xns : Roo.bootstrap,
                 md:4,
-                sm : 6
+                sm : 6,
                 items : [ {
                     header : treei.name,
                     xtype : 'Container',
