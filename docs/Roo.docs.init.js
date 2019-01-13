@@ -349,9 +349,20 @@ Roo.docs.init = {
                     ]
                 };
                 ctree.items[0].items.push(ctreei);
+                footer = '';
                 for(var iii = 0; iii < treeii.cn.length; iii++) {
                     var treeiii = treeii.cn[iii];
                     var ll = treeiii.name.match(/^(\S+)\s*(.*)$/);
+                    
+                    if (treeiii == 'Example') {
+                        for (var j =0;j< treeiii.cn.length; j++) {
+                            var exs = treeiii.cn[i].name.match(a.match(/^\[([^\]]+)\](.*)$/));
+                            footer += '"<li><a href="../' + exs[1] + '">'+exs[2] + '</a></li>';
+                        }
+                        
+                        
+                    }
+        
         
 
                     ctreeii = {
