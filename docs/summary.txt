@@ -94,7 +94,7 @@ Core Libraries
         Roo.Editor
         Roo.Toolbar.Item
 
-Widgets Bootstrap
+Bootstrap Widgets 
 
     Basic
         Roo.bootstrap.Body Page container
