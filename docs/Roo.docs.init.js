@@ -343,8 +343,27 @@ Roo.docs.init = {
                     ctree.items[0].push(ctreei);
                     var ctreep = ctree.items[0].cn;
                     for(var iii = 0; iii < treei.cn.length; iii++) {
-                        var ctreeii = ctreeii[iii];
-                        
+                        var treeiii = ctreeii[iii];
+                         var ll = = treeiii.name.match(/^(\S+)\s*(\S*)/);
+            
+            var sml = sm ? sm[1].length: 0;
+            Roo.log(sml);
+                        ctreeii = {
+                                xtype : 'Element',
+                                tag :'li',
+                                xns : Roo.bootstrap,
+                                cn : [
+                                    {
+                                       xtype : 'Link',
+                                        href :#,
+                                        xns : Roo.bootstrap 
+                                    }
+                                ]
+                                html : treeiii.name,
+                                
+                                
+                             }
+                        ctreei.items[0].cn.push(ctreeii)
                         
                     }
             
