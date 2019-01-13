@@ -99,7 +99,7 @@ Widgets Bootstrap
     Basic
         Roo.bootstrap.Body Page container
         Roo.bootstrap.Component Generic base class for most elements
-        Roo.bootstrap.Element Generic Div tag use 'tag' for span or other..
+        Roo.bootstrap.Element Generic HTML use 'tag' for span or other..
 
 
     Buttons
