@@ -253,7 +253,7 @@ Widgets Bootstrap
 
 
         
-        Roo.bootstrap.LocationPicker
+       
 
         
 
