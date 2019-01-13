@@ -58,6 +58,7 @@ Roo.docs.init = {
                 }, this);
                 var roo = Roo.docs.navGroup.items[1].menu;
                 roo.show(roo.triggerEl, '?', false);
+                this.loadIntro();
                 
                 
             },
@@ -266,8 +267,61 @@ Roo.docs.init = {
         var link = e.target.href.split('#')[1];
         this.loadClass(link);
         
+    },
+      
+    loadIntro : function()
+    {
+      
+        
+        Roo.Ajax.request({
+            url : 'summary.txt',
+            method : 'GET',
+            success : function(res)
+            {
+                this.renderIntro(res.responseText);
+               
+                
+            },
+            scope : this
+        });
+        
+        
+    },
+    // render the really simple markdown data
+    renderIntro : function(intro)
+    {
+        var lines = intro.split("\n");
+        var tree = { 'name' : 'root', cn : []};
+        var state = [ tree ];
+        for (var i=0;i< lines.length;i++) {
+            var line = lines[i];
+            if (!line.length || line.match(/^\s+$/)) {
+                continue;
+            }
+            var sm = line.match(/^(\s+)(.*)/);
+            
+            var sml = sm ? sm[1].length: 0;
+            Roo.log(sml);
+            sml = sml / 4; // 4 spaces indent?
+            var add = { name : sm ?  sm[2] : line, cn : [] };
+            state[sml].cn.push(add);
+            state[sml+1] = add;
+            
+        }
+        Roo.log(tree);
+        
+        for(var i = 0; i < tree.cn.length; i++) {
+            // make a container..
+            var container = Roo.factory({
+                title : tree.cn[i].name,
+                xtype : 'Container',
+                panel : 'info',
+                xns : Roo.bootstrap,
+            })
+            
+        }
+        
     }
-    
     
     
     
