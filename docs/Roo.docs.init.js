@@ -340,7 +340,7 @@ Roo.docs.init = {
                          }
                     ]
                 };
-                ctree.items[0].push(ctreei);
+                ctree.items.push(ctreei);
                 for(var iii = 0; iii < treeii.cn.length; iii++) {
                     var treeiii = ctreeii.cn[iii];
                     var ll = treeiii.name.match(/^(\w+)\s*(.*)/);
@@ -362,7 +362,7 @@ Roo.docs.init = {
                             
                             
                     };
-                    ctreei.items[0].cn.push(ctreeii);
+                    ctreei.items.cn.push(ctreeii);
                     
                 }
         
