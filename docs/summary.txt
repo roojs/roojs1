@@ -1,0 +1,394 @@
+
+
+Core Libraries
+    Core Class
+        Roo essentail reading - get, search elements etc.
+    Dom / CSS / Text
+        Roo.util.CSS
+        Roo.util.Format Various Text Formating / Encoding
+        Roo.DomHelper DOM creation
+        Roo.DomQuery DOM locating elements
+        Roo.util.TextMetrics Text size calculations
+    Element / Selection
+        Roo.Element Core Element methods (see also Roo.get())
+        Roo.CompositeElement
+        Roo.CompositeElementLite
+    Effects / Masks / Tips
+        Roo.Fx
+        Roo.LoadMask
+        Roo.QuickTips
+        Roo.Resizable
+        Examples
+            [examples/resizable/basic.html] Resizing elements With animation, snapping etc. (Works, needs a few replacement images)
+    State
+        Roo.state.CookieProvider
+    Drag and Drop
+        Roo.dd.DD
+        Roo.dd.DDProxy
+        Roo.dd.DDTarget
+        Roo.dd.DragDrop
+        Roo.dd.DragDropMgr
+        Roo.dd.DragZone
+        Roo.dd.DropTarget
+        Roo.dd.DropZone
+        Roo.dd.Registry
+        Roo.dd.ScrollManager
+        Roo.dd.StatusProxy
+    Signals / Events
+        Roo.util.Observable
+        Roo.util.DelayedTask
+        Roo.util.TaskRunner
+        Roo.EventObject
+        Roo.Shadow
+        Roo.util.ClickRepeater
+    AJAX
+        Roo.data.Connection
+        Roo.Ajax
+    Store
+        Roo.util.MixedCollection
+        Roo.data.JsonStore
+        Roo.data.Store
+        Roo.data.SimpleStore
+        Roo.data.Record
+        Roo.data.SortTypes
+    Data Readers
+        Roo.data.ArrayReader
+        Roo.data.DataReader
+        Roo.data.JsonReader
+        Roo.data.XmlReader
+    Data Proxies
+        Roo.data.DataProxy
+        Roo.data.HttpProxy
+        Roo.data.MemoryProxy
+        Roo.data.ScriptTagProxy
+    Tree Data
+        Roo.data.Node
+        Roo.data.Tree
+    Keys
+        Roo.KeyMap
+        Roo.KeyNav
+    Managers
+        Roo.ComponentMgr
+        Roo.DialogManager
+        Roo.EventManager
+        Roo.LayoutManager
+        Roo.UpdateManager
+        Roo.state.Manager
+    Templates
+        Roo.MasterTemplate
+        Roo.Template
+
+    Abstract Base Classes
+
+        Roo.BoxComponent
+        Roo.Component
+        Roo.form.Field
+        Roo.form.Layout
+        Roo.form.TriggerField
+        Roo.grid.AbstractGridView
+        Roo.grid.AbstractSelectionModel
+        Roo.menu.Adapter
+        Roo.menu.BaseItem
+        Roo.menu.Item
+        Roo.state.Provider
+        Roo.Editor
+        Roo.Toolbar.Item
+
+Widgets Bootstrap
+
+    Basic
+        Roo.bootstrap.Body Page container
+        Roo.bootstrap.Component Generic base class for most elements
+        Roo.bootstrap.Element Generic HTML use 'tag' for span or other..
+        Roo.bootstrap.Popover
+        Roo.bootstrap.Tooltip
+
+    Buttons
+        Roo.bootstrap.ButtonGroup
+        Roo.bootstrap.Button
+
+    Layout 
+        Roo.bootstrap.Column
+        Roo.bootstrap.Row
+        Roo.bootstrap.Container Panel Jumbo
+        Roo.bootstrap.Slider Header slider panel
+        Roo.bootstrap.Alert alert area
+        Roo.bootstrap.MessageBar message bar? not sure
+
+        Roo.bootstrap.Graph a graph (using g.raphael)
+
+    Panel Layout (like Classic Roo North/East/South/West Center)
+        Roo.bootstrap.layout.layout-ns
+        Roo.bootstrap.layout.Manager
+        Roo.bootstrap.layout.Border
+        Roo.bootstrap.layout.Basic
+        Roo.bootstrap.layout.Region
+        Roo.bootstrap.layout.Split
+        Roo.bootstrap.layout.Center
+        Roo.bootstrap.layout.North
+        Roo.bootstrap.layout.South
+        Roo.bootstrap.layout.East
+        Roo.bootstrap.layout.West
+
+
+
+        Roo.bootstrap.panel.panel-ns
+        Roo.bootstrap.panel.Content
+        Roo.bootstrap.panel.Grid
+        Roo.bootstrap.panel.Nest
+        Roo.bootstrap.panel.Tabs
+        Roo.bootstrap.panel.TabItem
+        Roo.bootstrap.SplitBar
+
+    Html
+        Roo.bootstrap.Img  Images
+        Roo.bootstrap.Link  Links (A href/name)
+        Roo.bootstrap.Header (Headers)
+
+    Menus
+        Roo.bootstrap.MenuMgr
+        Roo.bootstrap.Menu
+        Roo.bootstrap.MenuItem
+        Roo.bootstrap.MenuSeparator
+        Roo.bootstrap.menu.Menu (fixme these are dupes)
+        Roo.bootstrap.menu.Item (fixme these are dupes)
+        Roo.bootstrap.menu.Separator (fixme these are dupes)
+
+    Dialogs
+        Roo.bootstrap.Modal
+        Roo.bootstrap.MessageBox
+
+    Navigation Bars 
+        Roo.bootstrap.Navbar
+        Roo.bootstrap.NavSimplebar
+        Roo.bootstrap.NavHeaderbar
+        Roo.bootstrap.NavSidebar
+        Roo.bootstrap.NavGroup
+        Roo.bootstrap.NavItem
+        Roo.bootstrap.NavSidebarItem
+
+        Roo.bootstrap.NavProgressBar
+        Roo.bootstrap.NavProgressItem
+        
+    Grids / Pagers
+       
+        Roo.bootstrap.Pagination
+        Roo.bootstrap.PaginationItem
+        Roo.bootstrap.Table
+        Roo.bootstrap.Table.AbstractSelectionModel
+        Roo.bootstrap.Table.RowSelectionModel
+        Roo.bootstrap.PagingToolbar
+    Raw Table creation.
+        Roo.bootstrap.TableCell
+        Roo.bootstrap.TableRow
+        Roo.bootstrap.TableBody
+
+    Form
+        Roo.form.Action
+        Roo.bootstrap.Form
+        Roo.form.VTypes
+        Roo.bootstrap.Input
+        Roo.bootstrap.TextArea
+        Roo.bootstrap.TriggerField
+        Roo.bootstrap.ComboBox
+ 
+        Roo.bootstrap.DateField
+        Roo.bootstrap.TimeField
+        Roo.bootstrap.MonthField
+
+        Roo.bootstrap.CheckBox
+        Roo.bootstrap.Radio
+        Roo.bootstrap.SecurePass Secure password       
+        Roo.HtmlEditorCore
+        Roo.bootstrap.HtmlEditor
+        Roo.bootstrap.htmleditor.ToolbarStandard
+        Roo.bootstrap.FieldLabel
+
+        Roo.bootstrap.DateSplitField
+        Roo.bootstrap.NumberField
+        Roo.bootstrap.PhoneInputData
+        Roo.bootstrap.PhoneInput
+
+        Roo.bootstrap.MoneyField
+
+        Roo.bootstrap.BezierSignature
+        Roo.bootstrap.RadioSet
+
+
+        
+    Complex Widgets
+        Roo.bootstrap.Calendar
+        Roo.bootstrap.LocationPicker google maps location picker
+        Roo.bootstrap.UploadCropbox image upload with crop
+        Roo.bootstrap.DocumentManager  document upload grid
+        Roo.bootstrap.DocumentViewer  document view dialog
+        Roo.bootstrap.DocumentSlider
+    Masonry Grid
+        Roo.bootstrap.LayoutMasonry
+        Roo.bootstrap.LayoutMasonryAuto
+        Roo.bootstrap.MasonryBrick
+        Roo.bootstrap.Brick
+
+    Progress
+        Roo.bootstrap.Progress
+        Roo.bootstrap.ProgressBar
+
+    Tabs
+        Roo.bootstrap.TabGroup
+        Roo.bootstrap.TabPanel
+
+
+       
+       
+
+       
+        
+    Dashboard (Beta)
+
+        Roo.bootstrap.dash.NumberBox
+        Roo.bootstrap.dash.TabBox
+        Roo.bootstrap.dash.TabPane
+
+       
+
+
+        
+       
+
+        
+
+       
+
+      
+
+      
+
+        
+
+        
+
+       
+        
+
+        
+
+       
+
+
+
+Widgets (Classic Roo)
+ 
+    Windows and Dialogs
+        Roo.BasicDialog
+        Roo.LayoutDialog
+        Roo.MessageBox
+        Examples
+            [examples/dialog/hello.html] Simple Hello World
+            [examples/dialog/layout.html]Dialog with Layout
+            [examples/dialog/msg-box.html]Various Standard Message Boxes
+            [examples/dialog/blog.html]Simple Blog Post interface
+    Buttons
+        Roo.Button
+        Roo.SplitButton
+    
+    Core Form / Layout
+        Roo.form.Form
+        Roo.form.BasicForm
+        Roo.form.Column
+        Roo.form.FieldSet
+    Form Elements
+        Roo.form.Hidden
+        Roo.form.TextField
+        Roo.form.DateField
+        Roo.form.NumberField
+        Roo.form.TextArea
+        Roo.form.Checkbox
+        Roo.form.Radio
+        Roo.form.ComboBox
+        Html Editor
+        Roo.form.HtmlEditor (broken on IE)
+        Roo.form.FCKeditor embeded FCKeditor (slow but works)
+    Other
+        Roo.form.Action What happens when you load and save a form.
+        Roo.form.VTypes Various types of Validation for form elements.
+        Roo.DatePicker Date Picker (not really a form element...)
+        Examples
+            [examples/form/dynamic.html]Dynamic Forms
+            [examples/form/combos.html]Combox boxes
+            [examples/form/htmledit.html]HTML editor example
+            [examples/form/custom.html]Custom-  Autocomplete example - (Broken until we sort out a Json callback for trac)
+            [examples/form/forum-search.html]Search forum  - (Broken until we sort out a Json callback for trac)
+            [examples/form/xml-form.html]Form from/to xml            
+            [examples/form/fck.html]FCK editor example
+    Tree
+        Roo.tree.TreePanel
+        Roo.tree.TreeEditor
+        Roo.tree.AsyncTreeNode
+        Roo.tree.TreeNode
+        Roo.tree.TreeFilter
+        Roo.tree.TreeLoader
+        Roo.tree.TreeSorter
+        Roo.tree.DefaultSelectionModel
+        Roo.tree.MultiSelectionModel
+        Examples
+            [examples/tree/two-trees.html]Two Trees</a> (need to rename it!)</li>
+            [examples/tree/reorder.html]Re-orderable Trees
+            [examples/tree/dependency.html]The Roo Dependancy tree</a> (needs some css tidy up.)</li>
+            [examples/tree/organizer.html]Organizer</a> (needs some css tidy up.)</li>
+    Grid
+        Roo.grid.GridPanel
+        Roo.grid.CellSelectionModel
+        Roo.grid.RowSelectionModel
+        Roo.grid.ColumnModel
+        Roo.grid.EditorGrid
+        Roo.grid.Grid
+        Roo.grid.GridEditor
+        Roo.grid.GridView
+        Roo.PagingToolbar
+        Examples
+            [examples/grid/array-grid.html]Grid from Array
+            [examples/grid/custom-grid.html]Property Grid
+            [examples/grid/from-markup.html]Grid from HTML markup< (IE: css broken)
+            [examples/grid/paging.html]Paging Grid - FF: minor tidy up req, IE: Broken slightly when scrolling.
+            [examples/grid/edit-grid.html]Editable Grid
+    Menu / Toolbars
+        Roo.menu.CheckItem
+        Roo.menu.ColorItem
+        Roo.menu.DateItem
+        Roo.menu.DateMenu
+        Roo.menu.Menu
+        Roo.menu.MenuMgr
+        Roo.menu.Separator
+        Roo.menu.TextItem
+        Roo.Toolbar
+        Roo.Toolbar.Button
+        Roo.Toolbar.Fill
+        Roo.Toolbar.Separator
+        Roo.Toolbar.Spacer
+        Roo.Toolbar.SplitButton
+        Roo.Toolbar.TextItem
+        Examples
+            [examples/menu/menus.html]Toolbar / Menus example ( Minor css tweaking needed)
+    View / Layers
+        Roo.JsonView
+        Roo.Layer
+        Roo.View
+        Examples
+            [examples/view/chooser.html]Image Chooser</a>  </li>
+    Layout / Tabs
+        Roo.BasicLayoutRegion
+        Roo.BorderRegion
+        Roo.ContentPanel
+        Roo.LayoutRegion
+        Roo.NestedLayoutPanel
+        Roo.ReaderLayout
+        Roo.SplitBar
+        Roo.SplitLayoutRegion
+        Roo.TabPanel
+        Roo.TabPanelItem
+        Examples
+            [examples/layout/simple.html]Simple Layout
+            [examples/layout/nested.html]Nested Layout
+            [examples/layout/complex.html]Complex Layout ( Broken - needs converting to Roo JS)
+            [examples/tabs/tabs.html]Basic Tabs  (borders broken on tab boxes)
+            [examples/tabs/tabs-adv.html]Advanced Tabs(dynamic adding of tabs)

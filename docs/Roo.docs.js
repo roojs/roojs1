@@ -11,19 +11,20 @@ Roo.docs = new Roo.XComponent({
   'ae635f08107a69569e636835f24e6f6f' :" extends ",
   '87f9f735a1d36793ceaecd4e47124b63' :"Events",
   'd41d8cd98f00b204e9800998ecf8427e' :"",
+  '9b34238e8113db140b452beec500024b' :"Roo JS Documentation",
   '50f33d14f129e4548c1c270fd6725a78' :"Configuration options",
   'e64b94523532dbac62df6795a5153f04' :"doc-desc",
   '3673e725413179fe76f341ed908a5c36' :"Defined in: ",
   'd2b697ad8e989a6c4592987f22f5bbfc' :"doc-comments",
   'f361257612a512f9be2fdc2abfb25aef' :"<small>Defined by</small>",
   '494a64a432ff6a121e4ab9003c7a0df3' :"parentcls",
-  '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
   'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx",
+  '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
   'a1d108496af420635536a4e29e87d42b' :"Constructor, Static and Public Methods",
   'd41d8cd98f00b204e9800998ecf8427e' :" "
  },
 
-  part     :  ["docs2", "docs" ],
+  part     :  ["docs", "docs" ],
   order    : '001-Roo.docs',
   region   : 'center',
   parent   : false,
@@ -195,8 +196,14 @@ Roo.docs = new Roo.XComponent({
           {
            xtype : 'Link',
            cls : 'logo',
-           href : baseURL +'/',
-           preventDefault : false,
+           href : '#',
+           preventDefault : true,
+           listeners : {
+            click : function (e)
+             {
+                 document.location.reload();
+             }
+           },
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
           }
@@ -283,6 +290,38 @@ Roo.docs = new Roo.XComponent({
      },
      xns : Roo.bootstrap,
      '|xns' : 'Roo.bootstrap'
+    },
+    {
+     xtype : 'Container',
+     cls : 'general-content-body',
+     listeners : {
+      render : function (_self)
+       {
+              _this.introContainer = this;
+       }
+     },
+     xns : Roo.bootstrap,
+     '|xns' : 'Roo.bootstrap',
+     items  : [
+      {
+       xtype : 'Header',
+       html : _this._strings['9b34238e8113db140b452beec500024b'] /* Roo JS Documentation */,
+       level : 1,
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap'
+      },
+      {
+       xtype : 'Container',
+       listeners : {
+        render : function (_self)
+         {
+             _this.introBody = this;
+         }
+       },
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap'
+      }
+     ]
     },
     {
      xtype : 'Container',

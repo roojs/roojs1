@@ -2,7 +2,7 @@
  "name" : "Roo.docs",
  "parent" : "",
  "title" : "",
- "path" : "/home/alan/gitlive/roojs1/docs2/Roo.docs.bjs",
+ "path" : "/home/alan/gitlive/roojs1/docs/Roo.docs.bjs",
  "permname" : "",
  "modOrder" : "001",
  "strings" : {
@@ -10,14 +10,15 @@
   "ae635f08107a69569e636835f24e6f6f" : " extends ",
   "87f9f735a1d36793ceaecd4e47124b63" : "Events",
   "d41d8cd98f00b204e9800998ecf8427e" : " ",
+  "9b34238e8113db140b452beec500024b" : "Roo JS Documentation",
   "50f33d14f129e4548c1c270fd6725a78" : "Configuration options",
   "e64b94523532dbac62df6795a5153f04" : "doc-desc",
   "3673e725413179fe76f341ed908a5c36" : "Defined in: ",
   "d2b697ad8e989a6c4592987f22f5bbfc" : "doc-comments",
   "f361257612a512f9be2fdc2abfb25aef" : "<small>Defined by</small>",
   "494a64a432ff6a121e4ab9003c7a0df3" : "parentcls",
-  "9bd81329febf6efe22788e03ddeaf0af" : " Class ",
   "f561aaf6ef0bf14d4208bb46a4ccb3ad" : "xxx",
+  "9bd81329febf6efe22788e03ddeaf0af" : " Class ",
   "a1d108496af420635536a4e29e87d42b" : "Constructor, Static and Public Methods"
  },
  "items" : [
@@ -56,11 +57,14 @@
          "String style" : "position:fixed;top:0;z-Index:1000;",
          "items" : [
           {
+           "listeners" : {
+            "click" : "function (e)\n{\n    document.location.reload();\n}"
+           },
+           "string href" : "#",
            "String cls" : "logo",
-           "Boolean preventDefault" : false,
+           "Boolean preventDefault" : true,
            "xtype" : "Link",
-           "$ xns" : "Roo.bootstrap",
-           "$ string href" : "baseURL +'/'"
+           "$ xns" : "Roo.bootstrap"
           }
          ]
         }
@@ -85,14 +89,37 @@
       "render" : "function (_self)\n{\n    return;\n    \n    _this.navHeaderBar = this;\n    \n    this.el.addClass(language); \n    \n    var body = Roo.select('body', true).first();\n    \n    var mark = {\n        tag: \"div\",\n        cls:\"x-dlg-mask\"\n    };\n    \n    this.mask = Roo.DomHelper.append(body, mark, true);\n    \n    var size = body.getSize();\n    this.mask.setSize(size.width, size.height);\n    \n    this.mask.setStyle('z-index', '1029');\n    \n    this.mask.enableDisplayMode(\"block\");\n    this.mask.hide();\n    \n    this.mask.on('click', function(){\n        \n        this.el.select('.navbar-collapse',true).removeClass('in'); \n        this.mask.hide();\n        \n    }, this);\n    \n    \n    var maxHeight = Roo.lib.Dom.getViewHeight() - this.el.select('.navbar-header', true).first().getHeight();\n    \n    this.el.select('.navbar-collapse', true).first().setStyle('max-height', maxHeight);\n    \n}"
      },
      "$ String brand_href" : "baseURL + '/'",
-     "String cls" : "mobile-header-menu",
      "String position" : "fixed-top",
+     "String cls" : "mobile-header-menu",
      "bool autohide" : true,
      "xtype" : "NavHeaderbar",
      "Boolean inverse" : false,
      "$ xns" : "Roo.bootstrap",
      "String brand" : " ",
      "String style" : ""
+    },
+    {
+     "listeners" : {
+      "render" : "function (_self)\n{\n       _this.introContainer = this;\n}"
+     },
+     "String cls" : "general-content-body",
+     "xtype" : "Container",
+     "$ xns" : "Roo.bootstrap",
+     "items" : [
+      {
+       "xtype" : "Header",
+       "Number level" : 1,
+       "$ xns" : "Roo.bootstrap",
+       "String html" : "Roo JS Documentation"
+      },
+      {
+       "listeners" : {
+        "render" : "function (_self)\n{\n    _this.introBody = this;\n}"
+       },
+       "xtype" : "Container",
+       "$ xns" : "Roo.bootstrap"
+      }
+     ]
     },
     {
      "listeners" : {
@@ -120,8 +147,8 @@
            "items" : [
             {
              "xtype" : "Header",
-             "$ xns" : "Roo.bootstrap",
              "Number level" : 4,
+             "$ xns" : "Roo.bootstrap",
              "String html" : " Class ",
              "items" : [
               {
@@ -162,8 +189,8 @@
             },
             {
              "xtype" : "Header",
-             "Number level" : 5,
              "$ xns" : "Roo.bootstrap",
+             "Number level" : 5,
              "String html" : "Defined in: ",
              "items" : [
               {
@@ -172,8 +199,8 @@
                 "click" : "function (e)\n{\n    \n    Roo.log([\"click\", this]);\n    if (this.el.dom.innerHTML.length > 0) {\n        Roo.docs.init.loadSource();\n    }\n}"
                },
                "String cls" : "doc-source",
-               "String href" : "#",
                "Boolean preventDefault" : true,
+               "String href" : "#",
                "xtype" : "Link",
                "$ xns" : "Roo.bootstrap",
                "String html" : "Defined in: "
@@ -224,8 +251,8 @@
         "render" : "function (_self)\n{\n    _this.configTableContainer = this;\n}"
        },
        "String header" : "Configuration options",
-       "String cls" : "doc-table-container",
        "Boolean expanded" : true,
+       "String cls" : "doc-table-container",
        "xtype" : "Container",
        "String panel" : "info",
        "$ xns" : "Roo.bootstrap",
@@ -245,8 +272,8 @@
          "items" : [
           {
            "String header" : "",
-           "String dataIndex" : "name",
            "Number md" : 11,
+           "String dataIndex" : "name",
            "$ Function renderer" : "function(v,x,r) { \n\n    return Roo.docs.template.config(r.json);\n\n\t\t\t\n}",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
@@ -254,8 +281,8 @@
           },
           {
            "String header" : "<small>Defined by</small>",
-           "String dataIndex" : "memberOf",
            "Number md" : 1,
+           "String dataIndex" : "memberOf",
            "$ Function renderer" : "function(v,x,r) { \n if (r.json.memberOf  == Roo.docs.init.currentClass) {\n            return '';\n        }\n\n\t\treturn \t'<small><a href=\"#' + r.json.memberOf + '\">' + r.json.memberOf + '</a></small>';\n\t\t\t\n}",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
@@ -273,8 +300,8 @@
             },
             {
              "xtype" : "ArrayReader",
-             "$ fields" : "[ 'name', 'type', 'desc', 'memberOf' ]",
              "$ xns" : "Roo.data",
+             "$ fields" : "[ 'name', 'type', 'desc', 'memberOf' ]",
              "* prop" : "reader"
             }
            ]
@@ -288,8 +315,8 @@
         "render" : "function (_self)\n{\n    _this.methodsTableContainer = this;\n}"
        },
        "String header" : "Constructor, Static and Public Methods",
-       "String cls" : "doc-table-container",
        "Boolean expanded" : false,
+       "String cls" : "doc-table-container",
        "String panel" : "info",
        "xtype" : "Container",
        "$ xns" : "Roo.bootstrap",
@@ -307,8 +334,8 @@
          "items" : [
           {
            "String header" : " ",
-           "Number md" : 11,
            "String dataIndex" : "name",
+           "Number md" : 11,
            "$ Function renderer" : "function(v,x,r) { \n\n    return Roo.docs.template.method(r.json);\n\t\t \n\t\t\t\n}",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
@@ -317,8 +344,8 @@
           },
           {
            "String header" : "<small>Defined by</small>",
-           "Number md" : 1,
            "String dataIndex" : "memberOf",
+           "Number md" : 1,
            "$ Function renderer" : "function(v,x,r) { \n\n if (r.json.memberOf  == Roo.docs.init.currentClass) {\n            return '';\n        }\n\t\treturn \t'<small><a href=\"#' + r.json.memberOf + '\">' + r.json.memberOf + '</a></small>';\n\t\t\t\n}",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
@@ -337,8 +364,8 @@
             },
             {
              "xtype" : "ArrayReader",
-             "$ fields" : "[ 'name', 'type', 'desc', 'memberOf' ]",
              "$ xns" : "Roo.data",
+             "$ fields" : "[ 'name', 'type', 'desc', 'memberOf' ]",
              "* prop" : "reader"
             }
            ]
@@ -352,8 +379,8 @@
         "render" : "function (_self)\n{\n    _this.eventsTableContainer   = this;\n}"
        },
        "String header" : "Events",
-       "String cls" : "doc-table-container",
        "Boolean expanded" : false,
+       "String cls" : "doc-table-container",
        "xtype" : "Container",
        "String panel" : "info",
        "$ xns" : "Roo.bootstrap",
@@ -371,8 +398,8 @@
          "items" : [
           {
            "String header" : "",
-           "String dataIndex" : "name",
            "Number md" : 11,
+           "String dataIndex" : "name",
            "$ Function renderer" : "function(v,x,r) { \n\n    return Roo.docs.template.event(r.json);\n\t\t \n\t\t\t\n}",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
@@ -380,8 +407,8 @@
           },
           {
            "String header" : "<small>Defined by</small>",
-           "String dataIndex" : "memberOf",
            "Number md" : 1,
+           "String dataIndex" : "memberOf",
            "$ Function renderer" : "function(v,x,r) { \n        if (r.json.memberOf  == Roo.docs.init.currentClass) {\n            return '';\n        }\n\n\t\treturn \t'<small><a href=\"#' + r.json.memberOf + '\">' + r.json.memberOf + '</a></small>';\n\t\t\t\n}",
            "xtype" : "ColumnModel",
            "$ xns" : "Roo.grid",
@@ -394,8 +421,8 @@
            "items" : [
             {
              "xtype" : "ArrayReader",
-             "$ xns" : "Roo.data",
              "$ fields" : "[ 'name', 'type', 'desc', 'memberOf' ]",
+             "$ xns" : "Roo.data",
              "* prop" : "reader"
             },
             {

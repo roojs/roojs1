@@ -58,6 +58,7 @@ Roo.docs.init = {
                 }, this);
                 var roo = Roo.docs.navGroup.items[1].menu;
                 roo.show(roo.triggerEl, '?', false);
+                this.loadIntro();
                 
                 
             },
@@ -180,8 +181,10 @@ Roo.docs.init = {
         Roo.docs.doc_body_content.hide();
         this.currentClass = cls.name;
         if (!cls.is_class) {
+            Roo.docs.introBody.show();
             return;
         }
+        Roo.docs.introBody.hide();
         Roo.docs.doc_body_content.show();
         Roo.Ajax.request({
             url : 'symbols/' + cls.name + '.json',
@@ -266,8 +269,145 @@ Roo.docs.init = {
         var link = e.target.href.split('#')[1];
         this.loadClass(link);
         
+    },
+      
+    loadIntro : function()
+    {
+      
+        
+        Roo.Ajax.request({
+            url : 'summary.txt',
+            method : 'GET',
+            success : function(res)
+            {
+                this.renderIntro(res.responseText);
+               
+                
+            },
+            scope : this
+        });
+        
+        
+    },
+    // render the really simple markdown data
+    renderIntro : function(intro)
+    {
+        var lines = intro.split("\n");
+        var tree = { 'name' : 'root', cn : []};
+        var state = [ tree ];
+        for (var i=0;i< lines.length;i++) {
+            var line = lines[i];
+            if (!line.length || line.match(/^\s+$/)) {
+                continue;
+            }
+            var sm = line.match(/^(\s+)(.*)/);
+            
+            var sml = sm ? sm[1].length: 0;
+            Roo.log(sml);
+            sml = sml / 4; // 4 spaces indent?
+            var add = { name : sm ?  sm[2] : line, cn : [] };
+            state[sml].cn.push(add);
+            state[sml+1] = add;
+            
+        }
+        Roo.log(tree);
+        
+        for(var i = 0; i < tree.cn.length; i++) {
+            // make a container..
+            var treei = tree.cn[i];
+            var ctree = {
+                
+                xtype : 'Column',
+                xns : Roo.bootstrap,
+                md:4,
+                sm : 6,
+                items : [ {
+                    header : treei.name,
+                    xtype : 'Container',
+                    panel : 'info',
+                    xns : Roo.bootstrap,
+                    items : []
+                }]
+            };
+            for(var ii = 0; ii < treei.cn.length; ii++) {
+                var treeii = treei.cn[ii];
+                // another container..
+               var ctreei = {
+                    header : treeii.name,
+                    xtype : 'Container',
+                    panel : 'primary',
+                    xns : Roo.bootstrap,
+                  
+                    items : [
+                         {
+                            xtype : 'Element',
+                            tag :'ul',
+                           
+                            xns : Roo.bootstrap,
+                            items : []
+                         }
+                    ]
+                };
+                ctree.items[0].items.push(ctreei);
+                var footer = '';
+                for(var iii = 0; iii < treeii.cn.length; iii++) {
+                    var treeiii = treeii.cn[iii];
+                    var ll = treeiii.name.match(/^(\S+)\s*(.*)$/);
+                    //Roo.log(treeiii.name);
+                    if (treeiii.name == 'Examples') {
+                        for (var j =0;j< treeiii.cn.length; j++) {
+                            var exs = treeiii.cn[j].name.match(/^\[([^\]]+)\](.*)$/);
+                            footer += '<li><a href="../' + exs[1] + '">'+exs[2] + '</a></li>';
+                        }
+                        continue;
+                        
+                        
+                    }
+        
+        
+
+                    ctreeii = {
+                            xtype : 'Element',
+                            tag :'li',
+                            xns : Roo.bootstrap,
+                            items : [
+                                {
+                                   xtype : 'Link',
+                                    href : '#' + ( ll ? ll[1] : treeiii.name ) ,
+                                    html : ll ? ll[1] : treeiii.name,
+                                    xns : Roo.bootstrap 
+                                },
+                                {
+                                   xtype : 'Element',
+                                    tag : 'span',
+                                    html : ll && ll[2].length ? ' - ' + ll[2] : '',
+                                    xns : Roo.bootstrap 
+                                }
+                            ]
+                            
+                            
+                            
+                    };
+                    ctreei.items.push(ctreeii);
+                    
+                }
+                if (footer.length) {
+                    Roo.log("footer:"+  footer);
+                    ctreei.footer = '<h5>Examples:</h5><ul>'+footer +'</ul>';
+                }
+        
+            }
+            
+            
+            
+            
+            
+            Roo.docs.introBody.addxtypeChild(ctree);
+        }
+        
+        
+        
     }
-    
     
     
     
