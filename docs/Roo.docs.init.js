@@ -342,7 +342,7 @@ Roo.docs.init = {
                 };
                 ctree.items.push(ctreei);
                 for(var iii = 0; iii < treeii.cn.length; iii++) {
-                    var treeiii = ctreeii.cn[iii];
+                    var treeiii = treeii.cn[iii];
                     var ll = treeiii.name.match(/^(\w+)\s*(.*)/);
         
 
