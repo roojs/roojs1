@@ -329,7 +329,7 @@ Roo.docs.init = {
                     xtype : 'Container',
                     panel : 'primary',
                     xns : Roo.bootstrap,
-                    md:3,
+                  
                     items : [
                          {
                             xtype : 'Element',
