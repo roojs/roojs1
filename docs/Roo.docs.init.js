@@ -322,7 +322,7 @@ Roo.docs.init = {
                 items : []
             };
             for(var ii = 0; ii < treei.cn.length; ii++) {
-                var treeii = treei[ii];
+                var treeii = treei.cm[ii];
                 // another container..
                var ctreei = {
                     title : treeii.name,
