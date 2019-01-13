@@ -314,12 +314,17 @@ Roo.docs.init = {
             // make a container..
             var treei = tree.cn[i];
             var ctree = {
-                header : treei.name,
-                xtype : 'Container',
-                panel : 'info',
+                
+                xtype : 'Column',
                 xns : Roo.bootstrap,
                 md:3,
-                items : []
+                items : [ {
+                    header : treei.name,
+                    xtype : 'Container',
+                    panel : 'info',
+                    xns : Roo.bootstrap,
+                    items : []
+                }]
             };
             for(var ii = 0; ii < treei.cn.length; ii++) {
                 var treeii = treei.cn[ii];
