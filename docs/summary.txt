@@ -102,10 +102,10 @@ Widgets (Classic Roo)
         Roo.LayoutDialog
         Roo.MessageBox
         Examples
-            Simple Hello World
-            Dialog with Layout
-            Various Standard Message Boxes
-            Simple Blog Post interface
+            [examples/dialog/hello.html] Simple Hello World
+            <li><a href="../examples/dialog/layout.html" >Dialog with Layout</a></li>
+            <li><a href="../examples/dialog/msg-box.html" >Various Standard Message Boxes</a></li>
+            <li><a href="../examples/dialog/blog.html" >Simple Blog Post interface</a></li>
     Buttons
         Roo.Button
         Roo.SplitButton
@@ -132,82 +132,82 @@ Widgets (Classic Roo)
         Roo.form.VTypes Various types of Validation for form elements.
         Roo.DatePicker Date Picker (not really a form element...)
         Examples
-            Dynamic Forms
-            Combox boxes
-            HTML editor example
-            Custom - Autocomplete example - (Broken until we sort out a Json callback for trac)
-            Search forum - (Broken until we sort out a Json callback for trac)
-            Form from/to xml
-            FCK editor example
-        Tree
-            Roo.tree.TreePanel
-            Roo.tree.TreeEditor
-            Roo.tree.AsyncTreeNode
-            Roo.tree.TreeNode
-            Roo.tree.TreeFilter
-            Roo.tree.TreeLoader
-            Roo.tree.TreeSorter
-            Roo.tree.DefaultSelectionModel
-            Roo.tree.MultiSelectionModel
-            Examples
-                Two Trees (need to rename it!)
-                Re-orderable Trees
-                The Roo Dependancy tree (needs some css tidy up.)
-                Organizer (needs some css tidy up.)
-        Grid
-            Roo.grid.GridPanel
-            Roo.grid.CellSelectionModel
-            Roo.grid.RowSelectionModel
-            Roo.grid.ColumnModel
-            Roo.grid.EditorGrid
-            Roo.grid.Grid
-            Roo.grid.GridEditor
-            Roo.grid.GridView
-            Roo.PagingToolbar
-            Examples
-                Grid from Array
-                Property Grid
-                Grid from HTML markup IE: css broken
-                Paging Grid FF: minor tidy up req, IE: Broken slightly when scrolling.
-                Editable Grid
-        Menu / Toolbars
-            Roo.menu.CheckItem
-            Roo.menu.ColorItem
-            Roo.menu.DateItem
-            Roo.menu.DateMenu
-            Roo.menu.Menu
-            Roo.menu.MenuMgr
-            Roo.menu.Separator
-            Roo.menu.TextItem
-            Roo.Toolbar
-            Roo.Toolbar.Button
-            Roo.Toolbar.Fill
-            Roo.Toolbar.Separator
-            Roo.Toolbar.Spacer
-            Roo.Toolbar.SplitButton
-            Roo.Toolbar.TextItem
+            <li><a href="../examples/form/dynamic.html" >Dynamic Forms</a></li>
+            <li><a href="../examples/form/combos.html" >Combox boxes</a></li>
+            <li><a href="../examples/form/htmledit.html" >HTML editor example</a></li>
+            <li><a href="../examples/form/custom.html" >Custom</a> -  Autocomplete example - (Broken until we sort out a Json callback for trac)</li>
+            <li><a href="../examples/form/forum-search.html" >Search forum</a> - (Broken until we sort out a Json callback for trac)</li>
+            <li><a href="../examples/form/xml-form.html" >Form from/to xml</a> </li>            
+            <li><a href="../examples/form/fck.html" >FCK editor example</a></li>
+    Tree
+        Roo.tree.TreePanel
+        Roo.tree.TreeEditor
+        Roo.tree.AsyncTreeNode
+        Roo.tree.TreeNode
+        Roo.tree.TreeFilter
+        Roo.tree.TreeLoader
+        Roo.tree.TreeSorter
+        Roo.tree.DefaultSelectionModel
+        Roo.tree.MultiSelectionModel
         Examples
-            Toolbar / Menus example Minor css tweaking needed
-        View / Layers
-            Roo.JsonView
-            Roo.Layer
-            Roo.View
-            Examples
-                Image Chooser
-        Layout / Tabs
-            Roo.BasicLayoutRegion
-            Roo.BorderRegion
-            Roo.ContentPanel
-            Roo.LayoutRegion
-            Roo.NestedLayoutPanel
-            Roo.ReaderLayout
-            Roo.SplitBar
-            Roo.SplitLayoutRegion
-            Roo.TabPanel
-            Roo.TabPanelItem
-            Examples
-                Simple Layout
-                Nested Layout
-                Complex Layout Broken - needs converting to Roo JS
-                Basic Tabs (borders broken on tab boxes)
-                Advanced Tabs (dynamic adding of tabs)
+            <li><a href="../examples/tree/two-trees.html" >Two Trees</a> (need to rename it!)</li>
+            <li><a href="../examples/tree/reorder.html" >Re-orderable Trees</a></li>
+            <li><a href="../examples/tree/dependency.html" >The Roo Dependancy tree</a> (needs some css tidy up.)</li>
+            <li><a href="../examples/tree/organizer.html" >Organizer</a> (needs some css tidy up.)</li>
+    Grid
+        Roo.grid.GridPanel
+        Roo.grid.CellSelectionModel
+        Roo.grid.RowSelectionModel
+        Roo.grid.ColumnModel
+        Roo.grid.EditorGrid
+        Roo.grid.Grid
+        Roo.grid.GridEditor
+        Roo.grid.GridView
+        Roo.PagingToolbar
+        Examples
+            Grid from Array
+            Property Grid
+            Grid from HTML markup IE: css broken
+            Paging Grid FF: minor tidy up req, IE: Broken slightly when scrolling.
+            Editable Grid
+    Menu / Toolbars
+        Roo.menu.CheckItem
+        Roo.menu.ColorItem
+        Roo.menu.DateItem
+        Roo.menu.DateMenu
+        Roo.menu.Menu
+        Roo.menu.MenuMgr
+        Roo.menu.Separator
+        Roo.menu.TextItem
+        Roo.Toolbar
+        Roo.Toolbar.Button
+        Roo.Toolbar.Fill
+        Roo.Toolbar.Separator
+        Roo.Toolbar.Spacer
+        Roo.Toolbar.SplitButton
+        Roo.Toolbar.TextItem
+    Examples
+        Toolbar / Menus example Minor css tweaking needed
+    View / Layers
+        Roo.JsonView
+        Roo.Layer
+        Roo.View
+        Examples
+            Image Chooser
+    Layout / Tabs
+        Roo.BasicLayoutRegion
+        Roo.BorderRegion
+        Roo.ContentPanel
+        Roo.LayoutRegion
+        Roo.NestedLayoutPanel
+        Roo.ReaderLayout
+        Roo.SplitBar
+        Roo.SplitLayoutRegion
+        Roo.TabPanel
+        Roo.TabPanelItem
+        Examples
+            Simple Layout
+            Nested Layout
+            Complex Layout Broken - needs converting to Roo JS
+            Basic Tabs (borders broken on tab boxes)
+            Advanced Tabs (dynamic adding of tabs)
