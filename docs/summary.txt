@@ -1,0 +1,211 @@
+RooJS1 Documentation Contents
+Roo - Core Class - Essential Reading
+
+Core Libraries
+    Dom / CSS / Text
+        Roo.util.CSS
+        Roo.util.Format Various Text Formating / Encoding
+        Roo.DomHelper DOM creation
+        Roo.DomQuery DOM locating elements
+        Roo.util.TextMetrics Text size calculations
+    Element / Selection
+        Roo.Element Core Element methods (see also Roo.get())
+        Roo.CompositeElement
+        Roo.CompositeElementLite
+    Effects / Masks / Tips
+        Roo.Fx
+        Roo.LoadMask
+        Roo.QuickTips
+        Roo.Resizable
+        Examples
+            [examples/resizable/basic.html] Resizing elements With animation, snapping etc. (Works, needs a few replacement images)
+    State
+        Roo.state.CookieProvider
+    Drag and Drop
+        Roo.dd.DD
+        Roo.dd.DDProxy
+        Roo.dd.DDTarget
+        Roo.dd.DragDrop
+        Roo.dd.DragDropMgr
+        Roo.dd.DragZone
+        Roo.dd.DropTarget
+        Roo.dd.DropZone
+        Roo.dd.Registry
+        Roo.dd.ScrollManager
+        Roo.dd.StatusProxy
+    Signals / Events
+        Roo.util.Observable
+        Roo.util.DelayedTask
+        Roo.util.TaskRunner
+        Roo.EventObject
+        Roo.Shadow
+        Roo.util.ClickRepeater
+    AJAX
+        Roo.data.Connection
+        Roo.Ajax
+    Store
+        Roo.util.MixedCollection
+        Roo.data.JsonStore
+        Roo.data.Store
+        Roo.data.SimpleStore
+        Roo.data.Record
+        Roo.data.SortTypes
+    Data Readers
+        Roo.data.ArrayReader
+        Roo.data.DataReader
+        Roo.data.JsonReader
+        Roo.data.XmlReader
+    Data Proxies
+        Roo.data.DataProxy
+        Roo.data.HttpProxy
+        Roo.data.MemoryProxy
+        Roo.data.ScriptTagProxy
+    Tree Data
+        Roo.data.Node
+        Roo.data.Tree
+    Keys
+        Roo.KeyMap
+        Roo.KeyNav
+    Managers
+        Roo.ComponentMgr
+        Roo.DialogManager
+        Roo.EventManager
+        Roo.LayoutManager
+        Roo.UpdateManager
+        Roo.state.Manager
+    Templates
+        Roo.MasterTemplate
+        Roo.Template
+
+    Abstract Base Classes
+
+        Roo.BoxComponent
+        Roo.Component
+        Roo.form.Field
+        Roo.form.Layout
+        Roo.form.TriggerField
+        Roo.grid.AbstractGridView
+        Roo.grid.AbstractSelectionModel
+        Roo.menu.Adapter
+        Roo.menu.BaseItem
+        Roo.menu.Item
+        Roo.state.Provider
+        Roo.Editor
+        Roo.Toolbar.Item
+
+Widgets (Classic Roo)
+ 
+    Windows and Dialogs
+        Roo.BasicDialog
+        Roo.LayoutDialog
+        Roo.MessageBox
+        Examples
+            Simple Hello World
+            Dialog with Layout
+            Various Standard Message Boxes
+            Simple Blog Post interface
+    Buttons
+        Roo.Button
+        Roo.SplitButton
+    
+    Core Form / Layout
+        Roo.form.Form
+        Roo.form.BasicForm
+        Roo.form.Column
+        Roo.form.FieldSet
+    Form Elements
+        Roo.form.Hidden
+        Roo.form.TextField
+        Roo.form.DateField
+        Roo.form.NumberField
+        Roo.form.TextArea
+        Roo.form.Checkbox
+        Roo.form.Radio
+        Roo.form.ComboBox
+        Html Editor
+        Roo.form.HtmlEditor (broken on IE)
+        Roo.form.FCKeditor embeded FCKeditor (slow but works)
+    Other
+        Roo.form.Action What happens when you load and save a form.
+        Roo.form.VTypes Various types of Validation for form elements.
+        Roo.DatePicker Date Picker (not really a form element...)
+        Examples
+            Dynamic Forms
+            Combox boxes
+            HTML editor example
+            Custom - Autocomplete example - (Broken until we sort out a Json callback for trac)
+            Search forum - (Broken until we sort out a Json callback for trac)
+            Form from/to xml
+            FCK editor example
+        Tree
+            Roo.tree.TreePanel
+            Roo.tree.TreeEditor
+            Roo.tree.AsyncTreeNode
+            Roo.tree.TreeNode
+            Roo.tree.TreeFilter
+            Roo.tree.TreeLoader
+            Roo.tree.TreeSorter
+            Roo.tree.DefaultSelectionModel
+            Roo.tree.MultiSelectionModel
+            Examples
+                Two Trees (need to rename it!)
+                Re-orderable Trees
+                The Roo Dependancy tree (needs some css tidy up.)
+                Organizer (needs some css tidy up.)
+        Grid
+            Roo.grid.GridPanel
+            Roo.grid.CellSelectionModel
+            Roo.grid.RowSelectionModel
+            Roo.grid.ColumnModel
+            Roo.grid.EditorGrid
+            Roo.grid.Grid
+            Roo.grid.GridEditor
+            Roo.grid.GridView
+            Roo.PagingToolbar
+            Examples
+                Grid from Array
+                Property Grid
+                Grid from HTML markup IE: css broken
+                Paging Grid FF: minor tidy up req, IE: Broken slightly when scrolling.
+                Editable Grid
+        Menu / Toolbars
+            Roo.menu.CheckItem
+            Roo.menu.ColorItem
+            Roo.menu.DateItem
+            Roo.menu.DateMenu
+            Roo.menu.Menu
+            Roo.menu.MenuMgr
+            Roo.menu.Separator
+            Roo.menu.TextItem
+            Roo.Toolbar
+            Roo.Toolbar.Button
+            Roo.Toolbar.Fill
+            Roo.Toolbar.Separator
+            Roo.Toolbar.Spacer
+            Roo.Toolbar.SplitButton
+            Roo.Toolbar.TextItem
+        Examples
+            Toolbar / Menus example Minor css tweaking needed
+        View / Layers
+            Roo.JsonView
+            Roo.Layer
+            Roo.View
+            Examples
+                Image Chooser
+        Layout / Tabs
+            Roo.BasicLayoutRegion
+            Roo.BorderRegion
+            Roo.ContentPanel
+            Roo.LayoutRegion
+            Roo.NestedLayoutPanel
+            Roo.ReaderLayout
+            Roo.SplitBar
+            Roo.SplitLayoutRegion
+            Roo.TabPanel
+            Roo.TabPanelItem
+            Examples
+                Simple Layout
+                Nested Layout
+                Complex Layout Broken - needs converting to Roo JS
+                Basic Tabs (borders broken on tab boxes)
+                Advanced Tabs (dynamic adding of tabs)
