@@ -251,11 +251,9 @@ Roo.docs = new Roo.XComponent({
        },
       render : function (_self)
        {
+          
+            _this.navHeaderBar = this;
            return;
-           
-           _this.navHeaderBar = this;
-           
-           this.el.addClass(language); 
            
            var body = Roo.select('body', true).first();
            
