@@ -107,8 +107,8 @@ Roo.docs.init = {
                         }
                         
                     }
-                    
-                    Roo.docs.init.loadDoc(c);
+                    location.hash = '#' + c;
+                    //Roo.docs.init.loadDoc(c);
                     
                 }).createDelegate(this,[e], true)
                 
