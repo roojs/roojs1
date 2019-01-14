@@ -288,7 +288,7 @@ Roo.docs.init = {
     },
     loadHash : function()
     {
-        this.loadClass(location.hash);
+        this.loadClass(location.hash.substring(1));
     },
     
       
