@@ -200,6 +200,11 @@ Roo.docs.init = {
             Roo.docs.introBody.show();
             return;
         }
+        
+        // expand parents..
+        
+        
+        
         Roo.docs.introBody.hide();
         Roo.docs.doc_body_content.show();
         Roo.Ajax.request({
