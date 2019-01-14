@@ -174,7 +174,7 @@ Roo.docs.init = {
         if (parent_e !== false) {
             e.node = node;
             e.parent_menu = parent;
-            e.parent = parent_e;
+            e.parent = parent_e == true ? null : parent_e;
         }
         
         parent.items.push(node);
