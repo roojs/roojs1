@@ -86,7 +86,7 @@ Roo.docs.init = {
         // add a node..
         var node = parent.addxtypeChild(Roo.factory({
             html: e.name.split('.').pop(),
-            id : e.name,
+           // id : e.name,
             xns : Roo.bootstrap,
             showArrow: false,
             xtype : type,
