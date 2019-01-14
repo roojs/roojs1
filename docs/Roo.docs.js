@@ -240,13 +240,13 @@ Roo.docs = new Roo.XComponent({
        {
            //_this.navGroup.autoExpand(); 
            
-           (function() {
-               this.el.select('.navbar-collapse',true).first().setHeight(innerHeight-50);
-           }).defer(100,this);
+          
            
-           
-           if(this.el.select('.navbar-collapse',true).first().hasClass('in')){
-                
+           if(!this.el.select('.navbar-collapse',true).first().hasClass('in')){
+               (function() {
+                   this.el.select('.navbar-collapse',true).first().setHeight(innerHeight-50);
+               }).defer(100,this);
+                     
                return;
            }
        },
