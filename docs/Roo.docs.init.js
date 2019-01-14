@@ -80,7 +80,7 @@ Roo.docs.init = {
         
         
     },
-    addTreeItem : function(parent, e, type) {
+    addTreeItem : function(parent, e, type , parent_menuitem) {
         
         this.classes[e.name] = e; 
         // add a node..
