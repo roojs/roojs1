@@ -444,7 +444,7 @@ Roo.docs.init = {
                                    xtype : 'Link',
                                     href : '#' + ( ll ? ll[1] : treeiii.name ) ,
                                     html : ll ? ll[1] : treeiii.name,
-                                    target : "_new",
+                                    target : "_blank",
                                     xns : Roo.bootstrap 
                                 },
                                 {
