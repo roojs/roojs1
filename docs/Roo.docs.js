@@ -240,8 +240,9 @@ Roo.docs = new Roo.XComponent({
        {
            //_this.navGroup.autoExpand(); 
            
-           
-           this.el.select('.navbar-collapse',true).first().setHeight(innerHeight-50);
+           (function() {
+               this.el.select('.navbar-collapse',true).first().setHeight(innerHeight-50);
+           }).defer(100,this);
            
            
            if(this.el.select('.navbar-collapse',true).first().hasClass('in')){
