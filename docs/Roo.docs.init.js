@@ -80,6 +80,14 @@ Roo.docs.init = {
         
         
     },
+    
+    hideChildren : function(mi)
+    {
+        
+        
+    }
+    
+    
     addTreeItem : function(parent, e, type , parent_e) {
         
         this.classes[e.name] = e; 
