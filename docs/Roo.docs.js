@@ -482,7 +482,7 @@ Roo.docs = new Roo.XComponent({
            xtype : 'Container',
            cls : 'doc-augments',
            header : _this._strings['3e6ec55e2dff4342e3f25b0b0b988de9'] /* Inheritance tree */,
-           panel : 'success',
+           panel : 'primary',
            listeners : {
             render : function (_self)
              {

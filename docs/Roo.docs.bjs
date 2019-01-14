@@ -239,7 +239,7 @@
            "String header" : "Inheritance tree",
            "String cls" : "doc-augments",
            "xtype" : "Container",
-           "String panel" : "success",
+           "String panel" : "primary",
            "$ xns" : "Roo.bootstrap"
           }
          ]
