@@ -241,6 +241,8 @@ Roo.docs = new Roo.XComponent({
            //_this.navGroup.autoExpand(); 
            
            
+           this.el.select('.navbar-collapse',true).first().setHeight(innerHeight-50);
+           
            
            if(this.el.select('.navbar-collapse',true).first().hasClass('in')){
                _this.navHeaderBar.mask.hide();
