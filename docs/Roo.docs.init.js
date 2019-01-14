@@ -236,9 +236,13 @@ Roo.docs.init = {
     
     loadDoc : function(cls)
     {
+        if (this.currentClass == cls.name) {
+            return;
+        }
        // Roo.docs.mobileNavGroup.hide();
         Roo.log("loadDoc?");
         Roo.docs.doc_body_content.hide();
+        
         this.currentClass = cls.name;
         if (!cls ) {
             Roo.docs.introBody.show();
