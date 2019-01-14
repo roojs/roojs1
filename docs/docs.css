@@ -113,6 +113,11 @@ h6,
    /* color: #666; */
     font-weight: bold;
 }
+.sidebar .sidebar-menu li.open li.treeview-menu>a {
+    color: #fff;
+}
+
+
 /* block the broken bit from sidbar... */
 .sidebar .sidebar-menu li.open li.treeview-menu>a  {
     display: none;
