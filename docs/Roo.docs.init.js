@@ -210,8 +210,9 @@ Roo.docs.init = {
             m = mp.parent_menu;
             m.show(m.triggerEl,'?', false);
         }
-        cls.node.el.scrollIntoView(Roo.docs.sidebar.el,false)
-        
+        cls.node.el.scrollIntoView(Roo.docs.sidebar.el,false);
+        Roo.docs.sidebar.el.select('.active').removeClass('active');
+        cls.node.el.addClass('active');
         
         Roo.docs.introBody.hide();
         Roo.docs.doc_body_content.show();
