@@ -81,9 +81,14 @@ Roo.docs.init = {
         
     },
     
-    hideChildren : function(mi)
+    hideChildren : function(c)
     {
-        
+        if (c.node.menu) {
+            c.node.menu.hide();
+        }
+        for (var i =0; i < c.cn.length; i++) {
+            this.hideChildren(c.cn[i]);
+        }
         
     }
     
