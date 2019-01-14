@@ -90,7 +90,7 @@ Roo.docs.init = {
             this.hideChildren(c.cn[i]);
         }
         
-    }
+    },
     
     
     addTreeItem : function(parent, e, type , parent_e) {
@@ -114,7 +114,7 @@ Roo.docs.init = {
                     if (c.cn.length) {
                         Roo.log(ev);
                         if (mi.menu.el.hasClass('show')) {
-                            mi.menu.hide();
+                            this.hideChildren(c); //mi.menu.hide();
                             // collapse children..
                             
                             
