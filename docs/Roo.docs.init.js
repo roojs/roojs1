@@ -107,7 +107,7 @@ Roo.docs.init = {
                         }
                         
                     }
-                    location.hash = '#' + c;
+                    location.hash = '#' + c.name;
                     //Roo.docs.init.loadDoc(c);
                     
                 }).createDelegate(this,[e], true)
