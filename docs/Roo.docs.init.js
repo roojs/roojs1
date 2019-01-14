@@ -426,7 +426,7 @@ Roo.docs.init = {
                     if (treeiii.name == 'Examples') {
                         for (var j =0;j< treeiii.cn.length; j++) {
                             var exs = treeiii.cn[j].name.match(/^\[([^\]]+)\](.*)$/);
-                            footer += '<li><a href="../' + exs[1] + '">'+exs[2] + '</a></li>';
+                            footer += '<li><a target="_blank" href="../' + exs[1] + '">'+exs[2] + '</a></li>';
                         }
                         continue;
                         
@@ -444,7 +444,7 @@ Roo.docs.init = {
                                    xtype : 'Link',
                                     href : '#' + ( ll ? ll[1] : treeiii.name ) ,
                                     html : ll ? ll[1] : treeiii.name,
-                                    target : "_new",
+                                    
                                     xns : Roo.bootstrap 
                                 },
                                 {
