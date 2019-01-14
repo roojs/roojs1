@@ -52,7 +52,6 @@ Roo.docs = new Roo.XComponent({
     {
      xtype : 'NavSidebar',
      cls : 'left-menu-sidebar',
-     style : 'padding-top:80px;',
      listeners : {
       render : function (_self)
        {

@@ -37,7 +37,6 @@
      "String cls" : "left-menu-sidebar",
      "xtype" : "NavSidebar",
      "$ xns" : "Roo.bootstrap",
-     "String style" : "padding-top:80px;",
      "items" : [
       {
        "listeners" : {
