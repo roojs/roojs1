@@ -238,7 +238,7 @@ Roo.docs = new Roo.XComponent({
      listeners : {
       beforetoggle : function (_self)
        {
-           _this.navGroup.autoExpand(); 
+           //_this.navGroup.autoExpand(); 
            
            
            
