@@ -325,7 +325,8 @@ Roo.docs.init = {
     renderIntro : function(intro)
     {
         
-         
+        Roo.docs.doc_body_content.hide();
+
         
         var lines = intro.split("\n");
         var tree = { 'name' : 'root', cn : []};
