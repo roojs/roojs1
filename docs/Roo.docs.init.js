@@ -206,7 +206,7 @@ Roo.docs.init = {
         var m = cls.parent_menu;
         m.show(m.triggerEl,'?', false);
         var mp = cls;
-        while (mp = mp.parent) {
+        while ((mp = mp.parent)) {
             m = mp.parent_menu;
             m.show(m.triggerEl,'?', false);
         }
