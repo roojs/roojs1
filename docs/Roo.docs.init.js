@@ -286,12 +286,16 @@ Roo.docs.init = {
     
     onHashChange : function()
     {
-        
+        if (this.hash == location.hash) {
+            return;
+        }
+        this.loadHash();
         
     },
     loadHash : function()
     {
         this.loadClass(location.hash.substring(1));
+        this.hash = location.hash;
     },
     
       
