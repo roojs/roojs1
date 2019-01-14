@@ -110,7 +110,7 @@ h6,
 
 .left-menu-sidebar.sidebar .sidebar-menu > li .treeview-menu a:hover,
 .left-menu-sidebar.sidebar .sidebar-menu > li a:hover {
-    color: #666;
+   /* color: #666; */
     font-weight: bold;
 }
 /* block the broken bit from sidbar... */
