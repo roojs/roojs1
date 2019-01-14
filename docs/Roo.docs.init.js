@@ -132,6 +132,7 @@ Roo.docs.init = {
                 
             })
         }));
+        e.node = node;
         parent.items.push(node);
         if (e.cn.length  && type == 'NavSidebarItem') {
             this.topm = node.menu;
