@@ -52,10 +52,10 @@ Roo.docs = new Roo.XComponent({
     {
      xtype : 'NavSidebar',
      cls : 'left-menu-sidebar',
-     style : 'padding-top:80px;',
      listeners : {
       render : function (_self)
        {
+         _this.sidebar = this;
          //  this.el.addClass(language);
            
        }
@@ -201,7 +201,7 @@ Roo.docs = new Roo.XComponent({
            listeners : {
             click : function (e)
              {
-                 document.location.reload();
+                 document.location.hash = '#';
              }
            },
            xns : Roo.bootstrap,
@@ -394,14 +394,15 @@ Roo.docs = new Roo.XComponent({
                  xtype : 'Link',
                  cls : 'doc-extends',
                  html : _this._strings['494a64a432ff6a121e4ab9003c7a0df3'] /* parentcls */,
-                 preventDefault : false,
+                 preventDefault : true,
                  listeners : {
                   click : function (e)
                    {
                    
                        if (this.el.dom.innerHTML.length) {
-                           Roo.docs.init.loadDoc({ name : this.el.dom.innerHTML, is_class : true});
-                       }
+                           document.location.hash = '#' +  this.el.dom.innerHTML;
+                         
+                       } 
                    },
                   render : function (_self)
                    {
@@ -482,7 +483,7 @@ Roo.docs = new Roo.XComponent({
            xtype : 'Container',
            cls : 'doc-augments',
            header : _this._strings['3e6ec55e2dff4342e3f25b0b0b988de9'] /* Inheritance tree */,
-           panel : 'success',
+           panel : 'primary',
            listeners : {
             render : function (_self)
              {
@@ -502,7 +503,7 @@ Roo.docs = new Roo.XComponent({
        expandable : true,
        expanded : true,
        header : _this._strings['50f33d14f129e4548c1c270fd6725a78'] /* Configuration options */,
-       panel : 'info',
+       panel : 'primary',
        style : 'margin-top:15px',
        listeners : {
         render : function (_self)
@@ -595,9 +596,9 @@ Roo.docs = new Roo.XComponent({
        xtype : 'Container',
        cls : 'doc-table-container',
        expandable : true,
-       expanded : false,
+       expanded : true,
        header : _this._strings['a1d108496af420635536a4e29e87d42b'] /* Constructor, Static and Public Methods */,
-       panel : 'info',
+       panel : 'primary',
        listeners : {
         render : function (_self)
          {
@@ -690,9 +691,9 @@ Roo.docs = new Roo.XComponent({
        xtype : 'Container',
        cls : 'doc-table-container',
        expandable : true,
-       expanded : false,
+       expanded : true,
        header : _this._strings['87f9f735a1d36793ceaecd4e47124b63'] /* Events */,
-       panel : 'info',
+       panel : 'primary',
        listeners : {
         render : function (_self)
          {

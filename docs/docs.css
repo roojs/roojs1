@@ -69,7 +69,7 @@ h6,
 }
 
 .left-menu-sidebar.sidebar .sidebar-menu>li>a, .sidebar .sidebar-menu li.open li.treeview-menu > a {
-    color: #16114C;
+ /*   color: #16114C; */
 }
 
 .left-menu-sidebar.sidebar .left-menu-sidebar-options {
@@ -80,10 +80,6 @@ h6,
     color: #999;
 }
 
-.left-menu-sidebar.sidebar .sidebar-menu > li.active  {
-    background-color: #fff;
-    border-color: #eee;
-}
 
 .mobile-header-menu ul > li.active > a,
 .left-menu-sidebar.sidebar .sidebar-menu > li.active > a  {
@@ -91,8 +87,8 @@ h6,
 }
 
 .left-menu-sidebar.sidebar .sidebar-menu .treeview-menu > li.active {
-    background-color: #fff;
-    border-color: #eee;
+ /*  background-color: #fff;
+    border-color: #eee; */
 }
 
 .left-menu-sidebar.sidebar .sidebar-menu .treeview-menu > li.active > a  {
@@ -110,9 +106,16 @@ h6,
 
 .left-menu-sidebar.sidebar .sidebar-menu > li .treeview-menu a:hover,
 .left-menu-sidebar.sidebar .sidebar-menu > li a:hover {
-    color: #666;
+   /* color: #666; */
     font-weight: bold;
 }
+.left-menu-sidebar.sidebar .sidebar-menu>li.active>a, 
+.sidebar .sidebar-menu li.open li.treeview-menu.active>a
+{
+    color: #fff;
+}
+
+
 /* block the broken bit from sidbar... */
 .sidebar .sidebar-menu li.open li.treeview-menu>a  {
     display: none;
@@ -194,10 +197,16 @@ h6,
 
 .left-menu-sidebar {
     position: fixed;
-    width: 250px; /*320px;*/
-    height: 100%;
     top: 0;
     left: 0;
+    bottom: 0px;
+    margin-top: 80px;
+    height: auto;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    
+    width: 250px; /*320px;*/
+    
     z-index: 999;
     background-repeat: no-repeat;
     background-position: center center;

@@ -5,6 +5,7 @@ Roo.docs.init = {
     classes : false, // flat version of list of classes 
     currentClass : '', // currently viewed class name
     
+    hash : '',
     
     onReady : function()
     {
@@ -24,9 +25,16 @@ Roo.docs.init = {
         Roo.XComponent.on('buildcomplete', function() {
             
             //Roo.XComponent.modules[0].el.fireEvent('render');
-             this.loadTree();
+            this.loadTree();
         }, this);
-        Roo.get(document.body).on('click', this.onClick, this);
+        
+        
+        window.onhashchange = function() { Roo.docs.init.onHashChange(); }
+        
+        
+       
+        
+        //Roo.get(document.body).on('click', this.onClick, this);
       
         
     },
@@ -42,7 +50,7 @@ Roo.docs.init = {
             {
                 var d = Roo.decode(res.responseText);
                 Roo.log(d);
-                this.classes = [];
+                this.classes = {};
                 // our classes witch children first..
                 d.forEach(function(e) {
                     if (e.cn.length) {
@@ -58,6 +66,11 @@ Roo.docs.init = {
                 }, this);
                 var roo = Roo.docs.navGroup.items[1].menu;
                 roo.show(roo.triggerEl, '?', false);
+                if (location.hash.length) {
+                    this.loadHash();
+                    return;
+                }
+                
                 this.loadIntro();
                 
                 
@@ -67,13 +80,26 @@ Roo.docs.init = {
         
         
     },
-    addTreeItem : function(parent, e, type) {
+    
+    hideChildren : function(c)
+    {
+        if (c.node.menu) {
+            c.node.menu.hide();
+        }
+        for (var i =0; i < c.cn.length; i++) {
+            this.hideChildren(c.cn[i]);
+        }
+        
+    },
+    
+    
+    addTreeItem : function(parent, e, type , parent_e) {
         
         this.classes[e.name] = e; 
         // add a node..
         var node = parent.addxtypeChild(Roo.factory({
             html: e.name.split('.').pop(),
-            id : e.name,
+           // id : e.name,
             xns : Roo.bootstrap,
             showArrow: false,
             xtype : type,
@@ -88,14 +114,18 @@ Roo.docs.init = {
                     if (c.cn.length) {
                         Roo.log(ev);
                         if (mi.menu.el.hasClass('show')) {
-                            mi.menu.hide();
+                            this.hideChildren(c); //mi.menu.hide();
+                            // collapse children..
+                            
+                            
+                            
                         } else {
                             mi.menu.show(mi.menu.triggerEl,'?', false);
                         }
                         
                     }
-                    
-                    Roo.docs.init.loadDoc(c);
+                    location.hash = '#' + c.name;
+                    //Roo.docs.init.loadDoc(c);
                     
                 }).createDelegate(this,[e], true)
                 
@@ -119,6 +149,9 @@ Roo.docs.init = {
                 
             })
         }));
+        e.node = node;
+        e.parent_menu = parent;
+        e.parent = parent_e;
         parent.items.push(node);
         if (e.cn.length  && type == 'NavSidebarItem') {
             this.topm = node.menu;
@@ -132,14 +165,14 @@ Roo.docs.init = {
             var cn = ec.name.split('.').pop();
             Roo.log(cn);
             if (cn == cn.toLowerCase()) {
-                this.addTreeItem(node.menu, ec,'MenuItem');
+                this.addTreeItem(node.menu, ec,'MenuItem', e);
             }
             
         }, this);
         e.cn.forEach(function(ec) {
             var cn = ec.name.split('.').pop();
             if (cn != cn.toLowerCase()) {
-                this.addTreeItem(node.menu, ec,'MenuItem');
+                this.addTreeItem(node.menu, ec,'MenuItem', e);
             }
         }, this);
         
@@ -147,7 +180,7 @@ Roo.docs.init = {
     
     loadClass : function(name)
     {
-        if(typeof(this.classes[name]) != 'undefined') {
+        if(typeof(this.classes[name]) != 'undefined' && this.classes[name].is_class ) {
             this.loadDoc(this.classes[name]);
         }
         
@@ -180,10 +213,24 @@ Roo.docs.init = {
     {
         Roo.docs.doc_body_content.hide();
         this.currentClass = cls.name;
-        if (!cls.is_class) {
+        if (!cls ) {
             Roo.docs.introBody.show();
             return;
         }
+        
+        // expand parents..
+        
+        var m = cls.parent_menu;
+        m.show(m.triggerEl,'?', false);
+        var mp = cls;
+        while ((mp = mp.parent)) {
+            m = mp.parent_menu;
+            m.show(m.triggerEl,'?', false);
+        }
+        cls.node.el.scrollIntoView(Roo.docs.sidebar.el,false);
+        Roo.docs.sidebar.el.select('.active').removeClass('active');
+        cls.node.el.addClass('active');
+        
         Roo.docs.introBody.hide();
         Roo.docs.doc_body_content.show();
         Roo.Ajax.request({
@@ -270,6 +317,24 @@ Roo.docs.init = {
         this.loadClass(link);
         
     },
+    
+    onHashChange : function()
+    {
+        if (this.hash == location.hash) {
+            return;
+        }
+        this.loadHash();
+        
+    },
+    loadHash : function()
+    {
+        if (location.hash.length < 2) {
+            this.loadClass('');
+        }
+        this.loadClass(location.hash.substring(1));
+        this.hash = location.hash;
+    },
+    
       
     loadIntro : function()
     {
@@ -292,6 +357,10 @@ Roo.docs.init = {
     // render the really simple markdown data
     renderIntro : function(intro)
     {
+        
+        Roo.docs.doc_body_content.hide();
+
+        
         var lines = intro.split("\n");
         var tree = { 'name' : 'root', cn : []};
         var state = [ tree ];
@@ -375,6 +444,7 @@ Roo.docs.init = {
                                    xtype : 'Link',
                                     href : '#' + ( ll ? ll[1] : treeiii.name ) ,
                                     html : ll ? ll[1] : treeiii.name,
+                                    target : "_new",
                                     xns : Roo.bootstrap 
                                 },
                                 {
