@@ -160,7 +160,7 @@ Roo.docs.init = {
     
     loadClass : function(name)
     {
-        if(typeof(this.classes[name]) != 'undefined' && this.classes[name].isClass ) {
+        if(typeof(this.classes[name]) != 'undefined' && this.classes[name].is_class ) {
             this.loadDoc(this.classes[name]);
         }
         
