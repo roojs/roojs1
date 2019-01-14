@@ -80,10 +80,6 @@ h6,
     color: #999;
 }
 
-.left-menu-sidebar.sidebar .sidebar-menu > li.active  {
-    background-color: #fff;
-    border-color: #eee;
-}
 
 .mobile-header-menu ul > li.active > a,
 .left-menu-sidebar.sidebar .sidebar-menu > li.active > a  {
