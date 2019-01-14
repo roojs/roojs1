@@ -171,10 +171,12 @@ Roo.docs.init = {
         
         
         
+        if (parent_e !== false) {
+            e.node = node;
+            e.parent_menu = parent;
+            e.parent = parent_e;
+        }
         
-        e.node = node;
-        e.parent_menu = parent;
-        e.parent = parent_e;
         parent.items.push(node);
         if (e.cn.length  && type == 'NavSidebarItem') {
             this.topm = node.menu;
@@ -188,14 +190,14 @@ Roo.docs.init = {
             var cn = ec.name.split('.').pop();
             //Roo.log(cn);
             if (cn == cn.toLowerCase()) {
-                this.addTreeItem(node.menu, ec,'MenuItem', e);
+                this.addTreeItem(node.menu, ec,'MenuItem', parent_e !== false ? e : false);
             }
             
         }, this);
         e.cn.forEach(function(ec) {
             var cn = ec.name.split('.').pop();
             if (cn != cn.toLowerCase()) {
-                this.addTreeItem(node.menu, ec,'MenuItem', e);
+                this.addTreeItem(node.menu, ec,'MenuItem', parent_e !== false ? e : false);
             }
         }, this);
         
