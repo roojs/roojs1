@@ -56,6 +56,7 @@ Roo.docs = new Roo.XComponent({
      listeners : {
       render : function (_self)
        {
+         _this.sidebar = this;
          //  this.el.addClass(language);
            
        }
