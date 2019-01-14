@@ -230,7 +230,7 @@ Roo.docs = new Roo.XComponent({
      xtype : 'NavHeaderbar',
      autohide : true,
      brand : ' ',
-     brand_href : baseURL + '/',
+     brand_href : '#',
      cls : 'mobile-header-menu',
      inverse : false,
      position : 'fixed-top',
@@ -293,7 +293,7 @@ Roo.docs = new Roo.XComponent({
     },
     {
      xtype : 'Container',
-     cls : 'general-content-body',
+     cls : 'general-content-body general-content-intro',
      listeners : {
       render : function (_self)
        {
@@ -344,7 +344,6 @@ Roo.docs = new Roo.XComponent({
         {
          xtype : 'Column',
          md : 9,
-         style : 'padding-left: 0px;',
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap',
          items  : [
@@ -585,6 +584,7 @@ Roo.docs = new Roo.XComponent({
            		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
            			
            },
+           xs : 0,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           }
@@ -680,6 +680,7 @@ Roo.docs = new Roo.XComponent({
            		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
            			
            },
+           xs : 0,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           }
@@ -772,6 +773,7 @@ Roo.docs = new Roo.XComponent({
            		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
            			
            },
+           xs : 0,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           }

@@ -155,10 +155,10 @@ Roo.docs.template  = {
         if (member.returns.length) {
             output += ': ';
         for(var i = 0;i< member.returns.length;i++) {
-        var item = member.returns[i];
-        output += (i > 0 ? ' or ' : '') +
-            this.linkSymbol(item.type);
-        }
+	    var item = member.returns[i];
+	    output += (i > 0 ? ' or ' : '') +
+		this.linkSymbol(item.type);
+	    }
         }
             
             
@@ -360,7 +360,7 @@ Roo.docs.template  = {
         
             if (!params.length) return "()";
         var linkSymbol = this.linkSymbol;
-        var signature = "("    +
+        var signature = " ("    +
             params.filter(
                 function($) {
                     return $.name.indexOf(".") == -1; // don't show config params in signature
