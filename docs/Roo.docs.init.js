@@ -203,6 +203,14 @@ Roo.docs.init = {
         
         // expand parents..
         
+        var m = cls.parent_menu;
+        m.show(m.triggerEl,'?', false);
+        var mp = cls;
+        while (mp = mp.parent) {
+            m = mp.parent_menu;
+            m.show(m.triggerEl,'?', false);
+        }
+        
         
         
         Roo.docs.introBody.hide();
