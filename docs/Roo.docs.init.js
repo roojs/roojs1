@@ -285,7 +285,11 @@ Roo.docs.init = {
     {
         
         
-    }
+    },
+    loadHash : function()
+    {
+        this.loadClass(location.hash);
+    },
     
       
     loadIntro : function()
