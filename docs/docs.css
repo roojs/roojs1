@@ -109,7 +109,9 @@ h6,
    /* color: #666; */
     font-weight: bold;
 }
-.sidebar .sidebar-menu li.open li.treeview-menu.active>a {
+.left-menu-sidebar.sidebar .sidebar-menu>li.active>a, 
+.sidebar .sidebar-menu li.open li.treeview-menu.active>a,
+{
     color: #fff;
 }
 
