@@ -155,7 +155,7 @@ Roo.docs.init = {
         e.cn.forEach(function(ec) {
             var cn = ec.name.split('.').pop();
             if (cn != cn.toLowerCase()) {
-                this.addTreeItem(node.menu, ec,'MenuItem');
+                this.addTreeItem(node.menu, ec,'MenuItem', e);
             }
         }, this);
         
