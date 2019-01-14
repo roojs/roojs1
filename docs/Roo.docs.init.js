@@ -295,8 +295,7 @@ Roo.docs.init = {
     loadHash : function()
     {
         if (location.hash.length < 2) {
-            this.loadIntro();
-            return;
+            this.loadClass('');
         }
         this.loadClass(location.hash.substring(1));
         this.hash = location.hash;
