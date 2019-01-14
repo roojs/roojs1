@@ -193,7 +193,7 @@ Roo.docs.init = {
     {
         Roo.docs.doc_body_content.hide();
         this.currentClass = cls.name;
-        if (!cls.is_class) {
+        if (!cls ) {
             Roo.docs.introBody.show();
             return;
         }
