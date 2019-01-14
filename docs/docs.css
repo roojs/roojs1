@@ -91,8 +91,8 @@ h6,
 }
 
 .left-menu-sidebar.sidebar .sidebar-menu .treeview-menu > li.active {
-    background-color: #fff;
-    border-color: #eee;
+ /*  background-color: #fff;
+    border-color: #eee; */
 }
 
 .left-menu-sidebar.sidebar .sidebar-menu .treeview-menu > li.active > a  {
