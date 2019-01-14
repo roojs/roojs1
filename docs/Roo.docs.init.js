@@ -236,7 +236,7 @@ Roo.docs.init = {
     
     loadDoc : function(cls)
     {
-        Roo.docs.mobileNavGroup.hide()
+       //Roo.docs.mobileNavGroup.hide()
         Roo.docs.doc_body_content.hide();
         this.currentClass = cls.name;
         if (!cls ) {
