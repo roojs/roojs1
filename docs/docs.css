@@ -384,7 +384,7 @@ header-menu-options ul.socials > li:first-child,
      
     
     .left-menu-sidebar {
-        display: block;
+     /*   display: block; -- why? */
     }
 
     .mobile-header-menu {
