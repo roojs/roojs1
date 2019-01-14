@@ -194,6 +194,7 @@ h6,
 
 .left-menu-sidebar {
     position: fixed;
+    top: 0;
     left: 0;
     bottom: 0px;
     margin-top: 80px;
