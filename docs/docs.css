@@ -113,7 +113,7 @@ h6,
    /* color: #666; */
     font-weight: bold;
 }
-.sidebar .sidebar-menu li.open li.treeview-menu>a {
+.sidebar .sidebar-menu li.open li.treeview-menu.active>a {
     color: #fff;
 }
 
