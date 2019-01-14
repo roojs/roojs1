@@ -210,7 +210,7 @@ Roo.docs.init = {
             m = mp.parent_menu;
             m.show(m.triggerEl,'?', false);
         }
-        
+        cls.node.el.scrollIntoView(Roo.docs.sidebar.el,false)
         
         
         Roo.docs.introBody.hide();
