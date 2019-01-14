@@ -400,7 +400,7 @@ Roo.docs = new Roo.XComponent({
                    {
                    
                        if (this.el.dom.innerHTML.length) {
-                           Roo.docs.init.loadDoc({ name : this.el.dom.innerHTML, is_class : true});
+                           location.hash = '#' +  this.el.dom.innerHTML;
                        }
                    },
                   render : function (_self)
