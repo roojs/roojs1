@@ -102,6 +102,10 @@ Roo.docs.init = {
                         Roo.log(ev);
                         if (mi.menu.el.hasClass('show')) {
                             mi.menu.hide();
+                            // collapse children..
+                            
+                            
+                            
                         } else {
                             mi.menu.show(mi.menu.triggerEl,'?', false);
                         }
