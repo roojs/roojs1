@@ -49,7 +49,7 @@ Roo.docs.init = {
             success : function(res, o)
             {
                 var d = Roo.decode(res.responseText);
-                Roo.log(d);
+                //Roo.log(d);
                 this.classes = {};
                 // our classes witch children first..
                 d.forEach(function(e) {
@@ -112,7 +112,7 @@ Roo.docs.init = {
                     ev.stopPropagation();
                      
                     if (c.cn.length) {
-                        Roo.log(ev);
+                        //Roo.log(ev);
                         if (mi.menu.el.hasClass('show')) {
                             this.hideChildren(c); //mi.menu.hide();
                             // collapse children..
@@ -163,7 +163,7 @@ Roo.docs.init = {
         }
         e.cn.forEach(function(ec) {
             var cn = ec.name.split('.').pop();
-            Roo.log(cn);
+            //Roo.log(cn);
             if (cn == cn.toLowerCase()) {
                 this.addTreeItem(node.menu, ec,'MenuItem', e);
             }
@@ -372,14 +372,14 @@ Roo.docs.init = {
             var sm = line.match(/^(\s+)(.*)/);
             
             var sml = sm ? sm[1].length: 0;
-            Roo.log(sml);
+            //Roo.log(sml);
             sml = sml / 4; // 4 spaces indent?
             var add = { name : sm ?  sm[2] : line, cn : [] };
             state[sml].cn.push(add);
             state[sml+1] = add;
             
         }
-        Roo.log(tree);
+        //Roo.log(tree);
         
         for(var i = 0; i < tree.cn.length; i++) {
             // make a container..
@@ -462,7 +462,7 @@ Roo.docs.init = {
                     
                 }
                 if (footer.length) {
-                    Roo.log("footer:"+  footer);
+                    //Roo.log("footer:"+  footer);
                     ctreei.footer = '<h5>Examples:</h5><ul>'+footer +'</ul>';
                 }
         
