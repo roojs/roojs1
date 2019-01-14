@@ -246,7 +246,7 @@ Roo.docs = new Roo.XComponent({
            
            
            if(this.el.select('.navbar-collapse',true).first().hasClass('in')){
-               _this.navHeaderBar.mask.hide();
+                
                return;
            }
        },
