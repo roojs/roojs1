@@ -95,7 +95,13 @@
      "String brand_href" : "#",
      "$ xns" : "Roo.bootstrap",
      "String brand" : " ",
-     "String style" : ""
+     "String style" : "",
+     "items" : [
+      {
+       "xtype" : "NavGroup",
+       "$ xns" : "Roo.bootstrap"
+      }
+     ]
     },
     {
      "listeners" : {

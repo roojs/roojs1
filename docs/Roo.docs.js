@@ -287,7 +287,14 @@ Roo.docs = new Roo.XComponent({
        }
      },
      xns : Roo.bootstrap,
-     '|xns' : 'Roo.bootstrap'
+     '|xns' : 'Roo.bootstrap',
+     items  : [
+      {
+       xtype : 'NavGroup',
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap'
+      }
+     ]
     },
     {
      xtype : 'Container',
