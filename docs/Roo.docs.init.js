@@ -3,7 +3,7 @@
 Roo.docs.init = {
     
     classes : false, // flat version of list of classes 
-    currentClass : '', // currently viewed class name
+    currentClass : '--none--', // currently viewed class name
     
     hash : '',
     
