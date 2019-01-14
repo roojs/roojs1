@@ -230,7 +230,7 @@ Roo.docs = new Roo.XComponent({
      xtype : 'NavHeaderbar',
      autohide : true,
      brand : ' ',
-     brand_href : baseURL + '/',
+     brand_href : '#',
      cls : 'mobile-header-menu',
      inverse : false,
      position : 'fixed-top',
@@ -238,25 +238,29 @@ Roo.docs = new Roo.XComponent({
      listeners : {
       beforetoggle : function (_self)
        {
-           _this.navGroup.autoExpand(); 
+          // _this.mobileNavGroup.autoExpand(); 
            
-           _this.navGroup.activeLookup();
-           
-           _this.navHeaderBar.mask.show();
-           
-           if(this.el.select('.navbar-collapse',true).first().hasClass('in')){
-               _this.navHeaderBar.mask.hide();
+          
+            if(!this.el.select('.navbar-collapse',true).first().hasClass('in')){
+                this.el.select('.navbar-collapse',true).first().removeClass('in');
+                return true;
+       
+            }
+           if(!this.el.select('.navbar-collapse',true).first().hasClass('in')){
+             //  this.el.select('.navbar-collapse',true).first().setHeight(innerHeight-50);
+               //(function() {
+               //    this.el.select('.navbar-collapse',true).first().setHeight(innerHeight-50);
+               //}).defer(500,this);
+                     
                return;
            }
        },
       render : function (_self)
        {
+          
+            _this.navHeaderBar = this;
            return;
-           
-           _this.navHeaderBar = this;
-           
-           this.el.addClass(language); 
-           
+           /*
            var body = Roo.select('body', true).first();
            
            var mark = {
@@ -285,15 +289,28 @@ Roo.docs = new Roo.XComponent({
            var maxHeight = Roo.lib.Dom.getViewHeight() - this.el.select('.navbar-header', true).first().getHeight();
            
            this.el.select('.navbar-collapse', true).first().setStyle('max-height', maxHeight);
-           
+           */
        }
      },
      xns : Roo.bootstrap,
-     '|xns' : 'Roo.bootstrap'
+     '|xns' : 'Roo.bootstrap',
+     items  : [
+      {
+       xtype : 'NavGroup',
+       listeners : {
+        render : function (_self)
+         {
+             _this.mobileNavGroup = this;
+         }
+       },
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap'
+      }
+     ]
     },
     {
      xtype : 'Container',
-     cls : 'general-content-body',
+     cls : 'general-content-body general-content-intro',
      listeners : {
       render : function (_self)
        {
@@ -344,7 +361,6 @@ Roo.docs = new Roo.XComponent({
         {
          xtype : 'Column',
          md : 9,
-         style : 'padding-left: 0px;',
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap',
          items  : [
@@ -585,6 +601,7 @@ Roo.docs = new Roo.XComponent({
            		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
            			
            },
+           xs : 0,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           }
@@ -680,6 +697,7 @@ Roo.docs = new Roo.XComponent({
            		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
            			
            },
+           xs : 0,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           }
@@ -772,6 +790,7 @@ Roo.docs = new Roo.XComponent({
            		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
            			
            },
+           xs : 0,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           }

@@ -84,24 +84,33 @@
     },
     {
      "listeners" : {
-      "beforetoggle" : "function (_self)\n{\n    _this.navGroup.autoExpand(); \n    \n    _this.navGroup.activeLookup();\n    \n    _this.navHeaderBar.mask.show();\n    \n    if(this.el.select('.navbar-collapse',true).first().hasClass('in')){\n        _this.navHeaderBar.mask.hide();\n        return;\n    }\n}",
-      "render" : "function (_self)\n{\n    return;\n    \n    _this.navHeaderBar = this;\n    \n    this.el.addClass(language); \n    \n    var body = Roo.select('body', true).first();\n    \n    var mark = {\n        tag: \"div\",\n        cls:\"x-dlg-mask\"\n    };\n    \n    this.mask = Roo.DomHelper.append(body, mark, true);\n    \n    var size = body.getSize();\n    this.mask.setSize(size.width, size.height);\n    \n    this.mask.setStyle('z-index', '1029');\n    \n    this.mask.enableDisplayMode(\"block\");\n    this.mask.hide();\n    \n    this.mask.on('click', function(){\n        \n        this.el.select('.navbar-collapse',true).removeClass('in'); \n        this.mask.hide();\n        \n    }, this);\n    \n    \n    var maxHeight = Roo.lib.Dom.getViewHeight() - this.el.select('.navbar-header', true).first().getHeight();\n    \n    this.el.select('.navbar-collapse', true).first().setStyle('max-height', maxHeight);\n    \n}"
+      "beforetoggle" : "function (_self)\n{\n   // _this.mobileNavGroup.autoExpand(); \n    \n   \n     if(!this.el.select('.navbar-collapse',true).first().hasClass('in')){\n         this.el.select('.navbar-collapse',true).first().removeClass('in');\n         return true;\n\n     }\n    if(!this.el.select('.navbar-collapse',true).first().hasClass('in')){\n      //  this.el.select('.navbar-collapse',true).first().setHeight(innerHeight-50);\n        //(function() {\n        //    this.el.select('.navbar-collapse',true).first().setHeight(innerHeight-50);\n        //}).defer(500,this);\n              \n        return;\n    }\n}",
+      "render" : "function (_self)\n{\n   \n     _this.navHeaderBar = this;\n    return;\n    /*\n    var body = Roo.select('body', true).first();\n    \n    var mark = {\n        tag: \"div\",\n        cls:\"x-dlg-mask\"\n    };\n    \n    this.mask = Roo.DomHelper.append(body, mark, true);\n    \n    var size = body.getSize();\n    this.mask.setSize(size.width, size.height);\n    \n    this.mask.setStyle('z-index', '1029');\n    \n    this.mask.enableDisplayMode(\"block\");\n    this.mask.hide();\n    \n    this.mask.on('click', function(){\n        \n        this.el.select('.navbar-collapse',true).removeClass('in'); \n        this.mask.hide();\n        \n    }, this);\n    \n    \n    var maxHeight = Roo.lib.Dom.getViewHeight() - this.el.select('.navbar-header', true).first().getHeight();\n    \n    this.el.select('.navbar-collapse', true).first().setStyle('max-height', maxHeight);\n    */\n}"
      },
-     "$ String brand_href" : "baseURL + '/'",
      "String cls" : "mobile-header-menu",
      "String position" : "fixed-top",
      "bool autohide" : true,
      "xtype" : "NavHeaderbar",
      "Boolean inverse" : false,
+     "String brand_href" : "#",
      "$ xns" : "Roo.bootstrap",
      "String brand" : " ",
-     "String style" : ""
+     "String style" : "",
+     "items" : [
+      {
+       "listeners" : {
+        "render" : "function (_self)\n{\n    _this.mobileNavGroup = this;\n}"
+       },
+       "xtype" : "NavGroup",
+       "$ xns" : "Roo.bootstrap"
+      }
+     ]
     },
     {
      "listeners" : {
       "render" : "function (_self)\n{\n       _this.introContainer = this;\n}"
      },
-     "String cls" : "general-content-body",
+     "String cls" : "general-content-body general-content-intro",
      "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
      "items" : [
@@ -137,7 +146,6 @@
          "Number md" : 9,
          "xtype" : "Column",
          "$ xns" : "Roo.bootstrap",
-         "String style" : "padding-left: 0px;",
          "items" : [
           {
            "String cls" : "doc-header-container",
@@ -284,6 +292,7 @@
            "Number md" : 1,
            "$ Function renderer" : "function(v,x,r) { \n if (r.json.memberOf  == Roo.docs.init.currentClass) {\n            return '';\n        }\n\n\t\treturn \t'<small><a href=\"#' + r.json.memberOf + '\">' + r.json.memberOf + '</a></small>';\n\t\t\t\n}",
            "xtype" : "ColumnModel",
+           "Number xs" : 0,
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
           },
@@ -347,6 +356,7 @@
            "String dataIndex" : "memberOf",
            "$ Function renderer" : "function(v,x,r) { \n\n if (r.json.memberOf  == Roo.docs.init.currentClass) {\n            return '';\n        }\n\t\treturn \t'<small><a href=\"#' + r.json.memberOf + '\">' + r.json.memberOf + '</a></small>';\n\t\t\t\n}",
            "xtype" : "ColumnModel",
+           "Number xs" : 0,
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
           },
@@ -410,6 +420,7 @@
            "Number md" : 1,
            "$ Function renderer" : "function(v,x,r) { \n        if (r.json.memberOf  == Roo.docs.init.currentClass) {\n            return '';\n        }\n\n\t\treturn \t'<small><a href=\"#' + r.json.memberOf + '\">' + r.json.memberOf + '</a></small>';\n\t\t\t\n}",
            "xtype" : "ColumnModel",
+           "Number xs" : 0,
            "$ xns" : "Roo.grid",
            "* prop" : "cm[]"
           },

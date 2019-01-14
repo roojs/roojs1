@@ -3,7 +3,7 @@
 Roo.docs.init = {
     
     classes : false, // flat version of list of classes 
-    currentClass : '', // currently viewed class name
+    currentClass : '--none--', // currently viewed class name
     
     hash : '',
     
@@ -54,16 +54,30 @@ Roo.docs.init = {
                 // our classes witch children first..
                 d.forEach(function(e) {
                     if (e.cn.length) {
-                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem');
+                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem', true);
                         
                     }
                 }, this);
                 
                 d.forEach(function(e) {
                     if (!e.cn.length) {
-                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem');
+                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem' ,true);
                     }
                 }, this);
+                
+                d.forEach(function(e) {
+                    if (e.cn.length) {
+                        this.addTreeItem(Roo.docs.mobileNavGroup, e, 'NavSidebarItem', false);
+                        
+                    }
+                }, this);
+                
+                d.forEach(function(e) {
+                    if (!e.cn.length) {
+                        this.addTreeItem(Roo.docs.mobileNavGroup, e, 'NavSidebarItem', false);
+                    }
+                }, this);
+                
                 var roo = Roo.docs.navGroup.items[1].menu;
                 roo.show(roo.triggerEl, '?', false);
                 if (location.hash.length) {
@@ -149,9 +163,20 @@ Roo.docs.init = {
                 
             })
         }));
-        e.node = node;
-        e.parent_menu = parent;
-        e.parent = parent_e;
+        
+        // mobile nodes..?
+        
+       
+        
+        
+        
+        
+        if (parent_e !== false) {
+            e.node = node;
+            e.parent_menu = parent;
+            e.parent = parent_e == true ? null : parent_e;
+        }
+        
         parent.items.push(node);
         if (e.cn.length  && type == 'NavSidebarItem') {
             this.topm = node.menu;
@@ -165,14 +190,14 @@ Roo.docs.init = {
             var cn = ec.name.split('.').pop();
             //Roo.log(cn);
             if (cn == cn.toLowerCase()) {
-                this.addTreeItem(node.menu, ec,'MenuItem', e);
+                this.addTreeItem(node.menu, ec,'MenuItem', parent_e !== false ? e : false);
             }
             
         }, this);
         e.cn.forEach(function(ec) {
             var cn = ec.name.split('.').pop();
             if (cn != cn.toLowerCase()) {
-                this.addTreeItem(node.menu, ec,'MenuItem', e);
+                this.addTreeItem(node.menu, ec,'MenuItem', parent_e !== false ? e : false);
             }
         }, this);
         
@@ -211,7 +236,13 @@ Roo.docs.init = {
     
     loadDoc : function(cls)
     {
+        if (this.currentClass == cls.name) {
+            return;
+        }
+        //Roo.docs.mobileNavGroup.hide();
+        Roo.log("loadDoc?");
         Roo.docs.doc_body_content.hide();
+        
         this.currentClass = cls.name;
         if (!cls ) {
             Roo.docs.introBody.show();
