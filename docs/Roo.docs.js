@@ -291,6 +291,12 @@ Roo.docs = new Roo.XComponent({
      items  : [
       {
        xtype : 'NavGroup',
+       listeners : {
+        render : function (_self)
+         {
+             _this.mobileNavGroup = this;
+         }
+       },
        xns : Roo.bootstrap,
        '|xns' : 'Roo.bootstrap'
       }

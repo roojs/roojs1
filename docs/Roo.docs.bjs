@@ -98,6 +98,9 @@
      "String style" : "",
      "items" : [
       {
+       "listeners" : {
+        "render" : "function (_self)\n{\n    _this.mobileNavGroup = this;\n}"
+       },
        "xtype" : "NavGroup",
        "$ xns" : "Roo.bootstrap"
       }
