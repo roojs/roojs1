@@ -401,7 +401,7 @@ Roo.docs = new Roo.XComponent({
                    
                        if (this.el.dom.innerHTML.length) {
                            document.location.hash = '#' +  this.el.dom.innerHTML;
-                           console.log(this.el.dom.innerHTML);
+                         
                        } 
                    },
                   render : function (_self)
