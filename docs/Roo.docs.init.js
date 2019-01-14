@@ -54,16 +54,30 @@ Roo.docs.init = {
                 // our classes witch children first..
                 d.forEach(function(e) {
                     if (e.cn.length) {
-                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem');
+                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem', true);
                         
                     }
                 }, this);
                 
                 d.forEach(function(e) {
                     if (!e.cn.length) {
-                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem');
+                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem' ,true);
                     }
                 }, this);
+                
+                d.forEach(function(e) {
+                    if (e.cn.length) {
+                        this.addTreeItem(Roo.docs.mobileNavGroup, e, 'NavSidebarItem', false);
+                        
+                    }
+                }, this);
+                
+                d.forEach(function(e) {
+                    if (!e.cn.length) {
+                        this.addTreeItem(Roo.docs.mobileNavGroup, e, 'NavSidebarItem', false);
+                    }
+                }, this);
+                
                 var roo = Roo.docs.navGroup.items[1].menu;
                 roo.show(roo.triggerEl, '?', false);
                 if (location.hash.length) {
@@ -149,6 +163,15 @@ Roo.docs.init = {
                 
             })
         }));
+        
+        // mobile nodes..?
+        
+       
+        
+        
+        
+        
+        
         e.node = node;
         e.parent_menu = parent;
         e.parent = parent_e;
