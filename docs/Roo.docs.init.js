@@ -29,7 +29,7 @@ Roo.docs.init = {
         }, this);
         
         
-        window.onhashchange = Roo.docs.init.onHashChange;
+        window.onhashchange = function() { Roo.docs.init.onHashChange(); }
         
         
        
