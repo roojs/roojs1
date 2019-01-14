@@ -5,6 +5,7 @@ Roo.docs.init = {
     classes : false, // flat version of list of classes 
     currentClass : '', // currently viewed class name
     
+    hash : '',
     
     onReady : function()
     {
@@ -27,7 +28,13 @@ Roo.docs.init = {
              this.loadTree();
         }, this);
         
-        window.onhashchange = Roo.docs.ini.onHashChange;
+        
+        window.onhashchange = Roo.docs.init.onHashChange;
+        
+        
+        if (location.hash.length) {
+            this.loadHash(location.hash);
+        }
         
         //Roo.get(document.body).on('click', this.onClick, this);
       
@@ -273,6 +280,13 @@ Roo.docs.init = {
         this.loadClass(link);
         
     },
+    
+    onHashChange : function()
+    {
+        
+        
+    }
+    
       
     loadIntro : function()
     {
