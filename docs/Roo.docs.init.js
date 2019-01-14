@@ -33,7 +33,7 @@ Roo.docs.init = {
         
         
         if (location.hash.length) {
-            this.loadHash(location.hash);
+            this.loadHash();
         }
         
         //Roo.get(document.body).on('click', this.onClick, this);
