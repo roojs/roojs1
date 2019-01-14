@@ -294,6 +294,10 @@ Roo.docs.init = {
     },
     loadHash : function()
     {
+        if (location.hash.length < 2) {
+            this.loadIntro();
+            return;
+        }
         this.loadClass(location.hash.substring(1));
         this.hash = location.hash;
     },
@@ -320,6 +324,9 @@ Roo.docs.init = {
     // render the really simple markdown data
     renderIntro : function(intro)
     {
+        
+         
+        
         var lines = intro.split("\n");
         var tree = { 'name' : 'root', cn : []};
         var state = [ tree ];
