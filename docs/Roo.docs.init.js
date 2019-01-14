@@ -26,7 +26,10 @@ Roo.docs.init = {
             //Roo.XComponent.modules[0].el.fireEvent('render');
              this.loadTree();
         }, this);
-        Roo.get(document.body).on('click', this.onClick, this);
+        
+        window.onhashchange = Roo.docs.ini.onHashChange;
+        
+        //Roo.get(document.body).on('click', this.onClick, this);
       
         
     },
