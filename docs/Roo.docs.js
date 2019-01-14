@@ -254,7 +254,7 @@ Roo.docs = new Roo.XComponent({
           
             _this.navHeaderBar = this;
            return;
-           
+           /*
            var body = Roo.select('body', true).first();
            
            var mark = {
@@ -283,7 +283,7 @@ Roo.docs = new Roo.XComponent({
            var maxHeight = Roo.lib.Dom.getViewHeight() - this.el.select('.navbar-header', true).first().getHeight();
            
            this.el.select('.navbar-collapse', true).first().setStyle('max-height', maxHeight);
-           
+           */
        }
      },
      xns : Roo.bootstrap,
