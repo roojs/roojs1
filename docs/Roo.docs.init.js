@@ -50,7 +50,7 @@ Roo.docs.init = {
             {
                 var d = Roo.decode(res.responseText);
                 Roo.log(d);
-                this.classes = [];
+                this.classes = {};
                 // our classes witch children first..
                 d.forEach(function(e) {
                     if (e.cn.length) {
