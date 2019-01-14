@@ -245,7 +245,7 @@ Roo.docs = new Roo.XComponent({
            if(!this.el.select('.navbar-collapse',true).first().hasClass('in')){
                (function() {
                    this.el.select('.navbar-collapse',true).first().setHeight(innerHeight-50);
-               }).defer(100,this);
+               }).defer(500,this);
                      
                return;
            }
