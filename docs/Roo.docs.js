@@ -240,9 +240,7 @@ Roo.docs = new Roo.XComponent({
        {
            _this.navGroup.autoExpand(); 
            
-           _this.navGroup.activeLookup();
            
-           _this.navHeaderBar.mask.show();
            
            if(this.el.select('.navbar-collapse',true).first().hasClass('in')){
                _this.navHeaderBar.mask.hide();
