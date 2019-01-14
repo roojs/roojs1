@@ -502,7 +502,7 @@ Roo.docs = new Roo.XComponent({
        expandable : true,
        expanded : true,
        header : _this._strings['50f33d14f129e4548c1c270fd6725a78'] /* Configuration options */,
-       panel : 'info',
+       panel : 'primary',
        style : 'margin-top:15px',
        listeners : {
         render : function (_self)
@@ -595,9 +595,9 @@ Roo.docs = new Roo.XComponent({
        xtype : 'Container',
        cls : 'doc-table-container',
        expandable : true,
-       expanded : false,
+       expanded : true,
        header : _this._strings['a1d108496af420635536a4e29e87d42b'] /* Constructor, Static and Public Methods */,
-       panel : 'info',
+       panel : 'primary',
        listeners : {
         render : function (_self)
          {
@@ -690,9 +690,9 @@ Roo.docs = new Roo.XComponent({
        xtype : 'Container',
        cls : 'doc-table-container',
        expandable : true,
-       expanded : false,
+       expanded : true,
        header : _this._strings['87f9f735a1d36793ceaecd4e47124b63'] /* Events */,
-       panel : 'info',
+       panel : 'primary',
        listeners : {
         render : function (_self)
          {
