@@ -58,7 +58,7 @@
          "items" : [
           {
            "listeners" : {
-            "click" : "function (e)\n{\n    document.location.reload();\n}"
+            "click" : "function (e)\n{\n    document.location.hash = '#';\n}"
            },
            "string href" : "#",
            "String cls" : "logo",

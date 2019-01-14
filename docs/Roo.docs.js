@@ -201,7 +201,7 @@ Roo.docs = new Roo.XComponent({
            listeners : {
             click : function (e)
              {
-                 document.location.reload();
+                 document.location.hash = '#';
              }
            },
            xns : Roo.bootstrap,
