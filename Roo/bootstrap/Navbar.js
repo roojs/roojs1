@@ -48,7 +48,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     initEvents :function ()
     {
         //Roo.log(this.el.select('.navbar-toggle',true));
-        this.el.select('.navbar-toggle',true).on('click', , this);
+        this.el.select('.navbar-toggle',true).on('click', this.onToggle , this);
         
         var mark = {
             tag: "div",
