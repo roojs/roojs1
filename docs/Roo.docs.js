@@ -242,8 +242,8 @@ Roo.docs = new Roo.XComponent({
            
           
             if(!this.el.select('.navbar-collapse',true).first().hasClass('in')){
-                this.el.select('.navbar-collapse',true).first().removeClass('in');
-                return true;
+                //this.el.select('.navbar-collapse',true).first().removeClass('in');
+                //return true;
        
             }
            if(!this.el.select('.navbar-collapse',true).first().hasClass('in')){
