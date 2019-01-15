@@ -2,6 +2,18 @@
 
 Roo.docs.template  = {
 
+    summary : function (data)
+    {
+	
+	output = this.resolveLinks(data.desc) ;
+	if (data.example.length) {
+	    output += '<pre class="code">'+data.example+'</pre>';
+	}
+	return output;
+    },
+
+    
+    
     augments : function(data)
     {
 	if (!data.augments.length) {
@@ -173,7 +185,7 @@ Roo.docs.template  = {
         if (!member.isConstructor) {
             output+= this.resolveLinks(member.desc) ;
             if (member.example.length) {
-                output +'<pre class="code">'+member.example+'</pre>';
+                output += '<pre class="code">'+member.example+'</pre>';
             }
         } else {
             //ctor
@@ -271,7 +283,7 @@ Roo.docs.template  = {
         output += '<div class="long">' + this.resolveLinks(member.desc);
     
     if (member.example.length) {
-        output +'<pre class="code">'+member.example+'</pre>';
+        output +='<pre class="code">'+member.example+'</pre>';
     }
     if (member.params.length) {
         

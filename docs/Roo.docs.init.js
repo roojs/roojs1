@@ -293,11 +293,8 @@ Roo.docs.init = {
               {
         */
         document.body.scrollTop  = 0;
-        for (var k in d) {
-            if (typeof(Roo.docs['doc_' + k])  !=  'undefined') {
-                Roo.docs['doc_' + k].el.dom.innerHTML = Roo.docs.template.resolveLinks(d[k]);;
-            }
-        }
+        Roo.docs.doc_name.el.dom.innerHTML = Roo.docs.template.resolveLinks(d.name);
+        Roo.docs.doc_desc.el.dom.innerHTML = Roo.docs.template.summary(d);
         Roo.docs.doc_extends.hide();
         Roo.docs.doc_extends_sep.hide();
         if (d.augments.length) {
