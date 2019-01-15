@@ -50,8 +50,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         //Roo.log(this.el.select('.navbar-toggle',true));
         this.el.select('.navbar-toggle',true).on('click', function() {
             if(this.fireEvent('beforetoggle', this) !== false){
-                var ce = this.el.select('.navbar-collapse',true).first();
-                
+                 
                 if (ce.hasClass('collapse')) {
                    this.expand();
                 } else {
@@ -100,7 +99,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     expand : function ()
     {
-         // show it...
+        var ce = this.el.select('.navbar-collapse',true).first();
+               // show it...
         ce.addClass('in'); // old...
         ce.removeClass('collapse');
         ce.addClass('show');
@@ -124,6 +124,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     collapse : function()
     {
+        var ce = this.el.select('.navbar-collapse',true).first();
         ce.removeClass('in'); // old...
         ce.setHeight(ce.getHeight());
         ce.removeClass('show');
