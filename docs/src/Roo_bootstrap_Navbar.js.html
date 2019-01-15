@@ -108,7 +108,12 @@
      */
     </span><span class="jsdoc-var">expand </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
     {
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ce </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.navbar-collapse'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'collapsing'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">ce.dom.style.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
                </span><span class="jsdoc-comment">// show it...
         </span><span class="jsdoc-var">ce.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// old...
         </span><span class="jsdoc-var">ce.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'collapse'</span><span class="jsdoc-syntax">);
@@ -129,13 +134,19 @@
             </span><span class="jsdoc-var">ce.dom.style.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">single</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">} );
         </span><span class="jsdoc-var">ce.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ce.dom.scrollTop </span><span class="jsdoc-syntax">= 0;
     },
     </span><span class="jsdoc-comment">/**
      * Collapse the navbar pulldown 
      */
     </span><span class="jsdoc-var">collapse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ce </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.navbar-collapse'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ce </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.navbar-collapse'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'collapsing'</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">ce.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'collapse'</span><span class="jsdoc-syntax">) ) {
+            </span><span class="jsdoc-comment">// it's collapsed or collapsing..
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-var">ce.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// old...
         </span><span class="jsdoc-var">ce.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce.getHeight</span><span class="jsdoc-syntax">());
         </span><span class="jsdoc-var">ce.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">);
