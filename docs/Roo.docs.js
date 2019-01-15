@@ -236,26 +236,6 @@ Roo.docs = new Roo.XComponent({
      position : 'fixed-top',
      style : '',
      listeners : {
-      beforetoggle : function (_self)
-       {
-          // _this.mobileNavGroup.autoExpand(); 
-           
-          
-            if(!this.el.select('.navbar-collapse',true).first().hasClass('in')){
-                //this.el.select('.navbar-collapse',true).first().removeClass('in');
-                //return true;
-       
-            }
-           if(!this.el.select('.navbar-collapse',true).first().hasClass('in')){
-       
-             //  this.el.select('.navbar-collapse',true).first().setHeight(innerHeight-50);
-               //(function() {
-               //    this.el.select('.navbar-collapse',true).first().setHeight(innerHeight-50);
-               //}).defer(500,this);
-                     
-               return;
-           }
-       },
       render : function (_self)
        {
           
