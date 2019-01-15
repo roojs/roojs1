@@ -3964,6 +3964,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             ce.dom.style.height = '';
         }, this, { single: true} );
         ce.setHeight(h);
+        ce.dom.scrollTop = 0;
     },
     /**
      * Collapse the navbar pulldown 
