@@ -9,7 +9,7 @@ Roo.docs.template  = {
 	if (data.example.length) {
 	    output +'<pre class="code">'+data.example+'</pre>';
 	}
-	
+	return output;
     },
 
     
