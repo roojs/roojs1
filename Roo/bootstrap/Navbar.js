@@ -113,7 +113,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         if (ce.hasClass('collapsing')) {
             return;
         }
-        
+        ce.dom.style.height = '';
                // show it...
         ce.addClass('in'); // old...
         ce.removeClass('collapse');
