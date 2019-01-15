@@ -2639,6 +2639,13 @@ a.roo-brick-link:hover {
 table td .navbar {
   min-height: auto;
 }
+.navbar-collapse li {
+  list-style-type: none;
+  padding: 5px;
+}
+.navbar-collapse ul {
+  padding-left: 10px;
+}
 .roo-numberbox {
   background-color: #337ab7 !important;
   border: 10px solid black;
