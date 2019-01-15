@@ -3924,7 +3924,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         }
         var ce = this.el.select('.navbar-collapse',true).first();
       
-        if (ce.hasClass('collapse')) {
+        if (!ce.hasClass('show')) {
            this.expand();
         } else {
             this.collapse();

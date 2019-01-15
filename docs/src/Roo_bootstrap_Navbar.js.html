@@ -94,7 +94,7 @@
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ce </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.navbar-collapse'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'collapse'</span><span class="jsdoc-syntax">)) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ce.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">)) {
            </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">();
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
