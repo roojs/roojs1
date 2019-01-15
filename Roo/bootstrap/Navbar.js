@@ -140,11 +140,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
      */
     collapse : function()
     {
-        
+         var ce = this.el.select('.navbar-collapse',true).first();
+       
         if (ce.hasClass('collapsing')) {
             return;
         }
-        var ce = this.el.select('.navbar-collapse',true).first();
         ce.removeClass('in'); // old...
         ce.setHeight(ce.getHeight());
         ce.removeClass('show');
