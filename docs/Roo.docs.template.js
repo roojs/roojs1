@@ -5,9 +5,12 @@ Roo.docs.template  = {
     summary : function (data)
     {
 	
+	output+= this.resolveLinks(data.desc) ;
+	if (data.example.length) {
+	    output +'<pre class="code">'+data.example+'</pre>';
+	}
 	
-	
-    }
+    },
 
     
     
