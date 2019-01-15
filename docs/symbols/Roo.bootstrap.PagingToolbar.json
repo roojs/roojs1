@@ -330,6 +330,38 @@
       ]
     },
     {
+      "name" : "collapse",
+      "desc" : "Collapse the navbar pulldown",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Navbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "expand",
+      "desc" : "Expand the navbar pulldown",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Navbar",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
       "name" : "tooltipEl",
       "desc" : "Fetch the element to display the tooltip on.",
       "isStatic" : false,

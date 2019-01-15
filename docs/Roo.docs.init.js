@@ -242,7 +242,7 @@ Roo.docs.init = {
         //Roo.docs.mobileNavGroup.hide();
         Roo.log("loadDoc?");
         Roo.docs.doc_body_content.hide();
-        
+        Roo.docs.navHeaderBar.collapse();
         this.currentClass = cls.name;
         if (!cls ) {
             Roo.docs.introBody.show();
