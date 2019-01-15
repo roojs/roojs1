@@ -102,7 +102,10 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         
         
     
-    }
+    },
+    /**
+     * Expand the navbar pulldown 
+     */
     expand : function ()
     {
         var ce = this.el.select('.navbar-collapse',true).first();
@@ -127,7 +130,9 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         }, this, { single: true} );
         ce.setHeight(h);
     },
-    
+    /**
+     * Collapse the navbar pulldown 
+     */
     collapse : function()
     {
         var ce = this.el.select('.navbar-collapse',true).first();
