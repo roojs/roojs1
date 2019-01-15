@@ -299,7 +299,7 @@ Roo.docs.init = {
             }
         }
         
-        Roo.docs.docs_desc.el.dom.innerHTML = Roo.docs.template.summary(d);
+        Roo.docs.doc_desc.el.dom.innerHTML = Roo.docs.template.summary(d);
         Roo.docs.doc_extends.hide();
         Roo.docs.doc_extends_sep.hide();
         if (d.augments.length) {
