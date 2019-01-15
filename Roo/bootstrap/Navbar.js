@@ -51,39 +51,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         this.el.select('.navbar-toggle',true).on('click', function() {
             if(this.fireEvent('beforetoggle', this) !== false){
                 var ce = this.el.select('.navbar-collapse',true).first();
-                ce.toggleClass('in'); // old...
+                
                 if (ce.hasClass('collapse')) {
-                    // show it...
-                    ce.removeClass('collapse');
-                    ce.addClass('show');
-                    var h = ce.getHeight();
-                    Roo.log(h);
-                    ce.removeClass('show');
-                    // at this point we should be able to see it..
-                    ce.addClass('collapsing');
-                    
-                    ce.setHeight(0); // resize it ...
-                    ce.on('transitionend', function() {
-                        Roo.log('done transition');
-                        ce.removeClass('collapsing');
-                        ce.addClass('show');
-                        ce.removeClass('collapse');
-
-                        ce.dom.style.height = '';
-                    }, this, { single: true} );
-                    ce.setHeight(h);
-                    
+                   this.expand();
                 } else {
-                    ce.setHeight(ce.getHeight());
-                    ce.removeClass('show');
-                    ce.addClass('collapsing');
-                    
-                    ce.on('transitionend', function() {
-                        ce.dom.style.height = '';
-                        ce.removeClass('collapsing');
-                        ce.addClass('collapse');
-                    }, this, { single: true} );
-                    ce.setHeight(0);
+                    this.collapse();
                 }
             }
             
@@ -124,8 +96,46 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     unmask : function()
     {
         this.maskEl.hide();
-    } 
+    },
     
+    expand : function ()
+    {
+         // show it...
+        ce.addClass('in'); // old...
+        ce.removeClass('collapse');
+        ce.addClass('show');
+        var h = ce.getHeight();
+        Roo.log(h);
+        ce.removeClass('show');
+        // at this point we should be able to see it..
+        ce.addClass('collapsing');
+        
+        ce.setHeight(0); // resize it ...
+        ce.on('transitionend', function() {
+            //Roo.log('done transition');
+            ce.removeClass('collapsing');
+            ce.addClass('show');
+            ce.removeClass('collapse');
+
+            ce.dom.style.height = '';
+        }, this, { single: true} );
+        ce.setHeight(h);
+    },
+    
+    collapse : function()
+    {
+        ce.removeClass('in'); // old...
+        ce.setHeight(ce.getHeight());
+        ce.removeClass('show');
+        ce.addClass('collapsing');
+        
+        ce.on('transitionend', function() {
+            ce.dom.style.height = '';
+            ce.removeClass('collapsing');
+            ce.addClass('collapse');
+        }, this, { single: true} );
+        ce.setHeight(0);
+    }
     
     
     
