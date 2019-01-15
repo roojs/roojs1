@@ -48,17 +48,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     initEvents :function ()
     {
         //Roo.log(this.el.select('.navbar-toggle',true));
-        this.el.select('.navbar-toggle',true).on('click', function() {
-            if(this.fireEvent('beforetoggle', this) !== false){
-                 
-                if (ce.hasClass('collapse')) {
-                   this.expand();
-                } else {
-                    this.collapse();
-                }
-            }
-            
-        }, this);
+        this.el.select('.navbar-toggle',true).on('click', , this);
         
         var mark = {
             tag: "div",
@@ -96,7 +86,23 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     {
         this.maskEl.hide();
     },
+    onToggle : function()
+    {
+        
+        if(this.fireEvent('beforetoggle', this) === false){
+            return;
+        }
+        var ce = this.el.select('.navbar-collapse',true).first();
+      
+        if (ce.hasClass('collapse')) {
+           this.expand();
+        } else {
+            this.collapse();
+        }
+        
+        
     
+    }
     expand : function ()
     {
         var ce = this.el.select('.navbar-collapse',true).first();
