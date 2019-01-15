@@ -38506,6 +38506,14 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "collapse",
+        "type" : "function",
+        "desc" : "Collapse the navbar pulldown",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Navbar"
+      },
+      {
         "name" : "destroy",
         "type" : "function",
         "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
@@ -38528,6 +38536,14 @@
         "sig" : "()\n{\n\n}",
         "static" : false,
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "expand",
+        "type" : "function",
+        "desc" : "Expand the navbar pulldown",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Navbar"
       },
       {
         "name" : "fireEvent",
@@ -40263,6 +40279,14 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "collapse",
+        "type" : "function",
+        "desc" : "Collapse the navbar pulldown",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Navbar"
+      },
+      {
         "name" : "destroy",
         "type" : "function",
         "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
@@ -40285,6 +40309,14 @@
         "sig" : "()\n{\n\n}",
         "static" : false,
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "expand",
+        "type" : "function",
+        "desc" : "Expand the navbar pulldown",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Navbar"
       },
       {
         "name" : "fireEvent",
@@ -41255,6 +41287,14 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "collapse",
+        "type" : "function",
+        "desc" : "Collapse the navbar pulldown",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Navbar"
+      },
+      {
         "name" : "destroy",
         "type" : "function",
         "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
@@ -41277,6 +41317,14 @@
         "sig" : "()\n{\n\n}",
         "static" : false,
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "expand",
+        "type" : "function",
+        "desc" : "Expand the navbar pulldown",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Navbar"
       },
       {
         "name" : "fireEvent",
@@ -41653,6 +41701,14 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "collapse",
+        "type" : "function",
+        "desc" : "Collapse the navbar pulldown",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "destroy",
         "type" : "function",
         "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
@@ -41675,6 +41731,14 @@
         "sig" : "()\n{\n\n}",
         "static" : false,
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "expand",
+        "type" : "function",
+        "desc" : "Expand the navbar pulldown",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : ""
       },
       {
         "name" : "fireEvent",
@@ -43927,6 +43991,14 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "collapse",
+        "type" : "function",
+        "desc" : "Collapse the navbar pulldown",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Navbar"
+      },
+      {
         "name" : "destroy",
         "type" : "function",
         "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
@@ -43949,6 +44021,14 @@
         "sig" : "()\n{\n\n}",
         "static" : false,
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "expand",
+        "type" : "function",
+        "desc" : "Expand the navbar pulldown",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Navbar"
       },
       {
         "name" : "fireEvent",
