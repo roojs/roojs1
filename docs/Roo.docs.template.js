@@ -2,6 +2,15 @@
 
 Roo.docs.template  = {
 
+    summary : function (data)
+    {
+	
+	
+	
+    }
+
+    
+    
     augments : function(data)
     {
 	if (!data.augments.length) {
