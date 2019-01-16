@@ -77,10 +77,12 @@ function trigger_action($fn, $files)
     foreach(changed_files() as $cg) {
         foreach($files as $f) {
             if ($f == $cg) {
+                echo "RUNNING : $fn\n";
                 $fn();
                 return true;
             }
             if (substr($f, -1,1) == '/' && substr($cg,0, strlen($f)) == $f) {
+                echo "RUNNING : $fn\n";
                 $fn();
                 return true;    
             }
