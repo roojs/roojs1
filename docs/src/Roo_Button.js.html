@@ -1,0 +1,540 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/Button.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.Button
+ * @extends Roo.util.Observable
+ * Simple Button class
+ * @cfg {String} text The button text
+ * @cfg {String} icon The path to an image to display in the button (the image will be set as the background-image
+ * CSS property of the button by default, so if you want a mixed icon/text button, set cls:&quot;x-btn-text-icon&quot;)
+ * @cfg {Function} handler A function called when the button is clicked (can be used instead of click event)
+ * @cfg {Object} scope The scope of the handler
+ * @cfg {Number} minWidth The minimum width for this button (used to give a set of buttons a common width)
+ * @cfg {String/Object} tooltip The tooltip for the button - can be a string or QuickTips config object
+ * @cfg {Boolean} hidden True to start hidden (defaults to false)
+ * @cfg {Boolean} disabled True to start disabled (defaults to false)
+ * @cfg {Boolean} pressed True to start pressed (only if enableToggle = true)
+ * @cfg {String} toggleGroup The group this toggle button is a member of (only 1 per group can be pressed, only
+   applies if enableToggle = true)
+ * @cfg {String/HTMLElement/Element} renderTo The element to append the button to
+ * @cfg {Boolean/Object} repeat True to repeat fire the click event while the mouse is down. This can also be
+  an {@link Roo.util.ClickRepeater} config object (defaults to false).
+ * @constructor
+ * Create a new button
+ * @param {Object} config The config object
+ */
+</span><span class="jsdoc-var">Roo.Button </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renderTo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">renderTo</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">renderTo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.renderTo </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    }
+
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+	     * @event click
+	     * Fires when this button is clicked
+	     * @param {Button} this
+	     * @param {EventObject} e The click event
+	     */
+	    </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event toggle
+	     * Fires when the &quot;pressed&quot; state of this button changes (only if enableToggle = true)
+	     * @param {Button} this
+	     * @param {Boolean} pressed
+	     */
+	    </span><span class="jsdoc-string">&quot;toggle&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event mouseover
+	     * Fires when the mouse hovers over the button
+	     * @param {Button} this
+	     * @param {Event} e The event object
+	     */
+        </span><span class="jsdoc-string">'mouseover' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event mouseout
+	     * Fires when the mouse exits the button
+	     * @param {Button} this
+	     * @param {Event} e The event object
+	     */
+        </span><span class="jsdoc-string">'mouseout'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+         </span><span class="jsdoc-comment">/**
+	     * @event render
+	     * Fires when the button is rendered
+	     * @param {Button} this
+	     */
+        </span><span class="jsdoc-string">'render'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.menu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.menu.MenuMgr.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-comment">// register listeners first!!  - so render can be captured..
+    </span><span class="jsdoc-var">Roo.util.Observable.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renderTo</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renderTo</span><span class="jsdoc-syntax">);
+    }
+
+
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Button</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * 
+     */
+
+    /**
+     * Read-only. True if this button is hidden
+     * @type Boolean
+     */
+    </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * Read-only. True if this button is disabled
+     * @type Boolean
+     */
+    </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * Read-only. True if this button is pressed (only if enableToggle = true)
+     * @type Boolean
+     */
+    </span><span class="jsdoc-var">pressed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Number} tabIndex 
+     * The DOM tabIndex for this button (defaults to undefined)
+     */
+    </span><span class="jsdoc-var">tabIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} enableToggle
+     * True to enable pressed/not pressed toggling (defaults to false)
+     */
+    </span><span class="jsdoc-var">enableToggle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Mixed} menu
+     * Standard menu attribute consisting of a reference to a menu object, a menu id or a menu config blob (defaults to undefined).
+     */
+    </span><span class="jsdoc-var">menu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} menuAlign
+     * The position to align the menu to (see {@link Roo.Element#alignTo} for more details, defaults to 'tl-bl?').
+     */
+    </span><span class="jsdoc-var">menuAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;tl-bl?&quot;</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} iconCls
+     * A css class which sets a background image to be used as the icon for this button (defaults to undefined).
+     */
+    </span><span class="jsdoc-var">iconCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} type
+     * The button's type, corresponding to the DOM input element type attribute.  Either &quot;submit,&quot; &quot;reset&quot; or &quot;button&quot; (default).
+     */
+    </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">menuClassTarget</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} clickEvent
+     * The type of event to map to the button's event handler (defaults to 'click')
+     */
+    </span><span class="jsdoc-var">clickEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} handleMouseEvents
+     * False to disable visual cues on mouseover, mouseout and mousedown (defaults to true)
+     */
+    </span><span class="jsdoc-var">handleMouseEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} tooltipType
+     * The type of tooltip to use. Either &quot;qtip&quot; (default) for QuickTips or &quot;title&quot; for title attribute.
+     */
+    </span><span class="jsdoc-var">tooltipType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'qtip'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} cls
+     * A CSS class to apply to the button's main element.
+     */
+
+    /**
+     * @cfg {Roo.Template} template (Optional)
+     * An {@link Roo.Template} with which to create the Button's main element. This Template must
+     * contain numeric substitution parameter 0 if it is to display the tRoo property. Changing the template could
+     * require code modifications if required elements (e.g. a button) aren't present.
+     */
+
+    // private
+    </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renderTo</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hideParent</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.parentEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renderTo</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.dhconfig</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.template</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.Button.buttonTemplate</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-comment">// hideous table template
+                    </span><span class="jsdoc-var">Roo.Button.buttonTemplate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(
+                        </span><span class="jsdoc-string">'&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;x-btn-wrap&quot;&gt;&lt;tbody&gt;&lt;tr&gt;'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">'&lt;td class=&quot;x-btn-left&quot;&gt;&lt;i&gt;&amp;#160;&lt;/i&gt;&lt;/td&gt;&lt;td class=&quot;x-btn-center&quot;&gt;&lt;em unselectable=&quot;on&quot;&gt;&lt;button class=&quot;x-btn-text&quot; type=&quot;{1}&quot;&gt;{0}&lt;/button&gt;&lt;/em&gt;&lt;/td&gt;&lt;td class=&quot;x-btn-right&quot;&gt;&lt;i&gt;&amp;#160;&lt;/i&gt;&lt;/td&gt;'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-string">&quot;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&quot;</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-var">this.template </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Button.buttonTemplate</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.template.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renderTo</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'&amp;#160;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.type</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btnEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">btn.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;button:first&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">btnEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'focus'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onFocus</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">btnEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBlur</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">btn.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">btnEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'background-image'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'url(' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.icon </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">')'</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iconCls</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">btnEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iconCls</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">btn.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'x-btn-text-icon' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-btn-icon'</span><span class="jsdoc-syntax">);
+                }
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabIndex </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">btnEl.dom.tabIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tabIndex</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tooltip</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.tooltip </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">Roo.QuickTips.tips</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({
+                          </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">btnEl.id
+                    </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">this.tooltip</span><span class="jsdoc-syntax">));
+                } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">btnEl.dom</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.tooltipType</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.tooltip</span><span class="jsdoc-syntax">;
+                }
+            }
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renderTo</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dhconfig</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.dom.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menuClassTarget</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-with-menu&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.menu.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;show&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMenuShow</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.menu.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMenuHide</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">btn.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">Roo.isIE7</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.autoWidth.defer</span><span class="jsdoc-syntax">(1, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.autoWidth</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.handleMouseEvents</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">btn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseOver</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">btn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseOut</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">btn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">btn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.clickEvent</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//btn.on(&quot;mouseup&quot;, this.onMouseUp, this);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hidden</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.disable</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">Roo.ButtonToggleMgr.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.pressed</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-pressed&quot;</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.repeat</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">repeater </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.ClickRepeater</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.repeat </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;object&quot; </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.repeat </span><span class="jsdoc-syntax">: {}
+            );
+            </span><span class="jsdoc-var">repeater.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'render'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+    },
+    </span><span class="jsdoc-comment">/**
+     * Returns the button's underlying element
+     * @return {Roo.Element} The element
+     */
+    </span><span class="jsdoc-var">getEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Destroys this Button and removes any listeners.
+     */
+    </span><span class="jsdoc-var">destroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.ButtonToggleMgr.unregister</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.removeAllListeners</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.purgeListeners</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.remove</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">autoWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE7 </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.isStrict</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ib </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ib </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ib.getWidth</span><span class="jsdoc-syntax">() &gt; 20){
+                    </span><span class="jsdoc-var">ib.clip</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">ib.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.util.TextMetrics.measure</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ib</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.text</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.width</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">ib.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">));
+                }
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hidden</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.el.beginMeasure</span><span class="jsdoc-syntax">();
+                }
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() &lt; </span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.el.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hidden</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.el.endMeasure</span><span class="jsdoc-syntax">();
+                }
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Assigns this button's click handler
+     * @param {Function} handler The function to call when the button is clicked
+     * @param {Object} scope (optional) Scope for the function passed in
+     */
+    </span><span class="jsdoc-var">setHandler </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.handler </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets this button's text
+     * @param {String} text The button text
+     */
+    </span><span class="jsdoc-var">setText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;td.x-btn-center button.x-btn-text&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.autoWidth</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Gets the text for this button
+     * @return {String} The button text
+     */
+    </span><span class="jsdoc-var">getText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.text</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Show this button
+     */
+    </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.hideParent</span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'parentEl' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'el'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;display&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Hide this button
+     */
+    </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.hideParent</span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'parentEl' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'el'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;display&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;none&quot;</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Convenience function for boolean show/hide
+     * @param {Boolean} visible True to show, false to hide
+     */
+    </span><span class="jsdoc-var">setVisible</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">visible</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">visible</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">();
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * If a state it passed, it becomes the pressed state otherwise the current state is toggled.
+     * @param {Boolean} state (optional) Force a particular state
+     */
+    </span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? !</span><span class="jsdoc-var">this.pressed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.pressed</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-pressed&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.pressed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;toggle&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-pressed&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.pressed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;toggle&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toggleHandler</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.toggleHandler.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Focus the button
+     */
+    </span><span class="jsdoc-var">focus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'button:first'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.focus</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Disable this button
+     */
+    </span><span class="jsdoc-var">disable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-disabled&quot;</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Enable this button
+     */
+    </span><span class="jsdoc-var">enable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-disabled&quot;</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Convenience function for boolean enable/disable
+     * @param {Boolean} enabled True to enable, false to disable
+     */
+    </span><span class="jsdoc-var">setDisabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;enable&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;disable&quot;</span><span class="jsdoc-syntax">]();
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">!= 0){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableToggle</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.toggle</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.menu.isVisible</span><span class="jsdoc-syntax">()){
+                </span><span class="jsdoc-var">this.menu.show</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.menuAlign</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.handler</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-over&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.handler.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            }
+        }
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onMouseOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-over&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseover'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onMouseOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.within</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-over&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseout'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-focus&quot;</span><span class="jsdoc-syntax">);
+        }
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onBlur </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-focus&quot;</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onMouseDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">== 0){
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-click&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onMouseUp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">== 0){
+            </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-click&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onMenuShow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-menu-active&quot;</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onMenuHide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-menu-active&quot;</span><span class="jsdoc-syntax">);
+    }
+});
+
+</span><span class="jsdoc-comment">// Private utility class used by Button
+</span><span class="jsdoc-var">Roo.ButtonToggleMgr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+   </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">groups </span><span class="jsdoc-syntax">= {};
+
+   </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">toggleGroup</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">btn.toggleGroup</span><span class="jsdoc-syntax">];
+           </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+               </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.toggle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+               }
+           }
+       }
+   }
+
+   </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+       </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">btn.toggleGroup</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+           }
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">btn.toggleGroup</span><span class="jsdoc-syntax">];
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">btn.toggleGroup</span><span class="jsdoc-syntax">] = [];
+           }
+           </span><span class="jsdoc-var">g.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">btn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;toggle&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">toggleGroup</span><span class="jsdoc-syntax">);
+       },
+
+       </span><span class="jsdoc-var">unregister </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">btn.toggleGroup</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+           }
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">btn.toggleGroup</span><span class="jsdoc-syntax">];
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">g.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">);
+               </span><span class="jsdoc-var">btn.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;toggle&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">toggleGroup</span><span class="jsdoc-syntax">);
+           }
+       }
+   };
+}();</span></code></body></html>

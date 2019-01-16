@@ -32,24 +32,31 @@ var myReader = new Roo.data.ArrayReader({
  * <pre><code>
 [ [1, 'Bill', 'Gardener'], [2, 'Ben', 'Horticulturalist'] ]
   </code></pre>
- * @cfg {String} id (optional) The subscript within row Array that provides an ID for the Record
+ 
  * @constructor
  * Create a new JsonReader
  * @param {Object} meta Metadata configuration options.
- * @param {Object} recordType Either an Array of field definition objects
+ * @param {Object|Array} recordType Either an Array of field definition objects
+ * 
+ * @cfg {Array} fields Array of field definition objects
+ * @cfg {String} id Name of the property within a row object that contains a record identifier value.
  * as specified to {@link Roo.data.Record#create},
  * or an {@link Roo.data.Record} object
+ *
+ * 
  * created using {@link Roo.data.Record#create}.
  */
 Roo.data.ArrayReader = function(meta, recordType){
-    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType);
+    
+     
+    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 
 Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
     /**
      * Create a data block containing Roo.data.Records from an XML document.
      * @param {Object} o An Array of row objects which represents the dataset.
-     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * @return {Object} A data block which is used by an {@link Roo.data.Store} object as
      * a cache of Roo.data.Records.
      */
     readRecords : function(o){

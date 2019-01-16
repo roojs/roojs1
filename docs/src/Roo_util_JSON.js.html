@@ -1,0 +1,150 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/util/JSON.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.util.JSON
+ * Modified version of Douglas Crockford&quot;s json.js that doesn&quot;t
+ * mess with the Object prototype 
+ * http://www.json.org/js.html
+ * @singleton
+ */
+</span><span class="jsdoc-var">Roo.util.JSON </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">useHasOwn </span><span class="jsdoc-syntax">= {}</span><span class="jsdoc-var">.hasOwnProperty </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-comment">// crashes Safari in some instances
+    //var validRE = /^(&quot;(\\.|[^&quot;\\\n\r])*?&quot;|[,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t])+?$/;
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pad </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">&lt; 10 ? </span><span class="jsdoc-string">&quot;0&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= {
+        </span><span class="jsdoc-string">&quot;\b&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'\\b'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;\t&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'\\t'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'\\n'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;\f&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'\\f'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;\r&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'\\r'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'\\&quot;'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;\\&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'\\\\'
+    </span><span class="jsdoc-syntax">};
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">encodeString </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(/[&quot;\\\x00-\x1f]/</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">s.replace</span><span class="jsdoc-syntax">(/([\x00-\x1f\\&quot;])/g, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b.charCodeAt</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;\\u00&quot; </span><span class="jsdoc-syntax">+
+                    </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">/ 16)</span><span class="jsdoc-var">.toString</span><span class="jsdoc-syntax">(16) +
+                    (</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">% 16)</span><span class="jsdoc-var">.toString</span><span class="jsdoc-syntax">(16);
+            }) + </span><span class="jsdoc-string">'&quot;'</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;'</span><span class="jsdoc-syntax">;
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">encodeArray </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">&quot;[&quot;</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.length</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+                </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;unknown&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-var">a.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
+                        }
+                        </span><span class="jsdoc-var">a.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;null&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.util.JSON.encode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">));
+                        </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                }
+            }
+            </span><span class="jsdoc-var">a.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;]&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">a.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">encodeDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">o.getFullYear</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">&quot;-&quot; </span><span class="jsdoc-syntax">+
+                </span><span class="jsdoc-var">pad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.getMonth</span><span class="jsdoc-syntax">() + 1) + </span><span class="jsdoc-string">&quot;-&quot; </span><span class="jsdoc-syntax">+
+                </span><span class="jsdoc-var">pad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.getDate</span><span class="jsdoc-syntax">()) + </span><span class="jsdoc-string">&quot;T&quot; </span><span class="jsdoc-syntax">+
+                </span><span class="jsdoc-var">pad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.getHours</span><span class="jsdoc-syntax">()) + </span><span class="jsdoc-string">&quot;:&quot; </span><span class="jsdoc-syntax">+
+                </span><span class="jsdoc-var">pad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.getMinutes</span><span class="jsdoc-syntax">()) + </span><span class="jsdoc-string">&quot;:&quot; </span><span class="jsdoc-syntax">+
+                </span><span class="jsdoc-var">pad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.getSeconds</span><span class="jsdoc-syntax">()) + </span><span class="jsdoc-string">'&quot;'</span><span class="jsdoc-syntax">;
+    };
+
+    </span><span class="jsdoc-comment">/**
+     * Encodes an Object, Array or other value
+     * @param {Mixed} o The variable to encode
+     * @return {String} The JSON string
+     */
+    </span><span class="jsdoc-var">this.encode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// should this be extended to fully wrap stringify..
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;null&quot;</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">encodeArray</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">encodeDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">encodeString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;number&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">isFinite</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">&quot;null&quot;</span><span class="jsdoc-syntax">;
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;boolean&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">&quot;{&quot;</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">useHasOwn </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">o.hasOwnProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)) {
+                    </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;unknown&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">){
+                            </span><span class="jsdoc-var">a.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
+                        }
+                        </span><span class="jsdoc-var">a.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.encode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">), </span><span class="jsdoc-string">&quot;:&quot;</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;null&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.encode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">));
+                        </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                    }
+                }
+            }
+            </span><span class="jsdoc-var">a.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;}&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">a.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        }
+    };
+
+    </span><span class="jsdoc-comment">/**
+     * Decodes (parses) a JSON string to an object. If the JSON is invalid, this function throws a SyntaxError.
+     * @param {String} json The JSON string
+     * @return {Object} The resulting object
+     */
+    </span><span class="jsdoc-var">this.decode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">json</span><span class="jsdoc-syntax">){
+
+        </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-comment">/** eval:var:json */ </span><span class="jsdoc-keyword">eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;(&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">json </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">')'</span><span class="jsdoc-syntax">);
+    };
+})();
+</span><span class="jsdoc-comment">/** 
+ * Shorthand for {@link Roo.util.JSON#encode}
+ * @member Roo encode 
+ * @method */
+</span><span class="jsdoc-var">Roo.encode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">JSON</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">JSON.stringify </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">JSON.stringify </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.util.JSON.encode</span><span class="jsdoc-syntax">;
+</span><span class="jsdoc-comment">/** 
+ * Shorthand for {@link Roo.util.JSON#decode}
+ * @member Roo decode 
+ * @method */
+</span><span class="jsdoc-var">Roo.decode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">JSON</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">JSON.parse </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">JSON.parse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.util.JSON.decode</span><span class="jsdoc-syntax">;
+</span></code></body></html>

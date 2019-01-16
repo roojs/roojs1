@@ -1,0 +1,199 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/lib/Dom.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.lib.Dom
+ * @static
+ * 
+ * Dom utils (from YIU afaik)
+ * 
+ **/
+</span><span class="jsdoc-var">Roo.lib.Dom </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-comment">/**
+     * Get the view width
+     * @param {Boolean} full True will get the full document, otherwise it's the view width
+     * @return {Number} The width
+     */
+
+    </span><span class="jsdoc-var">getViewWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">full</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">full </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.getDocumentWidth</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.getViewportWidth</span><span class="jsdoc-syntax">();
+    },
+    </span><span class="jsdoc-comment">/**
+     * Get the view height
+     * @param {Boolean} full True will get the full document, otherwise it's the view height
+     * @return {Number} The height
+     */
+    </span><span class="jsdoc-var">getViewHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">full</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">full </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.getDocumentHeight</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.getViewportHeight</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">getDocumentHeight</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollHeight </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">document.compatMode </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;CSS1Compat&quot;</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">document.body.scrollHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">document.documentElement.scrollHeight</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scrollHeight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getViewportHeight</span><span class="jsdoc-syntax">());
+    },
+
+    </span><span class="jsdoc-var">getDocumentWidth</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollWidth </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">document.compatMode </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;CSS1Compat&quot;</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">document.body.scrollWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">document.documentElement.scrollWidth</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scrollWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getViewportWidth</span><span class="jsdoc-syntax">());
+    },
+
+    </span><span class="jsdoc-var">getViewportHeight</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">self.innerHeight</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.compatMode</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">) &amp;&amp; !</span><span class="jsdoc-var">Roo.isOpera</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;CSS1Compat&quot;</span><span class="jsdoc-syntax">) ?
+                     </span><span class="jsdoc-var">document.documentElement.clientHeight </span><span class="jsdoc-syntax">:
+                     </span><span class="jsdoc-var">document.body.clientHeight</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getViewportWidth</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">self.innerWidth</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.compatMode</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;CSS1Compat&quot;</span><span class="jsdoc-syntax">) ?
+                    </span><span class="jsdoc-var">document.documentElement.clientWidth </span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">document.body.clientWidth</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">isAncestor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p.contains </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">p.contains</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p.compareDocumentPosition</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!!(</span><span class="jsdoc-var">p.compareDocumentPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) &amp; 16);
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.parentNode</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">parent.tagName </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">parent.tagName.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">&quot;HTML&quot;</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parent.parentNode</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-var">getRegion </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.lib.Region.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">getY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)[1];
+    },
+
+    </span><span class="jsdoc-var">getX </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)[0];
+    },
+
+    </span><span class="jsdoc-var">getXY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pe</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fly </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.AnimBase.fly</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.getBoundingClientRect</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.getBoundingClientRect</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">scroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getScroll</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">b.left </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">scroll.left</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b.top </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">scroll.top</span><span class="jsdoc-syntax">];
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= 0;
+
+        </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hasAbsolute </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;absolute&quot;</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">) {
+
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">p.offsetLeft</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">p.offsetTop</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">hasAbsolute </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;absolute&quot;</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">hasAbsolute </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">pe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pe.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;borderTopWidth&quot;</span><span class="jsdoc-syntax">), 10) || 0;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pe.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;borderLeftWidth&quot;</span><span class="jsdoc-syntax">), 10) || 0;
+
+
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">bl</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">bt</span><span class="jsdoc-syntax">;
+
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">pe.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'overflow'</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'visible'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">bl</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">bt</span><span class="jsdoc-syntax">;
+                }
+            }
+            </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p.offsetParent</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isSafari </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">hasAbsolute</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">bd.offsetLeft</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">bd.offsetTop</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">hasAbsolute</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dbd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bd</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dbd.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;borderLeftWidth&quot;</span><span class="jsdoc-syntax">), 10) || 0;
+            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dbd.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;borderTopWidth&quot;</span><span class="jsdoc-syntax">), 10) || 0;
+        }
+
+        </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.parentNode</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">bd</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.isOpera </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">p.tagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'TR' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;display&quot;</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">&quot;inline&quot;</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">p.scrollLeft</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">p.scrollTop</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p.parentNode</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">];
+    },
+
+
+
+
+    </span><span class="jsdoc-var">setXY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'_setXY'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">el.position</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pts </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.translatePoints</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">el.dom.style.left </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pts.left </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1] !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">el.dom.style.top </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pts.top </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-var">setX </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">]);
+    },
+
+    </span><span class="jsdoc-var">setY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">]);
+    }
+};
+</span></code></body></html>

@@ -1,0 +1,43 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/menu/Separator.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.menu.Separator
+ * @extends Roo.menu.BaseItem
+ * Adds a separator bar to a menu, used to divide logical groups of menu items. Generally you will
+ * add one of these by using &quot;-&quot; in you call to add() or in your items config rather than creating one directly.
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.menu.Separator </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.menu.Separator.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.menu.Separator</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.menu.BaseItem</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} itemCls The default CSS class to use for separators (defaults to &quot;x-menu-sep&quot;)
+     */
+    </span><span class="jsdoc-var">itemCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-menu-sep&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} hideOnClick True to hide the containing menu after this item is clicked (defaults to false)
+     */
+    </span><span class="jsdoc-var">hideOnClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">s.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.itemCls</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">s.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&amp;#160;&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">li.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-menu-sep-li&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.menu.Separator.superclass.onRender.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+    }
+});</span></code></body></html>

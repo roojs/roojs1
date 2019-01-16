@@ -1,0 +1,210 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/bootstrap/FieldLabel.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * FieldLabel
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.FieldLabel
+ * @extends Roo.bootstrap.Component
+ * Bootstrap FieldLabel class
+ * @cfg {String} html contents of the element
+ * @cfg {String} tag tag of the element default label
+ * @cfg {String} cls class of the element
+ * @cfg {String} target label target 
+ * @cfg {Boolean} allowBlank (true|false) target allowBlank default true
+ * @cfg {String} invalidClass DEPRICATED - BS4 uses is-invalid
+ * @cfg {String} validClass DEPRICATED - BS4 uses is-valid
+ * @cfg {String} iconTooltip default &quot;This field is required&quot;
+ * @cfg {String} indicatorpos (left|right) default left
+ * 
+ * @constructor
+ * Create a new FieldLabel
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.FieldLabel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Element.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-comment">/**
+             * @event invalid
+             * Fires after the field has been marked as invalid.
+             * @param {Roo.form.FieldLabel} this
+             * @param {String} msg The validation message
+             */
+            </span><span class="jsdoc-var">invalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event valid
+             * Fires after the field has been validated with no errors.
+             * @param {Roo.form.FieldLabel} this
+             */
+            </span><span class="jsdoc-var">valid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.FieldLabel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+
+    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">allowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">invalidClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'has-warning'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">validClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'has-success'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">iconTooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">indicatorpos </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+
+	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-var">cls  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;visible&quot;</span><span class="jsdoc-syntax">;
+	}
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-bootstrap-field-label ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.target</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator left-indicator text-danger fa fa-lg fa-star ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.iconTooltip
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
+                </span><span class="jsdoc-syntax">}
+            ]
+        };
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicatorpos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-bootstrap-field-label ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.target</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                    {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
+                    </span><span class="jsdoc-syntax">},
+                    {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator right-indicator text-danger fa fa-lg fa-star '</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.iconTooltip
+                    </span><span class="jsdoc-syntax">}
+                ]
+            };
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.bootstrap.Element.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.indicator </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indicatorEl</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.indicator.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'visible'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.indicator.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invisible'</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">Roo.bootstrap.FieldLabel.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">indicatorEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">indicator </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i.roo-required-indicator'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">indicator</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">indicator</span><span class="jsdoc-syntax">;
+
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Mark this field as valid
+     */
+    </span><span class="jsdoc-var">markValid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.indicator.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'visible'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.indicator.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invisible'</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">== 3) {
+	    </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);
+	    </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">);
+	} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+	    </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'is-invalid'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'is-valid'</span><span class="jsdoc-syntax">);
+	}
+
+
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'valid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Mark this field as invalid
+     * @param {String} msg The validation message
+     */
+    </span><span class="jsdoc-var">markInvalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.indicator.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invisible'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.indicator.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'visible'</span><span class="jsdoc-syntax">);
+        }
+          </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">== 3) {
+	    </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">);
+	    </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);
+	} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+	    </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'is-valid'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'is-invalid'</span><span class="jsdoc-syntax">);
+	}
+
+
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invalid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
+    }
+
+
+});
+
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.FieldLabel</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">: {},
+
+     </span><span class="jsdoc-comment">/**
+    * register a FieldLabel Group
+    * @param {Roo.bootstrap.FieldLabel} the FieldLabel to add
+    */
+    </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groups.hasOwnProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label.target</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">label.target</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">;
+
+    },
+    </span><span class="jsdoc-comment">/**
+    * fetch a FieldLabel Group based on the target
+    * @param {string} target
+    * @returns {Roo.bootstrap.FieldLabel} the CheckBox group
+    */
+    </span><span class="jsdoc-var">get</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">] ;
+    }
+});
+
+
+
+ </span></code></body></html>

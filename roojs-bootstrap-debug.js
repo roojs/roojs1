@@ -2060,13 +2060,13 @@ Roo.bootstrap.Menu = function(config){
     this.addEvents({
         /**
          * @event beforeshow
-         * Fires before this menu is displayed
+         * Fires before this menu is displayed (return false to block)
          * @param {Roo.menu.Menu} this
          */
         beforeshow : true,
         /**
          * @event beforehide
-         * Fires before this menu is hidden
+         * Fires before this menu is hidden (return false to block)
          * @param {Roo.menu.Menu} this
          */
         beforehide : true,
@@ -2268,7 +2268,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     isVisible : function(){
         return !this.hidden;
     },
-     onMouseOut : function(e){
+    onMouseOut : function(e){
         var t  = this.findTargetItem(e);
         
         //if(t ){
@@ -2288,12 +2288,17 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      * the element (defaults to this.defaultAlign)
      * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
      */
-    show : function(el, pos, parentMenu){
-        this.parentMenu = parentMenu;
+    show : function(el, pos, parentMenu)
+    {
+        if (false === this.fireEvent("beforeshow", this)) {
+	    Roo.log("show canceled");
+	    return;
+	}
+	this.parentMenu = parentMenu;
         if(!this.el){
             this.render();
         }
-        this.fireEvent("beforeshow", this);
+        
         this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
     },
      /**
@@ -2356,10 +2361,13 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     hide : function(deep)
     {
-        
+        if (false === this.fireEvent("beforehide", this)) {
+	    Roo.log("hide canceled");
+	    return;
+	}
         this.hideMenuItems();
         if(this.el && this.isVisible()){
-            this.fireEvent("beforehide", this);
+           
             if(this.activeItem){
                 this.activeItem.deactivate();
                 this.activeItem = null;
@@ -2426,16 +2434,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if (!this.el) { 
             return;
         }
-        //$(backdrop).remove()
+        
         this.el.select('.open',true).each(function(aa) {
             
             aa.removeClass('open');
-          //var parent = getParent($(this))
-          //var relatedTarget = { relatedTarget: this }
-          
-           //$parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
-          //if (e.isDefaultPrevented()) return
-           //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
+         
         });
     },
     addxtypeChild : function (tree, cntr) {
@@ -3875,46 +3878,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     initEvents :function ()
     {
         //Roo.log(this.el.select('.navbar-toggle',true));
-        this.el.select('.navbar-toggle',true).on('click', function() {
-            if(this.fireEvent('beforetoggle', this) !== false){
-                var ce = this.el.select('.navbar-collapse',true).first();
-                ce.toggleClass('in'); // old...
-                if (ce.hasClass('collapse')) {
-                    // show it...
-                    ce.removeClass('collapse');
-                    ce.addClass('show');
-                    var h = ce.getHeight();
-                    Roo.log(h);
-                    ce.removeClass('show');
-                    // at this point we should be able to see it..
-                    ce.addClass('collapsing');
-                    
-                    ce.setHeight(0); // resize it ...
-                    ce.on('transitionend', function() {
-                        Roo.log('done transition');
-                        ce.removeClass('collapsing');
-                        ce.addClass('show');
-                        ce.removeClass('collapse');
-
-                        ce.dom.style.height = '';
-                    }, this, { single: true} );
-                    ce.setHeight(h);
-                    
-                } else {
-                    ce.setHeight(ce.getHeight());
-                    ce.removeClass('show');
-                    ce.addClass('collapsing');
-                    
-                    ce.on('transitionend', function() {
-                        ce.dom.style.height = '';
-                        ce.removeClass('collapsing');
-                        ce.addClass('collapse');
-                    }, this, { single: true} );
-                    ce.setHeight(0);
-                }
-            }
-            
-        }, this);
+        this.el.select('.navbar-toggle',true).on('click', this.onToggle , this);
         
         var mark = {
             tag: "div",
@@ -3936,7 +3900,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     getChildContainer : function()
     {
-        if (this.el.select('.collapse').getCount()) {
+        if (this.el && this.el.select('.collapse').getCount()) {
             return this.el.select('.collapse',true).first();
         }
         
@@ -3951,8 +3915,80 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     unmask : function()
     {
         this.maskEl.hide();
-    } 
+    },
+    onToggle : function()
+    {
+        
+        if(this.fireEvent('beforetoggle', this) === false){
+            return;
+        }
+        var ce = this.el.select('.navbar-collapse',true).first();
+      
+        if (!ce.hasClass('show')) {
+           this.expand();
+        } else {
+            this.collapse();
+        }
+        
+        
     
+    },
+    /**
+     * Expand the navbar pulldown 
+     */
+    expand : function ()
+    {
+       
+        var ce = this.el.select('.navbar-collapse',true).first();
+        if (ce.hasClass('collapsing')) {
+            return;
+        }
+        ce.dom.style.height = '';
+               // show it...
+        ce.addClass('in'); // old...
+        ce.removeClass('collapse');
+        ce.addClass('show');
+        var h = ce.getHeight();
+        Roo.log(h);
+        ce.removeClass('show');
+        // at this point we should be able to see it..
+        ce.addClass('collapsing');
+        
+        ce.setHeight(0); // resize it ...
+        ce.on('transitionend', function() {
+            //Roo.log('done transition');
+            ce.removeClass('collapsing');
+            ce.addClass('show');
+            ce.removeClass('collapse');
+
+            ce.dom.style.height = '';
+        }, this, { single: true} );
+        ce.setHeight(h);
+        ce.dom.scrollTop = 0;
+    },
+    /**
+     * Collapse the navbar pulldown 
+     */
+    collapse : function()
+    {
+         var ce = this.el.select('.navbar-collapse',true).first();
+       
+        if (ce.hasClass('collapsing') || ce.hasClass('collapse') ) {
+            // it's collapsed or collapsing..
+            return;
+        }
+        ce.removeClass('in'); // old...
+        ce.setHeight(ce.getHeight());
+        ce.removeClass('show');
+        ce.addClass('collapsing');
+        
+        ce.on('transitionend', function() {
+            ce.dom.style.height = '';
+            ce.removeClass('collapsing');
+            ce.addClass('collapse');
+        }, this, { single: true} );
+        ce.setHeight(0);
+    }
     
     
     
@@ -5125,7 +5161,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             e.preventDefault();
         }
         
-        this.fireEvent('click', this);
+        this.fireEvent('click', this, e);
     },
     
     disable : function()
@@ -12379,7 +12415,7 @@ Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
         params = params || {};
         var result;
         try {
-            result = reader.readRecords(this.data);
+            result = reader.readRecords(params.data ? params.data :this.data);
         }catch(e){
             this.fireEvent("loadexception", this, arg, null, e);
             callback.call(scope, null, arg, false);
@@ -12986,24 +13022,31 @@ var myReader = new Roo.data.ArrayReader({
  * <pre><code>
 [ [1, 'Bill', 'Gardener'], [2, 'Ben', 'Horticulturalist'] ]
   </code></pre>
- * @cfg {String} id (optional) The subscript within row Array that provides an ID for the Record
+ 
  * @constructor
  * Create a new JsonReader
  * @param {Object} meta Metadata configuration options.
- * @param {Object} recordType Either an Array of field definition objects
+ * @param {Object|Array} recordType Either an Array of field definition objects
+ * 
+ * @cfg {Array} fields Array of field definition objects
+ * @cfg {String} id Name of the property within a row object that contains a record identifier value.
  * as specified to {@link Roo.data.Record#create},
  * or an {@link Roo.data.Record} object
+ *
+ * 
  * created using {@link Roo.data.Record#create}.
  */
 Roo.data.ArrayReader = function(meta, recordType){
-    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType);
+    
+     
+    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 
 Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
     /**
      * Create a data block containing Roo.data.Records from an XML document.
      * @param {Object} o An Array of row objects which represents the dataset.
-     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * @return {Object} A data block which is used by an {@link Roo.data.Store} object as
      * a cache of Roo.data.Records.
      */
     readRecords : function(o){

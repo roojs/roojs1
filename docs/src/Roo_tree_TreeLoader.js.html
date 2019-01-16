@@ -1,0 +1,298 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/tree/TreeLoader.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+/**
+ * @class Roo.tree.TreeLoader
+ * @extends Roo.util.Observable
+ * A TreeLoader provides for lazy loading of an {@link Roo.tree.TreeNode}'s child
+ * nodes from a specified URL. The response must be a javascript Array definition
+ * who's elements are node definition objects. eg:
+ * &lt;pre&gt;&lt;code&gt;
+{  success : true,
+   data :      [
+   
+    { 'id': 1, 'text': 'A folder Node', 'leaf': false },
+    { 'id': 2, 'text': 'A leaf Node', 'leaf': true }
+    ]
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+ * &lt;br&gt;&lt;br&gt;
+ * The old style respose with just an array is still supported, but not recommended.
+ * &lt;br&gt;&lt;br&gt;
+ *
+ * A server request is sent, and child nodes are loaded only when a node is expanded.
+ * The loading node's id is passed to the server under the parameter name &quot;node&quot; to
+ * enable the server to produce the correct child nodes.
+ * &lt;br&gt;&lt;br&gt;
+ * To pass extra parameters, an event handler may be attached to the &quot;beforeload&quot;
+ * event, and the parameters specified in the TreeLoader's baseParams property:
+ * &lt;pre&gt;&lt;code&gt;
+    myTreeLoader.on(&quot;beforeload&quot;, function(treeLoader, node) {
+        this.baseParams.category = node.attributes.category;
+    }, this);
+&lt;/code&gt;&lt;/pre&gt;&lt;
+ * This would pass an HTTP parameter called &quot;category&quot; to the server containing
+ * the value of the Node's &quot;category&quot; attribute.
+ * @constructor
+ * Creates a new Treeloader.
+ * @param {Object} config A config object containing config properties.
+ */
+</span><span class="jsdoc-var">Roo.tree.TreeLoader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">this.baseParams </span><span class="jsdoc-syntax">= {};
+    </span><span class="jsdoc-var">this.requestMethod </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;POST&quot;</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+
+        </span><span class="jsdoc-comment">/**
+         * @event beforeload
+         * Fires before a network request is made to retrieve the Json text which specifies a node's children.
+         * @param {Object} This TreeLoader object.
+         * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
+         * @param {Object} callback The callback function specified in the {@link #load} call.
+         */
+        </span><span class="jsdoc-var">beforeload </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event load
+         * Fires when the node has been successfuly loaded.
+         * @param {Object} This TreeLoader object.
+         * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
+         * @param {Object} response The response object containing the data from the server.
+         */
+        </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event loadexception
+         * Fires if the network request failed.
+         * @param {Object} This TreeLoader object.
+         * @param {Object} node The {@link Roo.tree.TreeNode} object being loaded.
+         * @param {Object} response The response object containing the data from the server.
+         */
+        </span><span class="jsdoc-var">loadexception </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event create
+         * Fires before a node is created, enabling you to return custom Node types 
+         * @param {Object} This TreeLoader object.
+         * @param {Object} attr - the data returned from the AJAX call (modify it to suit)
+         */
+        </span><span class="jsdoc-var">create </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+
+    </span><span class="jsdoc-var">Roo.tree.TreeLoader.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.tree.TreeLoader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+    * @cfg {String} dataUrl The URL from which to request a Json string which
+    * specifies an array of node definition object representing the child nodes
+    * to be loaded.
+    */
+    /**
+    * @cfg {String} requestMethod either GET or POST
+    * defaults to POST (due to BC)
+    * to be loaded.
+    */
+    /**
+    * @cfg {Object} baseParams (optional) An object containing properties which
+    * specify HTTP parameters to be passed to each request for child nodes.
+    */
+    /**
+    * @cfg {Object} baseAttrs (optional) An object containing attributes to be added to all nodes
+    * created by this loader. If the attributes sent by the server have an attribute in this object,
+    * they take priority.
+    */
+    /**
+    * @cfg {Object} uiProviders (optional) An object containing properties which
+    * 
+    * DEPRECATED - use 'create' event handler to modify attributes - which affect creation.
+    * specify custom {@link Roo.tree.TreeNodeUI} implementations. If the optional
+    * &lt;i&gt;uiProvider&lt;/i&gt; attribute of a returned child node is a string rather
+    * than a reference to a TreeNodeUI implementation, this that string value
+    * is used as a property name in the uiProviders object. You can define the provider named
+    * 'default' , and this will be used for all nodes (if no uiProvider is delivered by the node data)
+    */
+    </span><span class="jsdoc-var">uiProviders </span><span class="jsdoc-syntax">: {},
+
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Boolean} clearOnLoad (optional) Default to true. Remove previously existing
+    * child nodes before loading.
+    */
+    </span><span class="jsdoc-var">clearOnLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+    * @cfg {String} root (optional) Default to false. Use this to read data from an object 
+    * property on loading, rather than expecting an array. (eg. more compatible to a standard
+    * Grid query { data : [ .....] }
+    */
+
+    </span><span class="jsdoc-var">root </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+     </span><span class="jsdoc-comment">/**
+    * @cfg {String} queryParam (optional) 
+    * Name of the query as it will be passed on the querystring (defaults to 'node')
+    * eg. the request will be ?node=[id]
+    */
+
+
+    </span><span class="jsdoc-var">queryParam</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * Load an {@link Roo.tree.TreeNode} from the URL specified in the constructor.
+     * This is called automatically when a node is expanded, but may be used to reload
+     * a node (or append new children if the {@link #clearOnLoad} option is false.)
+     * @param {Roo.tree.TreeNode} node
+     * @param {Function} callback
+     */
+    </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.clearOnLoad</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.firstChild</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">node.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.firstChild</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.attributes.children</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// preloaded json children
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.attributes.children</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cs.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-var">node.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.createNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]));
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">();
+            }
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataUrl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.requestData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">getParams</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buf </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">bp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.baseParams</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">key </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">bp</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">bp</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">buf.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">), </span><span class="jsdoc-string">&quot;=&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bp</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">]), </span><span class="jsdoc-string">&quot;&amp;&quot;</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.queryParam </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'node' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.queryParam</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">buf.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;=&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">encodeURIComponent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.id</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">buf.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">requestData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.transId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Ajax.request</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this.requestMethod</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dataUrl</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">this.url</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.handleResponse</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">failure</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.handleFailure</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">argument</span><span class="jsdoc-syntax">: {</span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">},
+                </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.getParams</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+            });
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-comment">// if the load is cancelled, make sure we notify
+            // the node that we are done
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">();
+            }
+        }
+    },
+
+    </span><span class="jsdoc-var">isLoading </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.transId </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">abort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isLoading</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">Roo.Ajax.abort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.transId</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">createNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// apply baseAttrs, nice idea Corey!
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.baseAttrs</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.applyIf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.baseAttrs</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.applyLoader </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">attr.loader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// uiProvider = depreciated..
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr.uiProvider</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">attr.uiProvider </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.uiProviders</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">attr.uiProvider</span><span class="jsdoc-syntax">] ||
+                </span><span class="jsdoc-comment">/**  eval:var:attr */ </span><span class="jsdoc-keyword">eval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr.uiProvider</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.uiProviders</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">attr.uiProvider </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.uiProviders</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">];
+        }
+
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'create'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">attr.leaf  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr.leaf</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">attr.leaf </span><span class="jsdoc-syntax">* 1 : </span><span class="jsdoc-var">attr.leaf</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr.leaf </span><span class="jsdoc-syntax">?
+                        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.tree.TreeNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">) :
+                        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.tree.AsyncTreeNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">));
+    },
+
+    </span><span class="jsdoc-var">processResponse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">json </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">json</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.root </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.success</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.root </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'data'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// the default behaviour for list like data..
+                </span><span class="jsdoc-syntax">}
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.root </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp;  !</span><span class="jsdoc-var">o.success</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// it's a failure condition.
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.argument</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a.node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Load failed - should have a handler really&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.root </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                 </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.root</span><span class="jsdoc-syntax">];
+            }
+
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">node.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+                }
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            }
+        }</span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.handleFailure</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">handleResponse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.transId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.argument</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.processResponse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a.node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a.callback</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a.node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">handleFailure </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// should handle failure better..
+        </span><span class="jsdoc-var">this.transId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.argument</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a.node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">a.callback </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">a.callback</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a.node</span><span class="jsdoc-syntax">);
+        }
+    }
+});</span></code></body></html>

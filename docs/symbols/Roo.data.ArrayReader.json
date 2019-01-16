@@ -1,0 +1,107 @@
+{
+  "name" : "Roo.data.ArrayReader",
+  "augments" : [
+    "Roo.data.DataReader"
+  ],
+  "desc" : "Data reader class to create an Array of Roo.data.Record objects from an Array.\nEach element of that Array represents a row of data fields. The\nfields are pulled into a Record object using as a subscript, the <em>mapping</em> property\nof the field definition if it exists, or the field's ordinal position in the definition.<br>\n<p>\nExample code:.\n<pre><code>\nvar RecordDef = Roo.data.Record.create([\n    {name: 'name', mapping: 1},         // \"mapping\" only needed if an \"id\" field is present which\n    {name: 'occupation', mapping: 2}    // precludes using the ordinal position as the index.\n]);\nvar myReader = new Roo.data.ArrayReader({\n    id: 0                     // The subscript within row Array that provides an ID for the Record (optional)\n}, RecordDef);\n</code></pre>\n<p>\nThis would consume an Array like this:\n<pre><code>\n[ [1, 'Bill', 'Gardener'], [2, 'Ben', 'Horticulturalist'] ]\n  </code></pre>",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "memberOf" : "ArrayReader",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "meta",
+      "type" : "Object",
+      "desc" : "Metadata configuration options.",
+      "isOptional" : false
+    },
+    {
+      "name" : "recordType",
+      "type" : "Object|Array",
+      "desc" : "Either an Array of field definition objects",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [
+  ],
+  "config" : [
+    {
+      "name" : "id",
+      "type" : "String",
+      "desc" : "Name of the property within a row object that contains a record identifier value.\nas specified to {@link Roo.data.Record#create},\nor an {@link Roo.data.Record} object\n\n\ncreated using {@link Roo.data.Record#create}.",
+      "memberOf" : "Roo.data.ArrayReader",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "fields",
+      "type" : "Array",
+      "desc" : "Array of field definition objects",
+      "memberOf" : "Roo.data.ArrayReader",
+      "values" : [
+      ]
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "readRecords",
+      "desc" : "Create a data block containing Roo.data.Records from an XML document.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.ArrayReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Object",
+          "desc" : "An Array of row objects which represents the dataset.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "A data block which is used by an {@link Roo.data.Store} object as\na cache of Roo.data.Records."
+        }
+      ]
+    },
+    {
+      "name" : "newRow",
+      "desc" : "Create an empty record",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.DataReader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "(optional) - overlay some values",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.data.Record",
+          "desc" : "record created."
+        }
+      ]
+    }
+  ],
+  "events" : [
+  ]
+}

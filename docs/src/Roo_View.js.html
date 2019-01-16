@@ -1,0 +1,697 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/View.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.View
+ * @extends Roo.util.Observable
+ * Create a &quot;View&quot; for an element based on a data model or UpdateManager and the supplied DomHelper template. 
+ * This class also supports single and multi selection modes. &lt;br&gt;
+ * Create a data model bound view:
+ &lt;pre&gt;&lt;code&gt;
+ var store = new Roo.data.Store(...);
+
+ var view = new Roo.View({
+    el : &quot;my-element&quot;,
+    tpl : '&amp;lt;div id=&quot;{0}&quot;&amp;gt;{2} - {1}&amp;lt;/div&amp;gt;', // auto create template
+ 
+    singleSelect: true,
+    selectedClass: &quot;ydataview-selected&quot;,
+    store: store
+ });
+
+ // listen for node click?
+ view.on(&quot;click&quot;, function(vw, index, node, e){
+ alert('Node &quot;' + node.id + '&quot; at index: ' + index + &quot; was clicked.&quot;);
+ });
+
+ // load XML data
+ dataModel.load(&quot;foobar.xml&quot;);
+ &lt;/code&gt;&lt;/pre&gt;
+ For an example of creating a JSON/UpdateManager view, see {@link Roo.JsonView}.
+ * &lt;br&gt;&lt;br&gt;
+ * &lt;b&gt;Note: The root of your template must be a single node. Table/row implementations may work but are not supported due to
+ * IE&quot;s limited insertion support with tables and Opera&quot;s faulty event bubbling.&lt;/b&gt;
+ * 
+ * Note: old style constructor is still suported (container, template, config)
+ * 
+ * @constructor
+ * Create a new View
+ * @param {Object} config The config object
+ * 
+ */
+</span><span class="jsdoc-var">Roo.View </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_tpl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_config</span><span class="jsdoc-syntax">){
+
+    </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">depreciated_tpl</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-comment">// new way.. - universal constructor.
+        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">// old format..
+        </span><span class="jsdoc-var">this.el  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">depreciated_tpl</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_config</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">this.wrapEl  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.wrap</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.wrap</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-comment">///this.el = this.wrapEla.appendChild(document.createElement(&quot;div&quot;));
+
+
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">);
+    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">// support xtype ctors..
+        </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">);
+    }
+
+
+    </span><span class="jsdoc-var">this.tpl.compile</span><span class="jsdoc-syntax">();
+
+    </span><span class="jsdoc-comment">/** @private */
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event beforeclick
+         * Fires before a click is processed. Returns false to cancel the default action.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            </span><span class="jsdoc-string">&quot;beforeclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event click
+         * Fires when a template node is clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event dblclick
+         * Fires when a template node is double clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            </span><span class="jsdoc-string">&quot;dblclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event contextmenu
+         * Fires when a template node is right clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            </span><span class="jsdoc-string">&quot;contextmenu&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event selectionchange
+         * Fires when the selected nodes change.
+         * @param {Roo.View} this
+         * @param {Array} selections Array of the selected nodes
+         */
+            </span><span class="jsdoc-string">&quot;selectionchange&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+        </span><span class="jsdoc-comment">/**
+         * @event beforeselect
+         * Fires before a selection is made. If any handlers return false, the selection is cancelled.
+         * @param {Roo.View} this
+         * @param {HTMLElement} node The node to be selected
+         * @param {Array} selections Array of currently selected nodes
+         */
+            </span><span class="jsdoc-string">&quot;beforeselect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event preparedata
+         * Fires on every row to render, to allow you to change the data.
+         * @param {Roo.View} this
+         * @param {Object} data to be rendered (change this)
+         */
+          </span><span class="jsdoc-string">&quot;preparedata&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+
+
+        </span><span class="jsdoc-syntax">});
+
+
+
+    </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;dblclick&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onDblClick</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;contextmenu&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onContextMenu</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this
+    </span><span class="jsdoc-syntax">});
+
+    </span><span class="jsdoc-var">this.selections </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">this.nodes </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">this.cmp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.CompositeElementLite</span><span class="jsdoc-syntax">([]);
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.setStore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+    }
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.footer.xtype</span><span class="jsdoc-syntax">) {
+
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.wrapEl.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">));
+
+        </span><span class="jsdoc-var">this.footer.dataSource </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.footer.container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fctr</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">fctr.insertFirst</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// this is a bit insane - as the paging toolbar seems to detach the el..
+//        dom.parentNode.parentNode.parentNode
+         // they get detached?
+    </span><span class="jsdoc-syntax">}
+
+
+    </span><span class="jsdoc-var">Roo.View.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.View</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+
+     </span><span class="jsdoc-comment">/**
+     * @cfg {Roo.data.Store} store Data store to load data from.
+     */
+    </span><span class="jsdoc-var">store </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String|Roo.Element} el The container element.
+     */
+    </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String|Roo.Template} tpl The template used by this View 
+     */
+    </span><span class="jsdoc-var">tpl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} dataName the named area of the template to use as the data area
+     *                          Works with domtemplates roo-name=&quot;name&quot;
+     */
+    </span><span class="jsdoc-var">dataName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} selectedClass The css class to add to selected nodes
+     */
+    </span><span class="jsdoc-var">selectedClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-view-selected&quot;</span><span class="jsdoc-syntax">,
+     </span><span class="jsdoc-comment">/**
+     * @cfg {String} emptyText The empty text to show when nothing is loaded.
+     */
+    </span><span class="jsdoc-var">emptyText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} text to display on mask (default Loading)
+     */
+    </span><span class="jsdoc-var">mask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} multiSelect Allow multiple selection
+     */
+    </span><span class="jsdoc-var">multiSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} singleSelect Allow single selection
+     */
+    </span><span class="jsdoc-var">singleSelect</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} toggleSelect - selecting 
+     */
+    </span><span class="jsdoc-var">toggleSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} tickable - selecting 
+     */
+    </span><span class="jsdoc-var">tickable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the element this view is bound to.
+     * @return {Roo.Element}
+     */
+    </span><span class="jsdoc-var">getEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrapEl</span><span class="jsdoc-syntax">;
+    },
+
+
+
+    </span><span class="jsdoc-comment">/**
+     * Refreshes the view. - called by datachanged on the store. - do not call directly.
+     */
+    </span><span class="jsdoc-var">refresh </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-comment">//Roo.log('refresh');
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// if we are using something like 'domtemplate', then
+        // the what gets used is:
+        // t.applySubtemplate(NAME, data, wrapping data..)
+        // the outer template then get' applied with
+        //     the store 'extra data'
+        // and the body get's added to the
+        //      roo-name=&quot;data&quot; node?
+        //      &lt;span class='roo-tpl-{name}'&gt;&lt;/span&gt; ?????
+
+
+
+        </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">records </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store.getRange</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records.length </span><span class="jsdoc-syntax">&lt; 1) {
+
+            </span><span class="jsdoc-comment">// is this valid??  = should it render a template??
+
+            </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.emptyText</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.meta</span><span class="jsdoc-syntax">)); </span><span class="jsdoc-comment">//????
+            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-tpl-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">records.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.prepareData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;preparedata&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-string">'roo-id' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">()});
+
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+                </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent.item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">_this.parent.valueField</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">_this.parent.valueField</span><span class="jsdoc-syntax">]){
+                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-string">'roo-data-checked' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'checked'</span><span class="jsdoc-syntax">});
+                });
+            }
+
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">html.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">Roo.util.Format.trim</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">this.dataName </span><span class="jsdoc-syntax">?
+                    </span><span class="jsdoc-var">t.applySubtemplate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.store.meta</span><span class="jsdoc-syntax">) :
+                    </span><span class="jsdoc-var">t.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">)
+            );
+        }
+
+
+
+        </span><span class="jsdoc-var">el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.nodes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dom.childNodes</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.updateIndexes</span><span class="jsdoc-syntax">(0);
+    },
+
+
+    </span><span class="jsdoc-comment">/**
+     * Function to override to reformat the data that is sent to
+     * the template for each node.
+     * DEPRICATED - use the preparedata event handler.
+     * @param {Array/Object} data The raw data (array of colData for a data model bound view or
+     * a JSON object for an UpdateManager bound view).
+     */
+    </span><span class="jsdoc-var">prepareData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;preparedata&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">onUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">// Roo.log('on update');   
+        </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.nodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-var">this.tpl.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.prepareData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record.data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">n.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.updateIndexes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+    },
+
+
+
+</span><span class="jsdoc-comment">// --------- FIXME     
+    </span><span class="jsdoc-var">onAdd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log(['on Add', ds, records, index] );        
+        </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.nodes.length </span><span class="jsdoc-syntax">== 0){
+            </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.nodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">records.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.prepareData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.tpl.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+
+                </span><span class="jsdoc-var">this.tpl.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-var">this.updateIndexes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">onRemove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-comment">// Roo.log('onRemove');
+        </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataName  </span><span class="jsdoc-syntax">?
+            </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-tpl-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">) :
+            </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">el.dom.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.nodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-var">this.updateIndexes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Refresh an individual node.
+     * @param {Number} index
+     */
+    </span><span class="jsdoc-var">refreshNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.onUpdate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.store.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">));
+    },
+
+    </span><span class="jsdoc-var">updateIndexes </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">startIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">endIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.nodes</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">startIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">startIndex </span><span class="jsdoc-syntax">|| 0;
+        </span><span class="jsdoc-var">endIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">endIndex </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ns.length </span><span class="jsdoc-syntax">- 1;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">startIndex</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">endIndex</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.nodeIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Changes the data store this view uses and refresh the view.
+     * @param {Store} store
+     */
+    </span><span class="jsdoc-var">setStore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">initial</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">initial </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;datachanged&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;add&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onAdd</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;remove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRemove</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;update&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onUpdate</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;clear&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">){
+
+            </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;datachanged&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;add&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onAdd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;remove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRemove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;update&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onUpdate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;clear&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeload&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
+        }
+    },
+    </span><span class="jsdoc-comment">/**
+     * onbeforeLoad - masks the loading area.
+     *
+     */
+    </span><span class="jsdoc-var">onBeforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">)
+    {
+         </span><span class="jsdoc-comment">//Roo.log('onBeforeLoad');   
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">opts.add</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.el.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mask </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.mask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Loading&quot; </span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">();
+    },
+
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the template node the passed child belongs to or null if it doesn't belong to one.
+     * @param {HTMLElement} node
+     * @return {HTMLElement} The template node
+     */
+    </span><span class="jsdoc-var">findItemFromChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataName  </span><span class="jsdoc-syntax">?
+            </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-tpl-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) :
+            </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">node.parentNode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+		    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">;
+	    }
+	    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.parentNode</span><span class="jsdoc-syntax">;
+	    </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p.parentNode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+            	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p.parentNode</span><span class="jsdoc-syntax">;
+        }
+	    </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/** @ignore */
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findItemFromChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.onItemClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            }
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/** @ignore */
+    </span><span class="jsdoc-var">onContextMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findItemFromChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;contextmenu&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/** @ignore */
+    </span><span class="jsdoc-var">onDblClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findItemFromChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;dblclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">onItemClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toggleSelect</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.isSelected</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'unselect' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">//Roo.log(m);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">_t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiSelect </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.singleSelect</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiSelect </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.shiftKey </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.lastSelection</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getNodes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastSelection</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.multiSelect </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.lastSelection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+            }
+
+        }
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Get the number of selected nodes.
+     * @return {Number}
+     */
+    </span><span class="jsdoc-var">getSelectionCount </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.selections.length</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Get the currently selected nodes.
+     * @return {Array} An array of HTMLElements
+     */
+    </span><span class="jsdoc-var">getSelectedNodes </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Get the indexes of the selected nodes.
+     * @return {Array}
+     */
+    </span><span class="jsdoc-var">getSelectedIndexes </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">indexes </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">indexes.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.nodeIndex</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">indexes</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Clear all selections
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange event
+     */
+    </span><span class="jsdoc-var">clearSelections </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.nodes </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.multiSelect </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.singleSelect</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">this.selections.length </span><span class="jsdoc-syntax">&gt; 0){
+            </span><span class="jsdoc-var">this.cmp.elements </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.cmp.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectedClass</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.selections </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;selectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">);
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true if the passed node is selected
+     * @param {HTMLElement/Number} node The node or node index
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">isSelected </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s.length </span><span class="jsdoc-syntax">&lt; 1){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">s.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) !== -1;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Selects nodes.
+     * @param {Array/HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node, id of a template node or an array of any of those to select
+     * @param {Boolean} keepExisting (optional) true to keep existing selections
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
+     */
+    </span><span class="jsdoc-var">select </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeInfo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeInfo </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nodeInfo.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeInfo</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeInfo</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.isSelected</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// already selected.
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeselect&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectedClass</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.selections.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;selectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">);
+            }
+        }
+
+
+    },
+      </span><span class="jsdoc-comment">/**
+     * Unselects nodes.
+     * @param {Array/HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node, id of a template node or an array of any of those to select
+     * @param {Boolean} keepExisting (optional) true IGNORED (for campatibility with select)
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
+     */
+    </span><span class="jsdoc-var">unselect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeInfo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeInfo </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.unselect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nodeInfo</span><span class="jsdoc-syntax">);
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeInfo</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.isSelected</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-comment">//Roo.log(&quot;not selected&quot;);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// not selected.
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-comment">// fireevent???
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectedClass</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">ns.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+        },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;selectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Gets a template node.
+     * @param {HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node or the id of a template node
+     * @return {HTMLElement} The node or null if it wasn't found
+     */
+    </span><span class="jsdoc-var">getNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeInfo</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">nodeInfo </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">document.getElementById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeInfo</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">nodeInfo </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;number&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.nodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nodeInfo</span><span class="jsdoc-syntax">];
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">nodeInfo</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Gets a range template nodes.
+     * @param {Number} startIndex
+     * @param {Number} endIndex
+     * @return {Array} An array of nodes
+     */
+    </span><span class="jsdoc-var">getNodes </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.nodes</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">|| 0;
+        </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">ns.length </span><span class="jsdoc-syntax">- 1 : </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodes </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-var">nodes.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            }
+        } </span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--){
+                </span><span class="jsdoc-var">nodes.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">nodes</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Finds the index of the passed node
+     * @param {HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node or the id of a template node
+     * @return {Number} The index of the node or -1
+     */
+    </span><span class="jsdoc-var">indexOf </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">node.nodeIndex </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;number&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">node.nodeIndex</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.nodes</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">-1;
+    }
+});
+</span></code></body></html>

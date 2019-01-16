@@ -1,0 +1,131 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/lib/AnimMgr.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/*
+ * Portions of this file are based on pieces of Yahoo User Interface Library
+ * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+ * YUI licensed under the BSD License:
+ * http://developer.yahoo.net/yui/license.txt
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ *
+ */
+
+</span><span class="jsdoc-var">Roo.lib.AnimMgr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new function</span><span class="jsdoc-syntax">() {
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thread </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">queue </span><span class="jsdoc-syntax">= [];
+
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tweenCount </span><span class="jsdoc-syntax">= 0;
+
+
+    </span><span class="jsdoc-var">this.fps </span><span class="jsdoc-syntax">= 1000;
+
+
+    </span><span class="jsdoc-var">this.delay </span><span class="jsdoc-syntax">= 1;
+
+
+    </span><span class="jsdoc-var">this.registerElement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tween</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">queue</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">queue.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">tween</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">tweenCount </span><span class="jsdoc-syntax">+= 1;
+        </span><span class="jsdoc-var">tween._onStart.fire</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.start</span><span class="jsdoc-syntax">();
+    };
+
+
+    </span><span class="jsdoc-var">this.unRegister </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tween</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">tween._onComplete.fire</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">getIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tween</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">!= -1) {
+            </span><span class="jsdoc-var">queue.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, 1);
+        }
+
+        </span><span class="jsdoc-var">tweenCount </span><span class="jsdoc-syntax">-= 1;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tweenCount </span><span class="jsdoc-syntax">&lt;= 0) {
+            </span><span class="jsdoc-var">this.stop</span><span class="jsdoc-syntax">();
+        }
+    };
+
+
+    </span><span class="jsdoc-var">this.start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thread </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">thread </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.run</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.delay</span><span class="jsdoc-syntax">);
+        }
+    };
+
+
+    </span><span class="jsdoc-var">this.stop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tween</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tween</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thread</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">queue.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queue</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.isAnimated</span><span class="jsdoc-syntax">()) {
+                    </span><span class="jsdoc-var">this.unRegister</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queue</span><span class="jsdoc-syntax">[0], 0);
+                }
+            }
+
+            </span><span class="jsdoc-var">queue </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-var">thread </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">tweenCount </span><span class="jsdoc-syntax">= 0;
+        }
+        </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.unRegister</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tween</span><span class="jsdoc-syntax">);
+        }
+    };
+
+
+    </span><span class="jsdoc-var">this.run </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">queue.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tween </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">queue</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tween </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">tween.isAnimated</span><span class="jsdoc-syntax">()) {
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tween.currentFrame </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">tween.totalFrames </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">tween.totalFrames </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">)
+            {
+                </span><span class="jsdoc-var">tween.currentFrame </span><span class="jsdoc-syntax">+= 1;
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tween.useSeconds</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">correctFrame</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tween</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-var">tween._onTween.fire</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">Roo.lib.AnimMgr.stop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tween</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+            }
+        }
+    };
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">getIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">anim</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">queue.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">queue</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">anim</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">-1;
+    };
+
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">correctFrame </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tween</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">frames </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tween.totalFrames</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">frame </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tween.currentFrame</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">expected </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">tween.currentFrame </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">tween.duration </span><span class="jsdoc-syntax">* 1000 / </span><span class="jsdoc-var">tween.totalFrames</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">elapsed </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">tween.getStartTime</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tweak </span><span class="jsdoc-syntax">= 0;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">elapsed </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">tween.duration </span><span class="jsdoc-syntax">* 1000) {
+            </span><span class="jsdoc-var">tweak </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.round</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">elapsed </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">expected </span><span class="jsdoc-syntax">- 1) * </span><span class="jsdoc-var">tween.currentFrame</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">tweak </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">frames </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">frame </span><span class="jsdoc-syntax">+ 1);
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tweak </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">isFinite</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tweak</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tween.currentFrame </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">tweak </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">frames</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">tweak </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">frames </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">frame </span><span class="jsdoc-syntax">+ 1);
+            }
+
+            </span><span class="jsdoc-var">tween.currentFrame </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">tweak</span><span class="jsdoc-syntax">;
+        }
+    };
+};
+
+    </span></code></body></html>

@@ -1,0 +1,193 @@
+<html><head><title>/home/alan/gitlive/roojs1/Roo/bootstrap/Img.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * image
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.Img
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Img class
+ * @cfg {Boolean} imgResponsive false | true
+ * @cfg {String} border rounded | circle | thumbnail
+ * @cfg {String} src image source
+ * @cfg {String} alt image alternative text
+ * @cfg {String} href a tag href
+ * @cfg {String} target (_self|_blank|_parent|_top)target for a href.
+ * @cfg {String} xsUrl xs image source
+ * @cfg {String} smUrl sm image source
+ * @cfg {String} mdUrl md image source
+ * @cfg {String} lgUrl lg image source
+ * 
+ * @constructor
+ * Create a new Input
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.Img </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Img.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">// img events
+        /**
+         * @event click
+         * The img click event for the img.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Img</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+
+    </span><span class="jsdoc-var">imgResponsive</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'about:blank'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">xsUrl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">smUrl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">mdUrl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">lgUrl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.src </span><span class="jsdoc-syntax">|| (!</span><span class="jsdoc-var">this.xsUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.smUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.mdUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.lgUrl</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.createSingleImg</span><span class="jsdoc-syntax">();
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-image-responsive-group'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: []
+        };
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">){
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'Url'</span><span class="jsdoc-syntax">]){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">img </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">_this.imgResponsive</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'img-responsive' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'Url'</span><span class="jsdoc-syntax">]
+            };
+
+            </span><span class="jsdoc-var">img.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' roo-image-responsive-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">];
+
+            </span><span class="jsdoc-var">s.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">), 1);
+
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ss</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">img.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' hidden-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ss</span><span class="jsdoc-syntax">;
+            });
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'rounded'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'circle'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'thumbnail'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.border</span><span class="jsdoc-syntax">)&gt;-1) {
+                </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' img-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">_this.border</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.alt</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">cfg.alt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_this.alt</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.href</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_this.href</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        </span><span class="jsdoc-var">img
+                    </span><span class="jsdoc-syntax">]
+                };
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.target</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">a.target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_this.target</span><span class="jsdoc-syntax">;
+                }
+            }
+
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">_this.href</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">);
+
+        });
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">createSingleImg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.imgResponsive</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'img-responsive' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'about:blank'  </span><span class="jsdoc-comment">// just incase src get's set to undefined?!?
+        </span><span class="jsdoc-syntax">};
+
+        </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">cfg.src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.src </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.src</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'rounded'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'circle'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'thumbnail'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.border</span><span class="jsdoc-syntax">)&gt;-1) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' img-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.border</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alt</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.alt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.alt</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                    </span><span class="jsdoc-var">cfg
+                </span><span class="jsdoc-syntax">]
+            };
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.target</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">a.target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target</span><span class="jsdoc-syntax">;
+            }
+
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
+    },
+
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img onclick'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">/**
+     * Sets the url of the image - used to update it
+     * @param {String} url the url of the image
+     */
+
+    </span><span class="jsdoc-var">setSrc </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.src </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.src </span><span class="jsdoc-syntax">|| (!</span><span class="jsdoc-var">this.xsUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.smUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.mdUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.lgUrl</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.el.dom.src </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.src </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">;
+    }
+
+
+
+});
+
+ </span></code></body></html>

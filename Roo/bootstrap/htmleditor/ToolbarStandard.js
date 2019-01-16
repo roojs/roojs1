@@ -4,6 +4,7 @@ Roo.namespace('Roo.bootstrap.htmleditor');
  * @class Roo.bootstrap.HtmlEditorToolbar1
  * Basic Toolbar
  * 
+ * @example
  * Usage:
  *
  new Roo.bootstrap.HtmlEditor({

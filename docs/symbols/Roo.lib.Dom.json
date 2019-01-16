@@ -1,0 +1,24 @@
+{
+  "name" : "Roo.lib.Dom",
+  "augments" : [
+  ],
+  "desc" : "Dom utils (from YIU afaik)",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "memberOf" : "Dom",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+  ],
+  "returns" : [
+  ],
+  "config" : [
+  ],
+  "methods" : [
+  ],
+  "events" : [
+  ]
+}
