@@ -20,7 +20,6 @@ Roo.bootstrap.BezierSignature = function(config){
     this.addEvents({
         "resize" : true
     });
-    
 };
 
 Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,
