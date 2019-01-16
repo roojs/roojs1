@@ -1,15 +1,16 @@
 /**
-*    This script refer to:
-*    Title: Signature Pad
-*    Author: szimek
-*    Availability: https://github.com/szimek/signature_pad
+*    
 **/
 
 /**
  * @class Roo.bootstrap.BezierSignature
  * @extends Roo.bootstrap.Component
  * Bootstrap BezierSignature class
+ * This script refer to:
  * 
+ *    Title: Signature Pad
+ *    Author: szimek
+ *    Availability: https://github.com/szimek/signature_pad* 
  * @constructor
  * Create a new BezierSignature
  * @param {Object} config The config object
