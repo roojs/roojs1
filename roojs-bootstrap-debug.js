@@ -41568,7 +41568,8 @@ Roo.bootstrap.BezierSignature = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,
+{
     
     curve_data: [],
     
@@ -41577,57 +41578,57 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     mouse_btn_down: true,
     
     /**
-     * @cfg(int) canvas height
+     * @cfg {int} canvas height
      */
     canvas_height: '200px',
     
     /**
-     * @cfg(float or function) Radius of a single dot.
+     * @cfg {float|function} Radius of a single dot.
      */ 
     dot_size: false,
     
     /**
-     * @cfg(float) Minimum width of a line. Defaults to 0.5.
+     * @cfg {float} Minimum width of a line. Defaults to 0.5.
      */
     min_width: 0.5,
     
     /**
-     * @cfg(float) Maximum width of a line. Defaults to 2.5.
+     * @cfg {float} Maximum width of a line. Defaults to 2.5.
      */
     max_width: 2.5,
     
     /**
-     * @cfg(integer) Draw the next point at most once per every x milliseconds. Set it to 0 to turn off throttling. Defaults to 16.
+     * @cfg {integer} Draw the next point at most once per every x milliseconds. Set it to 0 to turn off throttling. Defaults to 16.
      */
     throttle: 16,
     
     /**
-     * @cfg(integer) Add the next point only if the previous one is farther than x pixels. Defaults to 5.
+     * @cfg {integer} Add the next point only if the previous one is farther than x pixels. Defaults to 5.
      */
     min_distance: 5,
     
     /**
-     * @cfg(string) Color used to clear the background. Can be any color format accepted by context.fillStyle. Defaults to "rgba(0,0,0,0)" (transparent black). Use a non-transparent color e.g. "rgb(255,255,255)" (opaque white) if you'd like to save signatures as JPEG images.
+     * @cfg {string} Color used to clear the background. Can be any color format accepted by context.fillStyle. Defaults to "rgba(0,0,0,0)" (transparent black). Use a non-transparent color e.g. "rgb(255,255,255)" (opaque white) if you'd like to save signatures as JPEG images.
      */
     bg_color: 'rgba(0, 0, 0, 0)',
     
     /**
-     * @cfg(string) Color used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to "black".
+     * @cfg {string} Color used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to "black".
      */
     dot_color: 'black',
     
     /**
-     * @cfg(float) Weight used to modify new velocity based on the previous velocity. Defaults to 0.7.
-     */
+     * @cfg {float} Weight used to modify new velocity based on the previous velocity. Defaults to 0.7.
+     */ 
     velocity_filter_weight: 0.7,
     
     /**
-     * @cfg(function) Callback when stroke begin.
+     * @cfg {function} Callback when stroke begin.
      */
     onBegin: false,
     
     /**
-     * @cfg(function) Callback when stroke end.
+     * @cfg {function} Callback when stroke end.
      */
     onEnd: false,
     
