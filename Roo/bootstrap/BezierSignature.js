@@ -1,8 +1,4 @@
 /**
-*    
-**/
-
-/**
  * @class Roo.bootstrap.BezierSignature
  * @extends Roo.bootstrap.Component
  * Bootstrap BezierSignature class
