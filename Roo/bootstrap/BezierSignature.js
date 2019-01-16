@@ -256,7 +256,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,
         this.strokeUpdate(e);
         
         if (this.throttle) {
-            this.throttle(this.strokeUpdate, this.throttle);
+            this.throttleStroke(this.strokeUpdate, this.throttle);
         }
         else {
             this.strokeUpdate(e);
@@ -547,7 +547,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,
         return Bezier;
     }()),
     
-    throttle: function(fn, wait) {
+    throttleStroke: function(fn, wait) {
       if (wait === void 0) { wait = 250; }
       var previous = 0;
       var timeout = null;
