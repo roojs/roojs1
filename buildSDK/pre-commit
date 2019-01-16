@@ -7,3 +7,4 @@ while (($line = fgets(STDIN)) !== false) {
      echo "got: $line\n";
 }
      
+ 
