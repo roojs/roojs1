@@ -1,6 +1,9 @@
 #!/usr/bin/php
+<?php
 
 
- while (($line = fgets(STDIN)) !== false) {
-            echo "got: $line\n";
+
+while (($line = fgets(STDIN)) !== false) {
+         echo "got: $line\n";
+}
      
