@@ -4,6 +4,6 @@
 
 
 while (($line = fgets(STDIN)) !== false) {
-         echo "got: $line\n";
+     echo "got: $line\n";
 }
      
