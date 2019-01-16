@@ -22,7 +22,8 @@ Roo.bootstrap.BezierSignature = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,
+{
     
     curve_data: [],
     
@@ -72,7 +73,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
     
     /**
      * @cfg {float} Weight used to modify new velocity based on the previous velocity. Defaults to 0.7.
-     */
+     */ 
     velocity_filter_weight: 0.7,
     
     /**
