@@ -9,4 +9,4 @@ while (($line = fgets(STDIN)) !== false) {
 }
 file_put_contents("/tmp/commitlog.txt", implode("\n", $ar));
       
- 
+  
