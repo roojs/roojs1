@@ -24,7 +24,7 @@ Roo.bootstrap.BezierSignature = function(config){
 
 Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,
 {
-    
+     
     curve_data: [],
     
     is_empty: true,
