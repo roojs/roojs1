@@ -18,7 +18,7 @@
  * @cfg {Boolean} allowDrop false if this node cannot be drop on
  * @cfg {Boolean} disabled true to start the node disabled
  * @cfg {String} icon The path to an icon for the node. The preferred way to do this
- * is to use the cls or iconCls attributes and add the icon via a CSS background image.
+ *    is to use the cls or iconCls attributes and add the icon via a CSS background image.
  * @cfg {String} cls A css class to be added to the node
  * @cfg {String} iconCls A css class to be added to the nodes icon element for applying css background images
  * @cfg {String} href URL of the link used for the node (defaults to #)
