@@ -911,7 +911,7 @@
     {
       "name" : "specialkey",
       "desc" : "",
-      "memberOf" : "",
+      "memberOf" : "Roo.HtmlEditorCore",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -924,7 +924,7 @@
     {
       "name" : "editorevent",
       "desc" : "Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.",
-      "memberOf" : "",
+      "memberOf" : "Roo.HtmlEditorCore",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -943,7 +943,7 @@
     {
       "name" : "beforepush",
       "desc" : "Fires before the iframe editor is updated with content from the textarea. Return false\nto cancel the push.",
-      "memberOf" : "",
+      "memberOf" : "Roo.HtmlEditorCore",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -968,7 +968,7 @@
     {
       "name" : "activate",
       "desc" : "Fires when the editor is first receives the focus. Any insertion must wait\nuntil after this event.",
-      "memberOf" : "",
+      "memberOf" : "Roo.HtmlEditorCore",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -987,7 +987,7 @@
     {
       "name" : "initialize",
       "desc" : "Fires when the editor is fully initialized (including the iframe)",
-      "memberOf" : "",
+      "memberOf" : "Roo.HtmlEditorCore",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1006,7 +1006,7 @@
     {
       "name" : "beforesync",
       "desc" : "Fires before the textarea is updated with content from the editor iframe. Return false\nto cancel the sync.",
-      "memberOf" : "",
+      "memberOf" : "Roo.HtmlEditorCore",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1031,7 +1031,7 @@
     {
       "name" : "push",
       "desc" : "Fires when the iframe editor is updated with content from the textarea.",
-      "memberOf" : "",
+      "memberOf" : "Roo.HtmlEditorCore",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1056,7 +1056,7 @@
     {
       "name" : "sync",
       "desc" : "Fires when the textarea is updated with content from the editor iframe.",
-      "memberOf" : "",
+      "memberOf" : "Roo.HtmlEditorCore",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1081,7 +1081,7 @@
     {
       "name" : "change",
       "desc" : "",
-      "memberOf" : "",
+      "memberOf" : "Roo.HtmlEditorCore",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1094,7 +1094,7 @@
     {
       "name" : "blur",
       "desc" : "",
-      "memberOf" : "",
+      "memberOf" : "Roo.HtmlEditorCore",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1107,7 +1107,7 @@
     {
       "name" : "focus",
       "desc" : "",
-      "memberOf" : "",
+      "memberOf" : "Roo.HtmlEditorCore",
       "example" : "",
       "deprecated" : "",
       "since" : "",

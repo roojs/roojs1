@@ -1557,7 +1557,7 @@
     {
       "name" : "autosize",
       "desc" : "Fires when the autosize function is triggered.  The field may or may not have actually changed size\naccording to the default logic, but this event provides a hook for the developer to apply additional\nlogic at runtime to resize the field if needed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.TextField",
       "example" : "",
       "deprecated" : "",
       "since" : "",

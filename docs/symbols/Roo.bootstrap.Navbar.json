@@ -818,7 +818,7 @@
     {
       "name" : "beforetoggle",
       "desc" : "Fire before toggle the menu",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Navbar",
       "example" : "",
       "deprecated" : "",
       "since" : "",

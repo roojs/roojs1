@@ -1368,7 +1368,7 @@
     {
       "name" : "close",
       "desc" : "Fires after the click the close btn",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.DisplayField",
       "example" : "",
       "deprecated" : "",
       "since" : "",

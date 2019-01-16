@@ -1,14 +1,12 @@
-/*
- * - LGPL
- *
- * Alert
- * 
- */
-
 /**
  * @class Roo.bootstrap.Alert
  * @extends Roo.bootstrap.Component
- * Bootstrap Alert class
+ * Bootstrap Alert class - shows an alert area box
+ * eg
+ * <div class="alert alert-danger" role="alert"><span class="fa fa-exclamation-triangle"></span><span class="sr-only">Error:</span>
+  Enter a valid email address
+</div>
+ * @licence LGPL
  * @cfg {String} title The title of alert
  * @cfg {String} html The content of alert
  * @cfg {String} weight (  success | info | warning | danger )

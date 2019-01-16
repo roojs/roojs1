@@ -1087,7 +1087,7 @@
     {
       "name" : "rowsrendered",
       "desc" : "Fires when all the  rows have been rendered",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1106,7 +1106,7 @@
     {
       "name" : "headercontextmenu",
       "desc" : "Fires when a header is right clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1137,7 +1137,7 @@
     {
       "name" : "rowdblclick",
       "desc" : "Fires when a row is double clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1174,7 +1174,7 @@
     {
       "name" : "contextmenu",
       "desc" : "The raw contextmenu event for the entire grid.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1193,7 +1193,7 @@
     {
       "name" : "rowcontextmenu",
       "desc" : "Fires when a row is right clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1224,7 +1224,7 @@
     {
       "name" : "cellcontextmenu",
       "desc" : "Fires when a cell is right clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1261,7 +1261,7 @@
     {
       "name" : "celldblclick",
       "desc" : "Fires when a cell is double clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1304,7 +1304,7 @@
     {
       "name" : "rowclass",
       "desc" : "Fires when a row is rendered, so you can change add a style to it.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1329,7 +1329,7 @@
     {
       "name" : "mouseover",
       "desc" : "Fires when a mouseover occur",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1372,7 +1372,7 @@
     {
       "name" : "mouseout",
       "desc" : "Fires when a mouseout occur",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1415,7 +1415,7 @@
     {
       "name" : "cellclick",
       "desc" : "Fires when a cell is clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1458,7 +1458,7 @@
     {
       "name" : "rowclick",
       "desc" : "Fires when a row is clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",
       "since" : "",

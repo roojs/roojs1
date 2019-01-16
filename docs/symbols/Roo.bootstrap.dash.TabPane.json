@@ -826,7 +826,7 @@
     {
       "name" : "activate",
       "desc" : "When a pane is activated",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.dash.TabPane",
       "example" : "",
       "deprecated" : "",
       "since" : "",

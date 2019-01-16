@@ -834,7 +834,7 @@
     {
       "name" : "click",
       "desc" : "When a Brick is click",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Brick",
       "example" : "",
       "deprecated" : "",
       "since" : "",

@@ -631,7 +631,7 @@
     {
       "name" : "monthchange",
       "desc" : "Fires when the displayed month changes",
-      "memberOf" : "",
+      "memberOf" : "Roo.CalendarPanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -656,7 +656,7 @@
     {
       "name" : "evententer",
       "desc" : "Fires when mouse over an event",
-      "memberOf" : "",
+      "memberOf" : "Roo.CalendarPanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -681,7 +681,7 @@
     {
       "name" : "eventleave",
       "desc" : "Fires when the mouse leaves an",
-      "memberOf" : "",
+      "memberOf" : "Roo.CalendarPanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -706,7 +706,7 @@
     {
       "name" : "eventclick",
       "desc" : "Fires when the mouse click an",
-      "memberOf" : "",
+      "memberOf" : "Roo.CalendarPanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -731,7 +731,7 @@
     {
       "name" : "rendered",
       "desc" : "Fires when the grid is rendered",
-      "memberOf" : "",
+      "memberOf" : "Roo.CalendarPanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -750,7 +750,7 @@
     {
       "name" : "select",
       "desc" : "Fires when a date is selected",
-      "memberOf" : "",
+      "memberOf" : "Roo.CalendarPanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",

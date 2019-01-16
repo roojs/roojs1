@@ -402,7 +402,7 @@
     {
       "name" : "mousedown",
       "desc" : "Fires when the mouse button is depressed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.util.ClickRepeater",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -421,7 +421,7 @@
     {
       "name" : "click",
       "desc" : "Fires on a specified interval during the time the element is pressed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.util.ClickRepeater",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -440,7 +440,7 @@
     {
       "name" : "mouseup",
       "desc" : "Fires when the mouse key is released.",
-      "memberOf" : "",
+      "memberOf" : "Roo.util.ClickRepeater",
       "example" : "",
       "deprecated" : "",
       "since" : "",

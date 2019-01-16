@@ -841,7 +841,7 @@
     {
       "name" : "dblclick",
       "desc" : "Fires when a template node is double clicked.",
-      "memberOf" : "",
+      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -878,7 +878,7 @@
     {
       "name" : "preparedata",
       "desc" : "Fires on every row to render, to allow you to change the data.",
-      "memberOf" : "",
+      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -903,7 +903,7 @@
     {
       "name" : "selectionchange",
       "desc" : "Fires when the selected nodes change.",
-      "memberOf" : "",
+      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -928,7 +928,7 @@
     {
       "name" : "beforeselect",
       "desc" : "Fires before a selection is made. If any handlers return false, the selection is cancelled.",
-      "memberOf" : "",
+      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -959,7 +959,7 @@
     {
       "name" : "beforeclick",
       "desc" : "Fires before a click is processed. Returns false to cancel the default action.",
-      "memberOf" : "",
+      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -996,7 +996,7 @@
     {
       "name" : "click",
       "desc" : "Fires when a template node is clicked.",
-      "memberOf" : "",
+      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1033,7 +1033,7 @@
     {
       "name" : "contextmenu",
       "desc" : "Fires when a template node is right clicked.",
-      "memberOf" : "",
+      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",

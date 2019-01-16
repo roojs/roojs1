@@ -736,7 +736,7 @@
     {
       "name" : "mouseover",
       "desc" : "Fires when the mouse is hovering over this menu",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -767,7 +767,7 @@
     {
       "name" : "mouseout",
       "desc" : "Fires when the mouse exits this menu",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -798,7 +798,7 @@
     {
       "name" : "beforehide",
       "desc" : "Fires before this menu is hidden",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -817,7 +817,7 @@
     {
       "name" : "itemclick",
       "desc" : "Fires when a menu item contained in this menu is clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -842,7 +842,7 @@
     {
       "name" : "beforeshow",
       "desc" : "Fires before this menu is displayed",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -861,7 +861,7 @@
     {
       "name" : "hide",
       "desc" : "Fires after this menu is hidden",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -880,7 +880,7 @@
     {
       "name" : "click",
       "desc" : "Fires when this menu is clicked (or when the enter key is pressed while it is active)",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -911,7 +911,7 @@
     {
       "name" : "show",
       "desc" : "Fires after this menu is displayed",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",

@@ -671,7 +671,7 @@
     {
       "name" : "beforeclose",
       "desc" : "Fires before this tab is closed. To cancel the close, set cancel to true on e (e.cancel = true).",
-      "memberOf" : "",
+      "memberOf" : "Roo.TabPanelItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -696,7 +696,7 @@
     {
       "name" : "close",
       "desc" : "Fires when this tab is closed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.TabPanelItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -715,7 +715,7 @@
     {
       "name" : "activate",
       "desc" : "Fires when this tab becomes the active tab.",
-      "memberOf" : "",
+      "memberOf" : "Roo.TabPanelItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -740,7 +740,7 @@
     {
       "name" : "deactivate",
       "desc" : "Fires when this tab is no longer the active tab.",
-      "memberOf" : "",
+      "memberOf" : "Roo.TabPanelItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",

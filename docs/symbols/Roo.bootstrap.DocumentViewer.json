@@ -806,7 +806,7 @@
     {
       "name" : "download",
       "desc" : "Fire after download button",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentViewer",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -825,7 +825,7 @@
     {
       "name" : "initial",
       "desc" : "Fire after initEvent",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentViewer",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -844,7 +844,7 @@
     {
       "name" : "trash",
       "desc" : "Fire after trash button",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentViewer",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -863,7 +863,7 @@
     {
       "name" : "click",
       "desc" : "Fire after click",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentViewer",
       "example" : "",
       "deprecated" : "",
       "since" : "",

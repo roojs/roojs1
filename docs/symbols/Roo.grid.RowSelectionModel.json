@@ -822,7 +822,7 @@
     {
       "name" : "selectionchange",
       "desc" : "Fires when the selection changes",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.RowSelectionModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -841,7 +841,7 @@
     {
       "name" : "rowselect",
       "desc" : "Fires when a row is selected.",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.RowSelectionModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -872,7 +872,7 @@
     {
       "name" : "beforerowselect",
       "desc" : "Fires when a row is selected being selected, return false to cancel.",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.RowSelectionModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -903,7 +903,7 @@
     {
       "name" : "afterselectionchange",
       "desc" : "Fires after the selection changes (eg. by key press or clicking)",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.RowSelectionModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -922,7 +922,7 @@
     {
       "name" : "rowdeselect",
       "desc" : "Fires when a row is deselected.",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.RowSelectionModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",

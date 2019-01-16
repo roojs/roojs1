@@ -785,7 +785,7 @@
     {
       "name" : "childrenrendered",
       "desc" : "Fires when the children have been rendered..",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",

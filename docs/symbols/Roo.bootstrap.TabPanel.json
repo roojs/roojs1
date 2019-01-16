@@ -826,7 +826,7 @@
     {
       "name" : "changed",
       "desc" : "Fires when the active status changes",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.TabPanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -851,7 +851,7 @@
     {
       "name" : "beforedeactivate",
       "desc" : "Fires before a tab is de-activated - can be used to do validation on a form.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.TabPanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",

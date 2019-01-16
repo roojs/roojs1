@@ -51,7 +51,7 @@
     {
       "name" : "resize",
       "desc" : "Fire this event on a container when it resizes",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.ColumnTree",
       "example" : "",
       "deprecated" : "",
       "since" : "",

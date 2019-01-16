@@ -970,7 +970,7 @@
     {
       "name" : "changed",
       "desc" : "Fires when the active item changes",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.NavGroup",
       "example" : "",
       "deprecated" : "",
       "since" : "",

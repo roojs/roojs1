@@ -912,7 +912,7 @@
     {
       "name" : "beforeappend",
       "desc" : "Fires before a new child is appended, return false to cancel the append.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Node",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -943,7 +943,7 @@
     {
       "name" : "move",
       "desc" : "Fires when this node is moved to a new location in the tree",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Node",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -986,7 +986,7 @@
     {
       "name" : "append",
       "desc" : "Fires when a new child node is appended",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Node",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1023,7 +1023,7 @@
     {
       "name" : "beforeremove",
       "desc" : "Fires before a child is removed, return false to cancel the remove.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Node",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1054,7 +1054,7 @@
     {
       "name" : "remove",
       "desc" : "Fires when a child node is removed",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Node",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1085,7 +1085,7 @@
     {
       "name" : "beforeinsert",
       "desc" : "Fires before a new child is inserted, return false to cancel the insert.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Node",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1122,7 +1122,7 @@
     {
       "name" : "insert",
       "desc" : "Fires when a new child node is inserted.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Node",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1159,7 +1159,7 @@
     {
       "name" : "beforemove",
       "desc" : "Fires before this node is moved to a new location in the tree. Return false to cancel the move.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Node",
       "example" : "",
       "deprecated" : "",
       "since" : "",

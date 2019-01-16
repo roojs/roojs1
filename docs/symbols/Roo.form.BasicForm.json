@@ -969,7 +969,7 @@
     {
       "name" : "beforeaction",
       "desc" : "Fires before any action is performed. Return false to cancel the action.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -994,7 +994,7 @@
     {
       "name" : "actioncomplete",
       "desc" : "Fires when an action is completed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1019,7 +1019,7 @@
     {
       "name" : "actionfailed",
       "desc" : "Fires when an action fails.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",

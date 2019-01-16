@@ -630,7 +630,7 @@
     {
       "name" : "beforerender",
       "desc" : "Fires before the component is rendered. Return false to stop the render.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -649,7 +649,7 @@
     {
       "name" : "disable",
       "desc" : "Fires after the component is disabled.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -668,7 +668,7 @@
     {
       "name" : "render",
       "desc" : "Fires after the component is rendered.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -687,7 +687,7 @@
     {
       "name" : "destroy",
       "desc" : "Fires after the component is destroyed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -706,7 +706,7 @@
     {
       "name" : "hide",
       "desc" : "Fires after the component is hidden.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -725,7 +725,7 @@
     {
       "name" : "beforehide",
       "desc" : "Fires before the component is hidden. Return false to stop the hide.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -744,7 +744,7 @@
     {
       "name" : "show",
       "desc" : "Fires after the component is shown.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -763,7 +763,7 @@
     {
       "name" : "beforeshow",
       "desc" : "Fires before the component is shown.  Return false to stop the show.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -782,7 +782,7 @@
     {
       "name" : "enable",
       "desc" : "Fires after the component is enabled.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -801,7 +801,7 @@
     {
       "name" : "beforedestroy",
       "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",

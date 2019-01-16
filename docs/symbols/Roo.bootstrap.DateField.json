@@ -1540,7 +1540,7 @@
     {
       "name" : "beforeselect",
       "desc" : "Fires when before select a date.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DateField",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1565,7 +1565,7 @@
     {
       "name" : "show",
       "desc" : "Fires when this field show.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DateField",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1590,7 +1590,7 @@
     {
       "name" : "select",
       "desc" : "Fires when select a date.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DateField",
       "example" : "",
       "deprecated" : "",
       "since" : "",

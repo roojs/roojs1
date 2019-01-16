@@ -1061,7 +1061,7 @@
     {
       "name" : "toggle",
       "desc" : "After the button has been toggles",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Button",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1092,7 +1092,7 @@
     {
       "name" : "click",
       "desc" : "When a butotn is pressed",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Button",
       "example" : "",
       "deprecated" : "",
       "since" : "",

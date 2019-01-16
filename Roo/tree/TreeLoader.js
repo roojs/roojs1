@@ -39,7 +39,9 @@
     myTreeLoader.on("beforeload", function(treeLoader, node) {
         this.baseParams.category = node.attributes.category;
     }, this);
-</code></pre><
+    
+</code></pre>
+ *
  * This would pass an HTTP parameter called "category" to the server containing
  * the value of the Node's "category" attribute.
  * @constructor

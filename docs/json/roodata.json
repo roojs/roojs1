@@ -16557,6 +16557,54 @@
   "Roo.bootstrap.BezierSignature" : {
     "props" : [
       {
+        "name" : "Add",
+        "type" : "integer",
+        "desc" : "the next point only if the previous one is farther than x pixels. Defaults to 5.",
+        "memberOf" : ""
+      },
+      {
+        "name" : "Callback",
+        "type" : "function",
+        "desc" : "when stroke begin.",
+        "memberOf" : ""
+      },
+      {
+        "name" : "Color",
+        "type" : "string",
+        "desc" : "used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to \"black\".",
+        "memberOf" : ""
+      },
+      {
+        "name" : "Draw",
+        "type" : "integer",
+        "desc" : "the next point at most once per every x milliseconds. Set it to 0 to turn off throttling. Defaults to 16.",
+        "memberOf" : ""
+      },
+      {
+        "name" : "Maximum",
+        "type" : "float",
+        "desc" : "width of a line. Defaults to 2.5.",
+        "memberOf" : ""
+      },
+      {
+        "name" : "Minimum",
+        "type" : "float",
+        "desc" : "width of a line. Defaults to 0.5.",
+        "memberOf" : ""
+      },
+      {
+        "name" : "Radius",
+        "type" : "float|function",
+        "desc" : "of a single dot.",
+        "memberOf" : ""
+      },
+      {
+        "name" : "Weight",
+        "type" : "float",
+        "desc" : "used to modify new velocity based on the previous velocity. Defaults to 0.7.",
+        "memberOf" : ""
+      },
+      {
         "name" : "actionMode",
         "type" : "String",
         "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
@@ -16573,6 +16621,12 @@
         "type" : "Boolean",
         "desc" : "True if element can be rebuild from a HTML page",
         "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "canvas",
+        "type" : "int",
+        "desc" : "height",
+        "memberOf" : ""
       },
       {
         "name" : "cls",

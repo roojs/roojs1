@@ -1,0 +1,156 @@
+#!/usr/bin/php
+<?php
+
+// install : ln -s buildSDK/pre-commit .git/hooks/
+
+// the recomendation is to check if the current commit is same as the one on any of the files/directories that need monitoring.
+
+register_shutdown_function ( 'unlock');
+lock();
+
+trigger_action('build_docs', array('Roo.js', 'Roo/', 'Array.js', 'Function.js', 'Date.js', 'String.js', 'Number.js'));
+
+$core = trigger_action_file('compile_core', 'dependancy_core.txt');
+$ui = trigger_action_file('compile_ui',  'dependancy_ui.txt');
+trigger_action_file('compile_bootstrap',  'dependancy_bootstrap.txt');
+trigger_action_file('compile_mailer',  'dependancy_mailer.txt');
+trigger_action_file('compile_calendar',  'dependancy_calendar.txt');
+
+trigger_action('compile_less', array('less'));
+trigger_action('compile_scss', array('scss'));
+
+if ($core || $ui) {
+    merge_files();
+}
+
+function lock()
+{
+    static $tries = 0;
+    clearstatcache();
+    if (file_exists(".git/pre-commit-running")) {
+        if (file_exists(".git/pre-commit-pending")) {
+            exit;
+        }
+        file_put_contents(".git/pre-commit-pending","\n");
+        sleep(30); // wait 30 seconds
+        unlink(".git/pre-commit-pending");
+        $tries++;
+        if ($tries > 3) {
+            exit;
+        }
+    }
+    file_put_contents(".git/pre-commit-running","\n");
+}
+function unlock()
+{
+    unlink(".git/pre-commit-running");
+}
+
+
+function changed_files()
+{
+    static $output = array();
+    if (!empty($output)) {
+        return $output;
+    }
+    $return = 0;
+    exec('git rev-parse --verify HEAD 2> /dev/null', $output, $return);
+    if ($return != 0) {
+        exit;
+    }
+    
+    exec("git diff-index --cached --name-only 'HEAD'", $output);
+    return $output;
+}
+
+function trigger_action_file($fn, $filename)
+{
+    $ret = explode("\n",file_get_contents(__DIR__ . "/" . $filename));
+    $ret[] = "buildSDK/".$filename;
+    return trigger_action($fn, $ret);
+    
+}
+
+function trigger_action($fn, $files)
+{
+    $changed = changed_files();
+    foreach(changed_files() as $cg) {
+        foreach($files as $f) {
+            if ($f == $cg) {
+                echo "RUNNING : $fn\n";
+                $fn();
+                return true;
+            }
+            if (substr($f, -1,1) == '/' && substr($cg,0, strlen($f)) == $f) {
+                echo "RUNNING : $fn\n";
+                $fn();
+                return true;    
+            }
+        }
+    }
+    return false;
+}
+
+function build_docs()
+{
+    exec("roojspacker -i buildSDK/dependancy_core.txt  -i buildSDK/dependancy_ui.txt  " . 
+    "-i buildSDK/dependancy_bootstrap.txt -i buildSDK/dependancy_calendar.txt " .
+   "--doc-target=docs -D");
+}
+function compile_core()
+{
+    exec("roojspacker -t roojs-core.js -T roojs-core-debug.js -i buildSDK/dependancy_core.txt ");
+}
+
+function compile_ui()
+{
+    exec("roojspacker -t roojs-ui.js -T roojs-ui-debug.js -i buildSDK/dependancy_ui.txt");
+}
+
+function merge_files()
+{
+    exec("cat      roojs-core.js  roojs-ui.js >  roojs-all.js");
+    exec("cat roojs-core-debug.js  roojs-ui-debug.js > roojs-debug.js");
+}
+
+ 
+function compile_bootstrap()
+{
+    exec("roojspacker -t roojs-bootstrap.js -T roojs-bootstrap-debug.js -i buildSDK/dependancy_bootstrap.txt");
+}
+ 
+function compile_calendar()
+{
+    exec("roojspacker -t roojs-calendar.js -T roojs-calendar-debug.js -i buildSDK/dependancy_calendar.txt");
+}  
+  
+  
+function compile_mailer()
+{
+
+    exec("roojspacker -t roojs-mailer.js -T roojs-mailer-debug.js -i buildSDK/dependancy_mailer.txt");
+}  
+ 
+function compile_docbook()
+{
+    exec("roojspacker -t roojs-doc.js -T roojs-doc-debug.js -i buildSDK/dependancy_doc.txt");
+}
+
+  
+
+function compile_less()
+{
+    exec("php buildSDK/less-bootstrap-complier.php");
+}
+
+function compile_scss()
+{
+    exec("php buildSDK/scss-bootstrap.php");
+} 
+ 
+
+
+
+ 
+       
+  

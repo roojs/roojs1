@@ -1132,7 +1132,7 @@
     {
       "name" : "beforeloadadd",
       "desc" : "Fires after a new set of Records has been loaded.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Store",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1163,7 +1163,7 @@
     {
       "name" : "loadexception",
       "desc" : "Fires if an exception occurs in the Proxy during loading.\nCalled with the signature of the Proxy's \"loadexception\" event.\nIf you return Json { data: [] , success: false, .... } then this will be thrown with the following args",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Store",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1200,7 +1200,7 @@
     {
       "name" : "load",
       "desc" : "Fires after a new set of Records has been loaded, before they are added to the store.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Store",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1231,7 +1231,7 @@
     {
       "name" : "add",
       "desc" : "Fires when Records have been added to the Store",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Store",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1262,7 +1262,7 @@
     {
       "name" : "metachange",
       "desc" : "Fires when this store's reader provides new metadata (fields). This is currently only support for JsonReaders.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Store",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1287,7 +1287,7 @@
     {
       "name" : "clear",
       "desc" : "Fires when the data cache has been cleared.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Store",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1306,7 +1306,7 @@
     {
       "name" : "remove",
       "desc" : "Fires when a Record has been removed from the Store",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Store",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1337,7 +1337,7 @@
     {
       "name" : "update",
       "desc" : "Fires when a Record has been updated",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Store",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1368,7 +1368,7 @@
     {
       "name" : "beforeload",
       "desc" : "Fires before a request is made for a new data object.  If the beforeload handler returns false\nthe load action will be canceled.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Store",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1393,7 +1393,7 @@
     {
       "name" : "datachanged",
       "desc" : "Fires when the data cache has changed, and a widget which is using this Store\nas a Record cache should refresh its view.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Store",
       "example" : "",
       "deprecated" : "",
       "since" : "",

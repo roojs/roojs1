@@ -581,7 +581,7 @@
     {
       "name" : "paneladded",
       "desc" : "Fires when a panel is added.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicLayoutRegion",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -606,7 +606,7 @@
     {
       "name" : "invalidated",
       "desc" : "Fires when the layout for this region is changed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicLayoutRegion",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -625,7 +625,7 @@
     {
       "name" : "expanded",
       "desc" : "Fires when this region is expanded.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicLayoutRegion",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -644,7 +644,7 @@
     {
       "name" : "beforeremove",
       "desc" : "Fires before a panel is removed (or closed). To cancel the removal set \"e.cancel = true\" on the event argument.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicLayoutRegion",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -675,7 +675,7 @@
     {
       "name" : "collapsed",
       "desc" : "Fires when this region is collapsed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicLayoutRegion",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -694,7 +694,7 @@
     {
       "name" : "panelremoved",
       "desc" : "Fires when a panel is removed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicLayoutRegion",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -719,7 +719,7 @@
     {
       "name" : "beforecollapse",
       "desc" : "Fires when this region before collapse.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicLayoutRegion",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -738,7 +738,7 @@
     {
       "name" : "slidehide",
       "desc" : "Fires when this region slides out of view.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicLayoutRegion",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -757,7 +757,7 @@
     {
       "name" : "visibilitychange",
       "desc" : "Fires when this region is shown or hidden",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicLayoutRegion",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -782,7 +782,7 @@
     {
       "name" : "slideshow",
       "desc" : "Fires when this region is slid into view.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicLayoutRegion",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -801,7 +801,7 @@
     {
       "name" : "panelactivated",
       "desc" : "Fires when a panel is activated.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicLayoutRegion",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -826,7 +826,7 @@
     {
       "name" : "resized",
       "desc" : "Fires when the user resizes this region.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicLayoutRegion",
       "example" : "",
       "deprecated" : "",
       "since" : "",

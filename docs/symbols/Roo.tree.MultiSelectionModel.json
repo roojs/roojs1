@@ -465,7 +465,7 @@
     {
       "name" : "selectionchange",
       "desc" : "Fires when the selected nodes change",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.MultiSelectionModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",

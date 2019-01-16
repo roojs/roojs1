@@ -848,7 +848,7 @@
     {
       "name" : "beforepropertychange",
       "desc" : "Fires before a property changes (return false to stop?)",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.PropertyGrid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -885,7 +885,7 @@
     {
       "name" : "propertychange",
       "desc" : "Fires after a property changes",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.PropertyGrid",
       "example" : "",
       "deprecated" : "",
       "since" : "",

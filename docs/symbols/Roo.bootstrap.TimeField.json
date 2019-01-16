@@ -1436,7 +1436,7 @@
     {
       "name" : "select",
       "desc" : "Fires when select a date.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.TimeField",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1461,7 +1461,7 @@
     {
       "name" : "show",
       "desc" : "Fires when this field show.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.TimeField",
       "example" : "",
       "deprecated" : "",
       "since" : "",

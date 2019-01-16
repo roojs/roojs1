@@ -737,7 +737,7 @@
     {
       "name" : "select",
       "desc" : "",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.DateMenu",
       "example" : "",
       "deprecated" : "",
       "since" : "",

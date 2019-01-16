@@ -898,7 +898,7 @@
     {
       "name" : "mapRightClick",
       "desc" : "Fires when right click the map.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -923,7 +923,7 @@
     {
       "name" : "mapClick",
       "desc" : "Fires when click the map.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -948,7 +948,7 @@
     {
       "name" : "resize",
       "desc" : "Fires when the map resize.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -967,7 +967,7 @@
     {
       "name" : "OverlayViewOnRemove",
       "desc" : "Fires when OverlayView Draw",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -986,7 +986,7 @@
     {
       "name" : "OverlayViewDraw",
       "desc" : "Fires when OverlayView Draw",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1005,7 +1005,7 @@
     {
       "name" : "OverlayViewOnAdd",
       "desc" : "Fires when OverlayView Draw",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1024,7 +1024,7 @@
     {
       "name" : "OverlayViewHide",
       "desc" : "Fires when OverlayView Draw",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1043,7 +1043,7 @@
     {
       "name" : "OverlayViewShow",
       "desc" : "Fires when OverlayView Draw",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1068,7 +1068,7 @@
     {
       "name" : "initial",
       "desc" : "Fires when the picker initialized.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1093,7 +1093,7 @@
     {
       "name" : "positionchanged",
       "desc" : "Fires when the picker position changed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1118,7 +1118,7 @@
     {
       "name" : "markerClick",
       "desc" : "Fires when click the marker.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1143,7 +1143,7 @@
     {
       "name" : "loadexception",
       "desc" : "Fires when load google lib failed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1162,7 +1162,7 @@
     {
       "name" : "hide",
       "desc" : "Fires when the map hide.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1181,7 +1181,7 @@
     {
       "name" : "markerRightClick",
       "desc" : "Fires when right click the marker.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1206,7 +1206,7 @@
     {
       "name" : "show",
       "desc" : "Fires when the map show.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LocationPicker",
       "example" : "",
       "deprecated" : "",
       "since" : "",

@@ -1575,7 +1575,7 @@
     {
       "name" : "editorinit",
       "desc" : "Fired when the editor is initialized - you can add extra handlers here..",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.FCKeditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",

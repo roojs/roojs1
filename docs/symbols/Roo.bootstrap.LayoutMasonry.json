@@ -1024,7 +1024,7 @@
     {
       "name" : "layout",
       "desc" : "Fire after layout the items",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.LayoutMasonry",
       "example" : "",
       "deprecated" : "",
       "since" : "",

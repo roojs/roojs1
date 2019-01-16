@@ -848,7 +848,7 @@
     {
       "name" : "click",
       "desc" : "The img click event for the img.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Link",
       "example" : "",
       "deprecated" : "",
       "since" : "",

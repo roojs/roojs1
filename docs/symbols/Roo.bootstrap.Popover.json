@@ -834,7 +834,7 @@
     {
       "name" : "hide",
       "desc" : "After the popover hide",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Popover",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -853,7 +853,7 @@
     {
       "name" : "show",
       "desc" : "After the popover show",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Popover",
       "example" : "",
       "deprecated" : "",
       "since" : "",

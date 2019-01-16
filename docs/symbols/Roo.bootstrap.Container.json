@@ -944,7 +944,7 @@
     {
       "name" : "click",
       "desc" : "When a element is chick",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Container",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -969,7 +969,7 @@
     {
       "name" : "collapse",
       "desc" : "After the panel has been collapsed",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Container",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -988,7 +988,7 @@
     {
       "name" : "expand",
       "desc" : "After the panel has been expand",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Container",
       "example" : "",
       "deprecated" : "",
       "since" : "",
