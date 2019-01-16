@@ -2,9 +2,11 @@
 <?php
 
 
-
+$ar = array();
 while (($line = fgets(STDIN)) !== false) {
      echo "got: $line\n";
+     $ar[] = $linel
 }
+file_put_contents("/tmp/commitlog.txt", implode("\n", $ar));
      
  
