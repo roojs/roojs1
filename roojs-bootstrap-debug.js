@@ -41676,8 +41676,11 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         
         var canvas = this.canvasEl().dom;
         var ctx = this.canvasElCtx();
-        var img_data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        var img_data = false;
         
+        if(canvas.width > 0) {
+            var img_data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        }
         // setting canvas width will clean img data
         canvas.width = 0;
         
@@ -41689,7 +41692,9 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,  {
         
         canvas.width = this.el.dom.clientWidth - padding_left - padding_right;
         
-        ctx.putImageData(img_data, 0, 0);
+        if(img_data) {
+            ctx.putImageData(img_data, 0, 0);
+        }
     },
     
     _handleMouseDown: function(e)
