@@ -10,11 +10,11 @@ lock();
 
 trigger_action('build_docs', array('Roo.js', 'Roo/', 'Array.js', 'Function.js', 'Date.js', 'String.js', 'Number.js'));
 
-$core = trigger_action('compile_core', explode("\n", file_get_contents(__DIR__). 'dependancy_core.txt'));
-$ui = trigger_action('compile_ui', explode("\n", file_get_contents(__DIR__). 'dependancy_ui.txt'));
-trigger_action('compile_bootstrap', explode("\n", file_get_contents(__DIR__). 'dependancy_bootstrap.txt'));
-trigger_action('compile_mailer', explode("\n", file_get_contents(__DIR__). 'dependancy_mailer.txt'));
-trigger_action('compile_calendar', explode("\n", file_get_contents(__DIR__). 'dependancy_calendar.txt'));
+$core = trigger_action_file('compile_core', 'dependancy_core.txt');
+$ui = trigger_action_file('compile_ui',  'dependancy_ui.txt');
+trigger_action_file('compile_bootstrap',  'dependancy_bootstrap.txt');
+trigger_action_file('compile_mailer',  'dependancy_mailer.txt');
+trigger_action_file('compile_calendar',  'dependancy_calendar.txt');
 
 trigger_action('compile_less', array('less'));
 trigger_action('compile_scss', array('scss'));
@@ -63,6 +63,13 @@ function changed_files()
     return $output;
 }
 
+function trigger_action_file($fn, $filename)
+{
+    $ret = explode("\n",file_get_contents(__DIR__ . "/" . $filename));
+    $ret[] = "buildSDK/".$filename;
+    return trigger_action($fn, $ret);
+    
+}
 
 function trigger_action($fn, $files)
 {
