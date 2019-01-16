@@ -77,7 +77,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,
     velocity_filter_weight: 0.7,
     
     /**
-     * @cfg {function} Callback when stroke begin.
+     * @cfg {function} Callback when stroke begin. 
      */
     onBegin: false,
     
