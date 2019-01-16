@@ -5,7 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "desc" : "Bootstrap Alert class",
+  "desc" : "Bootstrap Alert class - shows an alert area box\neg\n<div class=\"alert alert-danger\" role=\"alert\"><span class=\"fa fa-exclamation-triangle\"></span><span class=\"sr-only\">Error:</span>\n  Enter a valid email address\n</div>",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
