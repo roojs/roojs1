@@ -26,6 +26,14 @@
   ],
   "config" : [
     {
+      "name" : "Callback",
+      "type" : "function",
+      "desc" : "when stroke begin.",
+      "memberOf" : "Roo.bootstrap.BezierSignature",
+      "values" : [
+      ]
+    },
+    {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -34,10 +42,26 @@
       ]
     },
     {
-      "name" : "container_method",
-      "type" : "string",
-      "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component",
+      "name" : "Radius",
+      "type" : "float|function",
+      "desc" : "of a single dot.",
+      "memberOf" : "Roo.bootstrap.BezierSignature",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "canvas",
+      "type" : "int",
+      "desc" : "height",
+      "memberOf" : "Roo.bootstrap.BezierSignature",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "Add",
+      "type" : "integer",
+      "desc" : "the next point only if the previous one is farther than x pixels. Defaults to 5.",
+      "memberOf" : "Roo.bootstrap.BezierSignature",
       "values" : [
       ]
     },
@@ -50,6 +74,14 @@
       ]
     },
     {
+      "name" : "container_method",
+      "type" : "string",
+      "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+      "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
+    },
+    {
       "name" : "visibilityEl",
       "type" : "string|object",
       "desc" : "What element to use for visibility (@see getVisibilityEl())",
@@ -57,6 +89,14 @@
       "values" : [
         "(el",
         "parent)"
+      ]
+    },
+    {
+      "name" : "Weight",
+      "type" : "float",
+      "desc" : "used to modify new velocity based on the previous velocity. Defaults to 0.7.",
+      "memberOf" : "Roo.bootstrap.BezierSignature",
+      "values" : [
       ]
     },
     {
@@ -94,10 +134,26 @@
       ]
     },
     {
+      "name" : "Draw",
+      "type" : "integer",
+      "desc" : "the next point at most once per every x milliseconds. Set it to 0 to turn off throttling. Defaults to 16.",
+      "memberOf" : "Roo.bootstrap.BezierSignature",
+      "values" : [
+      ]
+    },
+    {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "Color",
+      "type" : "string",
+      "desc" : "used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to \"black\".",
+      "memberOf" : "Roo.bootstrap.BezierSignature",
       "values" : [
       ]
     },
@@ -122,6 +178,22 @@
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "Minimum",
+      "type" : "float",
+      "desc" : "width of a line. Defaults to 0.5.",
+      "memberOf" : "Roo.bootstrap.BezierSignature",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "Maximum",
+      "type" : "float",
+      "desc" : "width of a line. Defaults to 2.5.",
+      "memberOf" : "Roo.bootstrap.BezierSignature",
       "values" : [
       ]
     },

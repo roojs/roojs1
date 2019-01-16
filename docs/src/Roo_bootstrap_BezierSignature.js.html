@@ -31,57 +31,57 @@
     </span><span class="jsdoc-var">mouse_btn_down</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg(int) canvas height
+     * @cfg {int} canvas height
      */
     </span><span class="jsdoc-var">canvas_height</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'200px'</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg(float or function) Radius of a single dot.
+     * @cfg {float|function} Radius of a single dot.
      */
     </span><span class="jsdoc-var">dot_size</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg(float) Minimum width of a line. Defaults to 0.5.
+     * @cfg {float} Minimum width of a line. Defaults to 0.5.
      */
     </span><span class="jsdoc-var">min_width</span><span class="jsdoc-syntax">: 0.5,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg(float) Maximum width of a line. Defaults to 2.5.
+     * @cfg {float} Maximum width of a line. Defaults to 2.5.
      */
     </span><span class="jsdoc-var">max_width</span><span class="jsdoc-syntax">: 2.5,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg(integer) Draw the next point at most once per every x milliseconds. Set it to 0 to turn off throttling. Defaults to 16.
+     * @cfg {integer} Draw the next point at most once per every x milliseconds. Set it to 0 to turn off throttling. Defaults to 16.
      */
     </span><span class="jsdoc-var">throttle</span><span class="jsdoc-syntax">: 16,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg(integer) Add the next point only if the previous one is farther than x pixels. Defaults to 5.
+     * @cfg {integer} Add the next point only if the previous one is farther than x pixels. Defaults to 5.
      */
     </span><span class="jsdoc-var">min_distance</span><span class="jsdoc-syntax">: 5,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg(string) Color used to clear the background. Can be any color format accepted by context.fillStyle. Defaults to &quot;rgba(0,0,0,0)&quot; (transparent black). Use a non-transparent color e.g. &quot;rgb(255,255,255)&quot; (opaque white) if you'd like to save signatures as JPEG images.
+     * @cfg {string} Color used to clear the background. Can be any color format accepted by context.fillStyle. Defaults to &quot;rgba(0,0,0,0)&quot; (transparent black). Use a non-transparent color e.g. &quot;rgb(255,255,255)&quot; (opaque white) if you'd like to save signatures as JPEG images.
      */
     </span><span class="jsdoc-var">bg_color</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rgba(0, 0, 0, 0)'</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg(string) Color used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to &quot;black&quot;.
+     * @cfg {string} Color used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to &quot;black&quot;.
      */
     </span><span class="jsdoc-var">dot_color</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'black'</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg(float) Weight used to modify new velocity based on the previous velocity. Defaults to 0.7.
+     * @cfg {float} Weight used to modify new velocity based on the previous velocity. Defaults to 0.7.
      */
     </span><span class="jsdoc-var">velocity_filter_weight</span><span class="jsdoc-syntax">: 0.7,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg(function) Callback when stroke begin.
+     * @cfg {function} Callback when stroke begin.
      */
     </span><span class="jsdoc-var">onBegin</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg(function) Callback when stroke end.
+     * @cfg {function} Callback when stroke end.
      */
     </span><span class="jsdoc-var">onEnd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
@@ -174,8 +174,11 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">canvas </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasElCtx</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">img_data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ctx.getImageData</span><span class="jsdoc-syntax">(0, 0, </span><span class="jsdoc-var">canvas.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">canvas.height</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">img_data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">canvas.width </span><span class="jsdoc-syntax">&gt; 0) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">img_data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ctx.getImageData</span><span class="jsdoc-syntax">(0, 0, </span><span class="jsdoc-var">canvas.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">canvas.height</span><span class="jsdoc-syntax">);
+        }
         </span><span class="jsdoc-comment">// setting canvas width will clean img data
         </span><span class="jsdoc-var">canvas.width </span><span class="jsdoc-syntax">= 0;
 
@@ -187,7 +190,9 @@
 
         </span><span class="jsdoc-var">canvas.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom.clientWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">padding_left </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">padding_right</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-var">ctx.putImageData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img_data</span><span class="jsdoc-syntax">, 0, 0);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img_data</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ctx.putImageData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img_data</span><span class="jsdoc-syntax">, 0, 0);
+        }
     },
 
     </span><span class="jsdoc-var">_handleMouseDown</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
