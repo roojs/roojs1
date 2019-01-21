@@ -301,15 +301,17 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         this.activeAction = null;
         var o = action.options;
         
-        if(this.waitMsgTarget === true){
-            this.el.unmask();
-        }else if(this.waitMsgTarget){
-            this.waitMsgTarget.unmask();
-        }else{
-            Roo.MessageBox.updateProgress(1);
-            Roo.MessageBox.hide();
+        if(!this.disableMask) {
+            if(this.waitMsgTarget === true){
+                this.el.unmask();
+            }else if(this.waitMsgTarget){
+                this.waitMsgTarget.unmask();
+            }else{
+                Roo.MessageBox.updateProgress(1);
+                Roo.MessageBox.hide();
+            }
         }
-         
+        
         if(success){
             if(o.reset){
                 this.reset();

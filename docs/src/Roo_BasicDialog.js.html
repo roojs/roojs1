@@ -1,4 +1,4 @@
-<html><head><title>/home/alan/gitlive/roojs1/Roo/BasicDialog.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>/home/edward/gitlive/roojs1/Roo/BasicDialog.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -600,6 +600,7 @@ dlg.show();
             </span><span class="jsdoc-var">this.xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getCenterXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.modal</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'adding x-body-masked class'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-body-masked&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.mask.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
             </span><span class="jsdoc-var">this.mask.show</span><span class="jsdoc-syntax">();
@@ -955,6 +956,7 @@ dlg.show();
         </span><span class="jsdoc-var">this.proxy.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.modal</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.mask.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'remove x-body-masked'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-body-masked&quot;</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);

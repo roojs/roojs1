@@ -1,4 +1,4 @@
-<html><head><title>/home/alan/gitlive/roojs1/Roo/form/BasicForm.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>/home/edward/gitlive/roojs1/Roo/form/BasicForm.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -122,6 +122,11 @@
      * @type Mixed
      */
     </span><span class="jsdoc-var">waitMsgTarget </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+     * @type Boolean
+     */
+    </span><span class="jsdoc-var">disableMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">initEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
@@ -277,15 +282,17 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     </span><span class="jsdoc-var">beforeAction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">action.options</span><span class="jsdoc-syntax">;
 
-
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitMsgTarget </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.el.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.waitMsg </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;Sending&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'x-mask-loading'</span><span class="jsdoc-syntax">);
-        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitMsgTarget</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.waitMsgTarget </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitMsgTarget</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.waitMsgTarget.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.waitMsg </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;Sending&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'x-mask-loading'</span><span class="jsdoc-syntax">);
-        }</span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">Roo.MessageBox.wait</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.waitMsg </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;Sending&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o.waitTitle </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.waitTitle </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'Please Wait...'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disableMask</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitMsgTarget </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.el.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.waitMsg </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;Sending&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'x-mask-loading'</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitMsgTarget</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.waitMsgTarget </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitMsgTarget</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.waitMsgTarget.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.waitMsg </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;Sending&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'x-mask-loading'</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">Roo.MessageBox.wait</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.waitMsg </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;Sending&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o.waitTitle </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.waitTitle </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'Please Wait...'</span><span class="jsdoc-syntax">);
+            }
         }
+
 
     },
 
@@ -294,13 +301,15 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         </span><span class="jsdoc-var">this.activeAction </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">action.options</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitMsgTarget </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">();
-        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitMsgTarget</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.waitMsgTarget.unmask</span><span class="jsdoc-syntax">();
-        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">Roo.MessageBox.updateProgress</span><span class="jsdoc-syntax">(1);
-            </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disableMask</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitMsgTarget </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">();
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.waitMsgTarget</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.waitMsgTarget.unmask</span><span class="jsdoc-syntax">();
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">Roo.MessageBox.updateProgress</span><span class="jsdoc-syntax">(1);
+                </span><span class="jsdoc-var">Roo.MessageBox.hide</span><span class="jsdoc-syntax">();
+            }
         }
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">){
