@@ -32429,6 +32429,7 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
             this.xy = this.el.getCenterXY(true);
         }
         if(this.modal){
+            Roo.log('adding x-body-masked class???!!!');
             Roo.get(document.body).addClass("x-body-masked");
             this.mask.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
             this.mask.show();
@@ -32784,6 +32785,7 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
         this.proxy.hide();
         if(this.modal){
             this.mask.hide();
+            Roo.log('remove x-body-masked');
             Roo.get(document.body).removeClass("x-body-masked");
         }
         this.fireEvent("hide", this);
@@ -46810,6 +46812,11 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * @type Mixed
      */
     waitMsgTarget : false,
+    
+    /**
+     * @type Boolean
+     */
+    disableMask : false,
 
     // private
     initEl : function(el){
@@ -46965,15 +46972,17 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     beforeAction : function(action){
         var o = action.options;
         
-       
-        if(this.waitMsgTarget === true){
-            this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
-        }else if(this.waitMsgTarget){
-            this.waitMsgTarget = Roo.get(this.waitMsgTarget);
-            this.waitMsgTarget.mask(o.waitMsg || "Sending", 'x-mask-loading');
-        }else {
-            Roo.MessageBox.wait(o.waitMsg || "Sending", o.waitTitle || this.waitTitle || 'Please Wait...');
+        if(!this.disableMask) {
+            if(this.waitMsgTarget === true){
+                this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
+            }else if(this.waitMsgTarget){
+                this.waitMsgTarget = Roo.get(this.waitMsgTarget);
+                this.waitMsgTarget.mask(o.waitMsg || "Sending", 'x-mask-loading');
+            }else {
+                Roo.MessageBox.wait(o.waitMsg || "Sending", o.waitTitle || this.waitTitle || 'Please Wait...');
+            }
         }
+        
          
     },
 
@@ -46982,15 +46991,17 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         this.activeAction = null;
         var o = action.options;
         
-        if(this.waitMsgTarget === true){
-            this.el.unmask();
-        }else if(this.waitMsgTarget){
-            this.waitMsgTarget.unmask();
-        }else{
-            Roo.MessageBox.updateProgress(1);
-            Roo.MessageBox.hide();
+        if(!this.disableMask) {
+            if(this.waitMsgTarget === true){
+                this.el.unmask();
+            }else if(this.waitMsgTarget){
+                this.waitMsgTarget.unmask();
+            }else{
+                Roo.MessageBox.updateProgress(1);
+                Roo.MessageBox.hide();
+            }
         }
-         
+        
         if(success){
             if(o.reset){
                 this.reset();
