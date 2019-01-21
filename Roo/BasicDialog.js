@@ -956,6 +956,7 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
         this.proxy.hide();
         if(this.modal){
             this.mask.hide();
+            Roo.log('remove x-body-masked');
             Roo.get(document.body).removeClass("x-body-masked");
         }
         this.fireEvent("hide", this);
