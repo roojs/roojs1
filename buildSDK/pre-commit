@@ -66,16 +66,24 @@ function changed_files()
 function trigger_action_file($fn, $filename)
 {
     $ret = explode("\n",file_get_contents(__DIR__ . "/" . $filename));
+    $add = array();
+    foreach($ret as $r) {
+        $r=trim($r);
+        if (strlen($r)) {
+            $add[] = str_replace('.','/', $r) . ".js";
+        }
+    }
     $ret[] = "buildSDK/".$filename;
-    return trigger_action($fn, $ret);
+    return trigger_action($fn, $add);
     
 }
 
 function trigger_action($fn, $files)
 {
-    $changed = changed_files();
+    
     foreach(changed_files() as $cg) {
         foreach($files as $f) {
+            $f = trim($f);
             if ($f == $cg) {
                 echo "RUNNING : $fn\n";
                 $fn();
