@@ -601,6 +601,7 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
         }
         if(this.modal){
             Roo.log('adding body masked');
+            
             Roo.get(document.body).addClass("x-body-masked");
             this.mask.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
             this.mask.show();
