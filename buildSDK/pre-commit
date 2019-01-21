@@ -65,7 +65,7 @@ function changed_files()
 
 function trigger_action_file($fn, $filename)
 {
-    $ret = explode("\n",file_get_contents("buildSDK/" . $filename));
+    $ret = explode("\n",file_get_contents(__DIR__ . "/" . $filename));
     $ret[] = "buildSDK/".$filename;
     return trigger_action($fn, $ret);
     
