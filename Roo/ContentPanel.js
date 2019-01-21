@@ -130,8 +130,7 @@ Roo.ContentPanel = function(el, config, content){
          * @param {Roo.ContentPanel} this
          */
         "render" : true
-        
-        
+         
         
     });
     

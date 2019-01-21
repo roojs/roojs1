@@ -462,7 +462,7 @@
     {
       "name" : "layout",
       "desc" : "Fires when a layout is performed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.LayoutManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -481,7 +481,7 @@
     {
       "name" : "regionexpanded",
       "desc" : "Fires when a region is expanded.",
-      "memberOf" : "",
+      "memberOf" : "Roo.LayoutManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -500,7 +500,7 @@
     {
       "name" : "regionresized",
       "desc" : "Fires when the user resizes a region.",
-      "memberOf" : "",
+      "memberOf" : "Roo.LayoutManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -525,7 +525,7 @@
     {
       "name" : "regioncollapsed",
       "desc" : "Fires when a region is collapsed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.LayoutManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",

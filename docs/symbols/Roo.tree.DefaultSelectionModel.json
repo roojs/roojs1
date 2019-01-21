@@ -495,7 +495,7 @@
     {
       "name" : "selectionchange",
       "desc" : "Fires when the selected node changes",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.DefaultSelectionModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -520,7 +520,7 @@
     {
       "name" : "beforeselect",
       "desc" : "Fires before the selected node changes, return false to cancel the change",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.DefaultSelectionModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",

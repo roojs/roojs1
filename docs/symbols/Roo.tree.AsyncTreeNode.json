@@ -1393,7 +1393,7 @@
     {
       "name" : "load",
       "desc" : "Fires when this node is loaded",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.AsyncTreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1412,7 +1412,7 @@
     {
       "name" : "beforeload",
       "desc" : "Fires before this node is loaded, return false to cancel",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.AsyncTreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",

@@ -848,7 +848,7 @@
     {
       "name" : "mouseover",
       "desc" : "Fires when the mouse is hovering over this menu",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.menu.Item",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -873,7 +873,7 @@
     {
       "name" : "mouseout",
       "desc" : "Fires when the mouse exits this menu",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.menu.Item",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -898,7 +898,7 @@
     {
       "name" : "click",
       "desc" : "The raw click event for the entire grid.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.menu.Item",
       "example" : "",
       "deprecated" : "",
       "since" : "",

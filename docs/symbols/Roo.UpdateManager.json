@@ -668,7 +668,7 @@
     {
       "name" : "update",
       "desc" : "Fired after successful update is made.",
-      "memberOf" : "",
+      "memberOf" : "Roo.UpdateManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -693,7 +693,7 @@
     {
       "name" : "beforeupdate",
       "desc" : "Fired before an update is made, return false from your handler and the update is cancelled.",
-      "memberOf" : "",
+      "memberOf" : "Roo.UpdateManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -724,7 +724,7 @@
     {
       "name" : "failure",
       "desc" : "Fired on update failure.",
-      "memberOf" : "",
+      "memberOf" : "Roo.UpdateManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",

@@ -844,7 +844,7 @@
     {
       "name" : "activatepane",
       "desc" : "When a pane is activated",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.dash.TabBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -863,7 +863,7 @@
     {
       "name" : "addpane",
       "desc" : "When a pane is added",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.dash.TabBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",

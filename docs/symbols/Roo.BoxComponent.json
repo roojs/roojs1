@@ -912,7 +912,7 @@
     {
       "name" : "move",
       "desc" : "Fires after the component is moved.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -943,7 +943,7 @@
     {
       "name" : "resize",
       "desc" : "Fires after the component is resized.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",

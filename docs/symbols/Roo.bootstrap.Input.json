@@ -1427,7 +1427,7 @@
     {
       "name" : "change",
       "desc" : "Fires just before the field blurs if the field value has changed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1458,7 +1458,7 @@
     {
       "name" : "invalid",
       "desc" : "Fires after the field has been marked as invalid.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1483,7 +1483,7 @@
     {
       "name" : "valid",
       "desc" : "Fires after the field has been validated with no errors.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1502,7 +1502,7 @@
     {
       "name" : "blur",
       "desc" : "Fires when this field loses input focus.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1521,7 +1521,7 @@
     {
       "name" : "specialkey",
       "desc" : "Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check\n{@link Roo.EventObject#getKey} to determine which key was pressed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1546,7 +1546,7 @@
     {
       "name" : "focus",
       "desc" : "Fires when this field receives input focus.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1565,7 +1565,7 @@
     {
       "name" : "keyup",
       "desc" : "Fires after the key up",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",

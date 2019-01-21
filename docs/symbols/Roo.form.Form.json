@@ -1339,7 +1339,7 @@
     {
       "name" : "rendered",
       "desc" : "Fires when the form is rendered",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1358,7 +1358,7 @@
     {
       "name" : "clientvalidation",
       "desc" : "If the monitorValid config option is true, this event fires repetitively to notify of valid state",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",

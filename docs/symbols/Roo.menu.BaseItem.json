@@ -679,7 +679,7 @@
     {
       "name" : "click",
       "desc" : "Fires when this item is clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.BaseItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -704,7 +704,7 @@
     {
       "name" : "activate",
       "desc" : "Fires when this item is activated",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.BaseItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -723,7 +723,7 @@
     {
       "name" : "deactivate",
       "desc" : "Fires when this item is deactivated",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.BaseItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",

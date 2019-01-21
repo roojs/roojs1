@@ -945,7 +945,7 @@
     {
       "name" : "btnclick",
       "desc" : "The raw btnclick event for the button",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Modal",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -964,7 +964,7 @@
     {
       "name" : "resize",
       "desc" : "Fire when dialog resize",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Modal",
       "example" : "",
       "deprecated" : "",
       "since" : "",

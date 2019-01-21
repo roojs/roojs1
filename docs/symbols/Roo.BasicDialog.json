@@ -1177,7 +1177,7 @@
     {
       "name" : "move",
       "desc" : "Fires when this dialog is moved by the user.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicDialog",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1208,7 +1208,7 @@
     {
       "name" : "resize",
       "desc" : "Fires when this dialog is resized by the user.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicDialog",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1239,7 +1239,7 @@
     {
       "name" : "beforehide",
       "desc" : "Fires before this dialog is hidden.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicDialog",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1258,7 +1258,7 @@
     {
       "name" : "beforeshow",
       "desc" : "Fires before this dialog is shown.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicDialog",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1277,7 +1277,7 @@
     {
       "name" : "hide",
       "desc" : "Fires when this dialog is hidden.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicDialog",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1296,7 +1296,7 @@
     {
       "name" : "show",
       "desc" : "Fires when this dialog is shown.",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicDialog",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1315,7 +1315,7 @@
     {
       "name" : "keydown",
       "desc" : "Fires when a key is pressed",
-      "memberOf" : "",
+      "memberOf" : "Roo.BasicDialog",
       "example" : "",
       "deprecated" : "",
       "since" : "",

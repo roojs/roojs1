@@ -495,7 +495,7 @@
     {
       "name" : "built",
       "desc" : "Fires when this the componnt is built",
-      "memberOf" : "",
+      "memberOf" : "Roo.XComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",

@@ -1451,7 +1451,7 @@
     {
       "name" : "click",
       "desc" : "Fires when the element is click.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.RadioSet",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1482,7 +1482,7 @@
     {
       "name" : "check",
       "desc" : "Fires when the element is checked or unchecked.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.RadioSet",
       "example" : "",
       "deprecated" : "",
       "since" : "",

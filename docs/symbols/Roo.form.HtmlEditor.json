@@ -1366,7 +1366,7 @@
     {
       "name" : "blur",
       "desc" : "",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1379,7 +1379,7 @@
     {
       "name" : "editmodechange",
       "desc" : "Fires when the editor switches edit modes",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1404,7 +1404,7 @@
     {
       "name" : "firstfocus",
       "desc" : "Fires when on first focus - needed by toolbars..",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1423,7 +1423,7 @@
     {
       "name" : "initialize",
       "desc" : "Fires when the editor is fully initialized (including the iframe)",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1442,7 +1442,7 @@
     {
       "name" : "change",
       "desc" : "",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1455,7 +1455,7 @@
     {
       "name" : "specialkey",
       "desc" : "",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1468,7 +1468,7 @@
     {
       "name" : "autosave",
       "desc" : "Auto save the htmlEditor value as a file into Events",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1487,7 +1487,7 @@
     {
       "name" : "focus",
       "desc" : "",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1500,7 +1500,7 @@
     {
       "name" : "push",
       "desc" : "Fires when the iframe editor is updated with content from the textarea.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1525,7 +1525,7 @@
     {
       "name" : "activate",
       "desc" : "Fires when the editor is first receives the focus. Any insertion must wait\nuntil after this event.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1544,7 +1544,7 @@
     {
       "name" : "editorevent",
       "desc" : "Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1563,7 +1563,7 @@
     {
       "name" : "beforepush",
       "desc" : "Fires before the iframe editor is updated with content from the textarea. Return false\nto cancel the push.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1588,7 +1588,7 @@
     {
       "name" : "sync",
       "desc" : "Fires when the textarea is updated with content from the editor iframe.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1613,7 +1613,7 @@
     {
       "name" : "savedpreview",
       "desc" : "preview the saved version of htmlEditor",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1632,7 +1632,7 @@
     {
       "name" : "stylesheetsclick",
       "desc" : "Fires when press the Sytlesheets button",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1651,7 +1651,7 @@
     {
       "name" : "beforesync",
       "desc" : "Fires before the textarea is updated with content from the editor iframe. Return false\nto cancel the sync.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",

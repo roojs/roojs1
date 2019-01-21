@@ -936,7 +936,7 @@
     {
       "name" : "invalid",
       "desc" : "Fires after the field has been marked as invalid.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.FieldLabel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -961,7 +961,7 @@
     {
       "name" : "valid",
       "desc" : "Fires after the field has been validated with no errors.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.FieldLabel",
       "example" : "",
       "deprecated" : "",
       "since" : "",

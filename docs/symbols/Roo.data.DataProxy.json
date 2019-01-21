@@ -23,7 +23,7 @@
     {
       "name" : "load",
       "desc" : "Fires before the load method's callback is called.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.DataProxy",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -54,7 +54,7 @@
     {
       "name" : "beforeload",
       "desc" : "Fires before a network request is made to retrieve a data object.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.DataProxy",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -79,7 +79,7 @@
     {
       "name" : "loadexception",
       "desc" : "Fires if an Exception occurs during data retrieval.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.DataProxy",
       "example" : "",
       "deprecated" : "",
       "since" : "",

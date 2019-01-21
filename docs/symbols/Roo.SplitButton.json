@@ -829,7 +829,7 @@
     {
       "name" : "arrowclick",
       "desc" : "Fires when this button's arrow is clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.SplitButton",
       "example" : "",
       "deprecated" : "",
       "since" : "",

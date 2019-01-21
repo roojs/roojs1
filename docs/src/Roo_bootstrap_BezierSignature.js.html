@@ -1,15 +1,12 @@
 <html><head><title>/home/alan/gitlive/roojs1/Roo/bootstrap/BezierSignature.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
-*    This script refer to:
-*    Title: Signature Pad
-*    Author: szimek
-*    Availability: https://github.com/szimek/signature_pad
-**/
-
-/**
  * @class Roo.bootstrap.BezierSignature
  * @extends Roo.bootstrap.Component
  * Bootstrap BezierSignature class
- * 
+ * This script refer to:
+ *    Title: Signature Pad
+ *    Author: szimek
+ *    Availability: https://github.com/szimek/signature_pad
+ *
  * @constructor
  * Create a new BezierSignature
  * @param {Object} config The config object
@@ -259,7 +256,7 @@
         </span><span class="jsdoc-var">this.strokeUpdate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.throttle</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.throttle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.strokeUpdate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.throttle</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.throttleStroke</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.strokeUpdate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.throttle</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">this.strokeUpdate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
@@ -550,7 +547,7 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Bezier</span><span class="jsdoc-syntax">;
     }()),
 
-    </span><span class="jsdoc-var">throttle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">wait</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">throttleStroke</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">wait</span><span class="jsdoc-syntax">) {
       </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wait </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">void </span><span class="jsdoc-syntax">0) { </span><span class="jsdoc-var">wait </span><span class="jsdoc-syntax">= 250; }
       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">previous </span><span class="jsdoc-syntax">= 0;
       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">timeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;

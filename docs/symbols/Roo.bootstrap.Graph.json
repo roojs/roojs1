@@ -842,7 +842,7 @@
     {
       "name" : "click",
       "desc" : "The img click event for the img.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Graph",
       "example" : "",
       "deprecated" : "",
       "since" : "",

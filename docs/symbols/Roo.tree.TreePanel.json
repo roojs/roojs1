@@ -787,7 +787,7 @@
     {
       "name" : "dblclick",
       "desc" : "Fires when a node is double clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -812,7 +812,7 @@
     {
       "name" : "contextmenu",
       "desc" : "Fires when a node is right clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -837,7 +837,7 @@
     {
       "name" : "beforeclick",
       "desc" : "Fires before click processing on a node. Return false to cancel the default action.",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -862,7 +862,7 @@
     {
       "name" : "checkchange",
       "desc" : "Fires when a node with a checkbox's checked property changes",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -887,7 +887,7 @@
     {
       "name" : "nodedragover",
       "desc" : "Fires when a tree node is being targeted for a drag drop, return false to signal drop not allowed. The dragOverEvent\npassed to handlers has the following properties:<br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>tree - The TreePanel</li>\n<li>target - The node being targeted for the drop</li>\n<li>data - The drag data from the drag source</li>\n<li>point - The point of the drop - append, above or below</li>\n<li>source - The drag source</li>\n<li>rawEvent - Raw mouse event</li>\n<li>dropNode - Drop node(s) provided by the source.</li>\n<li>cancel - Set this to true to signal drop not allowed.</li>\n</ul>",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -906,7 +906,7 @@
     {
       "name" : "beforeexpand",
       "desc" : "Fires before a node is expanded, return false to cancel.",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -937,7 +937,7 @@
     {
       "name" : "collapse",
       "desc" : "Fires when a node is collapsed",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -956,7 +956,7 @@
     {
       "name" : "beforenodedrop",
       "desc" : "Fires when a DD object is dropped on a node in this tree for preprocessing. Return false to cancel the drop. The dropEvent\npassed to handlers has the following properties:<br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>tree - The TreePanel</li>\n<li>target - The node being targeted for the drop</li>\n<li>data - The drag data from the drag source</li>\n<li>point - The point of the drop - append, above or below</li>\n<li>source - The drag source</li>\n<li>rawEvent - Raw mouse event</li>\n<li>dropNode - Drop node(s) provided by the source <b>OR</b> you can supply node(s)\nto be inserted by setting them on this object.</li>\n<li>cancel - Set this to true to cancel the drop.</li>\n</ul>",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -975,7 +975,7 @@
     {
       "name" : "beforechildrenrendered",
       "desc" : "Fires right before the child nodes for a node are rendered",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -994,7 +994,7 @@
     {
       "name" : "textchange",
       "desc" : "Fires when the text for a node is changed",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1025,7 +1025,7 @@
     {
       "name" : "load",
       "desc" : "Fires when a node is loaded",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1044,7 +1044,7 @@
     {
       "name" : "startdrag",
       "desc" : "Fires when a node starts being dragged",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1075,7 +1075,7 @@
     {
       "name" : "click",
       "desc" : "Fires when a node is clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1100,7 +1100,7 @@
     {
       "name" : "expand",
       "desc" : "Fires when a node is expanded",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1119,7 +1119,7 @@
     {
       "name" : "enddrag",
       "desc" : "Fires when a drag operation is complete",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1150,7 +1150,7 @@
     {
       "name" : "nodedrop",
       "desc" : "Fires after a DD object is dropped on a node in this tree. The dropEvent\npassed to handlers has the following properties:<br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>tree - The TreePanel</li>\n<li>target - The node being targeted for the drop</li>\n<li>data - The drag data from the drag source</li>\n<li>point - The point of the drop - append, above or below</li>\n<li>source - The drag source</li>\n<li>rawEvent - Raw mouse event</li>\n<li>dropNode - Dropped node(s).</li>\n</ul>",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1169,7 +1169,7 @@
     {
       "name" : "dragdrop",
       "desc" : "Fires when a dragged node is dropped on a valid DD target",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1206,7 +1206,7 @@
     {
       "name" : "beforecollapse",
       "desc" : "Fires before a node is collapsed, return false to cancel.",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1237,7 +1237,7 @@
     {
       "name" : "disabledchange",
       "desc" : "Fires when the disabled status of a node changes",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1262,7 +1262,7 @@
     {
       "name" : "beforeload",
       "desc" : "Fires before a node is loaded, return false to cancel",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreePanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",

@@ -794,7 +794,7 @@
     {
       "name" : "validateedit",
       "desc" : "Fires after a cell is edited, but before the value is set in the record. \nYou can use this to modify the value being set in the field, Return false\nto cancel the change. The edit event object has the following properties <br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>editor - This editor</li>\n<li>grid - This grid</li>\n<li>record - The record being edited</li>\n<li>field - The field name being edited</li>\n<li>value - The value being set</li>\n<li>originalValue - The original value for the field, before the edit.</li>\n<li>row - The grid row index</li>\n<li>column - The grid column index</li>\n<li>cancel - Set this to true to cancel the edit or return false from your handler.</li>\n</ul>",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.EditorGrid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -813,7 +813,7 @@
     {
       "name" : "beforeedit",
       "desc" : "Fires before cell editing is triggered. The edit event object has the following properties <br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>grid - This grid</li>\n<li>record - The record being edited</li>\n<li>field - The field name being edited</li>\n<li>value - The value for the field being edited.</li>\n<li>row - The grid row index</li>\n<li>column - The grid column index</li>\n<li>cancel - Set this to true to cancel the edit or return false from your handler.</li>\n</ul>",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.EditorGrid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -832,7 +832,7 @@
     {
       "name" : "afteredit",
       "desc" : "Fires after a cell is edited. <br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>grid - This grid</li>\n<li>record - The record being edited</li>\n<li>field - The field name being edited</li>\n<li>value - The value being set</li>\n<li>originalValue - The original value for the field, before the edit.</li>\n<li>row - The grid row index</li>\n<li>column - The grid column index</li>\n</ul>",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.EditorGrid",
       "example" : "",
       "deprecated" : "",
       "since" : "",

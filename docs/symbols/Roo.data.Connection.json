@@ -472,7 +472,7 @@
     {
       "name" : "requestcomplete",
       "desc" : "Fires if the request was successfully completed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Connection",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -503,7 +503,7 @@
     {
       "name" : "beforerequest",
       "desc" : "Fires before a network request is made to retrieve a data object.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Connection",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -528,7 +528,7 @@
     {
       "name" : "requestexception",
       "desc" : "Fires if an error HTTP status was returned from the server.\nSee {@link http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html} for details of HTTP status codes.",
-      "memberOf" : "",
+      "memberOf" : "Roo.data.Connection",
       "example" : "",
       "deprecated" : "",
       "since" : "",

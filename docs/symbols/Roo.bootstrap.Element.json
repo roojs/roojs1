@@ -822,7 +822,7 @@
     {
       "name" : "click",
       "desc" : "When a element is chick",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.Element",
       "example" : "",
       "deprecated" : "",
       "since" : "",

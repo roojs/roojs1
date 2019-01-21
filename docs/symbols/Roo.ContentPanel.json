@@ -797,7 +797,7 @@
     {
       "name" : "deactivate",
       "desc" : "Fires when this panel is activated.",
-      "memberOf" : "",
+      "memberOf" : "Roo.ContentPanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -816,7 +816,7 @@
     {
       "name" : "resize",
       "desc" : "Fires when this panel is resized if fitToFrame is true.",
-      "memberOf" : "",
+      "memberOf" : "Roo.ContentPanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -847,7 +847,7 @@
     {
       "name" : "render",
       "desc" : "Fires when this tab is created",
-      "memberOf" : "",
+      "memberOf" : "Roo.ContentPanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -866,7 +866,7 @@
     {
       "name" : "activate",
       "desc" : "Fires when this panel is activated.",
-      "memberOf" : "",
+      "memberOf" : "Roo.ContentPanel",
       "example" : "",
       "deprecated" : "",
       "since" : "",

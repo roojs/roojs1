@@ -1472,7 +1472,7 @@
     {
       "name" : "confirm",
       "desc" : "Fires when the 'confirm' icon is pressed (add a listener to enable add button)",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.Signature",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1491,7 +1491,7 @@
     {
       "name" : "reset",
       "desc" : "Fires when the 'edit' icon is pressed (add a listener to enable add button)",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.Signature",
       "example" : "",
       "deprecated" : "",
       "since" : "",

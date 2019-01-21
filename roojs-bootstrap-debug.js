@@ -27212,17 +27212,15 @@ Roo.apply(Roo.bootstrap.LocationPicker, {
     }
     
     
-});/*
- * - LGPL
- *
- * Alert
- * 
- */
-
-/**
+});/**
  * @class Roo.bootstrap.Alert
  * @extends Roo.bootstrap.Component
- * Bootstrap Alert class
+ * Bootstrap Alert class - shows an alert area box
+ * eg
+ * <div class="alert alert-danger" role="alert"><span class="fa fa-exclamation-triangle"></span><span class="sr-only">Error:</span>
+  Enter a valid email address
+</div>
+ * @licence LGPL
  * @cfg {String} title The title of alert
  * @cfg {String} html The content of alert
  * @cfg {String} weight (  success | info | warning | danger )
@@ -41545,17 +41543,14 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     }
     
 });/**
-*    This script refer to:
-*    Title: Signature Pad
-*    Author: szimek
-*    Availability: https://github.com/szimek/signature_pad
-**/
-
-/**
  * @class Roo.bootstrap.BezierSignature
  * @extends Roo.bootstrap.Component
  * Bootstrap BezierSignature class
- * 
+ * This script refer to:
+ *    Title: Signature Pad
+ *    Author: szimek
+ *    Availability: https://github.com/szimek/signature_pad
+ *
  * @constructor
  * Create a new BezierSignature
  * @param {Object} config The config object
@@ -41570,7 +41565,7 @@ Roo.bootstrap.BezierSignature = function(config){
 
 Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,
 {
-    
+     
     curve_data: [],
     
     is_empty: true,
@@ -41623,7 +41618,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,
     velocity_filter_weight: 0.7,
     
     /**
-     * @cfg {function} Callback when stroke begin.
+     * @cfg {function} Callback when stroke begin. 
      */
     onBegin: false,
     
@@ -41805,7 +41800,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,
         this.strokeUpdate(e);
         
         if (this.throttle) {
-            this.throttle(this.strokeUpdate, this.throttle);
+            this.throttleStroke(this.strokeUpdate, this.throttle);
         }
         else {
             this.strokeUpdate(e);
@@ -42096,7 +42091,7 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,
         return Bezier;
     }()),
     
-    throttle: function(fn, wait) {
+    throttleStroke: function(fn, wait) {
       if (wait === void 0) { wait = 250; }
       var previous = 0;
       var timeout = null;

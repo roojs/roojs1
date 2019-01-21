@@ -1388,7 +1388,7 @@
     {
       "name" : "check",
       "desc" : "Fires when the checkbox is checked or unchecked.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.Checkbox",
       "example" : "",
       "deprecated" : "",
       "since" : "",

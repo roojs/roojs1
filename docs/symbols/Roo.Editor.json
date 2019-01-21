@@ -884,7 +884,7 @@
     {
       "name" : "beforestartedit",
       "desc" : "Fires when editing is initiated, but before the value changes.  Editing can be canceled by returning\nfalse from the handler of this event.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -915,7 +915,7 @@
     {
       "name" : "beforecomplete",
       "desc" : "Fires after a change has been made to the field, but before the change is reflected in the underlying\nfield.  Saving the change to the field can be canceled by returning false from the handler of this event.\nNote that if the value has not changed and ignoreNoChange = true, the editing will still end but this\nevent will not fire since no edit actually occurred.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -946,7 +946,7 @@
     {
       "name" : "complete",
       "desc" : "Fires after editing is complete and any changed value has been written to the underlying field.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -977,7 +977,7 @@
     {
       "name" : "specialkey",
       "desc" : "Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check\n{@link Roo.EventObject#getKey} to determine which key was pressed.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1002,7 +1002,7 @@
     {
       "name" : "startedit",
       "desc" : "Fires when this editor is displayed",
-      "memberOf" : "",
+      "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
       "since" : "",

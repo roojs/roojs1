@@ -677,7 +677,7 @@
     {
       "name" : "select",
       "desc" : "Fires when a color is selected",
-      "memberOf" : "",
+      "memberOf" : "Roo.ColorPalette",
       "example" : "",
       "deprecated" : "",
       "since" : "",

@@ -1216,7 +1216,7 @@
     {
       "name" : "hiddenchange",
       "desc" : "Fires when a column is hidden or \"unhidden\".",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.ColumnModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1247,7 +1247,7 @@
     {
       "name" : "headerchange",
       "desc" : "Fires when the text of a header changes.",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.ColumnModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1278,7 +1278,7 @@
     {
       "name" : "columlockchange",
       "desc" : "Fires when a column's locked state is changed",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.ColumnModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1309,7 +1309,7 @@
     {
       "name" : "columnmoved",
       "desc" : "Fires when a column is moved.",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.ColumnModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1340,7 +1340,7 @@
     {
       "name" : "widthchange",
       "desc" : "Fires when the width of a column changes.",
-      "memberOf" : "",
+      "memberOf" : "Roo.grid.ColumnModel",
       "example" : "",
       "deprecated" : "",
       "since" : "",

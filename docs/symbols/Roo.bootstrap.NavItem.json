@@ -915,7 +915,7 @@
     {
       "name" : "changed",
       "desc" : "Fires when the active item active state changes",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.NavItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -940,7 +940,7 @@
     {
       "name" : "scrollto",
       "desc" : "Fires when scroll to element",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.NavItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -971,7 +971,7 @@
     {
       "name" : "click",
       "desc" : "The raw click event for the entire grid.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.NavItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",

@@ -801,7 +801,7 @@
     {
       "name" : "beforecheckchange",
       "desc" : "Fires before the checked value is set, providing an opportunity to cancel if needed",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.CheckItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -826,7 +826,7 @@
     {
       "name" : "checkchange",
       "desc" : "Fires after the checked value has been set",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.CheckItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",

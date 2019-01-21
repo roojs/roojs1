@@ -830,7 +830,7 @@
     {
       "name" : "click",
       "desc" : "The raw click event for the entire grid.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.PaginationItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",

@@ -1533,7 +1533,7 @@
     {
       "name" : "check",
       "desc" : "Fires when the element is checked or unchecked.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.CheckBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1558,7 +1558,7 @@
     {
       "name" : "click",
       "desc" : "Fires when the element is click.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.CheckBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",

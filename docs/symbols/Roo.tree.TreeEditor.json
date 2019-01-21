@@ -925,7 +925,7 @@
     {
       "name" : "beforenodeedit",
       "desc" : "Fires when editing is initiated, but before the value changes.  Editing can be canceled by returning\nfalse from the handler of this event.",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeEditor",
       "example" : "",
       "deprecated" : "",
       "since" : "",

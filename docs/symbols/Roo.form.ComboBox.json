@@ -2058,7 +2058,7 @@
     {
       "name" : "add",
       "desc" : "Fires when the 'add' icon is pressed (add a listener to enable add button)",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2077,7 +2077,7 @@
     {
       "name" : "expand",
       "desc" : "Fires when the dropdown list is expanded",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2096,7 +2096,7 @@
     {
       "name" : "collapse",
       "desc" : "Fires when the dropdown list is collapsed",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2115,7 +2115,7 @@
     {
       "name" : "select",
       "desc" : "Fires when a list item is selected",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2146,7 +2146,7 @@
     {
       "name" : "edit",
       "desc" : "Fires when the 'edit' icon is pressed (add a listener to enable add button)",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2171,7 +2171,7 @@
     {
       "name" : "beforequery",
       "desc" : "Fires before all queries are processed. Return false to cancel the query or set cancel to true.\nThe event object passed has these properties:",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2214,7 +2214,7 @@
     {
       "name" : "beforeselect",
       "desc" : "Fires before a list item is selected. Return false to cancel the selection.",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",

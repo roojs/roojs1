@@ -737,7 +737,7 @@
     {
       "name" : "select",
       "desc" : "",
-      "memberOf" : "",
+      "memberOf" : "Roo.menu.ColorMenu",
       "example" : "",
       "deprecated" : "",
       "since" : "",

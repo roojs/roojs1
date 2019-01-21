@@ -825,7 +825,7 @@
     {
       "name" : "click",
       "desc" : "Fires when this menu is clicked (or when the enter key is pressed while it is active)",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -850,7 +850,7 @@
     {
       "name" : "beforehide",
       "desc" : "Fires before this menu is hidden",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -869,7 +869,7 @@
     {
       "name" : "beforeshow",
       "desc" : "Fires before this menu is displayed",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -888,7 +888,7 @@
     {
       "name" : "hide",
       "desc" : "Fires after this menu is hidden",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -907,7 +907,7 @@
     {
       "name" : "show",
       "desc" : "Fires after this menu is displayed",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.menu.Menu",
       "example" : "",
       "deprecated" : "",
       "since" : "",

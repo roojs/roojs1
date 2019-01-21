@@ -168,7 +168,7 @@
     {
       "name" : "render",
       "desc" : "Fires when the button is rendered",
-      "memberOf" : "",
+      "memberOf" : "Roo.Toolbar.Item",
       "example" : "",
       "deprecated" : "",
       "since" : "",

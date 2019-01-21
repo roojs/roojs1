@@ -1433,7 +1433,7 @@
     {
       "name" : "out",
       "desc" : "The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged\nout of the target without dropping.  This default implementation simply removes the CSS class specified by\noverClass (if any) from the drop element.",
-      "memberOf" : "",
+      "memberOf" : "Roo.dd.DropTarget",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1464,7 +1464,7 @@
     {
       "name" : "over",
       "desc" : "The function a {@link Roo.dd.DragSource} calls continuously while it is being dragged over the target.\nThis method will be called on every mouse movement while the drag source is over the drop target.\nThis default implementation simply returns the dropAllowed config value.\n\nIMPORTANT : it should set this.dropAllowed",
-      "memberOf" : "",
+      "memberOf" : "Roo.dd.DropTarget",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1495,7 +1495,7 @@
     {
       "name" : "enter",
       "desc" : "The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source is now over the\ntarget.  This default implementation adds the CSS class specified by overClass (if any) to the drop element\nand returns the dropAllowed config value.  This method should be overridden if drop validation is required.\n\nIMPORTANT : it should set this.overClass and this.dropAllowed",
-      "memberOf" : "",
+      "memberOf" : "Roo.dd.DropTarget",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1526,7 +1526,7 @@
     {
       "name" : "drop",
       "desc" : "The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the dragged item has\nbeen dropped on it.  This method has no default implementation and returns false, so you must provide an\nimplementation that does something to process the drop event and returns true so that the drag source's\nrepair action does not run.\n\nIMPORTANT : it should set this.success",
-      "memberOf" : "",
+      "memberOf" : "Roo.dd.DropTarget",
       "example" : "",
       "deprecated" : "",
       "since" : "",

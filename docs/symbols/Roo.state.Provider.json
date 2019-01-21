@@ -160,7 +160,7 @@
     {
       "name" : "statechange",
       "desc" : "Fires when a state change occurs.",
-      "memberOf" : "",
+      "memberOf" : "Roo.state.Provider",
       "example" : "",
       "deprecated" : "",
       "since" : "",

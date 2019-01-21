@@ -1320,7 +1320,7 @@
     {
       "name" : "beforecollapse",
       "desc" : "Fires before this node is collapsed, return false to cancel.",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1351,7 +1351,7 @@
     {
       "name" : "dblclick",
       "desc" : "Fires when this node is double clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1376,7 +1376,7 @@
     {
       "name" : "disabledchange",
       "desc" : "Fires when the disabled status of this node changes",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1401,7 +1401,7 @@
     {
       "name" : "beforechildrenrendered",
       "desc" : "Fires right before the child nodes for this node are rendered",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1420,7 +1420,7 @@
     {
       "name" : "beforeclick",
       "desc" : "Fires before click processing. Return false to cancel the default action.",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1445,7 +1445,7 @@
     {
       "name" : "checkchange",
       "desc" : "Fires when a node with a checkbox's checked property changes",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1470,7 +1470,7 @@
     {
       "name" : "collapse",
       "desc" : "Fires when this node is collapsed",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1489,7 +1489,7 @@
     {
       "name" : "textchange",
       "desc" : "Fires when the text for this node is changed",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1520,7 +1520,7 @@
     {
       "name" : "beforeexpand",
       "desc" : "Fires before this node is expanded, return false to cancel.",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1551,7 +1551,7 @@
     {
       "name" : "click",
       "desc" : "Fires when this node is clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1576,7 +1576,7 @@
     {
       "name" : "contextmenu",
       "desc" : "Fires when this node is right clicked",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1601,7 +1601,7 @@
     {
       "name" : "expand",
       "desc" : "Fires when this node is expanded",
-      "memberOf" : "",
+      "memberOf" : "Roo.tree.TreeNode",
       "example" : "",
       "deprecated" : "",
       "since" : "",

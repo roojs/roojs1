@@ -910,7 +910,7 @@
     {
       "name" : "refresh",
       "desc" : "Fire after refresh the file",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -929,7 +929,7 @@
     {
       "name" : "afterupload",
       "desc" : "Fire when xhr load exception",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -954,7 +954,7 @@
     {
       "name" : "beforeselectfile",
       "desc" : "Fire before select file",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -973,7 +973,7 @@
     {
       "name" : "remove",
       "desc" : "Fire when remove the file",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -998,7 +998,7 @@
     {
       "name" : "process",
       "desc" : "Fire before process file",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1023,7 +1023,7 @@
     {
       "name" : "inspect",
       "desc" : "inspect selected file",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1048,7 +1048,7 @@
     {
       "name" : "initial",
       "desc" : "Fire when initial the DocumentManager",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1067,7 +1067,7 @@
     {
       "name" : "exception",
       "desc" : "Fire when xhr load exception",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1092,7 +1092,7 @@
     {
       "name" : "prepare",
       "desc" : "prepare the form data",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1117,7 +1117,7 @@
     {
       "name" : "click",
       "desc" : "Fire after click the image",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1142,7 +1142,7 @@
     {
       "name" : "edit",
       "desc" : "Fire when upload a image and editable set to true",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1167,7 +1167,7 @@
     {
       "name" : "previewrendered",
       "desc" : "Fire when preview rendered",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentManager",
       "example" : "",
       "deprecated" : "",
       "since" : "",

@@ -1661,7 +1661,7 @@
     {
       "name" : "select",
       "desc" : "Fires when a date is selected",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.MonthField",
       "example" : "",
       "deprecated" : "",
       "since" : "",

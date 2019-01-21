@@ -919,7 +919,7 @@
     {
       "name" : "click",
       "desc" : "When a MasonryBrick is clcik",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.MasonryBrick",
       "example" : "",
       "deprecated" : "",
       "since" : "",

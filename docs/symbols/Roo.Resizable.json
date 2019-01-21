@@ -654,7 +654,7 @@
     {
       "name" : "resize",
       "desc" : "Fired after a resize.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Resizable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -691,7 +691,7 @@
     {
       "name" : "resizing",
       "desc" : "Fired a resizing.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Resizable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -740,7 +740,7 @@
     {
       "name" : "beforeresize",
       "desc" : "Fired before resize is allowed. Set enabled to false to cancel resize.",
-      "memberOf" : "",
+      "memberOf" : "Roo.Resizable",
       "example" : "",
       "deprecated" : "",
       "since" : "",

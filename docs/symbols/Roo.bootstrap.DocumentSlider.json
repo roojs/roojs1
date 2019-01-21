@@ -786,7 +786,7 @@
     {
       "name" : "click",
       "desc" : "Fire after click",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentSlider",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -805,7 +805,7 @@
     {
       "name" : "initial",
       "desc" : "Fire after initEvent",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentSlider",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -824,7 +824,7 @@
     {
       "name" : "update",
       "desc" : "Fire after update",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.DocumentSlider",
       "example" : "",
       "deprecated" : "",
       "since" : "",

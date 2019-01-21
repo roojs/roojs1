@@ -531,7 +531,7 @@
     {
       "name" : "resize",
       "desc" : "Fires when the splitter is moved (alias for {@link #event-moved})",
-      "memberOf" : "",
+      "memberOf" : "Roo.SplitBar",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -556,7 +556,7 @@
     {
       "name" : "beforeresize",
       "desc" : "Fires before the splitter is dragged",
-      "memberOf" : "",
+      "memberOf" : "Roo.SplitBar",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -575,7 +575,7 @@
     {
       "name" : "moved",
       "desc" : "Fires when the splitter is moved",
-      "memberOf" : "",
+      "memberOf" : "Roo.SplitBar",
       "example" : "",
       "deprecated" : "",
       "since" : "",

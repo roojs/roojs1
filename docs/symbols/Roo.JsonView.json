@@ -1036,7 +1036,7 @@
     {
       "name" : "loadexception",
       "desc" : "Fires when loading fails.",
-      "memberOf" : "",
+      "memberOf" : "Roo.JsonView",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1061,7 +1061,7 @@
     {
       "name" : "load",
       "desc" : "Fires when data is loaded.",
-      "memberOf" : "",
+      "memberOf" : "Roo.JsonView",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1092,7 +1092,7 @@
     {
       "name" : "beforerender",
       "desc" : "Fires before rendering of the downloaded JSON data.",
-      "memberOf" : "",
+      "memberOf" : "Roo.JsonView",
       "example" : "",
       "deprecated" : "",
       "since" : "",

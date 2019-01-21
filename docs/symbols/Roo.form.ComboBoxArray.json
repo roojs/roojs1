@@ -1574,7 +1574,7 @@
     {
       "name" : "beforeremove",
       "desc" : "Fires before remove the value from the list",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.ComboBoxArray",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1599,7 +1599,7 @@
     {
       "name" : "remove",
       "desc" : "Fires when remove the value from the list",
-      "memberOf" : "",
+      "memberOf" : "Roo.form.ComboBoxArray",
       "example" : "",
       "deprecated" : "",
       "since" : "",

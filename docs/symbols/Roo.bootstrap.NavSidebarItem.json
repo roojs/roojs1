@@ -916,7 +916,7 @@
     {
       "name" : "changed",
       "desc" : "Fires when the active item active state changes",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.NavSidebarItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -941,7 +941,7 @@
     {
       "name" : "click",
       "desc" : "The raw click event for the entire grid.",
-      "memberOf" : "",
+      "memberOf" : "Roo.bootstrap.NavSidebarItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",
