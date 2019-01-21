@@ -9979,7 +9979,6 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
             this.xy = this.el.getCenterXY(true);
         }
         if(this.modal){
-            Roo.log('adding x-body-masked class???!!!');
             Roo.get(document.body).addClass("x-body-masked");
             this.mask.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
             this.mask.show();
@@ -10335,7 +10334,6 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
         this.proxy.hide();
         if(this.modal){
             this.mask.hide();
-            Roo.log('remove x-body-masked');
             Roo.get(document.body).removeClass("x-body-masked");
         }
         this.fireEvent("hide", this);
