@@ -122,6 +122,11 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * @type Mixed
      */
     waitMsgTarget : false,
+    
+    /**
+     * @type Boolean
+     */
+    disableMask : false,
 
     // private
     initEl : function(el){
