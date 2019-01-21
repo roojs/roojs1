@@ -1399,7 +1399,7 @@ Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
         params = params || {};
         var result;
         try {
-            result = reader.readRecords(this.data);
+            result = reader.readRecords(params.data ? params.data :this.data);
         }catch(e){
             this.fireEvent("loadexception", this, arg, null, e);
             callback.call(scope, null, arg, false);
@@ -2138,24 +2138,31 @@ var myReader = new Roo.data.ArrayReader({
  * <pre><code>
 [ [1, 'Bill', 'Gardener'], [2, 'Ben', 'Horticulturalist'] ]
   </code></pre>
- * @cfg {String} id (optional) The subscript within row Array that provides an ID for the Record
+ 
  * @constructor
  * Create a new JsonReader
  * @param {Object} meta Metadata configuration options.
- * @param {Object} recordType Either an Array of field definition objects
+ * @param {Object|Array} recordType Either an Array of field definition objects
+ * 
+ * @cfg {Array} fields Array of field definition objects
+ * @cfg {String} id Name of the property within a row object that contains a record identifier value.
  * as specified to {@link Roo.data.Record#create},
  * or an {@link Roo.data.Record} object
+ *
+ * 
  * created using {@link Roo.data.Record#create}.
  */
 Roo.data.ArrayReader = function(meta, recordType){
-    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType);
+    
+     
+    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 
 Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
     /**
      * Create a data block containing Roo.data.Records from an XML document.
      * @param {Object} o An Array of row objects which represents the dataset.
-     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * @return {Object} A data block which is used by an {@link Roo.data.Store} object as
      * a cache of Roo.data.Records.
      */
     readRecords : function(o){
@@ -12394,7 +12401,7 @@ Roo.extend(Roo.tree.MultiSelectionModel, Roo.util.Observable, {
  * @cfg {Boolean} allowDrop false if this node cannot be drop on
  * @cfg {Boolean} disabled true to start the node disabled
  * @cfg {String} icon The path to an icon for the node. The preferred way to do this
- * is to use the cls or iconCls attributes and add the icon via a CSS background image.
+ *    is to use the cls or iconCls attributes and add the icon via a CSS background image.
  * @cfg {String} cls A css class to be added to the node
  * @cfg {String} iconCls A css class to be added to the nodes icon element for applying css background images
  * @cfg {String} href URL of the link used for the node (defaults to #)
@@ -13561,7 +13568,9 @@ Roo.extend(Roo.tree.RootTreeNodeUI, Roo.tree.TreeNodeUI, {
     myTreeLoader.on("beforeload", function(treeLoader, node) {
         this.baseParams.category = node.attributes.category;
     }, this);
-</code></pre><
+    
+</code></pre>
+ *
  * This would pass an HTTP parameter called "category" to the server containing
  * the value of the Node's "category" attribute.
  * @constructor
@@ -30910,8 +30919,7 @@ Roo.ContentPanel = function(el, config, content){
          * @param {Roo.ContentPanel} this
          */
         "render" : true
-        
-        
+         
         
     });
     
@@ -31087,7 +31095,7 @@ panel.load({
         }
         if(this.footer){
             var te = this.footer.getEl();
-            Roo.log("footer:" + te.getHeight());
+            //Roo.log("footer:" + te.getHeight());
             
             height -= te.getHeight();
             te.setWidth(width);
