@@ -52277,7 +52277,6 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
      * Shows this region if it was previously hidden.
      */
     show : function(){
-        Roo.log('show??');
         if(!this.collapsed){
             this.el.show();
         }else{
@@ -52295,10 +52294,12 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
 
     collapseClick : function(e){
         if(this.isSlid){
+            Roo.log('slide in');
            e.stopPropagation();
            this.slideIn();
         }else{
            e.stopPropagation();
+           Roo.log('slide out');
            this.slideOut();
         }
     },
