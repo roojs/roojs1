@@ -29844,12 +29844,10 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
 
     collapseClick : function(e){
         if(this.isSlid){
-            Roo.log('slide in');
            e.stopPropagation();
            this.slideIn();
         }else{
            e.stopPropagation();
-           Roo.log('slide out');
            this.slideOut();
         }
     },
