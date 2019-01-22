@@ -289,6 +289,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
     },
 
     collapseClick : function(e){
+        Roo.log('collapse click');
         if(this.isSlid){
            e.stopPropagation();
            this.slideIn();
