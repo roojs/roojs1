@@ -349,10 +349,8 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
         }
         this.collapsed = false;
         if(this.config.animate && skipAnim !== true){
-            Roo.log('animate??');
             this.animateExpand();
         }else{
-            Roo.log('not animate??');
             this.el.show();
             if(this.split){
                 this.split.el.show();
