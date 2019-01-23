@@ -12,4 +12,4 @@ Roo.bootstrap.version = (
                     }
                 });
         return ret;
-})();
+})(); 
