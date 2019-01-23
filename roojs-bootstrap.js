@@ -1,5 +1,5 @@
 // Roo/bootstrap/version.js
-Roo.bootstrap.version=(function(){var A=3;Roo.each(document.styleSheets[0],function(s){if(s.href.match(/css-bootstrap4/)){A=4;}});return A;})();
+Roo.bootstrap.version=(function(){var A=3;Roo.each(document.styleSheets,function(s){if(s.href.match(/css-bootstrap4/)){A=4;}});return A;})();
 // Roo/bootstrap/Component.js
 Roo.bootstrap=Roo.bootstrap||{};Roo.bootstrap.Component=function(A){Roo.bootstrap.Component.superclass.constructor.call(this,A);this.addEvents({"childrenrendered":true});};Roo.extend(Roo.bootstrap.Component,Roo.BoxComponent,{allowDomMove:false,cls:false,style:false,autoCreate:false,tooltip:null,initEvents:function(){}
 ,xattr:false,parentId:false,can_build_overlaid:true,container_method:false,dataId:false,name:false,parent:function(){return Roo.ComponentMgr.get(this.parentId)},onRender:function(ct,A){Roo.bootstrap.Component.superclass.onRender.call(this,ct,A);if(this.el){if(this.el.attr('xtype')){this.el.attr('xtypex',this.el.attr('xtype'));
