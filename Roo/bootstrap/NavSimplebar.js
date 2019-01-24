@@ -70,9 +70,10 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
 	// i'm not actually sure these are really used - normally we add a navGroup to a navbar
 	
 	if (Roo.bootstrap.version == 4) {
-	     cfg.cn = [
+	    cfg.cn = [
 		{
-		    tag : 'span'
+		    cls: 'nav',
+		    tag : 'ul'
 		}
 	    ];
         
