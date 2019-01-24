@@ -237,6 +237,9 @@
     border-left: 0px;
     display: table-cell;
 }
+.roo-select2-container .dropdown-toggle::after {
+  margin-left: 0;
+}
 
 .roo-select2-container .roo-removable {
     position: relative;
