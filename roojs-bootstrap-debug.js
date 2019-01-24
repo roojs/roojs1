@@ -15376,8 +15376,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(!this.multiple && this.showToggleBtn){
             
             var caret = {
-                        tag: 'span',
-                        cls: 'caret'
+                cls: 'caret'
             };
             
             if (this.caret != false) {
@@ -15392,7 +15391,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 tag :'span',
                 cls : 'input-group-addon input-group-append input-group-text btn dropdown-toggle',
                 cn : [
-                    caret,
+                    Roo.bootstrap.version == 3 ? caret : '',
                     {
                         tag: 'span',
                         cls: 'combobox-clear',
