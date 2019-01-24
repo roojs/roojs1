@@ -657,7 +657,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                  
                 if (!config[size]) { // 0 = hidden
                     // BS 4 '0' is treated as hide that column and below.
-                    c.cls += ' hidden-' + size + ' hidden' + size + 'down';
+                    c.cls += ' hidden-' + size + ' hidden' + size + '-down';
                     return;
                 }
                 
@@ -975,7 +975,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                   
                 if (!config[size]) { // 0 = hidden
                     // BS 4 '0' is treated as hide that column and below.
-                    td.cls += ' hidden-' + size + ' hidden' + size + 'down';
+                    td.cls += ' hidden-' + size + ' hidden' + size + '-down';
                     return;
                 }
                 
