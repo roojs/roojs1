@@ -13,3 +13,8 @@
 table td .navbar {
     min-height: auto;
 }
+
+.tab-pane .navbar-nav,
+.tab-pane .navbar-nav .nav-item {
+    width: 100%;
+}
