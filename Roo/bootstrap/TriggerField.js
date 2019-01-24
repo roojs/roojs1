@@ -228,8 +228,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             
             combobox.cn.push({
                 tag :'span',
-                cls : 'input-group-addon input-group-append input-group-text btn'  +
-                    (Roo.bootstrap.version == 3 ? ' dropdown-toggle' : ''),
+                cls : 'input-group-addon input-group-append input-group-text btn dropdown-toggle',
                 cn : [
                     caret,
                     {
@@ -435,7 +434,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         if(!this.multiple && this.showToggleBtn){
-            this.trigger = this.el.select('span.input-group-append',true).first();
+            this.trigger = this.el.select('span.dropdown-toggle',true).first();
             if(this.hideTrigger){
                 this.trigger.setDisplayed(false);
             }

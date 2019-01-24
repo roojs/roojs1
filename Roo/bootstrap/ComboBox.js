@@ -2297,8 +2297,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             combobox.cn.push({
                 tag :'span',
-                cls : 'input-group-addon input-group-append input-group-text btn' +
-                    (Roo.bootstrap.version == 3 ? ' dropdown-toggle' : ''),
+                cls : 'input-group-addon input-group-append input-group-text btn dropdown-toggle',
                 cn : [
                     caret,
                     {
@@ -2479,7 +2478,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.originalValue = this.getValue();
         
-        this.triggerEl = this.el.select('span.input-group-append',true).first();
+        this.triggerEl = this.el.select('span.dropdown-toggle',true).first();
         
         this.inputEl().on("click", this.showTouchView, this);
         if (this.triggerEl) {
