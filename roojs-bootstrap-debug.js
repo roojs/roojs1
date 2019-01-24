@@ -3924,7 +3924,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         if(this.fireEvent('beforetoggle', this) === false){
             return;
         }
-        var ce = this.el.select('.navbar-collapse',true).first();
+        var ce = this.el.select('.roo-navbar-collapse',true).first();
       
         if (!ce.hasClass('show')) {
            this.expand();
@@ -3941,7 +3941,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     expand : function ()
     {
        
-        var ce = this.el.select('.navbar-collapse',true).first();
+        var ce = this.el.select('.roo-navbar-collapse',true).first();
         if (ce.hasClass('collapsing')) {
             return;
         }
@@ -4222,7 +4222,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         
         cn.push({
             tag: 'div',
-            cls: Roo.bootstrap.version == 4  ? 'nav flex-row' : 'collapse navbar-collapse',
+            cls: Roo.bootstrap.version == 4  ? 'nav flex-row roo-navbar-collapse' : 'collapse navbar-collapse',
             cn : []
         });
         
@@ -4892,7 +4892,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         // if parent is a navbarheader....- and link is probably a '#' page ref.. then remove the expanded menu.
         if (p.parentType == 'NavHeaderbar' && !this.menu) {
             // remove the collapsed menu expand...
-            p.parent().el.select('.navbar-collapse',true).removeClass('in');  
+            p.parent().el.select('.roo-navbar-collapse',true).removeClass('in');  
         }
     },
     
