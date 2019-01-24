@@ -4069,7 +4069,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
 	
 	// i'm not actually sure these are really used - normally we add a navGroup to a navbar
 	
-	if (Roo.bootstrap.version == 4 && this.xtype == 'NavSimpleBar') {
+	if (Roo.bootstrap.version == 4 && this.xtype == 'NavSimplebar') {
 	    return cfg;
 	}
 	
