@@ -1029,6 +1029,9 @@ table.fc-border-separate {
 .roo-ios-select {
   width: 100%;
 }
+.roo-select2-container.input-group > .form-control {
+  width: 100%;
+}
 /*!
  * Datepicker for Bootstrap
  *
