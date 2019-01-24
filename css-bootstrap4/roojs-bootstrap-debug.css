@@ -1001,6 +1001,9 @@ table.fc-border-separate {
   border-left: 0px;
   display: table-cell;
 }
+.navbar .roo-select2-container .input-group-addon {
+  padding: 6px 10px;
+}
 .roo-select2-container .dropdown-toggle::after {
   margin-left: 0;
 }
