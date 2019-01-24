@@ -2610,6 +2610,7 @@ table td .navbar {
   /* inline-block for ie7 */
   zoom: 1;
   *display: inline;
+  display: table;
   vertical-align: middle;
 }
 .roo-select2-container, .roo-select2-drop, .roo-select2-search, .roo-select2-search input {
