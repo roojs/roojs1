@@ -15390,7 +15390,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             combobox.cn.push({
                 tag :'span',
-                cls : 'input-group-addon input-group-append input-group-text btn dropdown-toggle',
+                cls : 'input-group-addon input-group-append input-group-text btn' +
+                    (Roo.bootstrap.version == 3 ? ' dropdown-toggle' : ''),
                 cn : [
                     caret,
                     {
