@@ -61,7 +61,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
 	    if (['tabs','pills'].indexOf(this.type) != -1) {
 		cfg.cls += ' nav-' + this.type; 
 	    } else {
-		cfg.cls += ' navbar-nav';
+		//cfg.cls += ' navbar-nav';
 	    }
 	} else {
 	    if (['tabs','pills'].indexOf(this.type) != -1) {
@@ -88,7 +88,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
                 tag: 'form',
                 cls: 'navbar-form form-inline'
             };
-            
+            //nav navbar-right ml-md-auto
             if (this.align === 'right') {
                 cfg.cls += ' navbar-right ml-md-auto';
             } else {
