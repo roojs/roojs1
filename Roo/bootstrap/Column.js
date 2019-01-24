@@ -76,10 +76,12 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
             }
             
             if (!settings[size]) { // 0 = hidden
-                cfg.cls += ' hidden-' + size;
+                cfg.cls += ' hidden-' + size + ' hidden' + size + '-down';;
                 return;
             }
-            cfg.cls += ' col-' + size + '-' + settings[size];
+            cfg.cls += ' col-' + size + '-' + settings[size] + (
+                size == 'xs' ? (' col-' + config[size] ) : '' // bs4 col-{num} replaces col-xs
+            );
             
         });
         
