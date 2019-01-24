@@ -594,8 +594,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.html = '<i class="glyphicon"></i>' + c.html;
             }
             
+            // could use BS4 hidden-..-down 
+            
             if(typeof(config.lgHeader) != 'undefined'){
-                hh += '<span class="hidden-xs hidden-sm hidden-md">' + config.lgHeader + '</span>';
+                hh += '<span class="hidden-xs hidden-sm hidden-md ">' + config.lgHeader + '</span>';
             }
             
             if(typeof(config.mdHeader) != 'undefined'){
@@ -660,7 +662,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
                 
                 c.cls += ' col-' + size + '-' + config[size] + (
-                    size == 'xs' ? (' col-' + + config[size] ) : '' // bs4 col-{num} replaces col-xs
+                    size == 'xs' ? (' col-' + config[size] ) : '' // bs4 col-{num} replaces col-xs
                 );
                 
                 
