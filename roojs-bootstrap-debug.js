@@ -4078,7 +4078,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
 	
         cfg.cn = [
             {
-                cls: 'nav nav-simplebar',
+                cls: 'nav nav-' + this.xtype,
                 tag : 'ul'
             }
         ];
