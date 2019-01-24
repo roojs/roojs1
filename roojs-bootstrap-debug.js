@@ -3973,7 +3973,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
      */
     collapse : function()
     {
-         var ce = this.el.select('.navbar-collapse',true).first();
+         var ce = this.el.select('.roo-navbar-collapse',true).first();
        
         if (ce.hasClass('collapsing') || ce.hasClass('collapse') ) {
             // it's collapsed or collapsing..
@@ -4222,7 +4222,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         
         cn.push({
             tag: 'div',
-            cls: Roo.bootstrap.version == 4  ? 'nav flex-row roo-navbar-collapse' : 'collapse navbar-collapse',
+            cls: Roo.bootstrap.version == 4  ? 'nav flex-row roo-navbar-collapse' : 'collapse navbar-collapse roo-navbar-collapse',
             cn : []
         });
         
