@@ -16,8 +16,8 @@ trigger_action_file('compile_bootstrap',  'dependancy_bootstrap.txt');
 trigger_action_file('compile_mailer',  'dependancy_mailer.txt');
 trigger_action_file('compile_calendar',  'dependancy_calendar.txt');
 
-trigger_action('compile_less', array('less'));
-trigger_action('compile_scss', array('scss'));
+trigger_action('compile_less', array('less/'));
+trigger_action('compile_scss', array('scss/'));
 
 if ($core || $ui) {
     merge_files();
@@ -45,8 +45,7 @@ function unlock()
 {
     unlink(".git/pre-commit-running");
 }
-
-
+ 
 function changed_files()
 {
     static $output = array();

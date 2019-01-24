@@ -967,6 +967,7 @@ table.fc-border-separate {
 .roo-select2-container .x-combo-noedit {
   cursor: pointer;
   background-color: #fff;
+  display: table-cell;
 }
 .roo-select2-container .x-combo-noedit[disabled] {
   cursor: not-allowed;
@@ -998,6 +999,7 @@ table.fc-border-separate {
   padding: 6px 12px;
   border: 1px solid #ced4da;
   border-left: 0px;
+  display: table-cell;
 }
 .roo-select2-container .roo-removable {
   position: relative;
@@ -1014,25 +1016,6 @@ table.fc-border-separate {
   z-index: 2;
   top: 5px;
 }
-/*
- .roo-select2-container .roo-removable.has-feedback .roo-combo-removable-btn {
- position: absolute;
- right: 40px;
- z-index: 2;
- top: 5px;
- }
- .roo-select2-container .roo-removable.has-feedback.input-group .roo-combo-removable-btn {
- position: absolute;
- right: 70px;
- z-index: 2;
- top: 5px;
- }
- .roo-select2-container.input-group .has-feedback .roo-combo-removable-btn {
- position: absolute;
- right: 35px;
- z-index: 2;
- top: 5px;
- }*/
 .has-warning .roo-select2-container-multi {
   border: 1px solid #ffc107;
 }
