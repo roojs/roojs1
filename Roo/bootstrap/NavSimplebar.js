@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
         
         var cfg = {
             tag : this.tag || 'div',
-            cls : 'navbar navbar-expand-lg roo-navbar-simple'
+            cls : 'navbar roo-navbar-simple' //navbar-expand-lg ??
         };
 	if (['light','white'].indexOf(this.weight) > -1) {
 	    cfg.cls += ['light','white'].indexOf(this.weight) > -1 ? ' navbar-light' : ' navbar-dark';
