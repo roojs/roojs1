@@ -653,13 +653,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     return;
                 }
                 
+                
+                
                 if (!config[size]) { // 0 = hidden
-                    c.cls += ' hidden-' + size;
+                    c.cls += ' hidden-' + size + ' hidden' + size + 'down';
                     return;
                 }
                 
-                c.cls += ' col-' + size + '-' + config[size];
-
+                c.cls += ' col-' + size + '-' + config[size] + (
+                    size == 'xs' ? (' col-' + + config[size] ) : '' // bs4 col-{num} replaces col-xs
+                );
+                
+                
             });
             
             header.cn.push(c)
