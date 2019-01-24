@@ -7183,12 +7183,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     return;
                 }
                 
+                
+                  
                 if (!config[size]) { // 0 = hidden
-                    td.cls += ' hidden-' + size;
+                    // BS 4 '0' is treated as hide that column and below.
+                    td.cls += ' hidden-' + size + ' hidden' + size + 'down';
                     return;
                 }
                 
-                td.cls += ' col-' + size + '-' + config[size];
+                td.cls += ' col-' + size + '-' + config[size] + (
+                    size == 'xs' ? (' col-' +   config[size] ) : '' // bs4 col-{num} replaces col-xs
+                );
+                 
 
             });
             
