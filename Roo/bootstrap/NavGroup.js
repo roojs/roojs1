@@ -61,6 +61,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
 	    if (['tabs','pills'].indexOf(this.type) != -1) {
 		cfg.cls += ' nav-' + this.type; 
 	    } else {
+		// trying to remove so header bar can right align top?
 		//cfg.cls += ' navbar-nav';
 	    }
 	} else {
