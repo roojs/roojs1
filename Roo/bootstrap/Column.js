@@ -80,7 +80,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
                 return;
             }
             cfg.cls += ' col-' + size + '-' + settings[size] + (
-                size == 'xs' ? (' col-' + cfg[size] ) : '' // bs4 col-{num} replaces col-xs
+                size == 'xs' ? (' col-' + settings[size] ) : '' // bs4 col-{num} replaces col-xs
             );
             
         });
