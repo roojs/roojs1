@@ -22,7 +22,7 @@ trigger.applyTo('my-field');
  * {@link Roo.bootstrap.DateField} and {@link Roo.bootstrap.ComboBox} are perfect examples of this.
  * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
  * class 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.
- * @cfg {String} caret (search|calendar) a fontawesome for the trigger icon see http://fortawesome.github.io/Font-Awesome/icons/
+ * @cfg {String} caret (search|calendar) BS3 only - carat fa name
 
  * @constructor
  * Create a new TriggerField.
@@ -230,7 +230,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 tag :'span',
                 cls : 'input-group-addon input-group-append input-group-text btn dropdown-toggle',
                 cn : [
-                    caret,
+                    Roo.bootstrap.version == 3 ? caret : '',
                     {
                         tag: 'span',
                         cls: 'combobox-clear',

@@ -1072,10 +1072,12 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
             }
             
             if (!settings[size]) { // 0 = hidden
-                cfg.cls += ' hidden-' + size;
+                cfg.cls += ' hidden-' + size + ' hidden' + size + '-down';;
                 return;
             }
-            cfg.cls += ' col-' + size + '-' + settings[size];
+            cfg.cls += ' col-' + size + '-' + settings[size] + (
+                size == 'xs' ? (' col-' + settings[size] ) : '' // bs4 col-{num} replaces col-xs
+            );
             
         });
         
@@ -3922,7 +3924,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         if(this.fireEvent('beforetoggle', this) === false){
             return;
         }
-        var ce = this.el.select('.navbar-collapse',true).first();
+        var ce = this.el.select('.roo-navbar-collapse',true).first();
       
         if (!ce.hasClass('show')) {
            this.expand();
@@ -3939,7 +3941,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     expand : function ()
     {
        
-        var ce = this.el.select('.navbar-collapse',true).first();
+        var ce = this.el.select('.roo-navbar-collapse',true).first();
         if (ce.hasClass('collapsing')) {
             return;
         }
@@ -3971,7 +3973,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
      */
     collapse : function()
     {
-         var ce = this.el.select('.navbar-collapse',true).first();
+         var ce = this.el.select('.roo-navbar-collapse',true).first();
        
         if (ce.hasClass('collapsing') || ce.hasClass('collapse') ) {
             // it's collapsed or collapsing..
@@ -4055,7 +4057,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
         
         var cfg = {
             tag : this.tag || 'div',
-            cls : 'navbar navbar-expand-lg roo-navbar-simple'
+            cls : 'navbar roo-navbar-simple' //navbar-expand-lg ??
         };
 	if (['light','white'].indexOf(this.weight) > -1) {
 	    cfg.cls += ['light','white'].indexOf(this.weight) > -1 ? ' navbar-light' : ' navbar-dark';
@@ -4069,13 +4071,16 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
 	
 	// i'm not actually sure these are really used - normally we add a navGroup to a navbar
 	
-	//if (Roo.bootstrap.version == 4) {
-	//    return cfg;
-	//}
+	if (Roo.bootstrap.version == 4 && this.xtype == 'NavSimplebar') {
+	    return cfg;
+	}
+	
+	
+    
 	
         cfg.cn = [
             {
-                cls: 'nav',
+                cls: 'nav nav-' + this.xtype,
                 tag : 'ul'
             }
         ];
@@ -4217,7 +4222,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         
         cn.push({
             tag: 'div',
-            cls: 'collapse navbar-collapse',
+            cls: Roo.bootstrap.version == 4  ? 'nav flex-row roo-navbar-collapse' : 'collapse navbar-collapse roo-navbar-collapse',
             cn : []
         });
         
@@ -4409,8 +4414,13 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
 	    if (['tabs','pills'].indexOf(this.type) != -1) {
 		cfg.cls += ' nav-' + this.type; 
 	    } else {
-		cfg.cls += ' navbar-nav';
+		// trying to remove so header bar can right align top?
+		if (this.parent() && this.parent().xtype != 'NavHeaderbar') {
+		    // do not use on header bar... 
+		    cfg.cls += ' navbar-nav';
+		}
 	    }
+	    
 	} else {
 	    if (['tabs','pills'].indexOf(this.type) != -1) {
 		cfg.cls += ' nav-' + this.type
@@ -4436,7 +4446,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
                 tag: 'form',
                 cls: 'navbar-form form-inline'
             };
-            
+            //nav navbar-right ml-md-auto
             if (this.align === 'right') {
                 cfg.cls += ' navbar-right ml-md-auto';
             } else {
@@ -4887,7 +4897,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         // if parent is a navbarheader....- and link is probably a '#' page ref.. then remove the expanded menu.
         if (p.parentType == 'NavHeaderbar' && !this.menu) {
             // remove the collapsed menu expand...
-            p.parent().el.select('.navbar-collapse',true).removeClass('in');  
+            p.parent().el.select('.roo-navbar-collapse',true).removeClass('in');  
         }
     },
     
@@ -6808,8 +6818,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.html = '<i class="glyphicon"></i>' + c.html;
             }
             
+            // could use BS4 hidden-..-down 
+            
             if(typeof(config.lgHeader) != 'undefined'){
-                hh += '<span class="hidden-xs hidden-sm hidden-md">' + config.lgHeader + '</span>';
+                hh += '<span class="hidden-xs hidden-sm hidden-md ">' + config.lgHeader + '</span>';
             }
             
             if(typeof(config.mdHeader) != 'undefined'){
@@ -6866,14 +6878,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 if(typeof(config[size]) == 'undefined'){
                     return;
                 }
-                
+                 
                 if (!config[size]) { // 0 = hidden
-                    c.cls += ' hidden-' + size;
+                    // BS 4 '0' is treated as hide that column and below.
+                    c.cls += ' hidden-' + size + ' hidden' + size + '-down';
                     return;
                 }
                 
-                c.cls += ' col-' + size + '-' + config[size];
-
+                c.cls += ' col-' + size + '-' + config[size] + (
+                    size == 'xs' ? (' col-' + config[size] ) : '' // bs4 col-{num} replaces col-xs
+                );
+                
+                
             });
             
             header.cn.push(c)
@@ -7179,12 +7195,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     return;
                 }
                 
+                
+                  
                 if (!config[size]) { // 0 = hidden
-                    td.cls += ' hidden-' + size;
+                    // BS 4 '0' is treated as hide that column and below.
+                    td.cls += ' hidden-' + size + ' hidden' + size + '-down';
                     return;
                 }
                 
-                td.cls += ' col-' + size + '-' + config[size];
+                td.cls += ' col-' + size + '-' + config[size] + (
+                    size == 'xs' ? (' col-' +   config[size] ) : '' // bs4 col-{num} replaces col-xs
+                );
+                 
 
             });
             
@@ -10433,7 +10455,7 @@ trigger.applyTo('my-field');
  * {@link Roo.bootstrap.DateField} and {@link Roo.bootstrap.ComboBox} are perfect examples of this.
  * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
  * class 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.
- * @cfg {String} caret (search|calendar) a fontawesome for the trigger icon see http://fortawesome.github.io/Font-Awesome/icons/
+ * @cfg {String} caret (search|calendar) BS3 only - carat fa name
 
  * @constructor
  * Create a new TriggerField.
@@ -10641,7 +10663,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 tag :'span',
                 cls : 'input-group-addon input-group-append input-group-text btn dropdown-toggle',
                 cn : [
-                    caret,
+                    Roo.bootstrap.version == 3 ? caret : '',
                     {
                         tag: 'span',
                         cls: 'combobox-clear',
@@ -15359,8 +15381,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(!this.multiple && this.showToggleBtn){
             
             var caret = {
-                        tag: 'span',
-                        cls: 'caret'
+                cls: 'caret'
             };
             
             if (this.caret != false) {
@@ -15375,7 +15396,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 tag :'span',
                 cls : 'input-group-addon input-group-append input-group-text btn dropdown-toggle',
                 cn : [
-                    caret,
+                    Roo.bootstrap.version == 3 ? caret : '',
                     {
                         tag: 'span',
                         cls: 'combobox-clear',

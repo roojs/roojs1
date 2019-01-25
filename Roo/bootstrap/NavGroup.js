@@ -61,8 +61,13 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
 	    if (['tabs','pills'].indexOf(this.type) != -1) {
 		cfg.cls += ' nav-' + this.type; 
 	    } else {
-		cfg.cls += ' navbar-nav';
+		// trying to remove so header bar can right align top?
+		if (this.parent() && this.parent().xtype != 'NavHeaderbar') {
+		    // do not use on header bar... 
+		    cfg.cls += ' navbar-nav';
+		}
 	    }
+	    
 	} else {
 	    if (['tabs','pills'].indexOf(this.type) != -1) {
 		cfg.cls += ' nav-' + this.type
@@ -88,7 +93,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
                 tag: 'form',
                 cls: 'navbar-form form-inline'
             };
-            
+            //nav navbar-right ml-md-auto
             if (this.align === 'right') {
                 cfg.cls += ' navbar-right ml-md-auto';
             } else {

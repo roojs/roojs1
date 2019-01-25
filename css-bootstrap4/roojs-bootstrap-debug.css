@@ -967,6 +967,7 @@ table.fc-border-separate {
 .roo-select2-container .x-combo-noedit {
   cursor: pointer;
   background-color: #fff;
+  display: table-cell;
 }
 .roo-select2-container .x-combo-noedit[disabled] {
   cursor: not-allowed;
@@ -995,9 +996,17 @@ table.fc-border-separate {
   margin-bottom: 3px;
 }
 .roo-select2-container .input-group-addon {
-  padding: 6px 12px;
+  padding: 6px 4px;
   border: 1px solid #ced4da;
   border-left: 0px;
+  display: table-cell;
+}
+/*  padding on navbars is different? */
+.navbar .roo-select2-container .input-group-addon {
+  padding: 6px 10px;
+}
+.roo-select2-container .dropdown-toggle::after {
+  margin-left: 0;
 }
 .roo-select2-container .roo-removable {
   position: relative;
@@ -1014,29 +1023,13 @@ table.fc-border-separate {
   z-index: 2;
   top: 5px;
 }
-/*
- .roo-select2-container .roo-removable.has-feedback .roo-combo-removable-btn {
- position: absolute;
- right: 40px;
- z-index: 2;
- top: 5px;
- }
- .roo-select2-container .roo-removable.has-feedback.input-group .roo-combo-removable-btn {
- position: absolute;
- right: 70px;
- z-index: 2;
- top: 5px;
- }
- .roo-select2-container.input-group .has-feedback .roo-combo-removable-btn {
- position: absolute;
- right: 35px;
- z-index: 2;
- top: 5px;
- }*/
 .has-warning .roo-select2-container-multi {
   border: 1px solid #ffc107;
 }
 .roo-ios-select {
+  width: 100%;
+}
+.roo-select2-container.input-group > .form-control {
   width: 100%;
 }
 /*!
@@ -2447,6 +2440,9 @@ a.roo-brick-link:focus, a.roo-brick-link:hover {
 table td .navbar {
   min-height: auto;
 }
+.tab-pane .navbar-nav, .tab-pane .navbar-nav .nav-item {
+  width: 100%;
+}
 .roo-numberbox {
   background-color: #007bff !important;
   border: 10px solid black;
@@ -2624,6 +2620,7 @@ table td .navbar {
   /* inline-block for ie7 */
   zoom: 1;
   *display: inline;
+  display: table;
   vertical-align: middle;
 }
 .roo-select2-container, .roo-select2-drop, .roo-select2-search, .roo-select2-search input {
