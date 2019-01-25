@@ -594,8 +594,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.html = '<i class="glyphicon"></i>' + c.html;
             }
             
+            // could use BS4 hidden-..-down 
+            
             if(typeof(config.lgHeader) != 'undefined'){
-                hh += '<span class="hidden-xs hidden-sm hidden-md">' + config.lgHeader + '</span>';
+                hh += '<span class="hidden-xs hidden-sm hidden-md ">' + config.lgHeader + '</span>';
             }
             
             if(typeof(config.mdHeader) != 'undefined'){
@@ -652,14 +654,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 if(typeof(config[size]) == 'undefined'){
                     return;
                 }
-                
+                 
                 if (!config[size]) { // 0 = hidden
-                    c.cls += ' hidden-' + size;
+                    // BS 4 '0' is treated as hide that column and below.
+                    c.cls += ' hidden-' + size + ' hidden' + size + '-down';
                     return;
                 }
                 
-                c.cls += ' col-' + size + '-' + config[size];
-
+                c.cls += ' col-' + size + '-' + config[size] + (
+                    size == 'xs' ? (' col-' + config[size] ) : '' // bs4 col-{num} replaces col-xs
+                );
+                
+                
             });
             
             header.cn.push(c)
@@ -965,12 +971,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     return;
                 }
                 
+                
+                  
                 if (!config[size]) { // 0 = hidden
-                    td.cls += ' hidden-' + size;
+                    // BS 4 '0' is treated as hide that column and below.
+                    td.cls += ' hidden-' + size + ' hidden' + size + '-down';
                     return;
                 }
                 
-                td.cls += ' col-' + size + '-' + config[size];
+                td.cls += ' col-' + size + '-' + config[size] + (
+                    size == 'xs' ? (' col-' +   config[size] ) : '' // bs4 col-{num} replaces col-xs
+                );
+                 
 
             });
             

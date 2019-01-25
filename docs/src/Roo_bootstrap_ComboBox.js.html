@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/bootstrap/ComboBox.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>Roo/bootstrap/ComboBox.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * - LGPL
  * * 
  */
@@ -2283,8 +2283,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.multiple </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.showToggleBtn</span><span class="jsdoc-syntax">){
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">caret </span><span class="jsdoc-syntax">= {
-                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'caret'
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'caret'
             </span><span class="jsdoc-syntax">};
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.caret </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
@@ -2299,7 +2298,7 @@
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group-addon input-group-append input-group-text btn dropdown-toggle'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
-                    </span><span class="jsdoc-var">caret</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">== 3 ? </span><span class="jsdoc-var">caret </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
                     {
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'combobox-clear'</span><span class="jsdoc-syntax">,

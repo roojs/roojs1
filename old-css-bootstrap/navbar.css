@@ -1,7 +1,0 @@
-/* for some reason it's -15px on BS */
-
-@media (min-width: 768px) {
-    .navbar-right {
-        margin-right: 15px;
-    }
-}

@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/bootstrap/NavSimplebar.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>Roo/bootstrap/NavSimplebar.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * - LGPL
  *
  * navbar
@@ -55,7 +55,7 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tag </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'navbar navbar-expand-lg roo-navbar-simple'
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'navbar roo-navbar-simple' </span><span class="jsdoc-comment">//navbar-expand-lg ??
         </span><span class="jsdoc-syntax">};
 	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'light'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'white'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">) &gt; -1) {
 	    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= [</span><span class="jsdoc-string">'light'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'white'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">) &gt; -1 ? </span><span class="jsdoc-string">' navbar-light' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' navbar-dark'</span><span class="jsdoc-syntax">;
@@ -69,13 +69,16 @@
 
 	</span><span class="jsdoc-comment">// i'm not actually sure these are really used - normally we add a navGroup to a navbar
 
-	//if (Roo.bootstrap.version == 4) {
-	//    return cfg;
-	//}
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">== 4 &amp;&amp; </span><span class="jsdoc-var">this.xtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'NavSimplebar'</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+	}
+
+
+
 
         </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
             {
-                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'nav'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'nav nav-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.xtype</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'
             </span><span class="jsdoc-syntax">}
         ];

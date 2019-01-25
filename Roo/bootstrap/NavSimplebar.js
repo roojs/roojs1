@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
         
         var cfg = {
             tag : this.tag || 'div',
-            cls : 'navbar navbar-expand-lg roo-navbar-simple'
+            cls : 'navbar roo-navbar-simple' //navbar-expand-lg ??
         };
 	if (['light','white'].indexOf(this.weight) > -1) {
 	    cfg.cls += ['light','white'].indexOf(this.weight) > -1 ? ' navbar-light' : ' navbar-dark';
@@ -69,13 +69,16 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
 	
 	// i'm not actually sure these are really used - normally we add a navGroup to a navbar
 	
-	//if (Roo.bootstrap.version == 4) {
-	//    return cfg;
-	//}
+	if (Roo.bootstrap.version == 4 && this.xtype == 'NavSimplebar') {
+	    return cfg;
+	}
+	
+	
+    
 	
         cfg.cn = [
             {
-                cls: 'nav',
+                cls: 'nav nav-' + this.xtype,
                 tag : 'ul'
             }
         ];
