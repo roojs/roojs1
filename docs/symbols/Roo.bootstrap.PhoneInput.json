@@ -342,7 +342,7 @@
     {
       "name" : "caret",
       "type" : "String",
-      "desc" : "a fontawesome for the trigger icon see http://fortawesome.github.io/Font-Awesome/icons/",
+      "desc" : "BS3 only - carat fa name",
       "memberOf" : "Roo.bootstrap.TriggerField",
       "values" : [
         "(search",
