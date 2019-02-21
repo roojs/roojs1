@@ -3924,7 +3924,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         if(this.fireEvent('beforetoggle', this) === false){
             return;
         }
-        var ce = this.el.select('.roo-navbar-collapse',true).first();
+        var ce = this.el.select('.navbar-collapse',true).first();
       
         if (!ce.hasClass('show')) {
            this.expand();
@@ -3941,7 +3941,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     expand : function ()
     {
        
-        var ce = this.el.select('.roo-navbar-collapse',true).first();
+        var ce = this.el.select('.navbar-collapse',true).first();
         if (ce.hasClass('collapsing')) {
             return;
         }
@@ -3973,7 +3973,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
      */
     collapse : function()
     {
-         var ce = this.el.select('.roo-navbar-collapse',true).first();
+         var ce = this.el.select('.navbar-collapse',true).first();
        
         if (ce.hasClass('collapsing') || ce.hasClass('collapse') ) {
             // it's collapsed or collapsing..
