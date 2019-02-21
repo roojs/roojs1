@@ -25,13 +25,14 @@ Dynamic.Component = function(cfg)
     Dynamic.Component.superclass.constructor.call(this, config);
     
     // we can add 'events that the extended element creates here..
-     this.addEvents({
-        
+    this.addEvents({
+        //eg..
        // "click" : true,
-         
        // "toggle" : true
     });
 }
+
+
 
 
 
