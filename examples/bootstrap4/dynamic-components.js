@@ -162,7 +162,15 @@ Roo.extend(Dynamic.Component, Roo.bootstrap.Body, {
     
 });
 
-
-
+Roo.apply(Dynamic.Component, {
+ _strings : {
+  '0c83f57c786a0b4a39efab23731c7ebc' :"email",
+  '3c0445c81a81e7508168c61674497f7d' :"Sign me in",
+  'b05d72142020283dc6812fd3a9bc691c' :"I forgot my password",
+  'b6d4223e60986fa4c9af77ee5f7149c5' :"Sign in",
+  '5f4dcc3b5aa765d61d8327deb882cf99' :"password",
+  '11268c03b59cc646b0fb7c4cb592130b' :"Register a new menbership"
+ }
+});
 
 
