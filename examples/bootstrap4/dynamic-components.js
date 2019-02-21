@@ -1,0 +1,11 @@
+/*
+ 
+The idea of this is to work out a new way for the builder to generate code
+That is more component based..
+-> basically the top level item would be 'extend' something... - like document body, etc..
+and then it would render the children...
+
+
+ 
+ 
+ */
