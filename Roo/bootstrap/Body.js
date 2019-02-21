@@ -28,7 +28,7 @@ Roo.bootstrap.Body = function(config){
     }
     if (config.do_render) {
 	this.onRender(config.do_render, '');
-	this.xaddChildren(config.items);
+	this.xAddChildren(config.items);
     }
     
 };

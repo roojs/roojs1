@@ -474,7 +474,7 @@ Roo.bootstrap.Body = function(config){
     }
     if (config.do_render) {
 	this.onRender(config.do_render, '');
-	this.addxtypeChildren(config.items);
+	this.xAddChildren(config.items);
     }
     
 };
