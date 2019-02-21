@@ -380,6 +380,21 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         return cn;
     },
     
+    
+    addxtypeChildren: function(child_array)
+    {
+	var nitems = [];
+	if (!tree.items || !tree.items.length) {
+            this.items = nitems;
+            //Roo.log(["no children", this]);
+            
+            return cn;
+        }
+	
+    },
+    
+    
+    
     /**
      * Set the element that will be used to show or hide
      */
