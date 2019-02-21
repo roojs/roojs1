@@ -167,9 +167,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
      */
     addxtype  : function(tree,cntr)
     {
-        var cn = this;
-        
-        cn = Roo.factory(tree);
+        var cn = Roo.factory(tree);
         //Roo.log(['addxtype', cn]);
            
         cn.parentType = this.xtype; //??
