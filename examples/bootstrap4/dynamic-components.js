@@ -188,44 +188,48 @@ Dynamic.Component.Form = function(cfg)
     var config = Roo.apply({
 
  
-                '|xns' : 'Roo.bootstrap',
-                xns : Roo.bootstrap,
-                xtype : 'Form',
-                items : [
-                 {
-                  '|xns' : 'Roo.bootstrap',
-                  cls : 'body bg-gray',
-                  xns : Roo.bootstrap,
-                  xtype : 'Container',
-                  items : [
-                   {
-                    '|xns' : 'Roo.bootstrap',
-                    placeholder : STRINGS['0c83f57c786a0b4a39efab23731c7ebc'],
-                    xns : Roo.bootstrap,
-                    xtype : 'Input'
-                   },
-                   {
-                    '|xns' : 'Roo.bootstrap',
-                    inputType : 'password',
-                    placeholder : STRINGS['5f4dcc3b5aa765d61d8327deb882cf99'],
-                    xns : Roo.bootstrap,
-                    xtype : 'Input'
-                   },
-                   {
-                    '|xns' : 'Roo.bootstrap',
-                    boxLabel : 'Remember me',
-                    xns : Roo.bootstrap,
-                    xtype : 'CheckBox'
-                   }
-                  ]
-         
-                 }
-                ]
-         
-               },
-        cfg
+        '|xns' : 'Roo.bootstrap',
+        xns : Roo.bootstrap,
+        xtype : 'Form',
+        items : [
+         {
+          '|xns' : 'Roo.bootstrap',
+          cls : 'body bg-gray',
+          xns : Roo.bootstrap,
+          xtype : 'Container',
+          items : [
+           {
+            '|xns' : 'Roo.bootstrap',
+            placeholder : STRINGS['0c83f57c786a0b4a39efab23731c7ebc'],
+            xns : Roo.bootstrap,
+            xtype : 'Input'
+           },
+           {
+            '|xns' : 'Roo.bootstrap',
+            inputType : 'password',
+            placeholder : STRINGS['5f4dcc3b5aa765d61d8327deb882cf99'],
+            xns : Roo.bootstrap,
+            xtype : 'Input'
+           },
+           {
+            '|xns' : 'Roo.bootstrap',
+            boxLabel : 'Remember me',
+            xns : Roo.bootstrap,
+            xtype : 'CheckBox'
+           }
+          ]
+         }
+        ]
+    }, cfg );
+    
+    Dynamic.Component.Form.superclass.constructor.call(this, config);
+    
+    // we can add 'events that the extended element creates here..
+    this.addEvents({
+        //eg..
+       // "click" : true,
+       // "toggle" : true
     });
-
 
 
 
