@@ -183,7 +183,7 @@ Dynamic.Component.Form = function(cfg)
     var _this = this;
     var STRINGS = Dynamic.Component.Form._strings;
     
-    // in theory you can use 'cfg.XXX to fill in values...'
+    // in theory you can use 'cfg.XXX to fill in values...' == eg. cfg.XXX || '10'
     
     var config = Roo.apply({
 
