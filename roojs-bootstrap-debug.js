@@ -388,6 +388,30 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     },
     
     
+    /**
+     * xAddChildren - the 'sub-compentized' version of the above idea..
+     */
+    xAddChildren: function(child_array, skip_children)
+    {
+	var nitems = [];
+	if (!child_array || !child_array.length ) {
+            this.items = nitems;
+            return;
+        }
+	
+	for(var i =0;i < child_array.length;i++) {
+	    if (skip_children) {
+		break;
+	    }
+	    //  Roo.log(['add child', items[i]]);
+	    nitems.push(this.xAdd(Roo.apply({}, child_array[i])));
+	}
+	this.items = nitems;
+        
+        this.fireEvent('childrenrendered', this);
+         
+    },
+    
     
     /**
      * Set the element that will be used to show or hide
