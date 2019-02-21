@@ -475,14 +475,16 @@ Roo.bootstrap.Body = function(config){
     if (this.cls && this.cls.length) {
         Roo.get(document.body).addClass(this.cls);
     }
-    if (this.do_render) {
-	this.onRender(do_render, '')
+    if (config.do_render) {
+	this.onRender(config.do_render, '');
+	this.addxtypeChildren(config.items);
     }
     
 };
 
 Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
 
+    do_render : false,
     is_body : true,// just to make sure it's constructed?
 
     autoCreate : {
@@ -490,7 +492,8 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
     },
     onRender : function(ct, position)
     {
-       /* Roo.log("Roo.bootstrap.Body - onRender");
+        
+        /* Roo.log("Roo.bootstrap.Body - onRender");
         if (this.cls && this.cls.length) {
             Roo.get(document.body).addClass(this.cls);
         }
