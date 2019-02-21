@@ -24,6 +24,7 @@ current build flow:
 Dynamic.Component = function(cfg)
 {
     var _this = this;
+    var STRINGS = Dynamic.Component._strings;
     
     config = Roo.apply({
         // the values specified in the builder for this element go here...
