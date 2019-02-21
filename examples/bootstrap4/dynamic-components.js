@@ -7,8 +7,9 @@ and then it would render the children...
 
 Changes that might need making?
 
-factory on the children might need to be more flexible?
- 
+?? can we apply it back to the old Roo library?
+
+
  
  
  */
