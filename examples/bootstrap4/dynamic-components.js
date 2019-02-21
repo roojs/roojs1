@@ -27,7 +27,7 @@ Dynamic.Component = function(cfg)
     var _this = this;
     var STRINGS = Dynamic.Component._strings;
     
-    config = Roo.apply({
+    var config = Roo.apply({
         // the values specified in the builder for this element go here...
             '|xns' : 'Roo.bootstrap',
             cls : 'bg-black',
@@ -174,5 +174,57 @@ Roo.apply(Dynamic.Component, {
   '11268c03b59cc646b0fb7c4cb592130b' :"Register a new menbership"
  }
 });
+
+/* ------------------------------------------------------------------------------ */
+
+
+Dynamic.Component.Form = function(cfg)
+{
+    var _this = this;
+    var STRINGS = Dynamic.Component.Form._strings;
+    
+    var config = Roo.apply({
+
+ 
+                '|xns' : 'Roo.bootstrap',
+                xns : Roo.bootstrap,
+                xtype : 'Form',
+                items : [
+                 {
+                  '|xns' : 'Roo.bootstrap',
+                  cls : 'body bg-gray',
+                  xns : Roo.bootstrap,
+                  xtype : 'Container',
+                  items : [
+                   {
+                    '|xns' : 'Roo.bootstrap',
+                    placeholder : STRINGS['0c83f57c786a0b4a39efab23731c7ebc'],
+                    xns : Roo.bootstrap,
+                    xtype : 'Input'
+                   },
+                   {
+                    '|xns' : 'Roo.bootstrap',
+                    inputType : 'password',
+                    placeholder : STRINGS['5f4dcc3b5aa765d61d8327deb882cf99'],
+                    xns : Roo.bootstrap,
+                    xtype : 'Input'
+                   },
+                   {
+                    '|xns' : 'Roo.bootstrap',
+                    boxLabel : 'Remember me',
+                    xns : Roo.bootstrap,
+                    xtype : 'CheckBox'
+                   }
+                  ]
+         
+                 }
+                ]
+         
+               },
+        cfg
+    });
+
+
+
 
 
