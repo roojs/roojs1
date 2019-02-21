@@ -167,13 +167,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
      */
     addxtype  : function(tree,cntr)
     {
-        var cn = Roo.factory(tree);
-        //Roo.log(['addxtype', cn]);
-           
+        cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
+	
+	var cn = Roo.factory(tree); // this is posibly the first of two times that the ctor get's called...
         cn.parentType = this.xtype; //??
         cn.parentId = this.id;
-        
-        cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
         if (typeof(cn.container_method) == 'string') {
             cntr = cn.container_method;
         }
