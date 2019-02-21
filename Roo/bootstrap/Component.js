@@ -374,8 +374,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
 	this.items = nitems;
         
         this.fireEvent('childrenrendered', this);
-        
-	
+         
     },
     
     
