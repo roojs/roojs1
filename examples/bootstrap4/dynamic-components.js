@@ -155,9 +155,7 @@ Dynamic.Component = function(cfg)
 
 Roo.extend(Dynamic.Component, Roo.bootstrap.Body, {
 
-    // children...
-    
-    // addxtype << this is the entry point for this component being 
+    // methods in here...
 
     
     
