@@ -49,8 +49,8 @@ Dynamic.Component = function(cfg)
                 xtype : 'Container'
                },
                {
-                '|xns' : 'Roo.bootstrap',
-                xns : Roo.bootstrap,
+                '|xns' : 'Dynamic.Component',
+                xns : Dynamic.Component,
                 xtype : 'Form',
                 items : [
                  {
@@ -231,4 +231,18 @@ Dynamic.Component.Form = function(cfg)
 
 
 
+Roo.extend(Dynamic.Component.Form, Roo.bootstrap.Form, {
 
+    // methods in here...
+
+    
+    
+    
+});
+
+Roo.apply(Dynamic.Component.Form, {
+ _strings : {
+  '0c83f57c786a0b4a39efab23731c7ebc' :"email",
+  '5f4dcc3b5aa765d61d8327deb882cf99' :"password",
+ }
+});
