@@ -476,7 +476,7 @@ Roo.bootstrap.Body = function(config){
         Roo.get(document.body).addClass(this.cls);
     }
     if (this.do_render) {
-	
+	this.onRender(do_render, '')
     }
     
 };
