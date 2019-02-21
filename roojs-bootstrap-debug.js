@@ -177,6 +177,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
      * = some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.
      *  -- this is a bit of a nightmare... and is even more confusing to debug..
      *
+     *  
+     *
      */
     addxtype  : function(tree,cntr)
     {
@@ -250,7 +252,13 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
        
         return ret;
     },
-    
+    /**
+     * add a child to this element
+     *   - turn the child.cfg into a child_instance
+     *   - call child_instance.render( this { getContainerMethod()} )
+     *   - loop through the children, and call addxtype.. (reall this) on newly created child.
+     *  
+     */
     
     addxtypeChild : function (tree, cntr, is_body)
     {
