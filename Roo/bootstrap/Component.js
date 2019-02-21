@@ -157,7 +157,13 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
         return this.el;
     },
-        
+    /**
+     * This is really a wrapper for addxtypeChild
+     * it handles stuff relating to flexy:foreach / flexy:if
+     * = some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.
+     *  -- this is a bit of a nightmare... and is even more confusing to debug..
+     *
+     */
     addxtype  : function(tree,cntr)
     {
         var cn = this;
