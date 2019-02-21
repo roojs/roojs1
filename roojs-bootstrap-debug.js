@@ -359,10 +359,15 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
 	var items = tree.items;
         delete tree.items;
         
-	cn.addxtypeChildren(items);
+	cn.addxtypeChildren(items, skip_children);
         return cn;
     },
     
+    /**
+     *  add a number of children to this object,
+     *     which in turn calls render...
+     *  
+     */
     
     addxtypeChildren: function(child_array, skip_children)
     {
