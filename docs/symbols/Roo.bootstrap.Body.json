@@ -26,6 +26,14 @@
   ],
   "config" : [
     {
+      "name" : "do_render",
+      "type" : "DomElement",
+      "desc" : "- if this is set, then the constructor will try and initialize render, using this as the start point",
+      "memberOf" : "Roo.bootstrap.Body",
+      "values" : [
+      ]
+    },
+    {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -34,17 +42,17 @@
       ]
     },
     {
-      "name" : "container_method",
+      "name" : "tooltip",
       "type" : "string",
-      "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+      "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
       "values" : [
       ]
     },
     {
-      "name" : "tooltip",
+      "name" : "container_method",
       "type" : "string",
-      "desc" : "Text for the tooltip",
+      "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
       "values" : [
       ]
@@ -229,6 +237,38 @@
       ]
     },
     {
+      "name" : "addxtype",
+      "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "addxtypeChild",
+      "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
       "name" : "initEvents",
       "desc" : "Initialize Events for the element",
       "isStatic" : false,
@@ -263,6 +303,22 @@
           "type" : "Roo.Element",
           "desc" : "defaults to this.el"
         }
+      ]
+    },
+    {
+      "name" : "addxtypeChildren",
+      "desc" : "add a number of children to this object,\n    which in turn calls render...",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
       ]
     },
     {

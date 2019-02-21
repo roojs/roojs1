@@ -549,6 +549,22 @@
       ]
     },
     {
+      "name" : "addxtypeChild",
+      "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
       "name" : "initEvents",
       "desc" : "Initialize Events for the element",
       "isStatic" : false,
@@ -583,6 +599,22 @@
           "type" : "Roo.Element",
           "desc" : "defaults to this.el"
         }
+      ]
+    },
+    {
+      "name" : "addxtypeChildren",
+      "desc" : "add a number of children to this object,\n    which in turn calls render...",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
       ]
     },
     {

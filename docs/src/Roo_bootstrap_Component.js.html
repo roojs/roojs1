@@ -39,7 +39,6 @@
         </span><span class="jsdoc-string">&quot;childrenrendered&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
 
 
-
     </span><span class="jsdoc-syntax">});
 
 
@@ -157,7 +156,15 @@
     {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
     },
-
+    </span><span class="jsdoc-comment">/**
+     * This is really a wrapper for addxtypeChild
+     * it handles stuff relating to flexy:foreach / flexy:if
+     * = some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.
+     *  -- this is a bit of a nightmare... and is even more confusing to debug..
+     *
+     *  
+     *
+     */
     </span><span class="jsdoc-var">addxtype  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
@@ -230,7 +237,13 @@
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
     },
-
+    </span><span class="jsdoc-comment">/**
+     * add a child to this element
+     *   - turn the child.cfg into a child_instance
+     *   - call child_instance.render( this { getContainerMethod()} )
+     *   - loop through the children, and call addxtype.. (reall this) on newly created child.
+     *  
+     */
 
     </span><span class="jsdoc-var">addxtypeChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">is_body</span><span class="jsdoc-syntax">)
     {
@@ -327,44 +340,43 @@
             </span><span class="jsdoc-comment">// then add the element..
         </span><span class="jsdoc-syntax">}
 
-        </span><span class="jsdoc-comment">// handle the kids..
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
-        </span><span class="jsdoc-comment">/*
-        if (typeof (tree.menu) != 'undefined') {
-            tree.menu.parentType = cn.xtype;
-            tree.menu.triggerEl = cn.el;
-            nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
-            
-        }
-        */
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tree.items </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">tree.items.length</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cn.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-comment">//Roo.log([&quot;no children&quot;, this]);
 
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
-        }
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tree.items</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">tree.items</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-comment">//Roo.log(items.length);
-            // add the items..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">skip_children</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-              </span><span class="jsdoc-comment">//  Roo.log(['add child', items[i]]);
-                </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])));
-            }
-        }
-
-        </span><span class="jsdoc-var">cn.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
-
-        </span><span class="jsdoc-comment">//Roo.log(&quot;fire childrenrendered&quot;);
-
-        </span><span class="jsdoc-var">cn.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'childrenrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-
+	</span><span class="jsdoc-var">cn.addxtypeChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.items</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">skip_children</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">tree.items</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
     },
+
+    </span><span class="jsdoc-comment">/**
+     *  add a number of children to this object,
+     *     which in turn calls render...
+     *  
+     */
+
+    </span><span class="jsdoc-var">addxtypeChildren</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">child_array</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">skip_children</span><span class="jsdoc-syntax">)
+    {
+	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">child_array </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">child_array.length </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+	</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">child_array.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">skip_children</span><span class="jsdoc-syntax">) {
+		</span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+	    }
+	    </span><span class="jsdoc-comment">//  Roo.log(['add child', items[i]]);
+	    </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">child_array</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])));
+	}
+	</span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'childrenrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+    },
+
+
 
     </span><span class="jsdoc-comment">/**
      * Set the element that will be used to show or hide

@@ -16353,6 +16353,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -16798,6 +16822,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -17044,6 +17092,12 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "do_render",
+        "type" : "DomElement",
+        "desc" : "- if this is set, then the constructor will try and initialize render, using this as the start point",
+        "memberOf" : ""
+      },
+      {
         "name" : "hideMode",
         "type" : "String",
         "desc" : [
@@ -17187,6 +17241,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -17621,6 +17699,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -18186,6 +18288,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -18655,6 +18781,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -19100,6 +19250,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -19915,6 +20089,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -20520,6 +20718,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -21720,6 +21942,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "autoSize",
         "type" : "function",
         "desc" : "",
@@ -22295,6 +22541,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -22841,6 +23111,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -23692,6 +23986,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -24315,6 +24633,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -24894,6 +25236,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -25304,6 +25670,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -25743,6 +26133,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -26169,6 +26583,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -26628,6 +27066,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -27150,6 +27612,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -27670,6 +28156,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -28078,6 +28588,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -28960,6 +29494,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -29533,6 +30091,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -30294,6 +30876,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -30858,6 +31464,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -31367,6 +31997,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -31813,6 +32467,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -32381,6 +33059,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -32848,6 +33550,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -33325,6 +34051,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -33773,6 +34523,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -34186,6 +34960,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -34618,6 +35416,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -35192,6 +36014,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "applyBody",
@@ -36503,6 +37349,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "autoSize",
         "type" : "function",
         "desc" : "",
@@ -37451,6 +38321,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -37982,6 +38876,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -38552,6 +39470,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -39086,6 +40028,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -39482,6 +40448,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -39927,6 +40917,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -40323,6 +41337,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -40859,6 +41897,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -41333,6 +42395,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -41745,6 +42831,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -42586,6 +43696,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -43085,6 +44219,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -43517,6 +44675,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -44027,6 +45209,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "bind",
@@ -44854,6 +46060,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "autoSize",
         "type" : "function",
         "desc" : "",
@@ -45393,6 +46623,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -45794,6 +47048,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -46234,6 +47512,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -46635,6 +47937,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -47423,6 +48749,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -47908,6 +49258,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -48679,6 +50053,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -49164,6 +50562,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -49930,6 +51352,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -50395,6 +51841,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -51042,6 +52512,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "autoSize",
@@ -51912,6 +53406,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -52393,6 +53911,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -52806,6 +54348,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -53597,6 +55163,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -54457,6 +56047,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -55352,6 +56966,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "autoSize",
         "type" : "function",
         "desc" : "",
@@ -56031,6 +57669,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -56458,6 +58120,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -56895,6 +58581,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -57314,6 +59024,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
@@ -58003,6 +59737,22 @@
         "memberOf" : ""
       },
       {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "beginUpdate",
         "type" : "function",
         "desc" : "Suspend the LayoutManager from doing auto-layouts while\nmaking multiple add or remove calls",
@@ -58492,6 +60242,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "beginUpdate",
@@ -59906,6 +61680,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -60336,6 +62134,30 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
         "name" : "capture",
         "type" : "function",
         "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
@@ -60725,6 +62547,30 @@
         "sig" : "(eventName, handler, scope, options)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addxtype",
+        "type" : "function",
+        "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChild",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "addxtypeChildren",
+        "type" : "function",
+        "desc" : "add a number of children to this object,\n    which in turn calls render...",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "capture",
