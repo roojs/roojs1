@@ -419,7 +419,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
          
         var parent_ctnr = this[cntr](true);
 	if(parent_ctnr === false){
-	    return; // getChildContainer an return false explicitly to block children being added?
+	    return false; // getChildContainer an return false explicitly to block children being added?
 	}
 	if(!parent_ctnr ){
 	    throw new Exception("could not find parent Container for item");
