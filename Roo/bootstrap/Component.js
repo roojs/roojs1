@@ -434,12 +434,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
         cn.render && cn.render(parent_ctnr);
                 
-             
-	
-        
-        
 	cn.xAddChildren(tree.items || cn.items);
-	delete tree.items;
+	delete tree.items; // not really needed?
         return cn;
     },
     

@@ -414,104 +414,29 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     xAdd : function (tree, cntr, is_body)
     {
         Roo.debug && Roo.log('xadd:' + cntr);
-        var cn = this;
+        
         cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
-        
-        
-        var has_flexy = (typeof(tree['flexy:if']) != 'undefined') ||
-                    (typeof(tree['flexy:foreach']) != 'undefined');
-          
-    
-        
-        skip_children = false;
-        // render the element if it's not BODY.
-        if (!is_body) {
-            
-            // if parent was disabled, then do not try and create the children..
-            if(!this[cntr](true)){
-                tree.items = [];
-                return tree;
-            }
+         
+        var parent_ctnr = this[cntr](true);
+	if(parent_ctnr === false){
+	    return; // getChildContainer an return false explicitly to block children being added?
+	}
+	if(!parent_ctnr ){
+	    throw new Exception("could not find parent Container for item");
+	}
            
-            cn = Roo.factory(tree);
-           
-            cn.parentType = this.xtype; //??
-            cn.parentId = this.id;
+        var cn = Roo.factory(tree);
+	// at this point items[] array may be set..
+	// constructors should not really be building their children?
+	cn.parentType = this.xtype; //??
+        cn.parentId = this.id;
             
-            var build_from_html =  Roo.XComponent.build_from_html;
             
-            
-            // does the container contain child eleemnts with 'xtype' attributes.
-            // that match this xtype..
-            // note - when we render we create these as well..
-            // so we should check to see if body has xtype set.
-            if (build_from_html && Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
-               
-                var self_cntr_el = Roo.get(this[cntr](false));
-                var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-                if (echild) { 
-                    //Roo.log(Roo.XComponent.build_from_html);
-                    //Roo.log("got echild:");
-                    //Roo.log(echild);
-                }
-                // there is a scenario where some of the child elements are flexy:if (and all of the same type)
-                // and are not displayed -this causes this to use up the wrong element when matching.
-                // at present the only work around for this is to nest flexy:if elements in another element that is always rendered.
+        cn.render && cn.render(parent_ctnr);
                 
-                
-                if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
-                  //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
-                  
-                  
-                  
-                    cn.el = echild;
-                  //  Roo.log("GOT");
-                    //echild.dom.removeAttribute('xtype');
-                } else {
-                    Roo.debug && Roo.log("MISSING " + cn.xtype + " on child of " + (this.el ? this.el.attr('xbuilderid') : 'no parent'));
-                    Roo.debug && Roo.log(self_cntr_el);
-                    Roo.debug && Roo.log(echild);
-                    Roo.debug && Roo.log(cn);
-                }
-            }
-           
-            
-           
-            // if object has flexy:if - then it may or may not be rendered.
-            if (build_from_html && has_flexy && !cn.el &&  cn.can_build_overlaid) {
-                // skip a flexy if element.
-                Roo.debug && Roo.log('skipping render');
-                Roo.debug && Roo.log(tree);
-                if (!cn.el) {
-                    Roo.debug && Roo.log('skipping all children');
-                    skip_children = true;
-                }
-                
-             } else {
-                 
-                // actually if flexy:foreach is found, we really want to create 
-                // multiple copies here...
-                //Roo.log('render');
-                //Roo.log(this[cntr]());
-                // some elements do not have render methods.. like the layouts...
-                /*
-                if(this[cntr](true) === false){
-                    cn.items = [];
-                    return cn;
-                }
-                */
-                cn.render && cn.render(this[cntr](true));
-                
-             }
-            // then add the element..
-        }
-        
-	
-	
-        
-        
-	cn.addxtypeChildren(tree.items, skip_children);
-	delete tree.items;
+             
+	cn.xAddChildren(tree.items || cn.items);
+	delete tree.items; // not really needeD?
         return cn;
     },
     
