@@ -19,6 +19,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {string} tooltip  Text for the tooltip
  * @cfg {string} container_method method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)
  * @cfg {string|object} visibilityEl (el|parent) What element to use for visibility (@see getVisibilityEl())
+ * @cfg {Boolean} do_render - if this is set, then the constructor will try and initialize render, on {this.el}
  
  * @constructor
  * Do not use directly - it does not do anything..
