@@ -20,6 +20,7 @@ current build flow:
  
  
  */
+Roo.namespace('Dynamic');
 
 Dynamic.Component = function(cfg)
 {
