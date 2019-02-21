@@ -462,6 +462,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
  * @constructor
  * Create a new body
  * @param {Object} config The config object
+ * @cfg {DomElement} do_render - if this is set, then the constructor will try and initialize render, using this as the start point
+ 
  */
 
 Roo.bootstrap.Body = function(config){
@@ -473,13 +475,17 @@ Roo.bootstrap.Body = function(config){
     if (this.cls && this.cls.length) {
         Roo.get(document.body).addClass(this.cls);
     }
+    if (this.do_render) {
+	
+    }
+    
 };
 
 Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
 
     is_body : true,// just to make sure it's constructed?
 
-	autoCreate : {
+    autoCreate : {
         cls: 'container'
     },
     onRender : function(ct, position)

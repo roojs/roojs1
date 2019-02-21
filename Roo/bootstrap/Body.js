@@ -36,7 +36,7 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
 
     is_body : true,// just to make sure it's constructed?
 
-	autoCreate : {
+    autoCreate : {
         cls: 'container'
     },
     onRender : function(ct, position)
