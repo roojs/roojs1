@@ -5,6 +5,9 @@ That is more component based..
 -> basically the top level item would be 'extend' something... - like document body, etc..
 and then it would render the children...
 
+Changes that might need making?
+
+factory on the children might need to be more flexible?
 
  
  
