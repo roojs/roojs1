@@ -388,7 +388,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             this.items = nitems;
             return this;
         }
-	
+	for(var i =0;i < child_array.length;i++) {
+	//  Roo.log(['add child', items[i]]);
+	  nitems.push(this.addxtype(Roo.apply({}, child_array[i])));
+      }
 	
 	
     },
