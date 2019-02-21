@@ -296,6 +296,22 @@
       ]
     },
     {
+      "name" : "xAddChildren",
+      "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
       "name" : "setVisibilityEl",
       "desc" : "Set the element that will be used to show or hide",
       "isStatic" : false,
@@ -330,6 +346,22 @@
     {
       "name" : "addxtype",
       "desc" : "This is really a wrapper for addxtypeChild\nit handles stuff relating to flexy:foreach / flexy:if\n= some of our projects use a flat rendering of the output, and try and overlay it with dynamic data.\n -- this is a bit of a nightmare... and is even more confusing to debug..",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+      ],
+      "returns" : [
+      ]
+    },
+    {
+      "name" : "xAdd",
+      "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,

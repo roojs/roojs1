@@ -16575,6 +16575,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -17044,6 +17060,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -17465,6 +17497,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -17923,6 +17971,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -18550,6 +18614,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -19003,6 +19083,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -19474,6 +19570,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -20423,6 +20535,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -20942,6 +21070,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -22348,6 +22492,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -22763,6 +22923,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : ""
       }
     ]
   },
@@ -23335,6 +23511,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -24304,6 +24496,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -24863,6 +25071,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -25458,6 +25682,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -25894,6 +26134,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -26355,6 +26611,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -26807,6 +27079,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -27322,6 +27610,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -27914,6 +28218,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -28378,6 +28698,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -28812,6 +29148,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -29828,6 +30180,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -30323,6 +30691,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -31194,6 +31578,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : ""
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -31726,6 +32126,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -32219,6 +32635,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -32691,6 +33123,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -33281,6 +33729,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -33790,6 +34254,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -34281,6 +34761,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -34745,6 +35241,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -35184,6 +35696,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -35640,6 +36168,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -36262,6 +36806,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -37755,6 +38315,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -38639,6 +39215,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -39148,6 +39740,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -39708,6 +40316,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -40250,6 +40874,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -40672,6 +41312,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -41139,6 +41795,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -41577,6 +42249,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -42119,6 +42807,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -42633,6 +43337,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -43071,6 +43791,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -44014,6 +44750,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -44441,6 +45193,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -44899,6 +45667,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -45465,6 +46249,22 @@
         "sig" : "(store)",
         "static" : false,
         "memberOf" : ""
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -46394,6 +47194,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -46845,6 +47661,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -47272,6 +48104,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -47734,6 +48582,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -48161,6 +49025,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -49067,6 +49947,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -49482,6 +50378,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -50371,6 +51283,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -50786,6 +51714,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -51606,6 +52550,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -52065,6 +53025,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -52768,6 +53744,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -53628,6 +54620,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -54133,6 +55141,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -54572,6 +55596,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -55483,6 +56523,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -56367,6 +57423,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -57300,6 +58372,22 @@
         "sig" : "(value)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -57891,6 +58979,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -58344,6 +59448,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -58811,6 +59931,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -59256,6 +60392,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -60023,6 +61175,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -60506,6 +61674,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -61902,6 +63086,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -62356,6 +63556,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },
@@ -62771,6 +63987,22 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "xAdd",
+        "type" : "function",
+        "desc" : "add a child to this element\n  - turn the child.cfg into a child_instance\n  - call child_instance.render( this { getContainerMethod()} )\n  - loop through the children, and call addxtype.. (reall this) on newly created child.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "xAddChildren",
+        "type" : "function",
+        "desc" : "xAddChildren - the 'sub-compentized' version of the above idea..",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.Component"
       }
     ]
   },

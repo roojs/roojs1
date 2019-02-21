@@ -8,15 +8,7 @@ and then it would render the children...
 Changes that might need making?
 
 factory on the children might need to be more flexible?
-
-
-- 1st step -- the outer code will be standard 'extend format'
-
-
-current build flow:
-
- addxtype(pa)
-
+ 
  
  
  */
@@ -156,13 +148,10 @@ Dynamic.Component.Form = function(cfg)
     var STRINGS = Dynamic.Component.Form._strings;
     
     // in theory you can use 'cfg.XXX to fill in values...' == eg. cfg.XXX || '10'
+    cfg = Roo.apply(this,cfg);
     
-    var config = Roo.apply({
-
- 
-        '|xns' : 'Roo.bootstrap',
-        xns : Roo.bootstrap,
-        xtype : 'Form',
+    Roo.apply(cfg, { 
+        
         items : [
          {
           '|xns' : 'Roo.bootstrap',
@@ -186,15 +175,18 @@ Dynamic.Component.Form = function(cfg)
            {
             '|xns' : 'Roo.bootstrap',
             boxLabel : 'Remember me',
+            cls : cfg.rememberCls,
             xns : Roo.bootstrap,
             xtype : 'CheckBox'
            }
           ]
          }
         ]
-    }, cfg );
+    });
     
-    Dynamic.Component.Form.superclass.constructor.call(this, config);
+    
+    
+    Dynamic.Component.Form.superclass.constructor.call(this, cfg);
     
     // we can add 'events that the extended element creates here..
     this.addEvents({
@@ -208,7 +200,9 @@ Dynamic.Component.Form = function(cfg)
 Roo.extend(Dynamic.Component.Form, Roo.bootstrap.Form, {
 
     // methods in here...
-
+    
+    // default values here...
+    rememberCls : 'xxxx', // these could be configurable items.. (the UI can pick them up as optional values.)
     
     
     
@@ -216,7 +210,7 @@ Roo.extend(Dynamic.Component.Form, Roo.bootstrap.Form, {
 
 Roo.apply(Dynamic.Component.Form, {
  _strings : {
-  '0c83f57c786a0b4a39efab23731c7ebc' :"email",
+  '0c83f57c786a0b4a39efab23731c7ebc' :"emailx",
   '5f4dcc3b5aa765d61d8327deb882cf99' :"password",
  }
 });

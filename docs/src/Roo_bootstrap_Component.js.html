@@ -167,15 +167,11 @@
      */
     </span><span class="jsdoc-var">addxtype  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'getChildContainer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">//Roo.log(['addxtype', cn]);
-
+	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// this is posibly the first of two times that the ctor get's called...
         </span><span class="jsdoc-var">cn.parentType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xtype</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">//??
         </span><span class="jsdoc-var">cn.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
-
-        </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'getChildContainer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn.container_method</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn.container_method</span><span class="jsdoc-syntax">;
         }
@@ -200,7 +196,8 @@
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">has_flexy_each </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">is_body </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">page_has_body</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">has_flexy_if </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.name</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">is_body </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">page_has_body</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addxtypeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">is_body</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-comment">//return this.addxtypeChild(tree,cntr, is_body);
+		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addxtypeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">is_body</span><span class="jsdoc-syntax">);
             }
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">echild </span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">self_cntr_el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">self_cntr_el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;*[name=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">tree.name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
@@ -376,6 +373,71 @@
 
     },
 
+
+
+
+
+
+    </span><span class="jsdoc-comment">/**
+     * xAddChildren - the 'sub-compentized' version of the above idea..
+     */
+    </span><span class="jsdoc-var">xAddChildren</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">child_array</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">skip_children</span><span class="jsdoc-syntax">)
+    {
+	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">child_array </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">child_array.length </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+	</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">child_array.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">skip_children</span><span class="jsdoc-syntax">) {
+		</span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+	    }
+	    </span><span class="jsdoc-comment">//  Roo.log(['add child', items[i]]);
+	    </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xAdd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">child_array</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])));
+	}
+	</span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'childrenrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+    },
+
+
+    </span><span class="jsdoc-comment">/**
+     * add a child to this element
+     *   - turn the child.cfg into a child_instance
+     *   - call child_instance.render( this { getContainerMethod()} )
+     *   - loop through the children, and call addxtype.. (reall this) on newly created child.
+     *  
+     */
+
+    </span><span class="jsdoc-var">xAdd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">is_body</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xadd:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'getChildContainer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parent_ctnr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">](</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parent_ctnr </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+	    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// getChildContainer an return false explicitly to block children being added?
+	</span><span class="jsdoc-syntax">}
+	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">parent_ctnr </span><span class="jsdoc-syntax">){
+	    </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Exception</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;could not find parent Container for item&quot;</span><span class="jsdoc-syntax">);
+	}
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-comment">// at this point items[] array may be set..
+	// constructors should not really be building their children?
+	</span><span class="jsdoc-var">cn.parentType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xtype</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">//??
+        </span><span class="jsdoc-var">cn.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
+
+
+        </span><span class="jsdoc-var">cn.render </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cn.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parent_ctnr</span><span class="jsdoc-syntax">);
+
+	</span><span class="jsdoc-var">cn.xAddChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.items </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cn.items</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">tree.items</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// not really needed?
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
+    },
 
 
     </span><span class="jsdoc-comment">/**
