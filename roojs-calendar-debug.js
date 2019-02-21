@@ -342,10 +342,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
 	
-	var items = tree.items;
-        delete tree.items;
+	
         
-	cn.addxtypeChildren(items, skip_children);
+        
+	cn.addxtypeChildren(tree.items, skip_children);
+	delete tree.items;
         return cn;
     },
     
