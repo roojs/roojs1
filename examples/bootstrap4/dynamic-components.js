@@ -184,8 +184,9 @@ Dynamic.Component.Form = function(cfg)
            }
           ]
          }
-        ],cfg // cfg has to be applied to the schema... 
-    });
+        ]
+        },cfg // cfg has to be applied to the schema... 
+    );
     
     
     
