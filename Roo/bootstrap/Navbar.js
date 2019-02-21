@@ -92,7 +92,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         if(this.fireEvent('beforetoggle', this) === false){
             return;
         }
-        var ce = this.el.select('.roo-navbar-collapse',true).first();
+        var ce = this.el.select('.navbar-collapse',true).first();
       
         if (!ce.hasClass('show')) {
            this.expand();
