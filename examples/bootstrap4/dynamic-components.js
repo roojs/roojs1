@@ -30,8 +30,8 @@ Dynamic.Component = function(cfg)
             '|xns' : 'Roo.bootstrap',
             cls : 'bg-black',
             style : 'min-height: 100%;',
-            xns : Roo.bootstrap,
-            xtype : 'Body',
+            //xns : Roo.bootstrap,
+            //xtype : 'Body', << not needed...
             items : [
              {
               '|xns' : 'Roo.bootstrap',
