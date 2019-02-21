@@ -49,39 +49,12 @@ Dynamic.Component = function(cfg)
                 xtype : 'Container'
                },
                {
+                
+                // our 'sub component here..
                 '|xns' : 'Dynamic.Component',
                 xns : Dynamic.Component,
                 xtype : 'Form',
-                items : [
-                 {
-                  '|xns' : 'Roo.bootstrap',
-                  cls : 'body bg-gray',
-                  xns : Roo.bootstrap,
-                  xtype : 'Container',
-                  items : [
-                   {
-                    '|xns' : 'Roo.bootstrap',
-                    placeholder : STRINGS['0c83f57c786a0b4a39efab23731c7ebc'],
-                    xns : Roo.bootstrap,
-                    xtype : 'Input'
-                   },
-                   {
-                    '|xns' : 'Roo.bootstrap',
-                    inputType : 'password',
-                    placeholder : STRINGS['5f4dcc3b5aa765d61d8327deb882cf99'],
-                    xns : Roo.bootstrap,
-                    xtype : 'Input'
-                   },
-                   {
-                    '|xns' : 'Roo.bootstrap',
-                    boxLabel : 'Remember me',
-                    xns : Roo.bootstrap,
-                    xtype : 'CheckBox'
-                   }
-                  ]
-         
-                 }
-                ]
+                   
          
                },
                {
