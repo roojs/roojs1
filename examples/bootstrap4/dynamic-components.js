@@ -36,6 +36,9 @@ Dynamic.Component = function(cfg)
        // "click" : true,
        // "toggle" : true
     });
+    
+    
+    
 }
 
 Roo.extend(Dynamic.Component, Roo.bootstrap.Body, {
