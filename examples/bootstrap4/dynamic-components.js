@@ -11,6 +11,12 @@ factory on the children might need to be more flexible?
 
 
 - 1st step -- the outer code will be standard 'extend format'
+
+
+current build flow:
+
+ addxtype(pa)
+
  
  
  */
@@ -36,8 +42,11 @@ Roo.extend(Dynamic.Component, Roo.bootstrap.Body, {
 
     // children...
     
-    
+    // addxtype << this is the entry point for this component being 
 
+    
+    
+    
 });
 
 
