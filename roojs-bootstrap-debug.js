@@ -398,12 +398,16 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     addxtypeChildren: function(child_array, skip_children)
     {
 	var nitems = [];
-	if (!child_array || !child_array.length) {
+	if (!child_array || !child_array.length ) {
             this.items = nitems;
             return;
         }
+	
 	for(var i =0;i < child_array.length;i++) {
-	//  Roo.log(['add child', items[i]]);
+	    if (skip_children) {
+		break;
+	    }
+	    //  Roo.log(['add child', items[i]]);
 	    nitems.push(this.addxtype(Roo.apply({}, child_array[i])));
 	}
 	this.items = nitems;
