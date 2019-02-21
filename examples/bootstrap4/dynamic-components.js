@@ -17,8 +17,12 @@ factory on the children might need to be more flexible?
 
 Dynamic.Component = function(cfg)
 {
-    
-    
+    config = Roo.apply({
+        // the values specified in the builder for this element go here...
+        
+    }, cfg);
+
+    Dynamic.Component.superclass.constructor.call(this, config);
     
     
 }
