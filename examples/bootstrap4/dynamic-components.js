@@ -9,6 +9,21 @@ Changes that might need making?
 
 factory on the children might need to be more flexible?
 
+
+- 1st step -- the outer code will be standard 'extend format'
  
  
  */
+
+Dynamic.Component = function(cfg)
+{
+    
+    
+    
+    
+}
+
+
+
+
+
