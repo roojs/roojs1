@@ -340,43 +340,12 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
              }
             // then add the element..
         }
-         
-        // handle the kids..
         
-        var nitems = [];
-        /*
-        if (typeof (tree.menu) != 'undefined') {
-            tree.menu.parentType = cn.xtype;
-            tree.menu.triggerEl = cn.el;
-            nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
-            
-        }
-        */
-        if (!tree.items || !tree.items.length) {
-            cn.items = nitems;
-            //Roo.log(["no children", this]);
-            
-            return cn;
-        }
-         
-        var items = tree.items;
+	
+	var items = tree.items;
         delete tree.items;
         
-        //Roo.log(items.length);
-            // add the items..
-        if (!skip_children) {    
-            for(var i =0;i < items.length;i++) {
-              //  Roo.log(['add child', items[i]]);
-                nitems.push(cn.addxtype(Roo.apply({}, items[i])));
-            }
-        }
-        
-        cn.items = nitems;
-        
-        //Roo.log("fire childrenrendered");
-        
-        cn.fireEvent('childrenrendered', this);
-        
+	cn.addxtypeChildren(items);
         return cn;
     },
     
