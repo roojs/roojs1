@@ -17,7 +17,7 @@ delete A.items;return cn;},addxtypeChildren:function(A,B){var C=[];if(!A||!A.len
 }this.getVisibilityEl().removeClass(['hidden','d-none']);this.fireEvent('show',this);},hide:function(){if(!this.getVisibilityEl()){return;}this.getVisibilityEl().addClass(['hidden','d-none']);this.fireEvent('hide',this);}});
 // Roo/bootstrap/Body.js
 Roo.bootstrap.Body=function(A){A=A||{};Roo.bootstrap.Body.superclass.constructor.call(this,A);this.el=Roo.get(A.el?A.el:document.body);if(this.cls&&this.cls.length){Roo.get(document.body).addClass(this.cls);}if(A.do_render){this.onRender(A.do_render,'');this.addxtypeChildren(A.items);
-}};Roo.extend(Roo.bootstrap.Body,Roo.bootstrap.Component,{do_render:false,is_body:true,autoCreate:{cls:'container'},onRender:function(ct,A){}});
+}};Roo.extend(Roo.bootstrap.Body,Roo.bootstrap.Component,{do_render:false,is_body:true,autoCreate:{cls:'container'},onRender:function(ct,A){if(!this.do_render){return;}this.el=this.do_render;}});
 // Roo/bootstrap/ButtonGroup.js
 Roo.bootstrap.ButtonGroup=function(A){Roo.bootstrap.ButtonGroup.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.ButtonGroup,Roo.bootstrap.Component,{size:'',align:'',direction:'',toolbar:false,btn:true,getAutoCreate:function(){var A={cls:'btn-group',html:null}
 ;A.html=this.html||A.html;if(this.toolbar){A={cls:'btn-toolbar',html:null};return A;}if(['vertical','justified'].indexOf(this.align)!==-1){A.cls='btn-group-'+this.align;if(this.align=='justified'){console.log(this.items);}}if(['lg','sm','xs'].indexOf(this.size)!==-1){A.cls+=' btn-group-'+this.size;
