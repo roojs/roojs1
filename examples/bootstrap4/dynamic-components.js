@@ -202,7 +202,7 @@ Dynamic.Component.Form = function(cfg)
        // "toggle" : true
     });
 
-
+}
 
 Roo.extend(Dynamic.Component.Form, Roo.bootstrap.Form, {
 
