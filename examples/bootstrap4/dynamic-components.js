@@ -34,7 +34,9 @@ Dynamic.Component = function(cfg)
 
 Roo.extend(Dynamic.Component, Roo.bootstrap.Body, {
 
-
+    // children...
+    
+    
 
 });
 
