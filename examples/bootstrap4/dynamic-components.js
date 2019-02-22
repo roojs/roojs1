@@ -24,6 +24,14 @@ Dynamic.Component = function(cfg)
     var STRINGS = Dynamic.Component._strings;
     Roo.apply(this,cfg);
     
+    // by modifying the incomming 'cfg' and adding the 'items' - the xAdd caller get's the new children.
+    // ** this might cause a problem that you can't add children to 'components?'
+    // -- example??
+    // component == a toolbar...
+    // we might want to add buttons to it..
+    // let's leave this for now.. 
+    
+    
     cfg.items = [
              {
               '|xns' : 'Roo.bootstrap',
