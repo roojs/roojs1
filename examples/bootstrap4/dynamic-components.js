@@ -22,12 +22,11 @@ Dynamic.Component = function(cfg)
 {
     var _this = this;
     var STRINGS = Dynamic.Component._strings;
+    Roo.apply(this,cfg);
     
-    var config = Roo.apply({
+    cfg.items = []
         // the values specified in the builder for this element go here...
-            '|xns' : 'Roo.bootstrap',
-            cls : 'bg-black',
-            style : 'min-height: 100%;',
+            
             //xns : Roo.bootstrap,
             //xtype : 'Body', << not needed...
             items : [
@@ -125,7 +124,10 @@ Dynamic.Component = function(cfg)
 Roo.extend(Dynamic.Component, Roo.bootstrap.Body, {
 
     // methods in here...
-
+    // properties here..
+    '|xns' : 'Roo.bootstrap',
+    cls : 'bg-black',
+    style : 'min-height: 100%;',
     
     
     
