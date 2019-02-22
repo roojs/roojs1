@@ -409,6 +409,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
      *   - call child_instance.render( this { getContainerMethod()} )
      *   - loop through the children, and call addxtype.. (reall this) on newly created child.
      *  
+     *
+     * 
      */
     
     xAdd : function (tree, cntr, is_body)
@@ -434,7 +436,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
         cn.render && cn.render(parent_ctnr);
                 
-	cn.xAddChildren(tree.items || cn.items);
+	cn.xAddChildren(tree.items);
 	delete tree.items; // not really needed?
         return cn;
     },
