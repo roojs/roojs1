@@ -111,6 +111,8 @@ Dynamic.Component = function(cfg)
        // "toggle" : true
     });
     
+    ///this.on(.....)
+    
     
     
 }
