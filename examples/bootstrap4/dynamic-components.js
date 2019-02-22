@@ -24,12 +24,7 @@ Dynamic.Component = function(cfg)
     var STRINGS = Dynamic.Component._strings;
     Roo.apply(this,cfg);
     
-    cfg.items = []
-        // the values specified in the builder for this element go here...
-            
-            //xns : Roo.bootstrap,
-            //xtype : 'Body', << not needed...
-            items : [
+    cfg.items = [
              {
               '|xns' : 'Roo.bootstrap',
               cls : 'form-box',
@@ -105,10 +100,9 @@ Dynamic.Component = function(cfg)
               ]
          
              }
-            ]
-    }, cfg);
-
-    Dynamic.Component.superclass.constructor.call(this, config);
+            ];
+    
+    Dynamic.Component.superclass.constructor.call(this, cfg);
     
     // we can add 'events that the extended element creates here..
     this.addEvents({
