@@ -151,11 +151,8 @@ Dynamic.Component.Form = function(cfg)
     var STRINGS = Dynamic.Component.Form._strings;
     
     // in theory you can use 'cfg.XXX to fill in values...' == eg. cfg.XXX || '10'
-    cfg = Roo.apply(this,cfg);
     
-    Roo.apply( cfg,  { 
-        
-        items : [
+    cfg.items : [
          {
           '|xns' : 'Roo.bootstrap',
           cls : 'body bg-gray',
