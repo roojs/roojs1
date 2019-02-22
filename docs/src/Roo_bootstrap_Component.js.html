@@ -409,6 +409,8 @@
      *   - call child_instance.render( this { getContainerMethod()} )
      *   - loop through the children, and call addxtype.. (reall this) on newly created child.
      *  
+     *
+     * 
      */
 
     </span><span class="jsdoc-var">xAdd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">is_body</span><span class="jsdoc-syntax">)
@@ -434,7 +436,7 @@
 
         </span><span class="jsdoc-var">cn.render </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cn.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parent_ctnr</span><span class="jsdoc-syntax">);
 
-	</span><span class="jsdoc-var">cn.xAddChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.items </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cn.items</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-var">cn.xAddChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.items</span><span class="jsdoc-syntax">);
 	</span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">tree.items</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// not really needed?
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
     },
