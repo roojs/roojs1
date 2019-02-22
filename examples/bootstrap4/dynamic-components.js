@@ -153,7 +153,7 @@ Dynamic.Component.Form = function(cfg)
     // in theory you can use 'cfg.XXX to fill in values...' == eg. cfg.XXX || '10'
     cfg = Roo.apply(this,cfg);
     
-    Roo.apply(  { 
+    Roo.apply( cfg,  { 
         
         items : [
          {
@@ -185,7 +185,7 @@ Dynamic.Component.Form = function(cfg)
           ]
          }
         ]
-        },cfg // cfg has to be applied to the schema... otherwise we have to generate a complicated. 
+        } // cfg has to be applied to the schema... otherwise we have to generate a complicated. 
     );
     
     
