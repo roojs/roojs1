@@ -65,14 +65,17 @@
     
     
 }
+.x-btn-primary.x-btn-over .x-btn-left,
 .x-btn-left
 {
     background-position:0 0;
 }
+.x-btn-primary.x-btn-over .x-btn-right,
 .x-btn-right
 {
 	background-position:0 -21px;
 }
+.x-btn-primary.x-btn-over .x-btn-center,
 .x-btn-center
 {
 	background-position: 0 -42px;
