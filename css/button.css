@@ -95,18 +95,24 @@
 
 
 /* -------------------------- BUTTON OVER -------------------------- */
+.x-btn-primary .x-btn-left,
 .x-btn-over .x-btn-left
 {
 	background-position:0 -63px;
 }
+.x-btn-primary .x-btn-right,
 .x-btn-over .x-btn-right
 {
 	background-position:0 -84px;
 }
+.x-btn-primary .x-btn-center,
 .x-btn-over .x-btn-center
 {
 	background-position:0 -105px;
 }
+
+
+
 /* -------------------------- BUTTON CLICK -------------------------- */
 .x-btn-click .x-btn-left
 {
