@@ -16893,7 +16893,7 @@ Roo.Markdown.toHtml = function(text) {
      * Block Lexer
      */
     
-    var Lexer = function (options) {
+    function Lexer(options) {
       this.tokens = [];
       this.tokens.links = {};
       this.options = options || marked.defaults;
