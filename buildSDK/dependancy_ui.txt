@@ -80,6 +80,7 @@ Roo.menu.ColorItem
 Roo.menu.DateMenu
 Roo.menu.ColorMenu
 
+Roo.form.TextItem
 Roo.form.Field
 Roo.form.TextField
 Roo.form.Hidden

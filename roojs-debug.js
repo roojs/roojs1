@@ -11471,16 +11471,17 @@ Roo.CompositeElementLite.prototype.on = Roo.CompositeElementLite.prototype.addLi
  * @class Roo.data.Connection
  * @extends Roo.util.Observable
  * The class encapsulates a connection to the page's originating domain, allowing requests to be made
- * either to a configured URL, or to a URL specified at request time.<br><br>
- * <p>
+ * either to a configured URL, or to a URL specified at request time. 
+ * 
  * Requests made by this class are asynchronous, and will return immediately. No data from
  * the server will be available to the statement immediately following the {@link #request} call.
- * To process returned data, use a callback in the request options object, or an event listener.</p><br>
- * <p>
+ * To process returned data, use a callback in the request options object, or an event listener.
+ * 
  * Note: If you are doing a file upload, you will not get a normal response object sent back to
  * your callback or event handler.  Since the upload is handled via in IFRAME, there is no XMLHttpRequest.
  * The response object is created using the innerHTML of the IFRAME's document as the responseText
- * property and, if present, the IFRAME's XML document as the responseXML property.</p><br>
+ * property and, if present, the IFRAME's XML document as the responseXML property.
+ * 
  * This means that a valid XML or HTML document must be returned. If JSON data is required, it is suggested
  * that it be placed either inside a &lt;textarea> in an HTML document and retrieved from the responseText
  * using a regex, or inside a CDATA section in an XML document and retrieved from the responseXML using
@@ -38696,6 +38697,69 @@ Roo.menu.ColorMenu = function(config){
     this.relayEvents(ci, ["select"]);
 };
 Roo.extend(Roo.menu.ColorMenu, Roo.menu.Menu);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.form.TextItem
+ * @extends Roo.BoxComponent
+ * Base class for form fields that provides default event handling, sizing, value handling and other functionality.
+ * @constructor
+ * Creates a new TextItem
+ * @param {Object} config Configuration options
+ */
+Roo.form.TextItem = function(config){
+    Roo.form.TextItem.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.form.TextItem, Roo.BoxComponent,  {
+    
+    /**
+     * @cfg {String} tag the tag for this item (default div)
+     */
+    tag : 'div',
+    /**
+     * @cfg {String} html the content for this item
+     */
+    html : '',
+    
+    getAutoCreate : function()
+    {
+        var cfg = {
+            id: this.id,
+            tag: this.tag,
+            html: this.html,
+            cls: 'x-form-item'
+        };
+        
+        return cfg;
+        
+    },
+    
+    onRender : function(ct, position)
+    {
+        Roo.form.TextItem.superclass.onRender.call(this, ct, position);
+        
+        if(!this.el){
+            var cfg = this.getAutoCreate();
+            if(!cfg.name){
+                cfg.name = typeof(this.name) == 'undefined' ? this.id : this.name;
+            }
+            if (!cfg.name.length) {
+                delete cfg.name;
+            }
+            this.el = ct.createChild(cfg, position);
+        }
+    }
+    
+});/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
