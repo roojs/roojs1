@@ -50,4 +50,5 @@ Roo.extend(Roo.form.TextItem, Roo.BoxComponent,  {
         
         return cfg;
     }
+    
 });
