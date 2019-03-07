@@ -16289,6 +16289,22 @@ Roo.extend(Roo.form.TextItem, Roo.BoxComponent,  {
         
         return cfg;
         
+    },
+    
+    onRender : function(ct, position)
+    {
+        Roo.form.TextItem.superclass.onRender.call(this, ct, position);
+        
+        if(!this.el){
+            var cfg = this.getAutoCreate();
+            if(!cfg.name){
+                cfg.name = typeof(this.name) == 'undefined' ? this.id : this.name;
+            }
+            if (!cfg.name.length) {
+                delete cfg.name;
+            }
+            this.el = ct.createChild(cfg, position);
+        }
     }
     
 });/*
