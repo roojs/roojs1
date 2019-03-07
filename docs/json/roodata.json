@@ -87816,6 +87816,423 @@
       }
     ]
   },
+  "Roo.form.TextItem" : {
+    "props" : [
+      {
+        "name" : "actionMode",
+        "type" : "String",
+        "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "allowDomMove",
+        "type" : "Boolean",
+        "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "autoCreate",
+        "type" : "String/Object",
+        "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"div\", type: \"text\", size: \"20\", autocomplete: \"off\"})",
+        "memberOf" : ""
+      },
+      {
+        "name" : "cls",
+        "type" : "String",
+        "desc" : "the class for this item",
+        "memberOf" : ""
+      },
+      {
+        "name" : "disableClass",
+        "type" : "String",
+        "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "height",
+        "type" : "Number",
+        "desc" : "height (optional) size of component",
+        "memberOf" : "Roo.BoxComponent"
+      },
+      {
+        "name" : "hideMode",
+        "type" : "String",
+        "desc" : [
+          "(display",
+          "visibility)"
+        ],
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "html",
+        "type" : "String",
+        "desc" : "the content for this item",
+        "memberOf" : ""
+      },
+      {
+        "name" : "listeners",
+        "type" : "Object",
+        "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "tag",
+        "type" : "String",
+        "desc" : "the tag for this item (default div)",
+        "memberOf" : ""
+      },
+      {
+        "name" : "width",
+        "type" : "Number",
+        "desc" : "width (optional) size of component",
+        "memberOf" : "Roo.BoxComponent"
+      }
+    ],
+    "events" : [
+      {
+        "name" : "beforedestroy",
+        "type" : "function",
+        "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
+        "sig" : "function (_self)\n{\n\n}",
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "beforehide",
+        "type" : "function",
+        "desc" : "Fires before the component is hidden. Return false to stop the hide.",
+        "sig" : "function (_self)\n{\n\n}",
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "beforerender",
+        "type" : "function",
+        "desc" : "Fires before the component is rendered. Return false to stop the render.",
+        "sig" : "function (_self)\n{\n\n}",
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "beforeshow",
+        "type" : "function",
+        "desc" : "Fires before the component is shown.  Return false to stop the show.",
+        "sig" : "function (_self)\n{\n\n}",
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "destroy",
+        "type" : "function",
+        "desc" : "Fires after the component is destroyed.",
+        "sig" : "function (_self)\n{\n\n}",
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "disable",
+        "type" : "function",
+        "desc" : "Fires after the component is disabled.",
+        "sig" : "function (_self)\n{\n\n}",
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "enable",
+        "type" : "function",
+        "desc" : "Fires after the component is enabled.",
+        "sig" : "function (_self)\n{\n\n}",
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "hide",
+        "type" : "function",
+        "desc" : "Fires after the component is hidden.",
+        "sig" : "function (_self)\n{\n\n}",
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "move",
+        "type" : "function",
+        "desc" : "Fires after the component is moved.",
+        "sig" : "function (_self, x, y)\n{\n\n}",
+        "memberOf" : "Roo.BoxComponent"
+      },
+      {
+        "name" : "render",
+        "type" : "function",
+        "desc" : "Fires after the component is rendered.",
+        "sig" : "function (_self)\n{\n\n}",
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "resize",
+        "type" : "function",
+        "desc" : "Fires after the component is resized.",
+        "sig" : "function (_self, adjWidth, adjHeight, rawWidth, rawHeight)\n{\n\n}",
+        "memberOf" : "Roo.BoxComponent"
+      },
+      {
+        "name" : "show",
+        "type" : "function",
+        "desc" : "Fires after the component is shown.",
+        "sig" : "function (_self)\n{\n\n}",
+        "memberOf" : "Roo.Component"
+      }
+    ],
+    "methods" : [
+      {
+        "name" : "addEvents",
+        "type" : "function",
+        "desc" : "Used to define events on this Observable",
+        "sig" : "(object)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addListener",
+        "type" : "function",
+        "desc" : "Appends an event handler to this component",
+        "sig" : "(eventName, handler, scope, options)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "capture",
+        "type" : "function",
+        "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+        "sig" : "(o, fn, scope)",
+        "static" : true,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "destroy",
+        "type" : "function",
+        "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "disable",
+        "type" : "function",
+        "desc" : "Disable this component.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "enable",
+        "type" : "function",
+        "desc" : "Enable this component.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "fireEvent",
+        "type" : "function",
+        "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+        "sig" : "(eventName, args)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "focus",
+        "type" : "function",
+        "desc" : "Try to focus this component.",
+        "sig" : "(selectText)",
+        "static" : false,
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "getBox",
+        "type" : "function",
+        "desc" : "Gets the current box measurements of the component's underlying element.",
+        "sig" : "(local)",
+        "static" : false,
+        "memberOf" : "Roo.BoxComponent"
+      },
+      {
+        "name" : "getEl",
+        "type" : "function",
+        "desc" : "Returns the underlying {@link Roo.Element}.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "getId",
+        "type" : "function",
+        "desc" : "Returns the id of this component.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "getPosition",
+        "type" : "function",
+        "desc" : "Gets the current XY position of the component's underlying element.",
+        "sig" : "(local)",
+        "static" : false,
+        "memberOf" : "Roo.BoxComponent"
+      },
+      {
+        "name" : "getSize",
+        "type" : "function",
+        "desc" : "Gets the current size of the component's underlying element.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.BoxComponent"
+      },
+      {
+        "name" : "hasListener",
+        "type" : "function",
+        "desc" : "Checks to see if this object has any listeners for a specified event",
+        "sig" : "(eventName)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "hide",
+        "type" : "function",
+        "desc" : "Hide this component.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "isVisible",
+        "type" : "function",
+        "desc" : "Returns true if this component is visible.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "on",
+        "type" : "function",
+        "desc" : "Appends an event handler to this element (shorthand for addListener)",
+        "sig" : "(eventName, handler, scope, options)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "onPosition",
+        "type" : "function",
+        "desc" : "Called after the component is moved, this method is empty by default but can be implemented by any\nsubclass that needs to perform custom logic after a move occurs.",
+        "sig" : "(x, y)",
+        "static" : false,
+        "memberOf" : "Roo.BoxComponent"
+      },
+      {
+        "name" : "onResize",
+        "type" : "function",
+        "desc" : "Called after the component is resized, this method is empty by default but can be implemented by any\nsubclass that needs to perform custom logic after a resize occurs.",
+        "sig" : "(adjWidth, adjHeight, rawWidth, rawHeight)",
+        "static" : false,
+        "memberOf" : "Roo.BoxComponent"
+      },
+      {
+        "name" : "purgeListeners",
+        "type" : "function",
+        "desc" : "Removes all listeners for this object",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "releaseCapture",
+        "type" : "function",
+        "desc" : "Removes <b>all</b> added captures from the Observable.",
+        "sig" : "(o)",
+        "static" : true,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "removeListener",
+        "type" : "function",
+        "desc" : "Removes a listener",
+        "sig" : "(eventName, handler, scope)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "render",
+        "type" : "function",
+        "desc" : "If this is a lazy rendering component, render it to its container element.",
+        "sig" : "(container)",
+        "static" : false,
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "setDisabled",
+        "type" : "function",
+        "desc" : "Convenience function for setting disabled/enabled by boolean.",
+        "sig" : "(disabled)",
+        "static" : false,
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "setPagePosition",
+        "type" : "function",
+        "desc" : "Sets the page XY position of the component.  To set the left and top instead, use {@link #setPosition}.\nThis method fires the move event.",
+        "sig" : "(x, y)",
+        "static" : false,
+        "memberOf" : "Roo.BoxComponent"
+      },
+      {
+        "name" : "setPosition",
+        "type" : "function",
+        "desc" : "Sets the left and top of the component.  To set the page XY position instead, use {@link #setPagePosition}.\nThis method fires the move event.",
+        "sig" : "(left, top)",
+        "static" : false,
+        "memberOf" : "Roo.BoxComponent"
+      },
+      {
+        "name" : "setSize",
+        "type" : "function",
+        "desc" : "Sets the width and height of the component.  This method fires the resize event.  This method can accept\neither width and height as separate numeric arguments, or you can pass a size object like {width:10, height:20}.",
+        "sig" : "(width, height)",
+        "static" : false,
+        "memberOf" : "Roo.BoxComponent"
+      },
+      {
+        "name" : "setVisible",
+        "type" : "function",
+        "desc" : "Convenience function to hide or show this component by boolean.",
+        "sig" : "(visible)",
+        "static" : false,
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "show",
+        "type" : "function",
+        "desc" : "Show this component.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "syncSize",
+        "type" : "function",
+        "desc" : "Force the component's size to recalculate based on the underlying element's current height and width.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.BoxComponent"
+      },
+      {
+        "name" : "un",
+        "type" : "function",
+        "desc" : "Removes a listener (shorthand for removeListener)",
+        "sig" : "(eventName, handler, scope)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "updateBox",
+        "type" : "function",
+        "desc" : "Sets the current box measurements of the component's underlying element.",
+        "sig" : "(box)",
+        "static" : false,
+        "memberOf" : "Roo.BoxComponent"
+      }
+    ]
+  },
   "Roo.form.TriggerField" : {
     "props" : [
       {

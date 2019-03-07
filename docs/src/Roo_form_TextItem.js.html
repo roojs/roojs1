@@ -1,0 +1,58 @@
+<html><head><title>/home/edward/gitlive/roojs1/Roo/form/TextItem.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+
+/**
+ * @class Roo.form.TextItem
+ * @extends Roo.BoxComponent
+ * Base class for form fields that provides default event handling, sizing, value handling and other functionality.
+ * @constructor
+ * Creates a new TextItem
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.TextItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.TextItem.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.TextItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.BoxComponent</span><span class="jsdoc-syntax">,  {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
+     * {tag: &quot;div&quot;, type: &quot;text&quot;, size: &quot;20&quot;, autocomplete: &quot;off&quot;})
+     */
+    </span><span class="jsdoc-var">defaultAutoCreate </span><span class="jsdoc-syntax">: {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;input&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;text&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;20&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">autocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;new-password&quot;</span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} tag the tag for this item (default div)
+     */
+    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} html the content for this item
+     */
+    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} cls the class for this item
+     */
+    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
+        </span><span class="jsdoc-syntax">}
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    }
+});</span></code></body></html>

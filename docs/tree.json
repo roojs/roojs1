@@ -1386,6 +1386,12 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.form.TextItem",
+            "cn" : [
+            ],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.form.TriggerField",
             "cn" : [
             ],
