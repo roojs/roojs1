@@ -11471,16 +11471,17 @@ Roo.CompositeElementLite.prototype.on = Roo.CompositeElementLite.prototype.addLi
  * @class Roo.data.Connection
  * @extends Roo.util.Observable
  * The class encapsulates a connection to the page's originating domain, allowing requests to be made
- * either to a configured URL, or to a URL specified at request time.<br><br>
- * <p>
+ * either to a configured URL, or to a URL specified at request time. 
+ * 
  * Requests made by this class are asynchronous, and will return immediately. No data from
  * the server will be available to the statement immediately following the {@link #request} call.
- * To process returned data, use a callback in the request options object, or an event listener.</p><br>
- * <p>
+ * To process returned data, use a callback in the request options object, or an event listener.
+ * 
  * Note: If you are doing a file upload, you will not get a normal response object sent back to
  * your callback or event handler.  Since the upload is handled via in IFRAME, there is no XMLHttpRequest.
  * The response object is created using the innerHTML of the IFRAME's document as the responseText
- * property and, if present, the IFRAME's XML document as the responseXML property.</p><br>
+ * property and, if present, the IFRAME's XML document as the responseXML property.
+ * 
  * This means that a valid XML or HTML document must be returned. If JSON data is required, it is suggested
  * that it be placed either inside a &lt;textarea> in an HTML document and retrieved from the responseText
  * using a regex, or inside a CDATA section in an XML document and retrieved from the responseXML using
@@ -16892,7 +16893,7 @@ Roo.Markdown.toHtml = function(text) {
      * Block Lexer
      */
     
-    function Lexer(options) {
+    var Lexer = function (options) {
       this.tokens = [];
       this.tokens.links = {};
       this.options = options || marked.defaults;
@@ -17310,7 +17311,7 @@ Roo.Markdown.toHtml = function(text) {
      * Inline Lexer & Compiler
      */
     
-    function InlineLexer(links, options) {
+    var InlineLexer = function (links, options) {
       this.options = options || marked.defaults;
       this.links = links;
       this.rules = inline.normal;
@@ -17550,7 +17551,7 @@ Roo.Markdown.toHtml = function(text) {
      * Renderer
      */
     
-    function Renderer(options) {
+    var Renderer = function (options) {
       this.options = options || {};
     }
     
@@ -17700,7 +17701,7 @@ Roo.Markdown.toHtml = function(text) {
      * Parsing & Compiling
      */
     
-    function Parser(options) {
+    var Parser = function (options) {
       this.tokens = [];
       this.token = null;
       this.options = options || marked.defaults;
@@ -17880,7 +17881,7 @@ Roo.Markdown.toHtml = function(text) {
      * Helpers
      */
     
-    function escape(html, encode) {
+    var escape = function (html, encode) {
       return html
         .replace(!encode ? /&(?!#?\w+;)/g : /&/g, '&amp;')
         .replace(/</g, '&lt;')
@@ -17889,7 +17890,7 @@ Roo.Markdown.toHtml = function(text) {
         .replace(/'/g, '&#39;');
     }
     
-    function unescape(html) {
+    var unescape = function (html) {
         // explicitly match decimal, hex, and named HTML entities 
       return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
         n = n.toLowerCase();
@@ -17903,7 +17904,7 @@ Roo.Markdown.toHtml = function(text) {
       });
     }
     
-    function replace(regex, opt) {
+    var replace = function (regex, opt) {
       regex = regex.source;
       opt = opt || '';
       return function self(name, val) {
@@ -17915,7 +17916,7 @@ Roo.Markdown.toHtml = function(text) {
       };
     }
     
-    function noop() {}
+    var noop = function () {}
     noop.exec = noop;
     
     function merge(obj) {
@@ -17940,7 +17941,7 @@ Roo.Markdown.toHtml = function(text) {
      * Marked
      */
     
-    function marked(src, opt, callback) {
+    var marked = function (src, opt, callback) {
       if (callback || typeof opt === 'function') {
         if (!callback) {
           callback = opt;
