@@ -22,11 +22,31 @@ Roo.form.TextItem = function(config){
 };
 
 Roo.extend(Roo.form.TextItem, Roo.BoxComponent,  {
-    
     /**
      * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
-     * {tag: "input", type: "text", size: "20", autocomplete: "off"})
+     * {tag: "div", type: "text", size: "20", autocomplete: "off"})
      */
     defaultAutoCreate : {tag: "input", type: "text", size: "20", autocomplete: "new-password"},
     
+    /**
+     * @cfg {String} tag the tag for this item (default div)
+     */
+    tag : 'div',
+    /**
+     * @cfg {String} html the content for this item (default empty)
+     */
+    html : '',
+    
+    getAutoCreate : function()
+    {
+        var cfg = {
+            tag: this.tag
+        }
+        var cfg = typeof this.autoCreate == "object" ?
+                      this.autoCreate : Roo.apply({}, this.defaultAutoCreate);
+        if(this.id && !cfg.id){
+            cfg.id = this.id;
+        }
+        return cfg;
+    },
 });
