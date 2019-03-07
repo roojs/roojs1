@@ -16285,7 +16285,7 @@ Roo.extend(Roo.form.TextItem, Roo.BoxComponent,  {
             id: this.id,
             tag: this.tag,
             html: this.html,
-            cls: 'x-form-textitem'
+            cls: 'x-form-item'
         };
         
         return cfg;
