@@ -31,10 +31,6 @@ Roo.extend(Roo.form.TextItem, Roo.BoxComponent,  {
      * @cfg {String} html the content for this item
      */
     html : '',
-    /**
-     * @cfg {String} cls the class for this item
-     */
-    cls : '',
     
     getAutoCreate : function()
     {
