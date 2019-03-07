@@ -42,7 +42,7 @@ Roo.extend(Roo.form.TextItem, Roo.BoxComponent,  {
             id: this.id,
             tag: this.tag,
             html: this.html
-        }
+        };
         
         if(this.cls) {
             cfg.cls = this.cls;
