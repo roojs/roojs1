@@ -33,20 +33,26 @@ Roo.extend(Roo.form.TextItem, Roo.BoxComponent,  {
      */
     tag : 'div',
     /**
-     * @cfg {String} html the content for this item (default empty)
+     * @cfg {String} html the content for this item
      */
     html : '',
+    /**
+     * @cfg {String} cls the class for this item
+     */
+    cls : '',
     
     getAutoCreate : function()
     {
         var cfg = {
-            tag: this.tag
+            id: this.id,
+            tag: this.tag,
+            html: this.html
         }
-        var cfg = typeof this.autoCreate == "object" ?
-                      this.autoCreate : Roo.apply({}, this.defaultAutoCreate);
-        if(this.id && !cfg.id){
-            cfg.id = this.id;
+        
+        if(this.cls) {
+            cfg.cls = this.cls;
         }
+        
         return cfg;
     },
 });
