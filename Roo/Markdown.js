@@ -556,7 +556,7 @@ Roo.Markdown.toHtml = function(text) {
      * Inline Lexer & Compiler
      */
     
-    var InlineLexer = function (links, options) {
+    function InlineLexer(links, options) {
       this.options = options || marked.defaults;
       this.links = links;
       this.rules = inline.normal;
@@ -796,7 +796,7 @@ Roo.Markdown.toHtml = function(text) {
      * Renderer
      */
     
-    var Renderer = function (options) {
+    function Renderer(options) {
       this.options = options || {};
     }
     
@@ -946,7 +946,7 @@ Roo.Markdown.toHtml = function(text) {
      * Parsing & Compiling
      */
     
-    var Parser = function (options) {
+    function Parser(options) {
       this.tokens = [];
       this.token = null;
       this.options = options || marked.defaults;
@@ -1126,7 +1126,7 @@ Roo.Markdown.toHtml = function(text) {
      * Helpers
      */
     
-    var escape = function (html, encode) {
+    function escape(html, encode) {
       return html
         .replace(!encode ? /&(?!#?\w+;)/g : /&/g, '&amp;')
         .replace(/</g, '&lt;')
@@ -1135,7 +1135,7 @@ Roo.Markdown.toHtml = function(text) {
         .replace(/'/g, '&#39;');
     }
     
-    var unescape = function (html) {
+    function unescape(html) {
         // explicitly match decimal, hex, and named HTML entities 
       return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
         n = n.toLowerCase();
@@ -1149,7 +1149,7 @@ Roo.Markdown.toHtml = function(text) {
       });
     }
     
-    var replace = function (regex, opt) {
+    function replace(regex, opt) {
       regex = regex.source;
       opt = opt || '';
       return function self(name, val) {
@@ -1161,7 +1161,7 @@ Roo.Markdown.toHtml = function(text) {
       };
     }
     
-    var noop = function () {}
+    function noop() {}
     noop.exec = noop;
     
     function merge(obj) {
@@ -1186,7 +1186,7 @@ Roo.Markdown.toHtml = function(text) {
      * Marked
      */
     
-    var marked = function (src, opt, callback) {
+    function marked(src, opt, callback) {
       if (callback || typeof opt === 'function') {
         if (!callback) {
           callback = opt;
