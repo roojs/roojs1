@@ -76,14 +76,6 @@
       ]
     },
     {
-      "name" : "autoCreate",
-      "type" : "String/Object",
-      "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"div\", type: \"text\", size: \"20\", autocomplete: \"off\"})",
-      "memberOf" : "Roo.form.TextItem",
-      "values" : [
-      ]
-    },
-    {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
