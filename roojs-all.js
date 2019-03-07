@@ -1578,6 +1578,9 @@ Roo.menu.DateMenu=function(A){Roo.menu.DateMenu.superclass.constructor.call(this
 }},this);};Roo.extend(Roo.menu.DateMenu,Roo.menu.Menu,{cls:'x-date-menu'});
 // Roo/menu/ColorMenu.js
 Roo.menu.ColorMenu=function(A){Roo.menu.ColorMenu.superclass.constructor.call(this,A);this.plain=true;var ci=new Roo.menu.ColorItem(A);this.add(ci);this.palette=ci.palette;this.relayEvents(ci,["select"]);};Roo.extend(Roo.menu.ColorMenu,Roo.menu.Menu);
+// Roo/form/TextItem.js
+Roo.form.TextItem=function(A){Roo.form.TextItem.superclass.constructor.call(this,A);};Roo.extend(Roo.form.TextItem,Roo.BoxComponent,{tag:'div',html:'',cls:'',getAutoCreate:function(){var A={id:this.id,tag:this.tag,html:this.html};if(this.cls){A.cls=this.cls;
+}return A;}});
 // Roo/form/Field.js
 Roo.form.Field=function(A){Roo.form.Field.superclass.constructor.call(this,A);};Roo.extend(Roo.form.Field,Roo.BoxComponent,{invalidClass:"x-form-invalid",invalidText:"The value in this field is invalid",focusClass:"x-form-focus",validationEvent:"keyup",validateOnBlur:true,validationDelay:250,defaultAutoCreate:{tag:"input",type:"text",size:"20",autocomplete:"new-password"}
 ,fieldClass:"x-form-field",msgTarget:'qtip',msgFx:'normal',readOnly:false,disabled:false,inputType:undefined,tabIndex:undefined,isFormField:true,hasFocus:false,value:undefined,loadedValue:false,initComponent:function(){Roo.form.Field.superclass.initComponent.call(this);
