@@ -756,7 +756,7 @@ td.x-date-mp-sel a{
 
 
 /* Miscellaneous */
-
+.x-item-disabled,
 .x-item-disabled *
 {
 	color:#333 !important;
