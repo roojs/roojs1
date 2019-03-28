@@ -302,11 +302,19 @@ Roo.docs.init = {
                         return;
                     }
                     d.methods.push(m);  
-                })
+                });
                 
+                r.props.forEach(function(m) {
+                    if (m.isConstant) {
+                        return;
+                    }
+                    d.props.push(m);  
+                });
                 
-                
-                
+                r.events.forEach(function(m) {
+                    
+                    d.events.push(m);  
+                });
                 
             },
             scope : this
