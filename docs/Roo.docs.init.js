@@ -288,15 +288,15 @@ Roo.docs.init = {
         });
         
     },
-    fillAugments : function(d, extends, cb )
+    fillAugments : function(d, ext, cb )
     {
-        if (!extends.length) {
+        if (!ext.length) {
             cb(d)
         }
-        d.augments.push(extends);
+        d.augments.push(ext);
         var ax =   new Roo.data.Connection({});
         ax.request({
-            url : this.prefix + 'symbols/' + extends + '.json',
+            url : this.prefix + 'symbols/' + ext + '.json',
             method : 'GET',
             success : function(res, o)
             {
