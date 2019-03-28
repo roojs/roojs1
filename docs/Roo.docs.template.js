@@ -155,7 +155,7 @@ Roo.docs.template  = {
         output += '</span><b class="itemname">' + member.name + '</b>';
                 
         output += this.makeSignature(member.params);
-        if (!member.isConstructor && member.returns.length) {
+        if (member.returns && member.returns.length) {
             output += ': ';
 	    for(var i = 0;i< member.returns.length;i++) {
 		var item = member.returns[i];
