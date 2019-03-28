@@ -330,6 +330,12 @@ Roo.docs.init = {
                     if (m.isConstant) {
                         return;
                     }
+                    if (r.props.find(function(e) {
+                        return e.name == m.name;
+                    })) {
+                        return;
+                    }
+                    
                     d.props.push(m);  
                 });
                 
