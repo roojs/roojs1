@@ -423,6 +423,12 @@ Roo.docs = new Roo.XComponent({
              xtype : 'Header',
              html : _this._strings['3673e725413179fe76f341ed908a5c36'] /* Defined in:  */,
              level : 5,
+             listeners : {
+              render : function (_self)
+               {
+                   _this.doc_source_row = this;
+               }
+             },
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap',
              items  : [
