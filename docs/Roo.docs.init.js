@@ -298,10 +298,11 @@ Roo.docs.init = {
         if (!ext.length) {
             cb(d)
         }
-        d.augments.push(ext);
+        var next = ext.shift();
+        d.augments.push(next);
         var ax =   new Roo.data.Connection({});
         ax.request({
-            url : this.prefix + 'symbols/' + ext + '.json',
+            url : this.prefix + 'symbols/' + next + '.json',
             method : 'GET',
             success : function(res, o)
             {
