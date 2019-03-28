@@ -303,7 +303,7 @@ Roo.docs.init = {
                 
                 var r = Roo.decode(res.responseText);
                 
-                //Roo.log(r);return;
+                Roo.log(r);return;
                 // copy methods that are not constructors..
                 r.methods.forEach(function(m) {
                     if (m.isConstructor || m.static) {
