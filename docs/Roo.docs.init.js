@@ -271,6 +271,7 @@ Roo.docs.init = {
             {
                 
                 var d = Roo.decode(res.responseText);
+                d.augments = [];
                 if (this.prefix.length) {
                     this.fillAugments(d, Roo.docs.init.fillDoc);
                     return;
@@ -289,6 +290,7 @@ Roo.docs.init = {
         if (!d.extends.lenght) {
             cb(d)
         }
+        d.augments.push(d.extends);
         Roo.Ajax.request({
             url : this.prefix + 'symbols/' + d.extends + '.json',
             method : 'GET',
