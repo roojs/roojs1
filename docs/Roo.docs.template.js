@@ -171,7 +171,7 @@ Roo.docs.template  = {
         } else  {
             //ctor
         output+= '<div class="short">Create a new '+member.memberOf +'</div>';
-        }
+    }
     output +='<div class="long">';
         if (!member.isConstructor) {
             output+= this.resolveLinks(member.desc) ;
