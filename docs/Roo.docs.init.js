@@ -320,7 +320,7 @@ Roo.docs.init = {
             scope : this
         });
         
-    }
+    },
     
     
     
