@@ -272,6 +272,7 @@ Roo.docs.init = {
                 
                 var d = Roo.decode(res.responseText);
                 d.augments = [];
+                d.config = []; // props for ctor?
                 if (this.prefix.length) {
                     this.fillAugments(d, Roo.docs.init.fillDoc);
                     return;
