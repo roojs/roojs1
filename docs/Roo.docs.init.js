@@ -309,15 +309,17 @@ Roo.docs.init = {
                 
                 var r = Roo.decode(res.responseText);
                 
-                 
-                // copy methods that are not constructors..
-                r.methods.forEach(function(m) {
-                    if (m.isConstructor || m.static) {
-                        return;
-                    }
-                    d.methods.push(m);  
-                });
-                
+                if (!r.isAbstract) {
+                    
+                    
+                    // copy methods that are not constructors..
+                    r.methods.forEach(function(m) {
+                        if (m.isConstructor || m.static) {
+                            return;
+                        }
+                        d.methods.push(m);  
+                    });
+                }    
                 r.props.forEach(function(m) {
                     if (m.isConstant) {
                         return;
@@ -329,6 +331,7 @@ Roo.docs.init = {
                     
                     d.events.push(m);  
                 });
+            
                 this.fillAugments(d,ext, cb)
                 
             },
