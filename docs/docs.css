@@ -935,7 +935,7 @@ pre code {
 }
 
 
-.dropdown-toggle::after {
+a.dropdown-toggle::after {
     display: inline-block;
     margin-left: .255em;
     vertical-align: .255em;
