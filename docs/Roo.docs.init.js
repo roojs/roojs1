@@ -329,7 +329,7 @@ Roo.docs.init = {
                     
                     d.events.push(m);  
                 });
-                this.fillAugments(d,r.extends, cb)
+                this.fillAugments(d,ext, cb)
                 
             },
             scope : this
