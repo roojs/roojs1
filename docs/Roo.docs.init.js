@@ -315,7 +315,7 @@ Roo.docs.init = {
                 
                 r.methods.forEach(function(m) {
                     
-                    if (r.methods.find(function(e) {
+                    if (d.methods.find(function(e) {
                         return e.name == m.name;
                     })) {
                         return;
@@ -330,7 +330,7 @@ Roo.docs.init = {
                     if (m.isConstant) {
                         return;
                     }
-                    if (r.props.find(function(e) {
+                    if (d.props.find(function(e) {
                         return e.name == m.name;
                     })) {
                         return;
@@ -340,7 +340,7 @@ Roo.docs.init = {
                 });
                 
                 r.events.forEach(function(m) {
-                    if (r.events.find(function(e) {
+                    if (d.events.find(function(e) {
                         return e.name == m.name;
                     })) {
                         return;
