@@ -119,7 +119,7 @@ Roo.docs.init = {
                 click : (function(mi,ev,c)
                 {
                     
-                    ev.stopPropagation();
+                    ev.stopEvent();
                      
                     if (c.cn.length) {
                         //Roo.log(ev);
