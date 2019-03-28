@@ -56,6 +56,8 @@ Roo.docs.init = {
                     }
                 }, this);
                 
+                // mobile....
+                
                 d.forEach(function(e) {
                     if (e.cn.length) {
                         this.addTreeItem(Roo.docs.mobileNavGroup, e, 'NavSidebarItem', false);
