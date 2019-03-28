@@ -276,7 +276,7 @@ Roo.docs.init = {
                     d.augments = [];
                     d.config = []; // props for ctor?
                     d.isFlutter  = true;
-                    this.fillAugments(d, Roo.docs.init.fillDoc);
+                    this.fillAugments(d, d.extends, Roo.docs.init.fillDoc);
                     return;
                 }
                 this.fillDoc(d);
@@ -288,15 +288,15 @@ Roo.docs.init = {
         });
         
     },
-    fillAugments : function(d, cb, extends)
+    fillAugments : function(d, extends, cb )
     {
         if (!extends.length) {
             cb(d)
         }
-        d.augments.push(d.extends);
+        d.augments.push(extends);
         var ax =   new Roo.data.Connection({});
         ax.request({
-            url : this.prefix + 'symbols/' + d.extends + '.json',
+            url : this.prefix + 'symbols/' + extends + '.json',
             method : 'GET',
             success : function(res, o)
             {
@@ -321,7 +321,7 @@ Roo.docs.init = {
                     
                     d.events.push(m);  
                 });
-                this.fillAugments(d,cb,r.extends)
+                this.fillAugments(d,r.extends, cb)
                 
             },
             scope : this
