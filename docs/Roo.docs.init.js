@@ -294,7 +294,8 @@ Roo.docs.init = {
             cb(d)
         }
         d.augments.push(d.extends);
-        Roo.Ajax.request({
+        var ax = new new Roo.Connection();
+        ax.request({
             url : this.prefix + 'symbols/' + d.extends + '.json',
             method : 'GET',
             success : function(res, o)
