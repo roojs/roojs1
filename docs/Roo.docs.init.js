@@ -121,7 +121,7 @@ Roo.docs.init = {
                     
                     ev.stopEvent();
                      
-                    if (c.cn.length) {
+                    if (c.cn.length && !Roo.docs.init.prefix.length) {
                         //Roo.log(ev);
                         if (mi.menu.el.hasClass('show')) {
                             this.hideChildren(c); //mi.menu.hide();
