@@ -265,7 +265,7 @@ Roo.docs.init = {
         Roo.docs.introBody.hide();
         Roo.docs.doc_body_content.show();
         Roo.Ajax.request({
-            url : 'symbols/' + cls.name + '.json',
+            url : this.prefix + 'symbols/' + cls.name + '.json',
             method : 'GET',
             success : function(res, o)
             {
