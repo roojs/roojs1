@@ -321,7 +321,7 @@ Roo.docs.template  = {
                         </dl>
                 </if>
                 */    
-      if (member.returns.length) {
+      if (member.returns && member.returns.length) {
             output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
         for (var i =0; i < member.returns.length; i++) {
         var item = member.returns[i];
@@ -340,7 +340,7 @@ Roo.docs.template  = {
                         </dl>
                 </if>
         */
-        if (member.see.length) {
+        if (member.see && member.see.length) {
             output+= '<dl class="detailList"><dt class="heading">See:</dt><dt>' +
                         '<dd>' + this.linkSymbol( member.see ) +'</dd></dl>';
         }
