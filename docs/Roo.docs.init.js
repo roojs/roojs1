@@ -269,6 +269,7 @@ Roo.docs.init = {
             method : 'GET',
             success : function(res, o)
             {
+                
                 var d = Roo.decode(res.responseText);
                 this.fillDoc(d);
                 
@@ -276,8 +277,28 @@ Roo.docs.init = {
             scope : this
         });
         
-        
     },
+    fillAugments : function(d, cb)
+    {
+        if (!d.extends.lenght) {
+            cb(d)
+        }
+        Roo.Ajax.request({
+            url : this.prefix + 'symbols/' + d.extends + '.json',
+            method : 'GET',
+            success : function(res, o)
+            {
+                
+                var d = Roo.decode(res.responseText);
+                this.fillDoc(d);
+                
+            },
+            scope : this
+        });
+        
+    }
+    
+    
     
     fillDoc : function(d)
     {
