@@ -11,7 +11,7 @@ Roo.docs.init = {
     onReady : function()
     {
        
-       
+        
         Roo.XComponent.hideProgress = true;
         Roo.XComponent.build();
          
@@ -21,7 +21,9 @@ Roo.docs.init = {
             //Roo.XComponent.modules[0].el.fireEvent('render');
             this.loadTree();
         }, this);
-        
+        if (window.location.search.length > 0) {
+            this.prefix = window.location.search.substring(1);
+        }
         
         window.onhashchange = function() { Roo.docs.init.onHashChange(); }
          
