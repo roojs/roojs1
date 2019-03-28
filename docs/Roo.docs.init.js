@@ -275,6 +275,7 @@ Roo.docs.init = {
                 if (this.prefix.length) {
                     d.augments = [];
                     d.config = []; // props for ctor?
+                    d.isFlutter  = true;
                     this.fillAugments(d, Roo.docs.init.fillDoc);
                     return;
                 }
