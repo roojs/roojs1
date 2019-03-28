@@ -340,7 +340,11 @@ Roo.docs.init = {
                 });
                 
                 r.events.forEach(function(m) {
-                    
+                    if (r.events.find(function(e) {
+                        return e.name == m.name;
+                    })) {
+                        return;
+                    }
                     d.events.push(m);  
                 });
             
