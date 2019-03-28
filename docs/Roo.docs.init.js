@@ -271,7 +271,8 @@ Roo.docs.init = {
             {
                 
                 var d = Roo.decode(res.responseText);
-                this.fillDoc(d);
+                this.fillAugments(d, Roo.docs.init.fillDoc);
+                
                 
             },
             scope : this
