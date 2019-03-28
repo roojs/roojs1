@@ -67,7 +67,8 @@ Roo.docs.template  = {
 	if (data.name.length && 
 	    !data.isBuiltin && 
 	    !data.isSingleton &&
-	    !data.isStatic
+	    !data.isStatic &&
+	    !data.isFlutter
 	    ) {
 	    data.isInherited = false;
 	    data.isConstructor = true;
@@ -80,17 +81,7 @@ Roo.docs.template  = {
 	
 	msorted.filter(
 	    function($){
-		
-	    //if (/@hide/.test($.desc)) { == not needed - done in the backend
-	    //    return false;
-	    //}
-		
-	    //if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
-	    
-	    // not sure if we should just ignore signletons???
-	    //if (!data.isSingleton) {
-	    //    return true; 
-	    //}
+	 
 	    
 	    
 	    
@@ -116,7 +107,7 @@ Roo.docs.template  = {
 		
 	    return true;
 	    }
-	    );
+	);
     
 	// then dynamics..
     
