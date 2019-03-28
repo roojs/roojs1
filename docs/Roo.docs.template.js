@@ -155,11 +155,11 @@ Roo.docs.template  = {
         output += '</span><b class="itemname">' + member.name + '</b>';
                 
         output += this.makeSignature(member.params);
-        if (member.returns.length) {
+        if (!member.isConstructor && member.returns.length) {
             output += ': ';
-        for(var i = 0;i< member.returns.length;i++) {
-	    var item = member.returns[i];
-	    output += (i > 0 ? ' or ' : '') +
+	    for(var i = 0;i< member.returns.length;i++) {
+		var item = member.returns[i];
+		output += (i > 0 ? ' or ' : '') +
 		this.linkSymbol(item.type);
 	    }
         }
