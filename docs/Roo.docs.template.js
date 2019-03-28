@@ -304,7 +304,7 @@ Roo.docs.template  = {
         }
         
         
-        if (member.since.length) {
+        if (member.since && member.since.length) {
             output+= '<dl class="detailList"><dt class="heading">Since:</dt><dt>' +
                         +member.since+'</dt></dl>';
         }
