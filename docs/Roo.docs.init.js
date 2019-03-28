@@ -310,17 +310,22 @@ Roo.docs.init = {
                 
                 var r = Roo.decode(res.responseText);
                 
-                if (!r.isAbstract) {
-                    
-                    
+                
                     // copy methods that are not constructors..
-                    r.methods.forEach(function(m) {
-                        if (m.isConstructor || m.static) {
-                            return;
-                        }
-                        d.methods.push(m);  
-                    });
-                }    
+                
+                r.methods.forEach(function(m) {
+                    
+                    if (r.methods.find(function(e) {
+                        return e.name == m.name;
+                    })) {
+                        return;
+                    }
+                    if (m.isConstructor || m.static) {
+                        return;
+                    }
+                    d.methods.push(m);  
+                });
+                
                 r.props.forEach(function(m) {
                     if (m.isConstant) {
                         return;
