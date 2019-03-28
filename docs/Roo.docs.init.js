@@ -72,7 +72,10 @@ Roo.docs.init = {
                 }, this);
                 
                 var roo = Roo.docs.navGroup.items[1].menu;
-               // roo.show(roo.triggerEl, '?', false);
+                if (!Roo.docs.init.prefix.length) {
+                    roo.show(roo.triggerEl, '?', false);
+                }
+                
                 if (location.hash.length) {
                     this.loadHash();
                     return;
