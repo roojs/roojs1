@@ -382,7 +382,7 @@ Roo.docs.init = {
             Roo.docs.doc_extends.show();
             Roo.docs.doc_extends_sep.show();
             Roo.docs.doc_extends.el.dom.innerHTML = d.augments[0];
-            Roo.docs.doc_extends.el.setAttribute('href ,'#' + d.augments[0]);
+            Roo.docs.doc_extends.el.setAttribute('href' ,'#' + d.augments[0]);
         }
         Roo.docs.doc_source.el.dom.innerHTML = d.name.replace(/\./g,"/") + ".js";
         if (Roo.docs.init.prefix.length) {
