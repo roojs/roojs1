@@ -937,7 +937,7 @@ pre code {
 
 a.dropdown-toggle::before {
     display: inline-block;
-    margin-left: .255em;
+    margin-right: .255em;
     vertical-align: .255em;
     content: "";
     border-top: .3em solid;
