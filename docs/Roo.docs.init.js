@@ -271,7 +271,12 @@ Roo.docs.init = {
             {
                 
                 var d = Roo.decode(res.responseText);
-                this.fillAugments(d, Roo.docs.init.fillDoc);
+                if (this.prefix.length) {
+                    this.fillAugments(d, Roo.docs.init.fillDoc);
+                    return;
+                }
+                this.fillDoc(d);
+                
                 
                 
             },
