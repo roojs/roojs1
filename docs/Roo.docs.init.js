@@ -272,7 +272,7 @@ Roo.docs.init = {
                 
                 var d = Roo.decode(res.responseText);
                 
-                if (this.prefix.length) {
+                if (typeof(d.augments) == null) {
                     d.augments = [];
                     d.config = []; // props for ctor?
                     d.isFlutter  = true;
