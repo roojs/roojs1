@@ -10,17 +10,10 @@ Roo.docs.init = {
     onReady : function()
     {
        
-        //if (typeof(pagedata) == 'undefined') {
-        //    Site.onReady.defer(100, Roo.docs.init);
-        //    return;
-        //}
-        //Roo.debug = 1;
-        
+       
         Roo.XComponent.hideProgress = true;
         Roo.XComponent.build();
-        
-        
-        
+         
         
         Roo.XComponent.on('buildcomplete', function() {
             
@@ -30,12 +23,7 @@ Roo.docs.init = {
         
         
         window.onhashchange = function() { Roo.docs.init.onHashChange(); }
-        
-        
-       
-        
-        //Roo.get(document.body).on('click', this.onClick, this);
-      
+         
         
     },
     
