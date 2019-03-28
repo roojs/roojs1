@@ -45,7 +45,7 @@ Roo.docs.init = {
                 // our classes witch children first..
                 d.forEach(function(e) {
                     if (e.cn.length) {
-                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem', true);
+                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem', !Roo.docs.prefix.length );
                         
                     }
                 }, this);
