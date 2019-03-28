@@ -22,7 +22,8 @@ Roo.docs.init = {
             this.loadTree();
         }, this);
         if (window.location.search.length > 0) {
-            this.prefix = window.location.search.substring(1);
+            this.prefix = "/Flutter/";
+            Roo.docs.roo_title = "Flutter Documentation";
         }
         
         window.onhashchange = function() { Roo.docs.init.onHashChange(); }
