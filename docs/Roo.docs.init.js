@@ -290,7 +290,7 @@ Roo.docs.init = {
     },
     fillAugments : function(d, cb)
     {
-        if (!d.extends.lenght) {
+        if (!d.extends.length) {
             cb(d)
         }
         d.augments.push(d.extends);
