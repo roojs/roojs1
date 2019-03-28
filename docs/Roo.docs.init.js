@@ -288,9 +288,9 @@ Roo.docs.init = {
         });
         
     },
-    fillAugments : function(d, cb)
+    fillAugments : function(d, cb, extends)
     {
-        if (!d.extends.length) {
+        if (!extends.length) {
             cb(d)
         }
         d.augments.push(d.extends);
@@ -321,6 +321,7 @@ Roo.docs.init = {
                     
                     d.events.push(m);  
                 });
+                this.fillAugments(d,cb,r.extends)
                 
             },
             scope : this
