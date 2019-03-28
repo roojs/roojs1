@@ -5,6 +5,7 @@ Roo.docs.init = {
     classes : false, // flat version of list of classes 
     currentClass : '--none--', // currently viewed class name
     
+    prefix : '',
     hash : '',
     
     onReady : function()
