@@ -148,7 +148,7 @@ Roo.docs.init = {
                 listeners : {
                     beforehide : (function(mi,c)
                     {
-                        if (c.name.split('.').length < 2 && !Roo.docs.init.prefix.length)  {
+                        if (c.name.split('.').length < 2 || Roo.docs.init.prefix.length)  {
                             return false;
                         }
                         return true;
