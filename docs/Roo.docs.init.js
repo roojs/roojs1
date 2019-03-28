@@ -35,7 +35,7 @@ Roo.docs.init = {
         Roo.docs.doc_body_content.hide();
         
         Roo.Ajax.request({
-            url : 'tree.json',
+            url : this.prefix + 'tree.json',
             method : 'GET',
             success : function(res, o)
             {
