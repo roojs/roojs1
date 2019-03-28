@@ -205,7 +205,7 @@ Roo.docs.template  = {
             }
             output+= '</dl>';
         }    
-        if (member.deprecated.length) {
+        if (member.isDeprecated || (member.deprecated && member.deprecated.length)) {
             output+= '<dl class="detailList"><dt class="heading">Deprecated:</dt><dt>' +
                         +member.deprecated+'</dt></dl>';
         }
