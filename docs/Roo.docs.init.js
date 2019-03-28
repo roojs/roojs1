@@ -20,10 +20,14 @@ Roo.docs.init = {
             
             //Roo.XComponent.modules[0].el.fireEvent('render');
             this.loadTree();
+            if (window.location.search.length > 0) {
+                Roo.docs.roo_title.el.dom.innerHTML = "Flutter Documentation";
+            }
+            
         }, this);
         if (window.location.search.length > 0) {
             this.prefix = "/flutter/";
-            Roo.docs.roo_title.el.dom.innerHTML = "Flutter Documentation";
+            
         }
         
         window.onhashchange = function() { Roo.docs.init.onHashChange(); }
