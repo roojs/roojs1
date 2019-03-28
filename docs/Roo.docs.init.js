@@ -296,7 +296,8 @@ Roo.docs.init = {
             return;
         }
         if (!ext.length) {
-            cb(d)
+            cb(d);
+            return;
         }
         var next = ext.shift();
         d.augments.push(next);
