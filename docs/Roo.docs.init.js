@@ -295,8 +295,18 @@ Roo.docs.init = {
             success : function(res, o)
             {
                 
-                var d = Roo.decode(res.responseText);
-                this.fillDoc(d);
+                var r = Roo.decode(res.responseText);
+                // copy methods that are not constructors..
+                r.methods.forEach(function(m) {
+                    if (m.isConstructor || m.static) {
+                        return;
+                    }
+                    d.methods.push(m);  
+                })
+                
+                
+                
+                
                 
             },
             scope : this
