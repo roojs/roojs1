@@ -22,7 +22,7 @@ Roo.docs.init = {
             this.loadTree();
         }, this);
         if (window.location.search.length > 0) {
-            this.prefix = "/Flutter/";
+            this.prefix = "/flutter/";
             Roo.docs.roo_title = "Flutter Documentation";
         }
         
