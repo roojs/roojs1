@@ -228,7 +228,7 @@ Roo.docs.template  = {
                         </dl>
                 </if>
                 */
-        if (!member.isConstructor && member.returns.length) {
+        if (member.returns && member.returns.length) {
             output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
         for (var i =0; i < member.returns.length; i++) {
         var item = member.returns[i];
