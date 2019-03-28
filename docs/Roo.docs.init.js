@@ -47,6 +47,9 @@ Roo.docs.init = {
                 var d = Roo.decode(res.responseText);
                 //Roo.log(d);
                 this.classes = {};
+                
+                d.sort(Roo.docs.template.makeSortby("name"));
+                
                 // our classes witch children first..
                 d.forEach(function(e) {
                     if (e.cn.length) {
