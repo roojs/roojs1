@@ -48,7 +48,7 @@ Roo.docs.init = {
                 //Roo.log(d);
                 this.classes = {};
                 
-                d.sort(Roo.docs.template.makeSortby("name"));
+                d = d.sort(Roo.docs.template.makeSortby("name"));
                 
                 // our classes witch children first..
                 d.forEach(function(e) {
