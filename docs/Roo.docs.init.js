@@ -288,8 +288,13 @@ Roo.docs.init = {
         });
         
     },
+    n : 0,
     fillAugments : function(d, ext, cb )
     {
+        Roo.docs.init.n++;
+        if (Roo.docs.init.n > 20) {
+            return;
+        }
         if (!ext.length) {
             cb(d)
         }
