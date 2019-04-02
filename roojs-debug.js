@@ -37226,7 +37226,9 @@ Roo.extend(Roo.tree.ColumnTree, Roo.tree.TreePanel, {
  * @param {Object} config Configuration options
  */
 Roo.menu.Menu = function(config){
-    Roo.apply(this, config);
+    
+    Roo.menu.Menu.superclass.constructor.call(this, config);
+    
     this.id = this.id || Roo.id();
     this.addEvents({
         /**
