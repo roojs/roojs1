@@ -51,7 +51,7 @@ Roo.docs.template  = {
 	
 	
 	var iblock_indent = 0;
-	data.implementors.reverse().map(
+	data.implementors.map(
 	    function($) {  
 	
 		output += '<li>' + linkSymbol($) + '</li>';
