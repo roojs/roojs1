@@ -54,7 +54,7 @@ Roo.docs.template  = {
 	data.implementors.reverse().map(
 	    function($) {  
 	
-		output += '<li>' + linkSymbol($) + '<li>';
+		output += '<li>' + linkSymbol($) + '</li>';
 		
 	    }
 	)
