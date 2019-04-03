@@ -413,6 +413,12 @@ Roo.docs.init = {
             Roo.docs.augments.hide();
         }
         
+        if (d.implementors.length) {
+            Roo.docs.implementors.show();
+            Roo.docs.implementors.bodyEl().dom.innerHTML = Roo.docs.template.implementors(d);
+        } else {
+            Roo.docs.implementors.hide();
+        }
         
         
         Roo.docs.configTableContainer.hide();
