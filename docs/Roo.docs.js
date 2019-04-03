@@ -517,7 +517,7 @@ Roo.docs = new Roo.XComponent({
            listeners : {
             render : function (_self)
              {
-                 _this.augments  = this;
+                 _this.implementors  = this;
              }
            },
            xns : Roo.bootstrap,

@@ -258,7 +258,7 @@
           },
           {
            "listeners" : {
-            "render" : "function (_self)\n{\n    _this.augments  = this;\n}"
+            "render" : "function (_self)\n{\n    _this.implementors  = this;\n}"
            },
            "String header" : "Implementations",
            "String cls" : "doc-augments",
