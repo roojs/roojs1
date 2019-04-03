@@ -445,7 +445,18 @@ Roo.docs.template  = {
     },
     linkSymbol : function(str)
     {
-        return '<span class=\"fixedFont\"><a href="#' + str + '">' + str + '</a></span>';
+        
+	var ar = str.split('<');
+	var out = '';
+	for(var i = ar.length-1; i > -1; i--) {
+	    var bit = ar[0].split('>').pop();
+	    if (out.length) {
+		out = '&lt;' + out + '&gt;';
+	    }
+	    out = '<span class=\"fixedFont\"><a href="#' + bit+ '">' + bit + '</a>' + out + '</span>';
+	}
+	
+	return '<span class=\"fixedFont\"><a href="#' + str + '">' + str + '</a></span>';
     },
     makeSortby : function(attribute) {
 	return function(a, b) {
