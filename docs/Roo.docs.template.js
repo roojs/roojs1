@@ -449,7 +449,7 @@ Roo.docs.template  = {
 	var ar = str.split('<');
 	var out = '';
 	for(var i = ar.length-1; i > -1; i--) {
-	    var bit = ar[0].split('>').pop();
+	    var bit = ar[i].split('>').pop();
 	    if (out.length) {
 		out = '&lt;' + out + '&gt;';
 	    }
