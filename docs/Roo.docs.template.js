@@ -39,6 +39,30 @@ Roo.docs.template  = {
        
     },
     
+    implementors : function(data)
+    {
+	if (!data.implementors.length) {
+	    return '';
+	}
+	var linkSymbol  = this.linkSymbol;
+	var output = '<ul class="inheritance res-block"> ';
+	
+	data.implementors.sort();
+	
+	
+	var iblock_indent = 0;
+	data.implementors.reverse().map(
+	    function($) {  
+	
+		output += '<li><pre class="res-block-inner">' + linkSymbol($) + '</pre><li>';
+		
+	    }
+	)
+	 
+	return output +   '</ul>'
+	
+    },
+    
     config : function(dtag)
     {
        
