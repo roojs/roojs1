@@ -945,3 +945,9 @@ a.dropdown-toggle::before {
     border-bottom: 0;
     border-left: .3em solid transparent;
 }
+.doc-implementors .panel-body {
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-left: 0;
+}
