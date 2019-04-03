@@ -41,17 +41,17 @@ Roo.docs.template  = {
     
     implementors : function(data)
     {
-	if (!data.implementors.length) {
+	if (!data.realImplementors.length) {
 	    return '';
 	}
 	var linkSymbol  = this.linkSymbol;
 	var output = '<ul class="inheritance res-block"> ';
 	
-	data.implementors.sort();
+	data.realImplementors.sort();
 	
 	
 	var iblock_indent = 0;
-	data.implementors.map(
+	data.realImplementors.map(
 	    function($) {  
 	
 		output += '<li>' + linkSymbol($) + '</li>';
