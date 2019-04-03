@@ -384,9 +384,9 @@ Roo.docs.init = {
               {
         */
         
-        Roo.docs.classType.el.dom.innerHMTL = 'Class';
+        Roo.docs.classType.el.dom.firstChild.textContent  = 'Class ';
         if (d.isAbstract) {
-            Roo.docs.classType.el.dom.innerHMTL = 'abstract class';
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'abstract class ';
         }
         
         document.body.scrollTop  = 0;
