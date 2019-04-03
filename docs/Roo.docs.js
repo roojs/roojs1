@@ -511,7 +511,7 @@ Roo.docs = new Roo.XComponent({
           },
           {
            xtype : 'Container',
-           cls : 'doc-augments',
+           cls : 'doc-implementors',
            header : _this._strings['3c81cc62cd8a24b231d0c0db34feda61'] /* Implementations */,
            panel : 'primary',
            listeners : {

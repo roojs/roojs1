@@ -261,7 +261,7 @@
             "render" : "function (_self)\n{\n    _this.implementors  = this;\n}"
            },
            "String header" : "Implementations",
-           "String cls" : "doc-augments",
+           "String cls" : "doc-implementors",
            "xtype" : "Container",
            "String panel" : "primary",
            "$ xns" : "Roo.bootstrap"
