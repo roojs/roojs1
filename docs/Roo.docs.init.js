@@ -383,6 +383,12 @@ Roo.docs.init = {
             "config" : [
               {
         */
+        
+        Roo.docs.classType.innerHMTL = 'Class';
+        if (d.isAbstract) {
+            Roo.docs.classType.innerHMTL = 'abstract class';
+        }
+        
         document.body.scrollTop  = 0;
         Roo.docs.doc_name.el.dom.innerHTML = Roo.docs.template.resolveLinks(d.name);
         Roo.docs.doc_desc.el.dom.innerHTML = Roo.docs.template.summary(d);
