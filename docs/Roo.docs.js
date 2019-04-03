@@ -18,6 +18,7 @@ Roo.docs = new Roo.XComponent({
   'd2b697ad8e989a6c4592987f22f5bbfc' :"doc-comments",
   'f361257612a512f9be2fdc2abfb25aef' :"<small>Defined by</small>",
   '494a64a432ff6a121e4ab9003c7a0df3' :"parentcls",
+  '3c81cc62cd8a24b231d0c0db34feda61' :"Implementations",
   'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx",
   '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
   'a1d108496af420635536a4e29e87d42b' :"Constructor, Static and Public Methods",
@@ -511,7 +512,7 @@ Roo.docs = new Roo.XComponent({
           {
            xtype : 'Container',
            cls : 'doc-augments',
-           header : _this._strings['3e6ec55e2dff4342e3f25b0b0b988de9'] /* Inheritance tree */,
+           header : _this._strings['3c81cc62cd8a24b231d0c0db34feda61'] /* Implementations */,
            panel : 'primary',
            listeners : {
             render : function (_self)
