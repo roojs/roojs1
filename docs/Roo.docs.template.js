@@ -445,7 +445,7 @@ Roo.docs.template  = {
     },
     linkSymbol : function(str)
     {
-        
+        Roo.log(str);
 	var ar = str.split('<');
 	var out = '';
 	for(var i = ar.length-1; i > -1; i--) {
