@@ -456,7 +456,7 @@ Roo.docs.template  = {
 	    out = '<span class=\"fixedFont\"><a href="#' + bit+ '">' + bit + '</a>' + out + '</span>';
 	}
 	
-	return '<span class=\"fixedFont\"><a href="#' + str + '">' + str + '</a></span>';
+	return out;
     },
     makeSortby : function(attribute) {
 	return function(a, b) {
