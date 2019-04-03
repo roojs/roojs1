@@ -45,7 +45,7 @@ Roo.docs.template  = {
 	    return '';
 	}
 	var linkSymbol  = this.linkSymbol;
-	var output = '<ul class="inheritance res-block"> ';
+	var output = '<ul class="inheritance res-block"><pre class="res-block-inner"> ';
 	
 	data.implementors.sort();
 	
@@ -54,12 +54,12 @@ Roo.docs.template  = {
 	data.implementors.reverse().map(
 	    function($) {  
 	
-		output += '<li><pre class="res-block-inner">' + linkSymbol($) + '</pre><li>';
+		output += '<li>' + linkSymbol($) + '<li>';
 		
 	    }
 	)
 	 
-	return output +   '</ul>'
+	return output +   '</pre></ul>'
 	
     },
     
