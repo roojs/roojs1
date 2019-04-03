@@ -358,6 +358,14 @@ Roo.docs.init = {
                     d.events.push(m);  
                 });
             
+                r.implementors.forEach(function(c) {
+                    if (d.implementors.indexOf(c) < 0) {
+                        d.implementors.push(c);
+                    }
+                    
+                })
+            
+            
                 this.fillAugments(d,ext, cb)
                 
             },
