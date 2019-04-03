@@ -157,6 +157,9 @@
            "$ xns" : "Roo.bootstrap",
            "items" : [
             {
+             "listeners" : {
+              "render" : "function (_self)\n{\n   _this.classType = this;\n}"
+             },
              "xtype" : "Header",
              "$ xns" : "Roo.bootstrap",
              "Number level" : 4,
