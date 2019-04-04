@@ -366,9 +366,11 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
             	this.appendChild(multi[i]);
             }
         }else{
+            Roo.log('1????????????');
             if(this.fireEvent("beforeappend", this.ownerTree, this, node) === false){
                 return false;
             }
+            Roo.log('2????????????????????')
             var index = this.childNodes.length;
             var oldParent = node.parentNode;
             // it's a move, make sure we move it cleanly
