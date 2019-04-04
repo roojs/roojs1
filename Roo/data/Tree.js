@@ -364,6 +364,7 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
         Roo.log(multi);
         // if passed an array or multiple args do them one by one
         if(multi){
+            Roo.log('in????????????????');
             for(var i = 0, len = multi.length; i < len; i++) {
             	this.appendChild(multi[i]);
             }
