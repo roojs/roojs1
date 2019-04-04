@@ -2553,19 +2553,16 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
         }else if(arguments.length > 1){
             multi = arguments;
         }
-        Roo.log(multi);
+        
         // if passed an array or multiple args do them one by one
         if(multi){
-            Roo.log('in????????????????');
             for(var i = 0, len = multi.length; i < len; i++) {
             	this.appendChild(multi[i]);
             }
         }else{
-            Roo.log('1????????????');
             if(this.fireEvent("beforeappend", this.ownerTree, this, node) === false){
                 return false;
             }
-            Roo.log('2????????????????????');
             var index = this.childNodes.length;
             var oldParent = node.parentNode;
             // it's a move, make sure we move it cleanly
@@ -2575,6 +2572,7 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
                 }
                 oldParent.removeChild(node);
             }
+            Roo.log('old parent ?????????');
             index = this.childNodes.length;
             if(index == 0){
                 this.setFirstChild(node);
