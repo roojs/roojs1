@@ -354,12 +354,14 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
      */
     appendChild : function(node){
         Roo.log('tree.js appendChild');
+        Roo.log(node);
         var multi = false;
         if(node instanceof Array){
             multi = node;
         }else if(arguments.length > 1){
             multi = arguments;
         }
+        Roo.log(multi);
         // if passed an array or multiple args do them one by one
         if(multi){
             for(var i = 0, len = multi.length; i < len; i++) {
