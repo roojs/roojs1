@@ -383,7 +383,7 @@ Roo.tree.TreeNodeUI.prototype = {
         // add some indent caching, this helps performance when rendering a large tree
         this.indentMarkup = n.parentNode ? n.parentNode.ui.getChildIndent() : '';
         var t = n.getOwnerTree();
-        var txt = t.renderer ? t.renderer(n.attributes) : Roo.util.Format.htmlEncode(n.text);
+        var txt = t && t.renderer ? t.renderer(n.attributes) : Roo.util.Format.htmlEncode(n.text);
         if (typeof(n.attributes.html) != 'undefined') {
             txt = n.attributes.html;
         }
