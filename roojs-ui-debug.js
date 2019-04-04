@@ -2551,6 +2551,7 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
         }else if(arguments.length > 1){
             multi = arguments;
         }
+        
         // if passed an array or multiple args do them one by one
         if(multi){
             for(var i = 0, len = multi.length; i < len; i++) {
@@ -2569,6 +2570,7 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
                 }
                 oldParent.removeChild(node);
             }
+            
             index = this.childNodes.length;
             if(index == 0){
                 this.setFirstChild(node);
@@ -2586,6 +2588,9 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
             this.setLastChild(node);
             node.setOwnerTree(this.getOwnerTree());
             this.fireEvent("append", this.ownerTree, this, node, index);
+            if(this.ownerTree) {
+                this.ownerTree.fireEvent("appendnode", this, node, index);
+            }
             if(oldParent){
                 node.fireEvent("move", this.ownerTree, node, oldParent, this, index);
             }
@@ -11823,7 +11828,15 @@ Roo.tree.TreePanel = function(el, config){
         * </ul>
         * @param {Object} dragOverEvent
         */
-       "nodedragover" : true
+       "nodedragover" : true,
+       /**
+        * @event appendnode
+        * Fires when append node to the tree
+        * @param {Roo.tree.TreePanel} this
+        * @param {Roo.tree.TreeNode} node
+        * @param {Number} index The index of the newly appended node
+        */
+       "appendnode" : true
         
     });
     if(this.singleExpand){
@@ -12684,7 +12697,8 @@ Roo.extend(Roo.tree.TreeNode, Roo.data.Node, {
                 this.renderChildren();
             }
             this.expanded = true;
-            if(!this.isHiddenRoot() && (this.getOwnerTree().animate && anim !== false) || anim){
+            
+            if(!this.isHiddenRoot() && (this.getOwnerTree() && this.getOwnerTree().animate && anim !== false) || anim){
                 this.ui.animExpand(function(){
                     this.fireEvent("expand", this);
                     if(typeof callback == "function"){
@@ -13135,7 +13149,7 @@ Roo.tree.TreeNodeUI.prototype = {
             this.addClass("x-tree-node-disabled");
         }
         var ot = this.node.getOwnerTree();
-        var dd = ot.enableDD || ot.enableDrag || ot.enableDrop;
+        var dd = ot ? (ot.enableDD || ot.enableDrag || ot.enableDrop) : false;
         if(dd && (!this.node.isRoot || ot.rootVisible)){
             Roo.dd.Registry.register(this.elNode, {
                 node: this.node,
@@ -13378,11 +13392,11 @@ Roo.tree.TreeNodeUI.prototype = {
         // add some indent caching, this helps performance when rendering a large tree
         this.indentMarkup = n.parentNode ? n.parentNode.ui.getChildIndent() : '';
         var t = n.getOwnerTree();
-        var txt = t.renderer ? t.renderer(n.attributes) : Roo.util.Format.htmlEncode(n.text);
+        var txt = t && t.renderer ? t.renderer(n.attributes) : Roo.util.Format.htmlEncode(n.text);
         if (typeof(n.attributes.html) != 'undefined') {
             txt = n.attributes.html;
         }
-        var tip = t.rendererTip ? t.rendererTip(n.attributes) : txt;
+        var tip = t && t.rendererTip ? t.rendererTip(n.attributes) : txt;
         var cb = typeof a.checked == 'boolean';
         var href = a.href ? a.href : Roo.isGecko ? "" : "#";
         var buf = ['<li class="x-tree-node"><div class="x-tree-node-el ', a.cls,'">',

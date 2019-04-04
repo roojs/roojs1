@@ -359,6 +359,7 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
         }else if(arguments.length > 1){
             multi = arguments;
         }
+        
         // if passed an array or multiple args do them one by one
         if(multi){
             for(var i = 0, len = multi.length; i < len; i++) {
@@ -377,6 +378,7 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
                 }
                 oldParent.removeChild(node);
             }
+            
             index = this.childNodes.length;
             if(index == 0){
                 this.setFirstChild(node);
@@ -394,6 +396,9 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
             this.setLastChild(node);
             node.setOwnerTree(this.getOwnerTree());
             this.fireEvent("append", this.ownerTree, this, node, index);
+            if(this.ownerTree) {
+                this.ownerTree.fireEvent("appendnode", this, node, index);
+            }
             if(oldParent){
                 node.fireEvent("move", this.ownerTree, node, oldParent, this, index);
             }
