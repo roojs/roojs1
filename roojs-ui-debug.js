@@ -12684,7 +12684,8 @@ Roo.extend(Roo.tree.TreeNode, Roo.data.Node, {
                 this.renderChildren();
             }
             this.expanded = true;
-            if(!this.isHiddenRoot() && (this.getOwnerTree().animate && anim !== false) || anim){
+            
+            if(!this.isHiddenRoot() && (this.getOwnerTree() && this.getOwnerTree().animate && anim !== false) || anim){
                 this.ui.animExpand(function(){
                     this.fireEvent("expand", this);
                     if(typeof callback == "function"){
