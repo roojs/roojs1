@@ -13396,7 +13396,7 @@ Roo.tree.TreeNodeUI.prototype = {
         if (typeof(n.attributes.html) != 'undefined') {
             txt = n.attributes.html;
         }
-        var tip = t.rendererTip ? t.rendererTip(n.attributes) : txt;
+        var tip = t && t.rendererTip ? t.rendererTip(n.attributes) : txt;
         var cb = typeof a.checked == 'boolean';
         var href = a.href ? a.href : Roo.isGecko ? "" : "#";
         var buf = ['<li class="x-tree-node"><div class="x-tree-node-el ', a.cls,'">',
