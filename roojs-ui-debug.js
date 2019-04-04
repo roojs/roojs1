@@ -2545,6 +2545,7 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
      * @return {Node} The appended node if single append, or null if an array was passed
      */
     appendChild : function(node){
+        Roo.log('tree.js appendChild');
         var multi = false;
         if(node instanceof Array){
             multi = node;
