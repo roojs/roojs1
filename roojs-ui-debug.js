@@ -13693,8 +13693,6 @@ Roo.extend(Roo.tree.TreeLoader, Roo.util.Observable, {
         if(node.attributes.children){ // preloaded json children
             var cs = node.attributes.children;
             for(var i = 0, len = cs.length; i < len; i++){
-                Roo.log('appendchild');
-                Roo.log(cs[i]);
                 node.appendChild(this.createNode(cs[i]));
             }
             if(typeof callback == "function"){
