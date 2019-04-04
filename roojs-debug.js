@@ -35600,7 +35600,7 @@ Roo.tree.TreeNodeUI.prototype = {
             this.addClass("x-tree-node-disabled");
         }
         var ot = this.node.getOwnerTree();
-        var dd = ot.enableDD || ot.enableDrag || ot.enableDrop;
+        var dd = ot ? (ot.enableDD || ot.enableDrag || ot.enableDrop) : false;
         if(dd && (!this.node.isRoot || ot.rootVisible)){
             Roo.dd.Registry.register(this.elNode, {
                 node: this.node,
