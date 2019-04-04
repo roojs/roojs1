@@ -373,7 +373,7 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
             if(this.fireEvent("beforeappend", this.ownerTree, this, node) === false){
                 return false;
             }
-            Roo.log('2????????????????????')
+            Roo.log('2????????????????????');
             var index = this.childNodes.length;
             var oldParent = node.parentNode;
             // it's a move, make sure we move it cleanly
