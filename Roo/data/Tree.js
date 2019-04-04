@@ -397,8 +397,6 @@ Roo.extend(Roo.data.Node, Roo.util.Observable, {
             node.nextSibling = null;
             this.setLastChild(node);
             node.setOwnerTree(this.getOwnerTree());
-            Roo.log('reach here???????????????????????????');
-            Roo.log(this);
             this.fireEvent("append", this.ownerTree, this, node, index);
             if(oldParent){
                 node.fireEvent("move", this.ownerTree, node, oldParent, this, index);
