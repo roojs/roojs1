@@ -140,7 +140,7 @@ Roo.tree.TreeNodeUI.prototype = {
             this.addClass("x-tree-node-disabled");
         }
         var ot = this.node.getOwnerTree();
-        var dd = ot.enableDD || ot.enableDrag || ot.enableDrop;
+        var dd = ot ? (ot.enableDD || ot.enableDrag || ot.enableDrop) : false;
         if(dd && (!this.node.isRoot || ot.rootVisible)){
             Roo.dd.Registry.register(this.elNode, {
                 node: this.node,
@@ -383,11 +383,11 @@ Roo.tree.TreeNodeUI.prototype = {
         // add some indent caching, this helps performance when rendering a large tree
         this.indentMarkup = n.parentNode ? n.parentNode.ui.getChildIndent() : '';
         var t = n.getOwnerTree();
-        var txt = t.renderer ? t.renderer(n.attributes) : Roo.util.Format.htmlEncode(n.text);
+        var txt = t && t.renderer ? t.renderer(n.attributes) : Roo.util.Format.htmlEncode(n.text);
         if (typeof(n.attributes.html) != 'undefined') {
             txt = n.attributes.html;
         }
-        var tip = t.rendererTip ? t.rendererTip(n.attributes) : txt;
+        var tip = t && t.rendererTip ? t.rendererTip(n.attributes) : txt;
         var cb = typeof a.checked == 'boolean';
         var href = a.href ? a.href : Roo.isGecko ? "" : "#";
         var buf = ['<li class="x-tree-node"><div class="x-tree-node-el ', a.cls,'">',

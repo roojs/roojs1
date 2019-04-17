@@ -239,7 +239,15 @@ Roo.tree.TreePanel = function(el, config){
         * </ul>
         * @param {Object} dragOverEvent
         */
-       "nodedragover" : true
+       "nodedragover" : true,
+       /**
+        * @event appendnode
+        * Fires when append node to the tree
+        * @param {Roo.tree.TreePanel} this
+        * @param {Roo.tree.TreeNode} node
+        * @param {Number} index The index of the newly appended node
+        */
+       "appendnode" : true
         
     });
     if(this.singleExpand){
