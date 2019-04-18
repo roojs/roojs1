@@ -388,7 +388,12 @@ Roo.docs.init = {
         if (d.isAbstract) {
             Roo.docs.classType.el.dom.firstChild.textContent  = 'abstract class ';
         }
-        
+        if (d.is_enum) {
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'enum ';
+        }
+        if (d.is_mixin) {
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'mixin ';
+        }
         document.body.scrollTop  = 0;
         Roo.docs.doc_name.el.dom.innerHTML = Roo.docs.template.resolveLinks(d.name);
         Roo.docs.doc_desc.el.dom.innerHTML = Roo.docs.template.summary(d);
