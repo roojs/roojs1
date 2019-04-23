@@ -21618,6 +21618,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if(node.nodeName == 'SPAN') {
             console.log(node);
             console.log(node.attributes);
+            console.log(node.childNodes);
         }
         
         if (node.nodeName == "#text") {
