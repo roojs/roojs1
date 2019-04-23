@@ -1177,7 +1177,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.childNodes.length == 1 &&
                 node.firstChild.nodeName == "#text"
         ) {
+            console.log('run!!!!!');
             var textNode = node.firstChild;
+            console.log(textNode);
             node.parentNode.insertBefore(textNode, node);
             node.parentNode.removeChild(node);
         }
