@@ -32833,6 +32833,8 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
         }
 
         this.lastZIndex = index;
+        
+        Roo.BasicDialog.lastZIndex = this.lastZIndex;
     },
 
     /**
