@@ -23149,8 +23149,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanWord : function(node)
     {
-        
-        
         if (!node) {
             this.cleanWord(this.doc.body);
             return;
