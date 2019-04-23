@@ -57,6 +57,8 @@ Roo.form.BasicForm = function(el, config){
         this.initEl(el);
     }
     Roo.form.BasicForm.superclass.constructor.call(this);
+    
+    Roo.form.BasicForm.popover.apply();
 };
 
 Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {

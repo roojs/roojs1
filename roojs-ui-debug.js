@@ -25075,8 +25075,6 @@ Roo.form.Form = function(config){
     
     Roo.each(xitems, this.addxtype, this);
     
-    Roo.form.Form.popover.apply();
-    
 };
 
 Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
