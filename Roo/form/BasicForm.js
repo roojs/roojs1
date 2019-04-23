@@ -826,7 +826,7 @@ Roo.apply(Roo.form.BasicForm, {
                 }
             }
 
-            this.toolTip.show(tip);
+//            this.toolTip.show(tip);
 
             this.intervalID = window.setInterval(function() {
                 Roo.bootstrap.Form.popover.unmask();
