@@ -24457,6 +24457,16 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * @type Boolean
      */
     disableMask : false,
+    
+    /**
+     * @cfg {Boolean} errorMask (true|false) default false
+     */
+    errorMask : false,
+    
+    /**
+     * @cfg {Number} maskOffset Default 100
+     */
+    maskOffset : 100,
 
     // private
     initEl : function(el){
