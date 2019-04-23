@@ -780,8 +780,8 @@ Roo.apply(Roo.form.BasicForm, {
             
             var box = this.target.el.getBox();
             Roo.log(box);
+            
             var zIndex = Roo.BasicDialog.lastZIndex++;
-
             
             this.maskEl.top.setStyle('position', 'absolute');
             this.maskEl.top.setStyle('z-index', zIndex);
