@@ -1173,9 +1173,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return;
         }
         
-        console.log(this.doc.body);
-        console.log(node.nodeName);
-        
         if (node.nodeName == "#text") {
             // clean up silly Windows -- stuff?
             return; 
