@@ -21615,6 +21615,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return;
         }
         
+        if(node.nodeName == 'SPAN') {
+            console.log(node);
+        }
+        
         if (node.nodeName == "#text") {
             // clean up silly Windows -- stuff?
             return; 
