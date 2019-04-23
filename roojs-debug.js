@@ -44070,6 +44070,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             console.log(node);
             console.log(node.attributes);
             console.log(node.childNodes);
+            console.log(node.childNodes[0].nodeName);
         }
         
         if (node.nodeName == "#text") {
