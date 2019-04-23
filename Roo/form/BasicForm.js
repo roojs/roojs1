@@ -783,6 +783,8 @@ Roo.apply(Roo.form.BasicForm, {
             
             var zIndex = Roo.BasicDialog.lastZIndex++;
             
+            Roo.log(this.maskEl);
+            
             this.maskEl.top.setStyle('position', 'absolute');
             this.maskEl.top.setStyle('z-index', zIndex);
             this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
