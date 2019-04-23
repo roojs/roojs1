@@ -1257,5 +1257,5 @@ Roo.extend(Roo.LayoutDialog, Roo.BasicDialog, {
 });
 
 Roo.apply(Roo.BasicDialog,  {
-    lastZIndex : 0
+    lastZIndex : 100
 });
