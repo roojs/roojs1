@@ -1174,6 +1174,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if(node.nodeName == 'SPAN') {
             console.log(node);
             console.log(node.attributes);
+            console.log(node.classList);
             console.log(node.childNodes);
             console.log(node.childNodes[0].nodeName);
         }
