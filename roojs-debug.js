@@ -46926,11 +46926,14 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      */
     isValid : function(){
         var valid = true;
+        var target = false;
         this.items.each(function(f){
            if(!f.validate()){
                valid = false;
            }
         });
+        
+        
         return valid;
     },
 
