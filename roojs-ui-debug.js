@@ -10644,7 +10644,7 @@ Roo.extend(Roo.LayoutDialog, Roo.BasicDialog, {
 });
 
 Roo.apply(Roo.BasicDialog,  {
-    lastZIndex : 100
+    lastZIndex : 9000
 });/*
  * Based on:
  * Ext JS Library 1.1.1

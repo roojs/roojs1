@@ -1320,7 +1320,7 @@ E();return F;},hideAll:function(){for(var id in A){if(A[id]&&typeof A[id]!="func
 }B.autoTabs=false;Roo.LayoutDialog.superclass.constructor.call(this,el,B);this.body.setStyle({overflow:"hidden",position:"relative"});this.layout=new Roo.BorderLayout(this.body.dom,B);this.layout.monitorWindowResize=false;this.el.addClass("x-dlg-auto-layout");
 this.center=Roo.BasicDialog.prototype.center;this.on("show",this.layout.layout,this.layout,true);if(B.items){var C=B.items;delete B.items;Roo.each(C,this.addxtype,this);}};Roo.extend(Roo.LayoutDialog,Roo.BasicDialog,{endUpdate:function(){this.layout.endUpdate();
 },beginUpdate:function(){this.layout.beginUpdate();},getLayout:function(){return this.layout;},showEl:function(){Roo.LayoutDialog.superclass.showEl.apply(this,arguments);if(Roo.isIE7){this.layout.layout();}},syncBodyHeight:function(){Roo.LayoutDialog.superclass.syncBodyHeight.call(this);
-if(this.layout){this.layout.layout();}},addxtype:function(c){return this.layout.addxtype(c);}});Roo.apply(Roo.BasicDialog,{lastZIndex:100});
+if(this.layout){this.layout.layout();}},addxtype:function(c){return this.layout.addxtype(c);}});Roo.apply(Roo.BasicDialog,{lastZIndex:9000});
 // Roo/MessageBox.js
 Roo.MessageBox=function(){var A,B,C,D;var E,F,G,H,I,pp;var J,K,L;var M=function(Q){A.hide();Roo.callback(B.fn,B.scope||window,[Q,K.dom.value],1);};var N=function(){if(B&&B.cls){A.el.removeClass(B.cls);}if(D){Roo.TaskMgr.stop(D);D=null;}};var O=function(b){var Q=0;
 if(!b){J["ok"].hide();J["cancel"].hide();J["yes"].hide();J["no"].hide();A.footer.dom.style.display='none';return Q;}A.footer.dom.style.display='';for(var k in J){if(typeof J[k]!="function"){if(b[k]){J[k].show();J[k].setText(typeof b[k]=="string"?b[k]:Roo.MessageBox.buttonText[k]);
