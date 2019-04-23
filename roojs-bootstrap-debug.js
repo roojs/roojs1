@@ -23149,12 +23149,23 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanWord : function(node)
     {
-        
-        
         if (!node) {
             this.cleanWord(this.doc.body);
             return;
         }
+        
+        if(
+                node.nodeName == 'SPAN' &&
+                !node.hasAttributes() &&
+                node.childNodes.length == 1 &&
+                node.firstChild.nodeName == "#text"
+        ) {
+            var text = ' ' + node.innerHTML + ' ';
+            var textNode = document.createTextNode(text);
+            node.parentNode.insertBefore(textNode, node);
+            node.parentNode.removeChild(node);
+        }
+        
         if (node.nodeName == "#text") {
             // clean up silly Windows -- stuff?
             return; 
