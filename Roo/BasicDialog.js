@@ -1253,3 +1253,7 @@ Roo.extend(Roo.LayoutDialog, Roo.BasicDialog, {
         return this.layout.addxtype(c);
     }
 });
+
+Roo.apply(Roo.BasicDialog,  {
+    lastZIndex : 0
+});
