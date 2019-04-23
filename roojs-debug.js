@@ -47639,9 +47639,9 @@ Roo.apply(Roo.form.BasicForm, {
             this.maskEl.right.setSize(0, 0).setXY([0, 0]);
             this.maskEl.right.hide();
             
-            this.toolTip.hide();
+//            this.toolTip.hide();
             
-            this.toolTip.el.hide();
+//            this.toolTip.el.hide();
             
             window.onwheel = function(){ return true;};
             
