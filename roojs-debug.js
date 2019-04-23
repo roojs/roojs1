@@ -33087,6 +33087,10 @@ Roo.extend(Roo.LayoutDialog, Roo.BasicDialog, {
     addxtype : function(c) {
         return this.layout.addxtype(c);
     }
+});
+
+Roo.apply(Roo.BasicDialog,  {
+    lastZIndex : 0
 });/*
  * Based on:
  * Ext JS Library 1.1.1
