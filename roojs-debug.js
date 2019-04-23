@@ -32815,6 +32815,7 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
     // private
     // z-index is managed by the DialogManager and may be overwritten at any time
     setZIndex : function(index){
+        console.log('run????');
         if(this.modal){
             this.mask.setStyle("z-index", index);
         }
