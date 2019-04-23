@@ -811,9 +811,9 @@ Roo.apply(Roo.form.BasicForm, {
             this.maskEl.right.setTop(box.y - this.padding);
             this.maskEl.right.show();
 
-            this.toolTip.bindEl = this.target.el;
-
-            this.toolTip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
+//            this.toolTip.bindEl = this.target.el;
+//
+//            this.toolTip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
 
             var tip = this.target.blankText;
 
