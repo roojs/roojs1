@@ -1172,6 +1172,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.cleanWord(this.doc.body);
             return;
         }
+        
+        console.log(this.doc.body);
+        console.log(node.nodeName);
+        
         if (node.nodeName == "#text") {
             // clean up silly Windows -- stuff?
             return; 
