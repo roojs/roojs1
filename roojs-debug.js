@@ -47545,7 +47545,7 @@ Roo.apply(Roo.form.BasicForm, {
                 return;
             }
             
-            var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.modal', 100, true) || Roo.get(document.body);
+            var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.x-layout-active-content', 100, true) || Roo.get(document.body);
             
             Roo.log(scrollable);
             
