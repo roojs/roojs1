@@ -21616,15 +21616,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         
         if(
-                node.nodeName == 'SPAN'
-//                !node.hasAttributes() &&
-//                node.childNodes.length == 1 &&
-//                node.firstChild.nodeName == "#text"
+                node.nodeName == 'SPAN' &&
+                !node.hasAttributes() &&
+                node.childNodes.length == 1 &&
+                node.firstChild.nodeName == "#text"
         ) {
-            console.log(node);
-            console.log(node.hasAttributes());
-            console.log(node.childNodes.length);
-            console.log(node.firstChild.nodeName);
+            
+            
+            
         }
         
         if (node.nodeName == "#text") {
