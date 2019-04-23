@@ -149,11 +149,18 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
         var valid = true;
         var target = false;
         this.items.each(function(f){
-           if(!f.validate()){
-               valid = false;
+            if(f.validate()){
+                valid = false;
+                
+                if(!target && f.el.isVisible(true)){
+                    target = f;
+                }
            }
         });
         
+        if(this.errorMask && !valid){
+            Roo.form.BasicForm.popover.mask(this, target);
+        }
         
         return valid;
     },
