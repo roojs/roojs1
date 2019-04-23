@@ -23155,6 +23155,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.cleanWord(this.doc.body);
             return;
         }
+        
         if (node.nodeName == "#text") {
             // clean up silly Windows -- stuff?
             return; 
