@@ -162,12 +162,14 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
         var target = false;
         this.items.each(function(f){
             if(f.validate()){
-                valid = false;
+                return;
+            }
+            
+            valid = false;
                 
-                if(!target && f.el.isVisible(true)){
-                    target = f;
-                }
-           }
+            if(!target && f.el.isVisible(true)){
+                target = f;
+            }
         });
         
         if(this.errorMask && !valid){
