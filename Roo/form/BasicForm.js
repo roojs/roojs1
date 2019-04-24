@@ -831,7 +831,7 @@ Roo.apply(Roo.form.BasicForm, {
 //            this.toolTip.show(tip);
 
             this.intervalID = window.setInterval(function() {
-                Roo.BasicForm.Form.popover.unmask();
+                Roo.form.BasicForm.popover.unmask();
             }, 10000);
 
             window.onwheel = function(){ return false;};
