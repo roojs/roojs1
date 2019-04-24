@@ -47484,7 +47484,7 @@ Roo.apply(Roo.form.BasicForm, {
     
     popover : {
         
-        padding : 5,
+        padding : 0,
         
         isApplied : false,
         
