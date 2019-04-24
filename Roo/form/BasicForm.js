@@ -770,8 +770,6 @@ Roo.apply(Roo.form.BasicForm, {
             
             var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.x-layout-active-content', 100, true) || Roo.get(document.body);
             
-            Roo.log(scrollable);
-            
             var ot = this.target.el.calcOffsetsTo(scrollable);
             
             var scrollTo = ot[1] - this.form.maskOffset;
@@ -781,9 +779,8 @@ Roo.apply(Roo.form.BasicForm, {
             scrollable.scrollTo('top', scrollTo);
             
             var el = this.target.wrap || this.target.el;
-            Roo.log(el);
+            
             var box = el.getBox();
-            Roo.log(box);
             
             var zIndex = Roo.BasicDialog.lastZIndex++;
             
@@ -814,23 +811,6 @@ Roo.apply(Roo.form.BasicForm, {
             this.maskEl.right.setLeft(box.right + this.padding);
             this.maskEl.right.setTop(box.y - this.padding);
             this.maskEl.right.show();
-
-//            this.toolTip.bindEl = this.target.el;
-//
-//            this.toolTip.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-
-            var tip = this.target.blankText;
-
-            if(this.target.getValue() !== '' ) {
-                
-                if (this.target.invalidText.length) {
-                    tip = this.target.invalidText;
-                } else if (this.target.regexText.length){
-                    tip = this.target.regexText;
-                }
-            }
-
-//            this.toolTip.show(tip);
 
             this.intervalID = window.setInterval(function() {
                 Roo.form.BasicForm.popover.unmask();
@@ -863,10 +843,6 @@ Roo.apply(Roo.form.BasicForm, {
             this.maskEl.right.setStyle('position', 'absolute');
             this.maskEl.right.setSize(0, 0).setXY([0, 0]);
             this.maskEl.right.hide();
-            
-//            this.toolTip.hide();
-            
-//            this.toolTip.el.hide();
             
             window.onwheel = function(){ return true;};
             
