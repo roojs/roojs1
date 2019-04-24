@@ -34,10 +34,10 @@
    background-color:#CCC;
 }
 
-.roo-form-top-mask,
-.roo-form-left-mask,
-.roo-form-bottom-mask,
-.roo-form-right-mask {
+.x-dlg-mask.roo-form-top-mask,
+.x-dlg-mask.roo-form-left-mask,
+.x-dlg-mask.roo-form-bottom-mask,
+.x-dlg-mask.roo-form-right-mask {
     background-color: gray;
 }
 
