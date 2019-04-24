@@ -47570,16 +47570,12 @@ Roo.apply(Roo.form.BasicForm, {
             
             var zIndex = Roo.BasicDialog.lastZIndex++;
             
-            Roo.log(this.maskEl);
-            
             this.maskEl.top.setStyle('position', 'absolute');
             this.maskEl.top.setStyle('z-index', zIndex);
             this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
             this.maskEl.top.setLeft(0);
             this.maskEl.top.setTop(0);
             this.maskEl.top.show();
-            
-            Roo.log(['top', Roo.lib.Dom.getDocumentWidth(), box.y - this.padding]);
             
             this.maskEl.left.setStyle('position', 'absolute');
             this.maskEl.left.setStyle('z-index', zIndex);
