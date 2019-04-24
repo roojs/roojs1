@@ -32833,8 +32833,6 @@ Roo.extend(Roo.BasicDialog, Roo.util.Observable, {
         }
 
         this.lastZIndex = index;
-        
-        Roo.BasicDialog.lastZIndex = this.lastZIndex;
     },
 
     /**
@@ -33089,10 +33087,6 @@ Roo.extend(Roo.LayoutDialog, Roo.BasicDialog, {
     addxtype : function(c) {
         return this.layout.addxtype(c);
     }
-});
-
-Roo.apply(Roo.BasicDialog,  {
-    lastZIndex : 9000
 });/*
  * Based on:
  * Ext JS Library 1.1.1
