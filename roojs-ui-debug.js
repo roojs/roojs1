@@ -24385,6 +24385,8 @@ Roo.form.BasicForm = function(el, config){
         this.initEl(el);
     }
     Roo.form.BasicForm.superclass.constructor.call(this);
+    
+    Roo.form.BasicForm.popover.apply();
 };
 
 Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
@@ -24455,6 +24457,16 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      * @type Boolean
      */
     disableMask : false,
+    
+    /**
+     * @cfg {Boolean} errorMask (true|false) default false
+     */
+    errorMask : false,
+    
+    /**
+     * @cfg {Number} maskOffset Default 100
+     */
+    maskOffset : 100,
 
     // private
     initEl : function(el){
@@ -24475,11 +24487,23 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
      */
     isValid : function(){
         var valid = true;
+        var target = false;
         this.items.each(function(f){
-           if(!f.validate()){
-               valid = false;
-           }
+            if(f.validate()){
+                return;
+            }
+            
+            valid = false;
+                
+            if(!target && f.el.isVisible(true)){
+                target = f;
+            }
         });
+        
+        if(this.errorMask && !valid){
+            Roo.form.BasicForm.popover.mask(this, target);
+        }
+        
         return valid;
     },
 
@@ -24997,7 +25021,153 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 });
 
 // back compat
-Roo.BasicForm = Roo.form.BasicForm;/*
+Roo.BasicForm = Roo.form.BasicForm;
+
+Roo.apply(Roo.form.BasicForm, {
+    
+    popover : {
+        
+        padding : 5,
+        
+        isApplied : false,
+        
+        isMasked : false,
+        
+        form : false,
+        
+        target : false,
+        
+        intervalID : false,
+        
+        maskEl : false,
+        
+        apply : function()
+        {
+            if(this.isApplied){
+                return;
+            }
+            
+            this.maskEl = {
+                top : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-top-mask" }, true),
+                left : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-left-mask" }, true),
+                bottom : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-bottom-mask" }, true),
+                right : Roo.DomHelper.append(Roo.get(document.body), { tag: "div", cls:"x-dlg-mask roo-form-right-mask" }, true)
+            };
+            
+            this.maskEl.top.enableDisplayMode("block");
+            this.maskEl.left.enableDisplayMode("block");
+            this.maskEl.bottom.enableDisplayMode("block");
+            this.maskEl.right.enableDisplayMode("block");
+            
+            Roo.get(document.body).on('click', function(){
+                this.unmask();
+            }, this);
+            
+            Roo.get(document.body).on('touchstart', function(){
+                this.unmask();
+            }, this);
+            
+            this.isApplied = true
+        },
+        
+        mask : function(form, target)
+        {
+            this.form = form;
+            
+            this.target = target;
+            
+            if(!this.form.errorMask || !target.el){
+                return;
+            }
+            
+            var scrollable = this.target.el.findScrollableParent() || this.target.el.findParent('div.x-layout-active-content', 100, true) || Roo.get(document.body);
+            
+            var ot = this.target.el.calcOffsetsTo(scrollable);
+            
+            var scrollTo = ot[1] - this.form.maskOffset;
+            
+            scrollTo = Math.min(scrollTo, scrollable.dom.scrollHeight);
+            
+            scrollable.scrollTo('top', scrollTo);
+            
+            var el = this.target.wrap || this.target.el;
+            
+            var box = el.getBox();
+            
+            this.maskEl.top.setStyle('position', 'absolute');
+            this.maskEl.top.setStyle('z-index', 10000);
+            this.maskEl.top.setSize(Roo.lib.Dom.getDocumentWidth(), box.y - this.padding);
+            this.maskEl.top.setLeft(0);
+            this.maskEl.top.setTop(0);
+            this.maskEl.top.show();
+            
+            this.maskEl.left.setStyle('position', 'absolute');
+            this.maskEl.left.setStyle('z-index', 10000);
+            this.maskEl.left.setSize(box.x - this.padding, box.height + this.padding * 2);
+            this.maskEl.left.setLeft(0);
+            this.maskEl.left.setTop(box.y - this.padding);
+            this.maskEl.left.show();
+
+            this.maskEl.bottom.setStyle('position', 'absolute');
+            this.maskEl.bottom.setStyle('z-index', 10000);
+            this.maskEl.bottom.setSize(Roo.lib.Dom.getDocumentWidth(), Roo.lib.Dom.getDocumentHeight() - box.bottom - this.padding);
+            this.maskEl.bottom.setLeft(0);
+            this.maskEl.bottom.setTop(box.bottom + this.padding);
+            this.maskEl.bottom.show();
+
+            this.maskEl.right.setStyle('position', 'absolute');
+            this.maskEl.right.setStyle('z-index', 10000);
+            this.maskEl.right.setSize(Roo.lib.Dom.getDocumentWidth() - box.right - this.padding, box.height + this.padding * 2);
+            this.maskEl.right.setLeft(box.right + this.padding);
+            this.maskEl.right.setTop(box.y - this.padding);
+            this.maskEl.right.show();
+
+            this.intervalID = window.setInterval(function() {
+                Roo.form.BasicForm.popover.unmask();
+            }, 10000);
+
+            window.onwheel = function(){ return false;};
+            
+            (function(){ this.isMasked = true; }).defer(500, this);
+            
+        },
+        
+        unmask : function()
+        {
+            if(!this.isApplied || !this.isMasked || !this.form || !this.target || !this.form.errorMask){
+                return;
+            }
+            
+            this.maskEl.top.setStyle('position', 'absolute');
+            this.maskEl.top.setSize(0, 0).setXY([0, 0]);
+            this.maskEl.top.hide();
+
+            this.maskEl.left.setStyle('position', 'absolute');
+            this.maskEl.left.setSize(0, 0).setXY([0, 0]);
+            this.maskEl.left.hide();
+
+            this.maskEl.bottom.setStyle('position', 'absolute');
+            this.maskEl.bottom.setSize(0, 0).setXY([0, 0]);
+            this.maskEl.bottom.hide();
+
+            this.maskEl.right.setStyle('position', 'absolute');
+            this.maskEl.right.setSize(0, 0).setXY([0, 0]);
+            this.maskEl.right.hide();
+            
+            window.onwheel = function(){ return true;};
+            
+            if(this.intervalID){
+                window.clearInterval(this.intervalID);
+                this.intervalID = false;
+            }
+            
+            this.isMasked = false;
+            
+        }
+        
+    }
+    
+});/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -25064,8 +25234,6 @@ Roo.form.Form = function(config){
         
     
     Roo.each(xitems, this.addxtype, this);
-    
-    
     
 };
 
