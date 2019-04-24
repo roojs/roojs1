@@ -794,6 +794,8 @@ Roo.apply(Roo.form.BasicForm, {
             this.maskEl.top.setTop(0);
             this.maskEl.top.show();
             
+            Roo.log(['top', Roo.lib.Dom.getDocumentWidth(), box.y - this.padding]);
+            
             this.maskEl.left.setStyle('position', 'absolute');
             this.maskEl.left.setStyle('z-index', zIndex);
             this.maskEl.left.setSize(box.x - this.padding, box.height + this.padding * 2);
