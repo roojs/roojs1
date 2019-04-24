@@ -46955,9 +46955,9 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
            }
         });
         
-        if(this.errorMask && !valid){
-            Roo.form.BasicForm.popover.mask(this, target);
-        }
+//        if(this.errorMask && !valid){
+//            Roo.form.BasicForm.popover.mask(this, target);
+//        }
         
         return valid;
     },
