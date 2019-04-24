@@ -25165,7 +25165,7 @@ Roo.apply(Roo.form.BasicForm, {
 //            this.toolTip.show(tip);
 
             this.intervalID = window.setInterval(function() {
-                Roo.bootstrap.Form.popover.unmask();
+                Roo.BasicForm.Form.popover.unmask();
             }, 10000);
 
             window.onwheel = function(){ return false;};
