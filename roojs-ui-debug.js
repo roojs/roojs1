@@ -25114,7 +25114,9 @@ Roo.apply(Roo.form.BasicForm, {
             
             scrollable.scrollTo('top', scrollTo);
             
-            var box = this.target.el.getBox();
+            var el = this.target.wrap || this.target.el;
+            Roo.log(el);
+            var box = el.getBox();
             Roo.log(box);
             
             var zIndex = Roo.BasicDialog.lastZIndex++;
