@@ -5,37 +5,33 @@ Roo.docs.init = {
     classes : false, // flat version of list of classes 
     currentClass : '--none--', // currently viewed class name
     
+    prefix : '',
     hash : '',
     
     onReady : function()
     {
        
-        //if (typeof(pagedata) == 'undefined') {
-        //    Site.onReady.defer(100, Roo.docs.init);
-        //    return;
-        //}
-        //Roo.debug = 1;
         
         Roo.XComponent.hideProgress = true;
         Roo.XComponent.build();
-        
-        
-        
+         
         
         Roo.XComponent.on('buildcomplete', function() {
             
             //Roo.XComponent.modules[0].el.fireEvent('render');
             this.loadTree();
+            if (window.location.search.length > 0) {
+                Roo.docs.roo_title.el.dom.innerHTML = "Flutter Documentation";
+            }
+            
         }, this);
-        
+        if (window.location.search.length > 0) {
+            this.prefix = "/flutter/";
+            
+        }
         
         window.onhashchange = function() { Roo.docs.init.onHashChange(); }
-        
-        
-       
-        
-        //Roo.get(document.body).on('click', this.onClick, this);
-      
+         
         
     },
     
@@ -44,17 +40,20 @@ Roo.docs.init = {
         Roo.docs.doc_body_content.hide();
         
         Roo.Ajax.request({
-            url : 'tree.json',
+            url : this.prefix + 'tree.json',
             method : 'GET',
             success : function(res, o)
             {
                 var d = Roo.decode(res.responseText);
                 //Roo.log(d);
                 this.classes = {};
+                
+                d = d.sort(Roo.docs.template.makeSortby("name"));
+                
                 // our classes witch children first..
                 d.forEach(function(e) {
                     if (e.cn.length) {
-                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem', true);
+                        this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem', true );
                         
                     }
                 }, this);
@@ -64,6 +63,8 @@ Roo.docs.init = {
                         this.addTreeItem(Roo.docs.navGroup, e, 'NavSidebarItem' ,true);
                     }
                 }, this);
+                
+                // mobile....
                 
                 d.forEach(function(e) {
                     if (e.cn.length) {
@@ -79,7 +80,10 @@ Roo.docs.init = {
                 }, this);
                 
                 var roo = Roo.docs.navGroup.items[1].menu;
-                roo.show(roo.triggerEl, '?', false);
+                if (!Roo.docs.init.prefix.length) {
+                    roo.show(roo.triggerEl, '?', false);
+                }
+                
                 if (location.hash.length) {
                     this.loadHash();
                     return;
@@ -123,9 +127,9 @@ Roo.docs.init = {
                 click : (function(mi,ev,c)
                 {
                     
-                    ev.stopPropagation();
+                    ev.stopEvent();
                      
-                    if (c.cn.length) {
+                    if (c.cn.length && mi.xtype == 'MenuItem') {
                         //Roo.log(ev);
                         if (mi.menu.el.hasClass('show')) {
                             this.hideChildren(c); //mi.menu.hide();
@@ -152,7 +156,11 @@ Roo.docs.init = {
                 listeners : {
                     beforehide : (function(mi,c)
                     {
-                        if (c.name.split('.').length < 2) {
+                        if (Roo.docs.init.prefix.length) {
+                            return;
+                        }
+                        
+                        if (c.name.split('.').length < 2)  {
                             return false;
                         }
                         return true;
@@ -265,19 +273,102 @@ Roo.docs.init = {
         Roo.docs.introBody.hide();
         Roo.docs.doc_body_content.show();
         Roo.Ajax.request({
-            url : 'symbols/' + cls.name + '.json',
+            url : this.prefix + 'symbols/' + cls.name + '.json',
             method : 'GET',
             success : function(res, o)
             {
+                
                 var d = Roo.decode(res.responseText);
+                
+                if (typeof(d.augments) == 'undefined') {
+                    d.augments = [];
+                    d.config = []; // props for ctor?
+                    d.isFlutter  = true;
+                    d.config= d.props; // hack..
+                    Roo.docs.init.n = 0;
+                    this.fillAugments(d, d.extends, Roo.docs.init.fillDoc);
+                    return;
+                }
                 this.fillDoc(d);
+                
+                
                 
             },
             scope : this
         });
         
+    },
+    n : 0,
+    fillAugments : function(d, ext, cb )
+    {
+        Roo.docs.init.n++;
+        if (Roo.docs.init.n > 20) {
+            return;
+        }
+        if (!ext.length) {
+            cb(d);
+            return;
+        }
+        var next = ext.shift();
+        d.augments.push(next);
+        var ax =   new Roo.data.Connection({});
+        ax.request({
+            url : this.prefix + 'symbols/' + next + '.json',
+            method : 'GET',
+            success : function(res, o)
+            {
+                
+                var r = Roo.decode(res.responseText);
+                
+                
+                    // copy methods that are not constructors..
+                
+                r.methods.forEach(function(m) {
+                    
+                    if (d.methods.find(function(e) {
+                        return e.name == m.name;
+                    })) {
+                        return;
+                    }
+                    if (m.isConstructor || m.static) {
+                        return;
+                    }
+                    d.methods.push(m);  
+                });
+                
+                r.props.forEach(function(m) {
+                    if (m.isConstant) {
+                        return;
+                    }
+                    if (d.props.find(function(e) {
+                        return e.name == m.name;
+                    })) {
+                        return;
+                    }
+                    
+                    d.props.push(m);  
+                });
+                
+                r.events.forEach(function(m) {
+                    if (d.events.find(function(e) {
+                        return e.name == m.name;
+                    })) {
+                        return;
+                    }
+                    d.events.push(m);  
+                });
+             
+            
+            
+                this.fillAugments(d,ext, cb)
+                
+            },
+            scope : this
+        });
         
     },
+    
+    
     
     fillDoc : function(d)
     {
@@ -292,6 +383,17 @@ Roo.docs.init = {
             "config" : [
               {
         */
+        
+        Roo.docs.classType.el.dom.firstChild.textContent  = 'Class ';
+        if (d.isAbstract) {
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'abstract class ';
+        }
+        if (d.is_enum) {
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'enum ';
+        }
+        if (d.is_mixin) {
+            Roo.docs.classType.el.dom.firstChild.textContent  = 'mixin ';
+        }
         document.body.scrollTop  = 0;
         Roo.docs.doc_name.el.dom.innerHTML = Roo.docs.template.resolveLinks(d.name);
         Roo.docs.doc_desc.el.dom.innerHTML = Roo.docs.template.summary(d);
@@ -301,8 +403,13 @@ Roo.docs.init = {
             Roo.docs.doc_extends.show();
             Roo.docs.doc_extends_sep.show();
             Roo.docs.doc_extends.el.dom.innerHTML = d.augments[0];
+            Roo.docs.doc_extends.el.dom.href= '#' + d.augments[0];
         }
         Roo.docs.doc_source.el.dom.innerHTML = d.name.replace(/\./g,"/") + ".js";
+        if (Roo.docs.init.prefix.length) {
+            Roo.docs.doc_source_row.hide();
+        }
+        
         
         if (d.augments.length) {
             Roo.docs.augments.show();
@@ -311,6 +418,12 @@ Roo.docs.init = {
             Roo.docs.augments.hide();
         }
         
+        if (d.realImplementors.length) {
+            Roo.docs.implementors.show();
+            Roo.docs.implementors.bodyEl().dom.innerHTML = Roo.docs.template.implementors(d);
+        } else {
+            Roo.docs.implementors.hide();
+        }
         
         
         Roo.docs.configTableContainer.hide();

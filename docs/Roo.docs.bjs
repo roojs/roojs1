@@ -17,6 +17,7 @@
   "d2b697ad8e989a6c4592987f22f5bbfc" : "doc-comments",
   "f361257612a512f9be2fdc2abfb25aef" : "<small>Defined by</small>",
   "494a64a432ff6a121e4ab9003c7a0df3" : "parentcls",
+  "3c81cc62cd8a24b231d0c0db34feda61" : "Implementations",
   "f561aaf6ef0bf14d4208bb46a4ccb3ad" : "xxx",
   "9bd81329febf6efe22788e03ddeaf0af" : " Class ",
   "a1d108496af420635536a4e29e87d42b" : "Constructor, Static and Public Methods"
@@ -115,6 +116,9 @@
      "$ xns" : "Roo.bootstrap",
      "items" : [
       {
+       "listeners" : {
+        "render" : "function (_self)\n{\n    _this.roo_title = this;\n}"
+       },
        "xtype" : "Header",
        "$ xns" : "Roo.bootstrap",
        "Number level" : 1,
@@ -153,6 +157,9 @@
            "$ xns" : "Roo.bootstrap",
            "items" : [
             {
+             "listeners" : {
+              "render" : "function (_self)\n{\n   _this.classType = this;\n}"
+             },
              "xtype" : "Header",
              "$ xns" : "Roo.bootstrap",
              "Number level" : 4,
@@ -195,6 +202,9 @@
              ]
             },
             {
+             "listeners" : {
+              "render" : "function (_self)\n{\n    _this.doc_source_row = this;\n}"
+             },
              "xtype" : "Header",
              "Number level" : 5,
              "$ xns" : "Roo.bootstrap",
@@ -245,6 +255,16 @@
            },
            "String header" : "Inheritance tree",
            "String cls" : "doc-augments",
+           "xtype" : "Container",
+           "String panel" : "primary",
+           "$ xns" : "Roo.bootstrap"
+          },
+          {
+           "listeners" : {
+            "render" : "function (_self)\n{\n    _this.implementors  = this;\n}"
+           },
+           "String header" : "Implementations",
+           "String cls" : "doc-implementors",
            "xtype" : "Container",
            "String panel" : "primary",
            "$ xns" : "Roo.bootstrap"

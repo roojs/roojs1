@@ -39,6 +39,30 @@ Roo.docs.template  = {
        
     },
     
+    implementors : function(data)
+    {
+	if (!data.realImplementors.length) {
+	    return '';
+	}
+	var linkSymbol  = this.linkSymbol;
+	var output = '<ul class="inheritance res-block"> ';
+	
+	data.realImplementors.sort();
+	
+	
+	var iblock_indent = 0;
+	data.realImplementors.map(
+	    function($) {  
+	
+		output += '<li>' + linkSymbol($) + '</li>';
+		
+	    }
+	)
+	 
+	return output +   '</ul>'
+	
+    },
+    
     config : function(dtag)
     {
        
@@ -49,7 +73,7 @@ Roo.docs.template  = {
 	output += '<div class="mdesc"><div class="short">'+this.resolveLinks(this.summarize(dtag.desc))+'</div></div>';
 		
 	output += '<div class="mdesc"><div class="long">' + this.resolveLinks(dtag.desc)+ ' ' + 
-			(dtag.values.length ? ("<BR/>Possible Values: " +
+			(dtag.values && dtag.values.length ? ("<BR/>Possible Values: " +
 		    dtag.values.map(function(v) {
 			return v.length ? v : "<B>Empty</B>";
 		    }).join(", ")) : ''
@@ -67,7 +91,8 @@ Roo.docs.template  = {
 	if (data.name.length && 
 	    !data.isBuiltin && 
 	    !data.isSingleton &&
-	    !data.isStatic
+	    !data.isStatic &&
+	    !data.isFlutter
 	    ) {
 	    data.isInherited = false;
 	    data.isConstructor = true;
@@ -80,17 +105,7 @@ Roo.docs.template  = {
 	
 	msorted.filter(
 	    function($){
-		
-	    //if (/@hide/.test($.desc)) { == not needed - done in the backend
-	    //    return false;
-	    //}
-		
-	    //if (!$.isEvent && (data.comment.getTag("instanceOf").length || data.comment.getTag("singleton").length)) {
-	    
-	    // not sure if we should just ignore signletons???
-	    //if (!data.isSingleton) {
-	    //    return true; 
-	    //}
+	 
 	    
 	    
 	    
@@ -116,7 +131,7 @@ Roo.docs.template  = {
 		
 	    return true;
 	    }
-	    );
+	);
     
 	// then dynamics..
     
@@ -164,11 +179,11 @@ Roo.docs.template  = {
         output += '</span><b class="itemname">' + member.name + '</b>';
                 
         output += this.makeSignature(member.params);
-        if (member.returns.length) {
+        if (member.returns && member.returns.length) {
             output += ': ';
-        for(var i = 0;i< member.returns.length;i++) {
-	    var item = member.returns[i];
-	    output += (i > 0 ? ' or ' : '') +
+	    for(var i = 0;i< member.returns.length;i++) {
+		var item = member.returns[i];
+		output += (i > 0 ? ' or ' : '') +
 		this.linkSymbol(item.type);
 	    }
         }
@@ -180,7 +195,7 @@ Roo.docs.template  = {
         } else  {
             //ctor
         output+= '<div class="short">Create a new '+member.memberOf +'</div>';
-        }
+    }
     output +='<div class="long">';
         if (!member.isConstructor) {
             output+= this.resolveLinks(member.desc) ;
@@ -214,13 +229,13 @@ Roo.docs.template  = {
             }
             output+= '</dl>';
         }    
-        if (member.deprecated.length) {
+        if (member.isDeprecated || (member.deprecated && member.deprecated.length)) {
             output+= '<dl class="detailList"><dt class="heading">Deprecated:</dt><dt>' +
                         +member.deprecated+'</dt></dl>';
         }
         
         
-        if (member.since.length) {
+        if (member.since && member.since.length) {
             output+= '<dl class="detailList"><dt class="heading">Since:</dt><dt>' +
                         +member.since+'</dt></dl>';
         }
@@ -237,7 +252,7 @@ Roo.docs.template  = {
                         </dl>
                 </if>
                 */
-        if (member.returns.length) {
+        if (member.returns && member.returns.length) {
             output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
         for (var i =0; i < member.returns.length; i++) {
         var item = member.returns[i];
@@ -256,7 +271,7 @@ Roo.docs.template  = {
                         </dl>
                 </if>
         */
-        if (member.see.length) {
+        if (member.see  && member.see.length) {
             output+= '<dl class="detailList"><dt class="heading">See:</dt><dt>' +
                         '<dd>' + this.linkSymbol( member.see ) +'</dd></dl>';
         }
@@ -307,13 +322,13 @@ Roo.docs.template  = {
             }
             output+= '</dl>';
         }            
-      if (member.deprecated.length) {
+      if ((member.deprecated && member.deprecated.length) || member.isDeprecated) {
             output+= '<dl class="detailList"><dt class="heading">Deprecated:</dt><dt>' +
                         +member.deprecated+'</dt></dl>';
         }
         
         
-        if (member.since.length) {
+        if (member.since && member.since.length) {
             output+= '<dl class="detailList"><dt class="heading">Since:</dt><dt>' +
                         +member.since+'</dt></dl>';
         }
@@ -330,7 +345,7 @@ Roo.docs.template  = {
                         </dl>
                 </if>
                 */    
-      if (member.returns.length) {
+      if (member.returns && member.returns.length) {
             output += '<dl class="detailList"><dt class="heading">Returns:</dt>';
         for (var i =0; i < member.returns.length; i++) {
         var item = member.returns[i];
@@ -349,7 +364,7 @@ Roo.docs.template  = {
                         </dl>
                 </if>
         */
-        if (member.see.length) {
+        if (member.see && member.see.length) {
             output+= '<dl class="detailList"><dt class="heading">See:</dt><dt>' +
                         '<dd>' + this.linkSymbol( member.see ) +'</dd></dl>';
         }
@@ -454,7 +469,18 @@ Roo.docs.template  = {
     },
     linkSymbol : function(str)
     {
-        return '<span class=\"fixedFont\"><a href="#' + str + '">' + str + '</a></span>';
+        Roo.log(str);
+	var ar = str.split('<');
+	var out = '';
+	for(var i = ar.length-1; i > -1; i--) {
+	    var bit = ar[i].split('>').shift();
+	    if (out.length) {
+		out = '&lt;' + out + '&gt;';
+	    }
+	    out = '<span class=\"fixedFont\"><a href="#' + bit+ '">' + bit + '</a>' + out + '</span>';
+	}
+	
+	return out;
     },
     makeSortby : function(attribute) {
 	return function(a, b) {

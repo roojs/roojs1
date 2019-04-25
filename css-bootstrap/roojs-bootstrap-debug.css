@@ -3458,6 +3458,7 @@ html[dir="rtl"] .roo-select2-search-choice-close {
 }
 .sidebar .sidebar-menu li.open .treeview-menu {
   display: block;
+  width: 120%;
 }
 /* --- treeview menu  */
 .sidebar .sidebar-menu .treeview-menu {

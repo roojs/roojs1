@@ -18,6 +18,7 @@ Roo.docs = new Roo.XComponent({
   'd2b697ad8e989a6c4592987f22f5bbfc' :"doc-comments",
   'f361257612a512f9be2fdc2abfb25aef' :"<small>Defined by</small>",
   '494a64a432ff6a121e4ab9003c7a0df3' :"parentcls",
+  '3c81cc62cd8a24b231d0c0db34feda61' :"Implementations",
   'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx",
   '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
   'a1d108496af420635536a4e29e87d42b' :"Constructor, Static and Public Methods",
@@ -311,6 +312,12 @@ Roo.docs = new Roo.XComponent({
        xtype : 'Header',
        html : _this._strings['9b34238e8113db140b452beec500024b'] /* Roo JS Documentation */,
        level : 1,
+       listeners : {
+        render : function (_self)
+         {
+             _this.roo_title = this;
+         }
+       },
        xns : Roo.bootstrap,
        '|xns' : 'Roo.bootstrap'
       },
@@ -361,6 +368,12 @@ Roo.docs = new Roo.XComponent({
              xtype : 'Header',
              html : _this._strings['9bd81329febf6efe22788e03ddeaf0af'] /*  Class  */,
              level : 4,
+             listeners : {
+              render : function (_self)
+               {
+                  _this.classType = this;
+               }
+             },
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap',
              items  : [
@@ -423,6 +436,12 @@ Roo.docs = new Roo.XComponent({
              xtype : 'Header',
              html : _this._strings['3673e725413179fe76f341ed908a5c36'] /* Defined in:  */,
              level : 5,
+             listeners : {
+              render : function (_self)
+               {
+                   _this.doc_source_row = this;
+               }
+             },
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap',
              items  : [
@@ -491,6 +510,20 @@ Roo.docs = new Roo.XComponent({
             render : function (_self)
              {
                  _this.augments  = this;
+             }
+           },
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
+          },
+          {
+           xtype : 'Container',
+           cls : 'doc-implementors',
+           header : _this._strings['3c81cc62cd8a24b231d0c0db34feda61'] /* Implementations */,
+           panel : 'primary',
+           listeners : {
+            render : function (_self)
+             {
+                 _this.implementors  = this;
              }
            },
            xns : Roo.bootstrap,
