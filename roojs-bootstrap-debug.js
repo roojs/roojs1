@@ -23160,8 +23160,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.childNodes.length == 1 &&
                 node.firstChild.nodeName == "#text"
         ) {
-            var text = ' ' + node.innerHTML + ' ';
-            var textNode = document.createTextNode(text);
+            var textNode = node.firstChild;
+            node.removeChild(textNode);
             node.parentNode.insertBefore(textNode, node);
             node.parentNode.removeChild(node);
         }
