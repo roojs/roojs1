@@ -44074,7 +44074,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         ) {
             var textNode = node.firstChild;
             node.removeChild(textNode);
+            
+            node.parentNode.insertBefore(node.ownerDocument.createTextNode(" "), node);
             node.parentNode.insertBefore(textNode, node);
+            node.parentNode.insertBefore(node.ownerDocument.createTextNode(" ") , node);
             node.parentNode.removeChild(node);
         }
         
