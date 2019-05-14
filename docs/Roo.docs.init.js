@@ -418,7 +418,7 @@ Roo.docs.init = {
             Roo.docs.augments.hide();
         }
         
-        if (d.realImplementors.length) {
+        if (d.realImplementors && d.realImplementors.length) { 
             Roo.docs.implementors.show();
             Roo.docs.implementors.bodyEl().dom.innerHTML = Roo.docs.template.implementors(d);
         } else {
