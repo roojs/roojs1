@@ -2651,6 +2651,8 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
  * @cfg {Boolean} fitwindow default false
+ * @cfg {Number} width fixed width - usefull for chrome extension only really.
+ * @cfg {Number} height fixed height - usefull for chrome extension only really.
  * @cfg {String} size (sm|lg) default empty
  * @cfg {Number} max_width set the max width of modal
  *
