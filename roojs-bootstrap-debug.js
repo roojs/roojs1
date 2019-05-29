@@ -23160,14 +23160,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.nodeName == 'SPAN' &&
                 !node.hasAttributes() &&
                 node.childNodes.length == 1 &&
-                node.firstChild.nodeName == "#text"
+                node.firstChild.nodeName == "#text"  
         ) {
             var textNode = node.firstChild;
             node.removeChild(textNode);
-            
-            node.parentNode.insertBefore(node.ownerDocument.createTextNode(" "), node);
+            if (node.getAttribute('lang') != 'zh-CN') {   // do not space pad on chinese characters..
+                node.parentNode.insertBefore(node.ownerDocument.createTextNode(" "), node);
+            }
             node.parentNode.insertBefore(textNode, node);
-            node.parentNode.insertBefore(node.ownerDocument.createTextNode(" ") , node);
+            if (node.getAttribute('lang') != 'zh-CN') {   // do not space pad on chinese characters..
+                node.parentNode.insertBefore(node.ownerDocument.createTextNode(" ") , node);
+            }
             node.parentNode.removeChild(node);
         }
         
