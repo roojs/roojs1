@@ -16991,6 +16991,10 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
      */
     selectOnFocus : false,
     /**
+     * @cfg {Boolean} allowLeadingSpace True to prevent the stripping of leading white space 
+     */    
+    allowLeadingSpace : false,
+    /**
      * @cfg {String} blankText Error text to display if the allow blank validation fails (defaults to "This field is required")
      */
     blankText : "This field is required",
@@ -17034,8 +17038,11 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
         
         if(this.selectOnFocus){
             this.on("focus", this.preFocus, this);
-            
         }
+	if (!this.allowLeadingSpace) {
+	    this.on('blur', this.cleanLeadingSpace, this);
+	}
+	
         if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
             this.el.on("keypress", this.filterKeys, this);
         }
@@ -17071,7 +17078,11 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             this.autoSize();
         }
     },
-
+    // private - clean the leading white space
+    cleanLeadingSpace : function(e)
+    {
+	this.setValue(this.getValue().replace(/^\s+/,''));
+    },
     /**
      * Resets the current field value to the originally-loaded value and clears any validation messages.
      *  
@@ -17079,9 +17090,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     reset : function(){
         Roo.form.TextField.superclass.reset.call(this);
        
-    },
-
-    
+    }, 
     // private
     preFocus : function(){
         
