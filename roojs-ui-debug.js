@@ -30129,7 +30129,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
      * Collapses this region.
      * @param {Boolean} skipAnim (optional) true to collapse the element without animation (if animate is true)
      */
-    collapse : function(skipAnim, skipCheck = false){
+    collapse : function(skipAnim, skipCheck){
         if(this.collapsed) {
             return;
         }
