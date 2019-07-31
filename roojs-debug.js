@@ -42126,6 +42126,11 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         this.view.select(match);
         var sn = Roo.get(this.view.getSelectedNodes()[0]);
         sn.scrollIntoView(sn.dom.parentNode, false);
+    },
+    // @overide
+    cleanLeadingSpace : function(e)
+    {
+       return;
     }
 
     /** 
