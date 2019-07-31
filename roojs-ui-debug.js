@@ -17081,7 +17081,7 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     // private - clean the leading white space
     cleanLeadingSpace : function(e)
     {
-        if (this.constructor == Roo.Form.TextField && this.inputType == 'file') {
+        if ( this.inputType == 'file') {
             return;
         }
         
