@@ -370,11 +370,7 @@ dateField.setValue('2006-5-4');
     // @overide
     cleanLeadingSpace : function(e)
     {
-        if ( this.inputType == 'file') {
-            return;
-        }
-        
-        this.setValue((this.getValue() + '').replace(/^\s+/,''));
+       return;
     }
     
 });
