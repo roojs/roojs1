@@ -17081,11 +17081,11 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     // private - clean the leading white space
     cleanLeadingSpace : function(e)
     {
-	if (this.inputType == 'file') {
-	    return;
-	}
-	
-	this.setValue((this.getValue() + '').replace(/^\s+/,''));
+        if (this.constructor == Roo.Form.TextField && this.inputType == 'file') {
+            return;
+        }
+        
+        this.setValue((this.getValue() + '').replace(/^\s+/,''));
     },
     /**
      * Resets the current field value to the originally-loaded value and clears any validation messages.
