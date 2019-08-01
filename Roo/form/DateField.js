@@ -17,7 +17,8 @@
 * Create a new DateField
 * @param {Object} config
  */
-Roo.form.DateField = function(config){
+Roo.form.DateField = function(config)
+{
     Roo.form.DateField.superclass.constructor.call(this, config);
     
       this.addEvents({
@@ -365,5 +366,11 @@ dateField.setValue('2006-5-4');
         
         return String(this.getValue()) !== String(this.startValue);
         
+    },
+    // @overide
+    cleanLeadingSpace : function(e)
+    {
+       return;
     }
+    
 });

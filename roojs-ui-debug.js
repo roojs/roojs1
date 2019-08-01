@@ -17081,11 +17081,11 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
     // private - clean the leading white space
     cleanLeadingSpace : function(e)
     {
-	if (this.inputType == 'file') {
-	    return;
-	}
-	
-	this.setValue((this.getValue() + '').replace(/^\s+/,''));
+        if ( this.inputType == 'file') {
+            return;
+        }
+        
+        this.setValue((this.getValue() + '').replace(/^\s+/,''));
     },
     /**
      * Resets the current field value to the originally-loaded value and clears any validation messages.
@@ -17846,7 +17846,8 @@ Roo.extend(Roo.form.NumberField, Roo.form.TextField,  {
 * Create a new DateField
 * @param {Object} config
  */
-Roo.form.DateField = function(config){
+Roo.form.DateField = function(config)
+{
     Roo.form.DateField.superclass.constructor.call(this, config);
     
       this.addEvents({
@@ -18194,7 +18195,13 @@ dateField.setValue('2006-5-4');
         
         return String(this.getValue()) !== String(this.startValue);
         
+    },
+    // @overide
+    cleanLeadingSpace : function(e)
+    {
+       return;
     }
+    
 });/*
  * Based on:
  * Ext JS Library 1.1.1
@@ -19668,7 +19675,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         this.view.select(match);
         var sn = Roo.get(this.view.getSelectedNodes()[0]);
         sn.scrollIntoView(sn.dom.parentNode, false);
-    }
+    } 
 
     /** 
     * @cfg {Boolean} grow 
