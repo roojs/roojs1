@@ -7,7 +7,7 @@ Roo.bootstrap.version = (
         function() {
                 var ret=3;
                 Roo.each(document.styleSheets, function(s) {
-                    if (typeof(s.href) != 'undefined' && s.href.match(/css-bootstrap4/)) {
+                    if ( s.href  && s.href.match(/css-bootstrap4/)) {
                         ret=4;
                     }
                 });
