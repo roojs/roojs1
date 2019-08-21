@@ -335,17 +335,38 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             html = this.cleanHtml(html);
             // fix up the special chars.. normaly like back quotes in word...
             // however we do not want to do this with chinese..
-            html = html.replace(/([\x80-\uffff])/g, function (a, b) {
-                var cc = b.charCodeAt();
-                if (
+            html = html.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u0000-\u001f\u0080-\uFFFF]/g, function(match) {
+                var high, low, charValue, rep
+                var cc = match.charCodeAt();
+
+                // Get the character value, handling surrogate pairs
+                if (match.length == 2) {
+                    // It's a surrogate pair, calculate the Unicode code point
+                    high = match.charCodeAt(0) - 0xD800;
+                    low  = match.charCodeAt(1) - 0xDC00;
+                    charValue = (high * 0x400) + low + 0x10000;
+                }  else if (
                     (cc >= 0x4E00 && cc < 0xA000 ) ||
                     (cc >= 0x3400 && cc < 0x4E00 ) ||
                     (cc >= 0xf900 && cc < 0xfb00 )
                 ) {
-                        return b;
+                        return match;
+                } else {
+                    // Not a surrogate pair, the value *is* the Unicode code point
+                    charValue = match.charCodeAt(0);
                 }
-                return "&#"+cc+";" 
+    
+                // See if we have a mapping for it
+                 
+                    // No, use a numeric entity. Here we brazenly (and possibly mistakenly)
+                    rep = "&#" + charValue + ";";
+                
+                // Return replacement
+                return rep;
             });
+            
+            
+             
             if(this.owner.fireEvent('beforesync', this, html) !== false){
                 this.el.dom.value = html;
                 this.owner.fireEvent('sync', this, html);
