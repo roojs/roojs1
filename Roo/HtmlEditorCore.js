@@ -355,14 +355,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     // Not a surrogate pair, the value *is* the Unicode code point
                     charValue = match.charCodeAt(0);
                 }
-    
-                // See if we have a mapping for it
-                 
-                    // No, use a numeric entity. Here we brazenly (and possibly mistakenly)
-                var rep = "&#" + charValue + ";";
+         
+                // No, use a numeric entity. Here we brazenly (and possibly mistakenly)
+                return "&#" + charValue + ";";
                 
-                // Return replacement
-                return rep;
+                
             });
             
             
