@@ -335,7 +335,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             html = this.cleanHtml(html);
             // fix up the special chars.. normaly like back quotes in word...
             // however we do not want to do this with chinese..
-            html = html.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u0000-\u001f\u0080-\uFFFF]/g, function(match) {
+            html = html.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u0080-\uFFFF]/g, function(match) {
                 var high, low, charValue, rep
                 var cc = match.charCodeAt();
 
