@@ -359,7 +359,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 // See if we have a mapping for it
                  
                     // No, use a numeric entity. Here we brazenly (and possibly mistakenly)
-                    rep = "&#" + charValue + ";";
+                var rep = "&#" + charValue + ";";
                 
                 // Return replacement
                 return rep;
