@@ -543,7 +543,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             var fd = new FormData(this.el.dom);
             var ret = {};
             while (pair = fd.entries().next()) {
-                ret[pair[0]] = pair[1]; // not sure how this will handle duplicates..
+                if (pair.done) {
+                    break;
+                }
+                ret[pair.value[0]] = pair.value[1]; // not sure how this will handle duplicates..
             };
             return ret;
         }
