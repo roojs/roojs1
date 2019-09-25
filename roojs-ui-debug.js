@@ -24911,11 +24911,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         if (typeof(FormData) != 'undefined' && asString !== true) {
             var fd = (new FormData(this.el.dom)).entries();
             var ret = {};
-            while (pair = fd.next()) {
-                if (pair.done) {
-                    break;
-                }
-                ret[pair.value[0]] = pair.value[1]; // not sure how this will handle duplicates..
+            var ent = fd.next();
+            while (!ent.done) {
+                ret[ent.value[0]] = ent.value[1]; // not sure how this will handle duplicates..
+                ent = fd.next();
             };
             return ret;
         }
