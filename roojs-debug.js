@@ -47360,9 +47360,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         
         // use formdata
         if (typeof(FormData) != 'undefined' && asString !== true) {
-            var fd = new FormData(this.el.dom);
+            var fd = new FormData(this.el.dom).entries();
             var ret = {};
-            while (pair = fd.entries().next()) {
+            while (pair = fd.next()) {
                 if (pair.done) {
                     break;
                 }
