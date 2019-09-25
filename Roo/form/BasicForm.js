@@ -538,6 +538,17 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             }, this);
         }
         
+        // use formdata
+        if (typeof(FormData) != 'undefined' && asString !== true) {
+            var fd = (new FormData(this.el.dom)).entries();
+            var ret = {};
+            var ent = fd.next();
+            while (!ent.done) {
+                ret[ent.value[0]] = ent.value[1]; // not sure how this will handle duplicates..
+                ent = fd.next();
+            };
+            return ret;
+        }
         
         
         var fs = Roo.lib.Ajax.serializeForm(this.el.dom);
