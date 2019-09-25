@@ -542,7 +542,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         if (typeof(FormData) != 'undefined' && asString !== true) {
             var fd = new FormData(this.el.dom);
             var ret = {}
-            formData.entries().forEach(function(pair) {
+            fd.entries().forEach(function(pair) {
                 ret[pair[0]] = pair[1]; // not sure how this will handle duplicates..
             });
             return ret;
