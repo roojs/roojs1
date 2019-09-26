@@ -23242,6 +23242,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     c.select('[class]').each(function(s) {
                         s.dom.removeAttribute('class');
                     });
+                    editorcore.cleanWord();
                     editorcore.syncValue();
                 },
                 tabIndex:-1
