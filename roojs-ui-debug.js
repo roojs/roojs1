@@ -23240,7 +23240,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     
                     var c = Roo.get(editorcore.doc.body);
                     c.select('[class]').each(function(s) {
-                        s.dom.className = '';
+                        s.dom.removeAttribute('class');
                     });
                     editorcore.syncValue();
                 },
