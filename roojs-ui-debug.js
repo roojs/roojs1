@@ -21627,11 +21627,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             if (a.name == 'class') {
                 if (a.value.match(/^Mso/)) {
-                    node.className = '';
+                    node.removeAttribute('class');
                 }
                 
                 if (a.value.match(/^body$/)) {
-                    node.className = '';
+                    node.removeAttribute('class');
                 }
                 continue;
             }
