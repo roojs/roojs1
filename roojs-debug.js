@@ -43956,9 +43956,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         if (!node.attributes || !node.attributes.length) {
             
-            if (lcname == 'span' &&
-                node.childNodes.length == 1 &&
-                node.childNodes[0].nodeName.toLowerCase() == 'span'
+            if (lcname == 'span' //&&
+                //node.childNodes.length == 1 &&
+                //node.childNodes[0].nodeName.toLowerCase() == 'span'
             ) {
                 remove_keep_children = true;
             }
