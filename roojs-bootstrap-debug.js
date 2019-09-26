@@ -23030,7 +23030,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             if (lcname == 'span' &&
                 node.childNodes.length == 1 &&
-                node.childNodes[0].nodeName.toLowerCase() = 'span'
+                node.childNodes[0].nodeName.toLowerCase() == 'span'
             ) {
                 remove_keep_children = true;
             }
