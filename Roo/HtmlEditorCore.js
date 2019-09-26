@@ -1041,7 +1041,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var remove_keep_children= Roo.HtmlEditorCore.remove.indexOf(node.tagName.toLowerCase()) > -1;
         
         // spans with no attributes - just remove them..
-        if ((!node.attributes || !node.attributes.length) && lcname == 'span') 
+        if ((!node.attributes || !node.attributes.length) && lcname == 'span') { 
             remove_keep_children = true;
         }
         
