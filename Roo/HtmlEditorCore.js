@@ -1040,6 +1040,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         var remove_keep_children= Roo.HtmlEditorCore.remove.indexOf(node.tagName.toLowerCase()) > -1;
         
+        
+        if (!node.attributes || !node.attributes.length) {
+            
+            if (lcname == 'span' &&
+                node.childNodes.length == 1 &&
+                node.childNodes[0].tagName.toLowerCase() == 'span'
+            ) {
+                remove_keep_children = true;
+            }
+        }
+        
         // remove <a name=....> as rendering on yahoo mailer is borked with this.
         // this will have to be flaged elsewhere - perhaps ablack=name... on the mailer..
         
@@ -1060,6 +1071,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         
         if (!node.attributes || !node.attributes.length) {
+            
+          
+            
+            
             this.cleanUpChildren(node);
             return;
         }
