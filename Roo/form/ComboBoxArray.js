@@ -115,7 +115,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         
         // give fake names to child combo;
         this.combo.hiddenName = this.hiddenName ? (this.hiddenName+'-subcombo') : this.hiddenName;
-        this.combo.name = this.name? (this.name+'-subcombo') : this.name;
+        this.combo.name = this.name ? (this.name+'-subcombo') : this.name;
         
         this.combo = Roo.factory(this.combo, Roo.form);
         this.combo.onRender(ct, position);
@@ -236,6 +236,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     {
         var valueField = this.combo.valueField;
         var displayField = this.combo.displayField;
+	
         if (this.items.indexOfKey(rec[valueField]) > -1) {
             //console.log("GOT " + rec.data.id);
             return;
@@ -267,7 +268,6 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         
         this.items.each(function(f) {
             ar.push(f.data[idField]);
-           
         });
         this.hiddenEl.dom.value = ar.join(',');
         this.validate();
@@ -293,11 +293,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
     },
     setValue: function(v) // not a valid action - must use addItems..
     {
-         
+        
         this.reset();
-        
-        
-        
+         
         if (this.store.isLocal && (typeof(v) == 'string')) {
             // then we can use the store to find the values..
             // comma seperated at present.. this needs to allow JSON based encoding..

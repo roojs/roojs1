@@ -23025,6 +23025,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         var remove_keep_children= Roo.HtmlEditorCore.remove.indexOf(node.tagName.toLowerCase()) > -1;
         
+        // spans with no attributes - just remove them..
+        if ((!node.attributes || !node.attributes.length) && lcname == 'span') { 
+            remove_keep_children = true;
+        }
+        
         // remove <a name=....> as rendering on yahoo mailer is borked with this.
         // this will have to be flaged elsewhere - perhaps ablack=name... on the mailer..
         
@@ -23045,6 +23050,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         
         if (!node.attributes || !node.attributes.length) {
+            
+          
+            
+            
             this.cleanUpChildren(node);
             return;
         }
@@ -23141,11 +23150,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             if (a.name == 'class') {
                 if (a.value.match(/^Mso/)) {
-                    node.className = '';
+                    node.removeAttribute('class');
                 }
                 
                 if (a.value.match(/^body$/)) {
-                    node.className = '';
+                    node.removeAttribute('class');
                 }
                 continue;
             }
