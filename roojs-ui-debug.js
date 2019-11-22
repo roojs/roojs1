@@ -21698,7 +21698,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.parentNode.insertBefore(cn, node);
             }
             node.parentNode.removeChild(node);
-            this.iterateChildren(node, this.cleanWord);
+            /// no need to iterate chidlren = it's got none..
+            //this.iterateChildren(node, this.cleanWord);
             return;
         }
         // clean styles
