@@ -44140,7 +44140,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             node.parentNode.removeChild(node);
             return;
         }
-        
+        Roo.log(node.tagName);
         // remove - but keep children..
         if (node.tagName.toLowerCase().match(/^(meta|link|\\?xml:|st1:|o:|v:|font)/)) {
             while (node.childNodes.length) {
