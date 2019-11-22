@@ -44147,10 +44147,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             while (node.childNodes.length) {
                 var cn = node.childNodes[0];
                 node.removeChild(cn);
-                if (cn.tagName.toLowerCase().match(/^(meta|link|\\?xml:|st1:|o:|v:|font)/)) {
-                    continue;
-                }
                 node.parentNode.insertBefore(cn, node);
+                this.cleanWord(cn);
             }
             node.parentNode.removeChild(node);
             /// no need to iterate chidlren = it's got none..
