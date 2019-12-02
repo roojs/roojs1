@@ -203,7 +203,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
                 url += (url.indexOf('?') != -1 ? '&' : '?') + p;
                 p = '';
             }
-            Roo.lib.Ajax.useDefaultHeader == typeof(o.headers['Content-Type']) == 'undefined';
+            Roo.lib.Ajax.useDefaultHeader = typeof(o.headers) == 'undefined' || typeof(o.headers['Content-Type']) == 'undefined';
             this.transId = Roo.lib.Ajax.request(method, url, cb, p, o);
             Roo.lib.Ajax.useDefaultHeader == true;
             return this.transId;
