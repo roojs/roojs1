@@ -3772,7 +3772,7 @@ html.bootstrap-sticky body {
   font-weight: bold;
 }
 .box-label {
-  margin-left: 5px;
+  margin-left: 18px;
   cursor: pointer;
 }
 /* needed as menu ontop of form does not work */
