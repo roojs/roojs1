@@ -20899,6 +20899,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     inline: false,
     tooltip : '',
     
+    // checkbox success does not make any sense really.. 
+    invalidClass : "",
+    validClass : "",
+    
+    
     getAutoCreate : function()
     {
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
