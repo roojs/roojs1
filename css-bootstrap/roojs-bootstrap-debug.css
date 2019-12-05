@@ -609,7 +609,7 @@ table.fc-border-separate {
  * From https://github.com/flatlogic/awesome-bootstrap-checkbox
  *
  */
-.checkbox label {
+.checkbox label.box-label {
   display: inline-block;
   position: relative;
   padding-left: 5px;
@@ -3780,10 +3780,10 @@ html.bootstrap-sticky body {
   z-index: 1;
 }
 /* admin-lte - messes with checkbox and radio.. */
-.checkbox,
-.radio {
-  padding-left: 15px !important;
+/*.checkbox, .radio {
+    padding-left: 15px !important;
 }
+*/
 /* inside a column it needs even more padding...*/
 /*
 * It breaks all the checkbox layout. comment it first...

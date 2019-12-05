@@ -3,7 +3,7 @@
  * From https://github.com/flatlogic/awesome-bootstrap-checkbox
  *
  */
-.checkbox label {
+.checkbox label.box-label {
     display: inline-block;
     position: relative;
     padding-left: 5px;
@@ -25,9 +25,12 @@
     padding-left: 3px;
     padding-top: 1px;
     font-size: 11px;
-    color: @gray; }
+    color: @gray;
+}
+
 .checkbox input[type="checkbox"] {
-    display: none; }
+    display: none;
+}
 .checkbox input[type="checkbox"]:checked + label::after {
     font-size: 18px;
     padding-top: 0px;
