@@ -2438,6 +2438,9 @@ a.roo-brick-link:hover {
   width: 0;
   background: #337ab7;
 }
+.enable-modal-body-overflow .modal-body {
+  overflow: auto;
+}
 .roo-navigation-bar-group,
 .roo-navigation-top-bar,
 .roo-navigation-bullets-bar,
