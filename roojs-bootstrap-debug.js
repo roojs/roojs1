@@ -20999,6 +20999,22 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             }
             
         }
+        var boxLabelCfg = false;
+        
+        if(this.boxLabel){
+           
+            boxLabelCfg = {
+                tag: 'label',
+                //'for': id, // box label is handled by onclick - so no for...
+                cls: 'box-label',
+                html: this.boxLabel
+            };
+            if(this.tooltip){
+                boxLabelCfg.tooltip = this.tooltip;
+            }
+             
+        }
+        
         
         if (align ==='left' && this.fieldLabel.length) {
 //                Roo.log("left and has label");
@@ -21016,6 +21032,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     ]
                 }
             ];
+            
+            if (boxLabelCfg) {
+                cfg.cn[1].cn.push(boxLabelCfg);
+            }
             
             if(this.labelWidth > 12){
                 cfg.cn[0].style = "width: " + this.labelWidth + 'px';
@@ -21060,29 +21080,22 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     inputblock
                     
                 ];
+                if (boxLabelCfg) {
+                    cfg.cn.push(boxLabelCfg);
+                }
 
         } else {
             
 //                Roo.log(" no label && no align");
                 cfg.cn = [  inputblock ] ;
-                
+                if (boxLabelCfg) {
+                    cfg.cn.push(boxLabelCfg);
+                }
+
                 
         }
         
-        if(this.boxLabel){
-             var boxLabelCfg = {
-                tag: 'label',
-                //'for': id, // box label is handled by onclick - so no for...
-                cls: 'box-label',
-                html: this.boxLabel
-            };
-            
-            if(this.tooltip){
-                boxLabelCfg.tooltip = this.tooltip;
-            }
-             
-            cfg.cn.push(boxLabelCfg);
-        }
+       
         
         if(this.inputType != 'radio'){
             cfg.cn.push(hidden);
