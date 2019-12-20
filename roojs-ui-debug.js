@@ -21006,7 +21006,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     insertTag : function(tg)
     {
         // could be a bit smarter... -> wrap the current selected tRoo..
-        if (tg.toLowerCase() == 'span' || tg.toLowerCase() == 'code') {
+        if (tg.toLowerCase() == 'span' ||
+            tg.toLowerCase() == 'code' ||
+            tg.toLowerCase() == 'sup' ||
+            tg.toLowerCase() == 'sub' 
+            ) {
             
             range = this.createRange(this.getSelection());
             var wrappingNode = this.doc.createElement(tg.toLowerCase());
