@@ -803,6 +803,10 @@ table.fc-border-separate {
 .radio.radio-inline {
   margin-top: 0;
 }
+.form-group.checkbox {
+  padding-bottom: 25px;
+  margin-top: 0;
+}
 /*
  *
  * From https://github.com/danielfarrell/bootstrap-combobox
