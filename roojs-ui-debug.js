@@ -22942,7 +22942,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         ["h1"],["h2"],["h3"],["h4"],["h5"],["h6"], 
         ["pre"],[ "code"], 
         ["abbr"],[ "acronym"],[ "address"],[ "cite"],[ "samp"],[ "var"],
-        ['div'],['span']
+        ['div'],['span'],
+        ['sup'],['sub']
     ],
     
     cleanStyles : [
