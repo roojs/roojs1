@@ -28,8 +28,8 @@ Roo.dd.DDTarget = function(id, sGroup, config) {
     if (id) {
         this.initTarget(id, sGroup, config);
     }
-    if (config.listeners || config.events) { 
-       Roo.dd.DragDrop.superclass.constructor.call(this,  { 
+    if (config && (config.listeners || config.events)) { 
+        Roo.dd.DragDrop.superclass.constructor.call(this,  { 
             listeners : config.listeners || {}, 
             events : config.events || {} 
         });    
