@@ -161,5 +161,5 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
         
     },
-     
+    onResize : function()  {}
 });
