@@ -381,7 +381,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         }
 
         this.view = new Roo.View(this.innerList, this.tpl, {
-            singleSelect:true, store: this.store, selectedClass: this.selectedClass
+            singleSelect:true,
+	    store: this.store,
+	    selectedClass: this.selectedClass
         });
 
         this.view.on('click', this.onViewClick, this);
