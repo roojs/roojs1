@@ -151,7 +151,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             store: store,
             selectedClass: this.selectedClass
         });
-
+        view.getEl().setWidth(Math.floor((lw - this.list.getFrameWidth('lr') / 3)));
         //view.on('click', this.onViewClick, this, { list : i });
 
         store.on('beforeload', this.onBeforeLoad, this);
