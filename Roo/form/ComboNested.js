@@ -126,8 +126,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         var lw = this.listWidth || Math.max(this.wrap.getWidth(), this.minListWidth);
 
         var il = this.innerLists[i] = this.list.createChild({cls:cls+'-inner'});
-        il.on('mouseover', this.onViewOver, this);
-        il.on('mousemove', this.onViewMove, this);
+        il.on('mouseover', this.onViewOver, this, i);
+        il.on('mousemove', this.onViewMove, this, i);
         il.setWidth(lw - this.list.getFrameWidth('lr'));
         
          
@@ -227,8 +227,15 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
     } ,
      
-    onViewOver : function () {}
-    
-    
+    onViewOver : function(e, t){
+        if(this.inKeyMode){ // prevent key nav and mouse over conflicts
+            return;
+        }
+        var item = this.view.findItemFromChild(t);
+        if(item){
+            var index = this.view.indexOf(item);
+            this.select(index, false);
+        }
+    },
     
 });
