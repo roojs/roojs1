@@ -227,14 +227,14 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
     } ,
      
-    onViewOver : function(e, t){
-        Roo.log(arguments);
+    onViewOver : function(e, t, opts){
+         
         if(this.inKeyMode){ // prevent key nav and mouse over conflicts
             return;
         }
-        var item = this.view.findItemFromChild(t);
+        var item = this.views[opts.list].findItemFromChild(t);
         if(item){
-            var index = this.view.indexOf(item);
+            var index = this.views[opts.list].indexOf(item);
             this.select(index, false);
         }
     },
