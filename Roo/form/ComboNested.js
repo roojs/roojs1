@@ -120,7 +120,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }
         
     },
-    onRenderList : function (ct, position, cls, listN)
+    onRenderList : function (ct, position, cls, i)
     {
         
         
