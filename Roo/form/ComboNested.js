@@ -175,7 +175,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }, this);
         
         this.list.beginUpdate();
-        this.list.setHeight(mh+this.lists[i].getFrameWidth('tb')+this.assetHeight);
+        this.list.setHeight(mh+this.list.getFrameWidth('tb')+this.assetHeight);
         this.list.alignTo(this.el, this.listAlign);
         this.list.endUpdate();
         
