@@ -89,6 +89,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             this.assetHeight += this.header.getHeight();
         }
         this.innerLists = [];
+        this.views = [];
         for (var i =0 ; i < 3; i++) {
             this.onRenderList(ct, position, cls, i);
         }
@@ -131,12 +132,14 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         if(!this.tpl){
             this.tpl = '<div class="'+cls+'-item">{' + this.displayField + '}</div>';
         }
-
-        this.view = new Roo.View(this.innerList, this.tpl, {
-            singleSelect:true, store: this.store, selectedClass: this.selectedClass
+        
+        var view = this.views[i] = new Roo.View(this.innerList, this.tpl, {
+            singleSelect:true,
+            store: this.store,
+            selectedClass: this.selectedClass
         });
 
-        this.view.on('click', this.onViewClick, this);
+        view.on('click', this.onViewClick, this);
 
         this.store.on('beforeload', this.onBeforeLoad, this);
         this.store.on('load', this.onLoad, this);
