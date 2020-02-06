@@ -221,27 +221,11 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
     } ,
      
-    onViewOver : function(e, t, opts)
-    {
-        return;
-        var item = this.views[opts.list].findItemFromChild(t);
-        if(item){
-            var index = this.views[opts.list].indexOf(item);
-            this.select(index, false);
-        }
-    },
-    
-    onViewClick : function(doFocus, opts)
-    {
-        Roo.log(arguments);
-        var index = this.views[opts.list].getSelectedIndexes()[0];
-        var r = this.stores[opts.list].getAt(index);
-        if(r){
-            this.onSelect(r, index);
-        }
-        if(doFocus !== false && !this.blockFocus){
-            this.el.focus();
-        }
-    },
+     
 
+    onSelectChange : function (el, sel) {
+        Roo.log(sel)
+    }
+    
+    
 });
