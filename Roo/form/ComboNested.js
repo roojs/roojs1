@@ -175,6 +175,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             var inner = el.dom;
             var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
             el.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
+            il.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
             mh = Math.max(el.getHeight(), mh);
         }, this);
         
