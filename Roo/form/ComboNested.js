@@ -153,7 +153,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             selectedClass: this.selectedClass
         });
 
-        view.on('click', this.onViewClick, this);
+        view.on('click', this.onViewClick, this, { list : i });
 
         store.on('beforeload', this.onBeforeLoad, this);
         store.on('load', this.onLoad, this);
@@ -227,12 +227,24 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
     } ,
      
-    onViewOver : function(e, t, opts){
+    onViewOver : function(e, t, opts)
+    {
         var item = this.views[opts.list].findItemFromChild(t);
         if(item){
             var index = this.views[opts.list].indexOf(item);
             this.select(index, false);
         }
     },
-    
+    onViewClick : function(doFocus)
+    {
+        var index = this.view.getSelectedIndexes()[0];
+        var r = this.store.getAt(index);
+        if(r){
+            this.onSelect(r, index);
+        }
+        if(doFocus !== false && !this.blockFocus){
+            this.el.focus();
+        }
+    },
+
 });
