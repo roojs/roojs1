@@ -126,8 +126,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         var lw = this.listWidth || Math.max(this.wrap.getWidth(), this.minListWidth);
 
         var il = this.innerLists[i] = this.list.createChild({cls:cls+'-inner'});
-        il.on('mouseover', this.onViewOver, this, i);
-        il.on('mousemove', this.onViewMove, this, i);
+        il.on('mouseover', this.onViewOver, this, { list:  i });
+        il.on('mousemove', this.onViewMove, this, { list:  i });
         il.setWidth(lw - this.list.getFrameWidth('lr'));
         
          
