@@ -199,6 +199,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     // private
     onLoad : function()
     {
+        Roo.log("onLoad");
         if(!this.hasFocus){
             return;
         }
