@@ -223,8 +223,11 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
      
      
 
-    onSelectChange : function (el, sel) {
-        Roo.log(arguments);
+    onSelectChange : function (view) {
+        var ix = view.getSelectedIndexes();
+        Roo.log(ix);
+        var rec = view.store.getAt(ix);
+        Roo.log(rec);
     }
     
     
