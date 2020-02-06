@@ -161,5 +161,22 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
         
     },
-    onResize : function()  {}
+    onResize : function()  {},
+    
+    restrictHeight : function()
+    {
+        Roo.each(this.innerLists, function(il,i) {
+            il.dom.style.height = '';
+            var inner = il.dom;
+            var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
+            il.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
+            this.lists[i].beginUpdate();
+            this.lists[i].setHeight(il.getHeight()+this.lists[i].getFrameWidth('tb')+this.assetHeight);
+            this.lists[i].alignTo(this.el, this.listAlign);
+            this.lists[i].endUpdate();
+        }, this);
+    },
+    
+    
+    
 });
