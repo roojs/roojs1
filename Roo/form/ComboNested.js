@@ -41,7 +41,7 @@ Roo.form.ComboNested = function(config){
             throw "Roo.form.ComboNested : missing value for: " + e;
         }
     });
-    this.setStore(this.store, true);
+     
     
 };
 
@@ -136,11 +136,14 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             this.tpl = '<div class="'+cls+'-item">{' + this.displayField + '}</div>';
         }
         
+        var store  = this.store;
+        if (i > 0) {
+            store  = this.stores[i] = new Roo.data.SimpleStore({
+                fields : [ 'key', 'value' ],
+                data : [ ]
+            });
+        }
         
-        var store  = this.stores[i] = new Roo.data.SimpleStore({
-            fields : [ 'key', 'value' ],
-            data : [ ]
-        });
                 
         
         
@@ -224,120 +227,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
         
     },
-      /**
-     * Changes the data store this view uses and refresh the view.
-     * Since we are wrapping the store, we have to emulate the behaviour of the view..
-     * 
-     * @param {Store} store
-     */
-    setStore : function(store, initial){
-        if(!initial && this.store){
-            this.store.un("datachanged",    this.storeRefresh);
-            this.store.un("add",            this.storeOnAdd);
-            this.store.un("remove",         this.storeOnRemove);
-            this.store.un("update",         this.storeOnUpdate);
-            this.store.un("clear",          this.storeRefresh);
-            this.store.un("beforeload",     this.storeOnBeforeLoad);
-            this.store.un("load",           this.storeOnLoad);
-            this.store.un("loadexception",  this.storeOnLoad);
-        }
-        if(store){
-          
-            store.on("datachanged",     this.storeRefresh, this);
-            store.on("add",             this.storeOnAdd, this);
-            store.on("remove",          this.storeOnRemove, this);
-            store.on("update",          this.storeOnUpdate, this);
-            store.on("clear",           this.storeRefresh, this);
-            store.on("beforeload",      this.storeOnBeforeLoad, this);
-            store.on("load",            this.storeOnLoad, this);
-            store.on("loadexception",   this.storeOnLoad, this);
-        }
-        
-        if(store){
-            this.storeRefresh();
-        }
-    },
     
-    storeRefresh : function()
-    {
-        var records = this.store.getRange();
-        if(records.length < 1) {
-            Roo.each(this.stores, function(st) {
-                st.clear();
-            });
-            return;
-        }
-        
-        for(var i = 0, len = records.length; i < len; i++){
-            var data = this.prepareData(records[i].data, i, records[i]);
-            this.fireEvent("preparedata", this, data, i, records[i]);
-            
-            var d = Roo.apply({}, data);
-            
-            if(this.tickable){
-                Roo.apply(d, {'roo-id' : Roo.id()});
-                
-                var _this = this;
-            
-                Roo.each(this.parent.item, function(item){
-                    if(item[_this.parent.valueField] != data[_this.parent.valueField]){
-                        return;
-                    }
-                    Roo.apply(d, {'roo-data-checked' : 'checked'});
-                });
-            }
-            
-            html[html.length] = Roo.util.Format.trim(
-                this.dataName ?
-                    t.applySubtemplate(this.dataName, d, this.store.meta) :
-                    t.apply(d)
-            );
-        }
-        
-        
-        
-        el.update(html.join(""));
-        this.nodes = el.dom.childNodes;
-        this.updateIndexes(0);
-        
-        
-        
-        Roo.each(this.stores, function(st) {
-            st.fireEvent('datachanged');
-        });
-    },
-    storeOnAdd: function(ds, records, index)
-    {
-        //Roo.log(['on Add', ds, records, index] );        
-        this.clearSelections();
-        if(this.nodes.length == 0){
-            this.refresh();
-            return;
-        }
-        var n = this.nodes[index];
-        for(var i = 0, len = records.length; i < len; i++){
-            var d = this.prepareData(records[i].data, i, records[i]);
-            if(n){
-                this.tpl.insertBefore(n, d);
-            }else{
-                
-                this.tpl.append(this.el, d);
-            }
-        }
-        this.updateIndexes(index);
-    },
-    
-    storeOnRemove: function() {
-        
-    },
-    storeOnUpdate: function() {
-        
-    },
-    storeOnBeforeLoad: function() {
-        
-    },
-    storeOnLoad: function() {
-        
     },
     
     
