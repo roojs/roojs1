@@ -258,15 +258,75 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }
     },
     
-    storeRefresh : function() {
-        // call refresh on child stores.
+    storeRefresh : function()
+    {
+        var records = this.store.getRange();
+        if(records.length < 1) {
+            Roo.each(this.stores, function(st) {
+                st.clear();
+            });
+            return;
+        }
+        
+        for(var i = 0, len = records.length; i < len; i++){
+            var data = this.prepareData(records[i].data, i, records[i]);
+            this.fireEvent("preparedata", this, data, i, records[i]);
+            
+            var d = Roo.apply({}, data);
+            
+            if(this.tickable){
+                Roo.apply(d, {'roo-id' : Roo.id()});
+                
+                var _this = this;
+            
+                Roo.each(this.parent.item, function(item){
+                    if(item[_this.parent.valueField] != data[_this.parent.valueField]){
+                        return;
+                    }
+                    Roo.apply(d, {'roo-data-checked' : 'checked'});
+                });
+            }
+            
+            html[html.length] = Roo.util.Format.trim(
+                this.dataName ?
+                    t.applySubtemplate(this.dataName, d, this.store.meta) :
+                    t.apply(d)
+            );
+        }
+        
+        
+        
+        el.update(html.join(""));
+        this.nodes = el.dom.childNodes;
+        this.updateIndexes(0);
+        
+        
+        
         Roo.each(this.stores, function(st) {
             st.fireEvent('datachanged');
         });
     },
-    storeOnAdd: function() {
-        
+    storeOnAdd: function(ds, records, index)
+    {
+        //Roo.log(['on Add', ds, records, index] );        
+        this.clearSelections();
+        if(this.nodes.length == 0){
+            this.refresh();
+            return;
+        }
+        var n = this.nodes[index];
+        for(var i = 0, len = records.length; i < len; i++){
+            var d = this.prepareData(records[i].data, i, records[i]);
+            if(n){
+                this.tpl.insertBefore(n, d);
+            }else{
+                
+                this.tpl.append(this.el, d);
+            }
+        }
+        this.updateIndexes(index);
     },
+    
     storeOnRemove: function() {
         
     },
