@@ -10,7 +10,7 @@ Roo.onReady(function(){
 
     Roo.QuickTips.init();
 
-    var sampledata  = [
+      sampledata  = [
         ['A', 'A states', [
             ['AK', 'Alaska'],
             ['AZ', 'Arizona'],
