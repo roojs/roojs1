@@ -259,7 +259,10 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     },
     
     storeRefresh : function() {
-        // do what?
+        // call refresh on child stores.
+        Roo.each(this.stores, function(st) {
+            st.fireEvent('refresh', st);
+        });
     },
     storeOnAdd: function() {
         
