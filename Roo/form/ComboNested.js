@@ -235,10 +235,10 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             this.select(index, false);
         }
     },
-    onViewClick : function(doFocus)
+    onViewClick : function(doFocus, opts)
     {
-        var index = this.view.getSelectedIndexes()[0];
-        var r = this.store.getAt(index);
+        var index = this.views[opts.list].getSelectedIndexes()[0];
+        var r = this.stores[opts.list].getAt(index);
         if(r){
             this.onSelect(r, index);
         }
