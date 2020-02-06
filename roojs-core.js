@@ -816,7 +816,7 @@ Roo.fly(this.getDragEl()).setSize(el.offsetWidth,el.offsetHeight);}},b4MouseDown
 },endDrag:function(e){var A=this.getEl();var B=this.getDragEl();B.style.visibility="";this.beforeMove();A.style.visibility="hidden";Roo.dd.DDM.moveToEl(A,B);B.style.visibility="hidden";A.style.visibility="";this.afterDrag();},beforeMove:function(){},afterDrag:function(){}
 ,toString:function(){return ("DDProxy "+this.id);}});
 // Roo/dd/DDTarget.js
-Roo.dd.DDTarget=function(id,A,B){if(id){this.initTarget(id,A,B);}if(B.listeners||B.events){Roo.dd.DragDrop.superclass.constructor.call(this,{listeners:B.listeners||{},events:B.events||{}});}};Roo.extend(Roo.dd.DDTarget,Roo.dd.DragDrop,{toString:function(){return ("DDTarget "+this.id);
+Roo.dd.DDTarget=function(id,A,B){if(id){this.initTarget(id,A,B);}if(B&&(B.listeners||B.events)){Roo.dd.DragDrop.superclass.constructor.call(this,{listeners:B.listeners||{},events:B.events||{}});}};Roo.extend(Roo.dd.DDTarget,Roo.dd.DragDrop,{toString:function(){return ("DDTarget "+this.id);
 }});
 // Roo/dd/ScrollManager.js
 Roo.dd.ScrollManager=function(){var A=Roo.dd.DragDropMgr;var B={};var C=null;var D={};var E=function(e){C=null;H();};var F=function(){if(A.dragCurrent){A.refreshCache(A.dragCurrent.groups);}};var G=function(){if(A.dragCurrent){var K=Roo.dd.ScrollManager;if(!K.animate){if(D.el.scroll(D.dir,K.increment)){F();
