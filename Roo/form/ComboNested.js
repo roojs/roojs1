@@ -232,6 +232,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
      
     onViewOver : function(e, t, opts)
     {
+        return;
         var item = this.views[opts.list].findItemFromChild(t);
         if(item){
             var index = this.views[opts.list].indexOf(item);
