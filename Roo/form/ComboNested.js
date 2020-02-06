@@ -41,7 +41,7 @@ Roo.form.ComboNested = function(config){
             throw "Roo.form.ComboNested : missing value for: " + e;
         }
     });
-    this.setStore(this.store);
+    this.setStore(this.store, true);
     
 };
 
