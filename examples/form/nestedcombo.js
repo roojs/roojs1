@@ -10,7 +10,30 @@ Roo.onReady(function(){
 
     Roo.QuickTips.init();
 
- 
+    var sampledata  = [
+        ['A', 'A states', [
+            ['AK', 'Alaska'],
+            ['AZ', 'Arizona'],
+            ['AR', 'Arkansas']
+                           
+        ]],
+        ['C', 'C states', [        
+          ['CA', 'California'],
+            ['CO', 'Colorado'],
+            ['CT', 'Connecticut']
+        ]],
+        ['D', 'D states', [
+            ['DE', 'Delaware'],
+            ['DC', 'District of Columbia']
+        ]]
+        ['I', 'I states', [
+        
+            ['ID', 'Idaho'],
+            ['IL', 'Illinois'],
+            ['IN', 'Indiana'],
+            ['IA', 'Iowa']
+        ]]
+    ];
     /*
      * ================  Form 2  =======================
      */
@@ -37,7 +60,7 @@ Roo.onReady(function(){
                     xns : Roo.data,
                     xtype : 'SimpleStore',
                     fields: ['abbr', 'state'],
-                    data : Roo.exampledata.states // from states.js
+                    data : sampledata// from states.js
                    
                 },
                 
