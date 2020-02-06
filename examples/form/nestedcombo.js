@@ -59,7 +59,7 @@ Roo.onReady(function(){
                 store: {
                     xns : Roo.data,
                     xtype : 'SimpleStore',
-                    fields: ['abbr', 'state'],
+                    fields: ['abbr', 'state' , 'cn'],
                     data : sampledata// from states.js
                    
                 },
