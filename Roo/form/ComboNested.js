@@ -227,8 +227,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
     } ,
      
-    onViewOver : function(e, t, x){
-        Roo.log(x);
+    onViewOver : function(e, t){
+        Roo.log(arguments);
         if(this.inKeyMode){ // prevent key nav and mouse over conflicts
             return;
         }
