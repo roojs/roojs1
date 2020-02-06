@@ -129,7 +129,6 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         il.on('mouseover', this.onViewOver, this, { list:  i });
         il.on('mousemove', this.onViewMove, this, { list:  i });
         il.setWidth(lw - this.list.getFrameWidth('lr'));
-        
          
 
         if(!this.tpl){
