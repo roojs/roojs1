@@ -130,7 +130,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         var il = this.innerLists[i] = this.list.createChild({cls:cls+'-inner'});
         il.on('mouseover', this.onViewOver, this, { list:  i });
         il.on('mousemove', this.onViewMove, this, { list:  i });
-        il.setWidth(Math.floor((lw - this.list.getFrameWidth('lr') / 3)));
+        il.setWidth(lw);
          
 
         if(!this.tpl){
@@ -153,7 +153,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             store: store,
             selectedClass: this.selectedClass
         });
-        view.getEl().setWidth(Math.floor((lw - this.list.getFrameWidth('lr') / 3)));
+        view.getEl().setWidth(lw);
         //view.on('click', this.onViewClick, this, { list : i });
 
         store.on('beforeload', this.onBeforeLoad, this);
