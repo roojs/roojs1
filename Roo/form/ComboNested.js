@@ -93,7 +93,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.views = [];
         this.stores = [];
         for (var i =0 ; i < 3; i++) {
-            this.onRenderList(ct, position, cls, i);
+            this.onRenderList( cls, i);
         }
         
         if(this.allowBlank && !this.disableClear){
@@ -120,10 +120,11 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }
         
     },
-    onRenderList : function (ct, position, cls, i)
+    onRenderList : function (  cls, i)
     {
         
-        
+        var lw = this.listWidth || Math.max(this.wrap.getWidth(), this.minListWidth);
+
         var il = this.innerLists[i] = this.list.createChild({cls:cls+'-inner'});
         il.on('mouseover', this.onViewOver, this);
         il.on('mousemove', this.onViewMove, this);
