@@ -180,7 +180,18 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.list.endUpdate();
         
     },
-    
-    
+    select : function(index, scrollIntoView)
+    {
+        
+        this.selectedIndex = index;
+        return;
+        this.view.select(index);
+        if(scrollIntoView !== false){
+            var el = this.view.getNode(index);
+            if(el){
+                this.innerList.scrollChildIntoView(el, false);
+            }
+        }
+    },    
     
 });
