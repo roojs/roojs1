@@ -165,16 +165,20 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     
     restrictHeight : function()
     {
+        var mh = 0;
         Roo.each(this.innerLists, function(il,i) {
             il.dom.style.height = '';
             var inner = il.dom;
             var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
             il.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
-            this.lists.beginUpdate();
-            this.lists.setHeight(il.getHeight()+this.lists[i].getFrameWidth('tb')+this.assetHeight);
-            this.lists.alignTo(this.el, this.listAlign);
-            this.lists.endUpdate();
+            mh = Math.Max(il.getHeight(), mh);
         }, this);
+        
+        this.list.beginUpdate();
+        this.list.setHeight(mh+this.lists[i].getFrameWidth('tb')+this.assetHeight);
+        this.list.alignTo(this.el, this.listAlign);
+        this.list.endUpdate();
+        
     },
     
     
