@@ -197,10 +197,10 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     // -- store handlers..
     
     // private
-    onLoad : function()
+    onLoad : function(a,b,c,d)
     {
         Roo.log("onLoad");
-        Roo.log(arguments);
+        Roo.log([a,b,c,d]);
         if(!this.hasFocus){
             return;
         }
