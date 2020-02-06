@@ -225,9 +225,9 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }
         
         
-    } 
+    } ,
      
-    
+    onViewOver : function () {}
     
     
     
