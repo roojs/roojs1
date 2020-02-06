@@ -128,8 +128,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             );;
 
         var il = this.innerLists[i] = this.list.createChild({cls:cls+'-inner'});
-        il.on('mouseover', this.onViewOver, this, { list:  i });
-        il.on('mousemove', this.onViewMove, this, { list:  i });
+        //il.on('mouseover', this.onViewOver, this, { list:  i });
+        //il.on('mousemove', this.onViewMove, this, { list:  i });
         il.setWidth(lw);
          
 
@@ -186,19 +186,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.list.endUpdate();
         
     },
-    select : function(index, scrollIntoView)
-    {
-        
-        this.selectedIndex = index;
-        return;
-        this.view.select(index);
-        if(scrollIntoView !== false){
-            var el = this.view.getNode(index);
-            if(el){
-                this.innerList.scrollChildIntoView(el, false);
-            }
-        }
-    },
+     
     
     // -- store handlers..
     
