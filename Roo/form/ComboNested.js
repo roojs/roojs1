@@ -224,7 +224,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
      
 
     onSelectChange : function (el, sel) {
-        Roo.log(sel);
+        Roo.log(arguments);
     }
     
     
