@@ -192,6 +192,36 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
                 this.innerList.scrollChildIntoView(el, false);
             }
         }
-    },    
+    },
+    
+    // -- store handlers..
+    
+    // private
+    onLoad : function()
+    {
+        if(!this.hasFocus){
+            return;
+        }
+        
+        if(this.store.getCount() > 0) {
+            this.expand();
+            this.restrictHeight();   
+        } else {
+            this.onEmptyResults();
+        }
+        //this.el.focus();
+    },
+    // private
+    onLoadException : function()
+    {
+        this.collapse();
+        Roo.log(this.store.reader.jsonData);
+        if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+            Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+        }
+        
+        
+    },
+    
     
 });
