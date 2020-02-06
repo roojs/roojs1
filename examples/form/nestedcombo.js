@@ -42,7 +42,7 @@ Roo.onReady(function(){
                 },
                 
                 typeAhead: true,
-                //mode: 'local', // ?? not sure if this should be done
+                mode: 'local',
                 triggerAction: 'all',
                 emptyText:'Select a state...',
                 selectOnFocus:true,
