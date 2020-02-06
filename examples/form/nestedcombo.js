@@ -25,7 +25,7 @@ Roo.onReady(function(){
         ['D', 'D states', [
             ['DE', 'Delaware'],
             ['DC', 'District of Columbia']
-        ]]
+        ]],
         ['I', 'I states', [
         
             ['ID', 'Idaho'],
