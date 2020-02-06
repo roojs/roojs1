@@ -138,12 +138,12 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
         var store  = this.store;
         if (i > 0) {
-            store  = this.stores[i] = new Roo.data.SimpleStore({
+            store  = new Roo.data.SimpleStore({
                 fields : [ 'key', 'value' ],
                 data : [ ]
             });
         }
-        
+        this.stores[i]  = store;
                 
         
         
