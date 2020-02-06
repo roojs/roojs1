@@ -153,7 +153,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             selectedClass: this.selectedClass
         });
 
-        view.on('click', this.onViewClick, this, { list : i });
+        //view.on('click', this.onViewClick, this, { list : i });
 
         store.on('beforeload', this.onBeforeLoad, this);
         store.on('load', this.onLoad, this);
@@ -235,7 +235,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             this.select(index, false);
         }
     },
-    onViewClick : function(doFocus, opts)
+    
+    onViewClick : function(e, item, el, ev doFocus, opts)
     {
         Roo.log(arguments);
         var index = this.views[opts.list].getSelectedIndexes()[0];
