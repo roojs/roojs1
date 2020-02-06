@@ -144,7 +144,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
                 
         
         
-        var view = this.views[i] = new Roo.View(this.innerList, this.tpl, {
+        var view = this.views[i] = new Roo.View(il, this.tpl, {
             singleSelect:true,
             store: store,
             selectedClass: this.selectedClass
