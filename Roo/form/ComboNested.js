@@ -236,7 +236,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }
     },
     
-    onViewClick : function(e, item, el, ev doFocus, opts)
+    onViewClick : function(doFocus, opts)
     {
         Roo.log(arguments);
         var index = this.views[opts.list].getSelectedIndexes()[0];
