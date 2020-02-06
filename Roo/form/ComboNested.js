@@ -154,6 +154,9 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             selectedClass: this.selectedClass
         });
         view.getEl().setWidth(lw);
+        
+        view.on('selectionchange', this.onSelectChange, this);
+        
         //view.on('click', this.onViewClick, this, { list : i });
 
         store.on('beforeload', this.onBeforeLoad, this);
