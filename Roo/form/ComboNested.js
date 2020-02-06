@@ -226,6 +226,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     },
       /**
      * Changes the data store this view uses and refresh the view.
+     * Since we are wrapping the store, we have to emulate the behaviour of the view..
+     * 
      * @param {Store} store
      */
     setStore : function(store, initial){
@@ -256,11 +258,24 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }
     },
     
-    
-    
-    
-    
-    
+    storeRefresh : function() {
+        // do what?
+    },
+    storeOnAdd: function() {
+        
+    },
+    storeOnRemove: function() {
+        
+    },
+    storeOnUpdate: function() {
+        
+    },
+    storeOnBeforeLoad: function() {
+        
+    },
+    storeOnLoad: function() {
+        
+    },
     
     
     
