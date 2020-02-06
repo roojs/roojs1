@@ -11,6 +11,10 @@ Roo.onReady(function(){
     Roo.QuickTips.init();
 
  
+    var sampleData = 
+ 
+ 
+ 
     /*
      * ================  Form 2  =======================
      */
