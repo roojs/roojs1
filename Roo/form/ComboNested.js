@@ -41,7 +41,7 @@ Roo.form.ComboNested = function(config){
             throw "Roo.form.ComboNested : missing value for: " + e;
         }
     });
-    
+    this.setStore(this.store);
     
 };
 
@@ -224,6 +224,46 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
         
     },
+      /**
+     * Changes the data store this view uses and refresh the view.
+     * @param {Store} store
+     */
+    setStore : function(store, initial){
+        if(!initial && this.store){
+            this.store.un("datachanged",    this.storeRefresh);
+            this.store.un("add",            this.storeOnAdd);
+            this.store.un("remove",         this.storeOnRemove);
+            this.store.un("update",         this.storeOnUpdate);
+            this.store.un("clear",          this.storeRefresh);
+            this.store.un("beforeload",     this.storeOnBeforeLoad);
+            this.store.un("load",           this.storeOnLoad);
+            this.store.un("loadexception",  this.storeOnLoad);
+        }
+        if(store){
+          
+            store.on("datachanged",     this.storerefresh, this);
+            store.on("add",             this.storeOnAdd, this);
+            store.on("remove",          this.storeOnRemove, this);
+            store.on("update",          this.storeOnUpdate, this);
+            store.on("clear",           this.storeRefresh, this);
+            store.on("beforeload",      this.storeOnBeforeLoad, this);
+            store.on("load",            this.storeOnLoad, this);
+            store.on("loadexception",   this.storeOnLoad, this);
+        }
+        
+        if(store){
+            this.storeRefresh();
+        }
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 });
