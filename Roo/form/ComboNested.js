@@ -243,7 +243,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }
         if(store){
           
-            store.on("datachanged",     this.storerefresh, this);
+            store.on("datachanged",     this.storeRefresh, this);
             store.on("add",             this.storeOnAdd, this);
             store.on("remove",          this.storeOnRemove, this);
             store.on("update",          this.storeOnUpdate, this);
