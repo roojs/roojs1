@@ -170,11 +170,12 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     {
         var mh = 0;
         Roo.each(this.innerLists, function(il,i) {
-            il.dom.style.height = '';
-            var inner = il.dom;
+            var el = this.views[i].getEl();
+            el.dom.style.height = '';
+            var inner = el.dom;
             var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
-            il.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
-            mh = Math.max(il.getHeight(), mh);
+            el.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
+            mh = Math.max(el.getHeight(), mh);
         }, this);
         
         this.list.beginUpdate();
