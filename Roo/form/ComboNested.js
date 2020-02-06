@@ -51,6 +51,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     list : null, // the outermost div..
     innerLists : null, // the
     views : null,
+    stores : null,
     // private
     onRender : function(ct, position)
     {
@@ -90,6 +91,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }
         this.innerLists = [];
         this.views = [];
+        this.stores = [];
         for (var i =0 ; i < 3; i++) {
             this.onRenderList(ct, position, cls, i);
         }
@@ -133,59 +135,27 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             this.tpl = '<div class="'+cls+'-item">{' + this.displayField + '}</div>';
         }
         
+        
+        var store  = this.stores[i] = new Roo.data.SimpleStore({
+            fields : [ 'key', 'value' ],
+            data : [ ]
+        });
+                
+        
+        
         var view = this.views[i] = new Roo.View(this.innerList, this.tpl, {
             singleSelect:true,
-            store: this.store,
+            store: store,
             selectedClass: this.selectedClass
         });
 
         view.on('click', this.onViewClick, this);
 
-        this.store.on('beforeload', this.onBeforeLoad, this);
-        this.store.on('load', this.onLoad, this);
-        this.store.on('loadexception', this.onLoadException, this);
+        store.on('beforeload', this.onBeforeLoad, this);
+        store.on('load', this.onLoad, this);
+        store.on('loadexception', this.onLoadException, this);
 
-        if(this.resizable){
-            this.resizer = new Roo.Resizable(this.list,  {
-               pinned:true, handles:'se'
-            });
-            this.resizer.on('resize', function(r, w, h){
-                this.maxHeight = h-this.handleHeight-this.list.getFrameWidth('tb')-this.assetHeight;
-                this.listWidth = w;
-                this.innerList.setWidth(w - this.list.getFrameWidth('lr'));
-                this.restrictHeight();
-            }, this);
-            this[this.pageSize?'footer':'innerList'].setStyle('margin-bottom', this.handleHeight+'px');
-        }
-        if(!this.editable){
-            this.editable = true;
-            this.setEditable(false);
-        }  
-        
-        
-        if (typeof(this.events.add.listeners) != 'undefined') {
-            
-            this.addicon = this.wrap.createChild(
-                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-add' });  
-       
-            this.addicon.on('click', function(e) {
-                this.fireEvent('add', this);
-            }, this);
-        }
-        if (typeof(this.events.edit.listeners) != 'undefined') {
-            
-            this.editicon = this.wrap.createChild(
-                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-edit' });  
-            if (this.addicon) {
-                this.editicon.setStyle('margin-left', '40px');
-            }
-            this.editicon.on('click', function(e) {
-                
-                // we fire even  if inothing is selected..
-                this.fireEvent('edit', this, this.lastData );
-                
-            }, this);
-        }
+          
         
         
         
