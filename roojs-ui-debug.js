@@ -20503,7 +20503,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     findRecordInStore : function(store, prop, value)
     {
         var cstore = new Roo.data.SimpleStore({
-            reader : this.store.reader,
+            reader : this.store.reader,  // we need array reader.. for 
             data : [ ]
         });
         var _this = this;
