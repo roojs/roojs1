@@ -1126,7 +1126,7 @@ Roo.Markdown.toHtml = function(text) {
      * Helpers
      */
     
-    function escape(html, encode) {
+    var escape = function (html, encode) {
       return html
         .replace(!encode ? /&(?!#?\w+;)/g : /&/g, '&amp;')
         .replace(/</g, '&lt;')
