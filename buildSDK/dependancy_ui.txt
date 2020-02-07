@@ -91,6 +91,7 @@ Roo.form.DateField
 Roo.form.MonthField
 Roo.form.ComboBox
 Roo.form.ComboBoxArray
+Roo.form.ComboNested
 Roo.form.Checkbox
 Roo.form.Radio
 Roo.HtmlEditorCore
