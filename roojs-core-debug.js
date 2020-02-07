@@ -17967,7 +17967,9 @@ Roo.Markdown.toHtml = function(text) {
     /**
      * Marked
      */
-    
+         /**
+         * eval:var:marked
+    */
     var marked = function (src, opt, callback) {
       if (callback || typeof opt === 'function') {
         if (!callback) {
@@ -17989,7 +17991,9 @@ Roo.Markdown.toHtml = function(text) {
         }
     
         pending = tokens.length;
-    
+         /**
+         * eval:var:done
+    */
         var done = function(err) {
           if (err) {
             opt.highlight = highlight;
