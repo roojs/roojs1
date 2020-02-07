@@ -141,7 +141,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
                 isEmpty: function (value, allValues) {
                     return value.length ? 'has-children' : 'no-children'
                 }
-            );
+            });
         }
         
         var store  = this.store;
