@@ -328,7 +328,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             reader : this.store.reader,
             data : [ ]
         });
-        
+        var _this = this;
         var record  = false;
         if(store.getCount() > 0){
            store.each(function(r){
