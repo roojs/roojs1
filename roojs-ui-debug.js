@@ -1098,7 +1098,8 @@ Roo.data.SimpleStore = function(config)
     Roo.data.SimpleStore.superclass.constructor.call(this, {
         isLocal : true,
         reader: typeof(config.reader) != 'undefined' ? config.reader : new Roo.data.ArrayReader({
-                id: config.id
+                id: config.id,
+                fields : config.fields
             },
             Roo.data.Record.create(config.fields)
         ),
@@ -1293,6 +1294,7 @@ Roo.data.DataReader.prototype = {
         });
         return new this.recordType(Roo.apply(da, d));
     }
+    
     
 };/*
  * Based on:
@@ -2154,9 +2156,8 @@ var myReader = new Roo.data.ArrayReader({
  * 
  * created using {@link Roo.data.Record#create}.
  */
-Roo.data.ArrayReader = function(meta, recordType){
-    
-     
+Roo.data.ArrayReader = function(meta, recordType)
+{    
     Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 
