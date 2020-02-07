@@ -69,12 +69,12 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
 	        var values = {};
 	        var id = ((sid || sid === 0) && n[sid] !== undefined && n[sid] !== "" ? n[sid] : null);
 	        for(var j = 0, jlen = fields.length; j < jlen; j++){
-                var f = fields.items[j];
-                var k = f.mapping !== undefined && f.mapping !== null ? f.mapping : j;
-                var v = n[k] !== undefined ? n[k] : f.defaultValue;
-                v = f.convert(v);
-                values[f.name] = v;
-            }
+		    var f = fields.items[j];
+		    var k = f.mapping !== undefined && f.mapping !== null ? f.mapping : j;
+		    var v = n[k] !== undefined ? n[k] : f.defaultValue;
+		    v = f.convert(v);
+		    values[f.name] = v;
+		}
 	        var record = new recordType(values, id);
 	        record.json = n;
 	        records[records.length] = record;
