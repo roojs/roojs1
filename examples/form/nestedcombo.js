@@ -31,7 +31,11 @@ Roo.onReady(function(){
             ['ID', 'Idaho'],
             ['IL', 'Illinois'],
             ['IN', 'Indiana'],
-            ['IA', 'Iowa']
+            ['IA', 'Iowa'],
+            ['IDA', 'Idaho'],
+            ['ILA', 'Illinois'],
+            ['INA', 'Indiana'],
+            ['IAA', 'Iowa']
         ]]
     ];
     /*
