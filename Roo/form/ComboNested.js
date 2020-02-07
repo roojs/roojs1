@@ -136,7 +136,12 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         il.setStyle({ 'overflow-x' : 'hidden'});
 
         if(!this.tpl){
-            this.tpl = '<div class="'+cls+'-item '+cls+'-item-{has_cn}">{' + this.displayField + '}</div>';
+            new Roo.Template({
+                html :  '<div class="'+cls+'-item '+cls+'-item-{cn:this.isEmpty}">{' + this.displayField + '}</div>',
+                isEmpty: function (value, allValues) {
+                    return value.length ? 'has-children' : 'no-children'
+                }
+            );
         }
         
         var store  = this.store;
