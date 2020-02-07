@@ -100,7 +100,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.footer = this.list.createChild({cls:cls+'-ft'});
         this.pageTb = new Roo.Toolbar(this.footer);  
         
-        this.pageTb.add(new Roo.Toolbar.Fill(), {
+        this.pageTb.add(  {
             
             text: 'Done',
             handler: function()
