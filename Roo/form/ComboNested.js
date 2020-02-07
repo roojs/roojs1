@@ -316,20 +316,33 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.value = v;
     },
     
+    findRecord : funciton (prop,value)
+    {
+        return this.findRecordInStore(this.store, prop,value);
+    },
     
      // private
-    findRecord : function(store, prop, value)
+    findRecordInStore : function(store, prop, value)
     {
+        var cstore = new Roo.data.SimpleStore({
+            reader : this.store.reader,
+            data : [ ]
+        });
         
-        
-        var record;
-        if(this.store.getCount() > 0){
-            this.store.each(function(r){
+        var record  = false;
+        if(store.getCount() > 0){
+           store.each(function(r){
                 if(r.data[prop] == value){
                     record = r;
                     return false;
                 }
-                
+                if (r.data.cn && r.data.cn.length) {
+                    var cret = cstore.loadData( r.data.cn);
+                    if (cret !== false) {
+                        record = cret;
+                        return false;
+                    }
+                }
                 
                 return true;
             });
