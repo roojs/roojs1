@@ -946,7 +946,7 @@ Roo.Markdown.toHtml = function(text) {
      * Parsing & Compiling
      */
     
-    function Parser(options) {
+    var Parser= function (options) {
       this.tokens = [];
       this.token = null;
       this.options = options || marked.defaults;

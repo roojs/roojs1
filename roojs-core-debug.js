@@ -17556,7 +17556,7 @@ Roo.Markdown.toHtml = function(text) {
      * Renderer
      */
     
-    function Renderer(options) {
+    var Renderer   = function (options) {
       this.options = options || {};
     }
     
