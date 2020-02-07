@@ -225,6 +225,11 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         //this.stores[2].loadData([]);
         //this.el.focus();
     },
+    onSubLoad : function ()
+    {
+        
+    },
+    
     // private
     onLoadException : function()
     {
