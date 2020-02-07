@@ -315,4 +315,26 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         Roo.form.ComboBox.superclass.setValue.call(this, text);
         this.value = v;
     },
+    
+    
+     // private
+    findRecord : function(prop, value)
+    {
+        
+        
+        var record;
+        if(this.store.getCount() > 0){
+            this.store.each(function(r){
+                if(r.data[prop] == value){
+                    record = r;
+                    return false;
+                }
+                
+                
+                return true;
+            });
+        }
+        return record;
+    },
+    
 });
