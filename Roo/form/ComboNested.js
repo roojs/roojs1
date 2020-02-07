@@ -163,7 +163,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             top: 0,
             left: (i * lw ) + 'px'           
         });
-        view.on('selectionchange', this.onSelectChange, this);
+        view.on('selectionchange', this.onSelectChange, this, {list : i });
         
         //view.on('click', this.onViewClick, this, { list : i });
 
