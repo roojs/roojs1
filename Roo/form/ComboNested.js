@@ -259,7 +259,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     onSelectChange : function (view, sels, opts )
     {
         var ix = view.getSelectedIndexes();
-        if (!ix.length|| opts.list > 2) {
+        if (!ix.length|| opts.list > 1) {
             this.stores[opts.list+1].loadData( [] );
             return;
         }
