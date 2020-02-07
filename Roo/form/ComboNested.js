@@ -136,7 +136,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         il.setStyle({ 'overflow-x' : 'hidden'});
 
         if(!this.tpl){
-            new Roo.Template({
+            this.tpl = new Roo.Template({
                 html :  '<div class="'+cls+'-item '+cls+'-item-{cn:this.isEmpty}">{' + this.displayField + '}</div>',
                 isEmpty: function (value, allValues) {
                     return value.length ? 'has-children' : 'no-children'
