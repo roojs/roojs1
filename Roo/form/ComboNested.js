@@ -161,7 +161,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         view.getEl().setStyle({
             position: i < 1 ? 'relative' : 'absolute',
             top: 0,
-            left: i * lw            
+            left: (i * lw ) + 'px'           
         });
         view.on('selectionchange', this.onSelectChange, this);
         
