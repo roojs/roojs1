@@ -17895,7 +17895,7 @@ Roo.Markdown.toHtml = function(text) {
         .replace(/'/g, '&#39;');
     }
     
-    function unescape(html) {
+    var unescape = function (html) {
         // explicitly match decimal, hex, and named HTML entities 
       return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
         n = n.toLowerCase();
@@ -17909,7 +17909,7 @@ Roo.Markdown.toHtml = function(text) {
       });
     }
     
-    function replace(regex, opt) {
+    var replace= function (regex, opt) {
       regex = regex.source;
       opt = opt || '';
       return function self(name, val) {
@@ -17921,10 +17921,10 @@ Roo.Markdown.toHtml = function(text) {
       };
     }
     
-    function noop() {}
+    var noop = function () {}
     noop.exec = noop;
     
-    function merge(obj) {
+    var merge = function (obj) {
       var i = 1
         , target
         , key;
@@ -17946,7 +17946,7 @@ Roo.Markdown.toHtml = function(text) {
      * Marked
      */
     
-    function marked(src, opt, callback) {
+    var marked = function (src, opt, callback) {
       if (callback || typeof opt === 'function') {
         if (!callback) {
           callback = opt;
