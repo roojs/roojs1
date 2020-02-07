@@ -172,7 +172,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             display : i > 0 ? 'none' : 'block'
         });
         view.on('selectionchange', this.onSelectChange, this, {list : i });
-        
+        view.on('dblclick', this.onDoubleClick, this, {list : i });
         //view.on('click', this.onViewClick, this, { list : i });
 
         store.on('beforeload', this.onBeforeLoad, this);
@@ -285,6 +285,10 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.views[opts.list+1].getEl().setStyle({ display : rec.data.cn.length ? 'block' : 'none' });
         this.innerLists[opts.list+1].setHeight( this.innerLists[0].getHeight());
         this.list.setWidth(lw * (opts.list + (rec.data.cn.length ? 2 : 1))); 
+    },
+    onDoubleClick : function()
+    {
+        this.collapse(); //??
     }
     
     
