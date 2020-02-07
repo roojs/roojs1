@@ -262,6 +262,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
         
         if (opts.list > 1) {
+             
+            this.setFromData(ix.length ? view.store.getAt(ix[0]).data : {});
             return;
         }
         
