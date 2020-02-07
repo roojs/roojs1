@@ -337,7 +337,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
                     return false;
                 }
                 if (r.data.cn && r.data.cn.length) {
-                    var cret = cstore.loadData( r.data.cn);
+                    cstore.loadData( r.data.cn);
+                    var cret = _this.findRecordInStore(cstore, prop, value);
                     if (cret !== false) {
                         record = cret;
                         return false;
