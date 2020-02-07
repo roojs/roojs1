@@ -4667,6 +4667,7 @@ Roo.Template.prototype = {
      * @return {String} The HTML fragment
      */
     applyTemplate : function(values){
+        Roo.log(["applyTemplate", values]);
         try {
            
             if(this.compiled){
