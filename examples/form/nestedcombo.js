@@ -5,7 +5,7 @@
  */
  
 var mform;
-var combo
+var combo, cats;
 Roo.onReady(function(){
 
     Roo.QuickTips.init();
@@ -156,6 +156,7 @@ Roo.onReady(function(){
 
     mform.render('form-ct5');
     combo = mform.findField('states');
+    cats = mform.findField('states_list');
    /* mform.setValues({
         states : '["AK","AZ"]',
         states_list : "Alaska, Arizona"
