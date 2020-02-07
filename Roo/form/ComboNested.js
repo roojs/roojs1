@@ -131,7 +131,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         //il.on('mouseover', this.onViewOver, this, { list:  i });
         //il.on('mousemove', this.onViewMove, this, { list:  i });
         il.setWidth(lw);
-         
+        il.setStyle({ 'overflow-x' : 'hidden'});
 
         if(!this.tpl){
             this.tpl = '<div class="'+cls+'-item">{' + this.displayField + '}</div>';
