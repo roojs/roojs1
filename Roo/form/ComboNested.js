@@ -259,20 +259,20 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     onSelectChange : function (view, sels, opts )
     {
         var ix = view.getSelectedIndexes();
-        this.setFromData()
+        
         
         if (opts.list > 1) {
             return;
         }
         
         if (!ix.length) {
+            this.setFromData({});
             this.stores[opts.list+1].loadData( [] );
             return;
         }
         
-        Roo.log(ix);
         var rec = view.store.getAt(ix[0]);
-        Roo.log(rec);
+        this.setFromData(rec.data)
         
         var lw = Math.floor(
                 ((this.listWidth || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / 3
