@@ -168,7 +168,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         //view.on('click', this.onViewClick, this, { list : i });
 
         store.on('beforeload', this.onBeforeLoad, this);
-        store.on('load', i > 0 ? this.onSubLoad : this.onLoad, this);
+        store.on('load', i > 0 ? this.onSubLoad : this.onLoad, this, { list  : i});
         store.on('loadexception', this.onLoadException, this);
 
           
@@ -221,8 +221,11 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         } else {
             this.onEmptyResults();
         }
-        //this.stores[1].loadData([]);
-        //this.stores[2].loadData([]);
+        this.stores[1].loadData([]);
+        this.stores[2].loadData([]);
+        this.views
+        
+        
         //this.el.focus();
     },
     onSubLoad : function ()
