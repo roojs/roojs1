@@ -215,8 +215,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         } else {
             this.onEmptyResults();
         }
-        this.stores[1].clear();
-        this.stores[2].clear();
+        this.stores[1].loadData([]);
+        this.stores[2].loadData([]);
         //this.el.focus();
     },
     // private
