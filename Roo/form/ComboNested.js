@@ -96,10 +96,10 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             this.onRenderList( cls, i);
         }
         
-        if(this.allowBlank && !this.disableClear){
-            this.footer = this.list.createChild({cls:cls+'-ft'});
-            this.pageTb = new Roo.Toolbar(this.footer);  
-        }
+        // always needs footer, as we are going to have an 'OK' button.
+        this.footer = this.list.createChild({cls:cls+'-ft'});
+        this.pageTb = new Roo.Toolbar(this.footer);  
+        
        
         
         if (this.pageTb && this.allowBlank && !this.disableClear) {
