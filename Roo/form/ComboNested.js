@@ -316,7 +316,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.value = v;
     },
     
-    findRecord : funciton (prop,value)
+    findRecord : function (prop,value)
     {
         return this.findRecordInStore(this.store, prop,value);
     },
