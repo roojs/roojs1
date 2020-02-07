@@ -221,7 +221,17 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
      
     
     // -- store handlers..
-    
+    // private
+    onBeforeLoad : function()
+    {
+        if(!this.hasFocus){
+            return;
+        }
+        this.innerList[0].update(this.loadingText ?
+               '<div class="loading-indicator">'+this.loadingText+'</div>' : '');
+        this.restrictHeight();
+        this.selectedIndex = -1;
+    },
     // private
     onLoad : function(a,b,c,d)
     {
