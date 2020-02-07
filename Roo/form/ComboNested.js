@@ -281,7 +281,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }
         
         var rec = view.store.getAt(ix[0]);
-        this.setFromData(rec.data)
+        this.setFromData(rec.data);
         
         var lw = Math.floor(
                 ((this.listWidth * 3 || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / 3
