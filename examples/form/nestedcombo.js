@@ -17,7 +17,7 @@ Roo.onReady(function(){
                 ['AK', 'Alaska'],
                 ['AZ', 'Arizona'],
                 ['AR', 'Arkansas']
-            ],
+            ]],
             ['AR', 'Arkansas']
                            
         ]],
