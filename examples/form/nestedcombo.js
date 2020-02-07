@@ -156,7 +156,7 @@ Roo.onReady(function(){
 
     mform.render('form-ct5');
     combo = mform.findField('states');
-    cats = mform.findField('states_list');
+    cats = mform.findField('supplier_category_id');
    /* mform.setValues({
         states : '["AK","AZ"]',
         states_list : "Alaska, Arizona"
