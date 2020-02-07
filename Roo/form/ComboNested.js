@@ -188,11 +188,13 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
             // only adjust heights on other ones..
             if (i < 1) {
+                
                 el.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
                 il.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
+                mh = Math.max(el.getHeight(), mh);
             }
             
-            mh = Math.max(el.getHeight(), mh);
+            
         }, this);
         
         this.list.beginUpdate();
