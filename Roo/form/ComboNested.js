@@ -168,7 +168,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         //view.on('click', this.onViewClick, this, { list : i });
 
         store.on('beforeload', this.onBeforeLoad, this);
-        store.on('load', this.onLoad, this);
+        store.on('load', i > 0 ? this.onSubLoad : this.onLoad, this);
         store.on('loadexception', this.onLoadException, this);
 
           
