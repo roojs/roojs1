@@ -1088,14 +1088,16 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
  * Small helper class to make creating Stores from Array data easier.
  * @cfg {Number} id The array index of the record id. Leave blank to auto generate ids.
  * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @cfg {Object} an existing reader (eg. copied from another store)
  * @cfg {Array} data The multi-dimensional array of data
  * @constructor
  * @param {Object} config
  */
-Roo.data.SimpleStore = function(config){
+Roo.data.SimpleStore = function(config)
+{
     Roo.data.SimpleStore.superclass.constructor.call(this, {
         isLocal : true,
-        reader: new Roo.data.ArrayReader({
+        reader: typeof(config.reader) != 'undefined' ? config.reader : new Roo.data.ArrayReader({
                 id: config.id
             },
             Roo.data.Record.create(config.fields)

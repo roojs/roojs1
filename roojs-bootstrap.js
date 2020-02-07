@@ -492,8 +492,8 @@ this.fireEvent("update",this,A,Roo.data.Record.COMMIT);},commitChanges:function(
 i<A;i++){m[i].reject();}},onMetaChange:function(A,B,o){this.recordType=B;this.fields=B.prototype.fields;delete this.snapshot;this.sortInfo=A.sortInfo||this.sortInfo;this.modified=[];this.fireEvent('metachange',this,this.reader.meta);},moveIndex:function(A,B){var C=this.indexOf(A);
 var D=C+B;this.remove(A);this.insert(D,A);}});
 // Roo/data/SimpleStore.js
-Roo.data.SimpleStore=function(A){Roo.data.SimpleStore.superclass.constructor.call(this,{isLocal:true,reader:new Roo.data.ArrayReader({id:A.id},Roo.data.Record.create(A.fields)),proxy:new Roo.data.MemoryProxy(A.data)});this.load();};Roo.extend(Roo.data.SimpleStore,Roo.data.Store);
-
+Roo.data.SimpleStore=function(A){Roo.data.SimpleStore.superclass.constructor.call(this,{isLocal:true,reader:typeof(A.reader)!='undefined'?A.reader:new Roo.data.ArrayReader({id:A.id},Roo.data.Record.create(A.fields)),proxy:new Roo.data.MemoryProxy(A.data)});
+this.load();};Roo.extend(Roo.data.SimpleStore,Roo.data.Store);
 // Roo/data/JsonStore.js
 Roo.data.JsonStore=function(c){Roo.data.JsonStore.superclass.constructor.call(this,Roo.apply(c,{proxy:!c.data?new Roo.data.HttpProxy({url:c.url}):undefined,reader:new Roo.data.JsonReader(c,c.fields)}));};Roo.extend(Roo.data.JsonStore,Roo.data.Store);
 // Roo/data/Field.js
