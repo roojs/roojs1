@@ -42852,7 +42852,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         //view.on('click', this.onViewClick, this, { list : i });
 
         store.on('beforeload', this.onBeforeLoad, this);
-        store.on('load',  this.onStoreLoad, this, { list  : i});
+        store.on('load',  this.onLoad, this, { list  : i});
         store.on('loadexception', this.onLoadException, this);
 
         // hide the other vies..
@@ -42923,10 +42923,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     
         //this.el.focus();
     },
-    onStoreLoad : function ()
-    {
-        Roo.log(arguments);
-    },
+    
     
     // private
     onLoadException : function()
