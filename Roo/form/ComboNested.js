@@ -161,7 +161,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         view.getEl().setStyle({
             position: i < 1 ? 'relative' : 'absolute',
             top: 0,
-            left: (i * lw ) + 'px'           
+            left: (i * lw ) + 'px',
+            display : i > 0 ? 'none' : 'block'
         });
         view.on('selectionchange', this.onSelectChange, this, {list : i });
         
@@ -171,7 +172,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         store.on('load',  this.onStoreLoad, this, { list  : i});
         store.on('loadexception', this.onLoadException, this);
 
-          
+        // hide the other vies..
         
         
         
