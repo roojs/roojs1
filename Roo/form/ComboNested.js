@@ -131,7 +131,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     {
         
         var lw = Math.floor(
-                ((this.listWidth || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / 3
+                ((this.listWidth * 3 || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / 3
         );
         
         this.list.setWidth(lw); // default to '1'
@@ -284,7 +284,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.setFromData(rec.data)
         
         var lw = Math.floor(
-                ((this.listWidth || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / 3
+                ((this.listWidth * 3 || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / 3
         );
         
         this.stores[opts.list+1].loadData( typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn);
