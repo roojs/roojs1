@@ -158,7 +158,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             }
         );
         view.getEl().setWidth(lw);
-        view.getEl().css({
+        view.getEl().setStyle({
             position: i < 1 ? 'relative' : 'absolute',
             top: 0,
             left: i * lw            
