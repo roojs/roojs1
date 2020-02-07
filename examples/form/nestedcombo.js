@@ -13,7 +13,11 @@ Roo.onReady(function(){
       sampledata  = [
         ['A', 'A states', [
             ['AK', 'Alaska'],
-            ['AZ', 'Arizona'],
+            ['AZ', 'Arizona', [
+                ['AK', 'Alaska'],
+                ['AZ', 'Arizona'],
+                ['AR', 'Arkansas']
+            ],
             ['AR', 'Arkansas']
                            
         ]],
