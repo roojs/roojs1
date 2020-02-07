@@ -263,6 +263,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
         this.stores[opts.list+1].loadData( typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn);
         this.views[opts.list+1].getEl().setHeight( this.innerLists[0].getHeight());
+        this.views[opts.list+1].getEl().setStyle({ display : rec.data.cn.length ? 'block' : 'none' });
         this.innerLists[opts.list+1].setHeight( this.innerLists[0].getHeight());        
     }
     
