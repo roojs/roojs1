@@ -45,6 +45,7 @@ Roo.data.DataReader.prototype = {
             
         });
         return new this.recordType(Roo.apply(da, d));
-    }
+    },
+    
     
 };
