@@ -36,7 +36,8 @@ Roo.onReady(function(){
             ['ILA', 'Illinois'],
             ['INA', 'Indiana'],
             ['IAA', 'Iowa']
-        ]]
+        ]],
+        ['E', 'Empty states', []],
     ];
     /*
      * ================  Form 2  =======================
