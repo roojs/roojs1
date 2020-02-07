@@ -16805,7 +16805,11 @@ Roo.Markdown.toHtml = function(text) {
 //
 (function() {
     
-    
+     /**
+         * eval:var:escape
+         * eval:var:unescape
+         * eval:var:replace
+         */
       
     /**
      * Helpers
