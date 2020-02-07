@@ -236,7 +236,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         Roo.log(ix);
         var rec = view.store.getAt(ix);
         Roo.log(rec);
-        if (i > 2) {
+        if (opts.list > 2) {
             return;
         }
         this.stores[opts.list+1].loadData( typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn);
