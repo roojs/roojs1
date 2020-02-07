@@ -148,11 +148,15 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
                 
         
         
-        var view = this.views[i] = new Roo.View(il, this.tpl, {
-            singleSelect:true,
-            store: store,
-            selectedClass: this.selectedClass
-        });
+        var view = this.views[i] = new Roo.View(
+            il,
+            this.tpl,
+            {
+                singleSelect:true,
+                store: store,
+                selectedClass: this.selectedClass
+            }
+        );
         view.getEl().setWidth(lw);
         
         view.on('selectionchange', this.onSelectChange, this);
