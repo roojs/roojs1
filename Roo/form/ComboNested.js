@@ -100,9 +100,16 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.footer = this.list.createChild({cls:cls+'-ft'});
         this.pageTb = new Roo.Toolbar(this.footer);  
         
-       
+        this.pageTb.add(new Roo.Toolbar.Fill(), {
+            
+            text: 'Done',
+            handler: function()
+            {
+                _t.collapse();
+            }
+        });
         
-        if (this.pageTb && this.allowBlank && !this.disableClear) {
+        if ( this.allowBlank && !this.disableClear) {
             var _this = this;
             this.pageTb.add(new Roo.Toolbar.Fill(), {
                 cls: 'x-btn-icon x-btn-clear',
