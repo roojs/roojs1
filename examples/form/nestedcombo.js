@@ -85,7 +85,69 @@ Roo.onReady(function(){
                         
                     }
                 }
-          }
+          },
+          
+           {
+            xtype : 'ComboNested',
+            allowBlank : true,
+            alwaysQuery : true,
+            displayField : 'fullpath',
+            editable : false,
+            emptyText : 'Category',
+            fieldLabel : 'Category',
+            forceSelection : true,
+            hiddenName : 'supplier_category_id',
+            listWidth : 500,
+            loadingText : 'Searching',
+            minChars : 2,
+            name : 'supplier_category_id_name',
+            pageSize : 999,
+            qtip : 'Category',
+            queryParam : 'query[fullpath]',
+            selectOnFocus : true,
+            triggerAction : 'all',
+            typeAhead : true,
+            valueField : 'id',
+            width : 260,
+            listeners : {
+             select : function (combo, record, index)
+              {
+                  _this.grid.footer.onClick('first');
+              }
+            },
+            xns : Roo.form,
+            '|xns' : 'Roo.form',
+            store : {
+             xtype : 'Store',
+             remoteSort : true,
+             sortInfo : { direction : 'ASC', field: 'fullpath' },
+             listeners : {
+              beforeload : function (_self, o){
+                   o.params = o.params || {};
+                   // set more here
+               }
+             },
+             xns : Roo.data,
+             '|xns' : 'Roo.data',
+             proxy : {
+              xtype : 'HttpProxy',
+              method : 'GET',
+              url : '/web.Texon/admin.php/Roo/category.php',
+              xns : Roo.data,
+              '|xns' : 'Roo.data'
+             },
+             reader : {
+              xtype : 'JsonReader',
+              fields : [{"name":"id","type":"int"},{"name":"fullpath","type":"string"}],
+              id : 'id',
+              root : 'data',
+              totalProperty : 'total',
+              xns : Roo.data,
+              '|xns' : 'Roo.data'
+             }
+            }
+           },
+          
 
             
         ]
