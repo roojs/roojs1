@@ -296,12 +296,12 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         var lw = Math.floor(
                 ((this.listWidth * 3 || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / 3
         );
-        
-        this.stores[opts.list+1].loadData( typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn);
+        var data =  typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn;
+        this.stores[opts.list+1].loadData( data );
         this.views[opts.list+1].getEl().setHeight( this.innerLists[0].getHeight());
-        this.views[opts.list+1].getEl().setStyle({ display : rec.data.cn.length ? 'block' : 'none' });
+        this.views[opts.list+1].getEl().setStyle({ display : data .length ? 'block' : 'none' });
         this.innerLists[opts.list+1].setHeight( this.innerLists[0].getHeight());
-        this.list.setWidth(lw * (opts.list + (rec.data.cn.length ? 2 : 1))); 
+        this.list.setWidth(lw * (opts.list + (data.length ? 2 : 1))); 
     },
     onDoubleClick : function()
     {
