@@ -244,7 +244,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         Roo.log(rec);
         
         this.stores[opts.list+1].loadData( typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn);
-        
+        this.innerLists[opts.list+1].setHeight( this.innerLists[0].getHeight());
     }
     
     
