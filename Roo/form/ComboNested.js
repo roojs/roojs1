@@ -158,7 +158,11 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             }
         );
         view.getEl().setWidth(lw);
-        
+        view.getEl().set({
+            position: i < 1 ? 'relative' : 'absolute',
+            top: 0,
+            left: i * w            
+        });
         view.on('selectionchange', this.onSelectChange, this);
         
         //view.on('click', this.onViewClick, this, { list : i });
