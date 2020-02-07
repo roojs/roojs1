@@ -89,6 +89,34 @@ Roo.Markdown.toHtml = function(text) {
         return self;
       };
     }
+
+
+         /**
+         * eval:var:noop
+    */
+    var noop = function () {}
+    noop.exec = noop;
+    
+         /**
+         * eval:var:merge
+    */
+    var merge = function (obj) {
+      var i = 1
+        , target
+        , key;
+    
+      for (; i < arguments.length; i++) {
+        target = arguments[i];
+        for (key in target) {
+          if (Object.prototype.hasOwnProperty.call(target, key)) {
+            obj[key] = target[key];
+          }
+        }
+      }
+    
+      return obj;
+    }
+    
     
     /**
      * Block-Level Grammar
@@ -1177,32 +1205,6 @@ Roo.Markdown.toHtml = function(text) {
       }
     };
   
-         /**
-         * eval:var:noop
-    */
-    var noop = function () {}
-    noop.exec = noop;
-    
-         /**
-         * eval:var:merge
-    */
-    var merge = function (obj) {
-      var i = 1
-        , target
-        , key;
-    
-      for (; i < arguments.length; i++) {
-        target = arguments[i];
-        for (key in target) {
-          if (Object.prototype.hasOwnProperty.call(target, key)) {
-            obj[key] = target[key];
-          }
-        }
-      }
-    
-      return obj;
-    }
-    
     
     /**
      * Marked
