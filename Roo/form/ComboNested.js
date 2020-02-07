@@ -136,7 +136,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         il.setStyle({ 'overflow-x' : 'hidden'});
 
         if(!this.tpl){
-            this.tpl = '<div class="'+cls+'-item">{' + this.displayField + '}</div>';
+            this.tpl = '<div class="'+cls+'-item '+cls+'-item-{cnlength}">{' + this.displayField + '}</div>';
         }
         
         var store  = this.store;
