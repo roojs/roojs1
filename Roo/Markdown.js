@@ -844,6 +844,10 @@ Roo.Markdown.toHtml = function(text) {
      * Renderer
      */
     
+     /**
+         * eval:var:Renderer
+    */
+    
     var Renderer   = function (options) {
       this.options = options || {};
     }
@@ -993,6 +997,9 @@ Roo.Markdown.toHtml = function(text) {
     /**
      * Parsing & Compiling
      */
+         /**
+         * eval:var:Parser
+    */
     
     var Parser= function (options) {
       this.tokens = [];
@@ -1170,10 +1177,15 @@ Roo.Markdown.toHtml = function(text) {
       }
     };
   
-    
+         /**
+         * eval:var:noop
+    */
     var noop = function () {}
     noop.exec = noop;
     
+         /**
+         * eval:var:merge
+    */
     var merge = function (obj) {
       var i = 1
         , target
