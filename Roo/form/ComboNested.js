@@ -221,11 +221,12 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         } else {
             this.onEmptyResults();
         }
+        /*
         this.stores[1].loadData([]);
         this.stores[2].loadData([]);
         this.views
-        
-        
+        */    
+    
         //this.el.focus();
     },
     onSubLoad : function ()
