@@ -72,7 +72,7 @@ Roo.onReady(function(){
                     data : sampledata// from states.js
                    
                 },
-                listWidth: 400,
+                listWidth: 250,
                 typeAhead: true,
                 mode: 'local',
                 triggerAction: 'all',
