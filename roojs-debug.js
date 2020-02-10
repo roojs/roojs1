@@ -24693,7 +24693,7 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
     loadDataFromChildren: function(rec)
     {
 	// expect rec just to be an array.. eg [a,b,c, [...] << cn ]
-	return this.loadData(typeof(rec.data.cn) == 'undefined' ? '' : rec.data.cn);
+	return this.loadData(typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn);
 	
     }
     
