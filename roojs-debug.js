@@ -42985,7 +42985,6 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         var ix = view.getSelectedIndexes();
          
         if (opts.list > this.maxColumns - 2) {
-             
             this.setFromData(ix.length ? view.store.getAt(ix[0]).data : {});
             return;
         }
@@ -43017,8 +43016,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         if (this.isLoading) {
             this.selectActive(opts.list);
         }
-        
-        
+         
     },
     onDoubleClick : function()
     {
@@ -43094,9 +43092,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
                 var cret = _this.findRecordInStore(cstore, prop, value);
                 if (cret !== false) {
                     var ix = store.getIndexOf(r);
-                    this.views[lvl].select(ix, false, true); // will not trigger select change..
-                    this.store.loadDataFromChildren(r); // will trigger load.
-                    this.selectActive(lvl+1);
+                    this.views[lvl].select(ix, false, false); // will trigger select change..
                     return false;
                 }
             }
