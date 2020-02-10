@@ -97,7 +97,7 @@ Roo.onReady(function(){
             fieldLabel : 'Category',
             forceSelection : true,
             hiddenName : 'supplier_category_id',
-            listWidth : 500,
+            listWidth : 200,
             loadingText : 'Searching',
             minChars : 2,
             name : 'supplier_category_id_name',
