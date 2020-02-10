@@ -292,7 +292,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         if (!ix.length) {
             this.setFromData({});
             var str = this.stores[opts.list+1];
-            str.loadData( str.reader.readerType == 'json' ? { data : [] } : [] );
+            str.removeAll();
             return;
         }
         
