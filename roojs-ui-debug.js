@@ -20558,28 +20558,58 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         });
         var _this = this;
         var record  = false;
-        if(store.getCount() > 0){
-           store.each(function(r){
-                if(r.data[prop] == value){
-                    record = r;
+        if(store.getCount() < 1){
+            return false;
+        }
+        store.each(function(r){
+            if(r.data[prop] == value){
+                record = r;
+                return false;
+            }
+            if (r.data.cn && r.data.cn.length) {
+                cstore.loadDataFromChildren( r);
+                var cret = _this.findRecordInStore(cstore, prop, value);
+                if (cret !== false) {
+                    record = cret;
                     return false;
                 }
-                if (r.data.cn && r.data.cn.length) {
-                    cstore.loadDataFromChildren( r);
-                    var cret = _this.findRecordInStore(cstore, prop, value);
-                    if (cret !== false) {
-                        record = cret;
-                        return false;
-                    }
-                }
-                
-                return true;
-            });
-        }
+            }
+             
+            return true;
+        });
+        
         return record;
     },
     
-    function selectActive()
+    
+    
+    selectActive : function (lvl)
+    {
+        // just need to determine which of the current level is selected if any..
+        var value = this.getValue();
+        var prop = this.hiddenName;
+        var store = this.stores[lvl];
+        if(store.getCount() < 1){
+            return;
+        }
+        store.each(function(r){
+            if(r.data[prop] == value){
+                 record = r;
+                 return false;
+            }
+             if (r.data.cn && r.data.cn.length) {
+                 cstore.loadDataFromChildren( r);
+                 var cret = _this.findRecordInStore(cstore, prop, value);
+                 if (cret !== false) {
+                     record = cret;
+                     return false;
+                 }
+             }
+             
+             return true;
+        });
+        
+    }
     
     
     

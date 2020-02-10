@@ -342,20 +342,20 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             return false;
         }
         store.each(function(r){
-             if(r.data[prop] == value){
-                 record = r;
-                 return false;
-             }
-             if (r.data.cn && r.data.cn.length) {
+            if(r.data[prop] == value){
+                record = r;
+                return false;
+            }
+            if (r.data.cn && r.data.cn.length) {
                 cstore.loadDataFromChildren( r);
                 var cret = _this.findRecordInStore(cstore, prop, value);
                 if (cret !== false) {
                     record = cret;
                     return false;
                 }
-             }
+            }
              
-             return true;
+            return true;
         });
         
         return record;
