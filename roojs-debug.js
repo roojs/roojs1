@@ -42814,7 +42814,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             this.tpl = new Roo.Template({
                 html :  '<div class="'+cls+'-item '+cls+'-item-{cn:this.isEmpty}">{' + this.displayField + '}</div>',
                 isEmpty: function (value, allValues) {
-                    return value && value.length ? 'has-children' : 'no-children'
+                    var dl = typeof(value.data) != 'undefined' ? value.data.total : value.length; ///json is a nested response..
+                    return dl ? 'has-children' : 'no-children'
                 }
             });
         }
@@ -42963,7 +42964,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
                 ((this.listWidth * 3 || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / 3
         );
         var data =  typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn;
-        var dl = typeof(data.data.cn) ? data.data.total : data.length; ///json is a nested response..
+        var dl = typeof(data.data.cn) != 'undefined' ? data.data.total : data.length; ///json is a nested response..
         this.stores[opts.list+1].loadData( data );
         this.views[opts.list+1].getEl().setHeight( this.innerLists[0].getHeight());
         this.views[opts.list+1].getEl().setStyle({ display : dl ? 'block' : 'none' });
