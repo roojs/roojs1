@@ -372,6 +372,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         var value = this.getValue();
         var prop = this.hiddenName;
         var store = this.stores[lvl];
+        var _this = this;
+        
         if(store.getCount() < 1){
             return;
         }
@@ -380,7 +382,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             // selected is at this level
             if(r.data[prop] == value){
                 var ix = store.getIndexOf(r);
-                this.views[lvl].select(ix, false, true); // do not trigger set active..
+                _this.views[lvl].select(ix, false, true); // do not trigger set active..
+                _this.loading 
                 return false;
             }
             
@@ -389,7 +392,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
                 var cret = _this.findRecordInStore(cstore, prop, value);
                 if (cret !== false) {
                     var ix = store.getIndexOf(r);
-                    this.views[lvl].select(ix, false, false); // will trigger select change..
+                    _this.views[lvl].select(ix, false, false); // will trigger select change..
                     return false;
                 }
             }
