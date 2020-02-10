@@ -27,6 +27,9 @@ Roo.data.DataReader = function(meta, recordType){
 };
 
 Roo.data.DataReader.prototype = {
+    
+    
+    readerType : 'Data',
      /**
      * Create an empty record
      * @param {Object} data (optional) - overlay some values
@@ -45,7 +48,7 @@ Roo.data.DataReader.prototype = {
             
         });
         return new this.recordType(Roo.apply(da, d));
-    },
+    }
     
     
 };

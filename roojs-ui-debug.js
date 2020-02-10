@@ -1274,6 +1274,9 @@ Roo.data.DataReader = function(meta, recordType){
 };
 
 Roo.data.DataReader.prototype = {
+    
+    
+    readerType : 'Data',
      /**
      * Create an empty record
      * @param {Object} data (optional) - overlay some values
@@ -1832,6 +1835,8 @@ Roo.data.JsonReader = function(meta, recordType){
     Roo.data.JsonReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
+    
+    readerType : 'Json',
     
     /**
      * @prop {Boolean} metaFromRemote  - if the meta data was loaded from the remote source.

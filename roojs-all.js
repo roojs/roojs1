@@ -918,7 +918,7 @@ break;case "date":this.sortType=st.asDate;break;default:this.sortType=st.none;}}
 };break;case "date":cv=function(v){if(!v){return '';}if(v instanceof Date){return v;}if(C){if(C=="timestamp"){return new Date(v*1000);}return Date.parseDate(v,C);}var D=Date.parse(v);return D?new Date(D):null;};break;}this.convert=cv;}};Roo.data.Field.prototype={dateFormat:null,defaultValue:"",mapping:null,sortType:null,sortDir:"ASC"}
 ;
 // Roo/data/DataReader.js
-Roo.data.DataReader=function(A,B){this.meta=A;this.recordType=B instanceof Array?Roo.data.Record.create(B):B;};Roo.data.DataReader.prototype={newRow:function(d){var da={};this.recordType.prototype.fields.each(function(c){switch(c.type){case 'int':da[c.name]=0;
+Roo.data.DataReader=function(A,B){this.meta=A;this.recordType=B instanceof Array?Roo.data.Record.create(B):B;};Roo.data.DataReader.prototype={readerType:'Data',newRow:function(d){var da={};this.recordType.prototype.fields.each(function(c){switch(c.type){case 'int':da[c.name]=0;
 break;case 'date':da[c.name]=new Date();break;case 'float':da[c.name]=0.0;break;case 'boolean':da[c.name]=false;break;default:da[c.name]="";break;}});return new this.recordType(Roo.apply(da,d));}};
 // Roo/data/DataProxy.js
 Roo.data.DataProxy=function(){this.addEvents({beforeload:true,load:true,loadexception:true});Roo.data.DataProxy.superclass.constructor.call(this);};Roo.extend(Roo.data.DataProxy,Roo.util.Observable);
@@ -939,7 +939,7 @@ J.setAttribute("type","text/javascript");J.setAttribute("id",H.scriptId);this.he
 }catch(e){}};}},handleResponse:function(o,A){this.trans=false;this.destroyTrans(A,true);var B;try{B=A.reader.readRecords(o);}catch(e){this.fireEvent("loadexception",this,o,A.arg,e);A.callback.call(A.scope||window,null,A.arg,false);return;}this.fireEvent("load",this,o,A.arg);
 A.callback.call(A.scope||window,B,A.arg,true);},handleFailure:function(A){this.trans=false;this.destroyTrans(A,false);this.fireEvent("loadexception",this,null,A.arg);A.callback.call(A.scope||window,null,A.arg,false);}});
 // Roo/data/JsonReader.js
-Roo.data.JsonReader=function(A,B){A=A||{};Roo.applyIf(A,{totalProperty:'total',successProperty:'success',root:'data',id:'id'});Roo.data.JsonReader.superclass.constructor.call(this,A,B||A.fields);};Roo.extend(Roo.data.JsonReader,Roo.data.DataReader,{metaFromRemote:false,read:function(A){var B=A.responseText;
+Roo.data.JsonReader=function(A,B){A=A||{};Roo.applyIf(A,{totalProperty:'total',successProperty:'success',root:'data',id:'id'});Roo.data.JsonReader.superclass.constructor.call(this,A,B||A.fields);};Roo.extend(Roo.data.JsonReader,Roo.data.DataReader,{readerType:'Json',metaFromRemote:false,read:function(A){var B=A.responseText;
 var o=eval("("+B+")");if(!o){throw {message:"JsonReader.read: Json object not found"};}if(o.metaData){delete this.ef;this.metaFromRemote=true;this.meta=o.metaData;this.recordType=Roo.data.Record.create(o.metaData.fields);this.onMetaChange(this.meta,this.recordType,o);
 }return this.readRecords(o);},onMetaChange:function(A,B,o){},simpleAccess:function(A,B){return A[B];},getJsonAccessor:function(){var re=/[\[\.]/;return function(A){try{return (re.test(A))?new Function("obj","return obj."+A):function(B){return B[A];};}catch(e){}
 return Roo.emptyFn;};}(),readRecords:function(o){this.o=o;var s=this.meta,A=this.recordType,f=A?A.prototype.fields:null,fi=f?f.items:[],fl=f?f.length:0;if(!this.ef){if(s.totalProperty){this.getTotal=this.getJsonAccessor(s.totalProperty);}if(s.successProperty){this.getSuccess=this.getJsonAccessor(s.successProperty);
