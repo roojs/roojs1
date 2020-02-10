@@ -42823,7 +42823,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         var store  = this.store;
         if (i > 0) {
             store  = new Roo.data.SimpleStore({
-                fields : this.store.reader.meta.fields,
+                reader : this.store.reader,
+                //fields : this.store.reader.meta.fields,
                 data : [ ]
             });
         }
