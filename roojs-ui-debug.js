@@ -20609,18 +20609,17 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
                 cstore.loadDataFromChildren( r);
                 var cret = _this.findRecordInStore(cstore, prop, value);
                 if (cret !== false) {
-                    record = r;
+                    var ix = store.getIndexOf(r);
+                    this.views[lvl].select(ix, false, true); // will not trigger select change..
+                    this.store.loadDataFromChildren(r); // will trigger load.
+                    this.selectActive(lvl+1);
                     return false;
                 }
             }
              
             return true;
         });
-        if (record !== false) {
-            var ix = store.getIndexOf(record);
-            this.views[lvl].function(ix, false, true); // will not trigger select change..
-        }
-        
+         
     }
     
     
