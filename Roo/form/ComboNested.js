@@ -146,7 +146,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             this.tpl = new Roo.Template({
                 html :  '<div class="'+cls+'-item '+cls+'-item-{cn:this.isEmpty}">{' + this.displayField + '}</div>',
                 isEmpty: function (value, allValues) {
-                    return value && value.length ? 'has-children' : 'no-children'
+                    var dl = typeof(value.data) != 'undefined' ? value.data.total : value.length; ///json is a nested response..
+                    return dl ? 'has-children' : 'no-children'
                 }
             });
         }
