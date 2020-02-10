@@ -85,7 +85,7 @@ j<K;j++){var f=D.items[j];var v=q.selectValue(f.mapping||f.name,n,f.defaultValue
 // Roo/data/ArrayReader.js
 Roo.data.ArrayReader=function(A,B){Roo.data.ArrayReader.superclass.constructor.call(this,A,B||A.fields);};Roo.extend(Roo.data.ArrayReader,Roo.data.JsonReader,{readRecords:function(o){var A=this.meta?this.meta.id:null;var B=this.recordType,C=B.prototype.fields;
 var D=[];var E=o;for(var i=0;i<E.length;i++){var n=E[i];var F={};var id=((A||A===0)&&n[A]!==undefined&&n[A]!==""?n[A]:null);for(var j=0,G=C.length;j<G;j++){var f=C.items[j];var k=f.mapping!==undefined&&f.mapping!==null?f.mapping:j;var v=n[k]!==undefined?n[k]:f.defaultValue;
-v=f.convert(v);F[f.name]=v;}var H=new B(F,id);H.json=n;D[D.length]=H;}return {records:D,totalRecords:D.length};},loadDataFromChildren:function(A){return this.loadData(A.data.cn);}});
+v=f.convert(v);F[f.name]=v;}var H=new B(F,id);H.json=n;D[D.length]=H;}return {records:D,totalRecords:D.length};},loadDataFromChildren:function(A){return this.loadData(typeof(A.data.cn)=='undefined'?'':A.data.cn);}});
 // Roo/data/Tree.js
 Roo.data.Tree=function(A){this.nodeHash={};this.root=null;if(A){this.setRootNode(A);}this.addEvents({"append":true,"remove":true,"move":true,"insert":true,"beforeappend":true,"beforeremove":true,"beforemove":true,"beforeinsert":true});Roo.data.Tree.superclass.constructor.call(this);
 };Roo.extend(Roo.data.Tree,Roo.util.Observable,{pathSeparator:"/",proxyNodeEvent:function(){return this.fireEvent.apply(this,arguments);},getRootNode:function(){return this.root;},setRootNode:function(A){this.root=A;A.ownerTree=this;A.isRoot=true;this.registerNode(A);
