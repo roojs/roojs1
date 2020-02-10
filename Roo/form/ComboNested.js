@@ -154,7 +154,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         var store  = this.store;
         if (i > 0) {
             store  = new Roo.data.SimpleStore({
-                fields : this.store.reader.meta.fields,
+                //fields : this.store.reader.meta.fields,
+                reader : this.store.reader,
                 data : [ ]
             });
         }
@@ -316,7 +317,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     findRecordInStore : function(store, prop, value)
     {
         var cstore = new Roo.data.SimpleStore({
-            fields : this.store.reader.meta.fields, // we need array reader.. for 
+            //fields : this.store.reader.meta.fields, // we need array reader.. for
+            reader : this.store.reader,
             data : [ ]
         });
         var _this = this;
