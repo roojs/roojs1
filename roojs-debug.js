@@ -24533,6 +24533,9 @@ Roo.data.XmlReader = function(meta, recordType){
     Roo.data.XmlReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 Roo.extend(Roo.data.XmlReader, Roo.data.DataReader, {
+    
+    readerType : 'Xml',
+    
     /**
      * This method is only used by a DataProxy which has retrieved data from a remote server.
 	 * @param {Object} response The XHR object which contains the parsed XML document.  The response is expected
@@ -24650,6 +24653,8 @@ Roo.data.ArrayReader = function(meta, recordType)
 };
 
 Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
+    
+    readerType : 'Array',
     /**
      * Create a data block containing Roo.data.Records from an XML document.
      * @param {Object} o An Array of row objects which represents the dataset.

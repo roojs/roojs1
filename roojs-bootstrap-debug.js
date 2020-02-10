@@ -13075,6 +13075,8 @@ Roo.data.ArrayReader = function(meta, recordType)
 };
 
 Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
+    
+    readerType : 'Array',
     /**
      * Create a data block containing Roo.data.Records from an XML document.
      * @param {Object} o An Array of row objects which represents the dataset.

@@ -948,12 +948,12 @@ jj<fl;jj++){f=fi[jj];var B=(f.mapping!==undefined&&f.mapping!==null)?f.mapping:f
 if(vs===false||vs==='false'){E=false;}}var F=[];for(var i=0;i<c;i++){var n=C[i];var G={};var id=this.getId(n);for(var j=0;j<fl;j++){f=fi[j];var v=this.ef[j](n);if(!f.convert){Roo.log('missing convert for '+f.name);Roo.log(f);continue;}G[f.name]=f.convert((v!==undefined)?v:f.defaultValue);
 }var H=new A(G,id);H.json=n;F[i]=H;}return {raw:o,success:E,records:F,totalRecords:D};}});
 // Roo/data/XmlReader.js
-Roo.data.XmlReader=function(A,B){A=A||{};Roo.data.XmlReader.superclass.constructor.call(this,A,B||A.fields);};Roo.extend(Roo.data.XmlReader,Roo.data.DataReader,{read:function(A){var B=A.responseXML;if(!B){throw {message:"XmlReader.read: XML Document not available"}
+Roo.data.XmlReader=function(A,B){A=A||{};Roo.data.XmlReader.superclass.constructor.call(this,A,B||A.fields);};Roo.extend(Roo.data.XmlReader,Roo.data.DataReader,{readerType:'Xml',read:function(A){var B=A.responseXML;if(!B){throw {message:"XmlReader.read: XML Document not available"}
 ;}return this.readRecords(B);},readRecords:function(A){this.xmlData=A;var B=A.documentElement||A;var q=Roo.DomQuery;var C=this.recordType,D=C.prototype.fields;var E=this.meta.id;var F=0,G=true;if(this.meta.totalRecords){F=q.selectNumber(this.meta.totalRecords,B,0);
 }if(this.meta.success){var sv=q.selectValue(this.meta.success,B,true);G=sv!==false&&sv!=='false';}var H=[];var ns=q.select(this.meta.record,B);for(var i=0,I=ns.length;i<I;i++){var n=ns[i];var J={};var id=E?q.selectValue(E,n):undefined;for(var j=0,K=D.length;
 j<K;j++){var f=D.items[j];var v=q.selectValue(f.mapping||f.name,n,f.defaultValue);v=f.convert(v);J[f.name]=v;}var L=new C(J,id);L.node=n;H[H.length]=L;}return {success:G,records:H,totalRecords:F||H.length};}});
 // Roo/data/ArrayReader.js
-Roo.data.ArrayReader=function(A,B){Roo.data.ArrayReader.superclass.constructor.call(this,A,B||A.fields);};Roo.extend(Roo.data.ArrayReader,Roo.data.JsonReader,{readRecords:function(o){var A=this.meta?this.meta.id:null;var B=this.recordType,C=B.prototype.fields;
+Roo.data.ArrayReader=function(A,B){Roo.data.ArrayReader.superclass.constructor.call(this,A,B||A.fields);};Roo.extend(Roo.data.ArrayReader,Roo.data.JsonReader,{readerType:'Array',readRecords:function(o){var A=this.meta?this.meta.id:null;var B=this.recordType,C=B.prototype.fields;
 var D=[];var E=o;for(var i=0;i<E.length;i++){var n=E[i];var F={};var id=((A||A===0)&&n[A]!==undefined&&n[A]!==""?n[A]:null);for(var j=0,G=C.length;j<G;j++){var f=C.items[j];var k=f.mapping!==undefined&&f.mapping!==null?f.mapping:j;var v=n[k]!==undefined?n[k]:f.defaultValue;
 v=f.convert(v);F[f.name]=v;}var H=new B(F,id);H.json=n;D[D.length]=H;}return {records:D,totalRecords:D.length};}});
 // Roo/data/Tree.js
