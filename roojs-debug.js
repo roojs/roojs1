@@ -23581,7 +23581,7 @@ Roo.data.SimpleStore = function(config)
 {
     Roo.data.SimpleStore.superclass.constructor.call(this, {
         isLocal : true,
-        reader: typeof(config.reader) != 'undefined' ? config.reader : new Roo.data.ArrayReader({
+        reader:  new Roo.data.ArrayReader({
                 id: config.id,
                 fields : config.fields
             },
