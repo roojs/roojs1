@@ -20595,16 +20595,17 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         if(store.getCount() < 1){
             return;
         }
-        var record = false;
+        
         store.each(function(r){
             // selected is at this level
             if(r.data[prop] == value){
-                record = r;
+                var ix = store.getIndexOf(r);
+                this.views[lvl].select(ix, false, true);
                 return false;
             }
             
             if (r.data.cn && r.data.cn.length) {
-                cstore.loadDataFromChildren( r);
+                cstore.loadDataFromChildren(r);
                 var cret = _this.findRecordInStore(cstore, prop, value);
                 if (cret !== false) {
                     var ix = store.getIndexOf(r);

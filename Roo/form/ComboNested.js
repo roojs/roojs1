@@ -380,7 +380,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             // selected is at this level
             if(r.data[prop] == value){
                 var ix = store.getIndexOf(r);
-                this.views[lvl].select(ix, false, true);
+                this.views[lvl].select(ix, false, true); // do not trigger set active..
                 return false;
             }
             
