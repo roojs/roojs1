@@ -67,6 +67,8 @@ Roo.data.JsonReader = function(meta, recordType){
 };
 Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
     
+    readerType : 'Json',
+    
     /**
      * @prop {Boolean} metaFromRemote  - if the meta data was loaded from the remote source.
      * Used by Store query builder to append _requestMeta to params.
