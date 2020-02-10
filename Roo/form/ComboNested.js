@@ -97,7 +97,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.innerLists = [];
         this.views = [];
         this.stores = [];
-        for (var i =0 ; i < 3; i++) {
+        for (var i =0 ; i < this.maxColumns; i++) {
             this.onRenderList( cls, i);
         }
         
