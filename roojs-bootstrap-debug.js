@@ -11832,7 +11832,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      */
     loadDataFromChildren : function(rec)
     {
-        
+        this.loadData(this.reader.toLoadData(rec));
     },
     
 
