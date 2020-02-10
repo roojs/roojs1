@@ -23268,6 +23268,13 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         var r = this.reader.readRecords(o);
         this.loadRecords(r, {add: append}, true);
     },
+    
+    
+    loadDataFromChildren : function(rec)
+    {
+        
+    },
+    
 
     /**
      * Gets the number of cached records.

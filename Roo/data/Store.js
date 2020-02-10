@@ -451,7 +451,10 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         this.loadRecords(r, {add: append}, true);
     },
     
-    
+     /**
+     * using 'cn' the nested child reader read the child array into it's child stores.
+     * @param {Object} rec The record with a 'children array
+     */
     loadDataFromChildren : function(rec)
     {
         

@@ -11825,6 +11825,16 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         var r = this.reader.readRecords(o);
         this.loadRecords(r, {add: append}, true);
     },
+    
+     /**
+     * using 'cn' the nested child reader read the child array into it's child stores.
+     * @param {Object} rec The record with a 'children array
+     */
+    loadDataFromChildren : function(rec)
+    {
+        
+    },
+    
 
     /**
      * Gets the number of cached records.
