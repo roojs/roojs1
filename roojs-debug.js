@@ -42804,7 +42804,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     {
         
         var lw = Math.floor(
-                ((this.listWidth * 3 || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / 3
+                ((this.listWidth * this.maxColumns || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / this.maxColumns
         );
         
         this.list.setWidth(lw); // default to '1'
@@ -42967,7 +42967,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.setFromData(rec.data);
         
         var lw = Math.floor(
-                ((this.listWidth * 3 || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / 3
+                ((this.listWidth * this.maxColumns || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / this.maxColumns
         );
         var data =  typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn;
         var dl = typeof(data.data) != 'undefined' ? data.total : data.length; ///json is a nested response..
