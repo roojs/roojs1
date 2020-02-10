@@ -13076,8 +13076,7 @@ Roo.data.ArrayReader = function(meta, recordType)
 
 Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
     
-    readerType : 'Array',
-    /**
+      /**
      * Create a data block containing Roo.data.Records from an XML document.
      * @param {Object} o An Array of row objects which represents the dataset.
      * @return {Object} A data block which is used by an {@link Roo.data.Store} object as
@@ -13108,7 +13107,19 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
 	    records : records,
 	    totalRecords : records.length
 	};
+    },
+    /**
+     * using 'cn' the nested child reader read the child array into it's child stores.
+     *
+     */
+    loadDataFromChildren: function(rec)
+    {
+	// expect rec just to be an array.. eg [a,b,c, [...] << cn ]
+	return this.loadData(rec.data.cn);
+	
     }
+    
+    
 });/*
  * - LGPL
  * * 
