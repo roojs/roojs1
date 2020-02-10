@@ -47,6 +47,11 @@ Roo.form.ComboNested = function(config){
 
 Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
    
+    /*
+     * @config {Number} max Number of columns to show
+     */
+    
+    maxColumns : 3,
    
     list : null, // the outermost div..
     innerLists : null, // the
