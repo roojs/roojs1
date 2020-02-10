@@ -365,6 +365,11 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     
     selectActive : function (lvl)
     {
+        var cstore = new Roo.data.SimpleStore({
+            //fields : this.store.reader.meta.fields, // we need array reader.. for
+            reader : this.store.reader,
+            data : [ ]
+        });
         // just need to determine which of the current level is selected if any..
         var value = this.getValue();
         var prop = this.hiddenName;
@@ -372,22 +377,29 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         if(store.getCount() < 1){
             return;
         }
+        var record = false;
         store.each(function(r){
+            // selected is at this level
             if(r.data[prop] == value){
-                 record = r;
-                 return false;
+                record = r;
+                return false;
             }
-             if (r.data.cn && r.data.cn.length) {
-                 cstore.loadDataFromChildren( r);
-                 var cret = _this.findRecordInStore(cstore, prop, value);
-                 if (cret !== false) {
-                     record = cret;
-                     return false;
-                 }
-             }
+            
+            if (r.data.cn && r.data.cn.length) {
+                cstore.loadDataFromChildren( r);
+                var cret = _this.findRecordInStore(cstore, prop, value);
+                if (cret !== false) {
+                    record = r;
+                    return false;
+                }
+            }
              
-             return true;
+            return true;
         });
+        if (record !== false) {
+            var ix = store.getIndexOf(record);
+            this.views[lvl].function(ix, false, true); // will not trigger select change..
+        }
         
     }
     
