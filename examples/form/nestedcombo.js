@@ -124,6 +124,7 @@ Roo.onReady(function(){
              listeners : {
               beforeload : function (_self, o){
                    o.params = o.params || {};
+                   o.params._as_tree = 1;
                    // set more here
                }
              },
