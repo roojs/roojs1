@@ -294,7 +294,10 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }
         
         var rec = view.store.getAt(ix[0]);
-        this.setFromData(rec.data);
+        if (!this.isLoading) {
+            this.setFromData(rec.data);
+        }
+        
         
         var lw = Math.floor(
                 ((this.listWidth * this.maxColumns || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / this.maxColumns
@@ -305,7 +308,13 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.views[opts.list+1].getEl().setHeight( this.innerLists[0].getHeight());
         this.views[opts.list+1].getEl().setStyle({ display : dl ? 'block' : 'none' });
         this.innerLists[opts.list+1].setHeight( this.innerLists[0].getHeight());
-        this.list.setWidth(lw * (opts.list + (dl ? 2 : 1))); 
+        this.list.setWidth(lw * (opts.list + (dl ? 2 : 1)));
+        
+        if (this.isLoading) {
+            this.selectActive(opts.list);
+        }
+        
+        
     },
     onDoubleClick : function()
     {
@@ -348,7 +357,9 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             });
         }
         return record;
-    }
+    },
+    
+    function selectActive()
     
     
     
