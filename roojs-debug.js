@@ -43079,7 +43079,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         var prop = this.hiddenName;
         var store = this.stores[lvl];
         if(store.getCount() < 1){
-            return false;
+            return;
         }
         var record = false;
         store.each(function(r){
@@ -43103,7 +43103,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
              
             return true;
         });
-         
+        
     }
     
     
