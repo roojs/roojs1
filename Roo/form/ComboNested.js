@@ -339,7 +339,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
                     return false;
                 }
                 if (r.data.cn && r.data.cn.length) {
-                    cstore.loadData( r.data.cn);
+                    cstore.loadDataFromChildren( r);
                     var cret = _this.findRecordInStore(cstore, prop, value);
                     if (cret !== false) {
                         record = cret;
