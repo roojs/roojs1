@@ -42871,9 +42871,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             });
         }
         this.stores[i]  = store;
-                
-        
-        
+                  
         var view = this.views[i] = new Roo.View(
             il,
             this.tpl,
@@ -42985,8 +42983,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     onSelectChange : function (view, sels, opts )
     {
         var ix = view.getSelectedIndexes();
-        
-        
+         
         if (opts.list > this.maxColumns - 2) {
              
             this.setFromData(ix.length ? view.store.getAt(ix[0]).data : {});
