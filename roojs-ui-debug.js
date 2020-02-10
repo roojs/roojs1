@@ -20339,8 +20339,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         var store  = this.store;
         if (i > 0) {
             store  = new Roo.data.SimpleStore({
-                reader : this.store.reader,
-                //fields : this.store.reader.meta.fields,
+                fields : this.store.reader.meta.fields,
                 data : [ ]
             });
         }
@@ -20502,7 +20501,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     findRecordInStore : function(store, prop, value)
     {
         var cstore = new Roo.data.SimpleStore({
-            reader : this.store.reader,  // we need array reader.. for 
+            fields : this.store.reader.meta.fields, // we need array reader.. for 
             data : [ ]
         });
         var _this = this;
