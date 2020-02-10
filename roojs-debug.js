@@ -42969,7 +42969,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
         if (!ix.length) {
             this.setFromData({});
-            this.stores[opts.list+1].loadData( [] );
+            var str = this.stores[opts.list+1];
+            str.loadData( str.reader.readerType == 'json' ? { data : [] } : [] );
             return;
         }
         
