@@ -85,14 +85,11 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
 	    totalRecords : records.length
 	};
     },
-    /**
-     * using 'cn' the nested child reader read the child array into it's child stores.
-     * @param {Object} rec The record with a 'children array
-     */
-    loadDataFromChildren: function(rec)
+    // used when loading children.. @see loadDataFromChildren
+    toLoadData: function(rec)
     {
 	// expect rec just to be an array.. eg [a,b,c, [...] << cn ]
-	return this.loadData(typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn);
+	return typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn;
 	
     }
     
