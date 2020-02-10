@@ -20518,9 +20518,9 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         var lw = Math.floor(
                 ((this.listWidth * this.maxColumns || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / this.maxColumns
         );
-        var data =  typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn;
-        var dl = typeof(data.data) != 'undefined' ? data.total : data.length; ///json is a nested response..
-        this.stores[opts.list+1].loadData( data );
+        
+        this.stores[opts.list+1].loadDataFromChildren( rec );
+        var dl = this.stores[opts.list+1]. getTotalCount();
         this.views[opts.list+1].getEl().setHeight( this.innerLists[0].getHeight());
         this.views[opts.list+1].getEl().setStyle({ display : dl ? 'block' : 'none' });
         this.innerLists[opts.list+1].setHeight( this.innerLists[0].getHeight());
@@ -20538,7 +20538,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         return this.findRecordInStore(this.store, prop,value);
     },
     
-     // private
+    // private
     findRecordInStore : function(store, prop, value)
     {
         var cstore = new Roo.data.SimpleStore({
