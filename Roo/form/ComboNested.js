@@ -369,15 +369,17 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             data : [ ]
         });
         // just need to determine which of the current level is selected if any..
-        var value = this.getValue();
-        var prop = this.hiddenName;
+        
         var store = this.stores[lvl];
-        var _this = this;
+        
         
         if(store.getCount() < 1){
             return;
         }
+        var value = this.getValue();
+        var prop = this.hiddenName;
         
+        var _this = this;
         store.each(function(r){
             // selected is at this level
             if(r.data[prop] == value){
