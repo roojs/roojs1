@@ -98,6 +98,7 @@ Roo.onReady(function(){
             forceSelection : true,
             hiddenName : 'supplier_category_id',
             listWidth : 200,
+            cols : 4,
             loadingText : 'Searching',
             minChars : 2,
             name : 'supplier_category_id_name',
