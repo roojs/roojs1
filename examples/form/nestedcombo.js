@@ -91,7 +91,7 @@ Roo.onReady(function(){
             xtype : 'ComboNested',
             allowBlank : true,
             alwaysQuery : true,
-            displayField : 'fullpath',
+            displayField : 'name',
             editable : false,
             emptyText : 'Category',
             fieldLabel : 'Category',
