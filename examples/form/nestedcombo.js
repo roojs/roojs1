@@ -139,7 +139,7 @@ Roo.onReady(function(){
              },
              reader : {
               xtype : 'JsonReader',
-              fields : [{"name":"id","type":"int"},{"name":"fullpath","type":"string"}],
+              fields : [{"name":"id","type":"int"},{"name":"fullpath","type":"string"},'name'],
               id : 'id',
               root : 'data',
               totalProperty : 'total',
