@@ -43074,9 +43074,10 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     
     selectActive : function ()
     {
-        
-	var stack = [];
+	// if store is not loaded, then we will need to wait for that to happen first.
+        var stack = [];
 	this.findRecordInStore(this.store, this.hiddenName, this.getValue(), stack);
+	
 	
     }
 	
