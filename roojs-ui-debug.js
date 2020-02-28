@@ -20593,7 +20593,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
 	var stack = [];
 	var rec =  this.findRecordInStore(this.store, this.hiddenName, this.getValue());
 	
-	
+    }
 	
 	 
     
