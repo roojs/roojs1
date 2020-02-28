@@ -20599,7 +20599,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         var stack = [];
 	this.recordToStack(this.store, this.valueField, this.getValue(), stack);
 	for (var i = 0; i < stack.length; i++ ) {
-	    this.view[i].select(stack[i].store.indexOf(stack[i]), false, false );
+	    this.views[i].select(stack[i].store.indexOf(stack[i]), false, false );
 	}
 	
     }
