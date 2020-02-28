@@ -321,11 +321,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     
      
     
-    findRecord : function (prop,value)
-    {
-        
-	return this.findRecordInStore(this.store, prop,value);
-    },
+    
     
     // private
     recordToStores : function(store, prop, value, stack)
@@ -337,6 +333,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         });
         var _this = this;
         var record  = false;
+	var srec = false;
         if(store.getCount() < 1){
             return false;
         }
@@ -350,6 +347,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
                 var cret = _this.recordToStores(cstore, prop, value, stack);
                 if (cret !== false) {
                     record = cret;
+		    srec = r;
                     return false;
                 }
             }
@@ -359,7 +357,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         if (record == false) {
 	    return false
 	}
-	stack.unshift(store);
+	stack.unshift(srec);
         return record;
     },
     
@@ -369,48 +367,15 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
      * 
      */
     
-    selectActive : function (lvl)
+    selectActive : function ()
     {
-        var cstore = new Roo.data.SimpleStore({
-            //fields : this.store.reader.meta.fields, // we need array reader.. for
-            reader : this.store.reader,
-            data : [ ]
-        });
-        // just need to determine which of the current level is selected if any..
         
-        var store = this.stores[lvl];
-        
-        
-        if(store.getCount() < 1){
-            return;
-        }
-        var value = this.getValue();
-        var prop = this.hiddenName;
-        
-        var _this = this;
-        store.each(function(r){
-            // selected is at this level
-            if(r.data[prop] == value){
-                var ix = store.getIndexOf(r);
-                _this.views[lvl].select(ix, false, true); // do not trigger set active..
-                _this.loading 
-                return false;
-            }
-            
-            if (r.data.cn && r.data.cn.length) {
-                cstore.loadDataFromChildren(r);
-                var cret = _this.findRecordInStore(cstore, prop, value);
-                if (cret !== false) {
-                    var ix = store.getIndexOf(r);
-                    _this.views[lvl].select(ix, false, false); // will trigger select change..
-                    return false;
-                }
-            }
-             
-            return true;
-        });
-        
-    }
+	var stack = [];
+	var rec =  this.findRecordInStore(this.store, this.hiddenName, this.getValue());
+	
+	
+	
+	 
     
     
     
