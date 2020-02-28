@@ -43033,7 +43033,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     
     
     // private
-    recordToStores : function(store, prop, value, stack)
+    recordToStack : function(store, prop, value, stack)
     {
         var cstore = new Roo.data.SimpleStore({
             //fields : this.store.reader.meta.fields, // we need array reader.. for
@@ -43054,7 +43054,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             }
             if (r.data.cn && r.data.cn.length) {
                 cstore.loadDataFromChildren( r);
-                var cret = _this.recordToStores(cstore, prop, value, stack);
+                var cret = _this.recordToStack(cstore, prop, value, stack);
                 if (cret !== false) {
                     record = cret;
 		    srec = r;
@@ -43081,7 +43081,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     {
 	// if store is not loaded, then we will need to wait for that to happen first.
         var stack = [];
-	this.findRecordInStore(this.store, this.hiddenName, this.getValue(), stack);
+	this.recordToStack(this.store, this.hiddenName, this.getValue(), stack);
 	for (var i = 0; i < stack.length; i++ ) {
 	    this.view[i].select(stack[i].store.indexOf(stack[i]), false, false );
 	}
