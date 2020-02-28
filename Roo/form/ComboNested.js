@@ -359,7 +359,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         if (record == false) {
 	    return false
 	}
-	stack.unshift(store, record);
+	stack.unshift(store);
         return record;
     },
     
