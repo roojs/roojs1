@@ -323,11 +323,12 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     
     findRecord : function (prop,value)
     {
-        return this.findRecordInStore(this.store, prop,value);
+        
+	return this.findRecordInStore(this.store, prop,value);
     },
     
     // private
-    findRecordInStore : function(store, prop, value)
+    recordToStores : function(store, prop, value, stack)
     {
         var cstore = new Roo.data.SimpleStore({
             //fields : this.store.reader.meta.fields, // we need array reader.. for
@@ -346,7 +347,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             }
             if (r.data.cn && r.data.cn.length) {
                 cstore.loadDataFromChildren( r);
-                var cret = _this.findRecordInStore(cstore, prop, value);
+                var cret = _this.recordToStores(cstore, prop, value, stack);
                 if (cret !== false) {
                     record = cret;
                     return false;
@@ -355,7 +356,10 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
              
             return true;
         });
-        
+        if (record == false) {
+	    return false
+	}
+	stack.unshift(store, record);
         return record;
     },
     
