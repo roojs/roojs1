@@ -359,7 +359,11 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         return record;
     },
     
-    
+    /*
+     * find the stack of stores that match our value.
+     *
+     * 
+     */
     
     selectActive : function (lvl)
     {
