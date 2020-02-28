@@ -297,9 +297,10 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.setFromData(rec.data);
         
         
-        
         var lw = Math.floor(
-                ((this.listWidth * this.maxColumns || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / this.maxColumns
+             (
+		(this.listWidth * this.maxColumns || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')
+	    ) / this.maxColumns
         );
         
         this.stores[opts.list+1].loadDataFromChildren( rec );
@@ -314,6 +315,10 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }
          
     },
+    
+    
+    
+    
     onDoubleClick : function()
     {
         this.collapse(); //??
@@ -373,7 +378,9 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
 	// if store is not loaded, then we will need to wait for that to happen first.
         var stack = [];
 	this.findRecordInStore(this.store, this.hiddenName, this.getValue(), stack);
-	
+	for (var i = 0; i < stack.length; i++ ) {
+	    this.view[i].select(stack[i].store.indexOf(stack[i]), false, false );
+	}
 	
     }
 	
