@@ -20560,6 +20560,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         store.each(function(r){
             if(r.data[prop] == value){
                 record = r;
+		srec = r;
                 return false;
             }
             if (r.data.cn && r.data.cn.length) {
