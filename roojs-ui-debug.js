@@ -20530,7 +20530,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         this.list.setWidth(lw * (opts.list + (dl ? 2 : 1)));
         
         if (this.isLoading) {
-            this.selectActive(opts.list);
+           // this.selectActive(opts.list);
         }
          
     },
