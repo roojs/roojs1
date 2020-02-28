@@ -377,7 +377,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     {
 	// if store is not loaded, then we will need to wait for that to happen first.
         var stack = [];
-	this.recordToStack(this.store, this.hiddenName, this.getValue(), stack);
+	this.recordToStack(this.store, this.valueField, this.getValue(), stack);
 	for (var i = 0; i < stack.length; i++ ) {
 	    this.view[i].select(stack[i].store.indexOf(stack[i]), false, false );
 	}
