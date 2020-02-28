@@ -294,7 +294,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
         var rec = view.store.getAt(ix[0]);
         //if (!this.isLoading) {
-            this.setFromData(rec.data);
+            //this.setFromData(rec.data);
         //}
         
         
