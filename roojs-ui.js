@@ -906,7 +906,7 @@ this.setFromData(E.data);var lw=Math.floor(((this.listWidth*this.maxColumns||Mat
 this.views[C.list+1].getEl().setHeight(this.innerLists[0].getHeight());this.views[C.list+1].getEl().setStyle({display:dl?'block':'none'});this.innerLists[C.list+1].setHeight(this.innerLists[0].getHeight());this.list.setWidth(lw*(C.list+(dl?2:1)));if(this.isLoading){}
 },onDoubleClick:function(){this.collapse();},recordToStores:function(A,B,C,D){var E=new Roo.data.SimpleStore({reader:this.store.reader,data:[]});var F=this;var G=false;var H=false;if(A.getCount()<1){return false;}A.each(function(r){if(r.data[B]==C){G=r;H=r;
 return false;}if(r.data.cn&&r.data.cn.length){E.loadDataFromChildren(r);var I=F.recordToStores(E,B,C,D);if(I!==false){G=I;H=r;return false;}}return true;});if(G==false){return false}D.unshift(H);return G;},selectActive:function(){var A=[];this.findRecordInStore(this.store,this.hiddenName,this.getValue(),A);
-}});
+for(var i=0;i<A.length;i++){this.view[i].select(A[i].store.indexOf(A[i]),false,false);}}});
 // Roo/form/Checkbox.js
 Roo.form.Checkbox=function(A){Roo.form.Checkbox.superclass.constructor.call(this,A);this.addEvents({check:true});};Roo.extend(Roo.form.Checkbox,Roo.form.Field,{focusClass:undefined,fieldClass:"x-form-field",checked:false,defaultAutoCreate:{tag:"input",type:'hidden',autocomplete:"off"}
 ,boxLabel:"",inputValue:'1',valueOff:'0',actionMode:'viewEl',itemCls:'x-menu-check-item x-form-item',groupClass:'x-menu-group-item',inputType:'hidden',inSetChecked:false,inputElement:false,basedOn:false,isFormField:true,onResize:function(){Roo.form.Checkbox.superclass.onResize.apply(this,arguments);
