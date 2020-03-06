@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/tree/TreePanel.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>Roo/tree/TreePanel.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -239,7 +239,15 @@
         * &lt;/ul&gt;
         * @param {Object} dragOverEvent
         */
-       </span><span class="jsdoc-string">&quot;nodedragover&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+       </span><span class="jsdoc-string">&quot;nodedragover&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-comment">/**
+        * @event appendnode
+        * Fires when append node to the tree
+        * @param {Roo.tree.TreePanel} this
+        * @param {Roo.tree.TreeNode} node
+        * @param {Number} index The index of the newly appended node
+        */
+       </span><span class="jsdoc-string">&quot;appendnode&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
 
     </span><span class="jsdoc-syntax">});
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.singleExpand</span><span class="jsdoc-syntax">){

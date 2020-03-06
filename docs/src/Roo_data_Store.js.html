@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/data/Store.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>Roo/data/Store.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -450,6 +450,16 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.reader.readRecords</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.loadRecords</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">add</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">append</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
     },
+
+     </span><span class="jsdoc-comment">/**
+     * using 'cn' the nested child reader read the child array into it's child stores.
+     * @param {Object} rec The record with a 'children array
+     */
+    </span><span class="jsdoc-var">loadDataFromChildren </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.loadData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.reader.toLoadData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">));
+    },
+
 
     </span><span class="jsdoc-comment">/**
      * Gets the number of cached records.

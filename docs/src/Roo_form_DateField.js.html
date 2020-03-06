@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/form/DateField.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>Roo/form/DateField.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -17,7 +17,8 @@
 * Create a new DateField
 * @param {Object} config
  */
-</span><span class="jsdoc-var">Roo.form.DateField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+</span><span class="jsdoc-var">Roo.form.DateField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
     </span><span class="jsdoc-var">Roo.form.DateField.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
 
       </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
@@ -365,5 +366,11 @@ dateField.setValue('2006-5-4');
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()) !== </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startValue</span><span class="jsdoc-syntax">);
 
+    },
+    </span><span class="jsdoc-comment">// @overide
+    </span><span class="jsdoc-var">cleanLeadingSpace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+       </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
     }
+
 });</span></code></body></html>

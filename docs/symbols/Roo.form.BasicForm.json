@@ -54,6 +54,16 @@
       ]
     },
     {
+      "name" : "errorMask",
+      "type" : "Boolean",
+      "desc" : "default false",
+      "memberOf" : "Roo.form.BasicForm",
+      "values" : [
+        "(true",
+        "false)"
+      ]
+    },
+    {
       "name" : "timeout",
       "type" : "Number",
       "desc" : "Timeout for form actions in seconds (default is 30 seconds).",
@@ -97,6 +107,14 @@
       "name" : "url",
       "type" : "String",
       "desc" : "The URL to use for form actions if one isn't supplied in the action options.",
+      "memberOf" : "Roo.form.BasicForm",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "maskOffset",
+      "type" : "Number",
+      "desc" : "Default 100",
       "memberOf" : "Roo.form.BasicForm",
       "values" : [
       ]

@@ -213,6 +213,14 @@
       ]
     },
     {
+      "name" : "allowLeadingSpace",
+      "type" : "Boolean",
+      "desc" : "True to prevent the stripping of leading white space",
+      "memberOf" : "Roo.form.TextField",
+      "values" : [
+      ]
+    },
+    {
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"20\", autocomplete: \"off\"})",

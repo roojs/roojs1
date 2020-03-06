@@ -190,14 +190,6 @@
       ]
     },
     {
-      "name" : "validateOnBlur",
-      "type" : "Boolean",
-      "desc" : "Whether the field should validate when it loses focus (defaults to true).",
-      "memberOf" : "Roo.form.Field",
-      "values" : [
-      ]
-    },
-    {
       "name" : "hideTrigger",
       "type" : "Boolean",
       "desc" : "True to hide the trigger element and display only the base text field (defaults to false)",
@@ -209,6 +201,14 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the field's underlying element.",
+      "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "validateOnBlur",
+      "type" : "Boolean",
+      "desc" : "Whether the field should validate when it loses focus (defaults to true).",
       "memberOf" : "Roo.form.Field",
       "values" : [
       ]
@@ -226,6 +226,14 @@
       "type" : "String",
       "desc" : "The default CSS class for the field (defaults to \"x-form-field\")",
       "memberOf" : "Roo.form.Field",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "allowLeadingSpace",
+      "type" : "Boolean",
+      "desc" : "True to prevent the stripping of leading white space",
+      "memberOf" : "Roo.form.TextField",
       "values" : [
       ]
     },

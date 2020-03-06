@@ -222,10 +222,10 @@
       ]
     },
     {
-      "name" : "validationEvent",
-      "type" : "String/Boolean",
-      "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
-      "memberOf" : "Roo.form.Field",
+      "name" : "allowLeadingSpace",
+      "type" : "Boolean",
+      "desc" : "True to prevent the stripping of leading white space",
+      "memberOf" : "Roo.form.TextField",
       "values" : [
       ]
     },
@@ -266,6 +266,14 @@
       "type" : "Number",
       "desc" : "The minimum height to allow when grow = true (defaults to 60)",
       "memberOf" : "Roo.form.TextArea",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "validationEvent",
+      "type" : "String/Boolean",
+      "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
+      "memberOf" : "Roo.form.Field",
       "values" : [
       ]
     },

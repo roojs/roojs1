@@ -1260,6 +1260,12 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.form.ComboNested",
+            "cn" : [
+            ],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.form.DateField",
             "cn" : [
             ],

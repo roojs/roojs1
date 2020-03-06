@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/form/HtmlEditor/ToolbarStandard.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">// &lt;script type=&quot;text/javascript&quot;&gt;
+<html><head><title>Roo/form/HtmlEditor/ToolbarStandard.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">// &lt;script type=&quot;text/javascript&quot;&gt;
 /*
  * Based on
  * Ext JS Library 1.1.1
@@ -132,7 +132,8 @@
         [</span><span class="jsdoc-string">&quot;h1&quot;</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">&quot;h2&quot;</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">&quot;h3&quot;</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">&quot;h4&quot;</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">&quot;h5&quot;</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">&quot;h6&quot;</span><span class="jsdoc-syntax">],
         [</span><span class="jsdoc-string">&quot;pre&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;code&quot;</span><span class="jsdoc-syntax">],
         [</span><span class="jsdoc-string">&quot;abbr&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;acronym&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;address&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;cite&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;samp&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;var&quot;</span><span class="jsdoc-syntax">],
-        [</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">]
+        [</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">],
+        [</span><span class="jsdoc-string">'sup'</span><span class="jsdoc-syntax">],[</span><span class="jsdoc-string">'sub'</span><span class="jsdoc-syntax">]
     ],
 
     </span><span class="jsdoc-var">cleanStyles </span><span class="jsdoc-syntax">: [
@@ -434,8 +435,9 @@
 
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editorcore.doc.body</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">c.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[class]'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">s.dom.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">s.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'class'</span><span class="jsdoc-syntax">);
                     });
+                    </span><span class="jsdoc-var">editorcore.cleanWord</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-var">editorcore.syncValue</span><span class="jsdoc-syntax">();
                 },
                 </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1

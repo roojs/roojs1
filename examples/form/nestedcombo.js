@@ -99,6 +99,7 @@ Roo.onReady(function(){
             hiddenName : 'supplier_category_id',
             listWidth : 200,
             maxColumns : 4,
+            maxHeight: 400,
             loadingText : 'Searching',
             minChars : 2,
             name : 'supplier_category_id_name',
@@ -109,11 +110,11 @@ Roo.onReady(function(){
             triggerAction : 'all',
             typeAhead : true,
             valueField : 'id',
-            width : 260,
+            width : 300,
             listeners : {
              select : function (combo, record, index)
               {
-                  _this.grid.footer.onClick('first');
+                 // _this.grid.footer.onClick('first');
               }
             },
             xns : Roo.form,

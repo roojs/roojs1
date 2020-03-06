@@ -60,14 +60,6 @@
       ]
     },
     {
-      "name" : "cls",
-      "type" : "String",
-      "desc" : "the class for this item",
-      "memberOf" : "Roo.form.TextItem",
-      "values" : [
-      ]
-    },
-    {
       "name" : "html",
       "type" : "String",
       "desc" : "the content for this item",

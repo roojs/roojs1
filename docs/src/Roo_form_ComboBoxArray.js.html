@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/form/ComboBoxArray.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>Roo/form/ComboBoxArray.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Copyright(c) 2010-2012, Roo J Solutions Limited
  *
  * Licence LGPL
@@ -115,7 +115,7 @@
 
         // give fake names to child combo;
         </span><span class="jsdoc-var">this.combo.hiddenName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hiddenName </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">this.hiddenName</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-subcombo'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.hiddenName</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.combo.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-subcombo'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.combo.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-subcombo'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-var">this.combo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.combo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.combo.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
@@ -236,6 +236,7 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">valueField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.combo.valueField</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">displayField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.combo.displayField</span><span class="jsdoc-syntax">;
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items.indexOfKey</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">valueField</span><span class="jsdoc-syntax">]) &gt; -1) {
             </span><span class="jsdoc-comment">//console.log(&quot;GOT &quot; + rec.data.id);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -267,7 +268,6 @@
 
         </span><span class="jsdoc-var">this.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ar.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">idField</span><span class="jsdoc-syntax">]);
-
         });
         </span><span class="jsdoc-var">this.hiddenEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ar.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
@@ -295,8 +295,6 @@
     </span><span class="jsdoc-syntax">{
 
         </span><span class="jsdoc-var">this.reset</span><span class="jsdoc-syntax">();
-
-
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.isLocal </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-comment">// then we can use the store to find the values..
