@@ -20278,11 +20278,13 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     views : null,
     stores : null,
     // private
+    loadingChildren : false,
+    
     onRender : function(ct, position)
     {
         Roo.form.ComboBox.superclass.onRender.call(this, ct, position); // skip parent call - got to above..
         
-	if(this.hiddenName){
+        if(this.hiddenName){
             this.hiddenField = this.el.insertSibling({tag:'input', type:'hidden', name: this.hiddenName, id:  (this.hiddenId||this.hiddenName)},
                     'before', true);
             this.hiddenField.value =
@@ -20417,8 +20419,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         
         
     },
-    onResize : function()  {},
-    
+      
     restrictHeight : function()
     {
         var mh = 0;
@@ -20426,13 +20427,14 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             var el = this.views[i].getEl();
             el.dom.style.height = '';
             var inner = el.dom;
-            var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
+            var h = Math.max(il.clientHeight, il.offsetHeight, il.scrollHeight);
             // only adjust heights on other ones..
+            mh = Math.max(h, mh);
             if (i < 1) {
                 
                 el.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
                 il.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
-                mh = Math.max(el.getHeight(), mh);
+               
             }
             
             
@@ -20461,7 +20463,19 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     // private
     onLoad : function(a,b,c,d)
     {
+        if (!this.loadingChildren) {
+            // then we are loading the top level. - hide the children
+            for (var i = 1;i < this.views.length; i++) {
+                this.views[i].getEl().setStyle({ display : 'none' });
+            }
+            var lw = Math.floor(
+                ((this.listWidth * this.maxColumns || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / this.maxColumns
+            );
         
+             this.list.setWidth(lw); // default to '1'
+
+            
+        }
         if(!this.hasFocus){
             return;
         }
@@ -20471,6 +20485,10 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             this.restrictHeight();   
         } else {
             this.onEmptyResults();
+        }
+        
+        if (!this.loadingChildren) {
+            this.selectActive();
         }
         /*
         this.stores[1].loadData([]);
@@ -20492,41 +20510,60 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         }
         
         
-    } ,
-     
-     
+    },
+    // no cleaning of leading spaces on blur here.
+    cleanLeadingSpace : function(e) { },
+    
 
     onSelectChange : function (view, sels, opts )
     {
         var ix = view.getSelectedIndexes();
          
         if (opts.list > this.maxColumns - 2) {
-            this.setFromData(ix.length ? view.store.getAt(ix[0]).data : {});
+            if (view.store.getCount()<  1) {
+                this.views[opts.list ].getEl().setStyle({ display :   'none' });
+
+            } else  {
+                if (ix.length) {
+                    // used to clear ?? but if we are loading unselected 
+                    this.setFromData(view.store.getAt(ix[0]).data);
+                }
+                
+            }
+            
             return;
         }
         
         if (!ix.length) {
-            this.setFromData({});
+            // this get's fired when trigger opens..
+           // this.setFromData({});
             var str = this.stores[opts.list+1];
-            str.removeAll();
+            str.data.clear(); // removeall wihtout the fire events..
             return;
         }
         
         var rec = view.store.getAt(ix[0]);
          
         this.setFromData(rec.data);
-        
+        this.fireEvent('select', this, rec, ix[0]);
         
         var lw = Math.floor(
              (
-		(this.listWidth * this.maxColumns || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')
-	    ) / this.maxColumns
+                (this.listWidth * this.maxColumns || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')
+             ) / this.maxColumns
         );
-        
+        this.loadingChildren = true;
         this.stores[opts.list+1].loadDataFromChildren( rec );
+        this.loadingChildren = false;
         var dl = this.stores[opts.list+1]. getTotalCount();
+        
         this.views[opts.list+1].getEl().setHeight( this.innerLists[0].getHeight());
+        
         this.views[opts.list+1].getEl().setStyle({ display : dl ? 'block' : 'none' });
+        for (var i = opts.list+2; i < this.views.length;i++) {
+            this.views[i].getEl().setStyle({ display : 'none' });
+        }
+        
         this.innerLists[opts.list+1].setHeight( this.innerLists[0].getHeight());
         this.list.setWidth(lw * (opts.list + (dl ? 2 : 1)));
         
@@ -20558,14 +20595,14 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
         });
         var _this = this;
         var record  = false;
-	var srec = false;
+        var srec = false;
         if(store.getCount() < 1){
             return false;
         }
         store.each(function(r){
             if(r.data[prop] == value){
                 record = r;
-		srec = r;
+            srec = r;
                 return false;
             }
             if (r.data.cn && r.data.cn.length) {
@@ -20573,7 +20610,7 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
                 var cret = _this.recordToStack(cstore, prop, value, stack);
                 if (cret !== false) {
                     record = cret;
-		    srec = r;
+                    srec = r;
                     return false;
                 }
             }
@@ -20581,9 +20618,9 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             return true;
         });
         if (record == false) {
-	    return false
-	}
-	stack.unshift(srec);
+            return false
+        }
+        stack.unshift(srec);
         return record;
     },
     
@@ -20597,10 +20634,10 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
     {
 	// if store is not loaded, then we will need to wait for that to happen first.
         var stack = [];
-	this.recordToStack(this.store, this.valueField, this.getValue(), stack);
-	for (var i = 0; i < stack.length; i++ ) {
-	    this.views[i].select(stack[i].store.indexOf(stack[i]), false, false );
-	}
+        this.recordToStack(this.store, this.valueField, this.getValue(), stack);
+        for (var i = 0; i < stack.length; i++ ) {
+            this.views[i].select(stack[i].store.indexOf(stack[i]), false, false );
+        }
 	
     }
 	
