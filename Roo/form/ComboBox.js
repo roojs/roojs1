@@ -304,9 +304,11 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     // element that contains real text value.. (when hidden is used..)
      
     // private
-    onRender : function(ct, position){
+    onRender : function(ct, position)
+    {
         Roo.form.ComboBox.superclass.onRender.call(this, ct, position);
-        if(this.hiddenName){
+        
+	if(this.hiddenName){
             this.hiddenField = this.el.insertSibling({tag:'input', type:'hidden', name: this.hiddenName, id:  (this.hiddenId||this.hiddenName)},
                     'before', true);
             this.hiddenField.value =
@@ -318,6 +320,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
              
              
         }
+	
         if(Roo.isGecko){
             this.el.dom.setAttribute('autocomplete', 'off');
         }
@@ -378,7 +381,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         }
 
         this.view = new Roo.View(this.innerList, this.tpl, {
-            singleSelect:true, store: this.store, selectedClass: this.selectedClass
+            singleSelect:true,
+	    store: this.store,
+	    selectedClass: this.selectedClass
         });
 
         this.view.on('click', this.onViewClick, this);

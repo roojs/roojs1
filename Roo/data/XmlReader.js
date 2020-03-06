@@ -67,6 +67,9 @@ Roo.data.XmlReader = function(meta, recordType){
     Roo.data.XmlReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 Roo.extend(Roo.data.XmlReader, Roo.data.DataReader, {
+    
+    readerType : 'Xml',
+    
     /**
      * This method is only used by a DataProxy which has retrieved data from a remote server.
 	 * @param {Object} response The XHR object which contains the parsed XML document.  The response is expected

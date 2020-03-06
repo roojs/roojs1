@@ -1042,6 +1042,37 @@
       ]
     },
     {
+      "name" : "appendnode",
+      "desc" : "Fires when append node to the tree",
+      "memberOf" : "Roo.tree.TreePanel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.tree.TreePanel",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "node",
+          "type" : "Roo.tree.TreeNode",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "index",
+          "type" : "Number",
+          "desc" : "The index of the newly appended node",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
       "name" : "startdrag",
       "desc" : "Fires when a node starts being dragged",
       "memberOf" : "Roo.tree.TreePanel",

@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/data/JsonReader.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>Roo/data/JsonReader.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -66,6 +66,8 @@ var myReader = new Roo.data.JsonReader({
     </span><span class="jsdoc-var">Roo.data.JsonReader.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">meta</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">recordType</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">meta.fields</span><span class="jsdoc-syntax">);
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.data.JsonReader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data.DataReader</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-var">readerType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Json'</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
      * @prop {Boolean} metaFromRemote  - if the meta data was loaded from the remote source.
@@ -208,5 +210,13 @@ var myReader = new Roo.data.JsonReader({
             </span><span class="jsdoc-var">records </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">totalRecords </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">totalRecords
         </span><span class="jsdoc-syntax">};
+    },
+    </span><span class="jsdoc-comment">// used when loading children.. @see loadDataFromChildren
+    </span><span class="jsdoc-var">toLoadData</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">)
+    {
+	</span><span class="jsdoc-comment">// expect rec just to be an array.. eg [a,b,c, [...] &lt;&lt; cn ]
+	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec.data.cn</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? [] : </span><span class="jsdoc-var">rec.data.cn</span><span class="jsdoc-syntax">;
+	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{ </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">total </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data.length </span><span class="jsdoc-syntax">};
+
     }
 });</span></code></body></html>

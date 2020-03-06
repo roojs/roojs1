@@ -45,9 +45,85 @@ Roo.Markdown.toHtml = function(text) {
 //
 (function() {
     
+     /**
+         * eval:var:escape
+         * eval:var:unescape
+         * eval:var:replace
+         */
+      
+    /**
+     * Helpers
+     */
+    
+    var escape = function (html, encode) {
+      return html
+        .replace(!encode ? /&(?!#?\w+;)/g : /&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+    
+    var unescape = function (html) {
+        // explicitly match decimal, hex, and named HTML entities 
+      return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
+        n = n.toLowerCase();
+        if (n === 'colon') { return ':'; }
+        if (n.charAt(0) === '#') {
+          return n.charAt(1) === 'x'
+            ? String.fromCharCode(parseInt(n.substring(2), 16))
+            : String.fromCharCode(+n.substring(1));
+        }
+        return '';
+      });
+    }
+    
+    var replace = function (regex, opt) {
+      regex = regex.source;
+      opt = opt || '';
+      return function self(name, val) {
+        if (!name) { return new RegExp(regex, opt); }
+        val = val.source || val;
+        val = val.replace(/(^|[^\[])\^/g, '$1');
+        regex = regex.replace(name, val);
+        return self;
+      };
+    }
+
+
+         /**
+         * eval:var:noop
+    */
+    var noop = function () {}
+    noop.exec = noop;
+    
+         /**
+         * eval:var:merge
+    */
+    var merge = function (obj) {
+      var i = 1
+        , target
+        , key;
+    
+      for (; i < arguments.length; i++) {
+        target = arguments[i];
+        for (key in target) {
+          if (Object.prototype.hasOwnProperty.call(target, key)) {
+            obj[key] = target[key];
+          }
+        }
+      }
+    
+      return obj;
+    }
+    
+    
     /**
      * Block-Level Grammar
      */
+    
+    
+    
     
     var block = {
       newline: /^\n+/,
@@ -138,7 +214,7 @@ Roo.Markdown.toHtml = function(text) {
      * Block Lexer
      */
     
-    function Lexer(options) {
+    var Lexer = function (options) {
       this.tokens = [];
       this.tokens.links = {};
       this.options = options || marked.defaults;
@@ -556,7 +632,7 @@ Roo.Markdown.toHtml = function(text) {
      * Inline Lexer & Compiler
      */
     
-    function InlineLexer(links, options) {
+    var InlineLexer  = function (links, options) {
       this.options = options || marked.defaults;
       this.links = links;
       this.rules = inline.normal;
@@ -796,7 +872,11 @@ Roo.Markdown.toHtml = function(text) {
      * Renderer
      */
     
-    function Renderer(options) {
+     /**
+         * eval:var:Renderer
+    */
+    
+    var Renderer   = function (options) {
       this.options = options || {};
     }
     
@@ -945,8 +1025,11 @@ Roo.Markdown.toHtml = function(text) {
     /**
      * Parsing & Compiling
      */
+         /**
+         * eval:var:Parser
+    */
     
-    function Parser(options) {
+    var Parser= function (options) {
       this.tokens = [];
       this.token = null;
       this.options = options || marked.defaults;
@@ -1121,72 +1204,15 @@ Roo.Markdown.toHtml = function(text) {
         }
       }
     };
-    
-    /**
-     * Helpers
-     */
-    
-    function escape(html, encode) {
-      return html
-        .replace(!encode ? /&(?!#?\w+;)/g : /&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-    }
-    
-    function unescape(html) {
-        // explicitly match decimal, hex, and named HTML entities 
-      return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
-        n = n.toLowerCase();
-        if (n === 'colon') { return ':'; }
-        if (n.charAt(0) === '#') {
-          return n.charAt(1) === 'x'
-            ? String.fromCharCode(parseInt(n.substring(2), 16))
-            : String.fromCharCode(+n.substring(1));
-        }
-        return '';
-      });
-    }
-    
-    function replace(regex, opt) {
-      regex = regex.source;
-      opt = opt || '';
-      return function self(name, val) {
-        if (!name) { return new RegExp(regex, opt); }
-        val = val.source || val;
-        val = val.replace(/(^|[^\[])\^/g, '$1');
-        regex = regex.replace(name, val);
-        return self;
-      };
-    }
-    
-    function noop() {}
-    noop.exec = noop;
-    
-    function merge(obj) {
-      var i = 1
-        , target
-        , key;
-    
-      for (; i < arguments.length; i++) {
-        target = arguments[i];
-        for (key in target) {
-          if (Object.prototype.hasOwnProperty.call(target, key)) {
-            obj[key] = target[key];
-          }
-        }
-      }
-    
-      return obj;
-    }
-    
+  
     
     /**
      * Marked
      */
-    
-    function marked(src, opt, callback) {
+         /**
+         * eval:var:marked
+    */
+    var marked = function (src, opt, callback) {
       if (callback || typeof opt === 'function') {
         if (!callback) {
           callback = opt;
@@ -1207,7 +1233,9 @@ Roo.Markdown.toHtml = function(text) {
         }
     
         pending = tokens.length;
-    
+         /**
+         * eval:var:done
+    */
         var done = function(err) {
           if (err) {
             opt.highlight = highlight;

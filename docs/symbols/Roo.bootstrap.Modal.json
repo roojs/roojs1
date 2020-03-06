@@ -185,6 +185,14 @@
       ]
     },
     {
+      "name" : "width",
+      "type" : "Number",
+      "desc" : "fixed width - usefull for chrome extension only really.",
+      "memberOf" : "Roo.bootstrap.Modal",
+      "values" : [
+      ]
+    },
+    {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
@@ -196,6 +204,14 @@
       "name" : "allow_close",
       "type" : "Boolean",
       "desc" : "default true",
+      "memberOf" : "Roo.bootstrap.Modal",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "height",
+      "type" : "Number",
+      "desc" : "fixed height - usefull for chrome extension only really.",
       "memberOf" : "Roo.bootstrap.Modal",
       "values" : [
       ]

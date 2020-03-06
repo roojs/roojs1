@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/Markdown.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">//
+<html><head><title>Roo/Markdown.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">//
  /**
  * marked - a markdown parser
  * Copyright (c) 2011-2014, Christopher Jeffrey. (MIT Licensed)
@@ -45,9 +45,85 @@
 //
 </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
 
+     </span><span class="jsdoc-comment">/**
+         * eval:var:escape
+         * eval:var:unescape
+         * eval:var:replace
+         */
+
+    /**
+     * Helpers
+     */
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">escape </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">encode</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">html
+        .replace</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">encode </span><span class="jsdoc-syntax">? /&amp;(?!#?\w+;)/g : /&amp;/g, </span><span class="jsdoc-string">'&amp;amp;'</span><span class="jsdoc-syntax">)
+        </span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&lt;/g, </span><span class="jsdoc-string">'&amp;lt;'</span><span class="jsdoc-syntax">)
+        </span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&gt;/g, </span><span class="jsdoc-string">'&amp;gt;'</span><span class="jsdoc-syntax">)
+        </span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&quot;/g, </span><span class="jsdoc-string">'&amp;quot;'</span><span class="jsdoc-syntax">)
+        </span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/'/g, </span><span class="jsdoc-string">'&amp;#39;'</span><span class="jsdoc-syntax">);
+    }
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">unescape </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-comment">// explicitly match decimal, hex, and named HTML entities 
+      </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">html.replace</span><span class="jsdoc-syntax">(/&amp;(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.toLowerCase</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'colon'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">; }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.charAt</span><span class="jsdoc-syntax">(0) === </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) {
+          </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.charAt</span><span class="jsdoc-syntax">(1) === </span><span class="jsdoc-string">'x'
+            </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.substring</span><span class="jsdoc-syntax">(2), 16))
+            : </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(+</span><span class="jsdoc-var">n.substring</span><span class="jsdoc-syntax">(1));
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+      });
+    }
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">replace </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">regex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">regex.source</span><span class="jsdoc-syntax">;
+      </span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+      </span><span class="jsdoc-keyword">return function </span><span class="jsdoc-var">self</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">regex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">); }
+        </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">val.source </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">val.replace</span><span class="jsdoc-syntax">(/(^|[^\[])\^/g, </span><span class="jsdoc-string">'$1'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">regex.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">self</span><span class="jsdoc-syntax">;
+      };
+    }
+
+
+         </span><span class="jsdoc-comment">/**
+         * eval:var:noop
+    */
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">noop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {}
+    </span><span class="jsdoc-var">noop.exec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">noop</span><span class="jsdoc-syntax">;
+
+         </span><span class="jsdoc-comment">/**
+         * eval:var:merge
+    */
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">merge </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 1
+        , </span><span class="jsdoc-var">target
+        </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">;
+
+      </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">arguments.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+        </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">) {
+          </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Object.prototype.hasOwnProperty.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">];
+          }
+        }
+      }
+
+      </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">;
+    }
+
+
     </span><span class="jsdoc-comment">/**
      * Block-Level Grammar
      */
+
+
+
 
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">block </span><span class="jsdoc-syntax">= {
       </span><span class="jsdoc-var">newline</span><span class="jsdoc-syntax">: /^\n+/,
@@ -556,7 +632,7 @@
      * Inline Lexer &amp; Compiler
      */
 
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">InlineLexer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">links</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">InlineLexer  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">links</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">) {
       </span><span class="jsdoc-var">this.options </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">options </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">marked.defaults</span><span class="jsdoc-syntax">;
       </span><span class="jsdoc-var">this.links </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">links</span><span class="jsdoc-syntax">;
       </span><span class="jsdoc-var">this.rules </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">inline.normal</span><span class="jsdoc-syntax">;
@@ -796,7 +872,11 @@
      * Renderer
      */
 
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">Renderer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">) {
+     /**
+         * eval:var:Renderer
+    */
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">Renderer   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">) {
       </span><span class="jsdoc-var">this.options </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">options </span><span class="jsdoc-syntax">|| {};
     }
 
@@ -945,8 +1025,11 @@
     </span><span class="jsdoc-comment">/**
      * Parsing &amp; Compiling
      */
+         /**
+         * eval:var:Parser
+    */
 
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">Parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">Parser</span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">) {
       </span><span class="jsdoc-var">this.tokens </span><span class="jsdoc-syntax">= [];
       </span><span class="jsdoc-var">this.token </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
       </span><span class="jsdoc-var">this.options </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">options </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">marked.defaults</span><span class="jsdoc-syntax">;
@@ -1122,70 +1205,13 @@
       }
     };
 
-    </span><span class="jsdoc-comment">/**
-     * Helpers
-     */
-
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">escape </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">encode</span><span class="jsdoc-syntax">) {
-      </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">html
-        .replace</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">encode </span><span class="jsdoc-syntax">? /&amp;(?!#?\w+;)/g : /&amp;/g, </span><span class="jsdoc-string">'&amp;amp;'</span><span class="jsdoc-syntax">)
-        </span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&lt;/g, </span><span class="jsdoc-string">'&amp;lt;'</span><span class="jsdoc-syntax">)
-        </span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&gt;/g, </span><span class="jsdoc-string">'&amp;gt;'</span><span class="jsdoc-syntax">)
-        </span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/&quot;/g, </span><span class="jsdoc-string">'&amp;quot;'</span><span class="jsdoc-syntax">)
-        </span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/'/g, </span><span class="jsdoc-string">'&amp;#39;'</span><span class="jsdoc-syntax">);
-    }
-
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">unescape </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-comment">// explicitly match decimal, hex, and named HTML entities 
-      </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">html.replace</span><span class="jsdoc-syntax">(/&amp;(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.toLowerCase</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'colon'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">; }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.charAt</span><span class="jsdoc-syntax">(0) === </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) {
-          </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.charAt</span><span class="jsdoc-syntax">(1) === </span><span class="jsdoc-string">'x'
-            </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.substring</span><span class="jsdoc-syntax">(2), 16))
-            : </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(+</span><span class="jsdoc-var">n.substring</span><span class="jsdoc-syntax">(1));
-        }
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-      });
-    }
-
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">replace </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">regex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">) {
-      </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">regex.source</span><span class="jsdoc-syntax">;
-      </span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-      </span><span class="jsdoc-keyword">return function </span><span class="jsdoc-var">self</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">regex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">); }
-        </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">val.source </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">val </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">val.replace</span><span class="jsdoc-syntax">(/(^|[^\[])\^/g, </span><span class="jsdoc-string">'$1'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">regex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">regex.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">self</span><span class="jsdoc-syntax">;
-      };
-    }
-
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">noop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {}
-    </span><span class="jsdoc-var">noop.exec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">noop</span><span class="jsdoc-syntax">;
-
-    </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">merge</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">) {
-      </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 1
-        , </span><span class="jsdoc-var">target
-        </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">;
-
-      </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">arguments.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-        </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
-        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">) {
-          </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Object.prototype.hasOwnProperty.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">)) {
-            </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">];
-          }
-        }
-      }
-
-      </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">obj</span><span class="jsdoc-syntax">;
-    }
-
 
     </span><span class="jsdoc-comment">/**
      * Marked
      */
-
+         /**
+         * eval:var:marked
+    */
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">marked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">) {
       </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">callback </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'function'</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">callback</span><span class="jsdoc-syntax">) {
@@ -1207,7 +1233,9 @@
         }
 
         </span><span class="jsdoc-var">pending </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tokens.length</span><span class="jsdoc-syntax">;
-
+         </span><span class="jsdoc-comment">/**
+         * eval:var:done
+    */
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">done </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">) {
           </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">err</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">opt.highlight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">highlight</span><span class="jsdoc-syntax">;

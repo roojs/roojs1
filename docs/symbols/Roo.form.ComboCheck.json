@@ -448,6 +448,14 @@
       ]
     },
     {
+      "name" : "allowLeadingSpace",
+      "type" : "Boolean",
+      "desc" : "True to prevent the stripping of leading white space",
+      "memberOf" : "Roo.form.TextField",
+      "values" : [
+      ]
+    },
+    {
       "name" : "invalidClass",
       "type" : "String",
       "desc" : "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",

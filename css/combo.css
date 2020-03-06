@@ -151,4 +151,9 @@
 {
     float: left;
 }
-
+/* needed for nested combo */
+.x-combo-list-item.x-combo-list-item-has-children:after {
+    content: '>';
+    float: right;
+    margin-right: 2px;
+}

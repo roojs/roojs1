@@ -11825,6 +11825,16 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         var r = this.reader.readRecords(o);
         this.loadRecords(r, {add: append}, true);
     },
+    
+     /**
+     * using 'cn' the nested child reader read the child array into it's child stores.
+     * @param {Object} rec The record with a 'children array
+     */
+    loadDataFromChildren : function(rec)
+    {
+        this.loadData(this.reader.toLoadData(rec));
+    },
+    
 
     /**
      * Gets the number of cached records.
@@ -12129,14 +12139,16 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
  * Small helper class to make creating Stores from Array data easier.
  * @cfg {Number} id The array index of the record id. Leave blank to auto generate ids.
  * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @cfg {Object} an existing reader (eg. copied from another store)
  * @cfg {Array} data The multi-dimensional array of data
  * @constructor
  * @param {Object} config
  */
-Roo.data.SimpleStore = function(config){
+Roo.data.SimpleStore = function(config)
+{
     Roo.data.SimpleStore.superclass.constructor.call(this, {
         isLocal : true,
-        reader: new Roo.data.ArrayReader({
+        reader: typeof(config.reader) != 'undefined' ? config.reader : new Roo.data.ArrayReader({
                 id: config.id
             },
             Roo.data.Record.create(config.fields)
@@ -12313,6 +12325,9 @@ Roo.data.DataReader = function(meta, recordType){
 };
 
 Roo.data.DataReader.prototype = {
+    
+    
+    readerType : 'Data',
      /**
      * Create an empty record
      * @param {Object} data (optional) - overlay some values
@@ -12332,6 +12347,7 @@ Roo.data.DataReader.prototype = {
         });
         return new this.recordType(Roo.apply(da, d));
     }
+    
     
 };/*
  * Based on:
@@ -12871,6 +12887,8 @@ Roo.data.JsonReader = function(meta, recordType){
 };
 Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
     
+    readerType : 'Json',
+    
     /**
      * @prop {Boolean} metaFromRemote  - if the meta data was loaded from the remote source.
      * Used by Store query builder to append _requestMeta to params.
@@ -13012,6 +13030,14 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
             records : records,
             totalRecords : totalRecords
         };
+    },
+    // used when loading children.. @see loadDataFromChildren
+    toLoadData: function(rec)
+    {
+	// expect rec just to be an array.. eg [a,b,c, [...] << cn ]
+	var data = typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn;
+	return { data : data, total : data.length };
+	
     }
 });/*
  * Based on:
@@ -13061,44 +13087,54 @@ var myReader = new Roo.data.ArrayReader({
  * 
  * created using {@link Roo.data.Record#create}.
  */
-Roo.data.ArrayReader = function(meta, recordType){
-    
-     
+Roo.data.ArrayReader = function(meta, recordType)
+{    
     Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 
 Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
-    /**
+    
+      /**
      * Create a data block containing Roo.data.Records from an XML document.
      * @param {Object} o An Array of row objects which represents the dataset.
      * @return {Object} A data block which is used by an {@link Roo.data.Store} object as
      * a cache of Roo.data.Records.
      */
-    readRecords : function(o){
+    readRecords : function(o)
+    {
         var sid = this.meta ? this.meta.id : null;
     	var recordType = this.recordType, fields = recordType.prototype.fields;
     	var records = [];
     	var root = o;
-	    for(var i = 0; i < root.length; i++){
-		    var n = root[i];
-	        var values = {};
-	        var id = ((sid || sid === 0) && n[sid] !== undefined && n[sid] !== "" ? n[sid] : null);
-	        for(var j = 0, jlen = fields.length; j < jlen; j++){
-                var f = fields.items[j];
-                var k = f.mapping !== undefined && f.mapping !== null ? f.mapping : j;
-                var v = n[k] !== undefined ? n[k] : f.defaultValue;
-                v = f.convert(v);
-                values[f.name] = v;
-            }
-	        var record = new recordType(values, id);
-	        record.json = n;
-	        records[records.length] = record;
+	for(var i = 0; i < root.length; i++){
+		var n = root[i];
+	    var values = {};
+	    var id = ((sid || sid === 0) && n[sid] !== undefined && n[sid] !== "" ? n[sid] : null);
+	    for(var j = 0, jlen = fields.length; j < jlen; j++){
+		var f = fields.items[j];
+		var k = f.mapping !== undefined && f.mapping !== null ? f.mapping : j;
+		var v = n[k] !== undefined ? n[k] : f.defaultValue;
+		v = f.convert(v);
+		values[f.name] = v;
 	    }
-	    return {
-	        records : records,
-	        totalRecords : records.length
-	    };
+	    var record = new recordType(values, id);
+	    record.json = n;
+	    records[records.length] = record;
+	}
+	return {
+	    records : records,
+	    totalRecords : records.length
+	};
+    },
+    // used when loading children.. @see loadDataFromChildren
+    toLoadData: function(rec)
+    {
+	// expect rec just to be an array.. eg [a,b,c, [...] << cn ]
+	return typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn;
+	
     }
+    
+    
 });/*
  * - LGPL
  * * 

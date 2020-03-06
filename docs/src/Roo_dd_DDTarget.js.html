@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/dd/DDTarget.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>Roo/dd/DDTarget.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -28,8 +28,8 @@
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.initTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sGroup</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     }
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.listeners </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.events</span><span class="jsdoc-syntax">) {
-       </span><span class="jsdoc-var">Roo.dd.DragDrop.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,  {
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">config.listeners </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.events</span><span class="jsdoc-syntax">)) {
+        </span><span class="jsdoc-var">Roo.dd.DragDrop.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,  {
             </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.listeners </span><span class="jsdoc-syntax">|| {},
             </span><span class="jsdoc-var">events </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.events </span><span class="jsdoc-syntax">|| {}
         });

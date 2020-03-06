@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/form/TextField.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>Roo/form/TextField.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -84,6 +84,10 @@
      */
     </span><span class="jsdoc-var">selectOnFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} allowLeadingSpace True to prevent the stripping of leading white space 
+     */
+    </span><span class="jsdoc-var">allowLeadingSpace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
      * @cfg {String} blankText Error text to display if the allow blank validation fails (defaults to &quot;This field is required&quot;)
      */
     </span><span class="jsdoc-var">blankText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;This field is required&quot;</span><span class="jsdoc-syntax">,
@@ -127,8 +131,11 @@
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectOnFocus</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;focus&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.preFocus</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-
         }
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.allowLeadingSpace</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cleanLeadingSpace</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+	}
+
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maskRe </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">this.vtype </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.disableKeyFilter </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.maskRe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.VTypes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.vtype</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'Mask'</span><span class="jsdoc-syntax">]))){
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keypress&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.filterKeys</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
@@ -164,7 +171,15 @@
             </span><span class="jsdoc-var">this.autoSize</span><span class="jsdoc-syntax">();
         }
     },
+    </span><span class="jsdoc-comment">// private - clean the leading white space
+    </span><span class="jsdoc-var">cleanLeadingSpace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'file'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
 
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/^\s+/,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">));
+    },
     </span><span class="jsdoc-comment">/**
      * Resets the current field value to the originally-loaded value and clears any validation messages.
      *  
@@ -173,8 +188,6 @@
         </span><span class="jsdoc-var">Roo.form.TextField.superclass.reset.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
     },
-
-
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">preFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 

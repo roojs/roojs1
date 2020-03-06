@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/data/XmlReader.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>Roo/data/XmlReader.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -67,6 +67,9 @@ var myReader = new Roo.data.XmlReader({
     </span><span class="jsdoc-var">Roo.data.XmlReader.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">meta</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">recordType</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">meta.fields</span><span class="jsdoc-syntax">);
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.data.XmlReader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data.DataReader</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-var">readerType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Xml'</span><span class="jsdoc-syntax">,
+
     </span><span class="jsdoc-comment">/**
      * This method is only used by a DataProxy which has retrieved data from a remote server.
 	 * @param {Object} response The XHR object which contains the parsed XML document.  The response is expected

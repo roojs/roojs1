@@ -485,6 +485,28 @@
       ]
     },
     {
+      "name" : "loadDataFromChildren",
+      "desc" : "using 'cn' the nested child reader read the child array into it's child stores.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.data.Store",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "rec",
+          "type" : "Object",
+          "desc" : "The record with a 'children array",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
       "name" : "clearFilter",
       "desc" : "Revert to a view of the Record cache with no filtering applied.",
       "isStatic" : false,

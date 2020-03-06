@@ -4667,6 +4667,7 @@ Roo.Template.prototype = {
      * @return {String} The HTML fragment
      */
     applyTemplate : function(values){
+        Roo.log(["applyTemplate", values]);
         try {
            
             if(this.compiled){
@@ -6073,10 +6074,12 @@ Roo.util.Observable.releaseCapture = function(o){
             var ls = this.listeners, scope, len = ls.length;
             if(len > 0){
                 this.firing = true;
-                var args = Array.prototype.slice.call(arguments, 0);
+                
                 for(var i = 0; i < len; i++){
-                    var l = ls[i];
-                    if(l.fireFn.apply(l.scope||this.obj||window, arguments) === false){
+		    var args = Array.prototype.slice.call(arguments, 0);
+		    var l = ls[i];
+		    args.push(l.options);
+                    if(l.fireFn.apply(l.scope||this.obj||window, args) === false){
                         this.firing = false;
                         return false;
                     }
@@ -16802,9 +16805,85 @@ Roo.Markdown.toHtml = function(text) {
 //
 (function() {
     
+     /**
+         * eval:var:escape
+         * eval:var:unescape
+         * eval:var:replace
+         */
+      
+    /**
+     * Helpers
+     */
+    
+    var escape = function (html, encode) {
+      return html
+        .replace(!encode ? /&(?!#?\w+;)/g : /&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+    
+    var unescape = function (html) {
+        // explicitly match decimal, hex, and named HTML entities 
+      return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
+        n = n.toLowerCase();
+        if (n === 'colon') { return ':'; }
+        if (n.charAt(0) === '#') {
+          return n.charAt(1) === 'x'
+            ? String.fromCharCode(parseInt(n.substring(2), 16))
+            : String.fromCharCode(+n.substring(1));
+        }
+        return '';
+      });
+    }
+    
+    var replace = function (regex, opt) {
+      regex = regex.source;
+      opt = opt || '';
+      return function self(name, val) {
+        if (!name) { return new RegExp(regex, opt); }
+        val = val.source || val;
+        val = val.replace(/(^|[^\[])\^/g, '$1');
+        regex = regex.replace(name, val);
+        return self;
+      };
+    }
+
+
+         /**
+         * eval:var:noop
+    */
+    var noop = function () {}
+    noop.exec = noop;
+    
+         /**
+         * eval:var:merge
+    */
+    var merge = function (obj) {
+      var i = 1
+        , target
+        , key;
+    
+      for (; i < arguments.length; i++) {
+        target = arguments[i];
+        for (key in target) {
+          if (Object.prototype.hasOwnProperty.call(target, key)) {
+            obj[key] = target[key];
+          }
+        }
+      }
+    
+      return obj;
+    }
+    
+    
     /**
      * Block-Level Grammar
      */
+    
+    
+    
     
     var block = {
       newline: /^\n+/,
@@ -16895,7 +16974,7 @@ Roo.Markdown.toHtml = function(text) {
      * Block Lexer
      */
     
-    function Lexer(options) {
+    var Lexer = function (options) {
       this.tokens = [];
       this.tokens.links = {};
       this.options = options || marked.defaults;
@@ -17313,7 +17392,7 @@ Roo.Markdown.toHtml = function(text) {
      * Inline Lexer & Compiler
      */
     
-    function InlineLexer(links, options) {
+    var InlineLexer  = function (links, options) {
       this.options = options || marked.defaults;
       this.links = links;
       this.rules = inline.normal;
@@ -17553,7 +17632,11 @@ Roo.Markdown.toHtml = function(text) {
      * Renderer
      */
     
-    function Renderer(options) {
+     /**
+         * eval:var:Renderer
+    */
+    
+    var Renderer   = function (options) {
       this.options = options || {};
     }
     
@@ -17702,8 +17785,11 @@ Roo.Markdown.toHtml = function(text) {
     /**
      * Parsing & Compiling
      */
+         /**
+         * eval:var:Parser
+    */
     
-    function Parser(options) {
+    var Parser= function (options) {
       this.tokens = [];
       this.token = null;
       this.options = options || marked.defaults;
@@ -17878,72 +17964,15 @@ Roo.Markdown.toHtml = function(text) {
         }
       }
     };
-    
-    /**
-     * Helpers
-     */
-    
-    function escape(html, encode) {
-      return html
-        .replace(!encode ? /&(?!#?\w+;)/g : /&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-    }
-    
-    function unescape(html) {
-        // explicitly match decimal, hex, and named HTML entities 
-      return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
-        n = n.toLowerCase();
-        if (n === 'colon') { return ':'; }
-        if (n.charAt(0) === '#') {
-          return n.charAt(1) === 'x'
-            ? String.fromCharCode(parseInt(n.substring(2), 16))
-            : String.fromCharCode(+n.substring(1));
-        }
-        return '';
-      });
-    }
-    
-    function replace(regex, opt) {
-      regex = regex.source;
-      opt = opt || '';
-      return function self(name, val) {
-        if (!name) { return new RegExp(regex, opt); }
-        val = val.source || val;
-        val = val.replace(/(^|[^\[])\^/g, '$1');
-        regex = regex.replace(name, val);
-        return self;
-      };
-    }
-    
-    function noop() {}
-    noop.exec = noop;
-    
-    function merge(obj) {
-      var i = 1
-        , target
-        , key;
-    
-      for (; i < arguments.length; i++) {
-        target = arguments[i];
-        for (key in target) {
-          if (Object.prototype.hasOwnProperty.call(target, key)) {
-            obj[key] = target[key];
-          }
-        }
-      }
-    
-      return obj;
-    }
-    
+  
     
     /**
      * Marked
      */
-    
-    function marked(src, opt, callback) {
+         /**
+         * eval:var:marked
+    */
+    var marked = function (src, opt, callback) {
       if (callback || typeof opt === 'function') {
         if (!callback) {
           callback = opt;
@@ -17964,7 +17993,9 @@ Roo.Markdown.toHtml = function(text) {
         }
     
         pending = tokens.length;
-    
+         /**
+         * eval:var:done
+    */
         var done = function(err) {
           if (err) {
             opt.highlight = highlight;
@@ -21097,8 +21128,8 @@ Roo.dd.DDTarget = function(id, sGroup, config) {
     if (id) {
         this.initTarget(id, sGroup, config);
     }
-    if (config.listeners || config.events) { 
-       Roo.dd.DragDrop.superclass.constructor.call(this,  { 
+    if (config && (config.listeners || config.events)) { 
+        Roo.dd.DragDrop.superclass.constructor.call(this,  { 
             listeners : config.listeners || {}, 
             events : config.events || {} 
         });    
@@ -23237,6 +23268,16 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         var r = this.reader.readRecords(o);
         this.loadRecords(r, {add: append}, true);
     },
+    
+     /**
+     * using 'cn' the nested child reader read the child array into it's child stores.
+     * @param {Object} rec The record with a 'children array
+     */
+    loadDataFromChildren : function(rec)
+    {
+        this.loadData(this.reader.toLoadData(rec));
+    },
+    
 
     /**
      * Gets the number of cached records.
@@ -23541,14 +23582,16 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
  * Small helper class to make creating Stores from Array data easier.
  * @cfg {Number} id The array index of the record id. Leave blank to auto generate ids.
  * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @cfg {Object} an existing reader (eg. copied from another store)
  * @cfg {Array} data The multi-dimensional array of data
  * @constructor
  * @param {Object} config
  */
-Roo.data.SimpleStore = function(config){
+Roo.data.SimpleStore = function(config)
+{
     Roo.data.SimpleStore.superclass.constructor.call(this, {
         isLocal : true,
-        reader: new Roo.data.ArrayReader({
+        reader: typeof(config.reader) != 'undefined' ? config.reader : new Roo.data.ArrayReader({
                 id: config.id
             },
             Roo.data.Record.create(config.fields)
@@ -23725,6 +23768,9 @@ Roo.data.DataReader = function(meta, recordType){
 };
 
 Roo.data.DataReader.prototype = {
+    
+    
+    readerType : 'Data',
      /**
      * Create an empty record
      * @param {Object} data (optional) - overlay some values
@@ -23744,6 +23790,7 @@ Roo.data.DataReader.prototype = {
         });
         return new this.recordType(Roo.apply(da, d));
     }
+    
     
 };/*
  * Based on:
@@ -24283,6 +24330,8 @@ Roo.data.JsonReader = function(meta, recordType){
 };
 Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
     
+    readerType : 'Json',
+    
     /**
      * @prop {Boolean} metaFromRemote  - if the meta data was loaded from the remote source.
      * Used by Store query builder to append _requestMeta to params.
@@ -24424,6 +24473,14 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
             records : records,
             totalRecords : totalRecords
         };
+    },
+    // used when loading children.. @see loadDataFromChildren
+    toLoadData: function(rec)
+    {
+	// expect rec just to be an array.. eg [a,b,c, [...] << cn ]
+	var data = typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn;
+	return { data : data, total : data.length };
+	
     }
 });/*
  * Based on:
@@ -24494,6 +24551,9 @@ Roo.data.XmlReader = function(meta, recordType){
     Roo.data.XmlReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 Roo.extend(Roo.data.XmlReader, Roo.data.DataReader, {
+    
+    readerType : 'Xml',
+    
     /**
      * This method is only used by a DataProxy which has retrieved data from a remote server.
 	 * @param {Object} response The XHR object which contains the parsed XML document.  The response is expected
@@ -24605,44 +24665,54 @@ var myReader = new Roo.data.ArrayReader({
  * 
  * created using {@link Roo.data.Record#create}.
  */
-Roo.data.ArrayReader = function(meta, recordType){
-    
-     
+Roo.data.ArrayReader = function(meta, recordType)
+{    
     Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType||meta.fields);
 };
 
 Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
-    /**
+    
+      /**
      * Create a data block containing Roo.data.Records from an XML document.
      * @param {Object} o An Array of row objects which represents the dataset.
      * @return {Object} A data block which is used by an {@link Roo.data.Store} object as
      * a cache of Roo.data.Records.
      */
-    readRecords : function(o){
+    readRecords : function(o)
+    {
         var sid = this.meta ? this.meta.id : null;
     	var recordType = this.recordType, fields = recordType.prototype.fields;
     	var records = [];
     	var root = o;
-	    for(var i = 0; i < root.length; i++){
-		    var n = root[i];
-	        var values = {};
-	        var id = ((sid || sid === 0) && n[sid] !== undefined && n[sid] !== "" ? n[sid] : null);
-	        for(var j = 0, jlen = fields.length; j < jlen; j++){
-                var f = fields.items[j];
-                var k = f.mapping !== undefined && f.mapping !== null ? f.mapping : j;
-                var v = n[k] !== undefined ? n[k] : f.defaultValue;
-                v = f.convert(v);
-                values[f.name] = v;
-            }
-	        var record = new recordType(values, id);
-	        record.json = n;
-	        records[records.length] = record;
+	for(var i = 0; i < root.length; i++){
+		var n = root[i];
+	    var values = {};
+	    var id = ((sid || sid === 0) && n[sid] !== undefined && n[sid] !== "" ? n[sid] : null);
+	    for(var j = 0, jlen = fields.length; j < jlen; j++){
+		var f = fields.items[j];
+		var k = f.mapping !== undefined && f.mapping !== null ? f.mapping : j;
+		var v = n[k] !== undefined ? n[k] : f.defaultValue;
+		v = f.convert(v);
+		values[f.name] = v;
 	    }
-	    return {
-	        records : records,
-	        totalRecords : records.length
-	    };
+	    var record = new recordType(values, id);
+	    record.json = n;
+	    records[records.length] = record;
+	}
+	return {
+	    records : records,
+	    totalRecords : records.length
+	};
+    },
+    // used when loading children.. @see loadDataFromChildren
+    toLoadData: function(rec)
+    {
+	// expect rec just to be an array.. eg [a,b,c, [...] << cn ]
+	return typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn;
+	
     }
+    
+    
 });/*
  * Based on:
  * Ext JS Library 1.1.1
@@ -41367,9 +41437,11 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     // element that contains real text value.. (when hidden is used..)
      
     // private
-    onRender : function(ct, position){
+    onRender : function(ct, position)
+    {
         Roo.form.ComboBox.superclass.onRender.call(this, ct, position);
-        if(this.hiddenName){
+        
+	if(this.hiddenName){
             this.hiddenField = this.el.insertSibling({tag:'input', type:'hidden', name: this.hiddenName, id:  (this.hiddenId||this.hiddenName)},
                     'before', true);
             this.hiddenField.value =
@@ -41381,6 +41453,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
              
              
         }
+	
         if(Roo.isGecko){
             this.el.dom.setAttribute('autocomplete', 'off');
         }
@@ -41441,7 +41514,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
         }
 
         this.view = new Roo.View(this.innerList, this.tpl, {
-            singleSelect:true, store: this.store, selectedClass: this.selectedClass
+            singleSelect:true,
+	    store: this.store,
+	    selectedClass: this.selectedClass
         });
 
         this.view.on('click', this.onViewClick, this);
@@ -42627,6 +42702,434 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         }
         
     }
+});/*
+ * RooJS Library 1.1.1
+ * Copyright(c) 2008-2011  Alan Knowles
+ *
+ * License - LGPL
+ */
+ 
+
+/**
+ * @class Roo.form.ComboNested
+ * @extends Roo.form.ComboBox
+ * A combobox for that allows selection of nested items in a list,
+ * eg.
+ *
+ *  Book
+ *    -> red
+ *    -> green
+ *  Table
+ *    -> square
+ *      ->red
+ *      ->green
+ *    -> rectangle
+ *      ->green
+ *      
+ * 
+ * @constructor
+ * Create a new ComboNested
+ * @param {Object} config Configuration options
+ */
+Roo.form.ComboNested = function(config){
+    Roo.form.ComboCheck.superclass.constructor.call(this, config);
+    // should verify some data...
+    // like
+    // hiddenName = required..
+    // displayField = required
+    // valudField == required
+    var req= [ 'hiddenName', 'displayField', 'valueField' ];
+    var _t = this;
+    Roo.each(req, function(e) {
+        if ((typeof(_t[e]) == 'undefined' ) || !_t[e].length) {
+            throw "Roo.form.ComboNested : missing value for: " + e;
+        }
+    });
+     
+    
+};
+
+Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
+   
+    /*
+     * @config {Number} max Number of columns to show
+     */
+    
+    maxColumns : 3,
+   
+    list : null, // the outermost div..
+    innerLists : null, // the
+    views : null,
+    stores : null,
+    // private
+    loadingChildren : false,
+    
+    onRender : function(ct, position)
+    {
+        Roo.form.ComboBox.superclass.onRender.call(this, ct, position); // skip parent call - got to above..
+        
+        if(this.hiddenName){
+            this.hiddenField = this.el.insertSibling({tag:'input', type:'hidden', name: this.hiddenName, id:  (this.hiddenId||this.hiddenName)},
+                    'before', true);
+            this.hiddenField.value =
+                this.hiddenValue !== undefined ? this.hiddenValue :
+                this.value !== undefined ? this.value : '';
+
+            // prevent input submission
+            this.el.dom.removeAttribute('name');
+             
+             
+        }
+	
+        if(Roo.isGecko){
+            this.el.dom.setAttribute('autocomplete', 'off');
+        }
+
+        var cls = 'x-combo-list';
+
+        this.list = new Roo.Layer({
+            shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
+        });
+
+        var lw = this.listWidth || Math.max(this.wrap.getWidth(), this.minListWidth);
+        this.list.setWidth(lw);
+        this.list.swallowEvent('mousewheel');
+        this.assetHeight = 0;
+
+        if(this.title){
+            this.header = this.list.createChild({cls:cls+'-hd', html: this.title});
+            this.assetHeight += this.header.getHeight();
+        }
+        this.innerLists = [];
+        this.views = [];
+        this.stores = [];
+        for (var i =0 ; i < this.maxColumns; i++) {
+            this.onRenderList( cls, i);
+        }
+        
+        // always needs footer, as we are going to have an 'OK' button.
+        this.footer = this.list.createChild({cls:cls+'-ft'});
+        this.pageTb = new Roo.Toolbar(this.footer);  
+        var _this = this;
+        this.pageTb.add(  {
+            
+            text: 'Done',
+            handler: function()
+            {
+                _this.collapse();
+            }
+        });
+        
+        if ( this.allowBlank && !this.disableClear) {
+            
+            this.pageTb.add(new Roo.Toolbar.Fill(), {
+                cls: 'x-btn-icon x-btn-clear',
+                text: '&#160;',
+                handler: function()
+                {
+                    _this.collapse();
+                    _this.clearValue();
+                    _this.onSelect(false, -1);
+                }
+            });
+        }
+        if (this.footer) {
+            this.assetHeight += this.footer.getHeight();
+        }
+        
+    },
+    onRenderList : function (  cls, i)
+    {
+        
+        var lw = Math.floor(
+                ((this.listWidth * this.maxColumns || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / this.maxColumns
+        );
+        
+        this.list.setWidth(lw); // default to '1'
+
+        var il = this.innerLists[i] = this.list.createChild({cls:cls+'-inner'});
+        //il.on('mouseover', this.onViewOver, this, { list:  i });
+        //il.on('mousemove', this.onViewMove, this, { list:  i });
+        il.setWidth(lw);
+        il.setStyle({ 'overflow-x' : 'hidden'});
+
+        if(!this.tpl){
+            this.tpl = new Roo.Template({
+                html :  '<div class="'+cls+'-item '+cls+'-item-{cn:this.isEmpty}">{' + this.displayField + '}</div>',
+                isEmpty: function (value, allValues) {
+                    //Roo.log(value);
+                    var dl = typeof(value.data) != 'undefined' ? value.data.length : value.length; ///json is a nested response..
+                    return dl ? 'has-children' : 'no-children'
+                }
+            });
+        }
+        
+        var store  = this.store;
+        if (i > 0) {
+            store  = new Roo.data.SimpleStore({
+                //fields : this.store.reader.meta.fields,
+                reader : this.store.reader,
+                data : [ ]
+            });
+        }
+        this.stores[i]  = store;
+                  
+        var view = this.views[i] = new Roo.View(
+            il,
+            this.tpl,
+            {
+                singleSelect:true,
+                store: store,
+                selectedClass: this.selectedClass
+            }
+        );
+        view.getEl().setWidth(lw);
+        view.getEl().setStyle({
+            position: i < 1 ? 'relative' : 'absolute',
+            top: 0,
+            left: (i * lw ) + 'px',
+            display : i > 0 ? 'none' : 'block'
+        });
+        view.on('selectionchange', this.onSelectChange, this, {list : i });
+        view.on('dblclick', this.onDoubleClick, this, {list : i });
+        //view.on('click', this.onViewClick, this, { list : i });
+
+        store.on('beforeload', this.onBeforeLoad, this);
+        store.on('load',  this.onLoad, this, { list  : i});
+        store.on('loadexception', this.onLoadException, this);
+
+        // hide the other vies..
+        
+        
+        
+    },
+      
+    restrictHeight : function()
+    {
+        var mh = 0;
+        Roo.each(this.innerLists, function(il,i) {
+            var el = this.views[i].getEl();
+            el.dom.style.height = '';
+            var inner = el.dom;
+            var h = Math.max(il.clientHeight, il.offsetHeight, il.scrollHeight);
+            // only adjust heights on other ones..
+            mh = Math.max(h, mh);
+            if (i < 1) {
+                
+                el.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
+                il.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
+               
+            }
+            
+            
+        }, this);
+        
+        this.list.beginUpdate();
+        this.list.setHeight(mh+this.list.getFrameWidth('tb')+this.assetHeight);
+        this.list.alignTo(this.el, this.listAlign);
+        this.list.endUpdate();
+        
+    },
+     
+    
+    // -- store handlers..
+    // private
+    onBeforeLoad : function()
+    {
+        if(!this.hasFocus){
+            return;
+        }
+        this.innerLists[0].update(this.loadingText ?
+               '<div class="loading-indicator">'+this.loadingText+'</div>' : '');
+        this.restrictHeight();
+        this.selectedIndex = -1;
+    },
+    // private
+    onLoad : function(a,b,c,d)
+    {
+        if (!this.loadingChildren) {
+            // then we are loading the top level. - hide the children
+            for (var i = 1;i < this.views.length; i++) {
+                this.views[i].getEl().setStyle({ display : 'none' });
+            }
+            var lw = Math.floor(
+                ((this.listWidth * this.maxColumns || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')) / this.maxColumns
+            );
+        
+             this.list.setWidth(lw); // default to '1'
+
+            
+        }
+        if(!this.hasFocus){
+            return;
+        }
+        
+        if(this.store.getCount() > 0) {
+            this.expand();
+            this.restrictHeight();   
+        } else {
+            this.onEmptyResults();
+        }
+        
+        if (!this.loadingChildren) {
+            this.selectActive();
+        }
+        /*
+        this.stores[1].loadData([]);
+        this.stores[2].loadData([]);
+        this.views
+        */    
+    
+        //this.el.focus();
+    },
+    
+    
+    // private
+    onLoadException : function()
+    {
+        this.collapse();
+        Roo.log(this.store.reader.jsonData);
+        if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+            Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+        }
+        
+        
+    },
+    // no cleaning of leading spaces on blur here.
+    cleanLeadingSpace : function(e) { },
+    
+
+    onSelectChange : function (view, sels, opts )
+    {
+        var ix = view.getSelectedIndexes();
+         
+        if (opts.list > this.maxColumns - 2) {
+            if (view.store.getCount()<  1) {
+                this.views[opts.list ].getEl().setStyle({ display :   'none' });
+
+            } else  {
+                if (ix.length) {
+                    // used to clear ?? but if we are loading unselected 
+                    this.setFromData(view.store.getAt(ix[0]).data);
+                }
+                
+            }
+            
+            return;
+        }
+        
+        if (!ix.length) {
+            // this get's fired when trigger opens..
+           // this.setFromData({});
+            var str = this.stores[opts.list+1];
+            str.data.clear(); // removeall wihtout the fire events..
+            return;
+        }
+        
+        var rec = view.store.getAt(ix[0]);
+         
+        this.setFromData(rec.data);
+        this.fireEvent('select', this, rec, ix[0]);
+        
+        var lw = Math.floor(
+             (
+                (this.listWidth * this.maxColumns || Math.max(this.wrap.getWidth(), this.minListWidth)) - this.list.getFrameWidth('lr')
+             ) / this.maxColumns
+        );
+        this.loadingChildren = true;
+        this.stores[opts.list+1].loadDataFromChildren( rec );
+        this.loadingChildren = false;
+        var dl = this.stores[opts.list+1]. getTotalCount();
+        
+        this.views[opts.list+1].getEl().setHeight( this.innerLists[0].getHeight());
+        
+        this.views[opts.list+1].getEl().setStyle({ display : dl ? 'block' : 'none' });
+        for (var i = opts.list+2; i < this.views.length;i++) {
+            this.views[i].getEl().setStyle({ display : 'none' });
+        }
+        
+        this.innerLists[opts.list+1].setHeight( this.innerLists[0].getHeight());
+        this.list.setWidth(lw * (opts.list + (dl ? 2 : 1)));
+        
+        if (this.isLoading) {
+           // this.selectActive(opts.list);
+        }
+         
+    },
+    
+    
+    
+    
+    onDoubleClick : function()
+    {
+        this.collapse(); //??
+    },
+    
+     
+    
+    
+    
+    // private
+    recordToStack : function(store, prop, value, stack)
+    {
+        var cstore = new Roo.data.SimpleStore({
+            //fields : this.store.reader.meta.fields, // we need array reader.. for
+            reader : this.store.reader,
+            data : [ ]
+        });
+        var _this = this;
+        var record  = false;
+        var srec = false;
+        if(store.getCount() < 1){
+            return false;
+        }
+        store.each(function(r){
+            if(r.data[prop] == value){
+                record = r;
+            srec = r;
+                return false;
+            }
+            if (r.data.cn && r.data.cn.length) {
+                cstore.loadDataFromChildren( r);
+                var cret = _this.recordToStack(cstore, prop, value, stack);
+                if (cret !== false) {
+                    record = cret;
+                    srec = r;
+                    return false;
+                }
+            }
+             
+            return true;
+        });
+        if (record == false) {
+            return false
+        }
+        stack.unshift(srec);
+        return record;
+    },
+    
+    /*
+     * find the stack of stores that match our value.
+     *
+     * 
+     */
+    
+    selectActive : function ()
+    {
+	// if store is not loaded, then we will need to wait for that to happen first.
+        var stack = [];
+        this.recordToStack(this.store, this.valueField, this.getValue(), stack);
+        for (var i = 0; i < stack.length; i++ ) {
+            this.views[i].select(stack[i].store.indexOf(stack[i]), false, false );
+        }
+	
+    }
+	
+	 
+    
+    
+    
+    
 });/*
  * Based on:
  * Ext JS Library 1.1.1

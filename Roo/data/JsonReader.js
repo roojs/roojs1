@@ -67,6 +67,8 @@ Roo.data.JsonReader = function(meta, recordType){
 };
 Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
     
+    readerType : 'Json',
+    
     /**
      * @prop {Boolean} metaFromRemote  - if the meta data was loaded from the remote source.
      * Used by Store query builder to append _requestMeta to params.
@@ -208,5 +210,13 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
             records : records,
             totalRecords : totalRecords
         };
+    },
+    // used when loading children.. @see loadDataFromChildren
+    toLoadData: function(rec)
+    {
+	// expect rec just to be an array.. eg [a,b,c, [...] << cn ]
+	var data = typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn;
+	return { data : data, total : data.length };
+	
     }
 });

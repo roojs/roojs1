@@ -97,6 +97,16 @@
       ]
     },
     {
+      "name" : "errorMask",
+      "type" : "Boolean",
+      "desc" : "default false",
+      "memberOf" : "Roo.form.BasicForm",
+      "values" : [
+        "(true",
+        "false)"
+      ]
+    },
+    {
       "name" : "labelWidth",
       "type" : "Number",
       "desc" : "The width of labels. This property cascades to child containers.",
@@ -164,6 +174,14 @@
       "name" : "url",
       "type" : "String",
       "desc" : "The URL to use for form actions if one isn't supplied in the action options.",
+      "memberOf" : "Roo.form.BasicForm",
+      "values" : [
+      ]
+    },
+    {
+      "name" : "maskOffset",
+      "type" : "Number",
+      "desc" : "Default 100",
       "memberOf" : "Roo.form.BasicForm",
       "values" : [
       ]

@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/bootstrap/CheckBox.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>Roo/bootstrap/CheckBox.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * - LGPL
  *
  * CheckBox
@@ -55,6 +55,11 @@
     </span><span class="jsdoc-var">weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">inline</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// checkbox success does not make any sense really.. 
+    </span><span class="jsdoc-var">invalidClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">validClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">,
+
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -156,6 +161,22 @@
             }
 
         }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">boxLabelCfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxLabel</span><span class="jsdoc-syntax">){
+
+            </span><span class="jsdoc-var">boxLabelCfg </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-comment">//'for': id, // box label is handled by onclick - so no for...
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'box-label'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.boxLabel
+            </span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tooltip</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">boxLabelCfg.tooltip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tooltip</span><span class="jsdoc-syntax">;
+            }
+
+        }
+
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
 </span><span class="jsdoc-comment">//                Roo.log(&quot;left and has label&quot;);
@@ -173,6 +194,10 @@
                     </span><span class="jsdoc-syntax">]
                 }
             ];
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">boxLabelCfg</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">boxLabelCfg</span><span class="jsdoc-syntax">);
+            }
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">&gt; 12){
                 </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width: &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
@@ -217,29 +242,22 @@
                     </span><span class="jsdoc-var">inputblock
 
                 </span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">boxLabelCfg</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">boxLabelCfg</span><span class="jsdoc-syntax">);
+                }
 
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
 
 </span><span class="jsdoc-comment">//                Roo.log(&quot; no label &amp;&amp; no align&quot;);
                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [  </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">] ;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">boxLabelCfg</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">boxLabelCfg</span><span class="jsdoc-syntax">);
+                }
 
 
         }
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxLabel</span><span class="jsdoc-syntax">){
-             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">boxLabelCfg </span><span class="jsdoc-syntax">= {
-                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-comment">//'for': id, // box label is handled by onclick - so no for...
-                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'box-label'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.boxLabel
-            </span><span class="jsdoc-syntax">};
 
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tooltip</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">boxLabelCfg.tooltip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tooltip</span><span class="jsdoc-syntax">;
-            }
-
-            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">boxLabelCfg</span><span class="jsdoc-syntax">);
-        }
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'radio'</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">);

@@ -1,4 +1,4 @@
-<html><head><title>/home/edward/gitlive/roojs1/Roo/HtmlEditorCore.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">//&lt;script type=&quot;text/javascript&quot;&gt;
+<html><head><title>Roo/HtmlEditorCore.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">//&lt;script type=&quot;text/javascript&quot;&gt;
 
 /*
  * Based  Ext JS Library 1.1.1
@@ -335,17 +335,32 @@
             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cleanHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-comment">// fix up the special chars.. normaly like back quotes in word...
             // however we do not want to do this with chinese..
-            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html.replace</span><span class="jsdoc-syntax">(/([\x80-\uffff])/g, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b.charCodeAt</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html.replace</span><span class="jsdoc-syntax">(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u0080-\uFFFF]/g, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">match</span><span class="jsdoc-syntax">) {
+
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">match.charCodeAt</span><span class="jsdoc-syntax">();
+
+                </span><span class="jsdoc-comment">// Get the character value, handling surrogate pairs
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">match.length </span><span class="jsdoc-syntax">== 2) {
+                    </span><span class="jsdoc-comment">// It's a surrogate pair, calculate the Unicode code point
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">high </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">match.charCodeAt</span><span class="jsdoc-syntax">(0) - 0xD800;
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">low  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">match.charCodeAt</span><span class="jsdoc-syntax">(1) - 0xDC00;
+                    </span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">high </span><span class="jsdoc-syntax">* 0x400) + </span><span class="jsdoc-var">low </span><span class="jsdoc-syntax">+ 0x10000;
+                }  </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(
                     (</span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">&gt;= 0x4E00 &amp;&amp; </span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">&lt; 0xA000 ) ||
                     (</span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">&gt;= 0x3400 &amp;&amp; </span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">&lt; 0x4E00 ) ||
                     (</span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">&gt;= 0xf900 &amp;&amp; </span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">&lt; 0xfb00 )
                 ) {
-                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">match</span><span class="jsdoc-syntax">;
                 }
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;&amp;#&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">cc</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">&quot;;&quot;
-            </span><span class="jsdoc-syntax">});
+
+                </span><span class="jsdoc-comment">// No, use a numeric entity. Here we brazenly (and possibly mistakenly)
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;&amp;#&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cc </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;;&quot;</span><span class="jsdoc-syntax">;
+
+
+            });
+
+
+
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforesync'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'sync'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
@@ -529,7 +544,11 @@
     </span><span class="jsdoc-var">insertTag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tg</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// could be a bit smarter... -&gt; wrap the current selected tRoo..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tg.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'span' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">tg.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'code'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tg.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'span' </span><span class="jsdoc-syntax">||
+            </span><span class="jsdoc-var">tg.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'code' </span><span class="jsdoc-syntax">||
+            </span><span class="jsdoc-var">tg.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'sup' </span><span class="jsdoc-syntax">||
+            </span><span class="jsdoc-var">tg.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'sub'
+            </span><span class="jsdoc-syntax">) {
 
             </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getSelection</span><span class="jsdoc-syntax">());
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">wrappingNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tg.toLowerCase</span><span class="jsdoc-syntax">());
@@ -1025,6 +1044,11 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">remove_keep_children</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.HtmlEditorCore.remove.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">()) &gt; -1;
 
+        </span><span class="jsdoc-comment">// spans with no attributes - just remove them..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((!</span><span class="jsdoc-var">node.attributes </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">node.attributes.length</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">lcname </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">remove_keep_children </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+
         </span><span class="jsdoc-comment">// remove &lt;a name=....&gt; as rendering on yahoo mailer is borked with this.
         // this will have to be flaged elsewhere - perhaps ablack=name... on the mailer..
 
@@ -1045,6 +1069,10 @@
         }
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node.attributes </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">node.attributes.length</span><span class="jsdoc-syntax">) {
+
+
+
+
             </span><span class="jsdoc-var">this.cleanUpChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
@@ -1141,11 +1169,11 @@
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'class'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.value.match</span><span class="jsdoc-syntax">(/^Mso/)) {
-                    </span><span class="jsdoc-var">node.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'class'</span><span class="jsdoc-syntax">);
                 }
 
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.value.match</span><span class="jsdoc-syntax">(/^body$/)) {
-                    </span><span class="jsdoc-var">node.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'class'</span><span class="jsdoc-syntax">);
                 }
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
@@ -1166,12 +1194,29 @@
      */
     </span><span class="jsdoc-var">cleanWord </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
-
-
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.cleanWord</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">node.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'SPAN' </span><span class="jsdoc-syntax">&amp;&amp;
+                !</span><span class="jsdoc-var">node.hasAttributes</span><span class="jsdoc-syntax">() &amp;&amp;
+                </span><span class="jsdoc-var">node.childNodes.length </span><span class="jsdoc-syntax">== 1 &amp;&amp;
+                </span><span class="jsdoc-var">node.firstChild.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;#text&quot;
+        </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">textNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.firstChild</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">node.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">textNode</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lang'</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'zh-CN'</span><span class="jsdoc-syntax">) {   </span><span class="jsdoc-comment">// do not space pad on chinese characters..
+                </span><span class="jsdoc-var">node.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.ownerDocument.createTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">node.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">textNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lang'</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'zh-CN'</span><span class="jsdoc-syntax">) {   </span><span class="jsdoc-comment">// do not space pad on chinese characters..
+                </span><span class="jsdoc-var">node.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.ownerDocument.createTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">) , </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        }
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;#text&quot;</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// clean up silly Windows -- stuff?
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -1186,16 +1231,20 @@
             </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-
-        </span><span class="jsdoc-comment">// remove - but keep children..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/^(meta|link|\\?xml:|st1:|o:|font)/)) {
+        </span><span class="jsdoc-comment">//Roo.log(node.tagName);
+        // remove - but keep children..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/^(meta|link|\\?xml:|st1:|o:|v:|font)/)) {
+            </span><span class="jsdoc-comment">//Roo.log('-- removed');
             </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes.length</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">[0];
                 </span><span class="jsdoc-var">node.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">node.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-comment">// move node to parent - and clean it..
+                </span><span class="jsdoc-var">this.cleanWord</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
             }
             </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.iterateChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cleanWord</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">/// no need to iterate chidlren = it's got none..
+            //this.iterateChildren(node, this.cleanWord);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-comment">// clean styles
