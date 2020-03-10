@@ -25398,14 +25398,20 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         
         // use formdata
         if (typeof(FormData) != 'undefined' && asString !== true) {
-            var fd = (new FormData(this.el.dom)).entries();
-            var ret = {};
-            var ent = fd.next();
-            while (!ent.done) {
-                ret[ent.value[0]] = ent.value[1]; // not sure how this will handle duplicates..
-                ent = fd.next();
-            };
-            return ret;
+            // this relies on a 'recent' version of chrome apparently...
+            try {
+                var fd = (new FormData(this.el.dom)).entries();
+                var ret = {};
+                var ent = fd.next();
+                while (!ent.done) {
+                    ret[ent.value[0]] = ent.value[1]; // not sure how this will handle duplicates..
+                    ent = fd.next();
+                };
+                return ret;
+            } catch(e) {
+                
+            }
+            
         }
         
         

@@ -540,14 +540,20 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 
         </span><span class="jsdoc-comment">// use formdata
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">FormData</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">asString </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fd </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FormData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.entries</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= {};
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fd.next</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ent.done</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ent.value</span><span class="jsdoc-syntax">[0]] = </span><span class="jsdoc-var">ent.value</span><span class="jsdoc-syntax">[1]; </span><span class="jsdoc-comment">// not sure how this will handle duplicates..
-                </span><span class="jsdoc-var">ent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fd.next</span><span class="jsdoc-syntax">();
-            };
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">// this relies on a 'recent' version of chrome apparently...
+            </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fd </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FormData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.entries</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= {};
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fd.next</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ent.done</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ent.value</span><span class="jsdoc-syntax">[0]] = </span><span class="jsdoc-var">ent.value</span><span class="jsdoc-syntax">[1]; </span><span class="jsdoc-comment">// not sure how this will handle duplicates..
+                    </span><span class="jsdoc-var">ent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fd.next</span><span class="jsdoc-syntax">();
+                };
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+
+            }
+
         }
 
 
