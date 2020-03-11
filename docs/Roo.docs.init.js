@@ -160,7 +160,7 @@ Roo.docs.init = {
                             return;
                         }
                         
-                        if (c.name.split('.').length < 2)  {
+                        if (typeof(c.name) == 'undefined' || c.name.split('.').length < 2)  {
                             return false;
                         }
                         return true;
