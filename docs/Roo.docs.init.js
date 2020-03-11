@@ -124,9 +124,9 @@ Roo.docs.init = {
             preventDefault : true,
           //  cls : type == 'NavSidebarItem' ? 'open' : '',
             listeners : {
-                click : (function(mi,ev,c)
+                click : (function(mi,ev, lv, c)
                 {
-                    
+                    Roo.log(arguments);
                     ev.stopEvent();
                      
                     if (c.cn.length && mi.xtype == 'MenuItem') {
@@ -154,13 +154,13 @@ Roo.docs.init = {
                 xns: Roo.bootstrap,
                 xtype : 'Menu',
                 listeners : {
-                    beforehide : (function(mi,c)
+                    beforehide : (function(mi,lv, c)
                     {
                         if (Roo.docs.init.prefix.length) {
                             return;
                         }
                         
-                        if (typeof(c.name) == 'undefined' || c.name.split('.').length < 2)  {
+                        if ( c.name.split('.').length < 2)  {
                             return false;
                         }
                         return true;
