@@ -13304,6 +13304,9 @@ mc.add(otherEl);
  * @return {Object} The item associated with the passed key.
  */
     item : function(key){
+        if (key === 'length') {
+            return null;
+        }
         var item = typeof this.map[key] != "undefined" ? this.map[key] : this.items[key];
         return typeof item != 'function' || this.allowFunctions ? item : null; // for prototype!
     },

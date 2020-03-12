@@ -323,6 +323,9 @@ mc.add(otherEl);
  * @return {Object} The item associated with the passed key.
  */
     </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">key </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'length'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.map</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.map</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">];
         </span><span class="jsdoc-keyword">return typeof </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'function' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.allowFunctions </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// for prototype!
     </span><span class="jsdoc-syntax">},
