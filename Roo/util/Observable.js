@@ -360,7 +360,6 @@ Roo.util.Observable.releaseCapture = function(o){
                 for(var i = 0; i < len; i++){
 		    var args = Array.prototype.slice.call(arguments, 0);
 		    var l = ls[i];
-		    args.push(l.options);
                     if(l.fireFn.apply(l.scope||this.obj||window, args) === false){
                         this.firing = false;
                         return false;
