@@ -356,9 +356,8 @@ Roo.util.Observable.releaseCapture = function(o){
             var ls = this.listeners, scope, len = ls.length;
             if(len > 0){
                 this.firing = true;
-                
+		var args = Array.prototype.slice.call(arguments, 0);                
                 for(var i = 0; i < len; i++){
-		    var args = Array.prototype.slice.call(arguments, 0);
 		    var l = ls[i];
                     if(l.fireFn.apply(l.scope||this.obj||window, args) === false){
                         this.firing = false;
