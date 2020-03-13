@@ -42891,8 +42891,8 @@ Roo.extend(Roo.form.ComboNested, Roo.form.ComboBox, {
             left: (i * lw ) + 'px',
             display : i > 0 ? 'none' : 'block'
         });
-        view.on('selectionchange', this.onSelectChange, this, {list : i });
-        view.on('dblclick', this.onDoubleClick, this, {list : i });
+        view.on('selectionchange', this.onSelectChange.createDelegate(this, {list : i }, true));
+        view.on('dblclick', this.onDoubleClick.createDelegate(this, {list : i }, true));
         //view.on('click', this.onViewClick, this, { list : i });
 
         store.on('beforeload', this.onBeforeLoad, this);
