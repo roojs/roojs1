@@ -509,7 +509,16 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
      */
     addColumn : function(cfg, pos)
     {
-        cfg.id = typeof(cfg.id) == 'undefined' : Roo.id() : cfg.id; // don't normally use this..
+        cfg.id = typeof(cfg.id) == 'undefined' ? Roo.id() : cfg.id; // don't normally use this..
+        this.cm.lookup[cfg.id] = cfg;
+        if (typeof(pos) == 'undefined' || pos >= this.cm.config.length) {
+            this.cm.config.push(cfg);
+            return;
+        }
+        // slice
+        pos = Math.max(0,pos);
+        
+        this.cm.config.splice(pos, 0, cfg);
         
         
     }
