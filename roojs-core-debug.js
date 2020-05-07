@@ -15439,7 +15439,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
     /**
      * @cfg {String} actionMode 
      * which property holds the element that used for  hide() / show() / disable() / enable()
-     * default is 'el' 
+     * default is 'el' for forms you probably want to set this to fieldEl 
      */
     actionMode : "el",
 

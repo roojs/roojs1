@@ -484,12 +484,12 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         return this;
     },
 
-	/**
-	 * Reconfigures the grid to use a different Store and Column Model.
-	 * The View will be bound to the new objects and refreshed.
-	 * @param {Roo.data.Store} dataSource The new {@link Roo.data.Store} object
-	 * @param {Roo.grid.ColumnModel} The new {@link Roo.grid.ColumnModel} object
-	 */
+    /**
+     * Reconfigures the grid to use a different Store and Column Model.
+     * The View will be bound to the new objects and refreshed.
+     * @param {Roo.data.Store} dataSource The new {@link Roo.data.Store} object
+     * @param {Roo.grid.ColumnModel} The new {@link Roo.grid.ColumnModel} object
+     */
     reconfigure : function(dataSource, colModel){
         if(this.loadMask){
             this.loadMask.destroy();
@@ -501,7 +501,22 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         this.colModel = colModel;
         this.view.refresh(true);
     },
-
+    /**
+     * addColumn
+     * Add's a column, default at the end..
+     * @param {Object} column configuration see {@link Roo.grid.ColumnModel} 
+     * @param {int} position to add (default end)
+     */
+    addColumn : function(cfg, pos)
+    {
+        cfg.id = typeof(cfg.id) == 'undefined' : Roo.id() : cfg.id; // don't normally use this..
+        
+        
+    }
+    
+    
+    
+    
     // private
     onKeyDown : function(e){
         this.fireEvent("keydown", e);
