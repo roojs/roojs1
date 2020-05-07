@@ -55499,9 +55499,8 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
             this.view.refresh(true);
             return;
         }
-        // slice
+        // splice
         pos = Math.max(0,pos);
-        
         this.cm.config.splice(pos, 0, cfg);
         this.view.refresh(true);
         
