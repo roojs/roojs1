@@ -32982,12 +32982,12 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         return this;
     },
 
-	/**
-	 * Reconfigures the grid to use a different Store and Column Model.
-	 * The View will be bound to the new objects and refreshed.
-	 * @param {Roo.data.Store} dataSource The new {@link Roo.data.Store} object
-	 * @param {Roo.grid.ColumnModel} The new {@link Roo.grid.ColumnModel} object
-	 */
+    /**
+     * Reconfigures the grid to use a different Store and Column Model.
+     * The View will be bound to the new objects and refreshed.
+     * @param {Roo.data.Store} dataSource The new {@link Roo.data.Store} object
+     * @param {Roo.grid.ColumnModel} The new {@link Roo.grid.ColumnModel} object
+     */
     reconfigure : function(dataSource, colModel){
         if(this.loadMask){
             this.loadMask.destroy();
@@ -32999,7 +32999,41 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         this.colModel = colModel;
         this.view.refresh(true);
     },
-
+    /**
+     * addColumns
+     * Add's a column, default at the end..
+     
+     * @param {int} position to add (default end)
+     * @param {Array} of objects of column configuration see {@link Roo.grid.ColumnModel} 
+     */
+    addColumns : function(pos, ar)
+    {
+        
+        for (var i =0;i< ar.length;i++) {
+            var cfg = ar[i];
+            cfg.id = typeof(cfg.id) == 'undefined' ? Roo.id() : cfg.id; // don't normally use this..
+            this.cm.lookup[cfg.id] = cfg;
+        }
+        
+        
+        if (typeof(pos) == 'undefined' || pos >= this.cm.config.length) {
+            pos = this.cm.config.length; //this.cm.config.push(cfg);
+        } 
+        pos = Math.max(0,pos);
+        ar.unshift(0);
+        ar.unshift(pos);
+        this.cm.config.splice.apply(this.cm.config, ar);
+        
+        
+        
+        this.view.generateRules(this.cm);
+        this.view.refresh(true);
+        
+    },
+    
+    
+    
+    
     // private
     onKeyDown : function(e){
         this.fireEvent("keydown", e);
