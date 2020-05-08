@@ -521,6 +521,34 @@
       ]
     },
     {
+      "name" : "addColumns",
+      "desc" : "addColumns\nAdd's a column, default at the end..",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.grid.Grid",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "position",
+          "type" : "int",
+          "desc" : "to add (default end)",
+          "isOptional" : false
+        },
+        {
+          "name" : "of",
+          "type" : "Array",
+          "desc" : "objects of column configuration see {@link Roo.grid.ColumnModel}",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+      ]
+    },
+    {
       "name" : "render",
       "desc" : "Called once after all setup has been completed and the grid is ready to be rendered.",
       "isStatic" : false,

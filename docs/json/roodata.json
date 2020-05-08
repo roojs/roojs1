@@ -91782,6 +91782,14 @@
     ],
     "methods" : [
       {
+        "name" : "addColumns",
+        "type" : "function",
+        "desc" : "addColumns\nAdd's a column, default at the end..",
+        "sig" : "(position, of)",
+        "static" : false,
+        "memberOf" : "Roo.grid.Grid"
+      },
+      {
         "name" : "addEvents",
         "type" : "function",
         "desc" : "Used to define events on this Observable",
@@ -92306,6 +92314,14 @@
       }
     ],
     "methods" : [
+      {
+        "name" : "addColumns",
+        "type" : "function",
+        "desc" : "addColumns\nAdd's a column, default at the end..",
+        "sig" : "(position, of)",
+        "static" : false,
+        "memberOf" : ""
+      },
       {
         "name" : "addEvents",
         "type" : "function",
@@ -93500,6 +93516,14 @@
       }
     ],
     "methods" : [
+      {
+        "name" : "addColumns",
+        "type" : "function",
+        "desc" : "addColumns\nAdd's a column, default at the end..",
+        "sig" : "(position, of)",
+        "static" : false,
+        "memberOf" : "Roo.grid.Grid"
+      },
       {
         "name" : "addEvents",
         "type" : "function",

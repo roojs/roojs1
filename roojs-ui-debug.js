@@ -33020,9 +33020,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
             pos = this.cm.config.length; //this.cm.config.push(cfg);
         } 
         pos = Math.max(0,pos);
-        ar.shift(ar.length);
-        ar.shift(pos);
-        this.cm.config.splice.call(ar);
+        ar.unshift(0);
+        ar.unshift(pos);
+        this.cm.config.splice.apply(this.cm.config, ar);
         
         
         
