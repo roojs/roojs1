@@ -501,6 +501,40 @@
         </span><span class="jsdoc-var">this.colModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">colModel</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.view.refresh</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
     },
+    </span><span class="jsdoc-comment">/**
+     * addColumns
+     * Add's a column, default at the end..
+     
+     * @param {int} position to add (default end)
+     * @param {Array} of objects of column configuration see {@link Roo.grid.ColumnModel} 
+     */
+    </span><span class="jsdoc-var">addColumns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">)
+    {
+
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">ar.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-var">cfg.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.id</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">cfg.id</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// don't normally use this..
+            </span><span class="jsdoc-var">this.cm.lookup</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cfg.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+        }
+
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">this.cm.config.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm.config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">//this.cm.config.push(cfg);
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(0,</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ar.unshift</span><span class="jsdoc-syntax">(0);
+        </span><span class="jsdoc-var">ar.unshift</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.cm.config.splice.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cm.config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">);
+
+
+
+        </span><span class="jsdoc-var">this.view.generateRules</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.view.refresh</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+    },
+
+
+
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onKeyDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
