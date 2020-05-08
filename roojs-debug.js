@@ -55485,26 +55485,36 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         this.view.refresh(true);
     },
     /**
-     * addColumn
+     * addColumns
      * Add's a column, default at the end..
-     * @param {Object} column configuration see {@link Roo.grid.ColumnModel} 
+     
      * @param {int} position to add (default end)
+     * @param {Array} of objects of column configuration see {@link Roo.grid.ColumnModel} 
      */
-    addColumn : function(cfg, pos)
+    addColumns : function(pos, ar)
     {
-        cfg.id = typeof(cfg.id) == 'undefined' ? Roo.id() : cfg.id; // don't normally use this..
-        this.cm.lookup[cfg.id] = cfg;
-        if (typeof(pos) == 'undefined' || pos >= this.cm.config.length) {
-            this.cm.config.push(cfg);
-            this.view.refresh(true);
-            return;
+        
+        for (var i =0;i< ar.length;i++) {
+            var cfg = ar[i];
+            cfg.id = typeof(cfg.id) == 'undefined' ? Roo.id() : cfg.id; // don't normally use this..
+            this.cm.lookup[cfg.id] = cfg;
         }
-        // splice
+        
+        
+        if (typeof(pos) == 'undefined' || pos >= this.cm.config.length) {
+            pos = this.cm.config.length; //this.cm.config.push(cfg);
+        } 
         pos = Math.max(0,pos);
-        this.cm.config.splice(pos, 0, cfg);
+        ar.shift(ar.length);
+        ar.shift(pos);
+        this.cm.config.splice.call(ar);
+        
+        
+        
+        this.view.generateRules(this.cm);
         this.view.refresh(true);
         
-    }
+    },
     
     
     

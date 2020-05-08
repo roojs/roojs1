@@ -521,13 +521,11 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         if (typeof(pos) == 'undefined' || pos >= this.cm.config.length) {
             pos = this.cm.config.length; //this.cm.config.push(cfg);
         } 
-            pos = Math.max(0,pos);
-            ar.shift(ar.length);
-            ar.shift(pos);
-            this.cm.config.splice.call(ar);
-            
-            this.cm.config.splice(pos, 0, cfg);
-        }
+        pos = Math.max(0,pos);
+        ar.shift(ar.length);
+        ar.shift(pos);
+        this.cm.config.splice.call(ar);
+        
         
         
         this.view.generateRules(this.cm);
