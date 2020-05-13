@@ -72313,6 +72313,12 @@
         "memberOf" : "Roo.form.TextField"
       },
       {
+        "name" : "seperator",
+        "type" : "String",
+        "desc" : "The value seperator normally ','",
+        "memberOf" : ""
+      },
+      {
         "name" : "tabIndex",
         "type" : "Number",
         "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",

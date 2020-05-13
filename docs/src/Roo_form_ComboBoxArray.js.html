@@ -94,7 +94,10 @@
      * @cfg {String} hiddenName    The hidden name of the field, often contains an comma seperated list of names
      */
     </span><span class="jsdoc-var">hiddenName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-
+      </span><span class="jsdoc-comment">/**
+     * @cfg {String} seperator    The value seperator normally ',' 
+     */
+    </span><span class="jsdoc-var">seperator </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">// private the array of items that are displayed..
     </span><span class="jsdoc-var">items  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -269,7 +272,7 @@
         </span><span class="jsdoc-var">this.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ar.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">idField</span><span class="jsdoc-syntax">]);
         });
-        </span><span class="jsdoc-var">this.hiddenEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ar.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.hiddenEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ar.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.seperator</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
     },
 
@@ -301,7 +304,7 @@
             // comma seperated at present.. this needs to allow JSON based encoding..
             </span><span class="jsdoc-var">this.hiddenEl.value  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v_ar </span><span class="jsdoc-syntax">= [];
-            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.seperator</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;CHECK &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.valueField </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">',' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store.query</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">li.length</span><span class="jsdoc-syntax">) {
@@ -340,10 +343,9 @@
         </span><span class="jsdoc-var">dv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dv</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">dv</span><span class="jsdoc-syntax">;
 
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">keys </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">kv.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dv.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">keys </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">kv.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.seperator</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dv.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.seperator</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0 ; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">keys.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-
             </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">= {};
             </span><span class="jsdoc-var">add</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">keys</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
             </span><span class="jsdoc-var">add</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">display</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
@@ -391,7 +393,7 @@
             </span><span class="jsdoc-var">originalValue.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">]);
         }
 
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()) !== </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">originalValue.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()) !== </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">originalValue.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.seperator</span><span class="jsdoc-syntax">));
 
     }
 

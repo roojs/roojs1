@@ -214,6 +214,14 @@
       ]
     },
     {
+      "name" : "seperator",
+      "type" : "String",
+      "desc" : "The value seperator normally ','",
+      "memberOf" : "Roo.form.ComboBoxArray",
+      "values" : [
+      ]
+    },
+    {
       "name" : "fieldClass",
       "type" : "String",
       "desc" : "The default CSS class for the field (defaults to \"x-form-field\")",

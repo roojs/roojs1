@@ -19833,7 +19833,10 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
      * @cfg {String} hiddenName    The hidden name of the field, often contains an comma seperated list of names
      */
     hiddenName : false,
-    
+      /**
+     * @cfg {String} seperator    The value seperator normally ',' 
+     */
+    seperator : ',',
     
     // private the array of items that are displayed..
     items  : false,
@@ -20008,7 +20011,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         this.items.each(function(f) {
             ar.push(f.data[idField]);
         });
-        this.hiddenEl.dom.value = ar.join(',');
+        this.hiddenEl.dom.value = ar.join(this.seperator);
         this.validate();
     },
     
@@ -20040,7 +20043,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
             // comma seperated at present.. this needs to allow JSON based encoding..
             this.hiddenEl.value  = v;
             var v_ar = [];
-            Roo.each(v.split(','), function(k) {
+            Roo.each(v.split(this.seperator), function(k) {
                 Roo.log("CHECK " + this.valueField + ',' + k);
                 var li = this.store.query(this.valueField, k);
                 if (!li.length) {
@@ -20079,10 +20082,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         dv = typeof(dv) != 'string' ? '' : dv;
         
         
-        var keys = kv.split(',');
-        var display = dv.split(',');
+        var keys = kv.split(this.seperator);
+        var display = dv.split(this.seperator);
         for (var i = 0 ; i < keys.length; i++) {
-            
             add = {};
             add[this.valueField] = keys[i];
             add[this.displayField] = display[i];
@@ -20130,7 +20132,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
             originalValue.push(d[i][this.valueField]);
         }
         
-        return String(this.getValue()) !== String(originalValue.join(','));
+        return String(this.getValue()) !== String(originalValue.join(this.seperator));
         
     }
     
