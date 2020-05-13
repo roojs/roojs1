@@ -20060,7 +20060,13 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         if (typeof(v) == 'object' ) {
             // then let's assume it's an array of objects..
             Roo.each(v, function(l) {
-                this.addItem(l);
+		var add = l;
+		if (typeof(l) == 'string') {
+		    add = {};
+		    add[this.valueField] = k;
+		    add[this.displayField] = k
+		}
+                this.addItem(add);
             }, this);
              
         }
