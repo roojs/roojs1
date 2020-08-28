@@ -10,13 +10,13 @@ RadioSet = new Roo.XComponent({
   '7fa3b767c460b54a2be4d49030b349c7' :"no",
   'e3917ff2d3b3a88eab391651215d6445' :"Radio Field Lable Left",
   '9dffbf69ffba8bc38bc4e01abf4b1675' :"Text",
+  '0d16301f634dadc4d7b280f7e375e3ad' :"Text for checkbox",
   '8d80ce38760953b68529d7fc9d8d89b6' :"Radio Field Lable",
   '015ae6f41d4b86ad13ac0fde840d2280' :"Text Input",
   '93cba07454f06a4a960172bbd6e2a435' :"Yes",
   'a6105c0a611b41b08f1209506350279e' :"yes",
   'ad3d06d03d94223fa652babc913de686' :"Validate",
-  'b7dc22f0e17f4dfca2940eb0bd0cdc54' :"Radio Set Example",
-  'd41d8cd98f00b204e9800998ecf8427e' :" "
+  'b7dc22f0e17f4dfca2940eb0bd0cdc54' :"Radio Set Example"
  },
  _named_strings : {
   'text_name_fieldLabel' : '015ae6f41d4b86ad13ac0fde840d2280' /* Text Input */ ,
@@ -24,7 +24,7 @@ RadioSet = new Roo.XComponent({
   'text_name_placeholder' : '9dffbf69ffba8bc38bc4e01abf4b1675' /* Text */ ,
   'email_name_placeholder' : 'ce8ae9da5b7cd6c3df2929543a9af92d' /* Email */ ,
   'top_radio_fieldLabel' : '8d80ce38760953b68529d7fc9d8d89b6' /* Radio Field Lable */ ,
-  'test1_boxLabel' : 'd41d8cd98f00b204e9800998ecf8427e' /*   */ 
+  'test1_boxLabel' : '0d16301f634dadc4d7b280f7e375e3ad' /* Text for checkbox */ 
  },
 
   part     :  ["bootstrap", "RadioSet" ],
@@ -252,7 +252,7 @@ RadioSet = new Roo.XComponent({
            items  : [
             {
              xtype : 'CheckBox',
-             boxLabel : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*   */,
+             boxLabel : _this._strings['0d16301f634dadc4d7b280f7e375e3ad'] /* Text for checkbox */,
              name : 'test1',
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
