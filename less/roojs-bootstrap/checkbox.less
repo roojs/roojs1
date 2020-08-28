@@ -34,7 +34,7 @@
 .checkbox input[type="checkbox"]:checked + label::after {
     font-size: 18px;
     padding-top: 0px;
-    font-family: 'Font Awesome 5 Free 400';
+    font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     color: @brand-success;
     content: "\f14a"; }
@@ -47,45 +47,33 @@
 
 .checkbox input[type="checkbox"]:disabled + label {
     opacity: 0.65; }
-.checkbox input[type="checkbox"]:disabled + label::before {
-    background-color: @gray-lighter;
-    cursor: not-allowed; }
+    
+.checkbox input[type="checkbox"]:disabled + label::after {
+    color: @gray-lighter;
+    cursor: not-allowed;
+}
+    
 .checkbox.checkbox-circle label::before {
     border-radius: 50%; }
 
+ 
 .checkbox-primary input[type="checkbox"]:checked + label::after {
-    background-color: @brand-primary;
-    border-color: @brand-primary; }
-.checkbox-primary input[type="checkbox"]:checked + label::after {
-    color: @body-bg; }
+    color: @brand-primary; }
 
+ 
 .checkbox-danger input[type="checkbox"]:checked + label::after {
-    background-color: @brand-danger;
-    border-color: @brand-danger; }
-.checkbox-danger input[type="checkbox"]:checked + label::after {
-    color: @body-bg; }
+    color:  @brand-danger; }
+ 
+.checkbox-info input[type="checkbox"]:checked + label::after {
+    color:  @brand-info; }
 
-.checkbox-info input[type="checkbox"]:checked + label::after
-{
-    background-color: @brand-info;
-    border-color: @brand-info;
-}
-.checkbox-info input[type="checkbox"]:checked + label::after
-{
-    color: @body-bg;
-}
-
+ 
 .checkbox-warning input[type="checkbox"]:checked + label::after {
-    background-color: @brand-warning;
-    border-color: @brand-warning; }
-.checkbox-warning input[type="checkbox"]:checked + label::after {
-    color: @body-bg; }
+    color: @brand-warning; }
 
+ 
 .checkbox-success input[type="checkbox"]:checked + label::after {
-    background-color: @brand-success;
-    border-color: @brand-success; }
-.checkbox-success input[type="checkbox"]:checked + label::after {
-    color: @body-bg; }
+    color:  @brand-success;}
 
 /* before is the outer cicle */    
 /* after is the inner circle.. */
@@ -142,19 +130,19 @@
 }
 .radio input[type="radio"]:disabled + label {
     opacity: 0.65; }
-.radio input[type="radio"]:disabled + label::after {
+.radio input[type="radio"]:disabled + label::before {
     cursor: not-allowed; }
 
 .radio-primary input[type="radio"] + label::after {
     background-color: @body-bg; }
-.radio-primary input[type="radio"]:checked + label::after {
+.radio-primary input[type="radio"]:checked + label::before {
     border-color: @brand-primary; }
 .radio-primary input[type="radio"]:checked + label::after {
     background-color: @brand-primary; }
 
 .radio-danger input[type="radio"] + label::after {
     background-color: @brand-danger; }
-.radio-danger input[type="radio"]:checked + label::after {
+.radio-danger input[type="radio"]:checked + label::before {
     border-color: @brand-danger; }
 .radio-danger input[type="radio"]:checked + label::after {
     background-color: @brand-danger; }
@@ -164,21 +152,21 @@
 .radio-info input[type="radio"] + label::after {
     background-color: @body-bg;
 }
-.radio-info input[type="radio"]:checked + label::after {
+.radio-info input[type="radio"]:checked + label::before {
     border-color: @brand-info; }
 .radio-info input[type="radio"]:checked + label::after {
     background-color: @brand-info; }
 
 .radio-warning input[type="radio"] + label::after {
     background-color: @body-bg; }
-.radio-warning input[type="radio"]:checked + label::after {
+.radio-warning input[type="radio"]:checked + label::before {
     border-color: @brand-warning; }
 .radio-warning input[type="radio"]:checked + label::after {
     background-color: @brand-warning; }
 
 .radio-success input[type="radio"] + label::after {
     background-color: @body-bg; }
-.radio-success input[type="radio"]:checked + label::after {
+.radio-success input[type="radio"]:checked + label::before {
     border-color: @brand-success; }
 .radio-success input[type="radio"]:checked + label::after {
     background-color: @brand-success; }
