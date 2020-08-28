@@ -53,31 +53,35 @@
 .checkbox.checkbox-circle label::before {
     border-radius: 50%; }
 
-.checkbox-primary input[type="checkbox"]:checked + label::before {
+.checkbox-primary input[type="checkbox"]:checked + label::after {
     background-color: @brand-primary;
     border-color: @brand-primary; }
 .checkbox-primary input[type="checkbox"]:checked + label::after {
     color: @body-bg; }
 
-.checkbox-danger input[type="checkbox"]:checked + label::before {
+.checkbox-danger input[type="checkbox"]:checked + label::after {
     background-color: @brand-danger;
     border-color: @brand-danger; }
 .checkbox-danger input[type="checkbox"]:checked + label::after {
     color: @body-bg; }
 
-.checkbox-info input[type="checkbox"]:checked + label::before {
+.checkbox-info input[type="checkbox"]:checked + label::after
+{
     background-color: @brand-info;
-    border-color: @brand-info; }
-.checkbox-info input[type="checkbox"]:checked + label::after {
-    color: @body-bg; }
+    border-color: @brand-info;
+}
+.checkbox-info input[type="checkbox"]:checked + label::after
+{
+    color: @body-bg;
+}
 
-.checkbox-warning input[type="checkbox"]:checked + label::before {
+.checkbox-warning input[type="checkbox"]:checked + label::after {
     background-color: @brand-warning;
     border-color: @brand-warning; }
 .checkbox-warning input[type="checkbox"]:checked + label::after {
     color: @body-bg; }
 
-.checkbox-success input[type="checkbox"]:checked + label::before {
+.checkbox-success input[type="checkbox"]:checked + label::after {
     background-color: @brand-success;
     border-color: @brand-success; }
 .checkbox-success input[type="checkbox"]:checked + label::after {
@@ -138,19 +142,19 @@
 }
 .radio input[type="radio"]:disabled + label {
     opacity: 0.65; }
-.radio input[type="radio"]:disabled + label::before {
+.radio input[type="radio"]:disabled + label::after {
     cursor: not-allowed; }
 
 .radio-primary input[type="radio"] + label::after {
     background-color: @body-bg; }
-.radio-primary input[type="radio"]:checked + label::before {
+.radio-primary input[type="radio"]:checked + label::after {
     border-color: @brand-primary; }
 .radio-primary input[type="radio"]:checked + label::after {
     background-color: @brand-primary; }
 
 .radio-danger input[type="radio"] + label::after {
     background-color: @brand-danger; }
-.radio-danger input[type="radio"]:checked + label::before {
+.radio-danger input[type="radio"]:checked + label::after {
     border-color: @brand-danger; }
 .radio-danger input[type="radio"]:checked + label::after {
     background-color: @brand-danger; }
@@ -160,21 +164,21 @@
 .radio-info input[type="radio"] + label::after {
     background-color: @body-bg;
 }
-.radio-info input[type="radio"]:checked + label::before {
+.radio-info input[type="radio"]:checked + label::after {
     border-color: @brand-info; }
 .radio-info input[type="radio"]:checked + label::after {
     background-color: @brand-info; }
 
 .radio-warning input[type="radio"] + label::after {
     background-color: @body-bg; }
-.radio-warning input[type="radio"]:checked + label::before {
+.radio-warning input[type="radio"]:checked + label::after {
     border-color: @brand-warning; }
 .radio-warning input[type="radio"]:checked + label::after {
     background-color: @brand-warning; }
 
 .radio-success input[type="radio"] + label::after {
     background-color: @body-bg; }
-.radio-success input[type="radio"]:checked + label::before {
+.radio-success input[type="radio"]:checked + label::after {
     border-color: @brand-success; }
 .radio-success input[type="radio"]:checked + label::after {
     background-color: @brand-success; }
