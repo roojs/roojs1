@@ -34,54 +34,46 @@
 .checkbox input[type="checkbox"]:checked + label::after {
     font-size: 18px;
     padding-top: 0px;
-    font-family: 'Font Awesome 5 Free 400';
+    font-family: 'Font Awesome 5 Free'; /* change the font - uses the filled one */
     font-weight: 900;
     color: @brand-success;
     content: "\f14a"; }
 .checkbox input[type="checkbox"]:not(:checked) + label::after {
     font-size: 18px;
     padding-top: 0px;
-    font-family: 'Font Awesome 5 Free 400';
+    font-family: 'Font Awesome 5 Free 400';  
     font-weight: 900;
     content: "\f0c8"; }
 
 .checkbox input[type="checkbox"]:disabled + label {
     opacity: 0.65; }
-.checkbox input[type="checkbox"]:disabled + label::before {
-    background-color: @gray-lighter;
-    cursor: not-allowed; }
+    
+.checkbox input[type="checkbox"]:disabled + label::after {
+    color: @gray-lighter;
+    cursor: not-allowed;
+}
+    
 .checkbox.checkbox-circle label::before {
     border-radius: 50%; }
 
-.checkbox-primary input[type="checkbox"]:checked + label::before {
-    background-color: @brand-primary;
-    border-color: @brand-primary; }
+ 
 .checkbox-primary input[type="checkbox"]:checked + label::after {
-    color: @body-bg; }
+    color: @brand-primary; }
 
-.checkbox-danger input[type="checkbox"]:checked + label::before {
-    background-color: @brand-danger;
-    border-color: @brand-danger; }
+ 
 .checkbox-danger input[type="checkbox"]:checked + label::after {
-    color: @body-bg; }
-
-.checkbox-info input[type="checkbox"]:checked + label::before {
-    background-color: @brand-info;
-    border-color: @brand-info; }
+    color:  @brand-danger; }
+ 
 .checkbox-info input[type="checkbox"]:checked + label::after {
-    color: @body-bg; }
+    color:  @brand-info; }
 
-.checkbox-warning input[type="checkbox"]:checked + label::before {
-    background-color: @brand-warning;
-    border-color: @brand-warning; }
+ 
 .checkbox-warning input[type="checkbox"]:checked + label::after {
-    color: @body-bg; }
+    color: @brand-warning; }
 
-.checkbox-success input[type="checkbox"]:checked + label::before {
-    background-color: @brand-success;
-    border-color: @brand-success; }
+ 
 .checkbox-success input[type="checkbox"]:checked + label::after {
-    color: @body-bg; }
+    color:  @brand-success;}
 
 /* before is the outer cicle */    
 /* after is the inner circle.. */
