@@ -15,14 +15,16 @@ RadioSet = new Roo.XComponent({
   '93cba07454f06a4a960172bbd6e2a435' :"Yes",
   'a6105c0a611b41b08f1209506350279e' :"yes",
   'ad3d06d03d94223fa652babc913de686' :"Validate",
-  'b7dc22f0e17f4dfca2940eb0bd0cdc54' :"Radio Set Example"
+  'b7dc22f0e17f4dfca2940eb0bd0cdc54' :"Radio Set Example",
+  'b09c9236a266cc99b2e790564b81cc70' :"This is a checkbox"
  },
  _named_strings : {
   'text_name_fieldLabel' : '015ae6f41d4b86ad13ac0fde840d2280' /* Text Input */ ,
   'left_radio_fieldLabel' : 'e3917ff2d3b3a88eab391651215d6445' /* Radio Field Lable Left */ ,
   'text_name_placeholder' : '9dffbf69ffba8bc38bc4e01abf4b1675' /* Text */ ,
   'email_name_placeholder' : 'ce8ae9da5b7cd6c3df2929543a9af92d' /* Email */ ,
-  'top_radio_fieldLabel' : '8d80ce38760953b68529d7fc9d8d89b6' /* Radio Field Lable */ 
+  'top_radio_fieldLabel' : '8d80ce38760953b68529d7fc9d8d89b6' /* Radio Field Lable */ ,
+  'test1_boxLabel' : 'b09c9236a266cc99b2e790564b81cc70' /* This is a checkbox */ 
  },
 
   part     :  ["bootstrap", "RadioSet" ],
@@ -250,6 +252,7 @@ RadioSet = new Roo.XComponent({
            items  : [
             {
              xtype : 'CheckBox',
+             boxLabel : _this._strings['b09c9236a266cc99b2e790564b81cc70'] /* This is a checkbox */,
              name : 'test1',
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
