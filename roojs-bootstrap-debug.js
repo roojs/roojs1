@@ -7320,9 +7320,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         if (tbd) {
             
-            tbd.setSize(ctr.getWidth(),
-                        ctr.getHeight() - ((thd ? thd.getHeight() : 0) + (tfd ? tfd.getHeight() : 0))
-            );
+            tbd.setWidth(ctr.getWidth());
+            // if the body has a max height - and then scrolls - we should perhaps set up the height here
+            // this needs fixing for various usage - currently only hydra job advers I think..
+            //tdb.setHeight(
+            //        ctr.getHeight() - ((thd ? thd.getHeight() : 0) + (tfd ? tfd.getHeight() : 0))
+            //); 
             var barsize = (tbd.dom.offsetWidth - tbd.dom.clientWidth);
             cw -= barsize;
         }
