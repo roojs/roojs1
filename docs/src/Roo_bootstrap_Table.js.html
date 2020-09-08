@@ -1093,9 +1093,12 @@
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tbd</span><span class="jsdoc-syntax">) {
 
-            </span><span class="jsdoc-var">tbd.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctr.getWidth</span><span class="jsdoc-syntax">(),
-                        </span><span class="jsdoc-var">ctr.getHeight</span><span class="jsdoc-syntax">() - ((</span><span class="jsdoc-var">thd </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">thd.getHeight</span><span class="jsdoc-syntax">() : 0) + (</span><span class="jsdoc-var">tfd </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">tfd.getHeight</span><span class="jsdoc-syntax">() : 0))
-            );
+            </span><span class="jsdoc-var">tbd.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctr.getWidth</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-comment">// if the body has a max height - and then scrolls - we should perhaps set up the height here
+            // this needs fixing for various usage - currently only hydra job advers I think..
+            //tdb.setHeight(
+            //        ctr.getHeight() - ((thd ? thd.getHeight() : 0) + (tfd ? tfd.getHeight() : 0))
+            //); 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">barsize </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">tbd.dom.offsetWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">tbd.dom.clientWidth</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">barsize</span><span class="jsdoc-syntax">;
         }

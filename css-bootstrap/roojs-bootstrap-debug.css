@@ -1003,6 +1003,7 @@ table.fc-border-separate {
 .dropdown-menu .roo-select2-result .checkbox {
   margin-top: 3px;
   margin-bottom: 3px;
+  margin-left: 20px;
 }
 .roo-select2-container .input-group-addon {
   padding: 6px 12px;
