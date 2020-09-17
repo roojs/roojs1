@@ -91,7 +91,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     title : '',
     subtitle : '',
     html : '',
-    
+    footer: '',
     
     childContainer : false,
 
@@ -186,7 +186,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             cls : 'card-body',
             cn : []
         };
-        cfg.push(body);
+        cfg.cn.push(body);
         
         if (this.title.length) {
             body.cn.push({
@@ -209,6 +209,12 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             cls : 'roo-card-body-ctr'
         });
         
+        if (this.html.length) {
+            body.cn.push({
+                tag: 'div',
+                html : this.html
+            });
+        }
         // fixme ? handle objects?
         if (this.footer.length) {
             body.cn.push({
