@@ -111,7 +111,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             }
         });
         
-        ['', 'xs', 'sm', 'lg', 'xl',   ].forEach(function(v) {
+        ['', 'xs', 'sm', 'lg', 'xl'].forEach(function(v) {
             if (t['display' + (v.length ? '_' : '') + v].length) {
                 cls += ' d' +  (v.length ? '-' : '') + v + '-' + t['margin' + (v.length ? '_' : '') + v].length
             }

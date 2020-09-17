@@ -474,6 +474,12 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.bootstrap.Card",
+            "cn" : [
+            ],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.bootstrap.CheckBox",
             "cn" : [
             ],
