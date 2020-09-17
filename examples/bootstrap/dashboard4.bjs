@@ -34,6 +34,11 @@
          "String header" : "ticket 1",
          "xtype" : "Card",
          "$ xns" : "Roo.bootstrap"
+        },
+        {
+         "String weight" : "primary",
+         "xtype" : "Button",
+         "$ xns" : "Roo.bootstrap"
         }
        ]
       }

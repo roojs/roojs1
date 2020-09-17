@@ -48,6 +48,12 @@ dashboard4 = new Roo.XComponent({
          header : _this._strings['d9fb0367346d21079a1c52d72da61c9f'] /* ticket 1 */,
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap'
+        },
+        {
+         xtype : 'Button',
+         weight : 'primary',
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap'
         }
        ]
       }
