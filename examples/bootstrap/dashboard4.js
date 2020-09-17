@@ -6,6 +6,7 @@ dashboard4 = new Roo.XComponent({
 
  _strings : {
   'e93b3fa481be3932aa08bd68c3deee70' :"example 1",
+  '552e21cd4cd9918678e3c1a0df491bc3' :"some text",
   'e037df87a91c6e2727f0d9eb15c8127f' :"this is the body text"
  },
 
@@ -38,12 +39,13 @@ dashboard4 = new Roo.XComponent({
        header : _this._strings['e93b3fa481be3932aa08bd68c3deee70'] /* example 1 */,
        html : _this._strings['e037df87a91c6e2727f0d9eb15c8127f'] /* this is the body text */,
        style : 'max-width:200px',
-       weight : 'primary',
+       weight : 'light',
        xns : Roo.bootstrap,
        '|xns' : 'Roo.bootstrap',
        items  : [
         {
-         xtype : 'Container',
+         xtype : 'Element',
+         html : _this._strings['552e21cd4cd9918678e3c1a0df491bc3'] /* some text */,
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap'
         }
