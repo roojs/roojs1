@@ -10,12 +10,15 @@
  *
  * possible... may not be implemented..
  * @cfg {String} header content of header (for panel)
- * @cfg {String|Object} - title
- * @cfg {String|Object} - subtitle
- * @cfg {String|Object} - body
- * @cfg {String|Object} - footer
+ * @cfg {String|Object} title
+ * @cfg {String|Object} subtitle
+ * @cfg {String|Object} body
+ * @cfg {String|Object} footer
  * @cfg {Array} - links
- *     
+ *
+ * @cfg {String} weight (primary|warning|info|danger|secondary|success|light|dark)
+ * @cfg {String} margin (0|1|2|3|4|5|auto|t-0|t-1|t-2|t-3|t-4|t-5|t-auto|b-0|b-1|b-2|b-3|b-4|b-5|b-auto|l-0|l-1|l-2|l-3|l-4|l-5|l-auto|r-0|r-1|r-2|r-3|r-4|r-5|r-auto|x-0|x-1|x-2|x-3|x-4|x-5|x-auto|y-0|y-1|y-2|y-3|y-4|y-5|y-auto)
+ * @cfg {String} padding (0|1|2|3|4|5|t-0|t-1|t-2|t-3|t-4|t-5|b-0|b-1|b-2|b-3|b-4|b-5|l-0|l-1|l-2|l-3|l-4|l-5|r-0|r-1|r-2|r-3|r-4|r-5|x-0|x-1|x-2|x-3|x-4|x-5|y-0|y-1|y-2|y-3|y-4|y-5)
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
@@ -32,6 +35,7 @@ Roo.bootstrap.Card = function(config){
 
 Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
+    weight : '',
    
    
        // Roo.log("Call onRender: " + this.xtype);
@@ -61,11 +65,17 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         var cfg = {
             tag : this.tag || 'div',
             html : '',
-            cls : ''
+            cls : 'card'
         };
-        if (this.jumbotron) {
-            cfg.cls = 'jumbotron';
+        
+        if (this.weight.length && this.weight != 'light') {
+            cfg.cls += ' text-white'
         }
+        if (this.weight.length) {
+            cfg.cls += ' bg-' + this.weight;
+        }
+        
+        // margin?
         
         
         
