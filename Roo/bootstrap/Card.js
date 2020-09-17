@@ -102,6 +102,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 cls += ' d' +  (v.length ? '-' : '') + v + '-' + t['margin' + (v.length ? '_' : '') + v].length
             }
         });
+        
+        // more generic support?
         if (this.hidden) {
             cls += ' d-none';
         }
@@ -148,9 +150,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         cfg.cls += this.layoutCls(); 
         
-        if (this.hidden) {
-            cfg.cls += ' hidden';
-        }
+       
         
         
         if (this.alert && ["success","info","warning", "danger"].indexOf(this.alert) > -1) {
