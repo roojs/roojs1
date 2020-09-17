@@ -90,6 +90,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     title : '',
     subtitle : '',
     html : '',
+    
+    
+    childContainer : false,
 
     layoutCls : function()
     {
@@ -198,8 +201,24 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             });
         }
         
-          
+        body.cn.push({
+            tag : 'div',
+            cls : 'roo-card-body-ctr'
+        });
+        
+        // fixme ? handle objects?
+        if (this.footer.length) {
+            body.cn.push({
+                tag : 'div',
+                cls : 'card-footer',
+                html: this.footer // escape?
+            });
+        }
+        // footer...
         
         return cfg;
     },
+    
+    
+    
 }
