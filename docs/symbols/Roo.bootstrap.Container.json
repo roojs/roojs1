@@ -28,15 +28,15 @@
     {
       "name" : "panel",
       "type" : "String",
-      "desc" : "render as panel  - type - primary/success.....",
+      "desc" : "r) render as panel  - type - primary/success.....",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
-        "(default",
+      "optvals" : [
+        "default",
         "primary",
         "success",
         "info",
         "warning",
-        "danger)"
+        "danger"
       ]
     },
     {
@@ -44,7 +44,7 @@
       "type" : "String",
       "desc" : "content of footer (for panel)",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -52,7 +52,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -60,7 +60,7 @@
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -68,17 +68,17 @@
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
-        "(el",
-        "parent)"
+      "optvals" : [
+        "el",
+        "parent"
       ]
     },
     {
@@ -86,38 +86,38 @@
       "type" : "Boolean",
       "desc" : "is it a jumbotron element",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "sticky",
       "type" : "String",
-      "desc" : "block to use as footer or body- needs css-bootstrap/sticky-footer.css",
+      "desc" : "h) block to use as footer or body- needs css-bootstrap/sticky-footer.css",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
-        "(footer",
+      "optvals" : [
+        "footer",
         "wrap",
-        "push)"
+        "push"
       ]
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
-      "desc" : "hide the element",
+      "desc" : "e) hide the element",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     },
     {
       "name" : "expanded",
       "type" : "Boolean",
-      "desc" : "default true",
+      "desc" : "e) default true",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     },
     {
@@ -125,7 +125,7 @@
       "type" : "String",
       "desc" : "contet on the right of header",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -133,28 +133,28 @@
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
       "name" : "tag",
       "type" : "String",
-      "desc" : "type of HTML tag.",
+      "desc" : "n) type of HTML tag.",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
-        "(header",
+      "optvals" : [
+        "header",
         "aside",
-        "section)"
+        "section"
       ]
     },
     {
@@ -162,7 +162,7 @@
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -170,18 +170,18 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "well",
       "type" : "String",
-      "desc" : "a well, large, small or medium.",
+      "desc" : "d) a well, large, small or medium.",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
-        "(lg",
+      "optvals" : [
+        "lg",
         "sm",
-        "md)"
+        "md"
       ]
     },
     {
@@ -189,7 +189,7 @@
       "type" : "String",
       "desc" : "content of element",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -197,17 +197,17 @@
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "clickable",
       "type" : "Boolean",
-      "desc" : "default false",
+      "desc" : "e) default false",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     },
     {
@@ -215,7 +215,7 @@
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -223,7 +223,7 @@
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -231,40 +231,40 @@
       "type" : "String",
       "desc" : "content of header (for panel)",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "icon",
       "type" : "String",
-      "desc" : "glyphicon name",
+      "desc" : ".) glyphicon name",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
-        "(info-sign",
+      "optvals" : [
+        "info-sign",
         "check",
-        "...)"
+        "..."
       ]
     },
     {
       "name" : "expandable",
       "type" : "Boolean",
-      "desc" : "default false",
+      "desc" : "e) default false",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     },
     {
       "name" : "alert",
       "type" : "String",
-      "desc" : "type alert (changes background / border...)",
+      "desc" : "r) type alert (changes background / border...)",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
-        "(success",
+      "optvals" : [
+        "success",
         "info",
         "warning",
-        "danger)"
+        "danger"
       ]
     },
     {
@@ -272,7 +272,7 @@
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -280,7 +280,7 @@
       "type" : "String",
       "desc" : "font awesome icon",
       "memberOf" : "Roo.bootstrap.Container",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -288,7 +288,7 @@
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -296,7 +296,7 @@
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

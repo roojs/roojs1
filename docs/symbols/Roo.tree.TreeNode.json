@@ -29,7 +29,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -37,7 +37,7 @@
       "type" : "String",
       "desc" : "target frame for the link",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -45,7 +45,7 @@
       "type" : "String",
       "desc" : "The id for this node. If one is not specified, one is generated.",
       "memberOf" : "Roo.data.Node",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -53,7 +53,7 @@
       "type" : "String",
       "desc" : "The text for this node",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -61,7 +61,7 @@
       "type" : "Function",
       "desc" : "A UI <b>class</b> to use for this node (defaults to Roo.tree.TreeNodeUI)",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -69,7 +69,7 @@
       "type" : "Boolean",
       "desc" : "true to start the node expanded",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -77,7 +77,7 @@
       "type" : "String",
       "desc" : "An Ext QuickTip config for the node (used instead of qtip)",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -85,7 +85,7 @@
       "type" : "Boolean",
       "desc" : "false if this node cannot be drop on",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -93,7 +93,7 @@
       "type" : "Boolean",
       "desc" : "true to start the node disabled",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -101,7 +101,7 @@
       "type" : "String",
       "desc" : "A css class to be added to the node",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -109,7 +109,7 @@
       "type" : "String",
       "desc" : "A css class to be added to the nodes icon element for applying css background images",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -117,7 +117,7 @@
       "type" : "Boolean",
       "desc" : "false to make this node undraggable if DD is on (defaults to true)",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -125,7 +125,7 @@
       "type" : "String",
       "desc" : "The path to an icon for the node. The preferred way to do this",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -133,7 +133,7 @@
       "type" : "Boolean",
       "desc" : "True for single click expand on this node",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -141,7 +141,7 @@
       "type" : "String",
       "desc" : "An Ext QuickTip for the node",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -149,7 +149,7 @@
       "type" : "Boolean",
       "desc" : "True to render a checked checkbox for this node, false to render an unchecked checkbox\n(defaults to undefined with no checkbox rendered)",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -157,7 +157,7 @@
       "type" : "String",
       "desc" : "URL of the link used for the node (defaults to #)",
       "memberOf" : "Roo.tree.TreeNode",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -165,7 +165,7 @@
       "type" : "Boolean",
       "desc" : "true if this node is a leaf and does not have children",
       "memberOf" : "Roo.data.Node",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

@@ -32,7 +32,7 @@
       "type" : "String",
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -40,18 +40,18 @@
       "type" : "Number",
       "desc" : "colspan out of 12 for large computer-sized screens",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "accept",
       "type" : "String",
-      "desc" : "use for file input only. (default empty)",
+      "desc" : "o) use for file input only. (default empty)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
-        "(image",
+      "optvals" : [
+        "image",
         "video",
-        "audio)"
+        "audio"
       ]
     },
     {
@@ -59,17 +59,17 @@
       "type" : "Number",
       "desc" : "colspan out of 12 for mobile-sized screens",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
@@ -77,7 +77,7 @@
       "type" : "Boolean",
       "desc" : "True to disable input keystroke filtering (defaults to false)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -85,7 +85,7 @@
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -93,7 +93,7 @@
       "type" : "Boolean",
       "desc" : "is it disabled",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -101,7 +101,7 @@
       "type" : "String",
       "desc" : "name of the input",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -109,7 +109,7 @@
       "type" : "Function",
       "desc" : "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -117,7 +117,7 @@
       "type" : "String",
       "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
       "memberOf" : "Roo.bootstrap.HtmlEditor",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -125,7 +125,7 @@
       "type" : "Array",
       "desc" : "Array of toolbars. - defaults to just the Standard one",
       "memberOf" : "Roo.bootstrap.HtmlEditor",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -133,7 +133,7 @@
       "type" : "Number",
       "desc" : "(in pixels)",
       "memberOf" : "Roo.bootstrap.HtmlEditor",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -141,7 +141,7 @@
       "type" : "String",
       "desc" : "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -149,17 +149,17 @@
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "labelAlign",
       "type" : "String",
-      "desc" : "",
+      "desc" : "t)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
-        "(top",
-        "left)"
+      "optvals" : [
+        "top",
+        "left"
       ]
     },
     {
@@ -167,7 +167,7 @@
       "type" : "String",
       "desc" : "-- Depricated - use Invalid Text",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -175,7 +175,7 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -183,7 +183,7 @@
       "type" : "Number",
       "desc" : "(in pixels)",
       "memberOf" : "Roo.bootstrap.HtmlEditor",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -191,7 +191,7 @@
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -199,7 +199,7 @@
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -207,17 +207,17 @@
       "type" : "string",
       "desc" : "default value of the input",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "hasFeedback",
       "type" : "Boolean",
-      "desc" : "default true",
+      "desc" : "e) default true",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     },
     {
@@ -225,7 +225,7 @@
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -233,7 +233,7 @@
       "type" : "Number",
       "desc" : "colspan out of 12 for tablet-sized screens",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -241,7 +241,7 @@
       "type" : "String",
       "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -249,7 +249,7 @@
       "type" : "String",
       "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -257,7 +257,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -265,7 +265,7 @@
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -273,38 +273,38 @@
       "type" : "Boolean",
       "desc" : "Specifies that the field should be read-only",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "indicatorpos",
       "type" : "String",
-      "desc" : "default left",
+      "desc" : "t) default left",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
-        "(left",
-        "right)"
+      "optvals" : [
+        "left",
+        "right"
       ]
     },
     {
       "name" : "align",
       "type" : "String",
-      "desc" : "Default left",
+      "desc" : "t) Default left",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
-        "(left",
+      "optvals" : [
+        "left",
         "center",
-        "right)"
+        "right"
       ]
     },
     {
       "name" : "wrap",
       "type" : "string",
-      "desc" : "Specifies how the text in a text area is to be wrapped when submitted in a form",
+      "desc" : "d)Specifies how the text in a text area is to be wrapped when submitted in a form",
       "memberOf" : "Roo.bootstrap.TextArea",
-      "values" : [
-        "(soft",
-        "hard)"
+      "optvals" : [
+        "soft",
+        "hard"
       ]
     },
     {
@@ -312,7 +312,7 @@
       "type" : "string",
       "desc" : "- (lg|sm) or leave empty..",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -320,7 +320,7 @@
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -328,7 +328,7 @@
       "type" : "Array",
       "desc" : "Array of toolbar's buttons. - defaults to empty",
       "memberOf" : "Roo.bootstrap.HtmlEditor",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -336,7 +336,7 @@
       "type" : "Number",
       "desc" : "Specifies the visible number of lines in a text area",
       "memberOf" : "Roo.bootstrap.TextArea",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -344,7 +344,7 @@
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -352,7 +352,7 @@
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -360,7 +360,7 @@
       "type" : "String",
       "desc" : "DEPRICATED - code uses BS4 - is-valid / is-invalid",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -368,7 +368,7 @@
       "type" : "String",
       "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -376,7 +376,7 @@
       "type" : "String/Boolean",
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -384,7 +384,7 @@
       "type" : "String",
       "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -392,7 +392,7 @@
       "type" : "string",
       "desc" : "- the label associated",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -400,7 +400,7 @@
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -408,7 +408,7 @@
       "type" : "Number",
       "desc" : "Specifies the visible width of a text area",
       "memberOf" : "Roo.bootstrap.TextArea",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -416,7 +416,7 @@
       "type" : "String",
       "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -424,7 +424,7 @@
       "type" : "string",
       "desc" : "- input group add on before",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -432,7 +432,7 @@
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -440,7 +440,7 @@
       "type" : "Boolean",
       "desc" : "True to automatically select any existing field text when the field receives input focus (defaults to false)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -448,7 +448,7 @@
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -456,17 +456,17 @@
       "type" : "String",
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
-        "(el",
-        "parent)"
+      "optvals" : [
+        "el",
+        "parent"
       ]
     },
     {
@@ -474,21 +474,21 @@
       "type" : "Array",
       "desc" : "url of stylesheets. set to [] to disable stylesheets.",
       "memberOf" : "Roo.bootstrap.HtmlEditor",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "resize",
       "type" : "string",
-      "desc" : "",
+      "desc" : "l)",
       "memberOf" : "Roo.bootstrap.TextArea",
-      "values" : [
-        "(none",
+      "optvals" : [
+        "none",
         "both",
         "horizontal",
         "vertical",
         "inherit",
-        "initial)"
+        "initial"
       ]
     },
     {
@@ -496,7 +496,7 @@
       "type" : "string",
       "desc" : "- placeholder to put in text.",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -504,7 +504,7 @@
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -512,7 +512,7 @@
       "type" : "Number",
       "desc" : "colspan out of 12 for computer-sized screens",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -520,7 +520,7 @@
       "type" : "RegExp",
       "desc" : "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -528,7 +528,7 @@
       "type" : "Number",
       "desc" : "set the width of label",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -536,17 +536,17 @@
       "type" : "Number",
       "desc" : "Minimum input field length required (defaults to 0)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "capture",
       "type" : "String",
-      "desc" : "use for file input only. (default empty)",
+      "desc" : "a) use for file input only. (default empty)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
-        "(user",
-        "camera)"
+      "optvals" : [
+        "user",
+        "camera"
       ]
     },
     {
@@ -554,7 +554,7 @@
       "type" : "String",
       "desc" : "DEPRICATED - code uses BS4 - is-valid / is-invalid",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -562,7 +562,7 @@
       "type" : "Boolean",
       "desc" : "False to validate that the value length > 0 (defaults to true)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -570,17 +570,17 @@
       "type" : "string",
       "desc" : "text",
       "memberOf" : "Roo.bootstrap.TextArea",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "forceFeedback",
       "type" : "Boolean",
-      "desc" : "Default false",
+      "desc" : "e) Default false",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     },
     {
@@ -588,7 +588,7 @@
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -596,7 +596,7 @@
       "type" : "string",
       "desc" : "- input group add on after",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -604,7 +604,7 @@
       "type" : "Number",
       "desc" : "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
       "memberOf" : "Roo.bootstrap.Input",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

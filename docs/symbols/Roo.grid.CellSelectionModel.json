@@ -29,7 +29,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -37,7 +37,7 @@
       "type" : "Boolean",
       "desc" : "Enter behaves the same as tab. (eg. goes to next cell) default: false",
       "memberOf" : "Roo.grid.CellSelectionModel",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

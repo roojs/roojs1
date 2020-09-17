@@ -31,7 +31,7 @@
       "type" : "String",
       "desc" : "The type attribute for input fields -- e.g. radio, text, password (defaults to \"text\").",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -39,7 +39,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -47,7 +47,7 @@
       "type" : "String",
       "desc" : "<b>Experimental</b> The effect used when displaying a validation message under the field (defaults to 'normal').",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -55,7 +55,7 @@
       "type" : "String",
       "desc" : "Label to use when rendering a form.",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -63,7 +63,7 @@
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -71,17 +71,17 @@
       "type" : "String",
       "desc" : "The location where error text should display.  Should be one of the following values (defaults to 'qtip'):\n<pre>\nValue         Description\n-----------   ----------------------------------------------------------------------\nqtip          Display a quick tip when the user hovers over the field\ntitle         Display a default browser title attribute popup\nunder         Add a block div beneath the field containing the error text\nside          Add an error icon to the right of the field with a popup on hover\n[element id]  Add the error text directly to the innerHTML of the specified element\n</pre>",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
@@ -89,7 +89,7 @@
       "type" : "Boolean",
       "desc" : "True to disable the field (defaults to false).",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -97,7 +97,7 @@
       "type" : "Mixed",
       "desc" : "A value to initialize this field with.",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -105,7 +105,7 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -113,7 +113,7 @@
       "type" : "Boolean",
       "desc" : "False to validate that the value length > 0 (defaults to false)",
       "memberOf" : "Roo.form.Signature",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -121,7 +121,7 @@
       "type" : "Number",
       "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -129,7 +129,7 @@
       "type" : "Boolean",
       "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -137,7 +137,7 @@
       "type" : "String",
       "desc" : "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -145,7 +145,7 @@
       "type" : "String",
       "desc" : "A CSS class to apply to the field's underlying element.",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -153,7 +153,7 @@
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"20\", autocomplete: \"off\"})",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -161,7 +161,7 @@
       "type" : "String",
       "desc" : "The error text to use when marking a field invalid and no message is provided (defaults to \"The value in this field is invalid\")",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -169,7 +169,7 @@
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -177,7 +177,7 @@
       "type" : "Number",
       "desc" : "The signature panel width (defaults to 300)",
       "memberOf" : "Roo.form.Signature",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -185,7 +185,7 @@
       "type" : "Object",
       "desc" : "Label to use when rendering a form.\ndefaults to \nlabels : { \n     clear : \"Clear\",\n     confirm : \"Confirm\"\n }",
       "memberOf" : "Roo.form.Signature",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -193,7 +193,7 @@
       "type" : "Boolean",
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -201,7 +201,7 @@
       "type" : "String/Boolean",
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -209,7 +209,7 @@
       "type" : "Number",
       "desc" : "The signature panel height (defaults to 100)",
       "memberOf" : "Roo.form.Signature",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -217,7 +217,7 @@
       "type" : "String",
       "desc" : "The field's HTML name attribute.",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -225,7 +225,7 @@
       "type" : "String",
       "desc" : "Mouse over tip",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -233,7 +233,7 @@
       "type" : "String",
       "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -241,7 +241,7 @@
       "type" : "String",
       "desc" : "The default CSS class for the field (defaults to \"x-form-field\")",
       "memberOf" : "Roo.form.Field",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -249,7 +249,7 @@
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

@@ -34,7 +34,7 @@
       "type" : "String/Boolean",
       "desc" : "True to create a shadow element with default class \"x-layer-shadow\", or\nyou can pass a string with a CSS class name. False turns off the shadow.",
       "memberOf" : "Roo.Layer",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -42,7 +42,7 @@
       "type" : "Boolean",
       "desc" : "False to disable constrain to viewport (defaults to true)",
       "memberOf" : "Roo.Layer",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -50,7 +50,7 @@
       "type" : "Number",
       "desc" : "Starting z-index (defaults to 11000)",
       "memberOf" : "Roo.Layer",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -58,7 +58,7 @@
       "type" : "Number",
       "desc" : "Number of pixels to offset the shadow (defaults to 3)",
       "memberOf" : "Roo.Layer",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -66,7 +66,7 @@
       "type" : "Object",
       "desc" : "DomHelper object config to create element with (defaults to {tag: \"div\", cls: \"x-layer\"}).",
       "memberOf" : "Roo.Layer",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -74,7 +74,7 @@
       "type" : "String",
       "desc" : "CSS class to add to the element",
       "memberOf" : "Roo.Layer",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -82,7 +82,7 @@
       "type" : "Boolean",
       "desc" : "False to disable the iframe shim in browsers which need one (defaults to true)",
       "memberOf" : "Roo.Layer",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

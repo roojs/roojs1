@@ -30,7 +30,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -38,7 +38,7 @@
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -46,17 +46,17 @@
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
-        "(el",
-        "parent)"
+      "optvals" : [
+        "el",
+        "parent"
       ]
     },
     {
@@ -64,7 +64,7 @@
       "type" : "Number",
       "desc" : "default 3000",
       "memberOf" : "Roo.bootstrap.UploadCropbox",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -72,7 +72,7 @@
       "type" : "Array",
       "desc" : "default ['rotateLeft', 'pictureBtn', 'rotateRight']",
       "memberOf" : "Roo.bootstrap.UploadCropbox",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -80,17 +80,17 @@
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
@@ -98,7 +98,7 @@
       "type" : "String",
       "desc" : "show when image has been loaded",
       "memberOf" : "Roo.bootstrap.UploadCropbox",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -106,7 +106,7 @@
       "type" : "Number",
       "desc" : "default 300",
       "memberOf" : "Roo.bootstrap.UploadCropbox",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -114,7 +114,7 @@
       "type" : "String",
       "desc" : "default POST",
       "memberOf" : "Roo.bootstrap.UploadCropbox",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -122,7 +122,7 @@
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -130,7 +130,7 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -138,7 +138,7 @@
       "type" : "String",
       "desc" : "default 'imageUpload'",
       "memberOf" : "Roo.bootstrap.UploadCropbox",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -146,7 +146,7 @@
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -154,27 +154,27 @@
       "type" : "Number",
       "desc" : "default 300",
       "memberOf" : "Roo.bootstrap.UploadCropbox",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "isDocument",
       "type" : "Boolean",
-      "desc" : "default false",
+      "desc" : "e) default false",
       "memberOf" : "Roo.bootstrap.UploadCropbox",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     },
     {
       "name" : "loadMask",
       "type" : "Boolean",
-      "desc" : "default true",
+      "desc" : "e) default true",
       "memberOf" : "Roo.bootstrap.UploadCropbox",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     },
     {
@@ -182,7 +182,7 @@
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -190,7 +190,7 @@
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -198,7 +198,7 @@
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -206,7 +206,7 @@
       "type" : "String",
       "desc" : "show when image too small to rotate",
       "memberOf" : "Roo.bootstrap.UploadCropbox",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -214,7 +214,7 @@
       "type" : "String",
       "desc" : "action url",
       "memberOf" : "Roo.bootstrap.UploadCropbox",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -222,7 +222,7 @@
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -230,7 +230,7 @@
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -238,7 +238,7 @@
       "type" : "Boolean",
       "desc" : "default 'Loading...'",
       "memberOf" : "Roo.bootstrap.UploadCropbox",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

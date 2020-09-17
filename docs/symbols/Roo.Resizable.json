@@ -34,7 +34,7 @@
       "type" : "String",
       "desc" : "Animation easing if animate = true (defaults to 'easingOutStrong')",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -42,7 +42,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -50,7 +50,7 @@
       "type" : "Number",
       "desc" : "The maximum width for the element (defaults to 10000)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -58,7 +58,7 @@
       "type" : "Number",
       "desc" : "The minimum width for the element (defaults to 5)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -66,7 +66,7 @@
       "type" : "Boolean",
       "desc" : "True to resize the element while dragging instead of using a proxy (defaults to false)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -74,7 +74,7 @@
       "type" : "Boolean",
       "desc" : "True to ensure that the resize handles are always visible, false to display them only when the\nuser mouses over the resizable borders. This is only applied at config time. (defaults to false)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -82,7 +82,7 @@
       "type" : "Boolean",
       "desc" : "False to disable resizing (defaults to true)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -90,7 +90,7 @@
       "type" : "String",
       "desc" : "String consisting of the resize handles to display (defaults to undefined)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -98,7 +98,7 @@
       "type" : "Boolean",
       "desc" : "True to preserve the original ratio between height and width during resize (defaults to false)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -106,7 +106,7 @@
       "type" : "Number",
       "desc" : "The minimum height for the element (defaults to 5)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -114,7 +114,7 @@
       "type" : "Number",
       "desc" : "The maximum height for the element (defaults to 10000)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -122,7 +122,7 @@
       "type" : "Number",
       "desc" : "The increment to snap the width resize in pixels (dynamic must be true, defaults to 0)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -130,7 +130,7 @@
       "type" : "Boolean/String/Element",
       "desc" : "True to resize the first child, or id/element to resize (defaults to false)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -138,7 +138,7 @@
       "type" : "Number",
       "desc" : "The width of the element in pixels (defaults to null)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -146,7 +146,7 @@
       "type" : "Boolean",
       "desc" : "True for transparent handles. This is only applied at config time. (defaults to false)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -154,7 +154,7 @@
       "type" : "Number",
       "desc" : "The minimum allowed page X for the element (only used for west resizing, defaults to 0)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -162,7 +162,7 @@
       "type" : "String/HTMLElement/Element",
       "desc" : "Constrain the resize to a particular element",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -170,7 +170,7 @@
       "type" : "Boolean",
       "desc" : "True to disable mouse tracking. This is only applied at config time. (defaults to false)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -178,7 +178,7 @@
       "type" : "Number",
       "desc" : "The minimum allowed page Y for the element (only used for north resizing, defaults to 0)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -186,7 +186,7 @@
       "type" : "Array/String",
       "desc" : "String \"auto\" or an array [width, height] with values to be <b>added</b> to the\nresize operation's new size (defaults to [0, 0])",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -194,7 +194,7 @@
       "type" : "Boolean",
       "desc" : "True to wrap an element with a div if needed (required for textareas and images, defaults to false)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -202,7 +202,7 @@
       "type" : "Number",
       "desc" : "The height of the element in pixels (defaults to null)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -210,7 +210,7 @@
       "type" : "Number",
       "desc" : "Animation duration if animate = true (defaults to .35)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -218,7 +218,7 @@
       "type" : "Boolean",
       "desc" : "True to animate the resize (not compatible with dynamic sizing, defaults to false)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -226,7 +226,7 @@
       "type" : "Boolean",
       "desc" : "<b>Deprecated</b>.  The old style of adding multi-direction resize handles, deprecated\nin favor of the handles config option (defaults to false)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -234,7 +234,7 @@
       "type" : "Number",
       "desc" : "The increment to snap the height resize in pixels (dynamic must be true, defaults to 0)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -242,7 +242,7 @@
       "type" : "Boolean",
       "desc" : "Convenience to initialize drag drop (defaults to false)",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -250,7 +250,7 @@
       "type" : "Roo.lib.Region",
       "desc" : "Constrain the resize to a particular region",
       "memberOf" : "Roo.Resizable",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

@@ -21,7 +21,7 @@
       "type" : "Array",
       "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
       "memberOf" : "Roo.bootstrap.htmleditor.ToolbarStandard",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -29,7 +29,7 @@
       "type" : "Object",
       "desc" : "List of elements to disable..",
       "memberOf" : "Roo.bootstrap.htmleditor.ToolbarStandard",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

@@ -33,7 +33,7 @@
       "type" : "Store",
       "desc" : "The store that loads events.",
       "memberOf" : "Roo.grid.Calendar",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

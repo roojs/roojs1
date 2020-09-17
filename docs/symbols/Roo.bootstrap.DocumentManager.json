@@ -28,11 +28,11 @@
     {
       "name" : "labelAlign",
       "type" : "String",
-      "desc" : "default left",
+      "desc" : "p) default left",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
-        "(left",
-        "top)"
+      "optvals" : [
+        "left",
+        "top"
       ]
     },
     {
@@ -40,7 +40,7 @@
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -48,7 +48,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -56,7 +56,7 @@
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -64,7 +64,7 @@
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -72,17 +72,17 @@
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
-        "(el",
-        "parent)"
+      "optvals" : [
+        "el",
+        "parent"
       ]
     },
     {
@@ -90,7 +90,7 @@
       "type" : "String",
       "desc" : "",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -98,7 +98,7 @@
       "type" : "String",
       "desc" : "default 'filename'",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -106,17 +106,17 @@
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
@@ -124,7 +124,7 @@
       "type" : "String",
       "desc" : "default POST",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -132,7 +132,7 @@
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -140,7 +140,7 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -148,7 +148,7 @@
       "type" : "String",
       "desc" : "default 'imageUpload'",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -156,7 +156,7 @@
       "type" : "Number",
       "desc" : "default 4",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -164,17 +164,17 @@
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "editable",
       "type" : "Boolean",
-      "desc" : "allow edit when upload a image default true",
+      "desc" : "e) allow edit when upload a image default true",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     },
     {
@@ -182,7 +182,7 @@
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -190,7 +190,7 @@
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -198,7 +198,7 @@
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -206,7 +206,7 @@
       "type" : "Number",
       "desc" : "number of boxes, 0 is no limit.. default 0",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -214,7 +214,7 @@
       "type" : "Boolean",
       "desc" : "multiple upload default true",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -222,7 +222,7 @@
       "type" : "Number",
       "desc" : "default 300",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -230,7 +230,7 @@
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -238,7 +238,7 @@
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -246,7 +246,7 @@
       "type" : "String",
       "desc" : "action url",
       "memberOf" : "Roo.bootstrap.DocumentManager",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -254,7 +254,7 @@
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -262,7 +262,7 @@
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],
