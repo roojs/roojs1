@@ -134,6 +134,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         >> this bit is really the body...
         <div> << we will ad dthis in hopefully it will not break shit.
         
+        ** card text does not actually have any styling...
+        
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
         
         </div> <<
