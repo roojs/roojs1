@@ -17,8 +17,29 @@
  * @cfg {Array} - links
  *
  * @cfg {String} weight (primary|warning|info|danger|secondary|success|light|dark)
- * @cfg {String} margin (0|1|2|3|4|5|auto|t-0|t-1|t-2|t-3|t-4|t-5|t-auto|b-0|b-1|b-2|b-3|b-4|b-5|b-auto|l-0|l-1|l-2|l-3|l-4|l-5|l-auto|r-0|r-1|r-2|r-3|r-4|r-5|r-auto|x-0|x-1|x-2|x-3|x-4|x-5|x-auto|y-0|y-1|y-2|y-3|y-4|y-5|y-auto)
- * @cfg {String} padding (0|1|2|3|4|5|t-0|t-1|t-2|t-3|t-4|t-5|b-0|b-1|b-2|b-3|b-4|b-5|l-0|l-1|l-2|l-3|l-4|l-5|r-0|r-1|r-2|r-3|r-4|r-5|x-0|x-1|x-2|x-3|x-4|x-5|y-0|y-1|y-2|y-3|y-4|y-5)
+ * 
+ * @cfg {String} margin (0|1|2|3|4|5|auto)
+ * @cfg {String} margin_top (0|1|2|3|4|5|auto)
+ * @cfg {String} margin_bottom (0|1|2|3|4|5|auto)
+ * @cfg {String} margin_left (0|1|2|3|4|5|auto)
+ * @cfg {String} margin_right (0|1|2|3|4|5|auto)
+ * @cfg {String} margin_x (0|1|2|3|4|5|auto)
+ * @cfg {String} margin_y (0|1|2|3|4|5|auto)
+ *
+ * @cfg {String} padding (0|1|2|3|4|5)
+ * @cfg {String} padding_top (0|1|2|3|4|5)
+ * @cfg {String} padding_bottom (0|1|2|3|4|5)
+ * @cfg {String} padding_left (0|1|2|3|4|5)
+ * @cfg {String} padding_right (0|1|2|3|4|5)
+ * @cfg {String} padding_x (0|1|2|3|4|5)
+ * @cfg {String} padding_y (0|1|2|3|4|5)
+ *
+ * @cfg {String} display (block|none)
+ * @cfg {String} display_xs (block|none)
+ * @cfg {String} display_sm (block|none)
+ * @cfg {String} display_lg (block|none)
+ * @cfg {String} display_xl (block|none)
+ 
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
@@ -36,8 +57,30 @@ Roo.bootstrap.Card = function(config){
 Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     weight : '',
-   
-   
+    
+    margin: '', /// may be better in component?
+    margin_xs: '', 
+    margin_sm: '', 
+    margin_lg: '',
+    margin_xl: '',
+    margin_x: '',
+    margin_y: '',
+    
+    padding : '',
+    padding_xs: '', 
+    padding_sm: '', 
+    padding_lg: '',
+    padding_xl: '',
+    padding_x: '',
+    padding_y: '',
+    
+    display: '', 
+    display_xs: '', 
+    display_sm: '', 
+    display_lg: '',
+    display_xl: '',
+ 
+
        // Roo.log("Call onRender: " + this.xtype);
         /*  We are looking at something like this.
 <div class="card">
@@ -76,8 +119,18 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         
         // margin?
-        
-        
+        if (this.margin.length) {
+            var bits = this.margin.split(" ");
+            bits.forEach(function (b) {
+                cfg.cls += ' m' + (b.length == 1 ? '-' : '') + b;
+            });
+        }
+        if (this.padding.length) {
+            var bits = this.padding.split(" ");
+            bits.forEach(function (b) {
+                cfg.cls += ' p' + (b.length == 1 ? '-' : '') + b;
+            });
+        }
         
         // - this is applied by the parent..
         //if (this.cls) {
