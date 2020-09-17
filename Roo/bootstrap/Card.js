@@ -9,16 +9,15 @@
  *
  *
  * possible... may not be implemented..
- * @cfg {String} header_image  
- * @cfg {String|Object} header
- * @cfg {String|Object} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
+ * @cfg {String} header_image  src url of image.
+ * @cfg {String} header
+ * @cfg {Number} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
  * 
- * @cfg {String|Object} title
- * @cfg {String|Object} subtitle
+ * @cfg {String} title
+ * @cfg {String} subtitle
  * @cfg {String} html -- html contents - or just use children..
- * @cfg {String|Object} footer
- * @cfg {Array} - links
- *
+ * @cfg {String} footer
+ 
  * @cfg {String} weight (primary|warning|info|danger|secondary|success|light|dark)
  * 
  * @cfg {String} margin (0|1|2|3|4|5|auto)
