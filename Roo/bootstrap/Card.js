@@ -15,7 +15,7 @@
  * 
  * @cfg {String|Object} title
  * @cfg {String|Object} subtitle
- * @cfg {String|Object} body
+ * @cfg {String} html -- html contents - or just use children..
  * @cfg {String|Object} footer
  * @cfg {Array} - links
  *
@@ -88,6 +88,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     header : '',
     header_size : 0,
     title : '',
+    subtitle : '',
     html : '',
 
     layoutCls : function()
@@ -159,14 +160,14 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         cfg.cls += this.layoutCls(); 
         
-        if (this.header) {
+        if (this.header.length) {
             cfg.cn.push({
-                tag : 'div',
+                tag : this.header_size > 0 ? 'h' + this.header_size : 'div',
                 cls : 'card-header',
                 html : this.header // escape?
             });
         }
-        if (this.header_image) {
+        if (this.header_image.length) {
             cfg.cn.push({
                 tag : 'img',
                 cls : 'card-img-top',
@@ -174,86 +175,30 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             });
         }
         
-
+        var body = {
+            tag : 'div',
+            cls : 'card-body',
+            cn : []
+        };
+        cfg.push(body);
         
-        
-        if (this.alert && ["success","info","warning", "danger"].indexOf(this.alert) > -1) {
-            cfg.cls +=' alert alert-' + this.alert;
-        }
-        
-        var body = cfg;
-        
-        if (this.panel.length) {
-            cfg.cls += ' panel panel-' + this.panel;
-            cfg.cn = [];
-            if (this.header.length) {
-                
-                var h = [];
-                
-                if(this.expandable){
-                    
-                    cfg.cls = cfg.cls + ' expandable';
-                    
-                    h.push({
-                        tag: 'i',
-                        cls: (this.expanded ? 'fa fa-minus' : 'fa fa-plus') 
-                    });
-                    
-                }
-                
-                h.push(
-                    {
-                        tag: 'span',
-                        cls : 'panel-title',
-                        html : (this.expandable ? '&nbsp;' : '') + this.header
-                    },
-                    {
-                        tag: 'span',
-                        cls: 'panel-header-right',
-                        html: this.rheader
-                    }
-                );
-                
-                cfg.cn.push({
-                    cls : 'panel-heading',
-                    style : this.expandable ? 'cursor: pointer' : '',
-                    cn : h
-                });
-                
-            }
-            
-            body = false;
-            cfg.cn.push({
-                cls : 'panel-body' + (this.expanded ? '' : ' hide'),
-                html : this.html
+        if (this.title.length) {
+            body.cn.push({
+                tag : 'div',
+                cls : 'card-title',
+                src: this.title // escape?
             });
-            
-            
-            if (this.footer.length) {
-                cfg.cn.push({
-                    cls : 'panel-footer',
-                    html : this.footer
-                    
-                });
-            }
-            
         }
         
-        if (body) {
-            body.html = this.html || cfg.html;
-            // prefix with the icons..
-            if (this.fa) {
-                body.html = '<i class="fa fa-'+this.fa + '"></i>' + body.html ;
-            }
-            if (this.icon) {
-                body.html = '<i class="glyphicon glyphicon-'+this.icon + '"></i>' + body.html ;
-            }
-            
-            
+        if (this.subtitle.length) {
+            body.cn.push({
+                tag : 'div',
+                cls : 'card-title',
+                src: this.subtitle // escape?
+            });
         }
-        if ((!this.cls || !this.cls.length) && (!cfg.cls || !cfg.cls.length)) {
-            cfg.cls =  'container';
-        }
+        
+          
         
         return cfg;
     },
