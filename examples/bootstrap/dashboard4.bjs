@@ -33,6 +33,7 @@
        "items" : [
         {
          "String header" : "ticket 1",
+         "String margin_bottom" : 3,
          "xtype" : "Card",
          "$ xns" : "Roo.bootstrap"
         },
