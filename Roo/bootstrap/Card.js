@@ -34,11 +34,11 @@
  * @cfg {String} padding_x (0|1|2|3|4|5)
  * @cfg {String} padding_y (0|1|2|3|4|5)
  *
- * @cfg {String} display (block|none)
- * @cfg {String} display_xs (block|none)
- * @cfg {String} display_sm (block|none)
- * @cfg {String} display_lg (block|none)
- * @cfg {String} display_xl (block|none)
+ * @cfg {String} display (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
+ * @cfg {String} display_xs (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
+ * @cfg {String} display_sm (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
+ * @cfg {String} display_lg (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
+ * @cfg {String} display_xl (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
  
  * @constructor
  * Create a new Container
@@ -59,18 +59,18 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     weight : '',
     
     margin: '', /// may be better in component?
-    margin_xs: '', 
-    margin_sm: '', 
-    margin_lg: '',
-    margin_xl: '',
+    margin_top: '', 
+    margin_bottom: '', 
+    margin_left: '',
+    margin_right: '',
     margin_x: '',
     margin_y: '',
     
     padding : '',
-    padding_xs: '', 
-    padding_sm: '', 
-    padding_lg: '',
-    padding_xl: '',
+    padding_top: '', 
+    padding_bottom: '', 
+    padding_left: '',
+    padding_right: '',
     padding_x: '',
     padding_y: '',
     
@@ -81,6 +81,31 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     display_xl: '',
  
 
+    layoutCls : function()
+    {
+        var cls = '';
+        var t = this;
+        
+        ['', 'top', 'bottom', 'left', 'right', 'x', 'y' ].forEach(function(v) {
+            // in theory these can do margin_top : ml-xs-3 ??? but we don't support that yet
+            
+            if (t['margin' + (v.length ? '_' : '') + v].length) {
+                cls += ' m' +  (v.length ? v[0]  : '') + '-' +  t['margin' + (v.length ? '_' : '') + v];
+            }
+            if (t['padding' + (v.length ? '_' : '') + v].length) {
+                cls += ' p' +  (v.length ? v[0]  : '') + '-' +  t['padding' + (v.length ? '_' : '') + v];
+            }
+        });
+        
+        ['', 'xs', 'sm', 'lg', 'xl',   ].forEach(function(v) {
+            if (t['display' + (v.length ? '_' : '') + v].length) {
+                cls += ' d' +  (v.length ? '-' : '') + v + '-' + t['margin' + (v.length ? '_' : '') + v].length
+            }
+        });
+        
+        
+    }
+ 
        // Roo.log("Call onRender: " + this.xtype);
         /*  We are looking at something like this.
 <div class="card">
