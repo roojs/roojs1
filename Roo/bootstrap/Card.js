@@ -232,4 +232,5 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         return this.el.select('.roo-card-body-ctr',true).first();    
     }
     
-}
+});
+
