@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     {
         var cls = '';
         var t = this;
-        
+        Roo.log(this.margin_bottom.length);
         ['', 'top', 'bottom', 'left', 'right', 'x', 'y' ].forEach(function(v) {
             // in theory these can do margin_top : ml-xs-3 ??? but we don't support that yet
             
