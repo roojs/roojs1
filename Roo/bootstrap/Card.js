@@ -220,15 +220,13 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     },
     
     
-    getChildContainer : function() {
+    getChildContainer : function()
+    {
         
         if(!this.el){
             return false;
         }
-        
-        
-        return this.el.select('.roo-card-body-ctr',true).first();
-        
-    },
+        return this.el.select('.roo-card-body-ctr',true).first();    
+    }
     
 }
