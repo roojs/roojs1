@@ -1592,17 +1592,17 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         ['', 'top', 'bottom', 'left', 'right', 'x', 'y' ].forEach(function(v) {
             // in theory these can do margin_top : ml-xs-3 ??? but we don't support that yet
             
-            if (t['margin' + (v.length ? '_' : '') + v].length) {
+            if (('' + t['margin' + (v.length ? '_' : '') + v]).length) {
                 cls += ' m' +  (v.length ? v[0]  : '') + '-' +  t['margin' + (v.length ? '_' : '') + v];
             }
-            if (t['padding' + (v.length ? '_' : '') + v].length) {
+            if (('' + t['padding' + (v.length ? '_' : '') + v]).length) {
                 cls += ' p' +  (v.length ? v[0]  : '') + '-' +  t['padding' + (v.length ? '_' : '') + v];
             }
         });
         
         ['', 'xs', 'sm', 'lg', 'xl'].forEach(function(v) {
-            if (t['display' + (v.length ? '_' : '') + v].length) {
-                cls += ' d' +  (v.length ? '-' : '') + v + '-' + t['margin' + (v.length ? '_' : '') + v].length
+            if (('' + t['display' + (v.length ? '_' : '') + v]).length) {
+                cls += ' d' +  (v.length ? '-' : '') + v + '-' + t['margin' + (v.length ? '_' : '') + v]
             }
         });
         
