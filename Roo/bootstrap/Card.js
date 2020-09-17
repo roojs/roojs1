@@ -102,9 +102,12 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 cls += ' d' +  (v.length ? '-' : '') + v + '-' + t['margin' + (v.length ? '_' : '') + v].length
             }
         });
+        if (this.hidden) {
+            cls += ' d-none';
+        }
         
         return cls;
-    }
+    },
  
        // Roo.log("Call onRender: " + this.xtype);
         /*  We are looking at something like this.
@@ -143,48 +146,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             cfg.cls += ' bg-' + this.weight;
         }
         
-        // margin?
-        if (this.margin.length) {
-            var bits = this.margin.split(" ");
-            bits.forEach(function (b) {
-                cfg.cls += ' m' + (b.length == 1 ? '-' : '') + b;
-            });
-        }
-        if (this.padding.length) {
-            var bits = this.padding.split(" ");
-            bits.forEach(function (b) {
-                cfg.cls += ' p' + (b.length == 1 ? '-' : '') + b;
-            });
-        }
-        
-        // - this is applied by the parent..
-        //if (this.cls) {
-        //    cfg.cls = this.cls + '';
-        //}
-        
-        if (this.sticky.length) {
-            
-            var bd = Roo.get(document.body);
-            if (!bd.hasClass('bootstrap-sticky')) {
-                bd.addClass('bootstrap-sticky');
-                Roo.select('html',true).setStyle('height', '100%');
-            }
-             
-            cfg.cls += 'bootstrap-sticky-' + this.sticky;
-        }
-	
-	
-        if (this.well.length) {
-            switch (this.well) {
-                case 'lg':
-                case 'sm':
-                    cfg.cls +=' well well-' +this.well;
-                    break;
-                default:
-                    cfg.cls +=' well';
-                    break;
-            }
-        }
+        cfg.cls += this.layoutCls(); 
         
         if (this.hidden) {
             cfg.cls += ' hidden';
