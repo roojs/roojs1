@@ -34,6 +34,10 @@
          "xtype" : "Element",
          "$ xns" : "Roo.bootstrap",
          "String html" : "some text"
+        },
+        {
+         "xtype" : "Card",
+         "$ xns" : "Roo.bootstrap"
         }
        ]
       }

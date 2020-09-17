@@ -48,6 +48,11 @@ dashboard4 = new Roo.XComponent({
          html : _this._strings['552e21cd4cd9918678e3c1a0df491bc3'] /* some text */,
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap'
+        },
+        {
+         xtype : 'Card',
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap'
         }
        ]
       }
