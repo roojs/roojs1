@@ -6,15 +6,8 @@
  "permname" : "",
  "modOrder" : "001",
  "strings" : {
-  "9d5ed678fe57bcca610140957afab571" : "B",
-  "9db5682a4d778ca2cb79580bdb67083f" : "Some text",
-  "0d61f8370cad1d412f80b84d143e1257" : "C",
-  "f623e75af30e62bbd73d6df5b50bb7b5" : "D",
-  "3a3ea00cfc35332cedf6e5e9a32e94da" : "E",
-  "70ce2e7a27cab2a670ca954f8362e19f" : "tab 2 content",
-  "800618943025315f869e4e1f09471012" : "F",
-  "18327168fcb401af02b4615b43d637ad" : "Pick from list",
-  "7fc56270e7a70fa81a5935b72eacbe29" : "A"
+  "e93b3fa481be3932aa08bd68c3deee70" : "example 1",
+  "e037df87a91c6e2727f0d9eb15c8127f" : "this is the body text"
  },
  "items" : [
   {
@@ -29,115 +22,16 @@
      "$ xns" : "Roo.bootstrap",
      "items" : [
       {
-       "xtype" : "Row",
+       "String header" : "example 1",
+       "String weight" : "primary",
+       "xtype" : "Card",
        "$ xns" : "Roo.bootstrap",
+       "String html" : "this is the body text",
+       "String style" : "max-width:200px",
        "items" : [
         {
-         "Number md" : 6,
-         "Number lg" : 6,
-         "xtype" : "Column",
-         "$ xns" : "Roo.bootstrap",
-         "String style" : "",
-         "Number sm" : 12,
-         "items" : [
-          {
-           "listeners" : {
-            "render" : "function (_self)\n{\n    _this.testbox = _self;\n}"
-           },
-           "xtype" : "TabBox",
-           "$ xns" : "Roo.bootstrap.dash",
-           "String title" : "Pick from list",
-           "items" : [
-            {
-             "xtype" : "TabPane",
-             "$ xns" : "Roo.bootstrap.dash",
-             "string title" : "A",
-             "items" : [
-              {
-               "xtype" : "Column",
-               "$ xns" : "Roo.bootstrap",
-               "items" : [
-                {
-                 "String size" : "sm",
-                 "String weight" : "warning",
-                 "xtype" : "Button",
-                 "$ xns" : "Roo.bootstrap",
-                 "String html" : "Some text"
-                },
-                {
-                 "String size" : "sm",
-                 "String weight" : "warning",
-                 "xtype" : "Button",
-                 "$ xns" : "Roo.bootstrap",
-                 "String html" : "Some text"
-                }
-               ]
-              }
-             ]
-            },
-            {
-             "xtype" : "TabPane",
-             "$ xns" : "Roo.bootstrap.dash",
-             "string title" : "B",
-             "items" : [
-              {
-               "xtype" : "Column",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "tab 2 content"
-              }
-             ]
-            },
-            {
-             "xtype" : "TabPane",
-             "$ xns" : "Roo.bootstrap.dash",
-             "string title" : "C",
-             "items" : [
-              {
-               "xtype" : "Column",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "tab 2 content"
-              }
-             ]
-            },
-            {
-             "xtype" : "TabPane",
-             "$ xns" : "Roo.bootstrap.dash",
-             "string title" : "D",
-             "items" : [
-              {
-               "xtype" : "Column",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "tab 2 content"
-              }
-             ]
-            },
-            {
-             "xtype" : "TabPane",
-             "$ xns" : "Roo.bootstrap.dash",
-             "string title" : "E",
-             "items" : [
-              {
-               "xtype" : "Column",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "tab 2 content"
-              }
-             ]
-            },
-            {
-             "xtype" : "TabPane",
-             "$ xns" : "Roo.bootstrap.dash",
-             "string title" : "F",
-             "items" : [
-              {
-               "xtype" : "Column",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "tab 2 content"
-              }
-             ]
-            }
-           ]
-          }
-         ]
+         "xtype" : "Container",
+         "$ xns" : "Roo.bootstrap"
         }
        ]
       }
