@@ -1,5 +1,7 @@
 /*
- * This is BS4's Card element.. - similar to our containers probably..
+ *  - LGPL
+ *
+ *  This is BS4's Card element.. - similar to our containers probably..
  * 
  */
 /**
