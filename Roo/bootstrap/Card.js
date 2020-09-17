@@ -103,7 +103,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             }
         });
         
-        
+        return cls;
     }
  
        // Roo.log("Call onRender: " + this.xtype);
