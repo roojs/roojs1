@@ -9,7 +9,10 @@
  *
  *
  * possible... may not be implemented..
- * @cfg {String} header content of header (for panel)
+ * @cfg {String} header_image  
+ * @cfg {String|Object} header
+ * @cfg {String|Object} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
+ * 
  * @cfg {String|Object} title
  * @cfg {String|Object} subtitle
  * @cfg {String|Object} body
@@ -56,6 +59,7 @@ Roo.bootstrap.Card = function(config){
 
 Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
+    
     weight : '',
     
     margin: '', /// may be better in component?
@@ -80,6 +84,11 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     display_lg: '',
     display_xl: '',
  
+    header_image  : '',
+    header : '',
+    header_size : 0,
+    title : '',
+    html : '',
 
     layoutCls : function()
     {
@@ -136,9 +145,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var cfg = {
-            tag : this.tag || 'div',
-            html : '',
-            cls : 'card'
+            tag : 'div',
+            cls : 'card',
+            cn : [ ]
         };
         
         if (this.weight.length && this.weight != 'light') {
@@ -150,7 +159,22 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         cfg.cls += this.layoutCls(); 
         
-       
+        if (this.header) {
+            cfg.cn.push({
+                tag : 'div',
+                cls : 'card-header',
+                html : this.header // escape?
+            });
+        }
+        if (this.header_image) {
+            cfg.cn.push({
+                tag : 'img',
+                cls : 'card-img-top',
+                src: this.header_image // escape?
+            });
+        }
+        
+
         
         
         if (this.alert && ["success","info","warning", "danger"].indexOf(this.alert) > -1) {
