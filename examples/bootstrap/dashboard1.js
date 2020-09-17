@@ -18,6 +18,7 @@ dashboard1 = new Roo.XComponent({
   '643a860f992333b8600ea264aca7c4fc' :"Email Address",
   '69165cb5e53db90fd85e2b0a98f1d77b' :"size sm",
   'a1e27e67ca3c6c3198c36a32e416a65f' :"General Form Elements  <small> Preview </small>",
+  '7c230330ef184cac6b35f3c20e40dedd' :"Checkbox weight=primary",
   'c3d8baf1b9da3d6922aea0057717a0b7' :"Enter email",
   'c81c5cb4cbfa1fe7cc3ae45112da3bf8' :"ComboBox disabled",
   'b85c1bc6f73a44489045c76aafbab96c' :"With checkbox and radio",
@@ -34,26 +35,37 @@ dashboard1 = new Roo.XComponent({
   '8d71e1fffea14ff1d8b7acbe0ded4305' :"With buttons",
   'eccbc87e4b5ce2fe28308fd9f2a7baf3' :"3",
   '5f7a612768f22e04c0a0c4bb0c24ce91' :"size md",
+  'de8a19fe7b105f264a9a83909b880af3' :"Checkbox 1",
   '08583f18f5ab76dcb709f7b34eb59104' :"Different Height",
   '7099e6d377281665976e57e80ba5fe0d' :"before $, after: .00",
   '82a3bed694a221ef4bb4f18514b05843' :"Input with Warning",
+  '770e06d40b8b4d64e89c24098d25fdc2' :"Radio 1",
+  'b52b5a382a07e93eb72c79ae431f3159' :"Radio Disabled",
   '088eb66998a403897b60aa8ee9115c91' :"cls = has-success",
   'dc647eb65e6711e155375218212b3964' :"Password",
   '343f7d4e4b503d9b9cb282205a4d5858' :"after: .00",
+  '9a64581b8c734327d597d13177b4203e' :"Checkbox Disabled",
   '221fd7bbd5b513f2c2db2939fcefec96' :"after - a button",
   '76946ef61117810371fa41415c86a2ed' :"size lg",
   'b5d4d25fe3fa9f8263b5f279a372b709' :"Textarea",
   '3b545ecbbdf3673f195c5a692fefa928' :"disabled=true",
   '71f30e09efd6fac81e65a32a32a1c6ac' :"With Icons",
   'f536bd90041a983b324d7a81de4e8089' :"Input with Success",
+  '2638b51cce6f3ce99752fa859b9c71a8' :"Radio (weight=danger)",
   'f8eae6750519389e078e1eb1bcb3d708' :"https://",
   '1c8d3efd26af385c51153c5bc082a279' :"before :  - an object...    ",
   '2f24bf395be7b31a10b6d501801d4099' :"Input Addon",
   '6f0e2583dbfc8eab280b4709a8c87b4b' :"Different Width",
   '1dcae4807c06e16567efb6eff4f1296c' :"Multiple selection",
+  '9fced129522f128b2445a41fb0b6ef9f' :"checkbox",
   'd1457b72c3fb323a2671125aef3eab5d' :"?",
-  '4c3d0e43b52db64c94f842da7fc7224c' :"Enter ...",
-  'a4d3b161ce1309df1c4e25df28694b7b' :"Submit"
+  'a4d3b161ce1309df1c4e25df28694b7b' :"Submit",
+  '4c3d0e43b52db64c94f842da7fc7224c' :"Enter ..."
+ },
+ _named_strings : {
+  'radio_boxLabel' : 'b52b5a382a07e93eb72c79ae431f3159' /* Radio Disabled */ ,
+  'radio_value' : 'eccbc87e4b5ce2fe28308fd9f2a7baf3' /* 3 */ ,
+  'combotest_fieldLabel' : '1dcae4807c06e16567efb6eff4f1296c' /* Multiple selection */ 
  },
 
   part     :  ["bootstrap", "dashboard1" ],
@@ -63,7 +75,7 @@ dashboard1 = new Roo.XComponent({
   name     : "unnamed module",
   disabled : false, 
   permname : '', 
-  _tree : function()
+  _tree : function(_data)
   {
    var _this = this;
    var MODULE = this;
@@ -154,15 +166,6 @@ dashboard1 = new Roo.XComponent({
                    level : 3,
                    xns : Roo.bootstrap,
                    '|xns' : 'Roo.bootstrap'
-                  },
-                  {
-                   xtype : 'Input',
-                   fieldLabel : _this._strings['dc647eb65e6711e155375218212b3964'] /* Password */,
-                   inputType : 'password',
-                   placeholder : _this._strings['483bc24d842fe8f3ec3a6f92fbd31922'] /* Enter password */,
-                   tooltip : 'Hello world',
-                   xns : Roo.bootstrap,
-                   '|xns' : 'Roo.bootstrap'
                   }
                  ]
                 },
@@ -178,6 +181,15 @@ dashboard1 = new Roo.XComponent({
                    xns : Roo.bootstrap,
                    '|xns' : 'Roo.bootstrap',
                    items  : [
+                    {
+                     xtype : 'Input',
+                     fieldLabel : _this._strings['dc647eb65e6711e155375218212b3964'] /* Password */,
+                     inputType : 'password',
+                     placeholder : _this._strings['483bc24d842fe8f3ec3a6f92fbd31922'] /* Enter password */,
+                     tooltip : 'Hello world',
+                     xns : Roo.bootstrap,
+                     '|xns' : 'Roo.bootstrap'
+                    },
                     {
                      xtype : 'Input',
                      fieldLabel : _this._strings['643a860f992333b8600ea264aca7c4fc'] /* Email Address */,
@@ -196,7 +208,7 @@ dashboard1 = new Roo.XComponent({
                     },
                     {
                      xtype : 'CheckBox',
-                     boxLabel : 'checkbox',
+                     boxLabel : _this._strings['9fced129522f128b2445a41fb0b6ef9f'] /* checkbox */,
                      xns : Roo.bootstrap,
                      '|xns' : 'Roo.bootstrap'
                     },
@@ -644,13 +656,13 @@ dashboard1 = new Roo.XComponent({
                     },
                     {
                      xtype : 'CheckBox',
-                     boxLabel : 'Checkbox 1',
+                     boxLabel : _this._strings['de8a19fe7b105f264a9a83909b880af3'] /* Checkbox 1 */,
                      xns : Roo.bootstrap,
                      '|xns' : 'Roo.bootstrap'
                     },
                     {
                      xtype : 'CheckBox',
-                     boxLabel : 'Checkbox weight=primary',
+                     boxLabel : _this._strings['7c230330ef184cac6b35f3c20e40dedd'] /* Checkbox weight=primary */,
                      checked : true,
                      weight : 'primary',
                      xns : Roo.bootstrap,
@@ -658,14 +670,14 @@ dashboard1 = new Roo.XComponent({
                     },
                     {
                      xtype : 'CheckBox',
-                     boxLabel : 'Checkbox Disabled',
+                     boxLabel : _this._strings['9a64581b8c734327d597d13177b4203e'] /* Checkbox Disabled */,
                      disabled : true,
                      xns : Roo.bootstrap,
                      '|xns' : 'Roo.bootstrap'
                     },
                     {
                      xtype : 'Radio',
-                     boxLabel : 'Radio 1',
+                     boxLabel : _this._strings['770e06d40b8b4d64e89c24098d25fdc2'] /* Radio 1 */,
                      name : 'radio',
                      value : 1,
                      xns : Roo.bootstrap,
@@ -673,7 +685,7 @@ dashboard1 = new Roo.XComponent({
                     },
                     {
                      xtype : 'Radio',
-                     boxLabel : 'Radio (weight=danger)',
+                     boxLabel : _this._strings['2638b51cce6f3ce99752fa859b9c71a8'] /* Radio (weight=danger) */,
                      name : 'radio',
                      value : 2,
                      weight : 'danger',
@@ -682,7 +694,7 @@ dashboard1 = new Roo.XComponent({
                     },
                     {
                      xtype : 'Radio',
-                     boxLabel : 'Radio Disabled',
+                     boxLabel : _this._strings['b52b5a382a07e93eb72c79ae431f3159'] /* Radio Disabled */,
                      disabled : true,
                      name : 'radio',
                      value : 3,

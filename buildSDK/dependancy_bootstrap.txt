@@ -8,6 +8,7 @@ Roo.bootstrap.ButtonGroup
 Roo.bootstrap.Button
 Roo.bootstrap.Column
 Roo.bootstrap.Container
+Roo.bootstrap.Card
 
 Roo.bootstrap.Img
 Roo.bootstrap.Link
