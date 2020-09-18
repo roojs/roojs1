@@ -1670,7 +1670,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -2429,7 +2429,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -2765,7 +2765,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -3080,7 +3080,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -3680,7 +3680,7 @@
         "type" : "String",
         "desc" : "t) which region to put this panel on (when used with xtype constructors)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "center",
           "north",
           "south",
@@ -4131,7 +4131,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -4957,7 +4957,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -6936,7 +6936,7 @@
         "type" : "String",
         "desc" : "t) which region to put this panel on (when used with xtype constructors)",
         "memberOf" : "Roo.ContentPanel",
-        "values" : [
+        "optvals" : [
           "center",
           "north",
           "south",
@@ -7225,7 +7225,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -10209,7 +10209,7 @@
         "type" : "String",
         "desc" : "m) \"top\" or \"bottom\" (defaults to \"bottom\")",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "top",
           "bottom"
         ]
@@ -10799,7 +10799,7 @@
         "type" : "String",
         "desc" : "t) which region to put this panel on (when used with xtype constructors)",
         "memberOf" : "Roo.ContentPanel",
-        "values" : [
+        "optvals" : [
           "center",
           "north",
           "south",
@@ -12688,7 +12688,7 @@
         "type" : "String",
         "desc" : "m) \"top\" or \"bottom\" (defaults to \"bottom\")",
         "memberOf" : "Roo.LayoutRegion",
-        "values" : [
+        "optvals" : [
           "top",
           "bottom"
         ]
@@ -15002,7 +15002,7 @@
         "type" : "String",
         "desc" : "t) which region to put this panel on (when used with xtype constructors)",
         "memberOf" : "Roo.ContentPanel",
-        "values" : [
+        "optvals" : [
           "center",
           "north",
           "south",
@@ -16202,7 +16202,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -16248,7 +16248,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -16258,7 +16258,7 @@
         "type" : "String",
         "desc" : ")",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "success",
           "info",
           "warning",
@@ -16673,7 +16673,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -16707,7 +16707,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -17066,7 +17066,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -17100,7 +17100,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -17465,7 +17465,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -17529,7 +17529,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -17871,7 +17871,7 @@
         "type" : "String",
         "desc" : ") default (same as button)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "default",
           "primary",
           "secondary",
@@ -17935,7 +17935,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -17999,7 +17999,7 @@
         "type" : "Boolean",
         "desc" : "e) default null - if the button ahs active state",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -18021,7 +18021,7 @@
         "type" : "String",
         "desc" : "s)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "lg",
           "sm",
           "xs"
@@ -18038,7 +18038,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "a",
           "input",
           "submit"
@@ -18055,7 +18055,7 @@
         "type" : "String",
         "desc" : "w)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "default",
           "glow"
         ]
@@ -18077,7 +18077,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -18087,7 +18087,7 @@
         "type" : "String",
         "desc" : ") default",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "default",
           "primary",
           "secondary",
@@ -18524,7 +18524,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -18570,7 +18570,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -18943,7 +18943,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -18959,7 +18959,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -18993,7 +18993,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -19387,7 +19387,7 @@
         "type" : "String",
         "desc" : "x)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "none",
           "inline",
           "inline-block",
@@ -19404,7 +19404,7 @@
         "type" : "String",
         "desc" : "x)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "none",
           "inline",
           "inline-block",
@@ -19421,7 +19421,7 @@
         "type" : "String",
         "desc" : "x)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "none",
           "inline",
           "inline-block",
@@ -19438,7 +19438,7 @@
         "type" : "String",
         "desc" : "x)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "none",
           "inline",
           "inline-block",
@@ -19455,7 +19455,7 @@
         "type" : "String",
         "desc" : "x)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "none",
           "inline",
           "inline-block",
@@ -19490,7 +19490,7 @@
         "type" : "Number",
         "desc" : "5) H1 or H2 etc.. 0 indicates default",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19504,7 +19504,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -19526,7 +19526,7 @@
         "type" : "String",
         "desc" : "o)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19541,7 +19541,7 @@
         "type" : "String",
         "desc" : "o)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19556,7 +19556,7 @@
         "type" : "String",
         "desc" : "o)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19571,7 +19571,7 @@
         "type" : "String",
         "desc" : "o)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19586,7 +19586,7 @@
         "type" : "String",
         "desc" : "o)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19601,7 +19601,7 @@
         "type" : "String",
         "desc" : "o)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19616,7 +19616,7 @@
         "type" : "String",
         "desc" : "o)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19637,7 +19637,7 @@
         "type" : "String",
         "desc" : "5)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19651,7 +19651,7 @@
         "type" : "String",
         "desc" : "5)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19665,7 +19665,7 @@
         "type" : "String",
         "desc" : "5)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19679,7 +19679,7 @@
         "type" : "String",
         "desc" : "5)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19693,7 +19693,7 @@
         "type" : "String",
         "desc" : "5)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19707,7 +19707,7 @@
         "type" : "String",
         "desc" : "5)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19721,7 +19721,7 @@
         "type" : "String",
         "desc" : "5)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "0",
           "1",
           "2",
@@ -19759,7 +19759,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -19769,7 +19769,7 @@
         "type" : "String",
         "desc" : "k)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "primary",
           "warning",
           "info",
@@ -20092,7 +20092,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -20115,7 +20115,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -20168,7 +20168,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -20232,7 +20232,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -20248,7 +20248,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -20258,7 +20258,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -20268,7 +20268,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -20314,7 +20314,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -20510,7 +20510,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -20526,7 +20526,7 @@
         "type" : "String",
         "desc" : "s) The text that appears beside the checkbox",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "primary",
           "warning",
           "info",
@@ -21033,7 +21033,7 @@
         "type" : "String",
         "desc" : "r) type alert (changes background / border...)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "success",
           "info",
           "warning",
@@ -21081,7 +21081,7 @@
         "type" : "String",
         "desc" : ".) font awesome icon",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "ban",
           "check",
           "..."
@@ -21092,7 +21092,7 @@
         "type" : "Number",
         "desc" : ".) font awsome size",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "1",
           "2",
           "...."
@@ -21103,7 +21103,7 @@
         "type" : "Boolean",
         "desc" : "e) hide the element",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -21113,7 +21113,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -21129,7 +21129,7 @@
         "type" : "String",
         "desc" : ".) glyphicon name",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "info-sign",
           "check",
           "..."
@@ -21200,7 +21200,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -21529,7 +21529,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -21552,7 +21552,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -21593,7 +21593,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -21609,7 +21609,7 @@
         "type" : "Boolean",
         "desc" : "e) auto focus the first item, default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -21655,7 +21655,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -21665,7 +21665,7 @@
         "type" : "String",
         "desc" : "r) BS3 only - carat fa name",
         "memberOf" : "Roo.bootstrap.TriggerField",
-        "values" : [
+        "optvals" : [
           "search",
           "calendar"
         ]
@@ -21753,7 +21753,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -21793,7 +21793,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -21809,7 +21809,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -21825,7 +21825,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -21859,7 +21859,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -21995,7 +21995,7 @@
         "type" : "Boolean",
         "desc" : "e) show mobile touch view when using a mobile default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -22005,7 +22005,7 @@
         "type" : "Boolean",
         "desc" : "e) restrict height for touch view",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -22027,7 +22027,7 @@
         "type" : "Boolean",
         "desc" : "e) ComboBobArray, default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -22085,7 +22085,7 @@
         "type" : "Boolean",
         "desc" : "e) special filter default false",
         "memberOf" : "Roo.bootstrap.TriggerField",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -22137,7 +22137,7 @@
         "type" : "Boolean",
         "desc" : "e) special filter default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -22219,7 +22219,7 @@
         "type" : "Boolean",
         "desc" : "e) render it as classic select for ios, not support dynamic load data (default false)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -22283,7 +22283,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -22971,7 +22971,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -23005,7 +23005,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -23328,7 +23328,7 @@
         "type" : "String",
         "desc" : "r) type alert (changes background / border...)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "success",
           "info",
           "warning",
@@ -23352,7 +23352,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -23386,7 +23386,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -23396,7 +23396,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -23424,7 +23424,7 @@
         "type" : "Boolean",
         "desc" : "e) hide the element",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -23434,7 +23434,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -23450,7 +23450,7 @@
         "type" : "String",
         "desc" : ".) glyphicon name",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "info-sign",
           "check",
           "..."
@@ -23479,7 +23479,7 @@
         "type" : "String",
         "desc" : "r) render as panel  - type - primary/success.....",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "default",
           "primary",
           "success",
@@ -23499,7 +23499,7 @@
         "type" : "String",
         "desc" : "h) block to use as footer or body- needs css-bootstrap/sticky-footer.css",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "footer",
           "wrap",
           "push"
@@ -23516,7 +23516,7 @@
         "type" : "String",
         "desc" : "n) type of HTML tag.",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "header",
           "aside",
           "section"
@@ -23533,7 +23533,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -23543,7 +23543,7 @@
         "type" : "String",
         "desc" : "d) a well, large, small or medium.",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "lg",
           "sm",
           "md"
@@ -23882,7 +23882,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -23905,7 +23905,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -23964,7 +23964,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -24034,7 +24034,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -24050,7 +24050,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -24060,7 +24060,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -24070,7 +24070,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -24110,7 +24110,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -24342,7 +24342,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -24872,7 +24872,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -24906,7 +24906,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -24916,7 +24916,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -24962,7 +24962,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -25002,7 +25002,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -25018,7 +25018,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -25425,7 +25425,7 @@
         "type" : "Boolean",
         "desc" : "e) allow edit when upload a image default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -25441,7 +25441,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -25451,7 +25451,7 @@
         "type" : "String",
         "desc" : "p) default left",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "left",
           "top"
         ]
@@ -25551,7 +25551,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -25994,7 +25994,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -26028,7 +26028,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -26408,7 +26408,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -26430,7 +26430,7 @@
         "type" : "Boolean",
         "desc" : "e) show download button (default true)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -26440,7 +26440,7 @@
         "type" : "Boolean",
         "desc" : "e) show trash button (default true)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -26462,7 +26462,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -26825,7 +26825,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -26859,7 +26859,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -26887,7 +26887,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -26915,7 +26915,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -27245,7 +27245,7 @@
         "type" : "Boolean",
         "desc" : "e) target allowBlank default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -27291,7 +27291,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -27313,7 +27313,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -27371,7 +27371,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -27788,7 +27788,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -27804,7 +27804,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -27880,7 +27880,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -28383,7 +28383,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -28423,7 +28423,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -28789,7 +28789,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -28805,7 +28805,7 @@
         "type" : "Number",
         "desc" : "6) default 1",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "1",
           "2",
           "3",
@@ -28843,7 +28843,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -29160,7 +29160,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -29183,7 +29183,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -29236,7 +29236,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -29294,7 +29294,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -29304,7 +29304,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -29320,7 +29320,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -29336,7 +29336,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -29358,7 +29358,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -29482,7 +29482,7 @@
         "type" : "string",
         "desc" : "l)",
         "memberOf" : "Roo.bootstrap.TextArea",
-        "values" : [
+        "optvals" : [
           "none",
           "both",
           "horizontal",
@@ -29580,7 +29580,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -29602,7 +29602,7 @@
         "type" : "string",
         "desc" : "d)Specifies how the text in a text area is to be wrapped when submitted in a form",
         "memberOf" : "Roo.bootstrap.TextArea",
-        "values" : [
+        "optvals" : [
           "soft",
           "hard"
         ]
@@ -30217,7 +30217,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -30281,7 +30281,7 @@
         "type" : "String",
         "desc" : "p)target for a href.",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "_self",
           "_blank",
           "_parent",
@@ -30299,7 +30299,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -30637,7 +30637,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -30660,7 +30660,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -30707,7 +30707,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -30765,7 +30765,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -30775,7 +30775,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -30785,7 +30785,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -30795,7 +30795,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -30829,7 +30829,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -31019,7 +31019,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -31559,7 +31559,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -31623,7 +31623,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -32051,7 +32051,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -32133,7 +32133,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -32534,7 +32534,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -32568,7 +32568,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -32584,7 +32584,7 @@
         "type" : "String",
         "desc" : "p) target for a href.",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "_self",
           "_blank",
           "_parent",
@@ -32602,7 +32602,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -32992,7 +32992,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -33080,7 +33080,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -33542,7 +33542,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -33588,7 +33588,7 @@
         "type" : "String",
         "desc" : "m)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "center",
           "bottom"
         ]
@@ -33604,7 +33604,7 @@
         "type" : "String",
         "desc" : "e)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "xs",
           "sm",
           "md",
@@ -33643,7 +33643,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -34031,7 +34031,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -34041,7 +34041,7 @@
         "type" : "bool",
         "desc" : "e)  the menu has link disable auto expand and collaspe (default false)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -34069,7 +34069,7 @@
         "type" : "bool",
         "desc" : "e)  Stop event after trigger press (default true)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -34091,7 +34091,7 @@
         "type" : "String",
         "desc" : "u) type of menu",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "dropdown",
           "treeview",
           "submenu"
@@ -34102,7 +34102,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -34509,7 +34509,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -34573,7 +34573,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -34963,7 +34963,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -34997,7 +34997,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -35338,7 +35338,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -35372,7 +35372,7 @@
         "type" : "Boolean",
         "desc" : "e) default false, fix the bar at the top",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -35382,7 +35382,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -35422,7 +35422,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -35432,7 +35432,7 @@
         "type" : "String",
         "desc" : "r) default info",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "info",
           "success",
           "warning",
@@ -35871,7 +35871,7 @@
         "type" : "String",
         "desc" : "r) default right (DEPRICATED) - use mr-auto on buttons to put them on the left",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "left",
           "right",
           "center"
@@ -35930,7 +35930,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -35964,7 +35964,7 @@
         "type" : "String",
         "desc" : "g) default empty",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "sm",
           "lg"
         ]
@@ -36004,7 +36004,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -36365,7 +36365,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -36388,7 +36388,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -36447,7 +36447,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "Roo.bootstrap.ComboBox",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -36463,7 +36463,7 @@
         "type" : "Boolean",
         "desc" : "e) auto focus the first item, default true",
         "memberOf" : "Roo.bootstrap.ComboBox",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -36509,7 +36509,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -36519,7 +36519,7 @@
         "type" : "String",
         "desc" : "r) BS3 only - carat fa name",
         "memberOf" : "Roo.bootstrap.TriggerField",
-        "values" : [
+        "optvals" : [
           "search",
           "calendar"
         ]
@@ -36529,7 +36529,7 @@
         "type" : "Boolean",
         "desc" : "e) cast int if true (defalut true)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -36635,7 +36635,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -36675,7 +36675,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -36691,7 +36691,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -36707,7 +36707,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -36741,7 +36741,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -36907,7 +36907,7 @@
         "type" : "Boolean",
         "desc" : "e) show mobile touch view when using a mobile default true",
         "memberOf" : "Roo.bootstrap.ComboBox",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -36917,7 +36917,7 @@
         "type" : "Boolean",
         "desc" : "e) restrict height for touch view",
         "memberOf" : "Roo.bootstrap.ComboBox",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -36939,7 +36939,7 @@
         "type" : "Boolean",
         "desc" : "e) ComboBobArray, default false",
         "memberOf" : "Roo.bootstrap.ComboBox",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -37003,7 +37003,7 @@
         "type" : "Boolean",
         "desc" : "e) special filter default false",
         "memberOf" : "Roo.bootstrap.TriggerField",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -37055,7 +37055,7 @@
         "type" : "Boolean",
         "desc" : "e) special filter default false",
         "memberOf" : "Roo.bootstrap.ComboBox",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -37143,7 +37143,7 @@
         "type" : "Boolean",
         "desc" : "e) render it as classic select for ios, not support dynamic load data (default false)",
         "memberOf" : "Roo.bootstrap.ComboBox",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -37207,7 +37207,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -37853,7 +37853,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -37876,7 +37876,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -37923,7 +37923,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -37981,7 +37981,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -37991,7 +37991,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -38001,7 +38001,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -38011,7 +38011,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -38045,7 +38045,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -38241,7 +38241,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -38728,7 +38728,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -38774,7 +38774,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -38820,7 +38820,7 @@
         "type" : "String",
         "desc" : "b) default nav",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "nav",
           "pills",
           "tab"
@@ -38831,7 +38831,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -39217,7 +39217,7 @@
         "type" : "String",
         "desc" : "t) alignment",
         "memberOf" : "Roo.bootstrap.NavSimplebar",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -39293,7 +39293,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -39315,7 +39315,7 @@
         "type" : "Boolean",
         "desc" : "e) loadMask on the bar",
         "memberOf" : "Roo.bootstrap.NavSimplebar",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -39325,7 +39325,7 @@
         "type" : "Boolean",
         "desc" : "e) main nav bar? default false",
         "memberOf" : "Roo.bootstrap.NavSimplebar",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -39347,7 +39347,7 @@
         "type" : "String",
         "desc" : "p) position",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "fixed-top",
           "fixed-bottom",
           "static-top"
@@ -39370,7 +39370,7 @@
         "type" : "String",
         "desc" : "v) default is nav",
         "memberOf" : "Roo.bootstrap.NavSimplebar",
-        "values" : [
+        "optvals" : [
           "header",
           "footer",
           "nav",
@@ -39388,7 +39388,7 @@
         "type" : "String",
         "desc" : "s)",
         "memberOf" : "Roo.bootstrap.NavSimplebar",
-        "values" : [
+        "optvals" : [
           "nav",
           "pills",
           "tabs"
@@ -39399,7 +39399,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -39409,7 +39409,7 @@
         "type" : "String",
         "desc" : "e) default is light.",
         "memberOf" : "Roo.bootstrap.NavSimplebar",
-        "values" : [
+        "optvals" : [
           "light",
           "primary",
           "secondary",
@@ -39774,7 +39774,7 @@
         "type" : "Boolean",
         "desc" : "e) link to element default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -39790,7 +39790,7 @@
         "type" : "String",
         "desc" : "w)the extra classes for the badge",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "bg-green",
           "bg-red",
           "bg-yellow"
@@ -39801,7 +39801,7 @@
         "type" : "String",
         "desc" : ") default none",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "default",
           "primary",
           "secondary",
@@ -39865,7 +39865,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -39905,7 +39905,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -39927,7 +39927,7 @@
         "type" : "String",
         "desc" : "n) render as a href or span?",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "a",
           "span"
         ]
@@ -39943,7 +39943,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -40323,7 +40323,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -40357,7 +40357,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -40687,7 +40687,7 @@
         "type" : "Boolean",
         "desc" : "e) Is item active default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -40733,7 +40733,7 @@
         "type" : "Boolean",
         "desc" : "e) Is item active default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -40743,7 +40743,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -40777,7 +40777,7 @@
         "type" : "String",
         "desc" : "m) text position default bottom",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "top",
           "bottom"
         ]
@@ -40805,7 +40805,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -41171,7 +41171,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -41205,7 +41205,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -41563,7 +41563,7 @@
         "type" : "Boolean",
         "desc" : "e) link to element default false",
         "memberOf" : "Roo.bootstrap.NavItem",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -41579,7 +41579,7 @@
         "type" : "String",
         "desc" : "w)the extra classes for the badge",
         "memberOf" : "Roo.bootstrap.NavItem",
-        "values" : [
+        "optvals" : [
           "bg-green",
           "bg-red",
           "bg-yellow"
@@ -41590,7 +41590,7 @@
         "type" : "String",
         "desc" : ") default none",
         "memberOf" : "Roo.bootstrap.NavItem",
-        "values" : [
+        "optvals" : [
           "default",
           "primary",
           "secondary",
@@ -41654,7 +41654,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -41694,7 +41694,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "Roo.bootstrap.NavItem",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -41716,7 +41716,7 @@
         "type" : "String",
         "desc" : "n) render as a href or span?",
         "memberOf" : "Roo.bootstrap.NavItem",
-        "values" : [
+        "optvals" : [
           "a",
           "span"
         ]
@@ -41732,7 +41732,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -42076,7 +42076,7 @@
         "type" : "String",
         "desc" : "t) alignment",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -42128,7 +42128,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -42150,7 +42150,7 @@
         "type" : "Boolean",
         "desc" : "e) loadMask on the bar",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -42160,7 +42160,7 @@
         "type" : "Boolean",
         "desc" : "e) main nav bar? default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -42182,7 +42182,7 @@
         "type" : "String",
         "desc" : "v) default is nav",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "header",
           "footer",
           "nav",
@@ -42200,7 +42200,7 @@
         "type" : "String",
         "desc" : "s)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "nav",
           "pills",
           "tabs"
@@ -42211,7 +42211,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -42221,7 +42221,7 @@
         "type" : "String",
         "desc" : "e) default is light.",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "light",
           "primary",
           "secondary",
@@ -42610,7 +42610,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -42644,7 +42644,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -42984,7 +42984,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -43007,7 +43007,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -43072,7 +43072,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -43142,7 +43142,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -43152,7 +43152,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -43162,7 +43162,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -43172,7 +43172,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -43206,7 +43206,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -43438,7 +43438,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -43954,7 +43954,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -44000,7 +44000,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -44323,7 +44323,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -44375,7 +44375,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -44409,7 +44409,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -44431,7 +44431,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -44761,7 +44761,7 @@
         "type" : "String",
         "desc" : "t) alignment",
         "memberOf" : "Roo.bootstrap.NavSimplebar",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -44843,7 +44843,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -44865,7 +44865,7 @@
         "type" : "Boolean",
         "desc" : "e) loadMask on the bar",
         "memberOf" : "Roo.bootstrap.NavSimplebar",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -44875,7 +44875,7 @@
         "type" : "Boolean",
         "desc" : "e) main nav bar? default false",
         "memberOf" : "Roo.bootstrap.NavSimplebar",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -44903,7 +44903,7 @@
         "type" : "String",
         "desc" : "v) default is nav",
         "memberOf" : "Roo.bootstrap.NavSimplebar",
-        "values" : [
+        "optvals" : [
           "header",
           "footer",
           "nav",
@@ -44921,7 +44921,7 @@
         "type" : "String",
         "desc" : "s)",
         "memberOf" : "Roo.bootstrap.NavSimplebar",
-        "values" : [
+        "optvals" : [
           "nav",
           "pills",
           "tabs"
@@ -44932,7 +44932,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -44942,7 +44942,7 @@
         "type" : "String",
         "desc" : "e) default is light.",
         "memberOf" : "Roo.bootstrap.NavSimplebar",
-        "values" : [
+        "optvals" : [
           "light",
           "primary",
           "secondary",
@@ -45305,7 +45305,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -45328,7 +45328,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -45375,7 +45375,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -45385,7 +45385,7 @@
         "type" : "String",
         "desc" : "r) BS3 only - carat fa name",
         "memberOf" : "Roo.bootstrap.TriggerField",
-        "values" : [
+        "optvals" : [
           "search",
           "calendar"
         ]
@@ -45449,7 +45449,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -45459,7 +45459,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -45469,7 +45469,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -45485,7 +45485,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -45519,7 +45519,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -45643,7 +45643,7 @@
         "type" : "Boolean",
         "desc" : "e) special filter default false",
         "memberOf" : "Roo.bootstrap.TriggerField",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -45731,7 +45731,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -46269,7 +46269,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -46333,7 +46333,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -46698,7 +46698,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -46738,7 +46738,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -47115,7 +47115,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -47143,7 +47143,7 @@
         "type" : "String",
         "desc" : ")",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "success",
           "info",
           "warning",
@@ -47179,7 +47179,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -47544,7 +47544,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -47584,7 +47584,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -47901,7 +47901,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -47924,7 +47924,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -47971,7 +47971,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -48029,7 +48029,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -48039,7 +48039,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -48049,7 +48049,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -48059,7 +48059,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -48069,7 +48069,7 @@
         "type" : "Boolean",
         "desc" : "e) inline the element (default true)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -48103,7 +48103,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -48293,7 +48293,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -48309,7 +48309,7 @@
         "type" : "String",
         "desc" : "s) The text that appears beside the radio",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "primary",
           "warning",
           "info",
@@ -48836,7 +48836,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -48870,7 +48870,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -49193,7 +49193,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -49216,7 +49216,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -49263,7 +49263,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -49327,7 +49327,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -49337,7 +49337,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -49347,7 +49347,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -49357,7 +49357,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -49391,7 +49391,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -49587,7 +49587,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -50103,7 +50103,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -50137,7 +50137,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -50687,7 +50687,7 @@
         "type" : "String",
         "desc" : "r) type alert (changes background / border...)",
         "memberOf" : "Roo.bootstrap.Column",
-        "values" : [
+        "optvals" : [
           "success",
           "info",
           "warning",
@@ -50705,7 +50705,7 @@
         "type" : "Boolean",
         "desc" : "e) auto slide .. default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -50757,7 +50757,7 @@
         "type" : "String",
         "desc" : ".) font awesome icon",
         "memberOf" : "Roo.bootstrap.Column",
-        "values" : [
+        "optvals" : [
           "ban",
           "check",
           "..."
@@ -50768,7 +50768,7 @@
         "type" : "Number",
         "desc" : ".) font awsome size",
         "memberOf" : "Roo.bootstrap.Column",
-        "values" : [
+        "optvals" : [
           "1",
           "2",
           "...."
@@ -50779,7 +50779,7 @@
         "type" : "Boolean",
         "desc" : "e) hide the element",
         "memberOf" : "Roo.bootstrap.Column",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -50789,7 +50789,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -50805,7 +50805,7 @@
         "type" : "String",
         "desc" : ".) glyphicon name",
         "memberOf" : "Roo.bootstrap.Column",
-        "values" : [
+        "optvals" : [
           "info-sign",
           "check",
           "..."
@@ -50858,7 +50858,7 @@
         "type" : "Boolean",
         "desc" : "e) show arrow default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -50898,7 +50898,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -51307,7 +51307,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -51365,7 +51365,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -51702,7 +51702,7 @@
         "type" : "String",
         "desc" : "t) Specifies the alignment of a table according to surrounding text",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -51749,7 +51749,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -51807,7 +51807,7 @@
         "type" : "Boolean",
         "desc" : "e) generate tfoot, default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -51823,7 +51823,7 @@
         "type" : "Boolean",
         "desc" : "e) generate thead, default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -51833,7 +51833,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -51867,7 +51867,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -51889,7 +51889,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -51905,7 +51905,7 @@
         "type" : "Boolean",
         "desc" : "e) default false - body scrolled / fixed header",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -51945,7 +51945,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -52859,7 +52859,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -52905,7 +52905,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -53312,7 +53312,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -53382,7 +53382,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -53765,7 +53765,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -53805,7 +53805,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -54122,7 +54122,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -54145,7 +54145,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -54192,7 +54192,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -54256,7 +54256,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -54266,7 +54266,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -54276,7 +54276,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -54292,7 +54292,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -54326,7 +54326,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -54444,7 +54444,7 @@
         "type" : "string",
         "desc" : "l)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "none",
           "both",
           "horizontal",
@@ -54536,7 +54536,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -54552,7 +54552,7 @@
         "type" : "string",
         "desc" : "d)Specifies how the text in a text area is to be wrapped when submitted in a form",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "soft",
           "hard"
         ]
@@ -55020,7 +55020,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -55043,7 +55043,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -55090,7 +55090,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -55148,7 +55148,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -55164,7 +55164,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -55174,7 +55174,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -55184,7 +55184,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -55218,7 +55218,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -55408,7 +55408,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -55905,7 +55905,7 @@
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "image",
           "video",
           "audio"
@@ -55928,7 +55928,7 @@
         "type" : "String",
         "desc" : "t) Default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "center",
           "right"
@@ -55975,7 +55975,7 @@
         "type" : "String",
         "desc" : "a) use for file input only. (default empty)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "user",
           "camera"
         ]
@@ -55985,7 +55985,7 @@
         "type" : "String",
         "desc" : "r) BS3 only - carat fa name",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "search",
           "calendar"
         ]
@@ -56043,7 +56043,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -56053,7 +56053,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -56063,7 +56063,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -56079,7 +56079,7 @@
         "type" : "String",
         "desc" : "t) default left",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "left",
           "right"
         ]
@@ -56113,7 +56113,7 @@
         "type" : "String",
         "desc" : "t)",
         "memberOf" : "Roo.bootstrap.Input",
-        "values" : [
+        "optvals" : [
           "top",
           "left"
         ]
@@ -56231,7 +56231,7 @@
         "type" : "Boolean",
         "desc" : "e) special filter default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -56319,7 +56319,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -56869,7 +56869,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -56879,7 +56879,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -56895,7 +56895,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -56965,7 +56965,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -57454,7 +57454,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -57494,7 +57494,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -57853,7 +57853,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -57881,7 +57881,7 @@
         "type" : "Boolean",
         "desc" : "e) show the tabs default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -57897,7 +57897,7 @@
         "type" : "Boolean",
         "desc" : "e) tab scrollable when mobile view default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -57919,7 +57919,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -58264,7 +58264,7 @@
         "type" : "Boolean",
         "desc" : "e) Default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "false",
           "true"
         ]
@@ -58310,7 +58310,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -58350,7 +58350,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -58960,7 +58960,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -58994,7 +58994,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -59477,7 +59477,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -59511,7 +59511,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -59992,7 +59992,7 @@
         "type" : "String",
         "desc" : "e) if you have menus in the region, then you need to set this to visible.",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "hidden",
           "visible"
         ]
@@ -60038,7 +60038,7 @@
         "type" : "String",
         "desc" : "m) \"top\" or \"bottom\" (defaults to \"bottom\")",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "top",
           "bottom"
         ]
@@ -60442,7 +60442,7 @@
         "type" : "String",
         "desc" : "m) \"top\" or \"bottom\" (defaults to \"bottom\")",
         "memberOf" : "Roo.LayoutRegion",
-        "values" : [
+        "optvals" : [
           "top",
           "bottom"
         ]
@@ -60844,7 +60844,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -60860,7 +60860,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -60906,7 +60906,7 @@
         "type" : "Boolean",
         "desc" : "e) default true",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -60922,7 +60922,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -60938,7 +60938,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -61318,7 +61318,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -61370,7 +61370,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -61380,7 +61380,7 @@
         "type" : "String",
         "desc" : "e)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "default",
           "primary",
           "success",
@@ -61751,7 +61751,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -61785,7 +61785,7 @@
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
         "memberOf" : "Roo.bootstrap.Component",
-        "values" : [
+        "optvals" : [
           "el",
           "parent"
         ]
@@ -62182,7 +62182,7 @@
         "type" : "String",
         "desc" : "t) which region to put this panel on (when used with xtype constructors)",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "center",
           "north",
           "south",
@@ -62517,7 +62517,7 @@
         "type" : "String",
         "desc" : "t) which region to put this panel on (when used with xtype constructors)",
         "memberOf" : "Roo.bootstrap.panel.Content",
-        "values" : [
+        "optvals" : [
           "center",
           "north",
           "south",
@@ -62854,7 +62854,7 @@
         "type" : "String",
         "desc" : "t) which region to put this panel on (when used with xtype constructors)",
         "memberOf" : "Roo.bootstrap.panel.Content",
-        "values" : [
+        "optvals" : [
           "center",
           "north",
           "south",
@@ -70708,7 +70708,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -71129,7 +71129,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -71793,7 +71793,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -72263,7 +72263,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -73368,7 +73368,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -74112,7 +74112,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -74644,7 +74644,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -75791,7 +75791,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -76902,7 +76902,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -77719,7 +77719,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -78346,7 +78346,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -78398,7 +78398,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -79134,7 +79134,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -79907,7 +79907,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -80552,7 +80552,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -80872,7 +80872,7 @@
         "type" : "Boolean",
         "desc" : "e) default false",
         "memberOf" : "Roo.form.BasicForm",
-        "values" : [
+        "optvals" : [
           "true",
           "false"
         ]
@@ -81429,7 +81429,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -82152,7 +82152,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -82906,7 +82906,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -83725,7 +83725,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -84153,7 +84153,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -85042,7 +85042,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -85844,7 +85844,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -86522,7 +86522,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -86998,7 +86998,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -88008,7 +88008,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -88785,7 +88785,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -89599,7 +89599,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -90323,7 +90323,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -90795,7 +90795,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -93745,7 +93745,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -95311,7 +95311,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -95656,7 +95656,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -96025,7 +96025,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -96424,7 +96424,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -97074,7 +97074,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -97730,7 +97730,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -98429,7 +98429,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -98780,7 +98780,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]
@@ -100337,7 +100337,7 @@
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
         "memberOf" : "Roo.Component",
-        "values" : [
+        "optvals" : [
           "display",
           "visibility"
         ]

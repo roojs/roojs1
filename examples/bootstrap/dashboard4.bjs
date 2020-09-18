@@ -7,7 +7,7 @@
  "modOrder" : "001",
  "strings" : {
   "e93b3fa481be3932aa08bd68c3deee70" : "example 1",
-  "e037df87a91c6e2727f0d9eb15c8127f" : "this is the body text",
+  "60ee66eb2cd31823032664c2e9a79fd5" : "body goes here",
   "9cf863d802aca813531ca28b319ead90" : "Add Issue",
   "d9fb0367346d21079a1c52d72da61c9f" : "ticket 1"
  },
@@ -25,17 +25,20 @@
      "items" : [
       {
        "String header" : "example 1",
-       "String weight" : "light",
+       "String footer" : "a footer",
+       "String weight" : "danger",
        "xtype" : "Card",
        "$ xns" : "Roo.bootstrap",
-       "String html" : "this is the body text",
-       "String style" : "max-width:200px",
+       "String style" : "max-width:300px",
        "items" : [
         {
          "String header" : "ticket 1",
+         "String weight" : "light",
          "String margin_bottom" : 3,
          "xtype" : "Card",
-         "$ xns" : "Roo.bootstrap"
+         "$ xns" : "Roo.bootstrap",
+         "String html" : "body goes here",
+         "bool dragable" : true
         },
         {
          "String weight" : "primary",

@@ -44,6 +44,10 @@
  * @cfg {String} display_lg (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
  * @cfg {String} display_xl (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
  
+ * @config {Boolean} dragable  if this card can be dragged.
+ * @config {Boolean} drag_group  group for drag
+ * 
+ 
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
@@ -92,6 +96,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     subtitle : '',
     html : '',
     footer: '',
+    
+    dragable : false,
+    drag_group : false,
     
     childContainer : false,
 
@@ -158,7 +165,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         };
         
         if (this.weight.length && this.weight != 'light') {
-            cfg.cls += ' text-white'
+            cfg.cls += ' text-white';
+        } else {
+            cfg.cls += ' text-dark'; // need as it's nested..
         }
         if (this.weight.length) {
             cfg.cls += ' bg-' + this.weight;
@@ -217,7 +226,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         // fixme ? handle objects?
         if (this.footer.length) {
-            body.cn.push({
+            cfg.cn.push({
                 tag : 'div',
                 cls : 'card-footer',
                 html: this.footer // escape?
@@ -236,7 +245,42 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return false;
         }
         return this.el.select('.roo-card-body-ctr',true).first();    
-    }
+    },
+    
+    initEvents: function() 
+    {
+        if(this.dragable){
+             this.dragZone = new Roo.dd.DragZone(this.getEl(), {
+                    containerScroll: true,
+                    ddGroup: this.drag_group || 'default_card_drag_group'
+            });
+            this.dragZone.getDragData = this.getDragData.createDelegate(this);
+        }
+        
+        
+        
+    },
+    getDragData : function(e) {
+        var target = this.getEl();
+	if (target) {
+	    //this.handleSelection(e);
+	    
+            var dragData = {
+                source: this,
+                copy: false,
+                nodes: this.getEl(),
+                records: []
+            };
+            
+            
+            dragData.ddel = target.dom ;	// the div element
+            Roo.log(target.getWidth( ));
+             dragData.ddel.style.width = target.getWidth() + 'px';
+            
+            return dragData;
+        }
+        return false;
+    },
     
 });
 
