@@ -71,6 +71,8 @@ Roo.state.CookieProvider
 Roo.ComponentMgr
 Roo.Component
 Roo.BoxComponent
+Roo.Layer
+
 
 Roo.XComponent
 Roo.Markdown
