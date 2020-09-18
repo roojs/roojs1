@@ -1,0 +1,287 @@
+<html><head><title>Roo/bootstrap/Card.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ *  - LGPL
+ *
+ *  This is BS4's Card element.. - similar to our containers probably..
+ * 
+ */
+/**
+ * @class Roo.bootstrap.Card
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Card class
+ *
+ *
+ * possible... may not be implemented..
+ * @cfg {String} header_image  src url of image.
+ * @cfg {String} header
+ * @cfg {Number} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
+ * 
+ * @cfg {String} title
+ * @cfg {String} subtitle
+ * @cfg {String} html -- html contents - or just use children..
+ * @cfg {String} footer
+ 
+ * @cfg {String} weight (primary|warning|info|danger|secondary|success|light|dark)
+ * 
+ * @cfg {String} margin (0|1|2|3|4|5|auto)
+ * @cfg {String} margin_top (0|1|2|3|4|5|auto)
+ * @cfg {String} margin_bottom (0|1|2|3|4|5|auto)
+ * @cfg {String} margin_left (0|1|2|3|4|5|auto)
+ * @cfg {String} margin_right (0|1|2|3|4|5|auto)
+ * @cfg {String} margin_x (0|1|2|3|4|5|auto)
+ * @cfg {String} margin_y (0|1|2|3|4|5|auto)
+ *
+ * @cfg {String} padding (0|1|2|3|4|5)
+ * @cfg {String} padding_top (0|1|2|3|4|5)
+ * @cfg {String} padding_bottom (0|1|2|3|4|5)
+ * @cfg {String} padding_left (0|1|2|3|4|5)
+ * @cfg {String} padding_right (0|1|2|3|4|5)
+ * @cfg {String} padding_x (0|1|2|3|4|5)
+ * @cfg {String} padding_y (0|1|2|3|4|5)
+ *
+ * @cfg {String} display (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
+ * @cfg {String} display_xs (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
+ * @cfg {String} display_sm (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
+ * @cfg {String} display_lg (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
+ * @cfg {String} display_xl (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
+ 
+ * @config {Boolean} dragable  if this card can be dragged.
+ * @config {Boolean} drag_group  group for drag
+ * 
+ 
+ * @constructor
+ * Create a new Container
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.Card </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Card.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+
+    });
+};
+
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Card</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+
+
+    </span><span class="jsdoc-var">weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">/// may be better in component?
+    </span><span class="jsdoc-var">margin_top</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">margin_bottom</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">margin_left</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">margin_right</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">margin_x</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">margin_y</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">padding </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">padding_top</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">padding_bottom</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">padding_left</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">padding_right</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">padding_x</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">padding_y</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">display</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">display_xs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">display_sm</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">display_lg</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">display_xl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">header_image  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">header_size </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">subtitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">footer</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">dragable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">drag_group </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">childContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">layoutCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.margin_bottom.length</span><span class="jsdoc-syntax">);
+        [</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'x'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'y' </span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// in theory these can do margin_top : ml-xs-3 ??? but we don't support that yet
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'margin' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'_' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">])</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' m' </span><span class="jsdoc-syntax">+  (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">[0]  : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'margin' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'_' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">];
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'padding' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'_' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">])</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' p' </span><span class="jsdoc-syntax">+  (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">[0]  : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'padding' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'_' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">];
+            }
+        });
+
+        [</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xl'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'display' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'_' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">])</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' d' </span><span class="jsdoc-syntax">+  (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'margin' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'_' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">]
+            }
+        });
+
+        </span><span class="jsdoc-comment">// more generic support?
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hidden</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' d-none'</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">;
+    },
+
+       </span><span class="jsdoc-comment">// Roo.log(&quot;Call onRender: &quot; + this.xtype);
+        /*  We are looking at something like this.
+&lt;div class=&quot;card&quot;&gt;
+    &lt;img src=&quot;...&quot; class=&quot;card-img-top&quot; alt=&quot;...&quot;&gt;
+    &lt;div class=&quot;card-body&quot;&gt;
+        &lt;h5 class=&quot;card-title&quot;&gt;Card title&lt;/h5&gt;
+         &lt;h6 class=&quot;card-subtitle mb-2 text-muted&quot;&gt;Card subtitle&lt;/h6&gt;
+
+        &gt;&gt; this bit is really the body...
+        &lt;div&gt; &lt;&lt; we will ad dthis in hopefully it will not break shit.
+        
+        ** card text does not actually have any styling...
+        
+            &lt;p class=&quot;card-text&quot;&gt;This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.&lt;/p&gt;
+        
+        &lt;/div&gt; &lt;&lt;
+          &lt;a href=&quot;#&quot; class=&quot;card-link&quot;&gt;Card link&lt;/a&gt;
+          
+    &lt;/div&gt;
+    &lt;div class=&quot;card-footer&quot;&gt;
+        &lt;small class=&quot;text-muted&quot;&gt;Last updated 3 mins ago&lt;/small&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+         */
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [ ]
+        };
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'light'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' text-white'</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' text-dark'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// need as it's nested..
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.layoutCls</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header_size </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-string">'h' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.header_size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header </span><span class="jsdoc-comment">// escape?
+            </span><span class="jsdoc-syntax">});
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header_image.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-img-top'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header_image </span><span class="jsdoc-comment">// escape?
+            </span><span class="jsdoc-syntax">});
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-body'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
+        };
+        </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.title.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">body.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-title'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title </span><span class="jsdoc-comment">// escape?
+            </span><span class="jsdoc-syntax">});
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.subtitle.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">body.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-title'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.subtitle </span><span class="jsdoc-comment">// escape?
+            </span><span class="jsdoc-syntax">});
+        }
+
+        </span><span class="jsdoc-var">body.cn.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-card-body-ctr'
+        </span><span class="jsdoc-syntax">});
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">body.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
+            </span><span class="jsdoc-syntax">});
+        }
+        </span><span class="jsdoc-comment">// fixme ? handle objects?
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-footer'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.footer </span><span class="jsdoc-comment">// escape?
+            </span><span class="jsdoc-syntax">});
+        }
+        </span><span class="jsdoc-comment">// footer...
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+
+
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-card-body-ctr'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dragable</span><span class="jsdoc-syntax">){
+             </span><span class="jsdoc-var">this.dragZone </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.dd.DragZone</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">(), {
+                    </span><span class="jsdoc-var">containerScroll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">ddGroup</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.drag_group </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'default_card_drag_group'
+            </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">this.dragZone.getDragData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getDragData.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
+
+
+    },
+    </span><span class="jsdoc-var">getDragData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">();
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-comment">//this.handleSelection(e);
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dragData </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">source</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">copy</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">nodes</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">(),
+                </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">: []
+            };
+
+
+            </span><span class="jsdoc-var">dragData.ddel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.dom </span><span class="jsdoc-syntax">;	</span><span class="jsdoc-comment">// the div element
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target.getWidth</span><span class="jsdoc-syntax">( ));
+             </span><span class="jsdoc-var">dragData.ddel.style.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.getWidth</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dragData</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
+
+});
+
+</span></code></body></html>
