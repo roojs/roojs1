@@ -25,7 +25,6 @@ Roo.data.Tree
 
 
 // component has been moved to core..
-Roo.Layer
 Roo.Shadow
 Roo.SplitBar
 Roo.View
