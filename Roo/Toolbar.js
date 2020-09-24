@@ -523,7 +523,7 @@ Roo.Toolbar.Fill = Roo.extend(Roo.Toolbar.Spacer, {
  * A simple class that renders text directly into a toolbar.
  * @constructor
  * Creates a new TextItem
- * @param {String} text
+ * @cfg {string} text 
  */
 Roo.Toolbar.TextItem = function(cfg){
     var  text = cfg || "";
