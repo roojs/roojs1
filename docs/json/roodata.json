@@ -11100,6 +11100,12 @@
         "type" : "Number",
         "desc" : "The number of records to display per page (defaults to 20)",
         "memberOf" : ""
+      },
+      {
+        "name" : "text",
+        "type" : "string",
+        "desc" : "",
+        "memberOf" : "Roo.Toolbar"
       }
     ],
     "events" : [
@@ -13638,6 +13644,12 @@
         "type" : "Array",
         "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
         "memberOf" : "Roo"
+      },
+      {
+        "name" : "text",
+        "type" : "string",
+        "desc" : "",
+        "memberOf" : ""
       }
     ],
     "events" : [
@@ -14852,6 +14864,12 @@
   },
   "Roo.Toolbar.TextItem" : {
     "props" : [
+      {
+        "name" : "text",
+        "type" : "string",
+        "desc" : "",
+        "memberOf" : "Roo.Toolbar"
+      }
     ],
     "events" : [
       {

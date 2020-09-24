@@ -23,6 +23,14 @@
   ],
   "config" : [
     {
+      "name" : "text",
+      "type" : "string",
+      "desc" : "",
+      "memberOf" : "Roo.Toolbar",
+      "optvals" : [
+      ]
+    },
+    {
       "name" : "container",
       "type" : "String/HTMLElement/Element",
       "desc" : "The id or element that will contain the toolbar",

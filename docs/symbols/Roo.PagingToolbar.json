@@ -24,6 +24,14 @@
   ],
   "config" : [
     {
+      "name" : "text",
+      "type" : "string",
+      "desc" : "",
+      "memberOf" : "Roo.Toolbar",
+      "optvals" : [
+      ]
+    },
+    {
       "name" : "pageSize",
       "type" : "Number",
       "desc" : "The number of records to display per page (defaults to 20)",
