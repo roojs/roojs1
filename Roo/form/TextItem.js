@@ -64,7 +64,7 @@ Roo.extend(Roo.form.TextItem, Roo.BoxComponent,  {
      * setHTML
      * @param {String} html update the Contents of the element.
      */
-    setHTML : funciton(html)
+    setHTML : function(html)
     {
         this.fieldEl.dom.innerHTML = html;
     }

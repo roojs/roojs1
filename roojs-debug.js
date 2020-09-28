@@ -38846,6 +38846,14 @@ Roo.extend(Roo.form.TextItem, Roo.BoxComponent,  {
             }
             this.el = ct.createChild(cfg, position);
         }
+    },
+    /*
+     * setHTML
+     * @param {String} html update the Contents of the element.
+     */
+    setHTML : function(html)
+    {
+        this.fieldEl.dom.innerHTML = html;
     }
     
 });/*
