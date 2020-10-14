@@ -34,6 +34,8 @@ Core Libraries
         Roo.dd.Registry
         Roo.dd.ScrollManager
         Roo.dd.StatusProxy
+        Examples
+            [examples/view/ddview.html] Drag and drop elements
     Signals / Events
         Roo.util.Observable
         Roo.util.DelayedTask

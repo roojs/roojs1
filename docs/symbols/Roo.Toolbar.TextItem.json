@@ -13,16 +13,18 @@
   "since" : "",
   "see" : "",
   "params" : [
-    {
-      "name" : "text",
-      "type" : "String",
-      "desc" : "",
-      "isOptional" : false
-    }
   ],
   "returns" : [
   ],
   "config" : [
+    {
+      "name" : "text",
+      "type" : "string",
+      "desc" : "",
+      "memberOf" : "Roo.Toolbar",
+      "optvals" : [
+      ]
+    }
   ],
   "methods" : [
     {

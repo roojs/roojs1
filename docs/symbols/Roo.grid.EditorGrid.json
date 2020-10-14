@@ -41,7 +41,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -49,7 +49,7 @@
       "type" : "Boolean",
       "desc" : "True to automatically resize the columns to fit their content\n<b>on initial render.</b> It is more efficient to explicitly size the columns\nthrough the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -57,7 +57,7 @@
       "type" : "Boolean",
       "desc" : "If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of\nrows measured to get a columns size. Default is 0 (all rows).",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -65,7 +65,7 @@
       "type" : "Number",
       "desc" : "The minimum width a column can be resized to. Default is 25.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -73,7 +73,7 @@
       "type" : "String",
       "desc" : "The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -81,7 +81,7 @@
       "type" : "Number",
       "desc" : "The maximum width the autoExpandColumn can have (if enabled). Default is 1000.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -89,7 +89,7 @@
       "type" : "Boolean",
       "desc" : "True to manually sync row heights across locked and not locked rows. Default is false.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -97,7 +97,7 @@
       "type" : "Boolean",
       "desc" : "True to autoSize the grid when the window resizes. Default is true.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -105,7 +105,7 @@
       "type" : "Number",
       "desc" : "The minimum width the autoExpandColumn can have (if enabled).\nDefault is 50.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -113,7 +113,7 @@
       "type" : "Object",
       "desc" : "The {@link Roo.grid.GridView} used by the grid. This can be set before a call to render().",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -121,7 +121,7 @@
       "type" : "Boolean",
       "desc" : "True to set the grid's width to the default total width of the grid's columns instead\nof a fixed width. Default is false.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -129,7 +129,7 @@
       "type" : "String",
       "desc" : "- drag drop group.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -137,7 +137,7 @@
       "type" : "Boolean",
       "desc" : "True to enable drag of rows. Default is false. (double check if this is needed?)",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -145,7 +145,7 @@
       "type" : "Number",
       "desc" : "Sets the maximum height of the grid - ignored if autoHeight is not on.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -153,7 +153,7 @@
       "type" : "Boolean",
       "desc" : "True to highlight rows when the mouse is over. Default is true.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -161,7 +161,7 @@
       "type" : "Object",
       "desc" : "An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -169,7 +169,7 @@
       "type" : "Boolean",
       "desc" : "True to stripe the rows.  Default is true.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -177,7 +177,7 @@
       "type" : "Boolean",
       "desc" : "True to enable drag and drop reorder of columns. Default is true.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -185,7 +185,7 @@
       "type" : "Boolean",
       "desc" : "True to enable hiding of columns with the header context menu. Default is true.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -193,7 +193,7 @@
       "type" : "Number",
       "desc" : "The number of clicks on a cell required to display the cell's editor (defaults to 2)",
       "memberOf" : "Roo.grid.EditorGrid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -201,7 +201,7 @@
       "type" : "Boolean",
       "desc" : "True to measure headers with column data when auto sizing columns. Default is true.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -209,7 +209,7 @@
       "type" : "Boolean",
       "desc" : "True to enable drag and drop of rows. Default is false.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -217,7 +217,7 @@
       "type" : "Roo.dd.DropTarget",
       "desc" : "An {@link Roo.dd.DropTarget} config",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -225,7 +225,7 @@
       "type" : "Boolean",
       "desc" : "True to fit the height of the grid container to the height of the data. Default is false.",
       "memberOf" : "Roo.grid.Grid",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

@@ -31,7 +31,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -39,7 +39,7 @@
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -47,17 +47,17 @@
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
-        "(el",
-        "parent)"
+      "optvals" : [
+        "el",
+        "parent"
       ]
     },
     {
@@ -65,17 +65,17 @@
       "type" : "Boolean",
       "desc" : "is inverted color",
       "memberOf" : "Roo.bootstrap.NavSimplebar",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "align",
       "type" : "String",
-      "desc" : "alignment",
+      "desc" : "t) alignment",
       "memberOf" : "Roo.bootstrap.NavSimplebar",
-      "values" : [
-        "(left",
-        "right)"
+      "optvals" : [
+        "left",
+        "right"
       ]
     },
     {
@@ -83,29 +83,29 @@
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
       "name" : "tag",
       "type" : "String",
-      "desc" : "default is nav",
+      "desc" : "v) default is nav",
       "memberOf" : "Roo.bootstrap.NavSimplebar",
-      "values" : [
-        "(header",
+      "optvals" : [
+        "header",
         "footer",
         "nav",
-        "div)"
+        "div"
       ]
     },
     {
@@ -113,7 +113,7 @@
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -121,7 +121,7 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -129,7 +129,7 @@
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -137,17 +137,17 @@
       "type" : "Boolean",
       "desc" : "stacked | justified",
       "memberOf" : "Roo.bootstrap.NavSimplebar",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "loadMask",
       "type" : "Boolean",
-      "desc" : "loadMask on the bar",
+      "desc" : "e) loadMask on the bar",
       "memberOf" : "Roo.bootstrap.NavSimplebar",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     },
     {
@@ -155,7 +155,7 @@
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -163,17 +163,17 @@
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "main",
       "type" : "Boolean",
-      "desc" : "main nav bar? default false",
+      "desc" : "e) main nav bar? default false",
       "memberOf" : "Roo.bootstrap.NavSimplebar",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     },
     {
@@ -181,27 +181,27 @@
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "type",
       "type" : "String",
-      "desc" : "",
+      "desc" : "s)",
       "memberOf" : "Roo.bootstrap.NavSimplebar",
-      "values" : [
-        "(nav",
+      "optvals" : [
+        "nav",
         "pills",
-        "tabs)"
+        "tabs"
       ]
     },
     {
       "name" : "weight",
       "type" : "String",
-      "desc" : "default is light.",
+      "desc" : "e) default is light.",
       "memberOf" : "Roo.bootstrap.NavSimplebar",
-      "values" : [
-        "(light",
+      "optvals" : [
+        "light",
         "primary",
         "secondary",
         "success",
@@ -209,7 +209,7 @@
         "warning",
         "info",
         "dark",
-        "white)"
+        "white"
       ]
     },
     {
@@ -217,7 +217,7 @@
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -225,7 +225,7 @@
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

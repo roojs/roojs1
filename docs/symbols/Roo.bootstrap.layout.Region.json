@@ -23,7 +23,7 @@
       "type" : "Object",
       "desc" : "Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -31,17 +31,17 @@
       "type" : "Boolean",
       "desc" : "True to always display tabs even when there is only 1 panel (defaults to false)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "overflow",
       "type" : "String",
-      "desc" : "if you have menus in the region, then you need to set this to visible.",
+      "desc" : "e) if you have menus in the region, then you need to set this to visible.",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
-        "(hidden",
-        "visible)"
+      "optvals" : [
+        "hidden",
+        "visible"
       ]
     },
     {
@@ -49,7 +49,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -57,7 +57,7 @@
       "type" : "Object",
       "desc" : "Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -65,7 +65,7 @@
       "type" : "Number",
       "desc" : "The preferred tab width (defaults to 150)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -73,7 +73,7 @@
       "type" : "Boolean",
       "desc" : "True to disable tab tooltips",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -81,7 +81,7 @@
       "type" : "bool",
       "desc" : "skip config?",
       "memberOf" : "Roo.bootstrap.layout.Basic",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -89,7 +89,7 @@
       "type" : "Boolean",
       "desc" : "True to enable overflow scrolling (defaults to false)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -97,7 +97,7 @@
       "type" : "Boolean",
       "desc" : "True to start the region hidden (defaults to false)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -105,7 +105,7 @@
       "type" : "Boolean",
       "desc" : "xtype configuration for a toolbar - shows on right of tabbar",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -113,7 +113,7 @@
       "type" : "string",
       "desc" : "the region that it inhabits..",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -121,7 +121,7 @@
       "type" : "String",
       "desc" : "The title for the region (overrides panel titles)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -129,7 +129,7 @@
       "type" : "Boolean",
       "desc" : "True to hide the region when it has no panels",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -137,7 +137,7 @@
       "type" : "Roo.bootstrap.layout.Manager",
       "desc" : "The manager",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -145,7 +145,7 @@
       "type" : "string",
       "desc" : "Extra CSS classes to add to region",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -153,7 +153,7 @@
       "type" : "Boolean",
       "desc" : "True to hide the tab strip (defaults to false)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -161,17 +161,17 @@
       "type" : "Boolean",
       "desc" : "True to enable automatic tab resizing. This will resize the tabs so they are all the same size and fit within\n                     the space available, similar to FireFox 1.5 tabs (defaults to false)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "tabPosition",
       "type" : "String",
-      "desc" : "\"top\" or \"bottom\" (defaults to \"bottom\")",
+      "desc" : "m) \"top\" or \"bottom\" (defaults to \"bottom\")",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
-        "(top",
-        "bottom)"
+      "optvals" : [
+        "top",
+        "bottom"
       ]
     },
     {
@@ -179,7 +179,7 @@
       "type" : "Number",
       "desc" : "For East/West panels",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -187,7 +187,7 @@
       "type" : "Number",
       "desc" : "The minimum tab width (defaults to 40)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -195,7 +195,7 @@
       "type" : "Boolean",
       "desc" : "To show the splitter",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -203,7 +203,7 @@
       "type" : "Boolean",
       "desc" : "True to display a title bar (defaults to true)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -211,7 +211,7 @@
       "type" : "Boolean",
       "desc" : "True to preserve removed panels so they can be readded later (defaults to false)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -219,7 +219,7 @@
       "type" : "Boolean",
       "desc" : "True to place the close icon on the tabs instead of the region titlebar (defaults to false)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -227,7 +227,7 @@
       "type" : "Number",
       "desc" : "For North/South panels",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -235,7 +235,7 @@
       "type" : "Boolean",
       "desc" : "True to animate expand/collapse (defaults to false)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -243,7 +243,7 @@
       "type" : "Boolean",
       "desc" : "False to disable auto hiding when the mouse leaves the \"floated\" region (defaults to true)",
       "memberOf" : "Roo.bootstrap.layout.Region",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

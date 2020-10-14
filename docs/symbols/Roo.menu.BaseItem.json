@@ -29,7 +29,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -37,7 +37,7 @@
       "type" : "String",
       "desc" : "The CSS class to use when the item becomes activated (defaults to \"x-menu-item-active\")",
       "memberOf" : "Roo.menu.BaseItem",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -45,17 +45,17 @@
       "type" : "Boolean",
       "desc" : "True to prevent creation of this menu item (defaults to false)",
       "memberOf" : "Roo.menu.BaseItem",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
@@ -63,7 +63,7 @@
       "type" : "Function",
       "desc" : "A function that will handle the click event of this menu item (defaults to undefined)",
       "memberOf" : "Roo.menu.BaseItem",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -71,7 +71,7 @@
       "type" : "Number",
       "desc" : "Length of time in milliseconds to wait before hiding after a click (defaults to 100)",
       "memberOf" : "Roo.menu.BaseItem",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -79,7 +79,7 @@
       "type" : "Boolean",
       "desc" : "True to hide the containing menu after this item is clicked (defaults to true)",
       "memberOf" : "Roo.menu.BaseItem",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -87,7 +87,7 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -95,7 +95,7 @@
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -103,7 +103,7 @@
       "type" : "Boolean",
       "desc" : "True if this item can be visually activated (defaults to false)",
       "memberOf" : "Roo.menu.BaseItem",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -111,7 +111,7 @@
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

@@ -30,7 +30,7 @@
       "type" : "Boolean",
       "desc" : "is it a slidy toggle button",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -38,7 +38,7 @@
       "type" : "Boolean",
       "desc" : "dark themed version",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -46,17 +46,17 @@
       "type" : "String",
       "desc" : "text for badge",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
@@ -64,7 +64,7 @@
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -72,7 +72,7 @@
       "type" : "Boolean",
       "desc" : "default false;",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -80,23 +80,23 @@
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "weight",
       "type" : "String",
-      "desc" : "default",
+      "desc" : ") default",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
-        "(default",
+      "optvals" : [
+        "default",
         "primary",
         "secondary",
         "success",
         "info",
         "warning",
         "danger",
-        "link )"
+        "link"
       ]
     },
     {
@@ -104,7 +104,7 @@
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -112,7 +112,7 @@
       "type" : "String",
       "desc" : "text for on slidy toggle state",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -120,17 +120,17 @@
       "type" : "Boolean",
       "desc" : "default true (stop click event triggering the URL if it's a link.)",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "theme",
       "type" : "String",
-      "desc" : "",
+      "desc" : "w)",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
-        "(default",
-        "glow)"
+      "optvals" : [
+        "default",
+        "glow"
       ]
     },
     {
@@ -138,7 +138,7 @@
       "type" : "String",
       "desc" : "target for a href. (_self|_blank|_parent|_top| other)",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -146,7 +146,7 @@
       "type" : "String",
       "desc" : "depricated - use fa",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -154,7 +154,7 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -162,7 +162,7 @@
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -170,7 +170,7 @@
       "type" : "Boolean",
       "desc" : "default false;",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -178,7 +178,7 @@
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -186,7 +186,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -194,7 +194,7 @@
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -202,18 +202,18 @@
       "type" : "String",
       "desc" : "fontawesome icon - eg. 'comment' - without the fa/fas etc..",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "size",
       "type" : "String",
-      "desc" : "",
+      "desc" : "s)",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
-        "( lg",
+      "optvals" : [
+        "lg",
         "sm",
-        "xs)"
+        "xs"
       ]
     },
     {
@@ -221,23 +221,23 @@
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "badge_weight",
       "type" : "String",
-      "desc" : "default (same as button)",
+      "desc" : ") default (same as button)",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
-        "(default",
+      "optvals" : [
+        "default",
         "primary",
         "secondary",
         "success",
         "info",
         "warning",
         "danger",
-        "link )"
+        "link"
       ]
     },
     {
@@ -245,7 +245,7 @@
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -253,17 +253,17 @@
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
-        "(el",
-        "parent)"
+      "optvals" : [
+        "el",
+        "parent"
       ]
     },
     {
@@ -271,18 +271,18 @@
       "type" : "String",
       "desc" : "empty or href",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "tag",
       "type" : "String",
-      "desc" : "",
+      "desc" : "t)",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
-        "( a",
+      "optvals" : [
+        "a",
         "input",
-        "submit)"
+        "submit"
       ]
     },
     {
@@ -290,7 +290,7 @@
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -298,7 +298,7 @@
       "type" : "Boolean",
       "desc" : "default false (except for weight=default which emulates old behaveiour with an outline)",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -306,7 +306,7 @@
       "type" : "String",
       "desc" : "text for off slidy toggle state",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -314,7 +314,7 @@
       "type" : "Boolean",
       "desc" : "remove the standard class..",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -322,17 +322,17 @@
       "type" : "String",
       "desc" : "The button content",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "pressed",
       "type" : "Boolean",
-      "desc" : "default null - if the button ahs active state",
+      "desc" : "e) default null - if the button ahs active state",
       "memberOf" : "Roo.bootstrap.Button",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     }
   ],

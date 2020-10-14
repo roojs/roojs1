@@ -30,17 +30,17 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
@@ -48,7 +48,7 @@
       "type" : "String",
       "desc" : "the tag for this item (default div)",
       "memberOf" : "Roo.form.TextItem",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -56,7 +56,7 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -64,7 +64,7 @@
       "type" : "String",
       "desc" : "the content for this item",
       "memberOf" : "Roo.form.TextItem",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -72,7 +72,7 @@
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -80,7 +80,7 @@
       "type" : "Number",
       "desc" : "width (optional) size of component",
       "memberOf" : "Roo.BoxComponent",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -88,7 +88,7 @@
       "type" : "Number",
       "desc" : "height (optional) size of component",
       "memberOf" : "Roo.BoxComponent",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -96,7 +96,7 @@
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],

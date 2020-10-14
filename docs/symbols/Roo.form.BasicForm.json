@@ -34,7 +34,7 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -42,7 +42,7 @@
       "type" : "Boolean",
       "desc" : "Set to true if this form is a file upload.",
       "memberOf" : "Roo.form.BasicForm",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -50,17 +50,17 @@
       "type" : "String",
       "desc" : "The request method to use (GET or POST) for form actions if one isn't supplied in the action options.",
       "memberOf" : "Roo.form.BasicForm",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
       "name" : "errorMask",
       "type" : "Boolean",
-      "desc" : "default false",
+      "desc" : "e) default false",
       "memberOf" : "Roo.form.BasicForm",
-      "values" : [
-        "(true",
-        "false)"
+      "optvals" : [
+        "true",
+        "false"
       ]
     },
     {
@@ -68,7 +68,7 @@
       "type" : "Number",
       "desc" : "Timeout for form actions in seconds (default is 30 seconds).",
       "memberOf" : "Roo.form.BasicForm",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -76,7 +76,7 @@
       "type" : "Object",
       "desc" : "Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.",
       "memberOf" : "Roo.form.BasicForm",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -84,7 +84,7 @@
       "type" : "Boolean",
       "desc" : "If set to true, form.reset() resets to the last loaded\nor setValues() data instead of when the form was first created.",
       "memberOf" : "Roo.form.BasicForm",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -92,7 +92,7 @@
       "type" : "DataReader",
       "desc" : "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when executing \"load\" actions.\nThis is optional as there is built-in support for processing JSON.",
       "memberOf" : "Roo.form.BasicForm",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -100,7 +100,7 @@
       "type" : "DataReader",
       "desc" : "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when reading validation errors on \"submit\" actions.\nThis is completely optional as there is built-in support for processing JSON.",
       "memberOf" : "Roo.form.BasicForm",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -108,7 +108,7 @@
       "type" : "String",
       "desc" : "The URL to use for form actions if one isn't supplied in the action options.",
       "memberOf" : "Roo.form.BasicForm",
-      "values" : [
+      "optvals" : [
       ]
     },
     {
@@ -116,7 +116,7 @@
       "type" : "Number",
       "desc" : "Default 100",
       "memberOf" : "Roo.form.BasicForm",
-      "values" : [
+      "optvals" : [
       ]
     }
   ],
