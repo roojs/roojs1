@@ -1,0 +1,429 @@
+<html><head><title>Roo/form/ComboNested.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * RooJS Library 1.1.1
+ * Copyright(c) 2008-2011  Alan Knowles
+ *
+ * License - LGPL
+ */
+
+
+/**
+ * @class Roo.form.ComboNested
+ * @extends Roo.form.ComboBox
+ * A combobox for that allows selection of nested items in a list,
+ * eg.
+ *
+ *  Book
+ *    -&gt; red
+ *    -&gt; green
+ *  Table
+ *    -&gt; square
+ *      -&gt;red
+ *      -&gt;green
+ *    -&gt; rectangle
+ *      -&gt;green
+ *      
+ * 
+ * @constructor
+ * Create a new ComboNested
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.ComboNested </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.ComboCheck.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">// should verify some data...
+    // like
+    // hiddenName = required..
+    // displayField = required
+    // valudField == required
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">req</span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-string">'hiddenName'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'displayField'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'valueField' </span><span class="jsdoc-syntax">];
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">req</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) || !</span><span class="jsdoc-var">_t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;Roo.form.ComboNested : missing value for: &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">;
+        }
+    });
+
+
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.ComboNested</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.ComboBox</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-comment">/*
+     * @config {Number} max Number of columns to show
+     */
+
+    </span><span class="jsdoc-var">maxColumns </span><span class="jsdoc-syntax">: 3,
+
+    </span><span class="jsdoc-var">list </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// the outermost div..
+    </span><span class="jsdoc-var">innerLists </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// the
+    </span><span class="jsdoc-var">views </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">stores </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">loadingChildren </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.form.ComboBox.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// skip parent call - got to above..
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenName</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.hiddenField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.insertSibling</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.hiddenName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">:  (</span><span class="jsdoc-var">this.hiddenId</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">this.hiddenName</span><span class="jsdoc-syntax">)},
+                    </span><span class="jsdoc-string">'before'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">=
+                </span><span class="jsdoc-var">this.hiddenValue </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.hiddenValue </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-comment">// prevent input submission
+            </span><span class="jsdoc-var">this.el.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">);
+
+
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'autocomplete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'off'</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'x-combo-list'</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.list </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Layer</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">shadow</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.shadow</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.listClass</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">constrain</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false
+        </span><span class="jsdoc-syntax">});
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.listWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.minListWidth</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.list.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.list.swallowEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousewheel'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.assetHeight </span><span class="jsdoc-syntax">= 0;
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.title</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.header </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.list.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-hd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title</span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">this.assetHeight </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.header.getHeight</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.innerLists </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.views </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.stores </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0 ; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.maxColumns</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">this.onRenderList</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-comment">// always needs footer, as we are going to have an 'OK' button.
+        </span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.list.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-ft'</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.pageTb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.pageTb.add</span><span class="jsdoc-syntax">(  {
+
+            </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Done'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+            {
+                </span><span class="jsdoc-var">_this.collapse</span><span class="jsdoc-syntax">();
+            }
+        });
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.disableClear</span><span class="jsdoc-syntax">) {
+
+            </span><span class="jsdoc-var">this.pageTb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar.Fill</span><span class="jsdoc-syntax">(), {
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-btn-icon x-btn-clear'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;#160;'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+                {
+                    </span><span class="jsdoc-var">_this.collapse</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">_this.clearValue</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">_this.onSelect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, -1);
+                }
+            });
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.assetHeight </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.footer.getHeight</span><span class="jsdoc-syntax">();
+        }
+
+    },
+    </span><span class="jsdoc-var">onRenderList </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(  </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)
+    {
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(
+                ((</span><span class="jsdoc-var">this.listWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.maxColumns </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.minListWidth</span><span class="jsdoc-syntax">)) - </span><span class="jsdoc-var">this.list.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">)) / </span><span class="jsdoc-var">this.maxColumns
+        </span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.list.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// default to '1'
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">il </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.innerLists</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.list.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-inner'</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-comment">//il.on('mouseover', this.onViewOver, this, { list:  i });
+        //il.on('mousemove', this.onViewMove, this, { list:  i });
+        </span><span class="jsdoc-var">il.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">il.setStyle</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-string">'overflow-x' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">});
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-string">'&lt;div class=&quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-item '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'-item-{cn:this.isEmpty}&quot;&gt;{' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.displayField </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'}&lt;/div&gt;'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">isEmpty</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">allValues</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-comment">//Roo.log(value);
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.data</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">value.data.length </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">value.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">///json is a nested response..
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dl </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'has-children' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'no-children'
+                </span><span class="jsdoc-syntax">}
+            });
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">store  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt; 0) {
+            </span><span class="jsdoc-var">store  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.data.SimpleStore</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-comment">//fields : this.store.reader.meta.fields,
+                </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.store.reader</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: [ ]
+            });
+        }
+        </span><span class="jsdoc-var">this.stores</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]  = </span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.views</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.View</span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-var">il</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">,
+            {
+                </span><span class="jsdoc-var">singleSelect</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">selectedClass</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.selectedClass
+            </span><span class="jsdoc-syntax">}
+        );
+        </span><span class="jsdoc-var">view.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">view.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; 1 ? </span><span class="jsdoc-string">'relative' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">top</span><span class="jsdoc-syntax">: 0,
+            </span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">display </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-string">'none' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'block'
+        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">view.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'selectionchange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSelectChange.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">list </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">view.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDoubleClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">list </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-comment">//view.on('click', this.onViewClick, this, { list : i });
+
+        </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">list  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoadException</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// hide the other vies..
+
+
+
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">restrictHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mh </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.innerLists</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">il</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.views</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.getEl</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">el.dom.style.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dom</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">il.clientHeight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">il.offsetHeight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">il.scrollHeight</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">// only adjust heights on other ones..
+            </span><span class="jsdoc-var">mh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; 1) {
+
+                </span><span class="jsdoc-var">el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.maxHeight </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'auto' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.maxHeight</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">il.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.maxHeight </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'auto' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.maxHeight</span><span class="jsdoc-syntax">);
+
+            }
+
+
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.list.beginUpdate</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.list.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mh</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.list.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-var">this.assetHeight</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.list.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.listAlign</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.list.endUpdate</span><span class="jsdoc-syntax">();
+
+    },
+
+
+    </span><span class="jsdoc-comment">// -- store handlers..
+    // private
+    </span><span class="jsdoc-var">onBeforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hasFocus</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.innerLists</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadingText </span><span class="jsdoc-syntax">?
+               </span><span class="jsdoc-string">'&lt;div class=&quot;loading-indicator&quot;&gt;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.loadingText</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&lt;/div&gt;' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.selectedIndex </span><span class="jsdoc-syntax">= -1;
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.loadingChildren</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// then we are loading the top level. - hide the children
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 1;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.views.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">this.views</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">display </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none' </span><span class="jsdoc-syntax">});
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(
+                ((</span><span class="jsdoc-var">this.listWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.maxColumns </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.minListWidth</span><span class="jsdoc-syntax">)) - </span><span class="jsdoc-var">this.list.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">)) / </span><span class="jsdoc-var">this.maxColumns
+            </span><span class="jsdoc-syntax">);
+
+             </span><span class="jsdoc-var">this.list.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// default to '1'
+
+
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hasFocus</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0) {
+            </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.onEmptyResults</span><span class="jsdoc-syntax">();
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.loadingChildren</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.selectActive</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-comment">/*
+        this.stores[1].loadData([]);
+        this.stores[2].loadData([]);
+        this.views
+        */
+
+        //this.el.focus();
+    </span><span class="jsdoc-syntax">},
+
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onLoadException </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.reader.jsonData</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.reader.jsonData.errorMsg</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.MessageBox.alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Error loading&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.store.reader.jsonData.errorMsg</span><span class="jsdoc-syntax">);
+        }
+
+
+    },
+    </span><span class="jsdoc-comment">// no cleaning of leading spaces on blur here.
+    </span><span class="jsdoc-var">cleanLeadingSpace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { },
+
+
+    </span><span class="jsdoc-var">onSelectChange </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">view</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sels</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ix </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">view.getSelectedIndexes</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">opts.list </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.maxColumns </span><span class="jsdoc-syntax">- 2) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">view.store.getCount</span><span class="jsdoc-syntax">()&lt;  1) {
+                </span><span class="jsdoc-var">this.views</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">opts.list </span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">display </span><span class="jsdoc-syntax">:   </span><span class="jsdoc-string">'none' </span><span class="jsdoc-syntax">});
+
+            } </span><span class="jsdoc-keyword">else  </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ix.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-comment">// used to clear ?? but if we are loading unselected 
+                    </span><span class="jsdoc-var">this.setFromData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">view.store.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ix</span><span class="jsdoc-syntax">[0])</span><span class="jsdoc-var">.data</span><span class="jsdoc-syntax">);
+                }
+
+            }
+
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ix.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// this get's fired when trigger opens..
+           // this.setFromData({});
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">str </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.stores</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">opts.list</span><span class="jsdoc-syntax">+1];
+            </span><span class="jsdoc-var">str.data.clear</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// removeall wihtout the fire events..
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">view.store.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ix</span><span class="jsdoc-syntax">[0]);
+
+        </span><span class="jsdoc-var">this.setFromData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rec.data</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rec</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ix</span><span class="jsdoc-syntax">[0]);
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(
+             (
+                (</span><span class="jsdoc-var">this.listWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.maxColumns </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.minListWidth</span><span class="jsdoc-syntax">)) - </span><span class="jsdoc-var">this.list.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">)
+             ) / </span><span class="jsdoc-var">this.maxColumns
+        </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.loadingChildren </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.stores</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">opts.list</span><span class="jsdoc-syntax">+1]</span><span class="jsdoc-var">.loadDataFromChildren</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">rec </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.loadingChildren </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.stores</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">opts.list</span><span class="jsdoc-syntax">+1]</span><span class="jsdoc-var">. getTotalCount</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">this.views</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">opts.list</span><span class="jsdoc-syntax">+1]</span><span class="jsdoc-var">.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.innerLists</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">());
+
+        </span><span class="jsdoc-var">this.views</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">opts.list</span><span class="jsdoc-syntax">+1]</span><span class="jsdoc-var">.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">display </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">dl </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'block' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none' </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">opts.list</span><span class="jsdoc-syntax">+2; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.views.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">this.views</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.getEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">display </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none' </span><span class="jsdoc-syntax">});
+        }
+
+        </span><span class="jsdoc-var">this.innerLists</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">opts.list</span><span class="jsdoc-syntax">+1]</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.innerLists</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">this.list.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">* (</span><span class="jsdoc-var">opts.list </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">dl </span><span class="jsdoc-syntax">? 2 : 1)));
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isLoading</span><span class="jsdoc-syntax">) {
+           </span><span class="jsdoc-comment">// this.selectActive(opts.list);
+        </span><span class="jsdoc-syntax">}
+
+    },
+
+
+
+
+    </span><span class="jsdoc-var">onDoubleClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">//??
+    </span><span class="jsdoc-syntax">},
+
+
+
+
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">recordToStack </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cstore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.data.SimpleStore</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-comment">//fields : this.store.reader.meta.fields, // we need array reader.. for
+            </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.store.reader</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: [ ]
+        });
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">record  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">srec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">store.getCount</span><span class="jsdoc-syntax">() &lt; 1){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">store.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">record </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">srec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.data.cn </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">r.data.cn.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cstore.loadDataFromChildren</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_this.recordToStack</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cstore</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">prop</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cret </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">record </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cret</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">srec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+                }
+            }
+
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        });
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-var">stack.unshift</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">srec</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/*
+     * find the stack of stores that match our value.
+     *
+     * 
+     */
+
+    </span><span class="jsdoc-var">selectActive </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+	</span><span class="jsdoc-comment">// if store is not loaded, then we will need to wait for that to happen first.
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stack </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.recordToStack</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">stack.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++ ) {
+            </span><span class="jsdoc-var">this.views</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.store.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]), </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">);
+        }
+
+    }
+
+
+
+
+
+
+});</span></code></body></html>
