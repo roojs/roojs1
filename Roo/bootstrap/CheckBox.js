@@ -69,10 +69,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var cfg = {};
         
-        cfg.cls = 'form-group ' + this.inputType; //input-group
+        cfg.cls = 'form-group form-check ' + this.inputType; //input-group
         
         if(this.inline){
-            cfg.cls += ' ' + this.inputType + '-inline';
+            cfg.cls += ' ' + this.inputType + '-inline  form-check-inline';
         }
         
         var input =  {

@@ -64,7 +64,8 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         };
         
         var settings=this;
-        ['xs','sm','md','lg'].map(function(size){
+        var sizes =   ['xs','sm','md','lg'];
+        sizes.map(function(size ,ix){
             //Roo.log( size + ':' + settings[size]);
             
             if (settings[size+'off'] !== false) {
@@ -76,7 +77,13 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
             }
             
             if (!settings[size]) { // 0 = hidden
-                cfg.cls += ' hidden-' + size + ' hidden' + size + '-down';;
+                cfg.cls += ' hidden-' + size + ' hidden-' + size + '-down';
+                // bootsrap4
+                for (var i = ix; i > -1; i--) {
+                    cfg.cls +=  ' d-' + sizes[i] + '-none'; 
+                }
+                
+                
                 return;
             }
             cfg.cls += ' col-' + size + '-' + settings[size] + (

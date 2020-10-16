@@ -280,7 +280,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return dragData;
         }
         return false;
-    },
+    }
     
 });
 

@@ -23,7 +23,7 @@ $files = array(
         'name' => 'bootstrap.css',
         'minify' => 'bootstrap.min.css',
         'sourceMapRootpath' => '../scss/bootstrap/',
-        'variables' =>  "@import 'variables';"
+        'variables' =>  "@import 'functions';\n@import 'variables';"
     ),
      
     "roojs-bootstrap.scss" => array(
@@ -32,10 +32,34 @@ $files = array(
         'name' => 'roojs-bootstrap-debug.css',
         'minify' => 'roojs-bootstrap.css',
         'sourceMapRootpath' => '../scss/roojs-bootstrap/',
-        'variables' => "@import '../bootstrap/variables';"
+        'variables' => "@import '../bootstrap/functions';\n@import '../bootstrap/variables';"
     )
      
 );
+require_once 'System.php';
+$sassc = System::which("sassc");
+if (empty($sassc)) {
+    die("INSTALL sassc");
+}
+foreach($files as $file => $f) {
+    
+    $tmpFile = tempnam("/tmp/", "scss");
+    file_put_contents($tmpFile, "{$f['variables']}\n@import \"{$file}\";\n");
+    echo file_get_contents($tmpFile);
+    
+    
+    
+    $cmd = "{$sassc}  --sourcemap=auto -I {$f['scssDir']} $tmpFile {$f['baseDir']}/{$f['name']}";
+    echo "$cmd\n";
+    echo `$cmd`;
+    $cmd = "{$sassc} --style=compressed --sourcemap=auto -I {$f['scssDir']} $tmpFile {$f['baseDir']}/{$f['minify']}";
+    echo "$cmd\n";
+    echo `$cmd`;
+}
+exit;
+
+
+
 /*
 foreach ($files as $src => $file){
     
@@ -105,11 +129,11 @@ foreach ($files as $src => $file){
                 // output source contents?
                 'outputSourceFiles' => false,
         
-                // base path for filename normalization
-                'sourceMapRootpath' => '',
+                // this is added to the file path.
+                'sourceMapRootpath' =>  '../',
         
-                // base path for filename normalization
-                'sourceMapBasepath' => ''
+                // this is removed from the filepath.
+                'sourceMapBasepath' => $rootDir .'/roojs1/scss'
             
         ));
        

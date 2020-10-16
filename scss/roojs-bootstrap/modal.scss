@@ -80,18 +80,21 @@
     }
 }
 */
-
+/*
 .modal-body.roo-layout-container,
 .modal-body > .container {
     padding: 0;
 }
+*/
 /*
 .modal-dialog {
     max-width: 100%;
 }
 */
+/*
 @media (max-width: 768px) {
     
+     *these should be fixed by adding p-md-0
     .modal-body  .col-md-12  {
         padding : 0;
     }
@@ -107,12 +110,12 @@
     .modal-body   > .container .col-xs-12 {  
         padding: 0;
     }
-     
-}
   
+}
+     */
 .modal .roo-mb-progress-wrap {
     margin-top: 4px;
-    border: 1px solid darken($brand-primary, 10%);;
+    border: 1px solid darken($brand-primary, 10%);
 }
 
 .modal .roo-mb-progress-wrap .roo-mb-progress {

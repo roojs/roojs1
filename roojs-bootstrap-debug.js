@@ -1060,7 +1060,8 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         };
         
         var settings=this;
-        ['xs','sm','md','lg'].map(function(size){
+        var sizes =   ['xs','sm','md','lg'];
+        sizes.map(function(size ,ix){
             //Roo.log( size + ':' + settings[size]);
             
             if (settings[size+'off'] !== false) {
@@ -1072,7 +1073,13 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
             }
             
             if (!settings[size]) { // 0 = hidden
-                cfg.cls += ' hidden-' + size + ' hidden' + size + '-down';;
+                cfg.cls += ' hidden-' + size + ' hidden-' + size + '-down';
+                // bootsrap4
+                for (var i = ix; i > -1; i--) {
+                    cfg.cls +=  ' d-' + sizes[i] + '-none'; 
+                }
+                
+                
                 return;
             }
             cfg.cls += ' col-' + size + '-' + settings[size] + (
@@ -1533,6 +1540,10 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  * @cfg {String} display_lg (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
  * @cfg {String} display_xl (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
  
+ * @config {Boolean} dragable  if this card can be dragged.
+ * @config {Boolean} drag_group  group for drag
+ * 
+ 
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
@@ -1581,6 +1592,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     subtitle : '',
     html : '',
     footer: '',
+    
+    dragable : false,
+    drag_group : false,
     
     childContainer : false,
 
@@ -1647,7 +1661,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         };
         
         if (this.weight.length && this.weight != 'light') {
-            cfg.cls += ' text-white'
+            cfg.cls += ' text-white';
+        } else {
+            cfg.cls += ' text-dark'; // need as it's nested..
         }
         if (this.weight.length) {
             cfg.cls += ' bg-' + this.weight;
@@ -1706,7 +1722,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         // fixme ? handle objects?
         if (this.footer.length) {
-            body.cn.push({
+            cfg.cn.push({
                 tag : 'div',
                 cls : 'card-footer',
                 html: this.footer // escape?
@@ -1725,6 +1741,41 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return false;
         }
         return this.el.select('.roo-card-body-ctr',true).first();    
+    },
+    
+    initEvents: function() 
+    {
+        if(this.dragable){
+             this.dragZone = new Roo.dd.DragZone(this.getEl(), {
+                    containerScroll: true,
+                    ddGroup: this.drag_group || 'default_card_drag_group'
+            });
+            this.dragZone.getDragData = this.getDragData.createDelegate(this);
+        }
+        
+        
+        
+    },
+    getDragData : function(e) {
+        var target = this.getEl();
+	if (target) {
+	    //this.handleSelection(e);
+	    
+            var dragData = {
+                source: this,
+                copy: false,
+                nodes: this.getEl(),
+                records: []
+            };
+            
+            
+            dragData.ddel = target.dom ;	// the div element
+            Roo.log(target.getWidth( ));
+             dragData.ddel.style.width = target.getWidth() + 'px';
+            
+            return dragData;
+        }
+        return false;
     }
     
 });
@@ -4467,7 +4518,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         
         cn.push({
             tag: 'div',
-            cls: Roo.bootstrap.version == 4  ? 'nav flex-row roo-navbar-collapse' : 'collapse navbar-collapse roo-navbar-collapse',
+            cls: Roo.bootstrap.version == 4  ? 'nav flex-row roo-navbar-collapse collapse navbar-collapse' : 'collapse navbar-collapse roo-navbar-collapse',
             cn : []
         });
         
@@ -4517,6 +4568,13 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         return this.getChildContainer();
     },
     
+    getChildContainer : function()
+    {
+	 
+	return this.el.select('.roo-navbar-collapse',true).first();
+	 
+	
+    },
     
     initEvents : function()
     {
@@ -21193,10 +21251,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var cfg = {};
         
-        cfg.cls = 'form-group ' + this.inputType; //input-group
+        cfg.cls = 'form-group form-check ' + this.inputType; //input-group
         
         if(this.inline){
-            cfg.cls += ' ' + this.inputType + '-inline';
+            cfg.cls += ' ' + this.inputType + '-inline  form-check-inline';
         }
         
         var input =  {

@@ -93,7 +93,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         
         cn.push({
             tag: 'div',
-            cls: Roo.bootstrap.version == 4  ? 'nav flex-row roo-navbar-collapse' : 'collapse navbar-collapse roo-navbar-collapse',
+            cls: Roo.bootstrap.version == 4  ? 'nav flex-row roo-navbar-collapse collapse navbar-collapse' : 'collapse navbar-collapse roo-navbar-collapse',
             cn : []
         });
         
@@ -143,6 +143,13 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         return this.getChildContainer();
     },
     
+    getChildContainer : function()
+    {
+	 
+	return this.el.select('.roo-navbar-collapse',true).first();
+	 
+	
+    },
     
     initEvents : function()
     {
