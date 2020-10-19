@@ -112,6 +112,7 @@ Bootstrap Widgets
     Layout 
         Roo.bootstrap.Column
         Roo.bootstrap.Row
+        Roo.bootstrap.Card  Bootstrap 4 Card 
         Roo.bootstrap.Container Panel Jumbo
         Roo.bootstrap.Slider Header slider panel
         Roo.bootstrap.Alert alert area

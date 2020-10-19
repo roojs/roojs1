@@ -93,7 +93,7 @@
 
         </span><span class="jsdoc-var">cn.push</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">== 4  ? </span><span class="jsdoc-string">'nav flex-row roo-navbar-collapse' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'collapse navbar-collapse roo-navbar-collapse'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">== 4  ? </span><span class="jsdoc-string">'nav flex-row roo-navbar-collapse collapse navbar-collapse' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'collapse navbar-collapse roo-navbar-collapse'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
         });
 
@@ -143,6 +143,13 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getChildContainer</span><span class="jsdoc-syntax">();
     },
 
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+
+	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-navbar-collapse'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+
+
+    },
 
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
