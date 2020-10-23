@@ -43615,7 +43615,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             //<style type="text/css">' +
             //'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
             //'</style>' +
-            ' </head><body class="' +  cls + '"></body></html>';
+            ' </head><body contenteditable="true" data-enable-grammerly="true" class="' +  cls + '"></body></html>';
     },
 
     // private
