@@ -26,32 +26,28 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "fileUpload",
       "type" : "Boolean",
       "desc" : "Set to true if this form is a file upload.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "method",
       "type" : "String",
       "desc" : "The request method to use (GET or POST) for form actions if one isn't supplied in the action options.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "errorMask",
@@ -68,56 +64,49 @@
       "type" : "Number",
       "desc" : "Timeout for form actions in seconds (default is 30 seconds).",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "baseParams",
       "type" : "Object",
       "desc" : "Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "trackResetOnLoad",
       "type" : "Boolean",
       "desc" : "If set to true, form.reset() resets to the last loaded\nor setValues() data instead of when the form was first created.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "reader",
       "type" : "DataReader",
       "desc" : "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when executing \"load\" actions.\nThis is optional as there is built-in support for processing JSON.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "errorReader",
       "type" : "DataReader",
       "desc" : "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when reading validation errors on \"submit\" actions.\nThis is completely optional as there is built-in support for processing JSON.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "The URL to use for form actions if one isn't supplied in the action options.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "maskOffset",
       "type" : "Number",
       "desc" : "Default 100",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -273,8 +262,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -294,8 +282,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -315,8 +302,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -363,8 +349,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -411,8 +396,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -513,8 +497,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -534,8 +517,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -648,8 +630,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -677,8 +658,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "purgeListeners",
@@ -691,10 +671,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -733,8 +711,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -767,8 +744,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -789,8 +765,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -811,8 +786,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -845,8 +819,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -939,8 +912,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -979,8 +951,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -1006,8 +977,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "actioncomplete",
@@ -1031,8 +1001,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "actionfailed",
@@ -1056,8 +1025,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

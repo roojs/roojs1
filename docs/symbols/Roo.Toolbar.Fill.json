@@ -13,12 +13,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "disable",
@@ -31,10 +28,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -47,10 +42,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "focus",
@@ -63,10 +56,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "show",
@@ -79,10 +70,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getEl",
@@ -95,8 +84,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -116,10 +104,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "enable",
@@ -132,10 +118,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setVisible",
@@ -156,8 +140,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -177,8 +160,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

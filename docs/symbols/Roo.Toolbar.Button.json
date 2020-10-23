@@ -21,200 +21,175 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "tooltip",
       "type" : "String/Object",
       "desc" : "The tooltip for the button - can be a string or QuickTips config object",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "The button text",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "renderTo",
       "type" : "String/HTMLElement/Element",
       "desc" : "The element to append the button to",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
       "desc" : "True to start hidden (defaults to false)",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "toggleGroup",
       "type" : "String",
       "desc" : "The group this toggle button is a member of (only 1 per group can be pressed, only\n   applies if enableToggle = true)",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "handleMouseEvents",
       "type" : "Boolean",
       "desc" : "False to disable visual cues on mouseover, mouseout and mousedown (defaults to true)",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "menu",
       "type" : "Mixed",
       "desc" : "Standard menu attribute consisting of a reference to a menu object, a menu id or a menu config blob (defaults to undefined).",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "enableToggle",
       "type" : "Boolean",
       "desc" : "True to enable pressed/not pressed toggling (defaults to false)",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "handler",
       "type" : "Function",
       "desc" : "A function called when the button is clicked (can be used instead of click event)",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "scope",
       "type" : "Object",
       "desc" : "The scope of the handler",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "minWidth",
       "type" : "Number",
       "desc" : "The minimum width for this button (used to give a set of buttons a common width)",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "True to start disabled (defaults to false)",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "pressed",
       "type" : "Boolean",
       "desc" : "True to start pressed (only if enableToggle = true)",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "template",
       "type" : "Roo.Template",
       "desc" : "(Optional)\nAn {@link Roo.Template} with which to create the Button's main element. This Template must\ncontain numeric substitution parameter 0 if it is to display the tRoo property. Changing the template could\nrequire code modifications if required elements (e.g. a button) aren't present.",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the button's main element.",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "tabIndex",
       "type" : "Number",
       "desc" : "The DOM tabIndex for this button (defaults to undefined)",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "iconCls",
       "type" : "String",
       "desc" : "A css class which sets a background image to be used as the icon for this button (defaults to undefined).",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "menuAlign",
       "type" : "String",
       "desc" : "The position to align the menu to (see {@link Roo.Element#alignTo} for more details, defaults to 'tl-bl?').",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "icon",
       "type" : "String",
       "desc" : "The path to an image to display in the button (the image will be set as the background-image\nCSS property of the button by default, so if you want a mixed icon/text button, set cls:\"x-btn-text-icon\")",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "tooltipType",
       "type" : "String",
       "desc" : "The type of tooltip to use. Either \"qtip\" (default) for QuickTips or \"title\" for title attribute.",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "clickEvent",
       "type" : "String",
       "desc" : "The type of event to map to the button's event handler (defaults to 'click')",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "repeat",
       "type" : "Boolean/Object",
       "desc" : "True to repeat fire the click event while the mouse is down. This can also be\n  an {@link Roo.util.ClickRepeater} config object (defaults to false).",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "type",
       "type" : "String",
       "desc" : "The button's type, corresponding to the DOM input element type attribute.  Either \"submit,\" \"reset\" or \"button\" (default).",
       "memberOf" : "Roo.Button",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -229,10 +204,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "enable",
@@ -245,10 +218,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "destroy",
@@ -261,10 +232,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -277,10 +246,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "show",
@@ -293,10 +260,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "focus",
@@ -309,10 +274,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setHandler",
@@ -339,8 +302,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getEl",
@@ -353,8 +315,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -382,8 +343,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setVisible",
@@ -404,8 +364,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getText",
@@ -418,8 +377,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -447,8 +405,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "toggle",
@@ -469,8 +426,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "purgeListeners",
@@ -483,10 +439,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -525,8 +479,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -559,8 +512,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -581,8 +533,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -603,8 +554,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -637,8 +587,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -731,8 +680,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -771,8 +719,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -792,8 +739,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "click",
@@ -817,8 +763,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "mouseover",
@@ -842,8 +787,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "toggle",
@@ -867,8 +811,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "mouseout",
@@ -892,8 +835,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

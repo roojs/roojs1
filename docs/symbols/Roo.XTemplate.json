@@ -12,26 +12,22 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
+  "params" : [],
+  "returns" : [],
   "config" : [
     {
       "name" : "html",
       "type" : "String",
       "desc" : "The HTML fragment or an array of fragments to join(\"\") or multiple arguments to join(\"\")",
       "memberOf" : "Roo.Template",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "The Url to load the template from. beware if you are loading from a url, the data may not be ready if you use it instantly..\n                   it should be fixed so that template is observable...",
       "memberOf" : "Roo.Template",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -66,8 +62,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "compile",
@@ -80,10 +75,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "insertFirst",
@@ -281,8 +274,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "insertAfter",
@@ -373,12 +365,9 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

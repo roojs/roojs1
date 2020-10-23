@@ -1,7 +1,6 @@
 {
   "name" : "Roo.dd.DragDropMgr",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "DragDropMgr is a singleton that tracks the element interaction for\nall DragDrop items in the window.  Generally, you will not call\nthis class directly, but it does have helper methods that could\nbe useful in your DragDrop implementations.",
   "isSingleton" : true,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "isDragDrop",
@@ -89,8 +85,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -124,8 +119,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "handleWasClicked",
@@ -146,8 +140,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "refreshCache",
@@ -168,8 +161,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getCss",
@@ -223,8 +215,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "stopEvent",
@@ -245,8 +236,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "lock",
@@ -259,10 +249,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "moveToEl",
@@ -289,8 +277,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "unlock",
@@ -303,10 +290,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getDDById",
@@ -420,8 +405,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getStyle",
@@ -521,8 +505,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -623,8 +606,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -644,10 +626,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "regHandle",
@@ -674,8 +654,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getElement",
@@ -732,6 +711,5 @@
       ]
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

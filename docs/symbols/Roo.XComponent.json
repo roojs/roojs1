@@ -20,64 +20,56 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "region",
       "type" : "String",
       "desc" : "Region to render component to (defaults to center)",
       "memberOf" : "Roo.XComponent",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disabled",
       "type" : "Function|boolean",
       "desc" : "If this module is disabled by some rule, return true from the funtion",
       "memberOf" : "Roo.XComponent",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "order",
       "type" : "String",
       "desc" : "Used to set the order in which elements are created (usefull for multiple tabs)",
       "memberOf" : "Roo.XComponent",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "items",
       "type" : "Array",
       "desc" : "A single item array - the first element is the root of the tree..\nIt's done this way to stay compatible with the Xtype system...",
       "memberOf" : "Roo.XComponent",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "parent",
       "type" : "String",
       "desc" : "Name of parent element which it get xtype added to..",
       "memberOf" : "Roo.XComponent",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "name",
       "type" : "String",
       "desc" : "String to display while loading.",
       "memberOf" : "Roo.XComponent",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -106,8 +98,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "preBuild",
@@ -120,10 +111,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "toObject",
@@ -136,10 +125,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "render",
@@ -160,8 +147,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "buildOrder",
@@ -174,8 +160,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -195,10 +180,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "build",
@@ -225,8 +208,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "purgeListeners",
@@ -239,10 +221,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "un",
@@ -275,8 +255,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -297,8 +276,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -319,8 +297,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -353,8 +330,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -447,8 +423,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -487,8 +462,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -508,8 +482,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

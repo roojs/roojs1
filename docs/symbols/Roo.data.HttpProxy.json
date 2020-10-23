@@ -20,64 +20,56 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "method",
       "type" : "String",
       "desc" : "(Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)",
       "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "timeout",
       "type" : "Number",
       "desc" : "(Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)",
       "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "autoAbort",
       "type" : "Boolean",
       "desc" : "(Optional) Whether this request should abort any pending requests. (defaults to false)",
       "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "(Optional) The default URL to be used for requests to the server. (defaults to undefined)",
       "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "extraParams",
       "type" : "Object",
       "desc" : "(Optional) An object containing properties which are used as\nextra parameters to each request made by this object. (defaults to undefined)",
       "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disableCaching",
       "type" : "Boolean",
       "desc" : "(Optional) True to add a unique cache-buster param to GET requests. (defaults to true)",
       "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "defaultHeaders",
       "type" : "Object",
       "desc" : "(Optional) An object containing request headers which are added\n to each request made by this object. (defaults to undefined)",
       "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -92,8 +84,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -145,8 +136,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -178,8 +168,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeload",
@@ -203,8 +192,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "loadexception",
@@ -240,8 +228,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

@@ -27,184 +27,161 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "editor",
       "type" : "Object|Roo.tree.TreeEditor",
       "desc" : "The TreeEditor or xtype data to display when clicked.",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "singleExpand",
       "type" : "Boolean",
       "desc" : "true if only 1 node per branch may be expanded",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "ddAppendOnly",
       "type" : "String",
       "desc" : "True if the tree should only allow append drops (use for trees which are sorted)",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "dragConfig",
       "type" : "Object",
       "desc" : "Custom config to pass to the {@link Roo.tree.TreeDragZone} instance",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "enableDrop",
       "type" : "Boolean",
       "desc" : "true to enable just drop",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hlColor",
       "type" : "String",
       "desc" : "The color of the node highlight (defaults to C3DAF9)",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "rendererTip",
       "type" : "Function",
       "desc" : "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "enableDD",
       "type" : "Boolean",
       "desc" : "true to enable drag and drop",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hlDrop",
       "type" : "Boolean",
       "desc" : "false to disable node highlight on drop (defaults to the value of Roo.enableFx)",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "renderer",
       "type" : "Function",
       "desc" : "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "rootVisible",
       "type" : "Boolean",
       "desc" : "false to hide the root node (defaults to true)",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "enableDrag",
       "type" : "Boolean",
       "desc" : "true to enable just drag",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "ddGroup",
       "type" : "String",
       "desc" : "The DD group this TreePanel belongs to",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "lines",
       "type" : "Boolean",
       "desc" : "false to disable tree lines (defaults to true)",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "dropConfig",
       "type" : "Object",
       "desc" : "Custom config to pass to the {@link Roo.tree.TreeDropZone} instance",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "selModel",
       "type" : "Boolean",
       "desc" : "A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "loader",
       "type" : "Boolean",
       "desc" : "A TreeLoader for use with this TreePanel",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "containerScroll",
       "type" : "Boolean",
       "desc" : "true to register this container with ScrollManager",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "ddScroll",
       "type" : "Boolean",
       "desc" : "true to enable YUI body scrolling",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "animate",
       "type" : "Boolean",
       "desc" : "true to enable animated expand/collapse (defaults to the value of Roo.enableFx)",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "pathSeparator",
       "type" : "String",
       "desc" : "The token used to separate sub-paths in path strings (defaults to '/')",
       "memberOf" : "Roo.tree.TreePanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -219,10 +196,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "render",
@@ -235,10 +210,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getSelectionModel",
@@ -251,10 +224,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "expandPath",
@@ -287,8 +258,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "expandAll",
@@ -301,10 +271,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getChecked",
@@ -370,8 +338,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getEl",
@@ -384,10 +351,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "collapseAll",
@@ -400,10 +365,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setRootNode",
@@ -443,8 +406,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -491,10 +453,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -533,8 +493,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -567,8 +526,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -589,8 +547,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -611,8 +568,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -645,8 +601,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -739,8 +694,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -779,8 +733,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -806,8 +759,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "contextmenu",
@@ -831,8 +783,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeclick",
@@ -856,8 +807,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "checkchange",
@@ -881,8 +831,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "nodedragover",
@@ -900,8 +849,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeexpand",
@@ -931,8 +879,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "collapse",
@@ -950,8 +897,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforenodedrop",
@@ -969,8 +915,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforechildrenrendered",
@@ -988,8 +933,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "textchange",
@@ -1019,8 +963,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "load",
@@ -1038,8 +981,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "appendnode",
@@ -1069,8 +1011,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "startdrag",
@@ -1100,8 +1041,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "click",
@@ -1125,8 +1065,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "expand",
@@ -1144,8 +1083,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "enddrag",
@@ -1175,8 +1113,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "nodedrop",
@@ -1194,8 +1131,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "dragdrop",
@@ -1231,8 +1167,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforecollapse",
@@ -1262,8 +1197,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "disabledchange",
@@ -1287,8 +1221,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeload",
@@ -1306,8 +1239,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "append",
@@ -1343,8 +1275,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforemove",
@@ -1386,8 +1317,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "insert",
@@ -1423,8 +1353,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeappend",
@@ -1454,8 +1383,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "move",
@@ -1497,8 +1425,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeremove",
@@ -1528,8 +1455,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "remove",
@@ -1559,8 +1485,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeinsert",
@@ -1596,8 +1521,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

@@ -28,64 +28,56 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "alignment",
       "type" : "String",
       "desc" : "The position to align to (see {@link Roo.Element#alignTo} for more details, defaults to \"l-l\").",
       "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hideEl",
       "type" : "Boolean",
       "desc" : "True to hide the bound element while the editor is displayed (defaults to false)",
       "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "maxWidth",
       "type" : "Number",
       "desc" : "The maximum width in pixels of the editor field (defaults to 250).  Note that if the maxWidth would exceed\nthe containing tree element's size, it will be automatically limited for you to the container width, taking\nscroll and client offsets into account prior to each edit.",
       "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "constrain",
       "type" : "Boolean",
       "desc" : "True to constrain the editor to the viewport",
       "memberOf" : "Roo.Editor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "shadow",
       "type" : "Boolean/String",
       "desc" : "\"sides\" for sides/bottom only, \"frame\" for 4-way shadow, and \"drop\"\nfor bottom-right shadow (defaults to \"frame\")",
       "memberOf" : "Roo.Editor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "field",
       "type" : "Roo.form.TextField|Object",
       "desc" : "The field configuration",
       "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -102,104 +94,91 @@
       "type" : "Mixed",
       "desc" : "The data value of the underlying field (defaults to \"\")",
       "memberOf" : "Roo.Editor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "CSS class to apply to the editor (defaults to \"x-small-editor x-tree-editor\")",
       "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "shim",
       "type" : "Boolean",
       "desc" : "True to shim the editor if selects/iframes could be displayed beneath it (defaults to false)",
       "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "cancelOnEsc",
       "type" : "Boolean",
       "desc" : "True to cancel the edit when the escape key is pressed (defaults to false)",
       "memberOf" : "Roo.Editor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "completeOnEnter",
       "type" : "Boolean",
       "desc" : "True to complete the edit when the enter key is pressed (defaults to false)",
       "memberOf" : "Roo.Editor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "revertInvalid",
       "type" : "Boolean",
       "desc" : "True to automatically revert the field value and cancel the edit when the user completes an edit and the field\nvalidation fails (defaults to true)",
       "memberOf" : "Roo.Editor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "tree",
       "type" : "Roo.tree.TreePanel",
       "desc" : "The tree to bind to.",
       "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "ignoreNoChange",
       "type" : "Boolean",
       "desc" : "True to skip the the edit completion process (no save, no events fired) if the user completes an edit and\nthe value has not changed (defaults to false).  Applies only to string values - edits for other data types\nwill never be ignored.",
       "memberOf" : "Roo.Editor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "autosize",
       "type" : "Boolean/String",
       "desc" : "True for the editor to automatically adopt the size of the underlying field, \"width\" to adopt the width only,\nor \"height\" to adopt the height only (defaults to false)",
       "memberOf" : "Roo.Editor",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "updateEl",
       "type" : "Boolean",
       "desc" : "True to update the innerHTML of the bound element when the update completes (defaults to false)",
       "memberOf" : "Roo.Editor",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -222,8 +201,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setSize",
@@ -250,8 +228,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "realign",
@@ -264,10 +241,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getValue",
@@ -280,8 +255,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -309,8 +283,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setValue",
@@ -331,8 +304,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "startEdit",
@@ -359,8 +331,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getId",
@@ -373,8 +344,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -402,8 +372,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "destroy",
@@ -416,10 +385,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "isVisible",
@@ -432,10 +399,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setDisabled",
@@ -456,8 +421,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -470,8 +434,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -518,8 +481,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -539,8 +501,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -587,8 +548,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -608,8 +568,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -629,10 +588,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -671,8 +628,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -705,8 +661,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -727,8 +682,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -749,8 +703,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -783,8 +736,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -877,8 +829,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -917,8 +868,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -944,8 +894,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforestartedit",
@@ -975,8 +924,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforecomplete",
@@ -1006,8 +954,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "complete",
@@ -1037,8 +984,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "specialkey",
@@ -1062,8 +1008,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "startedit",
@@ -1087,8 +1032,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforerender",
@@ -1106,8 +1050,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "disable",
@@ -1125,8 +1068,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "render",
@@ -1144,8 +1086,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "destroy",
@@ -1163,8 +1104,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -1182,8 +1122,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforehide",
@@ -1201,8 +1140,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "show",
@@ -1220,8 +1158,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeshow",
@@ -1239,8 +1176,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "enable",
@@ -1258,8 +1194,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforedestroy",
@@ -1277,8 +1212,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

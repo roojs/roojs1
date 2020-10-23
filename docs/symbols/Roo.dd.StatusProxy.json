@@ -1,7 +1,6 @@
 {
   "name" : "Roo.dd.StatusProxy",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "A specialized drag proxy that supports a drop status icon, {@link Roo.Layer} styles and auto-repair.  This is the\ndefault drag proxy used by all Roo.dd components.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -19,24 +18,21 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "dropNotAllowed",
       "type" : "String",
       "desc" : "The CSS class to apply to the status element when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
       "memberOf" : "Roo.dd.StatusProxy",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "dropAllowed",
       "type" : "String",
       "desc" : "The CSS class to apply to the status element when drop is allowed (defaults to \"x-dd-drop-ok\").",
       "memberOf" : "Roo.dd.StatusProxy",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -59,8 +55,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getGhost",
@@ -73,8 +68,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -94,8 +88,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -115,10 +108,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -139,8 +130,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "show",
@@ -153,10 +143,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "stop",
@@ -169,10 +157,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setStatus",
@@ -193,8 +179,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "update",
@@ -215,8 +200,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "repair",
@@ -249,10 +233,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

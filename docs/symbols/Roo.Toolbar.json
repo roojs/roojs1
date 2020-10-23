@@ -1,7 +1,6 @@
 {
   "name" : "Roo.Toolbar",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Basic Toolbar class.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -19,32 +18,28 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "text",
       "type" : "string",
       "desc" : "",
       "memberOf" : "Roo.Toolbar",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "container",
       "type" : "String/HTMLElement/Element",
       "desc" : "The id or element that will contain the toolbar",
       "memberOf" : "Roo.Toolbar",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "items",
       "type" : "Array",
       "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
       "memberOf" : "Roo",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -113,8 +108,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -134,10 +128,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "addSeparator",
@@ -150,8 +142,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -171,10 +162,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "addFill",
@@ -187,8 +176,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -208,8 +196,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -243,8 +230,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addField",
@@ -415,6 +401,5 @@
       ]
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

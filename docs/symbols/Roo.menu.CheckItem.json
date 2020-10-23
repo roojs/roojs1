@@ -23,48 +23,42 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "showDelay",
       "type" : "Number",
       "desc" : "Length of time in milliseconds to wait before showing this item (defaults to 200)",
       "memberOf" : "Roo.menu.Item",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "The text to show on the menu item.",
       "memberOf" : "Roo.menu.Item",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "activeClass",
       "type" : "String",
       "desc" : "The CSS class to use when the item becomes activated (defaults to \"x-menu-item-active\")",
       "memberOf" : "Roo.menu.BaseItem",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
       "desc" : "True to prevent creation of this menu item (defaults to false)",
       "memberOf" : "Roo.menu.BaseItem",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -81,104 +75,91 @@
       "type" : "String",
       "desc" : "All check items with the same group name will automatically be grouped into a single-select\nradio button group (defaults to '')",
       "memberOf" : "Roo.menu.CheckItem",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "handler",
       "type" : "Function",
       "desc" : "A function that will handle the click event of this menu item (defaults to undefined)",
       "memberOf" : "Roo.menu.BaseItem",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hideDelay",
       "type" : "Number",
       "desc" : "Length of time in milliseconds to wait before hiding after a click (defaults to 100)",
       "memberOf" : "Roo.menu.BaseItem",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hideOnClick",
       "type" : "Boolean",
       "desc" : "True to hide the containing menu after this item is clicked (defaults to true)",
       "memberOf" : "Roo.menu.BaseItem",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "itemCls",
       "type" : "String",
       "desc" : "The default CSS class to use for check items (defaults to \"x-menu-item x-menu-check-item\")",
       "memberOf" : "Roo.menu.CheckItem",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "HTML",
       "type" : "String",
       "desc" : "to render in menu\nThe text to show on the menu item (HTML version).",
       "memberOf" : "Roo.menu.Item",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "groupClass",
       "type" : "String",
       "desc" : "The default CSS class to use for radio group check items (defaults to \"x-menu-group-item\")",
       "memberOf" : "Roo.menu.CheckItem",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "canActivate",
       "type" : "Boolean",
       "desc" : "True if this item can be visually activated (defaults to true)",
       "memberOf" : "Roo.menu.Item",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "icon",
       "type" : "String",
       "desc" : "The path to an icon to display in this menu item (defaults to Roo.BLANK_IMAGE_URL)",
       "memberOf" : "Roo.menu.Item",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "checked",
       "type" : "Boolean",
       "desc" : "True to initialize this checkbox as checked (defaults to false).  Note that\nif this checkbox is part of a radio group (group = true) only the last item in the group that is\ninitialized with checked = true will be rendered as checked.",
       "memberOf" : "Roo.menu.CheckItem",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -207,8 +188,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setText",
@@ -235,8 +215,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getId",
@@ -249,8 +228,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -278,8 +256,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "destroy",
@@ -292,10 +269,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "isVisible",
@@ -308,10 +283,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setDisabled",
@@ -332,8 +305,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -346,8 +318,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -394,8 +365,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -415,8 +385,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -463,8 +432,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -484,8 +452,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -505,10 +472,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -547,8 +512,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -581,8 +545,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -603,8 +566,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -625,8 +587,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -659,8 +620,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -753,8 +713,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -793,8 +752,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -820,8 +778,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "checkchange",
@@ -845,8 +802,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "click",
@@ -870,8 +826,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "activate",
@@ -889,8 +844,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "deactivate",
@@ -908,8 +862,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforerender",
@@ -927,8 +880,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "disable",
@@ -946,8 +898,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "render",
@@ -965,8 +916,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "destroy",
@@ -984,8 +934,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -1003,8 +952,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforehide",
@@ -1022,8 +970,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "show",
@@ -1041,8 +988,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeshow",
@@ -1060,8 +1006,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "enable",
@@ -1079,8 +1024,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforedestroy",
@@ -1098,8 +1042,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

@@ -1,7 +1,6 @@
 {
   "name" : "Roo.form.Action",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Internal Class used to handle form actions",
   "isSingleton" : false,
   "isStatic" : false,
@@ -25,12 +24,8 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
-  "methods" : [
-  ],
-  "events" : [
-  ]
+  "returns" : [],
+  "config" : [],
+  "methods" : [],
+  "events" : []
 }

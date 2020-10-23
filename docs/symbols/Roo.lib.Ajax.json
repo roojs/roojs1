@@ -1,7 +1,6 @@
 {
   "name" : "Roo.lib.Ajax",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "request",
@@ -29,12 +25,9 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

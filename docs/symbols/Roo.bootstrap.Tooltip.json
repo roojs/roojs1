@@ -1,7 +1,6 @@
 {
   "name" : "Roo.bootstrap.Tooltip",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Bootstrap Tooltip class\nThis is basic at present - all componets support it by default, however they should add tooltipEl() method\nto determine which dom element triggers the tooltip.\n\nIt needs to add support for additional attributes like tooltip-position",
   "isSingleton" : false,
   "isStatic" : false,
@@ -19,10 +18,8 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "currentEl",
@@ -35,12 +32,9 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

@@ -22,160 +22,140 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hrefTarget",
       "type" : "String",
       "desc" : "target frame for the link",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "id",
       "type" : "String",
       "desc" : "The id for this node. If one is not specified, one is generated.",
       "memberOf" : "Roo.data.Node",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "The text for this node",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "uiProvider",
       "type" : "Function",
       "desc" : "A UI <b>class</b> to use for this node (defaults to Roo.tree.TreeNodeUI)",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "expanded",
       "type" : "Boolean",
       "desc" : "true to start the node expanded",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "qtipCfg",
       "type" : "String",
       "desc" : "An Ext QuickTip config for the node (used instead of qtip)",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "allowDrop",
       "type" : "Boolean",
       "desc" : "false if this node cannot be drop on",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "true to start the node disabled",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "A css class to be added to the node",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "iconCls",
       "type" : "String",
       "desc" : "A css class to be added to the nodes icon element for applying css background images",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "allowDrag",
       "type" : "Boolean",
       "desc" : "false to make this node undraggable if DD is on (defaults to true)",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "loader",
       "type" : "TreeLoader",
       "desc" : "A TreeLoader to be used by this node (defaults to the loader defined on the tree)",
       "memberOf" : "Roo.tree.AsyncTreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "icon",
       "type" : "String",
       "desc" : "The path to an icon for the node. The preferred way to do this",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "singleClickExpand",
       "type" : "Boolean",
       "desc" : "True for single click expand on this node",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "qtip",
       "type" : "String",
       "desc" : "An Ext QuickTip for the node",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "checked",
       "type" : "Boolean",
       "desc" : "True to render a checked checkbox for this node, false to render an unchecked checkbox\n(defaults to undefined with no checkbox rendered)",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "href",
       "type" : "String",
       "desc" : "URL of the link used for the node (defaults to #)",
       "memberOf" : "Roo.tree.TreeNode",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "leaf",
       "type" : "Boolean",
       "desc" : "true if this node is a leaf and does not have children",
       "memberOf" : "Roo.data.Node",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -190,8 +170,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -211,8 +190,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -240,8 +218,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "select",
@@ -254,10 +231,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "enable",
@@ -270,10 +245,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "collapseChildNodes",
@@ -294,8 +267,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "ensureVisible",
@@ -308,10 +280,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "isSelected",
@@ -324,8 +294,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -345,10 +314,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getUI",
@@ -361,8 +328,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -390,8 +356,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "toggle",
@@ -404,10 +369,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "unselect",
@@ -420,10 +383,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "isExpanded",
@@ -436,8 +397,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -465,8 +425,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "expand",
@@ -499,8 +458,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "collapse",
@@ -527,8 +485,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "sort",
@@ -555,8 +512,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeChild",
@@ -670,8 +626,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getDepth",
@@ -684,8 +639,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -759,8 +713,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -780,8 +733,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -801,8 +753,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -882,8 +833,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1016,8 +966,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "eachChild",
@@ -1050,8 +999,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "findChild",
@@ -1097,10 +1045,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -1139,8 +1085,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -1173,8 +1118,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -1195,8 +1139,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -1217,8 +1160,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -1251,8 +1193,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -1345,8 +1286,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -1385,8 +1325,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -1406,8 +1345,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeload",
@@ -1425,8 +1363,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforecollapse",
@@ -1456,8 +1393,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "dblclick",
@@ -1481,8 +1417,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "disabledchange",
@@ -1506,8 +1441,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforechildrenrendered",
@@ -1525,8 +1459,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeclick",
@@ -1550,8 +1483,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "checkchange",
@@ -1575,8 +1507,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "collapse",
@@ -1594,8 +1525,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "textchange",
@@ -1625,8 +1555,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeexpand",
@@ -1656,8 +1585,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "click",
@@ -1681,8 +1609,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "contextmenu",
@@ -1706,8 +1633,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "expand",
@@ -1725,8 +1651,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeappend",
@@ -1756,8 +1681,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "move",
@@ -1799,8 +1723,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "append",
@@ -1836,8 +1759,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeremove",
@@ -1867,8 +1789,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "remove",
@@ -1898,8 +1819,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeinsert",
@@ -1935,8 +1855,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "insert",
@@ -1972,8 +1891,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforemove",
@@ -2015,8 +1933,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

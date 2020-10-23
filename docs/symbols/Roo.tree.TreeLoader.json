@@ -20,80 +20,70 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "clearOnLoad",
       "type" : "Boolean",
       "desc" : "(optional) Default to true. Remove previously existing\nchild nodes before loading.",
       "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "dataUrl",
       "type" : "String",
       "desc" : "The URL from which to request a Json string which\nspecifies an array of node definition object representing the child nodes\nto be loaded.",
       "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "root",
       "type" : "String",
       "desc" : "(optional) Default to false. Use this to read data from an object \nproperty on loading, rather than expecting an array. (eg. more compatible to a standard\nGrid query { data : [ .....] }",
       "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "requestMethod",
       "type" : "String",
       "desc" : "either GET or POST\ndefaults to POST (due to BC)\nto be loaded.",
       "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "baseParams",
       "type" : "Object",
       "desc" : "(optional) An object containing properties which\nspecify HTTP parameters to be passed to each request for child nodes.",
       "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "baseAttrs",
       "type" : "Object",
       "desc" : "(optional) An object containing attributes to be added to all nodes\ncreated by this loader. If the attributes sent by the server have an attribute in this object,\nthey take priority.",
       "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "uiProviders",
       "type" : "Object",
       "desc" : "(optional) An object containing properties which\n\nDEPRECATED - use 'create' event handler to modify attributes - which affect creation.\nspecify custom {@link Roo.tree.TreeNodeUI} implementations. If the optional\n<i>uiProvider</i> attribute of a returned child node is a string rather\nthan a reference to a TreeNodeUI implementation, this that string value\nis used as a property name in the uiProviders object. You can define the provider named\n'default' , and this will be used for all nodes (if no uiProvider is delivered by the node data)",
       "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "queryParam",
       "type" : "String",
       "desc" : "(optional) \nName of the query as it will be passed on the querystring (defaults to 'node')\neg. the request will be ?node=[id]",
       "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -122,8 +112,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "purgeListeners",
@@ -136,10 +125,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -178,8 +165,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -212,8 +198,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -234,8 +219,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -256,8 +240,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -290,8 +273,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -384,8 +366,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -424,8 +405,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -451,8 +431,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeload",
@@ -482,8 +461,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "load",
@@ -513,8 +491,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "loadexception",
@@ -544,8 +521,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

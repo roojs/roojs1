@@ -21,96 +21,84 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "startDay",
       "type" : "Number",
       "desc" : "Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "monthYearText",
       "type" : "String",
       "desc" : "The header month selector tooltip (defaults to 'Choose a month (Control+Up/Down to move years)')",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "monthNames",
       "type" : "Array",
       "desc" : "An array of textual month names which can be overriden for localization support (defaults to Date.monthNames)",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "format",
       "type" : "String",
       "desc" : "The default date format string which can be overriden for localization support.  The format must be\nvalid according to {@link Date#parseDate} (defaults to 'm/d/y').",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "nextText",
       "type" : "String",
       "desc" : "The next month navigation button tooltip (defaults to 'Next Month (Control+Right)')",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "maxText",
       "type" : "String",
       "desc" : "The error text to display if the maxDate validation fails (defaults to \"This date is after the maximum date\")",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "constrainToViewport",
       "type" : "Boolean",
       "desc" : "True to constrain the date picker to the viewport (defaults to true)",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "minText",
       "type" : "String",
       "desc" : "The error text to display if the minDate validation fails (defaults to \"This date is before the minimum date\")",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disabledDatesText",
       "type" : "String",
       "desc" : "The tooltip text to display when the date falls on a disabled date (defaults to \"\")",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "todayTip",
       "type" : "String",
       "desc" : "The tooltip to display for the button that selects the current date (defaults to \"{current date} (Spacebar)\")",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -127,112 +115,98 @@
       "type" : "String",
       "desc" : "The text to display on the button that selects the current date (defaults to \"Today\")",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "cancelText",
       "type" : "String",
       "desc" : "The text to display on the cancel button",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "showClear",
       "type" : "Bool",
       "desc" : "Show a clear button (usefull for date form elements that can be blank.)",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "prevText",
       "type" : "String",
       "desc" : "The previous month navigation button tooltip (defaults to 'Previous Month (Control+Left)')",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "dayNames",
       "type" : "Array",
       "desc" : "An array of textual day names which can be overriden for localization support (defaults to Date.dayNames)",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disabledDaysText",
       "type" : "String",
       "desc" : "The tooltip to display when the date falls on a disabled day (defaults to \"\")",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disabledDatesRE",
       "type" : "RegExp",
       "desc" : "JavaScript regular expression used to disable a pattern of dates (defaults to null)",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "minDate",
       "type" : "Date",
       "desc" : "Minimum allowable date (JavaScript date object, defaults to null)",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disabledDays",
       "type" : "Array",
       "desc" : "An array of days to disable, 0-based. For example, [0, 6] disables Sunday and Saturday (defaults to null).",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "okText",
       "type" : "String",
       "desc" : "The text to display on the ok button",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "maxDate",
       "type" : "Date",
       "desc" : "Maximum allowable date (JavaScript date object, defaults to null)",
       "memberOf" : "Roo.DatePicker",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -247,8 +221,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -276,8 +249,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getId",
@@ -290,8 +262,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -319,8 +290,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "destroy",
@@ -333,10 +303,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "isVisible",
@@ -349,10 +317,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setDisabled",
@@ -373,8 +339,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -387,8 +352,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -435,8 +399,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -456,8 +419,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -504,8 +466,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -525,8 +486,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -546,10 +506,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -588,8 +546,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -622,8 +579,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -644,8 +600,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -666,8 +621,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -700,8 +654,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -794,8 +747,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -834,8 +786,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -861,8 +812,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "monthchange",
@@ -886,8 +836,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforerender",
@@ -905,8 +854,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "disable",
@@ -924,8 +872,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "render",
@@ -943,8 +890,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "destroy",
@@ -962,8 +908,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -981,8 +926,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforehide",
@@ -1000,8 +944,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "show",
@@ -1019,8 +962,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeshow",
@@ -1038,8 +980,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "enable",
@@ -1057,8 +998,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforedestroy",
@@ -1076,8 +1016,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

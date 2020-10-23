@@ -21,104 +21,91 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "selectedClass",
       "type" : "String",
       "desc" : "The css class to add to selected nodes",
       "memberOf" : "Roo.View",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "dataName",
       "type" : "String",
       "desc" : "the named area of the template to use as the data area\n                         Works with domtemplates roo-name=\"name\"",
       "memberOf" : "Roo.View",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "to display on mask (default Loading)",
       "memberOf" : "Roo.View",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "multiSelect",
       "type" : "Boolean",
       "desc" : "Allow multiple selection",
       "memberOf" : "Roo.View",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "emptyText",
       "type" : "String",
       "desc" : "The empty text to show when nothing is loaded.",
       "memberOf" : "Roo.View",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "store",
       "type" : "Roo.data.Store",
       "desc" : "Data store to load data from.",
       "memberOf" : "Roo.View",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "toggleSelect",
       "type" : "Boolean",
       "desc" : "- selecting",
       "memberOf" : "Roo.View",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "singleSelect",
       "type" : "Boolean",
       "desc" : "Allow single selection",
       "memberOf" : "Roo.View",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "tickable",
       "type" : "Boolean",
       "desc" : "- selecting",
       "memberOf" : "Roo.View",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "el",
       "type" : "String|Roo.Element",
       "desc" : "The container element.",
       "memberOf" : "Roo.View",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "tpl",
       "type" : "String|Roo.Template",
       "desc" : "The template used by this View",
       "memberOf" : "Roo.View",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -160,8 +147,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -201,8 +187,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "refresh",
@@ -215,10 +200,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "filterBy",
@@ -245,8 +228,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "clearFilter",
@@ -259,10 +241,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "load",
@@ -301,8 +281,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "filter",
@@ -329,8 +308,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getSelectedNodes",
@@ -343,8 +321,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -417,8 +394,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "clearSelections",
@@ -439,8 +415,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "isSelected",
@@ -480,10 +455,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getSelectedIndexes",
@@ -496,8 +469,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -544,8 +516,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -573,8 +544,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "refreshNode",
@@ -595,8 +565,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "prepareData",
@@ -617,8 +586,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getSelectionCount",
@@ -631,8 +599,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -699,8 +666,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getNode",
@@ -740,10 +706,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -782,8 +746,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -816,8 +779,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -838,8 +800,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -860,8 +821,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -894,8 +854,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -988,8 +947,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -1028,8 +986,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -1055,8 +1012,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "load",
@@ -1086,8 +1042,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforerender",
@@ -1111,8 +1066,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "dblclick",
@@ -1148,8 +1102,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "preparedata",
@@ -1173,8 +1126,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "selectionchange",
@@ -1198,8 +1150,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeselect",
@@ -1229,8 +1180,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeclick",
@@ -1266,8 +1216,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "click",
@@ -1303,8 +1252,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "contextmenu",
@@ -1340,8 +1288,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

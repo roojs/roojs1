@@ -20,160 +20,140 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "editor",
       "type" : "Roo.grid.GridEditor",
       "desc" : "(Optional) For grid editors - returns the grid editor",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "cursor",
       "type" : "String",
       "desc" : "(Optional)",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "tooltip",
       "type" : "String",
       "desc" : "(Optional)",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "md",
       "type" : "Number",
       "desc" : "(Optional)",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "align",
       "type" : "String",
       "desc" : "(Optional) Set the CSS text-align property of the column.  Defaults to undefined.",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "fixed",
       "type" : "Boolean",
       "desc" : "(Optional) True if the column width cannot be changed.  Defaults to false.",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
       "desc" : "(Optional) True to hide the column. Defaults to false.",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "valign",
       "type" : "String",
       "desc" : "(Optional) Set the CSS vertical-align property of the column (eg. middle, top, bottom etc).  Defaults to undefined.",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "locked",
       "type" : "Boolean",
       "desc" : "(Optional) True to lock the column in place while scrolling the Grid.  Defaults to false.",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "lg",
       "type" : "Number",
       "desc" : "(Optional)",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "renderer",
       "type" : "Function",
       "desc" : "(Optional) A function used to generate HTML markup for a cell\ngiven the cell's data value. See {@link #setRenderer}. If not specified, the\ndefault renderer returns the escaped data value. If an object is returned (bootstrap only)\nthen it is treated as a Roo Component object instance, and it is rendered after the initial row is rendered",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "xs",
       "type" : "Number",
       "desc" : "(Optional)",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "sortable",
       "type" : "Boolean",
       "desc" : "(Optional) True if sorting is to be allowed on this column.\nDefaults to the value of the {@link #defaultSortable} property.\nWhether local/remote sorting is used is specified in {@link Roo.data.Store#remoteSort}.",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "(Optional) The initial width in pixels of the column. Using this\ninstead of {@link Roo.grid.Grid#autoSizeColumns} is more efficient.",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "header",
       "type" : "String",
       "desc" : "The header text to display in the Grid view.",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "resizable",
       "type" : "Boolean",
       "desc" : "(Optional) False to disable column resizing. Defaults to true.",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "dataIndex",
       "type" : "String",
       "desc" : "(Optional) The name of the field in the grid's {@link Roo.data.Store}'s\n{@link Roo.data.Record} definition from which to draw the column's value. If not\nspecified, the column's index is used as an index into the Record's data Array.",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "sm",
       "type" : "Number",
       "desc" : "(Optional)",
       "memberOf" : "Roo.grid.ColumnModel",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -202,8 +182,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "isHidden",
@@ -257,8 +236,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getColumnCount",
@@ -271,8 +249,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -387,8 +364,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setDataIndex",
@@ -415,8 +391,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "isCellEditable",
@@ -522,10 +497,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getCellEditor",
@@ -625,8 +598,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -660,8 +632,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setHidden",
@@ -688,8 +659,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setEditable",
@@ -716,8 +686,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getColumnById",
@@ -798,8 +767,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "findColumnIndex",
@@ -920,10 +888,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -962,8 +928,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -996,8 +961,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -1018,8 +982,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -1040,8 +1003,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -1074,8 +1036,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -1168,8 +1129,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -1208,8 +1168,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -1241,8 +1200,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "headerchange",
@@ -1272,8 +1230,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "columlockchange",
@@ -1303,8 +1260,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "columnmoved",
@@ -1334,8 +1290,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "widthchange",
@@ -1365,8 +1320,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

@@ -26,240 +26,210 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "y",
       "type" : "Number",
       "desc" : "The default top page coordinate of the dialog (defaults to center screen)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "modal",
       "type" : "Boolean",
       "desc" : "True to show the dialog modally, preventing user interaction with the rest of the page (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "animateTarget",
       "type" : "String/Element",
       "desc" : "Id or element from which the dialog should animate while opening\n(defaults to null with no animation)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "shadow",
       "type" : "Boolean/String",
       "desc" : "True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\" for bottom-right\nshadow (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "autoScroll",
       "type" : "Boolean",
       "desc" : "True to allow the dialog body contents to overflow and display scrollbars (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "collapsible",
       "type" : "Boolean",
       "desc" : "False to remove the built-in top-right corner collapse button (defaults to true)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "autoTabs",
       "type" : "Boolean",
       "desc" : "If true, all elements with class 'x-dlg-tab' will get automatically converted to tabs (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "shadowOffset",
       "type" : "Number",
       "desc" : "The number of pixels to offset the shadow if displayed (defaults to 5)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "buttons",
       "type" : "Array",
       "desc" : "Array of buttons",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "minButtonWidth",
       "type" : "Number",
       "desc" : "Minimum width of all dialog buttons (defaults to 75)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "title",
       "type" : "String",
       "desc" : "Default text to display in the title bar (defaults to null)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "minWidth",
       "type" : "Number",
       "desc" : "The minimum allowable width for a resizable dialog (defaults to 200)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "buttonAlign",
       "type" : "String",
       "desc" : "Valid values are \"left,\" \"center\" and \"right\" (defaults to \"right\")",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "autoCreate",
       "type" : "Boolean/DomHelper",
       "desc" : "True to auto create from scratch, or using a DomHelper Object (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "minHeight",
       "type" : "Number",
       "desc" : "The minimum allowable height for a resizable dialog (defaults to 80)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "proxyDrag",
       "type" : "Boolean",
       "desc" : "True to drag a lightweight proxy element rather than the dialog itself, used when\ndraggable = true (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "shim",
       "type" : "Boolean",
       "desc" : "True to create an iframe shim that prevents selects from showing through (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "Width of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "constraintoviewport",
       "type" : "Boolean",
       "desc" : "True to keep the dialog constrained within the visible viewport boundaries (defaults to true)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "syncHeightBeforeShow",
       "type" : "Boolean",
       "desc" : "True to cause the dimensions to be recalculated before the dialog is shown (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "tabTag",
       "type" : "String",
       "desc" : "The tag name of tab elements, used when autoTabs = true (defaults to 'div')",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "resizable",
       "type" : "Boolean",
       "desc" : "False to disable manual dialog resizing (defaults to true)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "closable",
       "type" : "Boolean",
       "desc" : "False to remove the built-in top-right corner close button (defaults to true)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "fixedcenter",
       "type" : "Boolean",
       "desc" : "True to ensure that anytime the dialog is shown or resized it gets centered (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "Height of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "resizeHandles",
       "type" : "String",
       "desc" : "Which resize handles to display - see the {@link Roo.Resizable} handles config\nproperty for valid values (defaults to 'all')",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "x",
       "type" : "Number",
       "desc" : "The default left page coordinate of the dialog (defaults to center screen)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "draggable",
       "type" : "Boolean",
       "desc" : "False to disable dragging of the dialog within the viewport (defaults to true)",
       "memberOf" : "Roo.BasicDialog",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -274,10 +244,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "alignTo",
@@ -356,8 +324,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -410,8 +377,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -431,10 +397,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "initTabs",
@@ -447,8 +411,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -468,8 +431,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -557,8 +519,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "show",
@@ -721,10 +682,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getTabs",
@@ -737,8 +696,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -785,8 +743,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -839,8 +796,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -860,8 +816,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -881,10 +836,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -923,8 +876,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -957,8 +909,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -979,8 +930,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -1001,8 +951,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -1035,8 +984,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -1129,8 +1077,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -1169,8 +1116,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -1202,8 +1148,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "resize",
@@ -1233,8 +1178,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforehide",
@@ -1252,8 +1196,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeshow",
@@ -1271,8 +1214,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -1290,8 +1232,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "show",
@@ -1309,8 +1250,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "keydown",
@@ -1334,8 +1274,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

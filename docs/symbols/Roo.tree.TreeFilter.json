@@ -1,7 +1,6 @@
 {
   "name" : "Roo.tree.TreeFilter",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Note this class is experimental and doesn't update the indent (lines) or expand collapse icons of the nodes",
   "isSingleton" : false,
   "isStatic" : false,
@@ -25,10 +24,8 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "clear",
@@ -41,10 +38,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "filter",
@@ -77,8 +72,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "filterBy",
@@ -105,10 +99,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

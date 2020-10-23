@@ -1,7 +1,6 @@
 {
   "name" : "_global_",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "escape",
@@ -29,10 +25,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "merge",
@@ -45,10 +39,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "Renderer",
@@ -61,10 +53,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "InlineLexer",
@@ -77,10 +67,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "marked",
@@ -93,10 +81,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "noop",
@@ -109,10 +95,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "Lexer",
@@ -125,10 +109,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "Parser",
@@ -141,12 +123,9 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

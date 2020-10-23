@@ -1,7 +1,6 @@
 {
   "name" : "Roo.data.MemoryProxy",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor\nto the Reader when its load method is called.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -19,10 +18,8 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "load",
@@ -67,10 +64,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

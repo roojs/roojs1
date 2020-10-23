@@ -20,10 +20,8 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "setElementSize",
@@ -56,8 +54,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getElementSize",
@@ -78,10 +75,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

@@ -1,7 +1,6 @@
 {
   "name" : "Roo.data.SortTypes",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Defines the default sorting (casting?) comparison functions used when sorting data.",
   "isSingleton" : true,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "asFloat",
@@ -208,6 +204,5 @@
       ]
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

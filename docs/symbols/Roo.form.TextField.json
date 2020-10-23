@@ -23,8 +23,7 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "hideMode",
@@ -41,344 +40,301 @@
       "type" : "Boolean",
       "desc" : "True to disable input keystroke filtering (defaults to false)",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "True to disable the field (defaults to false).",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "validator",
       "type" : "Function",
       "desc" : "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "name",
       "type" : "String",
       "desc" : "The field's HTML name attribute.",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "width (optional) size of component",
       "memberOf" : "Roo.BoxComponent",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "regexText",
       "type" : "String",
       "desc" : "The error text to display if {@link #regex} is used and the test fails during validation (defaults to \"\")",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "height (optional) size of component",
       "memberOf" : "Roo.BoxComponent",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "value",
       "type" : "Mixed",
       "desc" : "A value to initialize this field with.",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "emptyText",
       "type" : "String",
       "desc" : "The default text to display in an empty field - placeholder... (defaults to null).",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "msgFx",
       "type" : "String",
       "desc" : "<b>Experimental</b> The effect used when displaying a validation message under the field (defaults to 'normal').",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "msgTarget",
       "type" : "String",
       "desc" : "The location where error text should display.  Should be one of the following values (defaults to 'qtip'):\n<pre>\nValue         Description\n-----------   ----------------------------------------------------------------------\nqtip          Display a quick tip when the user hovers over the field\ntitle         Display a default browser title attribute popup\nunder         Add a block div beneath the field containing the error text\nside          Add an error icon to the right of the field with a popup on hover\n[element id]  Add the error text directly to the innerHTML of the specified element\n</pre>",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "maxLengthText",
       "type" : "String",
       "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "minLengthText",
       "type" : "String",
       "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "readOnly",
       "type" : "Boolean",
       "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "focusClass",
       "type" : "String",
       "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the field's underlying element.",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "validateOnBlur",
       "type" : "Boolean",
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "inputType",
       "type" : "String",
       "desc" : "The type attribute for input fields -- e.g. radio, text, password (defaults to \"text\").",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "fieldClass",
       "type" : "String",
       "desc" : "The default CSS class for the field (defaults to \"x-form-field\")",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "allowLeadingSpace",
       "type" : "Boolean",
       "desc" : "True to prevent the stripping of leading white space",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"20\", autocomplete: \"off\"})",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "invalidClass",
       "type" : "String",
       "desc" : "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "maskRe",
       "type" : "String",
       "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "vtype",
       "type" : "String",
       "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "growMin",
       "type" : "Number",
       "desc" : "The minimum width to allow when grow = true (defaults to 30)",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "validationEvent",
       "type" : "String/Boolean",
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "fieldLabel",
       "type" : "String",
       "desc" : "Label to use when rendering a form.",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "blankText",
       "type" : "String",
       "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "validationDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "selectOnFocus",
       "type" : "Boolean",
       "desc" : "True to automatically select any existing field text when the field receives input focus (defaults to false)",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "tabIndex",
       "type" : "Number",
       "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "growMax",
       "type" : "Number",
       "desc" : "The maximum width to allow when grow = true (defaults to 800)",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "regex",
       "type" : "RegExp",
       "desc" : "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "minLength",
       "type" : "Number",
       "desc" : "Minimum input field length required (defaults to 0)",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "grow",
       "type" : "Boolean",
       "desc" : "True if this field should automatically grow and shrink to its content",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "allowBlank",
       "type" : "Boolean",
       "desc" : "False to validate that the value length > 0 (defaults to true)",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "qtip",
       "type" : "String",
       "desc" : "Mouse over tip",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "maxLength",
       "type" : "Number",
       "desc" : "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
       "memberOf" : "Roo.form.TextField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "invalidText",
       "type" : "String",
       "desc" : "The error text to use when marking a field invalid and no message is provided (defaults to \"The value in this field is invalid\")",
       "memberOf" : "Roo.form.Field",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -407,8 +363,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "validateValue",
@@ -448,10 +403,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "reset",
@@ -464,10 +417,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "validate",
@@ -480,8 +431,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -501,8 +451,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -530,8 +479,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getName",
@@ -544,8 +492,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -573,8 +520,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getRawValue",
@@ -587,8 +533,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -635,10 +580,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "isDirty",
@@ -651,10 +594,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setRawValue",
@@ -675,8 +616,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "clearInvalid",
@@ -689,10 +629,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "isValid",
@@ -732,10 +670,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "updateBox",
@@ -756,8 +692,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setPagePosition",
@@ -784,8 +719,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "syncSize",
@@ -798,10 +732,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setSize",
@@ -900,8 +832,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getBox",
@@ -922,8 +853,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getSize",
@@ -936,8 +866,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -971,8 +900,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setPosition",
@@ -999,8 +927,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getId",
@@ -1013,8 +940,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1042,8 +968,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "destroy",
@@ -1056,10 +981,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "isVisible",
@@ -1072,10 +995,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setDisabled",
@@ -1096,8 +1017,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -1110,8 +1030,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1158,8 +1077,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1179,8 +1097,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1227,8 +1144,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1248,8 +1164,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1269,10 +1184,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -1311,8 +1224,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -1345,8 +1257,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -1367,8 +1278,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -1389,8 +1299,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -1423,8 +1332,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -1517,8 +1425,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -1557,8 +1464,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -1584,8 +1490,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "blur",
@@ -1603,8 +1508,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "valid",
@@ -1622,8 +1526,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "specialkey",
@@ -1647,8 +1550,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "focus",
@@ -1666,8 +1568,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "keyup",
@@ -1691,8 +1592,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "invalid",
@@ -1716,8 +1616,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "change",
@@ -1747,8 +1646,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "move",
@@ -1778,8 +1676,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "resize",
@@ -1821,8 +1718,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforerender",
@@ -1840,8 +1736,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "disable",
@@ -1859,8 +1754,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "render",
@@ -1878,8 +1772,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "destroy",
@@ -1897,8 +1790,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -1916,8 +1808,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforehide",
@@ -1935,8 +1826,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "show",
@@ -1954,8 +1844,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeshow",
@@ -1973,8 +1862,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "enable",
@@ -1992,8 +1880,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforedestroy",
@@ -2011,8 +1898,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

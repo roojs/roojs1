@@ -24,32 +24,28 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "triggerClass",
       "type" : "String",
       "desc" : "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",
       "memberOf" : "Roo.bootstrap.TriggerField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "validFeedbackIcon",
       "type" : "String",
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "lg",
       "type" : "Number",
       "desc" : "colspan out of 12 for large computer-sized screens",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "accept",
@@ -67,8 +63,7 @@
       "type" : "Number",
       "desc" : "colspan out of 12 for mobile-sized screens",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -85,56 +80,49 @@
       "type" : "Boolean",
       "desc" : "True to disable input keystroke filtering (defaults to false)",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "is it disabled",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "validator",
       "type" : "Function",
       "desc" : "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "name",
       "type" : "String",
       "desc" : "name of the input",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "autocomplete",
       "type" : "String",
       "desc" : "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "labelAlign",
@@ -151,40 +139,35 @@
       "type" : "String",
       "desc" : "-- Depricated - use Invalid Text",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "labelmd",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "value",
       "type" : "string",
       "desc" : "default value of the input",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hasFeedback",
@@ -201,56 +184,49 @@
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "sm",
       "type" : "Number",
       "desc" : "colspan out of 12 for tablet-sized screens",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "maxLengthText",
       "type" : "String",
       "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "minLengthText",
       "type" : "String",
       "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "readOnly",
       "type" : "Boolean",
       "desc" : "Specifies that the field should be read-only",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "indicatorpos",
@@ -278,40 +254,35 @@
       "type" : "String",
       "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "size",
       "type" : "string",
       "desc" : "- (lg|sm) or leave empty..",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "labellg",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "validateOnBlur",
       "type" : "Boolean",
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "hideTrigger",
       "type" : "Boolean",
       "desc" : "True to hide the trigger element and display only the base text field (defaults to false)",
       "memberOf" : "Roo.bootstrap.TriggerField",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "removable",
@@ -328,16 +299,14 @@
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "caret",
@@ -354,104 +323,91 @@
       "type" : "String",
       "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "invalidClass",
       "type" : "String",
       "desc" : "DEPRICATED - code uses BS4 - is-valid / is-invalid",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "maskRe",
       "type" : "String",
       "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "validationEvent",
       "type" : "String/Boolean",
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "vtype",
       "type" : "String",
       "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "fieldLabel",
       "type" : "string",
       "desc" : "- the label associated",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "blankText",
       "type" : "String",
       "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "before",
       "type" : "string",
       "desc" : "- input group add on before",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "validationDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "selectOnFocus",
       "type" : "Boolean",
       "desc" : "True to automatically select any existing field text when the field receives input focus (defaults to false)",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "invalidFeedbackIcon",
       "type" : "String",
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "visibilityEl",
@@ -468,56 +424,49 @@
       "type" : "String",
       "desc" : "default '+852'",
       "memberOf" : "Roo.bootstrap.PhoneInput",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "placeholder",
       "type" : "string",
       "desc" : "- placeholder to put in text.",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "md",
       "type" : "Number",
       "desc" : "colspan out of 12 for computer-sized screens",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "regex",
       "type" : "RegExp",
       "desc" : "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "labelWidth",
       "type" : "Number",
       "desc" : "set the width of label",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "minLength",
       "type" : "Number",
       "desc" : "Minimum input field length required (defaults to 0)",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "capture",
@@ -534,24 +483,21 @@
       "type" : "String",
       "desc" : "DEPRICATED - code uses BS4 - is-valid / is-invalid",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "allowBlank",
       "type" : "Boolean",
       "desc" : "False to validate that the value length > 0 (defaults to true)",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "preferedCountries",
       "type" : "Array",
       "desc" : "default []",
       "memberOf" : "Roo.bootstrap.PhoneInput",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "forceFeedback",
@@ -568,32 +514,28 @@
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "after",
       "type" : "string",
       "desc" : "- input group add on after",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "maxLength",
       "type" : "Number",
       "desc" : "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "invalidText",
       "type" : "String",
       "desc" : "The error text to display if {@link #validator} test fails during validation (defaults to \"\")",
       "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -616,8 +558,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "autoSize",
@@ -630,10 +571,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "clearInvalid",
@@ -646,10 +585,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "validate",
@@ -662,8 +599,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -691,8 +627,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getRawValue",
@@ -705,8 +640,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -726,10 +660,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getName",
@@ -742,8 +674,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -763,10 +694,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getValue",
@@ -779,8 +708,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -808,8 +736,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setRawValue",
@@ -830,8 +757,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "inputEl",
@@ -844,10 +770,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "validateValue",
@@ -887,8 +811,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -908,10 +831,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "show",
@@ -924,10 +845,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setVisibilityEl",
@@ -940,10 +859,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getVisibilityEl",
@@ -956,10 +873,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "initEvents",
@@ -972,10 +887,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getChildContainer",
@@ -988,8 +901,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1009,8 +921,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1038,8 +949,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "destroy",
@@ -1052,10 +962,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "isVisible",
@@ -1068,10 +976,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setDisabled",
@@ -1092,8 +998,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "focus",
@@ -1133,8 +1038,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1181,8 +1085,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1202,8 +1105,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1223,10 +1125,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -1265,8 +1165,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -1299,8 +1198,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -1321,8 +1219,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -1343,8 +1240,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -1377,8 +1273,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -1471,8 +1366,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -1511,8 +1405,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -1544,8 +1437,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "invalid",
@@ -1569,8 +1461,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "valid",
@@ -1588,8 +1479,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "blur",
@@ -1607,8 +1497,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "specialkey",
@@ -1632,8 +1521,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "focus",
@@ -1651,8 +1539,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "keyup",
@@ -1676,8 +1563,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "childrenrendered",
@@ -1695,8 +1581,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforerender",
@@ -1714,8 +1599,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "disable",
@@ -1733,8 +1617,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "render",
@@ -1752,8 +1635,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "destroy",
@@ -1771,8 +1653,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -1790,8 +1671,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforehide",
@@ -1809,8 +1689,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "show",
@@ -1828,8 +1707,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeshow",
@@ -1847,8 +1725,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "enable",
@@ -1866,8 +1743,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforedestroy",
@@ -1885,8 +1761,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

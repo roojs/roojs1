@@ -1,7 +1,6 @@
 {
   "name" : "Number",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "constrain",
@@ -52,6 +48,5 @@
       ]
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

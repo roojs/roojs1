@@ -1,7 +1,6 @@
 {
   "name" : "Roo.DDView",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "A DnD enabled version of Roo.View.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -31,40 +30,35 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "dropGroup",
       "type" : "String/Array",
       "desc" : "The ddgroup name(s) for the View's DropZone.",
       "memberOf" : "Roo.DDView",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "allowCopy",
       "type" : "Boolean",
       "desc" : "Causes ctrl/drag operations to copy nodes rather than move.",
       "memberOf" : "Roo.DDView",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "copy",
       "type" : "Boolean",
       "desc" : "Causes drag operations to copy nodes rather than move.",
       "memberOf" : "Roo.DDView",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "dragGroup",
       "type" : "String/Array",
       "desc" : "The ddgroup name(s) for the View's DragZone.",
       "memberOf" : "Roo.DDView",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -79,10 +73,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getValue",
@@ -95,8 +87,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -124,8 +115,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setValue",
@@ -138,10 +128,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getTargetFromEvent",
@@ -154,10 +142,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "onDblClick",
@@ -170,10 +156,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getDragData",
@@ -186,10 +170,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setDraggable",
@@ -202,10 +184,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getName",
@@ -218,10 +198,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "remove",
@@ -242,8 +220,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getContextMenu",
@@ -256,10 +233,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "setDroppable",
@@ -272,12 +247,9 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

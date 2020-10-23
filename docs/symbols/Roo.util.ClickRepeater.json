@@ -26,72 +26,63 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "stopDefault",
       "type" : "Boolean",
       "desc" : "True to stop the default click event",
       "memberOf" : "Roo.util.ClickRepeater",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "delay",
       "type" : "Number",
       "desc" : "The initial delay before the repeating event begins firing.\nSimilar to an autorepeat key delay.",
       "memberOf" : "Roo.util.ClickRepeater",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "accelerate",
       "type" : "Boolean",
       "desc" : "True if autorepeating should start slowly and accelerate.\n          \"interval\" and \"delay\" are ignored. \"immediate\" is honored.",
       "memberOf" : "Roo.util.ClickRepeater",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "preventDefault",
       "type" : "Boolean",
       "desc" : "True to prevent the default click event",
       "memberOf" : "Roo.util.ClickRepeater",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "interval",
       "type" : "Number",
       "desc" : "The interval between firings of the \"click\" event. Default 10 ms.",
       "memberOf" : "Roo.util.ClickRepeater",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "el",
       "type" : "String/HTMLElement/Element",
       "desc" : "The element to act as a button.",
       "memberOf" : "Roo.util.ClickRepeater",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "pressClass",
       "type" : "String",
       "desc" : "A CSS class name to be applied to the element while pressed.",
       "memberOf" : "Roo.util.ClickRepeater",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -106,10 +97,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -148,8 +137,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -182,8 +170,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -204,8 +191,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -226,8 +212,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -260,8 +245,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -354,8 +338,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -394,8 +377,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -415,8 +397,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "click",
@@ -434,8 +415,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "mouseup",
@@ -453,8 +433,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

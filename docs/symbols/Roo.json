@@ -1,7 +1,6 @@
 {
   "name" : "Roo",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Roo core utilities and functions.",
   "isSingleton" : true,
   "isStatic" : false,
@@ -11,42 +10,36 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
+  "params" : [],
+  "returns" : [],
   "config" : [
     {
       "name" : "removeMask",
       "type" : "Boolean",
       "desc" : "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
       "memberOf" : "Roo",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "items",
       "type" : "Array",
       "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
       "memberOf" : "Roo",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "mode",
       "type" : "String",
       "desc" : "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
       "memberOf" : "Roo",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "tree",
       "type" : "Roo.tree.TreePanel",
       "desc" : "The tree TreePanel, with config etc.",
       "memberOf" : "Roo",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -81,8 +74,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "get",
@@ -122,10 +114,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getDom",
@@ -200,8 +190,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "factory",
@@ -228,8 +217,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "apply",
@@ -301,8 +289,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "select",
@@ -474,10 +461,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "fly",
@@ -669,8 +654,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "namespace",
@@ -703,8 +687,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "override",
@@ -731,8 +714,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "selectNode",
@@ -795,6 +777,5 @@
       ]
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

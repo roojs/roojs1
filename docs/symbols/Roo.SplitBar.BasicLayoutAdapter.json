@@ -1,7 +1,6 @@
 {
   "name" : "Roo.SplitBar.BasicLayoutAdapter",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Default Adapter. It assumes the splitter and resizing element are not positioned\nelements and only gets/sets the width of the element. Generally used for table based layouts.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "setElementSize",
@@ -49,8 +45,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getElementSize",
@@ -71,10 +66,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

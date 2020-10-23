@@ -1,9 +1,7 @@
 {
   "Array" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "indexOf",
@@ -32,10 +30,8 @@
     ]
   },
   "Date" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "add",
@@ -184,10 +180,8 @@
     ]
   },
   "Function" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "createCallback",
@@ -232,10 +226,8 @@
     ]
   },
   "Number" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "constrain",
@@ -248,10 +240,8 @@
     ]
   },
   "Roo" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "addBehaviors",
@@ -3344,10 +3334,8 @@
     ]
   },
   "Roo.ComponentMgr" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "get",
@@ -3384,10 +3372,8 @@
     ]
   },
   "Roo.CompositeElement" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "add",
@@ -3496,10 +3482,8 @@
     ]
   },
   "Roo.CompositeElementLite" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "add",
@@ -3957,8 +3941,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "getContextMenu",
@@ -4503,10 +4486,8 @@
     ]
   },
   "Roo.DialogManager" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "bringToFront",
@@ -4551,8 +4532,7 @@
         "memberOf" : "Roo.util.Observable"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "addEvents",
@@ -4637,10 +4617,8 @@
     ]
   },
   "Roo.DomHelper" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "append",
@@ -4717,10 +4695,8 @@
     ]
   },
   "Roo.DomQuery" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "compile",
@@ -4795,8 +4771,7 @@
         "memberOf" : "Roo.Template"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "append",
@@ -5342,10 +5317,8 @@
     ]
   },
   "Roo.Element" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "addClass",
@@ -6462,10 +6435,8 @@
     ]
   },
   "Roo.EventManager" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "addListener",
@@ -6534,10 +6505,8 @@
     ]
   },
   "Roo.EventObject" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "getCharCode",
@@ -6722,8 +6691,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "fadeIn",
@@ -8108,10 +8076,8 @@
     ]
   },
   "Roo.KeyMap" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "addBinding",
@@ -8176,8 +8142,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "disable",
@@ -8242,8 +8207,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "addClass",
@@ -10573,8 +10537,7 @@
         "memberOf" : "Roo"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "disable",
@@ -10609,8 +10572,7 @@
         "memberOf" : "Roo.Template"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "add",
@@ -11108,8 +11070,7 @@
         "memberOf" : "Roo.Toolbar"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "add",
@@ -11250,10 +11211,8 @@
     ]
   },
   "Roo.QuickTips" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "disable",
@@ -11879,8 +11838,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "hide",
@@ -12104,10 +12062,8 @@
     ]
   },
   "Roo.SplitBar.AbsoluteLayoutAdapter" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "getElementSize",
@@ -12128,10 +12084,8 @@
     ]
   },
   "Roo.SplitBar.BasicLayoutAdapter" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "getElementSize",
@@ -13546,8 +13500,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "append",
@@ -13652,8 +13605,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "add",
@@ -14149,8 +14101,7 @@
     ]
   },
   "Roo.Toolbar.Fill" : {
-    "props" : [
-    ],
+    "props" : [],
     "events" : [
       {
         "name" : "render",
@@ -14228,8 +14179,7 @@
     ]
   },
   "Roo.Toolbar.Item" : {
-    "props" : [
-    ],
+    "props" : [],
     "events" : [
       {
         "name" : "render",
@@ -14307,8 +14257,7 @@
     ]
   },
   "Roo.Toolbar.Separator" : {
-    "props" : [
-    ],
+    "props" : [],
     "events" : [
       {
         "name" : "render",
@@ -14386,8 +14335,7 @@
     ]
   },
   "Roo.Toolbar.Spacer" : {
-    "props" : [
-    ],
+    "props" : [],
     "events" : [
       {
         "name" : "render",
@@ -15488,10 +15436,8 @@
     ]
   },
   "Roo.UpdateManager.BasicRenderer" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "render",
@@ -15504,12 +15450,9 @@
     ]
   },
   "Roo.UpdateManager.defaults" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.View" : {
     "props" : [
@@ -16042,12 +15985,9 @@
     ]
   },
   "Roo.XComponent.event.events" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.XTemplate" : {
     "props" : [
@@ -16064,8 +16004,7 @@
         "memberOf" : "Roo.Template"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "append",
@@ -16158,12 +16097,9 @@
     ]
   },
   "Roo.bootstrap" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.bootstrap.Alert" : {
     "props" : [
@@ -34909,10 +34845,8 @@
     ]
   },
   "Roo.bootstrap.MenuMgr" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "get",
@@ -35763,10 +35697,8 @@
     ]
   },
   "Roo.bootstrap.MessageBox" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "alert",
@@ -50645,10 +50577,8 @@
     ]
   },
   "Roo.bootstrap.SplitBar.AbsoluteLayoutAdapter" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "getElementSize",
@@ -50669,10 +50599,8 @@
     ]
   },
   "Roo.bootstrap.SplitBar.BasicLayoutAdapter" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "getElementSize",
@@ -52404,8 +52332,7 @@
         "memberOf" : "Roo.util.Observable"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "addEvents",
@@ -55901,10 +55828,8 @@
     ]
   },
   "Roo.bootstrap.Tooltip" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "currentEl",
@@ -57392,12 +57317,9 @@
     ]
   },
   "Roo.bootstrap.dash" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.bootstrap.dash.NumberBox" : {
     "props" : [
@@ -58694,12 +58616,9 @@
     ]
   },
   "Roo.bootstrap.htmleditor" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.bootstrap.htmleditor.ToolbarStandard" : {
     "props" : [
@@ -58716,8 +58635,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "updateToolbar",
@@ -58730,12 +58648,9 @@
     ]
   },
   "Roo.bootstrap.layout" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.bootstrap.layout.Basic" : {
     "props" : [
@@ -58764,8 +58679,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "add",
@@ -60086,8 +60000,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "add",
@@ -60812,12 +60725,9 @@
     ]
   },
   "Roo.bootstrap.menu" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.bootstrap.menu.Item" : {
     "props" : [
@@ -62114,12 +62024,9 @@
     ]
   },
   "Roo.bootstrap.panel" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.bootstrap.panel.Content" : {
     "props" : [
@@ -63625,12 +63532,9 @@
     ]
   },
   "Roo.data" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.data.ArrayReader" : {
     "props" : [
@@ -63647,8 +63551,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "newRow",
@@ -63850,8 +63753,7 @@
     ]
   },
   "Roo.data.DataProxy" : {
-    "props" : [
-    ],
+    "props" : [],
     "events" : [
       {
         "name" : "beforeload",
@@ -63875,14 +63777,11 @@
         "memberOf" : ""
       }
     ],
-    "methods" : [
-    ]
+    "methods" : []
   },
   "Roo.data.DataReader" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "newRow",
@@ -64014,8 +63913,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "newRow",
@@ -64500,10 +64398,8 @@
     ]
   },
   "Roo.data.MemoryProxy" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "load",
@@ -64838,10 +64734,8 @@
     ]
   },
   "Roo.data.Record" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "commit",
@@ -64920,8 +64814,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "abort",
@@ -65410,10 +65303,8 @@
     ]
   },
   "Roo.data.SortTypes" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "asDate",
@@ -66124,8 +66015,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "newRow",
@@ -66154,12 +66044,9 @@
     ]
   },
   "Roo.dd" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.dd.DD" : {
     "props" : [
@@ -66170,8 +66057,7 @@
         "memberOf" : "Roo.util.Observable"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "addEvents",
@@ -66640,8 +66526,7 @@
         "memberOf" : "Roo.util.Observable"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "addEvents",
@@ -67126,8 +67011,7 @@
         "memberOf" : "Roo.util.Observable"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "addEvents",
@@ -67556,8 +67440,7 @@
         "memberOf" : "Roo.util.Observable"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "addEvents",
@@ -67978,10 +67861,8 @@
     ]
   },
   "Roo.dd.DragDropMgr" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "getBestMatch",
@@ -68230,8 +68111,7 @@
         "memberOf" : "Roo.util.Observable"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "addEvents",
@@ -68820,8 +68700,7 @@
         "memberOf" : "Roo.util.Observable"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "addEvents",
@@ -70510,10 +70389,8 @@
     ]
   },
   "Roo.dd.Registry" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "getHandle",
@@ -70566,10 +70443,8 @@
     ]
   },
   "Roo.dd.ScrollManager" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "refreshCache",
@@ -70612,8 +70487,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "getEl",
@@ -70698,20 +70572,14 @@
     ]
   },
   "Roo.form" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.form.Action" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.form.BasicForm" : {
     "props" : [
@@ -83635,8 +83503,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "updateToolbar",
@@ -83687,8 +83554,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "updateToolbar",
@@ -91527,10 +91393,8 @@
     ]
   },
   "Roo.form.VTypes" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "alpha'",
@@ -91567,20 +91431,14 @@
     ]
   },
   "Roo.grid" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.grid.AbstractGridView" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.grid.AbstractSelectionModel" : {
     "props" : [
@@ -91591,8 +91449,7 @@
         "memberOf" : "Roo.util.Observable"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "addEvents",
@@ -94156,8 +94013,7 @@
         "memberOf" : "Roo.util.Observable"
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "addEvents",
@@ -95235,18 +95091,13 @@
     ]
   },
   "Roo.lib" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.lib.Ajax" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "request",
@@ -95259,20 +95110,14 @@
     ]
   },
   "Roo.lib.Dom" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.menu" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.menu.Adapter" : {
     "props" : [
@@ -98369,10 +98214,8 @@
     ]
   },
   "Roo.menu.MenuMgr" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "get",
@@ -99101,12 +98944,9 @@
     ]
   },
   "Roo.state" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.state.CookieProvider" : {
     "props" : [
@@ -99188,10 +99028,8 @@
     ]
   },
   "Roo.state.Manager" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "clear",
@@ -99236,8 +99074,7 @@
     ]
   },
   "Roo.state.Provider" : {
-    "props" : [
-    ],
+    "props" : [],
     "events" : [
       {
         "name" : "statechange",
@@ -99291,12 +99128,9 @@
     ]
   },
   "Roo.tree" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.tree.AsyncTreeNode" : {
     "props" : [
@@ -99974,8 +99808,7 @@
         "memberOf" : ""
       }
     ],
-    "methods" : [
-    ]
+    "methods" : []
   },
   "Roo.tree.DefaultSelectionModel" : {
     "props" : [
@@ -100765,10 +100598,8 @@
     ]
   },
   "Roo.tree.TreeFilter" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "clear",
@@ -101583,12 +101414,9 @@
     ]
   },
   "Roo.tree.TreeNodeUI" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.tree.TreePanel" : {
     "props" : [
@@ -102148,24 +101976,17 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "events" : [],
+    "methods" : []
   },
   "Roo.util" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.util.CSS" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "createStyleSheet",
@@ -102383,18 +102204,13 @@
     ]
   },
   "Roo.util.DelayedTask" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.util.Format" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "capitalize",
@@ -102519,12 +102335,9 @@
     ]
   },
   "Roo.util.JSON" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.util.MixedCollection" : {
     "props" : [
@@ -102889,8 +102702,7 @@
         "memberOf" : ""
       }
     ],
-    "events" : [
-    ],
+    "events" : [],
     "methods" : [
       {
         "name" : "addEvents",
@@ -102975,10 +102787,8 @@
     ]
   },
   "Roo.util.TextMetrics" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "createInstance",
@@ -102999,18 +102809,13 @@
     ]
   },
   "Roo.util.TextMetrics.Instance" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "String" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "escape",
@@ -103055,10 +102860,8 @@
     ]
   },
   "_global_" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
+    "props" : [],
+    "events" : [],
     "methods" : [
       {
         "name" : "InlineLexer",
@@ -103127,11 +102930,8 @@
     ]
   },
   "this" : {
-    "props" : [
-    ],
-    "events" : [
-    ],
-    "methods" : [
-    ]
+    "props" : [],
+    "events" : [],
+    "methods" : []
   }
 }

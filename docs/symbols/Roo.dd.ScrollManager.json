@@ -1,7 +1,6 @@
 {
   "name" : "Roo.dd.ScrollManager",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Provides automatic scrolling of overflow regions in the page during drag operations.<br><br>\n<b>Note: This class uses \"Point Mode\" and is untested in \"Intersect Mode\".</b>",
   "isSingleton" : true,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "register",
@@ -37,8 +33,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "unregister",
@@ -59,8 +54,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "refreshCache",
@@ -73,12 +67,9 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

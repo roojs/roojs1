@@ -1,7 +1,6 @@
 {
   "name" : "Roo.DialogManager",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Provides global access to BasicDialogs that have been created and\nsupport for z-indexing (layering) multiple open dialogs.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "bringToFront",
@@ -83,10 +79,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "get",
@@ -116,6 +110,5 @@
       ]
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

@@ -1,7 +1,6 @@
 {
   "name" : "Roo.data.DataReader",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Base class for reading structured data from a data source.  This class is intended to be\nextended (see {Roo.data.ArrayReader}, {Roo.data.JsonReader} and {Roo.data.XmlReader}) and should not be created directly.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "newRow",
@@ -46,6 +42,5 @@
       ]
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

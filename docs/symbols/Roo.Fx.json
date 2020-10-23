@@ -1,7 +1,6 @@
 {
   "name" : "Roo.Fx",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "<p>A class to provide basic animation and visual effects support.  <b>Note:</b> This class is automatically applied\nto the {@link Roo.Element} interface when included, so all effects calls should be performed via Element.\nConversely, since the effects are not actually defined in Element, Roo.Fx <b>must</b> be included in order for the \nElement effects to work.</p><br/>\n\n<p>It is important to note that although the Fx methods and many non-Fx Element methods support \"method chaining\" in that\nthey return the Element object itself as the method return value, it is not always possible to mix the two in a single\nmethod chain.  The Fx methods use an internal effects queue so that each effect can be properly timed and sequenced.\nNon-Fx methods, on the other hand, have no such internal queueing and will always execute immediately.  For this reason,\nwhile it may be possible to mix certain Fx and non-Fx method calls in a single chain, it may not always provide the\nexpected results and should be done with care.</p><br/>\n\n<p>Motion effects support 8-way anchoring, meaning that you can choose one of 8 different anchor points on the Element\nthat will serve as either the start or end point of the animation.  Following are all of the supported anchor positions:</p>\n<pre>\nValue  Description\n-----  -----------------------------\ntl     The top left corner\nt      The center of the top edge\ntr     The top right corner\nl      The center of the left edge\nr      The center of the right edge\nbl     The bottom left corner\nb      The center of the bottom edge\nbr     The bottom right corner\n</pre>\n<b>Although some Fx methods accept specific custom config parameters, the ones shown in the Config Options section\nbelow are common options that can be passed to any Fx method.</b>",
   "isSingleton" : false,
   "isStatic" : false,
@@ -11,98 +10,85 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
+  "params" : [],
+  "returns" : [],
   "config" : [
     {
       "name" : "easing",
       "type" : "String",
       "desc" : "A valid Easing value for the effect",
       "memberOf" : "Roo.Fx",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "afterCls",
       "type" : "String",
       "desc" : "A css class to apply after the effect",
       "memberOf" : "Roo.Fx",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "useDisplay",
       "type" : "Boolean",
       "desc" : "Whether to use the <i>display</i> CSS property instead of <i>visibility</i> when hiding Elements (only applies to \neffects that end with the element being visually hidden, ignored otherwise)",
       "memberOf" : "Roo.Fx",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "stopFx",
       "type" : "Boolean",
       "desc" : "Whether subsequent effects should be stopped and removed after the current effect finishes",
       "memberOf" : "Roo.Fx",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "callback",
       "type" : "Function",
       "desc" : "A function called when the effect is finished",
       "memberOf" : "Roo.Fx",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "scope",
       "type" : "Object",
       "desc" : "The scope of the effect function",
       "memberOf" : "Roo.Fx",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "remove",
       "type" : "Boolean",
       "desc" : "Whether the Element should be removed from the DOM and destroyed after the effect finishes",
       "memberOf" : "Roo.Fx",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "concurrent",
       "type" : "Boolean",
       "desc" : "Whether to allow subsequently-queued effects to run at the same time as the current effect, or to ensure that they run in sequence",
       "memberOf" : "Roo.Fx",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "duration",
       "type" : "Number",
       "desc" : "The length of time (in seconds) that the effect should last",
       "memberOf" : "Roo.Fx",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "afterStyle",
       "type" : "String/Object/Function",
       "desc" : "A style specification string, e.g. \"width:100px\", or an object in the form {width:\"100px\"}, or\na function which returns such a specification that will be applied to the Element after the effect finishes",
       "memberOf" : "Roo.Fx",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "block",
       "type" : "Boolean",
       "desc" : "Whether the effect should block other effects from queueing while it runs",
       "memberOf" : "Roo.Fx",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -144,8 +130,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -231,8 +216,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -252,8 +236,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -306,8 +289,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -381,8 +363,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -584,6 +565,5 @@
       ]
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

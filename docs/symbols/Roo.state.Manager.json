@@ -1,7 +1,6 @@
 {
   "name" : "Roo.state.Manager",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "This is the global state manager. By default all components that are \"state aware\" check this class\nfor state information if you don't pass them a custom state provider. In order for this class\nto be useful, it must be initialized with a provider when your application initializes.\n <pre><code>\n// in your initialization function\ninit : function(){\n   Roo.state.Manager.setProvider(new Roo.state.CookieProvider());\n   ...\n   // supposed you have a {@link Roo.BorderLayout}\n   var layout = new Roo.BorderLayout(...);\n   layout.restoreState();\n   // or a {Roo.BasicDialog}\n   var dialog = new Roo.BasicDialog(...);\n   dialog.restoreState();\n </code></pre>",
   "isSingleton" : true,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "getProvider",
@@ -29,8 +25,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -58,8 +53,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "get",
@@ -119,8 +113,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setProvider",
@@ -141,10 +134,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

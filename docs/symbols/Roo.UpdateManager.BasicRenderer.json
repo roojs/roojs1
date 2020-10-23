@@ -1,7 +1,6 @@
 {
   "name" : "Roo.UpdateManager.BasicRenderer",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Default Content renderer. Updates the elements innerHTML with the responseText.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "render",
@@ -55,10 +51,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

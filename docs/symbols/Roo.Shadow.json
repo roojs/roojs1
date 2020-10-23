@@ -1,7 +1,6 @@
 {
   "name" : "Roo.Shadow",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Simple class that can provide a shadow effect for any element.  Note that the element MUST be absolutely positioned,\nand the shadow does not provide any shimming.  This should be used only in simple cases -- for more advanced\nfunctionality that can also provide the same shadow effect, see the {@link Roo.Layer} class.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -19,24 +18,21 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "offset",
       "type" : "String",
       "desc" : "The number of pixels to offset the shadow from the element (defaults to 4)",
       "memberOf" : "Roo.Shadow",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "mode",
       "type" : "String",
       "desc" : "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
       "memberOf" : "Roo",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -59,8 +55,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "isVisible",
@@ -73,10 +68,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "hide",
@@ -89,10 +82,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "show",
@@ -113,8 +104,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "realign",
@@ -153,10 +143,8 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

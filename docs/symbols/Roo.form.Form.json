@@ -21,80 +21,70 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\").\nThis property cascades to child containers if not set.",
       "memberOf" : "Roo.form.Form",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "formData",
       "type" : "boolean|FormData",
       "desc" : "- true to use new 'FormData' post, or set to a new FormData({dom form}) Object, if\nsending a formdata with extra parameters - eg uploaded elements.",
       "memberOf" : "Roo.form.Form",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "monitorValid",
       "type" : "Boolean",
       "desc" : "If true the form monitors its valid state <b>client-side</b> and\nfires a looping event with that state. This is required to bind buttons to the valid\nstate using the config value formBind:true on the button.",
       "memberOf" : "Roo.form.Form",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "fileUpload",
       "type" : "Boolean",
       "desc" : "Set to true if this form is a file upload.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "progressUrl",
       "type" : "String",
       "desc" : "- Url to return progress data",
       "memberOf" : "Roo.form.Form",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "minButtonWidth",
       "type" : "Number",
       "desc" : "Minimum width of all buttons in pixels (defaults to 75)",
       "memberOf" : "Roo.form.Form",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "buttonAlign",
       "type" : "String",
       "desc" : "Valid values are \"left,\" \"center\" and \"right\" (defaults to \"center\")",
       "memberOf" : "Roo.form.Form",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "method",
       "type" : "String",
       "desc" : "The request method to use (GET or POST) for form actions if one isn't supplied in the action options.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "errorMask",
@@ -111,80 +101,70 @@
       "type" : "Number",
       "desc" : "The width of labels. This property cascades to child containers.",
       "memberOf" : "Roo.form.Form",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "itemCls",
       "type" : "String",
       "desc" : "A css class to apply to the x-form-item of fields. This property cascades to child containers.",
       "memberOf" : "Roo.form.Form",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "timeout",
       "type" : "Number",
       "desc" : "Timeout for form actions in seconds (default is 30 seconds).",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "monitorPoll",
       "type" : "Number",
       "desc" : "The milliseconds to poll valid state, ignored if monitorValid is not true (defaults to 200)",
       "memberOf" : "Roo.form.Form",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "baseParams",
       "type" : "Object",
       "desc" : "Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "trackResetOnLoad",
       "type" : "Boolean",
       "desc" : "If set to true, form.reset() resets to the last loaded\nor setValues() data instead of when the form was first created.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "reader",
       "type" : "DataReader",
       "desc" : "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when executing \"load\" actions.\nThis is optional as there is built-in support for processing JSON.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "errorReader",
       "type" : "DataReader",
       "desc" : "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when reading validation errors on \"submit\" actions.\nThis is completely optional as there is built-in support for processing JSON.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "The URL to use for form actions if one isn't supplied in the action options.",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "maskOffset",
       "type" : "Number",
       "desc" : "Default 100",
       "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -207,8 +187,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fieldset",
@@ -365,10 +344,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "addButton",
@@ -420,10 +397,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "add",
@@ -541,8 +516,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -703,8 +677,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -724,8 +697,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -745,8 +717,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -793,8 +764,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -841,8 +811,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -943,8 +912,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1018,8 +986,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -1047,8 +1014,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "purgeListeners",
@@ -1061,10 +1027,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -1103,8 +1067,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -1137,8 +1100,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -1159,8 +1121,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -1181,8 +1142,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -1215,8 +1175,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -1309,8 +1268,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -1349,8 +1307,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -1370,8 +1327,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "clientvalidation",
@@ -1395,8 +1351,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeaction",
@@ -1420,8 +1375,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "actioncomplete",
@@ -1445,8 +1399,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "actionfailed",
@@ -1470,8 +1423,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

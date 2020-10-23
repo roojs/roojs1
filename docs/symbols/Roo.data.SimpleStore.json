@@ -21,112 +21,98 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "an",
       "type" : "Object",
       "desc" : "existing reader (eg. copied from another store)",
       "memberOf" : "Roo.data.SimpleStore",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "id",
       "type" : "Number",
       "desc" : "The array index of the record id. Leave blank to auto generate ids.",
       "memberOf" : "Roo.data.SimpleStore",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "fields",
       "type" : "Array",
       "desc" : "An array of field definition objects, or field name strings.",
       "memberOf" : "Roo.data.SimpleStore",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "proxy",
       "type" : "Roo.data.DataProxy",
       "desc" : "The Proxy object which provides access to a data object.",
       "memberOf" : "Roo.data.Store",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "multiSort",
       "type" : "Boolean",
       "desc" : "enable multi column sorting (sort is based on the order of columns, remote only at present)",
       "memberOf" : "Roo.data.Store",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "pruneModifiedRecords",
       "type" : "boolean",
       "desc" : "True to clear all modified record information each time the store is\nloaded or when a record is removed. (defaults to false).",
       "memberOf" : "Roo.data.Store",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "remoteSort",
       "type" : "boolean",
       "desc" : "True if sorting is to be handled by requesting the Proxy to provide a refreshed\nversion of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false).",
       "memberOf" : "Roo.data.Store",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "data",
       "type" : "Array",
       "desc" : "The multi-dimensional array of data",
       "memberOf" : "Roo.data.SimpleStore",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "sortInfo",
       "type" : "Object",
       "desc" : "A config object in the format: {field: \"fieldName\", direction: \"ASC|DESC\"}",
       "memberOf" : "Roo.data.Store",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "baseParams",
       "type" : "Object",
       "desc" : "An object containing properties which are to be sent as parameters\non any HTTP request",
       "memberOf" : "Roo.data.Store",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "reader",
       "type" : "Roo.data.Reader",
       "desc" : "The Reader object which processes the data object and returns\nan Array of Roo.data.record objects which are cached keyed by their <em>id</em> property.",
       "memberOf" : "Roo.data.Store",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "isLocal",
       "type" : "boolean",
       "desc" : "flag if data is locally available (and can be always looked up\nwithout a remote query - used by combo/forms at present.",
       "memberOf" : "Roo.data.Store",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -149,8 +135,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeAll",
@@ -163,10 +148,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "query",
@@ -284,10 +267,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getCount",
@@ -300,10 +281,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "indexOf",
@@ -351,8 +330,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "indexOfId",
@@ -412,8 +390,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "sort",
@@ -440,8 +417,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getRange",
@@ -528,8 +504,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "clearFilter",
@@ -550,8 +525,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "each",
@@ -578,8 +552,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "rejectChanges",
@@ -592,10 +565,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getAt",
@@ -635,10 +606,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "filterBy",
@@ -665,8 +634,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "collect",
@@ -718,8 +686,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -747,8 +714,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "loadData",
@@ -775,8 +741,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "load",
@@ -797,8 +762,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "setDefaultSort",
@@ -825,8 +789,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "insert",
@@ -853,8 +816,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getSortState",
@@ -867,10 +829,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "purgeListeners",
@@ -883,10 +843,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -925,8 +883,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -959,8 +916,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -981,8 +937,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -1003,8 +958,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -1037,8 +991,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -1131,8 +1084,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -1171,8 +1123,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -1204,8 +1155,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "loadexception",
@@ -1241,8 +1191,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "load",
@@ -1272,8 +1221,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "add",
@@ -1303,8 +1251,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "metachange",
@@ -1328,8 +1275,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "clear",
@@ -1347,8 +1293,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "remove",
@@ -1378,8 +1323,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "update",
@@ -1409,8 +1353,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeload",
@@ -1434,8 +1377,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "datachanged",
@@ -1453,8 +1395,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

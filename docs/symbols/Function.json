@@ -1,7 +1,6 @@
 {
   "name" : "Function",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "These functions are available on every Function object (any JavaScript function).",
   "isSingleton" : false,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "createDelegate",
@@ -179,8 +175,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -190,6 +185,5 @@
       ]
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

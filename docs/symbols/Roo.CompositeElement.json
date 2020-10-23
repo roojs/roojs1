@@ -1,7 +1,6 @@
 {
   "name" : "Roo.CompositeElement",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Standard composite class. Creates a Roo.Element for every element in the collection.\n<br><br>\n<b>NOTE: Although they are not listed, this class supports all of the set/update methods of Roo.Element. All Roo.Element\nactions will be performed on all the elements in this collection.</b>\n<br><br>\nAll methods return <i>this</i> and can be chained.\n <pre><code>\n var els = Roo.select(\"#some-el div.some-class\", true);\n // or select directly from an existing element\n var el = Roo.get('some-el');\n el.select('div.some-class', true);\n\n els.setWidth(100); // all elements become 100 width\n els.hide(true); // all elements fade out and hide\n // or\n els.setWidth(100).hide(true);\n </code></pre>",
   "isSingleton" : false,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "add",
@@ -56,8 +52,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -176,10 +171,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "filter",
@@ -252,8 +245,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -306,8 +298,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -327,8 +318,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -348,8 +338,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -359,6 +348,5 @@
       ]
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

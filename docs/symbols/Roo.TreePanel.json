@@ -21,56 +21,49 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "loadOnce",
       "type" : "Boolean",
       "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "autoScroll",
       "type" : "Boolean",
       "desc" : "True to scroll overflow in this panel (use with {@link #fitToFrame})",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "fitToFrame",
       "type" : "Boolean",
       "desc" : "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "background",
       "type" : "Boolean",
       "desc" : "True if the panel should not be activated when it is added (defaults to false)",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "toolbar",
       "type" : "Toolbar",
       "desc" : "A toolbar for this panel",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "region",
@@ -90,80 +83,70 @@
       "type" : "String",
       "desc" : "Raw content to fill content panel with (uses setContent on construction.)",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "title",
       "type" : "String",
       "desc" : "The title for this panel",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "autoCreate",
       "type" : "Boolean/Object",
       "desc" : "True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "fitContainer",
       "type" : "Boolean",
       "desc" : "When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "closable",
       "type" : "Boolean",
       "desc" : "True if the panel can be closed/removed",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "params",
       "type" : "String/Object",
       "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "tree",
       "type" : "Roo.tree.TreePanel",
       "desc" : "The tree TreePanel, with config etc.",
       "memberOf" : "Roo",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "adjustments",
       "type" : "Array",
       "desc" : "Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "Calls {@link #setUrl} with this value",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "resizeEl",
       "type" : "String/HTMLElement/Element",
       "desc" : "An element to resize if {@link #fitToFrame} is true (instead of this panel's element)",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -223,8 +206,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -244,8 +226,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -265,10 +246,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getEl",
@@ -281,8 +260,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -316,8 +294,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getId",
@@ -330,8 +307,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -359,8 +335,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "refresh",
@@ -373,10 +348,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "getTitle",
@@ -389,8 +362,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -418,8 +390,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "getToolbar",
@@ -432,8 +403,7 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
+      "params" : [],
       "returns" : [
         {
           "name" : "",
@@ -492,10 +462,8 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
       "name" : "on",
@@ -534,8 +502,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "un",
@@ -568,8 +535,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addEvents",
@@ -590,8 +556,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "releaseCapture",
@@ -612,8 +577,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeListener",
@@ -646,8 +610,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "fireEvent",
@@ -740,8 +703,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "addListener",
@@ -780,8 +742,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ],
   "events" : [
@@ -801,8 +762,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "resize",
@@ -832,8 +792,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "render",
@@ -851,8 +810,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "activate",
@@ -870,8 +828,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

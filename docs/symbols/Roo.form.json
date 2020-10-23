@@ -1,7 +1,6 @@
 {
   "name" : "Roo.form",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : true,
@@ -11,14 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
-  "methods" : [
-  ],
-  "events" : [
-  ]
+  "params" : [],
+  "returns" : [],
+  "config" : [],
+  "methods" : [],
+  "events" : []
 }

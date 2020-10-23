@@ -1,7 +1,6 @@
 {
   "name" : "Roo.EventManager",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Registers event handlers that want to receive a normalized EventObject instead of the standard browser event and provides \nseveral useful events directly.\nSee {@link Roo.EventObject} for more details on normalized event objects.",
   "isSingleton" : true,
   "isStatic" : false,
@@ -11,12 +10,9 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
   "methods" : [
     {
       "name" : "addListener",
@@ -61,8 +57,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "onDocumentReady",
@@ -95,8 +90,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "onTextResize",
@@ -129,8 +123,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "on",
@@ -175,8 +168,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "removeResizeListener",
@@ -203,8 +195,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "onWindowResize",
@@ -237,8 +228,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "wrap",
@@ -319,6 +309,5 @@
       ]
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

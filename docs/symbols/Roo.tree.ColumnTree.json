@@ -1,7 +1,6 @@
 {
   "name" : "Roo.tree.ColumnTree",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,
@@ -25,28 +24,24 @@
       "isOptional" : false
     }
   ],
-  "returns" : [
-  ],
+  "returns" : [],
   "config" : [
     {
       "name" : "columns",
       "type" : "Object",
       "desc" : "Including width, header, renderer, cls, dataIndex",
       "memberOf" : "Roo.tree.ColumnTree",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "borderWidth",
       "type" : "int",
       "desc" : "compined right/left border allowance",
       "memberOf" : "Roo.tree.ColumnTree",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
-  "methods" : [
-  ],
+  "methods" : [],
   "events" : [
     {
       "name" : "resize",
@@ -70,8 +65,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }

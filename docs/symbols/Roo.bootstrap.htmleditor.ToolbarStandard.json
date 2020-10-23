@@ -1,7 +1,6 @@
 {
   "name" : "Roo.bootstrap.htmleditor.ToolbarStandard",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "Basic Toolbar",
   "isSingleton" : false,
   "isStatic" : false,
@@ -11,26 +10,22 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
+  "params" : [],
+  "returns" : [],
   "config" : [
     {
       "name" : "btns",
       "type" : "Array",
       "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
       "memberOf" : "Roo.bootstrap.htmleditor.ToolbarStandard",
-      "optvals" : [
-      ]
+      "optvals" : []
     },
     {
       "name" : "disable",
       "type" : "Object",
       "desc" : "List of elements to disable..",
       "memberOf" : "Roo.bootstrap.htmleditor.ToolbarStandard",
-      "optvals" : [
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [
@@ -45,12 +40,9 @@
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-      ],
-      "returns" : [
-      ]
+      "params" : [],
+      "returns" : []
     }
   ],
-  "events" : [
-  ]
+  "events" : []
 }

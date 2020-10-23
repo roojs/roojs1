@@ -1,7 +1,6 @@
 {
   "name" : "Roo.data.DataProxy",
-  "augments" : [
-  ],
+  "augments" : [],
   "desc" : "This class is an abstract base class for implementations which provide retrieval of\nunformatted data objects.<br>\n<p>\nDataProxy implementations are usually used in conjunction with an implementation of Roo.data.DataReader\n(of the appropriate type which knows how to parse the data object) to provide a block of\n{@link Roo.data.Records} to an {@link Roo.data.Store}.<br>\n<p>\nCustom implementations must implement the load method as described in\n{@link Roo.data.HttpProxy#load}.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -11,14 +10,10 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-  ],
-  "returns" : [
-  ],
-  "config" : [
-  ],
-  "methods" : [
-  ],
+  "params" : [],
+  "returns" : [],
+  "config" : [],
+  "methods" : [],
   "events" : [
     {
       "name" : "load",
@@ -48,8 +43,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "beforeload",
@@ -73,8 +67,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     },
     {
       "name" : "loadexception",
@@ -110,8 +103,7 @@
           "isOptional" : false
         }
       ],
-      "returns" : [
-      ]
+      "returns" : []
     }
   ]
 }
