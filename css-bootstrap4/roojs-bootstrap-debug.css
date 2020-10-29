@@ -645,7 +645,7 @@ table.fc-border-separate {
 .checkbox input[type="checkbox"]:checked + label::after {
   font-size: 18px;
   padding-top: 0px;
-  font-family: 'Font Awesome 5 Free 400';
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   color: #28a745;
   content: "\f14a"; }
@@ -660,47 +660,28 @@ table.fc-border-separate {
 .checkbox input[type="checkbox"]:disabled + label {
   opacity: 0.65; }
 
-.checkbox input[type="checkbox"]:disabled + label::before {
-  background-color: #ced4da;
+.checkbox input[type="checkbox"]:disabled + label::after {
+  color: #ced4da !important;
+  /* overrides primary etc.. */
   cursor: not-allowed; }
 
 .checkbox.checkbox-circle label::before {
   border-radius: 50%; }
 
-.checkbox-primary input[type="checkbox"]:checked + label::before {
-  background-color: #007bff;
-  border-color: #007bff; }
-
 .checkbox-primary input[type="checkbox"]:checked + label::after {
-  color: #fff; }
-
-.checkbox-danger input[type="checkbox"]:checked + label::before {
-  background-color: #dc3545;
-  border-color: #dc3545; }
+  color: #007bff; }
 
 .checkbox-danger input[type="checkbox"]:checked + label::after {
-  color: #fff; }
-
-.checkbox-info input[type="checkbox"]:checked + label::before {
-  background-color: #17a2b8;
-  border-color: #17a2b8; }
+  color: #dc3545; }
 
 .checkbox-info input[type="checkbox"]:checked + label::after {
-  color: #fff; }
-
-.checkbox-warning input[type="checkbox"]:checked + label::before {
-  background-color: #ffc107;
-  border-color: #ffc107; }
+  color: #17a2b8; }
 
 .checkbox-warning input[type="checkbox"]:checked + label::after {
-  color: #fff; }
-
-.checkbox-success input[type="checkbox"]:checked + label::before {
-  background-color: #28a745;
-  border-color: #28a745; }
+  color: #ffc107; }
 
 .checkbox-success input[type="checkbox"]:checked + label::after {
-  color: #fff; }
+  color: #28a745; }
 
 /* before is the outer cicle */
 /* after is the inner circle.. */
@@ -1315,17 +1296,17 @@ table.fc-border-separate {
 .datepicker table tr td.today.disabled:active,
 .datepicker table tr td.today.disabled:hover:active,
 .datepicker table tr td.today.active,
-.datepicker table tr td.today:hover.active,
+.datepicker table tr td.today.active:hover,
 .datepicker table tr td.today.disabled.active,
-.datepicker table tr td.today.disabled:hover.active,
+.datepicker table tr td.today.disabled.active:hover,
 .datepicker table tr td.today.disabled,
-.datepicker table tr td.today:hover.disabled,
+.datepicker table tr td.today.disabled:hover,
 .datepicker table tr td.today.disabled.disabled,
-.datepicker table tr td.today.disabled:hover.disabled,
+.datepicker table tr td.today.disabled.disabled:hover,
 .datepicker table tr td.today[disabled],
-.datepicker table tr td.today:hover[disabled],
+.datepicker table tr td.today[disabled]:hover,
 .datepicker table tr td.today.disabled[disabled],
-.datepicker table tr td.today.disabled:hover[disabled] {
+.datepicker table tr td.today.disabled[disabled]:hover {
   background-color: #ffc107; }
 
 .datepicker table tr td.today:active,
@@ -1333,9 +1314,9 @@ table.fc-border-separate {
 .datepicker table tr td.today.disabled:active,
 .datepicker table tr td.today.disabled:hover:active,
 .datepicker table tr td.today.active,
-.datepicker table tr td.today:hover.active,
+.datepicker table tr td.today.active:hover,
 .datepicker table tr td.today.disabled.active,
-.datepicker table tr td.today.disabled:hover.active {
+.datepicker table tr td.today.disabled.active:hover {
   background-color: #ffc107; }
 
 .datepicker table tr td.active,
@@ -1366,17 +1347,17 @@ table.fc-border-separate {
 .datepicker table tr td.active.disabled:active,
 .datepicker table tr td.active.disabled:hover:active,
 .datepicker table tr td.active.active,
-.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.active:hover,
 .datepicker table tr td.active.disabled.active,
-.datepicker table tr td.active.disabled:hover.active,
+.datepicker table tr td.active.disabled.active:hover,
 .datepicker table tr td.active.disabled,
-.datepicker table tr td.active:hover.disabled,
+.datepicker table tr td.active.disabled:hover,
 .datepicker table tr td.active.disabled.disabled,
-.datepicker table tr td.active.disabled:hover.disabled,
+.datepicker table tr td.active.disabled.disabled:hover,
 .datepicker table tr td.active[disabled],
-.datepicker table tr td.active:hover[disabled],
+.datepicker table tr td.active[disabled]:hover,
 .datepicker table tr td.active.disabled[disabled],
-.datepicker table tr td.active.disabled:hover[disabled] {
+.datepicker table tr td.active.disabled[disabled]:hover {
   background-color: #007bff; }
 
 .datepicker table tr td.active:active,
@@ -1384,9 +1365,9 @@ table.fc-border-separate {
 .datepicker table tr td.active.disabled:active,
 .datepicker table tr td.active.disabled:hover:active,
 .datepicker table tr td.active.active,
-.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.active:hover,
 .datepicker table tr td.active.disabled.active,
-.datepicker table tr td.active.disabled:hover.active {
+.datepicker table tr td.active.disabled.active:hover {
   background-color: #0062cc; }
 
 .datepicker table tr td span {
@@ -1438,17 +1419,17 @@ table.fc-border-separate {
 .datepicker table tr td span.active.disabled:active,
 .datepicker table tr td span.active.disabled:hover:active,
 .datepicker table tr td span.active.active,
-.datepicker table tr td span.active:hover.active,
+.datepicker table tr td span.active.active:hover,
 .datepicker table tr td span.active.disabled.active,
-.datepicker table tr td span.active.disabled:hover.active,
+.datepicker table tr td span.active.disabled.active:hover,
 .datepicker table tr td span.active.disabled,
-.datepicker table tr td span.active:hover.disabled,
+.datepicker table tr td span.active.disabled:hover,
 .datepicker table tr td span.active.disabled.disabled,
-.datepicker table tr td span.active.disabled:hover.disabled,
+.datepicker table tr td span.active.disabled.disabled:hover,
 .datepicker table tr td span.active[disabled],
-.datepicker table tr td span.active:hover[disabled],
+.datepicker table tr td span.active[disabled]:hover,
 .datepicker table tr td span.active.disabled[disabled],
-.datepicker table tr td span.active.disabled:hover[disabled] {
+.datepicker table tr td span.active.disabled[disabled]:hover {
   background-color: #007bff; }
 
 .datepicker table tr td span.active:active,
@@ -1456,9 +1437,9 @@ table.fc-border-separate {
 .datepicker table tr td span.active.disabled:active,
 .datepicker table tr td span.active.disabled:hover:active,
 .datepicker table tr td span.active.active,
-.datepicker table tr td span.active:hover.active,
+.datepicker table tr td span.active.active:hover,
 .datepicker table tr td span.active.disabled.active,
-.datepicker table tr td span.active.disabled:hover.active {
+.datepicker table tr td span.active.disabled.active:hover {
   background-color: #0062cc; }
 
 .datepicker table tr td span.old {
@@ -2550,7 +2531,7 @@ a.roo-brick-link:hover {
 .nav-tabs-custom > .nav-tabs > li:first-of-type {
   margin-left: 0px; }
 
-.nav-tabs-custom > .nav-tabs > li:first-of-type.active > a {
+.nav-tabs-custom > .nav-tabs > li.active:first-of-type > a {
   border-left-width: 0; }
 
 .nav-tabs-custom > .nav-tabs.pull-right {
@@ -2562,7 +2543,7 @@ a.roo-brick-link:hover {
 .nav-tabs-custom > .nav-tabs.pull-right > li:first-of-type {
   margin-right: 0px; }
 
-.nav-tabs-custom > .nav-tabs.pull-right > li:first-of-type.active > a {
+.nav-tabs-custom > .nav-tabs.pull-right > li.active:first-of-type > a {
   border-left-width: 1px;
   border-right-width: 0px; }
 

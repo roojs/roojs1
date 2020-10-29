@@ -39,5 +39,11 @@ Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
      */
     isLocked : function(){
         return this.locked;
+    },
+    
+    
+    initEvents : function ()
+    {
+        
     }
 });

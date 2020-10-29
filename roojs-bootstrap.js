@@ -1033,7 +1033,7 @@ A.get('align-center').setActive(B.queryCommandState('justifycenter'));A.get('ali
 this.editor.toggleSourceEdit(A);}});
 // Roo/bootstrap/Table/AbstractSelectionModel.js
 Roo.bootstrap.Table.AbstractSelectionModel=function(){this.locked=false;Roo.bootstrap.Table.AbstractSelectionModel.superclass.constructor.call(this);};Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel,Roo.util.Observable,{init:function(A){this.grid=A;this.initEvents();
-},lock:function(){this.locked=true;},unlock:function(){this.locked=false;},isLocked:function(){return this.locked;}});
+},lock:function(){this.locked=true;},unlock:function(){this.locked=false;},isLocked:function(){return this.locked;},initEvents:function(){}});
 // Roo/bootstrap/Table/RowSelectionModel.js
 Roo.bootstrap.Table.RowSelectionModel=function(A){Roo.apply(this,A);this.selections=new Roo.util.MixedCollection(false,function(o){return o.id;});this.last=false;this.lastActive=false;this.addEvents({"selectionchange":true,"afterselectionchange":true,"beforerowselect":true,"rowselect":true,"rowdeselect":true}
 );Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call(this);this.locked=false;};Roo.extend(Roo.bootstrap.Table.RowSelectionModel,Roo.bootstrap.Table.AbstractSelectionModel,{singleSelect:false,initEvents:function(){this.grid.on("rowclick",this.handleMouseDown,this);
