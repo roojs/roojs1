@@ -253,6 +253,16 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         return ret;
     },
     
+    getCardImageTop : function()
+    {
+        var  ret = this.el.select('.card-img-top',true).first();
+	if (ret.hasClass('d-none')) {
+	    ret.removeClass('d-none');
+	}
+        
+        return ret;
+    },
+    
     getChildContainer : function()
     {
         
