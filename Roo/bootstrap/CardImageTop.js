@@ -6,22 +6,22 @@
  */
 
 /**
- * @class Roo.bootstrap.CardImage
- * @extends Roo.bootstrap.Image
- * Bootstrap Element class
+ * @class Roo.bootstrap.CardImageTop
+ * @extends Roo.bootstrap.Element
+ * Bootstrap CardImageTop class
  * @constructor
- * Create a new Card Image Element
+ * Create a new Card Image Top container
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.CardImage = function(config){
-    Roo.bootstrap.CardImage.superclass.constructor.call(this, config);
+Roo.bootstrap.CardImageTop = function(config){
+    Roo.bootstrap.CardImageTop.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.CardImage, Roo.bootstrap.Image,  {
+Roo.extend(Roo.bootstrap.CardImageTop, Roo.bootstrap.Element,  {
     
    
-    container_method : 'getCardImage',
+    container_method : 'getCardImageTop',
     
      
     
