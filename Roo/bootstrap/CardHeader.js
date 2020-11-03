@@ -10,7 +10,7 @@
  * @extends Roo.bootstrap.Element
  * Bootstrap Element class
  * @constructor
- * Create a new Element
+ * Create a new Card Header - that you can embed children into
  * @param {Object} config The config object
  */
 
@@ -20,7 +20,7 @@ Roo.bootstrap.CardHeader = function(config){
 
 Roo.extend(Roo.bootstrap.CardHeader, Roo.bootstrap.Element,  {
     
-    tag: 'div',
+    
     container_method : 'getCardHeader',
     
     getAutoCreate : function() {
