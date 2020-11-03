@@ -12,7 +12,7 @@
  *
  * possible... may not be implemented..
  * @cfg {String} header_image  src url of image.
- * @cfg {String} header
+ * @cfg {String|Object} header
  * @cfg {Number} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
  * 
  * @cfg {String} title
@@ -181,7 +181,12 @@
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header </span><span class="jsdoc-comment">// escape?
             </span><span class="jsdoc-syntax">});
-        }
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+	    </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header d-none'
+            </span><span class="jsdoc-syntax">});
+	}
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header_image.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
@@ -237,6 +242,16 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
 
+
+    </span><span class="jsdoc-var">getCardHeader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.card-header'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">)) {
+	    </span><span class="jsdoc-var">ret.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+	}
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+    },
 
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
