@@ -12,7 +12,7 @@
  *
  * possible... may not be implemented..
  * @cfg {String} header_image  src url of image.
- * @cfg {String} header
+ * @cfg {String|Object} header
  * @cfg {Number} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
  * 
  * @cfg {String} title
