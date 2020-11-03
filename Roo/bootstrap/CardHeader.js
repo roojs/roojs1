@@ -38,7 +38,6 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: 'div',
-            cls : 'card-header'
         };
         
         return cfg;
