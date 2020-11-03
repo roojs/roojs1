@@ -26,7 +26,7 @@ Roo.extend(Roo.bootstrap.CardHeader, Roo.bootstrap.Element,  {
     getAutoCreate : function() {
         
         var cfg = {
-            tag: 'div',
+            tag: 'div' 
         };
         
         return cfg;
