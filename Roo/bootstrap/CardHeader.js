@@ -8,7 +8,7 @@
 /**
  * @class Roo.bootstrap.CardHeader
  * @extends Roo.bootstrap.Element
- * Bootstrap Element class
+ * Bootstrap CardHeader class
  * @constructor
  * Create a new Card Header - that you can embed children into
  * @param {Object} config The config object
@@ -21,7 +21,7 @@ Roo.bootstrap.CardHeader = function(config){
 Roo.extend(Roo.bootstrap.CardHeader, Roo.bootstrap.Element,  {
     
     
-    container_method : 'getCardHeader',
+    container_method : 'getCardHeader' 
     
      
     
