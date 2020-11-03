@@ -181,7 +181,12 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 cls : 'card-header',
                 html : this.header // escape?
             });
-        }
+        } else {
+	    cfg.cn.push({
+                tag : 'div',
+                cls : 'card-header d-none'
+            });
+	}
         if (this.header_image.length) {
             cfg.cn.push({
                 tag : 'img',
@@ -237,6 +242,16 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+    
+    getCardHeader : function()
+    {
+        var  ret = this.el.select('.card-header',true).first();
+	if (ret.hasClass('d-none')) {
+	    ret.removeClass('d-none');
+	}
+        
+        return ret;
+    },
     
     getChildContainer : function()
     {
