@@ -11,6 +11,7 @@ Roo.bootstrap.Column
 Roo.bootstrap.Container
 Roo.bootstrap.Card
 Roo.bootstrap.CardHeader
+Roo.bootstrap.CardImage
 
 Roo.bootstrap.Img
 Roo.bootstrap.Link
