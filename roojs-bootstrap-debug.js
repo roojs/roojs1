@@ -1778,7 +1778,12 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 cls : 'card-img-top',
                 src: this.header_image // escape?
             });
-        }
+        } else {
+	    cfg.cn.push({
+                tag : 'div',
+                cls : 'card-img-top d-none' 
+            });
+	}
         
         var body = {
             tag : 'div',
@@ -1831,6 +1836,16 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     getCardHeader : function()
     {
         var  ret = this.el.select('.card-header',true).first();
+	if (ret.hasClass('d-none')) {
+	    ret.removeClass('d-none');
+	}
+        
+        return ret;
+    },
+    
+    getCardImageTop : function()
+    {
+        var  ret = this.el.select('.card-img-top',true).first();
 	if (ret.hasClass('d-none')) {
 	    ret.removeClass('d-none');
 	}
@@ -1894,9 +1909,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.CardHeader
  * @extends Roo.bootstrap.Element
- * Bootstrap Element class
+ * Bootstrap CardHeader class
  * @constructor
- * Create a new Element
+ * Create a new Card Header - that you can embed children into
  * @param {Object} config The config object
  */
 
@@ -1906,18 +1921,43 @@ Roo.bootstrap.CardHeader = function(config){
 
 Roo.extend(Roo.bootstrap.CardHeader, Roo.bootstrap.Element,  {
     
-    tag: 'div',
-    container_method : 'getCardHeader',
     
-    getAutoCreate : function() {
-        
-        var cfg = {
-            tag: 'div' 
-        };
-        
-        return cfg;
-    } 
+    container_method : 'getCardHeader' 
     
+     
+    
+    
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * Card header - holder for the card header elements.
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.CardImageTop
+ * @extends Roo.bootstrap.Element
+ * Bootstrap CardImageTop class
+ * @constructor
+ * Create a new Card Image Top container
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.CardImageTop = function(config){
+    Roo.bootstrap.CardImageTop.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.CardImageTop, Roo.bootstrap.Element,  {
+    
+   
+    container_method : 'getCardImageTop' 
+    
+     
     
    
 });

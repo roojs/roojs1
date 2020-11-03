@@ -196,7 +196,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         } else {
 	    cfg.cn.push({
                 tag : 'div',
-                cls : 'card-img-top d-none',
+                cls : 'card-img-top d-none' 
             });
 	}
         
