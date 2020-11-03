@@ -6,11 +6,11 @@
  */
 
 /**
- * @class Roo.bootstrap.CardHeader
- * @extends Roo.bootstrap.Element
+ * @class Roo.bootstrap.CardImage
+ * @extends Roo.bootstrap.Image
  * Bootstrap Element class
  * @constructor
- * Create a new Element
+ * Create a new Card Image Element
  * @param {Object} config The config object
  */
 
