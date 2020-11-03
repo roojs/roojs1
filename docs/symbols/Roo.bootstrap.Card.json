@@ -72,7 +72,7 @@
     },
     {
       "name" : "header",
-      "type" : "String",
+      "type" : "String|Object",
       "desc" : "",
       "memberOf" : "Roo.bootstrap.Card",
       "optvals" : []

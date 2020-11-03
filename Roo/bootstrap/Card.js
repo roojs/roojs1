@@ -12,7 +12,7 @@
  *
  * possible... may not be implemented..
  * @cfg {String} header_image  src url of image.
- * @cfg {String} header
+ * @cfg {String|Object} header
  * @cfg {Number} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
  * 
  * @cfg {String} title
@@ -181,14 +181,24 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 cls : 'card-header',
                 html : this.header // escape?
             });
-        }
+        } else {
+	    cfg.cn.push({
+                tag : 'div',
+                cls : 'card-header d-none'
+            });
+	}
         if (this.header_image.length) {
             cfg.cn.push({
                 tag : 'img',
                 cls : 'card-img-top',
                 src: this.header_image // escape?
             });
-        }
+        } else {
+	    cfg.cn.push({
+                tag : 'div',
+                cls : 'card-img-top d-none' 
+            });
+	}
         
         var body = {
             tag : 'div',
@@ -237,6 +247,26 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+    
+    getCardHeader : function()
+    {
+        var  ret = this.el.select('.card-header',true).first();
+	if (ret.hasClass('d-none')) {
+	    ret.removeClass('d-none');
+	}
+        
+        return ret;
+    },
+    
+    getCardImageTop : function()
+    {
+        var  ret = this.el.select('.card-img-top',true).first();
+	if (ret.hasClass('d-none')) {
+	    ret.removeClass('d-none');
+	}
+        
+        return ret;
+    },
     
     getChildContainer : function()
     {

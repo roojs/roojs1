@@ -438,6 +438,95 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
  /*
  * - LGPL
  *
+ * element
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Element
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Element class
+ * @cfg {String} html contents of the element
+ * @cfg {String} tag tag of the element
+ * @cfg {String} cls class of the element
+ * @cfg {Boolean} preventDefault (true|false) default false
+ * @cfg {Boolean} clickable (true|false) default false
+ * 
+ * @constructor
+ * Create a new Element
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Element = function(config){
+    Roo.bootstrap.Element.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * When a element is chick
+         * @param {Roo.bootstrap.Element} this
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
+};
+
+Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
+    
+    tag: 'div',
+    cls: '',
+    html: '',
+    preventDefault: false, 
+    clickable: false,
+    
+    getAutoCreate : function(){
+        
+        var cfg = {
+            tag: this.tag,
+            // cls: this.cls, double assign in parent class Component.js :: onRender
+            html: this.html
+        };
+        
+        return cfg;
+    },
+    
+    initEvents: function() 
+    {
+        Roo.bootstrap.Element.superclass.initEvents.call(this);
+        
+        if(this.clickable){
+            this.el.on('click', this.onClick, this);
+        }
+        
+    },
+    
+    onClick : function(e)
+    {
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
+        this.fireEvent('click', this, e);
+    },
+    
+    getValue : function()
+    {
+        return this.el.dom.innerHTML;
+    },
+    
+    setValue : function(value)
+    {
+        this.el.dom.innerHTML = value;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
  * Body
  *
  */
@@ -1508,7 +1597,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  *
  * possible... may not be implemented..
  * @cfg {String} header_image  src url of image.
- * @cfg {String} header
+ * @cfg {String|Object} header
  * @cfg {Number} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
  * 
  * @cfg {String} title
@@ -1677,14 +1766,24 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 cls : 'card-header',
                 html : this.header // escape?
             });
-        }
+        } else {
+	    cfg.cn.push({
+                tag : 'div',
+                cls : 'card-header d-none'
+            });
+	}
         if (this.header_image.length) {
             cfg.cn.push({
                 tag : 'img',
                 cls : 'card-img-top',
                 src: this.header_image // escape?
             });
-        }
+        } else {
+	    cfg.cn.push({
+                tag : 'div',
+                cls : 'card-img-top d-none' 
+            });
+	}
         
         var body = {
             tag : 'div',
@@ -1734,6 +1833,26 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     },
     
     
+    getCardHeader : function()
+    {
+        var  ret = this.el.select('.card-header',true).first();
+	if (ret.hasClass('d-none')) {
+	    ret.removeClass('d-none');
+	}
+        
+        return ret;
+    },
+    
+    getCardImageTop : function()
+    {
+        var  ret = this.el.select('.card-img-top',true).first();
+	if (ret.hasClass('d-none')) {
+	    ret.removeClass('d-none');
+	}
+        
+        return ret;
+    },
+    
     getChildContainer : function()
     {
         
@@ -1781,6 +1900,71 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 });
 
 /*
+ * - LGPL
+ *
+ * Card header - holder for the card header elements.
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.CardHeader
+ * @extends Roo.bootstrap.Element
+ * Bootstrap CardHeader class
+ * @constructor
+ * Create a new Card Header - that you can embed children into
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.CardHeader = function(config){
+    Roo.bootstrap.CardHeader.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.CardHeader, Roo.bootstrap.Element,  {
+    
+    
+    container_method : 'getCardHeader' 
+    
+     
+    
+    
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * Card header - holder for the card header elements.
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.CardImageTop
+ * @extends Roo.bootstrap.Element
+ * Bootstrap CardImageTop class
+ * @constructor
+ * Create a new Card Image Top container
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.CardImageTop = function(config){
+    Roo.bootstrap.CardImageTop.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.CardImageTop, Roo.bootstrap.Element,  {
+    
+   
+    container_method : 'getCardImageTop' 
+    
+     
+    
+   
+});
+
+ 
+
+ /*
  * - LGPL
  *
  * image
@@ -5573,95 +5757,6 @@ Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
     }
     
     
-});
-
- 
-
- /*
- * - LGPL
- *
- * element
- * 
- */
-
-/**
- * @class Roo.bootstrap.Element
- * @extends Roo.bootstrap.Component
- * Bootstrap Element class
- * @cfg {String} html contents of the element
- * @cfg {String} tag tag of the element
- * @cfg {String} cls class of the element
- * @cfg {Boolean} preventDefault (true|false) default false
- * @cfg {Boolean} clickable (true|false) default false
- * 
- * @constructor
- * Create a new Element
- * @param {Object} config The config object
- */
-
-Roo.bootstrap.Element = function(config){
-    Roo.bootstrap.Element.superclass.constructor.call(this, config);
-    
-    this.addEvents({
-        // raw events
-        /**
-         * @event click
-         * When a element is chick
-         * @param {Roo.bootstrap.Element} this
-         * @param {Roo.EventObject} e
-         */
-        "click" : true
-    });
-};
-
-Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
-    
-    tag: 'div',
-    cls: '',
-    html: '',
-    preventDefault: false, 
-    clickable: false,
-    
-    getAutoCreate : function(){
-        
-        var cfg = {
-            tag: this.tag,
-            // cls: this.cls, double assign in parent class Component.js :: onRender
-            html: this.html
-        };
-        
-        return cfg;
-    },
-    
-    initEvents: function() 
-    {
-        Roo.bootstrap.Element.superclass.initEvents.call(this);
-        
-        if(this.clickable){
-            this.el.on('click', this.onClick, this);
-        }
-        
-    },
-    
-    onClick : function(e)
-    {
-        if(this.preventDefault){
-            e.preventDefault();
-        }
-        
-        this.fireEvent('click', this, e);
-    },
-    
-    getValue : function()
-    {
-        return this.el.dom.innerHTML;
-    },
-    
-    setValue : function(value)
-    {
-        this.el.dom.innerHTML = value;
-    }
-   
 });
 
  

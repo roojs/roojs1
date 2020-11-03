@@ -406,6 +406,16 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.bootstrap.CardHeader",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.bootstrap.CardImageTop",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.bootstrap.CheckBox",
             "cn" : [],
             "is_class" : true
