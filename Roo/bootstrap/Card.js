@@ -193,7 +193,12 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 cls : 'card-img-top',
                 src: this.header_image // escape?
             });
-        }
+        } else {
+	    cfg.cn.push({
+                tag : 'div',
+                cls : 'card-img-top d-none',
+            });
+	}
         
         var body = {
             tag : 'div',
