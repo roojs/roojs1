@@ -23,14 +23,7 @@ Roo.extend(Roo.bootstrap.CardHeader, Roo.bootstrap.Element,  {
     
     container_method : 'getCardHeader',
     
-    getAutoCreate : function() {
-        
-        var cfg = {
-            tag: 'div' 
-        };
-        
-        return cfg;
-    } 
+     
     
     
    

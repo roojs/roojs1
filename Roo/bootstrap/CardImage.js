@@ -21,7 +21,7 @@ Roo.bootstrap.CardImage = function(config){
 Roo.extend(Roo.bootstrap.CardImage, Roo.bootstrap.Image,  {
     
    
-    container_method : 'getCardHeader',
+    container_method : 'getCardImage',
     
      
     
