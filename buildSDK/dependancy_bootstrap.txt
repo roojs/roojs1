@@ -2,6 +2,7 @@
 Roo.bootstrap.version
 
 Roo.bootstrap.Component
+Roo.bootstrap.Element
 
 Roo.bootstrap.Body
 Roo.bootstrap.ButtonGroup
@@ -34,7 +35,7 @@ Roo.bootstrap.NavSidebarItem
 
 Roo.bootstrap.Row
 
-Roo.bootstrap.Element
+
 Roo.bootstrap.Pagination
 Roo.bootstrap.PaginationItem
 Roo.bootstrap.Slider
