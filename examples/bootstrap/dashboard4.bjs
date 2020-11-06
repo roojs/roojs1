@@ -47,6 +47,31 @@
          "String html" : "Add Issue"
         }
        ]
+      },
+      {
+       "String header" : "example 1",
+       "String footer" : "a footer",
+       "String weight" : "danger",
+       "xtype" : "Card",
+       "$ xns" : "Roo.bootstrap",
+       "String style" : "max-width:300px",
+       "items" : [
+        {
+         "String header" : "ticket 1",
+         "String weight" : "light",
+         "String margin_bottom" : 3,
+         "xtype" : "Card",
+         "$ xns" : "Roo.bootstrap",
+         "String html" : "body goes here",
+         "bool dragable" : true
+        },
+        {
+         "String weight" : "primary",
+         "xtype" : "Button",
+         "$ xns" : "Roo.bootstrap",
+         "String html" : "Add Issue"
+        }
+       ]
       }
      ]
     }
