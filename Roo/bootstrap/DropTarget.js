@@ -65,11 +65,13 @@ Roo.extend(Roo.bootstrap.DropTarget, Roo.bootstrap.Element,  {
     onEnter : function(source)
     {
         // probably want to resize the element to match the dropped element..
+        Roo.log("enter");
     },
     
     onOut : function(value)
     {
         // resize back to normal
+        Roo.log("out");
     },
     
     onOver : function()
