@@ -42,6 +42,7 @@
            "items" : [
             {
              "String header" : "ticket 1",
+             "string drag_group" : "cards",
              "String weight" : "light",
              "String margin_bottom" : 3,
              "xtype" : "Card",
@@ -53,7 +54,7 @@
              "xtype" : "DropTarget",
              "$ xns" : "Roo.bootstrap",
              "String style" : "width:100%;height:10px;background-color:green",
-             "string name" : "drag"
+             "string name" : "cards"
             },
             {
              "String weight" : "primary",
