@@ -66,7 +66,7 @@ dashboard4 = new Roo.XComponent({
              '|xns' : 'Roo.bootstrap'
             },
             {
-             xtype : 'Container',
+             xtype : 'DropTarget',
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
             },

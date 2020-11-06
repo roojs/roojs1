@@ -50,7 +50,7 @@
              "bool dragable" : true
             },
             {
-             "xtype" : "Container",
+             "xtype" : "DropTarget",
              "$ xns" : "Roo.bootstrap"
             },
             {
