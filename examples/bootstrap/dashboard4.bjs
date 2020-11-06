@@ -50,6 +50,10 @@
              "bool dragable" : true
             },
             {
+             "xtype" : "Container",
+             "$ xns" : "Roo.bootstrap"
+            },
+            {
              "String weight" : "primary",
              "xtype" : "Button",
              "$ xns" : "Roo.bootstrap",
