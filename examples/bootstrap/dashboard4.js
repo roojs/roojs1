@@ -67,6 +67,7 @@ dashboard4 = new Roo.XComponent({
             },
             {
              xtype : 'DropTarget',
+             name : 'drag',
              style : 'width:100%;height:10px;background-color:green',
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
