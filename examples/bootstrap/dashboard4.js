@@ -37,6 +37,11 @@ dashboard4 = new Roo.XComponent({
      '|xns' : 'Roo.bootstrap',
      items  : [
       {
+       xtype : 'Column',
+       xns : Roo.bootstrap,
+       '|xns' : 'Roo.bootstrap'
+      },
+      {
        xtype : 'Card',
        footer : 'a footer',
        header : _this._strings['e93b3fa481be3932aa08bd68c3deee70'] /* example 1 */,

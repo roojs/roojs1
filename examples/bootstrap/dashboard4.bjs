@@ -25,6 +25,10 @@
      "$ xns" : "Roo.bootstrap",
      "items" : [
       {
+       "xtype" : "Column",
+       "$ xns" : "Roo.bootstrap"
+      },
+      {
        "String header" : "example 1",
        "String footer" : "a footer",
        "String weight" : "danger",
