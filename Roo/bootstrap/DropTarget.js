@@ -59,6 +59,7 @@ Roo.extend(Roo.bootstrap.DropTarget, Roo.bootstrap.Element,  {
     {
         // user has to decide how to impliment this.
         this.fireEvent('drop', this, source, e ,data);
+        return false;
     },
     
     onEnter : function(source)
