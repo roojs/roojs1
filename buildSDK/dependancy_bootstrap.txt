@@ -3,6 +3,7 @@ Roo.bootstrap.version
 
 Roo.bootstrap.Component
 Roo.bootstrap.Element
+Roo.bootstrap.DropTarget
 
 Roo.bootstrap.Body
 Roo.bootstrap.ButtonGroup
