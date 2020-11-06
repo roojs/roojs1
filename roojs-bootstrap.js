@@ -19,6 +19,10 @@ return cn;}var I=A.items;delete A.items;if(!skip_children){for(var i=0;i<I.lengt
 Roo.bootstrap.Element=function(A){Roo.bootstrap.Element.superclass.constructor.call(this,A);this.addEvents({"click":true});};Roo.extend(Roo.bootstrap.Element,Roo.bootstrap.Component,{tag:'div',cls:'',html:'',preventDefault:false,clickable:false,getAutoCreate:function(){var A={tag:this.tag,html:this.html}
 ;return A;},initEvents:function(){Roo.bootstrap.Element.superclass.initEvents.call(this);if(this.clickable){this.el.on('click',this.onClick,this);}},onClick:function(e){if(this.preventDefault){e.preventDefault();}this.fireEvent('click',this,e);},getValue:function(){return this.el.dom.innerHTML;
 },setValue:function(A){this.el.dom.innerHTML=A;}});
+// Roo/bootstrap/DropTarget.js
+Roo.bootstrap.DropTarget=function(A){Roo.bootstrap.DropTarget.superclass.constructor.call(this,A);this.addEvents({"drop":true});};Roo.extend(Roo.bootstrap.DropTarget,Roo.bootstrap.Element,{getAutoCreate:function(){},initEvents:function(){Roo.bootstrap.DropTarget.superclass.initEvents.call(this);
+this.dropZone=new Roo.dd.DropTarget(this.getEl(),{ddGroup:this.name,listeners:{drop:this.onDrop,enter:this.onEnter,out:this.onOut,over:this.onOver}});},onDrop:function(A,e,B){this.fireEvent('drop',this,A,e,B);},onEnter:function(A){Roo.log("enter");},onOut:function(A){Roo.log("out");
+},onOver:function(){}});
 // Roo/bootstrap/Body.js
 Roo.bootstrap.Body=function(A){A=A||{};Roo.bootstrap.Body.superclass.constructor.call(this,A);this.el=Roo.get(A.el?A.el:document.body);if(this.cls&&this.cls.length){Roo.get(document.body).addClass(this.cls);}};Roo.extend(Roo.bootstrap.Body,Roo.bootstrap.Component,{is_body:true,autoCreate:{cls:'container'}
 ,onRender:function(ct,A){}});
