@@ -52,8 +52,7 @@ Roo.extend(Roo.bootstrap.DropTarget, Roo.bootstrap.Element,  {
                 over : this.onOver
             }
         });
-        
-        
+         
     },
     
     onDrop : function(source,e,data)
