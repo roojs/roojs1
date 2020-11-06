@@ -81,6 +81,7 @@
            "items" : [
             {
              "String header" : "ticket 1",
+             "string drag_group" : "cards",
              "String weight" : "light",
              "String margin_bottom" : 3,
              "xtype" : "Card",
