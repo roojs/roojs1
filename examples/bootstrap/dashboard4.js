@@ -40,7 +40,7 @@ dashboard4 = new Roo.XComponent({
        xtype : 'Card',
        footer : 'a footer',
        header : _this._strings['e93b3fa481be3932aa08bd68c3deee70'] /* example 1 */,
-       style : 'max-width:300px',
+       style : 'max-width:300px;',
        weight : 'danger',
        xns : Roo.bootstrap,
        '|xns' : 'Roo.bootstrap',

@@ -30,7 +30,7 @@
        "String weight" : "danger",
        "xtype" : "Card",
        "$ xns" : "Roo.bootstrap",
-       "String style" : "max-width:300px",
+       "String style" : "max-width:300px;",
        "items" : [
         {
          "String header" : "ticket 1",
