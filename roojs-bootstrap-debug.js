@@ -1714,7 +1714,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  * @cfg {String} display_xl (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
  
  * @config {Boolean} dragable  if this card can be dragged.
- * @config {Boolean} drag_group  group for drag
+ * @config {string} drag_group  group for drag
  * 
  
  * @constructor
