@@ -21,8 +21,8 @@ Roo.bootstrap.Element=function(A){Roo.bootstrap.Element.superclass.constructor.c
 },setValue:function(A){this.el.dom.innerHTML=A;}});
 // Roo/bootstrap/DropTarget.js
 Roo.bootstrap.DropTarget=function(A){Roo.bootstrap.DropTarget.superclass.constructor.call(this,A);this.addEvents({"drop":true});};Roo.extend(Roo.bootstrap.DropTarget,Roo.bootstrap.Element,{getAutoCreate:function(){},initEvents:function(){Roo.bootstrap.DropTarget.superclass.initEvents.call(this);
-this.dropZone=new Roo.dd.DropTarget(this.getEl(),{ddGroup:this.name,listeners:{drop:this.onDrop,enter:this.onEnter,out:this.onOut,over:this.onOver}});},onDrop:function(A,e,B){this.fireEvent('drop',this,A,e,B);},onEnter:function(A){Roo.log("enter");},onOut:function(A){Roo.log("out");
-},onOver:function(){}});
+this.dropZone=new Roo.dd.DropTarget(this.getEl(),{ddGroup:this.name,listeners:{drop:this.onDrop,enter:this.onEnter,out:this.onOut,over:this.onOver}});},onDrop:function(A,e,B){this.fireEvent('drop',this,A,e,B);return false;},onEnter:function(A){Roo.log("enter");
+},onOut:function(A){Roo.log("out");},onOver:function(){}});
 // Roo/bootstrap/Body.js
 Roo.bootstrap.Body=function(A){A=A||{};Roo.bootstrap.Body.superclass.constructor.call(this,A);this.el=Roo.get(A.el?A.el:document.body);if(this.cls&&this.cls.length){Roo.get(document.body).addClass(this.cls);}};Roo.extend(Roo.bootstrap.Body,Roo.bootstrap.Component,{is_body:true,autoCreate:{cls:'container'}
 ,onRender:function(ct,A){}});
