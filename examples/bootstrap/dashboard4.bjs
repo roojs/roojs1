@@ -8,6 +8,7 @@
  "strings" : {
   "e93b3fa481be3932aa08bd68c3deee70" : "example 1",
   "60ee66eb2cd31823032664c2e9a79fd5" : "body goes here",
+  "a6b23ee7f9c084154997ea3bf5b4c1e3" : "example 2",
   "9cf863d802aca813531ca28b319ead90" : "Add Issue",
   "d9fb0367346d21079a1c52d72da61c9f" : "ticket 1"
  },
@@ -49,7 +50,7 @@
        ]
       },
       {
-       "String header" : "example 1",
+       "String header" : "example 2",
        "String footer" : "a footer",
        "String weight" : "danger",
        "xtype" : "Card",

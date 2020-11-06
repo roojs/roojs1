@@ -7,6 +7,7 @@ dashboard4 = new Roo.XComponent({
  _strings : {
   'e93b3fa481be3932aa08bd68c3deee70' :"example 1",
   '60ee66eb2cd31823032664c2e9a79fd5' :"body goes here",
+  'a6b23ee7f9c084154997ea3bf5b4c1e3' :"example 2",
   '9cf863d802aca813531ca28b319ead90' :"Add Issue",
   'd9fb0367346d21079a1c52d72da61c9f' :"ticket 1"
  },
@@ -66,7 +67,7 @@ dashboard4 = new Roo.XComponent({
       {
        xtype : 'Card',
        footer : 'a footer',
-       header : _this._strings['e93b3fa481be3932aa08bd68c3deee70'] /* example 1 */,
+       header : _this._strings['a6b23ee7f9c084154997ea3bf5b4c1e3'] /* example 2 */,
        style : 'max-width:300px',
        weight : 'danger',
        xns : Roo.bootstrap,
