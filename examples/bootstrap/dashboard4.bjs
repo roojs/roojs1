@@ -39,6 +39,7 @@
            "xtype" : "Card",
            "$ xns" : "Roo.bootstrap",
            "String style" : " ",
+           "bool dropable" : true,
            "items" : [
             {
              "String header" : "ticket 1",
@@ -49,12 +50,6 @@
              "$ xns" : "Roo.bootstrap",
              "String html" : "body goes here",
              "bool dragable" : true
-            },
-            {
-             "xtype" : "DropTarget",
-             "$ xns" : "Roo.bootstrap",
-             "String style" : "width:100%;height:10px;background-color:green",
-             "string name" : "cards"
             },
             {
              "String weight" : "primary",

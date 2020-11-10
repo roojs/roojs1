@@ -48,6 +48,7 @@ dashboard4 = new Roo.XComponent({
          items  : [
           {
            xtype : 'Card',
+           dropable : true,
            footer : 'a footer',
            header : _this._strings['e93b3fa481be3932aa08bd68c3deee70'] /* example 1 */,
            style : ' ',
@@ -63,13 +64,6 @@ dashboard4 = new Roo.XComponent({
              html : _this._strings['60ee66eb2cd31823032664c2e9a79fd5'] /* body goes here */,
              margin_bottom : 3,
              weight : 'light',
-             xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
-            },
-            {
-             xtype : 'DropTarget',
-             name : 'cards',
-             style : 'width:100%;height:10px;background-color:green',
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
             },
