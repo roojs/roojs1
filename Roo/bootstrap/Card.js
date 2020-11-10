@@ -294,7 +294,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (this.dropable) {
 	    this.dropZone = new Roo.dd.DropZone(this.getChildContainer(), {
 		    containerScroll: true,
-		    ddGroup: his.drop_group || 'default_card_drag_group'
+		    ddGroup: this.drop_group || 'default_card_drag_group'
 	    });
 	    this.dropZone.getTargetFromEvent = this.getTargetFromEvent.createDelegate(this);
 	    this.dropZone.onNodeEnter = this.onNodeEnter.createDelegate(this);
