@@ -282,7 +282,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        if(this.dragable){
+        
+	this.bodyEl = this.getChildContainer();
+	if(this.dragable){
             this.dragZone = new Roo.dd.DragZone(this.getEl(), {
                     containerScroll: true,
                     ddGroup: this.drag_group || 'default_card_drag_group'
@@ -331,7 +333,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     getTargetFromEvent : function(e) {
 	var target = e.getTarget();
 	while ((target !== null) && (target.parentNode != this.el.dom)) {
-	target = target.parentNode;
+	    target = target.parentNode;
 	}
 	if (!target) {
 		target = this.el.dom.lastChild || this.el.dom;
