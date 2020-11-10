@@ -323,7 +323,73 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return dragData;
         }
         return false;
-    }
+    },
+    /**
+ *	Part of the Roo.dd.DropZone interface. If no target node is found, the
+ *	whole Element becomes the target, and this causes the drop gesture to append.
+ */
+    getTargetFromEvent : function(e) {
+		var target = e.getTarget();
+		while ((target !== null) && (target.parentNode != this.el.dom)) {
+    		target = target.parentNode;
+		}
+		if (!target) {
+			target = this.el.dom.lastChild || this.el.dom;
+		}
+		return target;
+    },
     
+    onNodeEnter : function(n, dd, e, data){
+	return false;
+    },
+     onNodeOver : function(n, dd, e, data){
+	    var pt = this.getDropPoint(e, n, dd);
+	    // set the insert point style on the target node
+	    var dragElClass = this.dropNotAllowed;
+	    if (pt) {
+		    var targetElClass;
+		    if (pt == "above"){
+			    dragElClass = n.previousSibling ? "x-tree-drop-ok-between" : "x-tree-drop-ok-above";
+			    targetElClass = "x-view-drag-insert-above";
+		    } else {
+			    dragElClass = n.nextSibling ? "x-tree-drop-ok-between" : "x-tree-drop-ok-below";
+			    targetElClass = "x-view-drag-insert-below";
+		    }
+		    if (this.lastInsertClass != targetElClass){
+			    Roo.fly(n).replaceClass(this.lastInsertClass, targetElClass);
+			    this.lastInsertClass = targetElClass;
+		    }
+	    }
+	    return dragElClass;
+    },
+    onNodeOut : function(n, dd, e, data){
+		this.removeDropIndicators(n);
+    },
+    onNodeDrop : function(n, dd, e, data){
+    	if (this.fireEvent("drop", this, n, dd, e, data) === false) {
+    		return false;
+    	}
+    	var pt = this.getDropPoint(e, n, dd);
+		var insertAt = (n == this.el.dom) ? this.nodes.length : n.nodeIndex;
+		if (pt == "below") { insertAt++; }
+		for (var i = 0; i < data.records.length; i++) {
+			var r = data.records[i];
+			var dup = this.store.getById(r.id);
+			if (dup && (dd != this.dragZone)) {
+				Roo.fly(this.getNode(this.store.indexOf(dup))).frame("red", 1);
+			} else {
+				if (data.copy) {
+					this.store.insert(insertAt++, r.copy());
+				} else {
+					data.source.isDirtyFlag = true;
+					r.store.remove(r);
+					this.store.insert(insertAt++, r);
+				}
+				this.isDirtyFlag = true;
+			}
+		}
+		this.dragZone.cachedTarget = null;
+		return true;
+    },
 });
 
