@@ -332,12 +332,13 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
  */
     getTargetFromEvent : function(e) {
 	var target = e.getTarget();
-	while ((target !== null) && (target.parentNode != this.el.dom)) {
+	while ((target !== null) && (target.parentNode != this.bodyEl.dom)) {
 	    target = target.parentNode;
 	}
 	if (!target) {
-		target = this.el.dom.lastChild || this.el.dom;
+	    target = this.el.dom.lastChild || this.el.dom;
 	}
+	Roo.log(['getTargetFromEvent', target]);
 	return target;
     },
     
