@@ -45,7 +45,9 @@
  * @cfg {String} display_xl (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
  
  * @config {Boolean} dragable  if this card can be dragged.
- * @config {string} drag_group  group for drag
+ * @config {String} drag_group  group for drag
+ * @config {Boolean} dropable  if this card can be dropped into
+ * @config {String} drop_group  group for drag
  * 
  
  * @constructor
@@ -99,7 +101,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     dragable : false,
     drag_group : false,
-    
+    dropable : false,
+    drop_group : false,
     childContainer : false,
 
     layoutCls : function()
@@ -286,7 +289,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             });
             this.dragZone.getDragData = this.getDragData.createDelegate(this);
         }
-        
+        if (this.dropable) {
+	    //code
+	}
         
         
     },
