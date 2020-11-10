@@ -1973,6 +1973,11 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 		    containerScroll: true,
 		    ddGroup: his.drop_group || 'default_card_drag_group'
 	    });
+	    this.dropZone.getTargetFromEvent = this.getTargetFromEvent.createDelegate(this);
+	    this.dropZone.onNodeEnter = this.onNodeEnter.createDelegate(this);
+	    this.dropZone.onNodeOver = this.onNodeOver.createDelegate(this);
+	    this.dropZone.onNodeOut = this.onNodeOut.createDelegate(this);
+	    this.dropZone.onNodeDrop = this.onNodeDrop.createDelegate(this);
 	}
         
         
