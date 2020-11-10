@@ -339,6 +339,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	if (!target) {
 	    target = this.el.dom.lastChild || this.el.dom;
 	}
+	for(var i =0; i < this.items.length; i++) {
+	    
+	}
+	
 	Roo.log(['getTargetFromEvent', target]);
 	return target;
     },
