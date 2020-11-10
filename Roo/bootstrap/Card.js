@@ -352,26 +352,29 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	// set the insert point style on the target node
 	var dragElClass = this.dropNotAllowed;
 	if (pt) {
-		var targetElClass;
-		if (pt == "above"){
-			dragElClass = n.previousSibling ? "x-tree-drop-ok-between" : "x-tree-drop-ok-above";
-			targetElClass = "x-view-drag-insert-above";
-		} else {
-			dragElClass = n.nextSibling ? "x-tree-drop-ok-between" : "x-tree-drop-ok-below";
-			targetElClass = "x-view-drag-insert-below";
-		}
-		if (this.lastInsertClass != targetElClass){
-			Roo.fly(n).replaceClass(this.lastInsertClass, targetElClass);
-			this.lastInsertClass = targetElClass;
-		}
+	    var targetElClass;
+	    if (pt == "above"){
+		    dragElClass = n.previousSibling ? "x-tree-drop-ok-between" : "x-tree-drop-ok-above";
+		    targetElClass = "x-view-drag-insert-above";
+	    } else {
+		    dragElClass = n.nextSibling ? "x-tree-drop-ok-between" : "x-tree-drop-ok-below";
+		    targetElClass = "x-view-drag-insert-below";
+	    }
+	    if (this.lastInsertClass != targetElClass){
+		    Roo.fly(n).replaceClass(this.lastInsertClass, targetElClass);
+		    this.lastInsertClass = targetElClass;
+	    }
 	}
 	return dragElClass;
     },
     onNodeOut : function(n, dd, e, data){
-		this.removeDropIndicators(n);
+	this.removeDropIndicators(n);
     },
-    onNodeDrop : function(n, dd, e, data){
-    	if (this.fireEvent("drop", this, n, dd, e, data) === false) {
+    onNodeDrop : function(n, dd, e, data)
+    {
+    	return false;
+	
+	if (this.fireEvent("drop", this, n, dd, e, data) === false) {
     		return false;
     	}
     	var pt = this.getDropPoint(e, n, dd);
