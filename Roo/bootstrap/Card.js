@@ -350,7 +350,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     {
 	var pt = this.getDropPoint(e, n, dd);
 	// set the insert point style on the target node
-	var dragElClass = this.dropNotAllowed;
+	//var dragElClass = this.dropNotAllowed;
 	if (pt) {
 	    var targetElClass;
 	    if (pt == "above"){
@@ -365,7 +365,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 		    this.lastInsertClass = targetElClass;
 	    }
 	}
-	return dragElClass;
+	return false; //dragElClass;
     },
     onNodeOut : function(n, dd, e, data){
 	this.removeDropIndicators(n);
@@ -378,26 +378,28 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     		return false;
     	}
     	var pt = this.getDropPoint(e, n, dd);
-	var insertAt = (n == this.bodyEl.dom) ? this.nodes.length : n.nodeIndex;
-		if (pt == "below") { insertAt++; }
-		for (var i = 0; i < data.records.length; i++) {
-			var r = data.records[i];
-			var dup = this.store.getById(r.id);
-			if (dup && (dd != this.dragZone)) {
-				Roo.fly(this.getNode(this.store.indexOf(dup))).frame("red", 1);
-			} else {
-				if (data.copy) {
-					this.store.insert(insertAt++, r.copy());
-				} else {
-					data.source.isDirtyFlag = true;
-					r.store.remove(r);
-					this.store.insert(insertAt++, r);
-				}
-				this.isDirtyFlag = true;
-			}
+	var insertAt = (n == this.bodyEl.dom) ? this.items.length : n.nodeIndex;
+	if (pt == "below") {
+	    insertAt++;
+	}
+	for (var i = 0; i < this.items.length; i++) {
+	    var r = this.items[i];
+	    //var dup = this.store.getById(r.id);
+	    if (dup && (dd != this.dragZone)) {
+		    Roo.fly(this.getNode(this.store.indexOf(dup))).frame("red", 1);
+	    } else {
+		if (data.copy) {
+		    this.store.insert(insertAt++, r.copy());
+		} else {
+		    data.source.isDirtyFlag = true;
+		    r.store.remove(r);
+		    this.store.insert(insertAt++, r);
 		}
-		this.dragZone.cachedTarget = null;
-		return true;
+		this.isDirtyFlag = true;
+	    }
+	}
+	this.dragZone.cachedTarget = null;
+	return true;
     },
     
     /**	Decide whether to drop above or below a View node. */
