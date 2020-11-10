@@ -330,7 +330,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
  *	Part of the Roo.dd.DropZone interface. If no target node is found, the
  *	whole Element becomes the target, and this causes the drop gesture to append.
  */
-    getTargetFromEvent : function(e) {
+    getTargetFromEvent : function(e)
+    {
 	var target = e.getTarget();
 	while ((target !== null) && (target.parentNode != this.bodyEl.dom)) {
 	    target = target.parentNode;
@@ -345,7 +346,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     onNodeEnter : function(n, dd, e, data){
 	return false;
     },
-    onNodeOver : function(n, dd, e, data){
+    onNodeOver : function(n, dd, e, data)
+    {
 	var pt = this.getDropPoint(e, n, dd);
 	// set the insert point style on the target node
 	var dragElClass = this.dropNotAllowed;
@@ -394,5 +396,23 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 		this.dragZone.cachedTarget = null;
 		return true;
     },
+    
+    /**	Decide whether to drop above or below a View node. */
+    getDropPoint : function(e, n, dd)
+    {
+    	if (n == this.el.dom) {
+		return "above";
+	}
+	var t = Roo.lib.Dom.getY(n), b = t + n.offsetHeight;
+	var c = t + (b - t) / 2;
+	var y = Roo.lib.Event.getPageY(e);
+	if(y <= c) {
+		return "above";
+	}else{
+		return "below";
+	}
+    },
+
+    
 });
 
