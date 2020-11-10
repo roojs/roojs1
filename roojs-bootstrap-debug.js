@@ -572,35 +572,44 @@ Roo.extend(Roo.bootstrap.DropTarget, Roo.bootstrap.Element,  {
         this.dropZone = new Roo.dd.DropTarget(this.getEl(), {
             ddGroup: this.name,
             listeners : {
-                drop : this.onDrop,
-                enter : this.onEnter,
-                out : this.onOut,
-                over : this.onOver
+                drop : this.dragDrop.createDelegate(this),
+                enter : this.dragEnter.createDelegate(this),
+                out : this.dragOut.createDelegate(this),
+                over : this.dragOver.createDelegate(this)
             }
+            
         });
-         
+        this.dropZone.DDM.useCache = false // so data gets refreshed when we resize stuff
     },
     
-    onDrop : function(source,e,data)
+    dragDrop : function(source,e,data)
     {
         // user has to decide how to impliment this.
-        this.fireEvent('drop', this, source, e ,data);
+        Roo.log('drop');
+        Roo.log(this);
+        //this.fireEvent('drop', this, source, e ,data);
         return false;
     },
     
-    onEnter : function(source)
+    dragEnter : function(n, dd, e, data)
     {
         // probably want to resize the element to match the dropped element..
         Roo.log("enter");
+        this.originalSize = this.el.getSize();
+        this.el.setSize( n.el.getSize());
+        this.dropZone.DDM.refreshCache(this.name);
+        Roo.log([n, dd, e, data]);
     },
     
-    onOut : function(value)
+    dragOut : function(value)
     {
         // resize back to normal
         Roo.log("out");
+        this.el.setSize(this.originalSize);
+        this.dropZone.resetConstraints();
     },
     
-    onOver : function()
+    dragOver : function()
     {
         // ??? do nothing?
     }
@@ -1715,7 +1724,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  * @cfg {String} display_xl (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
  
  * @config {Boolean} dragable  if this card can be dragged.
- * @config {string} drag_group  group for drag
+ * @config {String} drag_group  group for drag
+ * @config {Boolean} dropable  if this card can be dropped into
+ * @config {String} drop_group  group for drag
  * 
  
  * @constructor
@@ -1769,7 +1780,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     dragable : false,
     drag_group : false,
-    
+    dropable : false,
+    drop_group : false,
     childContainer : false,
 
     layoutCls : function()
@@ -1956,7 +1968,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             });
             this.dragZone.getDragData = this.getDragData.createDelegate(this);
         }
-        
+        if (this.dropable) {
+	    //code
+	}
         
         
     },

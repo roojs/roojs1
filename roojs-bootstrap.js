@@ -21,8 +21,9 @@ Roo.bootstrap.Element=function(A){Roo.bootstrap.Element.superclass.constructor.c
 },setValue:function(A){this.el.dom.innerHTML=A;}});
 // Roo/bootstrap/DropTarget.js
 Roo.bootstrap.DropTarget=function(A){Roo.bootstrap.DropTarget.superclass.constructor.call(this,A);this.addEvents({"drop":true});};Roo.extend(Roo.bootstrap.DropTarget,Roo.bootstrap.Element,{getAutoCreate:function(){},initEvents:function(){Roo.bootstrap.DropTarget.superclass.initEvents.call(this);
-this.dropZone=new Roo.dd.DropTarget(this.getEl(),{ddGroup:this.name,listeners:{drop:this.onDrop,enter:this.onEnter,out:this.onOut,over:this.onOver}});},onDrop:function(A,e,B){this.fireEvent('drop',this,A,e,B);return false;},onEnter:function(A){Roo.log("enter");
-},onOut:function(A){Roo.log("out");},onOver:function(){}});
+this.dropZone=new Roo.dd.DropTarget(this.getEl(),{ddGroup:this.name,listeners:{drop:this.dragDrop.createDelegate(this),enter:this.dragEnter.createDelegate(this),out:this.dragOut.createDelegate(this),over:this.dragOver.createDelegate(this)}});this.dropZone.DDM.useCache=false}
+,dragDrop:function(A,e,B){Roo.log('drop');Roo.log(this);return false;},dragEnter:function(n,dd,e,A){Roo.log("enter");this.originalSize=this.el.getSize();this.el.setSize(n.el.getSize());this.dropZone.DDM.refreshCache(this.name);Roo.log([n,dd,e,A]);},dragOut:function(A){Roo.log("out");
+this.el.setSize(this.originalSize);this.dropZone.resetConstraints();},dragOver:function(){}});
 // Roo/bootstrap/Body.js
 Roo.bootstrap.Body=function(A){A=A||{};Roo.bootstrap.Body.superclass.constructor.call(this,A);this.el=Roo.get(A.el?A.el:document.body);if(this.cls&&this.cls.length){Roo.get(document.body).addClass(this.cls);}};Roo.extend(Roo.bootstrap.Body,Roo.bootstrap.Component,{is_body:true,autoCreate:{cls:'container'}
 ,onRender:function(ct,A){}});
@@ -69,7 +70,7 @@ return this.el.select('.panel-body',true).first()},titleEl:function(){if(!this.e
 },getTitle:function(){var A=this.titleEl();if(!A){return '';}return A.dom.innerHTML;},setRightTitle:function(v){var t=this.el.select('.panel-header-right',true).first();if(!t){return;}t.dom.innerHTML=v;},onClick:function(e){e.preventDefault();this.fireEvent('click',this,e);
 }});
 // Roo/bootstrap/Card.js
-Roo.bootstrap.Card=function(A){Roo.bootstrap.Card.superclass.constructor.call(this,A);this.addEvents({});};Roo.extend(Roo.bootstrap.Card,Roo.bootstrap.Component,{weight:'',margin:'',margin_top:'',margin_bottom:'',margin_left:'',margin_right:'',margin_x:'',margin_y:'',padding:'',padding_top:'',padding_bottom:'',padding_left:'',padding_right:'',padding_x:'',padding_y:'',display:'',display_xs:'',display_sm:'',display_lg:'',display_xl:'',header_image:'',header:'',header_size:0,title:'',subtitle:'',html:'',footer:'',dragable:false,drag_group:false,childContainer:false,layoutCls:function(){var A='';
+Roo.bootstrap.Card=function(A){Roo.bootstrap.Card.superclass.constructor.call(this,A);this.addEvents({});};Roo.extend(Roo.bootstrap.Card,Roo.bootstrap.Component,{weight:'',margin:'',margin_top:'',margin_bottom:'',margin_left:'',margin_right:'',margin_x:'',margin_y:'',padding:'',padding_top:'',padding_bottom:'',padding_left:'',padding_right:'',padding_x:'',padding_y:'',display:'',display_xs:'',display_sm:'',display_lg:'',display_xl:'',header_image:'',header:'',header_size:0,title:'',subtitle:'',html:'',footer:'',dragable:false,drag_group:false,dropable:false,drop_group:false,childContainer:false,layoutCls:function(){var A='';
 var t=this;Roo.log(this.margin_bottom.length);['','top','bottom','left','right','x','y'].forEach(function(v){if((''+t['margin'+(v.length?'_':'')+v]).length){A+=' m'+(v.length?v[0]:'')+'-'+t['margin'+(v.length?'_':'')+v];}if((''+t['padding'+(v.length?'_':'')+v]).length){A+=' p'+(v.length?v[0]:'')+'-'+t['padding'+(v.length?'_':'')+v];
 }});['','xs','sm','lg','xl'].forEach(function(v){if((''+t['display'+(v.length?'_':'')+v]).length){A+=' d'+(v.length?'-':'')+v+'-'+t['margin'+(v.length?'_':'')+v]}});if(this.hidden){A+=' d-none';}return A;},getAutoCreate:function(){var A={tag:'div',cls:'card',cn:[]}
 ;if(this.weight.length&&this.weight!='light'){A.cls+=' text-white';}else{A.cls+=' text-dark';}if(this.weight.length){A.cls+=' bg-'+this.weight;}A.cls+=this.layoutCls();if(this.header.length){A.cn.push({tag:this.header_size>0?'h'+this.header_size:'div',cls:'card-header',html:this.header}
@@ -77,8 +78,8 @@ var t=this;Roo.log(this.margin_bottom.length);['','top','bottom','left','right',
 if(this.title.length){B.cn.push({tag:'div',cls:'card-title',src:this.title});}if(this.subtitle.length){B.cn.push({tag:'div',cls:'card-title',src:this.subtitle});}B.cn.push({tag:'div',cls:'roo-card-body-ctr'});if(this.html.length){B.cn.push({tag:'div',html:this.html}
 );}if(this.footer.length){A.cn.push({tag:'div',cls:'card-footer',html:this.footer});}return A;},getCardHeader:function(){var A=this.el.select('.card-header',true).first();if(A.hasClass('d-none')){A.removeClass('d-none');}return A;},getCardImageTop:function(){var A=this.el.select('.card-img-top',true).first();
 if(A.hasClass('d-none')){A.removeClass('d-none');}return A;},getChildContainer:function(){if(!this.el){return false;}return this.el.select('.roo-card-body-ctr',true).first();},initEvents:function(){if(this.dragable){this.dragZone=new Roo.dd.DragZone(this.getEl(),{containerScroll:true,ddGroup:this.drag_group||'default_card_drag_group'}
-);this.dragZone.getDragData=this.getDragData.createDelegate(this);}},getDragData:function(e){var A=this.getEl();if(A){var B={source:this,copy:false,nodes:this.getEl(),records:[]};B.ddel=A.dom;Roo.log(A.getWidth());B.ddel.style.width=A.getWidth()+'px';return B;
-}return false;}});
+);this.dragZone.getDragData=this.getDragData.createDelegate(this);}if(this.dropable){}},getDragData:function(e){var A=this.getEl();if(A){var B={source:this,copy:false,nodes:this.getEl(),records:[]};B.ddel=A.dom;Roo.log(A.getWidth());B.ddel.style.width=A.getWidth()+'px';
+return B;}return false;}});
 // Roo/bootstrap/CardHeader.js
 Roo.bootstrap.CardHeader=function(A){Roo.bootstrap.CardHeader.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.CardHeader,Roo.bootstrap.Element,{container_method:'getCardHeader'});
 // Roo/bootstrap/CardImageTop.js

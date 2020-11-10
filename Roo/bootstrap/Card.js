@@ -46,7 +46,7 @@
  
  * @config {Boolean} dragable  if this card can be dragged.
  * @config {String} drag_group  group for drag
- * @config {Boolean} dropable  if this card can be dropped into
+ * @config {Boolean} dropable  if this card can recieve other cards being dropped onto it..
  * @config {String} drop_group  group for drag
  * 
  
