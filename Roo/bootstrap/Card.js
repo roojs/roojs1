@@ -378,7 +378,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     		return false;
     	}
     	var pt = this.getDropPoint(e, n, dd);
-		var insertAt = (n == this.el.dom) ? this.nodes.length : n.nodeIndex;
+	var insertAt = (n == this.bodyEl.dom) ? this.nodes.length : n.nodeIndex;
 		if (pt == "below") { insertAt++; }
 		for (var i = 0; i < data.records.length; i++) {
 			var r = data.records[i];
@@ -403,7 +403,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     /**	Decide whether to drop above or below a View node. */
     getDropPoint : function(e, n, dd)
     {
-    	if (n == this.el.dom) {
+    	if (n == this.bodyEl.dom) {
 		return "above";
 	}
 	var t = Roo.lib.Dom.getY(n), b = t + n.offsetHeight;
