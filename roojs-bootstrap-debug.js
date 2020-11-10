@@ -1969,7 +1969,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.dragZone.getDragData = this.getDragData.createDelegate(this);
         }
         if (this.dropable) {
-	    //code
+	    this.dropZone = new Roo.dd.DropZone(this.getChildContainer(), {
+		    containerScroll: true,
+		    ddGroup: his.drop_group || 'default_card_drag_group'
+	    });
 	}
         
         
