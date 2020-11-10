@@ -49,6 +49,7 @@ dashboard4 = new Roo.XComponent({
           {
            xtype : 'Card',
            dropable : true,
+           drop_group : 'cards',
            footer : 'a footer',
            header : _this._strings['e93b3fa481be3932aa08bd68c3deee70'] /* example 1 */,
            style : ' ',
