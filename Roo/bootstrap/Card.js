@@ -336,15 +336,25 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	while ((target !== null) && (target.parentNode != this.bodyEl.dom)) {
 	    target = target.parentNode;
 	}
-	if (!target) {
-	    target = this.el.dom.lastChild || this.el.dom;
-	}
-	for(var i =0; i < this.items.length; i++) {
-	    
+	// see if target is one of the 'cards'...
+	var ctarget = false;
+	for (var i = 0;i< this.items.length;i++) {
+	    if (this.items[i].xtype != 'Card') {
+		continue;
+	    }
+	    if (target == this.items[i].el.dom) {
+		ctarget = target;
+		break;
+	    }
 	}
 	
+	if (!ctarget) {
+	    ctarget = this.el.dom.lastChild || this.el.dom;
+	}
+	
+	
 	Roo.log(['getTargetFromEvent', target]);
-	return target;
+	return ctarget;
     },
     
     onNodeEnter : function(n, dd, e, data){
