@@ -353,7 +353,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	}
 	
 	
-	Roo.log(['getTargetFromEvent', target]);
+	Roo.log(['getTargetFromEvent', ctarget]);
 	return ctarget;
     },
     
