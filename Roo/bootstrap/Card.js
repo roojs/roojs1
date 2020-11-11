@@ -346,8 +346,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	    cards.push(this.items[i].el.dom)
 	    if (target == this.items[i].el.dom) {
 		ctarget = target;
-		break;
-	    }
+ 	    }
 	}
 	
 	if (!ctarget) {
