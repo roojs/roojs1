@@ -338,10 +338,12 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	}
 	// see if target is one of the 'cards'...
 	var ctarget = false;
+	var cards = [];
 	for (var i = 0;i< this.items.length;i++) {
 	    if (this.items[i].xtype != 'Card') {
 		continue;
 	    }
+	    cards.push(this.items[i].el.dom)
 	    if (target == this.items[i].el.dom) {
 		ctarget = target;
 		break;
@@ -349,7 +351,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	}
 	
 	if (!ctarget) {
-	    ctarget = this.items[this.items.length-1].el.dom || this.el.dom;
+	    ctarget = cards[cards.length-1] || this.el.dom;
 	}
 	
 	
