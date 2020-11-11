@@ -349,7 +349,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	}
 	
 	if (!ctarget) {
-	    ctarget = this.el.dom.lastChild || this.el.dom;
+	    ctarget = this.items[this.items.length-1].el.dom || this.el.dom;
 	}
 	
 	
