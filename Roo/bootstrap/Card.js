@@ -343,7 +343,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	    if (this.items[i].xtype != 'Card') {
 		continue;
 	    }
-	    cards.push(this.items[i].el.dom)
+	    cards.push(this.items[i].el.dom);
 	    if (target == this.items[i].el.dom) {
 		ctarget = target;
  	    }
@@ -420,7 +420,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	}else{
 		return "below";
 	}
-    },
+    }
 
     
 });

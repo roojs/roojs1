@@ -13,6 +13,203 @@ Roo.bootstrap.version = (
                 });
         return ret;
 })(); /*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+/**
+ * @class Roo.Shadow
+ * Simple class that can provide a shadow effect for any element.  Note that the element MUST be absolutely positioned,
+ * and the shadow does not provide any shimming.  This should be used only in simple cases -- for more advanced
+ * functionality that can also provide the same shadow effect, see the {@link Roo.Layer} class.
+ * @constructor
+ * Create a new Shadow
+ * @param {Object} config The config object
+ */
+Roo.Shadow = function(config){
+    Roo.apply(this, config);
+    if(typeof this.mode != "string"){
+        this.mode = this.defaultMode;
+    }
+    var o = this.offset, a = {h: 0};
+    var rad = Math.floor(this.offset/2);
+    switch(this.mode.toLowerCase()){ // all this hideous nonsense calculates the various offsets for shadows
+        case "drop":
+            a.w = 0;
+            a.l = a.t = o;
+            a.t -= 1;
+            if(Roo.isIE){
+                a.l -= this.offset + rad;
+                a.t -= this.offset + rad;
+                a.w -= rad;
+                a.h -= rad;
+                a.t += 1;
+            }
+        break;
+        case "sides":
+            a.w = (o*2);
+            a.l = -o;
+            a.t = o-1;
+            if(Roo.isIE){
+                a.l -= (this.offset - rad);
+                a.t -= this.offset + rad;
+                a.l += 1;
+                a.w -= (this.offset - rad)*2;
+                a.w -= rad + 1;
+                a.h -= 1;
+            }
+        break;
+        case "frame":
+            a.w = a.h = (o*2);
+            a.l = a.t = -o;
+            a.t += 1;
+            a.h -= 2;
+            if(Roo.isIE){
+                a.l -= (this.offset - rad);
+                a.t -= (this.offset - rad);
+                a.l += 1;
+                a.w -= (this.offset + rad + 1);
+                a.h -= (this.offset + rad);
+                a.h += 1;
+            }
+        break;
+    };
+
+    this.adjusts = a;
+};
+
+Roo.Shadow.prototype = {
+    /**
+     * @cfg {String} mode
+     * The shadow display mode.  Supports the following options:<br />
+     * sides: Shadow displays on both sides and bottom only<br />
+     * frame: Shadow displays equally on all four sides<br />
+     * drop: Traditional bottom-right drop shadow (default)
+     */
+    /**
+     * @cfg {String} offset
+     * The number of pixels to offset the shadow from the element (defaults to 4)
+     */
+    offset: 4,
+
+    // private
+    defaultMode: "drop",
+
+    /**
+     * Displays the shadow under the target element
+     * @param {String/HTMLElement/Element} targetEl The id or element under which the shadow should display
+     */
+    show : function(target){
+        target = Roo.get(target);
+        if(!this.el){
+            this.el = Roo.Shadow.Pool.pull();
+            if(this.el.dom.nextSibling != target.dom){
+                this.el.insertBefore(target);
+            }
+        }
+        this.el.setStyle("z-index", this.zIndex || parseInt(target.getStyle("z-index"), 10)-1);
+        if(Roo.isIE){
+            this.el.dom.style.filter="progid:DXImageTransform.Microsoft.alpha(opacity=50) progid:DXImageTransform.Microsoft.Blur(pixelradius="+(this.offset)+")";
+        }
+        this.realign(
+            target.getLeft(true),
+            target.getTop(true),
+            target.getWidth(),
+            target.getHeight()
+        );
+        this.el.dom.style.display = "block";
+    },
+
+    /**
+     * Returns true if the shadow is visible, else false
+     */
+    isVisible : function(){
+        return this.el ? true : false;  
+    },
+
+    /**
+     * Direct alignment when values are already available. Show must be called at least once before
+     * calling this method to ensure it is initialized.
+     * @param {Number} left The target element left position
+     * @param {Number} top The target element top position
+     * @param {Number} width The target element width
+     * @param {Number} height The target element height
+     */
+    realign : function(l, t, w, h){
+        if(!this.el){
+            return;
+        }
+        var a = this.adjusts, d = this.el.dom, s = d.style;
+        var iea = 0;
+        s.left = (l+a.l)+"px";
+        s.top = (t+a.t)+"px";
+        var sw = (w+a.w), sh = (h+a.h), sws = sw +"px", shs = sh + "px";
+ 
+        if(s.width != sws || s.height != shs){
+            s.width = sws;
+            s.height = shs;
+            if(!Roo.isIE){
+                var cn = d.childNodes;
+                var sww = Math.max(0, (sw-12))+"px";
+                cn[0].childNodes[1].style.width = sww;
+                cn[1].childNodes[1].style.width = sww;
+                cn[2].childNodes[1].style.width = sww;
+                cn[1].style.height = Math.max(0, (sh-12))+"px";
+            }
+        }
+    },
+
+    /**
+     * Hides this shadow
+     */
+    hide : function(){
+        if(this.el){
+            this.el.dom.style.display = "none";
+            Roo.Shadow.Pool.push(this.el);
+            delete this.el;
+        }
+    },
+
+    /**
+     * Adjust the z-index of this shadow
+     * @param {Number} zindex The new z-index
+     */
+    setZIndex : function(z){
+        this.zIndex = z;
+        if(this.el){
+            this.el.setStyle("z-index", z);
+        }
+    }
+};
+
+// Private utility class that manages the internal Shadow cache
+Roo.Shadow.Pool = function(){
+    var p = [];
+    var markup = Roo.isIE ?
+                 '<div class="x-ie-shadow"></div>' :
+                 '<div class="x-shadow"><div class="xst"><div class="xstl"></div><div class="xstc"></div><div class="xstr"></div></div><div class="xsc"><div class="xsml"></div><div class="xsmc"></div><div class="xsmr"></div></div><div class="xsb"><div class="xsbl"></div><div class="xsbc"></div><div class="xsbr"></div></div></div>';
+    return {
+        pull : function(){
+            var sh = p.shift();
+            if(!sh){
+                sh = Roo.get(Roo.DomHelper.insertHtml("beforeBegin", document.body.firstChild, markup));
+                sh.autoBoxAdjust = false;
+            }
+            return sh;
+        },
+
+        push : function(sh){
+            p.push(sh);
+        }
+    };
+}();/*
  * - LGPL
  *
  * base class for bootstrap elements.
@@ -1961,7 +2158,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        if(this.dragable){
+        
+	this.bodyEl = this.getChildContainer();
+	if(this.dragable){
             this.dragZone = new Roo.dd.DragZone(this.getEl(), {
                     containerScroll: true,
                     ddGroup: this.drag_group || 'default_card_drag_group'
@@ -1971,7 +2170,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (this.dropable) {
 	    this.dropZone = new Roo.dd.DropZone(this.getChildContainer(), {
 		    containerScroll: true,
-		    ddGroup: his.drop_group || 'default_card_drag_group'
+		    ddGroup: this.drop_group || 'default_card_drag_group'
 	    });
 	    this.dropZone.getTargetFromEvent = this.getTargetFromEvent.createDelegate(this);
 	    this.dropZone.onNodeEnter = this.onNodeEnter.createDelegate(this);
@@ -2002,7 +2201,103 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return dragData;
         }
         return false;
+    },
+    /**
+ *	Part of the Roo.dd.DropZone interface. If no target node is found, the
+ *	whole Element becomes the target, and this causes the drop gesture to append.
+ */
+    getTargetFromEvent : function(e)
+    {
+	var target = e.getTarget();
+	while ((target !== null) && (target.parentNode != this.bodyEl.dom)) {
+	    target = target.parentNode;
+	}
+	// see if target is one of the 'cards'...
+	var ctarget = false;
+	var cards = [];
+	for (var i = 0;i< this.items.length;i++) {
+	    if (this.items[i].xtype != 'Card') {
+		continue;
+	    }
+	    cards.push(this.items[i].el.dom);
+	    if (target == this.items[i].el.dom) {
+		ctarget = target;
+ 	    }
+	}
+	
+	if (!ctarget) {
+	    ctarget = cards[cards.length-1] || this.el.dom;
+	}
+	
+	
+	Roo.log(['getTargetFromEvent', ctarget]);
+	return ctarget;
+    },
+    
+    onNodeEnter : function(n, dd, e, data){
+	return false;
+    },
+    onNodeOver : function(n, dd, e, data)
+    {
+	var pt = this.getDropPoint(e, n, dd);
+	// set the insert point style on the target node
+	//var dragElClass = this.dropNotAllowed;
+	if (pt) {
+	    Roo.log(pt);
+	}
+	return false; //dragElClass;
+    },
+    onNodeOut : function(n, dd, e, data){
+	//this.removeDropIndicators(n);
+    },
+    onNodeDrop : function(n, dd, e, data)
+    {
+    	return false;
+	
+	if (this.fireEvent("drop", this, n, dd, e, data) === false) {
+    		return false;
+    	}
+    	var pt = this.getDropPoint(e, n, dd);
+	var insertAt = (n == this.bodyEl.dom) ? this.items.length : n.nodeIndex;
+	if (pt == "below") {
+	    insertAt++;
+	}
+	for (var i = 0; i < this.items.length; i++) {
+	    var r = this.items[i];
+	    //var dup = this.store.getById(r.id);
+	    if (dup && (dd != this.dragZone)) {
+		    Roo.fly(this.getNode(this.store.indexOf(dup))).frame("red", 1);
+	    } else {
+		if (data.copy) {
+		    this.store.insert(insertAt++, r.copy());
+		} else {
+		    data.source.isDirtyFlag = true;
+		    r.store.remove(r);
+		    this.store.insert(insertAt++, r);
+		}
+		this.isDirtyFlag = true;
+	    }
+	}
+	this.dragZone.cachedTarget = null;
+	return true;
+    },
+    
+    /**	Decide whether to drop above or below a View node. */
+    getDropPoint : function(e, n, dd)
+    {
+    	if (n == this.bodyEl.dom) {
+		return "above";
+	}
+	var t = Roo.lib.Dom.getY(n), b = t + n.offsetHeight;
+	var c = t + (b - t) / 2;
+	var y = Roo.lib.Event.getPageY(e);
+	if(y <= c) {
+		return "above";
+	}else{
+		return "below";
+	}
     }
+
     
 });
 
