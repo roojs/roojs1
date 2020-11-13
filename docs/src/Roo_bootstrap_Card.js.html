@@ -343,7 +343,7 @@
 	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.xtype </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'Card'</span><span class="jsdoc-syntax">) {
 		</span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
 	    }
-	    </span><span class="jsdoc-var">cards.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.el.dom</span><span class="jsdoc-syntax">)
+	    </span><span class="jsdoc-var">cards.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.el.dom</span><span class="jsdoc-syntax">);
 	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.el.dom</span><span class="jsdoc-syntax">) {
 		</span><span class="jsdoc-var">ctarget </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">;
  	    }
@@ -420,7 +420,7 @@
 	}</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
 		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;below&quot;</span><span class="jsdoc-syntax">;
 	}
-    },
+    }
 
 
 });
