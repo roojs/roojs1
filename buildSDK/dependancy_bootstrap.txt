@@ -1,5 +1,9 @@
 
+
+
 Roo.bootstrap.version
+
+Roo.Shadow
 
 Roo.bootstrap.Component
 Roo.bootstrap.Element

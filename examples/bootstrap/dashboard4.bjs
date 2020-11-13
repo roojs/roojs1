@@ -28,80 +28,68 @@
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
-         "Number md" : 3,
-         "xtype" : "Column",
+         "String header" : "example 1",
+         "String footer" : "a footer",
+         "String cls" : "col-xs-12 column col-12",
+         "String weight" : "danger",
+         "xtype" : "Card",
          "$ xns" : "Roo.bootstrap",
+         "String style" : "max-width:300px;margin: 0 12px;",
+         "bool dropable" : true,
+         "string drop_group" : "cards",
          "items" : [
           {
-           "String header" : "example 1",
-           "String footer" : "a footer",
-           "String weight" : "danger",
+           "String header" : "ticket 1",
+           "string drag_group" : "cards",
+           "String weight" : "light",
+           "String margin_bottom" : 3,
            "xtype" : "Card",
            "$ xns" : "Roo.bootstrap",
-           "String style" : " ",
-           "bool dropable" : true,
-           "string drop_group" : "cards",
-           "items" : [
-            {
-             "String header" : "ticket 1",
-             "string drag_group" : "cards",
-             "String weight" : "light",
-             "String margin_bottom" : 3,
-             "xtype" : "Card",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "body goes here",
-             "bool dragable" : true
-            },
-            {
-             "String header" : "ticket 1",
-             "string drag_group" : "cards",
-             "String weight" : "light",
-             "String margin_bottom" : 3,
-             "xtype" : "Card",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "body goes here",
-             "bool dragable" : true
-            },
-            {
-             "String weight" : "primary",
-             "xtype" : "Button",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "Add Issue"
-            }
-           ]
+           "String html" : "body goes here",
+           "bool dragable" : true
+          },
+          {
+           "String header" : "ticket 1",
+           "string drag_group" : "cards",
+           "String weight" : "light",
+           "String margin_bottom" : 3,
+           "xtype" : "Card",
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "body goes here",
+           "bool dragable" : true
+          },
+          {
+           "String weight" : "primary",
+           "xtype" : "Button",
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "Add Issue"
           }
          ]
         },
         {
-         "Number md" : 3,
-         "xtype" : "Column",
+         "String header" : "example 1",
+         "String footer" : "a footer",
+         "String cls" : "column col-xs-12 col-12",
+         "String weight" : "danger",
+         "xtype" : "Card",
          "$ xns" : "Roo.bootstrap",
+         "String style" : "max-width:300px;margin: 0 12px;",
          "items" : [
           {
-           "String header" : "example 1",
-           "String footer" : "a footer",
-           "String weight" : "danger",
+           "String header" : "ticket 1",
+           "string drag_group" : "cards",
+           "String weight" : "light",
+           "String margin_bottom" : 3,
            "xtype" : "Card",
            "$ xns" : "Roo.bootstrap",
-           "String style" : " ",
-           "items" : [
-            {
-             "String header" : "ticket 1",
-             "string drag_group" : "cards",
-             "String weight" : "light",
-             "String margin_bottom" : 3,
-             "xtype" : "Card",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "body goes here",
-             "bool dragable" : true
-            },
-            {
-             "String weight" : "primary",
-             "xtype" : "Button",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "Add Issue"
-            }
-           ]
+           "String html" : "body goes here",
+           "bool dragable" : true
+          },
+          {
+           "String weight" : "primary",
+           "xtype" : "Button",
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "Add Issue"
           }
          ]
         }

@@ -466,6 +466,11 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.bootstrap.DropTarget",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.bootstrap.Element",
             "cn" : [],
             "is_class" : true

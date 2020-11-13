@@ -41,89 +41,75 @@ dashboard4 = new Roo.XComponent({
        '|xns' : 'Roo.bootstrap',
        items  : [
         {
-         xtype : 'Column',
-         md : 3,
+         xtype : 'Card',
+         cls : 'col-xs-12 column col-12',
+         dropable : true,
+         drop_group : 'cards',
+         footer : 'a footer',
+         header : _this._strings['e93b3fa481be3932aa08bd68c3deee70'] /* example 1 */,
+         style : 'max-width:300px;margin: 0 12px;',
+         weight : 'danger',
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap',
          items  : [
           {
            xtype : 'Card',
-           dropable : true,
-           drop_group : 'cards',
-           footer : 'a footer',
-           header : _this._strings['e93b3fa481be3932aa08bd68c3deee70'] /* example 1 */,
-           style : ' ',
-           weight : 'danger',
+           dragable : true,
+           drag_group : 'cards',
+           header : _this._strings['d9fb0367346d21079a1c52d72da61c9f'] /* ticket 1 */,
+           html : _this._strings['60ee66eb2cd31823032664c2e9a79fd5'] /* body goes here */,
+           margin_bottom : 3,
+           weight : 'light',
            xns : Roo.bootstrap,
-           '|xns' : 'Roo.bootstrap',
-           items  : [
-            {
-             xtype : 'Card',
-             dragable : true,
-             drag_group : 'cards',
-             header : _this._strings['d9fb0367346d21079a1c52d72da61c9f'] /* ticket 1 */,
-             html : _this._strings['60ee66eb2cd31823032664c2e9a79fd5'] /* body goes here */,
-             margin_bottom : 3,
-             weight : 'light',
-             xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
-            },
-            {
-             xtype : 'Card',
-             dragable : true,
-             drag_group : 'cards',
-             header : _this._strings['d9fb0367346d21079a1c52d72da61c9f'] /* ticket 1 */,
-             html : _this._strings['60ee66eb2cd31823032664c2e9a79fd5'] /* body goes here */,
-             margin_bottom : 3,
-             weight : 'light',
-             xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
-            },
-            {
-             xtype : 'Button',
-             html : _this._strings['9cf863d802aca813531ca28b319ead90'] /* Add Issue */,
-             weight : 'primary',
-             xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
-            }
-           ]
+           '|xns' : 'Roo.bootstrap'
+          },
+          {
+           xtype : 'Card',
+           dragable : true,
+           drag_group : 'cards',
+           header : _this._strings['d9fb0367346d21079a1c52d72da61c9f'] /* ticket 1 */,
+           html : _this._strings['60ee66eb2cd31823032664c2e9a79fd5'] /* body goes here */,
+           margin_bottom : 3,
+           weight : 'light',
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
+          },
+          {
+           xtype : 'Button',
+           html : _this._strings['9cf863d802aca813531ca28b319ead90'] /* Add Issue */,
+           weight : 'primary',
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
           }
          ]
         },
         {
-         xtype : 'Column',
-         md : 3,
+         xtype : 'Card',
+         cls : 'column col-xs-12 col-12',
+         footer : 'a footer',
+         header : _this._strings['e93b3fa481be3932aa08bd68c3deee70'] /* example 1 */,
+         style : 'max-width:300px;margin: 0 12px;',
+         weight : 'danger',
          xns : Roo.bootstrap,
          '|xns' : 'Roo.bootstrap',
          items  : [
           {
            xtype : 'Card',
-           footer : 'a footer',
-           header : _this._strings['e93b3fa481be3932aa08bd68c3deee70'] /* example 1 */,
-           style : ' ',
-           weight : 'danger',
+           dragable : true,
+           drag_group : 'cards',
+           header : _this._strings['d9fb0367346d21079a1c52d72da61c9f'] /* ticket 1 */,
+           html : _this._strings['60ee66eb2cd31823032664c2e9a79fd5'] /* body goes here */,
+           margin_bottom : 3,
+           weight : 'light',
            xns : Roo.bootstrap,
-           '|xns' : 'Roo.bootstrap',
-           items  : [
-            {
-             xtype : 'Card',
-             dragable : true,
-             drag_group : 'cards',
-             header : _this._strings['d9fb0367346d21079a1c52d72da61c9f'] /* ticket 1 */,
-             html : _this._strings['60ee66eb2cd31823032664c2e9a79fd5'] /* body goes here */,
-             margin_bottom : 3,
-             weight : 'light',
-             xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
-            },
-            {
-             xtype : 'Button',
-             html : _this._strings['9cf863d802aca813531ca28b319ead90'] /* Add Issue */,
-             weight : 'primary',
-             xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap'
-            }
-           ]
+           '|xns' : 'Roo.bootstrap'
+          },
+          {
+           xtype : 'Button',
+           html : _this._strings['9cf863d802aca813531ca28b319ead90'] /* Add Issue */,
+           weight : 'primary',
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
           }
          ]
         }

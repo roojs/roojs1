@@ -491,6 +491,34 @@
   ],
   "methods" : [
     {
+      "name" : "getDropPoint",
+      "desc" : "Decide whether to drop above or below a View node.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Card",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "getTargetFromEvent",
+      "desc" : "Part of the Roo.dd.DropZone interface. If no target node is found, the\n\twhole Element becomes the target, and this causes the drop gesture to append.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Card",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
       "name" : "tooltipEl",
       "desc" : "Fetch the element to display the tooltip on.",
       "isStatic" : false,
