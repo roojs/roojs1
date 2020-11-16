@@ -422,7 +422,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             ctarget = last_card_pos
             cpos = 'below';
         }
-        if (this.items[ctarget].el == dragged_card_el) {
+        
+        if (this.items[items_pos].el == dragged_card_el) {
             return false;
         }
         
