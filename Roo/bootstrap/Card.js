@@ -515,7 +515,17 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	    return;
 	}
 	var cardel = where_ar[0].el.dom;
-	var dropEl
+	
+	this.dropEl.parentNode.removeChild(this.dropEl);
+	if (where_ar[0] == 'before') {
+	    this.cardel.parentNode.insertBefore(this.dropEl, cardel);
+	} else if (cardel.nextSibling) {
+	    this.cardel.parentNode.insertBefore(this.dropEl,ns);
+	} else
+	    this.cardel.parentNode.append(this.dropEl);
+	}
+	this.cardel.style.width = "100%";
+	this.cardel.style.height = Roo.get(data.ddel).getHeight() + 'px';
 	
 	
 	
