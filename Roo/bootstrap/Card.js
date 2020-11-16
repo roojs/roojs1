@@ -60,6 +60,13 @@ Roo.bootstrap.Card = function(config){
     Roo.bootstrap.Card.superclass.constructor.call(this, config);
     
     this.addEvents({
+         // raw events
+        /**
+         * @event drop
+         * When a element a card is dropped
+         * @param {Roo.bootstrap.Element} this
+         * @param {Roo.EventObject} e
+         */
         'drop' : true,
         
     });
