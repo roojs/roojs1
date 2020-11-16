@@ -443,7 +443,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return false;
         }
         
-        if (cpos == 'below') {
+        if (ret.position == 'below') {
             var card_after = ret.card_n+1 == ret.cards.length ? false : ret.cards[ret.card_n+1];
             
             if (card_after  && card_after.el == dragged_card_el) {
