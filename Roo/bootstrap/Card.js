@@ -444,7 +444,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         
         if (cpos == 'below') {
-            var card_after = ret.card_n+1 == cards.length ? false : cards[ret.card_n+1];
+            var card_after = ret.card_n+1 == ret.cards.length ? false : ret.cards[ret.card_n+1];
             
             if (card_after  && card_after.el == dragged_card_el) {
                 return false;
@@ -453,7 +453,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         
         // its's after ..
-        var card_before = ctarget > 0 ? cards[ctarget-1] : false;
+        var card_before = ret.card_n > 0 ? ret.cards[ret.card_n-1] : false;
         
         if (card_before  && card_before.el == dragged_card_el) {
             return false;
