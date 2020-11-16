@@ -418,7 +418,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             
             cards_len = ret.cards.length;
             //Roo.log(this.items[i].el.dom.id);
-            cards.push(this.items[i]);
+            ret.cards.push(this.items[i]);
             last_card_n  = i;
             if (ret.cards_n < 0 && pos == 'above') {
                 ret.position = cards_len > 0 ? 'below' : pos;
@@ -426,7 +426,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 ret.cards_n  = cards_len  > 0 ? cards_len - 1 : 0;
             }
         }
-        if (!cards.length) {
+        if (!ret.cards.length) {
             ret.card = true;
             ret.position = below;
             ret.items_n;
