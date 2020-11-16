@@ -404,12 +404,13 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                  continue;
             }
             pos = this.getDropPoint(e, this.items[i].el.dom);
-            
+            var cards_len = cards.length;
             //Roo.log(this.items[i].el.dom.id);
             cards.push(this.items[i]);
             last_card_pos  = i;
             if (ctarget < 0 && pos == 'above') {
                 items_pos = i > 0 ? i - 1 : 0;
+                cards_pos = cards_len  > 0 ? cards_len -1 : 0;
                 cpos = i > 0 ? 'below' : pos;
             }
         }
@@ -421,7 +422,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             ctarget = last_card_pos
             cpos = 'below';
         }
-        if (cards[ctarget].el == dragged_card_el) {
+        if (this.items[ctarget].el == dragged_card_el) {
             return false;
         }
         
