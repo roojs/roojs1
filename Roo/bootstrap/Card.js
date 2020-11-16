@@ -416,7 +416,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             }
             pos = this.getDropPoint(e, this.items[i].el.dom);
             
-            cards_len = cards.length;
+            cards_len = ret.cards.length;
             //Roo.log(this.items[i].el.dom.id);
             cards.push(this.items[i]);
             last_card_n  = i;
