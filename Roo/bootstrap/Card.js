@@ -424,7 +424,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 ret.position = cards_len > 0 ? 'below' : pos;
                 ret.items_n = i > 0 ? i - 1 : 0;
                 ret.card_n  = cards_len  > 0 ? cards_len - 1 : 0;
-                ret.card = ret.cards[cards_n];
+                ret.card = ret.cards[ret.cards_n];
             }
         }
         if (!ret.cards.length) {
