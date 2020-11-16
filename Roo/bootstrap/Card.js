@@ -49,7 +49,8 @@
  * @config {Boolean} dropable  if this card can recieve other cards being dropped onto it..
  * @config {String} drop_group  group for drag
  * 
- 
+ * @config {Boolean} collapsable can the body be collapsed.
+ * @config {Boolean} collapsed is the body collapsed when rendered...
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
@@ -98,6 +99,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     subtitle : '',
     html : '',
     footer: '',
+
+    collapsable : false,
+    collapsed : false,
     
     dragable : false,
     drag_group : false,
@@ -178,18 +182,31 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         cfg.cls += this.layoutCls(); 
         
+	var hdr = false;
         if (this.header.length) {
-            cfg.cn.push({
+            hdr = {
                 tag : this.header_size > 0 ? 'h' + this.header_size : 'div',
                 cls : 'card-header',
+		cn : [],
                 html : this.header // escape?
-            });
+            };
+	    cfg.cn.push(hdr);
+	    
         } else {
-	    cfg.cn.push({
+	    hdr = {
                 tag : 'div',
-                cls : 'card-header d-none'
-            });
+                cls : 'card-header d-none',
+		cn : []
+            }
+	    cfg.cn.push(hdr);
 	}
+	if (this.collapsable) {
+	    hdr.cn.push({
+		tag: 'i',
+		cls : 'fa fa-chevron-down pull-right'
+	    });
+	}
+	
         if (this.header_image.length) {
             cfg.cn.push({
                 tag : 'img',
@@ -208,6 +225,15 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             cls : 'card-body',
             cn : []
         };
+	
+	if (this.collapsable) {
+	    body = {
+		tag: 'div',
+		cls : 'roo-collapsable collapse ' + (this.collapsed ? '' : 'show'),
+		cn : body
+	    };
+	}
+	
         cfg.cn.push(body);
         
         if (this.title.length) {
@@ -303,7 +329,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	    this.dropZone.onNodeDrop = this.onNodeDrop.createDelegate(this);
 	}
         
-        
+        if (this.collapsable) {
+	    this.el.select('.card-body .pull-right',true).on('click', this.onToggleCollapse, this);
+	}
     },
     getDragData : function(e) {
         var target = this.getEl();
@@ -420,6 +448,20 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	}else{
 		return "below";
 	}
+    },
+    onToggleCollapse : function(e)
+    {
+	if (this.collapsed) {
+	    this.el.select('.roo-collapse-toggle').removeClass('collapsed');
+	    this.el.select('.roo-collapse').addClass('show');
+	    this.collapsed = false;
+	    return;
+	}
+	this.el.select('.roo-collapse-toggle').addClass('collapsed');
+	this.el.select('.roo-collapse').removeClass('show');
+	this.collapsed = true;
+	
+	
     }
 
     
