@@ -434,7 +434,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         // could not find a card.. stick it at the end..
         if (ret.card_n < 0) {
-            ret.card_n = last_card_pos;
+            ret.card_n = last_card_n;
             ret.items_n = this.items.indexOf(ret.cards[last_card_pos]);
             cpos = 'below';
         }
