@@ -1984,7 +1984,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     dropable : false,
     drop_group : false,
     childContainer : false,
-
+    dropEl : false, /// the dom placeholde element that indicates drop location.
+    
     layoutCls : function()
     {
         var cls = '';
