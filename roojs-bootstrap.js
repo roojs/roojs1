@@ -98,7 +98,8 @@ if(pt=="below"){B++;}for(var i=0;i<this.items.length;i++){var r=this.items[i];if
 this.store.insert(B++,r);}this.isDirtyFlag=true;}}this.dragZone.cachedTarget=null;return true;},getDropPoint:function(e,n,dd){if(dd){return false;}if(n==this.bodyEl.dom){return "above";}var t=Roo.lib.Dom.getY(n),b=t+n.offsetHeight;var c=t+(b-t)/2;var y=Roo.lib.Event.getPageY(e);
 if(y<=c){return "above";}else{return "below";}},onToggleCollapse:function(e){if(this.collapsed){this.el.select('.roo-collapse-toggle').removeClass('collapsed');this.el.select('.roo-collapsable').addClass('show');this.collapsed=false;return;}this.el.select('.roo-collapse-toggle').addClass('collapsed');
 this.el.select('.roo-collapsable').removeClass('show');this.collapsed=true;},dropPlaceHolder:function(A,B,C){if(this.dropEl===false){this.dropEl=new Roo.DomHelper.append(this.dom.bodyEl,{cls:'d-none'});}if(A=='hide'){this.dropEl.removeClass(['d-none','d-block']);
-this.dropEl.addClass('d-none');return;}var D=B[0].el.dom;var E}});
+this.dropEl.addClass('d-none');return;}var D=B[0].el.dom;this.dropEl.parentNode.removeChild(this.dropEl);if(B[0]=='before'){this.cardel.parentNode.insertBefore(this.dropEl,D);}else if(D.nextSibling){this.cardel.parentNode.insertBefore(this.dropEl,ns);}elsethis.cardel.parentNode.append(this.dropEl);
+}this.cardel.style.width="100%";this.cardel.style.height=Roo.get(data.ddel).getHeight()+'px';}});
 // Roo/bootstrap/CardHeader.js
 Roo.bootstrap.CardHeader=function(A){Roo.bootstrap.CardHeader.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.CardHeader,Roo.bootstrap.Element,{container_method:'getCardHeader'});
 // Roo/bootstrap/CardImageTop.js
