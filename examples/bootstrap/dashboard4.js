@@ -54,6 +54,7 @@ dashboard4 = new Roo.XComponent({
          items  : [
           {
            xtype : 'Card',
+           collapsable : true,
            dragable : true,
            drag_group : 'cards',
            header : _this._strings['d9fb0367346d21079a1c52d72da61c9f'] /* ticket 1 */,
