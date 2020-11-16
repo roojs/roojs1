@@ -2220,7 +2220,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	}
         
         if (this.collapsable) {
-	    this.el.select('.card-body .pull-right',true).on('click', this.onToggleCollapse, this);
+	    this.el.select('.card-header',true).on('click', this.onToggleCollapse, this);
 	}
     },
     getDragData : function(e) {
