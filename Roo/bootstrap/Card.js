@@ -502,6 +502,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         this.dropPlaceHolder('hide');
         
         
+        // add this to the correct place in items.
+        
+        
         return true;
     },
     
