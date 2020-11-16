@@ -206,7 +206,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 		cn: [
 		    {
 			tag: 'i',
-			cls : 'fa fa-chevron-down float-right'
+			cls : 'roo-collapse-toggle fa fa-chevron-down float-right'
 		    }
 		   
 		]
