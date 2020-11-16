@@ -95,8 +95,8 @@ while((A!==null)&&(A.parentNode!=this.bodyEl.dom)){A=A.parentNode;}var B=false;v
 }Roo.log(['getTargetFromEvent',B]);return B;},onNodeEnter:function(n,dd,e,A){return false;},onNodeOver:function(n,dd,e,A){var pt=this.getDropPoint(e,n,dd);if(pt){Roo.log(pt);}return false;},onNodeOut:function(n,dd,e,A){},onNodeDrop:function(n,dd,e,A){return false;
 if(this.fireEvent("drop",this,n,dd,e,A)===false){return false;}var pt=this.getDropPoint(e,n,dd);var B=(n==this.bodyEl.dom)?this.items.length:n.nodeIndex;if(pt=="below"){B++;}for(var i=0;i<this.items.length;i++){var r=this.items[i];if(dup&&(dd!=this.dragZone)){Roo.fly(this.getNode(this.store.indexOf(dup))).frame("red",1);
 }else{if(A.copy){this.store.insert(B++,r.copy());}else{A.source.isDirtyFlag=true;r.store.remove(r);this.store.insert(B++,r);}this.isDirtyFlag=true;}}this.dragZone.cachedTarget=null;return true;},getDropPoint:function(e,n,dd){if(n==this.bodyEl.dom){return "above";
-}var t=Roo.lib.Dom.getY(n),b=t+n.offsetHeight;var c=t+(b-t)/2;var y=Roo.lib.Event.getPageY(e);if(y<=c){return "above";}else{return "below";}},onToggleCollapse:function(e){if(this.collapsed){this.el.select('.roo-collapse-toggle').removeClass('collapsed');this.el.select('.roo-collapse').addClass('show');
-this.collapsed=false;return;}this.el.select('.roo-collapse-toggle').addClass('collapsed');this.el.select('.roo-collapse').removeClass('show');this.collapsed=true;}});
+}var t=Roo.lib.Dom.getY(n),b=t+n.offsetHeight;var c=t+(b-t)/2;var y=Roo.lib.Event.getPageY(e);if(y<=c){return "above";}else{return "below";}},onToggleCollapse:function(e){if(this.collapsed){this.el.select('.roo-collapse-toggle').removeClass('collapsed');this.el.select('.roo-collapsable').addClass('show');
+this.collapsed=false;return;}this.el.select('.roo-collapse-toggle').addClass('collapsed');this.el.select('.roo-collapsable').removeClass('show');this.collapsed=true;}});
 // Roo/bootstrap/CardHeader.js
 Roo.bootstrap.CardHeader=function(A){Roo.bootstrap.CardHeader.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.CardHeader,Roo.bootstrap.Element,{container_method:'getCardHeader'});
 // Roo/bootstrap/CardImageTop.js
