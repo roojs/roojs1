@@ -378,26 +378,36 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	while ((target !== null) && (target.parentNode != this.bodyEl.dom)) {
 	    target = target.parentNode;
 	}
+	//Roo.log([ 'target' , target ? target.id : '--nothing--']);
 	// see if target is one of the 'cards'...
 	var ctarget = false;
 	var cards = [];
+	//Roo.log(this.items.length);
+	var lpos = pos = false;
 	for (var i = 0;i< this.items.length;i++) {
-	    if (this.items[i].xtype != 'Card') {
+	    
+	    if (!this.items[i].el.hasClass('card')) {
 		continue;
 	    }
-	    cards.push(this.items[i].el.dom);
-	    if (target == this.items[i].el.dom) {
-		ctarget = target;
+	    pos = this.getDropPoint(e, this.items[i].el.dom);
+	    
+	    //Roo.log(this.items[i].el.dom.id);
+	    cards.push(this.items[i]);
+	    if (pos == 'above') {
+		ctarget = this.items[i > 0 ? i-1 : 0];
+		pos = i > 0 ? 'below' : pos;
+		break;
  	    }
 	}
 	
 	if (!ctarget) {
 	    ctarget = cards[cards.length-1] || this.el.dom;
+	    pos = 'below'
 	}
 	
 	
-	Roo.log(['getTargetFromEvent', ctarget]);
-	return ctarget;
+	//Roo.log(['getTargetFromEvent', ctarget]);
+	return [ ctarget, pos ];
     },
     
     onNodeEnter : function(n, dd, e, data){
@@ -405,12 +415,22 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     },
     onNodeOver : function(n, dd, e, data)
     {
+//	Roo.log(['onNodeOver'])
+	/*
 	var pt = this.getDropPoint(e, n, dd);
 	// set the insert point style on the target node
 	//var dragElClass = this.dropNotAllowed;
-	if (pt) {
-	    Roo.log(pt);
+	if (!pt) {
+	    this.dropPlaceHolder('hide');
+	    return false;
+	    
 	}
+	*/
+	target_info = this.getTargetFromEvent(e);
+	Roo.log(['getTargetFromEvent', target_info[0].el.dom.id,target_info[1]]);
+	
+	
+	this.dropPlaceHolder('show', targetinfo,data);
 	return false; //dragElClass;
     },
     onNodeOut : function(n, dd, e, data){
@@ -451,7 +471,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     /**	Decide whether to drop above or below a View node. */
     getDropPoint : function(e, n, dd)
     {
-    	if (n == this.bodyEl.dom) {
+    	if (dd) {
+	    return false;
+	}
+	if (n == this.bodyEl.dom) {
 		return "above";
 	}
 	var t = Roo.lib.Dom.getY(n), b = t + n.offsetHeight;
@@ -474,6 +497,27 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	this.el.select('.roo-collapse-toggle').addClass('collapsed');
 	this.el.select('.roo-collapsable').removeClass('show');
 	this.collapsed = true;
+	
+	
+    },
+    dropPlaceHolder: function (action, where_ar, data)
+    {
+	if (this.dropEl === false) {
+	    this.dropEl = new Roo.DomHelper.append(this.dom.bodyEl, {
+		cls : 'd-none'
+	    });
+	}
+	
+	if (action == 'hide') {
+	    this.dropEl.removeClass(['d-none', 'd-block']);
+	    this.dropEl.addClass('d-none');
+	    return;
+	}
+	var cardel = where_ar[0].el.dom;
+	var dropEl
+	
+	
+	
 	
 	
     }
