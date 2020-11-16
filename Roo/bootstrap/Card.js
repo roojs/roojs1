@@ -473,7 +473,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.dropPlaceHolder('hide');
             return false;
         }
-        Roo.log(['getTargetFromEvent', target_info[0].el.dom.id,target_info[1]]);
+        Roo.log(['getTargetFromEvent', target_info ]);
         
          
         this.dropPlaceHolder('show', target_info,data);
@@ -554,7 +554,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
     
     },
-    dropPlaceHolder: function (action, where_ar, data)
+    dropPlaceHolder: function (action, info, data)
     {
         if (this.dropEl === false) {
             this.dropEl = Roo.DomHelper.append(this.bodyEl, {
