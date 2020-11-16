@@ -49,7 +49,8 @@
  * @config {Boolean} dropable  if this card can recieve other cards being dropped onto it..
  * @config {String} drop_group  group for drag
  * 
- 
+ * @config {Boolean} collapsable can the body be collapsed.
+ * @config {Boolean} collapsed is the body collapsed when rendered...
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
@@ -98,6 +99,9 @@
     </span><span class="jsdoc-var">subtitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">footer</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">collapsable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">collapsed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">dragable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">drag_group </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -178,18 +182,45 @@
 
         </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.layoutCls</span><span class="jsdoc-syntax">();
 
+	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hdr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header.length</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">hdr </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header_size </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-string">'h' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.header_size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header </span><span class="jsdoc-comment">// escape?
-            </span><span class="jsdoc-syntax">});
+		</span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
+            };
+	    </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hdr</span><span class="jsdoc-syntax">);
+	    </span><span class="jsdoc-var">hdr_ctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hdr</span><span class="jsdoc-syntax">;
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-	    </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+	    </span><span class="jsdoc-var">hdr </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header d-none'
-            </span><span class="jsdoc-syntax">});
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header d-none'</span><span class="jsdoc-syntax">,
+		</span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
+            };
+	    </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hdr</span><span class="jsdoc-syntax">);
 	}
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsable</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-var">hdr_ctr </span><span class="jsdoc-syntax">= {
+		</span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
+		</span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d-block user-select-none'</span><span class="jsdoc-syntax">,
+		</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+		    {
+			</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+			</span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-collapse-toggle fa fa-chevron-down float-right'
+		    </span><span class="jsdoc-syntax">}
+
+		]
+	    };
+	    </span><span class="jsdoc-var">hdr.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hdr_ctr</span><span class="jsdoc-syntax">);
+	}
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header.length</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-var">hdr_ctr.cn.push</span><span class="jsdoc-syntax">(	    {
+		</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+		</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-card-header-ctr'</span><span class="jsdoc-syntax">,
+		</span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header
+	    </span><span class="jsdoc-syntax">})
+	}
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header_image.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
@@ -208,7 +239,16 @@
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-body'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
         };
-        </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">obody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">;
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsable</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-var">obody </span><span class="jsdoc-syntax">= {
+		</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+		</span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-collapsable collapse ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.collapsed </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">),
+		</span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [  </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">]
+	    };
+	}
+
+        </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">obody</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.title.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">body.cn.push</span><span class="jsdoc-syntax">({
@@ -303,7 +343,9 @@
 	    </span><span class="jsdoc-var">this.dropZone.onNodeDrop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.onNodeDrop.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 	}
 
-
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsable</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.card-header'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onToggleCollapse</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+	}
     },
     </span><span class="jsdoc-var">getDragData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">();
@@ -420,6 +462,20 @@
 	}</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
 		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;below&quot;</span><span class="jsdoc-syntax">;
 	}
+    },
+    </span><span class="jsdoc-var">onToggleCollapse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsed</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-collapse-toggle'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'collapsed'</span><span class="jsdoc-syntax">);
+	    </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-collapsable'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">);
+	    </span><span class="jsdoc-var">this.collapsed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+	    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+	}
+	</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-collapse-toggle'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'collapsed'</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-collapsable'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-var">this.collapsed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
+
     }
 
 

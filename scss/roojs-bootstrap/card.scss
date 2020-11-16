@@ -1,8 +1,9 @@
 /* collapseable card headers */
 
 .card-header .fa {
-  transition: .3s transform ease-in-out;
+    transition: .3s transform ease-in-out;
+    margin-top: 3px;
 }
 .card-header  .collapsed {
-  transform: rotate(90deg);
+    transform: rotate(90deg);
 }
