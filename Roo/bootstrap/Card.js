@@ -498,29 +498,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (target_info === false) {
             return false;
         }
+         
+        this.dropPlaceHolder('hide');
         
-        var pt = this.getDropPoint(e, n, dd);
-        var insertAt = (n == this.bodyEl.dom) ? this.items.length : n.nodeIndex;
-        if (pt == "below") {
-            insertAt++;
-        }
-        for (var i = 0; i < this.items.length; i++) {
-            var r = this.items[i];
-            //var dup = this.store.getById(r.id);
-            if (dup && (dd != this.dragZone)) {
-                Roo.fly(this.getNode(this.store.indexOf(dup))).frame("red", 1);
-            } else {
-            if (data.copy) {
-                this.store.insert(insertAt++, r.copy());
-            } else {
-                data.source.isDirtyFlag = true;
-                r.store.remove(r);
-                this.store.insert(insertAt++, r);
-            }
-            this.isDirtyFlag = true;
-            }
-        }
-        this.dragZone.cachedTarget = null;
+        
         return true;
     },
     
