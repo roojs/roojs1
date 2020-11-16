@@ -2397,7 +2397,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	    this.cardel.parentNode.insertBefore(this.dropEl, cardel);
 	} else if (cardel.nextSibling) {
 	    this.cardel.parentNode.insertBefore(this.dropEl,ns);
-	} else
+	} else {
 	    this.cardel.parentNode.append(this.dropEl);
 	}
 	this.cardel.style.width = "100%";
