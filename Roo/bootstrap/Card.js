@@ -188,10 +188,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 tag : this.header_size > 0 ? 'h' + this.header_size : 'div',
                 cls : 'card-header',
 		cn : [],
-                html : this.header // escape?
             };
 	    cfg.cn.push(hdr);
-	    
+	    hdr_ctr = hdr;
         } else {
 	    hdr = {
                 tag : 'div',
@@ -201,10 +200,25 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	    cfg.cn.push(hdr);
 	}
 	if (this.collapsable) {
-	    hdr.cn.push({
-		tag: 'i',
-		cls : 'fa fa-chevron-down pull-right'
-	    });
+	    hdr_ctr = {
+		tag : 'a',
+		cls : 'd-block',
+		cn: [
+		    {
+			tag: 'i',
+			cls : 'fa fa-chevron-down pull-right'
+		    }
+		   
+		]
+	    }
+	    hdr.cn.push(hdr_ctr);
+	}
+	if (this.header.length) {
+	    hdr_ctr.cn.push(	    {
+		tag: 'span',
+		cls: 'roo-card-header-ctr',
+		html : this.header
+	    })
 	}
 	
         if (this.header_image.length) {
