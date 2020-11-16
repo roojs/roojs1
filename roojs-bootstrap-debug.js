@@ -2078,7 +2078,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 	if (this.collapsable) {
 	    hdr_ctr = {
 		tag : 'a',
-		cls : 'd-block',
+		cls : 'd-block user-select-none',
 		cn: [
 		    {
 			tag: 'i',
