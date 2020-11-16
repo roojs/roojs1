@@ -567,10 +567,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.dropEl.addClass('d-none');
             return;
         }
-        var cardel = where_ar[0].el.dom;
+        var cardel = info.card.el.dom;
         
         this.dropEl.dom.parentNode.removeChild(this.dropEl.dom);
-        if (where_ar[1] == 'above') {
+        if (info.position == 'above') {
             cardel.parentNode.insertBefore(this.dropEl.dom, cardel);
         } else if (cardel.nextSibling) {
             cardel.parentNode.insertBefore(this.dropEl.dom,cardel.nextSibling);
