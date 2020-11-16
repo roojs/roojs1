@@ -393,11 +393,12 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         //Roo.log([ 'target' , target ? target.id : '--nothing--']);
         // see if target is one of the 'cards'...
-        var ctarget = -1;
+        var cards_pos = -1;
         var cards = [];
         //Roo.log(this.items.length);
-        var lpos = pos = cpos = false;
+        var lpos = pos = cards_pos = false;
         var last_card_pos = 0;
+        
         for (var i = 0;i< this.items.length;i++) {
             
             if (!this.items[i].el.hasClass('card')) {
