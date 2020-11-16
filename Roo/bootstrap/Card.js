@@ -65,9 +65,12 @@ Roo.bootstrap.Card = function(config){
          * @event drop
          * When a element a card is dropped
          * @param {Roo.bootstrap.Element} this
+         * @param {Roo.Element} n the node being dropped?
+         * @param {Object} dd Drag and drop data
          * @param {Roo.EventObject} e
+         * @param {Roo.EventObject} data  the data passed via getDragData
          */
-        'drop' : true,
+        'drop' : true
         
     });
 };
