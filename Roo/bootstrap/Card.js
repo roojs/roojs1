@@ -225,16 +225,16 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             cls : 'card-body',
             cn : []
         };
-	
+	var obody = body;
 	if (this.collapsable) {
-	    body = {
+	    obody = {
 		tag: 'div',
 		cls : 'roo-collapsable collapse ' + (this.collapsed ? '' : 'show'),
 		cn : [  body ]
 	    };
 	}
 	
-        cfg.cn.push(body);
+        cfg.cn.push(obody);
         
         if (this.title.length) {
             body.cn.push({
