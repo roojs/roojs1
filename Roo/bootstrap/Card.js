@@ -397,6 +397,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         var cards = [];
         //Roo.log(this.items.length);
         var lpos = pos = cpos = false;
+        var last_card_pos = 0;
         for (var i = 0;i< this.items.length;i++) {
             
             if (!this.items[i].el.hasClass('card')) {
@@ -405,12 +406,11 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             pos = this.getDropPoint(e, this.items[i].el.dom);
             
             //Roo.log(this.items[i].el.dom.id);
-            var ii = cards.length;
             cards.push(this.items[i]);
-            
+            last_card_pos  = i;
             if (ctarget < 0 && pos == 'above') {
-                ctarget = ii > 0 ? ii - 1 : 0;
-                cpos = ii > 0 ? 'below' : pos;
+                items_pos = i > 0 ? i - 1 : 0;
+                cpos = i > 0 ? 'below' : pos;
             }
         }
         if (!cards.length) {
@@ -418,7 +418,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         
         if (ctarget < 0) {
-            ctarget = cards.length -1;
+            ctarget = last_card_pos
             cpos = 'below';
         }
         if (cards[ctarget].el == dragged_card_el) {
