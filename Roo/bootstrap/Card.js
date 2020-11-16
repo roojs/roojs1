@@ -382,45 +382,60 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         return false;
     },
     /**
- *    Part of the Roo.dd.DropZone interface. If no target node is found, the
- *    whole Element becomes the target, and this causes the drop gesture to append.
- */
+    *    Part of the Roo.dd.DropZone interface. If no target node is found, the
+    *    whole Element becomes the target, and this causes the drop gesture to append.
+    */
     getTargetFromEvent : function(e, dragged_card_el)
     {
         var target = e.getTarget();
         while ((target !== null) && (target.parentNode != this.bodyEl.dom)) {
             target = target.parentNode;
         }
+        
+        var ret = {
+            position: '',
+            cards : [],
+            card_n : -1,
+            items_n : -1,
+            card : false,
+        };
+        
         //Roo.log([ 'target' , target ? target.id : '--nothing--']);
         // see if target is one of the 'cards'...
-        var cards_pos = -1;
-        var cards = [];
-        //Roo.log(this.items.length);
-        var lpos = pos = cards_pos = false;
-        var last_card_pos = 0;
         
+        
+        //Roo.log(this.items.length);
+        var pos = false;
+        
+        var last_card_n = 0;
+        var cards_len  = 0;
         for (var i = 0;i< this.items.length;i++) {
             
             if (!this.items[i].el.hasClass('card')) {
                  continue;
             }
             pos = this.getDropPoint(e, this.items[i].el.dom);
-            var cards_len = cards.length;
+            
+            cards_len = cards.length;
             //Roo.log(this.items[i].el.dom.id);
             cards.push(this.items[i]);
-            last_card_pos  = i;
-            if (ctarget < 0 && pos == 'above') {
-                items_pos = i > 0 ? i - 1 : 0;
-                cards_pos = cards_len  > 0 ? cards_len -1 : 0;
-                cpos = i > 0 ? 'below' : pos;
+            last_card_n  = i;
+            if (ret.cards_n < 0 && pos == 'above') {
+                ret.position = cards_len > 0 ? 'below' : pos;
+                ret.items_n = i > 0 ? i - 1 : 0;
+                ret.cards_n  = cards_len  > 0 ? cards_len - 1 : 0;
             }
         }
         if (!cards.length) {
-            return [ true, 'below' ];
+            ret.card = true;
+            ret.position = below;
+            ret.items_n;
+            return ret;
         }
-        
-        if (ctarget < 0) {
-            ctarget = last_card_pos
+        // could not find a card.. stick it at the end..
+        if (ret.cards_n < 0) {
+            ret.card_n = last_card_pos;
+            ret.items_n = this.items.indexOf(ret.cards[last_card_pos]);
             cpos = 'below';
         }
         
@@ -429,26 +444,22 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         
         if (cpos == 'below') {
-            var card_after = ctarget+1 == cards.length ? false : cards[ctarget+1];
-            
-            // then above should not be dragged_card_el.
-            // and ctarget sho
+            var card_after = cards_pos+1 == cards.length ? false : cards[cards_pos+1];
             
             if (card_after  && card_after.el == dragged_card_el) {
                 return false;
             }
-            return [ cards[ctarget], cpos ];
+            return ret;
         }
         
         // its's after ..
         var card_before = ctarget > 0 ? cards[ctarget-1] : false;
         
-            
         if (card_before  && card_before.el == dragged_card_el) {
             return false;
         }
         
-        return [ cards[ctarget], cpos, cards, ctarget ];
+        return ret;
     },
     
     onNodeEnter : function(n, dd, e, data){
