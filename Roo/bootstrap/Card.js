@@ -443,7 +443,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return false;
         }
         
-        return [ cards[ctarget], cpos ];
+        return [ cards[ctarget], cpos, cards, ctarget ];
     },
     
     onNodeEnter : function(n, dd, e, data){
@@ -476,7 +476,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return false;
         }
         
-        
+        var target_info = this.getTargetFromEvent(e,data.source.el);
+        if (target_info === false) {
+            return false;
+        }
         
         var pt = this.getDropPoint(e, n, dd);
         var insertAt = (n == this.bodyEl.dom) ? this.items.length : n.nodeIndex;
