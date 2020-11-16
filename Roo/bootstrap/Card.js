@@ -405,10 +405,12 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             pos = this.getDropPoint(e, this.items[i].el.dom);
             
             //Roo.log(this.items[i].el.dom.id);
+            var ii = cards.length;
             cards.push(this.items[i]);
+            
             if (ctarget < 0 && pos == 'above') {
-                ctarget = i > 0 ? i - 1 : 0;
-                cpos = i > 0 ? 'below' : pos;
+                ctarget = ii > 0 ? ii - 1 : 0;
+                cpos = ii > 0 ? 'below' : pos;
             }
         }
         if (!cards.length) {
