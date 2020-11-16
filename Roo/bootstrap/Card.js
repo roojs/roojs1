@@ -420,10 +420,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             //Roo.log(this.items[i].el.dom.id);
             ret.cards.push(this.items[i]);
             last_card_n  = i;
-            if (ret.cards_n < 0 && pos == 'above') {
+            if (ret.card_n < 0 && pos == 'above') {
                 ret.position = cards_len > 0 ? 'below' : pos;
                 ret.items_n = i > 0 ? i - 1 : 0;
-                ret.cards_n  = cards_len  > 0 ? cards_len - 1 : 0;
+                ret.card_n  = cards_len  > 0 ? cards_len - 1 : 0;
             }
         }
         if (!ret.cards.length) {
@@ -433,7 +433,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return ret;
         }
         // could not find a card.. stick it at the end..
-        if (ret.cards_n < 0) {
+        if (ret.card_n < 0) {
             ret.card_n = last_card_pos;
             ret.items_n = this.items.indexOf(ret.cards[last_card_pos]);
             cpos = 'below';
