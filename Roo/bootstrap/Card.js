@@ -514,8 +514,37 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
          
         this.dropPlaceHolder('hide');
         
+        // do the dom manipulation first..
+        var dom = data.source.el.dom;
+        dom.parentNode.removeChild(dom);
+        
+        
+        
         // remove Card from items.
         
+        var old_parent = data.source.parent();
+        
+        old_parent.items = old_parent.items.filter(function(e) { return e != data.source });
+        if (this.items.length) {
+            
+            
+            var nitems = [];
+            for (var i =0; i < this.items; i++) {
+                if (i == target_info.item_n && target_info.position == 'before') {
+                    nitems.push(data.source);
+                }
+                nitems.push(this.items[i]);
+                if (i == target_info.item_n && target_info.position == 'after') {
+                    nitems.push(data.source);
+                }
+            }
+            this.items = nitems;
+        } else {
+            this.items.push(data.source);
+        }
+        
+        
+        //FIXME HANDLE card = true 
         
         // add this to the correct place in items.
         
