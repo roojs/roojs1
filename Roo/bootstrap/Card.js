@@ -548,7 +548,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         if (this.items.length) {
             var nitems = [];
-            for (var i =0; i < this.items; i++) {
+            for (var i =0; i < this.items.length; i++) {
                 if (i == info.item_n && info.position == 'before') {
                     nitems.push(data.source);
                 }
