@@ -1,16 +1,16 @@
 /*
  * - LGPL
  *
- * Card header - holder for the card header elements.
+ * Card footer - holder for the card footer elements.
  * 
  */
 
 /**
- * @class Roo.bootstrap.CardHeader
+ * @class Roo.bootstrap.CardFooter
  * @extends Roo.bootstrap.Element
- * Bootstrap CardHeader class
+ * Bootstrap CardFooter class
  * @constructor
- * Create a new Card Header - that you can embed children into
+ * Create a new Card Footer - that you can embed children into
  * @param {Object} config The config object
  */
 
