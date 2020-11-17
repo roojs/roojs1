@@ -406,6 +406,11 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.bootstrap.CardFooter",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.bootstrap.CardHeader",
             "cn" : [],
             "is_class" : true

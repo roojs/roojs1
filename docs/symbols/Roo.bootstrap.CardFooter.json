@@ -1,15 +1,16 @@
 {
-  "name" : "Roo.bootstrap.Card",
+  "name" : "Roo.bootstrap.CardFooter",
   "augments" : [
+    "Roo.bootstrap.Element",
     "Roo.bootstrap.Component",
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "desc" : "Bootstrap Card class\n\n\npossible... may not be implemented..",
+  "desc" : "Bootstrap CardFooter class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
-  "memberOf" : "Card",
+  "memberOf" : "CardFooter",
   "example" : "",
   "deprecated" : "",
   "since" : "",
@@ -25,251 +26,6 @@
   "returns" : [],
   "config" : [
     {
-      "name" : "header_size",
-      "type" : "Number",
-      "desc" : "5) H1 or H2 etc.. 0 indicates default",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ]
-    },
-    {
-      "name" : "hideMode",
-      "type" : "String",
-      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-      "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
-      ]
-    },
-    {
-      "name" : "header_image",
-      "type" : "String",
-      "desc" : "src url of image.",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : []
-    },
-    {
-      "name" : "margin_right",
-      "type" : "String",
-      "desc" : "o)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "auto"
-      ]
-    },
-    {
-      "name" : "header",
-      "type" : "String|Object",
-      "desc" : "",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : []
-    },
-    {
-      "name" : "title",
-      "type" : "String",
-      "desc" : "",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : []
-    },
-    {
-      "name" : "xattr",
-      "type" : "Object",
-      "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
-    },
-    {
-      "name" : "name",
-      "type" : "string",
-      "desc" : "Specifies name attribute",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
-    },
-    {
-      "name" : "weight",
-      "type" : "String",
-      "desc" : "k)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "primary",
-        "warning",
-        "info",
-        "danger",
-        "secondary",
-        "success",
-        "light",
-        "dark"
-      ]
-    },
-    {
-      "name" : "display",
-      "type" : "String",
-      "desc" : "x)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "none",
-        "inline",
-        "inline-block",
-        "block",
-        "table",
-        "table-cell",
-        "table-row",
-        "flex",
-        "inline-flex"
-      ]
-    },
-    {
-      "name" : "margin_left",
-      "type" : "String",
-      "desc" : "o)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "auto"
-      ]
-    },
-    {
-      "name" : "padding_top",
-      "type" : "String",
-      "desc" : "5)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ]
-    },
-    {
-      "name" : "subtitle",
-      "type" : "String",
-      "desc" : "",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : []
-    },
-    {
-      "name" : "tooltip",
-      "type" : "string",
-      "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
-    },
-    {
-      "name" : "padding_right",
-      "type" : "String",
-      "desc" : "5)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ]
-    },
-    {
-      "name" : "padding",
-      "type" : "String",
-      "desc" : "5)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ]
-    },
-    {
-      "name" : "allowDomMove",
-      "type" : "Boolean",
-      "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
-    },
-    {
-      "name" : "style",
-      "type" : "String",
-      "desc" : "any extra css",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
-    },
-    {
-      "name" : "display_xl",
-      "type" : "String",
-      "desc" : "x)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "none",
-        "inline",
-        "inline-block",
-        "block",
-        "table",
-        "table-cell",
-        "table-row",
-        "flex",
-        "inline-flex"
-      ]
-    },
-    {
-      "name" : "margin",
-      "type" : "String",
-      "desc" : "o)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "auto"
-      ]
-    },
-    {
-      "name" : "actionMode",
-      "type" : "String",
-      "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
-    },
-    {
-      "name" : "padding_bottom",
-      "type" : "String",
-      "desc" : "5)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ]
-    },
-    {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -284,80 +40,10 @@
       "optvals" : []
     },
     {
-      "name" : "display_lg",
-      "type" : "String",
-      "desc" : "x)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "none",
-        "inline",
-        "inline-block",
-        "block",
-        "table",
-        "table-cell",
-        "table-row",
-        "flex",
-        "inline-flex"
-      ]
-    },
-    {
-      "name" : "footer",
-      "type" : "String",
-      "desc" : "",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : []
-    },
-    {
-      "name" : "display_xs",
-      "type" : "String",
-      "desc" : "x)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "none",
-        "inline",
-        "inline-block",
-        "block",
-        "table",
-        "table-cell",
-        "table-row",
-        "flex",
-        "inline-flex"
-      ]
-    },
-    {
-      "name" : "cls",
-      "type" : "String",
-      "desc" : "css class",
+      "name" : "tooltip",
+      "type" : "string",
+      "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
-    },
-    {
-      "name" : "can_build_overlaid",
-      "type" : "Boolean",
-      "desc" : "True if element can be rebuild from a HTML page",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
-    },
-    {
-      "name" : "margin_bottom",
-      "type" : "String",
-      "desc" : "o)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "auto"
-      ]
-    },
-    {
-      "name" : "disableClass",
-      "type" : "String",
-      "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component",
       "optvals" : []
     },
     {
@@ -371,19 +57,90 @@
       ]
     },
     {
-      "name" : "margin_top",
+      "name" : "can_build_overlaid",
+      "type" : "Boolean",
+      "desc" : "True if element can be rebuild from a HTML page",
+      "memberOf" : "Roo.bootstrap.Component",
+      "optvals" : []
+    },
+    {
+      "name" : "hideMode",
       "type" : "String",
-      "desc" : "o)",
-      "memberOf" : "Roo.bootstrap.Card",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
       "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "auto"
+        "display",
+        "visibility"
       ]
+    },
+    {
+      "name" : "tag",
+      "type" : "String",
+      "desc" : "tag of the element",
+      "memberOf" : "Roo.bootstrap.Element",
+      "optvals" : []
+    },
+    {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "any extra css",
+      "memberOf" : "Roo.bootstrap.Component",
+      "optvals" : []
+    },
+    {
+      "name" : "allowDomMove",
+      "type" : "Boolean",
+      "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
+      "memberOf" : "Roo.Component",
+      "optvals" : []
+    },
+    {
+      "name" : "cls",
+      "type" : "String",
+      "desc" : "class of the element",
+      "memberOf" : "Roo.bootstrap.Element",
+      "optvals" : []
+    },
+    {
+      "name" : "html",
+      "type" : "String",
+      "desc" : "contents of the element",
+      "memberOf" : "Roo.bootstrap.Element",
+      "optvals" : []
+    },
+    {
+      "name" : "preventDefault",
+      "type" : "Boolean",
+      "desc" : "e) default false",
+      "memberOf" : "Roo.bootstrap.Element",
+      "optvals" : [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "name" : "clickable",
+      "type" : "Boolean",
+      "desc" : "e) default false",
+      "memberOf" : "Roo.bootstrap.Element",
+      "optvals" : [
+        "true",
+        "false"
+      ]
+    },
+    {
+      "name" : "xattr",
+      "type" : "Object",
+      "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
+      "memberOf" : "Roo.bootstrap.Component",
+      "optvals" : []
+    },
+    {
+      "name" : "actionMode",
+      "type" : "String",
+      "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
+      "memberOf" : "Roo.Component",
+      "optvals" : []
     },
     {
       "name" : "dataId",
@@ -393,131 +150,21 @@
       "optvals" : []
     },
     {
-      "name" : "padding_left",
-      "type" : "String",
-      "desc" : "5)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ]
-    },
-    {
-      "name" : "margin_x",
-      "type" : "String",
-      "desc" : "o)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "auto"
-      ]
-    },
-    {
-      "name" : "margin_y",
-      "type" : "String",
-      "desc" : "o)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "auto"
-      ]
-    },
-    {
-      "name" : "html",
-      "type" : "String",
-      "desc" : "-- html contents - or just use children..",
-      "memberOf" : "Roo.bootstrap.Card",
+      "name" : "name",
+      "type" : "string",
+      "desc" : "Specifies name attribute",
+      "memberOf" : "Roo.bootstrap.Component",
       "optvals" : []
     },
     {
-      "name" : "padding_x",
+      "name" : "disableClass",
       "type" : "String",
-      "desc" : "5)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ]
-    },
-    {
-      "name" : "display_sm",
-      "type" : "String",
-      "desc" : "x)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "none",
-        "inline",
-        "inline-block",
-        "block",
-        "table",
-        "table-cell",
-        "table-row",
-        "flex",
-        "inline-flex"
-      ]
-    },
-    {
-      "name" : "padding_y",
-      "type" : "String",
-      "desc" : "5)",
-      "memberOf" : "Roo.bootstrap.Card",
-      "optvals" : [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ]
+      "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+      "memberOf" : "Roo.Component",
+      "optvals" : []
     }
   ],
   "methods" : [
-    {
-      "name" : "getDropPoint",
-      "desc" : "Decide whether to drop above or below a View node.",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Card",
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "params" : [],
-      "returns" : []
-    },
-    {
-      "name" : "getTargetFromEvent",
-      "desc" : "Part of the Roo.dd.DropZone interface. If no target node is found, the\n   whole Element becomes the target, and this causes the drop gesture to append.",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Card",
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "params" : [],
-      "returns" : []
-    },
     {
       "name" : "tooltipEl",
       "desc" : "Fetch the element to display the tooltip on.",
@@ -1128,9 +775,9 @@
   ],
   "events" : [
     {
-      "name" : "drop",
-      "desc" : "When a element a card is dropped",
-      "memberOf" : "Roo.bootstrap.Card",
+      "name" : "click",
+      "desc" : "When a element is chick",
+      "memberOf" : "Roo.bootstrap.Element",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1143,27 +790,9 @@
           "isOptional" : false
         },
         {
-          "name" : "n",
-          "type" : "Roo.Element",
-          "desc" : "the node being dropped?",
-          "isOptional" : false
-        },
-        {
-          "name" : "dd",
-          "type" : "Object",
-          "desc" : "Drag and drop data",
-          "isOptional" : false
-        },
-        {
           "name" : "e",
           "type" : "Roo.EventObject",
           "desc" : "",
-          "isOptional" : false
-        },
-        {
-          "name" : "data",
-          "type" : "Roo.EventObject",
-          "desc" : "the data passed via getDragData",
           "isOptional" : false
         }
       ],

@@ -4730,4 +4730,10 @@ html.bootstrap-sticky body {
 .card-header .collapsed {
   transform: rotate(90deg); }
 
+.roo-card-dropzone {
+  border: 1px dashed #adb5bd;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 0.25rem; }
+
 /*# sourceMappingURL=roojs-bootstrap-debug.css.map */
