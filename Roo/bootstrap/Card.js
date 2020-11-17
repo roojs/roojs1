@@ -507,12 +507,14 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         // this could actually fail - if the Network drops..
         // we will ignore this at present..- client should probably reload
         // the whole set of cards if stuff like that fails.
-        if (this.fireEvent("drop", this, n, dd, e, data) === false) {
-            return false;
-        }
+        
         
         var info = this.getTargetFromEvent(e,data.source.el);
         if (info === false) {
+            return false;
+        }
+        
+        if (this.fireEvent("drop", this, n, dd, e, data) === false) {
             return false;
         }
          
