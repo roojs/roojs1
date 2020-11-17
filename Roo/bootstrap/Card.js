@@ -550,11 +550,11 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             var nitems = [];
             Roo.log([info.items_n, info.position, this.items.length])
             for (var i =0; i < this.items.length; i++) {
-                if (i == info.items_n && info.position == 'below') {
+                if (i == info.items_n && info.position == 'above') {
                     nitems.push(data.source);
                 }
                 nitems.push(this.items[i]);
-                if (i == info.items_n && info.position == 'after') {
+                if (i == info.items_n && info.position == 'below') {
                     nitems.push(data.source);
                 }
             }
