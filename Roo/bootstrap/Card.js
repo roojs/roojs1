@@ -502,7 +502,11 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     onNodeDrop : function(n, dd, e, data)
     {
         
-        // call drop - return false if  
+        // call drop - return false if
+        
+        // this could actually fail - if the Network drops..
+        // we will ignore this at present..- client should probably reload
+        // the whole set of cards if stuff like that fails.
         if (this.fireEvent("drop", this, n, dd, e, data) === false) {
             return false;
         }
