@@ -545,6 +545,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         var old_parent = data.source.parent();
         
         old_parent.items = old_parent.items.filter(function(e) { return e != data.source });
+        
         if (this.items.length) {
             var nitems = [];
             for (var i =0; i < this.items; i++) {
@@ -557,6 +558,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 }
             }
             this.items = nitems;
+            Roo.log(this.items);
         } else {
             this.items.push(data.source);
         }
