@@ -526,8 +526,6 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         old_parent.items = old_parent.items.filter(function(e) { return e != data.source });
         if (this.items.length) {
-            
-            
             var nitems = [];
             for (var i =0; i < this.items; i++) {
                 if (i == target_info.item_n && target_info.position == 'before') {
@@ -597,16 +595,24 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.dropEl.addClass('d-none');
             return;
         }
-        var cardel = info.card.el.dom;
-        
+        // FIXME - info.card == true!!!
         this.dropEl.dom.parentNode.removeChild(this.dropEl.dom);
-        if (info.position == 'above') {
-            cardel.parentNode.insertBefore(this.dropEl.dom, cardel);
-        } else if (cardel.nextSibling) {
-            cardel.parentNode.insertBefore(this.dropEl.dom,cardel.nextSibling);
+        
+        if (info.card !== true) {
+            var cardel = info.card.el.dom;
+            
+            if (info.position == 'above') {
+                cardel.parentNode.insertBefore(this.dropEl.dom, cardel);
+            } else if (cardel.nextSibling) {
+                cardel.parentNode.insertBefore(this.dropEl.dom,cardel.nextSibling);
+            } else {
+                cardel.parentNode.append(this.dropEl.dom);
+            }
         } else {
-            cardel.parentNode.append(this.dropEl.dom);
+            // card container???
+            this.bodyEl.dom.append(this.dropEl.dom);
         }
+        
         this.dropEl.addClass('d-block roo-card-dropzone');
         
         this.dropEl.setHeight( Roo.get(data.ddel).getHeight() );
