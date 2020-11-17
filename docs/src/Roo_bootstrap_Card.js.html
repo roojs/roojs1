@@ -442,7 +442,7 @@
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ret.cards.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ret.card </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">ret.position </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">below</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ret.position </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'below'</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">ret.items_n</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
         }
@@ -451,7 +451,7 @@
             </span><span class="jsdoc-var">ret.card_n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">last_card_n</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">ret.card </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ret.cards</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">last_card_n</span><span class="jsdoc-syntax">];
             </span><span class="jsdoc-var">ret.items_n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret.cards</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">last_card_n</span><span class="jsdoc-syntax">]);
-            </span><span class="jsdoc-var">cpos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'below'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">ret.position </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'below'</span><span class="jsdoc-syntax">;
         }
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ret.items_n</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.el </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">dragged_card_el</span><span class="jsdoc-syntax">) {
@@ -507,8 +507,8 @@
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target_info </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getTargetFromEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">data.source.el</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target_info </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">info </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getTargetFromEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">data.source.el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">info </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
 
@@ -545,18 +545,21 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">old_parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.source.parent</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-var">old_parent.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">old_parent.items.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">data.source </span><span class="jsdoc-syntax">});
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
-            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">target_info.item_n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">target_info.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'before'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">info.items_n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">info.position</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">])
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">info.items_n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">info.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'before'</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.source</span><span class="jsdoc-syntax">);
                 }
                 </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">target_info.item_n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">target_info.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'after'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">info.items_n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">info.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'after'</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.source</span><span class="jsdoc-syntax">);
                 }
             }
             </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">);
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">this.items.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.source</span><span class="jsdoc-syntax">);
         }
