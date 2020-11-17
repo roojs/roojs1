@@ -507,8 +507,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return false;
         }
         
-        var target_info = this.getTargetFromEvent(e,data.source.el);
-        if (target_info === false) {
+        var info = this.getTargetFromEvent(e,data.source.el);
+        if (info === false) {
             return false;
         }
          
@@ -548,11 +548,11 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (this.items.length) {
             var nitems = [];
             for (var i =0; i < this.items; i++) {
-                if (i == target_info.item_n && target_info.position == 'before') {
+                if (i == info.item_n && info.position == 'before') {
                     nitems.push(data.source);
                 }
                 nitems.push(this.items[i]);
-                if (i == target_info.item_n && target_info.position == 'after') {
+                if (i == info.item_n && info.position == 'after') {
                     nitems.push(data.source);
                 }
             }
