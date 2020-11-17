@@ -194,45 +194,45 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         cfg.cls += this.layoutCls(); 
         
-    var hdr = false;
+        var hdr = false;
         if (this.header.length) {
             hdr = {
                 tag : this.header_size > 0 ? 'h' + this.header_size : 'div',
                 cls : 'card-header',
-        cn : []
+                cn : []
             };
-        cfg.cn.push(hdr);
-        hdr_ctr = hdr;
+            cfg.cn.push(hdr);
+            hdr_ctr = hdr;
         } else {
-        hdr = {
+            hdr = {
                 tag : 'div',
                 cls : 'card-header d-none',
-        cn : []
+                cn : []
             };
-        cfg.cn.push(hdr);
-    }
-    if (this.collapsable) {
-        hdr_ctr = {
-        tag : 'a',
-        cls : 'd-block user-select-none',
-        cn: [
-            {
-            tag: 'i',
-            cls : 'roo-collapse-toggle fa fa-chevron-down float-right ' + (this.collapsed ? 'collapsed' : '')
-            }
-           
-        ]
-        };
-        hdr.cn.push(hdr_ctr);
-    }
-    if (this.header.length) {
-        hdr_ctr.cn.push(        {
-        tag: 'span',
-        cls: 'roo-card-header-ctr',
-        html : this.header
-        })
-    }
-    
+            cfg.cn.push(hdr);
+        }
+        if (this.collapsable) {
+            hdr_ctr = {
+            tag : 'a',
+            cls : 'd-block user-select-none',
+            cn: [
+                    {
+                        tag: 'i',
+                        cls : 'roo-collapse-toggle fa fa-chevron-down float-right ' + (this.collapsed ? 'collapsed' : '')
+                    }
+                   
+                ]
+            };
+            hdr.cn.push(hdr_ctr);
+        }
+        if (this.header.length) {
+            hdr_ctr.cn.push(        {
+                tag: 'span',
+                cls: 'roo-card-header-ctr',
+                html : this.header
+            })
+        }
+        
         if (this.header_image.length) {
             cfg.cn.push({
                 tag : 'img',
@@ -240,26 +240,26 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 src: this.header_image // escape?
             });
         } else {
-        cfg.cn.push({
-                tag : 'div',
-                cls : 'card-img-top d-none' 
-            });
-    }
-        
+            cfg.cn.push({
+                    tag : 'div',
+                    cls : 'card-img-top d-none' 
+                });
+        }
+            
         var body = {
             tag : 'div',
             cls : 'card-body',
             cn : []
         };
-    var obody = body;
-    if (this.collapsable) {
-        obody = {
-        tag: 'div',
-        cls : 'roo-collapsable collapse ' + (this.collapsed ? '' : 'show'),
-        cn : [  body ]
-        };
-    }
-    
+        var obody = body;
+        if (this.collapsable) {
+            obody = {
+            tag: 'div',
+            cls : 'roo-collapsable collapse ' + (this.collapsed ? '' : 'show'),
+            cn : [  body ]
+            };
+        }
+        
         cfg.cn.push(obody);
         
         if (this.title.length) {
@@ -290,13 +290,18 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             });
         }
         // fixme ? handle objects?
+        
         if (this.footer.length) {
+           
             cfg.cn.push({
-                tag : 'div',
                 cls : 'card-footer',
-                html: this.footer // escape?
+                html : this.footer
             });
+            
+        } else {
+            cfg.cn.push({cls : 'card-footer d-none'});
         }
+        
         // footer...
         
         return cfg;
