@@ -451,7 +451,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             ret.card_n = last_card_n;
             ret.card = ret.cards[last_card_n];
             ret.items_n = this.items.indexOf(ret.cards[last_card_n]);
-            cpos = 'below';
+            ret.position = 'below';
         }
         
         if (this.items[ret.items_n].el == dragged_card_el) {
