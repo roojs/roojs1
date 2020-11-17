@@ -311,13 +311,21 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     getCardHeader : function()
     {
         var  ret = this.el.select('.card-header',true).first();
-    if (ret.hasClass('d-none')) {
-        ret.removeClass('d-none');
-    }
+        if (ret.hasClass('d-none')) {
+            ret.removeClass('d-none');
+        }
         
         return ret;
     },
-    
+    getCardFooter : function()
+    {
+        var  ret = this.el.select('.card-footer',true).first();
+        if (ret.hasClass('d-none')) {
+            ret.removeClass('d-none');
+        }
+        
+        return ret;
+    },
     getCardImageTop : function()
     {
         var  ret = this.el.select('.card-img-top',true).first();
