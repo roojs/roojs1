@@ -442,7 +442,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         if (!ret.cards.length) {
             ret.card = true;
-            ret.position = below;
+            ret.position = 'below';
             ret.items_n;
             return ret;
         }
