@@ -519,6 +519,26 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         dom.parentNode.removeChild(dom);
         
         
+        if (info.card !== true) {
+            var cardel = info.card.el.dom;
+            
+            if (info.position == 'above') {
+                cardel.parentNode.insertBefore(dom, cardel);
+            } else if (cardel.nextSibling) {
+                cardel.parentNode.insertBefore(dom,cardel.nextSibling);
+            } else {
+                cardel.parentNode.append(dom);
+            }
+        } else {
+            // card container???
+            this.bodyEl.dom.append(dom);
+        }
+        
+        //FIXME HANDLE card = true 
+        
+        // add this to the correct place in items.
+        
+        
         
         // remove Card from items.
         
@@ -541,10 +561,6 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.items.push(data.source);
         }
         
-        
-        //FIXME HANDLE card = true 
-        
-        // add this to the correct place in items.
         
         
         return true;
