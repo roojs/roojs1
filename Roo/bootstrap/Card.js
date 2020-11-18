@@ -248,7 +248,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             
         var body = {
             tag : 'div',
-            cls : 'card-body',
+            cls : 'card-body' + (this.body === false  ? ' d-none' : ''),
             cn : []
         };
         var obody = body;
@@ -268,7 +268,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 cls : 'card-title',
                 src: this.title // escape?
             });
-        }
+        }  
         
         if (this.subtitle.length) {
             body.cn.push({
