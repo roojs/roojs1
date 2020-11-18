@@ -17,7 +17,7 @@
  * 
  * @cfg {String} title
  * @cfg {String} subtitle
- * @cfg {String} html -- html contents - or just use children..
+ * @cfg {String|Boolean} html -- html contents - or just use children.. use false to hide it..
  * @cfg {String} footer
  
  * @cfg {String} weight (primary|warning|info|danger|secondary|success|light|dark)
