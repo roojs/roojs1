@@ -379,6 +379,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (this.rotateable) {
             this.el.select('.card-header',true).on('click', this.onToggleRotate, this);
         }
+        this.collapsableEl = this.el.select('.roo-collapsable').first();
+        this.footerEl = this.el.select('.card-footer').first();
         
     },
     getDragData : function(e)
@@ -619,8 +621,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     onToggleRotate : function(e)
     {
-        this.el.select('.roo-collapsable').first().removeClass('show');
-        this.el.select('.roo-collapsable').first().removeClass('show');
+        this.collapsableEl.removeClass('show');
+        this.footerEl.removeClass('d-none');
         if (this.rotated) {
             
             this.el.select('.roo-collapsable').addClass('show');
