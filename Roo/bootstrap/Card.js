@@ -350,8 +350,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     initEvents: function() 
     {
         
-    this.bodyEl = this.getChildContainer();
-    if(this.dragable){
+        this.bodyEl = this.getChildContainer();
+        if(this.dragable){
             this.dragZone = new Roo.dd.DragZone(this.getEl(), {
                     containerScroll: true,
                     ddGroup: this.drag_group || 'default_card_drag_group'
@@ -359,20 +359,24 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.dragZone.getDragData = this.getDragData.createDelegate(this);
         }
         if (this.dropable) {
-        this.dropZone = new Roo.dd.DropZone(this.el.select('.card-body',true).first() , {
-            containerScroll: true,
-            ddGroup: this.drop_group || 'default_card_drag_group'
-        });
-        this.dropZone.getTargetFromEvent = this.getTargetFromEvent.createDelegate(this);
-        this.dropZone.onNodeEnter = this.onNodeEnter.createDelegate(this);
-        this.dropZone.onNodeOver = this.onNodeOver.createDelegate(this);
-        this.dropZone.onNodeOut = this.onNodeOut.createDelegate(this);
-        this.dropZone.onNodeDrop = this.onNodeDrop.createDelegate(this);
-    }
+            this.dropZone = new Roo.dd.DropZone(this.el.select('.card-body',true).first() , {
+                containerScroll: true,
+                ddGroup: this.drop_group || 'default_card_drag_group'
+            });
+            this.dropZone.getTargetFromEvent = this.getTargetFromEvent.createDelegate(this);
+            this.dropZone.onNodeEnter = this.onNodeEnter.createDelegate(this);
+            this.dropZone.onNodeOver = this.onNodeOver.createDelegate(this);
+            this.dropZone.onNodeOut = this.onNodeOut.createDelegate(this);
+            this.dropZone.onNodeDrop = this.onNodeDrop.createDelegate(this);
+        }
         
         if (this.collapsable) {
-        this.el.select('.card-header',true).on('click', this.onToggleCollapse, this);
-    }
+            this.el.select('.card-header',true).on('click', this.onToggleCollapse, this);
+        }
+        if (this.rotateable) {
+            this.el.select('.card-header',true).on('click', this.onToggleRotate, this);
+        }
+        
     },
     getDragData : function(e)
     {
