@@ -113,6 +113,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 
     collapsable : false,
     collapsed : false,
+    rotateable : false,
+    rotated : false,
     
     dragable : false,
     drag_group : false,
