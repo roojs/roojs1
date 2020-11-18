@@ -259,9 +259,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         var obody = body;
         if (this.collapsable || this.rotateable) {
             obody = {
-            tag: 'div',
-            cls : 'roo-collapsable collapse ' + (this.collapsed || this.rotated ? '' : 'show'),
-            cn : [  body ]
+                tag: 'div',
+                cls : 'roo-collapsable collapse ' + (this.collapsed || this.rotated ? '' : 'show'),
+                cn : [  body ]
             };
         }
         
@@ -616,6 +616,24 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
     
     },
+    
+    onToggleRotate : function(e)
+    {
+        this.el.select('.roo-collapsable').first().removeClass('show');
+        this.el.select('.roo-collapsable').first().removeClass('show');
+        if (this.rotated) {
+            
+            this.el.select('.roo-collapsable').addClass('show');
+            this.rotated = false;
+            return;
+        }
+        this.el.select('.roo-collapse-toggle').addClass('collapsed');
+        this.el.select('.roo-collapsable').removeClass('show');
+        this.rotated = true;
+        
+    
+    },
+    
     dropPlaceHolder: function (action, info, data)
     {
         if (this.dropEl === false) {
