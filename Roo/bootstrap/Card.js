@@ -51,6 +51,9 @@
  * 
  * @config {Boolean} collapsable can the body be collapsed.
  * @config {Boolean} collapsed is the body collapsed when rendered...
+ * @config {Boolean} rotateable can the body be rotated by clicking on it..
+ * @config {Boolean} rotated is the body rotated when rendered...
+ * 
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
