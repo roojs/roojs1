@@ -254,10 +254,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             cn : []
         };
         var obody = body;
-        if (this.collapsable) {
+        if (this.collapsable || this.rotateable) {
             obody = {
             tag: 'div',
-            cls : 'roo-collapsable collapse ' + (this.collapsed ? '' : 'show'),
+            cls : 'roo-collapsable collapse ' + (this.collapsed || this.rotated ? '' : 'show'),
             cn : [  body ]
             };
         }
@@ -296,7 +296,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (this.footer.length) {
            
             cfg.cn.push({
-                cls : 'card-footer',
+                cls : 'card-footer ' + (this.rotated ? 'd-none' : ''),
                 html : this.footer
             });
             
