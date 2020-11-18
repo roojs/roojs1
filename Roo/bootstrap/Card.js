@@ -625,11 +625,11 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         this.footerEl.removeClass('d-none');
         if (this.rotated) {
             
-            this.el.select('.roo-collapsable').addClass('show');
+            this.collapsableEl.addClass('show');
             this.rotated = false;
             return;
         }
-        this.el.select('.roo-collapse-toggle').addClass('collapsed');
+        this.footerEl.addClass('d-none');
         this.el.select('.roo-collapsable').removeClass('show');
         this.rotated = true;
         
