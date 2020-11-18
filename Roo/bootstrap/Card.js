@@ -381,7 +381,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         this.collapsableEl = this.el.select('.roo-collapsable').first();
         this.footerEl = this.el.select('.card-footer').first();
-        
+        this.collapsableToggleEl = this.el.select('.roo-collapse-toggle');
     },
     getDragData : function(e)
     {
@@ -608,12 +608,12 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         {
         if (this.collapsed) {
             this.el.select('.roo-collapse-toggle').removeClass('collapsed');
-            this.el.select('.roo-collapsable').addClass('show');
+            this.collapsableEl.addClass('show');
             this.collapsed = false;
             return;
         }
         this.el.select('.roo-collapse-toggle').addClass('collapsed');
-        this.el.select('.roo-collapsable').removeClass('show');
+        this.collapsableEl.removeClass('show');
         this.collapsed = true;
         
     
