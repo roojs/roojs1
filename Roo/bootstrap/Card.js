@@ -248,7 +248,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             
         var body = {
             tag : 'div',
-            cls : 'card-body' + (this.body === false  ? ' d-none' : ''),
+            cls : 'card-body' + (this.html === false  ? ' d-none' : ''),
             cn : []
         };
         var obody = body;
