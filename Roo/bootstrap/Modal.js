@@ -603,7 +603,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
             this.headerEditEl.dom.value = this.title;
             this.headerEditEl.removeClass('d-none');
+            this.headerEditEl.dom.focus();
             this.titleEl.addClass('d-none');
+            
             this.is_header_editing = true;
             return
         }
