@@ -143,7 +143,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
 
      /**
-     * @cfg {String/Roo.Template} tpl The template to use to render the output
+     * @cfg {String/Roo.Template} tpl The template to use to render the output default is '<li class="roo-select2-result"><div class="checkbox"><input id="{roo-id}"' + 
+                'type="checkbox" {roo-data-checked}><label for="{roo-id}"><b>{' + this.displayField + '}</b></label></div></li>';
      */
      
      /**
