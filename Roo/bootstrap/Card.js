@@ -73,7 +73,15 @@ Roo.bootstrap.Card = function(config){
          * @param {Roo.EventObject} e
          * @param {Roo.EventObject} data  the data passed via getDragData
          */
-        'drop' : true
+        'drop' : true,
+         /**
+         * @event rotate
+         * When a element a card is rotate
+         * @param {Roo.bootstrap.Element} this
+         * @param {Roo.Element} n the node being dropped?
+         * @param {Boolean} rotate status
+         */
+        'rotate' : true
         
     });
 };
@@ -230,13 +238,13 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             };
             hdr.cn.push(hdr_ctr);
         }
-        if (this.header.length) {
-            hdr_ctr.cn.push(        {
-                tag: 'span',
-                cls: 'roo-card-header-ctr',
-                html : this.header
-            })
-        }
+        
+        hdr_ctr.cn.push(        {
+            tag: 'span',
+            cls: 'roo-card-header-ctr' + ( this.header.length ? '' : ' d-none'),
+            html : this.header
+        })
+        
         
         if (this.header_image.length) {
             cfg.cn.push({
@@ -380,8 +388,16 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.el.select('.card-header',true).on('click', this.onToggleRotate, this);
         }
         this.collapsableEl = this.el.select('.roo-collapsable').first();
+         
         this.footerEl = this.el.select('.card-footer').first();
         this.collapsableToggleEl = this.el.select('.roo-collapse-toggle');
+        this.headerEl = this.el.select('.roo-card-header-ctr').first();
+        
+        if (this.rotated) {
+            this.el.addClass('roo-card-rotated');
+            this.fireEvent('rotate', this, true);
+        }
+        
     },
     getDragData : function(e)
     {
@@ -581,7 +597,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.items.push(data.source);
         }
         
-        
+        data.source.parentId = this.id;
         
         return true;
     },
@@ -623,16 +639,21 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     {
         this.collapsableEl.removeClass('show');
         this.footerEl.removeClass('d-none');
+        this.el.removeClass('roo-card-rotated');
+        this.el.removeClass('d-none');
         if (this.rotated) {
             
             this.collapsableEl.addClass('show');
             this.rotated = false;
+            this.fireEvent('rotate', this, this.rotated);
             return;
         }
+        this.el.addClass('roo-card-rotated');
         this.footerEl.addClass('d-none');
         this.el.select('.roo-collapsable').removeClass('show');
-        this.rotated = true;
         
+        this.rotated = true;
+        this.fireEvent('rotate', this, this.rotated);
     
     },
     
@@ -675,6 +696,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     
     
+    },
+    setHeaderText: function(html)
+    {
+        this.headerEl.dom.innerHTML = html;
     }
 
     
