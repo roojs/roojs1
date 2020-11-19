@@ -300,8 +300,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.headerEditEl =  this.headerEl.select('.form-control',true).first();
             this.headerEl.on('click', function() { this.toggleHeaderInput(true) } , this);
             this.headerEditEl .on('keyup', function(e) {
-                if(e.isNavKeyPress()){
-                        this.toggleHeaderInput(false)
+                    if(e.isNavKeyPress()){
+                            this.toggleHeaderInput(false)
                     }
                 }, this);
         }
