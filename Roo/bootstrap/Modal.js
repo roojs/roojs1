@@ -20,7 +20,7 @@
  * @cfg {Number} height fixed height - usefull for chrome extension only really.
  * @cfg {String} size (sm|lg) default empty
  * @cfg {Number} max_width set the max width of modal
- * @cfg {Boolean} editable_title can the title be edited
+ * @cfg {Boolean} editableTitle can the title be edited
 
  *
  *
@@ -50,7 +50,6 @@ Roo.bootstrap.Modal = function(config){
          * @event titlechanged
          * Fire when the editable title has been changed
          * @param {Roo.bootstrap.Modal} this
-         * @param {Roo.EventObject} e
          * @param {Roo.EventObject} value
          */
         "titlechanged" : true,
@@ -100,7 +99,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     max_height: 0,
     
     fit_content: false,
-    editable_title  : false,
+    editableTitle  : false,
 
     onRender : function(ct, position)
     {
@@ -207,7 +206,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
         header.push(title);
 
-        if (this.editable_title) {
+        if (this.editableTitle) {
             header.push({
                 cls: 'form-control roo-editable-title d-none',
                 tag: 'input',
@@ -297,7 +296,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.closeEl.on('click', this.hide, this);
         }
         Roo.EventManager.onWindowResize(this.resize, this, true);
-        if (this.editable_title) {
+        if (this.editableTitle) {
             this.headerEditEl =  this.headerEl.select('.form-control',true).first();
             this.headerEl.on('click', this.showHeaderInput, this);
         }
@@ -608,7 +607,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.titleEl.removeClass('d-none');
         this.titleEl.dom.innerHTML = String.format('{0}', this.title);
         this.is_header_editing = false;
-        this.fireEvent('title-changed', this, this.title);
+        this.fireEvent('titlechanged', this, this.title);
     
             
         
