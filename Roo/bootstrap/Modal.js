@@ -20,6 +20,8 @@
  * @cfg {Number} height fixed height - usefull for chrome extension only really.
  * @cfg {String} size (sm|lg) default empty
  * @cfg {Number} max_width set the max width of modal
+ * @cfg {Boolean} editable_title can the title be edited
+
  *
  *
  * @constructor
