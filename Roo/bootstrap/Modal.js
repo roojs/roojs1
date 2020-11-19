@@ -299,7 +299,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (this.editableTitle) {
             this.headerEditEl =  this.headerEl.select('.form-control',true).first();
             this.headerEl.on('click', function() { this.toggleHeaderInput(true) } , this);
-            this.headerEditEl .on('specialkey', function() { this.toggleHeaderInput(false) } , this);
+            this.headerEditEl .on('keyup', function(e) {
+                if(e.isNavKeyPress()){
+                        this.toggleHeaderInput(false)
+                    }
+                }, this);
         }
 
     },
