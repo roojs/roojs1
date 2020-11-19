@@ -59,9 +59,8 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
     },
     updateMarkdown : function()
     {
-                this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(this.getValue()));
-
-    }
+          this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(this.getValue()));
+    },
     
     resizeTextArea: function () {
         
@@ -73,7 +72,7 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
     {
         Roo.bootstrap.TextArea.prototype.setValue(val);
         if (!this.editing) {
-            
+            this.updateMarkdown();
         }
         
     }
