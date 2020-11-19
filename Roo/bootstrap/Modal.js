@@ -579,6 +579,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         
         return child_height;
+    },
+    showHeaderInput : function() {
+        
+        
+        
     }
 
 });
