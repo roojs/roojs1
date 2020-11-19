@@ -512,7 +512,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             !child_nodes ||
             child_nodes.length == 0
         ) {
-            return;
+            return 0;
         }
         
         var child_height = 0;
