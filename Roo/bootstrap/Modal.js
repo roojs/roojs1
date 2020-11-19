@@ -603,13 +603,13 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             return
         }
         // flip back to not editing.
-            this.title = this.headerEditEl.getValue(this.title);
-            this.headerEditEl.addClass('d-none');
-            this.titleEl.removeClass('d-none');
-            this.titleEl.dom.innerHTML = String.format('{0}', this.title);
-            this.is_header_editing = false;
-            return
-        
+        this.title = this.headerEditEl.getValue(this.title);
+        this.headerEditEl.addClass('d-none');
+        this.titleEl.removeClass('d-none');
+        this.titleEl.dom.innerHTML = String.format('{0}', this.title);
+        this.is_header_editing = false;
+        this.fireEvent('title-changed', this, this.title);
+    
             
         
     }
