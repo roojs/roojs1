@@ -192,9 +192,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             html : this.title
         };
 
-        if(this.specificTitle){
+        if(this.specificTitle){ // WTF is this?
             title = this.title;
-
         }
 
         var header = [];
@@ -208,6 +207,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
         header.push(title);
 
+        if (this.editable_title) {
+            header.push({
+                cls: 'form-control roo-editable-title d-none',
+                tag: 'input',
+                type: 'text'
+            });
+        }
+        
         if (this.allow_close && Roo.bootstrap.version == 4) {
             header.push({
                 tag: 'button',
