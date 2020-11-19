@@ -290,7 +290,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.closeEl.on('click', this.hide, this);
         }
         Roo.EventManager.onWindowResize(this.resize, this, true);
-
+        if (this.editable_title) {
+            this.headerEl.on('click', this.showHeaderInput, this);
+        }
 
     },
   
