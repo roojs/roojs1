@@ -306,7 +306,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 }, this);
             this.headerEditEl.on('blur', function(e) {
                 this.toggleHeaderInput(false)
-            });
+            },this);
         }
 
     },
