@@ -100,6 +100,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     max_height: 0,
     
     fit_content: false,
+    editable_title  : false,
 
     onRender : function(ct, position)
     {
