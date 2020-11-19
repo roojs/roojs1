@@ -507,6 +507,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
      */
     setTitle: function(str) {
         this.titleEl.dom.innerHTML = str;
+        this.title = str;
     },
     /**
      * Set the body of the Dialog
