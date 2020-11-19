@@ -298,6 +298,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         Roo.EventManager.onWindowResize(this.resize, this, true);
         if (this.editable_title) {
+            this.headerEditEl =  this.headerEl.select('.form-control',true).first();
             this.headerEl.on('click', this.showHeaderInput, this);
         }
 
@@ -587,9 +588,29 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         return child_height;
     },
-    showHeaderInput : function() {
+    toggleHeaderInput : function(is_edit)
+    {
         
+        if (is_edit && this.is_header_editing) {
+            return; // already editing..
+        }
+        if (is_edit) {
+    
+            this.headerEditEl.setValue(this.title);
+            this.headerEditEl.removeClass('d-none');
+            this.titleEl.addClass('d-none');
+            this.is_header_editing = true;
+            return
+        }
+        // flip back to not editing.
+            this.title = this.headerEditEl.getValue(this.title);
+            this.headerEditEl.addClass('d-none');
+            this.titleEl.removeClass('d-none');
+            this.titleEl.dom.innerHTML = String.format('{0}', this.title);
+            this.is_header_editing = false;
+            return
         
+            
         
     }
 
