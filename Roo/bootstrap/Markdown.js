@@ -70,7 +70,7 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
     },
     setValue : function(val)
     {
-        Roo.bootstrap.TextArea.prototype.setValue(val);
+        Roo.bootstrap.TextArea.prototype.setValue.call(this,val);
         if (!this.editing) {
             this.updateMarkdown();
         }
