@@ -43,7 +43,16 @@ Roo.bootstrap.Modal = function(config){
          * @param {Roo.bootstrap.Modal} this
          * @param {Roo.EventObject} e
          */
-        "resize" : true
+        "resize" : true,
+        /**
+         * @event titlechanged
+         * Fire when the editable title has been changed
+         * @param {Roo.bootstrap.Modal} this
+         * @param {Roo.EventObject} e
+         * @param {Roo.EventObject} value
+         */
+        "titlechanged" : true,
+        
     });
     this.buttons = this.buttons || [];
 
@@ -633,3 +642,4 @@ Roo.apply(Roo.bootstrap.Modal,  {
         
         zIndex : 10001
 });
+
