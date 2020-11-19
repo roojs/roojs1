@@ -52,7 +52,7 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
             return;
         }
         // show showdown...
-        this.updateMarkDown();
+        this.updateMarkdown();
         this.markdownEl.removeClass('d-none');
         this.editing = false;
         return;
