@@ -493,6 +493,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             combobox.cn.push(feedback);
         }
         
+        
+        
         var indicator = {
             tag : 'i',
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
