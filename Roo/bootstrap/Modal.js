@@ -298,8 +298,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         Roo.EventManager.onWindowResize(this.resize, this, true);
         if (this.editableTitle) {
             this.headerEditEl =  this.headerEl.select('.form-control',true).first();
-            this.headerEl.on('click', function() { this.showHeaderInput(true) } , this);
-            this.headerEditEl .on('specialkey', function() { this.showHeaderInput(false) } , this);
+            this.headerEl.on('click', function() { this.toggleHeaderInput(true) } , this);
+            this.headerEditEl .on('specialkey', function() { this.toggleHeaderInput(false) } , this);
         }
 
     },
