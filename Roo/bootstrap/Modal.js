@@ -596,14 +596,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         if (is_edit) {
     
-            this.headerEditEl.setValue(this.title);
+            this.headerEditEl.dom.value = this.title;
             this.headerEditEl.removeClass('d-none');
             this.titleEl.addClass('d-none');
             this.is_header_editing = true;
             return
         }
         // flip back to not editing.
-        this.title = this.headerEditEl.getValue(this.title);
+        this.title = this.headerEditEl.dom.value;
         this.headerEditEl.addClass('d-none');
         this.titleEl.removeClass('d-none');
         this.titleEl.dom.innerHTML = String.format('{0}', this.title);
