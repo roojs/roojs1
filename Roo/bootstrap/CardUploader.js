@@ -179,7 +179,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                                 fa : 'download',
                                 listeners : {
                                     click : function() {
-                                        this.removeEl(data.id)
+                                        this.downloadCard(data.id)
                                     }
                                 }
                             },
@@ -191,7 +191,12 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                                 size : 'sm',
                                 weight: 'danger',
                                 cls : 'col-1',
-                                fa : 'times'
+                                fa : 'times',
+                                listeners : {
+                                    click : function() {
+                                        this.removeCard(data.id)
+                                    }
+                                }
                             }
                         ]
                     }
