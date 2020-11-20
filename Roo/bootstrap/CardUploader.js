@@ -188,7 +188,8 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                                         xtype : 'Button',
                                         html : String.format("<small>{0}</small>", data.title),
                                         cls : 'col-8 text-left',
-                                        size: 'sm', 
+                                        size: 'sm',
+                                        weight: 'info',
                                         fa : 'download',
                                         listeners : {
                                             click : function() {
