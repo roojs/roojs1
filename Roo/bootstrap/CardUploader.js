@@ -180,14 +180,22 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                             {
                                 xns : Roo.bootstrap,
                                 xtype : 'Element',
-                                html : data.title
-                            },
-                            {
-                                xns : Roo.bootstrap,
-                                xtype : 'Button',
-                                html : 'Delete',
-                                fa : 'times'
-                            }
+                                cls : 'd-flex'
+                                itesm : [
+                                    
+                                    {
+                                        xns : Roo.bootstrap,
+                                        xtype : 'Element',
+                                        html : String.format("{0}", data.title),
+                                        cls : 'p-9'
+                                    },
+                                    {
+                                        xns : Roo.bootstrap,
+                                        xtype : 'Button',
+                                        html : 'Delete',
+                                        cls : 'ml-auto p-3'
+                                        fa : 'times'
+                                    }
                             
                         ],
                     }
