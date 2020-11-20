@@ -39,7 +39,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
     
     getAutoCreate : function()
     {
-        var btn = Roo.bootstrap.Button.getAutoCreate.prototype.call(this);
+        var btn = Roo.bootstrap.Button.prototype.getAutoCreate.call(this);
         
         var cfg = {
             cls : 'roo-card-uploader-wrap',
@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
          
         this.selectorEl = this.el.select('.roo-card-upload-selector', true).first();
         
-        this.bodyEl.on('click', this.beforeSelectFile, this);
+        this.el.on('click', this.beforeSelectFile, this);
         this.selectorEl.on('change', this.onFileSelected, this);
         if (this.images) {
             var t = this;
