@@ -123,48 +123,6 @@ dashboard4 = new Roo.XComponent({
          '|xns' : 'Roo.bootstrap',
          items  : [
           {
-           xtype : 'UploadCropbox',
-           xns : Roo.bootstrap,
-           '|xns' : 'Roo.bootstrap'
-          }
-         ]
-        },
-        {
-         xtype : 'Card',
-         title : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
-         xns : Roo.bootstrap,
-         '|xns' : 'Roo.bootstrap',
-         items  : [
-          {
-           xtype : 'DocumentManager',
-           xns : Roo.bootstrap,
-           '|xns' : 'Roo.bootstrap'
-          }
-         ]
-        },
-        {
-         xtype : 'Column',
-         xs : 3,
-         xns : Roo.bootstrap,
-         '|xns' : 'Roo.bootstrap',
-         items  : [
-          {
-           xtype : 'Card',
-           footer : 'test',
-           header_image : 'https://www.roojs.com/Roojscom/templates/images/roojsolutions-tr-100.png',
-           title : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
-           xns : Roo.bootstrap,
-           '|xns' : 'Roo.bootstrap'
-          }
-         ]
-        },
-        {
-         xtype : 'Card',
-         title : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
-         xns : Roo.bootstrap,
-         '|xns' : 'Roo.bootstrap',
-         items  : [
-          {
            xtype : 'CardUploader',
            html : _this._strings['fb66f41b81f5973740bbfed019aa5d7d'] /* Upload Images or Documents */,
            xns : Roo.bootstrap,

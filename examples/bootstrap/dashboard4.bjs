@@ -102,42 +102,6 @@
          "String title" : "test",
          "items" : [
           {
-           "xtype" : "UploadCropbox",
-           "$ xns" : "Roo.bootstrap"
-          }
-         ]
-        },
-        {
-         "xtype" : "Card",
-         "$ xns" : "Roo.bootstrap",
-         "String title" : "test",
-         "items" : [
-          {
-           "xtype" : "DocumentManager",
-           "$ xns" : "Roo.bootstrap"
-          }
-         ]
-        },
-        {
-         "xtype" : "Column",
-         "Number xs" : 3,
-         "$ xns" : "Roo.bootstrap",
-         "items" : [
-          {
-           "String footer" : "test",
-           "xtype" : "Card",
-           "String header_image" : "https://www.roojs.com/Roojscom/templates/images/roojsolutions-tr-100.png",
-           "$ xns" : "Roo.bootstrap",
-           "String title" : "test"
-          }
-         ]
-        },
-        {
-         "xtype" : "Card",
-         "$ xns" : "Roo.bootstrap",
-         "String title" : "test",
-         "items" : [
-          {
            "xtype" : "CardUploader",
            "string html" : "Upload Images or Documents",
            "$ xns" : "Roo.bootstrap"
