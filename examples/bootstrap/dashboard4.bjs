@@ -134,7 +134,13 @@
         {
          "xtype" : "Card",
          "$ xns" : "Roo.bootstrap",
-         "String title" : "test"
+         "String title" : "test",
+         "items" : [
+          {
+           "xtype" : "CardUploader",
+           "$ xns" : "Roo.bootstrap"
+          }
+         ]
         }
        ]
       }
