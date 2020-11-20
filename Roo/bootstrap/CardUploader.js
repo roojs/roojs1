@@ -146,6 +146,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
             src : url,
             title : file.name,
             mimetype : file.type,
+            preview : false,
         })
         
     },
