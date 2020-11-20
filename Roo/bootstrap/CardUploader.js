@@ -220,7 +220,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                 items : footer,
                 initEvents : function() {
                     Roo.bootstrap.Card.prototype.initEvents.call(this);
-                    this.imgEl = this.el.select('card-img-top').first();
+                    this.imgEl = this.el.select('.card-img-top').first();
                     if (this.imgEl) {
                         this.imgEl.on('click', function() { t.previewCard( data.id); }, this);
                         this.imgEl.set('pointer','curspr');
