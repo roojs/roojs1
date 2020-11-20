@@ -166,7 +166,6 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                 closeable : true,
                 header_image : data.src,
                 data : data,
-                
                 listeners : {
                     click : function() {
                         // view..
