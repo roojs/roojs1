@@ -18,6 +18,7 @@ Roo.bootstrap.Card
 Roo.bootstrap.CardHeader
 Roo.bootstrap.CardFooter
 Roo.bootstrap.CardImageTop
+Roo.bootstrap.CardUploader
 
 Roo.bootstrap.Img
 Roo.bootstrap.Link
