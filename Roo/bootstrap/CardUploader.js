@@ -70,6 +70,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
     
     initEvents : function()
     {
+        Roo.bootstrap.Button.prototype.initEvents.call(this);
         this.urlAPI = (window.createObjectURL && window) || 
                                 (window.URL && URL.revokeObjectURL && URL) || 
                                 (window.webkitURL && webkitURL);
@@ -79,8 +80,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
          
         this.selectorEl = this.el.select('.roo-card-upload-selector', true).first();
         
-        this.el.on('click', this.beforeSelectFile, this);
-        this.selectorEl.on('change', this.onFileSelected, this);
+         this.selectorEl.on('change', this.onFileSelected, this);
         if (this.images) {
             var t = this;
             this.images.forEach(function(img) {
@@ -94,7 +94,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
     },
     
    
-    beforeSelectFile : function(e)
+    onClick : function(e)
     {
         e.preventDefault();
          
