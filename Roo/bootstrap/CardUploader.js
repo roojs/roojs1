@@ -172,11 +172,11 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                         // view..
                     }
                 },
-                cn : [
+                items : [
                     {
                         xns : Roo.bootstrap,
                         xtype : 'CardFooter',
-                        cn: [
+                        items: [
                             {
                                 xns : Roo.bootstrap,
                                 xtype : 'Element',
