@@ -164,6 +164,12 @@ dashboard4 = new Roo.XComponent({
          '|xns' : 'Roo.bootstrap',
          items  : [
           {
+           xtype : 'Button',
+           html : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
+          },
+          {
            xtype : 'CardUploader',
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'

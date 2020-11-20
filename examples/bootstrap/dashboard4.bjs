@@ -137,6 +137,11 @@
          "String title" : "test",
          "items" : [
           {
+           "xtype" : "Button",
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "test"
+          },
+          {
            "xtype" : "CardUploader",
            "$ xns" : "Roo.bootstrap"
           }
