@@ -214,6 +214,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                 closeable : true,
                 header : !data.mimetype.match(/image/) && !data.preview ? "Document": false,
                 header_image : data.mimetype.match(/image/) ? data.src  : data.preview,
+                header_image_fit_square: true,
                 data : data,
                 html : false,
                  
