@@ -186,7 +186,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                                     {
                                         xns : Roo.bootstrap,
                                         xtype : 'Link',
-                                        html : String.format("{0}", data.title),
+                                        html : String.format("<small>{0}</small>", data.title),
                                         cls : 'p-9'
                                     },
                                     {
