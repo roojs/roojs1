@@ -6,10 +6,10 @@ dashboard4 = new Roo.XComponent({
 
  _strings : {
   '098f6bcd4621d373cade4e832627b4f6' :"test",
-  'd41d8cd98f00b204e9800998ecf8427e' :"",
   'e93b3fa481be3932aa08bd68c3deee70' :"example 1",
   '60ee66eb2cd31823032664c2e9a79fd5' :"body goes here",
   '9cf863d802aca813531ca28b319ead90' :"Add Issue",
+  'fb66f41b81f5973740bbfed019aa5d7d' :"Upload Images or Documents",
   'd9fb0367346d21079a1c52d72da61c9f' :"ticket 1"
  },
 
@@ -165,14 +165,8 @@ dashboard4 = new Roo.XComponent({
          '|xns' : 'Roo.bootstrap',
          items  : [
           {
-           xtype : 'Button',
-           html : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
-           xns : Roo.bootstrap,
-           '|xns' : 'Roo.bootstrap'
-          },
-          {
            xtype : 'CardUploader',
-           html : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
+           html : _this._strings['fb66f41b81f5973740bbfed019aa5d7d'] /* Upload Images or Documents */,
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
           }
