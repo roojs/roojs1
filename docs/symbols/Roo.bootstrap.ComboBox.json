@@ -534,6 +534,13 @@
       "optvals" : []
     },
     {
+      "name" : "preventMark",
+      "type" : "Boolean",
+      "desc" : "Do not show tick or cross if error/success",
+      "memberOf" : "Roo.bootstrap.Input",
+      "optvals" : []
+    },
+    {
       "name" : "accept",
       "type" : "String",
       "desc" : "o) use for file input only. (default empty)",

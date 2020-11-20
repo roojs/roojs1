@@ -21690,6 +21690,12 @@
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "readOnly",
         "type" : "Boolean",
         "desc" : "Specifies that the field should be read-only",
@@ -23328,6 +23334,12 @@
         "name" : "placeholder",
         "type" : "string",
         "desc" : "- placeholder to put in text.",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
@@ -25495,6 +25507,12 @@
         "name" : "placeholder",
         "type" : "string",
         "desc" : "- placeholder to put in text.",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
@@ -31166,6 +31184,12 @@
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "readOnly",
         "type" : "Boolean",
         "desc" : "Specifies that the field should be read-only",
@@ -32634,6 +32658,12 @@
         "name" : "placeholder",
         "type" : "string",
         "desc" : "- placeholder to put in text.",
+        "memberOf" : ""
+      },
+      {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
         "memberOf" : ""
       },
       {
@@ -38690,6 +38720,12 @@
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "queryDelay",
         "type" : "Number",
         "desc" : "The length of time in milliseconds to delay between the start of typing and sending the\nquery to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')",
@@ -39865,6 +39901,12 @@
         "name" : "placeholder",
         "type" : "string",
         "desc" : "- placeholder to put in text.",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
@@ -45053,6 +45095,12 @@
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "readOnly",
         "type" : "Boolean",
         "desc" : "Specifies that the field should be read-only",
@@ -47340,6 +47388,12 @@
         "type" : "Array",
         "desc" : "default []",
         "memberOf" : ""
+      },
+      {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
+        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "readOnly",
@@ -49920,6 +49974,12 @@
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "readOnly",
         "type" : "Boolean",
         "desc" : "Specifies that the field should be read-only",
@@ -51205,6 +51265,12 @@
         "name" : "placeholder",
         "type" : "string",
         "desc" : "- placeholder to put in text.",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
@@ -56138,6 +56204,12 @@
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "readOnly",
         "type" : "Boolean",
         "desc" : "Specifies that the field should be read-only",
@@ -57027,6 +57099,12 @@
         "name" : "placeholder",
         "type" : "string",
         "desc" : "- placeholder to put in text.",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
@@ -57920,6 +57998,12 @@
         "name" : "placeholder",
         "type" : "string",
         "desc" : "- placeholder to put in text.",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "preventMark",
+        "type" : "Boolean",
+        "desc" : "Do not show tick or cross if error/success",
         "memberOf" : "Roo.bootstrap.Input"
       },
       {

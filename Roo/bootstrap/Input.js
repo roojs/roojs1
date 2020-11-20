@@ -925,8 +925,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-            //code
-        }
+           
         if(this.allowBlank && !this.getRawValue().length){
             return;
         }

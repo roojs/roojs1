@@ -368,13 +368,6 @@
       "optvals" : []
     },
     {
-      "name" : "blankText",
-      "type" : "String",
-      "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
-    },
-    {
       "name" : "before",
       "type" : "string",
       "desc" : "- input group add on before",
@@ -385,6 +378,13 @@
       "name" : "validationDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
+      "memberOf" : "Roo.bootstrap.Input",
+      "optvals" : []
+    },
+    {
+      "name" : "blankText",
+      "type" : "String",
+      "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
       "memberOf" : "Roo.bootstrap.Input",
       "optvals" : []
     },
@@ -497,6 +497,13 @@
       "type" : "Array",
       "desc" : "default []",
       "memberOf" : "Roo.bootstrap.PhoneInput",
+      "optvals" : []
+    },
+    {
+      "name" : "preventMark",
+      "type" : "Boolean",
+      "desc" : "Do not show tick or cross if error/success",
+      "memberOf" : "Roo.bootstrap.Input",
       "optvals" : []
     },
     {
