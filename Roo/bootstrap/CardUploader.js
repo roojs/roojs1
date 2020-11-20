@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                 btn,
                 {
                     tag : 'input',
-                    cls : 'd=none roo-card-upload-selector',
+                    cls : 'd-none roo-card-upload-selector',
                     type : 'file',
                     multiple : 'multiple'
                 },
