@@ -157,14 +157,57 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
         //then we need to use something other that and header_image
         
         //   remove.....
-        
+        var footer = [
+            {
+                xns : Roo.bootstrap,
+                xtype : 'CardFooter',
+                items: [
+                    {
+                        xns : Roo.bootstrap,
+                        xtype : 'Element',
+                        cls : 'd-flex',
+                        items : [
+                            
+                            {
+                                xns : Roo.bootstrap,
+                                xtype : 'Button',
+                                html : String.format("<small>{0}</small>", data.title),
+                                cls : 'col-11 text-left',
+                                size: 'sm',
+                                weight: 'link',
+                                fa : 'download',
+                                listeners : {
+                                    click : function() {
+                                        // download
+                                    }
+                                }
+                            },
+                          
+                            {
+                                xns : Roo.bootstrap,
+                                xtype : 'Button',
+                                
+                                size : 'sm',
+                                weight: 'danger',
+                                cls : 'col-1',
+                                fa : 'times'
+                            }
+                        ]
+                    }
+                    
+                ],
+            }
+            
+        ];
+
         var cn = this.addxtype(
             {
                  
                 xns : Roo.bootstrap,
                 xtype : 'Card',
                 closeable : true,
-                header_image : data.src,
+                header : !data.mimetype.match('/image/') ? "Document": false,
+                header_image : data.mimetype.match('/image/') ? data.src  : false,
                 data : data,
                 html : false,
                 listeners : {
@@ -172,48 +215,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                         // view..
                     }
                 },
-                items : [
-                    {
-                        xns : Roo.bootstrap,
-                        xtype : 'CardFooter',
-                        items: [
-                            {
-                                xns : Roo.bootstrap,
-                                xtype : 'Element',
-                                cls : 'd-flex',
-                                items : [
-                                    
-                                    {
-                                        xns : Roo.bootstrap,
-                                        xtype : 'Button',
-                                        html : String.format("<small>{0}</small>", data.title),
-                                        cls : 'col-11 text-left',
-                                        size: 'sm',
-                                        weight: 'link',
-                                        fa : 'download',
-                                        listeners : {
-                                            click : function() {
-                                                // download
-                                            }
-                                        }
-                                    },
-                                  
-                                    {
-                                        xns : Roo.bootstrap,
-                                        xtype : 'Button',
-                                        
-                                        size : 'sm',
-                                        weight: 'danger',
-                                        cls : 'col-1',
-                                        fa : 'times'
-                                    }
-                                ]
-                            }
-                            
-                        ],
-                    }
-                    
-                ]
+                items : footer
                   
                 
             }
