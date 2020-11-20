@@ -130,6 +130,11 @@
            "String title" : "test"
           }
          ]
+        },
+        {
+         "xtype" : "Card",
+         "$ xns" : "Roo.bootstrap",
+         "String title" : "test"
         }
        ]
       }
