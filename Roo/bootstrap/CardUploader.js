@@ -180,7 +180,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                             {
                                 xns : Roo.bootstrap,
                                 xtype : 'Element',
-                                cls : 'd-flex',
+                                cls : '',
                                 items : [
                                     
                                     {
