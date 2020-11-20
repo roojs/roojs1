@@ -223,7 +223,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                     this.imgEl = this.el.select('.card-img-top').first();
                     if (this.imgEl) {
                         this.imgEl.on('click', function() { t.previewCard( data.id); }, this);
-                        this.imgEl.set('pointer','curspr');
+                        this.imgEl.set({ 'pointer' : 'curspr' });
                                   
                     }
                     
