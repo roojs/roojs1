@@ -13,8 +13,8 @@
  * @cfg {String} weight (default | primary | secondary | success | info | warning | danger | link ) default
  * @cfg {String} badge_weight (default | primary | secondary | success | info | warning | danger | link ) default (same as button)
  * @cfg {Boolean} outline default false (except for weight=default which emulates old behaveiour with an outline)
- * @cfg {String} size ( lg | sm | xs)
- * @cfg {String} tag ( a | input | submit)
+ * @cfg {String} size (lg|sm|xs)
+ * @cfg {String} tag (a|input|submit)
  * @cfg {String} href empty or href
  * @cfg {Boolean} disabled default false;
  * @cfg {Boolean} isClose default false;
