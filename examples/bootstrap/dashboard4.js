@@ -5,6 +5,7 @@
 dashboard4 = new Roo.XComponent({
 
  _strings : {
+  '098f6bcd4621d373cade4e832627b4f6' :"test",
   'e93b3fa481be3932aa08bd68c3deee70' :"example 1",
   '60ee66eb2cd31823032664c2e9a79fd5' :"body goes here",
   '9cf863d802aca813531ca28b319ead90' :"Add Issue",
@@ -109,6 +110,48 @@ dashboard4 = new Roo.XComponent({
            xtype : 'Button',
            html : _this._strings['9cf863d802aca813531ca28b319ead90'] /* Add Issue */,
            weight : 'primary',
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
+          }
+         ]
+        },
+        {
+         xtype : 'Card',
+         title : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap',
+         items  : [
+          {
+           xtype : 'UploadCropbox',
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
+          }
+         ]
+        },
+        {
+         xtype : 'Card',
+         title : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap',
+         items  : [
+          {
+           xtype : 'DocumentManager',
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
+          }
+         ]
+        },
+        {
+         xtype : 'Column',
+         xs : 3,
+         xns : Roo.bootstrap,
+         '|xns' : 'Roo.bootstrap',
+         items  : [
+          {
+           xtype : 'Card',
+           footer : 'test',
+           header_image : 'https://www.roojs.com/Roojscom/templates/images/roojsolutions-tr-100.png',
+           title : _this._strings['098f6bcd4621d373cade4e832627b4f6'] /* test */,
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
           }

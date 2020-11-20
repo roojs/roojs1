@@ -438,8 +438,8 @@
     },
     {
       "name" : "html",
-      "type" : "String",
-      "desc" : "-- html contents - or just use children..",
+      "type" : "String|Boolean",
+      "desc" : "-- html contents - or just use children.. use false to hide it..",
       "memberOf" : "Roo.bootstrap.Card",
       "optvals" : []
     },
@@ -1127,6 +1127,36 @@
     }
   ],
   "events" : [
+    {
+      "name" : "rotate",
+      "desc" : "When a element a card is rotate",
+      "memberOf" : "Roo.bootstrap.Card",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.Element",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "n",
+          "type" : "Roo.Element",
+          "desc" : "the node being dropped?",
+          "isOptional" : false
+        },
+        {
+          "name" : "rotate",
+          "type" : "Boolean",
+          "desc" : "status",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
     {
       "name" : "drop",
       "desc" : "When a element a card is dropped",

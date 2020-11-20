@@ -25,6 +25,13 @@
   "returns" : [],
   "config" : [
     {
+      "name" : "editableTitle",
+      "type" : "Boolean",
+      "desc" : "can the title be edited",
+      "memberOf" : "Roo.bootstrap.Modal",
+      "optvals" : []
+    },
+    {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -900,6 +907,30 @@
     }
   ],
   "events" : [
+    {
+      "name" : "titlechanged",
+      "desc" : "Fire when the editable title has been changed",
+      "memberOf" : "Roo.bootstrap.Modal",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.Modal",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "value",
+          "type" : "Roo.EventObject",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
     {
       "name" : "btnclick",
       "desc" : "The raw btnclick event for the button",

@@ -33,6 +33,7 @@
  * @cfg {String} indicatorpos (left|right) default left
  * @cfg {String} capture (user|camera) use for file input only. (default empty)
  * @cfg {String} accept (image|video|audio) use for file input only. (default empty)
+ * @cfg {Boolean} preventMark Do not show tick or cross if error/success
 
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
@@ -924,6 +925,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
+            //code
+        }
         if(this.allowBlank && !this.getRawValue().length){
             return;
         }

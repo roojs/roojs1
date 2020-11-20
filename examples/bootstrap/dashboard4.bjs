@@ -6,6 +6,7 @@
  "permname" : "",
  "modOrder" : "001",
  "strings" : {
+  "098f6bcd4621d373cade4e832627b4f6" : "test",
   "e93b3fa481be3932aa08bd68c3deee70" : "example 1",
   "60ee66eb2cd31823032664c2e9a79fd5" : "body goes here",
   "9cf863d802aca813531ca28b319ead90" : "Add Issue",
@@ -91,6 +92,42 @@
            "xtype" : "Button",
            "$ xns" : "Roo.bootstrap",
            "String html" : "Add Issue"
+          }
+         ]
+        },
+        {
+         "xtype" : "Card",
+         "$ xns" : "Roo.bootstrap",
+         "String title" : "test",
+         "items" : [
+          {
+           "xtype" : "UploadCropbox",
+           "$ xns" : "Roo.bootstrap"
+          }
+         ]
+        },
+        {
+         "xtype" : "Card",
+         "$ xns" : "Roo.bootstrap",
+         "String title" : "test",
+         "items" : [
+          {
+           "xtype" : "DocumentManager",
+           "$ xns" : "Roo.bootstrap"
+          }
+         ]
+        },
+        {
+         "xtype" : "Column",
+         "Number xs" : 3,
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "String footer" : "test",
+           "xtype" : "Card",
+           "String header_image" : "https://www.roojs.com/Roojscom/templates/images/roojsolutions-tr-100.png",
+           "$ xns" : "Roo.bootstrap",
+           "String title" : "test"
           }
          ]
         }

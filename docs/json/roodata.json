@@ -19465,8 +19465,8 @@
       },
       {
         "name" : "html",
-        "type" : "String",
-        "desc" : "-- html contents - or just use children..",
+        "type" : "String|Boolean",
+        "desc" : "-- html contents - or just use children.. use false to hide it..",
         "memberOf" : ""
       },
       {
@@ -19818,6 +19818,13 @@
         "desc" : "Fires after the component is rendered.",
         "sig" : "function (_self)\n{\n\n}",
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "rotate",
+        "type" : "function",
+        "desc" : "When a element a card is rotate",
+        "sig" : "function (_self, n, rotate)\n{\n\n}",
+        "memberOf" : ""
       },
       {
         "name" : "show",
@@ -23448,7 +23455,7 @@
       {
         "name" : "tpl",
         "type" : "String/Roo.Template",
-        "desc" : "The template to use to render the output",
+        "desc" : "The template to use to render the output default is  '<a class=\"dropdown-item\" href=\"#\">{' + this.displayField + '}</a>'",
         "memberOf" : ""
       },
       {
@@ -37615,6 +37622,12 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "editableTitle",
+        "type" : "Boolean",
+        "desc" : "can the title be edited",
+        "memberOf" : ""
+      },
+      {
         "name" : "fitwindow",
         "type" : "Boolean",
         "desc" : "default false",
@@ -37814,6 +37827,13 @@
         "desc" : "Fires after the component is shown.",
         "sig" : "function (_self)\n{\n\n}",
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "titlechanged",
+        "type" : "function",
+        "desc" : "Fire when the editable title has been changed",
+        "sig" : "function (_self, value)\n{\n\n}",
+        "memberOf" : ""
       }
     ],
     "methods" : [
@@ -38800,7 +38820,7 @@
       {
         "name" : "tpl",
         "type" : "String/Roo.Template",
-        "desc" : "The template to use to render the output",
+        "desc" : "The template to use to render the output default is  '<a class=\"dropdown-item\" href=\"#\">{' + this.displayField + '}</a>'",
         "memberOf" : "Roo.bootstrap.ComboBox"
       },
       {

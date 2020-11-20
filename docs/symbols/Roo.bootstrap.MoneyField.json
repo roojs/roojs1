@@ -276,7 +276,7 @@
     {
       "name" : "tpl",
       "type" : "String/Roo.Template",
-      "desc" : "The template to use to render the output",
+      "desc" : "The template to use to render the output default is  '<a class=\"dropdown-item\" href=\"#\">{' + this.displayField + '}</a>'",
       "memberOf" : "Roo.bootstrap.ComboBox",
       "optvals" : []
     },
