@@ -23,7 +23,7 @@ Roo.bootstrap.CardUploader = function(config){
     Roo.bootstrap.CardUploader.superclass.constructor.call(this, config);
     
     
-    this.imageCollection  = new Roo.util.MixedCollection(function(r) { return r.id });
+    this.imageCollection  = new Roo.util.MixedCollection(function(r) { return r.data.id });
     
     
 };
@@ -156,7 +156,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
         // hidden input element?
         // if the file is not an image...
         //then we need to use something other that and header_image
-        
+        var t = this;
         //   remove.....
         var footer = [
             {
@@ -179,7 +179,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                                 fa : 'download',
                                 listeners : {
                                     click : function() {
-                                        // download
+                                        this.removeEl(data.id)
                                     }
                                 }
                             },
