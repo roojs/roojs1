@@ -18,9 +18,7 @@
 
 Roo.bootstrap.CardUploader = function(config){
     
-    if (test) {
-        //code
-    }
+ 
     
     Roo.bootstrap.CardUploader.superclass.constructor.call(this, config);
     
