@@ -40,7 +40,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
     getAutoCreate : function()
     {
         var btn = Roo.bootstrap.Button.prototype.getAutoCreate.call(this);
-        
+        btn.cls += ' w-100 pb-2';
         var cfg = {
             cls : 'roo-card-uploader-wrap',
             cn : [
