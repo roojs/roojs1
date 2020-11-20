@@ -186,7 +186,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                                 xns : Roo.bootstrap,
                                 xtype : 'Button',
                                 html : 'Delete',
-                                fa : 'cross'
+                                fa : 'times'
                             }
                             
                         ],
