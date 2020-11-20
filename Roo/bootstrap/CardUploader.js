@@ -187,7 +187,8 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                                         xns : Roo.bootstrap,
                                         xtype : 'Button',
                                         html : String.format("<small>{0}</small>", data.title),
-                                        cls : 'p-9',
+                                        cls : 'col-9 text-left',
+                                        size: 'sm', 
                                         fa : 'download',
                                         listeners : {
                                             click : function() {
@@ -200,7 +201,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                                         xtype : 'Button',
                                         html : 'Delete',
                                         size : 'sm',
-                                        cls : 'ml-auto p-3',
+                                        cls : 'col-3',
                                         fa : 'times'
                                     }
                                 ]
