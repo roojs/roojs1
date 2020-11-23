@@ -28,7 +28,7 @@ Roo.bootstrap.CardUploader = function(config){
     
 };
 
-Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
+Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
     
      
     errorTimeout : 3000,
@@ -39,7 +39,43 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
     
     getAutoCreate : function()
     {
-        var btn = Roo.bootstrap.Button.prototype.getAutoCreate.call(this);
+        
+        var cfg =  {
+            cls :'form-group' ,
+            cn : [
+                {
+                    tag : 'i',
+                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                    tooltip : 'This field is required'
+                },
+                {
+                    tag: 'label',
+                   //cls : 'input-group-addon',
+                    html : this.fieldLabel
+
+                },
+
+                {
+                    tag: 'input',
+                    id : id,
+                    type : 'hidden',
+                    value : this.value,
+                    cls : 'd-none'
+                },
+                {
+                    cls : 'roo-card-uploader-button-container'
+                },
+                {
+                    cls : 'card-columns roo-card-uploader-container'
+                }
+
+            ]
+        };
+           
+        
+        var input = Roo.bootstrap.Input.prototype.getAutoCreate.call(this);
+        
+        
         btn.cls += ' w-100 mb-2';
         var cfg = {
             cls : 'roo-card-uploader-wrap',
@@ -51,9 +87,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                     type : 'file',
                     multiple : 'multiple'
                 },
-                {
-                    cls : 'card-columns roo-card-uploader-container'
-                }
+               
             ]
             
         }
@@ -64,13 +98,25 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
     
     getChildContainer : function() /// what children are added to.
     {
-        return this.containerEl;
+        return this.el;
     },
    
     
     initEvents : function()
     {
-        Roo.bootstrap.Button.prototype.initEvents.call(this);
+        
+        Roo.bootstrap.Input.prototype.initEvents.call(this);
+        
+        this.addxtype({
+            xns: Roo.bootstrap,
+            xtype : 'Button',
+            
+            
+        })
+        
+        
+        
+        
         this.urlAPI = (window.createObjectURL && window) || 
                                 (window.URL && URL.revokeObjectURL && URL) || 
                                 (window.webkitURL && webkitURL);
