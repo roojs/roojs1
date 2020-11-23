@@ -63,7 +63,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                     cls : 'd-none'
                 },
                 {
-                    cls : 'roo-card-uploader-button-container'
+                    cls : 'roo-card-uploader-button-container w-100 mb-2'
                 },
                 {
                     cls : 'card-columns roo-card-uploader-container'
@@ -73,35 +73,21 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         };
            
         
-        var input = Roo.bootstrap.Input.prototype.getAutoCreate.call(this);
-        
-        
-        btn.cls += ' w-100 mb-2';
-        var cfg = {
-            cls : 'roo-card-uploader-wrap',
-            cn : [
-                btn,
-                {
-                    tag : 'input',
-                    cls : 'd-none roo-card-upload-selector',
-                    type : 'file',
-                    multiple : 'multiple'
-                },
-               
-            ]
-            
-        }
-        
+         
         
         return cfg;
     },
     
     getChildContainer : function() /// what children are added to.
     {
+        return this.containerEl;
+    },
+   
+    getButtonContainer : function() /// what children are added to.
+    {
         return this.el;
     },
    
-    
     initEvents : function()
     {
         
@@ -109,9 +95,16 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         
         this.addxtype({
             xns: Roo.bootstrap,
+
             xtype : 'Button',
-            
-            
+            container_method : 'getButtonContainer' ,            
+            title : 'Upload File / Images', // fix changable?
+            cls : 'w-100',
+            listeners : {
+                'click' : function(e) {
+                    this.onClick(e);
+                }
+            }
         })
         
         
@@ -126,7 +119,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
          
         this.selectorEl = this.el.select('.roo-card-upload-selector', true).first();
         
-         this.selectorEl.on('change', this.onFileSelected, this);
+        this.selectorEl.on('change', this.onFileSelected, this);
         if (this.images) {
             var t = this;
             this.images.forEach(function(img) {
