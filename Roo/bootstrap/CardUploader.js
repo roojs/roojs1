@@ -23,7 +23,9 @@ Roo.bootstrap.CardUploader = function(config){
     Roo.bootstrap.CardUploader.superclass.constructor.call(this, config);
     
     
-    this.imageCollection  = new Roo.util.MixedCollection(function(r) { return r.data.id });
+    this.fileCollection   = new Roo.util.MixedCollection(false,function(r) {
+        return r.data.id
+        });
     
     
 };
@@ -35,7 +37,8 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
      
     images : false,
    
-    imageCollection : false,
+    fileCollection : false,
+    allowBlank : true,
     
     getAutoCreate : function()
     {
@@ -43,11 +46,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         var cfg =  {
             cls :'form-group' ,
             cn : [
-                {
-                    tag : 'i',
-                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                    tooltip : 'This field is required'
-                },
+               
                 {
                     tag: 'label',
                    //cls : 'input-group-addon',
@@ -57,11 +56,18 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
 
                 {
                     tag: 'input',
-                    id : id,
                     type : 'hidden',
                     value : this.value,
-                    cls : 'd-none'
+                    cls : 'd-none  form-control'
                 },
+                
+                {
+                    tag: 'input',
+                    multiple : 'multiple',
+                    type : 'file',
+                    cls : 'd-none  roo-card-upload-selector'
+                },
+                
                 {
                     cls : 'roo-card-uploader-button-container w-100 mb-2'
                 },
@@ -85,7 +91,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
    
     getButtonContainer : function() /// what children are added to.
     {
-        return this.el;
+        return this.el.select(".roo-card-uploader-button-container").first();
     },
    
     initEvents : function()
@@ -93,16 +99,17 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         
         Roo.bootstrap.Input.prototype.initEvents.call(this);
         
+        var t = this;
         this.addxtype({
             xns: Roo.bootstrap,
 
             xtype : 'Button',
             container_method : 'getButtonContainer' ,            
-            title : 'Upload File / Images', // fix changable?
-            cls : 'w-100',
+            html : 'Upload File / Images', // fix changable?
+            cls : 'w-100 ',
             listeners : {
-                'click' : function(e) {
-                    this.onClick(e);
+                'click' : function(btn, e) {
+                    t.onClick(e);
                 }
             }
         })
@@ -233,7 +240,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                                 fa : 'times',
                                 listeners : {
                                     click : function() {
-                                        this.removeCard(data.id)
+                                        t.removeCard(data.id)
                                     }
                                 }
                             }
@@ -273,7 +280,16 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
             }
         );
         this.items.push(cn);
+        this.fileCollection.add(cn);
         
+    },
+    removeCard : function(id)
+    {
+        
+        var card  = this.fileCollection.get(id);
+        this.fileCollection.remove(card);
+        this.items = this.items.filter(function(e) { return e != card });
+        card.el.dom.parentNode.removeChild(card.el.dom);
         
     }
     
