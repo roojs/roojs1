@@ -301,7 +301,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
             card.el.dom.parentNode.removeChild(card.el.dom);    
         });
         this.fileCollection.clear();
-        this.inputEl().dom.value = '[]';
+        this.updateInput();
     },
     
     updateInput : function()
