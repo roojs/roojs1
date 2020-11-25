@@ -38335,11 +38335,12 @@
       {
         "name" : "size",
         "type" : "String",
-        "desc" : "g) default empty",
+        "desc" : "l) default empty",
         "memberOf" : "",
         "optvals" : [
           "sm",
-          "lg"
+          "lg",
+          "xl"
         ]
       },
       {

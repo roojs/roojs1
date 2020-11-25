@@ -145,6 +145,7 @@ Bootstrap Widgets
 
     Cards
         Roo.bootstrap.Card a interactive card element (dragable / expandabe etc.)
+            [examples/bootstrap4/dashboard4.html] Dragable Trello like cards.
         Roo.bootstrap.CardHeader container for header elements
         Roo.bootstrap.CardFooter container for footer elements
         Roo.bootstrap.CardImageTop container for footer elements

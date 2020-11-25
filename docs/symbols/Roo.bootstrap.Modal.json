@@ -205,11 +205,12 @@
     {
       "name" : "size",
       "type" : "String",
-      "desc" : "g) default empty",
+      "desc" : "l) default empty",
       "memberOf" : "Roo.bootstrap.Modal",
       "optvals" : [
         "sm",
-        "lg"
+        "lg",
+        "xl"
       ]
     },
     {
