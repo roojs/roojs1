@@ -8,8 +8,9 @@
  * @extends Roo.bootstrap.Button
  * Bootstrap Card Uploader class - it's a button which when you add files to it, adds cards below with preview and the name...
  * @cfg {Number} errorTimeout default 3000
- * @cfg {Boolean} name  the field name for each image..
  * @cfg {Array}  images  an array of ?? Img objects ??? when loading existing files..
+ * @cfg {Array}  html The button text.
+
  *
  * @constructor
  * Create a new CardUploader
@@ -78,9 +79,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
             ]
         };
            
-        
          
-        
         return cfg;
     },
     
@@ -105,7 +104,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
 
             xtype : 'Button',
             container_method : 'getButtonContainer' ,            
-            html : 'Upload File / Images', // fix changable?
+            html :  this.html, // fix changable?
             cls : 'w-100 ',
             listeners : {
                 'click' : function(btn, e) {
