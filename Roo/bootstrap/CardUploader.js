@@ -300,6 +300,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         this.fileCollection.each(function(card) {
             card.el.dom.parentNode.removeChild(card.el.dom);    
         });
+        this.fileCollection.clear();
         this.inputEl().dom.value = '[]';
     },
     
@@ -309,6 +310,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         this.fileCollection.each(function(e) {
             data.push(e.data);
         });
+        
         this.inputEl().dom.value = JSON.stringify(data);
     }
     
