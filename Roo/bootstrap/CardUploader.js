@@ -193,6 +193,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
             title : file.name,
             mimetype : file.type,
             preview : false,
+            is_deleted : 0
         })
         
     },
@@ -289,7 +290,8 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
     {
         
         var card  = this.fileCollection.get(id);
-        card.data.is_deleted : 1,
+        card.data.is_deleted = 1;
+        card.data.src = ''; /// delete the source - so it reduces size of not uploaded images etc.
         this.fileCollection.remove(card);
         //this.items = this.items.filter(function(e) { return e != card });
         // dont' really need ot update items.
