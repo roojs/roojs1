@@ -282,6 +282,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         // dont' really need ot update items.
         // this.items.push(cn);
         this.fileCollection.add(cn);
+        this.updateInput();
         
     },
     removeCard : function(id)
