@@ -6,6 +6,7 @@ dashboard4 = new Roo.XComponent({
 
  _strings : {
   '098f6bcd4621d373cade4e832627b4f6' :"test",
+  '9c1ab57e621c2bb257798752dbbe6f14' :"view source",
   'e93b3fa481be3932aa08bd68c3deee70' :"example 1",
   '60ee66eb2cd31823032664c2e9a79fd5' :"body goes here",
   'fb66f41b81f5973740bbfed019aa5d7d' :"Upload Images or Documents",
@@ -38,6 +39,16 @@ dashboard4 = new Roo.XComponent({
      items  : [
       {
        xtype : 'Button',
+       html : _this._strings['9c1ab57e621c2bb257798752dbbe6f14'] /* view source */,
+       listeners : {
+        click : function (btn, e)
+         {
+             // assumes installed as /roojs1.
+           Roo.docs.ViewSource.show({
+               src: '/roojs1/examples/bootstrap/dashboard4.js'
+           });
+         }
+       },
        xns : Roo.bootstrap,
        '|xns' : 'Roo.bootstrap'
       },

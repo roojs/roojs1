@@ -47,9 +47,28 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
           //    _this.acceptBtn.setText(_this.data.buttonText);
          // }
           
-            _this.body_ctr.el.dom.innerHTML = _this.data.source;
-           _this.body_ctr.el.dom.scrollTop = 0;
-           _this.dialog.setTitle("View Source: " + _this.data.fname);
+          if (typeof( _this.data.source) == 'undefined') {
+              Roo.Ajax.request({
+                  url : _this.data.src,
+                  method : 'GET',
+                  success : function(res, o)
+                  {
+                      Roo.docs.ViewSource.show({
+                          source : String.format("<PRE>{0}</PRE>",res.responseText),
+                          fname : _this.data.src.split('/').pop()
+                      });
+                      
+                  },
+                  scope : this
+              });
+              
+          
+              return;
+          }
+           
+        _this.body_ctr.el.dom.innerHTML = _this.data.source;
+       _this.body_ctr.el.dom.scrollTop = 0;
+       _this.dialog.setTitle("View Source: " + _this.data.fname);
           _this.dialog.el.setStyle('zIndex', '10002');
           
       }
