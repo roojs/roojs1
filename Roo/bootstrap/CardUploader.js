@@ -111,7 +111,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                     t.onClick(e);
                 }
             }
-        })
+        });
         
         
         
@@ -247,7 +247,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                         ]
                     }
                     
-                ],
+                ] 
             }
             
         ];

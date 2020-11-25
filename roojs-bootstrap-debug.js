@@ -961,11 +961,11 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Button class
  * @cfg {String} html The button content
- * @cfg {String} weight (default | primary | secondary | success | info | warning | danger | link ) default
- * @cfg {String} badge_weight (default | primary | secondary | success | info | warning | danger | link ) default (same as button)
+ * @cfg {String} weight (default|primary|secondary|success|info|warning|danger|link ) default
+ * @cfg {String} badge_weight (default|primary|secondary|success|info|warning|danger|link ) default (same as button)
  * @cfg {Boolean} outline default false (except for weight=default which emulates old behaveiour with an outline)
- * @cfg {String} size ( lg | sm | xs)
- * @cfg {String} tag ( a | input | submit)
+ * @cfg {String} size (lg|sm|xs)
+ * @cfg {String} tag (a|input|submit)
  * @cfg {String} href empty or href
  * @cfg {Boolean} disabled default false;
  * @cfg {Boolean} isClose default false;
@@ -975,12 +975,12 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {String} theme (default|glow)  
  * @cfg {Boolean} inverse dark themed version
  * @cfg {Boolean} toggle is it a slidy toggle button
- * @cfg {Boolean} pressed　(true|false) default null - if the button ahs active state
+ * @cfg {Boolean} pressed　  default null - if the button ahs active state
  * @cfg {String} ontext text for on slidy toggle state
  * @cfg {String} offtext text for off slidy toggle state
  * @cfg {Boolean} preventDefault  default true (stop click event triggering the URL if it's a link.)
  * @cfg {Boolean} removeClass remove the standard class..
- * @cfg {String} target  target for a href. (_self|_blank|_parent|_top| other)
+ * @cfg {String} target (_self|_blank|_parent|_top|other) target for a href. 
  * 
  * @constructor
  * Create a new button
@@ -1893,7 +1893,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  * 
  * @cfg {String} title
  * @cfg {String} subtitle
- * @cfg {String} html -- html contents - or just use children..
+ * @cfg {String|Boolean} html -- html contents - or just use children.. use false to hide it..
  * @cfg {String} footer
  
  * @cfg {String} weight (primary|warning|info|danger|secondary|success|light|dark)
@@ -1927,6 +1927,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  * 
  * @config {Boolean} collapsable can the body be collapsed.
  * @config {Boolean} collapsed is the body collapsed when rendered...
+ * @config {Boolean} rotateable can the body be rotated by clicking on it..
+ * @config {Boolean} rotated is the body rotated when rendered...
+ * 
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
@@ -1946,7 +1949,15 @@ Roo.bootstrap.Card = function(config){
          * @param {Roo.EventObject} e
          * @param {Roo.EventObject} data  the data passed via getDragData
          */
-        'drop' : true
+        'drop' : true,
+         /**
+         * @event rotate
+         * When a element a card is rotate
+         * @param {Roo.bootstrap.Element} this
+         * @param {Roo.Element} n the node being dropped?
+         * @param {Boolean} rotate status
+         */
+        'rotate' : true
         
     });
 };
@@ -1989,6 +2000,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 
     collapsable : false,
     collapsed : false,
+    rotateable : false,
+    rotated : false,
     
     dragable : false,
     drag_group : false,
@@ -2070,45 +2083,45 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         cfg.cls += this.layoutCls(); 
         
-    var hdr = false;
+        var hdr = false;
         if (this.header.length) {
             hdr = {
                 tag : this.header_size > 0 ? 'h' + this.header_size : 'div',
                 cls : 'card-header',
-        cn : []
+                cn : []
             };
-        cfg.cn.push(hdr);
-        hdr_ctr = hdr;
+            cfg.cn.push(hdr);
+            hdr_ctr = hdr;
         } else {
-        hdr = {
+            hdr = {
                 tag : 'div',
                 cls : 'card-header d-none',
-        cn : []
+                cn : []
             };
-        cfg.cn.push(hdr);
-    }
-    if (this.collapsable) {
-        hdr_ctr = {
-        tag : 'a',
-        cls : 'd-block user-select-none',
-        cn: [
-            {
-            tag: 'i',
-            cls : 'roo-collapse-toggle fa fa-chevron-down float-right'
-            }
-           
-        ]
-        };
-        hdr.cn.push(hdr_ctr);
-    }
-    if (this.header.length) {
+            cfg.cn.push(hdr);
+        }
+        if (this.collapsable) {
+            hdr_ctr = {
+            tag : 'a',
+            cls : 'd-block user-select-none',
+            cn: [
+                    {
+                        tag: 'i',
+                        cls : 'roo-collapse-toggle fa fa-chevron-down float-right ' + (this.collapsed ? 'collapsed' : '')
+                    }
+                   
+                ]
+            };
+            hdr.cn.push(hdr_ctr);
+        }
+        
         hdr_ctr.cn.push(        {
-        tag: 'span',
-        cls: 'roo-card-header-ctr',
-        html : this.header
-        })
-    }
-    
+            tag: 'span',
+            cls: 'roo-card-header-ctr' + ( this.header.length ? '' : ' d-none'),
+            html : this.header
+        });
+        
+        
         if (this.header_image.length) {
             cfg.cn.push({
                 tag : 'img',
@@ -2116,26 +2129,26 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 src: this.header_image // escape?
             });
         } else {
-        cfg.cn.push({
-                tag : 'div',
-                cls : 'card-img-top d-none' 
-            });
-    }
-        
+            cfg.cn.push({
+                    tag : 'div',
+                    cls : 'card-img-top d-none' 
+                });
+        }
+            
         var body = {
             tag : 'div',
-            cls : 'card-body',
+            cls : 'card-body' + (this.html === false  ? ' d-none' : ''),
             cn : []
         };
-    var obody = body;
-    if (this.collapsable) {
-        obody = {
-        tag: 'div',
-        cls : 'roo-collapsable collapse ' + (this.collapsed ? '' : 'show'),
-        cn : [  body ]
-        };
-    }
-    
+        var obody = body;
+        if (this.collapsable || this.rotateable) {
+            obody = {
+                tag: 'div',
+                cls : 'roo-collapsable collapse ' + (this.collapsed || this.rotated ? '' : 'show'),
+                cn : [  body ]
+            };
+        }
+        
         cfg.cn.push(obody);
         
         if (this.title.length) {
@@ -2144,7 +2157,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 cls : 'card-title',
                 src: this.title // escape?
             });
-        }
+        }  
         
         if (this.subtitle.length) {
             body.cn.push({
@@ -2166,13 +2179,18 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             });
         }
         // fixme ? handle objects?
+        
         if (this.footer.length) {
+           
             cfg.cn.push({
-                tag : 'div',
-                cls : 'card-footer',
-                html: this.footer // escape?
+                cls : 'card-footer ' + (this.rotated ? 'd-none' : ''),
+                html : this.footer
             });
+            
+        } else {
+            cfg.cn.push({cls : 'card-footer d-none'});
         }
+        
         // footer...
         
         return cfg;
@@ -2182,20 +2200,28 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     getCardHeader : function()
     {
         var  ret = this.el.select('.card-header',true).first();
-    if (ret.hasClass('d-none')) {
-        ret.removeClass('d-none');
-    }
+        if (ret.hasClass('d-none')) {
+            ret.removeClass('d-none');
+        }
         
         return ret;
     },
-    
+    getCardFooter : function()
+    {
+        var  ret = this.el.select('.card-footer',true).first();
+        if (ret.hasClass('d-none')) {
+            ret.removeClass('d-none');
+        }
+        
+        return ret;
+    },
     getCardImageTop : function()
     {
         var  ret = this.el.select('.card-img-top',true).first();
-    if (ret.hasClass('d-none')) {
-        ret.removeClass('d-none');
-    }
-        
+        if (ret.hasClass('d-none')) {
+            ret.removeClass('d-none');
+        }
+            
         return ret;
     },
     
@@ -2211,8 +2237,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     initEvents: function() 
     {
         
-    this.bodyEl = this.getChildContainer();
-    if(this.dragable){
+        this.bodyEl = this.getChildContainer();
+        if(this.dragable){
             this.dragZone = new Roo.dd.DragZone(this.getEl(), {
                     containerScroll: true,
                     ddGroup: this.drag_group || 'default_card_drag_group'
@@ -2220,20 +2246,34 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.dragZone.getDragData = this.getDragData.createDelegate(this);
         }
         if (this.dropable) {
-        this.dropZone = new Roo.dd.DropZone(this.el.select('.card-body',true).first() , {
-            containerScroll: true,
-            ddGroup: this.drop_group || 'default_card_drag_group'
-        });
-        this.dropZone.getTargetFromEvent = this.getTargetFromEvent.createDelegate(this);
-        this.dropZone.onNodeEnter = this.onNodeEnter.createDelegate(this);
-        this.dropZone.onNodeOver = this.onNodeOver.createDelegate(this);
-        this.dropZone.onNodeOut = this.onNodeOut.createDelegate(this);
-        this.dropZone.onNodeDrop = this.onNodeDrop.createDelegate(this);
-    }
+            this.dropZone = new Roo.dd.DropZone(this.el.select('.card-body',true).first() , {
+                containerScroll: true,
+                ddGroup: this.drop_group || 'default_card_drag_group'
+            });
+            this.dropZone.getTargetFromEvent = this.getTargetFromEvent.createDelegate(this);
+            this.dropZone.onNodeEnter = this.onNodeEnter.createDelegate(this);
+            this.dropZone.onNodeOver = this.onNodeOver.createDelegate(this);
+            this.dropZone.onNodeOut = this.onNodeOut.createDelegate(this);
+            this.dropZone.onNodeDrop = this.onNodeDrop.createDelegate(this);
+        }
         
         if (this.collapsable) {
-        this.el.select('.card-header',true).on('click', this.onToggleCollapse, this);
-    }
+            this.el.select('.card-header',true).on('click', this.onToggleCollapse, this);
+        }
+        if (this.rotateable) {
+            this.el.select('.card-header',true).on('click', this.onToggleRotate, this);
+        }
+        this.collapsableEl = this.el.select('.roo-collapsable').first();
+         
+        this.footerEl = this.el.select('.card-footer').first();
+        this.collapsableToggleEl = this.el.select('.roo-collapse-toggle');
+        this.headerEl = this.el.select('.roo-card-header-ctr').first();
+        
+        if (this.rotated) {
+            this.el.addClass('roo-card-rotated');
+            this.fireEvent('rotate', this, true);
+        }
+        
     },
     getDragData : function(e)
     {
@@ -2258,21 +2298,33 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         return false;
     },
     /**
- *    Part of the Roo.dd.DropZone interface. If no target node is found, the
- *    whole Element becomes the target, and this causes the drop gesture to append.
- */
+    *    Part of the Roo.dd.DropZone interface. If no target node is found, the
+    *    whole Element becomes the target, and this causes the drop gesture to append.
+    */
     getTargetFromEvent : function(e, dragged_card_el)
     {
         var target = e.getTarget();
         while ((target !== null) && (target.parentNode != this.bodyEl.dom)) {
             target = target.parentNode;
         }
+        
+        var ret = {
+            position: '',
+            cards : [],
+            card_n : -1,
+            items_n : -1,
+            card : false 
+        };
+        
         //Roo.log([ 'target' , target ? target.id : '--nothing--']);
         // see if target is one of the 'cards'...
-        var ctarget = -1;
-        var cards = [];
+        
+        
         //Roo.log(this.items.length);
-        var lpos = pos = cpos = false;
+        var pos = false;
+        
+        var last_card_n = 0;
+        var cards_len  = 0;
         for (var i = 0;i< this.items.length;i++) {
             
             if (!this.items[i].el.hasClass('card')) {
@@ -2280,48 +2332,52 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             }
             pos = this.getDropPoint(e, this.items[i].el.dom);
             
+            cards_len = ret.cards.length;
             //Roo.log(this.items[i].el.dom.id);
-            var ii = cards.length;
-            cards.push(this.items[i]);
-            
-            if (ctarget < 0 && pos == 'above') {
-                ctarget = ii > 0 ? ii - 1 : 0;
-                cpos = ii > 0 ? 'below' : pos;
+            ret.cards.push(this.items[i]);
+            last_card_n  = i;
+            if (ret.card_n < 0 && pos == 'above') {
+                ret.position = cards_len > 0 ? 'below' : pos;
+                ret.items_n = i > 0 ? i - 1 : 0;
+                ret.card_n  = cards_len  > 0 ? cards_len - 1 : 0;
+                ret.card = ret.cards[ret.card_n];
             }
         }
-        if (!cards.length) {
-            return [ true, 'below' ];
+        if (!ret.cards.length) {
+            ret.card = true;
+            ret.position = 'below';
+            ret.items_n;
+            return ret;
+        }
+        // could not find a card.. stick it at the end..
+        if (ret.card_n < 0) {
+            ret.card_n = last_card_n;
+            ret.card = ret.cards[last_card_n];
+            ret.items_n = this.items.indexOf(ret.cards[last_card_n]);
+            ret.position = 'below';
         }
         
-        if (ctarget < 0) {
-            ctarget = cards.length -1;
-            cpos = 'below';
-        }
-        if (cards[ctarget].el == dragged_card_el) {
+        if (this.items[ret.items_n].el == dragged_card_el) {
             return false;
         }
         
-        if (cpos == 'below') {
-            var card_after = ctarget+1 == cards.length ? false : cards[ctarget+1];
-            
-            // then above should not be dragged_card_el.
-            // and ctarget sho
+        if (ret.position == 'below') {
+            var card_after = ret.card_n+1 == ret.cards.length ? false : ret.cards[ret.card_n+1];
             
             if (card_after  && card_after.el == dragged_card_el) {
                 return false;
             }
-            return [ cards[ctarget], cpos ];
+            return ret;
         }
         
         // its's after ..
-        var card_before = ctarget > 0 ? cards[ctarget-1] : false;
+        var card_before = ret.card_n > 0 ? ret.cards[ret.card_n-1] : false;
         
-            
         if (card_before  && card_before.el == dragged_card_el) {
             return false;
         }
         
-        return [ cards[ctarget], cpos, cards, ctarget ];
+        return ret;
     },
     
     onNodeEnter : function(n, dd, e, data){
@@ -2335,7 +2391,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.dropPlaceHolder('hide');
             return false;
         }
-        Roo.log(['getTargetFromEvent', target_info[0].el.dom.id,target_info[1]]);
+        Roo.log(['getTargetFromEvent', target_info ]);
         
          
         this.dropPlaceHolder('show', target_info,data);
@@ -2349,38 +2405,76 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     onNodeDrop : function(n, dd, e, data)
     {
         
-        // call drop - return false if  
+        // call drop - return false if
+        
+        // this could actually fail - if the Network drops..
+        // we will ignore this at present..- client should probably reload
+        // the whole set of cards if stuff like that fails.
+        
+        
+        var info = this.getTargetFromEvent(e,data.source.el);
+        if (info === false) {
+            return false;
+        }
+        
         if (this.fireEvent("drop", this, n, dd, e, data) === false) {
             return false;
         }
+         
+        this.dropPlaceHolder('hide');
         
-        var target_info = this.getTargetFromEvent(e,data.source.el);
-        if (target_info === false) {
-            return false;
+        // do the dom manipulation first..
+        var dom = data.source.el.dom;
+        dom.parentNode.removeChild(dom);
+        
+        
+        if (info.card !== true) {
+            var cardel = info.card.el.dom;
+            
+            if (info.position == 'above') {
+                cardel.parentNode.insertBefore(dom, cardel);
+            } else if (cardel.nextSibling) {
+                cardel.parentNode.insertBefore(dom,cardel.nextSibling);
+            } else {
+                cardel.parentNode.append(dom);
+            }
+        } else {
+            // card container???
+            this.bodyEl.dom.append(dom);
         }
         
-        var pt = this.getDropPoint(e, n, dd);
-        var insertAt = (n == this.bodyEl.dom) ? this.items.length : n.nodeIndex;
-        if (pt == "below") {
-            insertAt++;
-        }
-        for (var i = 0; i < this.items.length; i++) {
-            var r = this.items[i];
-            //var dup = this.store.getById(r.id);
-            if (dup && (dd != this.dragZone)) {
-                Roo.fly(this.getNode(this.store.indexOf(dup))).frame("red", 1);
-            } else {
-            if (data.copy) {
-                this.store.insert(insertAt++, r.copy());
-            } else {
-                data.source.isDirtyFlag = true;
-                r.store.remove(r);
-                this.store.insert(insertAt++, r);
+        //FIXME HANDLE card = true 
+        
+        // add this to the correct place in items.
+        
+        
+        
+        // remove Card from items.
+        
+        var old_parent = data.source.parent();
+        
+        old_parent.items = old_parent.items.filter(function(e) { return e != data.source });
+        
+        if (this.items.length) {
+            var nitems = [];
+            //Roo.log([info.items_n, info.position, this.items.length]);
+            for (var i =0; i < this.items.length; i++) {
+                if (i == info.items_n && info.position == 'above') {
+                    nitems.push(data.source);
+                }
+                nitems.push(this.items[i]);
+                if (i == info.items_n && info.position == 'below') {
+                    nitems.push(data.source);
+                }
             }
-            this.isDirtyFlag = true;
-            }
+            this.items = nitems;
+            Roo.log(this.items);
+        } else {
+            this.items.push(data.source);
         }
-        this.dragZone.cachedTarget = null;
+        
+        data.source.parentId = this.id;
+        
         return true;
     },
     
@@ -2406,17 +2500,40 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         {
         if (this.collapsed) {
             this.el.select('.roo-collapse-toggle').removeClass('collapsed');
-            this.el.select('.roo-collapsable').addClass('show');
+            this.collapsableEl.addClass('show');
             this.collapsed = false;
             return;
         }
         this.el.select('.roo-collapse-toggle').addClass('collapsed');
-        this.el.select('.roo-collapsable').removeClass('show');
+        this.collapsableEl.removeClass('show');
         this.collapsed = true;
         
     
     },
-    dropPlaceHolder: function (action, where_ar, data)
+    
+    onToggleRotate : function(e)
+    {
+        this.collapsableEl.removeClass('show');
+        this.footerEl.removeClass('d-none');
+        this.el.removeClass('roo-card-rotated');
+        this.el.removeClass('d-none');
+        if (this.rotated) {
+            
+            this.collapsableEl.addClass('show');
+            this.rotated = false;
+            this.fireEvent('rotate', this, this.rotated);
+            return;
+        }
+        this.el.addClass('roo-card-rotated');
+        this.footerEl.addClass('d-none');
+        this.el.select('.roo-collapsable').removeClass('show');
+        
+        this.rotated = true;
+        this.fireEvent('rotate', this, this.rotated);
+    
+    },
+    
+    dropPlaceHolder: function (action, info, data)
     {
         if (this.dropEl === false) {
             this.dropEl = Roo.DomHelper.append(this.bodyEl, {
@@ -2429,16 +2546,24 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.dropEl.addClass('d-none');
             return;
         }
-        var cardel = where_ar[0].el.dom;
-        
+        // FIXME - info.card == true!!!
         this.dropEl.dom.parentNode.removeChild(this.dropEl.dom);
-        if (where_ar[1] == 'above') {
-            cardel.parentNode.insertBefore(this.dropEl.dom, cardel);
-        } else if (cardel.nextSibling) {
-            cardel.parentNode.insertBefore(this.dropEl.dom,cardel.nextSibling);
+        
+        if (info.card !== true) {
+            var cardel = info.card.el.dom;
+            
+            if (info.position == 'above') {
+                cardel.parentNode.insertBefore(this.dropEl.dom, cardel);
+            } else if (cardel.nextSibling) {
+                cardel.parentNode.insertBefore(this.dropEl.dom,cardel.nextSibling);
+            } else {
+                cardel.parentNode.append(this.dropEl.dom);
+            }
         } else {
-            cardel.parentNode.append(this.dropEl.dom);
+            // card container???
+            this.bodyEl.dom.append(this.dropEl.dom);
         }
+        
         this.dropEl.addClass('d-block roo-card-dropzone');
         
         this.dropEl.setHeight( Roo.get(data.ddel).getHeight() );
@@ -2447,6 +2572,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     
     
+    },
+    setHeaderText: function(html)
+    {
+        this.headerEl.dom.innerHTML = html;
     }
 
     
@@ -2488,6 +2617,39 @@ Roo.extend(Roo.bootstrap.CardHeader, Roo.bootstrap.Element,  {
  /*
  * - LGPL
  *
+ * Card footer - holder for the card footer elements.
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.CardFooter
+ * @extends Roo.bootstrap.Element
+ * Bootstrap CardFooter class
+ * @constructor
+ * Create a new Card Footer - that you can embed children into
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.CardFooter = function(config){
+    Roo.bootstrap.CardFooter.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.CardFooter, Roo.bootstrap.Element,  {
+    
+    
+    container_method : 'getCardFooter' 
+    
+     
+    
+    
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
  * Card header - holder for the card header elements.
  * 
  */
@@ -2517,7 +2679,329 @@ Roo.extend(Roo.bootstrap.CardImageTop, Roo.bootstrap.Element,  {
 
  
 
- /*
+ 
+/*
+* Licence: LGPL
+*/
+
+/**
+ * @class Roo.bootstrap.CardUploader
+ * @extends Roo.bootstrap.Button
+ * Bootstrap Card Uploader class - it's a button which when you add files to it, adds cards below with preview and the name...
+ * @cfg {Number} errorTimeout default 3000
+ * @cfg {Array}  images  an array of ?? Img objects ??? when loading existing files..
+ * @cfg {Array}  html The button text.
+
+ *
+ * @constructor
+ * Create a new CardUploader
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.CardUploader = function(config){
+    
+ 
+    
+    Roo.bootstrap.CardUploader.superclass.constructor.call(this, config);
+    
+    
+    this.fileCollection   = new Roo.util.MixedCollection(false,function(r) {
+        return r.data.id
+        });
+    
+    
+};
+
+Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
+    
+     
+    errorTimeout : 3000,
+     
+    images : false,
+   
+    fileCollection : false,
+    allowBlank : true,
+    
+    getAutoCreate : function()
+    {
+        
+        var cfg =  {
+            cls :'form-group' ,
+            cn : [
+               
+                {
+                    tag: 'label',
+                   //cls : 'input-group-addon',
+                    html : this.fieldLabel
+
+                },
+
+                {
+                    tag: 'input',
+                    type : 'hidden',
+                    value : this.value,
+                    cls : 'd-none  form-control'
+                },
+                
+                {
+                    tag: 'input',
+                    multiple : 'multiple',
+                    type : 'file',
+                    cls : 'd-none  roo-card-upload-selector'
+                },
+                
+                {
+                    cls : 'roo-card-uploader-button-container w-100 mb-2'
+                },
+                {
+                    cls : 'card-columns roo-card-uploader-container'
+                }
+
+            ]
+        };
+           
+         
+        return cfg;
+    },
+    
+    getChildContainer : function() /// what children are added to.
+    {
+        return this.containerEl;
+    },
+   
+    getButtonContainer : function() /// what children are added to.
+    {
+        return this.el.select(".roo-card-uploader-button-container").first();
+    },
+   
+    initEvents : function()
+    {
+        
+        Roo.bootstrap.Input.prototype.initEvents.call(this);
+        
+        var t = this;
+        this.addxtype({
+            xns: Roo.bootstrap,
+
+            xtype : 'Button',
+            container_method : 'getButtonContainer' ,            
+            html :  this.html, // fix changable?
+            cls : 'w-100 ',
+            listeners : {
+                'click' : function(btn, e) {
+                    t.onClick(e);
+                }
+            }
+        });
+        
+        
+        
+        
+        this.urlAPI = (window.createObjectURL && window) || 
+                                (window.URL && URL.revokeObjectURL && URL) || 
+                                (window.webkitURL && webkitURL);
+                        
+         
+         
+         
+        this.selectorEl = this.el.select('.roo-card-upload-selector', true).first();
+        
+        this.selectorEl.on('change', this.onFileSelected, this);
+        if (this.images) {
+            var t = this;
+            this.images.forEach(function(img) {
+                t.addCard(img)
+            });
+            this.images = false;
+        }
+        this.containerEl = this.el.select('.roo-card-uploader-container', true).first();
+         
+       
+    },
+    
+   
+    onClick : function(e)
+    {
+        e.preventDefault();
+         
+        this.selectorEl.dom.click();
+         
+    },
+    
+    onFileSelected : function(e)
+    {
+        e.preventDefault();
+        
+        if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
+            return;
+        }
+        
+        Roo.each(this.selectorEl.dom.files, function(file){    
+            this.addFile(file);
+        }, this);
+         
+    },
+    
+      
+    
+      
+    
+    addFile : function(file)
+    {
+           
+        if(typeof(file) === 'string'){
+            throw "Add file by name?"; // should not happen
+            return;
+        }
+        
+        if(!file || !this.urlAPI){
+            return;
+        }
+        
+        // file;
+        // file.type;
+        
+        var _this = this;
+        
+        
+        var url = _this.urlAPI.createObjectURL( file);
+           
+        this.addCard({
+            id : Roo.bootstrap.CardUploader.ID--,
+            is_uploaded : false,
+            src : url,
+            title : file.name,
+            mimetype : file.type,
+            preview : false,
+            is_deleted : 0
+        })
+        
+    },
+    
+    addCard : function (data)
+    {
+        // hidden input element?
+        // if the file is not an image...
+        //then we need to use something other that and header_image
+        var t = this;
+        //   remove.....
+        var footer = [
+            {
+                xns : Roo.bootstrap,
+                xtype : 'CardFooter',
+                items: [
+                    {
+                        xns : Roo.bootstrap,
+                        xtype : 'Element',
+                        cls : 'd-flex',
+                        items : [
+                            
+                            {
+                                xns : Roo.bootstrap,
+                                xtype : 'Button',
+                                html : String.format("<small>{0}</small>", data.title),
+                                cls : 'col-11 text-left',
+                                size: 'sm',
+                                weight: 'link',
+                                fa : 'download',
+                                listeners : {
+                                    click : function() {
+                                        this.downloadCard(data.id)
+                                    }
+                                }
+                            },
+                          
+                            {
+                                xns : Roo.bootstrap,
+                                xtype : 'Button',
+                                
+                                size : 'sm',
+                                weight: 'danger',
+                                cls : 'col-1',
+                                fa : 'times',
+                                listeners : {
+                                    click : function() {
+                                        t.removeCard(data.id)
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                    
+                ] 
+            }
+            
+        ];
+
+        var cn = this.addxtype(
+            {
+                 
+                xns : Roo.bootstrap,
+                xtype : 'Card',
+                closeable : true,
+                header : !data.mimetype.match(/image/) && !data.preview ? "Document": false,
+                header_image : data.mimetype.match(/image/) ? data.src  : data.preview,
+                header_image_fit_square: true, // fixme  - we probably need to use the 'Img' element to do stuff like this.
+                data : data,
+                html : false,
+                 
+                items : footer,
+                initEvents : function() {
+                    Roo.bootstrap.Card.prototype.initEvents.call(this);
+                    this.imgEl = this.el.select('.card-img-top').first();
+                    if (this.imgEl) {
+                        this.imgEl.on('click', function() { t.previewCard( data.id); }, this);
+                        this.imgEl.set({ 'pointer' : 'cursor' });
+                                  
+                    }
+                    
+                  
+                }
+                
+            }
+        );
+        // dont' really need ot update items.
+        // this.items.push(cn);
+        this.fileCollection.add(cn);
+        this.updateInput();
+        
+    },
+    removeCard : function(id)
+    {
+        
+        var card  = this.fileCollection.get(id);
+        card.data.is_deleted = 1;
+        card.data.src = ''; /// delete the source - so it reduces size of not uploaded images etc.
+        this.fileCollection.remove(card);
+        //this.items = this.items.filter(function(e) { return e != card });
+        // dont' really need ot update items.
+        card.el.dom.parentNode.removeChild(card.el.dom);
+        
+    },
+    reset: function()
+    {
+        this.fileCollection.each(function(card) {
+            card.el.dom.parentNode.removeChild(card.el.dom);    
+        });
+        this.fileCollection.clear();
+        this.updateInput();
+    },
+    
+    updateInput : function()
+    {
+        var data = [];
+        this.fileCollection.each(function(e) {
+            data.push(e.data);
+        });
+        
+        this.inputEl().dom.value = JSON.stringify(data);
+    }
+    
+    
+});
+
+
+Roo.bootstrap.CardUploader.ID = -1;/*
  * - LGPL
  *
  * image
@@ -3685,6 +4169,8 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @cfg {Number} height fixed height - usefull for chrome extension only really.
  * @cfg {String} size (sm|lg) default empty
  * @cfg {Number} max_width set the max width of modal
+ * @cfg {Boolean} editableTitle can the title be edited
+
  *
  *
  * @constructor
@@ -3708,7 +4194,15 @@ Roo.bootstrap.Modal = function(config){
          * @param {Roo.bootstrap.Modal} this
          * @param {Roo.EventObject} e
          */
-        "resize" : true
+        "resize" : true,
+        /**
+         * @event titlechanged
+         * Fire when the editable title has been changed
+         * @param {Roo.bootstrap.Modal} this
+         * @param {Roo.EventObject} value
+         */
+        "titlechanged" : true 
+        
     });
     this.buttons = this.buttons || [];
 
@@ -3754,6 +4248,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     max_height: 0,
     
     fit_content: false,
+    editableTitle  : false,
 
     onRender : function(ct, position)
     {
@@ -3845,9 +4340,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             html : this.title
         };
 
-        if(this.specificTitle){
+        if(this.specificTitle){ // WTF is this?
             title = this.title;
-
         }
 
         var header = [];
@@ -3861,6 +4355,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
         header.push(title);
 
+        if (this.editableTitle) {
+            header.push({
+                cls: 'form-control roo-editable-title d-none',
+                tag: 'input',
+                type: 'text'
+            });
+        }
+        
         if (this.allow_close && Roo.bootstrap.version == 4) {
             header.push({
                 tag: 'button',
@@ -3943,7 +4445,18 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.closeEl.on('click', this.hide, this);
         }
         Roo.EventManager.onWindowResize(this.resize, this, true);
-
+        if (this.editableTitle) {
+            this.headerEditEl =  this.headerEl.select('.form-control',true).first();
+            this.headerEl.on('click', function() { this.toggleHeaderInput(true) } , this);
+            this.headerEditEl.on('keyup', function(e) {
+                    if(e.isNavKeyPress()){
+                            this.toggleHeaderInput(false)
+                    }
+                }, this);
+            this.headerEditEl.on('blur', function(e) {
+                this.toggleHeaderInput(false)
+            },this);
+        }
 
     },
   
@@ -4150,6 +4663,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
      */
     setTitle: function(str) {
         this.titleEl.dom.innerHTML = str;
+        this.title = str;
     },
     /**
      * Set the body of the Dialog
@@ -4177,7 +4691,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             !child_nodes ||
             child_nodes.length == 0
         ) {
-            return;
+            return 0;
         }
         
         var child_height = 0;
@@ -4230,6 +4744,33 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         
         return child_height;
+    },
+    toggleHeaderInput : function(is_edit)
+    {
+        
+        if (is_edit && this.is_header_editing) {
+            return; // already editing..
+        }
+        if (is_edit) {
+    
+            this.headerEditEl.dom.value = this.title;
+            this.headerEditEl.removeClass('d-none');
+            this.headerEditEl.dom.focus();
+            this.titleEl.addClass('d-none');
+            
+            this.is_header_editing = true;
+            return
+        }
+        // flip back to not editing.
+        this.title = this.headerEditEl.dom.value;
+        this.headerEditEl.addClass('d-none');
+        this.titleEl.removeClass('d-none');
+        this.titleEl.dom.innerHTML = String.format('{0}', this.title);
+        this.is_header_editing = false;
+        this.fireEvent('titlechanged', this, this.title);
+    
+            
+        
     }
 
 });
@@ -4298,6 +4839,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
         
         zIndex : 10001
 });
+
 /*
  * - LGPL
  *
@@ -9959,6 +10501,7 @@ Roo.form.VTypes = function(){
  * @cfg {String} indicatorpos (left|right) default left
  * @cfg {String} capture (user|camera) use for file input only. (default empty)
  * @cfg {String} accept (image|video|audio) use for file input only. (default empty)
+ * @cfg {Boolean} preventMark Do not show tick or cross if error/success
 
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
@@ -10850,6 +11393,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
+           
         if(this.allowBlank && !this.getRawValue().length){
             return;
         }
@@ -11495,7 +12039,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 cls: 'glyphicon form-control-feedback'
             };
             
-            if(this.removable && !this.editable && !this.tickable){
+            if(this.removable && !this.editable  ){
                 inputblock = {
                     cls : 'has-feedback',
                     cn :  [
@@ -11519,7 +12063,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             }
 
         } else {
-            if(this.removable && !this.editable && !this.tickable){
+            if(this.removable && !this.editable ){
                 inputblock = {
                     cls : 'roo-removable',
                     cn :  [
@@ -14231,7 +14775,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
 
      /**
-     * @cfg {String/Roo.Template} tpl The template to use to render the output
+     * @cfg {String/Roo.Template} tpl The template to use to render the output default is  '<a class="dropdown-item" href="#">{' + this.displayField + '}</a>' 
      */
      
      /**
@@ -14580,6 +15124,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
             combobox.cn.push(feedback);
         }
+        
+        
         
         var indicator = {
             tag : 'i',

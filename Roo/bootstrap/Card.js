@@ -243,7 +243,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             tag: 'span',
             cls: 'roo-card-header-ctr' + ( this.header.length ? '' : ' d-none'),
             html : this.header
-        })
+        });
         
         
         if (this.header_image.length) {
@@ -437,7 +437,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             cards : [],
             card_n : -1,
             items_n : -1,
-            card : false,
+            card : false 
         };
         
         //Roo.log([ 'target' , target ? target.id : '--nothing--']);
@@ -581,7 +581,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         if (this.items.length) {
             var nitems = [];
-            Roo.log([info.items_n, info.position, this.items.length])
+            //Roo.log([info.items_n, info.position, this.items.length]);
             for (var i =0; i < this.items.length; i++) {
                 if (i == info.items_n && info.position == 'above') {
                     nitems.push(data.source);

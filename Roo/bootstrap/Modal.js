@@ -52,7 +52,7 @@ Roo.bootstrap.Modal = function(config){
          * @param {Roo.bootstrap.Modal} this
          * @param {Roo.EventObject} value
          */
-        "titlechanged" : true,
+        "titlechanged" : true 
         
     });
     this.buttons = this.buttons || [];

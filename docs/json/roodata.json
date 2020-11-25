@@ -21476,9 +21476,9 @@
       },
       {
         "name" : "html",
-        "type" : "String",
-        "desc" : "The button content",
-        "memberOf" : "Roo.bootstrap.Button"
+        "type" : "Array",
+        "desc" : "The button text.",
+        "memberOf" : ""
       },
       {
         "name" : "images",
@@ -21506,9 +21506,9 @@
       },
       {
         "name" : "name",
-        "type" : "Boolean",
-        "desc" : "the field name for each image..",
-        "memberOf" : ""
+        "type" : "string",
+        "desc" : "Specifies name attribute",
+        "memberOf" : "Roo.bootstrap.Component"
       },
       {
         "name" : "offtext",
