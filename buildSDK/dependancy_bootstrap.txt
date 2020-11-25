@@ -1,8 +1,13 @@
 
+
+
 Roo.bootstrap.version
+
+Roo.Shadow
 
 Roo.bootstrap.Component
 Roo.bootstrap.Element
+Roo.bootstrap.DropTarget
 
 Roo.bootstrap.Body
 Roo.bootstrap.ButtonGroup
@@ -11,7 +16,9 @@ Roo.bootstrap.Column
 Roo.bootstrap.Container
 Roo.bootstrap.Card
 Roo.bootstrap.CardHeader
+Roo.bootstrap.CardFooter
 Roo.bootstrap.CardImageTop
+Roo.bootstrap.CardUploader
 
 Roo.bootstrap.Img
 Roo.bootstrap.Link

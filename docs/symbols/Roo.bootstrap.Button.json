@@ -126,9 +126,15 @@
     {
       "name" : "target",
       "type" : "String",
-      "desc" : "target for a href. (_self|_blank|_parent|_top| other)",
+      "desc" : "r) target for a href.",
       "memberOf" : "Roo.bootstrap.Button",
-      "optvals" : []
+      "optvals" : [
+        "_self",
+        "_blank",
+        "_parent",
+        "_top",
+        "other"
+      ]
     },
     {
       "name" : "glyphicon",
@@ -300,12 +306,9 @@
     {
       "name" : "pressed",
       "type" : "Boolean",
-      "desc" : "e) default null - if the button ahs active state",
+      "desc" : "default null - if the button ahs active state",
       "memberOf" : "Roo.bootstrap.Button",
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -1,0 +1,95 @@
+<html><head><title>Roo/bootstrap/DropTarget.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * dropable area
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.DropTarget
+ * @extends Roo.bootstrap.Element
+ * Bootstrap DropTarget class
+ 
+ * @cfg {string} name dropable name
+ * 
+ * @constructor
+ * Create a new Dropable Area
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.DropTarget </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.DropTarget.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">// raw events
+        /**
+         * @event click
+         * When a element is chick
+         * @param {Roo.bootstrap.Element} this
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;drop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.DropTarget</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Element</span><span class="jsdoc-syntax">,  {
+
+
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+
+
+    },
+
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.bootstrap.DropTarget.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.dropZone </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.dd.DropTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">(), {
+            </span><span class="jsdoc-var">ddGroup</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-var">drop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dragDrop.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">enter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dragEnter.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">out </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dragOut.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">over </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dragOver.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)
+            }
+
+        });
+        </span><span class="jsdoc-var">this.dropZone.DDM.useCache </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false </span><span class="jsdoc-comment">// so data gets refreshed when we resize stuff
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">dragDrop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">source</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// user has to decide how to impliment this.
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'drop'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//this.fireEvent('drop', this, source, e ,data);
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">dragEnter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// probably want to resize the element to match the dropped element..
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;enter&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.originalSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getSize</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.el.setSize</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">n.el.getSize</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">this.dropZone.DDM.refreshCache</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">]);
+    },
+
+    </span><span class="jsdoc-var">dragOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// resize back to normal
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;out&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.originalSize</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.dropZone.resetConstraints</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">dragOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-comment">// ??? do nothing?
+    </span><span class="jsdoc-syntax">}
+
+});
+
+
+
+ </span></code></body></html>

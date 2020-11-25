@@ -20,6 +20,8 @@
  * @cfg {Number} height fixed height - usefull for chrome extension only really.
  * @cfg {String} size (sm|lg) default empty
  * @cfg {Number} max_width set the max width of modal
+ * @cfg {Boolean} editableTitle can the title be edited
+
  *
  *
  * @constructor
@@ -43,7 +45,15 @@ Roo.bootstrap.Modal = function(config){
          * @param {Roo.bootstrap.Modal} this
          * @param {Roo.EventObject} e
          */
-        "resize" : true
+        "resize" : true,
+        /**
+         * @event titlechanged
+         * Fire when the editable title has been changed
+         * @param {Roo.bootstrap.Modal} this
+         * @param {Roo.EventObject} value
+         */
+        "titlechanged" : true,
+        
     });
     this.buttons = this.buttons || [];
 
@@ -89,6 +99,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     max_height: 0,
     
     fit_content: false,
+    editableTitle  : false,
 
     onRender : function(ct, position)
     {
@@ -180,9 +191,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             html : this.title
         };
 
-        if(this.specificTitle){
+        if(this.specificTitle){ // WTF is this?
             title = this.title;
-
         }
 
         var header = [];
@@ -196,6 +206,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
         header.push(title);
 
+        if (this.editableTitle) {
+            header.push({
+                cls: 'form-control roo-editable-title d-none',
+                tag: 'input',
+                type: 'text'
+            });
+        }
+        
         if (this.allow_close && Roo.bootstrap.version == 4) {
             header.push({
                 tag: 'button',
@@ -278,7 +296,18 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.closeEl.on('click', this.hide, this);
         }
         Roo.EventManager.onWindowResize(this.resize, this, true);
-
+        if (this.editableTitle) {
+            this.headerEditEl =  this.headerEl.select('.form-control',true).first();
+            this.headerEl.on('click', function() { this.toggleHeaderInput(true) } , this);
+            this.headerEditEl.on('keyup', function(e) {
+                    if(e.isNavKeyPress()){
+                            this.toggleHeaderInput(false)
+                    }
+                }, this);
+            this.headerEditEl.on('blur', function(e) {
+                this.toggleHeaderInput(false)
+            },this);
+        }
 
     },
   
@@ -485,6 +514,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
      */
     setTitle: function(str) {
         this.titleEl.dom.innerHTML = str;
+        this.title = str;
     },
     /**
      * Set the body of the Dialog
@@ -512,7 +542,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             !child_nodes ||
             child_nodes.length == 0
         ) {
-            return;
+            return 0;
         }
         
         var child_height = 0;
@@ -565,6 +595,33 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         
         return child_height;
+    },
+    toggleHeaderInput : function(is_edit)
+    {
+        
+        if (is_edit && this.is_header_editing) {
+            return; // already editing..
+        }
+        if (is_edit) {
+    
+            this.headerEditEl.dom.value = this.title;
+            this.headerEditEl.removeClass('d-none');
+            this.headerEditEl.dom.focus();
+            this.titleEl.addClass('d-none');
+            
+            this.is_header_editing = true;
+            return
+        }
+        // flip back to not editing.
+        this.title = this.headerEditEl.dom.value;
+        this.headerEditEl.addClass('d-none');
+        this.titleEl.removeClass('d-none');
+        this.titleEl.dom.innerHTML = String.format('{0}', this.title);
+        this.is_header_editing = false;
+        this.fireEvent('titlechanged', this, this.title);
+    
+            
+        
     }
 
 });
@@ -633,3 +690,4 @@ Roo.apply(Roo.bootstrap.Modal,  {
         
         zIndex : 10001
 });
+

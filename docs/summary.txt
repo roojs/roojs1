@@ -143,6 +143,12 @@ Bootstrap Widgets
         Roo.bootstrap.panel.TabItem
         Roo.bootstrap.SplitBar
 
+    Cards
+        Roo.bootstrap.Card a interactive card element (dragable / expandabe etc.)
+        Roo.bootstrap.CardHeader container for header elements
+        Roo.bootstrap.CardFooter container for footer elements
+        Roo.bootstrap.CardImageTop container for footer elements
+        
     Html
         Roo.bootstrap.Img  Images
         Roo.bootstrap.Link  Links (A href/name)

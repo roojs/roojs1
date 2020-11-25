@@ -1,0 +1,16 @@
+/* collapseable card headers */
+
+.card-header .fa {
+    transition: .3s transform ease-in-out;
+    margin-top: 3px;
+}
+.card-header  .collapsed {
+    transform: rotate(90deg);
+}
+.roo-card-dropzone {
+    border:  1px dashed $gray-500;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius :$card-border-radius;
+
+}

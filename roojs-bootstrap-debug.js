@@ -13,6 +13,203 @@ Roo.bootstrap.version = (
                 });
         return ret;
 })(); /*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+/**
+ * @class Roo.Shadow
+ * Simple class that can provide a shadow effect for any element.  Note that the element MUST be absolutely positioned,
+ * and the shadow does not provide any shimming.  This should be used only in simple cases -- for more advanced
+ * functionality that can also provide the same shadow effect, see the {@link Roo.Layer} class.
+ * @constructor
+ * Create a new Shadow
+ * @param {Object} config The config object
+ */
+Roo.Shadow = function(config){
+    Roo.apply(this, config);
+    if(typeof this.mode != "string"){
+        this.mode = this.defaultMode;
+    }
+    var o = this.offset, a = {h: 0};
+    var rad = Math.floor(this.offset/2);
+    switch(this.mode.toLowerCase()){ // all this hideous nonsense calculates the various offsets for shadows
+        case "drop":
+            a.w = 0;
+            a.l = a.t = o;
+            a.t -= 1;
+            if(Roo.isIE){
+                a.l -= this.offset + rad;
+                a.t -= this.offset + rad;
+                a.w -= rad;
+                a.h -= rad;
+                a.t += 1;
+            }
+        break;
+        case "sides":
+            a.w = (o*2);
+            a.l = -o;
+            a.t = o-1;
+            if(Roo.isIE){
+                a.l -= (this.offset - rad);
+                a.t -= this.offset + rad;
+                a.l += 1;
+                a.w -= (this.offset - rad)*2;
+                a.w -= rad + 1;
+                a.h -= 1;
+            }
+        break;
+        case "frame":
+            a.w = a.h = (o*2);
+            a.l = a.t = -o;
+            a.t += 1;
+            a.h -= 2;
+            if(Roo.isIE){
+                a.l -= (this.offset - rad);
+                a.t -= (this.offset - rad);
+                a.l += 1;
+                a.w -= (this.offset + rad + 1);
+                a.h -= (this.offset + rad);
+                a.h += 1;
+            }
+        break;
+    };
+
+    this.adjusts = a;
+};
+
+Roo.Shadow.prototype = {
+    /**
+     * @cfg {String} mode
+     * The shadow display mode.  Supports the following options:<br />
+     * sides: Shadow displays on both sides and bottom only<br />
+     * frame: Shadow displays equally on all four sides<br />
+     * drop: Traditional bottom-right drop shadow (default)
+     */
+    /**
+     * @cfg {String} offset
+     * The number of pixels to offset the shadow from the element (defaults to 4)
+     */
+    offset: 4,
+
+    // private
+    defaultMode: "drop",
+
+    /**
+     * Displays the shadow under the target element
+     * @param {String/HTMLElement/Element} targetEl The id or element under which the shadow should display
+     */
+    show : function(target){
+        target = Roo.get(target);
+        if(!this.el){
+            this.el = Roo.Shadow.Pool.pull();
+            if(this.el.dom.nextSibling != target.dom){
+                this.el.insertBefore(target);
+            }
+        }
+        this.el.setStyle("z-index", this.zIndex || parseInt(target.getStyle("z-index"), 10)-1);
+        if(Roo.isIE){
+            this.el.dom.style.filter="progid:DXImageTransform.Microsoft.alpha(opacity=50) progid:DXImageTransform.Microsoft.Blur(pixelradius="+(this.offset)+")";
+        }
+        this.realign(
+            target.getLeft(true),
+            target.getTop(true),
+            target.getWidth(),
+            target.getHeight()
+        );
+        this.el.dom.style.display = "block";
+    },
+
+    /**
+     * Returns true if the shadow is visible, else false
+     */
+    isVisible : function(){
+        return this.el ? true : false;  
+    },
+
+    /**
+     * Direct alignment when values are already available. Show must be called at least once before
+     * calling this method to ensure it is initialized.
+     * @param {Number} left The target element left position
+     * @param {Number} top The target element top position
+     * @param {Number} width The target element width
+     * @param {Number} height The target element height
+     */
+    realign : function(l, t, w, h){
+        if(!this.el){
+            return;
+        }
+        var a = this.adjusts, d = this.el.dom, s = d.style;
+        var iea = 0;
+        s.left = (l+a.l)+"px";
+        s.top = (t+a.t)+"px";
+        var sw = (w+a.w), sh = (h+a.h), sws = sw +"px", shs = sh + "px";
+ 
+        if(s.width != sws || s.height != shs){
+            s.width = sws;
+            s.height = shs;
+            if(!Roo.isIE){
+                var cn = d.childNodes;
+                var sww = Math.max(0, (sw-12))+"px";
+                cn[0].childNodes[1].style.width = sww;
+                cn[1].childNodes[1].style.width = sww;
+                cn[2].childNodes[1].style.width = sww;
+                cn[1].style.height = Math.max(0, (sh-12))+"px";
+            }
+        }
+    },
+
+    /**
+     * Hides this shadow
+     */
+    hide : function(){
+        if(this.el){
+            this.el.dom.style.display = "none";
+            Roo.Shadow.Pool.push(this.el);
+            delete this.el;
+        }
+    },
+
+    /**
+     * Adjust the z-index of this shadow
+     * @param {Number} zindex The new z-index
+     */
+    setZIndex : function(z){
+        this.zIndex = z;
+        if(this.el){
+            this.el.setStyle("z-index", z);
+        }
+    }
+};
+
+// Private utility class that manages the internal Shadow cache
+Roo.Shadow.Pool = function(){
+    var p = [];
+    var markup = Roo.isIE ?
+                 '<div class="x-ie-shadow"></div>' :
+                 '<div class="x-shadow"><div class="xst"><div class="xstl"></div><div class="xstc"></div><div class="xstr"></div></div><div class="xsc"><div class="xsml"></div><div class="xsmc"></div><div class="xsmr"></div></div><div class="xsb"><div class="xsbl"></div><div class="xsbc"></div><div class="xsbr"></div></div></div>';
+    return {
+        pull : function(){
+            var sh = p.shift();
+            if(!sh){
+                sh = Roo.get(Roo.DomHelper.insertHtml("beforeBegin", document.body.firstChild, markup));
+                sh.autoBoxAdjust = false;
+            }
+            return sh;
+        },
+
+        push : function(sh){
+            p.push(sh);
+        }
+    };
+}();/*
  * - LGPL
  *
  * base class for bootstrap elements.
@@ -518,6 +715,100 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     setValue : function(value)
     {
         this.el.dom.innerHTML = value;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * dropable area
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.DropTarget
+ * @extends Roo.bootstrap.Element
+ * Bootstrap DropTarget class
+ 
+ * @cfg {string} name dropable name
+ * 
+ * @constructor
+ * Create a new Dropable Area
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.DropTarget = function(config){
+    Roo.bootstrap.DropTarget.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * When a element is chick
+         * @param {Roo.bootstrap.Element} this
+         * @param {Roo.EventObject} e
+         */
+        "drop" : true
+    });
+};
+
+Roo.extend(Roo.bootstrap.DropTarget, Roo.bootstrap.Element,  {
+    
+    
+    getAutoCreate : function(){
+        
+         
+    },
+    
+    initEvents: function() 
+    {
+        Roo.bootstrap.DropTarget.superclass.initEvents.call(this);
+        this.dropZone = new Roo.dd.DropTarget(this.getEl(), {
+            ddGroup: this.name,
+            listeners : {
+                drop : this.dragDrop.createDelegate(this),
+                enter : this.dragEnter.createDelegate(this),
+                out : this.dragOut.createDelegate(this),
+                over : this.dragOver.createDelegate(this)
+            }
+            
+        });
+        this.dropZone.DDM.useCache = false // so data gets refreshed when we resize stuff
+    },
+    
+    dragDrop : function(source,e,data)
+    {
+        // user has to decide how to impliment this.
+        Roo.log('drop');
+        Roo.log(this);
+        //this.fireEvent('drop', this, source, e ,data);
+        return false;
+    },
+    
+    dragEnter : function(n, dd, e, data)
+    {
+        // probably want to resize the element to match the dropped element..
+        Roo.log("enter");
+        this.originalSize = this.el.getSize();
+        this.el.setSize( n.el.getSize());
+        this.dropZone.DDM.refreshCache(this.name);
+        Roo.log([n, dd, e, data]);
+    },
+    
+    dragOut : function(value)
+    {
+        // resize back to normal
+        Roo.log("out");
+        this.el.setSize(this.originalSize);
+        this.dropZone.resetConstraints();
+    },
+    
+    dragOver : function()
+    {
+        // ??? do nothing?
     }
    
 });
@@ -1630,9 +1921,12 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  * @cfg {String} display_xl (none|inline|inline-block|block|table|table-cell|table-row|flex|inline-flex)
  
  * @config {Boolean} dragable  if this card can be dragged.
- * @config {Boolean} drag_group  group for drag
+ * @config {String} drag_group  group for drag
+ * @config {Boolean} dropable  if this card can recieve other cards being dropped onto it..
+ * @config {String} drop_group  group for drag
  * 
- 
+ * @config {Boolean} collapsable can the body be collapsed.
+ * @config {Boolean} collapsed is the body collapsed when rendered...
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
@@ -1642,6 +1936,17 @@ Roo.bootstrap.Card = function(config){
     Roo.bootstrap.Card.superclass.constructor.call(this, config);
     
     this.addEvents({
+         // raw events
+        /**
+         * @event drop
+         * When a element a card is dropped
+         * @param {Roo.bootstrap.Element} this
+         * @param {Roo.Element} n the node being dropped?
+         * @param {Object} dd Drag and drop data
+         * @param {Roo.EventObject} e
+         * @param {Roo.EventObject} data  the data passed via getDragData
+         */
+        'drop' : true
         
     });
 };
@@ -1681,12 +1986,17 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     subtitle : '',
     html : '',
     footer: '',
+
+    collapsable : false,
+    collapsed : false,
     
     dragable : false,
     drag_group : false,
-    
+    dropable : false,
+    drop_group : false,
     childContainer : false,
-
+    dropEl : false, /// the dom placeholde element that indicates drop location.
+    
     layoutCls : function()
     {
         var cls = '';
@@ -1760,18 +2070,45 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         cfg.cls += this.layoutCls(); 
         
+    var hdr = false;
         if (this.header.length) {
-            cfg.cn.push({
+            hdr = {
                 tag : this.header_size > 0 ? 'h' + this.header_size : 'div',
                 cls : 'card-header',
-                html : this.header // escape?
-            });
+        cn : []
+            };
+        cfg.cn.push(hdr);
+        hdr_ctr = hdr;
         } else {
-	    cfg.cn.push({
+        hdr = {
                 tag : 'div',
-                cls : 'card-header d-none'
-            });
-	}
+                cls : 'card-header d-none',
+        cn : []
+            };
+        cfg.cn.push(hdr);
+    }
+    if (this.collapsable) {
+        hdr_ctr = {
+        tag : 'a',
+        cls : 'd-block user-select-none',
+        cn: [
+            {
+            tag: 'i',
+            cls : 'roo-collapse-toggle fa fa-chevron-down float-right'
+            }
+           
+        ]
+        };
+        hdr.cn.push(hdr_ctr);
+    }
+    if (this.header.length) {
+        hdr_ctr.cn.push(        {
+        tag: 'span',
+        cls: 'roo-card-header-ctr',
+        html : this.header
+        })
+    }
+    
         if (this.header_image.length) {
             cfg.cn.push({
                 tag : 'img',
@@ -1779,18 +2116,27 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 src: this.header_image // escape?
             });
         } else {
-	    cfg.cn.push({
+        cfg.cn.push({
                 tag : 'div',
                 cls : 'card-img-top d-none' 
             });
-	}
+    }
         
         var body = {
             tag : 'div',
             cls : 'card-body',
             cn : []
         };
-        cfg.cn.push(body);
+    var obody = body;
+    if (this.collapsable) {
+        obody = {
+        tag: 'div',
+        cls : 'roo-collapsable collapse ' + (this.collapsed ? '' : 'show'),
+        cn : [  body ]
+        };
+    }
+    
+        cfg.cn.push(obody);
         
         if (this.title.length) {
             body.cn.push({
@@ -1836,9 +2182,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     getCardHeader : function()
     {
         var  ret = this.el.select('.card-header',true).first();
-	if (ret.hasClass('d-none')) {
-	    ret.removeClass('d-none');
-	}
+    if (ret.hasClass('d-none')) {
+        ret.removeClass('d-none');
+    }
         
         return ret;
     },
@@ -1846,9 +2192,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     getCardImageTop : function()
     {
         var  ret = this.el.select('.card-img-top',true).first();
-	if (ret.hasClass('d-none')) {
-	    ret.removeClass('d-none');
-	}
+    if (ret.hasClass('d-none')) {
+        ret.removeClass('d-none');
+    }
         
         return ret;
     },
@@ -1864,22 +2210,37 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        if(this.dragable){
-             this.dragZone = new Roo.dd.DragZone(this.getEl(), {
+        
+    this.bodyEl = this.getChildContainer();
+    if(this.dragable){
+            this.dragZone = new Roo.dd.DragZone(this.getEl(), {
                     containerScroll: true,
                     ddGroup: this.drag_group || 'default_card_drag_group'
             });
             this.dragZone.getDragData = this.getDragData.createDelegate(this);
         }
+        if (this.dropable) {
+        this.dropZone = new Roo.dd.DropZone(this.el.select('.card-body',true).first() , {
+            containerScroll: true,
+            ddGroup: this.drop_group || 'default_card_drag_group'
+        });
+        this.dropZone.getTargetFromEvent = this.getTargetFromEvent.createDelegate(this);
+        this.dropZone.onNodeEnter = this.onNodeEnter.createDelegate(this);
+        this.dropZone.onNodeOver = this.onNodeOver.createDelegate(this);
+        this.dropZone.onNodeOut = this.onNodeOut.createDelegate(this);
+        this.dropZone.onNodeDrop = this.onNodeDrop.createDelegate(this);
+    }
         
-        
-        
+        if (this.collapsable) {
+        this.el.select('.card-header',true).on('click', this.onToggleCollapse, this);
+    }
     },
-    getDragData : function(e) {
+    getDragData : function(e)
+    {
         var target = this.getEl();
-	if (target) {
-	    //this.handleSelection(e);
-	    
+        if (target) {
+            //this.handleSelection(e);
+            
             var dragData = {
                 source: this,
                 copy: false,
@@ -1888,14 +2249,206 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             };
             
             
-            dragData.ddel = target.dom ;	// the div element
+            dragData.ddel = target.dom ;    // the div element
             Roo.log(target.getWidth( ));
-             dragData.ddel.style.width = target.getWidth() + 'px';
+            dragData.ddel.style.width = target.getWidth() + 'px';
             
             return dragData;
         }
         return false;
+    },
+    /**
+ *    Part of the Roo.dd.DropZone interface. If no target node is found, the
+ *    whole Element becomes the target, and this causes the drop gesture to append.
+ */
+    getTargetFromEvent : function(e, dragged_card_el)
+    {
+        var target = e.getTarget();
+        while ((target !== null) && (target.parentNode != this.bodyEl.dom)) {
+            target = target.parentNode;
+        }
+        //Roo.log([ 'target' , target ? target.id : '--nothing--']);
+        // see if target is one of the 'cards'...
+        var ctarget = -1;
+        var cards = [];
+        //Roo.log(this.items.length);
+        var lpos = pos = cpos = false;
+        for (var i = 0;i< this.items.length;i++) {
+            
+            if (!this.items[i].el.hasClass('card')) {
+                 continue;
+            }
+            pos = this.getDropPoint(e, this.items[i].el.dom);
+            
+            //Roo.log(this.items[i].el.dom.id);
+            var ii = cards.length;
+            cards.push(this.items[i]);
+            
+            if (ctarget < 0 && pos == 'above') {
+                ctarget = ii > 0 ? ii - 1 : 0;
+                cpos = ii > 0 ? 'below' : pos;
+            }
+        }
+        if (!cards.length) {
+            return [ true, 'below' ];
+        }
+        
+        if (ctarget < 0) {
+            ctarget = cards.length -1;
+            cpos = 'below';
+        }
+        if (cards[ctarget].el == dragged_card_el) {
+            return false;
+        }
+        
+        if (cpos == 'below') {
+            var card_after = ctarget+1 == cards.length ? false : cards[ctarget+1];
+            
+            // then above should not be dragged_card_el.
+            // and ctarget sho
+            
+            if (card_after  && card_after.el == dragged_card_el) {
+                return false;
+            }
+            return [ cards[ctarget], cpos ];
+        }
+        
+        // its's after ..
+        var card_before = ctarget > 0 ? cards[ctarget-1] : false;
+        
+            
+        if (card_before  && card_before.el == dragged_card_el) {
+            return false;
+        }
+        
+        return [ cards[ctarget], cpos, cards, ctarget ];
+    },
+    
+    onNodeEnter : function(n, dd, e, data){
+        return false;
+    },
+    onNodeOver : function(n, dd, e, data)
+    {
+       
+        var target_info = this.getTargetFromEvent(e,data.source.el);
+        if (target_info === false) {
+            this.dropPlaceHolder('hide');
+            return false;
+        }
+        Roo.log(['getTargetFromEvent', target_info[0].el.dom.id,target_info[1]]);
+        
+         
+        this.dropPlaceHolder('show', target_info,data);
+        
+        return false; 
+    },
+    onNodeOut : function(n, dd, e, data){
+        this.dropPlaceHolder('hide');
+     
+    },
+    onNodeDrop : function(n, dd, e, data)
+    {
+        
+        // call drop - return false if  
+        if (this.fireEvent("drop", this, n, dd, e, data) === false) {
+            return false;
+        }
+        
+        var target_info = this.getTargetFromEvent(e,data.source.el);
+        if (target_info === false) {
+            return false;
+        }
+        
+        var pt = this.getDropPoint(e, n, dd);
+        var insertAt = (n == this.bodyEl.dom) ? this.items.length : n.nodeIndex;
+        if (pt == "below") {
+            insertAt++;
+        }
+        for (var i = 0; i < this.items.length; i++) {
+            var r = this.items[i];
+            //var dup = this.store.getById(r.id);
+            if (dup && (dd != this.dragZone)) {
+                Roo.fly(this.getNode(this.store.indexOf(dup))).frame("red", 1);
+            } else {
+            if (data.copy) {
+                this.store.insert(insertAt++, r.copy());
+            } else {
+                data.source.isDirtyFlag = true;
+                r.store.remove(r);
+                this.store.insert(insertAt++, r);
+            }
+            this.isDirtyFlag = true;
+            }
+        }
+        this.dragZone.cachedTarget = null;
+        return true;
+    },
+    
+    /**    Decide whether to drop above or below a View node. */
+    getDropPoint : function(e, n, dd)
+    {
+        if (dd) {
+             return false;
+        }
+        if (n == this.bodyEl.dom) {
+            return "above";
+        }
+        var t = Roo.lib.Dom.getY(n), b = t + n.offsetHeight;
+        var c = t + (b - t) / 2;
+        var y = Roo.lib.Event.getPageY(e);
+        if(y <= c) {
+            return "above";
+        }else{
+            return "below";
+        }
+    },
+    onToggleCollapse : function(e)
+        {
+        if (this.collapsed) {
+            this.el.select('.roo-collapse-toggle').removeClass('collapsed');
+            this.el.select('.roo-collapsable').addClass('show');
+            this.collapsed = false;
+            return;
+        }
+        this.el.select('.roo-collapse-toggle').addClass('collapsed');
+        this.el.select('.roo-collapsable').removeClass('show');
+        this.collapsed = true;
+        
+    
+    },
+    dropPlaceHolder: function (action, where_ar, data)
+    {
+        if (this.dropEl === false) {
+            this.dropEl = Roo.DomHelper.append(this.bodyEl, {
+            cls : 'd-none'
+            },true);
+        }
+        this.dropEl.removeClass(['d-none', 'd-block']);        
+        if (action == 'hide') {
+            
+            this.dropEl.addClass('d-none');
+            return;
+        }
+        var cardel = where_ar[0].el.dom;
+        
+        this.dropEl.dom.parentNode.removeChild(this.dropEl.dom);
+        if (where_ar[1] == 'above') {
+            cardel.parentNode.insertBefore(this.dropEl.dom, cardel);
+        } else if (cardel.nextSibling) {
+            cardel.parentNode.insertBefore(this.dropEl.dom,cardel.nextSibling);
+        } else {
+            cardel.parentNode.append(this.dropEl.dom);
+        }
+        this.dropEl.addClass('d-block roo-card-dropzone');
+        
+        this.dropEl.setHeight( Roo.get(data.ddel).getHeight() );
+        
+        
+    
+    
+    
     }
+
     
 });
 

@@ -276,7 +276,7 @@
     {
       "name" : "tpl",
       "type" : "String/Roo.Template",
-      "desc" : "The template to use to render the output",
+      "desc" : "The template to use to render the output default is  '<a class=\"dropdown-item\" href=\"#\">{' + this.displayField + '}</a>'",
       "memberOf" : "Roo.bootstrap.ComboBox",
       "optvals" : []
     },
@@ -591,6 +591,13 @@
       "type" : "String",
       "desc" : "The title of the dialog that pops up on mobile views.",
       "memberOf" : "Roo.bootstrap.ComboBox",
+      "optvals" : []
+    },
+    {
+      "name" : "preventMark",
+      "type" : "Boolean",
+      "desc" : "Do not show tick or cross if error/success",
+      "memberOf" : "Roo.bootstrap.Input",
       "optvals" : []
     },
     {

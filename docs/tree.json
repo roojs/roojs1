@@ -406,12 +406,22 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.bootstrap.CardFooter",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.bootstrap.CardHeader",
             "cn" : [],
             "is_class" : true
           },
           {
             "name" : "Roo.bootstrap.CardImageTop",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.bootstrap.CardUploader",
             "cn" : [],
             "is_class" : true
           },
@@ -462,6 +472,11 @@
           },
           {
             "name" : "Roo.bootstrap.DocumentViewer",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.bootstrap.DropTarget",
             "cn" : [],
             "is_class" : true
           },

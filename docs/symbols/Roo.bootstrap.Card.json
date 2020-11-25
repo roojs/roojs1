@@ -438,8 +438,8 @@
     },
     {
       "name" : "html",
-      "type" : "String",
-      "desc" : "-- html contents - or just use children..",
+      "type" : "String|Boolean",
+      "desc" : "-- html contents - or just use children.. use false to hide it..",
       "memberOf" : "Roo.bootstrap.Card",
       "optvals" : []
     },
@@ -490,6 +490,34 @@
     }
   ],
   "methods" : [
+    {
+      "name" : "getDropPoint",
+      "desc" : "Decide whether to drop above or below a View node.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Card",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "getTargetFromEvent",
+      "desc" : "Part of the Roo.dd.DropZone interface. If no target node is found, the\n   whole Element becomes the target, and this causes the drop gesture to append.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Card",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
     {
       "name" : "tooltipEl",
       "desc" : "Fetch the element to display the tooltip on.",
@@ -1099,6 +1127,78 @@
     }
   ],
   "events" : [
+    {
+      "name" : "rotate",
+      "desc" : "When a element a card is rotate",
+      "memberOf" : "Roo.bootstrap.Card",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.Element",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "n",
+          "type" : "Roo.Element",
+          "desc" : "the node being dropped?",
+          "isOptional" : false
+        },
+        {
+          "name" : "rotate",
+          "type" : "Boolean",
+          "desc" : "status",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "drop",
+      "desc" : "When a element a card is dropped",
+      "memberOf" : "Roo.bootstrap.Card",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.Element",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "n",
+          "type" : "Roo.Element",
+          "desc" : "the node being dropped?",
+          "isOptional" : false
+        },
+        {
+          "name" : "dd",
+          "type" : "Object",
+          "desc" : "Drag and drop data",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "data",
+          "type" : "Roo.EventObject",
+          "desc" : "the data passed via getDragData",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
     {
       "name" : "childrenrendered",
       "desc" : "Fires when the children have been rendered..",

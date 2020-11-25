@@ -10,11 +10,11 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Button class
  * @cfg {String} html The button content
- * @cfg {String} weight (default | primary | secondary | success | info | warning | danger | link ) default
- * @cfg {String} badge_weight (default | primary | secondary | success | info | warning | danger | link ) default (same as button)
+ * @cfg {String} weight (default|primary|secondary|success|info|warning|danger|link ) default
+ * @cfg {String} badge_weight (default|primary|secondary|success|info|warning|danger|link ) default (same as button)
  * @cfg {Boolean} outline default false (except for weight=default which emulates old behaveiour with an outline)
- * @cfg {String} size ( lg | sm | xs)
- * @cfg {String} tag ( a | input | submit)
+ * @cfg {String} size (lg|sm|xs)
+ * @cfg {String} tag (a|input|submit)
  * @cfg {String} href empty or href
  * @cfg {Boolean} disabled default false;
  * @cfg {Boolean} isClose default false;
@@ -24,12 +24,12 @@
  * @cfg {String} theme (default|glow)  
  * @cfg {Boolean} inverse dark themed version
  * @cfg {Boolean} toggle is it a slidy toggle button
- * @cfg {Boolean} pressed　(true|false) default null - if the button ahs active state
+ * @cfg {Boolean} pressed　  default null - if the button ahs active state
  * @cfg {String} ontext text for on slidy toggle state
  * @cfg {String} offtext text for off slidy toggle state
  * @cfg {Boolean} preventDefault  default true (stop click event triggering the URL if it's a link.)
  * @cfg {Boolean} removeClass remove the standard class..
- * @cfg {String} target  target for a href. (_self|_blank|_parent|_top| other)
+ * @cfg {String} target (_self|_blank|_parent|_top|other) target for a href. 
  * 
  * @constructor
  * Create a new button

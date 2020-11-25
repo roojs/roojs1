@@ -143,7 +143,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
 
      /**
-     * @cfg {String/Roo.Template} tpl The template to use to render the output
+     * @cfg {String/Roo.Template} tpl The template to use to render the output default is  '<a class="dropdown-item" href="#">{' + this.displayField + '}</a>' 
      */
      
      /**
@@ -492,6 +492,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
             combobox.cn.push(feedback);
         }
+        
+        
         
         var indicator = {
             tag : 'i',
