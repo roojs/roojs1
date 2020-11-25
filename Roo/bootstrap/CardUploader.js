@@ -280,7 +280,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
             }
         );
         // dont' really need ot update items.
-        //this.items.push(cn);
+        // this.items.push(cn);
         this.fileCollection.add(cn);
         
     },
@@ -294,9 +294,21 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         card.el.dom.parentNode.removeChild(card.el.dom);
         
     },
+    reset: function()
+    {
+        this.fileCollection.each(function(card) {
+            card.el.dom.parentNode.removeChild(card.el.dom);    
+        });
+        this.inputEl().dom.value = '[]';
+    },
+    
     updateInput : function()
     {
-        this.fileCo
+        var data = [];
+        this.fileCollection.each(function(e) {
+            data.push(e.data);
+        });
+        this.inputEl().dom.value = JSON.stringify(data);
     }
     
     
