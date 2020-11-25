@@ -9,7 +9,6 @@
   "098f6bcd4621d373cade4e832627b4f6" : "test",
   "e93b3fa481be3932aa08bd68c3deee70" : "example 1",
   "60ee66eb2cd31823032664c2e9a79fd5" : "body goes here",
-  "9cf863d802aca813531ca28b319ead90" : "Add Issue",
   "fb66f41b81f5973740bbfed019aa5d7d" : "Upload Images or Documents",
   "d9fb0367346d21079a1c52d72da61c9f" : "ticket 1"
  },
@@ -60,12 +59,6 @@
            "$ xns" : "Roo.bootstrap",
            "String html" : "body goes here",
            "bool dragable" : true
-          },
-          {
-           "String weight" : "primary",
-           "xtype" : "Button",
-           "$ xns" : "Roo.bootstrap",
-           "String html" : "Add Issue"
           }
          ]
         },
@@ -75,8 +68,10 @@
          "String cls" : "column col-xs-12 col-12",
          "String weight" : "danger",
          "xtype" : "Card",
+         "Boolean dropable" : true,
          "$ xns" : "Roo.bootstrap",
          "String style" : "max-width:300px;margin: 0 12px;",
+         "String drop_group" : "cards",
          "items" : [
           {
            "String header" : "ticket 1",
@@ -87,12 +82,6 @@
            "$ xns" : "Roo.bootstrap",
            "String html" : "body goes here",
            "bool dragable" : true
-          },
-          {
-           "String weight" : "primary",
-           "xtype" : "Button",
-           "$ xns" : "Roo.bootstrap",
-           "String html" : "Add Issue"
           }
          ]
         },
