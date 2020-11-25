@@ -4736,4 +4736,18 @@ html.bootstrap-sticky body {
   margin-bottom: 10px;
   border-radius: 0.25rem; }
 
+.roo-card-rotated {
+  transform: rotate(90deg) translate(0px, -50px);
+  transform-origin: top left;
+  width: 500px; }
+
+.roo-markdown-area .roo-placeholder {
+  color: #6c757d; }
+
+.roo-markdown-area {
+  min-height: 100px;
+  width: 100%;
+  border: 1px dashed #ccc;
+  padding: 4px 7px; }
+
 /*# sourceMappingURL=roojs-bootstrap-debug.css.map */

@@ -14,3 +14,9 @@
     border-radius :$card-border-radius;
 
 }
+.roo-card-rotated {
+    transform: rotate(90deg) translate(0px, -50px);
+    transform-origin: top left;
+    width:500px;
+   
+}

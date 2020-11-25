@@ -39,6 +39,7 @@ Roo.apply(Roo.docs.ViewSource.prototype, {
     xtype : 'Modal',
     fitwindow : true,
     max_width : 900,
+    size : 'xl',
     title : _this._strings['89babd10371e21bb9eaf39937de7c656'] /* View Source */,
     listeners : {
      show : function (_self)
