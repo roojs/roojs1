@@ -261,7 +261,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                 closeable : true,
                 header : !data.mimetype.match(/image/) && !data.preview ? "Document": false,
                 header_image : data.mimetype.match(/image/) ? data.src  : data.preview,
-                header_image_fit_square: true,
+                header_image_fit_square: true, // fixme  - we probably need to use the 'Img' element to do stuff like this.
                 data : data,
                 html : false,
                  
