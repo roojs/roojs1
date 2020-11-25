@@ -243,7 +243,7 @@
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-card-header-ctr' </span><span class="jsdoc-syntax">+ ( </span><span class="jsdoc-var">this.header.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' d-none'</span><span class="jsdoc-syntax">),
             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header
-        </span><span class="jsdoc-syntax">})
+        </span><span class="jsdoc-syntax">});
 
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header_image.length</span><span class="jsdoc-syntax">) {
@@ -437,8 +437,8 @@
             </span><span class="jsdoc-var">cards </span><span class="jsdoc-syntax">: [],
             </span><span class="jsdoc-var">card_n </span><span class="jsdoc-syntax">: -1,
             </span><span class="jsdoc-var">items_n </span><span class="jsdoc-syntax">: -1,
-            </span><span class="jsdoc-var">card </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-        };
+            </span><span class="jsdoc-var">card </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+        </span><span class="jsdoc-syntax">};
 
         </span><span class="jsdoc-comment">//Roo.log([ 'target' , target ? target.id : '--nothing--']);
         // see if target is one of the 'cards'...
@@ -581,7 +581,7 @@
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">info.items_n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">info.position</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">])
+            </span><span class="jsdoc-comment">//Roo.log([info.items_n, info.position, this.items.length]);
             </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">info.items_n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">info.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'above'</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.source</span><span class="jsdoc-syntax">);

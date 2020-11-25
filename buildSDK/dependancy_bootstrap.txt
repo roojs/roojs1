@@ -18,7 +18,6 @@ Roo.bootstrap.Card
 Roo.bootstrap.CardHeader
 Roo.bootstrap.CardFooter
 Roo.bootstrap.CardImageTop
-Roo.bootstrap.CardUploader
 
 Roo.bootstrap.Img
 Roo.bootstrap.Link
@@ -61,6 +60,8 @@ Roo.form.VTypes
 Roo.bootstrap.Input
 Roo.bootstrap.TextArea
 Roo.bootstrap.TriggerField
+Roo.bootstrap.CardUploader
+
 
 Roo.data.SortTypes
 Roo.data.Record
