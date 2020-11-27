@@ -10,8 +10,8 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Button class
  * @cfg {String} html The button content
- * @cfg {String} weight (default|primary|secondary|success|info|warning|danger|link ) default
- * @cfg {String} badge_weight (default|primary|secondary|success|info|warning|danger|link ) default (same as button)
+ * @cfg {String} weight (default|primary|secondary|success|info|warning|danger|link|light|dark) default
+ * @cfg {String} badge_weight (default|primary|secondary|success|info|warning|danger|link|light|dark) default (same as button)
  * @cfg {Boolean} outline default false (except for weight=default which emulates old behaveiour with an outline)
  * @cfg {String} size (lg|sm|xs)
  * @cfg {String} tag (a|input|submit)
@@ -39,14 +39,7 @@
 
 Roo.bootstrap.Button = function(config){
     Roo.bootstrap.Button.superclass.constructor.call(this, config);
-    this.weightClass = ["btn-default btn-outline-secondary", 
-                       "btn-primary", 
-                       "btn-success", 
-                       "btn-info", 
-                       "btn-warning",
-                       "btn-danger",
-                       "btn-link"
-                      ],  
+    
     this.addEvents({
         // raw events
         /**
@@ -143,8 +136,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             
             return cfg;
         }
+             
         
-         
         if (this.theme==='default') {
             cfg.cls = 'btn roo-button';
             
@@ -410,7 +403,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     
     setWeight : function(str)
     {
-    	this.el.removeClass(this.weightClass);
+    	this.el.removeClass(Roo.bootstrap.Button.weightClass );
         this.weight = str;
         var outline = this.outline ? 'outline-' : '';
         if (str == 'default') {
@@ -422,5 +415,17 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     
     
 });
-
- 
+Roo.bootstrap.Button.weightClass = [
+                        
+       "btn-default",
+       "btn-outline-secondary",
+       "btn-secondary",        
+       "btn-primary", 
+       "btn-success", 
+       "btn-info", 
+       "btn-warning",
+       "btn-danger",
+       "btn-link",
+       'btn-light',
+       'btn-dark'
+];
