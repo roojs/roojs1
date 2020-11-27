@@ -119,9 +119,9 @@
                     </span><span class="jsdoc-syntax">}
                 ]
             };
-
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'secondary' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'primary'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'success'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'warning'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'danger'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">) &gt; -1) {
-                </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">// why are we validating the weights?
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Button.weights.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">) &gt; -1) {
+                </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+=  </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">;
             }
 
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
@@ -144,7 +144,7 @@
             </span><span class="jsdoc-comment">//if (this.parentType != 'Navbar') {
             </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.weight.length </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-comment">//}
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'primary'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'secondary'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'success'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'warning'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'danger'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">) &gt; -1) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Button.weights.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">) &gt; -1) {
 
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">outline </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.outline </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'default' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'outline-' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">weight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'default' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'secondary' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">;
@@ -159,7 +159,7 @@
             </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'btn-glow roo-button'</span><span class="jsdoc-syntax">;
 
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'primary'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'success'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'warning'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'danger'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">) &gt; -1) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Button.weights.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">) &gt; -1) {
 
                 </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">;
             }
@@ -403,7 +403,8 @@
 
     </span><span class="jsdoc-var">setWeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">)
     {
-    	</span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Button.weightClass </span><span class="jsdoc-syntax">);
+    	</span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Button.weights.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'btn-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">; } ) );
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Button.weights.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'btn-outline-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">; } ) );
         </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">outline </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.outline </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'outline-' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">) {
@@ -415,18 +416,18 @@
 
 
 });
-</span><span class="jsdoc-comment">// fixme - should include btn-outline-*
-</span><span class="jsdoc-var">Roo.bootstrap.Button.weightClass </span><span class="jsdoc-syntax">= [
+</span><span class="jsdoc-comment">// fixme - this is probably generic bootstrap - should go in some kind of enum file.. - like sizes.
 
-       </span><span class="jsdoc-string">&quot;btn-default&quot;</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">&quot;btn-outline-secondary&quot;</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">&quot;btn-secondary&quot;</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">&quot;btn-primary&quot;</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">&quot;btn-success&quot;</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">&quot;btn-info&quot;</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">&quot;btn-warning&quot;</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">&quot;btn-danger&quot;</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">&quot;btn-link&quot;</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">'btn-light'</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">'btn-dark'
-</span><span class="jsdoc-syntax">];</span></code></body></html>
+</span><span class="jsdoc-var">Roo.bootstrap.Button.weights </span><span class="jsdoc-syntax">= [
+    </span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'secondary' </span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'primary'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'success'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'warning'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'danger'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'light'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'dark'</span><span class="jsdoc-syntax">,
+
+];</span></code></body></html>
