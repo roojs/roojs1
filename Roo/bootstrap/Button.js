@@ -119,9 +119,9 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
                     }
                 ]
             };
-            
-            if (['default', 'secondary' , 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
-                cfg.cls += ' '+this.weight;
+            // why are we validating the weights?
+            if (Roo.bootstrap.Button.weights.indexOf(this.weight) > -1) {
+                cfg.cls +=  ' ' + this.weight;
             }
             
             return cfg;
@@ -144,7 +144,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             //if (this.parentType != 'Navbar') {
             this.weight = this.weight.length ?  this.weight : 'default';
             //}
-            if (['default', 'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+            if (Roo.bootstrap.Button.weights.indexOf(this.weight) > -1) {
                 
                 var outline = this.outline || this.weight == 'default' ? 'outline-' : '';
                 var weight = this.weight == 'default' ? 'secondary' : this.weight;
@@ -159,7 +159,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             cfg.tag = 'a';
             cfg.cls = 'btn-glow roo-button';
             
-            if (['default', 'primary', 'success', 'info', 'warning', 'danger', 'link'].indexOf(this.weight) > -1) {
+            if (Roo.bootstrap.Button.weights.indexOf(this.weight) > -1) {
                 
                 cfg.cls += ' ' + this.weight;
             }
@@ -403,7 +403,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     
     setWeight : function(str)
     {
-    	this.el.removeClass(Roo.bootstrap.Button.weightClass );
+    	this.el.removeClass(Roo.bootstrap.Button.weights.map(function(w) { return 'btn-' + w; } ) );
+        this.el.removeClass(Roo.bootstrap.Button.weights.map(function(w) { return 'btn-outline-' + w; } ) );
         this.weight = str;
         var outline = this.outline ? 'outline-' : '';
         if (str == 'default') {
@@ -415,18 +416,18 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     
     
 });
-// fixme - should include btn-outline-*
-Roo.bootstrap.Button.weightClass = [
-                        
-       "btn-default",
-       "btn-outline-secondary",
-       "btn-secondary",        
-       "btn-primary", 
-       "btn-success", 
-       "btn-info", 
-       "btn-warning",
-       "btn-danger",
-       "btn-link",
-       'btn-light',
-       'btn-dark'
+// fixme - this is probably generic bootstrap - should go in some kind of enum file.. - like sizes.
+
+Roo.bootstrap.Button.weights = [
+    'default',
+    'secondary' ,
+    'primary',
+    'success',
+    'info',
+    'warning',
+    'danger',
+    'link',
+    'light',
+    'dark',              
+   
 ];
