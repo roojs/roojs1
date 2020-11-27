@@ -79,7 +79,7 @@
     {
       "name" : "weight",
       "type" : "String",
-      "desc" : ") default",
+      "desc" : "k) default",
       "memberOf" : "Roo.bootstrap.Button",
       "optvals" : [
         "default",
@@ -89,7 +89,9 @@
         "info",
         "warning",
         "danger",
-        "link"
+        "link",
+        "light",
+        "dark"
       ]
     },
     {
@@ -213,7 +215,7 @@
     {
       "name" : "badge_weight",
       "type" : "String",
-      "desc" : ") default (same as button)",
+      "desc" : "k) default (same as button)",
       "memberOf" : "Roo.bootstrap.Button",
       "optvals" : [
         "default",
@@ -223,7 +225,9 @@
         "info",
         "warning",
         "danger",
-        "link"
+        "link",
+        "light",
+        "dark"
       ]
     },
     {

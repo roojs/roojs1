@@ -10,8 +10,8 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Button class
  * @cfg {String} html The button content
- * @cfg {String} weight (default|primary|secondary|success|info|warning|danger|link ) default
- * @cfg {String} badge_weight (default|primary|secondary|success|info|warning|danger|link ) default (same as button)
+ * @cfg {String} weight (default|primary|secondary|success|info|warning|danger|link|light|dark) default
+ * @cfg {String} badge_weight (default|primary|secondary|success|info|warning|danger|link|light|dark) default (same as button)
  * @cfg {Boolean} outline default false (except for weight=default which emulates old behaveiour with an outline)
  * @cfg {String} size (lg|sm|xs)
  * @cfg {String} tag (a|input|submit)
@@ -39,14 +39,7 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.Button </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Button.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-var">this.weightClass </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">&quot;btn-default btn-outline-secondary&quot;</span><span class="jsdoc-syntax">,
-                       </span><span class="jsdoc-string">&quot;btn-primary&quot;</span><span class="jsdoc-syntax">,
-                       </span><span class="jsdoc-string">&quot;btn-success&quot;</span><span class="jsdoc-syntax">,
-                       </span><span class="jsdoc-string">&quot;btn-info&quot;</span><span class="jsdoc-syntax">,
-                       </span><span class="jsdoc-string">&quot;btn-warning&quot;</span><span class="jsdoc-syntax">,
-                       </span><span class="jsdoc-string">&quot;btn-danger&quot;</span><span class="jsdoc-syntax">,
-                       </span><span class="jsdoc-string">&quot;btn-link&quot;
-                      </span><span class="jsdoc-syntax">],
+
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">// raw events
         /**
@@ -410,7 +403,7 @@
 
     </span><span class="jsdoc-var">setWeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">)
     {
-    	</span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weightClass</span><span class="jsdoc-syntax">);
+    	</span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Button.weightClass </span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.weight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">outline </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.outline </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'outline-' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'default'</span><span class="jsdoc-syntax">) {
@@ -422,5 +415,17 @@
 
 
 });
+</span><span class="jsdoc-var">Roo.bootstrap.Button.weightClass </span><span class="jsdoc-syntax">= [
 
- </span></code></body></html>
+       </span><span class="jsdoc-string">&quot;btn-default&quot;</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">&quot;btn-outline-secondary&quot;</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">&quot;btn-secondary&quot;</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">&quot;btn-primary&quot;</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">&quot;btn-success&quot;</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">&quot;btn-info&quot;</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">&quot;btn-warning&quot;</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">&quot;btn-danger&quot;</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">&quot;btn-link&quot;</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">'btn-light'</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">'btn-dark'
+</span><span class="jsdoc-syntax">];</span></code></body></html>

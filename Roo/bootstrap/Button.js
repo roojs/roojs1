@@ -415,6 +415,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     
     
 });
+// fixme - should include btn-outline-*
 Roo.bootstrap.Button.weightClass = [
                         
        "btn-default",
