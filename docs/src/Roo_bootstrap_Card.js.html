@@ -208,6 +208,7 @@
         </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.layoutCls</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hdr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hdr_ctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">hdr </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header_size </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-string">'h' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.header_size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
@@ -223,6 +224,7 @@
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
             };
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hdr</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">hdr_ctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hdr</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsable</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">hdr_ctr </span><span class="jsdoc-syntax">= {
