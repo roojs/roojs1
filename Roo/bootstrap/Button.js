@@ -428,6 +428,6 @@ Roo.bootstrap.Button.weights = [
     'danger',
     'link',
     'light',
-    'dark',              
+    'dark'              
    
 ];
