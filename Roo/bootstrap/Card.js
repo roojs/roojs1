@@ -208,6 +208,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         cfg.cls += this.layoutCls(); 
         
         var hdr = false;
+        var hdr_ctr = false;
         if (this.header.length) {
             hdr = {
                 tag : this.header_size > 0 ? 'h' + this.header_size : 'div',
@@ -223,6 +224,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
                 cn : []
             };
             cfg.cn.push(hdr);
+            hdr_ctr = hdr;
         }
         if (this.collapsable) {
             hdr_ctr = {
