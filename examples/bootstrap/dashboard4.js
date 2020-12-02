@@ -9,6 +9,7 @@ dashboard4 = new Roo.XComponent({
   '9c1ab57e621c2bb257798752dbbe6f14' :"view source",
   'e93b3fa481be3932aa08bd68c3deee70' :"example 1",
   '60ee66eb2cd31823032664c2e9a79fd5' :"body goes here",
+  '009d65200f49f77cb6b15bdeadf60cdf' :"New Ticket",
   'fb66f41b81f5973740bbfed019aa5d7d' :"Upload Images or Documents",
   'd9fb0367346d21079a1c52d72da61c9f' :"ticket 1"
  },
@@ -76,6 +77,7 @@ dashboard4 = new Roo.XComponent({
            items  : [
             {
              xtype : 'Input',
+             placeholder : _this._strings['009d65200f49f77cb6b15bdeadf60cdf'] /* New Ticket */,
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'
             }
