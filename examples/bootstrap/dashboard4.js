@@ -70,6 +70,18 @@ dashboard4 = new Roo.XComponent({
          '|xns' : 'Roo.bootstrap',
          items  : [
           {
+           xtype : 'Form',
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap',
+           items  : [
+            {
+             xtype : 'Input',
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap'
+            }
+           ]
+          },
+          {
            xtype : 'Card',
            collapsable : true,
            dragable : true,
