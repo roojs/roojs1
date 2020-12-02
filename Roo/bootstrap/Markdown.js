@@ -1,12 +1,10 @@
-// Roo.ux.Showdown.toHtml(Roo.util.Format.htmlEncode(this.getValue())))
-
-
+ 
 /*
  * - LGPL
  */
 
 /**
- * @class Roo.bootstrap.Showdown
+ * @class Roo.bootstrap.Markdown
  * @extends Roo.bootstrap.TextArea
  * Bootstrap Showdown editable area
  * @cfg {string} content
