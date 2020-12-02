@@ -224,7 +224,7 @@ Bootstrap Widgets
 
         Roo.bootstrap.BezierSignature
         Roo.bootstrap.RadioSet
-        Roo.bootstrap.Markdown
+        Roo.bootstrap.Markdown - textarea that views as a markdown rendered display
 
 
         
