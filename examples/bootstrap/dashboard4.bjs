@@ -56,16 +56,7 @@
             {
              "xtype" : "Input",
              "string placeholder" : "New Ticket",
-             "$ xns" : "Roo.bootstrap",
-             "items" : [
-              {
-               "String size" : "sm",
-               "xtype" : "Button",
-               "String fa" : "plus",
-               "$ xns" : "Roo.bootstrap",
-               "* prop" : "after"
-              }
-             ]
+             "$ xns" : "Roo.bootstrap"
             }
            ]
           },

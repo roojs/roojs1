@@ -79,14 +79,7 @@ dashboard4 = new Roo.XComponent({
              xtype : 'Input',
              placeholder : _this._strings['009d65200f49f77cb6b15bdeadf60cdf'] /* New Ticket */,
              xns : Roo.bootstrap,
-             '|xns' : 'Roo.bootstrap',
-             after : {
-              xtype : 'Button',
-              fa : 'plus',
-              size : 'sm',
-              xns : Roo.bootstrap,
-              '|xns' : 'Roo.bootstrap'
-             }
+             '|xns' : 'Roo.bootstrap'
             }
            ]
           },
