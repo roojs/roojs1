@@ -10165,7 +10165,7 @@ Roo.form.VTypes = function(){
  * @extends Roo.bootstrap.Component
  * Bootstrap Input class
  * @cfg {Boolean} disabled is it disabled
- * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
+ * @cfg {String} (button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text) inputType 
  * @cfg {String} name name of the input
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string} placeholder - placeholder to put in text.
