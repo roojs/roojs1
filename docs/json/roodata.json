@@ -19802,7 +19802,7 @@
         "name" : "drop",
         "type" : "function",
         "desc" : "When a element a card is dropped",
-        "sig" : "function (_self, n, dd, e, data)\n{\n\n}",
+        "sig" : "function (_self, move_card, position, next_to_card)\n{\n\n}",
         "memberOf" : ""
       },
       {
@@ -19842,6 +19842,14 @@
       }
     ],
     "methods" : [
+      {
+        "name" : "acceptCard",
+        "type" : "function",
+        "desc" : "accept card\n\n-        card.acceptCard(move_card, info.position, info.card, info.items_n);",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : ""
+      },
       {
         "name" : "addEvents",
         "type" : "function",

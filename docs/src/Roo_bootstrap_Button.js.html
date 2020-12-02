@@ -375,8 +375,8 @@
      */
     </span><span class="jsdoc-var">toggleActive </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">this.setActive</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.pressed</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'toggle'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, !</span><span class="jsdoc-var">this.pressed</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.setActive</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.pressed</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// this modifies pressed...
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'toggle'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.pressed</span><span class="jsdoc-syntax">);
     },
      </span><span class="jsdoc-comment">/**
      * get the current active state

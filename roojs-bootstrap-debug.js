@@ -2429,70 +2429,13 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         this.dropPlaceHolder('hide');
   
-        if (this.fireEvent("drop", this, n, dd, e, data) === false) {
-            return false;
-        }
          
     
     
     
         this.acceptCard(data.source, info.position, info.card, info.items_n);
         return true;
-        /*
-        // do the dom manipulation first..
-        var dom = data.source.el.dom;
-        dom.parentNode.removeChild(dom);
-        
-        
-        if (info.card !== true) {
-            var cardel = info.card.el.dom;
-            
-            if (info.position == 'above') {
-                cardel.parentNode.insertBefore(dom, cardel);
-            } else if (cardel.nextSibling) {
-                cardel.parentNode.insertBefore(dom,cardel.nextSibling);
-            } else {
-                cardel.parentNode.append(dom);
-            }
-        } else {
-            // card container???
-            this.bodyEl.dom.append(dom);
-        }
-        
-        //FIXME HANDLE card = true 
-        
-        // add this to the correct place in items.
-        
-        
-        
-        // remove Card from items.
-        
-        var old_parent = data.source.parent();
-        
-        old_parent.items = old_parent.items.filter(function(e) { return e != data.source });
-        
-        if (this.items.length) {
-            var nitems = [];
-            //Roo.log([info.items_n, info.position, this.items.length]);
-            for (var i =0; i < this.items.length; i++) {
-                if (i == info.items_n && info.position == 'above') {
-                    nitems.push(data.source);
-                }
-                nitems.push(this.items[i]);
-                if (i == info.items_n && info.position == 'below') {
-                    nitems.push(data.source);
-                }
-            }
-            this.items = nitems;
-            Roo.log(this.items);
-        } else {
-            this.items.push(data.source);
-        }
-        
-        data.source.parentId = this.id;
-        
-        return true;
-        */
+         
     },
     firstChildCard : function()
     {
@@ -2517,14 +2460,14 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return false;
         }
         
-        var to_items_n = next_to_card ? this.items.indexOf(next_to_card) : true;
+        var to_items_n = next_to_card ? this.items.indexOf(next_to_card) : 0;
         
         
         var dom = move_card.el.dom;
         dom.parentNode.removeChild(dom);
         
         
-        if (next_to_card !== true) {
+        if (next_to_card !== false) {
             var cardel = next_to_card.el.dom;
             
             if (position == 'above') {

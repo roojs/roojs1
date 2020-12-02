@@ -519,6 +519,20 @@
       "returns" : []
     },
     {
+      "name" : "acceptCard",
+      "desc" : "accept card\n\n-        card.acceptCard(move_card, info.position, info.card, info.items_n);",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Card",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
       "name" : "tooltipEl",
       "desc" : "Fetch the element to display the tooltip on.",
       "isStatic" : false,
@@ -1168,32 +1182,26 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "Roo.bootstrap.Element",
+          "type" : "Roo.bootstrap.Card",
           "desc" : "",
           "isOptional" : false
         },
         {
-          "name" : "n",
-          "type" : "Roo.Element",
-          "desc" : "the node being dropped?",
+          "name" : "move_card",
+          "type" : "Roo.bootstrap.Card",
+          "desc" : "the card being dropped?",
           "isOptional" : false
         },
         {
-          "name" : "dd",
-          "type" : "Object",
-          "desc" : "Drag and drop data",
+          "name" : "position",
+          "type" : "String",
+          "desc" : "'above' or 'below'",
           "isOptional" : false
         },
         {
-          "name" : "e",
-          "type" : "Roo.EventObject",
-          "desc" : "",
-          "isOptional" : false
-        },
-        {
-          "name" : "data",
-          "type" : "Roo.EventObject",
-          "desc" : "the data passed via getDragData",
+          "name" : "next_to_card",
+          "type" : "Roo.bootstrap.Card",
+          "desc" : "What card position is relative to of 'false' for empty list.",
           "isOptional" : false
         }
       ],
