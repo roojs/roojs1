@@ -77,7 +77,7 @@ dashboard4 = new Roo.XComponent({
            items  : [
             {
              xtype : 'Input',
-             after : '<i class=\"fa fa-plus\"></i>',
+             before : '<i class=\"fa fa-plus\"></i>',
              placeholder : _this._strings['009d65200f49f77cb6b15bdeadf60cdf'] /* New Ticket */,
              xns : Roo.bootstrap,
              '|xns' : 'Roo.bootstrap'

@@ -57,7 +57,7 @@
              "xtype" : "Input",
              "string placeholder" : "New Ticket",
              "$ xns" : "Roo.bootstrap",
-             "string after" : "<i class=\"fa fa-plus\"></i>"
+             "string before" : "<i class=\"fa fa-plus\"></i>"
             }
            ]
           },
