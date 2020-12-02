@@ -77,6 +77,13 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
             this.updateMarkdown();
         }
         
+    },
+    focus : function()
+    {
+        if (!this.editing) {
+            this.toggleTextEdit();
+        }
+        
     }
 
 
