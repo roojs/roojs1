@@ -57,10 +57,10 @@
              "xtype" : "Input",
              "string placeholder" : "New Ticket",
              "$ xns" : "Roo.bootstrap",
-             "string after" : "<i class=\"fa fa-plus\"></i>",
              "items" : [
               {
                "xtype" : "Button",
+               "String fa" : "plus",
                "$ xns" : "Roo.bootstrap",
                "* prop" : "after"
               }
