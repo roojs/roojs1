@@ -224,6 +224,7 @@ Bootstrap Widgets
 
         Roo.bootstrap.BezierSignature
         Roo.bootstrap.RadioSet
+        Roo.bootstrap.Markdown
 
 
         
