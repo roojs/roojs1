@@ -375,8 +375,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
      */
     toggleActive : function(e)
     {
-        this.setActive(!this.pressed);
-        this.fireEvent('toggle', this, e, !this.pressed);
+        this.setActive(!this.pressed); // this modifies pressed...
+        this.fireEvent('toggle', this, e, this.pressed);
     },
      /**
      * get the current active state

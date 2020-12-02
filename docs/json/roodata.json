@@ -22005,6 +22005,12 @@
   "Roo.bootstrap.CheckBox" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -22195,12 +22201,6 @@
         "type" : "Boolean",
         "desc" : "inline the element (default false)",
         "memberOf" : ""
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "inputValue",
@@ -23448,6 +23448,12 @@
   "Roo.bootstrap.ComboBox" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -23752,12 +23758,6 @@
           "left",
           "right"
         ]
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "invalidClass",
@@ -25807,6 +25807,12 @@
   "Roo.bootstrap.DateField" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -26003,12 +26009,6 @@
           "left",
           "right"
         ]
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "invalidClass",
@@ -31523,6 +31523,12 @@
   "Roo.bootstrap.HtmlEditor" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -33006,6 +33012,12 @@
   "Roo.bootstrap.Input" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : ""
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -33172,12 +33184,6 @@
           "left",
           "right"
         ]
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : ""
       },
       {
         "name" : "invalidClass",
@@ -38750,6 +38756,12 @@
   "Roo.bootstrap.MoneyField" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -39100,12 +39112,6 @@
           "left",
           "right"
         ]
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "invalidClass",
@@ -40244,6 +40250,12 @@
   "Roo.bootstrap.MonthField" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -40410,12 +40422,6 @@
           "left",
           "right"
         ]
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "invalidClass",
@@ -45381,6 +45387,12 @@
   "Roo.bootstrap.NumberField" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -45577,12 +45589,6 @@
           "left",
           "right"
         ]
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "invalidClass",
@@ -47708,6 +47714,12 @@
   "Roo.bootstrap.PhoneInput" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -47896,12 +47908,6 @@
           "left",
           "right"
         ]
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "invalidClass",
@@ -50310,6 +50316,12 @@
   "Roo.bootstrap.RadioSet" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -50486,12 +50498,6 @@
           "true",
           "false"
         ]
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "invalidClass",
@@ -51602,6 +51608,12 @@
   "Roo.bootstrap.SecurePass" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "Label",
         "type" : "String/Object",
         "desc" : "for the strength meter (defaults to\n'Password strength:')",
@@ -51780,12 +51792,6 @@
           "left",
           "right"
         ]
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "invalidClass",
@@ -56538,6 +56544,12 @@
   "Roo.bootstrap.TextArea" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -56716,12 +56728,6 @@
           "left",
           "right"
         ]
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "invalidClass",
@@ -57442,6 +57448,12 @@
   "Roo.bootstrap.TimeField" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -57614,12 +57626,6 @@
           "left",
           "right"
         ]
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "invalidClass",
@@ -58331,6 +58337,12 @@
   "Roo.bootstrap.TriggerField" : {
     "props" : [
       {
+        "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+        "type" : "String",
+        "desc" : "inputType",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "accept",
         "type" : "String",
         "desc" : "o) use for file input only. (default empty)",
@@ -58513,12 +58525,6 @@
           "left",
           "right"
         ]
-      },
-      {
-        "name" : "inputType",
-        "type" : "String",
-        "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-        "memberOf" : "Roo.bootstrap.Input"
       },
       {
         "name" : "invalidClass",

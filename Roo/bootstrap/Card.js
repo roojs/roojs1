@@ -67,11 +67,13 @@ Roo.bootstrap.Card = function(config){
         /**
          * @event drop
          * When a element a card is dropped
-         * @param {Roo.bootstrap.Element} this
-         * @param {Roo.Element} n the node being dropped?
-         * @param {Object} dd Drag and drop data
-         * @param {Roo.EventObject} e
-         * @param {Roo.EventObject} data  the data passed via getDragData
+         * @param {Roo.bootstrap.Card} this
+         *
+         * 
+         * @param {Roo.bootstrap.Card} move_card the card being dropped?
+         * @param {String} position 'above' or 'below'
+         * @param {Roo.bootstrap.Card} next_to_card What card position is relative to of 'false' for empty list.
+        
          */
         'drop' : true,
          /**
@@ -542,22 +544,50 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (info === false) {
             return false;
         }
-        
-        if (this.fireEvent("drop", this, n, dd, e, data) === false) {
+        this.dropPlaceHolder('hide');
+  
+         
+    
+    
+    
+        this.acceptCard(data.source, info.position, info.card, info.items_n);
+        return true;
+         
+    },
+    firstChildCard : function()
+    {
+        for (var i = 0;i< this.items.length;i++) {
+            
+            if (!this.items[i].el.hasClass('card')) {
+                 continue;
+            }
+            return this.items[i];
+        }
+        return this.items.length ? this.items[this.items.length-1] : false; // don't try and put stuff after the cards...
+    },
+    /**
+     * accept card
+     *
+     * -        card.acceptCard(move_card, info.position, info.card, info.items_n);
+
+     */
+    acceptCard : function(move_card,  position, next_to_card )
+    {
+        if (this.fireEvent("drop", this, move_card, position, next_to_card) === false) {
             return false;
         }
-         
-        this.dropPlaceHolder('hide');
         
-        // do the dom manipulation first..
-        var dom = data.source.el.dom;
+        var to_items_n = next_to_card ? this.items.indexOf(next_to_card) : 0;
+        
+        
+        var dom = move_card.el.dom;
         dom.parentNode.removeChild(dom);
         
         
-        if (info.card !== true) {
-            var cardel = info.card.el.dom;
+        if (next_to_card !== false) {
+            var cardel = next_to_card.el.dom;
             
-            if (info.position == 'above') {
+            if (position == 'above') {
                 cardel.parentNode.insertBefore(dom, cardel);
             } else if (cardel.nextSibling) {
                 cardel.parentNode.insertBefore(dom,cardel.nextSibling);
@@ -577,32 +607,35 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         // remove Card from items.
         
-        var old_parent = data.source.parent();
+        var old_parent = move_card.parent();
         
-        old_parent.items = old_parent.items.filter(function(e) { return e != data.source });
+        old_parent.items = old_parent.items.filter(function(e) { return e != move_card });
         
         if (this.items.length) {
             var nitems = [];
             //Roo.log([info.items_n, info.position, this.items.length]);
             for (var i =0; i < this.items.length; i++) {
-                if (i == info.items_n && info.position == 'above') {
-                    nitems.push(data.source);
+                if (i == to_items_n && position == 'above') {
+                    nitems.push(move_card);
                 }
                 nitems.push(this.items[i]);
-                if (i == info.items_n && info.position == 'below') {
-                    nitems.push(data.source);
+                if (i == to_items_n && position == 'below') {
+                    nitems.push(move_card);
                 }
             }
             this.items = nitems;
             Roo.log(this.items);
         } else {
-            this.items.push(data.source);
+            this.items.push(move_card);
         }
         
-        data.source.parentId = this.id;
+        move_card.parentId = this.id;
         
         return true;
+        
+        
     },
+    
     
     /**    Decide whether to drop above or below a View node. */
     getDropPoint : function(e, n, dd)

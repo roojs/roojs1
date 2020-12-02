@@ -51,6 +51,13 @@
       ]
     },
     {
+      "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+      "type" : "String",
+      "desc" : "inputType",
+      "memberOf" : "Roo.bootstrap.Input",
+      "optvals" : []
+    },
+    {
       "name" : "xs",
       "type" : "Number",
       "desc" : "colspan out of 12 for mobile-sized screens",
@@ -256,16 +263,16 @@
       ]
     },
     {
-      "name" : "size",
-      "type" : "string",
-      "desc" : "- (lg|sm) or leave empty..",
+      "name" : "focusClass",
+      "type" : "String",
+      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.bootstrap.Input",
       "optvals" : []
     },
     {
-      "name" : "focusClass",
-      "type" : "String",
-      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
+      "name" : "size",
+      "type" : "string",
+      "desc" : "- (lg|sm) or leave empty..",
       "memberOf" : "Roo.bootstrap.Input",
       "optvals" : []
     },
@@ -295,13 +302,6 @@
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
-    },
-    {
-      "name" : "inputType",
-      "type" : "String",
-      "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-      "memberOf" : "Roo.bootstrap.Input",
       "optvals" : []
     },
     {
