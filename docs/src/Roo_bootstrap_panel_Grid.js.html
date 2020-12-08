@@ -112,15 +112,30 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.ignoreResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">)){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.adjustForComponents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">// tfoot is not a footer?
+
+
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">gridel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid.getGridEl</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">gridel.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-comment">/*
-            var thd = grid.getGridEl().select('thead',true).first();
-            var tbd = grid.getGridEl().select('tbody', true).first();
-            if (tbd) {
-                tbd.setSize(width, height - thd.getHeight());
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'thead'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbf</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tbf</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">size.height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">thd.getHeight</span><span class="jsdoc-syntax">();
             }
-            */
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thd</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">size.height </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">thd.getHeight</span><span class="jsdoc-syntax">();
+            }
+
+            </span><span class="jsdoc-var">tbd.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.height </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">// this is for the account management tab -seems to work there.
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'thead'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-comment">//if (tbd) {
+            //    tbd.setSize(size.width, size.height - thd.getHeight());
+            //}
+
             </span><span class="jsdoc-var">grid.autoSize</span><span class="jsdoc-syntax">();
         }
     },

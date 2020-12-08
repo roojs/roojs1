@@ -112,15 +112,30 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
         if(!this.ignoreResize(width, height)){
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
+            // tfoot is not a footer?
+          
+            
             var gridel = grid.getGridEl();
             gridel.setSize(size.width, size.height);
-            /*
-            var thd = grid.getGridEl().select('thead',true).first();
+            
             var tbd = grid.getGridEl().select('tbody', true).first();
-            if (tbd) {
-                tbd.setSize(width, height - thd.getHeight());
+            var thd = grid.getGridEl().select('thead',true).first();
+            var tbf= grid.getGridEl().select('tfoot', true).first();
+
+            if (tbf) {
+                size.height -= thd.getHeight();
             }
-            */
+            if (thd) {
+                size.height -= thd.getHeight();
+            }
+            
+            tbd.setSize(size.width, size.height );
+            // this is for the account management tab -seems to work there.
+            var thd = grid.getGridEl().select('thead',true).first();
+            //if (tbd) {
+            //    tbd.setSize(size.width, size.height - thd.getHeight());
+            //}
+             
             grid.autoSize();
         }
     },
