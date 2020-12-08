@@ -10550,7 +10550,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'roo-input-before input-group-prepend input-group-text input-group-' +
+                    cls : 'roo-input-before input-group-prepend   input-group-' +
                         (this.before.xtype == 'Button' ? 'btn' : 'addon')  //?? what about checkboxes - that looks like a bit of a hack thought? 
                 });
             }
@@ -10569,7 +10569,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'roo-input-after input-group-append input-group-text input-group-' +
+                    cls : 'roo-input-after input-group-append  input-group-' +
                         (this.after.xtype == 'Button' ? 'btn' : 'addon')  //?? what about checkboxes - that looks like a bit of a hack thought? 
                 });
             }
@@ -39582,15 +39582,30 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
         if(!this.ignoreResize(width, height)){
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
+            // tfoot is not a footer?
+          
+            
             var gridel = grid.getGridEl();
             gridel.setSize(size.width, size.height);
-            /*
-            var thd = grid.getGridEl().select('thead',true).first();
+            
             var tbd = grid.getGridEl().select('tbody', true).first();
-            if (tbd) {
-                tbd.setSize(width, height - thd.getHeight());
+            var thd = grid.getGridEl().select('thead',true).first();
+            var tbf= grid.getGridEl().select('tfoot', true).first();
+
+            if (tbf) {
+                size.height -= thd.getHeight();
             }
-            */
+            if (thd) {
+                size.height -= thd.getHeight();
+            }
+            
+            tbd.setSize(size.width, size.height );
+            // this is for the account management tab -seems to work there.
+            var thd = grid.getGridEl().select('thead',true).first();
+            //if (tbd) {
+            //    tbd.setSize(size.width, size.height - thd.getHeight());
+            //}
+             
             grid.autoSize();
         }
     },
