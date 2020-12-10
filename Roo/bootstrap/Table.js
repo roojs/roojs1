@@ -837,6 +837,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             record = ds.getAt(index);
         }else{
             index = ds.indexOf(record);
+            if (index < 0) {
+                return; // should not happen - but seems to 
+            }
         }
         this.insertRow(ds, index, true);
         this.autoSize();
