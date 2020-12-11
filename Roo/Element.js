@@ -113,7 +113,7 @@ if(opt.anim.isAnimated()){
 
     El.prototype = {
         /**
-         * The element's default display mode  (defaults to "")
+         * The element's default display mode  (defaults to "") 
          * @type String
          */
         originalDisplay : "",
