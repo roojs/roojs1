@@ -118,7 +118,8 @@ if(opt.anim.isAnimated()){
          */
         originalDisplay : "",
 
-        visibilityMode : 1,
+        // default to display in BS 4 - no idea why it was visibility before..
+        visibilityMode : typeof(Roo.bootstrap.version) != 'undefined' && Roo.bootstrap.version > 3 ? 2 :  1,
         /**
          * The default unit to append to CSS values where a unit isn't provided (defaults to px).
          * @type String
