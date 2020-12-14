@@ -11,5 +11,7 @@ Roo.bootstrap.version = (
                         ret=4;
                     }
                 });
+        if (ret > 3) {
+                Roo.Element.prototype.visibilityMode = Roo.Element.DISPLAY;
         return ret;
 })(); 
