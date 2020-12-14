@@ -10477,6 +10477,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             placeholder : this.placeholder || '',
             autocomplete : this.autocomplete || 'new-password'
         };
+        if (this.inputType == 'file') {
+            input.style = 'overflow:hidden'; // why not in CSS?
+        }
         
         if(this.capture.length){
             input.capture = this.capture;
