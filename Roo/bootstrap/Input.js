@@ -396,7 +396,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
             tooltip : 'This field is required'
         };
-        if (this.allowBlank > 3 ) {
+        if (this.allowBlank ) {
             indicator = { tag: 'i', cls : 'display-none' };
         }
         if (align ==='left' && this.fieldLabel.length) {
@@ -482,10 +482,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         } else if ( this.fieldLabel.length) {
                 
+            
+            
             cfg.cn = [
                 {
                     tag : 'i',
-                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                    cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star' + (this.allowBlank ? ' display-none' : ''),
                     tooltip : 'This field is required'
                 },
                 {
@@ -500,7 +502,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
            ];
            
            if(this.indicatorpos == 'right'){
-                
+       
                 cfg.cn = [
                     {
                         tag: 'label',
@@ -510,7 +512,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     },
                     {
                         tag : 'i',
-                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
+                        cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star' + (this.allowBlank ? ' display-none' : ''),
                         tooltip : 'This field is required'
                     },
 
