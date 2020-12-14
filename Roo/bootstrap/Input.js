@@ -397,10 +397,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             tooltip : 'This field is required'
         };
         if (Roo.bootstrap.version > 3 ) {
-            indicator = {
-                tag : 'i',
-                style : 'display-none'
-            };
+            indicator.cls += 'display-none'; // are we just hiding it?
         }
         if (align ==='left' && this.fieldLabel.length) {
             
