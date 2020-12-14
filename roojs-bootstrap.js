@@ -1,5 +1,5 @@
 // Roo/bootstrap/version.js
-Roo.bootstrap.version=(function(){var A=3;Roo.each(document.styleSheets,function(s){if(s.href&&s.href.match(/css-bootstrap4/)){A=4;}});return A;})();
+Roo.bootstrap.version=(function(){var ret=3;Roo.each(document.styleSheets,function(s){if(s.href&&s.href.match(/css-bootstrap4/)){ret=4;}});if(ret>3){Roo.Element.prototype.visibilityMode=Roo.Element.DISPLAY;return ret;})();
 // Roo/Shadow.js
 Roo.Shadow=function(A){Roo.apply(this,A);if(typeof this.mode!="string"){this.mode=this.defaultMode;}var o=this.offset,a={h:0};var B=Math.floor(this.offset/2);switch(this.mode.toLowerCase()){case "drop":a.w=0;a.l=a.t=o;a.t-=1;if(Roo.isIE){a.l-=this.offset+B;
 a.t-=this.offset+B;a.w-=B;a.h-=B;a.t+=1;}break;case "sides":a.w=(o*2);a.l=-o;a.t=o-1;if(Roo.isIE){a.l-=(this.offset-B);a.t-=this.offset+B;a.l+=1;a.w-=(this.offset-B)*2;a.w-=B+1;a.h-=1;}break;case "frame":a.w=a.h=(o*2);a.l=a.t=-o;a.t+=1;a.h-=2;if(Roo.isIE){a.l-=(this.offset-B);
