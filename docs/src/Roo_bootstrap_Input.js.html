@@ -284,6 +284,9 @@
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">autocomplete </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.autocomplete </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'new-password'
         </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'file'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">input.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'overflow:hidden'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// why not in CSS?
+        </span><span class="jsdoc-syntax">}
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.capture.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">input.capture </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.capture</span><span class="jsdoc-syntax">;
