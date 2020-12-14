@@ -397,7 +397,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             tooltip : 'This field is required'
         };
         if (this.allowBlank > 3 ) {
-            indicator = { tag: 'i', cls : 'display-none'; }
+            indicator = { tag: 'i', cls : 'display-none' };
         }
         if (align ==='left' && this.fieldLabel.length) {
             

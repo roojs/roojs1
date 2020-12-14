@@ -10589,8 +10589,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
             tooltip : 'This field is required'
         };
-        if (Roo.bootstrap.version > 3 ) {
-            indicator.cls += 'display-none'; // are we just hiding it?
+        if (this.allowBlank > 3 ) {
+            indicator = { tag: 'i', cls : 'display-none' };
         }
         if (align ==='left' && this.fieldLabel.length) {
             
