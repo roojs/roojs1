@@ -489,7 +489,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     tag : 'i',
                     cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
                     tooltip : 'This field is required',
-                    style : this.allowBlank ? ' display:none' : '',
+                    style : this.allowBlank ? ' display:none' : '' 
                 },
                 {
                     tag: 'label',
@@ -515,7 +515,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                         tag : 'i',
                         cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
                         tooltip : 'This field is required',
-                        style : this.allowBlank ? ' display:none' : '',
+                        style : this.allowBlank ? ' display:none' : '' 
                     },
 
                    inputblock
