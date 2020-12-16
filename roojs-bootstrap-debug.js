@@ -2022,7 +2022,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     dropEl : false, /// the dom placeholde element that indicates drop location.
     containerEl: false, // body container
     bodyEl: false, // card-body
-    headerContainer : false, //
+    headerContainerEl : false, //
     headerEl : false,
     
     layoutCls : function()
@@ -2284,7 +2284,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
          
         this.footerEl = this.el.select('.card-footer').first();
         this.collapsableToggleEl = this.el.select('.roo-collapse-toggle');
-        this.headerEl = this.el.select('.roo-card-header-ctr').first();
+        this.headerContainerEl = this.el.select('.roo-card-header-ctr').first();
         
         if (this.rotated) {
             this.el.addClass('roo-card-rotated');
@@ -2623,7 +2623,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     },
     setHeaderText: function(html)
     {
-        this.headerEl.dom.innerHTML = html;
+        this.headerContainerEl.dom.innerHTML = html;
     }
 
     
