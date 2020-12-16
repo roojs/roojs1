@@ -2249,7 +2249,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        
+        this.bodyEl = this.el.select('.card-body',true).first(); 
         this.containerEl = this.getChildContainer();
         if(this.dragable){
             this.dragZone = new Roo.dd.DragZone(this.getEl(), {
