@@ -28267,11 +28267,11 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
     
         var cfg = {
-           cls : 'tooltip',
+           cls : 'tooltip',   
            role : 'tooltip',
            cn : [
                 {
-                    cls : 'tooltip-arrow'
+                    cls : 'tooltip-arrow arrow'
                 },
                 {
                     cls : 'tooltip-inner'
@@ -28339,7 +28339,8 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         
         this.el.select('.tooltip-inner',true).first().dom.innerHTML = tip;
         
-        this.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
+        this.el.removeClass(['fade','top','bottom', 'left', 'right','in',
+                             'bs-tooltip-top','bs-tooltip-bottom', 'bs-tooltip-left', 'bs-tooltip-right']);
         
         var placement = typeof this.placement == 'function' ?
             this.placement.call(this, this.el, on_el) :
@@ -28392,8 +28393,9 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         //arrow.set(align[2], 
         
         this.el.addClass(placement);
+        this.el.addClass("bs-tooltip-"+ placement);
         
-        this.el.addClass('in fade');
+        this.el.addClass('in fade show');
         
         this.hoverState = null;
         
@@ -28409,7 +28411,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             return;
         }
         //this.el.setXY([0,0]);
-        this.el.removeClass('in');
+        this.el.removeClass(['show', 'in']);
         //this.el.hide();
         
     }

@@ -135,6 +135,10 @@
     </span><span class="jsdoc-var">drop_group </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">childContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">dropEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">/// the dom placeholde element that indicates drop location.
+    </span><span class="jsdoc-var">containerEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// body container
+    </span><span class="jsdoc-var">bodyEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// card-body
+    </span><span class="jsdoc-var">headerContainerEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//
+    </span><span class="jsdoc-var">headerEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">layoutCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -364,8 +368,8 @@
 
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-
-        </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getChildContainer</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.card-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.containerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getChildContainer</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dragable</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.dragZone </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.dd.DragZone</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">(), {
                     </span><span class="jsdoc-var">containerScroll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
@@ -395,7 +399,8 @@
 
         </span><span class="jsdoc-var">this.footerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.card-footer'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.collapsableToggleEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-collapse-toggle'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.headerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-card-header-ctr'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.headerContainerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-card-header-ctr'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.headerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.card-header'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rotated</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-card-rotated'</span><span class="jsdoc-syntax">);
@@ -432,7 +437,7 @@
     </span><span class="jsdoc-var">getTargetFromEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dragged_card_el</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) &amp;&amp; (</span><span class="jsdoc-var">target.parentNode </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">)) {
+        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) &amp;&amp; (</span><span class="jsdoc-var">target.parentNode </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.containerEl.dom</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.parentNode</span><span class="jsdoc-syntax">;
         }
 
@@ -596,7 +601,7 @@
             }
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-comment">// card container???
-            </span><span class="jsdoc-var">this.bodyEl.dom.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.containerEl.dom.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
         }
 
         </span><span class="jsdoc-comment">//FIXME HANDLE card = true 
@@ -643,7 +648,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">) {
              </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.containerEl.dom</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;above&quot;</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">n.offsetHeight</span><span class="jsdoc-syntax">;
@@ -695,7 +700,7 @@
     </span><span class="jsdoc-var">dropPlaceHolder</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">info</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dropEl </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.dropEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">, {
+            </span><span class="jsdoc-var">this.dropEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.containerEl</span><span class="jsdoc-syntax">, {
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d-none'
             </span><span class="jsdoc-syntax">},</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         }
@@ -720,7 +725,7 @@
             }
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-comment">// card container???
-            </span><span class="jsdoc-var">this.bodyEl.dom.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dropEl.dom</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.containerEl.dom.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dropEl.dom</span><span class="jsdoc-syntax">);
         }
 
         </span><span class="jsdoc-var">this.dropEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-block roo-card-dropzone'</span><span class="jsdoc-syntax">);
@@ -734,7 +739,7 @@
     },
     </span><span class="jsdoc-var">setHeaderText</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">this.headerEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.headerContainerEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
     }
 
 
