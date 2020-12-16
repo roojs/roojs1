@@ -2250,7 +2250,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     initEvents: function() 
     {
         
-        this.bodyEl = this.getChildContainer();
+        this.containerEl = this.getChildContainer();
         if(this.dragable){
             this.dragZone = new Roo.dd.DragZone(this.getEl(), {
                     containerScroll: true,
@@ -2317,7 +2317,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     getTargetFromEvent : function(e, dragged_card_el)
     {
         var target = e.getTarget();
-        while ((target !== null) && (target.parentNode != this.bodyEl.dom)) {
+        while ((target !== null) && (target.parentNode != this.containerEl.dom)) {
             target = target.parentNode;
         }
         
@@ -2481,7 +2481,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             }
         } else {
             // card container???
-            this.bodyEl.dom.append(dom);
+            this.containerEl.dom.append(dom);
         }
         
         //FIXME HANDLE card = true 
@@ -2528,7 +2528,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (dd) {
              return false;
         }
-        if (n == this.bodyEl.dom) {
+        if (n == this.containerEl.dom) {
             return "above";
         }
         var t = Roo.lib.Dom.getY(n), b = t + n.offsetHeight;
@@ -2580,7 +2580,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     dropPlaceHolder: function (action, info, data)
     {
         if (this.dropEl === false) {
-            this.dropEl = Roo.DomHelper.append(this.bodyEl, {
+            this.dropEl = Roo.DomHelper.append(this.containerEl, {
             cls : 'd-none'
             },true);
         }
@@ -2605,7 +2605,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             }
         } else {
             // card container???
-            this.bodyEl.dom.append(this.dropEl.dom);
+            this.containerEl.dom.append(this.dropEl.dom);
         }
         
         this.dropEl.addClass('d-block roo-card-dropzone');
