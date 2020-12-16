@@ -2285,6 +2285,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         this.footerEl = this.el.select('.card-footer').first();
         this.collapsableToggleEl = this.el.select('.roo-collapse-toggle');
         this.headerContainerEl = this.el.select('.roo-card-header-ctr').first();
+        this.headerEl = this.el.select('.card-header',true).first();
         
         if (this.rotated) {
             this.el.addClass('roo-card-rotated');
