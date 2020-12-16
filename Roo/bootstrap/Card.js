@@ -135,6 +135,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     drop_group : false,
     childContainer : false,
     dropEl : false, /// the dom placeholde element that indicates drop location.
+    containerEl: false, // body container
+    bodyEl: false, // card-body
+    headerContainer : false, //
+    headerEl : false,
     
     layoutCls : function()
     {
