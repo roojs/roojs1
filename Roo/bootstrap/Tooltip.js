@@ -179,7 +179,8 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         this.arrowEl = this.el.select('.arrow', true).first();
-    }
+        this.innerEl = this.el.select('.tooltip-inner', true).first();
+    },
     
     enter : function () {
        
@@ -280,6 +281,9 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             }
             
             align = this.alignment[placement];
+            
+            this.arrowEl.setLeft(this.innerEl.getWidth()/2);
+            
         }
         
         this.el.alignTo(this.bindEl, align[0],align[1]);
