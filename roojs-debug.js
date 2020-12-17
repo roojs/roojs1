@@ -44526,6 +44526,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (v.match(/^#/)) {
                 return;
             }
+            if (v.match(/^\{/)) { // allow template editing.
+                return;
+            }
 //            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);
             node.removeAttribute(n);
             
