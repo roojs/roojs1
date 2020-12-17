@@ -592,9 +592,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (next_to_card !== false && next_to_card !== true ) {
             var cardel = next_to_card.el.dom;
             
-            if (position == 'above') {
+            if (position == 'above' && cardel.parentNode) {
                 cardel.parentNode.insertBefore(dom, cardel);
-            } else if (cardel.nextSibling) {
+            } else if (cardel.nextSibling  && cardel.parentNode) {
                 cardel.parentNode.insertBefore(dom,cardel.nextSibling);
             } else {
                 cardel.parentNode.append(dom);
