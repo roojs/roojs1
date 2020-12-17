@@ -28285,7 +28285,11 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     {
         this.bindEl = el;
     },
-      
+    
+    initEvents : function()
+    {
+        this.arrowEl = this.el.select('.arrow', true).first();
+    }
     
     enter : function () {
        
@@ -28402,6 +28406,10 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         if (this.el.hasClass('fade')) {
             // fade it?
         }
+        
+        
+        
+        
         
     },
     hide : function()
