@@ -1089,6 +1089,9 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^#/)) {
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^\{/)) { </span><span class="jsdoc-comment">// allow template editing.
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
 </span><span class="jsdoc-comment">//            Roo.log(&quot;(REMOVE TAG)&quot;+ node.tagName +'.' + n + '=' + v);
             </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
 
