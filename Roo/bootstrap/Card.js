@@ -31,7 +31,7 @@
  * @cfg {String} margin_y (0|1|2|3|4|5|auto)
  *
  * @cfg {String} padding (0|1|2|3|4|5)
- * @cfg {String} padding_top (0|1|2|3|4|5)
+ * @cfg {String} padding_top (0|1|2|3|4|5)next_to_card
  * @cfg {String} padding_bottom (0|1|2|3|4|5)
  * @cfg {String} padding_left (0|1|2|3|4|5)
  * @cfg {String} padding_right (0|1|2|3|4|5)
@@ -589,7 +589,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         dom.parentNode.removeChild(dom);
         
         
-        if (next_to_card !== false) {
+        if (next_to_card !== false && next_to_card !== true ) {
             var cardel = next_to_card.el.dom;
             
             if (position == 'above') {
