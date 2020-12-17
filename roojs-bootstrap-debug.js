@@ -2474,12 +2474,12 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         dom.parentNode.removeChild(dom);
         
         
-        if (next_to_card !== false && next_to_card !== true ) {
+        if (next_to_card !== false && next_to_card !== true && next_to_card.el.dom.parentNode) {
             var cardel = next_to_card.el.dom;
             
-            if (position == 'above' && cardel.parentNode) {
+            if (position == 'above' ) {
                 cardel.parentNode.insertBefore(dom, cardel);
-            } else if (cardel.nextSibling  && cardel.parentNode) {
+            } else if (cardel.nextSibling) {
                 cardel.parentNode.insertBefore(dom,cardel.nextSibling);
             } else {
                 cardel.parentNode.append(dom);
