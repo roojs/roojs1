@@ -485,9 +485,9 @@ B.id=id;B.name=id;B.className='x-hidden';if(Roo.isIE){B.src=Roo.SSL_SECURE_URL;}
 }var D,hd;if(ps){D=[];ps=Roo.urlDecode(ps,false);for(var k in ps){if(ps.hasOwnProperty(k)){hd=document.createElement('input');hd.type='hidden';hd.name=k;hd.value=ps[k];C.appendChild(hd);D.push(hd);}}}function cb(){var r={responseText:'',responseXML:null};
 r.argument=o?o.argument:null;try{var F;if(Roo.isIE){F=B.contentWindow.document;}else{F=(B.contentDocument||window.frames[id].document);}if(F&&F.body){r.responseText=F.body.innerHTML;}if(F&&F.XMLDocument){r.responseXML=F.XMLDocument;}else{r.responseXML=F;}
 }catch(e){}Roo.EventManager.removeListener(B,'load',cb,this);this.fireEvent("requestcomplete",this,r,o);Roo.callback(o.success,o.scope,[r,o]);Roo.callback(o.callback,o.scope,[o,true,r]);setTimeout(function(){document.body.removeChild(B);},100);}Roo.EventManager.on(B,'load',cb,this);
-C.submit();if(D){for(var i=0,E=D.length;i<E;i++){C.removeChild(D[i]);}}},doFormDataUpload:function(o,ps,A){var B=Roo.getDom(o.form);B.enctype=B.encoding='multipart/form-data';var C=o.formData===true?new FormData(B):o.formData;var cb={success:this.handleResponse,failure:this.handleFailure,scope:this,argument:{options:o}
-,timeout:o.timeout||this.timeout};if(typeof o.autoAbort=='boolean'){if(o.autoAbort){this.abort();}}else if(this.autoAbort!==false){this.abort();}Roo.lib.Ajax.useDefaultHeader=false;this.transId=Roo.lib.Ajax.request("POST",A,cb,o.formData,o);Roo.lib.Ajax.useDefaultHeader=true;
-}});
+C.submit();if(D){for(var i=0,E=D.length;i<E;i++){C.removeChild(D[i]);}}},doFormDataUpload:function(o,ps,A){var B;if(o.form){var C=Roo.getDom(o.form);C.enctype=C.encoding='multipart/form-data';B=o.formData===true?new FormData(C):o.formData;}else{B=o.formData===true?new FormData():o.formData;
+}var cb={success:this.handleResponse,failure:this.handleFailure,scope:this,argument:{options:o},timeout:o.timeout||this.timeout};if(typeof o.autoAbort=='boolean'){if(o.autoAbort){this.abort();}}else if(this.autoAbort!==false){this.abort();}Roo.lib.Ajax.useDefaultHeader=false;
+this.transId=Roo.lib.Ajax.request("POST",A,cb,o.formData,o);Roo.lib.Ajax.useDefaultHeader=true;}});
 // Roo/Ajax.js
 Roo.Ajax=new Roo.data.Connection({autoAbort:false,serializeForm:function(A){return Roo.lib.Ajax.serializeForm(A);}});
 // Roo/UpdateManager.js
