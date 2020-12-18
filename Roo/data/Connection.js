@@ -168,6 +168,11 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
                 var f = Roo.lib.Ajax.serializeForm(form);
                 p = p ? (p + '&' + f) : f;
             }
+            
+            if (!o.form && o.formData) { 
+                return this.doFormDataUpload(o,p,url);
+            }
+            
 
             var hs = o.headers;
             if(this.defaultHeaders){
