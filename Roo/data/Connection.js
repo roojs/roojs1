@@ -385,7 +385,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
 
         //Roo.lib.Ajax.defaultPostHeader = null;
         Roo.lib.Ajax.useDefaultHeader = false;
-        this.transId = Roo.lib.Ajax.request( "POST", url, cb, o.formData, o);
+        this.transId = Roo.lib.Ajax.request( "POST", url, cb,  formData, o);
         Roo.lib.Ajax.useDefaultHeader = true;
  
          
