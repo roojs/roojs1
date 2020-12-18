@@ -54136,6 +54136,7 @@ Roo.LayoutStateManager.prototype = {
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
+ * @cfg {String}    style  Extra style to add to the content panel 
 
  * @constructor
  * Create a new ContentPanel.
