@@ -347,9 +347,15 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
     
     doFormDataUpload : function(o, ps, url)
     {
-        var form = Roo.getDom(o.form);
-        form.enctype = form.encoding = 'multipart/form-data';
-        var formData = o.formData === true ? new FormData(form) : o.formData;
+        var formData;
+        if (o.form) {
+            var form =  Roo.getDom(o.form);
+            form.enctype = form.encoding = 'multipart/form-data';
+            formData = o.formData === true ? new FormData(form) : o.formData;
+        } else {
+            formData = o.formData === true ? new FormData() : o.formData;
+        }
+        
       
         var cb = {
             success: this.handleResponse,
