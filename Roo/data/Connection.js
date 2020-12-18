@@ -159,7 +159,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
                 var enctype = form.getAttribute("enctype");
                 
                 if (o.formData) {
-                    return this.doFormDataUpload(o,p,url);
+                    return this.doFormDataUpload(o, url);
                 }
                 
                 if(o.isUpload || (enctype && enctype.toLowerCase() == 'multipart/form-data')){
@@ -175,7 +175,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
                     o.formData.append(k,o.params[k]);
                 }
                     
-                return this.doFormDataUpload(o,p,url);
+                return this.doFormDataUpload(o, url);
             }
             
 
@@ -355,7 +355,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
     // this is a 'formdata version???'
     
     
-    doFormDataUpload : function(o, ps, url)
+    doFormDataUpload : function(o,  url)
     {
         var formData;
         if (o.form) {
