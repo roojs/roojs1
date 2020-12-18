@@ -11628,7 +11628,12 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
                 p = p ? (p + '&' + f) : f;
             }
             
-            if (!o.form && o.formData) { 
+            if (!o.form && o.formData) {
+                o.formData = o.formData === true ? new FormData() : o.formData;
+                for (var k in o.params) {
+                    o.formData.append(k,o.params[k]);
+                }
+                    
                 return this.doFormDataUpload(o,p,url);
             }
             
