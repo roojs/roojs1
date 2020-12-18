@@ -541,6 +541,11 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.bootstrap.Markdown",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.bootstrap.MasonryBrick",
             "cn" : [],
             "is_class" : true

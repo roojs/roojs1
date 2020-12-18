@@ -31,7 +31,7 @@
  * @cfg {String} margin_y (0|1|2|3|4|5|auto)
  *
  * @cfg {String} padding (0|1|2|3|4|5)
- * @cfg {String} padding_top (0|1|2|3|4|5)
+ * @cfg {String} padding_top (0|1|2|3|4|5)next_to_card
  * @cfg {String} padding_bottom (0|1|2|3|4|5)
  * @cfg {String} padding_left (0|1|2|3|4|5)
  * @cfg {String} padding_right (0|1|2|3|4|5)
@@ -589,10 +589,10 @@
         </span><span class="jsdoc-var">dom.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
 
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">next_to_card.el.dom.parentNode</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cardel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">next_to_card.el.dom</span><span class="jsdoc-syntax">;
 
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'above'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'above' </span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">cardel.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cardel</span><span class="jsdoc-syntax">);
             } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cardel.nextSibling</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">cardel.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cardel.nextSibling</span><span class="jsdoc-syntax">);

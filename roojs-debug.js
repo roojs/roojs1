@@ -54174,9 +54174,7 @@ Roo.ContentPanel = function(el, config, content){
                         {tag: "div", cls: "x-layout-inactive-content", id: config.id||el}, true);
         }
     }
-    if (config.style) {
-        this.el.applyStyles(config.style);
-    }
+    
     
     this.closable = false;
     this.loaded = false;

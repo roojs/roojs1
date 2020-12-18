@@ -149,7 +149,7 @@
     {
       "name" : "padding_top",
       "type" : "String",
-      "desc" : "5)",
+      "desc" : "5)next_to_card",
       "memberOf" : "Roo.bootstrap.Card",
       "optvals" : [
         "0",
