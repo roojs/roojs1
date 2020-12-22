@@ -574,7 +574,6 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
      * accept card
      *
      * -        card.acceptCard(move_card, info.position, info.card, info.items_n);
-
      */
     acceptCard : function(move_card,  position, next_to_card )
     {
@@ -587,7 +586,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         var dom = move_card.el.dom;
         dom.parentNode.removeChild(dom);
-        
+        dom.style.width = ''; // clear with - which is set by drag.
         
         if (next_to_card !== false && next_to_card !== true && next_to_card.el.dom.parentNode) {
             var cardel = next_to_card.el.dom;

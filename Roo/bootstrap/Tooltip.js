@@ -282,7 +282,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             
             align = this.alignment[placement];
             
-            this.arrowEl.setLeft(this.innerEl.getWidth()/2);
+            this.arrowEl.setLeft((this.innerEl.getWidth()/2) - 5);
             
         }
         

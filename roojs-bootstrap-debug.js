@@ -983,6 +983,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {Boolean} preventDefault  default true (stop click event triggering the URL if it's a link.)
  * @cfg {Boolean} removeClass remove the standard class..
  * @cfg {String} target (_self|_blank|_parent|_top|other) target for a href. 
+ * @cfg {Boolean} grpup if parent is a btn group - then it turns it into a toogleGroup.
  * 
  * @constructor
  * Create a new button
@@ -997,11 +998,18 @@ Roo.bootstrap.Button = function(config){
         // raw events
         /**
          * @event click
-         * When a butotn is pressed
+         * When a button is pressed
          * @param {Roo.bootstrap.Button} btn
          * @param {Roo.EventObject} e
          */
         "click" : true,
+        /**
+         * @event dblclick
+         * When a button is double clicked
+         * @param {Roo.bootstrap.Button} btn
+         * @param {Roo.EventObject} e
+         */
+        "dblclick" : true,
          /**
          * @event toggle
          * After the button has been toggles
@@ -1038,6 +1046,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     removeClass: false,
     name: false,
     target: false,
+    group : false,
      
     pressed : null,
      
@@ -1265,17 +1274,30 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
 
 
-       if (this.el.hasClass('roo-button')) {
+        if (this.el.hasClass('roo-button')) {
+             this.el.on('click', this.onClick, this);
+             this.el.on('dblclick', this.onDblClick, this);
+        } else {
+             this.el.select('.roo-button').on('click', this.onClick, this);
+             this.el.select('.roo-button').on('dblclick', this.onDblClick, this);
+             
+        }
+        // why?
+        if(this.removeClass){
             this.el.on('click', this.onClick, this);
-       } else {
-            this.el.select('.roo-button').on('click', this.onClick, this);
-       }
-       
-       if(this.removeClass){
-           this.el.on('click', this.onClick, this);
-       }
-       
-       this.el.enableDisplayMode();
+        }
+        
+        if (this.group === true) {
+             if (this.pressed === false || this.pressed === true) {
+                // nothing
+            } else {
+                this.pressed = false;
+                this.setActive(this.pressed);
+            }
+            
+        }
+        
+        this.el.enableDisplayMode();
         
     },
     onClick : function(e)
@@ -1289,6 +1311,25 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             e.preventDefault();
         }
         
+        if (this.group) {
+            if (this.pressed) {
+                // do nothing -
+                return;
+            }
+            this.setActive(true);
+            var pi = this.parent().items;
+            for (var i = 0;i < pi.length;i++) {
+                if (this == pi[i]) {
+                    continue;
+                }
+                if (pi[i].el.hasClass('roo-button')) {
+                    pi[i].setActive(false);
+                }
+            }
+            this.fireEvent('click', this, e);            
+            return;
+        }
+        
         if (this.pressed === true || this.pressed === false) {
             this.toggleActive(e);
         }
@@ -1296,7 +1337,16 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         this.fireEvent('click', this, e);
     },
-    
+    onDblClick: function(e)
+    {
+        if (this.disabled) {
+            return;
+        }
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        this.fireEvent('dblclick', this, e);
+    },
     /**
      * Enables this button
      */
@@ -2459,7 +2509,6 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
      * accept card
      *
      * -        card.acceptCard(move_card, info.position, info.card, info.items_n);
-
      */
     acceptCard : function(move_card,  position, next_to_card )
     {
@@ -2472,7 +2521,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         var dom = move_card.el.dom;
         dom.parentNode.removeChild(dom);
-        
+        dom.style.width = ''; // clear with - which is set by drag.
         
         if (next_to_card !== false && next_to_card !== true && next_to_card.el.dom.parentNode) {
             var cardel = next_to_card.el.dom;
@@ -14705,6 +14754,7 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  * @cfg {Boolean} emptyResultText only for touch device
  * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
  * @cfg {String} emptyTitle default ''
+ * @cfg {Number} width fixed with? experimental
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -15031,6 +15081,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     emptyResultText: 'Empty',
     triggerText : 'Select',
     emptyTitle : '',
+    width : false,
     
     // element that contains real text value.. (when hidden is used..)
     
@@ -15254,7 +15305,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(this.labelWidth > 12){
                 labelCfg.style = "width: " + this.labelWidth + 'px';
             }
-            
+            if(this.width * 1 > 0){
+                contentCfg.style = "width: " + this.width + 'px';
+            }
             if(this.labelWidth < 13 && this.labelmd == 0){
                 this.labelmd = this.labelWidth;
             }
@@ -15769,7 +15822,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
 
     // private
-    onResize: function(w, h){
+    onResize: function(w, h)
+    {
+        
+        
 //        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
 //        
 //        if(typeof w != 'number'){
@@ -16888,7 +16944,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         var inputblock = {
-            cls : '',
+            cls : 'roo-combobox-wrap',
             cn : [
                 input
             ]
@@ -17025,7 +17081,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
                 },
                 {
-                    cls : '', 
+                    cls : 'roo-combobox-wrap ', 
                     cn: [
                         combobox
                     ]
@@ -17055,7 +17111,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         ]
                     },
                     {
-                        cls : "",
+                        cls : "roo-combobox-wrap ",
                         cn: [
                             combobox
                         ]
@@ -17072,7 +17128,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(this.labelWidth > 12){
                 labelCfg.style = "width: " + this.labelWidth + 'px';
             }
-            
+           
             if(this.labelWidth < 13 && this.labelmd == 0){
                 this.labelmd = this.labelWidth;
             }
@@ -28484,7 +28540,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             
             align = this.alignment[placement];
             
-            this.arrowEl.setLeft(this.innerEl.getWidth()/2);
+            this.arrowEl.setLeft((this.innerEl.getWidth()/2) - 5);
             
         }
         
