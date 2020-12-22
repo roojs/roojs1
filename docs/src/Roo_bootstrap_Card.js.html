@@ -574,7 +574,6 @@
      * accept card
      *
      * -        card.acceptCard(move_card, info.position, info.card, info.items_n);
-
      */
     </span><span class="jsdoc-var">acceptCard </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">move_card</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">)
     {
@@ -587,7 +586,7 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">move_card.el.dom</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">dom.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
-
+        </span><span class="jsdoc-var">dom.style.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// clear with - which is set by drag.
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">next_to_card.el.dom.parentNode</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cardel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">next_to_card.el.dom</span><span class="jsdoc-syntax">;

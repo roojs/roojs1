@@ -103,6 +103,13 @@
       ]
     },
     {
+      "name" : "grpup",
+      "type" : "Boolean",
+      "desc" : "if parent is a btn group - then it turns it into a toogleGroup.",
+      "memberOf" : "Roo.bootstrap.Button",
+      "optvals" : []
+    },
+    {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
@@ -1042,8 +1049,32 @@
       "returns" : []
     },
     {
+      "name" : "dblclick",
+      "desc" : "When a button is double clicked",
+      "memberOf" : "Roo.bootstrap.Button",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "btn",
+          "type" : "Roo.bootstrap.Button",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "click",
-      "desc" : "When a butotn is pressed",
+      "desc" : "When a button is pressed",
       "memberOf" : "Roo.bootstrap.Button",
       "example" : "",
       "deprecated" : "",

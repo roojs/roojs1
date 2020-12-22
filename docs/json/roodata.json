@@ -17911,6 +17911,12 @@
         "memberOf" : ""
       },
       {
+        "name" : "grpup",
+        "type" : "Boolean",
+        "desc" : "if parent is a btn group - then it turns it into a toogleGroup.",
+        "memberOf" : ""
+      },
+      {
         "name" : "hideMode",
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
@@ -18129,7 +18135,14 @@
       {
         "name" : "click",
         "type" : "function",
-        "desc" : "When a butotn is pressed",
+        "desc" : "When a button is pressed",
+        "sig" : "function (btn, e)\n{\n\n}",
+        "memberOf" : ""
+      },
+      {
+        "name" : "dblclick",
+        "type" : "function",
+        "desc" : "When a button is double clicked",
         "sig" : "function (btn, e)\n{\n\n}",
         "memberOf" : ""
       },
@@ -21497,6 +21510,12 @@
         "memberOf" : "Roo.bootstrap.Button"
       },
       {
+        "name" : "grpup",
+        "type" : "Boolean",
+        "desc" : "if parent is a btn group - then it turns it into a toogleGroup.",
+        "memberOf" : "Roo.bootstrap.Button"
+      },
+      {
         "name" : "hideMode",
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
@@ -21721,7 +21740,14 @@
       {
         "name" : "click",
         "type" : "function",
-        "desc" : "When a butotn is pressed",
+        "desc" : "When a button is pressed",
+        "sig" : "function (btn, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Button"
+      },
+      {
+        "name" : "dblclick",
+        "type" : "function",
+        "desc" : "When a button is double clicked",
         "sig" : "function (btn, e)\n{\n\n}",
         "memberOf" : "Roo.bootstrap.Button"
       },
@@ -24254,6 +24280,12 @@
         "type" : "String",
         "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "width",
+        "type" : "Number",
+        "desc" : "fixed with? experimental",
+        "memberOf" : ""
       },
       {
         "name" : "xattr",
@@ -40560,6 +40592,12 @@
         "type" : "String",
         "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
         "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "width",
+        "type" : "Number",
+        "desc" : "fixed with? experimental",
+        "memberOf" : "Roo.bootstrap.ComboBox"
       },
       {
         "name" : "xattr",

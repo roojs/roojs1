@@ -727,6 +727,13 @@
       "optvals" : []
     },
     {
+      "name" : "width",
+      "type" : "Number",
+      "desc" : "fixed with? experimental",
+      "memberOf" : "Roo.bootstrap.ComboBox",
+      "optvals" : []
+    },
+    {
       "name" : "caret",
       "type" : "String",
       "desc" : "r) BS3 only - carat fa name",
