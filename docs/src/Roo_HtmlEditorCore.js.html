@@ -161,9 +161,10 @@
                     </span><span class="jsdoc-string">'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' </span><span class="jsdoc-syntax">+
                    </span><span class="jsdoc-string">'&lt;/style&gt;'</span><span class="jsdoc-syntax">;
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;style type=&quot;text/css&quot;&gt;' </span><span class="jsdoc-syntax">+
-                    </span><span class="jsdoc-var">this.stylesheets </span><span class="jsdoc-syntax">+
-                </span><span class="jsdoc-string">'&lt;/style&gt;'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.stylesheets</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'&lt;link rel=&quot;stylesheet&quot; href=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.stylesheets</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] +</span><span class="jsdoc-string">'&quot; type=&quot;text/css&quot;&gt;'</span><span class="jsdoc-syntax">;
+            }
+
         }
 
         </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">+=  </span><span class="jsdoc-string">'&lt;style type=&quot;text/css&quot;&gt;' </span><span class="jsdoc-syntax">+
