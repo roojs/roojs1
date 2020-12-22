@@ -1,0 +1,90 @@
+<html><head><title>Roo/bootstrap/Markdown.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/*
+ * - LGPL
+ */
+
+/**
+ * @class Roo.bootstrap.Markdown
+ * @extends Roo.bootstrap.TextArea
+ * Bootstrap Showdown editable area
+ * @cfg {string} content
+ * 
+ * @constructor
+ * Create a new Showdown
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.Markdown </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Markdown.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Markdown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.TextArea</span><span class="jsdoc-syntax">,  {
+
+    </span><span class="jsdoc-var">editing </span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+
+        </span><span class="jsdoc-var">Roo.bootstrap.TextArea.prototype.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.markdownEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-markdown-area'
+        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.markdownEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Markdown.toHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.util.Format.htmlEncode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()));
+        </span><span class="jsdoc-var">this.markdownEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.toggleTextEdit</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.toggleTextEdit</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'specialkey'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.resizeTextArea</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">toggleTextEdit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.markdownEl.getHeight</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.markdownEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editing</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// show editor?
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(500, </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sh</span><span class="jsdoc-syntax">,(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">+1) * 30)));
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.focus</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.editing </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// show showdown...
+        </span><span class="jsdoc-var">this.updateMarkdown</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.markdownEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.editing </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">updateMarkdown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.markdownEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;span class=&quot;roo-placeholder&quot;&gt;{0}&lt;/span&gt;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.placeholder</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.markdownEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Markdown.toHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.util.Format.htmlEncode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()));
+    },
+
+    </span><span class="jsdoc-var">resizeTextArea</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sh </span><span class="jsdoc-syntax">= 100;
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">sh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">* 30]);
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(500, </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sh</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">+1) * 30)));
+    },
+    </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.bootstrap.TextArea.prototype.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editing</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.updateMarkdown</span><span class="jsdoc-syntax">();
+        }
+
+    },
+    </span><span class="jsdoc-var">focus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editing</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.toggleTextEdit</span><span class="jsdoc-syntax">();
+        }
+
+    }
+
+
+});</span></code></body></html>
