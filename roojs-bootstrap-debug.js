@@ -4225,8 +4225,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.headerEditEl =  this.headerEl.select('.form-control',true).first();
             this.headerEl.on('click', function() { this.toggleHeaderInput(true) } , this);
             this.headerEditEl.on('keyup', function(e) {
-                    if(e.isNavKeyPress()){
-                            this.toggleHeaderInput(false)
+                    if([  e.RETURN , e.TAB , e.ESC ].indexOf(e.keyCode) > -1) {
+                        this.toggleHeaderInput(false)
                     }
                 }, this);
             this.headerEditEl.on('blur', function(e) {
