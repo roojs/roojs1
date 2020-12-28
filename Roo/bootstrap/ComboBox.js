@@ -2592,9 +2592,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
         if(this.animate){
             var _this = this;
-            (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
+            (function(){ _this.touchViewEl.addClass(['in','show']); }).defer(50);
         }else{
-            this.touchViewEl.addClass('in');
+            this.touchViewEl.addClass(['in','show']);
         }
         
         if(this._touchViewMask){
@@ -2610,7 +2610,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     hideTouchView : function()
     {
-        this.touchViewEl.removeClass('in');
+        this.touchViewEl.removeClass(['in','show']);
 
         if(this.animate){
             var _this = this;
