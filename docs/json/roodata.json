@@ -54768,6 +54768,12 @@
         "memberOf" : "Roo.bootstrap.Component"
       },
       {
+        "name" : "touchSlide",
+        "type" : "Boolean",
+        "desc" : "if swiping slides tab to next panel (default off)",
+        "memberOf" : ""
+      },
+      {
         "name" : "visibilityEl",
         "type" : "string|object",
         "desc" : "t) What element to use for visibility (@see getVisibilityEl())",

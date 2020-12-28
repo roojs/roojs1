@@ -2592,9 +2592,9 @@
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-var">_this.touchViewEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(50);
+            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-var">_this.touchViewEl.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">]); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(50);
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">this.touchViewEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.touchViewEl.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">]);
         }
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this._touchViewMask</span><span class="jsdoc-syntax">){
@@ -2610,7 +2610,7 @@
 
     </span><span class="jsdoc-var">hideTouchView </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">this.touchViewEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.touchViewEl.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">]);
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
