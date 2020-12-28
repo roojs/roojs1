@@ -20359,7 +20359,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         this.el.on('click', this.onClick, this);
         
-        if(Roo.isTouch){
+        if(Roo.isTouch && this.touchSlide){
             this.el.on("touchstart", this.onTouchStart, this);
             this.el.on("touchmove", this.onTouchMove, this);
             this.el.on("touchend", this.onTouchEnd, this);
