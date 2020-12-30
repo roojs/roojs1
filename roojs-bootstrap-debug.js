@@ -23486,7 +23486,6 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     // private
     validateValue: function (value)
     {
-        
         if (!Roo.bootstrap.SecurePass.superclass.validateValue.call(this, value)) {
             return false;
         }

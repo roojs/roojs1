@@ -190,7 +190,6 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     // private
     validateValue: function (value)
     {
-        
         if (!Roo.bootstrap.SecurePass.superclass.validateValue.call(this, value)) {
             return false;
         }
@@ -209,7 +208,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             return true;
         }
         
-        if (!value.match(/[\x21-\x7e]*/)) {
+        if (!value.match(/[\x21-\x7e]+/)) {
             this.markInvalid(this.errors.PwdBadChar);
             this.errorMsg = this.errors.PwdBadChar;
             return false;
