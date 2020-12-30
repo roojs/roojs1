@@ -209,7 +209,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             return true;
         }
         
-        if ('[\x21-\x7e]*'.match(value)) {
+        if (value.match(/[\x21-\x7e]*/)) {
             this.markInvalid(this.errors.PwdBadChar);
             this.errorMsg = this.errors.PwdBadChar;
             return false;
