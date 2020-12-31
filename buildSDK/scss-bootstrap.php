@@ -43,7 +43,7 @@ $files = array(
         'name' => 'sb-admin-2.css',
         'minify' => 'sb-admin-2.min.css',
         'sourceMapRootpath' => '../scss/startbootstrap-sb-admin-2/',
-        'variables' =>  "@import 'functions';\n@import 'variables';"
+        'variables' =>  ""
     ),
     
      
