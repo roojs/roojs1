@@ -23,7 +23,7 @@ $files = array(
         'name' => 'bootstrap.css',
         'minify' => 'bootstrap.min.css',
         'sourceMapRootpath' => '../scss/bootstrap/',
-        'variables' =>  "@import 'functions';\n@import 'variables';"
+        'variables' =>  ""
     ),
     
     "roojs-bootstrap.scss" => array(
