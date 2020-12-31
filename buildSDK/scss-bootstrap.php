@@ -23,7 +23,7 @@ $files = array(
         'name' => 'bootstrap.css',
         'minify' => 'bootstrap.min.css',
         'sourceMapRootpath' => '../scss/bootstrap/',
-        
+        'variables' =>  "@import 'functions';\n@import 'variables';"
     ),
     
     "roojs-bootstrap.scss" => array(
@@ -32,8 +32,8 @@ $files = array(
         'name' => 'roojs-bootstrap-debug.css',
         'minify' => 'roojs-bootstrap.css',
         'sourceMapRootpath' => '../scss/roojs-bootstrap/',
-       
-    ),
+        'variables' => "@import '../bootstrap/functions';\n@import '../bootstrap/variables';"
+    )
     
     // this is a test to see if we can get this theme to build..
     // note our classic roojs-bootstrap will need a rebuild as well as it uses different variables.
@@ -43,7 +43,7 @@ $files = array(
         'name' => 'sb-admin-2.css',
         'minify' => 'sb-admin-2.min.css',
         'sourceMapRootpath' => '../scss/startbootstrap-sb-admin-2/',
-       
+        'variables' =>  "@import 'functions';\n@import 'variables';"
     ),
     
      
