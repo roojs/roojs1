@@ -33,7 +33,7 @@ $files = array(
         'minify' => 'roojs-bootstrap.css',
         'sourceMapRootpath' => '../scss/roojs-bootstrap/',
        
-    )
+    ),
     
     // this is a test to see if we can get this theme to build..
     // note our classic roojs-bootstrap will need a rebuild as well as it uses different variables.
