@@ -29,5 +29,5 @@ roojspacker -i buildSDK/dependancy_core.txt  -i buildSDK/dependancy_ui.txt  \
     -i buildSDK/dependancy_bootstrap.txt -i buildSDK/dependancy_calendar.txt \
    --doc-target=docs -D
 
-# SCSS
+# SCSS (really uses the C scss)
 php buildSDK/scss-bootstrap.php
