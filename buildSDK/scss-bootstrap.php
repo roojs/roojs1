@@ -25,7 +25,14 @@ $files = array(
         'sourceMapRootpath' => '../scss/bootstrap/',
         'variables' =>  "@import 'functions';\n@import 'variables';"
     ),
-     
+    "sb-admin-2.scss" => array(
+        "scssDir" => "{$rootDir}/roojs1/scss/startbootstrap-sb-admin-2",
+        'baseDir' => "{$rootDir}/roojs1/css-bootstrap4",
+        'name' => 'sb-admin-2.css',
+        'minify' => 'sb-admin-2.min.css',
+        'sourceMapRootpath' => '../scss/startbootstrap-sb-admin-2/',
+        'variables' =>  "@import 'functions';\n@import 'variables';"
+    ),
     "roojs-bootstrap.scss" => array(
         "scssDir" => "{$rootDir}/roojs1/scss/roojs-bootstrap",
         'baseDir' => "{$rootDir}/roojs1/css-bootstrap4",
