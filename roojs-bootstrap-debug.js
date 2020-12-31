@@ -4302,7 +4302,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (!this.rendered) {
             this.render();
         }
-
+        this.toggleHeaderInput(false);
         //this.el.setStyle('display', 'block');
         this.el.removeClass('hideing');
         this.el.dom.style.display='block';
@@ -23504,7 +23504,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             return true;
         }
         
-        if (!value.match(/[\x21-\x7e]*/)) {
+        if (!value.match(/[\x21-\x7e]+/)) {
             this.markInvalid(this.errors.PwdBadChar);
             this.errorMsg = this.errors.PwdBadChar;
             return false;

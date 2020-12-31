@@ -377,7 +377,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (!this.rendered) {
             this.render();
         }
-
+        this.toggleHeaderInput(false);
         //this.el.setStyle('display', 'block');
         this.el.removeClass('hideing');
         this.el.dom.style.display='block';

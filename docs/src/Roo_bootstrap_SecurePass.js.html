@@ -208,7 +208,7 @@
             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">value.match</span><span class="jsdoc-syntax">(/[\x21-\x7e]*/)) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">value.match</span><span class="jsdoc-syntax">(/[\x21-\x7e]+/)) {
             </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.errors.PwdBadChar</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.errorMsg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.errors.PwdBadChar</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
