@@ -212,7 +212,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             cfg.cls += ' bg-' + this.weight;
         }
         
-        cfg.cls += this.layoutCls(); 
+        cfg.cls += ' ' + this.layoutCls(); 
         
         var hdr = false;
         var hdr_ctr = false;

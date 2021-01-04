@@ -2154,7 +2154,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (this.header.length) {
             hdr = {
                 tag : this.header_size > 0 ? 'h' + this.header_size : 'div',
-                cls : 'card-header' + (this.header_weight ? 'bg-' + this.header_weight : ''),
+                cls : 'card-header ' + (this.header_weight ? 'bg-' + this.header_weight : ''),
                 cn : []
             };
             cfg.cn.push(hdr);
@@ -2162,7 +2162,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         } else {
             hdr = {
                 tag : 'div',
-                cls : 'card-header d-none' + (this.header_weight ? 'bg-' + this.header_weight : ''),
+                cls : 'card-header d-none ' + (this.header_weight ? 'bg-' + this.header_weight : ''),
                 cn : []
             };
             cfg.cn.push(hdr);
