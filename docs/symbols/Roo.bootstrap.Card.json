@@ -210,6 +210,22 @@
       "optvals" : []
     },
     {
+      "name" : "header_weight",
+      "type" : "Number",
+      "desc" : "k)",
+      "memberOf" : "Roo.bootstrap.Card",
+      "optvals" : [
+        "primary",
+        "secondary",
+        "success",
+        "info",
+        "warning",
+        "danger",
+        "light",
+        "dark"
+      ]
+    },
+    {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",

@@ -19498,6 +19498,22 @@
         ]
       },
       {
+        "name" : "header_weight",
+        "type" : "Number",
+        "desc" : "k)",
+        "memberOf" : "",
+        "optvals" : [
+          "primary",
+          "secondary",
+          "success",
+          "info",
+          "warning",
+          "danger",
+          "light",
+          "dark"
+        ]
+      },
+      {
         "name" : "hideMode",
         "type" : "String",
         "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
