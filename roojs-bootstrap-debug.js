@@ -39183,7 +39183,9 @@ Roo.bootstrap.panel.Content = function( config){
         }else{
             var elcfg =  {
                 tag: "div",
-                cls: "roo-layout-inactive-content",
+                cls: (config.cls || '') +
+                    (config.background ? ' bg-' + config.background : '') +
+                    " roo-layout-inactive-content",
                 id: config.id||el
             };
             if (config.html) {
