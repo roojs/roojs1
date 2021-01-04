@@ -598,7 +598,9 @@
     },
     </span><span class="jsdoc-var">toggleHeaderInput </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">is_edit</span><span class="jsdoc-syntax">)
     {
-
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editableTitle</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// not editable.
+        </span><span class="jsdoc-syntax">}
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">is_edit </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.is_header_editing</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// already editing..
         </span><span class="jsdoc-syntax">}

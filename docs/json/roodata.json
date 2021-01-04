@@ -65552,6 +65552,12 @@
         "memberOf" : ""
       },
       {
+        "name" : "cls",
+        "type" : "String",
+        "desc" : "extra classes to use",
+        "memberOf" : ""
+      },
+      {
         "name" : "content",
         "type" : "String",
         "desc" : "Raw content to fill content panel with (uses setContent on construction.)",
@@ -65878,6 +65884,12 @@
         "name" : "closable",
         "type" : "Boolean",
         "desc" : "True if the panel can be closed/removed",
+        "memberOf" : "Roo.bootstrap.panel.Content"
+      },
+      {
+        "name" : "cls",
+        "type" : "String",
+        "desc" : "extra classes to use",
         "memberOf" : "Roo.bootstrap.panel.Content"
       },
       {
@@ -66221,6 +66233,12 @@
         "name" : "closable",
         "type" : "Boolean",
         "desc" : "True if the panel can be closed/removed",
+        "memberOf" : "Roo.bootstrap.panel.Content"
+      },
+      {
+        "name" : "cls",
+        "type" : "String",
+        "desc" : "extra classes to use",
         "memberOf" : "Roo.bootstrap.panel.Content"
       },
       {

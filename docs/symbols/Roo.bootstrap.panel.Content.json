@@ -117,6 +117,13 @@
       "optvals" : []
     },
     {
+      "name" : "cls",
+      "type" : "String",
+      "desc" : "extra classes to use",
+      "memberOf" : "Roo.bootstrap.panel.Content",
+      "optvals" : []
+    },
+    {
       "name" : "autoCreate",
       "type" : "Boolean/Object",
       "desc" : "True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create",
