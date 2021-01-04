@@ -598,7 +598,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     toggleHeaderInput : function(is_edit)
     {
-        
+        if (!this.editableTitle) {
+            return; // not editable.
+        }
         if (is_edit && this.is_header_editing) {
             return; // already editing..
         }
