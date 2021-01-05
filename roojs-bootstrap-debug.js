@@ -26174,7 +26174,7 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
     updateMarkdown : function()
     {
         if (this.getValue() == '') {
-            this.markdownEl.dom.innerHTML = String.format('<span class="roo-placeholder">{0}</span>', this.placeholder);
+            this.markdownEl.dom.innerHTML = String.format('<span class="roo-placeholder">{0}</span>', this.placeholder || '');
             return;
         }
          var v = this.getValue();

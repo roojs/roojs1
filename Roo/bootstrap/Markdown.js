@@ -65,11 +65,8 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
             this.markdownEl.dom.innerHTML = String.format('<span class="roo-placeholder">{0}</span>', this.placeholder || '');
             return;
         }
-         var v = this.getValue();
-        if (v === false) {
-            v = '';
-        }
-        this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(v));
+ 
+        this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(this.getValue()));
     },
     
     resizeTextArea: function () {
