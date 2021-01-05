@@ -30,8 +30,12 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
             cls : 'roo-markdown-area'
         });
         this.inputEl().addClass('d-none');
-         
-        this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(this.getValue()));
+        if (this.getValue() == '') {
+            this.markdownEl.dom.innerHTML = String.format('<span class="roo-placeholder">{0}</span>', this.placeholder || '');
+            
+        } else {
+            this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(this.getValue()));
+        }
         this.markdownEl.on('click', this.toggleTextEdit, this);
         this.on('blur', this.toggleTextEdit, this);
         this.on('specialkey', this.resizeTextArea, this);
