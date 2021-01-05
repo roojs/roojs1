@@ -26146,7 +26146,7 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
         if (v === false) {
             v = '';
         }
-        this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(this.getValue()));
+        this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(v));
         this.markdownEl.on('click', this.toggleTextEdit, this);
         this.on('blur', this.toggleTextEdit, this);
         this.on('specialkey', this.resizeTextArea, this);
@@ -26177,7 +26177,11 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
             this.markdownEl.dom.innerHTML = String.format('<span class="roo-placeholder">{0}</span>', this.placeholder);
             return;
         }
-        this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(this.getValue()));
+         var v = this.getValue();
+        if (v === false) {
+            v = '';
+        }
+        this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(v));
     },
     
     resizeTextArea: function () {

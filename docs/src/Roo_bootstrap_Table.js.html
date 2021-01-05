@@ -1093,6 +1093,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tfd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ctr.getWidth</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot tr, tfoot  td'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tbd</span><span class="jsdoc-syntax">) {
 
@@ -1107,7 +1108,7 @@
         }
         </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.totalWidth</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody tr'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot tr, tfoot  td'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">);
+
         </span><span class="jsdoc-comment">// resize 'expandable coloumn?
 
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// we doe not have a view in this design..

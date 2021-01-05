@@ -30,7 +30,11 @@
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-markdown-area'
         </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.markdownEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Markdown.toHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.util.Format.htmlEncode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()));
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.markdownEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Markdown.toHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.util.Format.htmlEncode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-var">this.markdownEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.toggleTextEdit</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.toggleTextEdit</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'specialkey'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.resizeTextArea</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -61,7 +65,11 @@
             </span><span class="jsdoc-var">this.markdownEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;span class=&quot;roo-placeholder&quot;&gt;{0}&lt;/span&gt;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.placeholder</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-var">this.markdownEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Markdown.toHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.util.Format.htmlEncode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()));
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.markdownEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Markdown.toHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.util.Format.htmlEncode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">));
     },
 
     </span><span class="jsdoc-var">resizeTextArea</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
