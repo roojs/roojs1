@@ -657,6 +657,39 @@
       "returns" : []
     },
     {
+      "name" : "namespace",
+      "desc" : "Creates namespaces to be used for scoping variables and classes so that they are not global.  Usage:\n<pre><code>\nRoo.namespace('Company', 'Company.data');\nCompany.Widget = function() { ... }\nCompany.data.CustomStore = function(config) { ... }\n</code></pre>",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "namespace1",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "namespace2",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "etc",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "override",
       "desc" : "Adds a list of functions to the prototype of an existing class, overwriting any existing methods with the same name.\nUsage:<pre><code>\nRoo.override(MyClass, {\n    newMethod1: function(){\n        // etc.\n    },\n    newMethod2: function(foo){\n        // etc.\n    }\n});\n </code></pre>",
       "isStatic" : true,

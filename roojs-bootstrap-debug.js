@@ -6607,6 +6607,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
  *  Breadcrumb Nav
  * 
  */
+Roo.namespace('Roo.bootstrap.breadcrumb');
 
 
 /**
@@ -6621,7 +6622,6 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
  * @param {Object} config The config object
  */
 
-Roo.namespace('Roo.bootstrap.breadcrumb');
 
 Roo.bootstrap.breadcrumb.Nav = function(config){
     Roo.bootstrap.breadcrumb.Nav.superclass.constructor.call(this, config);

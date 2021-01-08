@@ -794,6 +794,11 @@
                 "name" : "Roo.bootstrap.breadcrumb.Item",
                 "cn" : [],
                 "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.breadcrumb.Nav",
+                "cn" : [],
+                "is_class" : true
               }
             ],
             "is_class" : false
@@ -1383,11 +1388,6 @@
           }
         ],
         "is_class" : false
-      },
-      {
-        "name" : "Roo.namespace",
-        "cn" : [],
-        "is_class" : true
       },
       {
         "name" : "Roo.state",
