@@ -12337,7 +12337,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     {
         this.list = Roo.get(document.body).createChild({
             tag: Roo.bootstrap.version == 4 ? 'div' : 'ul',
-            cls: 'typeahead typeahead-long dropdown-menu',
+            cls: 'typeahead typeahead-long dropdown-menu shadow',
             style: 'display:none'
         });
         
@@ -21673,7 +21673,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
   
     template : {
         tag: 'div',
-        cls: 'datepicker dropdown-menu roo-dynamic',
+        cls: 'datepicker dropdown-menu roo-dynamic shadow',
         cn: [
         {
             tag: 'div',
