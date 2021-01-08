@@ -1083,7 +1083,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
   
     template : {
         tag: 'div',
-        cls: 'datepicker dropdown-menu roo-dynamic',
+        cls: 'datepicker dropdown-menu roo-dynamic shadow',
         cn: [
         {
             tag: 'div',
