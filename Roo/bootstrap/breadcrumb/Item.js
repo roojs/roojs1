@@ -64,7 +64,7 @@ Roo.extend(Roo.bootstrap.breadcrumb.Item, Roo.bootstrap.Component,  {
     initEvents: function()
     {
         if (this.href) {
-            this.el.select('a', true).first().onClick(this.onClick, this)
+            this.el.select('a', true).first().on('click',this.onClick, this)
         }
         
     },
