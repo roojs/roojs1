@@ -39,6 +39,9 @@ Roo.bootstrap.NavGroup
 Roo.bootstrap.NavItem
 Roo.bootstrap.NavSidebarItem
 
+Roo.bootstrap.breadcrumb.Nav
+Roo.bootstrap.breadcrumb.Item
+
 
 Roo.bootstrap.Row
 
