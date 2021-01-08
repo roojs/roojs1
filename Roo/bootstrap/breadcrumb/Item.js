@@ -45,7 +45,8 @@ Roo.extend(Roo.bootstrap.breadcrumb.Item, Roo.bootstrap.Component,  {
     {
 
         var cfg = {
-            tag: 'li'
+            tag: 'li',
+            cls : 'breadcrumb-item' + (this.active ? ' active' : '')
         };
         if (this.href !== false) {
             cfg.cn = [{
