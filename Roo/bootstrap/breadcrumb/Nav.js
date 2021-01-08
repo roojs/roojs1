@@ -18,6 +18,8 @@
  * @param {Object} config The config object
  */
 
+Roo.namespace('Roo.bootstrap.breadcrumb');
+
 Roo.bootstrap.breadcrumb.Nav = function(config){
     Roo.bootstrap.breadcrumb.Nav.superclass.constructor.call(this, config);
     
