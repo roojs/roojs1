@@ -181,7 +181,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         // we will default to modal-body-overflow - might need to remove or make optional later.
         var bdy = {
-                cls : 'modal-body ' + this.fitwindow ? 'overflow-auto' : '', 
+                cls : 'modal-body ' + (this.fitwindow ? 'overflow-auto' : ''), 
                 html : this.html || ''
         };
 
