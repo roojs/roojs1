@@ -645,9 +645,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         var dom = c.el.dom;
         dom.parentNode.removeChild(dom);
         dom.style.width = ''; // clear with - which is set by drag.
-         
+        c.parentId = false;
         
-    }
+    },
     
     /**    Decide whether to drop above or below a View node. */
     getDropPoint : function(e, n, dd)
