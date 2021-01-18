@@ -609,8 +609,6 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         // add this to the correct place in items.
         
-        
-        
         // remove Card from items.
         
        
