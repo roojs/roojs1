@@ -584,9 +584,10 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">to_items_n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.items.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">next_to_card</span><span class="jsdoc-syntax">) : 0;
 
+        </span><span class="jsdoc-var">move_card.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeCard</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">move_card</span><span class="jsdoc-syntax">);
+
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">move_card.el.dom</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">dom.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">dom.style.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// clear with - which is set by drag.
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">next_to_card.el.dom.parentNode</span><span class="jsdoc-syntax">) {
@@ -612,9 +613,6 @@
 
         // remove Card from items.
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">old_parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">move_card.parent</span><span class="jsdoc-syntax">();
-
-        </span><span class="jsdoc-var">old_parent.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">old_parent.items.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">move_card </span><span class="jsdoc-syntax">});
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
@@ -640,7 +638,16 @@
 
 
     },
+    </span><span class="jsdoc-var">removeCard </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">});
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.el.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">dom.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">dom.style.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// clear with - which is set by drag.
+        </span><span class="jsdoc-var">c.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+    },
 
     </span><span class="jsdoc-comment">/**    Decide whether to drop above or below a View node. */
     </span><span class="jsdoc-var">getDropPoint </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">)
