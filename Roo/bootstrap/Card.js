@@ -584,7 +584,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         var to_items_n = next_to_card ? this.items.indexOf(next_to_card) : 0;
         
-        move_card.parent().removeCard(move_card)
+        move_card.parent().removeCard(move_card);
         
         
         var dom = move_card.el.dom;

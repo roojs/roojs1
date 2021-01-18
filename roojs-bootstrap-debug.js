@@ -2519,9 +2519,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         var to_items_n = next_to_card ? this.items.indexOf(next_to_card) : 0;
         
+        move_card.parent().removeCard(move_card);
+        
         
         var dom = move_card.el.dom;
-        dom.parentNode.removeChild(dom);
         dom.style.width = ''; // clear with - which is set by drag.
         
         if (next_to_card !== false && next_to_card !== true && next_to_card.el.dom.parentNode) {
@@ -2547,10 +2548,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         // remove Card from items.
         
-        var old_parent = move_card.parent();
-        
-        old_parent.items = old_parent.items.filter(function(e) { return e != move_card });
-        
+       
         if (this.items.length) {
             var nitems = [];
             //Roo.log([info.items_n, info.position, this.items.length]);
@@ -2575,7 +2573,16 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         
     },
-    
+    removeCard : function(c)
+    {
+        this.items = this.items.filter(function(e) { return e != c });
+ 
+        var dom = c.el.dom;
+        dom.parentNode.removeChild(dom);
+        dom.style.width = ''; // clear with - which is set by drag.
+        c.parentId = false;
+        
+    },
     
     /**    Decide whether to drop above or below a View node. */
     getDropPoint : function(e, n, dd)
