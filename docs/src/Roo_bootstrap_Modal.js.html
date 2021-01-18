@@ -181,7 +181,7 @@
     {
         </span><span class="jsdoc-comment">// we will default to modal-body-overflow - might need to remove or make optional later.
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bdy </span><span class="jsdoc-syntax">= {
-                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-body enable-modal-body-overflow '</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-body ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.fitwindow </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'overflow-auto' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
         </span><span class="jsdoc-syntax">};
 
