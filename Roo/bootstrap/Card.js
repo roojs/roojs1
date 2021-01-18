@@ -613,10 +613,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         // remove Card from items.
         
-        var old_parent = move_card.parent();
-        
-        old_parent.items = old_parent.items.filter(function(e) { return e != move_card });
-        
+       
         if (this.items.length) {
             var nitems = [];
             //Roo.log([info.items_n, info.position, this.items.length]);
