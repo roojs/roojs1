@@ -837,6 +837,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             record = ds.getAt(index);
         }else{
             index = ds.indexOf(record);
+            if (index < 0) {
+                return; // should not happen - but seems to 
+            }
         }
         this.insertRow(ds, index, true);
         this.autoSize();
@@ -1090,6 +1093,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var tfd = this.getGridEl().select('tfoot', true).first();
         
         var cw = ctr.getWidth();
+        this.getGridEl().select('tfoot tr, tfoot  td',true).setWidth(cw);
         
         if (tbd) {
             
@@ -1103,7 +1107,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cw -= barsize;
         }
         cw = Math.max(cw, this.totalWidth);
-        this.getGridEl().select('tr',true).setWidth(cw);
+        this.getGridEl().select('tbody tr',true).setWidth(cw);
+        
         // resize 'expandable coloumn?
         
         return; // we doe not have a view in this design..

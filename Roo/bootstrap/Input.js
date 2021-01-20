@@ -10,7 +10,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Input class
  * @cfg {Boolean} disabled is it disabled
- * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
+ * @cfg {String} (button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text) inputType 
  * @cfg {String} name name of the input
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string} placeholder - placeholder to put in text.
@@ -284,6 +284,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             placeholder : this.placeholder || '',
             autocomplete : this.autocomplete || 'new-password'
         };
+        if (this.inputType == 'file') {
+            input.style = 'overflow:hidden'; // why not in CSS?
+        }
         
         if(this.capture.length){
             input.capture = this.capture;
@@ -362,7 +365,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'roo-input-before input-group-prepend input-group-text input-group-' +
+                    cls : 'roo-input-before input-group-prepend   input-group-' +
                         (this.before.xtype == 'Button' ? 'btn' : 'addon')  //?? what about checkboxes - that looks like a bit of a hack thought? 
                 });
             }
@@ -381,7 +384,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'roo-input-after input-group-append input-group-text input-group-' +
+                    cls : 'roo-input-after input-group-append  input-group-' +
                         (this.after.xtype == 'Button' ? 'btn' : 'addon')  //?? what about checkboxes - that looks like a bit of a hack thought? 
                 });
             }
@@ -396,11 +399,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
             tooltip : 'This field is required'
         };
-        if (Roo.bootstrap.version == 4) {
-            indicator = {
-                tag : 'i',
-                style : 'display-none'
-            };
+        if (this.allowBlank ) {
+            indicator.style = this.allowBlank ? ' display:none' : '';
         }
         if (align ==='left' && this.fieldLabel.length) {
             
@@ -485,11 +485,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         } else if ( this.fieldLabel.length) {
                 
+            
+            
             cfg.cn = [
                 {
                     tag : 'i',
                     cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                    tooltip : 'This field is required'
+                    tooltip : 'This field is required',
+                    style : this.allowBlank ? ' display:none' : '' 
                 },
                 {
                     tag: 'label',
@@ -503,7 +506,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
            ];
            
            if(this.indicatorpos == 'right'){
-                
+       
                 cfg.cn = [
                     {
                         tag: 'label',
@@ -514,7 +517,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     {
                         tag : 'i',
                         cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                        tooltip : 'This field is required'
+                        tooltip : 'This field is required',
+                        style : this.allowBlank ? ' display:none' : '' 
                     },
 
                    inputblock

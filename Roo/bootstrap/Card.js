@@ -14,6 +14,7 @@
  * @cfg {String} header_image  src url of image.
  * @cfg {String|Object} header
  * @cfg {Number} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
+ * @cfg {Number} header_weight  (primary|secondary|success|info|warning|danger|light|dark)
  * 
  * @cfg {String} title
  * @cfg {String} subtitle
@@ -31,7 +32,7 @@
  * @cfg {String} margin_y (0|1|2|3|4|5|auto)
  *
  * @cfg {String} padding (0|1|2|3|4|5)
- * @cfg {String} padding_top (0|1|2|3|4|5)
+ * @cfg {String} padding_top (0|1|2|3|4|5)next_to_card
  * @cfg {String} padding_bottom (0|1|2|3|4|5)
  * @cfg {String} padding_left (0|1|2|3|4|5)
  * @cfg {String} padding_right (0|1|2|3|4|5)
@@ -67,11 +68,13 @@ Roo.bootstrap.Card = function(config){
         /**
          * @event drop
          * When a element a card is dropped
-         * @param {Roo.bootstrap.Element} this
-         * @param {Roo.Element} n the node being dropped?
-         * @param {Object} dd Drag and drop data
-         * @param {Roo.EventObject} e
-         * @param {Roo.EventObject} data  the data passed via getDragData
+         * @param {Roo.bootstrap.Card} this
+         *
+         * 
+         * @param {Roo.bootstrap.Card} move_card the card being dropped?
+         * @param {String} position 'above' or 'below'
+         * @param {Roo.bootstrap.Card} next_to_card What card position is relative to of 'false' for empty list.
+        
          */
         'drop' : true,
          /**
@@ -133,6 +136,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     drop_group : false,
     childContainer : false,
     dropEl : false, /// the dom placeholde element that indicates drop location.
+    containerEl: false, // body container
+    bodyEl: false, // card-body
+    headerContainerEl : false, //
+    headerEl : false,
     
     layoutCls : function()
     {
@@ -152,7 +159,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         ['', 'xs', 'sm', 'lg', 'xl'].forEach(function(v) {
             if (('' + t['display' + (v.length ? '_' : '') + v]).length) {
-                cls += ' d' +  (v.length ? '-' : '') + v + '-' + t['margin' + (v.length ? '_' : '') + v]
+                cls += ' d' +  (v.length ? '-' : '') + v + '-' + t['display' + (v.length ? '_' : '') + v]
             }
         });
         
@@ -205,14 +212,14 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             cfg.cls += ' bg-' + this.weight;
         }
         
-        cfg.cls += this.layoutCls(); 
+        cfg.cls += ' ' + this.layoutCls(); 
         
         var hdr = false;
         var hdr_ctr = false;
         if (this.header.length) {
             hdr = {
                 tag : this.header_size > 0 ? 'h' + this.header_size : 'div',
-                cls : 'card-header',
+                cls : 'card-header ' + (this.header_weight ? 'bg-' + this.header_weight : ''),
                 cn : []
             };
             cfg.cn.push(hdr);
@@ -220,7 +227,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         } else {
             hdr = {
                 tag : 'div',
-                cls : 'card-header d-none',
+                cls : 'card-header d-none ' + (this.header_weight ? 'bg-' + this.header_weight : ''),
                 cn : []
             };
             cfg.cn.push(hdr);
@@ -362,8 +369,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        
-        this.bodyEl = this.getChildContainer();
+        this.bodyEl = this.el.select('.card-body',true).first(); 
+        this.containerEl = this.getChildContainer();
         if(this.dragable){
             this.dragZone = new Roo.dd.DragZone(this.getEl(), {
                     containerScroll: true,
@@ -393,7 +400,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
          
         this.footerEl = this.el.select('.card-footer').first();
         this.collapsableToggleEl = this.el.select('.roo-collapse-toggle');
-        this.headerEl = this.el.select('.roo-card-header-ctr').first();
+        this.headerContainerEl = this.el.select('.roo-card-header-ctr').first();
+        this.headerEl = this.el.select('.card-header',true).first();
         
         if (this.rotated) {
             this.el.addClass('roo-card-rotated');
@@ -430,7 +438,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     getTargetFromEvent : function(e, dragged_card_el)
     {
         var target = e.getTarget();
-        while ((target !== null) && (target.parentNode != this.bodyEl.dom)) {
+        while ((target !== null) && (target.parentNode != this.containerEl.dom)) {
             target = target.parentNode;
         }
         
@@ -542,22 +550,50 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (info === false) {
             return false;
         }
-        
-        if (this.fireEvent("drop", this, n, dd, e, data) === false) {
+        this.dropPlaceHolder('hide');
+  
+         
+    
+    
+    
+        this.acceptCard(data.source, info.position, info.card, info.items_n);
+        return true;
+         
+    },
+    firstChildCard : function()
+    {
+        for (var i = 0;i< this.items.length;i++) {
+            
+            if (!this.items[i].el.hasClass('card')) {
+                 continue;
+            }
+            return this.items[i];
+        }
+        return this.items.length ? this.items[this.items.length-1] : false; // don't try and put stuff after the cards...
+    },
+    /**
+     * accept card
+     *
+     * -        card.acceptCard(move_card, info.position, info.card, info.items_n);
+     */
+    acceptCard : function(move_card,  position, next_to_card )
+    {
+        if (this.fireEvent("drop", this, move_card, position, next_to_card) === false) {
             return false;
         }
-         
-        this.dropPlaceHolder('hide');
         
-        // do the dom manipulation first..
-        var dom = data.source.el.dom;
-        dom.parentNode.removeChild(dom);
+        var to_items_n = next_to_card ? this.items.indexOf(next_to_card) : 0;
+        
+        move_card.parent().removeCard(move_card);
         
         
-        if (info.card !== true) {
-            var cardel = info.card.el.dom;
+        var dom = move_card.el.dom;
+        dom.style.width = ''; // clear with - which is set by drag.
+        
+        if (next_to_card !== false && next_to_card !== true && next_to_card.el.dom.parentNode) {
+            var cardel = next_to_card.el.dom;
             
-            if (info.position == 'above') {
+            if (position == 'above' ) {
                 cardel.parentNode.insertBefore(dom, cardel);
             } else if (cardel.nextSibling) {
                 cardel.parentNode.insertBefore(dom,cardel.nextSibling);
@@ -566,42 +602,49 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             }
         } else {
             // card container???
-            this.bodyEl.dom.append(dom);
+            this.containerEl.dom.append(dom);
         }
         
         //FIXME HANDLE card = true 
         
         // add this to the correct place in items.
         
-        
-        
         // remove Card from items.
         
-        var old_parent = data.source.parent();
-        
-        old_parent.items = old_parent.items.filter(function(e) { return e != data.source });
-        
+       
         if (this.items.length) {
             var nitems = [];
             //Roo.log([info.items_n, info.position, this.items.length]);
             for (var i =0; i < this.items.length; i++) {
-                if (i == info.items_n && info.position == 'above') {
-                    nitems.push(data.source);
+                if (i == to_items_n && position == 'above') {
+                    nitems.push(move_card);
                 }
                 nitems.push(this.items[i]);
-                if (i == info.items_n && info.position == 'below') {
-                    nitems.push(data.source);
+                if (i == to_items_n && position == 'below') {
+                    nitems.push(move_card);
                 }
             }
             this.items = nitems;
             Roo.log(this.items);
         } else {
-            this.items.push(data.source);
+            this.items.push(move_card);
         }
         
-        data.source.parentId = this.id;
+        move_card.parentId = this.id;
         
         return true;
+        
+        
+    },
+    removeCard : function(c)
+    {
+        this.items = this.items.filter(function(e) { return e != c });
+ 
+        var dom = c.el.dom;
+        dom.parentNode.removeChild(dom);
+        dom.style.width = ''; // clear with - which is set by drag.
+        c.parentId = false;
+        
     },
     
     /**    Decide whether to drop above or below a View node. */
@@ -610,7 +653,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (dd) {
              return false;
         }
-        if (n == this.bodyEl.dom) {
+        if (n == this.containerEl.dom) {
             return "above";
         }
         var t = Roo.lib.Dom.getY(n), b = t + n.offsetHeight;
@@ -662,7 +705,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     dropPlaceHolder: function (action, info, data)
     {
         if (this.dropEl === false) {
-            this.dropEl = Roo.DomHelper.append(this.bodyEl, {
+            this.dropEl = Roo.DomHelper.append(this.containerEl, {
             cls : 'd-none'
             },true);
         }
@@ -687,7 +730,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             }
         } else {
             // card container???
-            this.bodyEl.dom.append(this.dropEl.dom);
+            this.containerEl.dom.append(this.dropEl.dom);
         }
         
         this.dropEl.addClass('d-block roo-card-dropzone');
@@ -701,7 +744,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     },
     setHeaderText: function(html)
     {
-        this.headerEl.dom.innerHTML = html;
+        this.headerContainerEl.dom.innerHTML = html;
     }
 
     

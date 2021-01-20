@@ -1,0 +1,123 @@
+{
+ "name" : "cards.js",
+ "parent" : "",
+ "title" : "",
+ "path" : "/home/alan/gitlive/roojs1/examples/bootstrap/cards.js.bjs",
+ "permname" : "",
+ "modOrder" : "001",
+ "strings" : {
+  "9e727fdd3aec8274f46685441900280d" : "Project",
+  "6a58f977f2b623b695a340766f2a6843" : "Select Project",
+  "1243daf593fa297e07ab03bf06d925af" : "Searching...",
+  "cd81f9f55969c822377f076017bb3484" : "Cards",
+  "24f27bda5dd2c488aa9bc7700ba98c34" : "Select Projects"
+ },
+ "named_strings" : {
+  "project_id_name_emptyText" : "6a58f977f2b623b695a340766f2a6843",
+  "project_id_name_loadingText" : "1243daf593fa297e07ab03bf06d925af",
+  "project_id_name_qtip" : "24f27bda5dd2c488aa9bc7700ba98c34",
+  "project_id_name_fieldLabel" : "9e727fdd3aec8274f46685441900280d"
+ },
+ "items" : [
+  {
+   "listeners" : {
+    "activate" : "function (_self)\n{\n    this.loadCards();\n}",
+    "resize" : "function (_self, width, height)\n{\n     this.cardRow.updateHeight(height);\n}",
+    "render" : "function (_self)\n{\n    _this.content  = this;\n}"
+   },
+   "xtype" : "Content",
+   "bool cardRow" : false,
+   "Boolean fitToFrame" : true,
+   "| function loadCards" : "function() {\n\n   \n    if (this.cardRow == false) {\n        this.cardRow = this.addxtype({\n            xtype : 'CardRow',\n            xns : Pman.Tab.Cards\n        });\n    }\n    this.cardRow.load();\n    (function() { \n        _this.content.cardRow.updateHeight(_this.content.el.getHeight()); \n    }).defer(100);\n\n\n }",
+   "String region" : "center",
+   "$ xns" : "Roo.bootstrap.panel",
+   "String title" : "Cards",
+   "Boolean autoScroll" : true,
+   "items" : [
+    {
+     "xtype" : "NavSimplebar",
+     "$ xns" : "Roo.bootstrap",
+     "* prop" : "toolbar",
+     "items" : [
+      {
+       "xtype" : "NavGroup",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "xtype" : "NavItem",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "xtype" : "Element",
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "listeners" : {
+              "render" : "function (_self)\n{\n    _this.projectSel  = this;\n}",
+              "select" : "function (combo, record, index)\n{\n    _this.content.loadCards();\n}"
+             },
+             "listWidth" : 400,
+             "triggerAction" : "all",
+             "Number md" : 5,
+             "forceSelection" : true,
+             "selectOnFocus" : true,
+             "pageSize" : 100,
+             "displayField" : "name",
+             "emptyText" : "Select Project",
+             "hiddenName" : "project_id",
+             "minChars" : 2,
+             "valueField" : "id",
+             "xtype" : "ComboBox",
+             "allowBlank" : false,
+             "typeAhead" : true,
+             "string fieldLabel" : "Project",
+             "editable" : false,
+             "$ xns" : "Roo.bootstrap",
+             "name" : "project_id_name",
+             "qtip" : "Select Projects",
+             "queryParam" : "query[name]",
+             "tpl" : "<a class=\"dropdown-item\" href=\"#\"> {name} </a>",
+             "loadingText" : "Searching...",
+             "items" : [
+              {
+               "listeners" : {
+                "|beforeload" : "function (_self, o){\n    o.params = o.params || {};\n    // set more here\n}\n"
+               },
+               "xtype" : "Store",
+               "remoteSort" : true,
+               "$ sortInfo" : "{ direction : 'ASC', field: 'name' }",
+               "$ xns" : "Roo.data",
+               "* prop" : "store",
+               "items" : [
+                {
+                 "$ url" : "baseURL + '/Roo/core_project'",
+                 "xtype" : "HttpProxy",
+                 "method" : "GET",
+                 "$ xns" : "Roo.data",
+                 "* prop" : "proxy"
+                },
+                {
+                 "id" : "id",
+                 "root" : "data",
+                 "xtype" : "JsonReader",
+                 "$ xns" : "Roo.data",
+                 "$ fields" : "[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"name\",\"type\":\"string\"}]",
+                 "* prop" : "reader",
+                 "totalProperty" : "total"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

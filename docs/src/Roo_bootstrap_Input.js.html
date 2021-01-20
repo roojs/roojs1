@@ -10,7 +10,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Input class
  * @cfg {Boolean} disabled is it disabled
- * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
+ * @cfg {String} (button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text) inputType 
  * @cfg {String} name name of the input
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string} placeholder - placeholder to put in text.
@@ -284,6 +284,9 @@
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">autocomplete </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.autocomplete </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'new-password'
         </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'file'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">input.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'overflow:hidden'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// why not in CSS?
+        </span><span class="jsdoc-syntax">}
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.capture.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">input.capture </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.capture</span><span class="jsdoc-syntax">;
@@ -362,7 +365,7 @@
 
                 </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-input-before input-group-prepend input-group-text input-group-' </span><span class="jsdoc-syntax">+
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-input-before input-group-prepend   input-group-' </span><span class="jsdoc-syntax">+
                         (</span><span class="jsdoc-var">this.before.xtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'Button' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'btn' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'addon'</span><span class="jsdoc-syntax">)  </span><span class="jsdoc-comment">//?? what about checkboxes - that looks like a bit of a hack thought? 
                 </span><span class="jsdoc-syntax">});
             }
@@ -381,7 +384,7 @@
 
                 </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-input-after input-group-append input-group-text input-group-' </span><span class="jsdoc-syntax">+
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-input-after input-group-append  input-group-' </span><span class="jsdoc-syntax">+
                         (</span><span class="jsdoc-var">this.after.xtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'Button' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'btn' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'addon'</span><span class="jsdoc-syntax">)  </span><span class="jsdoc-comment">//?? what about checkboxes - that looks like a bit of a hack thought? 
                 </span><span class="jsdoc-syntax">});
             }
@@ -396,11 +399,8 @@
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.indicatorpos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'right'  </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'right' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">) +</span><span class="jsdoc-string">'-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
         </span><span class="jsdoc-syntax">};
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">== 4) {
-            </span><span class="jsdoc-var">indicator </span><span class="jsdoc-syntax">= {
-                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display-none'
-            </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">indicator.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' display:none' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
 
@@ -485,11 +485,14 @@
 
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
 
+
+
             </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator left-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+                    </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' display:none' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
                 </span><span class="jsdoc-syntax">},
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
@@ -514,7 +517,8 @@
                     {
                         </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator right-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+                        </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' display:none' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
                     </span><span class="jsdoc-syntax">},
 
                    </span><span class="jsdoc-var">inputblock

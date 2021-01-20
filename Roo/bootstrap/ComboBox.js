@@ -17,6 +17,7 @@
  * @cfg {Boolean} emptyResultText only for touch device
  * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
  * @cfg {String} emptyTitle default ''
+ * @cfg {Number} width fixed with? experimental
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -343,6 +344,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     emptyResultText: 'Empty',
     triggerText : 'Select',
     emptyTitle : '',
+    width : false,
     
     // element that contains real text value.. (when hidden is used..)
     
@@ -566,7 +568,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(this.labelWidth > 12){
                 labelCfg.style = "width: " + this.labelWidth + 'px';
             }
-            
+            if(this.width * 1 > 0){
+                contentCfg.style = "width: " + this.width + 'px';
+            }
             if(this.labelWidth < 13 && this.labelmd == 0){
                 this.labelmd = this.labelWidth;
             }
@@ -1081,7 +1085,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
 
     // private
-    onResize: function(w, h){
+    onResize: function(w, h)
+    {
+        
+        
 //        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
 //        
 //        if(typeof w != 'number'){
@@ -2200,7 +2207,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         var inputblock = {
-            cls : '',
+            cls : 'roo-combobox-wrap',
             cn : [
                 input
             ]
@@ -2337,7 +2344,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
                 },
                 {
-                    cls : '', 
+                    cls : 'roo-combobox-wrap ', 
                     cn: [
                         combobox
                     ]
@@ -2367,7 +2374,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         ]
                     },
                     {
-                        cls : "",
+                        cls : "roo-combobox-wrap ",
                         cn: [
                             combobox
                         ]
@@ -2384,7 +2391,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(this.labelWidth > 12){
                 labelCfg.style = "width: " + this.labelWidth + 'px';
             }
-            
+           
             if(this.labelWidth < 13 && this.labelmd == 0){
                 this.labelmd = this.labelWidth;
             }
@@ -2585,9 +2592,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
         if(this.animate){
             var _this = this;
-            (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
+            (function(){ _this.touchViewEl.addClass(['in','show']); }).defer(50);
         }else{
-            this.touchViewEl.addClass('in');
+            this.touchViewEl.addClass(['in','show']);
         }
         
         if(this._touchViewMask){
@@ -2603,7 +2610,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     hideTouchView : function()
     {
-        this.touchViewEl.removeClass('in');
+        this.touchViewEl.removeClass(['in','show']);
 
         if(this.animate){
             var _this = this;

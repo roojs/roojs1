@@ -3,15 +3,17 @@
  *
  */
 
-Roo.bootstrap.version = (
-        function() {
-                var ret=3;
-                Roo.each(document.styleSheets, function(s) {
-                    if ( s.href  && s.href.match(/css-bootstrap4/)) {
-                        ret=4;
-                    }
-                });
-        return ret;
+Roo.bootstrap.version = ( function() {
+    var ret=3;
+    Roo.each(document.styleSheets, function(s) {
+        if ( s.href  && s.href.match(/css-bootstrap4/)) {
+            ret=4;
+        }
+    });
+    if (ret > 3) {
+         Roo.Element.prototype.visibilityMode = Roo.Element.DISPLAY;
+    }
+    return ret;
 })(); /*
  * Based on:
  * Ext JS Library 1.1.1
@@ -981,6 +983,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {Boolean} preventDefault  default true (stop click event triggering the URL if it's a link.)
  * @cfg {Boolean} removeClass remove the standard class..
  * @cfg {String} target (_self|_blank|_parent|_top|other) target for a href. 
+ * @cfg {Boolean} grpup if parent is a btn group - then it turns it into a toogleGroup.
  * 
  * @constructor
  * Create a new button
@@ -995,11 +998,18 @@ Roo.bootstrap.Button = function(config){
         // raw events
         /**
          * @event click
-         * When a butotn is pressed
+         * When a button is pressed
          * @param {Roo.bootstrap.Button} btn
          * @param {Roo.EventObject} e
          */
         "click" : true,
+        /**
+         * @event dblclick
+         * When a button is double clicked
+         * @param {Roo.bootstrap.Button} btn
+         * @param {Roo.EventObject} e
+         */
+        "dblclick" : true,
          /**
          * @event toggle
          * After the button has been toggles
@@ -1036,6 +1046,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     removeClass: false,
     name: false,
     target: false,
+    group : false,
      
     pressed : null,
      
@@ -1263,17 +1274,30 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
 
 
-       if (this.el.hasClass('roo-button')) {
+        if (this.el.hasClass('roo-button')) {
+             this.el.on('click', this.onClick, this);
+             this.el.on('dblclick', this.onDblClick, this);
+        } else {
+             this.el.select('.roo-button').on('click', this.onClick, this);
+             this.el.select('.roo-button').on('dblclick', this.onDblClick, this);
+             
+        }
+        // why?
+        if(this.removeClass){
             this.el.on('click', this.onClick, this);
-       } else {
-            this.el.select('.roo-button').on('click', this.onClick, this);
-       }
-       
-       if(this.removeClass){
-           this.el.on('click', this.onClick, this);
-       }
-       
-       this.el.enableDisplayMode();
+        }
+        
+        if (this.group === true) {
+             if (this.pressed === false || this.pressed === true) {
+                // nothing
+            } else {
+                this.pressed = false;
+                this.setActive(this.pressed);
+            }
+            
+        }
+        
+        this.el.enableDisplayMode();
         
     },
     onClick : function(e)
@@ -1287,6 +1311,25 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             e.preventDefault();
         }
         
+        if (this.group) {
+            if (this.pressed) {
+                // do nothing -
+                return;
+            }
+            this.setActive(true);
+            var pi = this.parent().items;
+            for (var i = 0;i < pi.length;i++) {
+                if (this == pi[i]) {
+                    continue;
+                }
+                if (pi[i].el.hasClass('roo-button')) {
+                    pi[i].setActive(false);
+                }
+            }
+            this.fireEvent('click', this, e);            
+            return;
+        }
+        
         if (this.pressed === true || this.pressed === false) {
             this.toggleActive(e);
         }
@@ -1294,7 +1337,16 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         this.fireEvent('click', this, e);
     },
-    
+    onDblClick: function(e)
+    {
+        if (this.disabled) {
+            return;
+        }
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        this.fireEvent('dblclick', this, e);
+    },
     /**
      * Enables this button
      */
@@ -1326,8 +1378,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
      */
     toggleActive : function(e)
     {
-        this.setActive(!this.pressed);
-        this.fireEvent('toggle', this, e, !this.pressed);
+        this.setActive(!this.pressed); // this modifies pressed...
+        this.fireEvent('toggle', this, e, this.pressed);
     },
      /**
      * get the current active state
@@ -1897,6 +1949,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  * @cfg {String} header_image  src url of image.
  * @cfg {String|Object} header
  * @cfg {Number} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
+ * @cfg {Number} header_weight  (primary|secondary|success|info|warning|danger|light|dark)
  * 
  * @cfg {String} title
  * @cfg {String} subtitle
@@ -1914,7 +1967,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  * @cfg {String} margin_y (0|1|2|3|4|5|auto)
  *
  * @cfg {String} padding (0|1|2|3|4|5)
- * @cfg {String} padding_top (0|1|2|3|4|5)
+ * @cfg {String} padding_top (0|1|2|3|4|5)next_to_card
  * @cfg {String} padding_bottom (0|1|2|3|4|5)
  * @cfg {String} padding_left (0|1|2|3|4|5)
  * @cfg {String} padding_right (0|1|2|3|4|5)
@@ -1950,11 +2003,13 @@ Roo.bootstrap.Card = function(config){
         /**
          * @event drop
          * When a element a card is dropped
-         * @param {Roo.bootstrap.Element} this
-         * @param {Roo.Element} n the node being dropped?
-         * @param {Object} dd Drag and drop data
-         * @param {Roo.EventObject} e
-         * @param {Roo.EventObject} data  the data passed via getDragData
+         * @param {Roo.bootstrap.Card} this
+         *
+         * 
+         * @param {Roo.bootstrap.Card} move_card the card being dropped?
+         * @param {String} position 'above' or 'below'
+         * @param {Roo.bootstrap.Card} next_to_card What card position is relative to of 'false' for empty list.
+        
          */
         'drop' : true,
          /**
@@ -2016,6 +2071,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     drop_group : false,
     childContainer : false,
     dropEl : false, /// the dom placeholde element that indicates drop location.
+    containerEl: false, // body container
+    bodyEl: false, // card-body
+    headerContainerEl : false, //
+    headerEl : false,
     
     layoutCls : function()
     {
@@ -2035,7 +2094,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         
         ['', 'xs', 'sm', 'lg', 'xl'].forEach(function(v) {
             if (('' + t['display' + (v.length ? '_' : '') + v]).length) {
-                cls += ' d' +  (v.length ? '-' : '') + v + '-' + t['margin' + (v.length ? '_' : '') + v]
+                cls += ' d' +  (v.length ? '-' : '') + v + '-' + t['display' + (v.length ? '_' : '') + v]
             }
         });
         
@@ -2088,14 +2147,14 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             cfg.cls += ' bg-' + this.weight;
         }
         
-        cfg.cls += this.layoutCls(); 
+        cfg.cls += ' ' + this.layoutCls(); 
         
         var hdr = false;
         var hdr_ctr = false;
         if (this.header.length) {
             hdr = {
                 tag : this.header_size > 0 ? 'h' + this.header_size : 'div',
-                cls : 'card-header',
+                cls : 'card-header ' + (this.header_weight ? 'bg-' + this.header_weight : ''),
                 cn : []
             };
             cfg.cn.push(hdr);
@@ -2103,7 +2162,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         } else {
             hdr = {
                 tag : 'div',
-                cls : 'card-header d-none',
+                cls : 'card-header d-none ' + (this.header_weight ? 'bg-' + this.header_weight : ''),
                 cn : []
             };
             cfg.cn.push(hdr);
@@ -2245,8 +2304,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        
-        this.bodyEl = this.getChildContainer();
+        this.bodyEl = this.el.select('.card-body',true).first(); 
+        this.containerEl = this.getChildContainer();
         if(this.dragable){
             this.dragZone = new Roo.dd.DragZone(this.getEl(), {
                     containerScroll: true,
@@ -2276,7 +2335,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
          
         this.footerEl = this.el.select('.card-footer').first();
         this.collapsableToggleEl = this.el.select('.roo-collapse-toggle');
-        this.headerEl = this.el.select('.roo-card-header-ctr').first();
+        this.headerContainerEl = this.el.select('.roo-card-header-ctr').first();
+        this.headerEl = this.el.select('.card-header',true).first();
         
         if (this.rotated) {
             this.el.addClass('roo-card-rotated');
@@ -2313,7 +2373,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     getTargetFromEvent : function(e, dragged_card_el)
     {
         var target = e.getTarget();
-        while ((target !== null) && (target.parentNode != this.bodyEl.dom)) {
+        while ((target !== null) && (target.parentNode != this.containerEl.dom)) {
             target = target.parentNode;
         }
         
@@ -2425,22 +2485,50 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (info === false) {
             return false;
         }
-        
-        if (this.fireEvent("drop", this, n, dd, e, data) === false) {
+        this.dropPlaceHolder('hide');
+  
+         
+    
+    
+    
+        this.acceptCard(data.source, info.position, info.card, info.items_n);
+        return true;
+         
+    },
+    firstChildCard : function()
+    {
+        for (var i = 0;i< this.items.length;i++) {
+            
+            if (!this.items[i].el.hasClass('card')) {
+                 continue;
+            }
+            return this.items[i];
+        }
+        return this.items.length ? this.items[this.items.length-1] : false; // don't try and put stuff after the cards...
+    },
+    /**
+     * accept card
+     *
+     * -        card.acceptCard(move_card, info.position, info.card, info.items_n);
+     */
+    acceptCard : function(move_card,  position, next_to_card )
+    {
+        if (this.fireEvent("drop", this, move_card, position, next_to_card) === false) {
             return false;
         }
-         
-        this.dropPlaceHolder('hide');
         
-        // do the dom manipulation first..
-        var dom = data.source.el.dom;
-        dom.parentNode.removeChild(dom);
+        var to_items_n = next_to_card ? this.items.indexOf(next_to_card) : 0;
+        
+        move_card.parent().removeCard(move_card);
         
         
-        if (info.card !== true) {
-            var cardel = info.card.el.dom;
+        var dom = move_card.el.dom;
+        dom.style.width = ''; // clear with - which is set by drag.
+        
+        if (next_to_card !== false && next_to_card !== true && next_to_card.el.dom.parentNode) {
+            var cardel = next_to_card.el.dom;
             
-            if (info.position == 'above') {
+            if (position == 'above' ) {
                 cardel.parentNode.insertBefore(dom, cardel);
             } else if (cardel.nextSibling) {
                 cardel.parentNode.insertBefore(dom,cardel.nextSibling);
@@ -2449,42 +2537,49 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             }
         } else {
             // card container???
-            this.bodyEl.dom.append(dom);
+            this.containerEl.dom.append(dom);
         }
         
         //FIXME HANDLE card = true 
         
         // add this to the correct place in items.
         
-        
-        
         // remove Card from items.
         
-        var old_parent = data.source.parent();
-        
-        old_parent.items = old_parent.items.filter(function(e) { return e != data.source });
-        
+       
         if (this.items.length) {
             var nitems = [];
             //Roo.log([info.items_n, info.position, this.items.length]);
             for (var i =0; i < this.items.length; i++) {
-                if (i == info.items_n && info.position == 'above') {
-                    nitems.push(data.source);
+                if (i == to_items_n && position == 'above') {
+                    nitems.push(move_card);
                 }
                 nitems.push(this.items[i]);
-                if (i == info.items_n && info.position == 'below') {
-                    nitems.push(data.source);
+                if (i == to_items_n && position == 'below') {
+                    nitems.push(move_card);
                 }
             }
             this.items = nitems;
             Roo.log(this.items);
         } else {
-            this.items.push(data.source);
+            this.items.push(move_card);
         }
         
-        data.source.parentId = this.id;
+        move_card.parentId = this.id;
         
         return true;
+        
+        
+    },
+    removeCard : function(c)
+    {
+        this.items = this.items.filter(function(e) { return e != c });
+ 
+        var dom = c.el.dom;
+        dom.parentNode.removeChild(dom);
+        dom.style.width = ''; // clear with - which is set by drag.
+        c.parentId = false;
+        
     },
     
     /**    Decide whether to drop above or below a View node. */
@@ -2493,7 +2588,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (dd) {
              return false;
         }
-        if (n == this.bodyEl.dom) {
+        if (n == this.containerEl.dom) {
             return "above";
         }
         var t = Roo.lib.Dom.getY(n), b = t + n.offsetHeight;
@@ -2545,7 +2640,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     dropPlaceHolder: function (action, info, data)
     {
         if (this.dropEl === false) {
-            this.dropEl = Roo.DomHelper.append(this.bodyEl, {
+            this.dropEl = Roo.DomHelper.append(this.containerEl, {
             cls : 'd-none'
             },true);
         }
@@ -2570,7 +2665,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             }
         } else {
             // card container???
-            this.bodyEl.dom.append(this.dropEl.dom);
+            this.containerEl.dom.append(this.dropEl.dom);
         }
         
         this.dropEl.addClass('d-block roo-card-dropzone');
@@ -2584,7 +2679,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     },
     setHeaderText: function(html)
     {
-        this.headerEl.dom.innerHTML = html;
+        this.headerContainerEl.dom.innerHTML = html;
     }
 
     
@@ -4017,7 +4112,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         // we will default to modal-body-overflow - might need to remove or make optional later.
         var bdy = {
-                cls : 'modal-body enable-modal-body-overflow ', 
+                cls : 'modal-body ' + (this.fitwindow ? 'overflow-auto' : ''), 
                 html : this.html || ''
         };
 
@@ -4136,8 +4231,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.headerEditEl =  this.headerEl.select('.form-control',true).first();
             this.headerEl.on('click', function() { this.toggleHeaderInput(true) } , this);
             this.headerEditEl.on('keyup', function(e) {
-                    if(e.isNavKeyPress()){
-                            this.toggleHeaderInput(false)
+                    if([  e.RETURN , e.TAB , e.ESC ].indexOf(e.keyCode) > -1) {
+                        this.toggleHeaderInput(false)
                     }
                 }, this);
             this.headerEditEl.on('blur', function(e) {
@@ -4213,7 +4308,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (!this.rendered) {
             this.render();
         }
-
+        this.toggleHeaderInput(false);
         //this.el.setStyle('display', 'block');
         this.el.removeClass('hideing');
         this.el.dom.style.display='block';
@@ -4434,7 +4529,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     toggleHeaderInput : function(is_edit)
     {
-        
+        if (!this.editableTitle) {
+            return; // not editable.
+        }
         if (is_edit && this.is_header_editing) {
             return; // already editing..
         }
@@ -6512,6 +6609,142 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
  /*
  * - LGPL
  *
+ *  Breadcrumb Nav
+ * 
+ */
+Roo.namespace('Roo.bootstrap.breadcrumb');
+
+
+/**
+ * @class Roo.bootstrap.breadcrumb.Nav
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Breadcrumb Nav Class
+ *  
+ * @children Roo.bootstrap.breadcrumb.Item
+ * 
+ * @constructor
+ * Create a new breadcrumb.Nav
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.breadcrumb.Nav = function(config){
+    Roo.bootstrap.breadcrumb.Nav.superclass.constructor.call(this, config);
+    
+    
+};
+
+Roo.extend(Roo.bootstrap.breadcrumb.Nav, Roo.bootstrap.Component,  {
+    
+    getAutoCreate : function()
+    {
+
+        var cfg = {
+            tag: 'nav',
+            cn : [
+                {
+                    tag : 'ol',
+                    cls : 'breadcrumb'
+                }
+            ]
+            
+        };
+          
+        return cfg;
+    },
+    
+    initEvents: function()
+    {
+        this.olEl = this.el.select('ol',true).first();    
+    },
+    getChildContainer : function()
+    {
+        return this.olEl;  
+    }
+    
+});
+
+ /*
+ * - LGPL
+ *
+ *  Breadcrumb Item
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.breadcrumb.Nav
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Breadcrumb Nav Class
+ *  
+ * @children Roo.bootstrap.breadcrumb.Component
+ * @cfg {String} html the content of the link.
+ * @cfg {String} href where it links to if '#' is used the link will be handled by onClick.
+ * @cfg {Boolean} active is it active
+
+ * 
+ * @constructor
+ * Create a new breadcrumb.Nav
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.breadcrumb.Item = function(config){
+    Roo.bootstrap.breadcrumb.Item.superclass.constructor.call(this, config);
+    this.addEvents({
+        // img events
+        /**
+         * @event click
+         * The img click event for the img.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
+    
+};
+
+Roo.extend(Roo.bootstrap.breadcrumb.Item, Roo.bootstrap.Component,  {
+    
+    href: false,
+    html : '',
+    
+    getAutoCreate : function()
+    {
+
+        var cfg = {
+            tag: 'li',
+            cls : 'breadcrumb-item' + (this.active ? ' active' : '')
+        };
+        if (this.href !== false) {
+            cfg.cn = [{
+                tag : 'a',
+                href : this.href,
+                html : this.html
+            }];
+        } else {
+            cfg.html = this.html;
+        }
+        
+        return cfg;
+    },
+    
+    initEvents: function()
+    {
+        if (this.href) {
+            this.el.select('a', true).first().on('click',this.onClick, this)
+        }
+        
+    },
+    onClick : function(e)
+    {
+        e.preventDefault();
+        this.fireEvent('click',this,  e);
+    }
+    
+});
+
+ /*
+ * - LGPL
+ *
  * row
  * 
  */
@@ -8241,6 +8474,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             record = ds.getAt(index);
         }else{
             index = ds.indexOf(record);
+            if (index < 0) {
+                return; // should not happen - but seems to 
+            }
         }
         this.insertRow(ds, index, true);
         this.autoSize();
@@ -8494,6 +8730,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var tfd = this.getGridEl().select('tfoot', true).first();
         
         var cw = ctr.getWidth();
+        this.getGridEl().select('tfoot tr, tfoot  td',true).setWidth(cw);
         
         if (tbd) {
             
@@ -8507,7 +8744,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cw -= barsize;
         }
         cw = Math.max(cw, this.totalWidth);
-        this.getGridEl().select('tr',true).setWidth(cw);
+        this.getGridEl().select('tbody tr',true).setWidth(cw);
+        
         // resize 'expandable coloumn?
         
         return; // we doe not have a view in this design..
@@ -10165,7 +10403,7 @@ Roo.form.VTypes = function(){
  * @extends Roo.bootstrap.Component
  * Bootstrap Input class
  * @cfg {Boolean} disabled is it disabled
- * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
+ * @cfg {String} (button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text) inputType 
  * @cfg {String} name name of the input
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string} placeholder - placeholder to put in text.
@@ -10439,6 +10677,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             placeholder : this.placeholder || '',
             autocomplete : this.autocomplete || 'new-password'
         };
+        if (this.inputType == 'file') {
+            input.style = 'overflow:hidden'; // why not in CSS?
+        }
         
         if(this.capture.length){
             input.capture = this.capture;
@@ -10517,7 +10758,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'roo-input-before input-group-prepend input-group-text input-group-' +
+                    cls : 'roo-input-before input-group-prepend   input-group-' +
                         (this.before.xtype == 'Button' ? 'btn' : 'addon')  //?? what about checkboxes - that looks like a bit of a hack thought? 
                 });
             }
@@ -10536,7 +10777,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'roo-input-after input-group-append input-group-text input-group-' +
+                    cls : 'roo-input-after input-group-append  input-group-' +
                         (this.after.xtype == 'Button' ? 'btn' : 'addon')  //?? what about checkboxes - that looks like a bit of a hack thought? 
                 });
             }
@@ -10551,11 +10792,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
             tooltip : 'This field is required'
         };
-        if (Roo.bootstrap.version == 4) {
-            indicator = {
-                tag : 'i',
-                style : 'display-none'
-            };
+        if (this.allowBlank ) {
+            indicator.style = this.allowBlank ? ' display:none' : '';
         }
         if (align ==='left' && this.fieldLabel.length) {
             
@@ -10640,11 +10878,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         } else if ( this.fieldLabel.length) {
                 
+            
+            
             cfg.cn = [
                 {
                     tag : 'i',
                     cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                    tooltip : 'This field is required'
+                    tooltip : 'This field is required',
+                    style : this.allowBlank ? ' display:none' : '' 
                 },
                 {
                     tag: 'label',
@@ -10658,7 +10899,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
            ];
            
            if(this.indicatorpos == 'right'){
-                
+       
                 cfg.cn = [
                     {
                         tag: 'label',
@@ -10669,7 +10910,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     {
                         tag : 'i',
                         cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                        tooltip : 'This field is required'
+                        tooltip : 'This field is required',
+                        style : this.allowBlank ? ' display:none' : '' 
                     },
 
                    inputblock
@@ -12100,7 +12342,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     {
         this.list = Roo.get(document.body).createChild({
             tag: Roo.bootstrap.version == 4 ? 'div' : 'ul',
-            cls: 'typeahead typeahead-long dropdown-menu',
+            cls: 'typeahead typeahead-long dropdown-menu shadow',
             style: 'display:none'
         });
         
@@ -14658,6 +14900,7 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  * @cfg {Boolean} emptyResultText only for touch device
  * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
  * @cfg {String} emptyTitle default ''
+ * @cfg {Number} width fixed with? experimental
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -14984,6 +15227,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     emptyResultText: 'Empty',
     triggerText : 'Select',
     emptyTitle : '',
+    width : false,
     
     // element that contains real text value.. (when hidden is used..)
     
@@ -15207,7 +15451,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(this.labelWidth > 12){
                 labelCfg.style = "width: " + this.labelWidth + 'px';
             }
-            
+            if(this.width * 1 > 0){
+                contentCfg.style = "width: " + this.width + 'px';
+            }
             if(this.labelWidth < 13 && this.labelmd == 0){
                 this.labelmd = this.labelWidth;
             }
@@ -15722,7 +15968,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
 
     // private
-    onResize: function(w, h){
+    onResize: function(w, h)
+    {
+        
+        
 //        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
 //        
 //        if(typeof w != 'number'){
@@ -16841,7 +17090,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         var inputblock = {
-            cls : '',
+            cls : 'roo-combobox-wrap',
             cn : [
                 input
             ]
@@ -16978,7 +17227,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
                 },
                 {
-                    cls : '', 
+                    cls : 'roo-combobox-wrap ', 
                     cn: [
                         combobox
                     ]
@@ -17008,7 +17257,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         ]
                     },
                     {
-                        cls : "",
+                        cls : "roo-combobox-wrap ",
                         cn: [
                             combobox
                         ]
@@ -17025,7 +17274,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(this.labelWidth > 12){
                 labelCfg.style = "width: " + this.labelWidth + 'px';
             }
-            
+           
             if(this.labelWidth < 13 && this.labelmd == 0){
                 this.labelmd = this.labelWidth;
             }
@@ -17226,9 +17475,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
         if(this.animate){
             var _this = this;
-            (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
+            (function(){ _this.touchViewEl.addClass(['in','show']); }).defer(50);
         }else{
-            this.touchViewEl.addClass('in');
+            this.touchViewEl.addClass(['in','show']);
         }
         
         if(this._touchViewMask){
@@ -17244,7 +17493,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     hideTouchView : function()
     {
-        this.touchViewEl.removeClass('in');
+        this.touchViewEl.removeClass(['in','show']);
 
         if(this.animate){
             var _this = this;
@@ -20172,6 +20421,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
  * @cfg {String} tabId  unique tab ID (will be autogenerated if not set. - used to match TabItem to Panel)
  * @cfg {String} navId The Roo.bootstrap.NavGroup which triggers show hide ()
  * @cfg {String} href click to link..
+ * @cfg {Boolean} touchSlide if swiping slides tab to next panel (default off)
  * 
  * 
  * @constructor
@@ -20211,7 +20461,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     tabId: false,
     navId : false,
     href : '',
-    
+    touchSlide : false,
     getAutoCreate : function(){
         
 	
@@ -20256,7 +20506,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         this.el.on('click', this.onClick, this);
         
-        if(Roo.isTouch){
+        if(Roo.isTouch && this.touchSlide){
             this.el.on("touchstart", this.onTouchStart, this);
             this.el.on("touchmove", this.onTouchMove, this);
             this.el.on("touchend", this.onTouchEnd, this);
@@ -21428,7 +21678,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
   
     template : {
         tag: 'div',
-        cls: 'datepicker dropdown-menu roo-dynamic',
+        cls: 'datepicker dropdown-menu roo-dynamic shadow',
         cn: [
         {
             tag: 'div',
@@ -23382,7 +23632,6 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     // private
     validateValue: function (value)
     {
-        
         if (!Roo.bootstrap.SecurePass.superclass.validateValue.call(this, value)) {
             return false;
         }
@@ -23401,7 +23650,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
             return true;
         }
         
-        if ('[\x21-\x7e]*'.match(value)) {
+        if (!value.match(/[\x21-\x7e]+/)) {
             this.markInvalid(this.errors.PwdBadChar);
             this.errorMsg = this.errors.PwdBadChar;
             return false;
@@ -23706,10 +23955,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 st = '<style type="text/css">' +
                     'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
                    '</style>';
-        } else { 
-            st = '<style type="text/css">' +
-                    this.stylesheets +
-                '</style>';
+        } else {
+            for (var i in this.stylesheets) { 
+                st += '<link rel="stylesheet" href="' + this.stylesheets[i] +'" type="text/css">';
+            }
+            
         }
         
         st +=  '<style type="text/css">' +
@@ -24633,6 +24883,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 return;
             }
             if (v.match(/^#/)) {
+                return;
+            }
+            if (v.match(/^\{/)) { // allow template editing.
                 return;
             }
 //            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);
@@ -25998,7 +26251,102 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
 
 
 
+ 
+/*
+ * - LGPL
+ */
 
+/**
+ * @class Roo.bootstrap.Markdown
+ * @extends Roo.bootstrap.TextArea
+ * Bootstrap Showdown editable area
+ * @cfg {string} content
+ * 
+ * @constructor
+ * Create a new Showdown
+ */
+
+Roo.bootstrap.Markdown = function(config){
+    Roo.bootstrap.Markdown.superclass.constructor.call(this, config);
+   
+};
+
+Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
+    
+    editing :false,
+    
+    initEvents : function()
+    {
+        
+        Roo.bootstrap.TextArea.prototype.initEvents.call(this);
+        this.markdownEl = this.el.createChild({
+            cls : 'roo-markdown-area'
+        });
+        this.inputEl().addClass('d-none');
+        if (this.getValue() == '') {
+            this.markdownEl.dom.innerHTML = String.format('<span class="roo-placeholder">{0}</span>', this.placeholder || '');
+            
+        } else {
+            this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(this.getValue()));
+        }
+        this.markdownEl.on('click', this.toggleTextEdit, this);
+        this.on('blur', this.toggleTextEdit, this);
+        this.on('specialkey', this.resizeTextArea, this);
+    },
+    
+    toggleTextEdit : function()
+    {
+        var sh = this.markdownEl.getHeight();
+        this.inputEl().addClass('d-none');
+        this.markdownEl.addClass('d-none');
+        if (!this.editing) {
+            // show editor?
+            this.inputEl().setHeight(Math.min(500, Math.max(sh,(this.getValue().split("\n").length+1) * 30)));
+            this.inputEl().removeClass('d-none');
+            this.inputEl().focus();
+            this.editing = true;
+            return;
+        }
+        // show showdown...
+        this.updateMarkdown();
+        this.markdownEl.removeClass('d-none');
+        this.editing = false;
+        return;
+    },
+    updateMarkdown : function()
+    {
+        if (this.getValue() == '') {
+            this.markdownEl.dom.innerHTML = String.format('<span class="roo-placeholder">{0}</span>', this.placeholder || '');
+            return;
+        }
+ 
+        this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(this.getValue()));
+    },
+    
+    resizeTextArea: function () {
+        
+        var sh = 100;
+        Roo.log([sh, this.getValue().split("\n").length * 30]);
+        this.inputEl().setHeight(Math.min(500, Math.max(sh, (this.getValue().split("\n").length +1) * 30)));
+    },
+    setValue : function(val)
+    {
+        Roo.bootstrap.TextArea.prototype.setValue.call(this,val);
+        if (!this.editing) {
+            this.updateMarkdown();
+        }
+        
+    },
+    focus : function()
+    {
+        if (!this.editing) {
+            this.toggleTextEdit();
+        }
+        
+    }
+
+
+});
 /**
  * @class Roo.bootstrap.Table.AbstractSelectionModel
  * @extends Roo.util.Observable
@@ -28220,11 +28568,11 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
     
         var cfg = {
-           cls : 'tooltip',
+           cls : 'tooltip',   
            role : 'tooltip',
            cn : [
                 {
-                    cls : 'tooltip-arrow'
+                    cls : 'tooltip-arrow arrow'
                 },
                 {
                     cls : 'tooltip-inner'
@@ -28238,7 +28586,12 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     {
         this.bindEl = el;
     },
-      
+    
+    initEvents : function()
+    {
+        this.arrowEl = this.el.select('.arrow', true).first();
+        this.innerEl = this.el.select('.tooltip-inner', true).first();
+    },
     
     enter : function () {
        
@@ -28292,7 +28645,8 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         
         this.el.select('.tooltip-inner',true).first().dom.innerHTML = tip;
         
-        this.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
+        this.el.removeClass(['fade','top','bottom', 'left', 'right','in',
+                             'bs-tooltip-top','bs-tooltip-bottom', 'bs-tooltip-left', 'bs-tooltip-right']);
         
         var placement = typeof this.placement == 'function' ?
             this.placement.call(this, this.el, on_el) :
@@ -28338,6 +28692,9 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             }
             
             align = this.alignment[placement];
+            
+            this.arrowEl.setLeft((this.innerEl.getWidth()/2) - 5);
+            
         }
         
         this.el.alignTo(this.bindEl, align[0],align[1]);
@@ -28345,14 +28702,19 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         //arrow.set(align[2], 
         
         this.el.addClass(placement);
+        this.el.addClass("bs-tooltip-"+ placement);
         
-        this.el.addClass('in fade');
+        this.el.addClass('in fade show');
         
         this.hoverState = null;
         
         if (this.el.hasClass('fade')) {
             // fade it?
         }
+        
+        
+        
+        
         
     },
     hide : function()
@@ -28362,7 +28724,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             return;
         }
         //this.el.setXY([0,0]);
-        this.el.removeClass('in');
+        this.el.removeClass(['show', 'in']);
         //this.el.hide();
         
     }
@@ -38940,6 +39302,8 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
  * @cfg {Boolean} badges render the badges
+ * @cfg {String} cls  extra classes to use  
+ * @cfg {String} background (primary|secondary|success|info|warning|danger|light|dark)
 
  * @constructor
  * Create a new ContentPanel.
@@ -38967,10 +39331,13 @@ Roo.bootstrap.panel.Content = function( config){
             this.el = Roo.DomHelper.append(document.body,
                         config.autoCreate, true);
         }else{
-            var elcfg =  {   tag: "div",
-                            cls: "roo-layout-inactive-content",
-                            id: config.id||el
-                            };
+            var elcfg =  {
+                tag: "div",
+                cls: (config.cls || '') +
+                    (config.background ? ' bg-' + config.background : '') +
+                    " roo-layout-inactive-content",
+                id: config.id||el
+            };
             if (config.html) {
                 elcfg.html = config.html;
                 
@@ -39105,6 +39472,9 @@ Roo.bootstrap.panel.Content = function( config){
 };
 
 Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
+    
+    cls : '',
+    background : '',
     
     tabTip : '',
     
@@ -39549,15 +39919,30 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
         if(!this.ignoreResize(width, height)){
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
+            // tfoot is not a footer?
+          
+            
             var gridel = grid.getGridEl();
             gridel.setSize(size.width, size.height);
-            /*
-            var thd = grid.getGridEl().select('thead',true).first();
+            
             var tbd = grid.getGridEl().select('tbody', true).first();
-            if (tbd) {
-                tbd.setSize(width, height - thd.getHeight());
+            var thd = grid.getGridEl().select('thead',true).first();
+            var tbf= grid.getGridEl().select('tfoot', true).first();
+
+            if (tbf) {
+                size.height -= thd.getHeight();
             }
-            */
+            if (thd) {
+                size.height -= thd.getHeight();
+            }
+            
+            tbd.setSize(size.width, size.height );
+            // this is for the account management tab -seems to work there.
+            var thd = grid.getGridEl().select('thead',true).first();
+            //if (tbd) {
+            //    tbd.setSize(size.width, size.height - thd.getHeight());
+            //}
+             
             grid.autoSize();
         }
     },

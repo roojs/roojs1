@@ -181,7 +181,7 @@
     {
         </span><span class="jsdoc-comment">// we will default to modal-body-overflow - might need to remove or make optional later.
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bdy </span><span class="jsdoc-syntax">= {
-                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-body enable-modal-body-overflow '</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-body ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.fitwindow </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'overflow-auto' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
         </span><span class="jsdoc-syntax">};
 
@@ -300,8 +300,8 @@
             </span><span class="jsdoc-var">this.headerEditEl </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.headerEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.headerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">this.toggleHeaderInput</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) } , </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.headerEditEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.isNavKeyPress</span><span class="jsdoc-syntax">()){
-                            </span><span class="jsdoc-var">this.toggleHeaderInput</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">)
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">([  </span><span class="jsdoc-var">e.RETURN </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e.TAB </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e.ESC </span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.keyCode</span><span class="jsdoc-syntax">) &gt; -1) {
+                        </span><span class="jsdoc-var">this.toggleHeaderInput</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">)
                     }
                 }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.headerEditEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
@@ -377,7 +377,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">();
         }
-
+        </span><span class="jsdoc-var">this.toggleHeaderInput</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//this.el.setStyle('display', 'block');
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hideing'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.el.dom.style.display</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
@@ -598,7 +598,9 @@
     },
     </span><span class="jsdoc-var">toggleHeaderInput </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">is_edit</span><span class="jsdoc-syntax">)
     {
-
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.editableTitle</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// not editable.
+        </span><span class="jsdoc-syntax">}
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">is_edit </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.is_header_editing</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// already editing..
         </span><span class="jsdoc-syntax">}

@@ -86,17 +86,17 @@
       "optvals" : []
     },
     {
-      "name" : "minLength",
-      "type" : "Number",
-      "desc" : "Minimum input field length required (defaults to 0)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
-    },
-    {
       "name" : "triggerAction",
       "type" : "String",
       "desc" : "The action to execute when the trigger field is activated.  Use 'all' to run the\nquery specified by the allQuery config option (defaults to 'query')",
       "memberOf" : "Roo.bootstrap.ComboBox",
+      "optvals" : []
+    },
+    {
+      "name" : "minLength",
+      "type" : "Number",
+      "desc" : "Minimum input field length required (defaults to 0)",
+      "memberOf" : "Roo.bootstrap.Input",
       "optvals" : []
     },
     {
@@ -264,6 +264,13 @@
         "true",
         "false"
       ]
+    },
+    {
+      "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+      "type" : "String",
+      "desc" : "inputType",
+      "memberOf" : "Roo.bootstrap.Input",
+      "optvals" : []
     },
     {
       "name" : "actionMode",
@@ -608,13 +615,6 @@
       "optvals" : []
     },
     {
-      "name" : "inputType",
-      "type" : "String",
-      "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
-    },
-    {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
@@ -664,6 +664,13 @@
       "type" : "string",
       "desc" : "- (lg|sm) or leave empty..",
       "memberOf" : "Roo.bootstrap.Input",
+      "optvals" : []
+    },
+    {
+      "name" : "width",
+      "type" : "Number",
+      "desc" : "fixed with? experimental",
+      "memberOf" : "Roo.bootstrap.ComboBox",
       "optvals" : []
     },
     {

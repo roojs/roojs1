@@ -39,6 +39,9 @@ Roo.bootstrap.NavGroup
 Roo.bootstrap.NavItem
 Roo.bootstrap.NavSidebarItem
 
+Roo.bootstrap.breadcrumb.Nav
+Roo.bootstrap.breadcrumb.Item
+
 
 Roo.bootstrap.Row
 
@@ -101,6 +104,8 @@ Roo.bootstrap.SecurePass
 Roo.HtmlEditorCore
 Roo.bootstrap.HtmlEditor
 Roo.bootstrap.htmleditor.ToolbarStandard
+
+Roo.bootstrap.Markdown
 
 Roo.bootstrap.Table.AbstractSelectionModel
 Roo.bootstrap.Table.RowSelectionModel

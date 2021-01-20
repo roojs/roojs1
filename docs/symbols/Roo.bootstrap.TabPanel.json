@@ -162,6 +162,13 @@
       "desc" : "click to link..",
       "memberOf" : "Roo.bootstrap.TabPanel",
       "optvals" : []
+    },
+    {
+      "name" : "touchSlide",
+      "type" : "Boolean",
+      "desc" : "if swiping slides tab to next panel (default off)",
+      "memberOf" : "Roo.bootstrap.TabPanel",
+      "optvals" : []
     }
   ],
   "methods" : [

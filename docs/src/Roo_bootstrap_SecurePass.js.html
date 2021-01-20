@@ -190,7 +190,6 @@
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">validateValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
     {
-
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.bootstrap.SecurePass.superclass.validateValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
@@ -209,7 +208,7 @@
             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[\x21-\x7e]*'</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">value.match</span><span class="jsdoc-syntax">(/[\x21-\x7e]+/)) {
             </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.errors.PwdBadChar</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.errorMsg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.errors.PwdBadChar</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;

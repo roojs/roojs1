@@ -23,9 +23,9 @@ $files = array(
         'name' => 'bootstrap.css',
         'minify' => 'bootstrap.min.css',
         'sourceMapRootpath' => '../scss/bootstrap/',
-        'variables' =>  "@import 'functions';\n@import 'variables';"
+        'variables' =>  ""
     ),
-     
+    
     "roojs-bootstrap.scss" => array(
         "scssDir" => "{$rootDir}/roojs1/scss/roojs-bootstrap",
         'baseDir' => "{$rootDir}/roojs1/css-bootstrap4",
@@ -33,7 +33,19 @@ $files = array(
         'minify' => 'roojs-bootstrap.css',
         'sourceMapRootpath' => '../scss/roojs-bootstrap/',
         'variables' => "@import '../bootstrap/functions';\n@import '../bootstrap/variables';"
-    )
+    ),
+    
+    // this is a test to see if we can get this theme to build..
+    // note our classic roojs-bootstrap will need a rebuild as well as it uses different variables.
+    "sb-admin-2.scss" => array(
+        "scssDir" => "{$rootDir}/roojs1/scss/startbootstrap-sb-admin-2",
+        'baseDir' => "{$rootDir}/roojs1/css-bootstrap4",
+        'name' => 'sb-admin-2.css',
+        'minify' => 'sb-admin-2.min.css',
+        'sourceMapRootpath' => '../scss/startbootstrap-sb-admin-2/',
+        'variables' =>  ""
+    ),
+    
      
 );
 require_once 'System.php';

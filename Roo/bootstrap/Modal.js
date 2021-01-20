@@ -181,7 +181,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         // we will default to modal-body-overflow - might need to remove or make optional later.
         var bdy = {
-                cls : 'modal-body enable-modal-body-overflow ', 
+                cls : 'modal-body ' + (this.fitwindow ? 'overflow-auto' : ''), 
                 html : this.html || ''
         };
 
@@ -300,8 +300,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.headerEditEl =  this.headerEl.select('.form-control',true).first();
             this.headerEl.on('click', function() { this.toggleHeaderInput(true) } , this);
             this.headerEditEl.on('keyup', function(e) {
-                    if(e.isNavKeyPress()){
-                            this.toggleHeaderInput(false)
+                    if([  e.RETURN , e.TAB , e.ESC ].indexOf(e.keyCode) > -1) {
+                        this.toggleHeaderInput(false)
                     }
                 }, this);
             this.headerEditEl.on('blur', function(e) {
@@ -377,7 +377,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (!this.rendered) {
             this.render();
         }
-
+        this.toggleHeaderInput(false);
         //this.el.setStyle('display', 'block');
         this.el.removeClass('hideing');
         this.el.dom.style.display='block';
@@ -598,7 +598,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     toggleHeaderInput : function(is_edit)
     {
-        
+        if (!this.editableTitle) {
+            return; // not editable.
+        }
         if (is_edit && this.is_header_editing) {
             return; // already editing..
         }

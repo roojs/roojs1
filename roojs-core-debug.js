@@ -7127,12 +7127,14 @@ if(opt.anim.isAnimated()){
 
     El.prototype = {
         /**
-         * The element's default display mode  (defaults to "")
+         * The element's default display mode  (defaults to "") 
          * @type String
          */
         originalDisplay : "",
 
-        visibilityMode : 1,
+        
+        // note this is overridden in BS version..
+        visibilityMode : 1, 
         /**
          * The default unit to append to CSS values where a unit isn't provided (defaults to px).
          * @type String
@@ -11616,7 +11618,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
                 var enctype = form.getAttribute("enctype");
                 
                 if (o.formData) {
-                    return this.doFormDataUpload(o,p,url);
+                    return this.doFormDataUpload(o, url);
                 }
                 
                 if(o.isUpload || (enctype && enctype.toLowerCase() == 'multipart/form-data')){
@@ -11625,6 +11627,16 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
                 var f = Roo.lib.Ajax.serializeForm(form);
                 p = p ? (p + '&' + f) : f;
             }
+            
+            if (!o.form && o.formData) {
+                o.formData = o.formData === true ? new FormData() : o.formData;
+                for (var k in o.params) {
+                    o.formData.append(k,o.params[k]);
+                }
+                    
+                return this.doFormDataUpload(o, url);
+            }
+            
 
             var hs = o.headers;
             if(this.defaultHeaders){
@@ -11802,11 +11814,17 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
     // this is a 'formdata version???'
     
     
-    doFormDataUpload : function(o, ps, url)
+    doFormDataUpload : function(o,  url)
     {
-        var form = Roo.getDom(o.form);
-        form.enctype = form.encoding = 'multipart/form-data';
-        var formData = o.formData === true ? new FormData(form) : o.formData;
+        var formData;
+        if (o.form) {
+            var form =  Roo.getDom(o.form);
+            form.enctype = form.encoding = 'multipart/form-data';
+            formData = o.formData === true ? new FormData(form) : o.formData;
+        } else {
+            formData = o.formData === true ? new FormData() : o.formData;
+        }
+        
       
         var cb = {
             success: this.handleResponse,
@@ -11826,7 +11844,7 @@ Roo.extend(Roo.data.Connection, Roo.util.Observable, {
 
         //Roo.lib.Ajax.defaultPostHeader = null;
         Roo.lib.Ajax.useDefaultHeader = false;
-        this.transId = Roo.lib.Ajax.request( "POST", url, cb, o.formData, o);
+        this.transId = Roo.lib.Ajax.request( "POST", url, cb,  formData, o);
         Roo.lib.Ajax.useDefaultHeader = true;
  
          

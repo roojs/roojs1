@@ -113,12 +113,14 @@ if(opt.anim.isAnimated()){
 
     El.prototype = {
         /**
-         * The element's default display mode  (defaults to "")
+         * The element's default display mode  (defaults to "") 
          * @type String
          */
         originalDisplay : "",
 
-        visibilityMode : 1,
+        
+        // note this is overridden in BS version..
+        visibilityMode : 1, 
         /**
          * The default unit to append to CSS values where a unit isn't provided (defaults to px).
          * @type String

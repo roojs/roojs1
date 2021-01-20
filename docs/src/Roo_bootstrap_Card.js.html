@@ -14,6 +14,7 @@
  * @cfg {String} header_image  src url of image.
  * @cfg {String|Object} header
  * @cfg {Number} header_size (0|1|2|3|4|5) H1 or H2 etc.. 0 indicates default
+ * @cfg {Number} header_weight  (primary|secondary|success|info|warning|danger|light|dark)
  * 
  * @cfg {String} title
  * @cfg {String} subtitle
@@ -31,7 +32,7 @@
  * @cfg {String} margin_y (0|1|2|3|4|5|auto)
  *
  * @cfg {String} padding (0|1|2|3|4|5)
- * @cfg {String} padding_top (0|1|2|3|4|5)
+ * @cfg {String} padding_top (0|1|2|3|4|5)next_to_card
  * @cfg {String} padding_bottom (0|1|2|3|4|5)
  * @cfg {String} padding_left (0|1|2|3|4|5)
  * @cfg {String} padding_right (0|1|2|3|4|5)
@@ -67,11 +68,13 @@
         /**
          * @event drop
          * When a element a card is dropped
-         * @param {Roo.bootstrap.Element} this
-         * @param {Roo.Element} n the node being dropped?
-         * @param {Object} dd Drag and drop data
-         * @param {Roo.EventObject} e
-         * @param {Roo.EventObject} data  the data passed via getDragData
+         * @param {Roo.bootstrap.Card} this
+         *
+         * 
+         * @param {Roo.bootstrap.Card} move_card the card being dropped?
+         * @param {String} position 'above' or 'below'
+         * @param {Roo.bootstrap.Card} next_to_card What card position is relative to of 'false' for empty list.
+        
          */
         </span><span class="jsdoc-string">'drop' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
          </span><span class="jsdoc-comment">/**
@@ -133,6 +136,10 @@
     </span><span class="jsdoc-var">drop_group </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">childContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">dropEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">/// the dom placeholde element that indicates drop location.
+    </span><span class="jsdoc-var">containerEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// body container
+    </span><span class="jsdoc-var">bodyEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// card-body
+    </span><span class="jsdoc-var">headerContainerEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//
+    </span><span class="jsdoc-var">headerEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">layoutCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -152,7 +159,7 @@
 
         [</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xl'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'display' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'_' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">])</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' d' </span><span class="jsdoc-syntax">+  (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'margin' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'_' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">]
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' d' </span><span class="jsdoc-syntax">+  (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'display' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'_' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">]
             }
         });
 
@@ -205,14 +212,14 @@
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.layoutCls</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.layoutCls</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hdr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hdr_ctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">hdr </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header_size </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-string">'h' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.header_size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.header_weight </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.header_weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
             };
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hdr</span><span class="jsdoc-syntax">);
@@ -220,7 +227,7 @@
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">hdr </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header d-none'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-header d-none ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.header_weight </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.header_weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
             };
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hdr</span><span class="jsdoc-syntax">);
@@ -362,8 +369,8 @@
 
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-
-        </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getChildContainer</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.card-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.containerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getChildContainer</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dragable</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.dragZone </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.dd.DragZone</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getEl</span><span class="jsdoc-syntax">(), {
                     </span><span class="jsdoc-var">containerScroll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
@@ -393,7 +400,8 @@
 
         </span><span class="jsdoc-var">this.footerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.card-footer'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.collapsableToggleEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-collapse-toggle'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.headerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-card-header-ctr'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.headerContainerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-card-header-ctr'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.headerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.card-header'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rotated</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-card-rotated'</span><span class="jsdoc-syntax">);
@@ -430,7 +438,7 @@
     </span><span class="jsdoc-var">getTargetFromEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dragged_card_el</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) &amp;&amp; (</span><span class="jsdoc-var">target.parentNode </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">)) {
+        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) &amp;&amp; (</span><span class="jsdoc-var">target.parentNode </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.containerEl.dom</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.parentNode</span><span class="jsdoc-syntax">;
         }
 
@@ -542,22 +550,50 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">info </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-var">this.dropPlaceHolder</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;drop&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+
+
+
+
+        </span><span class="jsdoc-var">this.acceptCard</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.source</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">info.position</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">info.card</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">info.items_n</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+
+    },
+    </span><span class="jsdoc-var">firstChildCard </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.el.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'card'</span><span class="jsdoc-syntax">)) {
+                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.items.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">-1] : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// don't try and put stuff after the cards...
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-comment">/**
+     * accept card
+     *
+     * -        card.acceptCard(move_card, info.position, info.card, info.items_n);
+     */
+    </span><span class="jsdoc-var">acceptCard </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">move_card</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;drop&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">move_card</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">next_to_card</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-var">this.dropPlaceHolder</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">to_items_n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.items.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">next_to_card</span><span class="jsdoc-syntax">) : 0;
 
-        </span><span class="jsdoc-comment">// do the dom manipulation first..
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.source.el.dom</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">dom.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">move_card.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeCard</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">move_card</span><span class="jsdoc-syntax">);
 
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">info.card </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cardel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">info.card.el.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">move_card.el.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">dom.style.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// clear with - which is set by drag.
 
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">info.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'above'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">next_to_card </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">next_to_card.el.dom.parentNode</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cardel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">next_to_card.el.dom</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'above' </span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">cardel.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cardel</span><span class="jsdoc-syntax">);
             } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cardel.nextSibling</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">cardel.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cardel.nextSibling</span><span class="jsdoc-syntax">);
@@ -566,42 +602,49 @@
             }
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-comment">// card container???
-            </span><span class="jsdoc-var">this.bodyEl.dom.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.containerEl.dom.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
         }
 
         </span><span class="jsdoc-comment">//FIXME HANDLE card = true 
 
         // add this to the correct place in items.
 
-
-
         // remove Card from items.
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">old_parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.source.parent</span><span class="jsdoc-syntax">();
-
-        </span><span class="jsdoc-var">old_parent.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">old_parent.items.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">data.source </span><span class="jsdoc-syntax">});
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
             </span><span class="jsdoc-comment">//Roo.log([info.items_n, info.position, this.items.length]);
             </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.items.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">info.items_n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">info.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'above'</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.source</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">to_items_n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'above'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">move_card</span><span class="jsdoc-syntax">);
                 }
                 </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">info.items_n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">info.position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'below'</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.source</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">to_items_n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">position </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'below'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">move_card</span><span class="jsdoc-syntax">);
                 }
             }
             </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">);
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">this.items.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.source</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.items.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">move_card</span><span class="jsdoc-syntax">);
         }
 
-        </span><span class="jsdoc-var">data.source.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">move_card.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+
+
+    },
+    </span><span class="jsdoc-var">removeCard </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">});
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.el.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">dom.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">dom.style.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// clear with - which is set by drag.
+        </span><span class="jsdoc-var">c.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
     },
 
     </span><span class="jsdoc-comment">/**    Decide whether to drop above or below a View node. */
@@ -610,7 +653,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dd</span><span class="jsdoc-syntax">) {
              </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.containerEl.dom</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;above&quot;</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">n.offsetHeight</span><span class="jsdoc-syntax">;
@@ -662,7 +705,7 @@
     </span><span class="jsdoc-var">dropPlaceHolder</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">action</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">info</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dropEl </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.dropEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">, {
+            </span><span class="jsdoc-var">this.dropEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.containerEl</span><span class="jsdoc-syntax">, {
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d-none'
             </span><span class="jsdoc-syntax">},</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         }
@@ -687,7 +730,7 @@
             }
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-comment">// card container???
-            </span><span class="jsdoc-var">this.bodyEl.dom.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dropEl.dom</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.containerEl.dom.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dropEl.dom</span><span class="jsdoc-syntax">);
         }
 
         </span><span class="jsdoc-var">this.dropEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-block roo-card-dropzone'</span><span class="jsdoc-syntax">);
@@ -701,7 +744,7 @@
     },
     </span><span class="jsdoc-var">setHeaderText</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">this.headerEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.headerContainerEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
     }
 
 

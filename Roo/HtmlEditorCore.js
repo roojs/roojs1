@@ -160,10 +160,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 st = '<style type="text/css">' +
                     'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
                    '</style>';
-        } else { 
-            st = '<style type="text/css">' +
-                    this.stylesheets +
-                '</style>';
+        } else {
+            for (var i in this.stylesheets) { 
+                st += '<link rel="stylesheet" href="' + this.stylesheets[i] +'" type="text/css">';
+            }
+            
         }
         
         st +=  '<style type="text/css">' +
@@ -1087,6 +1088,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 return;
             }
             if (v.match(/^#/)) {
+                return;
+            }
+            if (v.match(/^\{/)) { // allow template editing.
                 return;
             }
 //            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);

@@ -27,6 +27,7 @@
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
+ * @cfg {String}    style  Extra style to add to the content panel 
 
  * @constructor
  * Create a new ContentPanel.
@@ -64,6 +65,8 @@ Roo.ContentPanel = function(el, config, content){
                         {tag: "div", cls: "x-layout-inactive-content", id: config.id||el}, true);
         }
     }
+    
+    
     this.closable = false;
     this.loaded = false;
     this.active = false;

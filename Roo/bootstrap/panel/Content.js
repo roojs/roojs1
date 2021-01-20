@@ -28,6 +28,8 @@
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
  * @cfg {Boolean} badges render the badges
+ * @cfg {String} cls  extra classes to use  
+ * @cfg {String} background (primary|secondary|success|info|warning|danger|light|dark)
 
  * @constructor
  * Create a new ContentPanel.
@@ -55,10 +57,13 @@ Roo.bootstrap.panel.Content = function( config){
             this.el = Roo.DomHelper.append(document.body,
                         config.autoCreate, true);
         }else{
-            var elcfg =  {   tag: "div",
-                            cls: "roo-layout-inactive-content",
-                            id: config.id||el
-                            };
+            var elcfg =  {
+                tag: "div",
+                cls: (config.cls || '') +
+                    (config.background ? ' bg-' + config.background : '') +
+                    " roo-layout-inactive-content",
+                id: config.id||el
+            };
             if (config.html) {
                 elcfg.html = config.html;
                 
@@ -193,6 +198,9 @@ Roo.bootstrap.panel.Content = function( config){
 };
 
 Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
+    
+    cls : '',
+    background : '',
     
     tabTip : '',
     

@@ -1,12 +1,10 @@
-// Roo.ux.Showdown.toHtml(Roo.util.Format.htmlEncode(this.getValue())))
-
-
+ 
 /*
  * - LGPL
  */
 
 /**
- * @class Roo.bootstrap.Showdown
+ * @class Roo.bootstrap.Markdown
  * @extends Roo.bootstrap.TextArea
  * Bootstrap Showdown editable area
  * @cfg {string} content
@@ -32,7 +30,12 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
             cls : 'roo-markdown-area'
         });
         this.inputEl().addClass('d-none');
-        this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(this.getValue()));
+        if (this.getValue() == '') {
+            this.markdownEl.dom.innerHTML = String.format('<span class="roo-placeholder">{0}</span>', this.placeholder || '');
+            
+        } else {
+            this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(this.getValue()));
+        }
         this.markdownEl.on('click', this.toggleTextEdit, this);
         this.on('blur', this.toggleTextEdit, this);
         this.on('specialkey', this.resizeTextArea, this);
@@ -60,9 +63,10 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
     updateMarkdown : function()
     {
         if (this.getValue() == '') {
-            this.markdownEl.dom.innerHTML = String.format('<span class="roo-placeholder">{0}</span>', this.placeholder);
+            this.markdownEl.dom.innerHTML = String.format('<span class="roo-placeholder">{0}</span>', this.placeholder || '');
             return;
         }
+ 
         this.markdownEl.dom.innerHTML = Roo.Markdown.toHtml(Roo.util.Format.htmlEncode(this.getValue()));
     },
     
@@ -77,6 +81,13 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
         Roo.bootstrap.TextArea.prototype.setValue.call(this,val);
         if (!this.editing) {
             this.updateMarkdown();
+        }
+        
+    },
+    focus : function()
+    {
+        if (!this.editing) {
+            this.toggleTextEdit();
         }
         
     }

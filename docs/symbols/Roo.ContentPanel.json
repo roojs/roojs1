@@ -110,6 +110,13 @@
       "optvals" : []
     },
     {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "Extra style to add to the content panel",
+      "memberOf" : "Roo.ContentPanel",
+      "optvals" : []
+    },
+    {
       "name" : "autoCreate",
       "type" : "Boolean/Object",
       "desc" : "True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create",

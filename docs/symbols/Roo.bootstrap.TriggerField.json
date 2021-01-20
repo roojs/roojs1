@@ -58,6 +58,13 @@
       ]
     },
     {
+      "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+      "type" : "String",
+      "desc" : "inputType",
+      "memberOf" : "Roo.bootstrap.Input",
+      "optvals" : []
+    },
+    {
       "name" : "xs",
       "type" : "Number",
       "desc" : "colspan out of 12 for mobile-sized screens",
@@ -316,13 +323,6 @@
         "search",
         "calendar"
       ]
-    },
-    {
-      "name" : "inputType",
-      "type" : "String",
-      "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
     },
     {
       "name" : "invalidClass",

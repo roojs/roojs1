@@ -28,6 +28,8 @@
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
  * @cfg {Boolean} badges render the badges
+ * @cfg {String} cls  extra classes to use  
+ * @cfg {String} background (primary|secondary|success|info|warning|danger|light|dark)
 
  * @constructor
  * Create a new ContentPanel.
@@ -55,10 +57,13 @@
             </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">config.autoCreate</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">elcfg </span><span class="jsdoc-syntax">=  {   </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo-layout-inactive-content&quot;</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.id</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">el
-                            </span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">elcfg </span><span class="jsdoc-syntax">=  {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">config.cls </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) +
+                    (</span><span class="jsdoc-var">config.background </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' bg-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.background </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) +
+                    </span><span class="jsdoc-string">&quot; roo-layout-inactive-content&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.id</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">el
+            </span><span class="jsdoc-syntax">};
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.html</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">elcfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.html</span><span class="jsdoc-syntax">;
 
@@ -193,6 +198,9 @@
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.panel.Content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">background </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">tabTip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
 

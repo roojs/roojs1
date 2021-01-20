@@ -3,13 +3,15 @@
  *
  */
 
-</span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">= (
-        </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">=3;
-                </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.styleSheets</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">s.href  </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">s.href.match</span><span class="jsdoc-syntax">(/css-bootstrap4/)) {
-                        </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">=4;
-                    }
-                });
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+</span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">= ( </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">=3;
+    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.styleSheets</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">s.href  </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">s.href.match</span><span class="jsdoc-syntax">(/css-bootstrap4/)) {
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">=4;
+        }
+    });
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">&gt; 3) {
+         </span><span class="jsdoc-var">Roo.Element.prototype.visibilityMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
 })(); </span></code></body></html>

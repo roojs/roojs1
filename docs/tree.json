@@ -541,6 +541,11 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.bootstrap.Markdown",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.bootstrap.MasonryBrick",
             "cn" : [],
             "is_class" : true
@@ -781,6 +786,22 @@
             "name" : "Roo.bootstrap.UploadCropbox",
             "cn" : [],
             "is_class" : true
+          },
+          {
+            "name" : "Roo.bootstrap.breadcrumb",
+            "cn" : [
+              {
+                "name" : "Roo.bootstrap.breadcrumb.Item",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.breadcrumb.Nav",
+                "cn" : [],
+                "is_class" : true
+              }
+            ],
+            "is_class" : false
           },
           {
             "name" : "Roo.bootstrap.dash",

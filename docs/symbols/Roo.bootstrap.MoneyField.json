@@ -312,6 +312,13 @@
       ]
     },
     {
+      "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
+      "type" : "String",
+      "desc" : "inputType",
+      "memberOf" : "Roo.bootstrap.Input",
+      "optvals" : []
+    },
+    {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
@@ -668,13 +675,6 @@
       "optvals" : []
     },
     {
-      "name" : "inputType",
-      "type" : "String",
-      "desc" : "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
-    },
-    {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
@@ -724,6 +724,13 @@
       "type" : "string",
       "desc" : "- (lg|sm) or leave empty..",
       "memberOf" : "Roo.bootstrap.Input",
+      "optvals" : []
+    },
+    {
+      "name" : "width",
+      "type" : "Number",
+      "desc" : "fixed with? experimental",
+      "memberOf" : "Roo.bootstrap.ComboBox",
       "optvals" : []
     },
     {
