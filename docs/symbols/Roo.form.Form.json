@@ -922,6 +922,26 @@
       ]
     },
     {
+      "name" : "invalidFields",
+      "desc" : "Returns array of invalid form fields.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.form.BasicForm",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "",
+          "desc" : "Array"
+        }
+      ]
+    },
+    {
       "name" : "applyIfToFields",
       "desc" : "Calls {@link Ext#applyIf} for all field in this form with the passed object.",
       "isStatic" : false,

@@ -75134,6 +75134,14 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "invalidFields",
+        "type" : "function",
+        "desc" : "Returns array of invalid form fields.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "isDirty",
         "type" : "function",
         "desc" : "DEPRICATED Returns true if any fields in this form have changed since their original load.",
@@ -85414,6 +85422,14 @@
         "sig" : "(eventName)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "invalidFields",
+        "type" : "function",
+        "desc" : "Returns array of invalid form fields.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.form.BasicForm"
       },
       {
         "name" : "isDirty",

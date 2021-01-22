@@ -178,6 +178,25 @@
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">valid</span><span class="jsdoc-syntax">;
     },
+    </span><span class="jsdoc-comment">/**
+     * Returns array of invalid form fields.
+     * @return Array
+     */
+
+    </span><span class="jsdoc-var">invalidFields </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.validate</span><span class="jsdoc-syntax">()){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">ret.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">);
+
+        });
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+    },
+
 
     </span><span class="jsdoc-comment">/**
      * DEPRICATED Returns true if any fields in this form have changed since their original load. 

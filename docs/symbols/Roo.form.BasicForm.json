@@ -507,6 +507,26 @@
       ]
     },
     {
+      "name" : "invalidFields",
+      "desc" : "Returns array of invalid form fields.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.form.BasicForm",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "",
+          "desc" : "Array"
+        }
+      ]
+    },
+    {
       "name" : "render",
       "desc" : "Looks at the fields in this form, checks them for an id attribute,\nand calls applyTo on the existing dom element with that id.",
       "isStatic" : false,
