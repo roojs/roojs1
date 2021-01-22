@@ -47559,7 +47559,26 @@ Roo.extend(Roo.form.BasicForm, Roo.util.Observable, {
         
         return valid;
     },
-
+    /**
+     * Returns array of invalid form fields.
+     * @return Array
+     */
+    
+    invalidFields : function()
+    {
+        var ret = [];
+        this.items.each(function(f){
+            if(f.validate()){
+                return;
+            }
+            ret.push(f);
+            
+        });
+        
+        return ret;
+    },
+    
+    
     /**
      * DEPRICATED Returns true if any fields in this form have changed since their original load. 
      * @return Boolean
