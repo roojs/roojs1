@@ -304,11 +304,9 @@ Roo.apply(Roo.bootstrap.Popover, {
     onMouseDown : function(e)
     {
         if (!e.getTarget(".roo-popup")) {
-            
+            this.hideAll();
         }
         
-        this.popups.each(function(p) {
-            p.hide()); })
         
     },
     
