@@ -19879,12 +19879,45 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
 });
 
-Roo.bootstrap.Popover.alignment = {
-    'left' : ['r-l', [-10,0], 'right bs-popover-right'],
-    'right' : ['l-r', [10,0], 'left bs-popover-left'],
-    'bottom' : ['t-b', [0,10], 'top bs-popover-top'],
-    'top' : [ 'b-t', [0,-10], 'bottom bs-popover-bottom']
-};
+
+Roo.apply(Roo.bootstrap.Popover, {
+
+    alignment : {
+        'left' : ['r-l', [-10,0], 'right bs-popover-right'],
+        'right' : ['l-r', [10,0], 'left bs-popover-left'],
+        'bottom' : ['t-b', [0,10], 'top bs-popover-top'],
+        'top' : [ 'b-t', [0,-10], 'bottom bs-popover-bottom']
+    },
+
+    clickHander : false,
+    
+
+    onMouseDown : function(e)
+    {
+        if (!e.getTarget(".roo-popup")) {
+            this.hideAll();
+        }
+        
+        
+    },
+    
+    popups : [],
+    
+    register : function(popup)
+    {
+        if (this.clickHandler === false) {
+            this.clickHandler = Roo.get(document).un("mousedown", this.onMouseDown, this);
+        }
+        // hide other popups.
+        this.hideAll();
+        this.popups.push(popup);
+    },
+    hideAll : function()
+    {
+        this.popups.each(function(p) {
+            p.hide());
+        })
+    }
 
  /*
  * - LGPL

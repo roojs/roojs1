@@ -821,8 +821,9 @@ return;}var _t=this;this.timeout=setTimeout(function(){if(_t.hoverState=='out'){
 if(this.html!==false){this.el.select('.popover-content',true).first().dom.innerHtml=this.html;}this.el.removeClass(['fade','top','bottom','left','right','in','bs-popover-top','bs-popover-bottom','bs-popover-left','bs-popover-right']);if(!this.title.length){this.el.select('.popover-title',true).hide();
 }var B=typeof this.placement=='function'?this.placement.call(this,this.el,A):this.placement;var C=/\s?auto?\s?/i;var D=C.test(B);if(D){B=B.replace(C,'')||'top';}this.el.show();this.el.dom.style.display='block';var p=this.getPosition();var E=this.el.getBox();
 if(D){}var F=Roo.bootstrap.Popover.alignment[B];this.el.addClass(F[2]);this.el.alignTo(A,F[0],F[1]);this.el.addClass('in');if(this.el.hasClass('fade')){}this.hoverState='in';this.fireEvent('show',this);},hide:function(){this.el.setXY([0,0]);this.el.removeClass('in');
-this.el.hide();this.hoverState=null;this.fireEvent('hide',this);}});Roo.bootstrap.Popover.alignment={'left':['r-l',[-10,0],'right bs-popover-right'],'right':['l-r',[10,0],'left bs-popover-left'],'bottom':['t-b',[0,10],'top bs-popover-top'],'top':['b-t',[0,-10],'bottom bs-popover-bottom']}
-;
+this.el.hide();this.hoverState=null;this.fireEvent('hide',this);}});Roo.apply(Roo.bootstrap.Popover,{alignment:{'left':['r-l',[-10,0],'right bs-popover-right'],'right':['l-r',[10,0],'left bs-popover-left'],'bottom':['t-b',[0,10],'top bs-popover-top'],'top':['b-t',[0,-10],'bottom bs-popover-bottom']}
+,clickHander:false,onMouseDown:function(e){if(!e.getTarget(".roo-popup")){this.hideAll();}},popups:[],register:function(popup){if(this.clickHandler===false){this.clickHandler=Roo.get(document).un("mousedown",this.onMouseDown,this);}this.hideAll();this.popups.push(popup);
+},hideAll:function(){this.popups.each(function(p){p.hide());})}
 // Roo/bootstrap/Progress.js
 Roo.bootstrap.Progress=function(A){Roo.bootstrap.Progress.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Progress,Roo.bootstrap.Component,{striped:false,active:false,getAutoCreate:function(){var A={tag:'div',cls:'progress'};if(this.striped){A.cls+=' progress-striped';
 }if(this.active){A.cls+=' active';}return A;}});
