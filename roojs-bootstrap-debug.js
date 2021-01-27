@@ -19738,10 +19738,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         if (this.triggers === false) {
             return;
         }
-        
-        if (this.over === false) {
-            return;
-        }
+         
         
         var on_el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
         var triggers = this.trigger ? this.trigger.split(' ') : [];
