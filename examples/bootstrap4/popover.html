@@ -30,6 +30,10 @@
   </body>
     <script type="text/javascript">
        Roo.onReady(function() {
+          var  e = Roo.get("bootstrap-body");
+          if (!e) {
+             return;
+          }
           Pman.Popover.FileTest.show(Roo.get("bootstrap-body"));
       });
 
