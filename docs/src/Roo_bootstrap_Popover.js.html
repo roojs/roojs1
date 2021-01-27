@@ -11,7 +11,7 @@
  * Bootstrap Popover class
  * @cfg {String} html contents of the popover   (or false to use children..)
  * @cfg {String} title of popover (or false to hide)
- * @cfg {String} placement how it is placed
+ * @cfg {String|function} (right|top|bottom|left|auto) placement how it is placed
  * @cfg {String} trigger click || hover (or false to trigger manually)
  * @cfg {String} over what (parent or false to trigger manually.)
  * @cfg {Number} delay - delay before showing
@@ -119,6 +119,20 @@
             </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
 </span><span class="jsdoc-comment">//            Roo.log(this.el);
         </span><span class="jsdoc-syntax">}
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])));
+            }
+        }
+
+        </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
+
+
         </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
     },
 
@@ -200,6 +214,10 @@
             </span><span class="jsdoc-var">on_el</span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.over </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'parent'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.over</span><span class="jsdoc-syntax">);
         }
 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">();
+        }
+
         </span><span class="jsdoc-comment">// set content.
         </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.popover-title'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHtml </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.title</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
@@ -227,7 +245,6 @@
         //this.el.setXY([0,0]);
         </span><span class="jsdoc-var">this.el.show</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.el.dom.style.display</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-comment">//this.el.appendTo(on_el);
 
@@ -238,6 +255,7 @@
             </span><span class="jsdoc-comment">// fixme..
         </span><span class="jsdoc-syntax">}
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Popover.alignment</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[2]);
 
 </span><span class="jsdoc-comment">//        Roo.log(align);
         </span><span class="jsdoc-var">this.el.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">on_el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[0],</span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[1]);

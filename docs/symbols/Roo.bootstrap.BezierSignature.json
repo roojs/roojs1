@@ -29,58 +29,58 @@
       "type" : "function",
       "desc" : "when stroke begin.",
       "memberOf" : "Roo.bootstrap.BezierSignature",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "Radius",
       "type" : "float|function",
       "desc" : "of a single dot.",
       "memberOf" : "Roo.bootstrap.BezierSignature",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "canvas",
       "type" : "int",
       "desc" : "height",
       "memberOf" : "Roo.bootstrap.BezierSignature",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "Add",
       "type" : "integer",
       "desc" : "the next point only if the previous one is farther than x pixels. Defaults to 5.",
       "memberOf" : "Roo.bootstrap.BezierSignature",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-        "el",
-        "parent"
+      "values" : [
+        "(el",
+        "parent)"
       ]
     },
     {
@@ -88,23 +88,23 @@
       "type" : "float",
       "desc" : "used to modify new velocity based on the previous velocity. Defaults to 0.7.",
       "memberOf" : "Roo.bootstrap.BezierSignature",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
+      "values" : [
+        "(display",
+        "visibility)"
       ]
     },
     {
@@ -112,84 +112,84 @@
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "Draw",
       "type" : "integer",
       "desc" : "the next point at most once per every x milliseconds. Set it to 0 to turn off throttling. Defaults to 16.",
       "memberOf" : "Roo.bootstrap.BezierSignature",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "Color",
       "type" : "string",
       "desc" : "used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to \"black\".",
       "memberOf" : "Roo.bootstrap.BezierSignature",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "Minimum",
       "type" : "float",
       "desc" : "width of a line. Defaults to 0.5.",
       "memberOf" : "Roo.bootstrap.BezierSignature",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "Maximum",
       "type" : "float",
       "desc" : "width of a line. Defaults to 2.5.",
       "memberOf" : "Roo.bootstrap.BezierSignature",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     }
   ],
   "methods" : [

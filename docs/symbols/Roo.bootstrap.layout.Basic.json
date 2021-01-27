@@ -20,28 +20,28 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "skipConfig",
       "type" : "bool",
       "desc" : "skip config?",
       "memberOf" : "Roo.bootstrap.layout.Basic",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "region",
       "type" : "string",
       "desc" : "the region that it inhabits..",
       "memberOf" : "Roo.bootstrap.layout.Basic",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "mgr",
       "type" : "Roo.bootstrap.layout.Manager",
       "desc" : "The manager",
       "memberOf" : "Roo.bootstrap.layout.Basic",
-      "optvals" : []
+      "values" : []
     }
   ],
   "methods" : [

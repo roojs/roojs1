@@ -27,11 +27,11 @@
     {
       "name" : "isLink",
       "type" : "bool",
-      "desc" : "e)  the menu has link disable auto expand and collaspe (default false)",
+      "desc" : "the menu has link disable auto expand and collaspe (default false)",
       "memberOf" : "Roo.bootstrap.Menu",
-      "optvals" : [
-        "true",
-        "false"
+      "values" : [
+        "(true",
+        "false)"
       ]
     },
     {
@@ -39,30 +39,30 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-        "el",
-        "parent"
+      "values" : [
+        "(el",
+        "parent)"
       ]
     },
     {
@@ -70,33 +70,33 @@
       "type" : "bool",
       "desc" : "if the menu should be hidden when rendered.",
       "memberOf" : "Roo.bootstrap.Menu",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
+      "values" : [
+        "(display",
+        "visibility)"
       ]
     },
     {
       "name" : "stopEvent",
       "type" : "bool",
-      "desc" : "e)  Stop event after trigger press (default true)",
+      "desc" : "Stop event after trigger press (default true)",
       "memberOf" : "Roo.bootstrap.Menu",
-      "optvals" : [
-        "true",
-        "false"
+      "values" : [
+        "(true",
+        "false)"
       ]
     },
     {
@@ -104,59 +104,59 @@
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "registerMenu",
       "type" : "Boolean",
       "desc" : "True (default) - means that clicking on screen etc. hides it.",
       "memberOf" : "Roo.bootstrap.Menu",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "type",
       "type" : "String",
-      "desc" : "u) type of menu",
+      "desc" : "type of menu",
       "memberOf" : "Roo.bootstrap.Menu",
-      "optvals" : [
-        "dropdown",
+      "values" : [
+        "(dropdown",
         "treeview",
-        "submenu"
+        "submenu)"
       ]
     },
     {
@@ -164,14 +164,14 @@
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     }
   ],
   "methods" : [

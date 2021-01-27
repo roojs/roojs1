@@ -28,30 +28,30 @@
       "type" : "String",
       "desc" : "Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\")",
       "memberOf" : "Roo.form.Layout",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "hideLabels",
       "type" : "Boolean",
       "desc" : "True to suppress the display of field labels in this layout (defaults to false)",
       "memberOf" : "Roo.form.Layout",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
+      "values" : [
+        "(display",
+        "visibility)"
       ]
     },
     {
@@ -59,56 +59,56 @@
       "type" : "String/Object/Function",
       "desc" : "A style specification string, e.g. \"width:100px\", or object in the form {width:\"100px\"}, or\na function which returns such a specification.",
       "memberOf" : "Roo.form.Layout",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "labelWidth",
       "type" : "Number",
       "desc" : "Fixed width in pixels of all field labels (defaults to undefined)",
       "memberOf" : "Roo.form.Layout",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "labelSeparator",
       "type" : "String",
       "desc" : "The separator to use after field labels (defaults to ':')",
       "memberOf" : "Roo.form.Layout",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec used to autocreate the layout (defaults to {tag: 'div', cls: 'x-form-ct'})",
       "memberOf" : "Roo.form.Layout",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "clear",
       "type" : "Boolean",
       "desc" : "True to add a clearing element at the end of this layout, equivalent to CSS clear: both (defaults to true)",
       "memberOf" : "Roo.form.Layout",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     }
   ],
   "methods" : [

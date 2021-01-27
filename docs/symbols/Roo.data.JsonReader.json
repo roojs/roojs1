@@ -33,35 +33,35 @@
       "type" : "String",
       "desc" : "Name of the property within a row object that contains a record identifier value.",
       "memberOf" : "Roo.data.JsonReader",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "fields",
       "type" : "Array",
       "desc" : "Array of field definition objects",
       "memberOf" : "Roo.data.JsonReader",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "root",
       "type" : "String",
       "desc" : "name of the property which contains the Array of row objects.",
       "memberOf" : "Roo.data.JsonReader",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "successProperty",
       "type" : "String",
       "desc" : "Name of the property from which to retrieve the success attribute used by forms.",
       "memberOf" : "Roo.data.JsonReader",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "totalProperty",
       "type" : "String",
       "desc" : "Name of the property from which to retrieve the total number of records\nin the dataset. This is only needed if the whole dataset is not passed in one go, but is being\npaged from the remote server.",
       "memberOf" : "Roo.data.JsonReader",
-      "optvals" : []
+      "values" : []
     }
   ],
   "methods" : [

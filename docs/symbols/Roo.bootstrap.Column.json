@@ -29,47 +29,47 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "md",
       "type" : "Number",
       "desc" : "colspan out of 12 for computer-sized screens or 0 for hidden",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-        "el",
-        "parent"
+      "values" : [
+        "(el",
+        "parent)"
       ]
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
-      "desc" : "e) hide the element",
+      "desc" : "hide the element",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : [
-        "true",
-        "false"
+      "values" : [
+        "(true",
+        "false)"
       ]
     },
     {
@@ -77,16 +77,16 @@
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
+      "values" : [
+        "(display",
+        "visibility)"
       ]
     },
     {
@@ -94,106 +94,106 @@
       "type" : "Number",
       "desc" : "colspan out of 12 for large computer-sized screens or 0 for hidden",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "xs",
       "type" : "Number",
       "desc" : "colspan out of 12 for mobile-sized screens or 0 for hidden",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "xsoff",
       "type" : "Number",
       "desc" : "colspan offset out of 12 for mobile-sized screens or 0 for hidden",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "smoff",
       "type" : "Number",
       "desc" : "colspan offset out of 12 for tablet-sized screens or 0 for hidden",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "mdoff",
       "type" : "Number",
       "desc" : "colspan offset out of 12 for computer-sized screens or 0 for hidden",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "lgoff",
       "type" : "Number",
       "desc" : "colspan offset out of 12 for large computer-sized screens or 0 for hidden",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "content of column.",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "icon",
       "type" : "String",
-      "desc" : ".) glyphicon name",
+      "desc" : "glyphicon name",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : [
-        "info-sign",
+      "values" : [
+        "(info-sign",
         "check",
-        "..."
+        "...)"
       ]
     },
     {
       "name" : "alert",
       "type" : "String",
-      "desc" : "r) type alert (changes background / border...)",
+      "desc" : "type alert (changes background / border...)",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : [
-        "success",
+      "values" : [
+        "(success",
         "info",
         "warning",
-        "danger"
+        "danger)"
       ]
     },
     {
@@ -201,28 +201,28 @@
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "fa",
       "type" : "String",
-      "desc" : ".) font awesome icon",
+      "desc" : "font awesome icon",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : [
-        "ban",
+      "values" : [
+        "(ban",
         "check",
-        "..."
+        "...)"
       ]
     },
     {
       "name" : "fasize",
       "type" : "Number",
-      "desc" : ".) font awsome size",
+      "desc" : "font awsome size",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : [
-        "1",
+      "values" : [
+        "(1",
         "2",
-        "...."
+        "....)"
       ]
     },
     {
@@ -230,21 +230,21 @@
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "sm",
       "type" : "Number",
       "desc" : "colspan out of 12 for tablet-sized screens or 0 for hidden",
       "memberOf" : "Roo.bootstrap.Column",
-      "optvals" : []
+      "values" : []
     }
   ],
   "methods" : [
