@@ -138,6 +138,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
+        
+        Roo.bootstrap.Popover.register(this);
         this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
         this.el.enableDisplayMode('block');
         this.el.hide();
@@ -323,8 +325,8 @@ Roo.apply(Roo.bootstrap.Popover, {
     hideAll : function()
     {
         this.popups.each(function(p) {
-            p.hide());
-        })
+            p.hide();
+        });
     }
 
- 
+});
