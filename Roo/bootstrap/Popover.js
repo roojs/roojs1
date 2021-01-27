@@ -120,7 +120,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
 //            Roo.log(this.el);
         }
         
-        
+        var nitems = [];
         if(typeof(this.items) != 'undefined'){
             var items = this.items;
             delete this.items;
