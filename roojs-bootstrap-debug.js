@@ -19897,8 +19897,7 @@ Roo.apply(Roo.bootstrap.Popover, {
         if (!e.getTarget(".roo-popup")) {
             this.hideAll();
         }
-        
-        
+         
     },
     
     popups : [],
