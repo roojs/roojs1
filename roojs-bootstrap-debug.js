@@ -19602,7 +19602,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
  * Bootstrap Popover class
  * @cfg {String} html contents of the popover   (or false to use children..)
  * @cfg {String} title of popover (or false to hide)
- * @cfg {String|function} (right|top) placement how it is placed
+ * @cfg {String|function} (right|top|bottom|left|auto) placement how it is placed
  * @cfg {String} trigger click || hover (or false to trigger manually)
  * @cfg {String} over what (parent or false to trigger manually.)
  * @cfg {Number} delay - delay before showing
@@ -19836,7 +19836,6 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         //this.el.setXY([0,0]);
         this.el.show();
         this.el.dom.style.display='block';
-        this.el.addClass(placement);
         
         //this.el.appendTo(on_el);
         
@@ -19847,7 +19846,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             // fixme..
         }
         var align = Roo.bootstrap.Popover.alignment[placement];
-        
+        this.el.addClass(align[2]);
+
 //        Roo.log(align);
         this.el.alignTo(on_el, align[0],align[1]);
         //var arrow = this.el.select('.arrow',true).first();
