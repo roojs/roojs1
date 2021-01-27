@@ -19806,7 +19806,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }
         
         if (!this.el) {
-            this.render();
+            this.render(document.body);
         }
         
         // set content.
