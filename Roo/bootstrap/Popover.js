@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     delay : 0,
     
-    over: 'parent',
+    over: false,
     
     can_build_overlaid : false,
     
