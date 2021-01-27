@@ -11,7 +11,7 @@
  * Bootstrap Popover class
  * @cfg {String} html contents of the popover   (or false to use children..)
  * @cfg {String} title of popover (or false to hide)
- * @cfg {String} placement how it is placed
+ * @cfg {String|function} (right|top) placement how it is placed
  * @cfg {String} trigger click || hover (or false to trigger manually)
  * @cfg {String} over what (parent or false to trigger manually.)
  * @cfg {Number} delay - delay before showing
