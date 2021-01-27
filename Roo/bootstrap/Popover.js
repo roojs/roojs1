@@ -314,6 +314,9 @@ Roo.apply(Roo.bootstrap.Popover, {
     
     register : function(popup)
     {
+        if (this.clickHandler = false) {
+            this.clickHandler = Roo.get(document).un("mousedown", this.onMouseDown, this);
+        }
         // hide other popups.
         this.popups.each(function(p) { p.hide()); })
         this.popups.push(popup);
