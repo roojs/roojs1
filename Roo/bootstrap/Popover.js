@@ -119,6 +119,20 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             this.el = Roo.get(document.body).createChild(cfg, position);
 //            Roo.log(this.el);
         }
+        
+        
+        if(typeof(this.items) != 'undefined'){
+            var items = this.items;
+            delete this.items;
+
+            for(var i =0;i < items.length;i++) {
+                nitems.push(this.addxtype(Roo.apply({}, items[i])));
+            }
+        }
+
+        this.items = nitems;
+        
+        
         this.initEvents();
     },
     
