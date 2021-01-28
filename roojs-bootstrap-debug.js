@@ -19816,7 +19816,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             }
         }, this.delay.hide)
     },
-    
+    /**
+     * Show the popover
+     * @param {Roo.Element|string|false} - element to align and point to.
+     */
     show : function (on_el)
     {
         
