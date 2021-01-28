@@ -164,7 +164,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         
         this.contentEl = this.el.select('.popover-content',true).first();
-        this.headerEl =  this.el.select('.popover-header',true).first();
+        this.headerEl =  this.el.select('.popover-title',true).first();
         
         this.initEvents();
     },
