@@ -14,7 +14,8 @@
  * @cfg {String|function} (right|top|bottom|left|auto) placement how it is placed
  * @cfg {String} trigger click || hover (or false to trigger manually)
  * @cfg {String|Boolean|Roo.Element} add click hander to trigger show over what element
- *      - if false|parent, and it has a 'parent' then it will be automatically added to that element
+ *      - if false and it has a 'parent' then it will be automatically added to that element
+ *      - if string - Roo.get  will be called 
  * @cfg {Number} delay - delay before showing
  
  * @constructor
