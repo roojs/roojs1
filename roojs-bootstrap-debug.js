@@ -19683,7 +19683,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                         {
                             tag: 'h3',
                             cls: 'popover-title popover-header',
-                            html : this.title || ''
+                            html : this.title === false ? '' : this.title
                         },
                         {
                             cls : 'popover-content popover-body'  + this.cls,
