@@ -61,16 +61,19 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     can_build_overlaid : false,
     
     maskEl : false, // the mask element
+    headerEl : false,
+    contentEl : false,
+    
     
     getChildContainer : function()
     {
         return this.contentEl;
-        return this.el.select('.popover-content',true).first();
+        
     },
     getPopoverHeader : function()
     {
         return this.headerEl
-    }
+    },
     
     
     getAutoCreate : function(){
@@ -109,7 +112,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     {
         this.title = str;
         if (this.el) {
-            this.el.select('.popover-title',true).first().dom.innerHTML = str;
+            this.headerEl.dom.innerHTML = str;
         }
         
     },
