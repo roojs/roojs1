@@ -166,8 +166,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-         
-        Roo.bootstrap.Popover.register(this);
+        
+        if (!this.modal) { 
+            Roo.bootstrap.Popover.register(this);
+        }
          
         
         this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
