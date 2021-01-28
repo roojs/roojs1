@@ -19604,6 +19604,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
  * @cfg {String} title of popover (or false to hide)
  * @cfg {String|function} (right|top|bottom|left|auto) placement how it is placed
  * @cfg {String} trigger click || hover (or false to trigger manually)
+ * @cfg {Boolean} modal - popovers that are modal will mask the screen, and must be closed with another event.
  * @cfg {String|Boolean|Roo.Element} add click hander to trigger show over what element
  *      - if false and it has a 'parent' then it will be automatically added to that element
  *      - if string - Roo.get  will be called 
@@ -19658,7 +19659,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
          
         var cfg = {
-           cls : 'popover roo-dynamic roo-popover',
+           cls : 'popover roo-dynamic shadow roo-popover',
            style: 'display:block',
            cn : [
                 {

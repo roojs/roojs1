@@ -68,7 +68,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
          
         var cfg = {
-           cls : 'popover roo-dynamic roo-popover',
+           cls : 'popover roo-dynamic shadow roo-popover',
            style: 'display:block',
            cn : [
                 {
