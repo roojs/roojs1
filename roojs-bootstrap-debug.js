@@ -19684,6 +19684,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         return cfg;
     },
+    /**
+     * @param {string} the title
+     */
     setTitle: function(str)
     {
         this.title = str;
@@ -19692,6 +19695,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }
         
     },
+    /**
+     * @param {string} the body content
+     */
     setContent: function(str)
     {
         this.html = str;
@@ -19749,7 +19755,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             return;
         }
          
-        
+        // support parent
         var on_el = (this.over == 'parent' || this.over === false) ? this.parent().el : Roo.get(this.over);
         var triggers = this.trigger ? this.trigger.split(' ') : [];
         Roo.each(triggers, function(trigger) {
