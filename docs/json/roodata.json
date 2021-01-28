@@ -49297,6 +49297,12 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "add",
+        "type" : "String|Boolean|Roo.Element",
+        "desc" : "click hander to trigger show over what element\n     - if false and it has a 'parent' then it will be automatically added to that element\n     - if string - Roo.get  will be called",
+        "memberOf" : ""
+      },
+      {
         "name" : "allowDomMove",
         "type" : "Boolean",
         "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
@@ -49360,16 +49366,16 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "modal",
+        "type" : "Boolean",
+        "desc" : "- popovers that are modal will mask the screen, and must be closed with another event.",
+        "memberOf" : ""
+      },
+      {
         "name" : "name",
         "type" : "string",
         "desc" : "Specifies name attribute",
         "memberOf" : "Roo.bootstrap.Component"
-      },
-      {
-        "name" : "over",
-        "type" : "String",
-        "desc" : "what (parent or false to trigger manually.)",
-        "memberOf" : ""
       },
       {
         "name" : "style",
@@ -49660,12 +49666,28 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "setContent",
+        "type" : "function",
+        "desc" : "",
+        "sig" : "(the)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "setDisabled",
         "type" : "function",
         "desc" : "Convenience function for setting disabled/enabled by boolean.",
         "sig" : "(disabled)",
         "static" : false,
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "setTitle",
+        "type" : "function",
+        "desc" : "",
+        "sig" : "(the)",
+        "static" : false,
+        "memberOf" : ""
       },
       {
         "name" : "setVisibilityEl",
@@ -49686,10 +49708,10 @@
       {
         "name" : "show",
         "type" : "function",
-        "desc" : "Show a component - removes 'hidden' class",
-        "sig" : "()\n{\n\n}",
+        "desc" : "Show the popover",
+        "sig" : "(-)",
         "static" : false,
-        "memberOf" : "Roo.bootstrap.Component"
+        "memberOf" : ""
       },
       {
         "name" : "tooltipEl",
