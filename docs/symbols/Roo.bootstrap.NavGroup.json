@@ -25,6 +25,13 @@
   "returns" : [],
   "config" : [
     {
+      "name" : "(nav|pills|tab)",
+      "type" : "String",
+      "desc" : "type  default nav",
+      "memberOf" : "Roo.bootstrap.NavGroup",
+      "values" : []
+    },
+    {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -53,16 +60,6 @@
       "values" : [
         "(el",
         "parent)"
-      ]
-    },
-    {
-      "name" : "align",
-      "type" : "String",
-      "desc" : "",
-      "memberOf" : "Roo.bootstrap.NavGroup",
-      "values" : [
-        "(left",
-        "right)"
       ]
     },
     {
@@ -139,15 +136,11 @@
       "values" : []
     },
     {
-      "name" : "type",
+      "name" : "(left|right)",
       "type" : "String",
-      "desc" : "default nav",
+      "desc" : "align",
       "memberOf" : "Roo.bootstrap.NavGroup",
-      "values" : [
-        "(nav",
-        "pills",
-        "tab)"
-      ]
+      "values" : []
     },
     {
       "name" : "name",

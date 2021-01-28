@@ -41854,19 +41854,22 @@
   "Roo.bootstrap.NavGroup" : {
     "props" : [
       {
+        "name" : "(left|right)",
+        "type" : "String",
+        "desc" : "align",
+        "memberOf" : ""
+      },
+      {
+        "name" : "(nav|pills|tab)",
+        "type" : "String",
+        "desc" : "type  default nav",
+        "memberOf" : ""
+      },
+      {
         "name" : "actionMode",
         "type" : "String",
         "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
         "memberOf" : "Roo.Component"
-      },
-      {
-        "name" : "align",
-        "type" : "String",
-        "desc" : [
-          "(left",
-          "right)"
-        ],
-        "memberOf" : ""
       },
       {
         "name" : "allowDomMove",
@@ -41948,16 +41951,6 @@
         "type" : "string",
         "desc" : "Text for the tooltip",
         "memberOf" : "Roo.bootstrap.Component"
-      },
-      {
-        "name" : "type",
-        "type" : "String",
-        "desc" : [
-          "(nav",
-          "pills",
-          "tab)"
-        ],
-        "memberOf" : ""
       },
       {
         "name" : "visibilityEl",
@@ -49734,19 +49727,22 @@
   "Roo.bootstrap.PopoverNav" : {
     "props" : [
       {
+        "name" : "(left|right)",
+        "type" : "String",
+        "desc" : "align",
+        "memberOf" : "Roo.bootstrap.NavGroup"
+      },
+      {
+        "name" : "(nav|pills|tab)",
+        "type" : "String",
+        "desc" : "type  default nav",
+        "memberOf" : "Roo.bootstrap.NavGroup"
+      },
+      {
         "name" : "actionMode",
         "type" : "String",
         "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
         "memberOf" : "Roo.Component"
-      },
-      {
-        "name" : "align",
-        "type" : "String",
-        "desc" : [
-          "(left",
-          "right)"
-        ],
-        "memberOf" : "Roo.bootstrap.NavGroup"
       },
       {
         "name" : "allowDomMove",
@@ -49828,16 +49824,6 @@
         "type" : "string",
         "desc" : "Text for the tooltip",
         "memberOf" : "Roo.bootstrap.Component"
-      },
-      {
-        "name" : "type",
-        "type" : "String",
-        "desc" : [
-          "(nav",
-          "pills",
-          "tab)"
-        ],
-        "memberOf" : "Roo.bootstrap.NavGroup"
       },
       {
         "name" : "visibilityEl",

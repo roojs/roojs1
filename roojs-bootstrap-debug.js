@@ -5728,9 +5728,9 @@ Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
  * @class Roo.bootstrap.NavGroup
  * @extends Roo.bootstrap.Component
  * Bootstrap NavGroup class
- * @cfg {String} align (left|right)
+ * @cfg {String} (left|right) align 
  * @cfg {Boolean} inverse
- * @cfg {String} type (nav|pills|tab) default nav
+ * @cfg {String} (nav|pills|tab) type  default nav
  * @cfg {String} navId - reference Id for navbar.
 
  * 
