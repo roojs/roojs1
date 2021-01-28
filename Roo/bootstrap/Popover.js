@@ -282,7 +282,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
         ]);
         
-        if (!this.title.length) {
+        if (this.title === false) {
             this.headerEl.hide();
         }
         

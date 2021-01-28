@@ -19775,7 +19775,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }
          
         
-        this.headerEl.setVisibilityMode(Roo.Element.DISPLAY);
+        this.headerEl.setVisibilityMode(Roo.Element.DISPLAY); // probably not needed as it's default in BS4
         this.el.enableDisplayMode('block');
         this.el.hide();
         if (this.over === false && !this.parent()) {
@@ -19873,8 +19873,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
         ]);
         
-        if (!this.title.length) {
-            this.el.select('.popover-title',true).hide();
+        if (this.title === false) {
+            this.headerEl.hide();
         }
         
         
