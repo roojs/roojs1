@@ -14,14 +14,14 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.CardHeader = function(config){
-    Roo.bootstrap.CardHeader.superclass.constructor.call(this, config);
+Roo.bootstrap.PopoverNav = function(config){
+    Roo.bootstrap.PopoverNav.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.CardHeader, Roo.bootstrap.Element,  {
+Roo.extend(Roo.bootstrap.PopoverNav, Roo.bootstrap.NavGroup,  {
     
     
-    container_method : 'getCardHeader' 
+    container_method : 'getPopoverHeader' 
     
      
     
