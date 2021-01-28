@@ -4750,4 +4750,7 @@ html.bootstrap-sticky body {
   border: 1px dashed #ccc;
   padding: 4px 7px; }
 
+.popover {
+  max-width: 90%; }
+
 /*# sourceMappingURL=roojs-bootstrap-debug.css.map */
