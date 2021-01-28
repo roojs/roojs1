@@ -95,7 +95,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                             html : this.title === false ? '' : this.title
                         },
                         {
-                            cls : 'popover-content popover-body'  + this.cls,
+                            cls : 'popover-content popover-body '  + (this.cls || ''),
                             html : this.html || ''
                         }
                     ]
