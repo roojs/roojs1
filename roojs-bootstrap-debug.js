@@ -19663,6 +19663,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     },
     getPopoverHeader : function()
     {
+        this.title = true; // flag not to hide it..
         return this.headerEl
     },
     
