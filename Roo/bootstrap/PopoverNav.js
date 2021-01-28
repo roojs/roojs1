@@ -6,11 +6,11 @@
  */
 
 /**
- * @class Roo.bootstrap.CardHeader
- * @extends Roo.bootstrap.Element
- * Bootstrap CardHeader class
+ * @class Roo.bootstrap.PopoverNav
+ * @extends Roo.bootstrap.NavGroup
+ * Bootstrap Popover header navigation class
  * @constructor
- * Create a new Card Header - that you can embed children into
+ * Create a new Popover Header Navigation 
  * @param {Object} config The config object
  */
 
