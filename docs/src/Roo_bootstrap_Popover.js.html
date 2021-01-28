@@ -61,11 +61,21 @@
     </span><span class="jsdoc-var">can_build_overlaid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">maskEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// the mask element
+    </span><span class="jsdoc-var">headerEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">contentEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
 
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.popover-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.contentEl</span><span class="jsdoc-syntax">;
+
     },
+    </span><span class="jsdoc-var">getPopoverHeader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// flag not to hide it..
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.headerEl
+    </span><span class="jsdoc-syntax">},
+
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 
@@ -82,7 +92,7 @@
                         {
                             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h3'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'popover-title popover-header'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
+                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title
                         </span><span class="jsdoc-syntax">},
                         {
                             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'popover-content popover-body'  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">,
@@ -103,7 +113,7 @@
     {
         </span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.popover-title'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.headerEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
         }
 
     },
@@ -113,8 +123,8 @@
     </span><span class="jsdoc-var">setContent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.popover-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.contentEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.contentEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
         }
 
     },
@@ -153,6 +163,9 @@
         </span><span class="jsdoc-var">Roo.EventManager.onWindowResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeMask</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
 
 
+        </span><span class="jsdoc-var">this.contentEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.popover-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.headerEl </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.popover-header'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+
         </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
     },
 
@@ -172,7 +185,7 @@
         }
 
 
-        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.popover-title'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.headerEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// probably not needed as it's default in BS4
         </span><span class="jsdoc-var">this.el.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.el.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.over </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()) {
@@ -270,8 +283,8 @@
             </span><span class="jsdoc-string">'bs-popover-top'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'bs-popover-bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'bs-popover-left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'bs-popover-right'
         </span><span class="jsdoc-syntax">]);
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.title.length</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.popover-title'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.headerEl.hide</span><span class="jsdoc-syntax">();
         }
 
 
