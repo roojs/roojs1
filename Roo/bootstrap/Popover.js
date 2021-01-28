@@ -329,14 +329,14 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         this.hoverState = 'in';
         
-        this.el.setStyle('z-index', Roo.bootstrap.Popover.zIndex++);
         if (this.modal) {
             this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
             this.maskEl.setStyle('z-index', Roo.bootstrap.Popover.zIndex++);
             this.maskEl.dom.style.display = 'block';
             this.maskEl.addClass('show');
         }
-        
+        this.el.setStyle('z-index', Roo.bootstrap.Popover.zIndex++);
+
         
         
         this.fireEvent('show', this);
