@@ -45,7 +45,7 @@ Roo.bootstrap.Popover = function(config){
 
 Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
-    title: 'Fill in a title',
+    title: false,
     html: false,
     
     placement : 'right',
@@ -65,23 +65,23 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
          
         var cfg = {
-           cls : 'popover roo-dynamic',
+           cls : 'popover roo-dynamic roo-popover',
            style: 'display:block',
            cn : [
                 {
                     cls : 'arrow'
                 },
                 {
-                    cls : 'popover-inner',
+                    cls : 'popover-inner ',
                     cn : [
                         {
                             tag: 'h3',
                             cls: 'popover-title popover-header',
-                            html : this.title
+                            html : this.title || ''
                         },
                         {
-                            cls : 'popover-content popover-body',
-                            html : this.html
+                            cls : 'popover-content popover-body'  + this.cls,
+                            html : this.html || ''
                         }
                     ]
                     
@@ -143,7 +143,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
         this.el.enableDisplayMode('block');
         this.el.hide();
-        if (this.over === false) {
+        if (this.over === false && !this.parent()) {
             return; 
         }
         if (this.triggers === false) {
@@ -151,7 +151,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }
          
         
-        var on_el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+        var on_el = (this.over == 'parent' || this.over === false) ? this.parent().el : Roo.get(this.over);
         var triggers = this.trigger ? this.trigger.split(' ') : [];
         Roo.each(triggers, function(trigger) {
         
@@ -294,8 +294,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
 Roo.apply(Roo.bootstrap.Popover, {
 
     alignment : {
-        'left' : ['r-l', [-10,0], 'right bs-popover-right'],
-        'right' : ['l-r', [10,0], 'left bs-popover-left'],
+        'left' : ['r-l', [-10,0], 'left bs-popover-left'],
+        'right' : ['l-br', [10,0], 'right bs-popover-right'],
         'bottom' : ['t-b', [0,10], 'top bs-popover-top'],
         'top' : [ 'b-t', [0,-10], 'bottom bs-popover-bottom']
     },
@@ -305,7 +305,7 @@ Roo.apply(Roo.bootstrap.Popover, {
 
     onMouseDown : function(e)
     {
-        if (!e.getTarget(".roo-popup")) {
+        if (!e.getTarget(".roo-popover")) {
             this.hideAll();
         }
          
@@ -315,8 +315,8 @@ Roo.apply(Roo.bootstrap.Popover, {
     
     register : function(popup)
     {
-        if (this.clickHandler === false) {
-            this.clickHandler = Roo.get(document).un("mousedown", this.onMouseDown, this);
+        if (!Roo.bootstrap.Popover.clickHandler) {
+            Roo.bootstrap.Popover.clickHandler = Roo.get(document).on("mousedown", Roo.bootstrap.Popover.onMouseDown, Roo.bootstrap.Popover);
         }
         // hide other popups.
         this.hideAll();
@@ -324,7 +324,7 @@ Roo.apply(Roo.bootstrap.Popover, {
     },
     hideAll : function()
     {
-        this.popups.each(function(p) {
+        this.popups.forEach(function(p) {
             p.hide();
         });
     }
