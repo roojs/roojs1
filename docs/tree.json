@@ -671,6 +671,11 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.bootstrap.PopoverNav",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.bootstrap.Progress",
             "cn" : [],
             "is_class" : true
