@@ -89,8 +89,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cls: 'nav-item'
         };
         
+	cfg.cls =  typeof(cfg.cls) == 'undefined'  ? '' : cfg.cls;
+	
         if (this.active) {
-            cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
+            cfg.cls +=  ' active' ;
         }
         if (this.disabled) {
             cfg.cls += ' disabled';
@@ -126,7 +128,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                 }
             ];
             if (this.tagtype == 'a') {
-		cfg.cn[0].cls = 'nav-link';
+		cfg.cn[0].cls = 'nav-link' +  (this.active ?  ' active'  : '');
+        
 	    }
             if (this.icon) {
                 cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>';
