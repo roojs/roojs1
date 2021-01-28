@@ -162,7 +162,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             Roo.lib.Dom.getViewWidth(true),
             Roo.lib.Dom.getViewHeight(true)
         );
-    }
+    },
     
     initEvents : function()
     {
@@ -325,6 +325,15 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         this.hoverState = 'in';
         
+        if (this.modal) {
+            this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
+            this.maskEl.setStyle('z-index', Roo.bootstrap.Popover.zIndex++);
+            this.maskEl.dom.style.display = 'block';
+            this.maskEl.addClass('show');
+        }
+        
+        
+        
         this.fireEvent('show', this);
         
     },
@@ -349,6 +358,8 @@ Roo.apply(Roo.bootstrap.Popover, {
         'bottom' : ['t-b', [0,10], 'top bs-popover-top'],
         'top' : [ 'b-t', [0,-10], 'bottom bs-popover-bottom']
     },
+    
+    zIndex : 20001,
 
     clickHander : false,
     
