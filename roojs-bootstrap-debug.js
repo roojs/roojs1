@@ -19813,15 +19813,14 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     show : function (on_el)
     {
         
-        
+        on_el = on_el || false; // default to false
         if (!on_el) {
             if (this.parent() && (this.over == 'parent' || (this.over === false))) {
                 on_el = this.parent().el;
             } else if (this.over) {
                 Roo.get(this.over);
-            } else {
-                on_el = false;
             }
+            
         }
         
         if (!this.el) {
