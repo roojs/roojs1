@@ -19723,6 +19723,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     onRender : function(ct, position)
     {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
+        this.contentEl = this.el.select('.popover-content',true).first();
+        this.headerEl =  this.el.select('.popover-title',true).first();
+        
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
             cfg.id = Roo.id();
@@ -19754,8 +19758,6 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         Roo.EventManager.onWindowResize(this.resizeMask, this, true);
         
         
-        this.contentEl = this.el.select('.popover-content',true).first();
-        this.headerEl =  this.el.select('.popover-header',true).first();
         
         this.initEvents();
     },
