@@ -19749,7 +19749,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     resizeMask : function()
     {
-        
+        this.maskEl.setSize(
+            Roo.lib.Dom.getViewWidth(true),
+            Roo.lib.Dom.getViewHeight(true)
+        );
     }
     
     initEvents : function()
