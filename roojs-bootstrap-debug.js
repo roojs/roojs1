@@ -19724,8 +19724,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         
-        this.contentEl = this.el.select('.popover-content',true).first();
-        this.headerEl =  this.el.select('.popover-title',true).first();
+        
         
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
@@ -19741,6 +19740,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             this.el = Roo.get(document.body).createChild(cfg, position);
 //            Roo.log(this.el);
         }
+        
+        this.contentEl = this.el.select('.popover-content',true).first();
+        this.headerEl =  this.el.select('.popover-title',true).first();
         
         var nitems = [];
         if(typeof(this.items) != 'undefined'){
