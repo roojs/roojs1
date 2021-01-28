@@ -19916,6 +19916,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         this.hoverState = 'in';
         
+        this.el.setStyle('z-index', Roo.bootstrap...zIndex++);
         if (this.modal) {
             this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
             this.maskEl.setStyle('z-index', Roo.bootstrap.Popover.zIndex++);
