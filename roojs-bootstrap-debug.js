@@ -19738,6 +19738,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
 
         this.items = nitems;
         
+        this.maskEl = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
+
+        
         
         this.initEvents();
     },

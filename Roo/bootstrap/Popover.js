@@ -53,12 +53,14 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     placement : 'right',
     trigger : 'hover', // hover
-    
+    modal : false,
     delay : 0,
     
     over: false,
     
     can_build_overlaid : false,
+    
+    maskEl : false, // the mask element
     
     getChildContainer : function()
     {
