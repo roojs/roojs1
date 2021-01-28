@@ -344,7 +344,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.removeClass('in');
         this.el.hide();
         this.hoverState = null;
-        
+        this.maskEl.hide(); // always..
         this.fireEvent('hide', this);
     }
     
