@@ -10,7 +10,7 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
  _strings : {
   '897356954c2cd3d41b221e3f24f99bba' :"Key",
   '689202409e48743b914713f96d93947c' :"Value",
-  '53290b1ff9190e3b40183b207b1fe818' :"File Details"
+  '5a105e8b9d40e1329780d62ea2265d8a' :"test1"
  },
 
  dialog : false,
@@ -38,52 +38,74 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
   var _this = this;
   this.dialog = Roo.factory({
     xtype : 'Popover',
-     placement : 'right',
-     modal : true,
-     cls : 'p-0',
+    modal : true,
+    placement : 'right',
+    style : 'width:500px',
     xns : Roo.bootstrap,
     '|xns' : 'Roo.bootstrap',
     items  : [
      {
-      xtype : 'Card',
-      header : _this._strings['53290b1ff9190e3b40183b207b1fe818'] /* File Details */,
+      xtype : 'Table',
+      width : 500,
+      xns : Roo.bootstrap,
+      '|xns' : 'Roo.bootstrap',
+      store : {
+       xtype : 'Store',
+       xns : Roo.data,
+       '|xns' : 'Roo.data',
+       proxy : {
+        xtype : 'HttpProxy',
+        url : rootURL + '/Roo/Files_keytypes',
+        xns : Roo.data,
+        '|xns' : 'Roo.data'
+       },
+       reader : {
+        xtype : 'JsonReader',
+        xns : Roo.data,
+        '|xns' : 'Roo.data'
+       }
+      },
+      cm : [
+       {
+        xtype : 'ColumnModel',
+        header : _this._strings['897356954c2cd3d41b221e3f24f99bba'] /* Key */,
+        xns : Roo.grid,
+        '|xns' : 'Roo.grid'
+       },
+       {
+        xtype : 'ColumnModel',
+        header : _this._strings['689202409e48743b914713f96d93947c'] /* Value */,
+        xns : Roo.grid,
+        '|xns' : 'Roo.grid'
+       }
+      ]
+     },
+     {
+      xtype : 'PopoverNav',
+      style : 'width:500px',
+      type : 'pills',
       xns : Roo.bootstrap,
       '|xns' : 'Roo.bootstrap',
       items  : [
        {
-        xtype : 'Table',
+        xtype : 'NavItem',
+        html : _this._strings['5a105e8b9d40e1329780d62ea2265d8a'] /* test1 */,
+        style : 'width:50%',
         xns : Roo.bootstrap,
-        '|xns' : 'Roo.bootstrap',
-        store : {
-         xtype : 'Store',
-         xns : Roo.data,
-         '|xns' : 'Roo.data',
-         proxy : {
-          xtype : 'HttpProxy',
-          url : rootURL + '/Roo/Files_keytypes',
-          xns : Roo.data,
-          '|xns' : 'Roo.data'
-         },
-         reader : {
-          xtype : 'JsonReader',
-          xns : Roo.data,
-          '|xns' : 'Roo.data'
-         }
-        },
-        cm : [
-         {
-          xtype : 'ColumnModel',
-          header : _this._strings['897356954c2cd3d41b221e3f24f99bba'] /* Key */,
-          xns : Roo.grid,
-          '|xns' : 'Roo.grid'
-         },
-         {
-          xtype : 'ColumnModel',
-          header : _this._strings['689202409e48743b914713f96d93947c'] /* Value */,
-          xns : Roo.grid,
-          '|xns' : 'Roo.grid'
-         }
-        ]
+        '|xns' : 'Roo.bootstrap'
+       },
+       {
+        xtype : 'NavItem',
+        button_weight : 'secondary',
+        html : _this._strings['5a105e8b9d40e1329780d62ea2265d8a'] /* test1 */,
+        xns : Roo.bootstrap,
+        '|xns' : 'Roo.bootstrap'
+       },
+       {
+        xtype : 'NavItem',
+        html : _this._strings['5a105e8b9d40e1329780d62ea2265d8a'] /* test1 */,
+        xns : Roo.bootstrap,
+        '|xns' : 'Roo.bootstrap'
        }
       ]
      }
