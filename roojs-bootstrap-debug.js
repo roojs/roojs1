@@ -19652,16 +19652,19 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     can_build_overlaid : false,
     
     maskEl : false, // the mask element
+    headerEl : false,
+    contentEl : false,
+    
     
     getChildContainer : function()
     {
         return this.contentEl;
-        return this.el.select('.popover-content',true).first();
+        
     },
     getPopoverHeader : function()
     {
         return this.headerEl
-    }
+    },
     
     
     getAutoCreate : function(){
@@ -19700,7 +19703,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     {
         this.title = str;
         if (this.el) {
-            this.el.select('.popover-title',true).first().dom.innerHTML = str;
+            this.headerEl.dom.innerHTML = str;
         }
         
     },
@@ -19772,7 +19775,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }
          
         
-        this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
+        this.headerEl.setVisibilityMode(Roo.Element.DISPLAY);
         this.el.enableDisplayMode('block');
         this.el.hide();
         if (this.over === false && !this.parent()) {

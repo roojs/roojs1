@@ -184,7 +184,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }
          
         
-        this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
+        this.headerEl.setVisibilityMode(Roo.Element.DISPLAY);
         this.el.enableDisplayMode('block');
         this.el.hide();
         if (this.over === false && !this.parent()) {
