@@ -39,6 +39,8 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
   this.dialog = Roo.factory({
     xtype : 'Popover',
      placement : 'right',
+     modal : true,
+     cls : 'p-0',
     xns : Roo.bootstrap,
     '|xns' : 'Roo.bootstrap',
     items  : [
