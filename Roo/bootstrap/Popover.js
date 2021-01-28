@@ -229,7 +229,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             } else if (this.over) {
                 Roo.get(this.over);
             } else {
-                on_el= false;
+                on_el = false;
             }
         }
         

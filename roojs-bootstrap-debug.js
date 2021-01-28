@@ -19604,7 +19604,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
  * @cfg {String} title of popover (or false to hide)
  * @cfg {String|function} (right|top|bottom|left|auto) placement how it is placed
  * @cfg {String} trigger click || hover (or false to trigger manually)
- * @cfg {String} over what (parent or false to trigger manually.)
+ * @cfg {String|Boolean|Roo.Element} add click hander to trigger show over what element
+ *      - if false|parent, and it has a 'parent' then it will be automatically added to that element
  * @cfg {Number} delay - delay before showing
  
  * @constructor
@@ -19685,12 +19686,18 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     setTitle: function(str)
     {
         this.title = str;
-        this.el.select('.popover-title',true).first().dom.innerHTML = str;
+        if (this.el) {
+            this.el.select('.popover-title',true).first().dom.innerHTML = str;
+        }
+        
     },
     setContent: function(str)
     {
         this.html = str;
-        this.el.select('.popover-content',true).first().dom.innerHTML = str;
+        if (this.el) {
+            this.el.select('.popover-content',true).first().dom.innerHTML = str;
+        }
+        
     },
     // as it get's added to the bottom of the page.
     onRender : function(ct, position)
@@ -19805,39 +19812,49 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     show : function (on_el)
     {
+        
+        
         if (!on_el) {
-            on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+            if (this.parent() && (this.over == 'parent' || (this.over === false))) {
+                on_el = this.parent().el;
+            } else if (this.over) {
+                Roo.get(this.over);
+            } else {
+                on_el= false;
+            }
         }
         
         if (!this.el) {
             this.render(document.body);
         }
         
-        // set content.
-        this.el.select('.popover-title',true).first().dom.innerHtml = this.title;
-        if (this.html !== false) {
-            this.el.select('.popover-content',true).first().dom.innerHtml = this.html;
-        }
+        
         this.el.removeClass([
             'fade','top','bottom', 'left', 'right','in',
             'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
         ]);
+        
         if (!this.title.length) {
             this.el.select('.popover-title',true).hide();
         }
+        
         
         var placement = typeof this.placement == 'function' ?
             this.placement.call(this, this.el, on_el) :
             this.placement;
             
-        var autoToken = /\s?auto?\s?/i;
+        /*
+        var autoToken = /\s?auto?\s?/i;   /// not sure how this was supposed to work? right auto ? what?
+        
+        // I think  'auto right' - but 
+        
         var autoPlace = autoToken.test(placement);
         if (autoPlace) {
             placement = placement.replace(autoToken, '') || 'top';
         }
+        */
         
-        //this.el.detach()
-        //this.el.setXY([0,0]);
+        
         this.el.show();
         this.el.dom.style.display='block';
         
@@ -19846,14 +19863,24 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         var p = this.getPosition();
         var box = this.el.getBox();
         
-        if (autoPlace) {
-            // fixme..
-        }
+        
         var align = Roo.bootstrap.Popover.alignment[placement];
         this.el.addClass(align[2]);
 
 //        Roo.log(align);
-        this.el.alignTo(on_el, align[0],align[1]);
+
+        if (on_el) {
+            this.el.alignTo(on_el, align[0],align[1]);
+        } else {
+            // this is usually just done by the builder = to show the popoup in the middle of the scren.
+            var es = this.el.getSize();
+            var x = Roo.lib.Dom.getViewWidth()/2;
+            var y = Roo.lib.Dom.getViewHeight()/2;
+            this.el.setXY([ x-(es.width/2),  y-(es.height/2)] );
+            
+        }
+
+        
         //var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
         
