@@ -11,7 +11,6 @@
  * Bootstrap Navbar.NavItem class
  * @cfg {String} href  link to
  * @cfg {String} button_weight (default|primary|secondary|success|info|warning|danger|link|light|dark) default none
- * @cfg {String} button_outline(default|primary|secondary|success|info|warning|danger|link|light|dark) default none
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
  * @cfg {String} badgecls (bg-green|bg-red|bg-yellow)the extra classes for the badge
