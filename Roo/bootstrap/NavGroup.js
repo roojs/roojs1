@@ -13,7 +13,7 @@
  * @cfg {Boolean} inverse
  * @cfg {String} type (nav|pills|tab) default nav
  * @cfg {String} navId - reference Id for navbar.
-
+ * @cfg {Boolean} pilltype default true (turn to off to disable active toggle)
  * 
  * @constructor
  * Create a new nav group
