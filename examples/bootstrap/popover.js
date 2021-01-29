@@ -97,6 +97,7 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
        {
         xtype : 'NavGroup',
         align : 'right',
+        pilltype : false,
         cls : '',
         tooltip : '',
         type : 'pills',
