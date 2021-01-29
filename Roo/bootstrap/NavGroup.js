@@ -46,6 +46,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     type: 'nav',
     navId : '',
     // private
+    pilltype : true,
     
     navItems : false, 
     
