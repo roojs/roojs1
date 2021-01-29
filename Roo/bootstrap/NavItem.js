@@ -241,7 +241,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         var p =  this.parent();
    
-        if (['tabs','pills'].indexOf(p.type)!==-1) {
+        if (['tabs','pills'].indexOf(p.type)!==-1 && p.pilltype) {
             if (typeof(p.setActiveItem) !== 'undefined') {
                 p.setActiveItem(this);
             }
