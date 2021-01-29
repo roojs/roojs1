@@ -98,27 +98,26 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
         xtype : 'NavGroup',
         align : 'right',
         pilltype : false,
-        cls : '',
-        tooltip : '',
         type : 'pills',
         xns : Roo.bootstrap,
         '|xns' : 'Roo.bootstrap',
         items  : [
          {
           xtype : 'NavItem',
-          button_outline : true,
-          button_weight : 'primary',
-          fa : 'download',
-          html : 'Download', /* test1 */
+          html : _this._strings['5a105e8b9d40e1329780d62ea2265d8a'] /* test1 */,
           xns : Roo.bootstrap,
           '|xns' : 'Roo.bootstrap'
          },
          {
           xtype : 'NavItem',
-         
-           fa : 'times',
-           linkcls : 'pr-0',
-          html : '' /* test1 */,
+          fa : 'times',
+          linkcls : 'pr-0',
+          listeners : {
+           click : function (e)
+            {
+                _this.dialog.hide();
+            }
+          },
           xns : Roo.bootstrap,
           '|xns' : 'Roo.bootstrap'
          }
