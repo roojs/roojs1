@@ -6027,6 +6027,7 @@ Roo.apply(Roo.bootstrap.NavGroup, {
  * Bootstrap Navbar.NavItem class
  * @cfg {String} href  link to
  * @cfg {String} button_weight (default|primary|secondary|success|info|warning|danger|link|light|dark) default none
+ * @cfg {Boolean} button_outline show and outlined button
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
  * @cfg {String} badgecls (bg-green|bg-red|bg-yellow)the extra classes for the badge
