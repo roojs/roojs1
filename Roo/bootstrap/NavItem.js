@@ -128,7 +128,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                 }
             ];
             if (this.tagtype == 'a') {
-		cfg.cn[0].cls = 'nav-link' +  (this.active ?  ' active'  : '');
+		cfg.cn[0].cls = 'nav-link' +  (this.active ?  ' active'  : '') + ' ' + this.linkcls;
         
 	    }
             if (this.icon) {
