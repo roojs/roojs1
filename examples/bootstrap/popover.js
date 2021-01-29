@@ -108,7 +108,7 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
           button_outline : true,
           button_weight : 'primary',
           fa : 'download',
-          html : 'Download', /* test1 */,
+          html : 'Download', /* test1 */
           xns : Roo.bootstrap,
           '|xns' : 'Roo.bootstrap'
          },
