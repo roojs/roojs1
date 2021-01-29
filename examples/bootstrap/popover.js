@@ -104,6 +104,9 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
         items  : [
          {
           xtype : 'NavItem',
+          button_outline : true,
+          button_weight : 'primary',
+          fa : 'download',
           html : _this._strings['5a105e8b9d40e1329780d62ea2265d8a'] /* test1 */,
           xns : Roo.bootstrap,
           '|xns' : 'Roo.bootstrap'
