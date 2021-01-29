@@ -10,7 +10,8 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
  _strings : {
   '897356954c2cd3d41b221e3f24f99bba' :"Key",
   '689202409e48743b914713f96d93947c' :"Value",
-  '5a105e8b9d40e1329780d62ea2265d8a' :"test1"
+  '5a105e8b9d40e1329780d62ea2265d8a' :"test1",
+  'd1e2284f2f77494e8ed6bcb990bf6072' :"Brand here"
  },
 
  dialog : false,
@@ -46,7 +47,6 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
     items  : [
      {
       xtype : 'Table',
-      width : 500,
       xns : Roo.bootstrap,
       '|xns' : 'Roo.bootstrap',
       store : {
@@ -82,30 +82,43 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
      },
      {
       xtype : 'PopoverNav',
-      style : 'width:500px',
+      style : 'flex-direction: row;',
       type : 'pills',
       xns : Roo.bootstrap,
       '|xns' : 'Roo.bootstrap',
       items  : [
        {
-        xtype : 'NavItem',
-        html : _this._strings['5a105e8b9d40e1329780d62ea2265d8a'] /* test1 */,
-        style : 'width:50%',
+        xtype : 'Element',
+        cls : 'navbar-brand',
+        html : _this._strings['d1e2284f2f77494e8ed6bcb990bf6072'] /* Brand here */,
         xns : Roo.bootstrap,
         '|xns' : 'Roo.bootstrap'
        },
        {
-        xtype : 'NavItem',
-        button_weight : 'secondary',
-        html : _this._strings['5a105e8b9d40e1329780d62ea2265d8a'] /* test1 */,
+        xtype : 'NavGroup',
+        align : 'right',
+        cls : '',
+        tooltip : '',
+        type : 'pills',
         xns : Roo.bootstrap,
-        '|xns' : 'Roo.bootstrap'
-       },
-       {
-        xtype : 'NavItem',
-        html : _this._strings['5a105e8b9d40e1329780d62ea2265d8a'] /* test1 */,
-        xns : Roo.bootstrap,
-        '|xns' : 'Roo.bootstrap'
+        '|xns' : 'Roo.bootstrap',
+        items  : [
+         {
+          xtype : 'NavItem',
+          html : _this._strings['5a105e8b9d40e1329780d62ea2265d8a'] /* test1 */,
+          xns : Roo.bootstrap,
+          '|xns' : 'Roo.bootstrap'
+         },
+         {
+          xtype : 'NavItem',
+          button_outline : true,
+          button_weight : 'primary',
+          fa : 'times',
+          html : _this._strings['5a105e8b9d40e1329780d62ea2265d8a'] /* test1 */,
+          xns : Roo.bootstrap,
+          '|xns' : 'Roo.bootstrap'
+         }
+        ]
        }
       ]
      }
