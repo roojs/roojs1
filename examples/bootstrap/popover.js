@@ -114,7 +114,7 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
          },
          {
           xtype : 'NavItem',
-          button_outline : true,
+         
            fa : 'times',
           html : '' /* test1 */,
           xns : Roo.bootstrap,
