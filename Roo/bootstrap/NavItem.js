@@ -20,7 +20,7 @@
  * @cfg {String} fa - Fontawsome icon name (can add stuff to it like fa-2x)
  * @cfg {Boolean} active Is item active
  * @cfg {Boolean} disabled Is item disabled
- 
+ * @cfg {String} linkcls  Link Class
  * @cfg {Boolean} preventDefault (true | false) default false
  * @cfg {String} tabId the tab that this item activates.
  * @cfg {String} tagtype (a|span) render as a href or span?
@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     was_active : false,
     button_weight : '',
     button_outline : false,
-    
+    linkcls : '',
     navLink: false,
     
     getAutoCreate : function(){
