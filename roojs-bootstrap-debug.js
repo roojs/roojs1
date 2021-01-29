@@ -20026,7 +20026,7 @@ Roo.bootstrap.PopoverNav = function(config){
     Roo.bootstrap.PopoverNav.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.NavGroup,  {
+Roo.extend(Roo.bootstrap.PopoverNav, Roo.bootstrap.NavSimplebar,  {
     
     
     container_method : 'getPopoverHeader' 

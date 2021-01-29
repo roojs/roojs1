@@ -827,7 +827,7 @@ this.el.removeClass('in');this.el.hide();this.hoverState=null;this.maskEl.hide()
 ,zIndex:20001,clickHander:false,onMouseDown:function(e){if(!e.getTarget(".roo-popover")){this.hideAll();}},popups:[],register:function(A){if(!Roo.bootstrap.Popover.clickHandler){Roo.bootstrap.Popover.clickHandler=Roo.get(document).on("mousedown",Roo.bootstrap.Popover.onMouseDown,Roo.bootstrap.Popover);
 }this.hideAll();this.popups.push(A);},hideAll:function(){this.popups.forEach(function(p){p.hide();});}});
 // Roo/bootstrap/PopoverNav.js
-Roo.bootstrap.PopoverNav=function(A){Roo.bootstrap.PopoverNav.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.NavSimplebar,Roo.bootstrap.NavGroup,{container_method:'getPopoverHeader'});
+Roo.bootstrap.PopoverNav=function(A){Roo.bootstrap.PopoverNav.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.PopoverNav,Roo.bootstrap.NavSimplebar,{container_method:'getPopoverHeader'});
 // Roo/bootstrap/Progress.js
 Roo.bootstrap.Progress=function(A){Roo.bootstrap.Progress.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Progress,Roo.bootstrap.Component,{striped:false,active:false,getAutoCreate:function(){var A={tag:'div',cls:'progress'};if(this.striped){A.cls+=' progress-striped';
 }if(this.active){A.cls+=' active';}return A;}});
