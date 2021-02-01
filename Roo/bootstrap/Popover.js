@@ -73,6 +73,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     getPopoverHeader : function()
     {
         this.title = true; // flag not to hide it..
+        this.headerEl.addClass('p-0');
         return this.headerEl
     },
     

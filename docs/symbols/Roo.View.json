@@ -27,84 +27,84 @@
       "type" : "String",
       "desc" : "The css class to add to selected nodes",
       "memberOf" : "Roo.View",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "dataName",
       "type" : "String",
       "desc" : "the named area of the template to use as the data area\n                         Works with domtemplates roo-name=\"name\"",
       "memberOf" : "Roo.View",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "to display on mask (default Loading)",
       "memberOf" : "Roo.View",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "multiSelect",
       "type" : "Boolean",
       "desc" : "Allow multiple selection",
       "memberOf" : "Roo.View",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "emptyText",
       "type" : "String",
       "desc" : "The empty text to show when nothing is loaded.",
       "memberOf" : "Roo.View",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "store",
       "type" : "Roo.data.Store",
       "desc" : "Data store to load data from.",
       "memberOf" : "Roo.View",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "toggleSelect",
       "type" : "Boolean",
       "desc" : "- selecting",
       "memberOf" : "Roo.View",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "singleSelect",
       "type" : "Boolean",
       "desc" : "Allow single selection",
       "memberOf" : "Roo.View",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "tickable",
       "type" : "Boolean",
       "desc" : "- selecting",
       "memberOf" : "Roo.View",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "el",
       "type" : "String|Roo.Element",
       "desc" : "The container element.",
       "memberOf" : "Roo.View",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "tpl",
       "type" : "String|Roo.Template",
       "desc" : "The template used by this View",
       "memberOf" : "Roo.View",
-      "values" : []
+      "optvals" : []
     }
   ],
   "methods" : [

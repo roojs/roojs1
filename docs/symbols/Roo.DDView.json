@@ -37,28 +37,28 @@
       "type" : "String/Array",
       "desc" : "The ddgroup name(s) for the View's DropZone.",
       "memberOf" : "Roo.DDView",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "allowCopy",
       "type" : "Boolean",
       "desc" : "Causes ctrl/drag operations to copy nodes rather than move.",
       "memberOf" : "Roo.DDView",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "copy",
       "type" : "Boolean",
       "desc" : "Causes drag operations to copy nodes rather than move.",
       "memberOf" : "Roo.DDView",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "dragGroup",
       "type" : "String/Array",
       "desc" : "The ddgroup name(s) for the View's DragZone.",
       "memberOf" : "Roo.DDView",
-      "values" : []
+      "optvals" : []
     }
   ],
   "methods" : [

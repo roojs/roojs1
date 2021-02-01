@@ -29,44 +29,44 @@
       "type" : "number",
       "desc" : "coodinator | centre y (pie)",
       "memberOf" : "Roo.bootstrap.Graph",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "g_height",
       "type" : "number",
       "desc" : "height of the chart (respected by all elements in the set)",
       "memberOf" : "Roo.bootstrap.Graph",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
-        "(el",
-        "parent)"
+      "optvals" : [
+        "el",
+        "parent"
       ]
     },
     {
@@ -74,16 +74,16 @@
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
@@ -91,91 +91,91 @@
       "type" : "number",
       "desc" : "radius (pie)",
       "memberOf" : "Roo.bootstrap.Graph",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "title",
       "type" : "Object",
       "desc" : "The title of the chart\n    \n -{Array}  values\n -opts (object) options for the chart \n     o {\n     o type (string) type of endings of the bar. Default: 'square'. Other options are: 'round', 'sharp', 'soft'.\n     o gutter (number)(string) default '20%' (WHAT DOES IT DO?)\n     o vgutter (number)\n     o colors (array) colors be used repeatedly to plot the bars. If multicolumn bar is used each sequence of bars with use a different color.\n     o stacked (boolean) whether or not to tread values as in a stacked bar chart\n     o to\n     o stretch (boolean)\n     o }\n -opts (object) options for the pie\n     o{\n     o cut\n     o startAngle (number)\n     o endAngle (number)\n     }",
       "memberOf" : "Roo.bootstrap.Graph",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "graphtype",
       "type" : "String",
       "desc" : "bar | vbar | pie",
       "memberOf" : "Roo.bootstrap.Graph",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "g_width",
       "type" : "number",
       "desc" : "width of the chart (respected by all elements in the set)",
       "memberOf" : "Roo.bootstrap.Graph",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "g_x",
       "type" : "number",
       "desc" : "coodinator | centre x (pie)",
       "memberOf" : "Roo.bootstrap.Graph",
-      "values" : []
+      "optvals" : []
     }
   ],
   "methods" : [
