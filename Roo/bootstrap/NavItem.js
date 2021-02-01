@@ -180,9 +180,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         this.el.select('.nav-item',true).on('click', this.onClick, this);
         
-        if(this.tagtype == 'span'){
-            this.el.select('span',true).on('click', this.onClick, this);
-        }
+        //if(this.tagtype == 'span'){
+        //    this.el.select('span',true).on('click', this.onClick, this);
+        //}
        
         // at this point parent should be available..
         this.parent().register(this);
