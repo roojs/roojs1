@@ -178,7 +178,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             this.menu = this.addxtype(Roo.apply({}, this.menu));
         }
         
-        this.el.select('.nav-item',true).on('click', this.onClick, this);
+        this.el.on('click', this.onClick, this);
         
         //if(this.tagtype == 'span'){
         //    this.el.select('span',true).on('click', this.onClick, this);
