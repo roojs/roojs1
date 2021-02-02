@@ -285,6 +285,9 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
      * @return {Roo.UpdateManager} The UpdateManager
      */
     getUpdateManager : function(){
+        if (this.iframe) {
+            return false;
+        }
         return this.el.getUpdateManager();
     },
      /**

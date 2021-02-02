@@ -39530,6 +39530,10 @@ Roo.bootstrap.panel.Content = function( config){
             }
                         
             this.el = Roo.DomHelper.append(document.body, elcfg , true);
+            if (this.iframe) {
+                this.iframeEl = this.el.select('iframe',true).first();
+            }
+            
         }
     } 
     this.closable = false;
@@ -39626,7 +39630,7 @@ Roo.bootstrap.panel.Content = function( config){
 
     
     
-    if(this.autoScroll){
+    if(this.autoScroll && !this.iframe){
         this.resizeEl.setStyle("overflow", "auto");
     } else {
         // fix randome scrolling
@@ -39705,11 +39709,15 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
         return true;
     },
     /**
-     * Updates this panel's element
+     * Updates this panel's element (not for iframe)
      * @param {String} content The new content
      * @param {Boolean} loadScripts (optional) true to look for and process scripts
     */
     setContent : function(content, loadScripts){
+        if (this.iframe) {
+            return;
+        }
+        
         this.el.update(content, loadScripts);
     },
 
@@ -39726,6 +39734,9 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
      * @return {Roo.UpdateManager} The UpdateManager
      */
     getUpdateManager : function(){
+        if (this.iframe) {
+            return false;
+        }
         return this.el.getUpdateManager();
     },
      /**
