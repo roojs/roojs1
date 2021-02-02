@@ -314,6 +314,11 @@ panel.load({
      * @return {Roo.ContentPanel} this
      */
     load : function(){
+        
+        if (this.iframe) {
+            return this;
+        }
+        
         var um = this.el.getUpdateManager();
         um.update.apply(um, arguments);
         return this;
@@ -328,6 +333,11 @@ panel.load({
      * @return {Roo.UpdateManager} The UpdateManager
      */
     setUrl : function(url, params, loadOnce){
+        if (this.iframe) {
+            this.iframeEl.dom.src = url;
+            return;
+        }
+        
         if(this.refreshDelegate){
             this.removeListener("activate", this.refreshDelegate);
         }
