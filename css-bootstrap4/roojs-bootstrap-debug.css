@@ -2590,7 +2590,9 @@ a.roo-brick-link:hover {
 /* for some reason it's -15px on BS */
 @media (min-width: 768px) {
   .navbar-right {
-    margin-right: 15px; } }
+    /*  not needed on popup?
+        margin-right: 15px;
+        */ } }
 
 /* was -15 before, on mobile it made the buttons too close to the edit.. */
 .navbar-nav {
@@ -4749,5 +4751,8 @@ html.bootstrap-sticky body {
   width: 100%;
   border: 1px dashed #ccc;
   padding: 4px 7px; }
+
+.popover {
+  max-width: 90%; }
 
 /*# sourceMappingURL=roojs-bootstrap-debug.css.map */

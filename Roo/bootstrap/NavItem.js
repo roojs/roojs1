@@ -10,8 +10,8 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Navbar.NavItem class
  * @cfg {String} href  link to
- * @cfg {String} button_weight (default | primary | secondary | success | info | warning | danger | link ) default none
-
+ * @cfg {String} button_weight (default|primary|secondary|success|info|warning|danger|link|light|dark) default none
+ * @cfg {Boolean} button_outline show and outlined button
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
  * @cfg {String} badgecls (bg-green|bg-red|bg-yellow)the extra classes for the badge
@@ -20,7 +20,7 @@
  * @cfg {String} fa - Fontawsome icon name (can add stuff to it like fa-2x)
  * @cfg {Boolean} active Is item active
  * @cfg {Boolean} disabled Is item disabled
- 
+ * @cfg {String} linkcls  Link Class
  * @cfg {Boolean} preventDefault (true | false) default false
  * @cfg {String} tabId the tab that this item activates.
  * @cfg {String} tagtype (a|span) render as a href or span?
@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     was_active : false,
     button_weight : '',
     button_outline : false,
-    
+    linkcls : '',
     navLink: false,
     
     getAutoCreate : function(){
@@ -89,8 +89,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cls: 'nav-item'
         };
         
+	cfg.cls =  typeof(cfg.cls) == 'undefined'  ? '' : cfg.cls;
+	
         if (this.active) {
-            cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
+            cfg.cls +=  ' active' ;
         }
         if (this.disabled) {
             cfg.cls += ' disabled';
@@ -126,7 +128,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                 }
             ];
             if (this.tagtype == 'a') {
-		cfg.cn[0].cls = 'nav-link';
+		cfg.cn[0].cls = 'nav-link' +  (this.active ?  ' active'  : '') + ' ' + this.linkcls;
+        
 	    }
             if (this.icon) {
                 cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>';
@@ -175,11 +178,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             this.menu = this.addxtype(Roo.apply({}, this.menu));
         }
         
-        this.el.select('a',true).on('click', this.onClick, this);
+        this.el.on('click', this.onClick, this);
         
-        if(this.tagtype == 'span'){
-            this.el.select('span',true).on('click', this.onClick, this);
-        }
+        //if(this.tagtype == 'span'){
+        //    this.el.select('span',true).on('click', this.onClick, this);
+        //}
        
         // at this point parent should be available..
         this.parent().register(this);
@@ -238,7 +241,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         var p =  this.parent();
    
-        if (['tabs','pills'].indexOf(p.type)!==-1) {
+        if (['tabs','pills'].indexOf(p.type)!==-1 && p.pilltype) {
             if (typeof(p.setActiveItem) !== 'undefined') {
                 p.setActiveItem(this);
             }

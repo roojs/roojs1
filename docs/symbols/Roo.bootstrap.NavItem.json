@@ -32,6 +32,13 @@
       "optvals" : []
     },
     {
+      "name" : "linkcls",
+      "type" : "String",
+      "desc" : "Link Class",
+      "memberOf" : "Roo.bootstrap.NavItem",
+      "optvals" : []
+    },
+    {
       "name" : "tagtype",
       "type" : "String",
       "desc" : "n) render as a href or span?",
@@ -128,6 +135,13 @@
       "optvals" : []
     },
     {
+      "name" : "button_outline",
+      "type" : "Boolean",
+      "desc" : "show and outlined button",
+      "memberOf" : "Roo.bootstrap.NavItem",
+      "optvals" : []
+    },
+    {
       "name" : "html",
       "type" : "String",
       "desc" : "content of button",
@@ -200,7 +214,7 @@
     {
       "name" : "button_weight",
       "type" : "String",
-      "desc" : ") default none",
+      "desc" : "k) default none",
       "memberOf" : "Roo.bootstrap.NavItem",
       "optvals" : [
         "default",
@@ -210,7 +224,9 @@
         "info",
         "warning",
         "danger",
-        "link"
+        "link",
+        "light",
+        "dark"
       ]
     },
     {

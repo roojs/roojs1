@@ -13,7 +13,7 @@
  * @cfg {Boolean} inverse
  * @cfg {String} type (nav|pills|tab) default nav
  * @cfg {String} navId - reference Id for navbar.
-
+ * @cfg {Boolean} pilltype default true (turn to off to disable active toggle)
  * 
  * @constructor
  * Create a new nav group
@@ -46,6 +46,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     type: 'nav',
     navId : '',
     // private
+    pilltype : true,
     
     navItems : false, 
     

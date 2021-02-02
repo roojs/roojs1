@@ -27,6 +27,7 @@
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
+ * @cfg {Boolean} iframe      contents are an iframe - makes showing remote sources/CSS feasible..
  * @cfg {Boolean} badges render the badges
  * @cfg {String} cls  extra classes to use  
  * @cfg {String} background (primary|secondary|success|info|warning|danger|light|dark)
@@ -64,12 +65,26 @@ Roo.bootstrap.panel.Content = function( config){
                     " roo-layout-inactive-content",
                 id: config.id||el
             };
+            if (config.iframe) {
+                elcfg.cn = [
+                    {
+                        tag : 'iframe',
+                        style : 'border: 0px',
+                        src : 'about:blank'
+                    }
+                ];
+            }
+              
             if (config.html) {
                 elcfg.html = config.html;
                 
             }
                         
             this.el = Roo.DomHelper.append(document.body, elcfg , true);
+            if (config.iframe) {
+                this.iframeEl = this.el.select('iframe',true).first();
+            }
+            
         }
     } 
     this.closable = false;
@@ -166,7 +181,7 @@ Roo.bootstrap.panel.Content = function( config){
 
     
     
-    if(this.autoScroll){
+    if(this.autoScroll && !this.iframe){
         this.resizeEl.setStyle("overflow", "auto");
     } else {
         // fix randome scrolling
@@ -203,6 +218,9 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     background : '',
     
     tabTip : '',
+    
+    iframe : false,
+    iframeEl : false,
     
     setRegion : function(region){
         this.region = region;
@@ -243,11 +261,15 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
         return true;
     },
     /**
-     * Updates this panel's element
+     * Updates this panel's element (not for iframe)
      * @param {String} content The new content
      * @param {Boolean} loadScripts (optional) true to look for and process scripts
     */
     setContent : function(content, loadScripts){
+        if (this.iframe) {
+            return;
+        }
+        
         this.el.update(content, loadScripts);
     },
 
@@ -264,10 +286,14 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
      * @return {Roo.UpdateManager} The UpdateManager
      */
     getUpdateManager : function(){
+        if (this.iframe) {
+            return false;
+        }
         return this.el.getUpdateManager();
     },
      /**
      * Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.
+     * Does not work with IFRAME contents
      * @param {Object/String/Function} url The url for this request or a function to call to get the url or a config object containing any of the following options:
 <pre><code>
 panel.load({
@@ -282,6 +308,7 @@ panel.load({
     scripts: false
 });
 </code></pre>
+     
      * The only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>
      * are shorthand for <i>disableCaching</i>, <i>indicatorText</i> and <i>loadScripts</i> and are used to set their associated property on this panel UpdateManager instance.
      * @param {String/Object} params (optional) The parameters to pass as either a URL encoded string "param1=1&amp;param2=2" or an object {param1: 1, param2: 2}
@@ -290,6 +317,11 @@ panel.load({
      * @return {Roo.ContentPanel} this
      */
     load : function(){
+        
+        if (this.iframe) {
+            return this;
+        }
+        
         var um = this.el.getUpdateManager();
         um.update.apply(um, arguments);
         return this;
@@ -301,9 +333,14 @@ panel.load({
      * @param {String/Function} url The URL to load the content from or a function to call to get the URL
      * @param {String/Object} params (optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)
      * @param {Boolean} loadOnce (optional) Whether to only load the content once. If this is false it makes the Ajax call every time this panel is activated. (Defaults to false)
-     * @return {Roo.UpdateManager} The UpdateManager
+     * @return {Roo.UpdateManager|Boolean} The UpdateManager or false if IFRAME
      */
     setUrl : function(url, params, loadOnce){
+        if (this.iframe) {
+            this.iframeEl.dom.src = url;
+            return false;
+        }
+        
         if(this.refreshDelegate){
             this.removeListener("activate", this.refreshDelegate);
         }
@@ -373,8 +410,14 @@ panel.load({
                 this.el.setSize(width, height);
             }
             var size = this.adjustForComponents(width, height);
+            if (this.iframe) {
+                this.iframeEl.setSize(width,height);
+            }
+            
             this.resizeEl.setSize(this.autoWidth ? "auto" : size.width, this.autoHeight ? "auto" : size.height);
             this.fireEvent('resize', this, size.width, size.height);
+            
+            
         }
     },
     

@@ -100,6 +100,13 @@
       "optvals" : []
     },
     {
+      "name" : "iframe",
+      "type" : "Boolean",
+      "desc" : "contents are an iframe - makes showing remote sources/CSS feasible..",
+      "memberOf" : "Roo.bootstrap.panel.Content",
+      "optvals" : []
+    },
+    {
       "name" : "cls",
       "type" : "String",
       "desc" : "extra classes to use",
@@ -314,8 +321,8 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.UpdateManager",
-          "desc" : "The UpdateManager"
+          "type" : "Roo.UpdateManager|Boolean",
+          "desc" : "The UpdateManager or false if IFRAME"
         }
       ]
     },
@@ -355,7 +362,7 @@
     },
     {
       "name" : "load",
-      "desc" : "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.",
+      "desc" : "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.\nDoes not work with IFRAME contents",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
@@ -460,7 +467,7 @@
     },
     {
       "name" : "setContent",
-      "desc" : "Updates this panel's element",
+      "desc" : "Updates this panel's element (not for iframe)",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,

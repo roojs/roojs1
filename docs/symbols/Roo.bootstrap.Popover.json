@@ -25,16 +25,9 @@
   "returns" : [],
   "config" : [
     {
-      "name" : "placement",
-      "type" : "String",
-      "desc" : "how it is placed",
-      "memberOf" : "Roo.bootstrap.Popover",
-      "optvals" : []
-    },
-    {
-      "name" : "over",
-      "type" : "String",
-      "desc" : "what (parent or false to trigger manually.)",
+      "name" : "modal",
+      "type" : "Boolean",
+      "desc" : "- popovers that are modal will mask the screen, and must be closed with another event.",
       "memberOf" : "Roo.bootstrap.Popover",
       "optvals" : []
     },
@@ -43,6 +36,13 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
+      "optvals" : []
+    },
+    {
+      "name" : "add",
+      "type" : "String|Boolean|Roo.Element",
+      "desc" : "click hander to trigger show over what element\n     - if false and it has a 'parent' then it will be automatically added to that element\n     - if string - Roo.get  will be called",
+      "memberOf" : "Roo.bootstrap.Popover",
       "optvals" : []
     },
     {
@@ -122,6 +122,13 @@
       "optvals" : []
     },
     {
+      "name" : "(right|top|bottom|left|auto)",
+      "type" : "String|function",
+      "desc" : "placement how it is placed",
+      "memberOf" : "Roo.bootstrap.Popover",
+      "optvals" : []
+    },
+    {
       "name" : "html",
       "type" : "String",
       "desc" : "contents of the popover   (or false to use children..)",
@@ -173,6 +180,69 @@
   ],
   "methods" : [
     {
+      "name" : "setContent",
+      "desc" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Popover",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "the",
+          "type" : "string",
+          "desc" : "body content",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "setTitle",
+      "desc" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Popover",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "the",
+          "type" : "string",
+          "desc" : "title",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "show",
+      "desc" : "Show the popover",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Popover",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "-",
+          "type" : "Roo.Element|string|false",
+          "desc" : "element to align and point to.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "tooltipEl",
       "desc" : "Fetch the element to display the tooltip on.",
       "isStatic" : false,
@@ -195,20 +265,6 @@
     {
       "name" : "hide",
       "desc" : "Hide a component - adds 'hidden' class",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "params" : [],
-      "returns" : []
-    },
-    {
-      "name" : "show",
-      "desc" : "Show a component - removes 'hidden' class",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,

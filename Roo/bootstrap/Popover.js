@@ -11,9 +11,12 @@
  * Bootstrap Popover class
  * @cfg {String} html contents of the popover   (or false to use children..)
  * @cfg {String} title of popover (or false to hide)
- * @cfg {String} placement how it is placed
+ * @cfg {String|function} (right|top|bottom|left|auto) placement how it is placed
  * @cfg {String} trigger click || hover (or false to trigger manually)
- * @cfg {String} over what (parent or false to trigger manually.)
+ * @cfg {Boolean} modal - popovers that are modal will mask the screen, and must be closed with another event.
+ * @cfg {String|Boolean|Roo.Element} add click hander to trigger show over what element
+ *      - if false and it has a 'parent' then it will be automatically added to that element
+ *      - if string - Roo.get  will be called 
  * @cfg {Number} delay - delay before showing
  
  * @constructor
@@ -45,43 +48,56 @@ Roo.bootstrap.Popover = function(config){
 
 Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
-    title: 'Fill in a title',
+    title: false,
     html: false,
     
     placement : 'right',
     trigger : 'hover', // hover
-    
+    modal : false,
     delay : 0,
     
-    over: 'parent',
+    over: false,
     
     can_build_overlaid : false,
     
+    maskEl : false, // the mask element
+    headerEl : false,
+    contentEl : false,
+    
+    
     getChildContainer : function()
     {
-        return this.el.select('.popover-content',true).first();
+        return this.contentEl;
+        
     },
+    getPopoverHeader : function()
+    {
+        this.title = true; // flag not to hide it..
+        this.headerEl.addClass('p-0');
+        return this.headerEl
+    },
+    
     
     getAutoCreate : function(){
          
         var cfg = {
-           cls : 'popover roo-dynamic',
+           cls : 'popover roo-dynamic shadow roo-popover' + (this.modal ? '-modal' : ''),
            style: 'display:block',
            cn : [
                 {
                     cls : 'arrow'
                 },
                 {
-                    cls : 'popover-inner',
+                    cls : 'popover-inner ',
                     cn : [
                         {
                             tag: 'h3',
                             cls: 'popover-title popover-header',
-                            html : this.title
+                            html : this.title === false ? '' : this.title
                         },
                         {
-                            cls : 'popover-content popover-body',
-                            html : this.html
+                            cls : 'popover-content popover-body '  + (this.cls || ''),
+                            html : this.html || ''
                         }
                     ]
                     
@@ -91,20 +107,35 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         return cfg;
     },
+    /**
+     * @param {string} the title
+     */
     setTitle: function(str)
     {
         this.title = str;
-        this.el.select('.popover-title',true).first().dom.innerHTML = str;
+        if (this.el) {
+            this.headerEl.dom.innerHTML = str;
+        }
+        
     },
+    /**
+     * @param {string} the body content
+     */
     setContent: function(str)
     {
         this.html = str;
-        this.el.select('.popover-content',true).first().dom.innerHTML = str;
+        if (this.contentEl) {
+            this.contentEl.dom.innerHTML = str;
+        }
+        
     },
     // as it get's added to the bottom of the page.
     onRender : function(ct, position)
     {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
+        
+        
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
             cfg.id = Roo.id();
@@ -119,21 +150,58 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             this.el = Roo.get(document.body).createChild(cfg, position);
 //            Roo.log(this.el);
         }
+        
+        this.contentEl = this.el.select('.popover-content',true).first();
+        this.headerEl =  this.el.select('.popover-title',true).first();
+        
+        var nitems = [];
+        if(typeof(this.items) != 'undefined'){
+            var items = this.items;
+            delete this.items;
+
+            for(var i =0;i < items.length;i++) {
+                nitems.push(this.addxtype(Roo.apply({}, items[i])));
+            }
+        }
+
+        this.items = nitems;
+        
+        this.maskEl = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
+        Roo.EventManager.onWindowResize(this.resizeMask, this, true);
+        
+        
+        
         this.initEvents();
+    },
+    
+    resizeMask : function()
+    {
+        this.maskEl.setSize(
+            Roo.lib.Dom.getViewWidth(true),
+            Roo.lib.Dom.getViewHeight(true)
+        );
     },
     
     initEvents : function()
     {
-        this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
+        
+        if (!this.modal) { 
+            Roo.bootstrap.Popover.register(this);
+        }
+         
+        
+        this.headerEl.setVisibilityMode(Roo.Element.DISPLAY); // probably not needed as it's default in BS4
         this.el.enableDisplayMode('block');
         this.el.hide();
-        if (this.over === false) {
+        if (this.over === false && !this.parent()) {
             return; 
         }
         if (this.triggers === false) {
             return;
         }
-        var on_el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+         
+        // support parent
+        var on_el = (this.over == 'parent' || this.over === false) ? this.parent().el : Roo.get(this.over);
         var triggers = this.trigger ? this.trigger.split(' ') : [];
         Roo.each(triggers, function(trigger) {
         
@@ -193,54 +261,80 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             }
         }, this.delay.hide)
     },
-    
+    /**
+     * Show the popover
+     * @param {Roo.Element|string|false} - element to align and point to.
+     */
     show : function (on_el)
     {
+        
+        on_el = on_el || false; // default to false
         if (!on_el) {
-            on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+            if (this.parent() && (this.over == 'parent' || (this.over === false))) {
+                on_el = this.parent().el;
+            } else if (this.over) {
+                Roo.get(this.over);
+            }
+            
         }
         
-        // set content.
-        this.el.select('.popover-title',true).first().dom.innerHtml = this.title;
-        if (this.html !== false) {
-            this.el.select('.popover-content',true).first().dom.innerHtml = this.html;
+        if (!this.el) {
+            this.render(document.body);
         }
+        
+        
         this.el.removeClass([
             'fade','top','bottom', 'left', 'right','in',
             'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
         ]);
-        if (!this.title.length) {
-            this.el.select('.popover-title',true).hide();
+        
+        if (this.title === false) {
+            this.headerEl.hide();
         }
+        
         
         var placement = typeof this.placement == 'function' ?
             this.placement.call(this, this.el, on_el) :
             this.placement;
             
-        var autoToken = /\s?auto?\s?/i;
+        /*
+        var autoToken = /\s?auto?\s?/i;   /// not sure how this was supposed to work? right auto ? what?
+        
+        // I think  'auto right' - but 
+        
         var autoPlace = autoToken.test(placement);
         if (autoPlace) {
             placement = placement.replace(autoToken, '') || 'top';
         }
+        */
         
-        //this.el.detach()
-        //this.el.setXY([0,0]);
+        
         this.el.show();
         this.el.dom.style.display='block';
-        this.el.addClass(placement);
         
         //this.el.appendTo(on_el);
         
         var p = this.getPosition();
         var box = this.el.getBox();
         
-        if (autoPlace) {
-            // fixme..
-        }
-        var align = Roo.bootstrap.Popover.alignment[placement];
         
+        var align = Roo.bootstrap.Popover.alignment[placement];
+        this.el.addClass(align[2]);
+
 //        Roo.log(align);
-        this.el.alignTo(on_el, align[0],align[1]);
+
+        if (on_el) {
+            this.el.alignTo(on_el, align[0],align[1]);
+        } else {
+            // this is usually just done by the builder = to show the popoup in the middle of the scren.
+            var es = this.el.getSize();
+            var x = Roo.lib.Dom.getViewWidth()/2;
+            var y = Roo.lib.Dom.getViewHeight()/2;
+            this.el.setXY([ x-(es.width/2),  y-(es.height/2)] );
+            
+        }
+
+        
         //var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
         
@@ -253,6 +347,16 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         this.hoverState = 'in';
         
+        if (this.modal) {
+            this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
+            this.maskEl.setStyle('z-index', Roo.bootstrap.Popover.zIndex++);
+            this.maskEl.dom.style.display = 'block';
+            this.maskEl.addClass('show');
+        }
+        this.el.setStyle('z-index', Roo.bootstrap.Popover.zIndex++);
+
+        
+        
         this.fireEvent('show', this);
         
     },
@@ -262,17 +366,51 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.removeClass('in');
         this.el.hide();
         this.hoverState = null;
-        
+        this.maskEl.hide(); // always..
         this.fireEvent('hide', this);
     }
     
 });
 
-Roo.bootstrap.Popover.alignment = {
-    'left' : ['r-l', [-10,0], 'right bs-popover-right'],
-    'right' : ['l-r', [10,0], 'left bs-popover-left'],
-    'bottom' : ['t-b', [0,10], 'top bs-popover-top'],
-    'top' : [ 'b-t', [0,-10], 'bottom bs-popover-bottom']
-};
 
- 
+Roo.apply(Roo.bootstrap.Popover, {
+
+    alignment : {
+        'left' : ['r-l', [-10,0], 'left bs-popover-left'],
+        'right' : ['l-br', [10,0], 'right bs-popover-right'],
+        'bottom' : ['t-b', [0,10], 'top bs-popover-top'],
+        'top' : [ 'b-t', [0,-10], 'bottom bs-popover-bottom']
+    },
+    
+    zIndex : 20001,
+
+    clickHander : false,
+    
+
+    onMouseDown : function(e)
+    {
+        if (!e.getTarget(".roo-popover")) {
+            this.hideAll();
+        }
+         
+    },
+    
+    popups : [],
+    
+    register : function(popup)
+    {
+        if (!Roo.bootstrap.Popover.clickHandler) {
+            Roo.bootstrap.Popover.clickHandler = Roo.get(document).on("mousedown", Roo.bootstrap.Popover.onMouseDown, Roo.bootstrap.Popover);
+        }
+        // hide other popups.
+        this.hideAll();
+        this.popups.push(popup);
+    },
+    hideAll : function()
+    {
+        this.popups.forEach(function(p) {
+            p.hide();
+        });
+    }
+
+});

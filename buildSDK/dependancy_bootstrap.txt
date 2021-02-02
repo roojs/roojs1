@@ -86,6 +86,7 @@ Roo.View
 
 Roo.bootstrap.Calendar
 Roo.bootstrap.Popover
+Roo.bootstrap.PopoverNav
 
 Roo.bootstrap.Progress
 Roo.bootstrap.ProgressBar

@@ -5732,7 +5732,7 @@ Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
  * @cfg {Boolean} inverse
  * @cfg {String} type (nav|pills|tab) default nav
  * @cfg {String} navId - reference Id for navbar.
-
+ * @cfg {Boolean} pilltype default true (turn to off to disable active toggle)
  * 
  * @constructor
  * Create a new nav group
@@ -5765,6 +5765,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     type: 'nav',
     navId : '',
     // private
+    pilltype : true,
     
     navItems : false, 
     
@@ -6026,8 +6027,8 @@ Roo.apply(Roo.bootstrap.NavGroup, {
  * @extends Roo.bootstrap.Component
  * Bootstrap Navbar.NavItem class
  * @cfg {String} href  link to
- * @cfg {String} button_weight (default | primary | secondary | success | info | warning | danger | link ) default none
-
+ * @cfg {String} button_weight (default|primary|secondary|success|info|warning|danger|link|light|dark) default none
+ * @cfg {Boolean} button_outline show and outlined button
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
  * @cfg {String} badgecls (bg-green|bg-red|bg-yellow)the extra classes for the badge
@@ -6036,7 +6037,7 @@ Roo.apply(Roo.bootstrap.NavGroup, {
  * @cfg {String} fa - Fontawsome icon name (can add stuff to it like fa-2x)
  * @cfg {Boolean} active Is item active
  * @cfg {Boolean} disabled Is item disabled
- 
+ * @cfg {String} linkcls  Link Class
  * @cfg {Boolean} preventDefault (true | false) default false
  * @cfg {String} tabId the tab that this item activates.
  * @cfg {String} tagtype (a|span) render as a href or span?
@@ -6095,7 +6096,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     was_active : false,
     button_weight : '',
     button_outline : false,
-    
+    linkcls : '',
     navLink: false,
     
     getAutoCreate : function(){
@@ -6105,8 +6106,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cls: 'nav-item'
         };
         
+	cfg.cls =  typeof(cfg.cls) == 'undefined'  ? '' : cfg.cls;
+	
         if (this.active) {
-            cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
+            cfg.cls +=  ' active' ;
         }
         if (this.disabled) {
             cfg.cls += ' disabled';
@@ -6142,7 +6145,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                 }
             ];
             if (this.tagtype == 'a') {
-		cfg.cn[0].cls = 'nav-link';
+		cfg.cn[0].cls = 'nav-link' +  (this.active ?  ' active'  : '') + ' ' + this.linkcls;
+        
 	    }
             if (this.icon) {
                 cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>';
@@ -6191,11 +6195,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             this.menu = this.addxtype(Roo.apply({}, this.menu));
         }
         
-        this.el.select('a',true).on('click', this.onClick, this);
+        this.el.on('click', this.onClick, this);
         
-        if(this.tagtype == 'span'){
-            this.el.select('span',true).on('click', this.onClick, this);
-        }
+        //if(this.tagtype == 'span'){
+        //    this.el.select('span',true).on('click', this.onClick, this);
+        //}
        
         // at this point parent should be available..
         this.parent().register(this);
@@ -6254,7 +6258,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         var p =  this.parent();
    
-        if (['tabs','pills'].indexOf(p.type)!==-1) {
+        if (['tabs','pills'].indexOf(p.type)!==-1 && p.pilltype) {
             if (typeof(p.setActiveItem) !== 'undefined') {
                 p.setActiveItem(this);
             }
@@ -19602,9 +19606,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
  * Bootstrap Popover class
  * @cfg {String} html contents of the popover   (or false to use children..)
  * @cfg {String} title of popover (or false to hide)
- * @cfg {String} placement how it is placed
+ * @cfg {String|function} (right|top|bottom|left|auto) placement how it is placed
  * @cfg {String} trigger click || hover (or false to trigger manually)
- * @cfg {String} over what (parent or false to trigger manually.)
+ * @cfg {Boolean} modal - popovers that are modal will mask the screen, and must be closed with another event.
+ * @cfg {String|Boolean|Roo.Element} add click hander to trigger show over what element
+ *      - if false and it has a 'parent' then it will be automatically added to that element
+ *      - if string - Roo.get  will be called 
  * @cfg {Number} delay - delay before showing
  
  * @constructor
@@ -19636,43 +19643,56 @@ Roo.bootstrap.Popover = function(config){
 
 Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
-    title: 'Fill in a title',
+    title: false,
     html: false,
     
     placement : 'right',
     trigger : 'hover', // hover
-    
+    modal : false,
     delay : 0,
     
-    over: 'parent',
+    over: false,
     
     can_build_overlaid : false,
     
+    maskEl : false, // the mask element
+    headerEl : false,
+    contentEl : false,
+    
+    
     getChildContainer : function()
     {
-        return this.el.select('.popover-content',true).first();
+        return this.contentEl;
+        
     },
+    getPopoverHeader : function()
+    {
+        this.title = true; // flag not to hide it..
+        this.headerEl.addClass('p-0');
+        return this.headerEl
+    },
+    
     
     getAutoCreate : function(){
          
         var cfg = {
-           cls : 'popover roo-dynamic',
+           cls : 'popover roo-dynamic shadow roo-popover' + (this.modal ? '-modal' : ''),
            style: 'display:block',
            cn : [
                 {
                     cls : 'arrow'
                 },
                 {
-                    cls : 'popover-inner',
+                    cls : 'popover-inner ',
                     cn : [
                         {
                             tag: 'h3',
                             cls: 'popover-title popover-header',
-                            html : this.title
+                            html : this.title === false ? '' : this.title
                         },
                         {
-                            cls : 'popover-content popover-body',
-                            html : this.html
+                            cls : 'popover-content popover-body '  + (this.cls || ''),
+                            html : this.html || ''
                         }
                     ]
                     
@@ -19682,20 +19702,35 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         return cfg;
     },
+    /**
+     * @param {string} the title
+     */
     setTitle: function(str)
     {
         this.title = str;
-        this.el.select('.popover-title',true).first().dom.innerHTML = str;
+        if (this.el) {
+            this.headerEl.dom.innerHTML = str;
+        }
+        
     },
+    /**
+     * @param {string} the body content
+     */
     setContent: function(str)
     {
         this.html = str;
-        this.el.select('.popover-content',true).first().dom.innerHTML = str;
+        if (this.contentEl) {
+            this.contentEl.dom.innerHTML = str;
+        }
+        
     },
     // as it get's added to the bottom of the page.
     onRender : function(ct, position)
     {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
+        
+        
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
             cfg.id = Roo.id();
@@ -19710,21 +19745,58 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             this.el = Roo.get(document.body).createChild(cfg, position);
 //            Roo.log(this.el);
         }
+        
+        this.contentEl = this.el.select('.popover-content',true).first();
+        this.headerEl =  this.el.select('.popover-title',true).first();
+        
+        var nitems = [];
+        if(typeof(this.items) != 'undefined'){
+            var items = this.items;
+            delete this.items;
+
+            for(var i =0;i < items.length;i++) {
+                nitems.push(this.addxtype(Roo.apply({}, items[i])));
+            }
+        }
+
+        this.items = nitems;
+        
+        this.maskEl = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
+        Roo.EventManager.onWindowResize(this.resizeMask, this, true);
+        
+        
+        
         this.initEvents();
+    },
+    
+    resizeMask : function()
+    {
+        this.maskEl.setSize(
+            Roo.lib.Dom.getViewWidth(true),
+            Roo.lib.Dom.getViewHeight(true)
+        );
     },
     
     initEvents : function()
     {
-        this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
+        
+        if (!this.modal) { 
+            Roo.bootstrap.Popover.register(this);
+        }
+         
+        
+        this.headerEl.setVisibilityMode(Roo.Element.DISPLAY); // probably not needed as it's default in BS4
         this.el.enableDisplayMode('block');
         this.el.hide();
-        if (this.over === false) {
+        if (this.over === false && !this.parent()) {
             return; 
         }
         if (this.triggers === false) {
             return;
         }
-        var on_el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+         
+        // support parent
+        var on_el = (this.over == 'parent' || this.over === false) ? this.parent().el : Roo.get(this.over);
         var triggers = this.trigger ? this.trigger.split(' ') : [];
         Roo.each(triggers, function(trigger) {
         
@@ -19784,54 +19856,80 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             }
         }, this.delay.hide)
     },
-    
+    /**
+     * Show the popover
+     * @param {Roo.Element|string|false} - element to align and point to.
+     */
     show : function (on_el)
     {
+        
+        on_el = on_el || false; // default to false
         if (!on_el) {
-            on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+            if (this.parent() && (this.over == 'parent' || (this.over === false))) {
+                on_el = this.parent().el;
+            } else if (this.over) {
+                Roo.get(this.over);
+            }
+            
         }
         
-        // set content.
-        this.el.select('.popover-title',true).first().dom.innerHtml = this.title;
-        if (this.html !== false) {
-            this.el.select('.popover-content',true).first().dom.innerHtml = this.html;
+        if (!this.el) {
+            this.render(document.body);
         }
+        
+        
         this.el.removeClass([
             'fade','top','bottom', 'left', 'right','in',
             'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
         ]);
-        if (!this.title.length) {
-            this.el.select('.popover-title',true).hide();
+        
+        if (this.title === false) {
+            this.headerEl.hide();
         }
+        
         
         var placement = typeof this.placement == 'function' ?
             this.placement.call(this, this.el, on_el) :
             this.placement;
             
-        var autoToken = /\s?auto?\s?/i;
+        /*
+        var autoToken = /\s?auto?\s?/i;   /// not sure how this was supposed to work? right auto ? what?
+        
+        // I think  'auto right' - but 
+        
         var autoPlace = autoToken.test(placement);
         if (autoPlace) {
             placement = placement.replace(autoToken, '') || 'top';
         }
+        */
         
-        //this.el.detach()
-        //this.el.setXY([0,0]);
+        
         this.el.show();
         this.el.dom.style.display='block';
-        this.el.addClass(placement);
         
         //this.el.appendTo(on_el);
         
         var p = this.getPosition();
         var box = this.el.getBox();
         
-        if (autoPlace) {
-            // fixme..
-        }
-        var align = Roo.bootstrap.Popover.alignment[placement];
         
+        var align = Roo.bootstrap.Popover.alignment[placement];
+        this.el.addClass(align[2]);
+
 //        Roo.log(align);
-        this.el.alignTo(on_el, align[0],align[1]);
+
+        if (on_el) {
+            this.el.alignTo(on_el, align[0],align[1]);
+        } else {
+            // this is usually just done by the builder = to show the popoup in the middle of the scren.
+            var es = this.el.getSize();
+            var x = Roo.lib.Dom.getViewWidth()/2;
+            var y = Roo.lib.Dom.getViewHeight()/2;
+            this.el.setXY([ x-(es.width/2),  y-(es.height/2)] );
+            
+        }
+
+        
         //var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
         
@@ -19844,6 +19942,16 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         this.hoverState = 'in';
         
+        if (this.modal) {
+            this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true),   Roo.lib.Dom.getViewHeight(true));
+            this.maskEl.setStyle('z-index', Roo.bootstrap.Popover.zIndex++);
+            this.maskEl.dom.style.display = 'block';
+            this.maskEl.addClass('show');
+        }
+        this.el.setStyle('z-index', Roo.bootstrap.Popover.zIndex++);
+
+        
+        
         this.fireEvent('show', this);
         
     },
@@ -19853,18 +19961,85 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.removeClass('in');
         this.el.hide();
         this.hoverState = null;
-        
+        this.maskEl.hide(); // always..
         this.fireEvent('hide', this);
     }
     
 });
 
-Roo.bootstrap.Popover.alignment = {
-    'left' : ['r-l', [-10,0], 'right bs-popover-right'],
-    'right' : ['l-r', [10,0], 'left bs-popover-left'],
-    'bottom' : ['t-b', [0,10], 'top bs-popover-top'],
-    'top' : [ 'b-t', [0,-10], 'bottom bs-popover-bottom']
+
+Roo.apply(Roo.bootstrap.Popover, {
+
+    alignment : {
+        'left' : ['r-l', [-10,0], 'left bs-popover-left'],
+        'right' : ['l-br', [10,0], 'right bs-popover-right'],
+        'bottom' : ['t-b', [0,10], 'top bs-popover-top'],
+        'top' : [ 'b-t', [0,-10], 'bottom bs-popover-bottom']
+    },
+    
+    zIndex : 20001,
+
+    clickHander : false,
+    
+
+    onMouseDown : function(e)
+    {
+        if (!e.getTarget(".roo-popover")) {
+            this.hideAll();
+        }
+         
+    },
+    
+    popups : [],
+    
+    register : function(popup)
+    {
+        if (!Roo.bootstrap.Popover.clickHandler) {
+            Roo.bootstrap.Popover.clickHandler = Roo.get(document).on("mousedown", Roo.bootstrap.Popover.onMouseDown, Roo.bootstrap.Popover);
+        }
+        // hide other popups.
+        this.hideAll();
+        this.popups.push(popup);
+    },
+    hideAll : function()
+    {
+        this.popups.forEach(function(p) {
+            p.hide();
+        });
+    }
+
+});/*
+ * - LGPL
+ *
+ * Card header - holder for the card header elements.
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.PopoverNav
+ * @extends Roo.bootstrap.NavGroup
+ * Bootstrap Popover header navigation class
+ * @constructor
+ * Create a new Popover Header Navigation 
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.PopoverNav = function(config){
+    Roo.bootstrap.PopoverNav.superclass.constructor.call(this, config);
 };
+
+Roo.extend(Roo.bootstrap.PopoverNav, Roo.bootstrap.NavSimplebar,  {
+    
+    
+    container_method : 'getPopoverHeader' 
+    
+     
+    
+    
+   
+});
+
+ 
 
  /*
  * - LGPL
@@ -39301,6 +39476,7 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
+ * @cfg {Boolean} iframe      contents are an iframe - makes showing remote sources/CSS feasible..
  * @cfg {Boolean} badges render the badges
  * @cfg {String} cls  extra classes to use  
  * @cfg {String} background (primary|secondary|success|info|warning|danger|light|dark)
@@ -39338,12 +39514,26 @@ Roo.bootstrap.panel.Content = function( config){
                     " roo-layout-inactive-content",
                 id: config.id||el
             };
+            if (config.iframe) {
+                elcfg.cn = [
+                    {
+                        tag : 'iframe',
+                        style : 'border: 0px',
+                        src : 'about:blank'
+                    }
+                ];
+            }
+              
             if (config.html) {
                 elcfg.html = config.html;
                 
             }
                         
             this.el = Roo.DomHelper.append(document.body, elcfg , true);
+            if (config.iframe) {
+                this.iframeEl = this.el.select('iframe',true).first();
+            }
+            
         }
     } 
     this.closable = false;
@@ -39440,7 +39630,7 @@ Roo.bootstrap.panel.Content = function( config){
 
     
     
-    if(this.autoScroll){
+    if(this.autoScroll && !this.iframe){
         this.resizeEl.setStyle("overflow", "auto");
     } else {
         // fix randome scrolling
@@ -39477,6 +39667,9 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     background : '',
     
     tabTip : '',
+    
+    iframe : false,
+    iframeEl : false,
     
     setRegion : function(region){
         this.region = region;
@@ -39517,11 +39710,15 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
         return true;
     },
     /**
-     * Updates this panel's element
+     * Updates this panel's element (not for iframe)
      * @param {String} content The new content
      * @param {Boolean} loadScripts (optional) true to look for and process scripts
     */
     setContent : function(content, loadScripts){
+        if (this.iframe) {
+            return;
+        }
+        
         this.el.update(content, loadScripts);
     },
 
@@ -39538,10 +39735,14 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
      * @return {Roo.UpdateManager} The UpdateManager
      */
     getUpdateManager : function(){
+        if (this.iframe) {
+            return false;
+        }
         return this.el.getUpdateManager();
     },
      /**
      * Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.
+     * Does not work with IFRAME contents
      * @param {Object/String/Function} url The url for this request or a function to call to get the url or a config object containing any of the following options:
 <pre><code>
 panel.load({
@@ -39556,6 +39757,7 @@ panel.load({
     scripts: false
 });
 </code></pre>
+     
      * The only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>
      * are shorthand for <i>disableCaching</i>, <i>indicatorText</i> and <i>loadScripts</i> and are used to set their associated property on this panel UpdateManager instance.
      * @param {String/Object} params (optional) The parameters to pass as either a URL encoded string "param1=1&amp;param2=2" or an object {param1: 1, param2: 2}
@@ -39564,6 +39766,11 @@ panel.load({
      * @return {Roo.ContentPanel} this
      */
     load : function(){
+        
+        if (this.iframe) {
+            return this;
+        }
+        
         var um = this.el.getUpdateManager();
         um.update.apply(um, arguments);
         return this;
@@ -39575,9 +39782,14 @@ panel.load({
      * @param {String/Function} url The URL to load the content from or a function to call to get the URL
      * @param {String/Object} params (optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)
      * @param {Boolean} loadOnce (optional) Whether to only load the content once. If this is false it makes the Ajax call every time this panel is activated. (Defaults to false)
-     * @return {Roo.UpdateManager} The UpdateManager
+     * @return {Roo.UpdateManager|Boolean} The UpdateManager or false if IFRAME
      */
     setUrl : function(url, params, loadOnce){
+        if (this.iframe) {
+            this.iframeEl.dom.src = url;
+            return false;
+        }
+        
         if(this.refreshDelegate){
             this.removeListener("activate", this.refreshDelegate);
         }
@@ -39647,8 +39859,14 @@ panel.load({
                 this.el.setSize(width, height);
             }
             var size = this.adjustForComponents(width, height);
+            if (this.iframe) {
+                this.iframeEl.setSize(width,height);
+            }
+            
             this.resizeEl.setSize(this.autoWidth ? "auto" : size.width, this.autoHeight ? "auto" : size.height);
             this.fireEvent('resize', this, size.width, size.height);
+            
+            
         }
     },
     

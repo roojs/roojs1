@@ -73,6 +73,13 @@
       "optvals" : []
     },
     {
+      "name" : "pilltype",
+      "type" : "Boolean",
+      "desc" : "default true (turn to off to disable active toggle)",
+      "memberOf" : "Roo.bootstrap.NavGroup",
+      "optvals" : []
+    },
+    {
       "name" : "navId",
       "type" : "String",
       "desc" : "- reference Id for navbar.",

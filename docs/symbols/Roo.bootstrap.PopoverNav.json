@@ -1,52 +1,30 @@
 {
-  "name" : "Roo.bootstrap.panel.Content",
+  "name" : "Roo.bootstrap.PopoverNav",
   "augments" : [
+    "Roo.bootstrap.NavGroup",
+    "Roo.bootstrap.Component",
+    "Roo.Component",
     "Roo.util.Observable"
   ],
-  "desc" : "A basic ContentPanel element.",
+  "desc" : "Bootstrap Popover header navigation class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
-  "memberOf" : "Content",
+  "memberOf" : "PopoverNav",
   "example" : "",
   "deprecated" : "",
   "since" : "",
   "see" : "",
   "params" : [
     {
-      "name" : "el",
-      "type" : "String/HTMLElement/Roo.Element",
-      "desc" : "The container element for this panel",
-      "isOptional" : false
-    },
-    {
       "name" : "config",
-      "type" : "String/Object",
-      "desc" : "A string to set only the title or a config object",
-      "isOptional" : false
-    },
-    {
-      "name" : "content",
-      "type" : "String",
-      "desc" : "(optional) Set the HTML content for this panel",
-      "isOptional" : false
-    },
-    {
-      "name" : "region",
-      "type" : "String",
-      "desc" : "(optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)",
+      "type" : "Object",
+      "desc" : "The config object",
       "isOptional" : false
     }
   ],
   "returns" : [],
   "config" : [
-    {
-      "name" : "loadOnce",
-      "type" : "Boolean",
-      "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "optvals" : []
-    },
     {
       "name" : "listeners",
       "type" : "Object",
@@ -55,194 +33,174 @@
       "optvals" : []
     },
     {
-      "name" : "badges",
-      "type" : "Boolean",
-      "desc" : "render the badges",
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "name" : "tooltip",
+      "type" : "string",
+      "desc" : "Text for the tooltip",
+      "memberOf" : "Roo.bootstrap.Component",
       "optvals" : []
     },
     {
-      "name" : "autoScroll",
-      "type" : "Boolean",
-      "desc" : "True to scroll overflow in this panel (use with {@link #fitToFrame})",
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "name" : "container_method",
+      "type" : "string",
+      "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+      "memberOf" : "Roo.bootstrap.Component",
       "optvals" : []
     },
     {
-      "name" : "fitToFrame",
-      "type" : "Boolean",
-      "desc" : "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "optvals" : []
-    },
-    {
-      "name" : "background",
-      "type" : "Boolean",
-      "desc" : "True if the panel should not be activated when it is added (defaults to false)",
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "optvals" : []
-    },
-    {
-      "name" : "toolbar",
-      "type" : "Toolbar",
-      "desc" : "A toolbar for this panel",
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "optvals" : []
-    },
-    {
-      "name" : "region",
-      "type" : "String",
-      "desc" : "t) which region to put this panel on (when used with xtype constructors)",
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "name" : "visibilityEl",
+      "type" : "string|object",
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
+      "memberOf" : "Roo.bootstrap.Component",
       "optvals" : [
-        "center",
-        "north",
-        "south",
-        "east",
-        "west"
+        "el",
+        "parent"
       ]
     },
     {
-      "name" : "content",
-      "type" : "String",
-      "desc" : "Raw content to fill content panel with (uses setContent on construction.)",
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "optvals" : []
-    },
-    {
-      "name" : "title",
-      "type" : "String",
-      "desc" : "The title for this panel",
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "optvals" : []
-    },
-    {
-      "name" : "iframe",
+      "name" : "pilltype",
       "type" : "Boolean",
-      "desc" : "contents are an iframe - makes showing remote sources/CSS feasible..",
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "desc" : "default true (turn to off to disable active toggle)",
+      "memberOf" : "Roo.bootstrap.NavGroup",
+      "optvals" : []
+    },
+    {
+      "name" : "align",
+      "type" : "String",
+      "desc" : "t)",
+      "memberOf" : "Roo.bootstrap.NavGroup",
+      "optvals" : [
+        "left",
+        "right"
+      ]
+    },
+    {
+      "name" : "inverse",
+      "type" : "Boolean",
+      "desc" : "",
+      "memberOf" : "Roo.bootstrap.NavGroup",
+      "optvals" : []
+    },
+    {
+      "name" : "navId",
+      "type" : "String",
+      "desc" : "- reference Id for navbar.",
+      "memberOf" : "Roo.bootstrap.NavGroup",
+      "optvals" : []
+    },
+    {
+      "name" : "can_build_overlaid",
+      "type" : "Boolean",
+      "desc" : "True if element can be rebuild from a HTML page",
+      "memberOf" : "Roo.bootstrap.Component",
+      "optvals" : []
+    },
+    {
+      "name" : "hideMode",
+      "type" : "String",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "memberOf" : "Roo.Component",
+      "optvals" : [
+        "display",
+        "visibility"
+      ]
+    },
+    {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "any extra css",
+      "memberOf" : "Roo.bootstrap.Component",
+      "optvals" : []
+    },
+    {
+      "name" : "allowDomMove",
+      "type" : "Boolean",
+      "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
+      "memberOf" : "Roo.Component",
       "optvals" : []
     },
     {
       "name" : "cls",
       "type" : "String",
-      "desc" : "extra classes to use",
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "desc" : "css class",
+      "memberOf" : "Roo.bootstrap.Component",
       "optvals" : []
     },
     {
-      "name" : "autoCreate",
-      "type" : "Boolean/Object",
-      "desc" : "True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create",
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "name" : "xattr",
+      "type" : "Object",
+      "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
+      "memberOf" : "Roo.bootstrap.Component",
       "optvals" : []
     },
     {
-      "name" : "fitContainer",
-      "type" : "Boolean",
-      "desc" : "When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)",
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "optvals" : []
-    },
-    {
-      "name" : "closable",
-      "type" : "Boolean",
-      "desc" : "True if the panel can be closed/removed",
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "optvals" : []
-    },
-    {
-      "name" : "params",
-      "type" : "String/Object",
-      "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "optvals" : []
-    },
-    {
-      "name" : "adjustments",
-      "type" : "Array",
-      "desc" : "Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])",
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "optvals" : []
-    },
-    {
-      "name" : "url",
+      "name" : "actionMode",
       "type" : "String",
-      "desc" : "Calls {@link #setUrl} with this value",
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
+      "memberOf" : "Roo.Component",
       "optvals" : []
     },
     {
-      "name" : "resizeEl",
-      "type" : "String/HTMLElement/Element",
-      "desc" : "An element to resize if {@link #fitToFrame} is true (instead of this panel's element)",
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "name" : "dataId",
+      "type" : "string",
+      "desc" : "cutomer id",
+      "memberOf" : "Roo.bootstrap.Component",
+      "optvals" : []
+    },
+    {
+      "name" : "type",
+      "type" : "String",
+      "desc" : "b) default nav",
+      "memberOf" : "Roo.bootstrap.NavGroup",
+      "optvals" : [
+        "nav",
+        "pills",
+        "tab"
+      ]
+    },
+    {
+      "name" : "name",
+      "type" : "string",
+      "desc" : "Specifies name attribute",
+      "memberOf" : "Roo.bootstrap.Component",
+      "optvals" : []
+    },
+    {
+      "name" : "disableClass",
+      "type" : "String",
+      "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+      "memberOf" : "Roo.Component",
       "optvals" : []
     }
   ],
   "methods" : [
     {
-      "name" : "refresh",
-      "desc" : "Force a content refresh from the URL specified in the {@link #setUrl} method.\n  Will fail silently if the {@link #setUrl} method has not been called.\n  This does not activate the panel, just updates its content.",
+      "name" : "register",
+      "desc" : "register a Navigation item",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "params" : [],
-      "returns" : []
-    },
-    {
-      "name" : "getUpdateManager",
-      "desc" : "Get the {@link Roo.UpdateManager} for this panel. Enables you to perform Ajax updates.",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "params" : [],
-      "returns" : [
-        {
-          "name" : "",
-          "type" : "Roo.UpdateManager",
-          "desc" : "The UpdateManager"
-        }
-      ]
-    },
-    {
-      "name" : "getChildContainer",
-      "desc" : "Adds a xtype elements to the panel - currently only supports Forms, View, JsonView.\n<pre><code>\n\nlayout.addxtype({\n       xtype : 'Form',\n       items: [ .... ]\n   }\n);\n\n</code></pre>",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "memberOf" : "Roo.bootstrap.NavGroup",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
       "params" : [
         {
-          "name" : "cfg",
-          "type" : "Object",
-          "desc" : "Xtype definition of item to add.",
+          "name" : "the",
+          "type" : "Roo.bootstrap.NavItem",
+          "desc" : "navitem to add",
           "isOptional" : false
         }
       ],
       "returns" : []
     },
     {
-      "name" : "getToolbar",
-      "desc" : "Returns the toolbar for this Panel if one was configured.",
+      "name" : "getActive",
+      "desc" : "gets the active Navigation item",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "memberOf" : "Roo.bootstrap.NavGroup",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -251,78 +209,95 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "Roo.Toolbar",
-          "desc" : ""
+          "type" : "Roo.bootstrap.NavItem",
+          "desc" : "the current navitem"
         }
       ]
     },
     {
-      "name" : "setTitle",
-      "desc" : "Set this panel's title",
+      "name" : "addItem",
+      "desc" : "adds a Navigation item",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "memberOf" : "Roo.bootstrap.NavGroup",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
       "params" : [
         {
-          "name" : "title",
-          "type" : "String",
-          "desc" : "",
+          "name" : "the",
+          "type" : "Roo.bootstrap.NavItem",
+          "desc" : "navitem to add",
           "isOptional" : false
         }
       ],
       "returns" : []
     },
     {
-      "name" : "setUrl",
-      "desc" : "Set a URL to be used to load the content for this panel. When this panel is activated, the content will be loaded from that URL.",
-      "isStatic" : false,
+      "name" : "get",
+      "desc" : "fetch a Navigation Group based on the navigation ID",
+      "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "memberOf" : "Roo.bootstrap.NavGroup",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
       "params" : [
         {
-          "name" : "url",
-          "type" : "String/Function",
-          "desc" : "The URL to load the content from or a function to call to get the URL",
-          "isOptional" : false
-        },
-        {
-          "name" : "params",
-          "type" : "String/Object",
-          "desc" : "(optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)",
-          "isOptional" : false
-        },
-        {
-          "name" : "loadOnce",
-          "type" : "Boolean",
-          "desc" : "(optional) Whether to only load the content once. If this is false it makes the Ajax call every time this panel is activated. (Defaults to false)",
+          "name" : "the",
+          "type" : "string",
+          "desc" : "navgroup to add",
           "isOptional" : false
         }
       ],
-      "returns" : [
-        {
-          "name" : "",
-          "type" : "Roo.UpdateManager|Boolean",
-          "desc" : "The UpdateManager or false if IFRAME"
-        }
-      ]
+      "returns" : []
     },
     {
-      "name" : "getEl",
-      "desc" : "Returns this panel's element - used by regiosn to add.",
+      "name" : "setActiveItem",
+      "desc" : "sets the active Navigation item",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "memberOf" : "Roo.bootstrap.NavGroup",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "the",
+          "type" : "Roo.bootstrap.NavItem",
+          "desc" : "new current navitem",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "clearAll",
+      "desc" : "clear all the Navigation item",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.NavGroup",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "tooltipEl",
+      "desc" : "Fetch the element to display the tooltip on.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -332,17 +307,17 @@
         {
           "name" : "",
           "type" : "Roo.Element",
-          "desc" : ""
+          "desc" : "defaults to this.el"
         }
       ]
     },
     {
-      "name" : "destroy",
-      "desc" : "Destroys this panel",
+      "name" : "hide",
+      "desc" : "Hide a component - adds 'hidden' class",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -351,57 +326,68 @@
       "returns" : []
     },
     {
-      "name" : "load",
-      "desc" : "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.\nDoes not work with IFRAME contents",
+      "name" : "show",
+      "desc" : "Show a component - removes 'hidden' class",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
-      "params" : [
-        {
-          "name" : "url",
-          "type" : "Object/String/Function",
-          "desc" : "The url for this request or a function to call to get the url or a config object containing any of the following options:\n<pre><code>\npanel.load({\n    url: \"your-url.php\",\n    params: {param1: \"foo\", param2: \"bar\"}, // or a URL encoded string\n    callback: yourFunction,\n    scope: yourObject, //(optional scope)\n    discardUrl: false,\n    nocache: false,\n    text: \"Loading...\",\n    timeout: 30,\n    scripts: false\n});\n</code></pre>\nThe only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>\nare shorthand for <i>disableCaching</i>, <i>indicatorText</i> and <i>loadScripts</i> and are used to set their associated property on this panel UpdateManager instance.",
-          "isOptional" : false
-        },
-        {
-          "name" : "params",
-          "type" : "String/Object",
-          "desc" : "(optional) The parameters to pass as either a URL encoded string \"param1=1&amp;param2=2\" or an object {param1: 1, param2: 2}",
-          "isOptional" : false
-        },
-        {
-          "name" : "callback",
-          "type" : "Function",
-          "desc" : "(optional) Callback when transaction is complete -- called with signature (oElement, bSuccess, oResponse)",
-          "isOptional" : false
-        },
-        {
-          "name" : "discardUrl",
-          "type" : "Boolean",
-          "desc" : "(optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL.",
-          "isOptional" : false
-        }
-      ],
-      "returns" : [
-        {
-          "name" : "",
-          "type" : "Roo.ContentPanel",
-          "desc" : "this"
-        }
-      ]
+      "params" : [],
+      "returns" : []
     },
     {
-      "name" : "getTitle",
-      "desc" : "Returns this panel's title",
+      "name" : "setVisibilityEl",
+      "desc" : "Set the element that will be used to show or hide",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "getVisibilityEl",
+      "desc" : "Get the element that will be used to show or hide",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "initEvents",
+      "desc" : "Initialize Events for the element",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "getChildContainer",
+      "desc" : "Fetch the element to add children to",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -410,38 +396,18 @@
       "returns" : [
         {
           "name" : "",
-          "type" : "String",
-          "desc" : ""
-        }
-      ]
-    },
-    {
-      "name" : "isClosable",
-      "desc" : "Returns true is this panel was configured to be closable",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "params" : [],
-      "returns" : [
-        {
-          "name" : "",
-          "type" : "Boolean",
-          "desc" : ""
+          "type" : "Roo.Element",
+          "desc" : "defaults to this.el"
         }
       ]
     },
     {
       "name" : "getId",
-      "desc" : "Returns this panel's id",
+      "desc" : "Returns the id of this component.",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -456,31 +422,188 @@
       ]
     },
     {
-      "name" : "setContent",
-      "desc" : "Updates this panel's element (not for iframe)",
+      "name" : "render",
+      "desc" : "If this is a lazy rendering component, render it to its container element.",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
       "params" : [
         {
-          "name" : "content",
-          "type" : "String",
-          "desc" : "The new content",
-          "isOptional" : false
-        },
-        {
-          "name" : "loadScripts",
-          "type" : "Boolean",
-          "desc" : "(optional) true to look for and process scripts",
+          "name" : "container",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "(optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off.",
           "isOptional" : false
         }
       ],
       "returns" : []
+    },
+    {
+      "name" : "destroy",
+      "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "isVisible",
+      "desc" : "Returns true if this component is visible.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "setDisabled",
+      "desc" : "Convenience function for setting disabled/enabled by boolean.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "disabled",
+          "type" : "Boolean",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "focus",
+      "desc" : "Try to focus this component.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "selectText",
+          "type" : "Boolean",
+          "desc" : "True to also select the text in this component (if applicable)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "enable",
+      "desc" : "Enable this component.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "setVisible",
+      "desc" : "Convenience function to hide or show this component by boolean.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "visible",
+          "type" : "Boolean",
+          "desc" : "True to show, false to hide",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "disable",
+      "desc" : "Disable this component.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Component",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "getEl",
+      "desc" : "Returns the underlying {@link Roo.Element}.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.Element",
+          "desc" : "The element"
+        }
+      ]
     },
     {
       "name" : "purgeListeners",
@@ -778,9 +901,9 @@
   ],
   "events" : [
     {
-      "name" : "activate",
-      "desc" : "Fires when this panel is activated.",
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "name" : "changed",
+      "desc" : "Fires when the active item changes",
+      "memberOf" : "Roo.bootstrap.NavGroup",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -788,7 +911,37 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.bootstrap.NavGroup",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "selected",
+          "type" : "Roo.bootstrap.Navbar.Item",
+          "desc" : "The item selected",
+          "isOptional" : false
+        },
+        {
+          "name" : "prev",
+          "type" : "Roo.bootstrap.Navbar.Item",
+          "desc" : "The previously selected item",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "childrenrendered",
+      "desc" : "Fires when the children have been rendered..",
+      "memberOf" : "Roo.bootstrap.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.Component",
           "desc" : "",
           "isOptional" : false
         }
@@ -796,9 +949,9 @@
       "returns" : []
     },
     {
-      "name" : "resize",
-      "desc" : "Fires when this panel is resized if fitToFrame is true.",
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "name" : "beforerender",
+      "desc" : "Fires before the component is rendered. Return false to stop the render.",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -806,29 +959,17 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.Component",
           "desc" : "",
-          "isOptional" : false
-        },
-        {
-          "name" : "width",
-          "type" : "Number",
-          "desc" : "The width after any component adjustments",
-          "isOptional" : false
-        },
-        {
-          "name" : "height",
-          "type" : "Number",
-          "desc" : "The height after any component adjustments",
           "isOptional" : false
         }
       ],
       "returns" : []
     },
     {
-      "name" : "deactivate",
-      "desc" : "Fires when this panel is activated.",
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "name" : "disable",
+      "desc" : "Fires after the component is disabled.",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -836,7 +977,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.Component",
           "desc" : "",
           "isOptional" : false
         }
@@ -845,8 +986,8 @@
     },
     {
       "name" : "render",
-      "desc" : "Fires when this tab is created",
-      "memberOf" : "Roo.bootstrap.panel.Content",
+      "desc" : "Fires after the component is rendered.",
+      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -854,7 +995,133 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "Roo.ContentPanel",
+          "type" : "Roo.Component",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "destroy",
+      "desc" : "Fires after the component is destroyed.",
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "hide",
+      "desc" : "Fires after the component is hidden.",
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "beforehide",
+      "desc" : "Fires before the component is hidden. Return false to stop the hide.",
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "show",
+      "desc" : "Fires after the component is shown.",
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "beforeshow",
+      "desc" : "Fires before the component is shown.  Return false to stop the show.",
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "enable",
+      "desc" : "Fires after the component is enabled.",
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "beforedestroy",
+      "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
+      "memberOf" : "Roo.Component",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.Component",
           "desc" : "",
           "isOptional" : false
         }
