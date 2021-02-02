@@ -65,11 +65,11 @@ Roo.bootstrap.panel.Content = function( config){
                     " roo-layout-inactive-content",
                 id: config.id||el
             };
-            if (this.iframe) {
+            if (config.iframe) {
                 elcfg.cn = [
                     {
                         tag : 'iframe',
-                        style : 'border 0px',
+                        style : 'border: 0px',
                         src : 'about:blank'
                     }
                 ];
@@ -81,7 +81,7 @@ Roo.bootstrap.panel.Content = function( config){
             }
                         
             this.el = Roo.DomHelper.append(document.body, elcfg , true);
-            if (this.iframe) {
+            if (config.iframe) {
                 this.iframeEl = this.el.select('iframe',true).first();
             }
             
@@ -220,6 +220,7 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     tabTip : '',
     
     iframe : false,
+    iframeEl : false,
     
     setRegion : function(region){
         this.region = region;
@@ -409,8 +410,14 @@ panel.load({
                 this.el.setSize(width, height);
             }
             var size = this.adjustForComponents(width, height);
+            if (this.iframe) {
+                this.iframeEl.setSize(width,height);
+            }
+            
             this.resizeEl.setSize(this.autoWidth ? "auto" : size.width, this.autoHeight ? "auto" : size.height);
             this.fireEvent('resize', this, size.width, size.height);
+            
+            
         }
     },
     

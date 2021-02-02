@@ -66951,6 +66951,12 @@
         "memberOf" : ""
       },
       {
+        "name" : "iframe",
+        "type" : "Boolean",
+        "desc" : "contents are an iframe - makes showing remote sources/CSS feasible..",
+        "memberOf" : ""
+      },
+      {
         "name" : "listeners",
         "type" : "Object",
         "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -67144,7 +67150,7 @@
       {
         "name" : "load",
         "type" : "function",
-        "desc" : "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.",
+        "desc" : "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.\nDoes not work with IFRAME contents",
         "sig" : "(url, params, callback, discardUrl)",
         "static" : false,
         "memberOf" : ""
@@ -67192,7 +67198,7 @@
       {
         "name" : "setContent",
         "type" : "function",
-        "desc" : "Updates this panel's element",
+        "desc" : "Updates this panel's element (not for iframe)",
         "sig" : "(content, loadScripts)",
         "static" : false,
         "memberOf" : ""
@@ -67290,6 +67296,12 @@
         "type" : "Roo.bootstrap.Table",
         "desc" : "The grid for this panel",
         "memberOf" : ""
+      },
+      {
+        "name" : "iframe",
+        "type" : "Boolean",
+        "desc" : "contents are an iframe - makes showing remote sources/CSS feasible..",
+        "memberOf" : "Roo.bootstrap.panel.Content"
       },
       {
         "name" : "listeners",
@@ -67493,7 +67505,7 @@
       {
         "name" : "load",
         "type" : "function",
-        "desc" : "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.",
+        "desc" : "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.\nDoes not work with IFRAME contents",
         "sig" : "(url, params, callback, discardUrl)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.panel.Content"
@@ -67541,7 +67553,7 @@
       {
         "name" : "setContent",
         "type" : "function",
-        "desc" : "Updates this panel's element",
+        "desc" : "Updates this panel's element (not for iframe)",
         "sig" : "(content, loadScripts)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.panel.Content"
@@ -67632,6 +67644,12 @@
         "name" : "fitToFrame",
         "type" : "Boolean",
         "desc" : "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
+        "memberOf" : "Roo.bootstrap.panel.Content"
+      },
+      {
+        "name" : "iframe",
+        "type" : "Boolean",
+        "desc" : "contents are an iframe - makes showing remote sources/CSS feasible..",
         "memberOf" : "Roo.bootstrap.panel.Content"
       },
       {
@@ -67844,7 +67862,7 @@
       {
         "name" : "load",
         "type" : "function",
-        "desc" : "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.",
+        "desc" : "Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.\nDoes not work with IFRAME contents",
         "sig" : "(url, params, callback, discardUrl)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.panel.Content"
@@ -67892,7 +67910,7 @@
       {
         "name" : "setContent",
         "type" : "function",
-        "desc" : "Updates this panel's element",
+        "desc" : "Updates this panel's element (not for iframe)",
         "sig" : "(content, loadScripts)",
         "static" : false,
         "memberOf" : "Roo.bootstrap.panel.Content"

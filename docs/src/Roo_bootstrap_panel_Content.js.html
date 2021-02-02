@@ -27,6 +27,7 @@
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
+ * @cfg {Boolean} iframe      contents are an iframe - makes showing remote sources/CSS feasible..
  * @cfg {Boolean} badges render the badges
  * @cfg {String} cls  extra classes to use  
  * @cfg {String} background (primary|secondary|success|info|warning|danger|light|dark)
@@ -64,12 +65,26 @@
                     </span><span class="jsdoc-string">&quot; roo-layout-inactive-content&quot;</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.id</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">el
             </span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">elcfg.cn </span><span class="jsdoc-syntax">= [
+                    {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'iframe'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'border 0px'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'about:blank'
+                    </span><span class="jsdoc-syntax">}
+                ];
+            }
+
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.html</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">elcfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.html</span><span class="jsdoc-syntax">;
 
             }
 
             </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">elcfg </span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.iframeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'iframe'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+            }
+
         }
     }
     </span><span class="jsdoc-var">this.closable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
@@ -166,7 +181,7 @@
 
 
 
-    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoScroll</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoScroll </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.resizeEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;overflow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;auto&quot;</span><span class="jsdoc-syntax">);
     } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
         </span><span class="jsdoc-comment">// fix randome scrolling
@@ -203,6 +218,8 @@
     </span><span class="jsdoc-var">background </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">tabTip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">iframe </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">setRegion </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">;
@@ -243,11 +260,15 @@
         </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-comment">/**
-     * Updates this panel's element
+     * Updates this panel's element (not for iframe)
      * @param {String} content The new content
      * @param {Boolean} loadScripts (optional) true to look for and process scripts
     */
     </span><span class="jsdoc-var">setContent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadScripts</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
         </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadScripts</span><span class="jsdoc-syntax">);
     },
 
@@ -264,10 +285,14 @@
      * @return {Roo.UpdateManager} The UpdateManager
      */
     </span><span class="jsdoc-var">getUpdateManager </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.getUpdateManager</span><span class="jsdoc-syntax">();
     },
      </span><span class="jsdoc-comment">/**
      * Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.
+     * Does not work with IFRAME contents
      * @param {Object/String/Function} url The url for this request or a function to call to get the url or a config object containing any of the following options:
 &lt;pre&gt;&lt;code&gt;
 panel.load({
@@ -282,6 +307,7 @@ panel.load({
     scripts: false
 });
 &lt;/code&gt;&lt;/pre&gt;
+     
      * The only required property is &lt;i&gt;url&lt;/i&gt;. The optional properties &lt;i&gt;nocache&lt;/i&gt;, &lt;i&gt;text&lt;/i&gt; and &lt;i&gt;scripts&lt;/i&gt;
      * are shorthand for &lt;i&gt;disableCaching&lt;/i&gt;, &lt;i&gt;indicatorText&lt;/i&gt; and &lt;i&gt;loadScripts&lt;/i&gt; and are used to set their associated property on this panel UpdateManager instance.
      * @param {String/Object} params (optional) The parameters to pass as either a URL encoded string &quot;param1=1&amp;amp;param2=2&quot; or an object {param1: 1, param2: 2}
@@ -290,6 +316,11 @@ panel.load({
      * @return {Roo.ContentPanel} this
      */
     </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        }
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">um </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getUpdateManager</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">um.update.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">um</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
@@ -301,9 +332,14 @@ panel.load({
      * @param {String/Function} url The URL to load the content from or a function to call to get the URL
      * @param {String/Object} params (optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)
      * @param {Boolean} loadOnce (optional) Whether to only load the content once. If this is false it makes the Ajax call every time this panel is activated. (Defaults to false)
-     * @return {Roo.UpdateManager} The UpdateManager
+     * @return {Roo.UpdateManager|Boolean} The UpdateManager or false if IFRAME
      */
     </span><span class="jsdoc-var">setUrl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadOnce</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.iframeEl.dom.src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.refreshDelegate</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.removeListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;activate&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.refreshDelegate</span><span class="jsdoc-syntax">);
         }
