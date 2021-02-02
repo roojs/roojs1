@@ -39514,6 +39514,16 @@ Roo.bootstrap.panel.Content = function( config){
                     " roo-layout-inactive-content",
                 id: config.id||el
             };
+            if (this.iframe) {
+                elcfg.cn = [
+                    {
+                        tag : 'iframe',
+                        style : 'border 0px',
+                        src : 'about:blank'
+                    }
+                ];
+            }
+              
             if (config.html) {
                 elcfg.html = config.html;
                 
