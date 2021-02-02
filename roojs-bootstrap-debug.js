@@ -39741,6 +39741,7 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     },
      /**
      * Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.
+     * Does not work with IFRAME contents
      * @param {Object/String/Function} url The url for this request or a function to call to get the url or a config object containing any of the following options:
 <pre><code>
 panel.load({
@@ -39755,6 +39756,7 @@ panel.load({
     scripts: false
 });
 </code></pre>
+     
      * The only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>
      * are shorthand for <i>disableCaching</i>, <i>indicatorText</i> and <i>loadScripts</i> and are used to set their associated property on this panel UpdateManager instance.
      * @param {String/Object} params (optional) The parameters to pass as either a URL encoded string "param1=1&amp;param2=2" or an object {param1: 1, param2: 2}
@@ -39763,6 +39765,11 @@ panel.load({
      * @return {Roo.ContentPanel} this
      */
     load : function(){
+        
+        if (this.iframe) {
+            return this;
+        }
+        
         var um = this.el.getUpdateManager();
         um.update.apply(um, arguments);
         return this;
@@ -39777,6 +39784,11 @@ panel.load({
      * @return {Roo.UpdateManager} The UpdateManager
      */
     setUrl : function(url, params, loadOnce){
+        if (this.iframe) {
+            this.iframeEl.dom.src = url;
+            return;
+        }
+        
         if(this.refreshDelegate){
             this.removeListener("activate", this.refreshDelegate);
         }
