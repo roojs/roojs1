@@ -39476,6 +39476,7 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
+ * @cfg {Boolean} iframe      contents are an iframe - makes showing remote sources/CSS feasible..
  * @cfg {Boolean} badges render the badges
  * @cfg {String} cls  extra classes to use  
  * @cfg {String} background (primary|secondary|success|info|warning|danger|light|dark)
@@ -39652,6 +39653,8 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     background : '',
     
     tabTip : '',
+    
+    iframe : false,
     
     setRegion : function(region){
         this.region = region;
