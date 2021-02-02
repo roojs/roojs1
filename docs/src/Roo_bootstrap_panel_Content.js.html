@@ -65,11 +65,11 @@
                     </span><span class="jsdoc-string">&quot; roo-layout-inactive-content&quot;</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">config.id</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">el
             </span><span class="jsdoc-syntax">};
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.iframe</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">elcfg.cn </span><span class="jsdoc-syntax">= [
                     {
                         </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'iframe'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'border 0px'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'border: 0px'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'about:blank'
                     </span><span class="jsdoc-syntax">}
                 ];
@@ -81,7 +81,7 @@
             }
 
             </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">elcfg </span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.iframe</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">this.iframeEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'iframe'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
             }
 
@@ -220,6 +220,7 @@
     </span><span class="jsdoc-var">tabTip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">iframe </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">iframeEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">setRegion </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.region </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">region</span><span class="jsdoc-syntax">;
@@ -409,8 +410,14 @@ panel.load({
                 </span><span class="jsdoc-var">this.el.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
             }
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.adjustForComponents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.iframeEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+            }
+
             </span><span class="jsdoc-var">this.resizeEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoWidth </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;auto&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.autoHeight </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;auto&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">);
+
+
         }
     },
 
