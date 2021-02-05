@@ -11,14 +11,22 @@
         </span><span class="jsdoc-var">this.split.orientation </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.SplitBar.VERTICAL</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.split.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;roo-layout-split-v&quot;</span><span class="jsdoc-syntax">);
     }
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.initialSize </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">config.height</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">);
-    }
+
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.layout.South</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.layout.Split</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-var">orientation</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap.SplitBar.VERTICAL</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.bootstrap.layout.Split.prototype.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ctr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.initialSize </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.config.height</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">);
+        }
+
+    },
+
     </span><span class="jsdoc-var">getBox </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.collapsed</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.collapsedEl.getBox</span><span class="jsdoc-syntax">();
