@@ -331,8 +331,8 @@
      */
     </span><span class="jsdoc-var">tooltipEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.tagtype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-    },
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">//this.tagtype  == 'a' ? this.el  : this.el.select('' + this.tagtype + '', true).first();
+    </span><span class="jsdoc-syntax">},
 
     </span><span class="jsdoc-var">scrollToElement </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {

@@ -16,6 +16,7 @@
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
  * @cfg {Boolean} fitwindow default false
+ * @cfg {Boolean} bodyOverflow should the body element have overflow auto added default false
  * @cfg {Number} width fixed width - usefull for chrome extension only really.
  * @cfg {Number} height fixed height - usefull for chrome extension only really.
  * @cfg {String} size (sm|lg|xl) default empty
@@ -181,12 +182,12 @@
     {
         </span><span class="jsdoc-comment">// we will default to modal-body-overflow - might need to remove or make optional later.
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bdy </span><span class="jsdoc-syntax">= {
-                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-body ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.fitwindow </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'overflow-auto' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-body ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.bodyOverflow </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'overflow-auto' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
         </span><span class="jsdoc-syntax">};
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">= {
-            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h4'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h5'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-title'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title
         </span><span class="jsdoc-syntax">};
@@ -321,7 +322,7 @@
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fitwindow</span><span class="jsdoc-syntax">) {
 
-
+           </span><span class="jsdoc-var">this.dialogEl.setStyle</span><span class="jsdoc-syntax">( { </span><span class="jsdoc-string">'max-width' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%' </span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(
                 </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.lib.Dom.getViewportWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - 30,
                 </span><span class="jsdoc-var">this.height </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.lib.Dom.getViewportHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) </span><span class="jsdoc-comment">// catering margin-top 30 margin-bottom 30

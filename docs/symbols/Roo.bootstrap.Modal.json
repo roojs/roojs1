@@ -39,6 +39,13 @@
       "optvals" : []
     },
     {
+      "name" : "bodyOverflow",
+      "type" : "Boolean",
+      "desc" : "should the body element have overflow auto added default false",
+      "memberOf" : "Roo.bootstrap.Modal",
+      "optvals" : []
+    },
+    {
       "name" : "max_width",
       "type" : "Number",
       "desc" : "set the max width of modal",

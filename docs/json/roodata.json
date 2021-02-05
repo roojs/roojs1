@@ -39238,6 +39238,12 @@
         "memberOf" : ""
       },
       {
+        "name" : "bodyOverflow",
+        "type" : "Boolean",
+        "desc" : "should the body element have overflow auto added default false",
+        "memberOf" : ""
+      },
+      {
         "name" : "buttonPosition",
         "type" : "String",
         "desc" : "r) default right (DEPRICATED) - use mr-auto on buttons to put them on the left",
