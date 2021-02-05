@@ -331,7 +331,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
      */
     tooltipEl : function()
     {
-        return this.el.select('' + this.tagtype + '', true).first();
+        return this.el; //this.tagtype  == 'a' ? this.el  : this.el.select('' + this.tagtype + '', true).first();
     },
     
     scrollToElement : function(e)

@@ -1890,12 +1890,14 @@ div.input-group.has-feedback > .roo-input-after + .form-control-feedback {
     border:1px solid #98c0f4;
     */ }
 
+/*
+ *not sure why these are set - they seem to cause problems displaying the popdownmenus over nav bars.
 .roo-layout-panel-east, .roo-layout-panel-west {
-  z-index: 10; }
-
+    z-index:10;
+}
 .roo-layout-panel-north, .roo-layout-panel-south {
-  z-index: 11; }
-
+    z-index:11;
+}
 /*
 .roo-layout-collapsed-north, .x-layout-collapsed-south, .x-layout-collapsed-east, .x-layout-collapsed-west {
     z-index:12;

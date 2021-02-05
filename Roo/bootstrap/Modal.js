@@ -16,6 +16,7 @@
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
  * @cfg {Boolean} fitwindow default false
+ * @cfg {Boolean} bodyOverflow should the body element have overflow auto added default false
  * @cfg {Number} width fixed width - usefull for chrome extension only really.
  * @cfg {Number} height fixed height - usefull for chrome extension only really.
  * @cfg {String} size (sm|lg|xl) default empty
@@ -181,12 +182,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         // we will default to modal-body-overflow - might need to remove or make optional later.
         var bdy = {
-                cls : 'modal-body ' + (this.fitwindow ? 'overflow-auto' : ''), 
+                cls : 'modal-body ' + (this.bodyOverflow ? 'overflow-auto' : ''), 
                 html : this.html || ''
         };
 
         var title = {
-            tag: 'h4',
+            tag: 'h5',
             cls : 'modal-title',
             html : this.title
         };
@@ -321,7 +322,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if (this.fitwindow) {
             
-           
+           this.dialogEl.setStyle( { 'max-width' : '100%' });
             this.setSize(
                 this.width || Roo.lib.Dom.getViewportWidth(true) - 30,
                 this.height || Roo.lib.Dom.getViewportHeight(true) // catering margin-top 30 margin-bottom 30

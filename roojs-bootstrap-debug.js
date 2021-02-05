@@ -3947,6 +3947,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
  * @cfg {Boolean} fitwindow default false
+ * @cfg {Boolean} bodyOverflow should the body element have overflow auto added default false
  * @cfg {Number} width fixed width - usefull for chrome extension only really.
  * @cfg {Number} height fixed height - usefull for chrome extension only really.
  * @cfg {String} size (sm|lg|xl) default empty
@@ -4112,12 +4113,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         // we will default to modal-body-overflow - might need to remove or make optional later.
         var bdy = {
-                cls : 'modal-body ' + (this.fitwindow ? 'overflow-auto' : ''), 
+                cls : 'modal-body ' + (this.bodyOverflow ? 'overflow-auto' : ''), 
                 html : this.html || ''
         };
 
         var title = {
-            tag: 'h4',
+            tag: 'h5',
             cls : 'modal-title',
             html : this.title
         };
@@ -4252,7 +4253,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if (this.fitwindow) {
             
-           
+           this.dialogEl.setStyle( { 'max-width' : '100%' });
             this.setSize(
                 this.width || Roo.lib.Dom.getViewportWidth(true) - 30,
                 this.height || Roo.lib.Dom.getViewportHeight(true) // catering margin-top 30 margin-bottom 30
@@ -6348,7 +6349,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
      */
     tooltipEl : function()
     {
-        return this.el.select('' + this.tagtype + '', true).first();
+        return this.el; //this.tagtype  == 'a' ? this.el  : this.el.select('' + this.tagtype + '', true).first();
     },
     
     scrollToElement : function(e)
@@ -39428,6 +39429,9 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
             return this.collapsedEl.getBox();
         }
         var box = this.el.getBox();
+        if (box.width == 0) {
+            box.width = this.config.width; // kludge?
+        }
         if(this.split){
             box.width += this.split.el.getWidth();
         }
@@ -40148,7 +40152,7 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
             var tbf= grid.getGridEl().select('tfoot', true).first();
 
             if (tbf) {
-                size.height -= thd.getHeight();
+                size.height -= tbf.getHeight();
             }
             if (thd) {
                 size.height -= thd.getHeight();

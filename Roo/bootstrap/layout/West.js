@@ -28,6 +28,9 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
             return this.collapsedEl.getBox();
         }
         var box = this.el.getBox();
+        if (box.width == 0) {
+            box.width = this.config.width; // kludge?
+        }
         if(this.split){
             box.width += this.split.el.getWidth();
         }

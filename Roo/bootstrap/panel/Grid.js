@@ -123,7 +123,7 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
             var tbf= grid.getGridEl().select('tfoot', true).first();
 
             if (tbf) {
-                size.height -= thd.getHeight();
+                size.height -= tbf.getHeight();
             }
             if (thd) {
                 size.height -= thd.getHeight();
