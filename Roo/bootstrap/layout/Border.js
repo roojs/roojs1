@@ -38,7 +38,7 @@ Roo.bootstrap.layout.Border = function(config){
     
 };
 
-Roo.bootstrap.layout.Border.regions =  ["north","south","east","west","center"];
+Roo.bootstrap.layout.Border.regions =  ["center", "north","south","east","west"];
 
 Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     

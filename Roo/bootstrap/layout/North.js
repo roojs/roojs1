@@ -16,16 +16,25 @@ Roo.bootstrap.layout.North = function(config)
         this.split.orientation = Roo.bootstrap.SplitBar.VERTICAL;
         this.split.el.addClass("roo-layout-split-v");
     }
-    var size = config.initialSize || config.height;
-    if(typeof size != "undefined"){
-        this.el.setHeight(size);
-    }
+    //var size = config.initialSize || config.height;
+    //if(this.el && typeof size != "undefined"){
+    //    this.el.setHeight(size);
+    //}
 };
 Roo.extend(Roo.bootstrap.layout.North, Roo.bootstrap.layout.Split,
 {
     orientation: Roo.bootstrap.SplitBar.VERTICAL,
+     
+     
+    onRender : function(ctr, pos)
+    {
+        Roo.bootstrap.layout.Split.prototype.onRender.call(this, ctr, pos);
+        var size = this.config.initialSize || this.config.height;
+        if(this.el && typeof size != "undefined"){
+            this.el.setHeight(size);
+        }
     
-    
+    },
     
     getBox : function(){
         if(this.collapsed){
