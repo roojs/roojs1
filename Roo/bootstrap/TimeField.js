@@ -341,7 +341,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         
         Roo.each(cls, function(c){
             if(c == 'bottom'){
-                _this.picker().alignTo(_this.inputEl(), 't-b');
+                _this.picker().alignTo(_this.inputEl(), 't-b', 10);
                 
                 //_this.picker().setTop(_this.inputEl().getHeight());
                 return;
