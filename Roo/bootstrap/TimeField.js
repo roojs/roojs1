@@ -334,23 +334,27 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
             cls.pop();
             cls.push('left');
         }
-        
+        //this.picker().setXY(20000,20000);
         this.picker().addClass(cls.join('-'));
         
         var _this = this;
         
         Roo.each(cls, function(c){
             if(c == 'bottom'){
-                _this.picker().alignTo(_this.inputEl(),  't-b');
-                
+                (function() {
+                 //  
+                }).defer(200);
+                 _this.picker().alignTo(_this.inputEl(),   "tr-br", [0, 10], false);
                 //_this.picker().setTop(_this.inputEl().getHeight());
                 return;
             }
             if(c == 'top'){
-                _this.picker().setTop(0 - _this.picker().getHeight());
+                 _this.picker().alignTo(_this.inputEl(),   "br-tr", [0, 10], false);
+                
+                //_this.picker().setTop(0 - _this.picker().getHeight());
                 return;
             }
-            
+            /*
             if(c == 'left'){
                 _this.picker().setLeft(_this.inputEl().getLeft() + _this.inputEl().getWidth() - _this.el.getLeft() - _this.picker().getWidth());
                 return;
@@ -359,6 +363,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
                 _this.picker().setLeft(_this.inputEl().getLeft() - _this.el.getLeft());
                 return;
             }
+            */
         });
         
     },
