@@ -55,8 +55,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     getAutoCreate : function()
     {
         this.after = '<i class="fa far fa-clock"></i>';
-        Roo.bootstrap.TimeField.superclass.getAutoCreate.call(this);
-
+        return Roo.bootstrap.TimeField.superclass.getAutoCreate.call(this);
+        
          
     },
     onRender: function(ct, position)
@@ -64,7 +64,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         
         Roo.bootstrap.TimeField.superclass.onRender.call(this, ct, position);
                 
-        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.TimeField.template);
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.TimeField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -79,10 +79,10 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.fillTime();
         this.update();
             
-        this.pop.select('span.hours-up', true).first().on('click', this.onIncrementHours, this);
-        this.pop.select('span.hours-down', true).first().on('click', this.onDecrementHours, this);
-        this.pop.select('span.minutes-up', true).first().on('click', this.onIncrementMinutes, this);
-        this.pop.select('span.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
+        this.pop.select('.hours-up', true).first().on('click', this.onIncrementHours, this);
+        this.pop.select('.hours-down', true).first().on('click', this.onDecrementHours, this);
+        this.pop.select('.minutes-up', true).first().on('click', this.onIncrementMinutes, this);
+        this.pop.select('.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
         this.pop.select('button.period', true).first().on('click', this.onTogglePeriod, this);
         this.pop.select('button.ok', true).first().on('click', this.setTime, this);
 
@@ -126,7 +126,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     picker : function()
     {
-        return this.el.select('.datepicker', true).first();
+        return this.pickerEl;
     },
     
     fillTime: function()
@@ -147,8 +147,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
                             cls: 'btn',
                             cn: [
                                 {
-                                    tag: 'span',
-                                    cls: 'hours-up glyphicon glyphicon-chevron-up'
+                                    tag: 'i',
+                                    cls: 'hours-up fa fas fa-chevron-up'
                                 }
                             ]
                         } 
@@ -167,8 +167,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
                             cls: 'btn',
                             cn: [
                                 {
-                                    tag: 'span',
-                                    cls: 'minutes-up glyphicon glyphicon-chevron-up'
+                                    tag: 'i',
+                                    cls: 'minutes-up fa fas fa-chevron-up'
                                 }
                             ]
                         }
@@ -241,7 +241,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
                             cn: [
                                 {
                                     tag: 'span',
-                                    cls: 'hours-down glyphicon glyphicon-chevron-down'
+                                    cls: 'hours-down fa fas fa-chevron-down'
                                 }
                             ]
                         }
@@ -261,7 +261,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
                             cn: [
                                 {
                                     tag: 'span',
-                                    cls: 'minutes-down glyphicon glyphicon-chevron-down'
+                                    cls: 'minutes-down fa fas fa-chevron-down'
                                 }
                             ]
                         }
@@ -334,21 +334,27 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
             cls.pop();
             cls.push('left');
         }
-        
+        //this.picker().setXY(20000,20000);
         this.picker().addClass(cls.join('-'));
         
         var _this = this;
         
         Roo.each(cls, function(c){
             if(c == 'bottom'){
-                _this.picker().setTop(_this.inputEl().getHeight());
+                (function() {
+                 //  
+                }).defer(200);
+                 _this.picker().alignTo(_this.inputEl(),   "tr-br", [0, 10], false);
+                //_this.picker().setTop(_this.inputEl().getHeight());
                 return;
             }
             if(c == 'top'){
-                _this.picker().setTop(0 - _this.picker().getHeight());
+                 _this.picker().alignTo(_this.inputEl(),   "br-tr", [0, 10], false);
+                
+                //_this.picker().setTop(0 - _this.picker().getHeight());
                 return;
             }
-            
+            /*
             if(c == 'left'){
                 _this.picker().setLeft(_this.inputEl().getLeft() + _this.inputEl().getWidth() - _this.el.getLeft() - _this.picker().getWidth());
                 return;
@@ -357,6 +363,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
                 _this.picker().setLeft(_this.inputEl().getLeft() - _this.el.getLeft());
                 return;
             }
+            */
         });
         
     },
@@ -444,48 +451,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
    
 });
-
-Roo.apply(Roo.bootstrap.TimeField,  {
-    
-    content : {
-        tag: 'tbody',
-        cn: [
-            {
-                tag: 'tr',
-                cn: [
-                {
-                    tag: 'td',
-                    colspan: '7'
-                }
-                ]
-            }
-        ]
-    },
-    
-    footer : {
-        tag: 'tfoot',
-        cn: [
-            {
-                tag: 'tr',
-                cn: [
-                {
-                    tag: 'th',
-                    colspan: '7',
-                    cls: '',
-                    cn: [
-                        {
-                            tag: 'button',
-                            cls: 'btn btn-info ok',
-                            html: 'OK'
-                        }
-                    ]
-                }
-
-                ]
-            }
-        ]
-    }
-});
+ 
 
 Roo.apply(Roo.bootstrap.TimeField,  {
   
@@ -501,8 +467,43 @@ Roo.apply(Roo.bootstrap.TimeField,  {
                     tag: 'table',
                     cls: 'table-condensed',
                     cn:[
-                    Roo.bootstrap.TimeField.content,
-                    Roo.bootstrap.TimeField.footer
+                        {
+                            tag: 'tbody',
+                            cn: [
+                                {
+                                    tag: 'tr',
+                                    cn: [
+                                    {
+                                        tag: 'td',
+                                        colspan: '7'
+                                    }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            tag: 'tfoot',
+                            cn: [
+                                {
+                                    tag: 'tr',
+                                    cn: [
+                                    {
+                                        tag: 'th',
+                                        colspan: '7',
+                                        cls: '',
+                                        cn: [
+                                            {
+                                                tag: 'button',
+                                                cls: 'btn btn-info ok',
+                                                html: 'OK'
+                                            }
+                                        ]
+                                    }
+                    
+                                    ]
+                                }
+                            ]
+                        }
                     ]
                 }
                 ]
