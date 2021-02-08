@@ -225,7 +225,9 @@ Bootstrap Widgets
         Roo.bootstrap.BezierSignature
         Roo.bootstrap.RadioSet
         Roo.bootstrap.Markdown - textarea that views as a markdown rendered display
-
+        Examples
+            [examples/bootstrap4/TimePicker.html] Timepicker on a dialog
+        
 
         
     Complex Widgets
