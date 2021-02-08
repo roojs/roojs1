@@ -22058,8 +22058,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
                             cls: 'btn',
                             cn: [
                                 {
-                                    tag: 'span',
-                                    cls: 'hours-up glyphicon glyphicon-chevron-up'
+                                    tag: 'i',
+                                    cls: 'hours-up fa fas fa-chevron-up'
                                 }
                             ]
                         } 
@@ -22078,8 +22078,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
                             cls: 'btn',
                             cn: [
                                 {
-                                    tag: 'span',
-                                    cls: 'minutes-up glyphicon glyphicon-chevron-up'
+                                    tag: 'i',
+                                    cls: 'minutes-up fa fas fa-chevron-up'
                                 }
                             ]
                         }
@@ -22152,7 +22152,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
                             cn: [
                                 {
                                     tag: 'span',
-                                    cls: 'hours-down glyphicon glyphicon-chevron-down'
+                                    cls: 'hours-down fa fas fa-chevron-down'
                                 }
                             ]
                         }
@@ -22172,7 +22172,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
                             cn: [
                                 {
                                     tag: 'span',
-                                    cls: 'minutes-down glyphicon glyphicon-chevron-down'
+                                    cls: 'minutes-down fa fas fa-chevron-down'
                                 }
                             ]
                         }
