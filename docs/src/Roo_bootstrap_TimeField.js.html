@@ -334,32 +334,37 @@
             </span><span class="jsdoc-var">cls.pop</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">cls.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">);
         }
-
+        </span><span class="jsdoc-comment">//this.picker().setXY(20000,20000);
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">));
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.inputEl</span><span class="jsdoc-syntax">(),  </span><span class="jsdoc-string">'t-b'</span><span class="jsdoc-syntax">);
-
+                (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                 </span><span class="jsdoc-comment">//  
+                </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(200);
+                 </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.inputEl</span><span class="jsdoc-syntax">(),   </span><span class="jsdoc-string">&quot;tr-br&quot;</span><span class="jsdoc-syntax">, [0, 10], </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-comment">//_this.picker().setTop(_this.inputEl().getHeight());
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setTop</span><span class="jsdoc-syntax">(0 - </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">());
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-            }
+                 </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.inputEl</span><span class="jsdoc-syntax">(),   </span><span class="jsdoc-string">&quot;br-tr&quot;</span><span class="jsdoc-syntax">, [0, 10], </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
 
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getLeft</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">_this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">_this.el.getLeft</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-comment">//_this.picker().setTop(0 - _this.picker().getHeight());
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getLeft</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">_this.el.getLeft</span><span class="jsdoc-syntax">());
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">/*
+            if(c == 'left'){
+                _this.picker().setLeft(_this.inputEl().getLeft() + _this.inputEl().getWidth() - _this.el.getLeft() - _this.picker().getWidth());
+                return;
             }
-        });
+            if(c == 'right'){
+                _this.picker().setLeft(_this.inputEl().getLeft() - _this.el.getLeft());
+                return;
+            }
+            */
+        </span><span class="jsdoc-syntax">});
 
     },
 
