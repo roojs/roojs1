@@ -21962,7 +21962,14 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
      * valid according to {@link Date#parseDate} (defaults to 'H:i').
      */
     format : "H:i",
-       
+
+    getAutoCreate : function()
+    {
+        this.after = '<i class="fa far fa-clock"></i>';
+        Roo.bootstrap.TimeField.superclass.getAutoCreate.call(this);
+
+         
+    },
     onRender: function(ct, position)
     {
         
