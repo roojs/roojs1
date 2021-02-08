@@ -55,8 +55,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     getAutoCreate : function()
     {
         this.after = '<i class="fa far fa-clock"></i>';
-        Roo.bootstrap.TimeField.superclass.getAutoCreate.call(this);
-
+        return Roo.bootstrap.TimeField.superclass.getAutoCreate.call(this);
+        
          
     },
     onRender: function(ct, position)
