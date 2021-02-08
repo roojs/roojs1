@@ -21975,7 +21975,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         
         Roo.bootstrap.TimeField.superclass.onRender.call(this, ct, position);
                 
-        this.el.select('.input-group', true).first().createChild(Roo.bootstrap.TimeField.template);
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.TimeField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
