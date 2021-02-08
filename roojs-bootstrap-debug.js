@@ -22037,7 +22037,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     picker : function()
     {
-        return this.el.select('.datepicker', true).first();
+        return this.pickerEl;
     },
     
     fillTime: function()
@@ -22355,48 +22355,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
    
 });
-
-Roo.apply(Roo.bootstrap.TimeField,  {
-    
-    content : {
-        tag: 'tbody',
-        cn: [
-            {
-                tag: 'tr',
-                cn: [
-                {
-                    tag: 'td',
-                    colspan: '7'
-                }
-                ]
-            }
-        ]
-    },
-    
-    footer : {
-        tag: 'tfoot',
-        cn: [
-            {
-                tag: 'tr',
-                cn: [
-                {
-                    tag: 'th',
-                    colspan: '7',
-                    cls: '',
-                    cn: [
-                        {
-                            tag: 'button',
-                            cls: 'btn btn-info ok',
-                            html: 'OK'
-                        }
-                    ]
-                }
-
-                ]
-            }
-        ]
-    }
-});
+ 
 
 Roo.apply(Roo.bootstrap.TimeField,  {
   
@@ -22412,8 +22371,43 @@ Roo.apply(Roo.bootstrap.TimeField,  {
                     tag: 'table',
                     cls: 'table-condensed',
                     cn:[
-                    Roo.bootstrap.TimeField.content,
-                    Roo.bootstrap.TimeField.footer
+                        {
+                            tag: 'tbody',
+                            cn: [
+                                {
+                                    tag: 'tr',
+                                    cn: [
+                                    {
+                                        tag: 'td',
+                                        colspan: '7'
+                                    }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            tag: 'tfoot',
+                            cn: [
+                                {
+                                    tag: 'tr',
+                                    cn: [
+                                    {
+                                        tag: 'th',
+                                        colspan: '7',
+                                        cls: '',
+                                        cn: [
+                                            {
+                                                tag: 'button',
+                                                cls: 'btn btn-info ok',
+                                                html: 'OK'
+                                            }
+                                        ]
+                                    }
+                    
+                                    ]
+                                }
+                            ]
+                        }
                     ]
                 }
                 ]
