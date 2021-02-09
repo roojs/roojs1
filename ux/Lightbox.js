@@ -86,7 +86,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     
     
     /**
-     * List of images
+     * Array of images Roo.Elements (which should be images)
+     * properties can be 
      */
     imageArray: false,
     
@@ -451,7 +452,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 				      this.imageArray[this.activeImage].dom.lheight || imgPreloader.getHeight());
             imgPreloader.remove();
         }, this);
-        imgPreloader.dom.src =this.imageArray[this.activeImage].srcfull|| this.imageArray[this.activeImage].href || 
+        imgPreloader.dom.src = this.imageArray[this.activeImage].srcfull || this.imageArray[this.activeImage].href || 
             this.imageArray[this.activeImage].dom.href ||  this.imageArray[this.activeImage].dom.src;
     },
 
