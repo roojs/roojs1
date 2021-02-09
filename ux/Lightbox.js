@@ -86,7 +86,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
     
     
     /**
-     * List of images
+     * Array of images Roo.Elements (which should be images)
+     * properties can be 
      */
     imageArray: false,
     
@@ -113,8 +114,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.resizeSpeed  = Math.min(this.resizeSpeed, 10);
         this.resizeSpeed  = Math.max(this.resizeSpeed, 1);
         
-	    this.resizeDuration = this.animate ? ((11 - this.resizeSpeed) * 0.15) : 0;
-	    this.overlayDuration = this.animate ? 0.2 : 0;  // shadow fade in/out duration
+	this.resizeDuration = this.animate ? ((11 - this.resizeSpeed) * 0.15) : 0;
+	this.overlayDuration = this.animate ? 0.2 : 0;  // shadow fade in/out duration
 
         // When Lightbox starts it will resize itself from 250 by 250 to the current image dimension.
         // If animations are turned off, it will be hidden as to prevent a flicker of a
@@ -311,7 +312,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 position: 'absolute',
                 top: '0px',
                 width: '100%',
-                'z-index': '90'
+                'z-index': '999'
             }
         });
     },
@@ -399,12 +400,12 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         
         //var lightboxTop = s.top + (Roo.lib.Dom.getViewHeight() / 10);
         var lightboxTop = (Roo.lib.Dom.getViewHeight() / 10);
-        var lightboxLeft = s.left
+        var lightboxLeft = s.left;
         this.lightbox.setStyle({ 
             top: lightboxTop + 'px', 
             left: lightboxLeft + 'px' ,
             zIndex : 1000
-        })
+        });
         //console.log("show lightbox");
         this.lightbox.show();
         
@@ -444,13 +445,15 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 
         imgPreloader.on('load', function() {
             
-            this.lightboximage.dom.src = this.imageArray[this.activeImage].href || 
+            this.lightboximage.dom.src = this.imageArray[this.activeImage].srcfull  ||  this.imageArray[this.activeImage].href || 
                 this.imageArray[this.activeImage].dom.href || this.imageArray[this.activeImage].dom.src;
             
-            this.resizeImageContainer(this.imageArray[this.activeImage].dom.lwidth || imgPreloader.getWidth(), this.imageArray[this.activeImage].dom.lheight || imgPreloader.getHeight());
+            this.resizeImageContainer(this.imageArray[this.activeImage].dom.lwidth || imgPreloader.getWidth(),
+				      this.imageArray[this.activeImage].dom.lheight || imgPreloader.getHeight());
             imgPreloader.remove();
         }, this);
-        imgPreloader.dom.src = this.imageArray[this.activeImage].href || 
+	Roo.log(this.imageArray[this.activeImage]);
+        imgPreloader.dom.src = this.imageArray[this.activeImage].srcfull || this.imageArray[this.activeImage].href || 
             this.imageArray[this.activeImage].dom.href ||  this.imageArray[this.activeImage].dom.src;
     },
 
@@ -515,7 +518,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
             'easeOut', // easing
             'run' // effect
         
-        )        
+        );  
        
         
         // if new and old image are same size and no scaling transition is necessary, 
@@ -523,7 +526,9 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var timeout = 0;
         if ((hDiff == 0) && (wDiff == 0)){
             timeout = 100;
-            if (Roo.isIE) timeout = 250;   
+            if (Roo.isIE) {
+		timeout = 250;
+	    }
         }
 
         (function(){
@@ -571,7 +576,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // if image is part of set display 'Image x of x' 
         if (this.imageArray.length > 1){
             this.numberdisplay.update(
-                this.labelImage + ' ' + (this.activeImage + 1) + ' ' + this.labelOf + '  ' + this.imageArray.length)
+                this.labelImage + ' ' + (this.activeImage + 1) + ' ' + this.labelOf + '  ' + this.imageArray.length);
             this.numberdisplay.show();
         }
         var _this = this;
@@ -600,10 +605,14 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.hovernav.show();               
 
         // if not first image in set, display prev image button
-        if (this.activeImage > 0) this.prevlink.show();
+        if (this.activeImage > 0) {
+	    this.prevlink.show();
+	}
 
         // if not last image in set, display next image button
-        if (this.activeImage < (this.imageArray.length - 1)) this.nextlink.show();
+        if (this.activeImage < (this.imageArray.length - 1)) {
+	    this.nextlink.show();
+	}
         
         this.enableKeyboardNav();
     },
