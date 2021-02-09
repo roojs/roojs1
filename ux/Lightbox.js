@@ -357,8 +357,12 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // stretch overlay to fill page and fade in
         //var arrayPageSize = this.getPageSize();
         
-        this.overlay.setHeight(Roo.lib.Dom.getDocumentHeight()) ;
-        this.overlay.setWidth(Roo.lib.Dom.getDocumentWidth());
+        this.onResize();
+	if (!this.resizer) {
+	    this.resizer = Roo.EventManager.onWindowResize(this.onResize, this, true);;
+	}
+        
+	
         this.overlay.fadeIn({
                 endOpacity: this.overlayOpacity, 
                 easing: 'easeOut',
@@ -378,7 +382,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 }
             });
         }
-        
+         
         // let's assume the constructor sorts out the list of images..
         /*
         if ((imageLink.rel == 'lightbox')){
@@ -399,7 +403,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // weird.. why / 10?
         
         //var lightboxTop = s.top + (Roo.lib.Dom.getViewHeight() / 10);
-        var lightboxTop = (Roo.lib.Dom.getViewHeight() / 10);
+        var lightboxTop = (Roo.lib.Dom.getViewHeight() / 10) + document.body.scrollTop;
         var lightboxLeft = s.left;
         this.lightbox.setStyle({ 
             top: lightboxTop + 'px', 
@@ -413,6 +417,11 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.changeImage(imageNum);
     },
 
+    onResize : function()
+    {
+	this.overlay.setHeight(Roo.lib.Dom.getDocumentHeight()) ;
+        this.overlay.setWidth(Roo.lib.Dom.getDocumentWidth());
+    },
     //
     //  changeImage()
     //  Hide most elements and preload image in preparation for resizing image container.
