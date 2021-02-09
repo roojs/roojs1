@@ -114,8 +114,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.resizeSpeed  = Math.min(this.resizeSpeed, 10);
         this.resizeSpeed  = Math.max(this.resizeSpeed, 1);
         
-	    this.resizeDuration = this.animate ? ((11 - this.resizeSpeed) * 0.15) : 0;
-	    this.overlayDuration = this.animate ? 0.2 : 0;  // shadow fade in/out duration
+	this.resizeDuration = this.animate ? ((11 - this.resizeSpeed) * 0.15) : 0;
+	this.overlayDuration = this.animate ? 0.2 : 0;  // shadow fade in/out duration
 
         // When Lightbox starts it will resize itself from 250 by 250 to the current image dimension.
         // If animations are turned off, it will be hidden as to prevent a flicker of a
@@ -312,7 +312,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 position: 'absolute',
                 top: '0px',
                 width: '100%',
-                'z-index': '90'
+                'z-index': '999'
             }
         });
     },
