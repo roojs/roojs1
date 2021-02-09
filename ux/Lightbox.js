@@ -445,7 +445,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 
         imgPreloader.on('load', function() {
             
-            this.lightboximage.dom.src = this.imageArray[this.activeImage].href || 
+            this.lightboximage.dom.src = this.imageArray[this.activeImage].srcfull  ||  this.imageArray[this.activeImage].href || 
                 this.imageArray[this.activeImage].dom.href || this.imageArray[this.activeImage].dom.src;
             
             this.resizeImageContainer(this.imageArray[this.activeImage].dom.lwidth || imgPreloader.getWidth(),
