@@ -452,6 +452,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
 				      this.imageArray[this.activeImage].dom.lheight || imgPreloader.getHeight());
             imgPreloader.remove();
         }, this);
+	Roo.log(this.imageArray[this.activeImage]);
         imgPreloader.dom.src = this.imageArray[this.activeImage].srcfull || this.imageArray[this.activeImage].href || 
             this.imageArray[this.activeImage].dom.href ||  this.imageArray[this.activeImage].dom.src;
     },
