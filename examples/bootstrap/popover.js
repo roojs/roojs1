@@ -54,6 +54,7 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
     items  : [
      {
       xtype : 'Table',
+      cls : 'm-0';
       listeners : {
        render : function (_self)
         {
