@@ -362,7 +362,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                     this.el.setXY(offset);
                     var xy = this.alignEl.getAnchorXY('tr', false);
                     xy[0]+=2;xy[1]+=5;
-                    //this.arrowEl.setXY(xy);
+                    this.arrowEl.setXY(xy);
                     return true;
                 }
                 // continue through...

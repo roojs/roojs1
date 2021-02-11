@@ -19943,7 +19943,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             'fade','top','bottom', 'left', 'right','in',
             'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
         ]);
-        this.el.addClass(placement + ' roo-popover-' + placement);
+        this.el.addClass(placement + ' bs-popover-' + placement);
         
         if (!this.alignEl ) {
             return false;
@@ -19958,7 +19958,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                     this.el.setXY(offset);
                     var xy = this.alignEl.getAnchorXY('tr', false);
                     xy[0]+=2;xy[1]+=5;
-                    //this.arrowEl.setXY(xy);
+                    this.arrowEl.setXY(xy);
                     return true;
                 }
                 // continue through...
