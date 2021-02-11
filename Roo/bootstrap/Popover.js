@@ -366,7 +366,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                     return true;
                 }
                 // continue through...
-                try_move = false;
+                return this.updatePosition('left', false);
                 
             
             case 'left':
@@ -395,7 +395,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                     return true;
                 }
                 // fall through
-                try_move = false;
+               return this.updatePosition('bottom', false);
             
             case 'bottom':
                  var exact = this.el.getAlignToXY(this.alignEl, 't-b', [0,10]);
