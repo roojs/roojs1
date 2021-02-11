@@ -339,7 +339,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
      */
     updatePosition : function(placement, try_move)
     {
+        // allow for calling with no parameters
         placement = placement   ? placement :  this.placement;
+        try_move = typeof(try_move) == 'undefined' ? true : try_move;
         
         this.el.removeClass([
             'fade','top','bottom', 'left', 'right','in',
