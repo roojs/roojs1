@@ -366,7 +366,7 @@
                     </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
                 }
                 </span><span class="jsdoc-comment">// continue through...
-                </span><span class="jsdoc-var">try_move </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.updatePosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
 
 
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">:
@@ -376,7 +376,7 @@
                     </span><span class="jsdoc-comment">//normal display... or moved up/down.
                     </span><span class="jsdoc-var">this.el.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.alignEl.getAnchorXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tl'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0]+=2;</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1]+=5; </span><span class="jsdoc-comment">// &lt;&lt; fix me
+                    </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0]-=10;</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1]+=5; </span><span class="jsdoc-comment">// &lt;&lt; fix me
                     </span><span class="jsdoc-var">this.arrowEl.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
                 }
@@ -395,7 +395,7 @@
                     </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
                 }
                 </span><span class="jsdoc-comment">// fall through
-                </span><span class="jsdoc-var">try_move </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+               </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.updatePosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
 
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">:
                  </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">exact </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'t-b'</span><span class="jsdoc-syntax">, [0,10]);
