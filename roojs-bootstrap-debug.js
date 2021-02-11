@@ -19859,12 +19859,14 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     },
     /**
      * Show the popover
-     * @param {Roo.Element|string|false} - element to align and point to.
+     * @param {Roo.Element|string|false} - element to align and point to. (set align to [ pos, offset ])
      */
     show : function (on_el)
     {
         
         on_el = on_el || false; // default to false
+        var align = on_el && typeof(on_el._align) != 'undefined' ? on_el._align : false;
+        
         if (!on_el) {
             if (this.parent() && (this.over == 'parent' || (this.over === false))) {
                 on_el = this.parent().el;
@@ -19914,7 +19916,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         var box = this.el.getBox();
         
         
-        var align = Roo.bootstrap.Popover.alignment[placement];
+        align = align || Roo.bootstrap.Popover.alignment[placement];
         this.el.addClass(align[2]);
 
 //        Roo.log(align);
@@ -27304,7 +27306,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     // private
     onLoad : function(ds, r, o)
     {
-        this.cursor = o.params.start ? o.params.start : 0;
+        this.cursor = o.params && o.params.start ? o.params.start : 0;
         
         var d = this.getPageData(),
             ap = d.activePage,

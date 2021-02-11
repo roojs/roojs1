@@ -26,13 +26,30 @@
   
   <body id="body">
   
-    <div id="bootstrap-body"
-         style="width: 100px;height: 100px;display: block;background-color: red;position: relative;left: 133px;top: 100px;"></div>
+    <div id="right-test"
+         style="width: 100px;height: 100px;display: block;background-color: red;position: relative;left: 133px;top: 400px;"></div>
+    
+      <div id="below-test"
+         style="width: 100px;height: 100px;display: block;background-color: red;position: relative;left: 500px;top: 300px;"></div>
+    
+    
+    
   </body>
     <script type="text/javascript">
        Roo.onReady(function() {
-       
-          Pman.Popover.FileTest.show({   });
+          Roo.get('right-test').on('click', function(e) {
+            var el = Roo.get(e.getTarget());
+            el._align = ['tl-tr?', [10,0], 'right bs-popover-right'];
+            Pman.Popover.FileTest.show({  _el : el });
+          });
+          Roo.get('below-test').on('click', function(e) {
+            var el = Roo.get(e.getTarget());
+            el._align = ['t-b?', [0,10], 'bottom bs-popover-bottom'];
+            Pman.Popover.FileTest.show({  _el : el });
+          });
+          
+          
+          //Pman.Popover.FileTest.show({   });
           //Roo.get("bootstrap-body").on('click', function() { Pman.Popover.FileTest.show({ _el : Roo.get("bootstrap-body") }); })
       });
 

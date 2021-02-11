@@ -189,10 +189,12 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             Roo.bootstrap.Popover.register(this);
         }
          
-        
+        this.arrowEl = this.el.select('.arrow',true).first();
         this.headerEl.setVisibilityMode(Roo.Element.DISPLAY); // probably not needed as it's default in BS4
         this.el.enableDisplayMode('block');
         this.el.hide();
+ 
+        
         if (this.over === false && !this.parent()) {
             return; 
         }
@@ -215,7 +217,6 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 on_el.on(eventOut, this.leave, this);
             }
         }, this);
-        
     },
     
     
@@ -263,12 +264,14 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     },
     /**
      * Show the popover
-     * @param {Roo.Element|string|false} - element to align and point to.
+     * @param {Roo.Element|string|false} - element to align and point to. (set align to [ pos, offset ])
      */
     show : function (on_el)
     {
         
         on_el = on_el || false; // default to false
+        var align = on_el && typeof(on_el._align) != 'undefined' ? on_el._align : false;
+        
         if (!on_el) {
             if (this.parent() && (this.over == 'parent' || (this.over === false))) {
                 on_el = this.parent().el;
@@ -318,13 +321,15 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         var box = this.el.getBox();
         
         
-        var align = Roo.bootstrap.Popover.alignment[placement];
-        this.el.addClass(align[2]);
+        this.alignment = align || Roo.bootstrap.Popover.alignment[placement];
+        this.el.addClass(this.alignment[2]);
 
 //        Roo.log(align);
 
         if (on_el) {
-            this.el.alignTo(on_el, align[0],align[1]);
+            this.alignEl = on_el;
+            this.updatePosition();
+             
         } else {
             // this is usually just done by the builder = to show the popoup in the middle of the scren.
             var es = this.el.getSize();
@@ -340,10 +345,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         this.el.addClass('in');
         
-        
-        if (this.el.hasClass('fade')) {
-            // fade it?
-        }
+         
         
         this.hoverState = 'in';
         
@@ -354,12 +356,29 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             this.maskEl.addClass('show');
         }
         this.el.setStyle('z-index', Roo.bootstrap.Popover.zIndex++);
-
-        
-        
+ 
         this.fireEvent('show', this);
         
     },
+    /**
+     * fire this manually after loading a grid in the table for example
+     *
+     */
+    updatePosition : function()
+    {
+        if (!this.alignEl || !this.alignment) {
+            return;
+        }
+        this.el.alignTo(this.alignEl , this.alignment[0],this.alignment[1]);
+        
+        // work out the pointy position.
+        var p1 = this.alignment[0].split('-').pop().replace('?','');
+        var xy = this.alignEl.getAnchorXY(p1, false);
+        xy[0]+=2;xy[1]+=5;
+        this.arrowEl.setXY(xy);
+        
+    },
+    
     hide : function()
     {
         this.el.setXY([0,0]);

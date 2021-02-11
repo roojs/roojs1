@@ -8562,7 +8562,8 @@ if(opt.anim.isAnimated()){
          * @param {Array} offsets (optional) Offset the positioning by [x, y]
          * @return {Array} [x, y]
          */
-        getAlignToXY : function(el, p, o){
+        getAlignToXY : function(el, p, o)
+        {
             el = Roo.get(el);
             var d = this.dom;
             if(!el.dom){
@@ -8603,7 +8604,7 @@ if(opt.anim.isAnimated()){
                 //otherwise swap the aligned el to the opposite border of the target.
                 var p1y = p1.charAt(0), p1x = p1.charAt(p1.length-1);
                var p2y = p2.charAt(0), p2x = p2.charAt(p2.length-1);
-               var swapY = ((p1y=="t" && p2y=="b") || (p1y=="b" && p2y=="t"));
+               var swapY = ((p1y=="t" && p2y=="b") || (p1y=="b" && p2y=="t") || ((p1y=="b" || p1y=="t") && p2y=="r"));
                var swapX = ((p1x=="r" && p2x=="l") || (p1x=="l" && p2x=="r"));
 
                var doc = document;
