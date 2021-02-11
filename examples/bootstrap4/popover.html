@@ -51,9 +51,19 @@
     <script type="text/javascript">
        Roo.onReady(function() {
           Roo.get('right-test').on('click', function(e) {
-            
             Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'right');
           });
+          
+          Roo.get('right-move-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'right');
+          });
+          
+          Roo.get('left-flip-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'left');
+          });
+          
+          
+          
           Roo.get('below-test').on('click', function(e) {
             Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'bottom');
           });
