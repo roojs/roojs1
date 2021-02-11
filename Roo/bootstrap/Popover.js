@@ -352,14 +352,30 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             case 'right':
                 var exact = this.el.getAlignToXY(this.alignEl, 'tl-tr', [10,0]);
                 var offset = this.el.getAlignToXY(this.alignEl, 'tl-tr?',[10,0]);
-                if (exact.equals(offset)) {
-                    //normal display...
-                    this.setXY(exact, this.preanim(arguments, 3));
-                    var xy = this.alignEl.getAnchorXY(p1, false);
-                    
+                if (!try_move || exact.equals(offset) || exact[0] == offset[0] ) {
+                    //normal display... or moved up/down.
+                    this.setXY(offset);
+                    var xy = this.alignEl.getAnchorXY('tr', false);
+                    xy[0]+=2;xy[1]+=5;
+                    this.arrowEl.setXY(xy);
+                    return true;
                 }
-                
-                
+                return this.updatePosition('left', false);
+            
+            case 'left':
+                var exact = this.el.getAlignToXY(this.alignEl, 'tr-tl', [-10,0]);
+                var offset = this.el.getAlignToXY(this.alignEl, 'tl-tr?',[-10,0]);
+                if (!try_move || exact.equals(offset) || exact[0] == offset[0] ) {
+                    //normal display... or moved up/down.
+                    this.setXY(offset);
+                    var xy = this.alignEl.getAnchorXY('tl', false);
+                    xy[0]+=2;xy[1]+=5;
+                    this.arrowEl.setXY(xy);
+                    return true;
+                }
+                return this.updatePosition('right', false);
+            
+            
         }
         
         
@@ -369,7 +385,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         var xy = this.alignEl.getAnchorXY(p1, false);
         xy[0]+=2;xy[1]+=5;
         this.arrowEl.setXY(xy);
-        
+        return true;
     },
     
     hide : function()
