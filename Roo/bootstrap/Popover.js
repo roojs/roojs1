@@ -339,7 +339,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
      */
     updatePosition : function(placement, try_move)
     {
-        placement = placement === false ? this.placement : placement;
+        placement = placement   ? placement :  this.placement;
         
         this.el.removeClass([
             'fade','top','bottom', 'left', 'right','in',
