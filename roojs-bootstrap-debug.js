@@ -19877,7 +19877,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             
         }
         
-        this.alignEl = on_el;
+        this.alignEl = Roo.get( on_el );
 
         if (!this.el) {
             this.render(document.body);
