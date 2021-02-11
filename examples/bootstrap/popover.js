@@ -22,10 +22,10 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
   if (!this.dialog) {
    this.create();
   }
-
+  
   this.callback = cb;
   this.data = data;
-  this.dialog.show(this.data._el);
+  this.dialog.show.apply(this.dialog,  Array.prototype.slice.call(arguments).slice(2));
   if (this.form) {
    this.form.reset();
    this.form.setValues(data);
@@ -39,31 +39,49 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
   var _this = this;
   this.dialog = Roo.factory({
     xtype : 'Popover',
-    modal : true,
+    modal : false,
     placement : 'right',
     style : 'width:500px',
+    cls: 'p-0',
+    listeners : {
+     show : function (_self)
+      {
+          _this.grid.ds.load({});
+           this.updatePosition.defer(100,this);
+      }
+    },
     xns : Roo.bootstrap,
     '|xns' : 'Roo.bootstrap',
     items  : [
      {
       xtype : 'Table',
+       listeners : {
+       render : function (_self)
+        {
+            _this.grid = this;
+        }
+      },
       xns : Roo.bootstrap,
       '|xns' : 'Roo.bootstrap',
       store : {
-       xtype : 'Store',
-       xns : Roo.data,
-       '|xns' : 'Roo.data',
-       proxy : {
-        xtype : 'HttpProxy',
-        url : rootURL + '/Roo/Files_keytypes',
-        xns : Roo.data,
-        '|xns' : 'Roo.data'
+       xtype : 'SimpleStore',
+       data : [
+           [ 'NG1234:', 'Wanchai' ],
+           [ 'NG1234:', 'Central' ],
+           [ 'NG1234:', 'North Point' ],
+           [ 'NG1234:', 'Causeway Bay' ],
+           [ 'NG1234:', 'Eastern' ]
+       ],
+       fields : [ 'code' , 'name' ],
+       isLocal : true,
+       listeners : {
+        load : function (_self, records, options)
+         {
+          
+         }
        },
-       reader : {
-        xtype : 'JsonReader',
-        xns : Roo.data,
-        '|xns' : 'Roo.data'
-       }
+       xns : Roo.data,
+       '|xns' : 'Roo.data'
       },
       cm : [
        {

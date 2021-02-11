@@ -4,6 +4,14 @@
     "events" : [],
     "methods" : [
       {
+        "name" : "equals",
+        "type" : "function",
+        "desc" : "equals",
+        "sig" : "(o)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "indexOf",
         "type" : "function",
         "desc" : "Checks whether or not the specified object exists in the array.",
@@ -50098,7 +50106,7 @@
         "name" : "show",
         "type" : "function",
         "desc" : "Show the popover",
-        "sig" : "(-)",
+        "sig" : "(-, (left|right|top|bottom))",
         "static" : false,
         "memberOf" : ""
       },
@@ -50117,6 +50125,14 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "updatePosition",
+        "type" : "function",
+        "desc" : "fire this manually after loading a grid in the table for example",
+        "sig" : "((left|right|top|bottom), try)",
+        "static" : false,
+        "memberOf" : ""
       }
     ]
   },

@@ -19659,7 +19659,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     maskEl : false, // the mask element
     headerEl : false,
     contentEl : false,
-    
+    alignEl : false, // when show is called with an element - this get's stored.
     
     getChildContainer : function()
     {
@@ -19785,10 +19785,12 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             Roo.bootstrap.Popover.register(this);
         }
          
-        
+        this.arrowEl = this.el.select('.arrow',true).first();
         this.headerEl.setVisibilityMode(Roo.Element.DISPLAY); // probably not needed as it's default in BS4
         this.el.enableDisplayMode('block');
         this.el.hide();
+ 
+        
         if (this.over === false && !this.parent()) {
             return; 
         }
@@ -19811,7 +19813,6 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 on_el.on(eventOut, this.leave, this);
             }
         }, this);
-        
     },
     
     
@@ -19859,12 +19860,14 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     },
     /**
      * Show the popover
-     * @param {Roo.Element|string|false} - element to align and point to.
+     * @param {Roo.Element|string|Boolean} - element to align and point to. (set align to [ pos, offset ])
+     * @param {string} (left|right|top|bottom) position
      */
-    show : function (on_el)
+    show : function (on_el, placement)
     {
-        
+        this.placement = typeof(placement) == 'undefined' ?  this.placement   : placement;
         on_el = on_el || false; // default to false
+         
         if (!on_el) {
             if (this.parent() && (this.over == 'parent' || (this.over === false))) {
                 on_el = this.parent().el;
@@ -19874,53 +19877,27 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             
         }
         
+        this.alignEl = on_el;
+
         if (!this.el) {
             this.render(document.body);
         }
         
         
-        this.el.removeClass([
-            'fade','top','bottom', 'left', 'right','in',
-            'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
-        ]);
+         
         
         if (this.title === false) {
             this.headerEl.hide();
         }
         
-        
-        var placement = typeof this.placement == 'function' ?
-            this.placement.call(this, this.el, on_el) :
-            this.placement;
-            
-        /*
-        var autoToken = /\s?auto?\s?/i;   /// not sure how this was supposed to work? right auto ? what?
-        
-        // I think  'auto right' - but 
-        
-        var autoPlace = autoToken.test(placement);
-        if (autoPlace) {
-            placement = placement.replace(autoToken, '') || 'top';
-        }
-        */
-        
-        
+       
         this.el.show();
-        this.el.dom.style.display='block';
-        
-        //this.el.appendTo(on_el);
-        
-        var p = this.getPosition();
-        var box = this.el.getBox();
-        
-        
-        var align = Roo.bootstrap.Popover.alignment[placement];
-        this.el.addClass(align[2]);
-
-//        Roo.log(align);
-
-        if (on_el) {
-            this.el.alignTo(on_el, align[0],align[1]);
+        this.el.dom.style.display = 'block';
+         
+ 
+        if (this.alignEl) {
+            this.updatePosition(this.placement, true);
+             
         } else {
             // this is usually just done by the builder = to show the popoup in the middle of the scren.
             var es = this.el.getSize();
@@ -19936,10 +19913,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
         this.el.addClass('in');
         
-        
-        if (this.el.hasClass('fade')) {
-            // fade it?
-        }
+         
         
         this.hoverState = 'in';
         
@@ -19950,12 +19924,96 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             this.maskEl.addClass('show');
         }
         this.el.setStyle('z-index', Roo.bootstrap.Popover.zIndex++);
-
-        
-        
+ 
         this.fireEvent('show', this);
         
     },
+    /**
+     * fire this manually after loading a grid in the table for example
+     * @param {string} (left|right|top|bottom) where to try and put it (use false to use the last one)
+     * @param {Boolean} try and move it if we cant get right position.
+     */
+    updatePosition : function(placement, try_move)
+    {
+        // allow for calling with no parameters
+        placement = placement   ? placement :  this.placement;
+        try_move = typeof(try_move) == 'undefined' ? true : try_move;
+        
+        this.el.removeClass([
+            'fade','top','bottom', 'left', 'right','in',
+            'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
+        ]);
+        this.el.addClass(placement + ' bs-popover-' + placement);
+        
+        if (!this.alignEl ) {
+            return false;
+        }
+        
+        switch (placement) {
+            case 'right':
+                var exact = this.el.getAlignToXY(this.alignEl, 'tl-tr', [10,0]);
+                var offset = this.el.getAlignToXY(this.alignEl, 'tl-tr?',[10,0]);
+                if (!try_move || exact.equals(offset) || exact[0] == offset[0] ) {
+                    //normal display... or moved up/down.
+                    this.el.setXY(offset);
+                    var xy = this.alignEl.getAnchorXY('tr', false);
+                    xy[0]+=2;xy[1]+=5;
+                    this.arrowEl.setXY(xy);
+                    return true;
+                }
+                // continue through...
+                return this.updatePosition('left', false);
+                
+            
+            case 'left':
+                var exact = this.el.getAlignToXY(this.alignEl, 'tr-tl', [-10,0]);
+                var offset = this.el.getAlignToXY(this.alignEl, 'tr-tl?',[-10,0]);
+                if (!try_move || exact.equals(offset) || exact[0] == offset[0] ) {
+                    //normal display... or moved up/down.
+                    this.el.setXY(offset);
+                    var xy = this.alignEl.getAnchorXY('tl', false);
+                    xy[0]-=10;xy[1]+=5; // << fix me
+                    this.arrowEl.setXY(xy);
+                    return true;
+                }
+                // call self...
+                return this.updatePosition('right', false);
+            
+            case 'top':
+                var exact = this.el.getAlignToXY(this.alignEl, 'b-t', [0,-10]);
+                var offset = this.el.getAlignToXY(this.alignEl, 'b-t?',[0,-10]);
+                if (!try_move || exact.equals(offset) || exact[1] == offset[1] ) {
+                    //normal display... or moved up/down.
+                    this.el.setXY(offset);
+                    var xy = this.alignEl.getAnchorXY('t', false);
+                    xy[1]-=10; // << fix me
+                    this.arrowEl.setXY(xy);
+                    return true;
+                }
+                // fall through
+               return this.updatePosition('bottom', false);
+            
+            case 'bottom':
+                 var exact = this.el.getAlignToXY(this.alignEl, 't-b', [0,10]);
+                var offset = this.el.getAlignToXY(this.alignEl, 't-b?',[0,10]);
+                if (!try_move || exact.equals(offset) || exact[1] == offset[1] ) {
+                    //normal display... or moved up/down.
+                    this.el.setXY(offset);
+                    var xy = this.alignEl.getAnchorXY('b', false);
+                     xy[1]+=2; // << fix me
+                    this.arrowEl.setXY(xy);
+                    return true;
+                }
+                // fall through
+                return this.updatePosition('top', false);
+                
+            
+        }
+        
+        
+        return false;
+    },
+    
     hide : function()
     {
         this.el.setXY([0,0]);
@@ -27304,7 +27362,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     // private
     onLoad : function(ds, r, o)
     {
-        this.cursor = o.params.start ? o.params.start : 0;
+        this.cursor = o.params && o.params.start ? o.params.start : 0;
         
         var d = this.getPageData(),
             ap = d.activePage,

@@ -4757,4 +4757,7 @@ html.bootstrap-sticky body {
 .popover {
   max-width: 90%; }
 
+.popover-header .form-group {
+  margin-bottom: 0; }
+
 /*# sourceMappingURL=roojs-bootstrap-debug.css.map */

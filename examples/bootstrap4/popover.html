@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bootstrap 101 Template</title>
+    <title>Popover Examples</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Bootstrap -->
@@ -15,7 +15,8 @@
         
     <script type="text/javascript" src="../../roojs-core-debug.js"></script>
     <script type="text/javascript" src="../../roojs-bootstrap-debug.js"></script>
-    <script type="text/javascript" src="../../Roo/bootstrap/Popover.js"></script>
+<!--    <script type="text/javascript" src="../../Roo/bootstrap/Popover.js"></script> -->
+  <script type="text/javascript" src="../../docs/Roo.docs.ViewSource.js"></script>
 
          <script type="text/javascript">
             rootURL = '/';
@@ -26,13 +27,88 @@
   
   <body id="body">
   
-    <div id="bootstrap-body"
-         style="width: 100px;height: 100px;display: block;background-color: red;position: relative;left: 133px;top: 100px;"></div>
+  <H1>Popover Test (auto ajusting if no room..)</H1>
+  
+  <a  href="#"  onclick="Roo.docs.ViewSource.show({ src: '/roojs1/examples/bootstrap/popover.js'});">popover.js</a>
+  <a href="#" onclick="Roo.docs.ViewSource.show({ src: '/roojs1/examples/bootstrap4/popover.html'});">popover.html</a>
+           
+  
+    <div id="right-test"
+         style="width: 100px;height: 100px;display: block;background-color: yellow;position: absolute;left: 100px;top: 100px;">RIGHT</div>
+    
+     <div id="right-move-test"
+         style="width: 100px;height: 100px;display: block;background-color: yellow;position: absolute;left: 100px;top: 600px;">RIGHT</div>
+     
+     <div id="left-flip-test"
+         style="width: 100px;height: 100px;display: block;background-color: yellow;position: absolute;left: 100px;top: 400px;">LEFT</div>
+    
+      <div id="below-test"
+         style="width: 100px;height: 100px;display: block;background-color: yellow;position: absolute;left: 300px;top: 100px;">BOTTOM</div>
+      
+      <div id="below-bad-test"
+         style="width: 100px;height: 100px;display: block;background-color: yellow;position: absolute;left: 300px;top: 500px;">BOTTOM</div>
+    
+     <div id="above-bad-test"
+         style="width: 100px;height: 100px;display: block;background-color: yellow;position: absolute;left: 500px;top: 100px;">TOP</div>
+    
+     <div id="above-test"
+         style="width: 100px;height: 100px;display: block;background-color: yellow;position: absolute;left: 500px;top: 500px;">TOP</div>
+    
+    
+    <div id="left-test"
+         style="width: 100px;height: 100px;display: block;background-color: yellow;position: absolute;left: 1000px;top: 100px;">LEFT</div>
+    
+     <div id="left-move-test"
+         style="width: 100px;height: 100px;display: block;background-color: yellow;position: absolute;left: 1000px;top: 600px;">LEFT</div>
+     
+     <div id="right-flip-test"
+         style="width: 100px;height: 100px;display: block;background-color: yellow;position: absolute;left: 1000px;top: 400px;">RIGHT</div>
+    
+    
   </body>
     <script type="text/javascript">
        Roo.onReady(function() {
-       
-          Pman.Popover.FileTest.show({   });
+          Roo.get('right-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'right');
+          });
+          
+          Roo.get('right-move-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'right');
+          });
+          
+          Roo.get('left-flip-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'left');
+          });
+          
+          Roo.get('left-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'left');
+          });
+          
+          Roo.get('left-move-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'left');
+          });
+          
+          Roo.get('right-flip-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'right');
+          });
+          
+          
+          Roo.get('below-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'bottom');
+          });
+          
+          Roo.get('below-bad-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'bottom');
+          });
+          
+          Roo.get('above-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'top');
+          });          
+          Roo.get('above-bad-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'top');
+          });          
+          
+          //Pman.Popover.FileTest.show({   });
           //Roo.get("bootstrap-body").on('click', function() { Pman.Popover.FileTest.show({ _el : Roo.get("bootstrap-body") }); })
       });
 

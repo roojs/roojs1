@@ -55,8 +55,34 @@ Roo.applyIf(Array.prototype, {
         }
 
         return res;
+    },
+    /**
+     * equals
+     * @param {Array} o The array to compare to
+     * @returns {Boolean} true if the same
+     */
+    equals : function(b)
+    {
+        // https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
+	if (this === b) {
+	    return true;
+	 }
+	if (b == null) {
+	    return false;
+	}
+	if (this.length !== b.length) {
+	    return false;
+	}
+      
+	// sort?? a.sort().equals(b.sort());
+      
+	for (var i = 0; i < this.length; ++i) {
+	    if (this[i] !== b[i]) {
+		return false;
+	    }
+	}
+	return true;
     }
-    
 });
 
 
