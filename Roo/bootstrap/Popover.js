@@ -295,29 +295,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             this.headerEl.hide();
         }
         
-        // why make it so complicated... - we used to support functional calls for this .. why ?
-        
-            
-        /*
-        var autoToken = /\s?auto?\s?/i;   /// not sure how this was supposed to work? right auto ? what?
-        
-        // I think  'auto right' - but 
-        
-        var autoPlace = autoToken.test(placement);
-        if (autoPlace) {
-            placement = placement.replace(autoToken, '') || 'top';
-        }
-        */
-        
-        
+       
         this.el.show();
-        this.el.dom.style.display='block';
-        
-        //this.el.appendTo(on_el);
-        
-        var p = this.getPosition();
-        var box = this.el.getBox();
-        
+        this.el.dom.style.display = 'block';
+         
         
         this.el.addClass(placement + ' roo-popover-' + placement);
 
@@ -360,9 +341,14 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
      */
     updatePosition : function()
     {
+        this.el.addClass(placement + ' roo-popover-' + placement);
+        
         if (!this.alignEl || !this.alignment) {
             return;
         }
+        
+        
+        
         this.el.alignTo(this.alignEl , this.alignment[0],this.alignment[1]);
         
         // work out the pointy position.
