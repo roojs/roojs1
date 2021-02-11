@@ -19659,7 +19659,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     maskEl : false, // the mask element
     headerEl : false,
     contentEl : false,
-    
+    alignEl : false, // when show is called with an element - this get's stored.
     
     getChildContainer : function()
     {
@@ -19863,12 +19863,11 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
      * @param {Roo.Element|string|Boolean} - element to align and point to. (set align to [ pos, offset ])
      * @param {string} (left|right|top|bottom) position
      */
-    show : function (on_el)
+    show : function (on_el, placement)
     {
-        
+        this.placement = typeof(placement) == 'undefined' ?  this.placement   : placement;
         on_el = on_el || false; // default to false
-        var align = on_el && typeof(on_el._align) != 'undefined' ? on_el._align : false;
-        
+         
         if (!on_el) {
             if (this.parent() && (this.over == 'parent' || (this.over === false))) {
                 on_el = this.parent().el;
@@ -19892,10 +19891,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             this.headerEl.hide();
         }
         
+        // why make it so complicated... - we used to support functional calls for this .. why ?
         
-        var placement = typeof this.placement == 'function' ?
-            this.placement.call(this, this.el, on_el) :
-            this.placement;
             
         /*
         var autoToken = /\s?auto?\s?/i;   /// not sure how this was supposed to work? right auto ? what?
@@ -19918,13 +19915,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         var box = this.el.getBox();
         
         
-        this.alignment = align || Roo.bootstrap.Popover.alignment[placement];
-        this.el.addClass(this.alignment[2]);
-
-//        Roo.log(align);
+        this.el.addClass(placement + ' roo-popover-' + placement);
 
         if (on_el) {
-            this.alignEl = on_el;
             this.updatePosition();
              
         } else {
