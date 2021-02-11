@@ -82,6 +82,27 @@
         }
       ],
       "returns" : []
+    },
+    {
+      "name" : "equals",
+      "desc" : "equals",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Array",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Array",
+          "desc" : "The array to compare to",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
     }
   ],
   "events" : []

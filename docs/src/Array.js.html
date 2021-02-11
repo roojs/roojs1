@@ -55,8 +55,34 @@
         }
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">res</span><span class="jsdoc-syntax">;
-    }
+    },
+    </span><span class="jsdoc-comment">/**
+     * equals
+     * @param {Array} o The array to compare to
+     * @returns {Boolean} true if the same
+     */
+    </span><span class="jsdoc-var">equals </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+	 }
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+	}
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.length </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">b.length</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+	}
 
+	</span><span class="jsdoc-comment">// sort?? a.sort().equals(b.sort());
+
+	</span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">a.length</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] !== </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) {
+		</span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+	    }
+	}
+	</span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+    }
 });
 
 

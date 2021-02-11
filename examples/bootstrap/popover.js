@@ -17,15 +17,15 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
  dialog : false,
  callback:  false,
 
- show : function(data, cb, opts)
+ show : function(data, cb)
  {
   if (!this.dialog) {
    this.create();
   }
-
+  
   this.callback = cb;
   this.data = data;
-  this.dialog.show(this.data._el, opts);
+  this.dialog.show.apply(this.dialog,  Array.prototype.slice.call(arguments).slice(2));
   if (this.form) {
    this.form.reset();
    this.form.setValues(data);

@@ -222,6 +222,33 @@
       "returns" : []
     },
     {
+      "name" : "updatePosition",
+      "desc" : "fire this manually after loading a grid in the table for example",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Popover",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "(left|right|top|bottom)",
+          "type" : "string",
+          "desc" : "where to try and put it (use false to use the last one)",
+          "isOptional" : false
+        },
+        {
+          "name" : "try",
+          "type" : "Boolean",
+          "desc" : "and move it if we cant get right position.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "show",
       "desc" : "Show the popover",
       "isStatic" : false,
@@ -235,8 +262,14 @@
       "params" : [
         {
           "name" : "-",
-          "type" : "Roo.Element|string|false",
-          "desc" : "element to align and point to.",
+          "type" : "Roo.Element|string|Boolean",
+          "desc" : "element to align and point to. (set align to [ pos, offset ])",
+          "isOptional" : false
+        },
+        {
+          "name" : "(left|right|top|bottom)",
+          "type" : "string",
+          "desc" : "position",
           "isOptional" : false
         }
       ],
