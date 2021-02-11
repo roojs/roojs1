@@ -19895,7 +19895,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         
  
         if (on_el) {
-            this.updatePosition(placement);
+            this.updatePosition(this.placement, true);
              
         } else {
             // this is usually just done by the builder = to show the popoup in the middle of the scren.
@@ -19929,11 +19929,13 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     },
     /**
      * fire this manually after loading a grid in the table for example
-     * @param {string} (left|right|top|bottom) where to try and put it
+     * @param {string} (left|right|top|bottom) where to try and put it (use false to use the last one)
      * @param {Boolean} try and move it if we cant get right position.
      */
     updatePosition : function(placement, try_move)
     {
+        placement = placement === false ? this.placement : placement;
+        
         this.el.removeClass([
             'fade','top','bottom', 'left', 'right','in',
             'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
