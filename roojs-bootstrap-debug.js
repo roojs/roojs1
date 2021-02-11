@@ -19956,7 +19956,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                     this.arrowEl.setXY(xy);
                     return true;
                 }
-                return this.updatePosition('left', false);
+                // continue through...
+                try_move = false;
+                
             
             case 'left':
                 var exact = this.el.getAlignToXY(this.alignEl, 'tr-tl', [-10,0]);
@@ -19969,8 +19971,22 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                     this.arrowEl.setXY(xy);
                     return true;
                 }
+                // call self...
                 return this.updatePosition('right', false);
             
+            case 'top':
+                var exact = this.el.getAlignToXY(this.alignEl, 't-b', [0,-10]);
+                var offset = this.el.getAlignToXY(this.alignEl, 't-b?',[0,-10]);
+                if (!try_move || exact.equals(offset) || exact[1] == offset[1] ) {
+                    //normal display... or moved up/down.
+                    this.setXY(offset);
+                    var xy = this.alignEl.getAnchorXY('tl', false);
+                    xy[0]+=2;xy[1]+=5; // << fix me
+                    this.arrowEl.setXY(xy);
+                    return true;
+                }
+                return this.updatePosition('right', false);
+                
             
         }
         
