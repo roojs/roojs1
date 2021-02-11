@@ -339,15 +339,15 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
      * fire this manually after loading a grid in the table for example
      *
      */
-    updatePosition : function()
+    updatePosition : function(placement)
     {
         this.el.addClass(placement + ' roo-popover-' + placement);
         
-        if (!this.alignEl || !this.alignment) {
+        if (!this.alignEl ) {
             return;
         }
         
-        
+        switch ()
         
         this.el.alignTo(this.alignEl , this.alignment[0],this.alignment[1]);
         
