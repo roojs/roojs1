@@ -389,7 +389,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 if (!try_move || exact.equals(offset) || exact[1] == offset[1] ) {
                     //normal display... or moved up/down.
                     this.el.setXY(offset);
-                    var xy = this.alignEl.getAnchorXY('b', false);
+                    var xy = this.alignEl.getAnchorXY('t', false);
                     xy[0]+=2;xy[1]+=5; // << fix me
                     this.arrowEl.setXY(xy);
                     return true;
@@ -403,7 +403,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 if (!try_move || exact.equals(offset) || exact[1] == offset[1] ) {
                     //normal display... or moved up/down.
                     this.el.setXY(offset);
-                    var xy = this.alignEl.getAnchorXY('t', false);
+                    var xy = this.alignEl.getAnchorXY('b', false);
                     xy[0]+=2;xy[1]+=5; // << fix me
                     this.arrowEl.setXY(xy);
                     return true;
