@@ -281,6 +281,8 @@
 
         }
 
+        </span><span class="jsdoc-var">this.alignEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">on_el</span><span class="jsdoc-syntax">;
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
         }
@@ -297,8 +299,7 @@
         </span><span class="jsdoc-var">this.el.dom.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
 
 
-
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">on_el</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.updatePosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.placement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
 
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
@@ -338,13 +339,15 @@
      */
     </span><span class="jsdoc-var">updatePosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">try_move</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.placement </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// allow for calling with no parameters
+        </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">placement   </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.placement</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">try_move </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">try_move</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">try_move</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([
             </span><span class="jsdoc-string">'fade'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'bs-popover-top'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'bs-popover-bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'bs-popover-left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'bs-popover-right'
         </span><span class="jsdoc-syntax">]);
-        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' roo-popover-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' bs-popover-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.alignEl </span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
@@ -356,7 +359,7 @@
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'tl-tr?'</span><span class="jsdoc-syntax">,[10,0]);
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">try_move </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">exact.equals</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">exact</span><span class="jsdoc-syntax">[0] == </span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">[0] ) {
                     </span><span class="jsdoc-comment">//normal display... or moved up/down.
-                    </span><span class="jsdoc-var">this.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.el.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.alignEl.getAnchorXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0]+=2;</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1]+=5;
                     </span><span class="jsdoc-var">this.arrowEl.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
@@ -371,7 +374,7 @@
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'tr-tl?'</span><span class="jsdoc-syntax">,[-10,0]);
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">try_move </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">exact.equals</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">exact</span><span class="jsdoc-syntax">[0] == </span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">[0] ) {
                     </span><span class="jsdoc-comment">//normal display... or moved up/down.
-                    </span><span class="jsdoc-var">this.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.el.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.alignEl.getAnchorXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tl'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0]+=2;</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1]+=5; </span><span class="jsdoc-comment">// &lt;&lt; fix me
                     </span><span class="jsdoc-var">this.arrowEl.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
@@ -381,13 +384,13 @@
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.updatePosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
 
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">exact </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'t-b'</span><span class="jsdoc-syntax">, [0,-10]);
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'t-b?'</span><span class="jsdoc-syntax">,[0,-10]);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">exact </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'b-t'</span><span class="jsdoc-syntax">, [0,-10]);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'b-t?'</span><span class="jsdoc-syntax">,[0,-10]);
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">try_move </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">exact.equals</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">exact</span><span class="jsdoc-syntax">[1] == </span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">[1] ) {
                     </span><span class="jsdoc-comment">//normal display... or moved up/down.
-                    </span><span class="jsdoc-var">this.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.alignEl.getAnchorXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'b'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0]+=2;</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1]+=5; </span><span class="jsdoc-comment">// &lt;&lt; fix me
+                    </span><span class="jsdoc-var">this.el.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.alignEl.getAnchorXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'t'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1]-=10; </span><span class="jsdoc-comment">// &lt;&lt; fix me
                     </span><span class="jsdoc-var">this.arrowEl.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
                 }
@@ -395,13 +398,13 @@
                 </span><span class="jsdoc-var">try_move </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">:
-                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">exact </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'b-t'</span><span class="jsdoc-syntax">, [0,10]);
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'b-t?'</span><span class="jsdoc-syntax">,[0,10]);
+                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">exact </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'t-b'</span><span class="jsdoc-syntax">, [0,10]);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'t-b?'</span><span class="jsdoc-syntax">,[0,10]);
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">try_move </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">exact.equals</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">exact</span><span class="jsdoc-syntax">[1] == </span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">[1] ) {
                     </span><span class="jsdoc-comment">//normal display... or moved up/down.
-                    </span><span class="jsdoc-var">this.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.alignEl.getAnchorXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'t'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0]+=2;</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1]+=5; </span><span class="jsdoc-comment">// &lt;&lt; fix me
+                    </span><span class="jsdoc-var">this.el.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.alignEl.getAnchorXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'b'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                     </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1]+=2; </span><span class="jsdoc-comment">// &lt;&lt; fix me
                     </span><span class="jsdoc-var">this.arrowEl.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
                 }
