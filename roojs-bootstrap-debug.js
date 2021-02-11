@@ -19978,8 +19978,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 return this.updatePosition('right', false);
             
             case 'top':
-                var exact = this.el.getAlignToXY(this.alignEl, 't-b', [0,-10]);
-                var offset = this.el.getAlignToXY(this.alignEl, 't-b?',[0,-10]);
+                var exact = this.el.getAlignToXY(this.alignEl, 'b-t', [0,-10]);
+                var offset = this.el.getAlignToXY(this.alignEl, 'b-t?',[0,-10]);
                 if (!try_move || exact.equals(offset) || exact[1] == offset[1] ) {
                     //normal display... or moved up/down.
                     this.el.setXY(offset);
@@ -19992,8 +19992,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 try_move = false;
             
             case 'bottom':
-                 var exact = this.el.getAlignToXY(this.alignEl, 'b-t', [0,10]);
-                var offset = this.el.getAlignToXY(this.alignEl, 'b-t?',[0,10]);
+                 var exact = this.el.getAlignToXY(this.alignEl, 't-b', [0,10]);
+                var offset = this.el.getAlignToXY(this.alignEl, 't-b?',[0,10]);
                 if (!try_move || exact.equals(offset) || exact[1] == offset[1] ) {
                     //normal display... or moved up/down.
                     this.el.setXY(offset);
