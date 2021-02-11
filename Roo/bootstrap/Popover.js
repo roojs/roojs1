@@ -264,7 +264,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     },
     /**
      * Show the popover
-     * @param {Roo.Element|string|false} - element to align and point to. (set align to [ pos, offset ])
+     * @param {Roo.Element|string|Boolean} - element to align and point to. (set align to [ pos, offset ])
+     * @param {string} (left|right|top|bottom) position
      */
     show : function (on_el)
     {
