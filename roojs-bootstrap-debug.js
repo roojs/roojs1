@@ -19935,17 +19935,29 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
      * fire this manually after loading a grid in the table for example
      *
      */
-    updatePosition : function()
+    updatePosition : function(placement, try_move)
     {
         this.el.addClass(placement + ' roo-popover-' + placement);
         
-        if (!this.alignEl || !this.alignment) {
-            return;
+        if (!this.alignEl ) {
+            return false;
+        }
+        
+        switch (placement) {
+            case 'right':
+                var exact = this.el.getAlignToXY(this.alignEl, 'tl-tr', [10,0]);
+                var offset = this.el.getAlignToXY(this.alignEl, 'tl-tr?',[10,0]);
+                if (exact.equals(offset)) {
+                    //normal display...
+                    this.setXY(exact, this.preanim(arguments, 3));
+                    var xy = this.alignEl.getAnchorXY(p1, false);
+                    
+                }
+                
+                
         }
         
         
-        
-        this.el.alignTo(this.alignEl , this.alignment[0],this.alignment[1]);
         
         // work out the pointy position.
         var p1 = this.alignment[0].split('-').pop().replace('?','');
