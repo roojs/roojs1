@@ -62,12 +62,33 @@
             Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'left');
           });
           
+          Roo.get('left-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'right');
+          });
+          
+          Roo.get('left-move-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'right');
+          });
+          
+          Roo.get('right-flip-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'left');
+          });
           
           
           Roo.get('below-test').on('click', function(e) {
             Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'bottom');
           });
           
+          Roo.get('below-bad-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'bottom');
+          });
+          
+          Roo.get('above-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'top');
+          });          
+          Roo.get('above-bad-test').on('click', function(e) {
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'top');
+          });          
           
           //Pman.Popover.FileTest.show({   });
           //Roo.get("bootstrap-body").on('click', function() { Pman.Popover.FileTest.show({ _el : Roo.get("bootstrap-body") }); })
