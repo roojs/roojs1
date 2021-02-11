@@ -19877,6 +19877,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             
         }
         
+        this.alignEl = on_el;
+
         if (!this.el) {
             this.render(document.body);
         }
@@ -19892,9 +19894,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.show();
         this.el.dom.style.display = 'block';
          
-        
  
-        if (on_el) {
+        if (this.alignEl) {
             this.updatePosition(this.placement, true);
              
         } else {
