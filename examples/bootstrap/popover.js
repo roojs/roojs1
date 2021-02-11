@@ -42,6 +42,7 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
     modal : false,
     placement : 'right',
     style : 'width:500px',
+    cls: 'p-0',
     listeners : {
      show : function (_self)
       {
@@ -54,8 +55,7 @@ Roo.apply(Pman.Popover.FileTest.prototype, {
     items  : [
      {
       xtype : 'Table',
-      cls : 'm-0',
-      listeners : {
+       listeners : {
        render : function (_self)
         {
             _this.grid = this;
