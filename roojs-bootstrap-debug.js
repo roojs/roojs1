@@ -19972,7 +19972,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                     //normal display... or moved up/down.
                     this.el.setXY(offset);
                     var xy = this.alignEl.getAnchorXY('tl', false);
-                    xy[0]-=12;xy[1]+=5; // << fix me
+                    xy[0]-=10;xy[1]+=5; // << fix me
                     this.arrowEl.setXY(xy);
                     return true;
                 }
