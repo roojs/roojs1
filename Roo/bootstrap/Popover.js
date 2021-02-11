@@ -286,10 +286,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }
         
         
-        this.el.removeClass([
-            'fade','top','bottom', 'left', 'right','in',
-            'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
-        ]);
+         
         
         if (this.title === false) {
             this.headerEl.hide();
@@ -300,10 +297,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.dom.style.display = 'block';
          
         
-        this.el.addClass(placement + ' roo-popover-' + placement);
-
+ 
         if (on_el) {
-            this.updatePosition();
+            this.updatePosition(placement);
              
         } else {
             // this is usually just done by the builder = to show the popoup in the middle of the scren.
