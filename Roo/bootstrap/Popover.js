@@ -342,6 +342,10 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
      */
     updatePosition : function(placement, try_move)
     {
+        this.el.removeClass([
+            'fade','top','bottom', 'left', 'right','in',
+            'bs-popover-top','bs-popover-bottom', 'bs-popover-left', 'bs-popover-right'
+        ]);
         this.el.addClass(placement + ' roo-popover-' + placement);
         
         if (!this.alignEl ) {
