@@ -19953,7 +19953,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 var offset = this.el.getAlignToXY(this.alignEl, 'tl-tr?',[10,0]);
                 if (!try_move || exact.equals(offset) || exact[0] == offset[0] ) {
                     //normal display... or moved up/down.
-                    this.setXY(offset);
+                    this.el.setXY(offset);
                     var xy = this.alignEl.getAnchorXY('tr', false);
                     xy[0]+=2;xy[1]+=5;
                     this.arrowEl.setXY(xy);
@@ -19968,7 +19968,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 var offset = this.el.getAlignToXY(this.alignEl, 'tr-tl?',[-10,0]);
                 if (!try_move || exact.equals(offset) || exact[0] == offset[0] ) {
                     //normal display... or moved up/down.
-                    this.setXY(offset);
+                    this.el.setXY(offset);
                     var xy = this.alignEl.getAnchorXY('tl', false);
                     xy[0]+=2;xy[1]+=5; // << fix me
                     this.arrowEl.setXY(xy);
@@ -19982,7 +19982,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 var offset = this.el.getAlignToXY(this.alignEl, 't-b?',[0,-10]);
                 if (!try_move || exact.equals(offset) || exact[1] == offset[1] ) {
                     //normal display... or moved up/down.
-                    this.setXY(offset);
+                    this.el.setXY(offset);
                     var xy = this.alignEl.getAnchorXY('b', false);
                     xy[0]+=2;xy[1]+=5; // << fix me
                     this.arrowEl.setXY(xy);
@@ -19996,7 +19996,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
                 var offset = this.el.getAlignToXY(this.alignEl, 'b-t?',[0,10]);
                 if (!try_move || exact.equals(offset) || exact[1] == offset[1] ) {
                     //normal display... or moved up/down.
-                    this.setXY(offset);
+                    this.el.setXY(offset);
                     var xy = this.alignEl.getAnchorXY('t', false);
                     xy[0]+=2;xy[1]+=5; // << fix me
                     this.arrowEl.setXY(xy);
