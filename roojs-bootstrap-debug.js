@@ -19933,7 +19933,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     },
     /**
      * fire this manually after loading a grid in the table for example
-     *
+     * @param {string} (left|right|top|bottom) where to try and put it
+     * @param {Boolean} try and move it if we cant get right position.
      */
     updatePosition : function(placement, try_move)
     {
