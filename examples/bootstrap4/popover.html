@@ -47,6 +47,17 @@
      <div id="above-test"
          style="width: 100px;height: 100px;display: block;background-color: red;position: relative;left: 400px;top: 500px;"></div>
     
+    
+    <div id="left-test"
+         style="width: 100px;height: 100px;display: block;background-color: red;position: relative;left: 700px;top: 100px;"></div>
+    
+     <div id="left-move-test"
+         style="width: 100px;height: 100px;display: block;background-color: red;position: relative;left: 700px;top: 600px;"></div>
+     
+     <div id="right-flip-test"
+         style="width: 100px;height: 100px;display: block;background-color: red;position: relative;left: 700px;top: 400px;"></div>
+    
+    
   </body>
     <script type="text/javascript">
        Roo.onReady(function() {
@@ -63,15 +74,15 @@
           });
           
           Roo.get('left-test').on('click', function(e) {
-            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'right');
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'left');
           });
           
           Roo.get('left-move-test').on('click', function(e) {
-            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'right');
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'left');
           });
           
           Roo.get('right-flip-test').on('click', function(e) {
-            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'left');
+            Pman.Popover.FileTest.show({} , false, Roo.get(e.getTarget()), 'right');
           });
           
           
