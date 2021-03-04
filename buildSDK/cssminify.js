@@ -11,9 +11,8 @@
  * Usage: seed buildSDK/cssminify.js {OUTPUT} {files........}
  */ 
 
+return; // do not use this..
 
-
-File = imports.File.File;
 GLib = imports.gi.GLib;  
 // let's see if this works..
 // should be run from top level..
@@ -31,10 +30,13 @@ var out = '';
 args.forEach(function(l) {
     
     //out += pack(File.read(pa+'/css/' + l)).replace(/\}/g, "}\n")+"\n";
-    out += pack(File.read(l)) + "\n";
+    out += pack(GLib.file_get_contents(path)['contents']) + "\n";
 });
+var f = Gio.file_new_for_path(String(outname));
+var data_out = new Gio.DataOutputStream({base_stream:f.replace(null, false, Gio.FileCreateFlags.NONE, null)});
+data_out.put_string(out, null);
+data_out.close(null);
 
-File.write(outname, out); 
     
      
 print("written " + outname);

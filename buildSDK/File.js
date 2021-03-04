@@ -39,8 +39,8 @@ var File = {
 
     read : function (path) {
         var out = {};
-        GLib.file_get_contents(path, out, null, null);
-        return out['value'];
+        out = GLib.file_get_contents(path);
+        return out['contents'];
     },
 
     isFile : function (path) {

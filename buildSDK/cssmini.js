@@ -9,21 +9,22 @@
  * This code is a port of Isaac Schlueter's cssmin utility.
  *
  * Usage: seed buildSDK/cssmini.js
+ * Usage: gjs -I buildSDK buildSDK/cssmini.js
  */ 
 
 
 
-File = imports.File.File;
-GLib = imports.gi.GLib;  
+GLib = imports.gi.GLib;
+Gio = imports.gi.Gio;   
 // let's see if this works..
 // should be run from top level..
 var pa = GLib.get_current_dir();
 
 
-print(pa);
+//print(pa);
 //println(pack(File.read(pa+'/css/basic-dialog.css')));
 
-var lines = File.read(pa + '/css/roojs-debug.css').split(/\n/);
+ var lines = String(GLib.file_get_contents(pa + '/css/roojs-debug.css')[1]).split(/\n/);
 //@import url("reset-min.css");
 var out = '';
 lines.forEach(function(l) {
@@ -33,11 +34,15 @@ lines.forEach(function(l) {
     l = l.replace(/^[^"]+"([^"]+)".*/, '$1');
     print("pack " + l);
     //out += pack(File.read(pa+'/css/' + l)).replace(/\}/g, "}\n")+"\n";
-    out += pack(File.read(pa+'/css/' + l)) + "\n";
+    var data = String(GLib.file_get_contents(pa+'/css/' + l)[1]);
+//print(data);
+    out += pack(data) + "\n";
 });
-
-File.write(pa+'/css/roojs.css', out); 
-    
+var f = Gio.file_new_for_path(String(pa+'/css/roojs.css'));
+var data_out = new Gio.DataOutputStream({base_stream:f.replace(null, false, Gio.FileCreateFlags.NONE, null)});
+data_out.put_string(out, null);
+data_out.close(null);
+     
      
 print("written css/roojs.css");
 // and the themese...
