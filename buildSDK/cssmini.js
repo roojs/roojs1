@@ -24,7 +24,7 @@ print(pa);
 //println(pack(File.read(pa+'/css/basic-dialog.css')));
 var x = GLib.file_get_contents(pa + '/css/roojs-debug.css');
 print(x);
-var lines = GLib.file_get_contents(pa + '/css/roojs-debug.css')['contents'].split(/\n/);
+var lines = GLib.file_get_contents(pa + '/css/roojs-debug.css').split(/\n/);
 //@import url("reset-min.css");
 var out = '';
 lines.forEach(function(l) {
@@ -34,7 +34,7 @@ lines.forEach(function(l) {
     l = l.replace(/^[^"]+"([^"]+)".*/, '$1');
     print("pack " + l);
     //out += pack(File.read(pa+'/css/' + l)).replace(/\}/g, "}\n")+"\n";
-    out += pack(GLib.file_get_contents(pa+'/css/' + l)['contents']) + "\n";
+    out += pack(GLib.file_get_contents(pa+'/css/' + l)) + "\n";
 });
 var f = Gio.file_new_for_path(String(pa+'/css/roojs.css'));
 var data_out = new Gio.DataOutputStream({base_stream:f.replace(null, false, Gio.FileCreateFlags.NONE, null)});
