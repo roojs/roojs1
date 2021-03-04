@@ -31,7 +31,7 @@ var out = '';
 args.forEach(function(l) {
     
     //out += pack(File.read(pa+'/css/' + l)).replace(/\}/g, "}\n")+"\n";
-    out += pack(File.read(l)) + "\n";
+    out += pack(GLib.file_get_contents(path)['contents']) + "\n";
 });
 
 File.write(outname, out); 
