@@ -36,9 +36,11 @@ lines.forEach(function(l) {
     //out += pack(File.read(pa+'/css/' + l)).replace(/\}/g, "}\n")+"\n";
     out += pack(File.read(pa+'/css/' + l)) + "\n";
 });
-
-File.write(pa+'/css/roojs.css', out); 
-    
+var f = Gio.file_new_for_path(String(pa+'/css/roojs.css'));
+var data_out = new Gio.DataOutputStream({base_stream:f.replace(null, false, Gio.FileCreateFlags.NONE, null)});
+data_out.put_string(out, null);
+data_out.close(null);
+     
      
 print("written css/roojs.css");
 // and the themese...
