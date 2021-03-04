@@ -4762,7 +4762,7 @@ Roo.Template.prototype = {
                 _t.url = false;
                 _t.compile();
                 if (_t.onLoad) {
-                    _t.onload();
+                    _t.onLoad();
                 }
              },
             failure : function(response) {
