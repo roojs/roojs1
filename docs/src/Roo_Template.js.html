@@ -68,11 +68,18 @@ t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'}
      * @cfg {String} html  The HTML fragment or an array of fragments to join(&quot;&quot;) or multiple arguments to join(&quot;&quot;)
      */
     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+
+    </span><span class="jsdoc-var">compiled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">loaded </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
      * Returns an HTML fragment of this template with the specified values applied.
      * @param {Object} values The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})
      * @return {String} The HTML fragment
      */
+
+
+
     </span><span class="jsdoc-var">applyTemplate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-comment">//Roo.log([&quot;applyTemplate&quot;, values]);
         </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
@@ -134,7 +141,9 @@ t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'}
             </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">_t.loading </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">_t.url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">_t.set</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)
+
+                </span><span class="jsdoc-var">_t.set</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_t.loaded </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_t.onLoad</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">_t.onLoad</span><span class="jsdoc-syntax">();
                 }
@@ -154,7 +163,7 @@ t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'}
      */
     </span><span class="jsdoc-var">set </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">compile</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.compiled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.compiled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">compile</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.compile</span><span class="jsdoc-syntax">();
         }
