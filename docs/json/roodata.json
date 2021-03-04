@@ -4779,6 +4779,12 @@
         "memberOf" : "Roo.Template"
       },
       {
+        "name" : "onLoad",
+        "type" : "Function",
+        "desc" : "Called after the template has been loaded and complied (usually from a remove source)",
+        "memberOf" : "Roo.Template"
+      },
+      {
         "name" : "url",
         "type" : "String",
         "desc" : "The Url to load the template from. beware if you are loading from a url, the data may not be ready if you use it instantly..\n                   it should be fixed so that template is observable...",
@@ -10586,6 +10592,12 @@
         "memberOf" : "Roo.Template"
       },
       {
+        "name" : "onLoad",
+        "type" : "Function",
+        "desc" : "Called after the template has been loaded and complied (usually from a remove source)",
+        "memberOf" : "Roo.Template"
+      },
+      {
         "name" : "url",
         "type" : "String",
         "desc" : "The Url to load the template from. beware if you are loading from a url, the data may not be ready if you use it instantly..\n                   it should be fixed so that template is observable...",
@@ -13520,6 +13532,12 @@
         "memberOf" : ""
       },
       {
+        "name" : "onLoad",
+        "type" : "Function",
+        "desc" : "Called after the template has been loaded and complied (usually from a remove source)",
+        "memberOf" : ""
+      },
+      {
         "name" : "url",
         "type" : "String",
         "desc" : "The Url to load the template from. beware if you are loading from a url, the data may not be ready if you use it instantly..\n                   it should be fixed so that template is observable...",
@@ -16027,6 +16045,12 @@
         "name" : "html",
         "type" : "String",
         "desc" : "The HTML fragment or an array of fragments to join(\"\") or multiple arguments to join(\"\")",
+        "memberOf" : "Roo.Template"
+      },
+      {
+        "name" : "onLoad",
+        "type" : "Function",
+        "desc" : "Called after the template has been loaded and complied (usually from a remove source)",
         "memberOf" : "Roo.Template"
       },
       {

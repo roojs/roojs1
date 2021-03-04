@@ -54,6 +54,12 @@ t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'}
 </span><span class="jsdoc-var">Roo.Template.prototype </span><span class="jsdoc-syntax">= {
 
     </span><span class="jsdoc-comment">/**
+     * @cfg {Function} onLoad Called after the template has been loaded and complied (usually from a remove source)
+     */
+    </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+
+    </span><span class="jsdoc-comment">/**
      * @cfg {String} url  The Url to load the template from. beware if you are loading from a url, the data may not be ready if you use it instantly..
      *                    it should be fixed so that template is observable...
      */
@@ -130,6 +136,9 @@ t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'}
                 </span><span class="jsdoc-var">_t.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">_t.url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">_t.compile</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_t.onLoad</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">_t.onload</span><span class="jsdoc-syntax">();
+                }
              },
             </span><span class="jsdoc-var">failure </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Template failed to load from &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">_t.url</span><span class="jsdoc-syntax">);

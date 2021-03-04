@@ -16,6 +16,13 @@
   "returns" : [],
   "config" : [
     {
+      "name" : "onLoad",
+      "type" : "Function",
+      "desc" : "Called after the template has been loaded and complied (usually from a remove source)",
+      "memberOf" : "Roo.Template",
+      "optvals" : []
+    },
+    {
       "name" : "html",
       "type" : "String",
       "desc" : "The HTML fragment or an array of fragments to join(\"\") or multiple arguments to join(\"\")",
