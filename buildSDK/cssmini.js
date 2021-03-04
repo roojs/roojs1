@@ -14,7 +14,8 @@
 
 
 
- GLib = imports.gi.GLib;  
+GLib = imports.gi.GLib;
+Gio = imports.gi.Gio;   
 // let's see if this works..
 // should be run from top level..
 var pa = GLib.get_current_dir();
