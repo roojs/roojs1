@@ -11,7 +11,7 @@
  * Usage: seed buildSDK/cssminify.js {OUTPUT} {files........}
  */ 
 
-
+return; // do not use this..
 
 GLib = imports.gi.GLib;  
 // let's see if this works..
