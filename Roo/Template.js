@@ -133,9 +133,8 @@ Roo.Template.prototype = {
             method : 'GET',
             success : function (response) {
                 _t.loading = false;
-                _t.html = response.responseText;
                 _t.url = false;
-                _t.compile();
+                _t.set(response.responseText,true)
                 if (_t.onLoad) {
                     _t.onLoad();
                 }
