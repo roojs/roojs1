@@ -4693,11 +4693,18 @@ Roo.Template.prototype = {
      * @cfg {String} html  The HTML fragment or an array of fragments to join("") or multiple arguments to join("")
      */
     html : '',
+    
+    
+    compiled : false,
+    loaded : false,
     /**
      * Returns an HTML fragment of this template with the specified values applied.
      * @param {Object} values The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})
      * @return {String} The HTML fragment
      */
+    
+   
+    
     applyTemplate : function(values){
         //Roo.log(["applyTemplate", values]);
         try {
@@ -4758,9 +4765,10 @@ Roo.Template.prototype = {
             method : 'GET',
             success : function (response) {
                 _t.loading = false;
-                _t.html = response.responseText;
                 _t.url = false;
-                _t.compile();
+                
+                _t.set(response.responseText,true);
+                _t.loaded = true;
                 if (_t.onLoad) {
                     _t.onLoad();
                 }
@@ -4780,7 +4788,7 @@ Roo.Template.prototype = {
      */
     set : function(html, compile){
         this.html = html;
-        this.compiled = null;
+        this.compiled = false;
         if(compile){
             this.compile();
         }
