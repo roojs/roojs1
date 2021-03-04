@@ -4679,6 +4679,12 @@ Roo.Template = function(cfg){
 Roo.Template.prototype = {
     
     /**
+     * @cfg {Function} onLoad Called after the template has been loaded and complied (usually from a remove source)
+     */
+    onLoad : false,
+    
+    
+    /**
      * @cfg {String} url  The Url to load the template from. beware if you are loading from a url, the data may not be ready if you use it instantly..
      *                    it should be fixed so that template is observable...
      */
@@ -4755,6 +4761,9 @@ Roo.Template.prototype = {
                 _t.html = response.responseText;
                 _t.url = false;
                 _t.compile();
+                if (_t.onLoad) {
+                    _t.onload();
+                }
              },
             failure : function(response) {
                 Roo.log("Template failed to load from " + _t.url);
