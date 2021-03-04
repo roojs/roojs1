@@ -22,9 +22,9 @@ var pa = GLib.get_current_dir();
 
 //print(pa);
 //println(pack(File.read(pa+'/css/basic-dialog.css')));
-var x = GLib.file_get_contents(pa + '/css/roojs-debug.css');
+
 print(JSON.stringify(x));
-var lines = GLib.file_get_contents(pa + '/css/roojs-debug.css').split(/\n/);
+var lines = String(GLib.file_get_contents(pa + '/css/roojs-debug.css')).split(/\n/);
 //@import url("reset-min.css");
 var out = '';
 lines.forEach(function(l) {
