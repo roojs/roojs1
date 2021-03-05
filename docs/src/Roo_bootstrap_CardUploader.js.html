@@ -58,6 +58,7 @@
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">nane </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d-none  form-control'
                 </span><span class="jsdoc-syntax">},
@@ -282,7 +283,16 @@
         </span><span class="jsdoc-comment">// dont' really need ot update items.
         // this.items.push(cn);
         </span><span class="jsdoc-var">this.fileCollection.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.updateInput</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FileReader</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">reader.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">data.srcdata </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">reader.result</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">_t.updateInput</span><span class="jsdoc-syntax">();
+        });
+        </span><span class="jsdoc-var">reader.readAsDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.src</span><span class="jsdoc-syntax">);
+
+
 
     },
     </span><span class="jsdoc-var">removeCard </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">)
@@ -308,12 +318,15 @@
 
     </span><span class="jsdoc-var">updateInput </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= [];
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-var">this.fileCollection.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">data.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.data</span><span class="jsdoc-syntax">);
-        });
 
+        });
         </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">JSON.stringify</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+
+
+
     }
 
 
