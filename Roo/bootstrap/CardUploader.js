@@ -320,26 +320,12 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
     {
         var i =0;
         var data = [];
-        var dom = this.inputEl().dom;
-        var fc = this.fileCollection;
-        var next = function() {
-            if (i >= fc.length) {
-                dom.value = JSON.stringify(data);
-                return;
-            }
-            var reader = new FileReader();
-            reader.onloadend = function(evt) {  
-                // file is loaded
-                var ee = Roo.apply({}, fc[i]);
-                ee.src = evt.target.result;
-                data.push(ee);
-                i++;
-                next();
-            };
-            reader.readAsDataURL(fc[i].src);
+        this.fileCollection.forEach(function(e) {
+            data.push(e.data);
             
-        }
-        next();
+        });
+        this.inputEl().dom.value = JSON.stringify(data);
+        
         
         
     }
