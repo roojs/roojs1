@@ -310,12 +310,21 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
     updateInput : function()
     {
         var data = [];
+        var reader = new FileReaderSync();
         this.fileCollection.each(function(e) {
+            var ee = Roo.apply({}, e);
+            ee.src = 'data:' + e.mimetype +';base64,' + reader.readAsDataURL(blob); 
             data.push(e.data);
         });
         
         this.inputEl().dom.value = JSON.stringify(data);
-    }
+    },
+    blobtoBase64 : function(blob) {
+       
+        return reader.readAsDataURL(blob); 
+        
+        
+    },
     
     
 });
