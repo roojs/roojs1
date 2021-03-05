@@ -531,7 +531,7 @@ this.selectorEl=this.el.select('.roo-card-upload-selector',true).first();this.se
 this.imgEl=this.el.select('.card-img-top').first();if(this.imgEl){this.imgEl.on('click',function(){t.previewCard(A.id);},this);this.imgEl.set({'pointer':'cursor'});}}});this.fileCollection.add(cn);this.updateInput();},removeCard:function(id){var A=this.fileCollection.get(id);
 A.data.is_deleted=1;A.data.src='';this.fileCollection.remove(A);A.el.dom.parentNode.removeChild(A.el.dom);},reset:function(){this.fileCollection.each(function(A){A.el.dom.parentNode.removeChild(A.el.dom);});this.fileCollection.clear();this.updateInput();}
 ,updateInput:function(){var i=0;var A=[];var B=this.inputEl().dom;var fc=this.fileCollection;var C=function(){if(i>=fc.length){B.value=JSON.stringify(A);return;}var D=new FileReader();D.onloadend=function(E){var ee=Roo.apply({},fc[i]);ee.src=E.target.result;
-A.push(ee);};D.readAsDataURL(fc[i].src);};C();}});Roo.bootstrap.CardUploader.ID=-1;
+A.push(ee);i++;C();};D.readAsDataURL(fc[i].src);};C();}});Roo.bootstrap.CardUploader.ID=-1;
 // Roo/data/SortTypes.js
 Roo.data.SortTypes={none:function(s){return s;},stripTagsRE:/<\/?[^>]+>/gi,asText:function(s){return String(s).replace(this.stripTagsRE,"");},asUCText:function(s){return String(s).toUpperCase().replace(this.stripTagsRE,"");},asUCString:function(s){return String(s).toUpperCase();
 },asDate:function(s){if(!s){return 0;}if(s instanceof Date){return s.getTime();}return Date.parse(String(s));},asFloat:function(s){var A=parseFloat(String(s).replace(/,/g,""));if(isNaN(A)){A=0;}return A;},asInt:function(s){var A=parseInt(String(s).replace(/,/g,""));
