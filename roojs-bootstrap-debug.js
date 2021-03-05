@@ -12799,6 +12799,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
             reader.readAsDataURL(fc[i].src); 
             
         }
+        next();
         
         
     }

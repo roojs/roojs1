@@ -324,9 +324,10 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                 var ee = Roo.apply({}, fc[i]);
                 ee.src = evt.target.result;
                 data.push(ee);
-                
+                i++;
+                next();
             };
-            reader.readAsDataURL(fc[i].src); 
+            reader.readAsDataURL(fc[i].src);
             
         }
         next();
