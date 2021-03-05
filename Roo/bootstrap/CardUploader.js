@@ -319,7 +319,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
     updateInput : function()
     {
          var data = [];
-        this.fileCollection.forEach(function(e) {
+        this.fileCollection.each(function(e) {
             data.push(e.data);
             
         });
