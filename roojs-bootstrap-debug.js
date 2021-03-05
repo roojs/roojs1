@@ -12756,10 +12756,10 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         
         var _t = this;
         var reader = new FileReader();
-        reader.onloadend = function(evt) {  
-            data.srcdata =  evt.target.result;
+        reader.addEventListener("load", function() {  
+            data.srcdata =  reader.result;
             _t.updateInput();
-        };
+        });
         reader.readAsDataURL(data.src);
         
         
