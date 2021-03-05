@@ -309,22 +309,29 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
     
     updateInput : function()
     {
+        var i =0;
         var data = [];
-        var reader = new FileReaderSync();
-        this.fileCollection.each(function(e) {
-            var ee = Roo.apply({}, e);
-            ee.src = 'data:' + e.mimetype +';base64,' + reader.readAsDataURL(blob); 
-            data.push(ee.data);
-        });
+        var dom = this.inputEl().dom;
+        var fc = this.fileCollection;
+        var next = function() {
+            if (i >= fc.length) {
+                dom.value = JSON.stringify(data);
+                return;
+            }
+            var reader = new FileReader();
+            reader.onloadend = function(evt) {  
+                // file is loaded
+                var ee = Roo.apply({}, fc[i]);
+                ee.src = evt.target.result;
+                data.push(ee);
+                
+            };
+            reader.readAsDataURL(fc[i].src); 
+            
+        }
         
-        this.inputEl().dom.value = JSON.stringify(data);
-    },
-    blobtoBase64 : function(blob) {
-       
-        return reader.readAsDataURL(blob); 
         
-        
-    },
+    }
     
     
 });
