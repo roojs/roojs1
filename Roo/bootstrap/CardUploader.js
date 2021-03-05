@@ -58,6 +58,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                 {
                     tag: 'input',
                     type : 'hidden',
+                    nane : this.name,
                     value : this.value,
                     cls : 'd-none  form-control'
                 },
