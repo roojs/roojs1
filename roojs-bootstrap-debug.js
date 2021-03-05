@@ -12528,6 +12528,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                 {
                     tag: 'input',
                     type : 'hidden',
+                    nane : this.name,
                     value : this.value,
                     cls : 'd-none  form-control'
                 },
@@ -12778,12 +12779,28 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
     
     updateInput : function()
     {
+        var i =0;
         var data = [];
-        this.fileCollection.each(function(e) {
-            data.push(e.data);
-        });
+        var dom = this.inputEl().dom;
+        var fc = this.fileCollection;
+        var next = function() {
+            if (i >= fc.length) {
+                dom.value = JSON.stringify(data);
+                return;
+            }
+            var reader = new FileReader();
+            reader.onloadend = function(evt) {  
+                // file is loaded
+                var ee = Roo.apply({}, fc[i]);
+                ee.src = evt.target.result;
+                data.push(ee);
+                
+            };
+            reader.readAsDataURL(fc[i].src); 
+            
+        }
         
-        this.inputEl().dom.value = JSON.stringify(data);
+        
     }
     
     
