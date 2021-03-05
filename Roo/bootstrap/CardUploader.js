@@ -314,7 +314,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         this.fileCollection.each(function(e) {
             var ee = Roo.apply({}, e);
             ee.src = 'data:' + e.mimetype +';base64,' + reader.readAsDataURL(blob); 
-            data.push(e.data);
+            data.push(ee.data);
         });
         
         this.inputEl().dom.value = JSON.stringify(data);
