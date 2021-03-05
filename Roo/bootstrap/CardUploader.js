@@ -252,7 +252,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
             }
             
         ];
-
+        
         var cn = this.addxtype(
             {
                  
@@ -283,7 +283,16 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         // dont' really need ot update items.
         // this.items.push(cn);
         this.fileCollection.add(cn);
-        this.updateInput();
+        
+        var _t = this;
+        var reader = new FileReader();
+        reader.onloadend = function(evt) {  
+            data.srcdata =  evt.target.result;
+            _t.updateInput();
+        };
+        reader.readAsDataURL(data.src);
+        
+        
         
     },
     removeCard : function(id)
