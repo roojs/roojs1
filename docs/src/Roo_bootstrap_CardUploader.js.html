@@ -26,7 +26,7 @@
 
     </span><span class="jsdoc-var">this.fileCollection   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r.data.id
-        </span><span class="jsdoc-syntax">});
+     </span><span class="jsdoc-syntax">});
 
 
 };
@@ -58,7 +58,7 @@
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">nane </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d-none  form-control'
                 </span><span class="jsdoc-syntax">},
@@ -190,11 +190,12 @@
             </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap.CardUploader.ID</span><span class="jsdoc-syntax">--,
             </span><span class="jsdoc-var">is_uploaded </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">srcfile </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">file.name</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">mimetype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">file.type</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">preview </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">is_deleted </span><span class="jsdoc-syntax">: 0
-        })
+        });
 
     },
 
@@ -284,13 +285,18 @@
         // this.items.push(cn);
         </span><span class="jsdoc-var">this.fileCollection.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">data.srcfile</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.updateInput</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FileReader</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">reader.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
             </span><span class="jsdoc-var">data.srcdata </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">reader.result</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">_t.updateInput</span><span class="jsdoc-syntax">();
         });
-        </span><span class="jsdoc-var">reader.readAsDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.src</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">reader.readAsDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.srcfile</span><span class="jsdoc-syntax">);
 
 
 
@@ -301,16 +307,20 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">card  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.fileCollection.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">card.data.is_deleted </span><span class="jsdoc-syntax">= 1;
         </span><span class="jsdoc-var">card.data.src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">/// delete the source - so it reduces size of not uploaded images etc.
-        </span><span class="jsdoc-var">this.fileCollection.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">card</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">//this.items = this.items.filter(function(e) { return e != card });
+        //this.fileCollection.remove(card);
+        //this.items = this.items.filter(function(e) { return e != card });
         // dont' really need ot update items.
         </span><span class="jsdoc-var">card.el.dom.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">card.el.dom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.updateInput</span><span class="jsdoc-syntax">();
+
 
     },
     </span><span class="jsdoc-var">reset</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.fileCollection.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">card</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">card.el.dom.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">card.el.dom</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">card.el.dom </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">card.el.dom.parentNode</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">card.el.dom.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">card.el.dom</span><span class="jsdoc-syntax">);
+            }
         });
         </span><span class="jsdoc-var">this.fileCollection.clear</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.updateInput</span><span class="jsdoc-syntax">();
