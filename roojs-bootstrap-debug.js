@@ -12788,8 +12788,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
     
     updateInput : function()
     {
-        var i =0;
-        var data = [];
+         var data = [];
         this.fileCollection.forEach(function(e) {
             data.push(e.data);
             
