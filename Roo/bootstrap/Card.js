@@ -744,7 +744,10 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     },
     setHeaderText: function(html)
     {
-        this.headerContainerEl.dom.innerHTML = html;
+        this.header = html;
+        if (this.headerContainerEl) {
+            this.headerContainerEl.dom.innerHTML = html;
+        }
     }
 
     
