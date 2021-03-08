@@ -12496,7 +12496,7 @@ Roo.bootstrap.CardUploader = function(config){
     
     this.fileCollection   = new Roo.util.MixedCollection(false,function(r) {
         return r.data.id
-        });
+     });
     
     
 };
@@ -12528,6 +12528,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                 {
                     tag: 'input',
                     type : 'hidden',
+                    name : this.name,
                     value : this.value,
                     cls : 'd-none  form-control'
                 },
@@ -12659,11 +12660,12 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
             id : Roo.bootstrap.CardUploader.ID--,
             is_uploaded : false,
             src : url,
+            srcfile : file,
             title : file.name,
             mimetype : file.type,
             preview : false,
             is_deleted : 0
-        })
+        });
         
     },
     
@@ -12721,7 +12723,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
             }
             
         ];
-
+        
         var cn = this.addxtype(
             {
                  
@@ -12752,7 +12754,21 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         // dont' really need ot update items.
         // this.items.push(cn);
         this.fileCollection.add(cn);
-        this.updateInput();
+        
+        if (!data.srcfile) {
+            this.updateInput();
+            return;
+        }
+            
+        var _t = this;
+        var reader = new FileReader();
+        reader.addEventListener("load", function() {  
+            data.srcdata =  reader.result;
+            _t.updateInput();
+        });
+        reader.readAsDataURL(data.srcfile);
+        
+        
         
     },
     removeCard : function(id)
@@ -12761,16 +12777,20 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         var card  = this.fileCollection.get(id);
         card.data.is_deleted = 1;
         card.data.src = ''; /// delete the source - so it reduces size of not uploaded images etc.
-        this.fileCollection.remove(card);
+        //this.fileCollection.remove(card);
         //this.items = this.items.filter(function(e) { return e != card });
         // dont' really need ot update items.
         card.el.dom.parentNode.removeChild(card.el.dom);
+        this.updateInput();
+
         
     },
     reset: function()
     {
         this.fileCollection.each(function(card) {
-            card.el.dom.parentNode.removeChild(card.el.dom);    
+            if (card.el.dom && card.el.dom.parentNode) {
+                card.el.dom.parentNode.removeChild(card.el.dom);
+            }
         });
         this.fileCollection.clear();
         this.updateInput();
@@ -12778,12 +12798,15 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
     
     updateInput : function()
     {
-        var data = [];
+         var data = [];
         this.fileCollection.each(function(e) {
             data.push(e.data);
+            
         });
-        
         this.inputEl().dom.value = JSON.stringify(data);
+        
+        
+        
     }
     
     
