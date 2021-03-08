@@ -235,7 +235,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                             {
                                 xns : Roo.bootstrap,
                                 xtype : 'Button',
-                                
+                                style: 'max-height: 28px;min-width: 27px;',
                                 size : 'sm',
                                 weight: 'danger',
                                 cls : 'col-1',
