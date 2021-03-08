@@ -221,7 +221,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                                 xns : Roo.bootstrap,
                                 xtype : 'Button',
                                 html : String.format("<small>{0}</small>", data.title),
-                                cls : 'col-11 text-left',
+                                cls : 'col-10 text-left',
                                 size: 'sm',
                                 weight: 'link',
                                 fa : 'download',
@@ -238,7 +238,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                                 style: 'max-height: 28px;min-width: 27px;',
                                 size : 'sm',
                                 weight: 'danger',
-                                cls : 'col-1',
+                                cls : 'col-2',
                                 fa : 'times',
                                 listeners : {
                                     click : function() {
