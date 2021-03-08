@@ -210,7 +210,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
             {
                 xns : Roo.bootstrap,
                 xtype : 'CardFooter',
-                items: [
+                 items: [
                     {
                         xns : Roo.bootstrap,
                         xtype : 'Element',
@@ -275,6 +275,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                         this.imgEl.set({ 'pointer' : 'cursor' });
                                   
                     }
+                    this.getCardFooter().addClass('p-1');
                     
                   
                 }
