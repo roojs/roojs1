@@ -246,7 +246,8 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                                 fa : 'download',
                                 listeners : {
                                     click : function() {
-                                        this.downloadCard(data.id)
+                                     
+                                        t.fireEvent( "download", t, data );
                                     }
                                 }
                             },
@@ -291,7 +292,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                     var card = this;
                     this.imgEl = this.el.select('.card-img-top').first();
                     if (this.imgEl) {
-                        this.imgEl.on('click', function() { t.fireEvent( "preview", t, card ); }, this);
+                        this.imgEl.on('click', function() { t.fireEvent( "preview", t, data ); }, this);
                         this.imgEl.set({ 'pointer' : 'cursor' });
                                   
                     }
