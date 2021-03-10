@@ -12704,7 +12704,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
           mimetype : file.type,
           preview : false,
           is_deleted : 0
-          
+          .. any other data...
         }
      *
      * 
