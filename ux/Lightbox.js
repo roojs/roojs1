@@ -312,7 +312,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                 position: 'absolute',
                 top: '0px',
                 width: '100%',
-                'z-index': '999'
+                'z-index': '40999'
             }
         });
     },
@@ -413,7 +413,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         this.lightbox.setStyle({ 
             top: lightboxTop + 'px', 
             left: lightboxLeft + 'px' ,
-            zIndex : 1000
+            zIndex : 41000
         });
         //console.log("show lightbox");
         this.lightbox.show();
@@ -438,7 +438,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // hide elements during transition
         if (this.animate) {
             this.loading.setStyle({
-                zIndex :1200
+                zIndex : 41200
             });
             this.loading.show();
             this.loadinglink.setX( (Roo.lib.Dom.getViewWidth() / 2) - 16);
