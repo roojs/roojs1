@@ -28,7 +28,26 @@ Roo.bootstrap.CardUploader = function(config){
         return r.data.id
      });
     
-    
+     this.addEvents({
+         // raw events
+        /**
+         * @event view
+         * When a image is clicked on - and needs to display a slideshow or similar..
+         * @param {Roo.bootstrap.Card} this
+         * @param {Roo.bootstrap.Card} The card containing the image data (.data is a property with image info.)
+         *
+         */
+        'view' : true,
+         /**
+         * @event download
+         * When a the download link is clicked
+         * @param {Roo.bootstrap.Card} this
+         * @param {Roo.bootstrap.Card} The card containing the image data (.data is a property with image info.)
+         */
+        'download' : true
+        
+    });
+};
 };
 
 Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
