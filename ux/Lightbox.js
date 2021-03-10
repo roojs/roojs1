@@ -370,7 +370,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         });
          
         //this.imageArray = [];
-        var imageNum = 0;       
+        var imageNum = -1;       
         
         if (imageLink) {
             imageLink = Roo.get(imageLink);
@@ -381,6 +381,11 @@ Roo.apply(Roo.ux.Lightbox.prototype,
                     imageNum = i;
                 }
             });
+	    if (imageNum < 0) {
+		
+		this.imageArray.push(imageLink);
+		imageNum = this.imageArray.length-1;
+	    }
         }
          
         // let's assume the constructor sorts out the list of images..
