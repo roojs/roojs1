@@ -12501,7 +12501,26 @@ Roo.bootstrap.CardUploader = function(config){
         return r.data.id
      });
     
-    
+     this.addEvents({
+         // raw events
+        /**
+         * @event view
+         * When a image is clicked on - and needs to display a slideshow or similar..
+         * @param {Roo.bootstrap.Card} this
+         * @param {Roo.bootstrap.Card} The card containing the image data (.data is a property with image info.)
+         *
+         */
+        'view' : true,
+         /**
+         * @event download
+         * When a the download link is clicked
+         * @param {Roo.bootstrap.Card} this
+         * @param {Roo.bootstrap.Card} The card containing the image data (.data is a property with image info.)
+         */
+        'download' : true
+        
+    });
+};
 };
 
 Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
@@ -12742,9 +12761,10 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                 items : footer,
                 initEvents : function() {
                     Roo.bootstrap.Card.prototype.initEvents.call(this);
+                    var card = this;
                     this.imgEl = this.el.select('.card-img-top').first();
                     if (this.imgEl) {
-                        this.imgEl.on('click', function() { t.previewCard( data.id); }, this);
+                        this.imgEl.on('click', function() { t.fireEvent( "preview", t, card ); }, this);
                         this.imgEl.set({ 'pointer' : 'cursor' });
                                   
                     }
