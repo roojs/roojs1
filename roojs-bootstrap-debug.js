@@ -12521,8 +12521,7 @@ Roo.bootstrap.CardUploader = function(config){
         
     });
 };
-};
-
+ 
 Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
     
      
