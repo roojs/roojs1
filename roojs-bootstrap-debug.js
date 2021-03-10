@@ -12501,9 +12501,27 @@ Roo.bootstrap.CardUploader = function(config){
         return r.data.id
      });
     
-    
+     this.addEvents({
+         // raw events
+        /**
+         * @event preview
+         * When a image is clicked on - and needs to display a slideshow or similar..
+         * @param {Roo.bootstrap.Card} this
+         * @param {Object} The image information data 
+         *
+         */
+        'preview' : true,
+         /**
+         * @event download
+         * When a the download link is clicked
+         * @param {Roo.bootstrap.Card} this
+         * @param {Object} The image information data  contains 
+         */
+        'download' : true
+        
+    });
 };
-
+ 
 Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
     
      
@@ -12672,6 +12690,25 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         
     },
     
+    /**
+     * addCard - add an Attachment to the uploader
+     * @param data - the data about the image to upload
+     *
+     * {
+          id : 123
+          title : "Title of file",
+          is_uploaded : false,
+          src : "http://.....",
+          srcfile : { the File upload object },
+          mimetype : file.type,
+          preview : false,
+          is_deleted : 0
+          .. any other data...
+        }
+     *
+     * 
+    */
+    
     addCard : function (data)
     {
         // hidden input element?
@@ -12700,7 +12737,8 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                                 fa : 'download',
                                 listeners : {
                                     click : function() {
-                                        this.downloadCard(data.id)
+                                     
+                                        t.fireEvent( "download", t, data );
                                     }
                                 }
                             },
@@ -12742,9 +12780,10 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                 items : footer,
                 initEvents : function() {
                     Roo.bootstrap.Card.prototype.initEvents.call(this);
+                    var card = this;
                     this.imgEl = this.el.select('.card-img-top').first();
                     if (this.imgEl) {
-                        this.imgEl.on('click', function() { t.previewCard( data.id); }, this);
+                        this.imgEl.on('click', function() { t.fireEvent( "preview", t, data ); }, this);
                         this.imgEl.set({ 'pointer' : 'cursor' });
                                   
                     }
