@@ -288,9 +288,10 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
                 items : footer,
                 initEvents : function() {
                     Roo.bootstrap.Card.prototype.initEvents.call(this);
+                    var card = this;
                     this.imgEl = this.el.select('.card-img-top').first();
                     if (this.imgEl) {
-                        this.imgEl.on('click', function() { t.previewCard( data.id); }, this);
+                        this.imgEl.on('click', function() { t.fireEvent( "preview", t, card ); }, this);
                         this.imgEl.set({ 'pointer' : 'cursor' });
                                   
                     }
