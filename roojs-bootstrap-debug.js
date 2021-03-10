@@ -12504,13 +12504,13 @@ Roo.bootstrap.CardUploader = function(config){
      this.addEvents({
          // raw events
         /**
-         * @event view
+         * @event preview
          * When a image is clicked on - and needs to display a slideshow or similar..
          * @param {Roo.bootstrap.Card} this
          * @param {Object} The image information data 
          *
          */
-        'view' : true,
+        'preview' : true,
          /**
          * @event download
          * When a the download link is clicked
