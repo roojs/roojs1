@@ -28,7 +28,25 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r.data.id
      </span><span class="jsdoc-syntax">});
 
+     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+         </span><span class="jsdoc-comment">// raw events
+        /**
+         * @event preview
+         * When a image is clicked on - and needs to display a slideshow or similar..
+         * @param {Roo.bootstrap.Card} this
+         * @param {Object} The image information data 
+         *
+         */
+        </span><span class="jsdoc-string">'preview' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+         </span><span class="jsdoc-comment">/**
+         * @event download
+         * When a the download link is clicked
+         * @param {Roo.bootstrap.Card} this
+         * @param {Object} The image information data  contains 
+         */
+        </span><span class="jsdoc-string">'download' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
 
+    </span><span class="jsdoc-syntax">});
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.CardUploader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Input</span><span class="jsdoc-syntax">,  {
@@ -199,6 +217,25 @@
 
     },
 
+    </span><span class="jsdoc-comment">/**
+     * addCard - add an Attachment to the uploader
+     * @param data - the data about the image to upload
+     *
+     * {
+          id : 123
+          title : &quot;Title of file&quot;,
+          is_uploaded : false,
+          src : &quot;http://.....&quot;,
+          srcfile : { the File upload object },
+          mimetype : file.type,
+          preview : false,
+          is_deleted : 0
+          .. any other data...
+        }
+     *
+     * 
+    */
+
     </span><span class="jsdoc-var">addCard </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// hidden input element?
@@ -227,7 +264,8 @@
                                 </span><span class="jsdoc-var">fa </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'download'</span><span class="jsdoc-syntax">,
                                 </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
                                     </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
-                                        </span><span class="jsdoc-var">this.downloadCard</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.id</span><span class="jsdoc-syntax">)
+
+                                        </span><span class="jsdoc-var">t.fireEvent</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">&quot;download&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">);
                                     }
                                 }
                             },
@@ -269,9 +307,10 @@
                 </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">footer</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
                     </span><span class="jsdoc-var">Roo.bootstrap.Card.prototype.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">card </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-var">this.imgEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.card-img-top'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imgEl</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">this.imgEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">t.previewCard</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">data.id</span><span class="jsdoc-syntax">); }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">this.imgEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">t.fireEvent</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">&quot;preview&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">); }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-var">this.imgEl.set</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-string">'pointer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'cursor' </span><span class="jsdoc-syntax">});
 
                     }

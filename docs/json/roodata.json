@@ -21814,6 +21814,13 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "download",
+        "type" : "function",
+        "desc" : "When a the download link is clicked",
+        "sig" : "function (_self, The)\n{\n\n}",
+        "memberOf" : ""
+      },
+      {
         "name" : "enable",
         "type" : "function",
         "desc" : "Fires after the component is enabled.",
@@ -21826,6 +21833,13 @@
         "desc" : "Fires after the component is hidden.",
         "sig" : "function (_self)\n{\n\n}",
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "preview",
+        "type" : "function",
+        "desc" : "When a image is clicked on - and needs to display a slideshow or similar..",
+        "sig" : "function (_self, The)\n{\n\n}",
+        "memberOf" : ""
       },
       {
         "name" : "render",
@@ -21850,6 +21864,14 @@
       }
     ],
     "methods" : [
+      {
+        "name" : "addCard",
+        "type" : "function",
+        "desc" : "addCard - add an Attachment to the uploader",
+        "sig" : "(data)",
+        "static" : false,
+        "memberOf" : ""
+      },
       {
         "name" : "addEvents",
         "type" : "function",

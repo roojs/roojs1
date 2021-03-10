@@ -339,6 +339,27 @@
   ],
   "methods" : [
     {
+      "name" : "addCard",
+      "desc" : "addCard - add an Attachment to the uploader",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.CardUploader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "data",
+          "type" : "",
+          "desc" : "- the data about the image to upload\n\n{\n          id : 123\n          title : \"Title of file\",\n          is_uploaded : false,\n          src : \"http://.....\",\n          srcfile : { the File upload object },\n          mimetype : file.type,\n          preview : false,\n          is_deleted : 0\n          .. any other data...\n        }",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "setText",
       "desc" : "set the text of the first selected button",
       "isStatic" : false,
@@ -1018,6 +1039,54 @@
     }
   ],
   "events" : [
+    {
+      "name" : "download",
+      "desc" : "When a the download link is clicked",
+      "memberOf" : "Roo.bootstrap.CardUploader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.Card",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "The",
+          "type" : "Object",
+          "desc" : "image information data  contains",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "preview",
+      "desc" : "When a image is clicked on - and needs to display a slideshow or similar..",
+      "memberOf" : "Roo.bootstrap.CardUploader",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.Card",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "The",
+          "type" : "Object",
+          "desc" : "image information data",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
     {
       "name" : "toggle",
       "desc" : "After the button has been toggles",
