@@ -34,7 +34,7 @@ Roo.bootstrap.CardUploader = function(config){
          * @event view
          * When a image is clicked on - and needs to display a slideshow or similar..
          * @param {Roo.bootstrap.Card} this
-         * @param {Roo.bootstrap.Card} The card containing the image data (.data is a property with image info.)
+         * @param {Object} The image information data 
          *
          */
         'view' : true,
@@ -42,7 +42,7 @@ Roo.bootstrap.CardUploader = function(config){
          * @event download
          * When a the download link is clicked
          * @param {Roo.bootstrap.Card} this
-         * @param {Roo.bootstrap.Card} The card containing the image data (.data is a property with image info.)
+         * @param {Object} The image information data  contains 
          */
         'download' : true
         
@@ -217,6 +217,25 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         });
         
     },
+    
+    /**
+     * addCard - add an Attachment to the uploader
+     * @param data - the data about the image to upload
+     *
+     * {
+          id : 123
+          title : "Title of file",
+          is_uploaded : false,
+          src : "http://.....",
+          srcfile : { the File upload object },
+          mimetype : file.type,
+          preview : false,
+          is_deleted : 0
+          
+        }
+     *
+     * 
+    */
     
     addCard : function (data)
     {
