@@ -28466,10 +28466,10 @@ Roo.DDView = function(container, tpl, config) {
     this.getEl().setStyle("outline", "0px none");
     this.getEl().unselectable();
     if (this.dragGroup) {
-		this.setDraggable(this.dragGroup.split(","));
+	this.setDraggable(this.dragGroup.split(","));
     }
     if (this.dropGroup) {
-		this.setDroppable(this.dropGroup.split(","));
+	this.setDroppable(this.dropGroup.split(","));
     }
     if (this.deletable) {
     	this.setDeletable();
@@ -32403,6 +32403,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     /**
      * @cfg {String} ddGroup - drag drop group.
      */
+      /**
+     * @cfg {String} dragGroup - drag group (?? not sure if needed.)
+     */
 
     /**
      * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
@@ -32439,6 +32442,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
 
     /**
     * @cfg {Boolean} enableDrag  True to enable drag of rows. Default is false. (double check if this is needed?)
+    */
+      /**
+    * @cfg {Boolean} enableDrop  True to enable drop of elements. Default is false. (double check if this is needed?)
     */
     
     /**
@@ -32513,6 +32519,15 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     /**
     * @cfg {Number} maxHeight Sets the maximum height of the grid - ignored if autoHeight is not on.
     */
+    
+    
+    /**
+    * @cfg {String} ddText Configures the text is the drag proxy (defaults to "%0 selected row(s)").
+    * %0 is replaced with the number of selected rows.
+    */
+    ddText : "{0} selected row{1}",
+    
+    
     /**
      * Called once after all setup has been completed and the grid is ready to be rendered.
      * @return {Roo.grid.Grid} this
@@ -32828,6 +32843,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     },
     /**
      * Called to get grid's drag proxy text, by default returns this.ddText.
+     * Override this to put something different in the dragged text.
      * @return {String}
      */
     getDragDropText : function(){
@@ -32835,12 +32851,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         return String.format(this.ddText, count, count == 1 ? '' : 's');
     }
 });
-/**
- * Configures the text is the drag proxy (defaults to "%0 selected row(s)").
- * %0 is replaced with the number of selected rows.
- * @type String
- */
-Roo.grid.Grid.prototype.ddText = "{0} selected row{1}";/*
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -34750,7 +34761,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         }
     },
 
-    layout : function(initialRender, is2ndPass){
+    layout : function(initialRender, is2ndPass)
+    {
         var g = this.grid;
         var auto = g.autoHeight;
         var scrollOffset = 16;
