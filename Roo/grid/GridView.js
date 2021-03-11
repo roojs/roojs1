@@ -1593,7 +1593,8 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
         }
     },
 
-    layout : function(initialRender, is2ndPass){
+    layout : function(initialRender, is2ndPass)
+    {
         var g = this.grid;
         var auto = g.autoHeight;
         var scrollOffset = 16;
