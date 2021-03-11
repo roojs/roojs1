@@ -22564,7 +22564,7 @@ Roo.dd.DropTarget = function(el, config){
          * target.  This default implementation adds the CSS class specified by overClass (if any) to the drop element
          * and returns the dropAllowed config value.  This method should be overridden if drop validation is required.
          * 
-         * IMPORTANT : it should set this.overClass and this.dropAllowed
+         * IMPORTANT : it should set  this.valid to true|false
          * 
          * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
          * @param {Event} e The event
@@ -22578,7 +22578,7 @@ Roo.dd.DropTarget = function(el, config){
          * This method will be called on every mouse movement while the drag source is over the drop target.
          * This default implementation simply returns the dropAllowed config value.
          * 
-         * IMPORTANT : it should set this.dropAllowed
+         * IMPORTANT : it should set  this.valid to true|false
          * 
          * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
          * @param {Event} e The event
@@ -22591,6 +22591,7 @@ Roo.dd.DropTarget = function(el, config){
          * The function a {@link Roo.dd.DragSource} calls once to notify this drop target that the source has been dragged
          * out of the target without dropping.  This default implementation simply removes the CSS class specified by
          * overClass (if any) from the drop element.
+         * 
          * 
          * @param {Roo.dd.DragSource} source The drag source that was dragged over this drop target
          * @param {Event} e The event
@@ -51470,10 +51471,10 @@ Roo.DDView = function(container, tpl, config) {
     this.getEl().setStyle("outline", "0px none");
     this.getEl().unselectable();
     if (this.dragGroup) {
-		this.setDraggable(this.dragGroup.split(","));
+	this.setDraggable(this.dragGroup.split(","));
     }
     if (this.dropGroup) {
-		this.setDroppable(this.dropGroup.split(","));
+	this.setDroppable(this.dropGroup.split(","));
     }
     if (this.deletable) {
     	this.setDeletable();
@@ -55407,6 +55408,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     /**
      * @cfg {String} ddGroup - drag drop group.
      */
+      /**
+     * @cfg {String} dragGroup - drag group (?? not sure if needed.)
+     */
 
     /**
      * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
@@ -55443,6 +55447,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
 
     /**
     * @cfg {Boolean} enableDrag  True to enable drag of rows. Default is false. (double check if this is needed?)
+    */
+      /**
+    * @cfg {Boolean} enableDrop  True to enable drop of elements. Default is false. (double check if this is needed?)
     */
     
     /**
@@ -55517,6 +55524,15 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     /**
     * @cfg {Number} maxHeight Sets the maximum height of the grid - ignored if autoHeight is not on.
     */
+    
+    
+    /**
+    * @cfg {String} ddText Configures the text is the drag proxy (defaults to "%0 selected row(s)").
+    * %0 is replaced with the number of selected rows.
+    */
+    ddText : "{0} selected row{1}",
+    
+    
     /**
      * Called once after all setup has been completed and the grid is ready to be rendered.
      * @return {Roo.grid.Grid} this
@@ -55832,6 +55848,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     },
     /**
      * Called to get grid's drag proxy text, by default returns this.ddText.
+     * Override this to put something different in the dragged text.
      * @return {String}
      */
     getDragDropText : function(){
@@ -55839,12 +55856,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         return String.format(this.ddText, count, count == 1 ? '' : 's');
     }
 });
-/**
- * Configures the text is the drag proxy (defaults to "%0 selected row(s)").
- * %0 is replaced with the number of selected rows.
- * @type String
- */
-Roo.grid.Grid.prototype.ddText = "{0} selected row{1}";/*
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
