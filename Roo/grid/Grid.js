@@ -320,6 +320,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     /**
      * @cfg {String} ddGroup - drag drop group.
      */
+      /**
+     * @cfg {String} dragGroup - drag group (?? not sure if needed.)
+     */
 
     /**
      * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
@@ -356,6 +359,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
 
     /**
     * @cfg {Boolean} enableDrag  True to enable drag of rows. Default is false. (double check if this is needed?)
+    */
+      /**
+    * @cfg {Boolean} enableDrop  True to enable drop of elements. Default is false. (double check if this is needed?)
     */
     
     /**
@@ -430,6 +436,15 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     /**
     * @cfg {Number} maxHeight Sets the maximum height of the grid - ignored if autoHeight is not on.
     */
+    
+    
+    /**
+    * @cfg {String} ddText Configures the text is the drag proxy (defaults to "%0 selected row(s)").
+    * %0 is replaced with the number of selected rows.
+    */
+    ddText : "{0} selected row{1}",
+    
+    
     /**
      * Called once after all setup has been completed and the grid is ready to be rendered.
      * @return {Roo.grid.Grid} this
@@ -745,6 +760,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     },
     /**
      * Called to get grid's drag proxy text, by default returns this.ddText.
+     * Override this to put something different in the dragged text.
      * @return {String}
      */
     getDragDropText : function(){
@@ -752,9 +768,3 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
         return String.format(this.ddText, count, count == 1 ? '' : 's');
     }
 });
-/**
- * Configures the text is the drag proxy (defaults to "%0 selected row(s)").
- * %0 is replaced with the number of selected rows.
- * @type String
- */
-Roo.grid.Grid.prototype.ddText = "{0} selected row{1}";
