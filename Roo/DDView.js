@@ -28,10 +28,10 @@ Roo.DDView = function(container, tpl, config) {
     this.getEl().setStyle("outline", "0px none");
     this.getEl().unselectable();
     if (this.dragGroup) {
-		this.setDraggable(this.dragGroup.split(","));
+	this.setDraggable(this.dragGroup.split(","));
     }
     if (this.dropGroup) {
-		this.setDroppable(this.dropGroup.split(","));
+	this.setDroppable(this.dropGroup.split(","));
     }
     if (this.deletable) {
     	this.setDeletable();

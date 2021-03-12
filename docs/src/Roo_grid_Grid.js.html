@@ -320,6 +320,9 @@
     </span><span class="jsdoc-comment">/**
      * @cfg {String} ddGroup - drag drop group.
      */
+      /**
+     * @cfg {String} dragGroup - drag group (?? not sure if needed.)
+     */
 
     /**
      * @cfg {Number} minColumnWidth The minimum width a column can be resized to. Default is 25.
@@ -356,6 +359,9 @@
 
     </span><span class="jsdoc-comment">/**
     * @cfg {Boolean} enableDrag  True to enable drag of rows. Default is false. (double check if this is needed?)
+    */
+      /**
+    * @cfg {Boolean} enableDrop  True to enable drop of elements. Default is false. (double check if this is needed?)
     */
 
     /**
@@ -430,7 +436,16 @@
     /**
     * @cfg {Number} maxHeight Sets the maximum height of the grid - ignored if autoHeight is not on.
     */
+
+
     /**
+    * @cfg {String} ddText Configures the text is the drag proxy (defaults to &quot;%0 selected row(s)&quot;).
+    * %0 is replaced with the number of selected rows.
+    */
+    </span><span class="jsdoc-var">ddText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;{0} selected row{1}&quot;</span><span class="jsdoc-syntax">,
+
+
+    </span><span class="jsdoc-comment">/**
      * Called once after all setup has been completed and the grid is ready to be rendered.
      * @return {Roo.grid.Grid} this
      */
@@ -745,6 +760,7 @@
     },
     </span><span class="jsdoc-comment">/**
      * Called to get grid's drag proxy text, by default returns this.ddText.
+     * Override this to put something different in the dragged text.
      * @return {String}
      */
     </span><span class="jsdoc-var">getDragDropText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
@@ -752,9 +768,4 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ddText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">count</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">count </span><span class="jsdoc-syntax">== 1 ? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'s'</span><span class="jsdoc-syntax">);
     }
 });
-</span><span class="jsdoc-comment">/**
- * Configures the text is the drag proxy (defaults to &quot;%0 selected row(s)&quot;).
- * %0 is replaced with the number of selected rows.
- * @type String
- */
-</span><span class="jsdoc-var">Roo.grid.Grid.prototype.ddText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;{0} selected row{1}&quot;</span><span class="jsdoc-syntax">;</span></code></body></html>
+</span></code></body></html>

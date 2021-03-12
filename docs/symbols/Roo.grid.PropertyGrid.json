@@ -66,6 +66,13 @@
       "optvals" : []
     },
     {
+      "name" : "ddText",
+      "type" : "String",
+      "desc" : "Configures the text is the drag proxy (defaults to \"%0 selected row(s)\").\n%0 is replaced with the number of selected rows.",
+      "memberOf" : "Roo.grid.Grid",
+      "optvals" : []
+    },
+    {
       "name" : "autoExpandColumn",
       "type" : "String",
       "desc" : "The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.",
@@ -94,6 +101,13 @@
       "optvals" : []
     },
     {
+      "name" : "enableDrop",
+      "type" : "Boolean",
+      "desc" : "True to enable drop of elements. Default is false. (double check if this is needed?)",
+      "memberOf" : "Roo.grid.Grid",
+      "optvals" : []
+    },
+    {
       "name" : "monitorWindowResize",
       "type" : "Boolean",
       "desc" : "True to autoSize the grid when the window resizes. Default is true.",
@@ -115,9 +129,9 @@
       "optvals" : []
     },
     {
-      "name" : "autoWidth",
+      "name" : "enableDrag",
       "type" : "Boolean",
-      "desc" : "True to set the grid's width to the default total width of the grid's columns instead\nof a fixed width. Default is false.",
+      "desc" : "True to enable drag of rows. Default is false. (double check if this is needed?)",
       "memberOf" : "Roo.grid.Grid",
       "optvals" : []
     },
@@ -129,9 +143,9 @@
       "optvals" : []
     },
     {
-      "name" : "enableDrag",
+      "name" : "autoWidth",
       "type" : "Boolean",
-      "desc" : "True to enable drag of rows. Default is false. (double check if this is needed?)",
+      "desc" : "True to set the grid's width to the default total width of the grid's columns instead\nof a fixed width. Default is false.",
       "memberOf" : "Roo.grid.Grid",
       "optvals" : []
     },
@@ -202,6 +216,13 @@
       "name" : "dropTarget",
       "type" : "Roo.dd.DropTarget",
       "desc" : "An {@link Roo.dd.DropTarget} config",
+      "memberOf" : "Roo.grid.Grid",
+      "optvals" : []
+    },
+    {
+      "name" : "dragGroup",
+      "type" : "String",
+      "desc" : "- drag group (?? not sure if needed.)",
       "memberOf" : "Roo.grid.Grid",
       "optvals" : []
     },
