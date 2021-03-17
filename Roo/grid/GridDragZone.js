@@ -44,12 +44,13 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
             }
         
         }
+        if (sm.getSelections && sm.getSelections().length < 1) {
+            return false;
+        }
         
-        var sels = sm.getSelections ? sm.getSelections() : (
-                    sm.getSelectedCell() ? [ this.grid.ds.getAt(sm.getSelectedCell()[0]) ] : []);
         
         // before it used to all dragging of unseleted... - now we dont do that.
-        if(sels &&  sels.length){
+        if(rowIndex){
             
             // if editorgrid.. 
             
@@ -69,7 +70,8 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
                 grid: this.grid,
                 ddel: this.ddel,
                 rowIndex: rowIndex,
-                selections: sels
+                selections: sm.getSelections ? sm.getSelections() : (
+                    sm.getSelectedCell() ? [ this.grid.ds.getAt(sm.getSelectedCell()[0]) ] : [])
             };
         }
         return false;
