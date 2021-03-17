@@ -58032,7 +58032,7 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
         
         
         // before it used to all dragging of unseleted... - now we dont do that.
-        if(rowIndex){
+        if(rowIndex !== false){
             
             // if editorgrid.. 
             
