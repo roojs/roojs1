@@ -58031,7 +58031,7 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
                     sm.getSelectedCell() ? [ this.grid.ds.getAt(sm.getSelectedCell()[0]) ] : []);
         
         // before it used to all dragging of unseleted... - now we dont do that.
-        if(sels){
+        if(sels || sels.length){
             
             // if editorgrid.. 
             
