@@ -45,7 +45,11 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
         
         }
         
-        if(rowIndex !== false){
+        var sels = sm.getSelections ? sm.getSelections() : (
+                    sm.getSelectedCell() ? [ this.grid.ds.getAt(sm.getSelectedCell()[0]) ] : []);
+        
+        // before it used to all dragging of unseleted... - now we dont do that.
+        if(sels){
             
             // if editorgrid.. 
             
@@ -72,7 +76,12 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
         }
         return false;
     },
-
+    
+    onBeforeDrag : function(data, e)
+    {
+        // if we dont have any data to drag - then cancel.
+        return data !== false;
+    },
     onInitDrag : function(e){
         var data = this.dragData;
         this.ddel.innerHTML = this.grid.getDragDropText();
