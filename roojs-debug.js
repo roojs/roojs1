@@ -58051,9 +58051,7 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
                 grid: this.grid,
                 ddel: this.ddel,
                 rowIndex: rowIndex,
-                selections:sm.getSelections ? sm.getSelections() : (
-                    sm.getSelectedCell() ? [ this.grid.ds.getAt(sm.getSelectedCell()[0]) ] : []
-                )
+                selections: sels
             };
         }
         return false;
