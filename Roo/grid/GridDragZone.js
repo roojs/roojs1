@@ -77,11 +77,7 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
         return false;
     },
     
-    onBeforeDrag : function(data, e)
-    {
-        // if we dont have any data to drag - then cancel.
-        return data !== false;
-    },
+    
     onInitDrag : function(e){
         var data = this.dragData;
         this.ddel.innerHTML = this.grid.getDragDropText();
