@@ -44,7 +44,12 @@
             }
 
         }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sm.getSelections </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sm.getSelections</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">&lt; 1) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
 
+
+        </span><span class="jsdoc-comment">// before it used to all dragging of unseleted... - now we dont do that.
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
 
             </span><span class="jsdoc-comment">// if editorgrid.. 
@@ -65,13 +70,13 @@
                 </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">ddel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.ddel</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">selections</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">sm.getSelections </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">sm.getSelections</span><span class="jsdoc-syntax">() : (
-                    </span><span class="jsdoc-var">sm.getSelectedCell</span><span class="jsdoc-syntax">() ? [ </span><span class="jsdoc-var">this.grid.ds.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sm.getSelectedCell</span><span class="jsdoc-syntax">()[0]) ] : []
-                )
+                </span><span class="jsdoc-var">selections</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">sm.getSelections </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">sm.getSelections</span><span class="jsdoc-syntax">() : (
+                    </span><span class="jsdoc-var">sm.getSelectedCell</span><span class="jsdoc-syntax">() ? [ </span><span class="jsdoc-var">this.grid.ds.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sm.getSelectedCell</span><span class="jsdoc-syntax">()[0]) ] : [])
             };
         }
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
     },
+
 
     </span><span class="jsdoc-var">onInitDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dragData</span><span class="jsdoc-syntax">;
