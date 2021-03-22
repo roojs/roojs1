@@ -1472,6 +1472,30 @@
       "returns" : []
     },
     {
+      "name" : "paste",
+      "desc" : "Fires after the user pastes into input",
+      "memberOf" : "Roo.bootstrap.Input",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The event Object",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "change",
       "desc" : "Fires just before the field blurs if the field value has changed.",
       "memberOf" : "Roo.bootstrap.Input",

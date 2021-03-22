@@ -1714,6 +1714,30 @@
       "returns" : []
     },
     {
+      "name" : "paste",
+      "desc" : "Fires after the user pastes into input",
+      "memberOf" : "Roo.bootstrap.Input",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.form.Field",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "The event Object",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "invalid",
       "desc" : "Fires after the field has been marked as invalid.",
       "memberOf" : "Roo.bootstrap.Input",

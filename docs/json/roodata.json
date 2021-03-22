@@ -22712,6 +22712,13 @@
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "render",
         "type" : "function",
         "desc" : "Fires after the component is rendered.",
@@ -24515,6 +24522,13 @@
         "name" : "keyup",
         "type" : "function",
         "desc" : "Fires after the key up",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
         "sig" : "function (_self, e)\n{\n\n}",
         "memberOf" : "Roo.bootstrap.Input"
       },
@@ -26544,6 +26558,13 @@
         "name" : "keyup",
         "type" : "function",
         "desc" : "Fires after the key up",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
         "sig" : "function (_self, e)\n{\n\n}",
         "memberOf" : "Roo.bootstrap.Input"
       },
@@ -32289,6 +32310,13 @@
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "push",
         "type" : "function",
         "desc" : "Fires when the iframe editor is updated with content from the textarea.",
@@ -33658,6 +33686,13 @@
         "name" : "keyup",
         "type" : "function",
         "desc" : "Fires after the key up",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : ""
+      },
+      {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
         "sig" : "function (_self, e)\n{\n\n}",
         "memberOf" : ""
       },
@@ -36569,6 +36604,13 @@
         "name" : "keyup",
         "type" : "function",
         "desc" : "Fires after the key up",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
         "sig" : "function (_self, e)\n{\n\n}",
         "memberOf" : "Roo.bootstrap.Input"
       },
@@ -40837,6 +40879,13 @@
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "remove",
         "type" : "function",
         "desc" : "Fires when the remove value from the combobox array",
@@ -41824,6 +41873,13 @@
         "name" : "keyup",
         "type" : "function",
         "desc" : "Fires after the key up",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
         "sig" : "function (_self, e)\n{\n\n}",
         "memberOf" : "Roo.bootstrap.Input"
       },
@@ -47065,6 +47121,13 @@
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "render",
         "type" : "function",
         "desc" : "Fires after the component is rendered.",
@@ -49360,6 +49423,13 @@
         "name" : "keyup",
         "type" : "function",
         "desc" : "Fires after the key up",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
         "sig" : "function (_self, e)\n{\n\n}",
         "memberOf" : "Roo.bootstrap.Input"
       },
@@ -52476,6 +52546,13 @@
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "render",
         "type" : "function",
         "desc" : "Fires after the component is rendered.",
@@ -53745,6 +53822,13 @@
         "name" : "keyup",
         "type" : "function",
         "desc" : "Fires after the key up",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
         "sig" : "function (_self, e)\n{\n\n}",
         "memberOf" : "Roo.bootstrap.Input"
       },
@@ -58715,6 +58799,13 @@
         "memberOf" : "Roo.bootstrap.Input"
       },
       {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
         "name" : "render",
         "type" : "function",
         "desc" : "Fires after the component is rendered.",
@@ -59579,6 +59670,13 @@
         "name" : "keyup",
         "type" : "function",
         "desc" : "Fires after the key up",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
         "sig" : "function (_self, e)\n{\n\n}",
         "memberOf" : "Roo.bootstrap.Input"
       },
@@ -60494,6 +60592,13 @@
         "name" : "keyup",
         "type" : "function",
         "desc" : "Fires after the key up",
+        "sig" : "function (_self, e)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.Input"
+      },
+      {
+        "name" : "paste",
+        "type" : "function",
+        "desc" : "Fires after the user pastes into input",
         "sig" : "function (_self, e)\n{\n\n}",
         "memberOf" : "Roo.bootstrap.Input"
       },
