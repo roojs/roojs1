@@ -10496,7 +10496,14 @@ Roo.bootstrap.Input = function(config){
          * @param {Roo.form.Field} this
          * @param {Roo.EventObject}  e The event Object
          */
-        keyup : true
+        keyup : true,
+        /**
+         * @event paste
+         * Fires after the user pastes into input
+         * @param {Roo.form.Field} this
+         * @param {Roo.EventObject}  e The event Object
+         */
+        paste : true
     });
 };
 
@@ -10999,6 +11006,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().on("blur", this.onBlur,  this);
         
         this.inputEl().relayEvent('keyup', this);
+        this.inputEl().relayEvent('paste', this);
         
         this.indicator = this.indicatorEl();
         
