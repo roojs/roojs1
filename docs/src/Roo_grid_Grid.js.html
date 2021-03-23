@@ -755,6 +755,11 @@
     </span><span class="jsdoc-var">getView </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.GridView</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.viewConfig</span><span class="jsdoc-syntax">);
+ 	    </span><span class="jsdoc-var">this.relayEvents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">, [
+		</span><span class="jsdoc-string">&quot;beforerowremoved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;beforerowsinserted&quot;</span><span class="jsdoc-syntax">,
+		</span><span class="jsdoc-string">&quot;beforerefresh&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;rowremoved&quot;</span><span class="jsdoc-syntax">,
+		</span><span class="jsdoc-string">&quot;rowsinserted&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;rowupdated&quot; </span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;refresh&quot;
+	    </span><span class="jsdoc-syntax">]);
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.view</span><span class="jsdoc-syntax">;
     },
