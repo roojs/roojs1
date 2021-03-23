@@ -188,12 +188,15 @@ Roo.util.Observable.prototype = {
     relayEvents : function(o, events){
         var createHandler = function(ename){
             return function(){
+		 
                 return this.fireEvent.apply(this, Roo.combine(ename, Array.prototype.slice.call(arguments, 0)));
             };
         };
         for(var i = 0, len = events.length; i < len; i++){
             var ename = events[i];
-            if(!this.events[ename]){ this.events[ename] = true; };
+            if(!this.events[ename]){
+		this.events[ename] = true;
+	    };
             o.on(ename, createHandler(ename), this);
         }
     },

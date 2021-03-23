@@ -5949,12 +5949,15 @@ Roo.util.Observable.prototype = {
     relayEvents : function(o, events){
         var createHandler = function(ename){
             return function(){
+		 
                 return this.fireEvent.apply(this, Roo.combine(ename, Array.prototype.slice.call(arguments, 0)));
             };
         };
         for(var i = 0, len = events.length; i < len; i++){
             var ename = events[i];
-            if(!this.events[ename]){ this.events[ename] = true; };
+            if(!this.events[ename]){
+		this.events[ename] = true;
+	    };
             o.on(ename, createHandler(ename), this);
         }
     },
@@ -55843,6 +55846,11 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     getView : function(){
         if(!this.view){
             this.view = new Roo.grid.GridView(this.viewConfig);
+ 	    this.relayEvents(this.view, [
+		"beforerowremoved", "beforerowsinserted",
+		"beforerefresh", "rowremoved",
+		"rowsinserted", "rowupdated" ,"refresh"
+	    ]);
         }
         return this.view;
     },
