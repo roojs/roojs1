@@ -99,7 +99,6 @@ Roo.bootstrap.Input = function(config){
         /**
          * @event paste
          * Fires after the user pastes into input
-         * @param {Roo.form.Field} this
          * @param {Roo.EventObject}  e The event Object
          */
         paste : true

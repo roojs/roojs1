@@ -96,5 +96,5 @@ Roo.extend(Roo.grid.AbstractGridView, Roo.util.Observable, {
                          this.splitSelector, cid, " {\n}\n");
         }
         return Roo.util.CSS.createStyleSheet(ruleBuf.join(""), rulesId);
-    }
+    } 
 });

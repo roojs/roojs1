@@ -755,6 +755,11 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     getView : function(){
         if(!this.view){
             this.view = new Roo.grid.GridView(this.viewConfig);
+ 	    this.view.relayEvents(this, [
+		"beforerowremoved", "beforerowsinserted",
+		"beforerefresh", "rowremoved",
+		"rowsinserted", "rowupdated" ,"refresh"
+	    ]);
         }
         return this.view;
     },
