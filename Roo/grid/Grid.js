@@ -310,7 +310,52 @@ Roo.grid.Grid = function(container, config){
          * Fires when the grid is rendered
          * @param {Grid} grid
          */
-        'render' : true
+        'render' : true,
+	
+	  /**
+         * @event beforerowremoved
+         * Fires before row is removed
+         * @param {Roo.grid.GridView} gridview
+         */
+	 "beforerowremoved" : true,
+	    /**
+         * @event beforerowsinserted
+         * Fires before row is inserted
+         * @param {Roo.grid.GridView} grid
+         */
+	"beforerowsinserted" : true,
+	 /**
+         * @event beforerefresh
+         * Fires before grid is refresh
+         * @param {Roo.grid.GridView} gridView
+         */
+	"beforerefresh" : true,
+	 /**
+         * @event rowremoved
+         * Fires when row is removed
+         * @param {Roo.grid.GridView} grid
+         */
+	"rowremoved" : true,
+	 /**
+         * @event rowsinserted
+         * Fires when the row is inserted
+         * @param {Roo.grid.GridView} grid
+         */
+	 "rowsinserted" : true,
+	 /**
+         * @event rowupdated
+         * Fires when the row is updated
+         * @param {Roo.grid.GridView} grid
+         */
+	 "rowupdated" : true,
+	 /**
+         * @event refresh
+         * Fires when the grid is refreshed
+         * @param {Roo.grid.GridView} grid
+         */
+	 "refresh" : true
+	
+	
     });
 
     Roo.grid.Grid.superclass.constructor.call(this);
