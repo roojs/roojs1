@@ -32393,7 +32393,52 @@ Roo.grid.Grid = function(container, config){
          * Fires when the grid is rendered
          * @param {Grid} grid
          */
-        'render' : true
+        'render' : true,
+	
+	  /**
+         * @event beforerowremoved
+         * Fires before row is removed
+         * @param {Roo.grid.GridView} gridview
+         */
+	 "beforerowremoved" : true,
+	    /**
+         * @event beforerowsinserted
+         * Fires before row is inserted
+         * @param {Roo.grid.GridView} grid
+         */
+	"beforerowsinserted" : true,
+	 /**
+         * @event beforerefresh
+         * Fires before grid is refresh
+         * @param {Roo.grid.GridView} gridView
+         */
+	"beforerefresh" : true,
+	 /**
+         * @event rowremoved
+         * Fires when row is removed
+         * @param {Roo.grid.GridView} grid
+         */
+	"rowremoved" : true,
+	 /**
+         * @event rowsinserted
+         * Fires when the row is inserted
+         * @param {Roo.grid.GridView} grid
+         */
+	 "rowsinserted" : true,
+	 /**
+         * @event rowupdated
+         * Fires when the row is updated
+         * @param {Roo.grid.GridView} grid
+         */
+	 "rowupdated" : true,
+	 /**
+         * @event refresh
+         * Fires when the grid is refreshed
+         * @param {Roo.grid.GridView} grid
+         */
+	 "refresh" : true
+	
+	
     });
 
     Roo.grid.Grid.superclass.constructor.call(this);
@@ -32838,6 +32883,11 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     getView : function(){
         if(!this.view){
             this.view = new Roo.grid.GridView(this.viewConfig);
+ 	    this.view.relayEvents(this, [
+		"beforerowremoved", "beforerowsinserted",
+		"beforerefresh", "rowremoved",
+		"rowsinserted", "rowupdated" ,"refresh"
+	    ]);
         }
         return this.view;
     },
@@ -32949,7 +32999,7 @@ Roo.extend(Roo.grid.AbstractGridView, Roo.util.Observable, {
                          this.splitSelector, cid, " {\n}\n");
         }
         return Roo.util.CSS.createStyleSheet(ruleBuf.join(""), rulesId);
-    }
+    } 
 });/*
  * Based on:
  * Ext JS Library 1.1.1
