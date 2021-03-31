@@ -751,6 +751,23 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (this.headerContainerEl) {
             this.headerContainerEl.dom.innerHTML = html;
         }
+    },
+    onHeaderImageLoad : function(he)
+    {
+        if (!this.header_image_fit_square) {
+            return;
+        }
+        
+        var hw = he.dom.naturalHeight / he.dom.naturalWidth;
+        // wide image = < 0
+        // tall image = > 1
+        //var w = he.dom.naturalWidth;
+        var ww = he.dom.width;
+        if (hw > 1) {
+            he.dom.width = ww * (1/hw);
+            he.dom.height = ww;
+        }
+
     }
 
     
