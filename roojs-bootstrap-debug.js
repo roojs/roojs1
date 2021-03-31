@@ -2700,8 +2700,9 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         var ww = he.width;
         Roo.get(he).setX( 0 );
         if (hw > 1) {
+            var nw = (ww * (1/hw));
             Roo.get(he).setSize( ww * (1/hw),  ww);
-            Roo.get(he).setX( (ww - (ww * (1/hw)))/ 2);
+            Roo.get(he).setX( (ww - nw)/ 2);
         }
 
     }
