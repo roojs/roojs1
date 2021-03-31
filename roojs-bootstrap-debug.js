@@ -2075,6 +2075,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     bodyEl: false, // card-body
     headerContainerEl : false, //
     headerEl : false,
+    header_imageEl : false,
     
     layoutCls : function()
     {
@@ -2285,7 +2286,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     },
     getCardImageTop : function()
     {
-        var  ret = this.el.select('.card-img-top',true).first();
+        var  ret = this.header_imageEl;
         if (ret.hasClass('d-none')) {
             ret.removeClass('d-none');
         }
@@ -2342,6 +2343,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.el.addClass('roo-card-rotated');
             this.fireEvent('rotate', this, true);
         }
+        this.header_imageEl = this.el.select('.card-img-top',true).first(); 
+        this.header_imageEl.on('load', this.onHeaderImageLoad, this );
         
     },
     getDragData : function(e)
@@ -2683,6 +2686,27 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (this.headerContainerEl) {
             this.headerContainerEl.dom.innerHTML = html;
         }
+    },
+    onHeaderImageLoad : function(ev, he)
+    {
+        if (!this.header_image_fit_square) {
+            return;
+        }
+        
+        var hw = he.naturalHeight / he.naturalWidth;
+        // wide image = < 0
+        // tall image = > 1
+        //var w = he.dom.naturalWidth;
+        var ww = he.width;
+        he.style.left =  0;
+        he.style.position =  'relative';
+        if (hw > 1) {
+            var nw = (ww * (1/hw));
+            Roo.get(he).setSize( ww * (1/hw),  ww);
+            he.style.left =  ((ww - nw)/ 2) + 'px';
+            he.style.position =  'relative';
+        }
+
     }
 
     

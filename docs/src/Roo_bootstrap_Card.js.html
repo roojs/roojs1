@@ -140,6 +140,7 @@
     </span><span class="jsdoc-var">bodyEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// card-body
     </span><span class="jsdoc-var">headerContainerEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//
     </span><span class="jsdoc-var">headerEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">header_imageEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">layoutCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -350,7 +351,7 @@
     },
     </span><span class="jsdoc-var">getCardImageTop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.card-img-top'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.header_imageEl</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-var">ret.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
         }
@@ -407,6 +408,8 @@
             </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-card-rotated'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rotate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         }
+        </span><span class="jsdoc-var">this.header_imageEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.card-img-top'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.header_imageEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onHeaderImageLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this </span><span class="jsdoc-syntax">);
 
     },
     </span><span class="jsdoc-var">getDragData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
@@ -748,6 +751,27 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headerContainerEl</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.headerContainerEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
         }
+    },
+    </span><span class="jsdoc-var">onHeaderImageLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">he</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.header_image_fit_square</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">he.naturalHeight </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">he.naturalWidth</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// wide image = &lt; 0
+        // tall image = &gt; 1
+        //var w = he.dom.naturalWidth;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ww </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">he.width</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">he.style.left </span><span class="jsdoc-syntax">=  0;
+        </span><span class="jsdoc-var">he.style.position </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hw </span><span class="jsdoc-syntax">&gt; 1) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nw </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">ww </span><span class="jsdoc-syntax">* (1/</span><span class="jsdoc-var">hw</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">he</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setSize</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">ww </span><span class="jsdoc-syntax">* (1/</span><span class="jsdoc-var">hw</span><span class="jsdoc-syntax">),  </span><span class="jsdoc-var">ww</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">he.style.left </span><span class="jsdoc-syntax">=  ((</span><span class="jsdoc-var">ww </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">nw</span><span class="jsdoc-syntax">)/ 2) + </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">he.style.position </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">;
+        }
+
     }
 
 
