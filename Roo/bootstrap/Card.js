@@ -764,8 +764,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         //var w = he.dom.naturalWidth;
         var ww = he.dom.width;
         if (hw > 1) {
-            he.dom.width = ww * (1/hw);
-            he.dom.height = ww;
+            he.setSize( ww * (1/hw),  ww);
         }
 
     }
