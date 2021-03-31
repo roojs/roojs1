@@ -2344,7 +2344,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.fireEvent('rotate', this, true);
         }
         this.header_imageEl = this.el.select('.card-img-top',true).first(); 
-        this.header_imageEl.on('load', this.onHeaderImageLoad, this, [ this.header_imageEl ]);
+        this.header_imageEl.on('load', this.onHeaderImageLoad, this );
         
     },
     getDragData : function(e)
