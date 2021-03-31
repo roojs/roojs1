@@ -2698,11 +2698,13 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         // tall image = > 1
         //var w = he.dom.naturalWidth;
         var ww = he.width;
-        Roo.get(he).setX( 0 );
+        he.style.left =  0;
+        he.style.position =  'relative';
         if (hw > 1) {
             var nw = (ww * (1/hw));
             Roo.get(he).setSize( ww * (1/hw),  ww);
-            Roo.get(he).setX( (ww - nw)/ 2);
+            he.style.left =  ((ww - nw)/ 2) + 'px';
+            he.style.position =  'relative';
         }
 
     }
