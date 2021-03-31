@@ -758,7 +758,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return;
         }
         
-        var hw = he.naturalHeight / heom.naturalWidth;
+        var hw = he.naturalHeight / he.naturalWidth;
         // wide image = < 0
         // tall image = > 1
         //var w = he.dom.naturalWidth;

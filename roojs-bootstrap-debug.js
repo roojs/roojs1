@@ -2693,13 +2693,13 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             return;
         }
         
-        var hw = he.dom.naturalHeight / he.dom.naturalWidth;
+        var hw = he.naturalHeight / heom.naturalWidth;
         // wide image = < 0
         // tall image = > 1
         //var w = he.dom.naturalWidth;
-        var ww = he.dom.width;
+        var ww = he.width;
         if (hw > 1) {
-            he.setSize( ww * (1/hw),  ww);
+            Roo.get(he).setSize( ww * (1/hw),  ww);
         }
 
     }
