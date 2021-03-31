@@ -2698,6 +2698,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         // tall image = > 1
         //var w = he.dom.naturalWidth;
         var ww = he.width;
+        Roo.get(he).setX( 0 );
         if (hw > 1) {
             Roo.get(he).setSize( ww * (1/hw),  ww);
             Roo.get(he).setX( (ww - (ww * (1/hw)))/ 2);
