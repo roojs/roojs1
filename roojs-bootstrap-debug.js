@@ -2344,7 +2344,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.fireEvent('rotate', this, true);
         }
         this.header_imageEl = this.el.select('.card-img-top',true).first(); 
-        this.header_imageEl.on('load', this.onHeaderImageLoad, this);
+        this.header_imageEl.on('load', this.onHeaderImageLoad, this, [ this.header_imageEl ]);
         
     },
     getDragData : function(e)
@@ -2687,7 +2687,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.headerContainerEl.dom.innerHTML = html;
         }
     },
-    onHeaderImageLoad : function(he)
+    onHeaderImageLoad : function(ev, he)
     {
         if (!this.header_image_fit_square) {
             return;

@@ -752,7 +752,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
             this.headerContainerEl.dom.innerHTML = html;
         }
     },
-    onHeaderImageLoad : function(he)
+    onHeaderImageLoad : function(ev, he)
     {
         if (!this.header_image_fit_square) {
             return;
