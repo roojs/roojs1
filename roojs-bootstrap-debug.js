@@ -1354,7 +1354,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     {
         this.disabled = false;
         this.el.removeClass('disabled');
-        this.el.attr("disabled", false);
+        this.el.dom.removeAttribute("disabled");
     },
     
     /**
