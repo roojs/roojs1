@@ -401,6 +401,7 @@
     {
         </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;disabled&quot;</span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-comment">/**
@@ -410,6 +411,7 @@
     {
         </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;disabled&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;disabled&quot;</span><span class="jsdoc-syntax">)
     },
      </span><span class="jsdoc-comment">/**
      * sets the active state on/off, 
