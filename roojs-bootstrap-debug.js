@@ -1354,6 +1354,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     {
         this.disabled = false;
         this.el.removeClass('disabled');
+        this.el.dom.removeAttribute("disabled");
     },
     
     /**
@@ -1363,6 +1364,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     {
         this.disabled = true;
         this.el.addClass('disabled');
+        this.el.attr("disabled", "disabled")
     },
      /**
      * sets the active state on/off, 
