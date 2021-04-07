@@ -80,11 +80,18 @@ Roo.bootstrap.Card = function(config){
          /**
          * @event rotate
          * When a element a card is rotate
-         * @param {Roo.bootstrap.Element} this
+         * @param {Roo.bootstrap.Card} this
          * @param {Roo.Element} n the node being dropped?
          * @param {Boolean} rotate status
          */
-        'rotate' : true
+        'rotate' : true,
+        /**
+         * @event cardover
+         * When a card element is dragged over ready to drop (return false to block dropable)
+         * @param {Roo.bootstrap.Card} this
+         * @param {Object} data from dragdrop 
+         */
+         'cardover' : true 
         
     });
 };
@@ -437,6 +444,17 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     /**
     *    Part of the Roo.dd.DropZone interface. If no target node is found, the
     *    whole Element becomes the target, and this causes the drop gesture to append.
+    *
+    *    Returns an object:
+    *     {
+           
+           position : 'below' or 'above'
+           card  : relateive to card OBJECT (or true for no cards listed)
+           items_n : relative to nth item in list
+           card_n : relative to  nth card in list
+    }
+    *
+    *    
     */
     getTargetFromEvent : function(e, dragged_card_el)
     {
@@ -530,7 +548,11 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         Roo.log(['getTargetFromEvent', target_info ]);
         
-         
+        
+        if (this.fireEvent('cardover', this, [ data ]) === false) {
+            return false;
+        }
+        
         this.dropPlaceHolder('show', target_info,data);
         
         return false; 
@@ -555,9 +577,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         }
         this.dropPlaceHolder('hide');
   
-         
-    
-    
+          
     
         this.acceptCard(data.source, info.position, info.card, info.items_n);
         return true;
