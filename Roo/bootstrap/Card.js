@@ -87,7 +87,7 @@ Roo.bootstrap.Card = function(config){
         'rotate' : true,
         /**
          * @event cardover
-         * When a card element is dragged over ready to drop
+         * When a card element is dragged over ready to drop (return false to block dropable)
          * @param {Roo.bootstrap.Card} this
          * @param {Object} data from dragdrop 
          */
