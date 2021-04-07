@@ -522,7 +522,7 @@
     },
     {
       "name" : "getTargetFromEvent",
-      "desc" : "Part of the Roo.dd.DropZone interface. If no target node is found, the\n   whole Element becomes the target, and this causes the drop gesture to append.",
+      "desc" : "Part of the Roo.dd.DropZone interface. If no target node is found, the\n   whole Element becomes the target, and this causes the drop gesture to append.\n\n   Returns an object:\n    {\n           \n           position : 'below' or 'above'\n           card  : relateive to card OBJECT (or true for no cards listed)\n           items_n : relative to nth item in list\n           card_n : relative to  nth card in list\n    }",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
@@ -1168,7 +1168,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "Roo.bootstrap.Element",
+          "type" : "Roo.bootstrap.Card",
           "desc" : "",
           "isOptional" : false
         },
@@ -1218,6 +1218,30 @@
           "name" : "next_to_card",
           "type" : "Roo.bootstrap.Card",
           "desc" : "What card position is relative to of 'false' for empty list.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "cardover",
+      "desc" : "When a card element is dragged over ready to drop (return false to block dropable)",
+      "memberOf" : "Roo.bootstrap.Card",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.Card",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "data",
+          "type" : "Object",
+          "desc" : "from dragdrop",
           "isOptional" : false
         }
       ],

@@ -80,11 +80,18 @@
          </span><span class="jsdoc-comment">/**
          * @event rotate
          * When a element a card is rotate
-         * @param {Roo.bootstrap.Element} this
+         * @param {Roo.bootstrap.Card} this
          * @param {Roo.Element} n the node being dropped?
          * @param {Boolean} rotate status
          */
-        </span><span class="jsdoc-string">'rotate' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">'rotate' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event cardover
+         * When a card element is dragged over ready to drop (return false to block dropable)
+         * @param {Roo.bootstrap.Card} this
+         * @param {Object} data from dragdrop 
+         */
+         </span><span class="jsdoc-string">'cardover' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
 
     </span><span class="jsdoc-syntax">});
 };
@@ -437,6 +444,17 @@
     </span><span class="jsdoc-comment">/**
     *    Part of the Roo.dd.DropZone interface. If no target node is found, the
     *    whole Element becomes the target, and this causes the drop gesture to append.
+    *
+    *    Returns an object:
+    *     {
+           
+           position : 'below' or 'above'
+           card  : relateive to card OBJECT (or true for no cards listed)
+           items_n : relative to nth item in list
+           card_n : relative to  nth card in list
+    }
+    *
+    *    
     */
     </span><span class="jsdoc-var">getTargetFromEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dragged_card_el</span><span class="jsdoc-syntax">)
     {
@@ -531,6 +549,10 @@
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'getTargetFromEvent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">target_info </span><span class="jsdoc-syntax">]);
 
 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'cardover'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [ </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">]) === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
         </span><span class="jsdoc-var">this.dropPlaceHolder</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">target_info</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
@@ -554,8 +576,6 @@
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">this.dropPlaceHolder</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">);
-
-
 
 
 
