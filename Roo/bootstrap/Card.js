@@ -80,11 +80,18 @@ Roo.bootstrap.Card = function(config){
          /**
          * @event rotate
          * When a element a card is rotate
-         * @param {Roo.bootstrap.Element} this
+         * @param {Roo.bootstrap.Card} this
          * @param {Roo.Element} n the node being dropped?
          * @param {Boolean} rotate status
          */
-        'rotate' : true
+        'rotate' : true,
+        /**
+         * @event cardover
+         * When a card element is dragged over ready to drop
+         * @param {Roo.bootstrap.Card} this
+         * @param {Object} data from dragdrop 
+         */
+        
         
     });
 };
@@ -542,8 +549,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         Roo.log(['getTargetFromEvent', target_info ]);
         
         
-        if (this.fireEvent('cardover', data) === false) {
-            return;
+        if (this.fireEvent('cardover', this, [ data ]) === false) {
+            return false;
         }
         
         this.dropPlaceHolder('show', target_info,data);
