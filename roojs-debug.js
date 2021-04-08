@@ -8249,7 +8249,7 @@ if(opt.anim.isAnimated()){
                 return;
             }
             event.preventDefault();
-            this.dom.dispatchEvent('dblclick', this, event);
+            this.dom.fireEvent('ondblclick', event);
             //action on double tap goes below
              
         }, 
