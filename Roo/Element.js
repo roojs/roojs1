@@ -1188,7 +1188,10 @@ if(opt.anim.isAnimated()){
                 return;
             }
             event.preventDefault();
-            this.dom.fireEvent('ondblclick', event);
+            var revent = document.createEventObject(event);
+            revent.eventName = "dblclick";
+            revent.eventType = "dblclick";
+            this.dom.dispatchEvent(revent);
             //action on double tap goes below
              
         }, 
