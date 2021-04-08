@@ -8249,7 +8249,7 @@ if(opt.anim.isAnimated()){
                 return;
             }
             event.preventDefault();
-            var revent = document.createEventObject(event);
+            var revent = document.createEvent(event);
             revent.eventName = "dblclick";
             revent.eventType = "dblclick";
             this.dom.dispatchEvent(revent);
