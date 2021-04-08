@@ -1172,7 +1172,26 @@ if(opt.anim.isAnimated()){
             if (this.dom) {
                 Roo.EventManager.on(this.dom,  eventName, fn, scope || this, options);
             }
+            if (eventName == 'dblclick') {
+                this.addEventListener('touchstart', this.onTapHandler, this);
+            }
         },
+        tapedTwice : false,
+        onTapHandler : function(event)
+        {
+            if(!this.tapedTwice) {
+                this.tapedTwice = true;
+                var s = this;
+                setTimeout( function() {
+                    s.tapedTwice = false;
+                }, 300 );
+                return;
+            }
+            event.preventDefault();
+            this.fireEvent('dblclick', this, event);
+            //action on double tap goes below
+             
+        }, 
 
         /**
          * Removes an event handler from this element
@@ -2304,7 +2323,7 @@ if(opt.anim.isAnimated()){
         /**
          * @private
          */
-      fitToParentDelegate : Roo.emptyFn, // keep a reference to the fitToParent delegate
+        fitToParentDelegate : Roo.emptyFn, // keep a reference to the fitToParent delegate
 
         /**
          * Sizes this element to its parent element's dimensions performing

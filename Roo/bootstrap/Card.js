@@ -91,8 +91,8 @@ Roo.bootstrap.Card = function(config){
          * @param {Roo.bootstrap.Card} this
          * @param {Object} data from dragdrop 
          */
-         'cardover' : true 
-        
+         'cardover' : true
+         
     });
 };
 

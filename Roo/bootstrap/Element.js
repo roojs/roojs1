@@ -31,7 +31,9 @@ Roo.bootstrap.Element = function(config){
          * @param {Roo.bootstrap.Element} this
          * @param {Roo.EventObject} e
          */
-        "click" : true
+        "click" : true 
+        
+      
     });
 };
 
@@ -42,6 +44,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     html: '',
     preventDefault: false, 
     clickable: false,
+    tapedTwice : false,
     
     getAutoCreate : function(){
         
@@ -62,6 +65,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
             this.el.on('click', this.onClick, this);
         }
         
+        
     },
     
     onClick : function(e)
@@ -70,8 +74,13 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
             e.preventDefault();
         }
         
-        this.fireEvent('click', this, e);
+        this.fireEvent('dblclick', this, e);
     },
+    
+    
+    
+
+    
     
     getValue : function()
     {
