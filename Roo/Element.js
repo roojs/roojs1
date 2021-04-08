@@ -1173,7 +1173,7 @@ if(opt.anim.isAnimated()){
                 Roo.EventManager.on(this.dom,  eventName, fn, scope || this, options);
             }
             if (eventName == 'dblclick') {
-                this.addEventListener('touchstart', this.onTapHandler, this);
+                this.addListener('touchstart', this.onTapHandler, this);
             }
         },
         tapedTwice : false,
