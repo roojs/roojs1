@@ -1188,7 +1188,7 @@ if(opt.anim.isAnimated()){
                 return;
             }
             event.preventDefault();
-            this.fireEvent('dblclick', this, event);
+            this.dom.dispatchEvent('dblclick', this, event);
             //action on double tap goes below
              
         }, 
