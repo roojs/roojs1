@@ -1188,9 +1188,12 @@ if(opt.anim.isAnimated()){
                 return;
             }
             event.preventDefault();
-            var revent = document.createEvent(event);
-            revent.eventName = "dblclick";
-            revent.eventType = "dblclick";
+            var revent = new MouseEvent('dblclick',  {
+                view: window,
+                bubbles: true,
+                cancelable: true
+            });
+             
             this.dom.dispatchEvent(revent);
             //action on double tap goes below
              
