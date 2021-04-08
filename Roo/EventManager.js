@@ -122,6 +122,7 @@ Roo.EventManager = function(){
         }
     }
     
+  
 
     var listen = function(element, ename, opt, fn, scope){
         var o = (!opt || typeof opt == "boolean") ? {} : opt;

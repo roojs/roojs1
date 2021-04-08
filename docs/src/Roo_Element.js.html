@@ -1172,7 +1172,32 @@ if(opt.anim.isAnimated()){
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">Roo.EventManager.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
             }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTapHandler</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }
         },
+        </span><span class="jsdoc-var">tapedTwice </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">onTapHandler </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tapedTwice</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.tapedTwice </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                    </span><span class="jsdoc-var">s.tapedTwice </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                }, 300 );
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">event.preventDefault</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">revent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">MouseEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">,  {
+                </span><span class="jsdoc-var">view</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">bubbles</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cancelable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+            </span><span class="jsdoc-syntax">});
+
+            </span><span class="jsdoc-var">this.dom.dispatchEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">revent</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">//action on double tap goes below
+
+        </span><span class="jsdoc-syntax">},
 
         </span><span class="jsdoc-comment">/**
          * Removes an event handler from this element
@@ -2304,7 +2329,7 @@ if(opt.anim.isAnimated()){
         </span><span class="jsdoc-comment">/**
          * @private
          */
-      </span><span class="jsdoc-var">fitToParentDelegate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// keep a reference to the fitToParent delegate
+        </span><span class="jsdoc-var">fitToParentDelegate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// keep a reference to the fitToParent delegate
 
         /**
          * Sizes this element to its parent element's dimensions performing
