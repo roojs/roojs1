@@ -29,58 +29,58 @@
       "type" : "String",
       "desc" : "Specifies an abbreviated version of the content in a cell",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "charoff",
       "type" : "Number",
       "desc" : "Sets the number of characters the content will be aligned from the character specified by the char attribute",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "axis",
       "type" : "String",
       "desc" : "Categorizes cells",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "bgcolor",
       "type" : "String",
       "desc" : "Specifies the background color of a cell",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-        "el",
-        "parent"
+      "values" : [
+        "(el",
+        "parent)"
       ]
     },
     {
@@ -88,30 +88,30 @@
       "type" : "String",
       "desc" : "Aligns the content in a cell",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "valign",
       "type" : "String",
       "desc" : "Vertical aligns the content in a cell",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
+      "values" : [
+        "(display",
+        "visibility)"
       ]
     },
     {
@@ -119,119 +119,119 @@
       "type" : "String",
       "desc" : "cell tag (td|th) default td",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "scope",
       "type" : "String",
       "desc" : "Defines a way to associate header cells and data cells in a table",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "cell contain text",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "cell class",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "headers",
       "type" : "String",
       "desc" : "Specifies one or more header cells a cell is related to",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "nowrap",
       "type" : "String",
       "desc" : "Specifies that the content inside a cell should not wrap",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "Specifies the width of a cell",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "colspan",
       "type" : "Number",
       "desc" : "Specifies the number of columns a cell should span",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "Sets the height of a cell",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "rowspan",
       "type" : "Number",
       "desc" : "Sets the number of rows a cell should span",
       "memberOf" : "Roo.bootstrap.TableCell",
-      "optvals" : []
+      "values" : []
     }
   ],
   "methods" : [

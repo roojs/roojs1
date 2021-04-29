@@ -25,14 +25,14 @@
       "type" : "String",
       "desc" : "The CSS class to apply to the status element when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
       "memberOf" : "Roo.dd.StatusProxy",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "dropAllowed",
       "type" : "String",
       "desc" : "The CSS class to apply to the status element when drop is allowed (defaults to \"x-dd-drop-ok\").",
       "memberOf" : "Roo.dd.StatusProxy",
-      "optvals" : []
+      "values" : []
     }
   ],
   "methods" : [

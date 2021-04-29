@@ -38380,7 +38380,7 @@ Roo.menu.TextItem = function(cfg){
 
 Roo.extend(Roo.menu.TextItem, Roo.menu.BaseItem, {
     /**
-     * @cfg {Boolean} text Text to show on item.
+     * @cfg {String} text Text to show on item.
      */
     text : '',
     
