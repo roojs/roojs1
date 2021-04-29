@@ -10922,7 +10922,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             
             if(this.labelWidth < 13 && this.labelmd == 0){
-                this.labellg = this.labellg > 0 ? labellg ? this.labelWidth;
+                this.labellg = this.labellg > 0 ? this.labellg : this.labelWidth;
             }
             
             if(this.labellg > 0){
