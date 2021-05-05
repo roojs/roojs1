@@ -29,30 +29,30 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-        "el",
-        "parent"
+      "values" : [
+        "(el",
+        "parent)"
       ]
     },
     {
@@ -60,23 +60,23 @@
       "type" : "String",
       "desc" : "DEPRICATED - BS4 uses is-valid",
       "memberOf" : "Roo.bootstrap.FieldLabel",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
+      "values" : [
+        "(display",
+        "visibility)"
       ]
     },
     {
@@ -84,16 +84,16 @@
       "type" : "String",
       "desc" : "tag of the element default label",
       "memberOf" : "Roo.bootstrap.FieldLabel",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "indicatorpos",
       "type" : "String",
-      "desc" : "t) default left",
+      "desc" : "default left",
       "memberOf" : "Roo.bootstrap.FieldLabel",
-      "optvals" : [
-        "left",
-        "right"
+      "values" : [
+        "(left",
+        "right)"
       ]
     },
     {
@@ -101,37 +101,37 @@
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "class of the element",
       "memberOf" : "Roo.bootstrap.FieldLabel",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "contents of the element",
       "memberOf" : "Roo.bootstrap.FieldLabel",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "allowBlank",
       "type" : "Boolean",
-      "desc" : "e) target allowBlank default true",
+      "desc" : "target allowBlank default true",
       "memberOf" : "Roo.bootstrap.FieldLabel",
-      "optvals" : [
-        "true",
-        "false"
+      "values" : [
+        "(true",
+        "false)"
       ]
     },
     {
@@ -139,56 +139,56 @@
       "type" : "String",
       "desc" : "DEPRICATED - BS4 uses is-invalid",
       "memberOf" : "Roo.bootstrap.FieldLabel",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "iconTooltip",
       "type" : "String",
       "desc" : "default \"This field is required\"",
       "memberOf" : "Roo.bootstrap.FieldLabel",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "target",
       "type" : "String",
       "desc" : "label target",
       "memberOf" : "Roo.bootstrap.FieldLabel",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     }
   ],
   "methods" : [

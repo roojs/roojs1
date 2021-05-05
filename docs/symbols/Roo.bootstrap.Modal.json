@@ -29,51 +29,51 @@
       "type" : "Boolean",
       "desc" : "can the title be edited",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "bodyOverflow",
       "type" : "Boolean",
       "desc" : "should the body element have overflow auto added default false",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "max_width",
       "type" : "Number",
       "desc" : "set the max width of modal",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-        "el",
-        "parent"
+      "values" : [
+        "(el",
+        "parent)"
       ]
     },
     {
@@ -81,23 +81,23 @@
       "type" : "Array",
       "desc" : "Array of buttons or standard button set..",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
+      "values" : [
+        "(display",
+        "visibility)"
       ]
     },
     {
@@ -105,45 +105,45 @@
       "type" : "String",
       "desc" : "Title of dialog",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "tmpl",
       "type" : "Roo.Template",
       "desc" : "- a template with variables. to use it, add a handler in show:method  adn",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "- the body of the dialog (for simple ones) - you can also use template..",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "buttonPosition",
       "type" : "String",
-      "desc" : "r) default right (DEPRICATED) - use mr-auto on buttons to put them on the left",
+      "desc" : "default right (DEPRICATED) - use mr-auto on buttons to put them on the left",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : [
-        "left",
+      "values" : [
+        "(left",
         "right",
-        "center"
+        "center)"
       ]
     },
     {
@@ -151,73 +151,73 @@
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "fitwindow",
       "type" : "Boolean",
       "desc" : "default false",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "specificTitle",
       "type" : "Boolean",
       "desc" : "default false",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "fixed width - usefull for chrome extension only really.",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "allow_close",
       "type" : "Boolean",
       "desc" : "default true",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "fixed height - usefull for chrome extension only really.",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "size",
       "type" : "String",
-      "desc" : "l) default empty",
+      "desc" : "default empty",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : [
-        "sm",
+      "values" : [
+        "(sm",
         "lg",
-        "xl"
+        "xl)"
       ]
     },
     {
@@ -225,21 +225,21 @@
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "optvals" : []
+      "values" : []
     },
     {
       "name" : "animate",
       "type" : "Boolean",
       "desc" : "default true",
       "memberOf" : "Roo.bootstrap.Modal",
-      "optvals" : []
+      "values" : []
     }
   ],
   "methods" : [
