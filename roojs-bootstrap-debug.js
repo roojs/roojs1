@@ -6243,7 +6243,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	
         var ret = Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
 	this.navLink = this.el.select('.nav-link',true).first();
-	this.htmlEl = this.el.select('.nav-html',true).first();
+	this.htmlEl = this.el.hasClass('nav-html') ? this.el : this.el.select('.nav-html',true).first();
 	return ret;
     },
       
