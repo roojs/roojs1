@@ -167,6 +167,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	
         var ret = Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
 	this.navLink = this.el.select('.nav-link',true).first();
+	this.htmlEl = this.el.select('.nav-html',true).first();
 	return ret;
     },
       
@@ -184,8 +185,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         //if(this.tagtype == 'span'){
         //    this.el.select('span',true).on('click', this.onClick, this);
         //}
-       	this.htmlEl = this.el.select('.nav-html',true).first();
-
+       
         // at this point parent should be available..
         this.parent().register(this);
     },
