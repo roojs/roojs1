@@ -372,6 +372,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
      */
     setHtml : function(html)
     {
+	this.html = html;
 	this.htmlEl.dom.innerHTML = html;
 	
     } 
