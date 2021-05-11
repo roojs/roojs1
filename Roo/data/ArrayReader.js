@@ -66,7 +66,7 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
     	var records = [];
     	var root = o;
 	for(var i = 0; i < root.length; i++){
-		var n = root[i];
+	    var n = root[i];
 	    var values = {};
 	    var id = ((sid || sid === 0) && n[sid] !== undefined && n[sid] !== "" ? n[sid] : null);
 	    for(var j = 0, jlen = fields.length; j < jlen; j++){
