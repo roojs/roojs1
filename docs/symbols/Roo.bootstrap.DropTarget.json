@@ -157,6 +157,13 @@
       "values" : []
     },
     {
+      "name" : "role",
+      "type" : "String",
+      "desc" : "default blank - set to button to force cursor pointer",
+      "memberOf" : "Roo.bootstrap.Element",
+      "values" : []
+    },
+    {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",

@@ -150,6 +150,13 @@
       "values" : []
     },
     {
+      "name" : "role",
+      "type" : "String",
+      "desc" : "default blank - set to button to force cursor pointer",
+      "memberOf" : "Roo.bootstrap.Element",
+      "values" : []
+    },
+    {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",

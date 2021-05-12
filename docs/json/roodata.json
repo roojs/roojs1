@@ -20207,6 +20207,12 @@
         "memberOf" : "Roo.bootstrap.Element"
       },
       {
+        "name" : "role",
+        "type" : "String",
+        "desc" : "default blank - set to button to force cursor pointer",
+        "memberOf" : "Roo.bootstrap.Element"
+      },
+      {
         "name" : "style",
         "type" : "String",
         "desc" : "any extra css",
@@ -20635,6 +20641,12 @@
         "memberOf" : "Roo.bootstrap.Element"
       },
       {
+        "name" : "role",
+        "type" : "String",
+        "desc" : "default blank - set to button to force cursor pointer",
+        "memberOf" : "Roo.bootstrap.Element"
+      },
+      {
         "name" : "style",
         "type" : "String",
         "desc" : "any extra css",
@@ -21060,6 +21072,12 @@
           "(true",
           "false)"
         ],
+        "memberOf" : "Roo.bootstrap.Element"
+      },
+      {
+        "name" : "role",
+        "type" : "String",
+        "desc" : "default blank - set to button to force cursor pointer",
         "memberOf" : "Roo.bootstrap.Element"
       },
       {
@@ -28834,6 +28852,12 @@
         "memberOf" : "Roo.bootstrap.Element"
       },
       {
+        "name" : "role",
+        "type" : "String",
+        "desc" : "default blank - set to button to force cursor pointer",
+        "memberOf" : "Roo.bootstrap.Element"
+      },
+      {
         "name" : "style",
         "type" : "String",
         "desc" : "any extra css",
@@ -29259,6 +29283,12 @@
           "(true",
           "false)"
         ],
+        "memberOf" : ""
+      },
+      {
+        "name" : "role",
+        "type" : "String",
+        "desc" : "default blank - set to button to force cursor pointer",
         "memberOf" : ""
       },
       {
@@ -43492,6 +43522,14 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "setHtml",
+        "type" : "function",
+        "desc" : "Set the HTML (text content) of the item",
+        "sig" : "(html)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "setVisibilityEl",
         "type" : "function",
         "desc" : "Set the element that will be used to show or hide",
@@ -45277,6 +45315,14 @@
         "sig" : "(disabled)",
         "static" : false,
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "setHtml",
+        "type" : "function",
+        "desc" : "Set the HTML (text content) of the item",
+        "sig" : "(html)",
+        "static" : false,
+        "memberOf" : "Roo.bootstrap.NavItem"
       },
       {
         "name" : "setVisibilityEl",
