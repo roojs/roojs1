@@ -2351,7 +2351,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (this.rotateable) {
             this.el.select('.card-header',true).on('click', this.onToggleRotate, this);
         }
-        this.collapsableEl = this.el.select('.roo-collapsable').first();
+        this.collapsableEl = this.el.select('.roo-collapsable',true).first();
          
         this.footerEl = this.el.select('.card-footer',true).first();
         this.collapsableToggleEl = this.el.select('.roo-collapse-toggle',true).first();
