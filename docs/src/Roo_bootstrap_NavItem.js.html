@@ -107,8 +107,10 @@
 		</span><span class="jsdoc-var">cfg.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">;
 	    }
 	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fa</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;fa fas fa-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.fa</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt; &lt;span&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'</span><span class="jsdoc-syntax">;
-            }
+                </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;fa fas fa-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.fa</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt; &lt;span class=&quot;nav-html&quot;&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+		</span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot; nav-html&quot;</span><span class="jsdoc-syntax">;
+	    }
 
 	    </span><span class="jsdoc-comment">// menu .. should add dropdown-menu class - so no need for carat..
 
@@ -124,7 +126,8 @@
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tagtype</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;#&quot;</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
+                    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+		    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
                 </span><span class="jsdoc-syntax">}
             ];
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tagtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">) {
@@ -132,23 +135,21 @@
 
 	    }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt; &lt;span&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'</span><span class="jsdoc-syntax">;
-            }
-	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fa</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;fa fas fa-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.fa</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt; &lt;span&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.glyphicon</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt; &lt;span class=&quot;nav-html&quot;&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else  if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fa</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;fa fas fa-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.fa</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt; &lt;span class=&quot;nav-html&quot;&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.glyphicon</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;span class=&quot;glyphicon glyphicon-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.glyphicon </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;&lt;/span&gt; '  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html</span><span class="jsdoc-syntax">;
-            }
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+		</span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot; nav-html&quot;</span><span class="jsdoc-syntax">;
+	    }
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">) {
-
                 </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot; &lt;span class='caret'&gt;&lt;/span&gt;&quot;</span><span class="jsdoc-syntax">;
 
             }
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.badge </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
-
                 </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' &lt;span class=&quot;badge badge-secondary&quot;&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.badge </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'</span><span class="jsdoc-syntax">;
             }
         }
@@ -166,6 +167,7 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.NavItem.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
 	</span><span class="jsdoc-var">this.navLink </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-link'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+	</span><span class="jsdoc-var">this.htmlEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'nav-html'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-html'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
 	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
     },
 
@@ -363,6 +365,16 @@
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.scrollTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * Set the HTML (text content) of the item
+     * @param {string} html  content for the nav item
+     */
+    </span><span class="jsdoc-var">setHtml </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">)
+    {
+	</span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
+	</span><span class="jsdoc-var">this.htmlEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
+
     }
 });
 

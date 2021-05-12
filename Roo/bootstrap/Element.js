@@ -14,6 +14,8 @@
  * @cfg {String} cls class of the element
  * @cfg {Boolean} preventDefault (true|false) default false
  * @cfg {Boolean} clickable (true|false) default false
+ * @cfg {String} role default blank - set to button to force cursor pointer
+ 
  * 
  * @constructor
  * Create a new Element
@@ -45,6 +47,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     preventDefault: false, 
     clickable: false,
     tapedTwice : false,
+    role : false,
     
     getAutoCreate : function(){
         
@@ -53,6 +56,9 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
             // cls: this.cls, double assign in parent class Component.js :: onRender
             html: this.html
         };
+        if (this.role !== false) {
+            cfg.role = this.role;
+        }
         
         return cfg;
     },
@@ -74,7 +80,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
             e.preventDefault();
         }
         
-        this.fireEvent('dblclick', this, e);
+        this.fireEvent('click', this, e); // why was this double click before?
     },
     
     

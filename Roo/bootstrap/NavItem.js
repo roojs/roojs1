@@ -107,8 +107,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 		cfg.href = this.href;
 	    }
 	    if (this.fa) {
-                cfg.html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + this.html + '</span>';
-            }
+                cfg.html = '<i class="fa fas fa-'+this.fa+'"></i> <span class="nav-html">' + this.html + '</span>';
+            } else {
+		cfg.cls += " nav-html";
+	    }
 	    
 	    // menu .. should add dropdown-menu class - so no need for carat..
 	    
@@ -124,7 +126,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                 {
                     tag: this.tagtype,
                     href : this.href || "#",
-                    html: this.html || ''
+                    html: this.html || '',
+		    cls : ''
                 }
             ];
             if (this.tagtype == 'a') {
@@ -132,23 +135,21 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
 	    }
             if (this.icon) {
-                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>';
-            }
-	    if (this.fa) {
-                cfg.cn[0].html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + cfg.cn[0].html + '</span>';
-            }
-            if(this.glyphicon) {
+                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span class="nav-html">' + cfg.cn[0].html + '</span>';
+            } else  if (this.fa) {
+                cfg.cn[0].html = '<i class="fa fas fa-'+this.fa+'"></i> <span class="nav-html">' + cfg.cn[0].html + '</span>';
+            } else if(this.glyphicon) {
                 cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
-            }
+            } else {
+		cfg.cn[0].cls += " nav-html";
+	    }
             
             if (this.menu) {
-                
                 cfg.cn[0].html += " <span class='caret'></span>";
              
             }
             
             if (this.badge !== '') {
-                 
                 cfg.cn[0].html += ' <span class="badge badge-secondary">' + this.badge + '</span>';
             }
         }
@@ -166,6 +167,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	
         var ret = Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
 	this.navLink = this.el.select('.nav-link',true).first();
+	this.htmlEl = this.el.hasClass('nav-html') ? this.el : this.el.select('.nav-html',true).first();
 	return ret;
     },
       
@@ -363,7 +365,17 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         Roo.get(c).scrollTo('top', options.value, true);
         
         return;
-    }
+    },
+    /**
+     * Set the HTML (text content) of the item
+     * @param {string} html  content for the nav item
+     */
+    setHtml : function(html)
+    {
+	this.html = html;
+	this.htmlEl.dom.innerHTML = html;
+	
+    } 
 });
  
 

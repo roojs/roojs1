@@ -650,6 +650,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
  * @cfg {String} cls class of the element
  * @cfg {Boolean} preventDefault (true|false) default false
  * @cfg {Boolean} clickable (true|false) default false
+ * @cfg {String} role default blank - set to button to force cursor pointer
+ 
  * 
  * @constructor
  * Create a new Element
@@ -681,6 +683,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     preventDefault: false, 
     clickable: false,
     tapedTwice : false,
+    role : false,
     
     getAutoCreate : function(){
         
@@ -689,6 +692,9 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
             // cls: this.cls, double assign in parent class Component.js :: onRender
             html: this.html
         };
+        if (this.role !== false) {
+            cfg.role = this.role;
+        }
         
         return cfg;
     },
@@ -710,7 +716,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
             e.preventDefault();
         }
         
-        this.fireEvent('dblclick', this, e);
+        this.fireEvent('click', this, e); // why was this double click before?
     },
     
     
@@ -2095,6 +2101,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     headerEl : false,
     header_imageEl : false,
     
+    
     layoutCls : function()
     {
         var cls = '';
@@ -2350,11 +2357,11 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         if (this.rotateable) {
             this.el.select('.card-header',true).on('click', this.onToggleRotate, this);
         }
-        this.collapsableEl = this.el.select('.roo-collapsable').first();
+        this.collapsableEl = this.el.select('.roo-collapsable',true).first();
          
-        this.footerEl = this.el.select('.card-footer').first();
-        this.collapsableToggleEl = this.el.select('.roo-collapse-toggle');
-        this.headerContainerEl = this.el.select('.roo-card-header-ctr').first();
+        this.footerEl = this.el.select('.card-footer',true).first();
+        this.collapsableToggleEl = this.el.select('.roo-collapse-toggle',true).first();
+        this.headerContainerEl = this.el.select('.roo-card-header-ctr',true).first();
         this.headerEl = this.el.select('.card-header',true).first();
         
         if (this.rotated) {
@@ -6183,8 +6190,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 		cfg.href = this.href;
 	    }
 	    if (this.fa) {
-                cfg.html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + this.html + '</span>';
-            }
+                cfg.html = '<i class="fa fas fa-'+this.fa+'"></i> <span class="nav-html">' + this.html + '</span>';
+            } else {
+		cfg.cls += " nav-html";
+	    }
 	    
 	    // menu .. should add dropdown-menu class - so no need for carat..
 	    
@@ -6200,7 +6209,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                 {
                     tag: this.tagtype,
                     href : this.href || "#",
-                    html: this.html || ''
+                    html: this.html || '',
+		    cls : ''
                 }
             ];
             if (this.tagtype == 'a') {
@@ -6208,23 +6218,21 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
 	    }
             if (this.icon) {
-                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>';
-            }
-	    if (this.fa) {
-                cfg.cn[0].html = '<i class="fa fas fa-'+this.fa+'"></i> <span>' + cfg.cn[0].html + '</span>';
-            }
-            if(this.glyphicon) {
+                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span class="nav-html">' + cfg.cn[0].html + '</span>';
+            } else  if (this.fa) {
+                cfg.cn[0].html = '<i class="fa fas fa-'+this.fa+'"></i> <span class="nav-html">' + cfg.cn[0].html + '</span>';
+            } else if(this.glyphicon) {
                 cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
-            }
+            } else {
+		cfg.cn[0].cls += " nav-html";
+	    }
             
             if (this.menu) {
-                
                 cfg.cn[0].html += " <span class='caret'></span>";
              
             }
             
             if (this.badge !== '') {
-                 
                 cfg.cn[0].html += ' <span class="badge badge-secondary">' + this.badge + '</span>';
             }
         }
@@ -6242,6 +6250,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	
         var ret = Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
 	this.navLink = this.el.select('.nav-link',true).first();
+	this.htmlEl = this.el.hasClass('nav-html') ? this.el : this.el.select('.nav-html',true).first();
 	return ret;
     },
       
@@ -6439,7 +6448,17 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         Roo.get(c).scrollTo('top', options.value, true);
         
         return;
-    }
+    },
+    /**
+     * Set the HTML (text content) of the item
+     * @param {string} html  content for the nav item
+     */
+    setHtml : function(html)
+    {
+	this.html = html;
+	this.htmlEl.dom.innerHTML = html;
+	
+    } 
 });
  
 
@@ -14983,35 +15002,35 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
     readRecords : function(o)
     {
         var sid = this.meta ? this.meta.id : null;
-    	var recordType = this.recordType, fields = recordType.prototype.fields;
-    	var records = [];
-    	var root = o;
-	for(var i = 0; i < root.length; i++){
-		var n = root[i];
-	    var values = {};
-	    var id = ((sid || sid === 0) && n[sid] !== undefined && n[sid] !== "" ? n[sid] : null);
-	    for(var j = 0, jlen = fields.length; j < jlen; j++){
-		var f = fields.items[j];
-		var k = f.mapping !== undefined && f.mapping !== null ? f.mapping : j;
-		var v = n[k] !== undefined ? n[k] : f.defaultValue;
-		v = f.convert(v);
-		values[f.name] = v;
-	    }
-	    var record = new recordType(values, id);
-	    record.json = n;
-	    records[records.length] = record;
-	}
-	return {
-	    records : records,
-	    totalRecords : records.length
-	};
+        var recordType = this.recordType, fields = recordType.prototype.fields;
+        var records = [];
+        var root = o;
+        for(var i = 0; i < root.length; i++){
+            var n = root[i];
+            var values = {};
+            var id = ((sid || sid === 0) && n[sid] !== undefined && n[sid] !== "" ? n[sid] : null);
+            for(var j = 0, jlen = fields.length; j < jlen; j++){
+                var f = fields.items[j];
+                var k = f.mapping !== undefined && f.mapping !== null ? f.mapping : j;
+                var v = n[k] !== undefined ? n[k] : f.defaultValue;
+                v = f.convert(v);
+                values[f.name] = v;
+            }
+            var record = new recordType(values, id);
+            record.json = n;
+            records[records.length] = record;
+        }
+        return {
+            records : records,
+            totalRecords : records.length
+        };
     },
     // used when loading children.. @see loadDataFromChildren
     toLoadData: function(rec)
     {
-	// expect rec just to be an array.. eg [a,b,c, [...] << cn ]
-	return typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn;
-	
+        // expect rec just to be an array.. eg [a,b,c, [...] << cn ]
+        return typeof(rec.data.cn) == 'undefined' ? [] : rec.data.cn;
+        
     }
     
     

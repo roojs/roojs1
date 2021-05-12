@@ -288,6 +288,27 @@
       ]
     },
     {
+      "name" : "setHtml",
+      "desc" : "Set the HTML (text content) of the item",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.NavItem",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "html",
+          "type" : "string",
+          "desc" : "content for the nav item",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "hide",
       "desc" : "Hide a component - adds 'hidden' class",
       "isStatic" : false,

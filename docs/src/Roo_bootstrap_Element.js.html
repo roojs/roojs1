@@ -14,6 +14,8 @@
  * @cfg {String} cls class of the element
  * @cfg {Boolean} preventDefault (true|false) default false
  * @cfg {Boolean} clickable (true|false) default false
+ * @cfg {String} role default blank - set to button to force cursor pointer
+ 
  * 
  * @constructor
  * Create a new Element
@@ -45,6 +47,7 @@
     </span><span class="jsdoc-var">preventDefault</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">clickable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">tapedTwice </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 
@@ -53,6 +56,9 @@
             </span><span class="jsdoc-comment">// cls: this.cls, double assign in parent class Component.js :: onRender
             </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
         </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.role </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.role </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.role</span><span class="jsdoc-syntax">;
+        }
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
@@ -74,8 +80,8 @@
             </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         }
 
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
-    },
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// why was this double click before?
+    </span><span class="jsdoc-syntax">},
 
 
 
