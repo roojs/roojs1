@@ -2094,6 +2094,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     headerContainerEl : false, //
     headerEl : false,
     header_imageEl : false,
+    titleEl : false,
     
     layoutCls : function()
     {
