@@ -80,7 +80,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
             e.preventDefault();
         }
         
-        this.fireEvent('click', this, e);
+        this.fireEvent('click', this, e); // why was this double click before?
     },
     
     
