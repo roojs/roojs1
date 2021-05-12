@@ -47,6 +47,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     preventDefault: false, 
     clickable: false,
     tapedTwice : false,
+    role : false,
     
     getAutoCreate : function(){
         
@@ -55,6 +56,9 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
             // cls: this.cls, double assign in parent class Component.js :: onRender
             html: this.html
         };
+        if (this.role !== false) {
+            cfg.role = this.role;
+        }
         
         return cfg;
     },
