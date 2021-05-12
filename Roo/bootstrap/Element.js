@@ -14,6 +14,8 @@
  * @cfg {String} cls class of the element
  * @cfg {Boolean} preventDefault (true|false) default false
  * @cfg {Boolean} clickable (true|false) default false
+ * @cfg {String} role default blank - set to button to force cursor pointer
+ 
  * 
  * @constructor
  * Create a new Element
