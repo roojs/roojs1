@@ -148,7 +148,7 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
     headerContainerEl : false, //
     headerEl : false,
     header_imageEl : false,
-    titleEl : false,
+    
     
     layoutCls : function()
     {
@@ -408,8 +408,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
         this.collapsableEl = this.el.select('.roo-collapsable').first();
          
         this.footerEl = this.el.select('.card-footer').first();
-        this.collapsableToggleEl = this.el.select('.roo-collapse-toggle');
-        this.headerContainerEl = this.el.select('.roo-card-header-ctr').first();
+        this.collapsableToggleEl = this.el.select('.roo-collapse-toggle',true);
+        this.headerContainerEl = this.el.select('.roo-card-header-ctr',true).first();
         this.headerEl = this.el.select('.card-header',true).first();
         
         if (this.rotated) {
