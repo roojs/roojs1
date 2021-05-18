@@ -213,9 +213,10 @@ textarea.x-form-invalid
     padding-left: 12px;
     padding-bottom: 7px;
     margin-bottom:9px;
-    float: left; /* ie borked */
 }
-
+.roo-ie .x-form fieldset {
+    float: left; /*ie borked */
+}
 .x-form fieldset legend {
     font-weight: bold;
     
