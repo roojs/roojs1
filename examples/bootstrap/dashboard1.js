@@ -24,10 +24,10 @@ dashboard1 = new Roo.XComponent({
   'ac8f3751f51c35383892f7a1684e35ea' :"disabled = true",
   '8ac5836f3de7379d49bc60dcd36913c7' :"Input with Error",
   'cb76b3c00a2436a2a0d57f1282cbd66a' :"after : &lt;i class=&quot;fa fa-after&quot;&gt;&lt;/i&gt;",
+  'dc8f50091cddc5183be3a5b5f774912a' :"Upload a file",
   'fd249a0c28275ebf9d4c8464ca2225cf' :"ComboBox",
   '5485e0b19975fe1d4400e35162a7c099' :"Quick Example",
   'c4ca4238a0b923820dcc509a6f75849b' :"1",
-  '20cd1be1f1f5928b3ee0ca6d96c01338' :"Uplaod a file",
   'e7ef9c258353d78ca676588bd59ec915' :"cls = has-warning",
   'c81e728d9d4c2f636f067f89cc14862c' :"2",
   '483bc24d842fe8f3ec3a6f92fbd31922' :"Enter password",
@@ -200,7 +200,7 @@ dashboard1 = new Roo.XComponent({
                     },
                     {
                      xtype : 'ButtonUploader',
-                     html : _this._strings['20cd1be1f1f5928b3ee0ca6d96c01338'] /* Uplaod a file */,
+                     html : _this._strings['dc8f50091cddc5183be3a5b5f774912a'] /* Upload a file */,
                      xns : Roo.bootstrap,
                      '|xns' : 'Roo.bootstrap'
                     },
