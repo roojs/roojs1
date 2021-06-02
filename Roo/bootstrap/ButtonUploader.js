@@ -63,7 +63,7 @@ Roo.extend(Roo.bootstrap.ButtonUploader, Roo.bootstrap.Button,  {
         return  {
             cls :'div' ,
             cn : [
-                Roo.bootstrap.Button.prototype.getAutoCreate(),
+                Roo.bootstrap.Button.prototype.getAutoCreate.call(this),
                 {
                     tag: 'input',
                     multiple : 'multiple',
