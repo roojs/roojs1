@@ -33,20 +33,19 @@ Roo.bootstrap.ButtonUploader = function(config){
      this.addEvents({
          // raw events
         /**
-         * @event preview
-         * When a image is clicked on - and needs to display a slideshow or similar..
-         * @param {Roo.bootstrap.Card} this
-         * @param {Object} The image information data 
+         * @event beforeselect
+         * When button is pressed, before show upload files dialog is shown
+         * @param {Roo.bootstrap.UploaderButton} this
          *
          */
-        'preview' : true,
+        'beforeselect' : true,
          /**
-         * @event download
+         * @event fired when files have been selected, 
          * When a the download link is clicked
          * @param {Roo.bootstrap.Card} this
          * @param {Object} The image information data  contains 
          */
-        'download' : true
+        'uploaded' : true
         
     });
 };
@@ -113,6 +112,10 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
     onClick : function(e)
     {
         e.preventDefault();
+        
+        if ( this.fireEvent('beforeselect', this) === false) {
+            return;
+        }
          
         this.selectorEl.dom.click();
          
@@ -127,7 +130,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
         }
         
         Roo.each(this.selectorEl.dom.files, function(file){    
-            this.addFile(file);
+            this.fireEvent('uploaded', this, [file]);
         }, this);
          
     },
@@ -155,17 +158,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
         
         
         var url = _this.urlAPI.createObjectURL( file);
-           
-        this.addCard({
-            id : Roo.bootstrap.CardUploader.ID--,
-            is_uploaded : false,
-            src : url,
-            srcfile : file,
-            title : file.name,
-            mimetype : file.type,
-            preview : false,
-            is_deleted : 0
-        });
+       
         
     },
     
@@ -187,152 +180,15 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
      *
      * 
     */
-    
-    addCard : function (data)
-    {
-        // hidden input element?
-        // if the file is not an image...
-        //then we need to use something other that and header_image
-        var t = this;
-        //   remove.....
-        var footer = [
-            {
-                xns : Roo.bootstrap,
-                xtype : 'CardFooter',
-                 items: [
-                    {
-                        xns : Roo.bootstrap,
-                        xtype : 'Element',
-                        cls : 'd-flex',
-                        items : [
-                            
-                            {
-                                xns : Roo.bootstrap,
-                                xtype : 'Button',
-                                html : String.format("<small>{0}</small>", data.title),
-                                cls : 'col-10 text-left',
-                                size: 'sm',
-                                weight: 'link',
-                                fa : 'download',
-                                listeners : {
-                                    click : function() {
-                                     
-                                        t.fireEvent( "download", t, data );
-                                    }
-                                }
-                            },
-                          
-                            {
-                                xns : Roo.bootstrap,
-                                xtype : 'Button',
-                                style: 'max-height: 28px; ',
-                                size : 'sm',
-                                weight: 'danger',
-                                cls : 'col-2',
-                                fa : 'times',
-                                listeners : {
-                                    click : function() {
-                                        t.removeCard(data.id)
-                                    }
-                                }
-                            }
-                        ]
-                    }
-                    
-                ] 
-            }
-            
-        ];
-        
-        var cn = this.addxtype(
-            {
-                 
-                xns : Roo.bootstrap,
-                xtype : 'Card',
-                closeable : true,
-                header : !data.mimetype.match(/image/) && !data.preview ? "Document": false,
-                header_image : data.mimetype.match(/image/) ? data.src  : data.preview,
-                header_image_fit_square: true, // fixme  - we probably need to use the 'Img' element to do stuff like this.
-                data : data,
-                html : false,
-                 
-                items : footer,
-                initEvents : function() {
-                    Roo.bootstrap.Card.prototype.initEvents.call(this);
-                    var card = this;
-                    this.imgEl = this.el.select('.card-img-top').first();
-                    if (this.imgEl) {
-                        this.imgEl.on('click', function() { t.fireEvent( "preview", t, data ); }, this);
-                        this.imgEl.set({ 'pointer' : 'cursor' });
-                                  
-                    }
-                    this.getCardFooter().addClass('p-1');
-                    
-                  
-                }
-                
-            }
-        );
-        // dont' really need ot update items.
-        // this.items.push(cn);
-        this.fileCollection.add(cn);
-        
-        if (!data.srcfile) {
-            this.updateInput();
-            return;
-        }
-            
-        var _t = this;
-        var reader = new FileReader();
-        reader.addEventListener("load", function() {  
-            data.srcdata =  reader.result;
-            _t.updateInput();
-        });
-        reader.readAsDataURL(data.srcfile);
-        
-        
-        
-    },
-    removeCard : function(id)
-    {
-        
-        var card  = this.fileCollection.get(id);
-        card.data.is_deleted = 1;
-        card.data.src = ''; /// delete the source - so it reduces size of not uploaded images etc.
-        //this.fileCollection.remove(card);
-        //this.items = this.items.filter(function(e) { return e != card });
-        // dont' really need ot update items.
-        card.el.dom.parentNode.removeChild(card.el.dom);
-        this.updateInput();
-
-        
-    },
+     
     reset: function()
     {
-        this.fileCollection.each(function(card) {
-            if (card.el.dom && card.el.dom.parentNode) {
-                card.el.dom.parentNode.removeChild(card.el.dom);
-            }
-        });
-        this.fileCollection.clear();
-        this.updateInput();
-    },
+         
+         this.selectorEl
+    } 
     
-    updateInput : function()
-    {
-         var data = [];
-        this.fileCollection.each(function(e) {
-            data.push(e.data);
-            
-        });
-        this.inputEl().dom.value = JSON.stringify(data);
-        
-        
-        
-    }
+    
     
     
 });
-
-
-Roo.bootstrap.CardUploader.ID = -1;
+ 
