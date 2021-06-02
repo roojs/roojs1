@@ -27,6 +27,7 @@ dashboard1 = new Roo.XComponent({
   'fd249a0c28275ebf9d4c8464ca2225cf' :"ComboBox",
   '5485e0b19975fe1d4400e35162a7c099' :"Quick Example",
   'c4ca4238a0b923820dcc509a6f75849b' :"1",
+  '20cd1be1f1f5928b3ee0ca6d96c01338' :"Uplaod a file",
   'e7ef9c258353d78ca676588bd59ec915' :"cls = has-warning",
   'c81e728d9d4c2f636f067f89cc14862c' :"2",
   '483bc24d842fe8f3ec3a6f92fbd31922' :"Enter password",
@@ -58,8 +59,8 @@ dashboard1 = new Roo.XComponent({
   '1dcae4807c06e16567efb6eff4f1296c' :"Multiple selection",
   '9fced129522f128b2445a41fb0b6ef9f' :"checkbox",
   'd1457b72c3fb323a2671125aef3eab5d' :"?",
-  '4c3d0e43b52db64c94f842da7fc7224c' :"Enter ...",
-  'a4d3b161ce1309df1c4e25df28694b7b' :"Submit"
+  'a4d3b161ce1309df1c4e25df28694b7b' :"Submit",
+  '4c3d0e43b52db64c94f842da7fc7224c' :"Enter ..."
  },
  _named_strings : {
   'radio_boxLabel' : 'b52b5a382a07e93eb72c79ae431f3159' /* Radio Disabled */ ,
@@ -199,8 +200,8 @@ dashboard1 = new Roo.XComponent({
                     },
                     {
                      xtype : 'ButtonUpload',
+                     html : _this._strings['20cd1be1f1f5928b3ee0ca6d96c01338'] /* Uplaod a file */,
                      inputType : 'file',
-                     placeholder : _this._strings['c3d8baf1b9da3d6922aea0057717a0b7'] /* Enter email */,
                      xns : Roo.bootstrap,
                      '|xns' : 'Roo.bootstrap'
                     },
