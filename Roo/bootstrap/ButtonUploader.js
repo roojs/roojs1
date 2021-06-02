@@ -129,38 +129,15 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
             return;
         }
         
-        Roo.each(this.selectorEl.dom.files, function(file){    
-            this.fireEvent('uploaded', this, [file]);
+        Roo.each(this.selectorEl.dom.files, function(file){
+            var url = this.urlAPI.createObjectURL(file); // not sure...
+            this.fireEvent('uploaded', this, [file, url]);
         }, this);
          
     },
     
-      
-    
-      
-    
-    addFile : function(file)
-    {
-           
-        if(typeof(file) === 'string'){
-            throw "Add file by name?"; // should not happen
-            return;
-        }
-        
-        if(!file || !this.urlAPI){
-            return;
-        }
-        
-        // file;
-        // file.type;
-        
-        var _this = this;
-        
-        
-        var url = _this.urlAPI.createObjectURL( file);
        
-        
-    },
+   
     
     /**
      * addCard - add an Attachment to the uploader
