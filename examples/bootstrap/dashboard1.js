@@ -199,7 +199,7 @@ dashboard1 = new Roo.XComponent({
                      '|xns' : 'Roo.bootstrap'
                     },
                     {
-                     xtype : 'ButtonUpload',
+                     xtype : 'ButtonUploader',
                      html : _this._strings['20cd1be1f1f5928b3ee0ca6d96c01338'] /* Uplaod a file */,
                      inputType : 'file',
                      xns : Roo.bootstrap,
