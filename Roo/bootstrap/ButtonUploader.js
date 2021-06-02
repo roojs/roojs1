@@ -50,7 +50,7 @@ Roo.bootstrap.ButtonUploader = function(config){
     });
 };
  
-Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
+Roo.extend(Roo.bootstrap.ButtonUploader, Roo.bootstrap.Button,  {
     
      
     errorTimeout : 3000,
