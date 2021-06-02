@@ -8,7 +8,6 @@ dashboard1 = new Roo.XComponent({
   'dbd7790bcd23fde7607101ef6a633779' :"http://",
   '9dffbf69ffba8bc38bc4e01abf4b1675' :"Text",
   '680e083786e18d3b9bd07bffd61dc5dc' :"after : &lt;i class=&quot;fa fa-ambulance&quot;&gt;&lt;/i&gt; before : &lt;i class=&quot;fa fa-dollar&quot;&gt;&lt;/i&gt;",
-  'bc6d090c772eedbd8e59e273620830c6' :"File Input",
   'f6b6d9142474aba10b39e88cf4e06f6e' :"before : @",
   '7c4d0cf56e05ed67ec50246c517e149b' :"md 3",
   'cb6b36c6d62d94b76628a4543517f89b' :"md 4",
@@ -59,8 +58,8 @@ dashboard1 = new Roo.XComponent({
   '1dcae4807c06e16567efb6eff4f1296c' :"Multiple selection",
   '9fced129522f128b2445a41fb0b6ef9f' :"checkbox",
   'd1457b72c3fb323a2671125aef3eab5d' :"?",
-  'a4d3b161ce1309df1c4e25df28694b7b' :"Submit",
-  '4c3d0e43b52db64c94f842da7fc7224c' :"Enter ..."
+  '4c3d0e43b52db64c94f842da7fc7224c' :"Enter ...",
+  'a4d3b161ce1309df1c4e25df28694b7b' :"Submit"
  },
  _named_strings : {
   'radio_boxLabel' : 'b52b5a382a07e93eb72c79ae431f3159' /* Radio Disabled */ ,
@@ -200,7 +199,6 @@ dashboard1 = new Roo.XComponent({
                     },
                     {
                      xtype : 'ButtonUpload',
-                     fieldLabel : _this._strings['bc6d090c772eedbd8e59e273620830c6'] /* File Input */,
                      inputType : 'file',
                      placeholder : _this._strings['c3d8baf1b9da3d6922aea0057717a0b7'] /* Enter email */,
                      xns : Roo.bootstrap,
