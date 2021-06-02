@@ -23,7 +23,7 @@ Roo.bootstrap.ButtonUploader = function(config){
     
  
     
-    Roo.bootstrap.CardUploader.superclass.constructor.call(this, config);
+    Roo.bootstrap.ButtonUploader.superclass.constructor.call(this, config);
     
     
     this.fileCollection   = new Roo.util.MixedCollection(false,function(r) {
