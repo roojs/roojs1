@@ -38,8 +38,8 @@ Roo.bootstrap.ButtonUploader = function(config){
          /**
          * @event fired when files have been selected, 
          * When a the download link is clicked
-         * @param {Roo.bootstrap.Card} this
-         * @param {Object} The image information data  contains 
+         * @param {Roo.bootstrap.UploaderButton} this
+         * @param {Array} Array of files that have been uploaded
          */
         'uploaded' : true
         
@@ -124,12 +124,8 @@ Roo.extend(Roo.bootstrap.ButtonUploader, Roo.bootstrap.Button,  {
         if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
             return;
         }
+        this.fireEvent('uploaded', this,  this.selectorEl.dom.files );
         
-        Roo.each(this.selectorEl.dom.files, function(file){
-            var url = this.urlAPI.createObjectURL(file); // not sure...
-            this.fireEvent('uploaded', this, [file, url]);
-        }, this);
-         
     },
     
        
