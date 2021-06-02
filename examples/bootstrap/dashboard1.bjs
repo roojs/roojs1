@@ -175,7 +175,6 @@
                     },
                     {
                      "xtype" : "ButtonUploader",
-                     "String inputType" : "file",
                      "string html" : "Uplaod a file",
                      "$ xns" : "Roo.bootstrap"
                     },
