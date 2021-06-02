@@ -104,14 +104,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
         this.selectorEl = this.el.select('.roo-card-upload-selector', true).first();
         
         this.selectorEl.on('change', this.onFileSelected, this);
-        if (this.images) {
-            var t = this;
-            this.images.forEach(function(img) {
-                t.addCard(img)
-            });
-            this.images = false;
-        }
-        this.containerEl = this.el.select('.roo-card-uploader-container', true).first();
+         
          
        
     },
