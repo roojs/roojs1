@@ -19244,7 +19244,7 @@
         "name" : "fired when files have been selected,",
         "type" : "function",
         "desc" : "When a the download link is clicked",
-        "sig" : "function (_self, The)\n{\n\n}",
+        "sig" : "function (_self, Array)\n{\n\n}",
         "memberOf" : ""
       },
       {
