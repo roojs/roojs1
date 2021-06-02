@@ -25,11 +25,7 @@ Roo.bootstrap.ButtonUploader = function(config){
     
     Roo.bootstrap.ButtonUploader.superclass.constructor.call(this, config);
     
-    
-    this.fileCollection   = new Roo.util.MixedCollection(false,function(r) {
-        return r.data.id
-     });
-    
+     
      this.addEvents({
          // raw events
         /**
