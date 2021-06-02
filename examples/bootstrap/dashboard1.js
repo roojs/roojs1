@@ -8,7 +8,6 @@ dashboard1 = new Roo.XComponent({
   'dbd7790bcd23fde7607101ef6a633779' :"http://",
   '9dffbf69ffba8bc38bc4e01abf4b1675' :"Text",
   '680e083786e18d3b9bd07bffd61dc5dc' :"after : &lt;i class=&quot;fa fa-ambulance&quot;&gt;&lt;/i&gt; before : &lt;i class=&quot;fa fa-dollar&quot;&gt;&lt;/i&gt;",
-  'bc6d090c772eedbd8e59e273620830c6' :"File Input",
   'f6b6d9142474aba10b39e88cf4e06f6e' :"before : @",
   '7c4d0cf56e05ed67ec50246c517e149b' :"md 3",
   'cb6b36c6d62d94b76628a4543517f89b' :"md 4",
@@ -25,6 +24,7 @@ dashboard1 = new Roo.XComponent({
   'ac8f3751f51c35383892f7a1684e35ea' :"disabled = true",
   '8ac5836f3de7379d49bc60dcd36913c7' :"Input with Error",
   'cb76b3c00a2436a2a0d57f1282cbd66a' :"after : &lt;i class=&quot;fa fa-after&quot;&gt;&lt;/i&gt;",
+  'dc8f50091cddc5183be3a5b5f774912a' :"Upload a file",
   'fd249a0c28275ebf9d4c8464ca2225cf' :"ComboBox",
   '5485e0b19975fe1d4400e35162a7c099' :"Quick Example",
   'c4ca4238a0b923820dcc509a6f75849b' :"1",
@@ -199,10 +199,8 @@ dashboard1 = new Roo.XComponent({
                      '|xns' : 'Roo.bootstrap'
                     },
                     {
-                     xtype : 'Input',
-                     fieldLabel : _this._strings['bc6d090c772eedbd8e59e273620830c6'] /* File Input */,
-                     inputType : 'file',
-                     placeholder : _this._strings['c3d8baf1b9da3d6922aea0057717a0b7'] /* Enter email */,
+                     xtype : 'ButtonUploader',
+                     html : _this._strings['dc8f50091cddc5183be3a5b5f774912a'] /* Upload a file */,
                      xns : Roo.bootstrap,
                      '|xns' : 'Roo.bootstrap'
                     },
