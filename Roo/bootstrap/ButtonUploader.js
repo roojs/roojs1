@@ -73,45 +73,23 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Button,  {
                     tag: 'input',
                     multiple : 'multiple',
                     type : 'file',
-                    cls : 'd-none  roo-card-upload-selector'
+                    cls : 'd-none  roo-card-upload-selector' 
+                  
                 }
-                
+                 
 
             ]
         };
            
          
     },
-    
-    getChildContainer : function() /// what children are added to.
-    {
-        return this.containerEl;
-    },
-   
-    getButtonContainer : function() /// what children are added to.
-    {
-        return this.el.select(".roo-card-uploader-button-container").first();
-    },
+     
    
     initEvents : function()
     {
         
-        Roo.bootstrap.Input.prototype.initEvents.call(this);
+        Roo.bootstrap.Button.prototype.initEvents.call(this);
         
-        var t = this;
-        this.addxtype({
-            xns: Roo.bootstrap,
-
-            xtype : 'Button',
-            container_method : 'getButtonContainer' ,            
-            html :  this.html, // fix changable?
-            cls : 'w-100 ',
-            listeners : {
-                'click' : function(btn, e) {
-                    t.onClick(e);
-                }
-            }
-        });
         
         
         
