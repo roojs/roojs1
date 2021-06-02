@@ -396,6 +396,11 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.bootstrap.ButtonUploader",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.bootstrap.Calendar",
             "cn" : [],
             "is_class" : true
