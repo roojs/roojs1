@@ -362,6 +362,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
         return this.el;
     },
+    getDocumentBody : function() // used by menus - as they are attached to the body so zIndexes work
+    {
+        return Roo.get(document.body);
+    },
+    
     /**
      * Fetch the element to display the tooltip on.
      * @return {Roo.Element} defaults to this.el
@@ -3666,6 +3671,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     isLink : false,
     
+    container_method : 'getDocumentBody',
+    
+    
     getChildContainer : function() {
         return this.el;  
     },
@@ -3703,10 +3711,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
         
 	
-	if (this.triggerEl.hasClass('nav-item')) {
+	if (this.triggerEl.hasClass('nav-item') && this.triggerEl.select('.nav-link',true).length) {
 	    // dropdown toggle on the 'a' in BS4?
 	    this.triggerEl.select('.nav-link',true).first().addClass('dropdown-toggle');
-	} else {
+	} else if (!this.triggerEl.hasClass('no-dropdown-toggle')) {
 	    this.triggerEl.addClass('dropdown-toggle');
 	}
         if (Roo.isTouch) {
@@ -28954,7 +28962,7 @@ Roo.extend(Roo.bootstrap.menu.Separator, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = {
             tag : 'li',
-            cls: 'divider'
+            cls: 'dropdown-divider divider'
         };
         
         return cfg;

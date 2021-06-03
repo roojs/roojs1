@@ -26,7 +26,7 @@ Roo.extend(Roo.bootstrap.menu.Separator, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = {
             tag : 'li',
-            cls: 'divider'
+            cls: 'dropdown-divider divider'
         };
         
         return cfg;

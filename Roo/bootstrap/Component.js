@@ -149,6 +149,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
         return this.el;
     },
+    getDocumentBody : function() // used by menus - as they are attached to the body so zIndexes work
+    {
+        return Roo.get(document.body);
+    },
+    
     /**
      * Fetch the element to display the tooltip on.
      * @return {Roo.Element} defaults to this.el

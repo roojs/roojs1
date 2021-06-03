@@ -108,6 +108,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     isLink : false,
     
+    container_method : 'getDocumentBody',
+    
+    
     getChildContainer : function() {
         return this.el;  
     },
@@ -145,10 +148,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
         
 	
-	if (this.triggerEl.hasClass('nav-item')) {
+	if (this.triggerEl.hasClass('nav-item') && this.triggerEl.select('.nav-link',true).length) {
 	    // dropdown toggle on the 'a' in BS4?
 	    this.triggerEl.select('.nav-link',true).first().addClass('dropdown-toggle');
-	} else {
+	} else if (!this.triggerEl.hasClass('no-dropdown-toggle')) {
 	    this.triggerEl.addClass('dropdown-toggle');
 	}
         if (Roo.isTouch) {
