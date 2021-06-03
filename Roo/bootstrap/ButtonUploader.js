@@ -12,7 +12,7 @@
  * @cfg {Number} errorTimeout default 3000
  * @cfg {Array}  images  an array of ?? Img objects ??? when loading existing files..
  * @cfg {Array}  html The button text.
-
+ * @cfg {Boolean}  multiple (default true) Should the upload allow multiple files to be uploaded.
  *
  * @constructor
  * Create a new CardUploader
@@ -58,20 +58,22 @@ Roo.extend(Roo.bootstrap.ButtonUploader, Roo.bootstrap.Button,  {
     
     getAutoCreate : function()
     {
-        
+        var im = {
+            tag: 'input',
+            
+            type : 'file',
+            cls : 'd-none  roo-card-upload-selector' 
+          
+        }
+        if (this.multiple) {
+            im.multiple = 'multiple';
+        }
         
         return  {
             cls :'div' ,
             cn : [
                 Roo.bootstrap.Button.prototype.getAutoCreate.call(this),
-                {
-                    tag: 'input',
-                    multiple : 'multiple',
-                    type : 'file',
-                    cls : 'd-none  roo-card-upload-selector' 
-                  
-                }
-                 
+                im
 
             ]
         };
