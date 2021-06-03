@@ -128,7 +128,7 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">files </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.prototype.slice.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectorEl.dom.files</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.selectorEl.dom.reset</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.selectorEl.dom.value  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;</span><span class="jsdoc-comment">// hopefully reset..
 
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'uploaded'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">files </span><span class="jsdoc-syntax">);
 
