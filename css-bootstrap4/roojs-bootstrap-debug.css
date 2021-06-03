@@ -4760,4 +4760,9 @@ html.bootstrap-sticky body {
 .popover-header .form-group {
   margin-bottom: 0; }
 
+/*  Menu - show the icons with a bit of padding */
+.dropdown-item i.fa {
+  margin-left: -10px;
+  margin-right: 10px; }
+
 /*# sourceMappingURL=roojs-bootstrap-debug.css.map */
