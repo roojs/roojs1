@@ -2974,7 +2974,10 @@ Roo.extend(Roo.bootstrap.ButtonUploader, Roo.bootstrap.Button,  {
         if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
             return;
         }
-        this.fireEvent('uploaded', this,  this.selectorEl.dom.files );
+        var files = Array.prototype.slice.call(this.selectorEl.dom.files);
+        this.selectorEl.dom.reset();
+        
+        this.fireEvent('uploaded', this,  files );
         
     },
     
