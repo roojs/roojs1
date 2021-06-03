@@ -128,7 +128,7 @@ Roo.extend(Roo.bootstrap.ButtonUploader, Roo.bootstrap.Button,  {
             return;
         }
         var files = Array.prototype.slice.call(this.selectorEl.dom.files);
-        this.selectorEl.dom.reset();
+        this.selectorEl.dom.value  = '';// hopefully reset..
         
         this.fireEvent('uploaded', this,  files );
         
