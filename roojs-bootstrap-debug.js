@@ -3576,6 +3576,7 @@ Roo.bootstrap.MenuMgr = function(){
  * @cfg {bool} hidden  if the menu should be hidden when rendered.
  * @cfg {bool} stopEvent (true|false)  Stop event after trigger press (default true)
  * @cfg {bool} isLink (true|false)  the menu has link disable auto expand and collaspe (default false)
+ * @cfg {bool} hideTrigger (true|false)  default false - hide the carret for trigger.
  * 
  * @constructor
  * Create a new Menu
@@ -3671,7 +3672,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     isLink : false,
     
-    container_method : 'getDocumentBody',
+    container_method : 'getDocumentBody', // so the menu is rendered on the body and zIndex works.
+    
+    hideTrigger : false,
     
     
     getChildContainer : function() {
@@ -3710,12 +3713,13 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
         
-	
-	if (this.triggerEl.hasClass('nav-item') && this.triggerEl.select('.nav-link',true).length) {
-	    // dropdown toggle on the 'a' in BS4?
-	    this.triggerEl.select('.nav-link',true).first().addClass('dropdown-toggle');
-	} else if (!this.triggerEl.hasClass('no-dropdown-toggle')) {
-	    this.triggerEl.addClass('dropdown-toggle');
+	if (!this.hideTrigger) {
+	    if (this.triggerEl.hasClass('nav-item') && this.triggerEl.select('.nav-link',true).length) {
+		// dropdown toggle on the 'a' in BS4?
+		this.triggerEl.select('.nav-link',true).first().addClass('dropdown-toggle');
+	    } else {
+		this.triggerEl.addClass('dropdown-toggle');
+	    }
 	}
         if (Roo.isTouch) {
             this.el.on('touchstart'  , this.onTouch, this);

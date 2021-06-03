@@ -37980,6 +37980,15 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "hideTrigger",
+        "type" : "bool",
+        "desc" : [
+          "(true",
+          "false)"
+        ],
+        "memberOf" : ""
+      },
+      {
         "name" : "isLink",
         "type" : "bool",
         "desc" : [

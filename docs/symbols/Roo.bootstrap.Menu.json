@@ -135,6 +135,16 @@
       "values" : []
     },
     {
+      "name" : "hideTrigger",
+      "type" : "bool",
+      "desc" : "default false - hide the carret for trigger.",
+      "memberOf" : "Roo.bootstrap.Menu",
+      "values" : [
+        "(true",
+        "false)"
+      ]
+    },
+    {
       "name" : "registerMenu",
       "type" : "Boolean",
       "desc" : "True (default) - means that clicking on screen etc. hides it.",

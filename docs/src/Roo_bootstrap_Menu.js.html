@@ -13,6 +13,7 @@
  * @cfg {bool} hidden  if the menu should be hidden when rendered.
  * @cfg {bool} stopEvent (true|false)  Stop event after trigger press (default true)
  * @cfg {bool} isLink (true|false)  the menu has link disable auto expand and collaspe (default false)
+ * @cfg {bool} hideTrigger (true|false)  default false - hide the carret for trigger.
  * 
  * @constructor
  * Create a new Menu
@@ -108,7 +109,9 @@
 
     </span><span class="jsdoc-var">isLink </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
-    </span><span class="jsdoc-var">container_method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'getDocumentBody'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">container_method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'getDocumentBody'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// so the menu is rendered on the body and zIndex works.
+
+    </span><span class="jsdoc-var">hideTrigger </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
 
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
@@ -147,12 +150,13 @@
 
         </span><span class="jsdoc-var">this.triggerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'touchstart' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTriggerPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
-
-	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerEl.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'nav-item'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">this.triggerEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-link'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">) {
-	    </span><span class="jsdoc-comment">// dropdown toggle on the 'a' in BS4?
-	    </span><span class="jsdoc-var">this.triggerEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-link'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dropdown-toggle'</span><span class="jsdoc-syntax">);
-	} </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.triggerEl.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'no-dropdown-toggle'</span><span class="jsdoc-syntax">)) {
-	    </span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dropdown-toggle'</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hideTrigger</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerEl.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'nav-item'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">this.triggerEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-link'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">) {
+		</span><span class="jsdoc-comment">// dropdown toggle on the 'a' in BS4?
+		</span><span class="jsdoc-var">this.triggerEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-link'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dropdown-toggle'</span><span class="jsdoc-syntax">);
+	    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+		</span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dropdown-toggle'</span><span class="jsdoc-syntax">);
+	    }
 	}
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'  </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouch</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
