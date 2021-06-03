@@ -149,6 +149,11 @@
     {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
     },
+    </span><span class="jsdoc-var">getDocumentBody </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() </span><span class="jsdoc-comment">// used by menus - as they are attached to the body so zIndexes work
+    </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
+    },
+
     </span><span class="jsdoc-comment">/**
      * Fetch the element to display the tooltip on.
      * @return {Roo.Element} defaults to this.el
