@@ -56,15 +56,16 @@ Roo.extend(Roo.bootstrap.ButtonUploader, Roo.bootstrap.Button,  {
     fileCollection : false,
     allowBlank : true,
     
+    multiple : true,
+    
     getAutoCreate : function()
     {
         var im = {
             tag: 'input',
-            
             type : 'file',
             cls : 'd-none  roo-card-upload-selector' 
           
-        }
+        };
         if (this.multiple) {
             im.multiple = 'multiple';
         }

@@ -19029,6 +19029,12 @@
         "memberOf" : "Roo.util.Observable"
       },
       {
+        "name" : "multiple",
+        "type" : "Boolean",
+        "desc" : "(default true) Should the upload allow multiple files to be uploaded.",
+        "memberOf" : ""
+      },
+      {
         "name" : "name",
         "type" : "string",
         "desc" : "Specifies name attribute",
