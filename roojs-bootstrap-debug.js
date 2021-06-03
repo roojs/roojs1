@@ -3690,7 +3690,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag : 'ul',
-            cls : 'dropdown-menu' ,
+            cls : 'dropdown-menu shadow' ,
             style : 'z-index:1000'
             
         };
