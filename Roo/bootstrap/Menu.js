@@ -13,8 +13,9 @@
  * @cfg {bool} hidden  if the menu should be hidden when rendered.
  * @cfg {bool} stopEvent (true|false)  Stop event after trigger press (default true)
  * @cfg {bool} isLink (true|false)  the menu has link disable auto expand and collaspe (default false)
- * @cfg {bool} hideTrigger (true|false)  default false - hide the carret for trigger.
- * 
+  * @cfg {bool} hideTrigger (true|false)  default false - hide the carret for trigger.
+  * @cfg {String} align  default tl-bl? == below  - how the menu should be aligned. 
+ 
  * @constructor
  * Create a new Menu
  * @param {Object} config The config object
@@ -91,7 +92,7 @@ Roo.bootstrap.Menu = function(config){
 Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
    /// html : false,
-    //align : '',
+   
     triggerEl : false,  // is this set by component builder? -- it should really be fetched from parent()???
     type: false,
     /**
@@ -113,6 +114,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
     hideTrigger : false,
     
+    align : 'tl-bl?',
+    
     
     getChildContainer : function() {
         return this.el;  
@@ -123,8 +126,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         //if (['right'].indexOf(this.align)!==-1) {
         //    cfg.cn[1].cls += ' pull-right'
         //}
-        
-        
+         
         var cfg = {
             tag : 'ul',
             cls : 'dropdown-menu shadow' ,
@@ -275,8 +277,31 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if(!this.el){
             this.render();
         }
+        this.el.addClass('show'); // show otherwise we do not know how big we are..
+	 
+	var xy = this.el.getAlignToXY(el, pos);
+	
+	// bl-tl << left align  below
+	// tl-bl << left align 
+	
+	if(this.el.getWidth() + xy[0] >= Roo.lib.Dom.getViewWidth()){
+	    // if it goes to far to the right.. -> align left.
+	    xy = this.el.getAlignToXY(el, this.align.replace('/l/g', 'r'))
+        }
+	if(xy[0] < 0){
+	    // was left align - go right?
+	    xy = this.el.getAlignToXY(el, this.align.replace('/r/g', 'l'))
+        }
+	
+	// goes down the bottom
+        if(this.el.getHeight() + xy[1] >= Roo.lib.Dom.getViewHeight() ||
+	   xy[1]  < 0 ){
+	    var a = this.align.replace('?', '').split('-');
+	    xy = this.el.getAlignToXY(el, a[1]  + '-' + a[0] + '?')
+	    
+        }
         
-        this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
+        this.showAt(  xy , parentMenu, false);
     },
      /**
      * Displays this menu at a specific xy position
@@ -299,15 +324,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.triggerEl.addClass('open');
 	this.el.addClass('show');
         
+	
+	
         // reassign x when hitting right
-        if(this.el.getWidth() + xy[0] >= Roo.lib.Dom.getViewWidth()){
-            xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
-        }
         
         // reassign y when hitting bottom
-        if(this.el.getHeight() + xy[1] >= Roo.lib.Dom.getViewHeight()){
-            xy[1] = xy[1] - this.el.getHeight() - this.triggerEl.getHeight();
-        }
         
         // but the list may align on trigger left or trigger top... should it be a properity?
         
@@ -395,7 +416,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.hide();
         } else {
             Roo.log('show');
-            this.show(this.triggerEl, '?', false);
+	     
+            this.show(this.triggerEl, this.align, false);
         }
         
         if(this.stopEvent || e.getTarget().nodeName.toLowerCase() === 'i'){
