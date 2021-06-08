@@ -29855,8 +29855,7 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
                     type :  "button",
                     cls: "close",
                     html : '×',
-                    style : 'display:none'
-                    
+                    style : this.close ? '' : 'display:none'
                 },
                 {
                     tag : 'i',
