@@ -66,6 +66,13 @@
       ]
     },
     {
+      "name" : "align",
+      "type" : "String",
+      "desc" : "default tl-bl? == below  - how the menu should be aligned.",
+      "memberOf" : "Roo.bootstrap.Menu",
+      "values" : []
+    },
+    {
       "name" : "hidden",
       "type" : "bool",
       "desc" : "if the menu should be hidden when rendered.",

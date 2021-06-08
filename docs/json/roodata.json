@@ -37935,6 +37935,12 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "align",
+        "type" : "String",
+        "desc" : "default tl-bl? == below  - how the menu should be aligned.",
+        "memberOf" : ""
+      },
+      {
         "name" : "allowDomMove",
         "type" : "Boolean",
         "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",

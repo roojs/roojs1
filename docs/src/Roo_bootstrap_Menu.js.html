@@ -13,8 +13,9 @@
  * @cfg {bool} hidden  if the menu should be hidden when rendered.
  * @cfg {bool} stopEvent (true|false)  Stop event after trigger press (default true)
  * @cfg {bool} isLink (true|false)  the menu has link disable auto expand and collaspe (default false)
- * @cfg {bool} hideTrigger (true|false)  default false - hide the carret for trigger.
- * 
+  * @cfg {bool} hideTrigger (true|false)  default false - hide the carret for trigger.
+  * @cfg {String} align  default tl-bl? == below  - how the menu should be aligned. 
+ 
  * @constructor
  * Create a new Menu
  * @param {Object} config The config object
@@ -91,7 +92,7 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Menu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
 
    </span><span class="jsdoc-comment">/// html : false,
-    //align : '',
+
     </span><span class="jsdoc-var">triggerEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-comment">// is this set by component builder? -- it should really be fetched from parent()???
     </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
@@ -113,6 +114,8 @@
 
     </span><span class="jsdoc-var">hideTrigger </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
+    </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tl-bl?'</span><span class="jsdoc-syntax">,
+
 
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
@@ -123,7 +126,6 @@
         </span><span class="jsdoc-comment">//if (['right'].indexOf(this.align)!==-1) {
         //    cfg.cn[1].cls += ' pull-right'
         //}
-
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
@@ -275,8 +277,31 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">();
         }
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// show otherwise we do not know how big we are..
 
-        </span><span class="jsdoc-var">this.showAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.defaultAlign</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">parentMenu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">);
+
+	</span><span class="jsdoc-comment">// bl-tl &lt;&lt; left align  below
+	// tl-bl &lt;&lt; left align 
+
+	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] &gt;= </span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">()){
+	    </span><span class="jsdoc-comment">// if it goes to far to the right.. -&gt; align left.
+	    </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.align.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'/l/g'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'r'</span><span class="jsdoc-syntax">))
+        }
+	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] &lt; 0){
+	    </span><span class="jsdoc-comment">// was left align - go right?
+	    </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.align.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'/r/g'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'l'</span><span class="jsdoc-syntax">))
+        }
+
+	</span><span class="jsdoc-comment">// goes down the bottom
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1] &gt;= </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() ||
+	   </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1]  &lt; 0 ){
+	    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.align.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'?'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">);
+	    </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">[1]  + </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">[0] + </span><span class="jsdoc-string">'?'</span><span class="jsdoc-syntax">)
+
+        }
+
+        </span><span class="jsdoc-var">this.showAt</span><span class="jsdoc-syntax">(  </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parentMenu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
     },
      </span><span class="jsdoc-comment">/**
      * Displays this menu at a specific xy position
@@ -299,17 +324,13 @@
         </span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
 	</span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">);
 
+
+
         </span><span class="jsdoc-comment">// reassign x when hitting right
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] &gt;= </span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">()){
-            </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] = </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] - </span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.triggerEl.getWidth</span><span class="jsdoc-syntax">();
-        }
 
-        </span><span class="jsdoc-comment">// reassign y when hitting bottom
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1] &gt;= </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">()){
-            </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1] = </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1] - </span><span class="jsdoc-var">this.el.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.triggerEl.getHeight</span><span class="jsdoc-syntax">();
-        }
+        // reassign y when hitting bottom
 
-        </span><span class="jsdoc-comment">// but the list may align on trigger left or trigger top... should it be a properity?
+        // but the list may align on trigger left or trigger top... should it be a properity?
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'auto' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.el.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.slice</span><span class="jsdoc-syntax">(-1) != </span><span class="jsdoc-string">&quot;%&quot;</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
@@ -395,7 +416,8 @@
             </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'?'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
         }
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stopEvent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.nodeName.toLowerCase</span><span class="jsdoc-syntax">() === </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">){
