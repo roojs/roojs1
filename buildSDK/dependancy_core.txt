@@ -60,6 +60,7 @@ Roo.util.Format
 Roo.MasterTemplate
 Roo.util.CSS
 Roo.util.ClickRepeater
+Roo.util.Clipboard
 Roo.KeyNav
 Roo.KeyMap
 Roo.util.TextMetrics

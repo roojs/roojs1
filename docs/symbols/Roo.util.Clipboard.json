@@ -1,0 +1,18 @@
+{
+  "name" : "Roo.util.Clipboard",
+  "augments" : [],
+  "desc" : "Clipboard UTILS",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "memberOf" : "Clipboard",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [],
+  "returns" : [],
+  "config" : [],
+  "methods" : [],
+  "events" : []
+}

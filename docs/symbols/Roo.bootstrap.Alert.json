@@ -80,6 +80,20 @@
       "values" : []
     },
     {
+      "name" : "seconds",
+      "type" : "Number",
+      "desc" : "default:-1 Number of seconds until it disapears (-1 means never.)",
+      "memberOf" : "Roo.bootstrap.Alert",
+      "values" : []
+    },
+    {
+      "name" : "close",
+      "type" : "Boolean",
+      "desc" : "true to show a x closer",
+      "memberOf" : "Roo.bootstrap.Alert",
+      "values" : []
+    },
+    {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
@@ -122,13 +136,6 @@
       "values" : []
     },
     {
-      "name" : "faicon",
-      "type" : "String",
-      "desc" : "font-awesomeicon",
-      "memberOf" : "Roo.bootstrap.Alert",
-      "values" : []
-    },
-    {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
@@ -146,6 +153,13 @@
         "warning",
         "danger )"
       ]
+    },
+    {
+      "name" : "fa",
+      "type" : "String",
+      "desc" : "font-awesomeicon",
+      "memberOf" : "Roo.bootstrap.Alert",
+      "values" : []
     },
     {
       "name" : "name",

@@ -1,0 +1,38 @@
+<html><head><title>Roo/util/Clipboard.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+ * @class Roo.util.Clipboard
+ * @static
+ * 
+ * Clipboard UTILS
+ * 
+ **/
+</span><span class="jsdoc-var">Roo.util.Clipboard </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-comment">/**
+     * Writes a string to the clipboard - using the Clipboard API if https, otherwise using text area.
+     * @param {String} text to copy to clipboard
+     */
+    </span><span class="jsdoc-var">write </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-comment">// navigator clipboard api needs a secure context (https)
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">navigator.clipboard </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">window.isSecureContext</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// navigator clipboard api method'
+            </span><span class="jsdoc-var">navigator.clipboard.writeText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// text area method
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ta </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;textarea&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ta.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// make the textarea out of viewport
+        </span><span class="jsdoc-var">ta.style.position </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;fixed&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">ta.style.left </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;-999999px&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">ta.style.top </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;-999999px&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">document.body.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ta</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ta.focus</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">ta.select</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">document.execCommand</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'copy'</span><span class="jsdoc-syntax">);
+        (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">ta.remove</span><span class="jsdoc-syntax">();
+        })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(100);
+
+    }
+
+}
+    </span></code></body></html>

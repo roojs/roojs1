@@ -16165,6 +16165,12 @@
         "memberOf" : "Roo.bootstrap.Component"
       },
       {
+        "name" : "close",
+        "type" : "Boolean",
+        "desc" : "true to show a x closer",
+        "memberOf" : ""
+      },
+      {
         "name" : "cls",
         "type" : "String",
         "desc" : "css class",
@@ -16189,7 +16195,7 @@
         "memberOf" : "Roo.Component"
       },
       {
-        "name" : "faicon",
+        "name" : "fa",
         "type" : "String",
         "desc" : "font-awesomeicon",
         "memberOf" : ""
@@ -16220,6 +16226,12 @@
         "type" : "string",
         "desc" : "Specifies name attribute",
         "memberOf" : "Roo.bootstrap.Component"
+      },
+      {
+        "name" : "seconds",
+        "type" : "Number",
+        "desc" : "default:-1 Number of seconds until it disapears (-1 means never.)",
+        "memberOf" : ""
       },
       {
         "name" : "style",
@@ -37933,6 +37945,12 @@
         "type" : "String",
         "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "align",
+        "type" : "String",
+        "desc" : "default tl-bl? == below  - how the menu should be aligned.",
+        "memberOf" : ""
       },
       {
         "name" : "allowDomMove",
@@ -107548,6 +107566,11 @@
         "memberOf" : "Roo.util.Observable"
       }
     ]
+  },
+  "Roo.util.Clipboard" : {
+    "props" : [],
+    "events" : [],
+    "methods" : []
   },
   "Roo.util.DelayedTask" : {
     "props" : [],

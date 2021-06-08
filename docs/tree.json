@@ -1495,6 +1495,11 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.util.Clipboard",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
             "name" : "Roo.util.DelayedTask",
             "cn" : [],
             "is_class" : false

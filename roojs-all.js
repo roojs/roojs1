@@ -599,6 +599,9 @@ if(A<500){return 400;}else if(A<1700){return 320;}else if(A<2600){return 250;}el
 if(this.pressClass){this.el.removeClass(this.pressClass);}this.el.on("mouseover",this.handleMouseReturn,this);},handleMouseReturn:function(){this.el.un("mouseover",this.handleMouseReturn);if(this.pressClass){this.el.addClass(this.pressClass);}this.click();
 },handleMouseUp:function(){clearTimeout(this.timer);this.el.un("mouseover",this.handleMouseReturn);this.el.un("mouseout",this.handleMouseOut);Roo.get(document).un("mouseup",this.handleMouseUp);this.el.removeClass(this.pressClass);this.fireEvent("mouseup",this);
 }});
+// Roo/util/Clipboard.js
+Roo.util.Clipboard={write:function(A){if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(A);return;}var ta=document.createElement("textarea");ta.value=A;ta.style.position="fixed";ta.style.left="-999999px";ta.style.top="-999999px";
+document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');(function(){ta.remove();}).defer(100);}};
 // Roo/KeyNav.js
 Roo.KeyNav=function(el,A){this.el=Roo.get(el);Roo.apply(this,A);if(!this.disabled){this.disabled=true;this.enable();}};Roo.KeyNav.prototype={disabled:false,defaultEventAction:"stopEvent",forceKeyDown:false,prepareEvent:function(e){var k=e.getKey();var h=this.keyToHandler[k];
 if(Roo.isSafari&&h&&k>=37&&k<=40){e.stopEvent();}},relay:function(e){var k=e.getKey();var h=this.keyToHandler[k];if(h&&this[h]){if(this.doRelay(e,this[h],h)!==true){e[this.defaultEventAction]();}}},doRelay:function(e,h,A){return h.call(this.scope||this,e);
