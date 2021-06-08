@@ -11,7 +11,8 @@
  * @cfg {String} html The content of alert
  * @cfg {String} weight (  success | info | warning | danger )
  * @cfg {String} fa font-awesomeicon
-   @cfg {Number} seconds default:-1 Number of seconds until it disapears (-1 means never.)
+ * @cfg {Number} seconds default:-1 Number of seconds until it disapears (-1 means never.)
+ * @cfg {Boolean} close true to show a x closer
  * 
  * 
  * @constructor
@@ -32,6 +33,8 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
     weight: false,
     fa: false,
     faicon: false, // BC
+    close : false,
+    
     
     getAutoCreate : function()
     {
@@ -40,6 +43,14 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
             tag : 'div',
             cls : 'alert',
             cn : [
+                {
+                    tag: 'button',
+                    type :  "button",
+                    cls: "close",
+                    html : '×',
+                    style : 'display:none'
+                    
+                },
                 {
                     tag : 'i',
                     cls : 'roo-alert-icon'
@@ -103,12 +114,12 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
     setIcon : function(icon)
     {
         if(this.faicon){
-            this.el.select('.roo-alert-icon',true).first().removeClass(['fa', 'fa-' + this.faicon]);
+            this.alertEl.removeClass(['fa', 'fa-' + this.faicon]);
         }
         
         this.faicon = icon;
         
-        this.el.select('.roo-alert-icon',true).first().addClass(['fa', 'fa-' + this.faicon]);
+        this.alertEl.addClass(['fa', 'fa-' + this.faicon]);
     },
     
     hide: function() 
