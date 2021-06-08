@@ -600,7 +600,7 @@ if(this.pressClass){this.el.removeClass(this.pressClass);}this.el.on("mouseover"
 },handleMouseUp:function(){clearTimeout(this.timer);this.el.un("mouseover",this.handleMouseReturn);this.el.un("mouseout",this.handleMouseOut);Roo.get(document).un("mouseup",this.handleMouseUp);this.el.removeClass(this.pressClass);this.fireEvent("mouseup",this);
 }});
 // Roo/util/Clipboard.js
-Roo.util.Clipboard={copy:function(A){if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(A);return;}var ta=document.createElement("textarea");ta.value=A;ta.style.position="fixed";ta.style.left="-999999px";ta.style.top="-999999px";
+Roo.util.Clipboard={write:function(A){if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(A);return;}var ta=document.createElement("textarea");ta.value=A;ta.style.position="fixed";ta.style.left="-999999px";ta.style.top="-999999px";
 document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');(function(){ta.remove();}).defer(100);}};
 // Roo/KeyNav.js
 Roo.KeyNav=function(el,A){this.el=Roo.get(el);Roo.apply(this,A);if(!this.disabled){this.disabled=true;this.enable();}};Roo.KeyNav.prototype={disabled:false,defaultEventAction:"stopEvent",forceKeyDown:false,prepareEvent:function(e){var k=e.getKey();var h=this.keyToHandler[k];
