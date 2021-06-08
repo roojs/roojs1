@@ -27,6 +27,7 @@ Roo.util.Clipboard = {
         (function() {
             textArea.remove();
         }).defer(100);
+        return true;
     }
         
 }
