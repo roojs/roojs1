@@ -14513,7 +14513,10 @@ Roo.extend(Roo.util.ClickRepeater, Roo.util.Observable, {
  * 
  **/
 Roo.util.Clipboard = {
-    
+    /**
+     * Writes a string to the clipboard - using the Clipboard API if https, otherwise using text area.
+     * @param {String} text to copy to clipboard
+     */
     write : function(text) {
         // navigator clipboard api needs a secure context (https)
         if (navigator.clipboard && window.isSecureContext) {
