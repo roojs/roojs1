@@ -11,7 +11,8 @@ Roo.util.Clipboard = {
         // navigator clipboard api needs a secure context (https)
         if (navigator.clipboard && window.isSecureContext) {
             // navigator clipboard api method'
-            return navigator.clipboard.writeText(textToCopy);
+            navigator.clipboard.writeText(textToCopy);
+            return ;
         } 
         // text area method
         var textArea = document.createElement("textarea");
@@ -27,7 +28,7 @@ Roo.util.Clipboard = {
         (function() {
             textArea.remove();
         }).defer(100);
-        return true;
+        
     }
         
 }
