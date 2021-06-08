@@ -15,18 +15,18 @@ Roo.util.Clipboard = {
             return ;
         } 
         // text area method
-        var textArea = document.createElement("textarea");
-        textArea.value = textToCopy;
+        var ta = document.createElement("textarea");
+        ta.value = textToCopy;
         // make the textarea out of viewport
-        textArea.style.position = "fixed";
-        textArea.style.left = "-999999px";
-        textArea.style.top = "-999999px";
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
+        ta.style.position = "fixed";
+        ta.style.left = "-999999px";
+        ta.style.top = "-999999px";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
         document.execCommand('copy');
         (function() {
-            textArea.remove();
+            ta.remove();
         }).defer(100);
         
     }
