@@ -29894,6 +29894,9 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
         this.el.setVisibilityMode(Roo.Element.DISPLAY);
         this.titleEl =  this.el.select('.roo-alert-title',true).first();
         this.iconEl = this.el.select('.roo-alert-icon',true).first();
+        if (this.seconds > 0) {
+            this.hide.defer(this.seconds, this);
+        }
     },
     
     setTitle : function(str)
