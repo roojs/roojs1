@@ -29817,7 +29817,8 @@ Roo.apply(Roo.bootstrap.LocationPicker, {
  * @cfg {String} title The title of alert
  * @cfg {String} html The content of alert
  * @cfg {String} weight (  success | info | warning | danger )
- * @cfg {String} faicon font-awesomeicon
+ * @cfg {String} fa font-awesomeicon
+ * 
  * 
  * @constructor
  * Create a new alert
@@ -29835,7 +29836,8 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
     title: '',
     html: '',
     weight: false,
-    faicon: false,
+    fa: false,
+    faicon: false, // BC
     
     getAutoCreate : function()
     {
@@ -29864,6 +29866,9 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
         
         if(this.faicon){
             cfg.cn[0].cls += ' fa ' + this.faicon;
+        }
+        if(this.fa){
+            cfg.cn[0].cls += ' fa ' + this.fa;
         }
         
         if(this.weight){
