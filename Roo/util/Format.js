@@ -255,7 +255,7 @@ Roo.util.Format = function(){
          */
         size : function(value, decimals)
         {
-            var sizes = ['b', 'k', 'm', 'g', 't'];
+            var sizes = ['b', 'k', 'M', 'G', 'T'];
             if (value == 0) {
                 return 0;
             }
