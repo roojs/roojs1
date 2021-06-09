@@ -78,9 +78,18 @@
         }
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bindEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">pel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;[tooltip]&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pel</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">bindEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pel</span><span class="jsdoc-syntax">);
+            }
+        }
+
+
 
         </span><span class="jsdoc-comment">// you can not look for children, as if el is the body.. then everythign is the child..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-comment">//
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">pel </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-comment">//
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;[tooltip]&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements.length</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
@@ -94,7 +103,7 @@
             </span><span class="jsdoc-comment">//Roo.log(&quot;child element over..&quot;);
 
         </span><span class="jsdoc-syntax">}
-        </span><span class="jsdoc-var">this.currentEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bindEl</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.currentEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.currentTip.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bindEl</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.currentRegion </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Region.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.currentTip.enter</span><span class="jsdoc-syntax">();
@@ -285,6 +294,22 @@
             </span><span class="jsdoc-var">this.arrowEl.setLeft</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.innerEl.getWidth</span><span class="jsdoc-syntax">()/2) - 5);
 
         }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">elems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">highest </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Number.MIN_SAFE_INTEGER </span><span class="jsdoc-syntax">|| -(</span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(2, 53) - 1);
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">elems.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+          </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">zindex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Number.parseInt</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">document.defaultView.getComputedStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">elems</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getPropertyValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;z-index&quot;</span><span class="jsdoc-syntax">),
+                10
+          );
+          </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">zindex </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">highest</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">highest </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">zindex</span><span class="jsdoc-syntax">;
+          }
+        }
+
+
+
+        </span><span class="jsdoc-var">this.el.dom.style.zIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">highest</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-var">this.el.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bindEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[0],</span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[1]);
         </span><span class="jsdoc-comment">//var arrow = this.el.select('.arrow',true).first();
