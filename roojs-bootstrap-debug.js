@@ -20222,7 +20222,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             if (this.parent() && (this.over == 'parent' || (this.over === false))) {
                 on_el = this.parent().el;
             } else if (this.over) {
-                Roo.get(this.over);
+                on_el = Roo.get(this.over);
             }
             
         }
@@ -29080,10 +29080,19 @@ Roo.apply(Roo.bootstrap.Tooltip, {
             return;
         }
         
-        var bindEl = el;
+        var bindEl = el; 
+        var pel = false;
+        if (!el.attr('tooltip')) {
+            pel = el.findParent("[tooltip]");
+            if (pel) {
+                bindEl = Roo.get(pel);
+            }
+        }
+        
+       
         
         // you can not look for children, as if el is the body.. then everythign is the child..
-        if (!el.attr('tooltip')) { //
+        if (!pel && !el.attr('tooltip')) { //
             if (!el.select("[tooltip]").elements.length) {
                 return;
             }
@@ -29097,7 +29106,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
             //Roo.log("child element over..");
             
         }
-        this.currentEl = bindEl;
+        this.currentEl = el;
         this.currentTip.bind(bindEl);
         this.currentRegion = Roo.lib.Region.getRegion(dom);
         this.currentTip.enter();
@@ -29288,6 +29297,22 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             this.arrowEl.setLeft((this.innerEl.getWidth()/2) - 5);
             
         }
+        
+        var elems = document.getElementsByTagName('div');
+        var highest = Number.MIN_SAFE_INTEGER || -(Math.pow(2, 53) - 1);
+        for (var i = 0; i < elems.length; i++) {
+          var zindex = Number.parseInt(
+                document.defaultView.getComputedStyle(elems[i], null).getPropertyValue("z-index"),
+                10
+          );
+          if (zindex > highest) {
+            highest = zindex;
+          }
+        }
+        
+        
+        
+        this.el.dom.style.zIndex = highest;
         
         this.el.alignTo(this.bindEl, align[0],align[1]);
         //var arrow = this.el.select('.arrow',true).first();

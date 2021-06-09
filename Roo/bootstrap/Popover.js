@@ -287,14 +287,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             this.render(document.body);
         }
         
-        var x = this.alignEl.dom;
-        while (x && "auto" ==getComputedStyle(x).zIndex) {
-            //Roo.log(getComputedStyle(x).zIndex );
-            x = x.parentNode;
-        }
-        if (x) {
-            this.el.dom.style.zIndex = (1*getComputedStyle(x).zIndex) + 1000;
-        }
+        
          
         
         if (this.title === false) {

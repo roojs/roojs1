@@ -276,7 +276,7 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">() &amp;&amp; (</span><span class="jsdoc-var">this.over </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'parent' </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">this.over </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">))) {
                 </span><span class="jsdoc-var">on_el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el</span><span class="jsdoc-syntax">;
             } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.over</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.over</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">on_el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.over</span><span class="jsdoc-syntax">);
             }
 
         }
@@ -287,7 +287,14 @@
             </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
         }
 
-
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.alignEl.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-string">&quot;auto&quot; </span><span class="jsdoc-syntax">==</span><span class="jsdoc-var">getComputedStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.zIndex</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">//Roo.log(getComputedStyle(x).zIndex );
+            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x.parentNode</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.dom.style.zIndex </span><span class="jsdoc-syntax">= (1*</span><span class="jsdoc-var">getComputedStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.zIndex</span><span class="jsdoc-syntax">) + 1000;
+        }
 
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
