@@ -14005,7 +14005,7 @@ Roo.util.Format = function(){
                 return 0;
             }
             var i = parseInt(Math.floor(Math.log(value) / Math.log(1024)));
-            return this.number(value/ Math.pow(1024, i) ,decimals) + ' ' + sizes[i];
+            return Roo.util.Format.number(value/ Math.pow(1024, i) ,decimals) + ' ' + sizes[i];
         }
         
         

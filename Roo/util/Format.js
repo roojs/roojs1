@@ -255,12 +255,12 @@ Roo.util.Format = function(){
          */
         size : function(value, decimals)
         {
-            var sizes = ['b', 'k', 'M', 'G', 'T'];
+            var sizes = ['b', 'k', 'm', 'g', 't'];
             if (value == 0) {
                 return 0;
             }
             var i = parseInt(Math.floor(Math.log(value) / Math.log(1024)));
-            return Roo.util.Format.number(value/ Math.pow(1024, i) ,decimals) + ' ' + sizes[i];
+            return Roo.util.Format.number(value/ Math.pow(1024, i) ,decimals)   + sizes[i];
         }
         
         
