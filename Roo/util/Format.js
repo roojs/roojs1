@@ -246,6 +246,7 @@ Roo.util.Format = function(){
         stripTags : function(v){
             return !v ? v : String(v).replace(this.stripTagsRE, "");
         },
+        
         /**
          * Size in Mb,Gb etc.
          * @param {Number} value The number to be formated
@@ -255,11 +256,11 @@ Roo.util.Format = function(){
         size : function(value, decimals)
         {
             var sizes = ['b', 'k', 'M', 'G', 'T'];
-            if (v == 0) {
+            if (value == 0) {
                 return 0;
             }
-            var i = parseInt(Math.floor(Math.log(v) / Math.log(1024)));
-            return this.number(v / Math.pow(1024, i) ,decimals) + ' ' + sizes[i];
+            var i = parseInt(Math.floor(Math.log(value) / Math.log(1024)));
+            return this.number(value/ Math.pow(1024, i) ,decimals) + ' ' + sizes[i];
         }
         
         

@@ -243,6 +243,39 @@
       ]
     },
     {
+      "name" : "size",
+      "desc" : "Size in Mb,Gb etc.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.util.Format",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "value",
+          "type" : "Number",
+          "desc" : "The number to be formated",
+          "isOptional" : false
+        },
+        {
+          "name" : "decimals",
+          "type" : "number",
+          "desc" : "how many decimal places",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "the formated string"
+        }
+      ]
+    },
+    {
       "name" : "toFixed",
       "desc" : "safer version of Math.toFixed..??/",
       "isStatic" : false,

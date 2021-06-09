@@ -245,7 +245,25 @@
          */
         </span><span class="jsdoc-var">stripTags </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stripTagsRE</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        },
+        </span><span class="jsdoc-comment">/**
+         * Size in Mb,Gb etc.
+         * @param {Number} value The number to be formated
+         * @param {number} decimals how many decimal places
+         * @return {String} the formated string
+         */
+        </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">decimals</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sizes </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'b'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'k'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'M'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'G'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'T'</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">== 0) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">0;
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) / </span><span class="jsdoc-var">Math.log</span><span class="jsdoc-syntax">(1024)));
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.number</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(1024, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) ,</span><span class="jsdoc-var">decimals</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sizes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
         }
+
+
+
     };
 }();
 </span><span class="jsdoc-var">Roo.util.Format.defaults </span><span class="jsdoc-syntax">= {

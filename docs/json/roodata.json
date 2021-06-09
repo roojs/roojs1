@@ -107646,6 +107646,14 @@
         "memberOf" : ""
       },
       {
+        "name" : "size",
+        "type" : "function",
+        "desc" : "Size in Mb,Gb etc.",
+        "sig" : "(value, decimals)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "stripTags",
         "type" : "function",
         "desc" : "Strips all HTML tags",
