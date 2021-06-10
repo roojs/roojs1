@@ -3589,6 +3589,13 @@ Roo.bootstrap.MenuMgr = function(){
 
 
 Roo.bootstrap.Menu = function(config){
+    
+    if (config.type == 'treeview') {
+	// normally menu's are drawn attached to the document to handle layering etc..
+	// however treeview (used by the docs menu is drawn into the parent element)
+	this.container_method = 'getChildContainer'; 
+    }
+    
     Roo.bootstrap.Menu.superclass.constructor.call(this, config);
     if (this.registerMenu && this.type != 'treeview')  {
         Roo.bootstrap.MenuMgr.register(this);
