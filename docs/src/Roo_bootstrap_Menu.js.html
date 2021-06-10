@@ -23,6 +23,13 @@
 
 
 </span><span class="jsdoc-var">Roo.bootstrap.Menu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'treeview'</span><span class="jsdoc-syntax">) {
+	</span><span class="jsdoc-comment">// normally menu's are drawn attached to the document to handle layering etc..
+	// however treeview (used by the docs menu is drawn into the parent element)
+	</span><span class="jsdoc-var">this.container_method </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'getChildContainer'</span><span class="jsdoc-syntax">;
+    }
+
     </span><span class="jsdoc-var">Roo.bootstrap.Menu.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.registerMenu </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'treeview'</span><span class="jsdoc-syntax">)  {
         </span><span class="jsdoc-var">Roo.bootstrap.MenuMgr.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
