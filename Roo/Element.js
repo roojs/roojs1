@@ -614,7 +614,11 @@ if(opt.anim.isAnimated()){
                 }
             }else{
                 if(className && !this.hasClass(className)){
-                    this.dom.className = this.dom.className + " " + className;
+                    if (this.dom instanceof SVGElement) {
+                        this.dom.className.baseVal =this.dom.className.baseVal  + " " + className;
+                    } else {
+                        this.dom.className = this.dom.className + " " + className;
+                    }
                 }
             }
             return this;
@@ -643,7 +647,9 @@ if(opt.anim.isAnimated()){
          * @return {Roo.Element} this
          */
         removeClass : function(className){
-            if(!className || !this.dom.className){
+            
+            var cn = this.dom instanceof SVGElement ? this.dom.className.baseVal : this.dom.className;
+            if(!className || !cn){
                 return this;
             }
             if(className instanceof Array){
@@ -657,8 +663,11 @@ if(opt.anim.isAnimated()){
                        re = new RegExp('(?:^|\\s+)' + className + '(?:\\s+|$)', "g");
                        this.classReCache[className] = re;
                     }
-                    this.dom.className =
-                        this.dom.className.replace(re, " ");
+                    if (this.dom instanceof SVGElement) {
+                        this.dom.className.baseVal = cn.replace(re, " ");
+                    } else {
+                        this.dom.className = cn.replace(re, " ");
+                    }
                 }
             }
             return this;
@@ -687,6 +696,9 @@ if(opt.anim.isAnimated()){
          * @return {Boolean} True if the class exists, else false
          */
         hasClass : function(className){
+            if (this.dom instanceof SVGElement) {
+                return className && (' '+this.dom.className.baseVal +' ').indexOf(' '+className+' ') != -1; 
+            } 
             return className && (' '+this.dom.className+' ').indexOf(' '+className+' ') != -1;
         },
 
