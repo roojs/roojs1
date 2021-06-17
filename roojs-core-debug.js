@@ -7725,7 +7725,7 @@ if(opt.anim.isAnimated()){
                        this.classReCache[className] = re;
                     }
                     if (this.dom instanceof SVGElement) {
-                        this.dom.className.baseVal = cn.baseVal.replace(re, " ");
+                        this.dom.className.baseVal = cn.replace(re, " ");
                     } else {
                         this.dom.className = cn.replace(re, " ");
                     }
