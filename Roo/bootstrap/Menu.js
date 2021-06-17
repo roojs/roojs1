@@ -154,19 +154,22 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
-        
-        this.triggerEl.on('click', this.onTriggerClick, this);
-        
-        this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
-        
-	if (!this.hideTrigger) {
-	    if (this.triggerEl.hasClass('nav-item') && this.triggerEl.select('.nav-link',true).length) {
-		// dropdown toggle on the 'a' in BS4?
-		this.triggerEl.select('.nav-link',true).first().addClass('dropdown-toggle');
-	    } else {
-		this.triggerEl.addClass('dropdown-toggle');
+        if (this.triggerEl) {
+	    
+	    this.triggerEl.on('click', this.onTriggerClick, this);
+	    
+	    this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
+	    
+	    if (!this.hideTrigger) {
+		if (this.triggerEl.hasClass('nav-item') && this.triggerEl.select('.nav-link',true).length) {
+		    // dropdown toggle on the 'a' in BS4?
+		    this.triggerEl.select('.nav-link',true).first().addClass('dropdown-toggle');
+		} else {
+		    this.triggerEl.addClass('dropdown-toggle');
+		}
 	    }
 	}
+	
         if (Roo.isTouch) {
             this.el.on('touchstart'  , this.onTouch, this);
         }
@@ -328,7 +331,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         //this.el.show();
         this.hideMenuItems();
         this.hidden = false;
-        this.triggerEl.addClass('open');
+	if (this.triggerEl) {
+	    this.triggerEl.addClass('open');
+	}
+        
 	this.el.addClass('show');
         
 	
