@@ -151,6 +151,8 @@
     border: 1px solid black;
     margin-top: 2px;
     margin-left: 2px;
+    max-height: 95%;
+    overflow-y: scroll;
 }
 
 .x-menu-plain
