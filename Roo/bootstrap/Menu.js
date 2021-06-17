@@ -155,21 +155,21 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
         if (this.triggerEl) {
-	    
-	    this.triggerEl.on('click', this.onTriggerClick, this);
-	    
-	    this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
-	    
-	    if (!this.hideTrigger) {
-		if (this.triggerEl.hasClass('nav-item') && this.triggerEl.select('.nav-link',true).length) {
-		    // dropdown toggle on the 'a' in BS4?
-		    this.triggerEl.select('.nav-link',true).first().addClass('dropdown-toggle');
-		} else {
-		    this.triggerEl.addClass('dropdown-toggle');
-		}
-	    }
-	}
-	
+            
+            this.triggerEl.on('click', this.onTriggerClick, this);
+            
+            this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
+            
+            if (!this.hideTrigger) {
+                if (this.triggerEl.hasClass('nav-item') && this.triggerEl.select('.nav-link',true).length) {
+                    // dropdown toggle on the 'a' in BS4?
+                    this.triggerEl.select('.nav-link',true).first().addClass('dropdown-toggle');
+                } else {
+                    this.triggerEl.addClass('dropdown-toggle');
+                }
+            }
+        }
+        
         if (Roo.isTouch) {
             this.el.on('touchstart'  , this.onTouch, this);
         }
@@ -373,9 +373,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     hide : function(deep)
     {
         if (false === this.fireEvent("beforehide", this)) {
-	    Roo.log("hide canceled");
-	    return;
-	}
+            Roo.log("hide canceled");
+            return;
+        }
         this.hideMenuItems();
         if(this.el && this.isVisible()){
            
@@ -383,8 +383,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
                 this.activeItem.deactivate();
                 this.activeItem = null;
             }
-            this.triggerEl.removeClass('open');;
-	    this.el.removeClass('show');
+            if (this.triggerEl) {
+                this.triggerEl.removeClass('open');
+            }
+            
+            this.el.removeClass('show');
             this.hidden = true;
             this.fireEvent("hide", this);
         }
@@ -429,7 +432,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.hide();
         } else {
             Roo.log('show');
-	     
+            
             this.show(this.triggerEl, this.align, false);
         }
         
