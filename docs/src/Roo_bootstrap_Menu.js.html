@@ -154,19 +154,22 @@
 
        </span><span class="jsdoc-comment">// Roo.log(&quot;ADD event&quot;);
        // Roo.log(this.triggerEl.dom);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerEl</span><span class="jsdoc-syntax">) {
 
-        </span><span class="jsdoc-var">this.triggerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTriggerClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.triggerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTriggerClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-var">this.triggerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'touchstart' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTriggerPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.triggerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'touchstart' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTriggerPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
-	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hideTrigger</span><span class="jsdoc-syntax">) {
-	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerEl.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'nav-item'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">this.triggerEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-link'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">) {
-		</span><span class="jsdoc-comment">// dropdown toggle on the 'a' in BS4?
-		</span><span class="jsdoc-var">this.triggerEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-link'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dropdown-toggle'</span><span class="jsdoc-syntax">);
-	    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-		</span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dropdown-toggle'</span><span class="jsdoc-syntax">);
-	    }
-	}
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hideTrigger</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerEl.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'nav-item'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">this.triggerEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-link'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-comment">// dropdown toggle on the 'a' in BS4?
+                    </span><span class="jsdoc-var">this.triggerEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-link'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dropdown-toggle'</span><span class="jsdoc-syntax">);
+                } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dropdown-toggle'</span><span class="jsdoc-syntax">);
+                }
+            }
+        }
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'  </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouch</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
@@ -328,7 +331,10 @@
         </span><span class="jsdoc-comment">//this.el.show();
         </span><span class="jsdoc-var">this.hideMenuItems</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerEl</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
+	}
+
 	</span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">);
 
 
@@ -367,9 +373,9 @@
     </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">deep</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforehide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)) {
-	    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hide canceled&quot;</span><span class="jsdoc-syntax">);
-	    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-	}
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hide canceled&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-var">this.hideMenuItems</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.isVisible</span><span class="jsdoc-syntax">()){
 
@@ -377,8 +383,11 @@
                 </span><span class="jsdoc-var">this.activeItem.deactivate</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">this.activeItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-var">this.triggerEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);;
-	    </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerEl</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.triggerEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }

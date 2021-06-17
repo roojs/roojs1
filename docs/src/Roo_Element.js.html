@@ -614,7 +614,11 @@ if(opt.anim.isAnimated()){
                 }
             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className</span><span class="jsdoc-syntax">)){
-                    </span><span class="jsdoc-var">this.dom.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dom.className </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">className</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGElement</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">this.dom.className.baseVal </span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.dom.className.baseVal  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">className</span><span class="jsdoc-syntax">;
+                    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                        </span><span class="jsdoc-var">this.dom.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dom.className </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">className</span><span class="jsdoc-syntax">;
+                    }
                 }
             }
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
@@ -643,7 +647,9 @@ if(opt.anim.isAnimated()){
          * @return {Roo.Element} this
          */
         </span><span class="jsdoc-var">removeClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">className </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.dom.className</span><span class="jsdoc-syntax">){
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dom </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGElement </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.dom.className.baseVal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.dom.className</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">className </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">){
@@ -657,8 +663,11 @@ if(opt.anim.isAnimated()){
                        </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'(?:^|\\s+)' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">className </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'(?:\\s+|$)'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;g&quot;</span><span class="jsdoc-syntax">);
                        </span><span class="jsdoc-var">this.classReCache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">className</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">;
                     }
-                    </span><span class="jsdoc-var">this.dom.className </span><span class="jsdoc-syntax">=
-                        </span><span class="jsdoc-var">this.dom.className.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGElement</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">this.dom.className.baseVal </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">);
+                    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                        </span><span class="jsdoc-var">this.dom.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">re</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">);
+                    }
                 }
             }
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
@@ -687,6 +696,9 @@ if(opt.anim.isAnimated()){
          * @return {Boolean} True if the class exists, else false
          */
         </span><span class="jsdoc-var">hasClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGElement</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">className </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.dom.className.baseVal </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">className</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) != -1;
+            }
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">className </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.dom.className</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">className</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) != -1;
         },
 
