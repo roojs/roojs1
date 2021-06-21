@@ -1859,6 +1859,10 @@ div.input-group.has-feedback > .roo-input-after + .form-control-feedback {
 .roo-required-indicator.left-indicator {
   margin-right: 3px; }
 
+.roo-form-group-label-left .roo-required-indicator.left-indicator {
+  position: absolute;
+  /* horizontal laid out forms indicator is a bit messy */ }
+
 .roo-required-indicator.right-indicator {
   margin-left: 3px; }
 
