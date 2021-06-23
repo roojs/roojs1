@@ -2327,16 +2327,21 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             combobox.cls += ' roo-select2-container-multi';
         }
         
+        var required =  this.allowBlank ?  {
+                    tag : 'i',
+                    style: 'display: none'
+                } : {
+                   tag : 'i',
+                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
+                   tooltip : 'This field is required'
+                };
+        
         var align = this.labelAlign || this.parentLabelAlign();
         
         if (align ==='left' && this.fieldLabel.length) {
 
             cfg.cn = [
-                {
-                   tag : 'i',
-                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                   tooltip : 'This field is required'
-                },
+                required,
                 {
                     tag: 'label',
                     cls : 'control-label col-form-label',
@@ -2366,11 +2371,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                                 tag : 'span',
                                 html : this.fieldLabel
                             },
-                            {
-                                tag : 'i',
-                                cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                                tooltip : 'This field is required'
-                            }
+                            required
                         ]
                     },
                     {
@@ -2419,11 +2420,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 
         } else if ( this.fieldLabel.length) {
             cfg.cn = [
-                {
-                   tag : 'i',
-                   cls : 'roo-required-indicator left-indicator text-danger fa fa-lg fa-star',
-                   tooltip : 'This field is required'
-                },
+               required,
                 {
                     tag: 'label',
                     cls : 'control-label',
@@ -2445,11 +2442,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         cls : 'control-label',
                         html : this.fieldLabel,
                         cn : [
-                            {
-                               tag : 'i',
-                               cls : 'roo-required-indicator right-indicator text-danger fa fa-lg fa-star',
-                               tooltip : 'This field is required'
-                            }
+                            required
                         ]
                     },
                     {
