@@ -124,7 +124,8 @@ Roo.EventManager = function(){
     
   
 
-    var listen = function(element, ename, opt, fn, scope){
+    var listen = function(element, ename, opt, fn, scope)
+    {
         var o = (!opt || typeof opt == "boolean") ? {} : opt;
         fn = fn || o.fn; scope = scope || o.scope;
         var el = Roo.getDom(element);
@@ -181,7 +182,9 @@ Roo.EventManager = function(){
         
         
          
-        E.on(el, ename, h);
+        E.on(el, ename, h); // this adds the actuall listener to the object..
+        
+        
         if(ename == "mousewheel" && el.addEventListener){ // workaround for jQuery
             el.addEventListener("DOMMouseScroll", h, false);
             E.on(window, 'unload', function(){
