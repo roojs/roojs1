@@ -74,19 +74,24 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
           
     },
     
-    autoResizeToEl : function(el)
+    
+    fitToParent : function()
     {
         // should it fit Horizontal - as per this?
         // or fit full ? // in which case pan/zoom done by drag?
+         
+        if (!this.el.dom.parentNode) { // check if this Element still exists
+            return;
+        }
+        var p = Roo.get(targetParent || this.dom.parentNode);
+        var gs = this.g.dom.getBBox();
         
-        el.on('resize', function() {
-            var sz = el.getSize();
-            var gs = this.g.dom.getBBox();
-            this.svg.set({
-                width: (sz.width - 30),
-                height:  (sz.width -30) * (gs.height / gs.width)
-            });
-        });
+        var x = p.getComputedWidth()  - p.getFrameWidth('lr');
+        this.setSize(
+            x,
+            (gs.height / gs.width) //p.getComputedHeight() - p.getFrameWidth('tb')
+        );
+        
         
     }
     
