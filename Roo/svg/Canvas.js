@@ -55,6 +55,14 @@ Roo.extend(Roo.svg.Canvas, Roo.BoxComponent,  {
         
         
     },
-   
+    onClick : function(e)
+    {
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
+        this.fireEvent('click', this, e); // why was this double click before?
+    },
+    
    
 });
