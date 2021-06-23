@@ -12,3 +12,9 @@
  */
 
 
+Roo.svg.Canvas = function(cfg)
+{
+    
+    
+    
+}
