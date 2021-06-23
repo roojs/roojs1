@@ -11,30 +11,34 @@
  *
  */
 
-Roo.namespace(Roo.svg);
+Roo.namespace('Roo.svg');
 
 Roo.svg.Canvas = function(cfg)
 {
-    Roo.svg.Canvas.superclass.constructor.call(this, config);
-    
+    Roo.svg.Canvas.superclass.constructor.call(this, cfg);
+    this.addEvents({
+        'click' : true,
+        'dblclick' : true,
+        'context' : true,
+    });
     
 }
 
-Roo.extend(Roo.svg.Canvas, Roo.BoxComponent,  {
+Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
+   
+    width: 100,
+    height : 100, // changeable...
+    
    
     getAutoCreate : function(){
         
-        var cfg = {
-            tag: this.tag,
-            // cls: this.cls, double assign in parent class Component.js :: onRender
-            html: this.html
-        };
+       
         return {
             ns: "svg",
             xmlns: "http://www.w3.org/2000/svg",
             tag: "svg",
-            width: this.wrapper.dom.clientWidth,
-            height: this.wrapper.dom.clientHeight,
+            width: this.width,
+            height: this.height,
             cn : [
                 {
                     ns: "svg",
@@ -47,22 +51,45 @@ Roo.extend(Roo.svg.Canvas, Roo.BoxComponent,  {
     
     initEvents: function() 
     {
-        Roo.bootstrap.Element.superclass.initEvents.call(this);
+        Roo.svg.Canvas.superclass.initEvents.call(this);
+        // others...
         
-        if(this.clickable){
-            this.el.on('click', this.onClick, this);
-        }
-        
+        this.el.on('click', this.relayEvent, this);
+        this.el.on('dblclick', this.relayEvent, this);
+        this.el.on('context', this.relayEvent, this); // ??? any others
+        this.g = this.el.select('g', true);
+         
         
     },
-    onClick : function(e)
+    
+    relayEvent: function(e)
     {
-        if(this.preventDefault){
-            e.preventDefault();
+        //e.type
+        var cel = e.getTarget().findParent('roo-svg-observable', false, true);
+        if (typeof(cel.listeners[e.type]) == 'undefined') {
+            this.fireEvent(e.type)
+            return;
         }
-        
-        this.fireEvent('click', this, e); // why was this double click before?
+        cel.listeners[e.type].fire(e, cel);
+          
     },
+    
+    autoResizeToEl : function(el)
+    {
+        // should it fit Horizontal - as per this?
+        // or fit full ? // in which case pan/zoom done by drag?
+        
+        el.on('resize', function() {
+            var sz = el.getSize();
+            var gs = this.g.dom.getBBox();
+            this.svg.set({
+                width: (sz.width - 30),
+                height:  (sz.width -30) * (gs.height / gs.width)
+            });
+        });
+        
+    }
+    
     
    
 });
