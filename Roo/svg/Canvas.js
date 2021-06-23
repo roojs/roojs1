@@ -14,9 +14,11 @@
 
 Roo.svg.Canvas = function(cfg)
 {
-    
+    Roo.svg.Canvas.superclass.constructor.call(this, config);
     
     
 }
 
 Roo.extend(Roo.svg.Canvas, Roo.BoxComponent,  {
+   
+   
