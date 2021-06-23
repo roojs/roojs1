@@ -90,7 +90,7 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
         var x = p.getComputedWidth()  - p.getFrameWidth('lr');
         this.el.attr({
             width : x,
-            height : x * (gs.height / gs.width) //p.getComputedHeight() - p.getFrameWidth('tb')
+            height : x * ratio //p.getComputedHeight() - p.getFrameWidth('tb')
         });
         
         
