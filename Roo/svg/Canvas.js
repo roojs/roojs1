@@ -87,10 +87,10 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
         var gs = this.g.dom.getBBox();
         
         var x = p.getComputedWidth()  - p.getFrameWidth('lr');
-        this.setSize(
-            x,
-            (gs.height / gs.width) //p.getComputedHeight() - p.getFrameWidth('tb')
-        );
+        this.el.attr({
+            width : x,
+            height : (gs.height / gs.width) //p.getComputedHeight() - p.getFrameWidth('tb')
+        });
         
         
     }
