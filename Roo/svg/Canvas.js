@@ -83,7 +83,7 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
         if (!this.el.dom.parentNode) { // check if this Element still exists
             return;
         }
-        var p = Roo.get(targetParent || this.dom.parentNode);
+        var p = Roo.get(this.el.dom.parentNode);
         var gs = this.g.dom.getBBox();
         
         var x = p.getComputedWidth()  - p.getFrameWidth('lr');
