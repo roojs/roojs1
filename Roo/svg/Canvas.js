@@ -22,7 +22,39 @@ Roo.svg.Canvas = function(cfg)
 
 Roo.extend(Roo.svg.Canvas, Roo.BoxComponent,  {
    
-   
+    getAutoCreate : function(){
+        
+        var cfg = {
+            tag: this.tag,
+            // cls: this.cls, double assign in parent class Component.js :: onRender
+            html: this.html
+        };
+        return {
+            ns: "svg",
+            xmlns: "http://www.w3.org/2000/svg",
+            tag: "svg",
+            width: this.wrapper.dom.clientWidth,
+            height: this.wrapper.dom.clientHeight,
+            cn : [
+                {
+                    ns: "svg",
+                    tag: "g",
+                    focusable : 'true'
+                }
+            ]
+        };
+    },
+    
+    initEvents: function() 
+    {
+        Roo.bootstrap.Element.superclass.initEvents.call(this);
+        
+        if(this.clickable){
+            this.el.on('click', this.onClick, this);
+        }
+        
+        
+    },
    
    
 });
