@@ -57,7 +57,7 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
         this.el.on('click', this.relayEvent, this);
         this.el.on('dblclick', this.relayEvent, this);
         this.el.on('context', this.relayEvent, this); // ??? any others
-        this.g = this.el.select('g', true);
+        this.g = this.el.select('g', true).first();
          
         
     },
