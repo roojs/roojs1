@@ -11,6 +11,7 @@
  *
  */
 
+Roo.namespace(Roo.svg);
 
 Roo.svg.Canvas = function(cfg)
 {
@@ -22,3 +23,6 @@ Roo.svg.Canvas = function(cfg)
 Roo.extend(Roo.svg.Canvas, Roo.BoxComponent,  {
    
    
+   
+   
+});
