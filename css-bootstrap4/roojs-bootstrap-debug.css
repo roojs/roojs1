@@ -1876,6 +1876,10 @@ div.input-group.has-feedback > .roo-input-after + .form-control-feedback {
   height: 100%;
   overflow: hidden; }
 
+.modal-body.roo-layout-container {
+  padding: 0;
+  /* modal padding messes up calcs on layout */ }
+
 .roo-layout-inactive-content {
   position: absolute;
   left: -10000px;

@@ -1,8 +1,11 @@
  
-.roo-layout-container{
+.roo-layout-container {
     width:100%;
     height:100%;
     overflow:hidden;
+}
+.modal-body.roo-layout-container {
+    padding: 0; /* modal padding messes up calcs on layout */
 }
  
 .roo-layout-inactive-content{
