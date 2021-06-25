@@ -85,7 +85,7 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
             var p = Roo.get(this.el.dom.parentNode);
             var gs = this.g.dom.getBBox();
             var ratio = gs.height / gs.width;
-            ratio = isNaN(ratio) || ration < 0.2 ? 1 : ratio;
+            ratio = isNaN(ratio) || ratio < 0.2 ? 1 : ratio;
             var x = p.getComputedWidth()  - p.getFrameWidth('lr') - 20; // close as possible with scroll bar
             this.el.attr({
                 width : x,
