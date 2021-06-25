@@ -20402,7 +20402,7 @@ Roo.apply(Roo.bootstrap.Popover, {
 
     onMouseDown : function(e)
     {
-        if (!e.getTarget(".roo-popover")) {
+        if (this.popup.length, !e.getTarget(".roo-popover") && this.popup.length) {
             /// what is nothing is showing..
             this.hideAll();
         }
@@ -20418,7 +20418,7 @@ Roo.apply(Roo.bootstrap.Popover, {
         }
         // hide other popups.
         popup.on('show', Roo.bootstrap.Popover.onShow);
-        popup.on('hide', Roo.bootstrap.Popover.onShow);
+        popup.on('hide', Roo.bootstrap.Popover.onHide);
         this.hideAll();
         this.popups.push(popup);
     },
