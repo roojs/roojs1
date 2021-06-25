@@ -20399,15 +20399,17 @@ Roo.apply(Roo.bootstrap.Popover, {
 
     clickHander : false,
     
+    
 
     onMouseDown : function(e)
     {
-        if (this.popup.length, !e.getTarget(".roo-popover") && this.popup.length) {
+        if (this.popup.length &&  !e.getTarget(".roo-popover") && this.popup.length) {
             /// what is nothing is showing..
             this.hideAll();
         }
          
     },
+    
     
     popups : [],
     
@@ -20417,8 +20419,8 @@ Roo.apply(Roo.bootstrap.Popover, {
             Roo.bootstrap.Popover.clickHandler = Roo.get(document).on("mousedown", Roo.bootstrap.Popover.onMouseDown, Roo.bootstrap.Popover);
         }
         // hide other popups.
-        popup.on('show', Roo.bootstrap.Popover.onShow);
-        popup.on('hide', Roo.bootstrap.Popover.onHide);
+        popup.on('show', Roo.bootstrap.Popover.onShow, Roo.bootstrap.Popover, popup);
+        popup.on('hide', Roo.bootstrap.Popover.onHide, Roo.bootstrap.Popover, popup);
         this.hideAll();
         this.popups.push(popup);
     },
@@ -20428,9 +20430,8 @@ Roo.apply(Roo.bootstrap.Popover, {
             p.hide();
         });
     },
-    unregister : function(popup)
-    {
-        
+    onShow : function(p) {
+        this.popups.push(p);
     }
 
 });/*
