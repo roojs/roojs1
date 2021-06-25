@@ -467,7 +467,7 @@ Roo.apply(Roo.bootstrap.Popover, {
         popup.on('show', Roo.bootstrap.Popover.onShow,  popup);
         popup.on('hide', Roo.bootstrap.Popover.onHide,  popup);
         this.hideAll();
-        this.popups.push(popup);
+        //this.popups.push(popup);
     },
     hideAll : function()
     {
@@ -475,10 +475,10 @@ Roo.apply(Roo.bootstrap.Popover, {
             p.hide();
         });
     },
-    onShow : function(p) {
+    onShow : function() {
         Roo.bootstrap.Popover.popups.push(this);
     },
-    onHide : function(p) {
+    onHide : function() {
         Roo.bootstrap.Popover.popups.remove(this);
     },
 
