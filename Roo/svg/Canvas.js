@@ -93,6 +93,11 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
             });
         }).defer(300, this);
         
+    },
+    
+    updateViewBox: function()
+    {
+        
     }
     
     
