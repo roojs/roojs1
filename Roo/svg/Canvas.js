@@ -97,14 +97,7 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
             
         }).defer(300, this);
         
-    },
-    
-    updateViewBox: function()
-    {
-        var box = this.el.dom.getBBox()
-        this.el.attr("viewBox", box.x + " " + box.y + " " + box.width + " " + box.height);
-
-    }
+    } 
     
     
    
