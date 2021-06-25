@@ -97,7 +97,8 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
     
     updateViewBox: function()
     {
-        this.el.attr("viewBox", this.viewBox.x + " " + this.viewBox.y + " " + this.viewBox.w + " " + this.viewBox.h);
+        var box = this.el.dom.getBBox()
+        this.el.attr("viewBox", box.x + " " + box.y + " " + box.width + " " + box.height);
 
     }
     
