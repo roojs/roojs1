@@ -92,7 +92,7 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
                 height : x * ratio //p.getComputedHeight() - p.getFrameWidth('tb')
             });
             if (gs.height) {
-                this.el.attr("viewBox", box.x + " " + box.y + " " + box.width + " " + box.height);
+                this.el.attr("viewBox", gs.x + " " + gs.y + " " + gs.width + " " + gs.height);
             }
             
         }).defer(300, this);
