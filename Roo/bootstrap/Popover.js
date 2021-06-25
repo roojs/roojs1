@@ -448,6 +448,7 @@ Roo.apply(Roo.bootstrap.Popover, {
     onMouseDown : function(e)
     {
         if (!e.getTarget(".roo-popover")) {
+            /// what is nothing is showing..
             this.hideAll();
         }
          
@@ -469,6 +470,10 @@ Roo.apply(Roo.bootstrap.Popover, {
         this.popups.forEach(function(p) {
             p.hide();
         });
+    },
+    unregister : function(popup)
+    {
+        
     }
 
 });
