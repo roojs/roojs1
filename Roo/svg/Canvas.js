@@ -26,8 +26,6 @@ Roo.svg.Canvas = function(cfg)
 
 Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
    
-    width: 100,
-    height : 100, // changeable...
     
    
     getAutoCreate : function(){
@@ -37,8 +35,8 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
             ns: "svg",
             xmlns: "http://www.w3.org/2000/svg",
             tag: "svg",
-            width: this.width,
-            height: this.height,
+            width: 100,
+            height: 100,
             cn : [
                 {
                     ns: "svg",
@@ -65,8 +63,8 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
     relayEvent: function(e)
     {
         //e.type
-        var cel = e.getTarget().findParent('roo-svg-observable', false, true);
-        if (typeof(cel.listeners[e.type]) == 'undefined') {
+        var cel = e.getTarget('roo-svg-observable', false, true);
+        if (!cel || typeof(cel.listeners[e.type]) == 'undefined') {
             this.fireEvent(e.type)
             return;
         }
@@ -83,16 +81,17 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
         if (!this.el.dom.parentNode) { // check if this Element still exists
             return;
         }
-        var p = Roo.get(this.el.dom.parentNode);
-        var gs = this.g.dom.getBBox();
-        var ratio = gs.height / gs.width;
-        ratio = isNaN(ratio) || ration < 0.2 ? 1 : ratio;
-        var x = p.getComputedWidth()  - p.getFrameWidth('lr');
-        this.el.attr({
-            width : x,
-            height : x * ratio //p.getComputedHeight() - p.getFrameWidth('tb')
-        });
-        
+        (function() { 
+            var p = Roo.get(this.el.dom.parentNode);
+            var gs = this.g.dom.getBBox();
+            var ratio = gs.height / gs.width;
+            ratio = isNaN(ratio) || ration < 0.2 ? 1 : ratio;
+            var x = p.getComputedWidth()  - p.getFrameWidth('lr') - 20; // close as possible with scroll bar
+            this.el.attr({
+                width : x,
+                height : x * ratio //p.getComputedHeight() - p.getFrameWidth('tb')
+            });
+        }).defer(300, this);
         
     }
     
