@@ -466,7 +466,7 @@ Roo.apply(Roo.bootstrap.Popover, {
         // hide other popups.
         popup.on('show', Roo.bootstrap.Popover.onShow,  popup);
         popup.on('hide', Roo.bootstrap.Popover.onHide,  popup);
-        this.hideAll();
+        this.hideAll(); //<< why?
         //this.popups.push(popup);
     },
     hideAll : function()
