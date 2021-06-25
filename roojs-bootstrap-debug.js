@@ -20417,6 +20417,8 @@ Roo.apply(Roo.bootstrap.Popover, {
             Roo.bootstrap.Popover.clickHandler = Roo.get(document).on("mousedown", Roo.bootstrap.Popover.onMouseDown, Roo.bootstrap.Popover);
         }
         // hide other popups.
+        popup.on('show', Roo.bootstrap.Popover.onShow);
+        popup.on('hide', Roo.bootstrap.Popover.onShow);
         this.hideAll();
         this.popups.push(popup);
     },
