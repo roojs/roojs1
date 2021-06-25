@@ -91,6 +91,7 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
                 width : x,
                 height : x * ratio //p.getComputedHeight() - p.getFrameWidth('tb')
             });
+            this.updateViewBox();
         }).defer(300, this);
         
     },
