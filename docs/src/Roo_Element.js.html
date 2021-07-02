@@ -89,6 +89,9 @@ if(opt.anim.isAnimated()){
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">element </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot; </span><span class="jsdoc-syntax">?
                 </span><span class="jsdoc-var">document.getElementById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">element</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">element</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.listeners </span><span class="jsdoc-syntax">= {};
+
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// invalid id/element
             </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
         }
@@ -109,8 +112,8 @@ if(opt.anim.isAnimated()){
          */
         </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-var">this.listeners </span><span class="jsdoc-syntax">= {};
-    };
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// assumed for cctor?
+    </span><span class="jsdoc-syntax">};
 
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">El </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Element</span><span class="jsdoc-syntax">;
 
@@ -1240,7 +1243,7 @@ if(opt.anim.isAnimated()){
          */
         </span><span class="jsdoc-var">removeListener </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">Roo.EventManager.removeListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.listeners</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'  </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-var">this.listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.removeListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">);
@@ -2381,7 +2384,7 @@ if(opt.anim.isAnimated()){
           </span><span class="jsdoc-var">Roo.EventManager.removeResizeListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fitToParentDelegate</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// always remove previous fitToParent delegate from onWindowResize
           </span><span class="jsdoc-var">this.fitToParentDelegate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// remove reference to previous delegate
           </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">monitorResize </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.dom.parentNode</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// check if this Element still exists
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
           }
           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">targetParent </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.dom.parentNode</span><span class="jsdoc-syntax">);
           </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p.getComputedWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">p.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lr'</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">p.getComputedHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">p.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">));

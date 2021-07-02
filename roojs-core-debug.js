@@ -8297,7 +8297,7 @@ if(opt.anim.isAnimated()){
             //action on double tap goes below
              
         }, 
-
+ 
         /**
          * Removes an event handler from this element
          * @param {String} eventName the type of event to remove
