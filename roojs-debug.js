@@ -7153,6 +7153,9 @@ if(opt.anim.isAnimated()){
     {
         var dom = typeof element == "string" ?
                 document.getElementById(element) : element;
+        
+        this.listeners = {};
+        
         if(!dom){ // invalid id/element
             return null;
         }
@@ -7173,7 +7176,7 @@ if(opt.anim.isAnimated()){
          */
         this.id = id || Roo.id(dom);
         
-        this.listeners = {};
+        return this; // assumed for cctor?
     };
 
     var El = Roo.Element;
@@ -8304,7 +8307,7 @@ if(opt.anim.isAnimated()){
          */
         removeListener : function(eventName, fn, scope){
             Roo.EventManager.removeListener(this.dom,  eventName, fn);
-            if (typeof(this.listeners[eventName]) == 'undefined') {
+            if (typeof(this.listeners) == 'undefined'  || typeof(this.listeners[eventName]) == 'undefined') {
                 return this;
             }
             this.listeners[eventName].removeListener(fn, scope);
@@ -9445,7 +9448,7 @@ if(opt.anim.isAnimated()){
           Roo.EventManager.removeResizeListener(this.fitToParentDelegate); // always remove previous fitToParent delegate from onWindowResize
           this.fitToParentDelegate = Roo.emptyFn; // remove reference to previous delegate
           if (monitorResize === true && !this.dom.parentNode) { // check if this Element still exists
-            return;
+            return this;
           }
           var p = Roo.get(targetParent || this.dom.parentNode);
           this.setSize(p.getComputedWidth() - p.getFrameWidth('lr'), p.getComputedHeight() - p.getFrameWidth('tb'));
