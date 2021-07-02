@@ -445,13 +445,16 @@
     </span><span class="jsdoc-var">clickHander </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
 
+
     </span><span class="jsdoc-var">onMouseDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;.roo-popover&quot;</span><span class="jsdoc-syntax">)) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.popup.length </span><span class="jsdoc-syntax">&amp;&amp;  !</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;.roo-popover&quot;</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">this.popup.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">/// what is nothing is showing..
             </span><span class="jsdoc-var">this.hideAll</span><span class="jsdoc-syntax">();
         }
 
     },
+
 
     </span><span class="jsdoc-var">popups </span><span class="jsdoc-syntax">: [],
 
@@ -461,14 +464,22 @@
             </span><span class="jsdoc-var">Roo.bootstrap.Popover.clickHandler </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Popover.onMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Popover</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-comment">// hide other popups.
-        </span><span class="jsdoc-var">this.hideAll</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.popups.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">popup</span><span class="jsdoc-syntax">);
-    },
+        </span><span class="jsdoc-var">popup.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Popover.onShow</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">popup</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">popup.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Popover.onHide</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">popup</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.hideAll</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">//&lt;&lt; why?
+        //this.popups.push(popup);
+    </span><span class="jsdoc-syntax">},
     </span><span class="jsdoc-var">hideAll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.popups.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">p.hide</span><span class="jsdoc-syntax">();
         });
-    }
+    },
+    </span><span class="jsdoc-var">onShow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">Roo.bootstrap.Popover.popups.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">onHide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">Roo.bootstrap.Popover.popups.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
 
 });</span></code></body></html>

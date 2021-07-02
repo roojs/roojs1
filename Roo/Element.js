@@ -85,7 +85,8 @@ if(opt.anim.isAnimated()){
  * @param {String/HTMLElement} element
  * @param {Boolean} forceNew (optional) By default the constructor checks to see if there is already an instance of this element in the cache and if there is it returns the same instance. This will skip that check (useful for extending this class).
  */
-    Roo.Element = function(element, forceNew){
+    Roo.Element = function(element, forceNew)
+    {
         var dom = typeof element == "string" ?
                 document.getElementById(element) : element;
         if(!dom){ // invalid id/element
@@ -107,6 +108,8 @@ if(opt.anim.isAnimated()){
          * @type String
          */
         this.id = id || Roo.id(dom);
+        
+        this.listeners = {};
     };
 
     var El = Roo.Element;
@@ -1180,13 +1183,30 @@ if(opt.anim.isAnimated()){
          * @param {Object} scope       (optional) The scope (this object) of the fn
          * @param {Object}   options   (optional)An object with standard {@link Roo.EventManager#addListener} options
          */
-        addListener : function(eventName, fn, scope, options){
-            if (this.dom) {
-                Roo.EventManager.on(this.dom,  eventName, fn, scope || this, options);
-            }
-            if (eventName == 'dblclick') {
+        addListener : function(eventName, fn, scope, options)
+        {
+            if (eventName == 'dblclick') { // doublclick (touchstart) - faked on touch.
                 this.addListener('touchstart', this.onTapHandler, this);
             }
+            
+            // we need to handle a special case where dom element is a svg element.
+            // in this case we do not actua
+            if (!this.dom) {
+                return;
+            }
+            
+            if (this.dom instanceof SVGElement && !(this.dom instanceof SVGSVGElement)) {
+                if (typeof(this.listeners[eventName]) == 'undefined') {
+                    this.listeners[eventName] =  new Roo.util.Event(this, eventName);
+                }
+                this.listeners[eventName].addListener(fn, scope, options);
+                return;
+            }
+            
+                
+            Roo.EventManager.on(this.dom,  eventName, fn, scope || this, options);
+            
+            
         },
         tapedTwice : false,
         onTapHandler : function(event)
@@ -1215,10 +1235,15 @@ if(opt.anim.isAnimated()){
          * Removes an event handler from this element
          * @param {String} eventName the type of event to remove
          * @param {Function} fn the method the event invokes
+         * @param {Function} scope (needed for svg fake listeners)
          * @return {Roo.Element} this
          */
-        removeListener : function(eventName, fn){
+        removeListener : function(eventName, fn, scope){
             Roo.EventManager.removeListener(this.dom,  eventName, fn);
+            if (typeof(this.listeners[eventName]) == 'undefined') {
+                return this;
+            }
+            this.listeners[eventName].removeListener(fn, scope);
             return this;
         },
 
@@ -1228,6 +1253,7 @@ if(opt.anim.isAnimated()){
          */
         removeAllListeners : function(){
             E.purgeElement(this.dom);
+            this.listeners = {};
             return this;
         },
 
@@ -1237,6 +1263,7 @@ if(opt.anim.isAnimated()){
             });
         },
 
+        
         /**
          * Set the opacity of the element
          * @param {Float} opacity The new opacity. 0 = transparent, .5 = 50% visibile, 1 = fully visible, etc

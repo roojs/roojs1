@@ -2327,16 +2327,21 @@
             </span><span class="jsdoc-var">combobox.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' roo-select2-container-multi'</span><span class="jsdoc-syntax">;
         }
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">required </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">?  {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display: none'
+                </span><span class="jsdoc-syntax">} : {
+                   </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                   </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator left-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
+                   </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
+                </span><span class="jsdoc-syntax">};
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.parentLabelAlign</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
 
             </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
-                {
-                   </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
-                   </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator left-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
-                   </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
-                </span><span class="jsdoc-syntax">},
+                </span><span class="jsdoc-var">required</span><span class="jsdoc-syntax">,
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label col-form-label'</span><span class="jsdoc-syntax">,
@@ -2366,12 +2371,8 @@
                                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
                             </span><span class="jsdoc-syntax">},
-                            {
-                                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
-                                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator right-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
-                                </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
-                            </span><span class="jsdoc-syntax">}
-                        ]
+                            </span><span class="jsdoc-var">required
+                        </span><span class="jsdoc-syntax">]
                     },
                     {
                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo-combobox-wrap &quot;</span><span class="jsdoc-syntax">,
@@ -2419,11 +2420,7 @@
 
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
-                {
-                   </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
-                   </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator left-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
-                   </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
-                </span><span class="jsdoc-syntax">},
+               </span><span class="jsdoc-var">required</span><span class="jsdoc-syntax">,
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label'</span><span class="jsdoc-syntax">,
@@ -2445,12 +2442,8 @@
                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
-                            {
-                               </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
-                               </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator right-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
-                               </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'
-                            </span><span class="jsdoc-syntax">}
-                        ]
+                            </span><span class="jsdoc-var">required
+                        </span><span class="jsdoc-syntax">]
                     },
                     {
                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,

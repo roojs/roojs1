@@ -85,7 +85,8 @@ if(opt.anim.isAnimated()){
  * @param {String/HTMLElement} element
  * @param {Boolean} forceNew (optional) By default the constructor checks to see if there is already an instance of this element in the cache and if there is it returns the same instance. This will skip that check (useful for extending this class).
  */
-    </span><span class="jsdoc-var">Roo.Element </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">element</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">forceNew</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.Element </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">element</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">forceNew</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">element </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot; </span><span class="jsdoc-syntax">?
                 </span><span class="jsdoc-var">document.getElementById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">element</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">element</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// invalid id/element
@@ -107,6 +108,8 @@ if(opt.anim.isAnimated()){
          * @type String
          */
         </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.listeners </span><span class="jsdoc-syntax">= {};
     };
 
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">El </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.Element</span><span class="jsdoc-syntax">;
@@ -1180,13 +1183,30 @@ if(opt.anim.isAnimated()){
          * @param {Object} scope       (optional) The scope (this object) of the fn
          * @param {Object}   options   (optional)An object with standard {@link Roo.EventManager#addListener} options
          */
-        </span><span class="jsdoc-var">addListener </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">Roo.EventManager.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
-            }
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">addListener </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// doublclick (touchstart) - faked on touch.
                 </span><span class="jsdoc-var">this.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'touchstart'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTapHandler</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             }
+
+            </span><span class="jsdoc-comment">// we need to handle a special case where dom element is a svg element.
+            // in this case we do not actua
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGElement </span><span class="jsdoc-syntax">&amp;&amp; !(</span><span class="jsdoc-var">this.dom </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGSVGElement</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">] =  </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.Event</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-var">this.listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+
+            </span><span class="jsdoc-var">Roo.EventManager.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
+
+
         },
         </span><span class="jsdoc-var">tapedTwice </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-var">onTapHandler </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">)
@@ -1215,10 +1235,15 @@ if(opt.anim.isAnimated()){
          * Removes an event handler from this element
          * @param {String} eventName the type of event to remove
          * @param {Function} fn the method the event invokes
+         * @param {Function} scope (needed for svg fake listeners)
          * @return {Roo.Element} this
          */
-        </span><span class="jsdoc-var">removeListener </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">removeListener </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">Roo.EventManager.removeListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">this.listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.removeListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         },
 
@@ -1228,6 +1253,7 @@ if(opt.anim.isAnimated()){
          */
         </span><span class="jsdoc-var">removeAllListeners </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
             </span><span class="jsdoc-var">E.purgeElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dom</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.listeners </span><span class="jsdoc-syntax">= {};
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         },
 
@@ -1236,6 +1262,7 @@ if(opt.anim.isAnimated()){
                 </span><span class="jsdoc-var">observable.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
             });
         },
+
 
         </span><span class="jsdoc-comment">/**
          * Set the opacity of the element

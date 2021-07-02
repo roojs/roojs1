@@ -124,7 +124,8 @@
 
 
 
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listen </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">element</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listen </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">element</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= (!</span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;boolean&quot;</span><span class="jsdoc-syntax">) ? {} : </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">o.fn</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">o.scope</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">element</span><span class="jsdoc-syntax">);
@@ -181,7 +182,9 @@
 
 
 
-        </span><span class="jsdoc-var">E.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">E.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// this adds the actuall listener to the object..
+
+
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ename </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;mousewheel&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">el.addEventListener</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// workaround for jQuery
             </span><span class="jsdoc-var">el.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;DOMMouseScroll&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">E.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'unload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){

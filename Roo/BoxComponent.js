@@ -14,7 +14,7 @@
  * @extends Roo.Component
  * Base class for any visual {@link Roo.Component} that uses a box container.  BoxComponent provides automatic box
  * model adjustments for sizing and positioning and will work correctly withnin the Component rendering model.  All
- * container classes should subclass BoxComponent so that they will work consistently when nested within other Ext
+ * container classes should subclass BoxComponent so that they will work consistently when nested within other Roo
  * layout containers.
  * @constructor
  * @param {Roo.Element/String/Object} config The configuration options.

@@ -6113,7 +6113,7 @@
         "name" : "removeListener",
         "type" : "function",
         "desc" : "Removes an event handler from this element",
-        "sig" : "(eventName, fn)",
+        "sig" : "(eventName, fn, scope)",
         "static" : false,
         "memberOf" : ""
       },
@@ -9006,7 +9006,7 @@
         "name" : "removeListener",
         "type" : "function",
         "desc" : "Removes an event handler from this element",
-        "sig" : "(eventName, fn)",
+        "sig" : "(eventName, fn, scope)",
         "static" : false,
         "memberOf" : "Roo.Element"
       },

@@ -3706,6 +3706,12 @@
           "type" : "Function",
           "desc" : "the method the event invokes",
           "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Function",
+          "desc" : "(needed for svg fake listeners)",
+          "isOptional" : false
         }
       ],
       "returns" : [
