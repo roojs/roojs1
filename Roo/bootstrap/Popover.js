@@ -448,7 +448,7 @@ Roo.apply(Roo.bootstrap.Popover, {
 
     onMouseDown : function(e)
     {
-        if (this.popup.length &&  !e.getTarget(".roo-popover") && this.popup.length) {
+        if (this.popups.length &&  !e.getTarget(".roo-popover")) {
             /// what is nothing is showing..
             this.hideAll();
         }
