@@ -128,7 +128,11 @@ Roo.DomQuery = function(){
         }
         var r = [], ri = -1, cn;
         for(var i = 0, ci; ci = c[i]; i++){
-            if((' '+ci.className+' ').indexOf(v) != -1){
+	    
+	    
+            if((' '+
+		( (ci instanceof SVGElement) ? ci.className.baseVal : ci.className)
+		 +' ').indexOf(v) != -1){
                 r[++ri] = ci;
             }
         }
@@ -146,7 +150,7 @@ Roo.DomQuery = function(){
             return n.htmlFor;
         }
         if(attr == "class" || attr == "className"){
-            return n.className;
+	    return (n instanceof SVGElement) ? n.className.baseVal : n.className;
         }
         return n.getAttribute(attr) || n[attr];
 
@@ -250,7 +254,7 @@ Roo.DomQuery = function(){
                 a = Roo.DomQuery.getStyle(ci, attr);
             }
             else if(attr == "class" || attr == "className"){
-                a = ci.className;
+                a = (ci instanceof SVGElement) ? ci.className.baseVal : ci.className;
             }else if(attr == "for"){
                 a = ci.htmlFor;
             }else if(attr == "href"){
