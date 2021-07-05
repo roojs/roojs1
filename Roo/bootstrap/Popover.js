@@ -480,6 +480,6 @@ Roo.apply(Roo.bootstrap.Popover, {
     },
     onHide : function() {
         Roo.bootstrap.Popover.popups.remove(this);
-    },
+    } 
 
 });

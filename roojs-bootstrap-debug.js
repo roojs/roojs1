@@ -20403,7 +20403,7 @@ Roo.apply(Roo.bootstrap.Popover, {
 
     onMouseDown : function(e)
     {
-        if (this.popup.length &&  !e.getTarget(".roo-popover") && this.popup.length) {
+        if (this.popups.length &&  !e.getTarget(".roo-popover")) {
             /// what is nothing is showing..
             this.hideAll();
         }
@@ -20419,10 +20419,10 @@ Roo.apply(Roo.bootstrap.Popover, {
             Roo.bootstrap.Popover.clickHandler = Roo.get(document).on("mousedown", Roo.bootstrap.Popover.onMouseDown, Roo.bootstrap.Popover);
         }
         // hide other popups.
-        popup.on('show', Roo.bootstrap.Popover.onShow, Roo.bootstrap.Popover, popup);
-        popup.on('hide', Roo.bootstrap.Popover.onHide, Roo.bootstrap.Popover, popup);
-        this.hideAll();
-        this.popups.push(popup);
+        popup.on('show', Roo.bootstrap.Popover.onShow,  popup);
+        popup.on('hide', Roo.bootstrap.Popover.onHide,  popup);
+        this.hideAll(); //<< why?
+        //this.popups.push(popup);
     },
     hideAll : function()
     {
@@ -20430,9 +20430,12 @@ Roo.apply(Roo.bootstrap.Popover, {
             p.hide();
         });
     },
-    onShow : function(p) {
-        this.popups.push(p);
-    }
+    onShow : function() {
+        Roo.bootstrap.Popover.popups.push(this);
+    },
+    onHide : function() {
+        Roo.bootstrap.Popover.popups.remove(this);
+    } 
 
 });/*
  * - LGPL
