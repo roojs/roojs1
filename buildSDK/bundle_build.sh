@@ -29,6 +29,7 @@ roojspacker -t roojs-svg.js -T roojs-svg-debug.js -i buildSDK/dependancy_svg.txt
 #new version?? -  
 roojspacker -i buildSDK/dependancy_core.txt  -i buildSDK/dependancy_ui.txt  \
     -i buildSDK/dependancy_bootstrap.txt -i buildSDK/dependancy_calendar.txt \
+    -i buildSDK/dependancy_svg.txt \
    --doc-target=docs -D
 
 # SCSS (really uses the C scss)
