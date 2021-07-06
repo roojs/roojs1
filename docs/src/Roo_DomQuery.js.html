@@ -128,7 +128,11 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [], </span><span class="jsdoc-var">ri </span><span class="jsdoc-syntax">= -1, </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">ci </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">ci.className</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) != -1){
+
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">+
+		( (</span><span class="jsdoc-var">ci </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGElement</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">ci.className.baseVal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ci.className</span><span class="jsdoc-syntax">)
+		 +</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) != -1){
                 </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[++</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">;
             }
         }
@@ -146,7 +150,7 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.htmlFor</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;class&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;className&quot;</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.className</span><span class="jsdoc-syntax">;
+	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGElement</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">n.className.baseVal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">n.className</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">];
 
@@ -250,7 +254,7 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
                 </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">);
             }
             </span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;class&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;className&quot;</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ci.className</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">ci </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">SVGElement</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">ci.className.baseVal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ci.className</span><span class="jsdoc-syntax">;
             }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;for&quot;</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ci.htmlFor</span><span class="jsdoc-syntax">;
             }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;href&quot;</span><span class="jsdoc-syntax">){

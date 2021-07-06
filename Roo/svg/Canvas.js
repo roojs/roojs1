@@ -63,7 +63,7 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
     relayEvent: function(e)
     {
         //e.type
-        var cel = e.getTarget('roo-svg-observable', false, true);
+        var cel = e.getTarget('.roo-svg-observable', false, true);
         if (!cel || typeof(cel.listeners[e.type]) == 'undefined') {
             this.fireEvent(e.type)
             return;
