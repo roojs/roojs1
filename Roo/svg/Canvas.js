@@ -19,7 +19,7 @@ Roo.svg.Canvas = function(cfg)
     this.addEvents({
         'click' : true,
         'dblclick' : true,
-        'context' : true,
+        'context' : true
     });
     
 }
@@ -65,7 +65,7 @@ Roo.extend(Roo.svg.Canvas, Roo.bootstrap.Component,  {
         //e.type
         var cel = e.getTarget('.roo-svg-observable', false, true);
         if (!cel || typeof(cel.listeners[e.type]) == 'undefined') {
-            this.fireEvent(e.type)
+            this.fireEvent(e.type);
             return;
         }
         cel.listeners[e.type].fire(e, cel);

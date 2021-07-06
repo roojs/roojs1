@@ -19,6 +19,8 @@ roojspacker -t roojs-calendar.js -T roojs-calendar-debug.js -i buildSDK/dependan
 roojspacker -t roojs-mailer.js -T roojs-mailer-debug.js -i buildSDK/dependancy_mailer.txt  
 #build docbook library
 roojspacker -t roojs-doc.js -T roojs-doc-debug.js -i buildSDK/dependancy_doc.txt
+#build svg library
+roojspacker -t roojs-svg.js -T roojs-svg-debug.js -i buildSDK/dependancy_svg.txt
 
   
 
