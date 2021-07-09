@@ -58266,30 +58266,15 @@ Roo.grid.ColumnModel = function(config){
 	/**
      * The config passed into the constructor
      */
-    this.config = config;
+    this.config = []; //config;
     this.lookup = {};
 
     // if no id, create one
     // if the column does not have a dataIndex mapping,
     // map it to the order it is in the config
     for(var i = 0, len = config.length; i < len; i++){
-        var c = config[i];
-        if(typeof c.dataIndex == "undefined"){
-            c.dataIndex = i;
-        }
-        if(typeof c.renderer == "string"){
-            c.renderer = Roo.util.Format[c.renderer];
-        }
-        if(typeof c.id == "undefined"){
-            c.id = Roo.id();
-        }
-        if(c.editor && c.editor.xtype){
-            c.editor  = Roo.factory(c.editor, Roo.grid);
-        }
-        if(c.editor && c.editor.isFormField){
-            c.editor = new Roo.grid.GridEditor(c.editor);
-        }
-        this.lookup[c.id] = c;
+	this.addColumn(config[i]);
+	
     }
 
     /**
@@ -58757,7 +58742,33 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      */
     setEditor : function(col, editor){
         this.config[col].editor = editor;
+    },
+    /**
+     * Add a column (experimental...) - defaults to adding to the end..
+     * @param {Object} config 
+    */
+    addColumn : function(c)
+    {
+    
+	var i = this.config.length;
+	if(typeof c.dataIndex == "undefined"){
+            c.dataIndex = i;
+        }
+        if(typeof c.renderer == "string"){
+            c.renderer = Roo.util.Format[c.renderer];
+        }
+        if(typeof c.id == "undefined"){
+            c.id = Roo.id();
+        }
+        if(c.editor && c.editor.xtype){
+            c.editor  = Roo.factory(c.editor, Roo.grid);
+        }
+        if(c.editor && c.editor.isFormField){
+            c.editor = new Roo.grid.GridEditor(c.editor);
+        }
+        this.lookup[c.id] = c;
     }
+    
 });
 
 Roo.grid.ColumnModel.defaultRenderer = function(value)

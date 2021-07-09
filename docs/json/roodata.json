@@ -380,14 +380,6 @@
         "memberOf" : ""
       },
       {
-        "name" : "namespace",
-        "type" : "function",
-        "desc" : "Creates namespaces to be used for scoping variables and classes so that they are not global.  Usage:\n<pre><code>\nRoo.namespace('Company', 'Company.data');\nCompany.Widget = function() { ... }\nCompany.data.CustomStore = function(config) { ... }\n</code></pre>",
-        "sig" : "(namespace1, namespace2, etc)",
-        "static" : true,
-        "memberOf" : ""
-      },
-      {
         "name" : "onReady",
         "type" : "function",
         "desc" : "Fires when the document is ready (before onload and before images are loaded).  Shorthand of {@link Roo.EventManager#onDocumentReady}.",
@@ -97498,6 +97490,14 @@
       }
     ],
     "methods" : [
+      {
+        "name" : "addColumn",
+        "type" : "function",
+        "desc" : "Add a column (experimental...) - defaults to adding to the end..",
+        "sig" : "(config)",
+        "static" : false,
+        "memberOf" : ""
+      },
       {
         "name" : "addEvents",
         "type" : "function",
