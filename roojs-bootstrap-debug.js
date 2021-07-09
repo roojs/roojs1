@@ -8533,7 +8533,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 tag: 'th',
                 cls : 'x-hcol-' + i,
                 style : '',
-                tooltip : cm.getColumnTooltip(i),
+                tooltip : cm.getColumnTooltip(i) || '',
                 html: cm.getColumnHeader(i)
             };
             
