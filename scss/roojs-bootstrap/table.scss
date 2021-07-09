@@ -47,10 +47,13 @@
     min-height: 0;
 }
 
-.table .sortable {
+.table .sortable
+{
     cursor: pointer;
-    .i.fa-arrow-up, .i.fa-arrow-down {
-            margin-right: 6px;
+    .i.fa-arrow-up,
+    .i.fa-arrow-down
+    {
+         margin-right: 6px;
     }
 }
 
