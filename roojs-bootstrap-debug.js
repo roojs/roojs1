@@ -8881,6 +8881,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var td = {
                 tag: 'td',
+                // this might end up displaying HTML?
                 tooltip : (typeof(value) === 'object') ? '' : value,
                 cls : rowcfg.rowClass + ' x-col-' + i,
                 style: '',
