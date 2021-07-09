@@ -3572,8 +3572,8 @@ html.bootstrap-sticky body {
 
 .table .sortable {
   cursor: pointer; }
-  .table .sortable .i.fa-arrow-up,
-  .table .sortable .i.fa-arrow-down {
+  .table .sortable i.fa-arrow-up,
+  .table .sortable i.fa-arrow-down {
     margin-right: 6px; }
 
 .table-body-fixed tbody {
