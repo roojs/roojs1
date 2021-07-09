@@ -7455,7 +7455,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
 
     
     /**
-     * Returns the column for a specified dataIndex.
+     * Returns the column Object for a specified dataIndex.
      * @param {String} dataIndex The column dataIndex
      * @return {Object|Boolean} the column or false if not found
      */
