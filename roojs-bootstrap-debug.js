@@ -8270,11 +8270,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         
         
-        var _this = this;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            e.on('click', _this.sort, _this);
-        });
+            e.on('click', this.sort, this);
+        }, this);
         
         this.mainBody.on("click", this.onClick, this);
         this.mainBody.on("dblclick", this.onDblClick, this);
