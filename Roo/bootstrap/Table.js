@@ -1158,6 +1158,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.mainHead.remove();
         this.mainHead = table.createChild(header, this.mainBody, false);
+        
+        Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
+            e.on('click', _this.sort, _this);
+        });
+        
+        
     },
     
     onHiddenChange : function(colModel, colIndex, hidden)
