@@ -8541,7 +8541,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             if(typeof(config.sortable) != 'undefined' && config.sortable){
                 c.cls = 'sortable';
-                c.html = '<i class="far"></i>' + c.html;
+                c.html = '<i class="fa"></i>' + c.html;
             }
             
             // could use BS4 hidden-..-down 
