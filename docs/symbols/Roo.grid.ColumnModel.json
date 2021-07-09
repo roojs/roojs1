@@ -738,7 +738,7 @@
     },
     {
       "name" : "getColumnByDataIndex",
-      "desc" : "Returns the column for a specified dataIndex.",
+      "desc" : "Returns the column Object for a specified dataIndex.",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,

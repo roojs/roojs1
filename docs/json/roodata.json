@@ -97549,7 +97549,7 @@
       {
         "name" : "getColumnByDataIndex",
         "type" : "function",
-        "desc" : "Returns the column for a specified dataIndex.",
+        "desc" : "Returns the column Object for a specified dataIndex.",
         "sig" : "(dataIndex)",
         "static" : false,
         "memberOf" : ""

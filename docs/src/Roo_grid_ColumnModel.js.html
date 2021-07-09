@@ -188,7 +188,7 @@
 
 
     </span><span class="jsdoc-comment">/**
-     * Returns the column for a specified dataIndex.
+     * Returns the column Object for a specified dataIndex.
      * @param {String} dataIndex The column dataIndex
      * @return {Object|Boolean} the column or false if not found
      */
@@ -523,6 +523,8 @@
     {
 
 	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.length</span><span class="jsdoc-syntax">;
+	</span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+
 	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">c.dataIndex </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">c.dataIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
         }
