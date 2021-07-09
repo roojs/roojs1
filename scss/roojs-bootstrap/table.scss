@@ -67,12 +67,12 @@
 
 .table-body-fixed tbody td, 
 .table-body-fixed thead > tr> th {
-  float: left;
-  border-bottom-width: 0;
-  /* long headers? and body ?*/
-  overflow: hidden;
-  white-space: nowrap;
-      text-overflow: ellipsis;
+    float: left;
+    border-bottom-width: 0;
+    /* long headers? and body ?*/
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
 }
 
