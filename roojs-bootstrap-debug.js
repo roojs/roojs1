@@ -8501,7 +8501,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var sort = col.attr('sort');
         var dir = 'ASC';
         
-        if(col.select('i', true).first().hasClass('glyphicon-arrow-up')){
+        if(col.select('i', true).first().hasClass('fa-arrow-up')){
             dir = 'DESC';
         }
         
@@ -8676,15 +8676,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var ds = this.store;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            e.select('i', true).removeClass(['glyphicon-arrow-up', 'glyphicon-arrow-down']);
+            e.select('i', true).removeClass(['fa-arrow-up', 'fa-arrow-down']);
             if (_this.store.sortInfo) {
                     
                 if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'ASC'){
-                    e.select('i', true).addClass(['glyphicon-arrow-up']);
+                    e.select('i', true).addClass(['fa-arrow-up']);
                 }
                 
                 if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'DESC'){
-                    e.select('i', true).addClass(['glyphicon-arrow-down']);
+                    e.select('i', true).addClass(['fa-arrow-down']);
                 }
             }
         });
