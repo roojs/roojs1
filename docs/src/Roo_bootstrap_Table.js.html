@@ -583,9 +583,15 @@
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-hcol-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cm.getColumnTooltip</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">),
+
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cm.getColumnHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)
             };
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnTooltip</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">c.tooltip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">;
+            }
+
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
 

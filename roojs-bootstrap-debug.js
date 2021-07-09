@@ -8533,9 +8533,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 tag: 'th',
                 cls : 'x-hcol-' + i,
                 style : '',
-                tooltip : cm.getColumnTooltip(i) || '',
+                
                 html: cm.getColumnHeader(i)
             };
+            
+            var tooltip = cm.getColumnTooltip(i);
+            if (tooltip) {
+                c.tooltip = tooltip;
+            }
+            
             
             var hh = '';
             
