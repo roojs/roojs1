@@ -58751,6 +58751,8 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     {
     
 	var i = this.config.length;
+	this.config[i] = c;
+	
 	if(typeof c.dataIndex == "undefined"){
             c.dataIndex = i;
         }
