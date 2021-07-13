@@ -259,6 +259,27 @@
       ]
     },
     {
+      "name" : "addColumn",
+      "desc" : "Add a column (experimental...) - defaults to adding to the end..",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.grid.ColumnModel",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "config",
+          "type" : "Object",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "getColumnHeader",
       "desc" : "Returns the header for the specified column.",
       "isStatic" : false,
@@ -717,7 +738,7 @@
     },
     {
       "name" : "getColumnByDataIndex",
-      "desc" : "Returns the column for a specified dataIndex.",
+      "desc" : "Returns the column Object for a specified dataIndex.",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,

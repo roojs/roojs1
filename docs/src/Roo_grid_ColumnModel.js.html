@@ -38,30 +38,15 @@
 	</span><span class="jsdoc-comment">/**
      * The config passed into the constructor
      */
-    </span><span class="jsdoc-var">this.config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.config </span><span class="jsdoc-syntax">= []; </span><span class="jsdoc-comment">//config;
     </span><span class="jsdoc-var">this.lookup </span><span class="jsdoc-syntax">= {};
 
     </span><span class="jsdoc-comment">// if no id, create one
     // if the column does not have a dataIndex mapping,
     // map it to the order it is in the config
     </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">c.dataIndex </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">c.dataIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">c.renderer </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">c.renderer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.Format</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.renderer</span><span class="jsdoc-syntax">];
-        }
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">c.id </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">c.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
-        }
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.editor </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">c.editor.xtype</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">c.editor  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.grid</span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.editor </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">c.editor.isFormField</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">c.editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.GridEditor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.editor</span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-var">this.lookup</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+	</span><span class="jsdoc-var">this.addColumn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+
     }
 
     </span><span class="jsdoc-comment">/**
@@ -203,7 +188,7 @@
 
 
     </span><span class="jsdoc-comment">/**
-     * Returns the column for a specified dataIndex.
+     * Returns the column Object for a specified dataIndex.
      * @param {String} dataIndex The column dataIndex
      * @return {Object|Boolean} the column or false if not found
      */
@@ -529,7 +514,35 @@
      */
     </span><span class="jsdoc-var">setEditor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * Add a column (experimental...) - defaults to adding to the end..
+     * @param {Object} config 
+    */
+    </span><span class="jsdoc-var">addColumn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
+    {
+
+	</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.length</span><span class="jsdoc-syntax">;
+	</span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+
+	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">c.dataIndex </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">c.dataIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">c.renderer </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">c.renderer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.Format</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.renderer</span><span class="jsdoc-syntax">];
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">c.id </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">c.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.editor </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">c.editor.xtype</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">c.editor  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.grid</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.editor </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">c.editor.isFormField</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">c.editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.GridEditor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.editor</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.lookup</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
     }
+
 });
 
 </span><span class="jsdoc-var">Roo.grid.ColumnModel.defaultRenderer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)

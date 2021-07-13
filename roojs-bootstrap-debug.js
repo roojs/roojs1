@@ -7305,30 +7305,15 @@ Roo.grid.ColumnModel = function(config){
 	/**
      * The config passed into the constructor
      */
-    this.config = config;
+    this.config = []; //config;
     this.lookup = {};
 
     // if no id, create one
     // if the column does not have a dataIndex mapping,
     // map it to the order it is in the config
     for(var i = 0, len = config.length; i < len; i++){
-        var c = config[i];
-        if(typeof c.dataIndex == "undefined"){
-            c.dataIndex = i;
-        }
-        if(typeof c.renderer == "string"){
-            c.renderer = Roo.util.Format[c.renderer];
-        }
-        if(typeof c.id == "undefined"){
-            c.id = Roo.id();
-        }
-        if(c.editor && c.editor.xtype){
-            c.editor  = Roo.factory(c.editor, Roo.grid);
-        }
-        if(c.editor && c.editor.isFormField){
-            c.editor = new Roo.grid.GridEditor(c.editor);
-        }
-        this.lookup[c.id] = c;
+	this.addColumn(config[i]);
+	
     }
 
     /**
@@ -7470,7 +7455,7 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
 
     
     /**
-     * Returns the column for a specified dataIndex.
+     * Returns the column Object for a specified dataIndex.
      * @param {String} dataIndex The column dataIndex
      * @return {Object|Boolean} the column or false if not found
      */
@@ -7796,7 +7781,35 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      */
     setEditor : function(col, editor){
         this.config[col].editor = editor;
+    },
+    /**
+     * Add a column (experimental...) - defaults to adding to the end..
+     * @param {Object} config 
+    */
+    addColumn : function(c)
+    {
+    
+	var i = this.config.length;
+	this.config[i] = c;
+	
+	if(typeof c.dataIndex == "undefined"){
+            c.dataIndex = i;
+        }
+        if(typeof c.renderer == "string"){
+            c.renderer = Roo.util.Format[c.renderer];
+        }
+        if(typeof c.id == "undefined"){
+            c.id = Roo.id();
+        }
+        if(c.editor && c.editor.xtype){
+            c.editor  = Roo.factory(c.editor, Roo.grid);
+        }
+        if(c.editor && c.editor.isFormField){
+            c.editor = new Roo.grid.GridEditor(c.editor);
+        }
+        this.lookup[c.id] = c;
     }
+    
 });
 
 Roo.grid.ColumnModel.defaultRenderer = function(value)
@@ -8257,11 +8270,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         
         
-        var _this = this;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            e.on('click', _this.sort, _this);
-        });
+            e.on('click', this.sort, this);
+        }, this);
         
         this.mainBody.on("click", this.onClick, this);
         this.mainBody.on("dblclick", this.onDblClick, this);
@@ -8488,7 +8500,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var sort = col.attr('sort');
         var dir = 'ASC';
         
-        if(col.select('i', true).first().hasClass('glyphicon-arrow-up')){
+        if(col.select('i', true).first().hasClass('fa-arrow-up')){
             dir = 'DESC';
         }
         
@@ -8521,14 +8533,21 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 tag: 'th',
                 cls : 'x-hcol-' + i,
                 style : '',
+                
                 html: cm.getColumnHeader(i)
             };
+            
+            var tooltip = cm.getColumnTooltip(i);
+            if (tooltip) {
+                c.tooltip = tooltip;
+            }
+            
             
             var hh = '';
             
             if(typeof(config.sortable) != 'undefined' && config.sortable){
                 c.cls = 'sortable';
-                c.html = '<i class="glyphicon"></i>' + c.html;
+                c.html = '<i class="fa"></i>' + c.html;
             }
             
             // could use BS4 hidden-..-down 
@@ -8663,15 +8682,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var ds = this.store;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            e.select('i', true).removeClass(['glyphicon-arrow-up', 'glyphicon-arrow-down']);
+            e.select('i', true).removeClass(['fa-arrow-up', 'fa-arrow-down']);
             if (_this.store.sortInfo) {
                     
                 if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'ASC'){
-                    e.select('i', true).addClass(['glyphicon-arrow-up']);
+                    e.select('i', true).addClass(['fa-arrow-up']);
                 }
                 
                 if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'DESC'){
-                    e.select('i', true).addClass(['glyphicon-arrow-down']);
+                    e.select('i', true).addClass(['fa-arrow-down']);
                 }
             }
         });
@@ -8869,6 +8888,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var td = {
                 tag: 'td',
+                // this might end up displaying HTML?
+                // this is too messy... - better to only do it on columsn you know are going to be too long
+                //tooltip : (typeof(value) === 'object') ? '' : value,
                 cls : rowcfg.rowClass + ' x-col-' + i,
                 style: '',
                 html: (typeof(value) === 'object') ? '' : value
@@ -9095,6 +9117,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.mainHead.remove();
         this.mainHead = table.createChild(header, this.mainBody, false);
+        
+        Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
+            e.on('click', this.sort, this);
+        }, this);
+        
+        
     },
     
     onHiddenChange : function(colModel, colIndex, hidden)

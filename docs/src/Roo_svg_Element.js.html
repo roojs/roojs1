@@ -1,0 +1,116 @@
+<html><head><title>Roo/svg/Element.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+ *
+ * The SVG element.. - with a 'g' subelement, that can handle moving / panning etc..
+ *
+ *
+ * The SVG element is the only element that handles events
+ *   if you click on it, it will look for  roo-svg-observable in the event handler and pass on events to children.
+ *
+ *    
+ *
+ */
+
+</span><span class="jsdoc-var">Roo.namespace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Roo.svg'</span><span class="jsdoc-syntax">);
+
+</span><span class="jsdoc-var">Roo.svg.Element </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-var">Roo.svg.Element.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-string">'click' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'dblclick' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'context' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+
+}
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.svg.Element</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Component</span><span class="jsdoc-syntax">,  {
+
+    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'g'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;svg&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">xmlns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;http://www.w3.org/2000/svg&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' roo-svg-observable'
+        </span><span class="jsdoc-syntax">};
+    },
+
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.svg.Canvas.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// others...
+        </span><span class="jsdoc-var">this.el.relayEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.relayEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.relayEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'context'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+    },
+
+     </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {
+       </span><span class="jsdoc-comment">// Roo.log(&quot;Call onRender: &quot; + this.xtype);
+
+        </span><span class="jsdoc-var">Roo.bootstrap.Component.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">this.el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtypex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">this.el.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
+            }
+
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({},  </span><span class="jsdoc-var">this.getAutoCreate</span><span class="jsdoc-syntax">());
+
+        </span><span class="jsdoc-var">cfg.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-comment">// fill in the extra attributes 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xattr </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">) ==</span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.xattr</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            }
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataId</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.dataId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataId</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.style</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// fixme needs to support more complex style data.
+            </span><span class="jsdoc-var">cfg.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.style</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ct.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tooltip</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.tooltipEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tooltip</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabIndex </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabIndex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tabIndex</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
+
+    }
+
+
+
+});</span></code></body></html>

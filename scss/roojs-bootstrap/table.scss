@@ -47,8 +47,14 @@
     min-height: 0;
 }
 
-.table .sortable {
+.table .sortable
+{
     cursor: pointer;
+    i.fa-arrow-up,
+    i.fa-arrow-down
+    {
+         margin-right: 6px;
+    }
 }
 
 .table-body-fixed tbody {
@@ -67,8 +73,13 @@
 
 .table-body-fixed tbody td, 
 .table-body-fixed thead > tr> th {
-  float: left;
-  border-bottom-width: 0;
+    float: left;
+    border-bottom-width: 0;
+    /* long headers? and body ?*/
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
 }
 
 /* fake infinate widt.. */
