@@ -727,10 +727,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
             case 'span':
                 if (className.indexOf('disabled') < 0) {
-		    if (!this.viewDate) {
-			this.viewDate = new Date();
-		    }
-                    this.viewDate.setUTCDate(1);
+                if (!this.viewDate) {
+                    this.viewDate = new Date();
+                }
+                this.viewDate.setUTCDate(1);
                     if (className.indexOf('month') > -1) {
                         this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
                     } else {

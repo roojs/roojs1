@@ -727,6 +727,9 @@
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">) &lt; 0) {
+		    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.viewDate</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-var">this.viewDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">();
+		    }
                     </span><span class="jsdoc-var">this.viewDate.setUTCDate</span><span class="jsdoc-syntax">(1);
                     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'month'</span><span class="jsdoc-syntax">) &gt; -1) {
                         </span><span class="jsdoc-var">this.viewDate.setUTCMonth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.DateField.dates</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.monthsShort.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">));
