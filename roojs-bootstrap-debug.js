@@ -29889,7 +29889,7 @@ Roo.apply(Roo.bootstrap.LocationPicker, {
  * @licence LGPL
  * @cfg {String} title The title of alert
  * @cfg {String} html The content of alert
- * @cfg {String} weight (  success | info | warning | danger )
+ * @cfg {String} weight (success|info|warning|danger) Weight of the message
  * @cfg {String} fa font-awesomeicon
  * @cfg {Number} seconds default:-1 Number of seconds until it disapears (-1 means never.)
  * @cfg {Boolean} close true to show a x closer
@@ -29967,20 +29967,32 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
         this.el.setVisibilityMode(Roo.Element.DISPLAY);
         this.titleEl =  this.el.select('.roo-alert-title',true).first();
         this.iconEl = this.el.select('.roo-alert-icon',true).first();
+        this.htmlEl = this.el.select('.roo-alert-text',true).first();
         if (this.seconds > 0) {
             this.hide.defer(this.seconds, this);
         }
     },
-    
+    /**
+     * Set the Title Message HTML
+     * @param {String} html
+     */
     setTitle : function(str)
     {
         this.titleEl.dom.innerHTML = str;
     },
-    
-    setText : function(str)
+     
+     /**
+     * Set the Body Message HTML
+     * @param {String} html
+     */
+    setHtml : function(str)
     {
-        this.titleEl.dom.innerHTML = str;
+        this.htmlEl.dom.innerHTML = str;
     },
+    /**
+     * Set the Weight of the alert
+     * @param {String} (success|info|warning|danger) weight
+     */
     
     setWeight : function(weight)
     {
@@ -29992,7 +30004,10 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
         
         this.el.addClass('alert-' + this.weight);
     },
-    
+      /**
+     * Set the Icon of the alert
+     * @param {String} see fontawsome names (name without the 'fa-' bit)
+     */
     setIcon : function(icon)
     {
         if(this.faicon){
@@ -30003,12 +30018,16 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
         
         this.alertEl.addClass(['fa', 'fa-' + this.faicon]);
     },
-    
+    /**
+     * Hide the Alert
+     */
     hide: function() 
     {
         this.el.hide();   
     },
-    
+    /**
+     * Show the Alert
+     */
     show: function() 
     {  
         this.el.show();   

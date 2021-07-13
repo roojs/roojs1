@@ -9,7 +9,7 @@
  * @licence LGPL
  * @cfg {String} title The title of alert
  * @cfg {String} html The content of alert
- * @cfg {String} weight (  success | info | warning | danger )
+ * @cfg {String} weight (success|info|warning|danger) Weight of the message
  * @cfg {String} fa font-awesomeicon
  * @cfg {Number} seconds default:-1 Number of seconds until it disapears (-1 means never.)
  * @cfg {Boolean} close true to show a x closer
@@ -87,20 +87,32 @@
         </span><span class="jsdoc-var">this.el.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.titleEl </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-alert-title'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.iconEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-alert-icon'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.htmlEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-alert-text'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.seconds </span><span class="jsdoc-syntax">&gt; 0) {
             </span><span class="jsdoc-var">this.hide.defer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.seconds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
     },
-
+    </span><span class="jsdoc-comment">/**
+     * Set the Title Message HTML
+     * @param {String} html
+     */
     </span><span class="jsdoc-var">setTitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">this.titleEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
     },
 
-    </span><span class="jsdoc-var">setText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">)
+     </span><span class="jsdoc-comment">/**
+     * Set the Body Message HTML
+     * @param {String} html
+     */
+    </span><span class="jsdoc-var">setHtml </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">this.titleEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.htmlEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
     },
+    </span><span class="jsdoc-comment">/**
+     * Set the Weight of the alert
+     * @param {String} (success|info|warning|danger) weight
+     */
 
     </span><span class="jsdoc-var">setWeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">weight</span><span class="jsdoc-syntax">)
     {
@@ -112,7 +124,10 @@
 
         </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'alert-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">);
     },
-
+      </span><span class="jsdoc-comment">/**
+     * Set the Icon of the alert
+     * @param {String} see fontawsome names (name without the 'fa-' bit)
+     */
     </span><span class="jsdoc-var">setIcon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">icon</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.faicon</span><span class="jsdoc-syntax">){
@@ -123,12 +138,16 @@
 
         </span><span class="jsdoc-var">this.alertEl.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'fa'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'fa-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.faicon</span><span class="jsdoc-syntax">]);
     },
-
+    </span><span class="jsdoc-comment">/**
+     * Hide the Alert
+     */
     </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.el.hide</span><span class="jsdoc-syntax">();
     },
-
+    </span><span class="jsdoc-comment">/**
+     * Show the Alert
+     */
     </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.el.show</span><span class="jsdoc-syntax">();

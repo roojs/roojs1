@@ -145,13 +145,13 @@
     {
       "name" : "weight",
       "type" : "String",
-      "desc" : "",
+      "desc" : "Weight of the message",
       "memberOf" : "Roo.bootstrap.Alert",
       "values" : [
-        "(  success",
+        "(success",
         "info",
         "warning",
-        "danger )"
+        "danger)"
       ]
     },
     {
@@ -178,6 +178,118 @@
   ],
   "methods" : [
     {
+      "name" : "setTitle",
+      "desc" : "Set the Title Message HTML",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Alert",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "html",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "setHtml",
+      "desc" : "Set the Body Message HTML",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Alert",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "html",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "setWeight",
+      "desc" : "Set the Weight of the alert",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Alert",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "(success|info|warning|danger)",
+          "type" : "String",
+          "desc" : "weight",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "setIcon",
+      "desc" : "Set the Icon of the alert",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Alert",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "see",
+          "type" : "String",
+          "desc" : "fontawsome names (name without the 'fa-' bit)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "hide",
+      "desc" : "Hide the Alert",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Alert",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "show",
+      "desc" : "Show the Alert",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Alert",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
       "name" : "tooltipEl",
       "desc" : "Fetch the element to display the tooltip on.",
       "isStatic" : false,
@@ -196,34 +308,6 @@
           "desc" : "defaults to this.el"
         }
       ]
-    },
-    {
-      "name" : "hide",
-      "desc" : "Hide a component - adds 'hidden' class",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "params" : [],
-      "returns" : []
-    },
-    {
-      "name" : "show",
-      "desc" : "Show a component - removes 'hidden' class",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "params" : [],
-      "returns" : []
     },
     {
       "name" : "setVisibilityEl",

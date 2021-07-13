@@ -16256,10 +16256,10 @@
         "name" : "weight",
         "type" : "String",
         "desc" : [
-          "(  success",
+          "(success",
           "info",
           "warning",
-          "danger )"
+          "danger)"
         ],
         "memberOf" : ""
       },
@@ -16457,10 +16457,10 @@
       {
         "name" : "hide",
         "type" : "function",
-        "desc" : "Hide a component - adds 'hidden' class",
+        "desc" : "Hide the Alert",
         "sig" : "()\n{\n\n}",
         "static" : false,
-        "memberOf" : "Roo.bootstrap.Component"
+        "memberOf" : ""
       },
       {
         "name" : "initEvents",
@@ -16527,6 +16527,30 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "setHtml",
+        "type" : "function",
+        "desc" : "Set the Body Message HTML",
+        "sig" : "(html)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
+        "name" : "setIcon",
+        "type" : "function",
+        "desc" : "Set the Icon of the alert",
+        "sig" : "(see)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
+        "name" : "setTitle",
+        "type" : "function",
+        "desc" : "Set the Title Message HTML",
+        "sig" : "(html)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "setVisibilityEl",
         "type" : "function",
         "desc" : "Set the element that will be used to show or hide",
@@ -16543,12 +16567,20 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "setWeight",
+        "type" : "function",
+        "desc" : "Set the Weight of the alert",
+        "sig" : "((success|info|warning|danger))",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "show",
         "type" : "function",
-        "desc" : "Show a component - removes 'hidden' class",
+        "desc" : "Show the Alert",
         "sig" : "()\n{\n\n}",
         "static" : false,
-        "memberOf" : "Roo.bootstrap.Component"
+        "memberOf" : ""
       },
       {
         "name" : "tooltipEl",
