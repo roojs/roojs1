@@ -494,16 +494,15 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRowIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-comment">// why??? - should these not be based on SelectionModel?
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellSelection</span><span class="jsdoc-syntax">){
+        //if(this.cellSelection){
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'cellclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cellIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
-        }
+        </span><span class="jsdoc-comment">//}
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rowSelection</span><span class="jsdoc-syntax">){
+        //if(this.rowSelection){
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
-        }
+        </span><span class="jsdoc-comment">//}
 
-
-    },
+    </span><span class="jsdoc-syntax">},
 
     </span><span class="jsdoc-var">onDblClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
     {

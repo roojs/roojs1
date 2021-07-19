@@ -8444,15 +8444,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var rowIndex = this.getRowIndex(row);
         
         // why??? - should these not be based on SelectionModel?
-        if(this.cellSelection){
+        //if(this.cellSelection){
             this.fireEvent('cellclick', this, cell, rowIndex, cellIndex, e);
-        }
+        //}
         
-        if(this.rowSelection){
+        //if(this.rowSelection){
             this.fireEvent('rowclick', this, row, rowIndex, e);
-        }
-        
-        
+        //}
+         
     },
         
     onDblClick : function(e,el)
