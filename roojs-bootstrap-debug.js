@@ -40213,7 +40213,14 @@ Roo.bootstrap.panel.Content = function( config){
          * Fires when this tab is created
          * @param {Roo.ContentPanel} this
          */
-        "render" : true
+        "render" : true,
+        
+          /**
+         * @event scroll
+         * Fires when this content is scrolled
+         * @param {Roo.ContentPanel} this
+         */
+        "scroll" : true
         
         
         
