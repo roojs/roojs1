@@ -3191,8 +3191,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             this.el.on('click', this.onClick, this);
         }
         if(this.src || (!this.xsUrl && !this.smUrl && !this.mdUrl && !this.lgUrl)){
-            this.el.on('loac', this.onImageLoad, this);
-            
+            this.el.on('load', this.onImageLoad, this);
         } else {
             // not sure if this works.. not tested
             this.el.select('img', true).on('load', this.onImageLoad, this);
