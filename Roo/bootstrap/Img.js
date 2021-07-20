@@ -57,6 +57,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     smUrl: '',
     mdUrl: '',
     lgUrl: '',
+    backgroundContain : false,
 
     getAutoCreate : function()
     {   
@@ -129,12 +130,20 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             tag: 'img',
             cls: (this.imgResponsive) ? 'img-responsive' : '',
             html : null,
-            src : 'about:blank'  // just incase src get's set to undefined?!?
+            src : Roo.BLANK_IMAGE_URL  // just incase src get's set to undefined?!?
         };
+        
+        if (this.backgroundContain) {
+            cfg.cls += ' background-contain';
+        }
         
         cfg.html = this.html || cfg.html;
         
-        cfg.src = this.src || cfg.src;
+        if (this.backgroundContain) {
+            cfg.style="background-image: url(" + this.src + ')';
+        } else {
+            cfg.src = this.src || cfg.src;
+        }
         
         if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
             cfg.cls += ' img-' + this.border;
