@@ -4780,4 +4780,9 @@ html.bootstrap-sticky body {
   margin-left: -10px;
   margin-right: 10px; }
 
+img.background-contain {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain; }
+
 /*# sourceMappingURL=roojs-bootstrap-debug.css.map */

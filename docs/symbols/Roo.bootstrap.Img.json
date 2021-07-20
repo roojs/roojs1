@@ -67,6 +67,13 @@
       "values" : []
     },
     {
+      "name" : "backgroundContain",
+      "type" : "Boolean",
+      "desc" : "(use style background and contain image in content)",
+      "memberOf" : "Roo.bootstrap.Img",
+      "values" : []
+    },
+    {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -838,6 +845,24 @@
     {
       "name" : "click",
       "desc" : "The img click event for the img.",
+      "memberOf" : "Roo.bootstrap.Img",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "load",
+      "desc" : "The when any image loads",
       "memberOf" : "Roo.bootstrap.Img",
       "example" : "",
       "deprecated" : "",

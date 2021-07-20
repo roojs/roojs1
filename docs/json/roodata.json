@@ -33270,6 +33270,12 @@
         "memberOf" : ""
       },
       {
+        "name" : "backgroundContain",
+        "type" : "Boolean",
+        "desc" : "(use style background and contain image in content)",
+        "memberOf" : ""
+      },
+      {
         "name" : "border",
         "type" : "String",
         "desc" : "rounded | circle | thumbnail",
@@ -33477,6 +33483,13 @@
         "desc" : "Fires after the component is hidden.",
         "sig" : "function (_self)\n{\n\n}",
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "load",
+        "type" : "function",
+        "desc" : "The when any image loads",
+        "sig" : "function (e)\n{\n\n}",
+        "memberOf" : ""
       },
       {
         "name" : "render",

@@ -172,7 +172,15 @@ Roo.bootstrap.panel.Content = function( config){
          * Fires when this tab is created
          * @param {Roo.ContentPanel} this
          */
-        "render" : true
+        "render" : true,
+        
+          /**
+         * @event scroll
+         * Fires when this content is scrolled
+         * @param {Roo.ContentPanel} this
+         * @param {Event} scrollEvent
+         */
+        "scroll" : true
         
         
         
@@ -183,6 +191,7 @@ Roo.bootstrap.panel.Content = function( config){
     
     if(this.autoScroll && !this.iframe){
         this.resizeEl.setStyle("overflow", "auto");
+        this.resizeEl.on('scroll', this.onScroll, this);
     } else {
         // fix randome scrolling
         //this.el.on('scroll', function() {
@@ -221,6 +230,9 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     
     iframe : false,
     iframeEl : false,
+    
+    /* Resize Element - use this to work out scroll etc. */
+    resizeEl : false,
     
     setRegion : function(region){
         this.region = region;
@@ -531,6 +543,12 @@ layout.addxtype({
     
     getChildContainer: function () {
         return this.getEl();
+    },
+    
+    
+    onScroll : function(e)
+    {
+        this.fireEvent('scroll', this, e);
     }
     
     

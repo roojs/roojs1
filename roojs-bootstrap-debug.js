@@ -330,11 +330,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         if (this.cls) {
-            cfg.cls = (typeof(cfg.cls) == 'undefined') ? this.cls : cfg.cls + ' ' + this.cls;
+            cfg.cls = (typeof(cfg.cls) == 'undefined' ? this.cls : cfg.cls) + ' ' + this.cls;
         }
         
         if (this.style) { // fixme needs to support more complex style data.
-            cfg.style = this.style;
+            cfg.style = (typeof(cfg.style) == 'undefined' ? this.style : cfg.style) + '; ' + this.style;
         }
         
         if(this.name){
@@ -3043,6 +3043,7 @@ Roo.extend(Roo.bootstrap.ButtonUploader, Roo.bootstrap.Button,  {
  * @cfg {String} smUrl sm image source
  * @cfg {String} mdUrl md image source
  * @cfg {String} lgUrl lg image source
+ * @cfg {Boolean} backgroundContain (use style background and contain image in content)
  * 
  * @constructor
  * Create a new Input
@@ -3080,6 +3081,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     smUrl: '',
     mdUrl: '',
     lgUrl: '',
+    backgroundContain : false,
 
     getAutoCreate : function()
     {   
@@ -3152,12 +3154,20 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             tag: 'img',
             cls: (this.imgResponsive) ? 'img-responsive' : '',
             html : null,
-            src : 'about:blank'  // just incase src get's set to undefined?!?
+            src : Roo.BLANK_IMAGE_URL  // just incase src get's set to undefined?!?
         };
+        
+        if (this.backgroundContain) {
+            cfg.cls += ' background-contain';
+        }
         
         cfg.html = this.html || cfg.html;
         
-        cfg.src = this.src || cfg.src;
+        if (this.backgroundContain) {
+            cfg.style="background-image: url(" + this.src + ')';
+        } else {
+            cfg.src = this.src || cfg.src;
+        }
         
         if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
             cfg.cls += ' img-' + this.border;
@@ -3190,7 +3200,13 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         if(!this.href){
             this.el.on('click', this.onClick, this);
         }
-        this.el.select('img', true).on('load', this.onImageLoad, this);
+        if(this.src || (!this.xsUrl && !this.smUrl && !this.mdUrl && !this.lgUrl)){
+            this.el.on('load', this.onImageLoad, this);
+        } else {
+            // not sure if this works.. not tested
+            this.el.select('img', true).on('load', this.onImageLoad, this);
+        }
+        
     },
     
     onClick : function(e)
@@ -3214,7 +3230,11 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         this.src =  url;
         
         if(this.src || (!this.xsUrl && !this.smUrl && !this.mdUrl && !this.lgUrl)){
-            this.el.dom.src =  url;
+            if (this.backgroundContain) {
+                this.el.dom.style.backgroundImage =  'url(' + url + ')';
+            } else {
+                this.el.dom.src =  url;
+            }
             return;
         }
         
@@ -40193,7 +40213,15 @@ Roo.bootstrap.panel.Content = function( config){
          * Fires when this tab is created
          * @param {Roo.ContentPanel} this
          */
-        "render" : true
+        "render" : true,
+        
+          /**
+         * @event scroll
+         * Fires when this content is scrolled
+         * @param {Roo.ContentPanel} this
+         * @param {Event} scrollEvent
+         */
+        "scroll" : true
         
         
         
@@ -40204,6 +40232,7 @@ Roo.bootstrap.panel.Content = function( config){
     
     if(this.autoScroll && !this.iframe){
         this.resizeEl.setStyle("overflow", "auto");
+        this.resizeEl.on('scroll', this.onScroll, this);
     } else {
         // fix randome scrolling
         //this.el.on('scroll', function() {
@@ -40242,6 +40271,9 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     
     iframe : false,
     iframeEl : false,
+    
+    /* Resize Element - use this to work out scroll etc. */
+    resizeEl : false,
     
     setRegion : function(region){
         this.region = region;
@@ -40552,6 +40584,12 @@ layout.addxtype({
     
     getChildContainer: function () {
         return this.getEl();
+    },
+    
+    
+    onScroll : function(e)
+    {
+        this.fireEvent('scroll', this, e);
     }
     
     

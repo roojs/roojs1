@@ -20,6 +20,7 @@
  * @cfg {String} smUrl sm image source
  * @cfg {String} mdUrl md image source
  * @cfg {String} lgUrl lg image source
+ * @cfg {Boolean} backgroundContain (use style background and contain image in content)
  * 
  * @constructor
  * Create a new Input
@@ -57,6 +58,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     smUrl: '',
     mdUrl: '',
     lgUrl: '',
+    backgroundContain : false,
 
     getAutoCreate : function()
     {   
@@ -129,12 +131,20 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             tag: 'img',
             cls: (this.imgResponsive) ? 'img-responsive' : '',
             html : null,
-            src : 'about:blank'  // just incase src get's set to undefined?!?
+            src : Roo.BLANK_IMAGE_URL  // just incase src get's set to undefined?!?
         };
+        
+        if (this.backgroundContain) {
+            cfg.cls += ' background-contain';
+        }
         
         cfg.html = this.html || cfg.html;
         
-        cfg.src = this.src || cfg.src;
+        if (this.backgroundContain) {
+            cfg.style="background-image: url(" + this.src + ')';
+        } else {
+            cfg.src = this.src || cfg.src;
+        }
         
         if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
             cfg.cls += ' img-' + this.border;
@@ -167,7 +177,13 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         if(!this.href){
             this.el.on('click', this.onClick, this);
         }
-        this.el.select('img', true).on('load', this.onImageLoad, this);
+        if(this.src || (!this.xsUrl && !this.smUrl && !this.mdUrl && !this.lgUrl)){
+            this.el.on('load', this.onImageLoad, this);
+        } else {
+            // not sure if this works.. not tested
+            this.el.select('img', true).on('load', this.onImageLoad, this);
+        }
+        
     },
     
     onClick : function(e)
@@ -191,7 +207,11 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         this.src =  url;
         
         if(this.src || (!this.xsUrl && !this.smUrl && !this.mdUrl && !this.lgUrl)){
-            this.el.dom.src =  url;
+            if (this.backgroundContain) {
+                this.el.dom.style.backgroundImage =  'url(' + url + ')';
+            } else {
+                this.el.dom.src =  url;
+            }
             return;
         }
         
