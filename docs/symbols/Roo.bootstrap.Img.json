@@ -67,6 +67,13 @@
       "values" : []
     },
     {
+      "name" : "backgroundContain",
+      "type" : "Boolean",
+      "desc" : "(use style background and contain image in content)",
+      "memberOf" : "Roo.bootstrap.Img",
+      "values" : []
+    },
+    {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",

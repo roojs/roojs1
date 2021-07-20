@@ -20,6 +20,7 @@
  * @cfg {String} smUrl sm image source
  * @cfg {String} mdUrl md image source
  * @cfg {String} lgUrl lg image source
+ * @cfg {Boolean} backgroundContain (use style background and contain image in content)
  * 
  * @constructor
  * Create a new Input
@@ -57,6 +58,7 @@
     </span><span class="jsdoc-var">smUrl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">mdUrl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">lgUrl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">backgroundContain </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -129,12 +131,20 @@
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.imgResponsive</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'img-responsive' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'about:blank'  </span><span class="jsdoc-comment">// just incase src get's set to undefined?!?
+            </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.BLANK_IMAGE_URL  </span><span class="jsdoc-comment">// just incase src get's set to undefined?!?
         </span><span class="jsdoc-syntax">};
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.backgroundContain</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' background-contain'</span><span class="jsdoc-syntax">;
+        }
 
         </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-var">cfg.src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.src </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.src</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.backgroundContain</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.style</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">&quot;background-image: url(&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.src </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">')'</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">cfg.src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.src </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.src</span><span class="jsdoc-syntax">;
+        }
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'rounded'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'circle'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'thumbnail'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.border</span><span class="jsdoc-syntax">)&gt;-1) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' img-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.border</span><span class="jsdoc-syntax">;
@@ -167,7 +177,13 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
-        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onImageLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.src </span><span class="jsdoc-syntax">|| (!</span><span class="jsdoc-var">this.xsUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.smUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.mdUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.lgUrl</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onImageLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-comment">// not sure if this works.. not tested
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onImageLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
     },
 
     </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)

@@ -33270,6 +33270,12 @@
         "memberOf" : ""
       },
       {
+        "name" : "backgroundContain",
+        "type" : "Boolean",
+        "desc" : "(use style background and contain image in content)",
+        "memberOf" : ""
+      },
+      {
         "name" : "border",
         "type" : "String",
         "desc" : "rounded | circle | thumbnail",
