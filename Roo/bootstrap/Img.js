@@ -20,6 +20,7 @@
  * @cfg {String} smUrl sm image source
  * @cfg {String} mdUrl md image source
  * @cfg {String} lgUrl lg image source
+ * @cfg {Boolean} backgroundContain (use style background and contain image in content)
  * 
  * @constructor
  * Create a new Input
