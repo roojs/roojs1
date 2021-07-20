@@ -36,7 +36,13 @@ Roo.bootstrap.Img = function(config){
          * The img click event for the img.
          * @param {Roo.EventObject} e
          */
-        "click" : true
+        "click" : true,
+        /**
+         * @event load
+         * The when any image loads
+         * @param {Roo.EventObject} e
+         */
+        "load" : true
     });
 };
 
@@ -161,7 +167,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         if(!this.href){
             this.el.on('click', this.onClick, this);
         }
-        
+        this.el.select('img', true).on('load', this.onImageLoad, this);
     },
     
     onClick : function(e)
@@ -169,6 +175,12 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         Roo.log('img onclick');
         this.fireEvent('click', this, e);
     },
+    onImageLoad: function(e)
+    {
+        Roo.log('img load');
+        this.fireEvent('load', this, e);
+    },
+    
     /**
      * Sets the url of the image - used to update it
      * @param {String} url the url of the image
