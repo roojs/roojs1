@@ -121,7 +121,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         if (this.style) { // fixme needs to support more complex style data.
-            cfg.style = (typeof(cfg.style) == 'undefined' ? this.style : cfg.style) + ' ' + this.style;
+            cfg.style = (typeof(cfg.style) == 'undefined' ? this.style : cfg.style) + '; ' + this.style;
         }
         
         if(this.name){
