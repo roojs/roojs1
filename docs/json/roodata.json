@@ -67504,6 +67504,13 @@
         "desc" : "Fires when this panel is resized if fitToFrame is true.",
         "sig" : "function (_self, width, height)\n{\n\n}",
         "memberOf" : ""
+      },
+      {
+        "name" : "scroll",
+        "type" : "function",
+        "desc" : "Fires when this content is scrolled",
+        "sig" : "function (_self, scrollEvent)\n{\n\n}",
+        "memberOf" : ""
       }
     ],
     "methods" : [
@@ -67849,6 +67856,13 @@
         "type" : "function",
         "desc" : "Fires when this panel is resized if fitToFrame is true.",
         "sig" : "function (_self, width, height)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.panel.Content"
+      },
+      {
+        "name" : "scroll",
+        "type" : "function",
+        "desc" : "Fires when this content is scrolled",
+        "sig" : "function (_self, scrollEvent)\n{\n\n}",
         "memberOf" : "Roo.bootstrap.panel.Content"
       }
     ],
@@ -68197,6 +68211,13 @@
         "type" : "function",
         "desc" : "Fires when this panel is resized if fitToFrame is true.",
         "sig" : "function (_self, width, height)\n{\n\n}",
+        "memberOf" : "Roo.bootstrap.panel.Content"
+      },
+      {
+        "name" : "scroll",
+        "type" : "function",
+        "desc" : "Fires when this content is scrolled",
+        "sig" : "function (_self, scrollEvent)\n{\n\n}",
         "memberOf" : "Roo.bootstrap.panel.Content"
       }
     ],

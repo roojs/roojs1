@@ -890,6 +890,30 @@
         }
       ],
       "returns" : []
+    },
+    {
+      "name" : "scroll",
+      "desc" : "Fires when this content is scrolled",
+      "memberOf" : "Roo.bootstrap.panel.Content",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.ContentPanel",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "scrollEvent",
+          "type" : "Event",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
     }
   ]
 }
