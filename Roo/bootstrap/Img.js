@@ -207,7 +207,11 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         this.src =  url;
         
         if(this.src || (!this.xsUrl && !this.smUrl && !this.mdUrl && !this.lgUrl)){
-            this.el.dom.src =  url;
+            if (this.backgroundContain) {
+                this.el.dom.style.backgroundImage =  'url(' + url + ')';
+            } else {
+                this.el.dom.src =  url;
+            }
             return;
         }
         
