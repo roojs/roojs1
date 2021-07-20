@@ -207,7 +207,11 @@
         </span><span class="jsdoc-var">this.src </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.src </span><span class="jsdoc-syntax">|| (!</span><span class="jsdoc-var">this.xsUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.smUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.mdUrl </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.lgUrl</span><span class="jsdoc-syntax">)){
-            </span><span class="jsdoc-var">this.el.dom.src </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.backgroundContain</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.el.dom.style.backgroundImage </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">'url(' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">')'</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.el.dom.src </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
 
