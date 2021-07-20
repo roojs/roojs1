@@ -167,7 +167,14 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         if(!this.href){
             this.el.on('click', this.onClick, this);
         }
-        this.el.select('img', true).on('load', this.onImageLoad, this);
+        if(this.src || (!this.xsUrl && !this.smUrl && !this.mdUrl && !this.lgUrl)){
+            this.el.on('loac', this.onImageLoad, this);
+            
+        } else {
+            // not sure if this works.. not tested
+            this.el.select('img', true).on('load', this.onImageLoad, this);
+        }
+        
     },
     
     onClick : function(e)
