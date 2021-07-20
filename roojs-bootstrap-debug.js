@@ -40272,6 +40272,9 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
     iframe : false,
     iframeEl : false,
     
+    /* Resize Element - use this to work out scroll etc. */
+    resizeEl : false,
+    
     setRegion : function(region){
         this.region = region;
         this.setActiveClass(region && !this.background);
