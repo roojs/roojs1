@@ -40219,6 +40219,7 @@ Roo.bootstrap.panel.Content = function( config){
          * @event scroll
          * Fires when this content is scrolled
          * @param {Roo.ContentPanel} this
+         * @param {Event} scrollEvent
          */
         "scroll" : true
         
@@ -40231,6 +40232,7 @@ Roo.bootstrap.panel.Content = function( config){
     
     if(this.autoScroll && !this.iframe){
         this.resizeEl.setStyle("overflow", "auto");
+        this.resizeEl.on('scroll', this.onScroll, this);
     } else {
         // fix randome scrolling
         //this.el.on('scroll', function() {
@@ -40579,6 +40581,12 @@ layout.addxtype({
     
     getChildContainer: function () {
         return this.getEl();
+    },
+    
+    
+    onScroll : function(e)
+    {
+        this.fireEvent('scroll', this, e);
     }
     
     
