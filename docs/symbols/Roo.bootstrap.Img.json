@@ -854,6 +854,24 @@
       "returns" : []
     },
     {
+      "name" : "load",
+      "desc" : "The when any image loads",
+      "memberOf" : "Roo.bootstrap.Img",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "childrenrendered",
       "desc" : "Fires when the children have been rendered..",
       "memberOf" : "Roo.bootstrap.Component",

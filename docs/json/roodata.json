@@ -33479,6 +33479,13 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "load",
+        "type" : "function",
+        "desc" : "The when any image loads",
+        "sig" : "function (e)\n{\n\n}",
+        "memberOf" : ""
+      },
+      {
         "name" : "render",
         "type" : "function",
         "desc" : "Fires after the component is rendered.",
