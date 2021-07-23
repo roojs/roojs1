@@ -8039,7 +8039,11 @@ Roo.LoadMask.prototype = {
  // set any options
  grid.render(Roo.get("some-div"));
 </code></pre>
-  <b>A Dialog should always be a direct child of the body element.</b>
+
+Currently the Table  uses multiple headers to try and handle XL / Medium etc... styling
+
+
+
  *
  * @cfg {Roo.bootstrap.Table.RowSelectionModel|Roo.bootstrap.Table.CellSelectionModel} sm The selection model to use (cell selection is not supported yet)
  * @cfg {Roo.data.Store|Roo.data.SimpleStore} store The data store to use
@@ -9259,7 +9263,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 
  
 
- /*
+/**
+ * @depricated
+*/
+Roo.bootstrap.Table.AbstractSelectionModel = Roo.grid.AbstractSelectionModel;/*
  * - LGPL
  *
  * table cell
