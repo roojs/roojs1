@@ -112,7 +112,8 @@ Roo.bootstrap.htmleditor.ToolbarStandard
 Roo.bootstrap.Markdown
 
 Roo.grid.AbstractSelectionModel
-Roo.bootstrap.Table.RowSelectionModel
+Roo.grid.RowSelectionModel
+
 
 Roo.bootstrap.PagingToolbar
 Roo.bootstrap.MessageBar
