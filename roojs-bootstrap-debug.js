@@ -9073,6 +9073,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     findRowIndex : function(el)
     {
         var cell = Roo.get(el);
+        if(!cell) {
+            return false;
+        }
         var row = cell.findParent('tr', false, true);
         
         if(!row || typeof(row) == 'undefined'){
