@@ -86,8 +86,7 @@
 /** -- the dragable column bar */
 .table-body-fixed thead > tr .roo-hd-split {
     position: absolute;
-    content: " ";
-    top: 0px;
+     top: 0px;
     right: -3px;
     width: 6px;
     z-index: 9999;
