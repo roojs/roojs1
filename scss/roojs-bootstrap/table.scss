@@ -84,7 +84,7 @@
 }
 
 /** -- the dragable column bar */
-.table-body-fixed thead > tr:hover .roo-hd-split {
+.table-body-fixed thead > tr .roo-hd-split {
     position: absolute;
     content: " ";
     top: 0px;
@@ -95,7 +95,7 @@
     background: transparent;
     cursor: col-resize;
 }
-.table-body-fixed thead > tr:hover .roo-hd-split:before {
+.table-body-fixed thead > tr .roo-hd-split:before {
     position: absolute;
     content: " ";
     top: 0;
