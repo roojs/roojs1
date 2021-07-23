@@ -9070,7 +9070,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.fireEvent('rowdblclick', this, row, rowIndex, e);
         }
     },
-    
+    findRowIndex : function(el)
+    {
+        var cell = Roo.get(el);
+        var row = cell.findParent('tr', false, true);
+        
+        if(!row || typeof(row) == 'undefined'){
+            return false;
+        }
+        return this.getRowIndex(row);
+    },
     sort : function(e,el)
     {
         var col = Roo.get(el);
