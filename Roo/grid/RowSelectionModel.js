@@ -125,7 +125,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
 
     // private
     onRefresh : function(){
-        var ds = this.grid.dataSource, i, v = this.grid.view;
+        var ds = this.grid.ds, i, v = this.grid.view;
         var s = this.selections;
         s.each(function(r){
             if((i = ds.indexOfId(r.id)) != -1){
@@ -158,7 +158,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
         if(!keepExisting){
             this.clearSelections();
         }
-        var ds = this.grid.dataSource;
+        var ds = this.grid.ds;
         for(var i = 0, len = records.length; i < len; i++){
             this.selectRow(ds.indexOf(records[i]), true);
         }
@@ -192,7 +192,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     selectNext : function(keepExisting){
-        if(this.last !== false && (this.last+1) < this.grid.dataSource.getCount()){
+        if(this.last !== false && (this.last+1) < this.grid.ds.getCount()){
             this.selectRow(this.last+1, keepExisting);
             var view = this.grid.view ? this.grid.view : this.grid;
             view.focusRow(this.last);
@@ -235,7 +235,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
             return;
         }
         if(fast !== true){
-            var ds = this.grid.dataSource;
+            var ds = this.grid.ds;
             var s = this.selections;
             s.each(function(r){
                 this.deselectRow(ds.indexOfId(r.id));
@@ -256,7 +256,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
             return;
         }
         this.selections.clear();
-        for(var i = 0, len = this.grid.dataSource.getCount(); i < len; i++){
+        for(var i = 0, len = this.grid.ds.getCount(); i < len; i++){
             this.selectRow(i, true);
         }
     },
@@ -275,7 +275,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @return {Boolean}
      */
     isSelected : function(index){
-        var r = typeof index == "number" ? this.grid.dataSource.getAt(index) : index;
+        var r = typeof index == "number" ? this.grid.ds.getAt(index) : index;
         return (r && this.selections.key(r.id) ? true : false);
     },
 
@@ -383,14 +383,14 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     selectRow : function(index, keepExisting, preventViewNotify){
-        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) {
+        if(this.locked || (index < 0 || index >= this.grid.ds.getCount())) {
             return;
         }
         if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
             if(!keepExisting || this.singleSelect){
                 this.clearSelections();
             }
-            var r = this.grid.dataSource.getAt(index);
+            var r = this.grid.ds.getAt(index);
             this.selections.add(r);
             this.last = this.lastActive = index;
             if(!preventViewNotify){
@@ -415,7 +415,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
         if(this.lastActive == index){
             this.lastActive = false;
         }
-        var r = this.grid.dataSource.getAt(index);
+        var r = this.grid.ds.getAt(index);
         this.selections.remove(r);
         if(!preventViewNotify){
             this.grid.getView().onRowDeselect(index);
