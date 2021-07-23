@@ -104,7 +104,7 @@ Roo.bootstrap.Table = function(config)
     this.sm = this.sm || {xtype: 'RowSelectionModel'};
     if (this.sm) {
         this.sm.grid = this;
-        this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
+        this.selModel = Roo.factory(this.sm, Roo.grid);
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
     }
