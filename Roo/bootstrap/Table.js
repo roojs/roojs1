@@ -8,7 +8,67 @@
 /**
  * @class Roo.bootstrap.Table
  * @extends Roo.bootstrap.Component
- * Bootstrap Table class
+ * Bootstrap Table class.  This class represents the primary interface of a component based grid control.
+ * Similar to Roo.grid.Grid
+ * <pre><code>
+ var table = Roo.factory({
+    xtype : 'Table',
+    xns : Roo.bootstrap,
+    autoSizeColumns: true,
+    
+    
+    store : {
+        xtype : 'Store',
+        xns : Roo.data,
+        remoteSort : true,
+        sortInfo : { direction : 'ASC', field: 'name' },
+        proxy : {
+           xtype : 'HttpProxy',
+           xns : Roo.data,
+           method : 'GET',
+           url : 'https://example.com/some.data.url.json'
+        },
+        reader : {
+           xtype : 'JsonReader',
+           xns : Roo.data,
+           fields : [ 'id', 'name', whatever' ],
+           id : 'id',
+           root : 'data'
+        }
+    },
+    cm : [
+        {
+            xtype : 'ColumnModel',
+            xns : Roo.grid,
+            align : 'center',
+            cursor : 'pointer',
+            dataIndex : 'is_in_group',
+            header : "Name",
+            sortable : true,
+            renderer : function(v, x , r) {  
+            
+                return String.format("{0}", v)
+            }
+            width : 3
+        } // more columns..
+    ],
+    selModel : {
+        xtype : 'RowSelectionModel',
+        xns : Roo.bootstrap.Table
+        // you can add listeners to catch selection change here....
+    }
+     
+
+ });
+ // set any options
+ grid.render(Roo.get("some-div"));
+</code></pre>
+  <b>A Dialog should always be a direct child of the body element.</b>
+ *
+ * @cfg {Roo.bootstrap.Table.RowSelectionModel|Roo.bootstrap.Table.CellSelectionModel} sm The selection model to use (cell selection is not supported yet)
+ * @cfg {Roo.data.Store|Roo.data.SimpleStore} store The data store to use
+ * @cfg {Roo.grid.ColumnModel} cm[] A column for th grid.
+ * 
  * @cfg {String} cls table class
  * @cfg {String} align (left|center|right) Specifies the alignment of a table according to surrounding text
  * @cfg {String} bgcolor Specifies the background color for a table
@@ -45,9 +105,7 @@
 
 Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
-    
-  
-    
+     
     // BC...
     this.rowSelection = (typeof(config.rowSelection) != 'undefined') ? config.rowSelection : this.rowSelection;
     this.cellSelection = (typeof(config.cellSelection) != 'undefined') ? config.cellSelection : this.cellSelection;
