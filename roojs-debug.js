@@ -58867,39 +58867,39 @@ Roo.grid.RowSelectionModel = function(config){
 
     this.addEvents({
         /**
-	     * @event selectionchange
-	     * Fires when the selection changes
-	     * @param {SelectionModel} this
-	     */
-	    "selectionchange" : true,
-        /**
-	     * @event afterselectionchange
-	     * Fires after the selection changes (eg. by key press or clicking)
-	     * @param {SelectionModel} this
-	     */
-	    "afterselectionchange" : true,
-        /**
-	     * @event beforerowselect
-	     * Fires when a row is selected being selected, return false to cancel.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected index
-	     * @param {Boolean} keepExisting False if other selections will be cleared
-	     */
-	    "beforerowselect" : true,
-        /**
-	     * @event rowselect
-	     * Fires when a row is selected.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected index
-	     * @param {Roo.data.Record} r The record
-	     */
-	    "rowselect" : true,
-        /**
-	     * @event rowdeselect
-	     * Fires when a row is deselected.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected index
-	     */
+        * @event selectionchange
+        * Fires when the selection changes
+        * @param {SelectionModel} this
+        */
+       "selectionchange" : true,
+       /**
+        * @event afterselectionchange
+        * Fires after the selection changes (eg. by key press or clicking)
+        * @param {SelectionModel} this
+        */
+       "afterselectionchange" : true,
+       /**
+        * @event beforerowselect
+        * Fires when a row is selected being selected, return false to cancel.
+        * @param {SelectionModel} this
+        * @param {Number} rowIndex The selected index
+        * @param {Boolean} keepExisting False if other selections will be cleared
+        */
+       "beforerowselect" : true,
+       /**
+        * @event rowselect
+        * Fires when a row is selected.
+        * @param {SelectionModel} this
+        * @param {Number} rowIndex The selected index
+        * @param {Roo.data.Record} r The record
+        */
+       "rowselect" : true,
+       /**
+        * @event rowdeselect
+        * Fires when a row is deselected.
+        * @param {SelectionModel} this
+        * @param {Number} rowIndex The selected index
+        */
         "rowdeselect" : true
     });
     Roo.grid.RowSelectionModel.superclass.constructor.call(this);
@@ -58921,8 +58921,8 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
         }else{ // allow click to work like normal
             this.grid.on("rowclick", this.handleDragableRowClick, this);
         }
-	// bootstrap does not have a view..
-	var view = this.grid.view ? this.grid.view : this.grid;
+        // bootstrap does not have a view..
+        var view = this.grid.view ? this.grid.view : this.grid;
         this.rowNav = new Roo.KeyNav(this.grid.getGridEl(), {
             "up" : function(e){
                 if(!e.shiftKey){
@@ -59034,7 +59034,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
     selectNext : function(keepExisting){
         if(this.last !== false && (this.last+1) < this.grid.dataSource.getCount()){
             this.selectRow(this.last+1, keepExisting);
-	    var view = this.grid.view ? this.grid.view : this.grid;
+            var view = this.grid.view ? this.grid.view : this.grid;
             view.focusRow(this.last);
         }
     },
@@ -59129,9 +59129,10 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
     },
 
     // private
-    handleMouseDown : function(e, t){
+    handleMouseDown : function(e, t)
+    {
         var view = this.grid.view ? this.grid.view : this.grid;
-	var rowIndex;
+        var rowIndex;
         if(this.isLocked() || (rowIndex = view.findRowIndex(t)) === false){
             return;
         };
@@ -59158,7 +59159,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
     {
         if(e.button === 0 && !e.shiftKey && !e.ctrlKey) {
             this.selectRow(rowIndex, false);
-	    var view = this.grid.view ? this.grid.view : this.grid;
+            var view = this.grid.view ? this.grid.view : this.grid;
             view.focusRow(rowIndex);
              this.fireEvent("afterselectionchange", this);
         }
