@@ -9231,7 +9231,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 
             });
-            
+            // at the end?
             c.html +=' <span class="roo-hd-split"></span>';
             
             
