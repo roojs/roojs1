@@ -58922,7 +58922,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
             this.grid.on("rowclick", this.handleDragableRowClick, this);
         }
 	// bootstrap does not have a view..
-	var view = this.grid.getView ? this.grid.getView() : this.grid;
+	var view = this.grid.view ? this.grid.view : this.grid;
         this.rowNav = new Roo.KeyNav(this.grid.getGridEl(), {
             "up" : function(e){
                 if(!e.shiftKey){
@@ -58930,7 +58930,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
                 }else if(this.last !== false && this.lastActive !== false){
                     var last = this.last;
                     this.selectRange(this.last,  this.lastActive-1);
-                    view .focusRow(this.lastActive);
+                    view.focusRow(this.lastActive);
                     if(last !== false){
                         this.last = last;
                     }
@@ -58945,7 +58945,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
                 }else if(this.last !== false && this.lastActive !== false){
                     var last = this.last;
                     this.selectRange(this.last,  this.lastActive+1);
-                    view .focusRow(this.lastActive);
+                    view.focusRow(this.lastActive);
                     if(last !== false){
                         this.last = last;
                     }
@@ -58957,7 +58957,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
             scope: this
         });
 
-        var view = this.grid.view;
+         
         view.on("refresh", this.onRefresh, this);
         view.on("rowupdated", this.onRowUpdated, this);
         view.on("rowremoved", this.onRemove, this);
