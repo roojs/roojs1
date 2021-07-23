@@ -101,6 +101,8 @@ Roo.bootstrap.Table = function(config)
     this.headerShow = (typeof(config.thead) != 'undefined') ? config.thead : this.headerShow;
     this.footerShow = (typeof(config.tfoot) != 'undefined') ? config.tfoot : this.footerShow;
     
+    this.view = this; // compat with grid.
+    
     this.sm = this.sm || {xtype: 'RowSelectionModel'};
     if (this.sm) {
         this.sm.grid = this;
@@ -261,9 +263,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     layout : false,
     
     // Roo.Element - the tbody
-    mainBody: false,
-    // Roo.Element - thead element
-    mainHead: false,
+    bodyEl: false,  // <tbody> Roo.Element - thead element
+    
+    headEl: false,  // <thead> Roo.Element - thead element
     
     container: false, // used by gridpanel...
     
@@ -273,13 +275,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     auto_hide_footer : false,
     
+    view: false, // actually points to this..
+    
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
         
         cfg = {
             tag: 'table',
-            cls : 'table',
+            cls : 'table', 
             cn : []
         };
         // this get's auto added by panel.Grid
@@ -343,8 +347,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         //Roo.log('initEvents with ds!!!!');
         
-        this.mainBody = this.el.select('tbody', true).first();
-        this.mainHead = this.el.select('thead', true).first();
+        this.bodyEl = this.el.select('tbody', true).first();
+        this.headEl = this.el.select('thead', true).first();
         this.mainFoot = this.el.select('tfoot', true).first();
         
         
@@ -384,17 +388,22 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.cm.on("headerchange", this.onHeaderChange, this);
         this.cm.on("hiddenchange", this.onHiddenChange, this, arguments);
 
-        
-        this.mainBody.on("click", this.onClick, this);
-        this.mainBody.on("dblclick", this.onDblClick, this);        
-        this.mainBody.on('scroll', this.onBodyScroll, this);
+ //?? does bodyEl get replaced on render?
+        this.bodyEl.on("click", this.onClick, this);
+        this.bodyEl.on("dblclick", this.onDblClick, this);        
+        this.bodyEl.on('scroll', this.onBodyScroll, this);
 
         // guessing mainbody will work - this relays usually caught by selmodel at present.
-        this.relayEvents(this.mainBody, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
+        this.relayEvents(this.bodyEl, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
   
         
         
         
+    },
+    // Compatibility with grid - we implement all the view features at present.
+    getView : function()
+    {
+        return this;
     },
     
     onContextMenu : function(e, t)
@@ -678,7 +687,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
             if(typeof(config.hidden) != 'undefined' && config.hidden){
-                c.style += ' display:none;';
+                c.cls += ' d-none';
+            } else {
+                c.cls += ' d-block';
             }
             
             if(typeof(config.dataIndex) != 'undefined'){
@@ -792,7 +803,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         });
         
-        var tbody =  this.mainBody;
+        var tbody =  this.bodyEl;
               
         if(ds.getCount() > 0){
             ds.data.each(function(d,rowIndex){
@@ -847,7 +858,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(isUpdate !== true){
             this.fireEvent("beforerowremoved", this, index, record);
         }
-        var bt = this.mainBody.dom;
+        var bt = this.bodyEl.dom;
         
         var rows = this.el.select('tbody > tr', true).elements;
         
@@ -871,7 +882,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         //Roo.log('on Add called');
         // - note this does not handle multiple adding very well..
-        var bt = this.mainBody.dom;
+        var bt = this.bodyEl.dom;
         for (var i =0 ; i < records.length;i++) {
             //Roo.log('call insert row Add called on ' + rowIndex + ':' + i);
             //Roo.log(records[i]);
@@ -912,6 +923,105 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var row = this.getRowDom(rowIndex);
         row.removeClass(['bg-info','info']);
     },
+      /**
+     * Focuses the specified row.
+     * @param {Number} row The row index
+     */
+    focusRow : function(row)
+    {
+        //Roo.log('GridView.focusRow');
+        var x = this.bodyEl.dom.scrollLeft;
+        this.focusCell(row, 0, false);
+        this.bodyEl.dom.scrollLeft = x;
+
+    },
+     /**
+     * Focuses the specified cell.
+     * @param {Number} row The row index
+     * @param {Number} col The column index
+     * @param {Boolean} hscroll false to disable horizontal scrolling
+     */
+    focusCell : function(row, col, hscroll)
+    {
+        //Roo.log('GridView.focusCell');
+        var el = this.ensureVisible(row, col, hscroll);
+        // not sure what focusEL achives = it's a <a> pos relative 
+        //this.focusEl.alignTo(el, "tl-tl");
+        //if(Roo.isGecko){
+        //    this.focusEl.focus();
+        //}else{
+        //    this.focusEl.focus.defer(1, this.focusEl);
+        //}
+    },
+    
+     /**
+     * Scrolls the specified cell into view
+     * @param {Number} row The row index
+     * @param {Number} col The column index
+     * @param {Boolean} hscroll false to disable horizontal scrolling
+     */
+    ensureVisible : function(row, col, hscroll)
+    {
+        //Roo.log('GridView.ensureVisible,' + row + ',' + col);
+        //return null; //disable for testing.
+        if(typeof row != "number"){
+            row = row.rowIndex;
+        }
+        if(row < 0 && row >= this.ds.getCount()){
+            return  null;
+        }
+        col = (col !== undefined ? col : 0);
+        var cm = this.cm;
+        while(cm.isHidden(col)){
+            col++;
+        }
+
+        var el = this.getCellDom(row, col);
+        if(!el){
+            return null;
+        }
+        var c = this.bodyEl.dom;
+
+        var ctop = parseInt(el.offsetTop, 10);
+        var cleft = parseInt(el.offsetLeft, 10);
+        var cbot = ctop + el.offsetHeight;
+        var cright = cleft + el.offsetWidth;
+
+        //var ch = c.clientHeight - this.mainHd.dom.offsetHeight;
+        var ch = 0; //?? header is not withing the area?
+        var stop = parseInt(c.scrollTop, 10);
+        var sleft = parseInt(c.scrollLeft, 10);
+        var sbot = stop + ch;
+        var sright = sleft + c.clientWidth;
+        /*
+        Roo.log('GridView.ensureVisible:' +
+                ' ctop:' + ctop +
+                ' c.clientHeight:' + c.clientHeight +
+                ' this.mainHd.dom.offsetHeight:' + this.mainHd.dom.offsetHeight +
+                ' stop:' + stop +
+                ' cbot:' + cbot +
+                ' sbot:' + sbot +
+                ' ch:' + ch  
+                );
+        */
+        if(ctop < stop){
+            c.scrollTop = ctop;
+            //Roo.log("set scrolltop to ctop DISABLE?");
+        }else if(cbot > sbot){
+            //Roo.log("set scrolltop to cbot-ch");
+            c.scrollTop = cbot-ch;
+        }
+
+        if(hscroll !== false){
+            if(cleft < sleft){
+                c.scrollLeft = cleft;
+            }else if(cright > sright){
+                c.scrollLeft = cright-c.clientWidth;
+            }
+        }
+
+        return el;
+    },
     
     
     insertRow : function(dm, rowIndex, isUpdate){
@@ -922,7 +1032,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             //var s = this.getScrollState();
         var row = this.renderRow(this.cm, this.store, rowIndex);
         // insert before rowIndex..
-        var e = this.mainBody.createChild(row,this.getRowDom(rowIndex));
+        var e = this.bodyEl.createChild(row,this.getRowDom(rowIndex));
         
         var _this = this;
                 
@@ -949,6 +1059,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         return (typeof(rows[rowIndex]) == 'undefined') ? false : rows[rowIndex];
         
     },
+    getCellDom : function(rowIndex, colIndex)
+    {
+        var row = this.getRowDom(rowIndex);
+        if (row === false) {
+            return false;
+        }
+        var cols = row.select('td', true).elements;
+        return (typeof(cols[colIndex]) == 'undefined') ? false : cols[colIndex];
+        
+    },
+    
     // returns the object tree for a tr..
   
     
@@ -1013,7 +1134,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
             if(typeof(config.hidden) != 'undefined' && config.hidden){
-                td.style += ' display:none;';
+                td.cls += ' d-none';
+            } else {
+                td.cls += ' d-block';
             }
             
             if(typeof(config.align) != 'undefined' && config.align.length){
@@ -1086,14 +1209,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      */
     setRowVisibility : function(rowIndex, state)
     {
-        var bt = this.mainBody.dom;
+        var bt = this.bodyEl.dom;
         
         var rows = this.el.select('tbody > tr', true).elements;
         
         if(typeof(rows[rowIndex]) == 'undefined'){
             return;
         }
-        rows[rowIndex].dom.style.display = state ? '' : 'none';
+        rows[rowIndex][ state ? 'removeClass' : 'addClass']('d-none');
+        
     },
     
     
@@ -1183,21 +1307,21 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     },
     onBodyScroll: function()
     {
-        //Roo.log("body scrolled');" + this.mainBody.dom.scrollLeft);
-        if(this.mainHead){
-            this.mainHead.setStyle({
+        //Roo.log("body scrolled');" + this.bodyEl.dom.scrollLeft);
+        if(this.headEl){
+            this.headEl.setStyle({
                 'position' : 'relative',
-                'left': (-1* this.mainBody.dom.scrollLeft) + 'px'
+                'left': (-1* this.bodyEl.dom.scrollLeft) + 'px'
             });
         }
         
         if(this.lazyLoad){
             
-            var scrollHeight = this.mainBody.dom.scrollHeight;
+            var scrollHeight = this.bodyEl.dom.scrollHeight;
             
-            var scrollTop = Math.ceil(this.mainBody.getScroll().top);
+            var scrollTop = Math.ceil(this.bodyEl.getScroll().top);
             
-            var height = this.mainBody.getHeight();
+            var height = this.bodyEl.getHeight();
             
             if(scrollHeight - height == scrollTop) {
                 
@@ -1223,8 +1347,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var header = this.renderHeader();
         var table = this.el.select('table', true).first();
         
-        this.mainHead.remove();
-        this.mainHead = table.createChild(header, this.mainBody, false);
+        this.headEl.remove();
+        this.headEl = table.createChild(header, this.bodyEl, false);
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.on('click', this.sort, this);
@@ -1238,11 +1362,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var thSelector = '#' + this.id + ' .x-hcol-' + colIndex;
         var tdSelector = '#' + this.id + ' .x-col-' + colIndex;
         
-        this.CSS.updateRule(thSelector, "display", "");
+        //this.CSS.updateRule(thSelector, "display", "");
+        var cols = this.headEl.select('th', true).elements;
+        if (typeof(cols[colIndex]) != 'undefined') {
+            cols[colIndex].removeClass(['d-none', 'd-block']);
+            cols[colIndex].addClass( hidden ? 'd-none' : 'd-block');
+        }
         this.CSS.updateRule(tdSelector, "display", "");
         
         if(hidden){
-            this.CSS.updateRule(thSelector, "display", "none");
+          //  this.CSS.updateRule(thSelector, "display", "none");
             this.CSS.updateRule(tdSelector, "display", "none");
         }
         
