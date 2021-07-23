@@ -905,12 +905,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onRowSelect : function(rowIndex){
         var row = this.getRowDom(rowIndex);
-        row.addClass("bg-info info");
+        row.addClass(['bg-info','info']);
     },
 
     onRowDeselect : function(rowIndex){
         var row = this.getRowDom(rowIndex);
-        row.removeClass("bg-info info");
+        row.removeClass(['bg-info','info']);
     },
     
     

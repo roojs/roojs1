@@ -9403,6 +9403,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.fireEvent("rowupdated", this, index, record);
     },
     
+    onRowSelect : function(rowIndex){
+        var row = this.getRowDom(rowIndex);
+        row.addClass(['bg-info','info']);
+    },
+
+    onRowDeselect : function(rowIndex){
+        var row = this.getRowDom(rowIndex);
+        row.removeClass(['bg-info','info']);
+    },
+    
+    
     insertRow : function(dm, rowIndex, isUpdate){
         
         if(!isUpdate){
