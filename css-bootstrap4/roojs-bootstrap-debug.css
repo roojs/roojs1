@@ -3605,7 +3605,7 @@ html.bootstrap-sticky body {
   top: 0px;
   right: -3px;
   width: 6px;
-  z-index: 999;
+  z-index: 9999;
   height: 100%;
   background: transparent;
   cursor: col-resize; }
@@ -3616,7 +3616,7 @@ html.bootstrap-sticky body {
   top: 0px;
   right: -3px;
   width: 1px;
-  z-index: 1000;
+  z-index: 10000;
   height: 100%;
   background: black;
   cursor: col-resize; }

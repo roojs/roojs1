@@ -98,8 +98,8 @@
 .table-body-fixed thead > tr:hover .roo-hd-split:before {
     position: absolute;
     content: " ";
-    top: 0px;
-    right: -3px;
+    top: 0;
+    right: 0;
     width: 1px;
     z-index: 10000;
     height: 100%;
