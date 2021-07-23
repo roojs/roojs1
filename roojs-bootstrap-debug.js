@@ -27283,7 +27283,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     selectLastRow : function(keepExisting){
-        this.selectRow(this.grid.dataSource.getCount() - 1, keepExisting);
+        this.selectRow(this.grid.ds.getCount() - 1, keepExisting);
     },
 
     /**
@@ -27293,7 +27293,8 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
     selectNext : function(keepExisting){
         if(this.last !== false && (this.last+1) < this.grid.dataSource.getCount()){
             this.selectRow(this.last+1, keepExisting);
-            this.grid.getView().focusRow(this.last);
+	    var view = this.grid.view ? this.grid.view : this.grid;
+            view.focusRow(this.last);
         }
     },
 
@@ -27388,7 +27389,8 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
 
     // private
     handleMouseDown : function(e, t){
-        var view = this.grid.getView(), rowIndex;
+        var view = this.grid.view ? this.grid.view : this.grid;
+	var rowIndex;
         if(this.isLocked() || (rowIndex = view.findRowIndex(t)) === false){
             return;
         };
@@ -27415,7 +27417,8 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
     {
         if(e.button === 0 && !e.shiftKey && !e.ctrlKey) {
             this.selectRow(rowIndex, false);
-            grid.view.focusRow(rowIndex);
+	    var view = this.grid.view ? this.grid.view : this.grid;
+            view.focusRow(rowIndex);
              this.fireEvent("afterselectionchange", this);
         }
     },
