@@ -56207,16 +56207,6 @@
         "memberOf" : "Roo.Component"
       },
       {
-        "name" : "align",
-        "type" : "String",
-        "desc" : [
-          "(left",
-          "center",
-          "right)"
-        ],
-        "memberOf" : ""
-      },
-      {
         "name" : "allowDomMove",
         "type" : "Boolean",
         "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
@@ -56226,18 +56216,6 @@
         "name" : "auto_hide_footer",
         "type" : "Boolean",
         "desc" : "auto hide footer if only one page (default false)",
-        "memberOf" : ""
-      },
-      {
-        "name" : "bgcolor",
-        "type" : "String",
-        "desc" : "Specifies the background color for a table",
-        "memberOf" : ""
-      },
-      {
-        "name" : "border",
-        "type" : "Number",
-        "desc" : "Specifies whether the table cells should have borders or not",
         "memberOf" : ""
       },
       {
@@ -56262,21 +56240,15 @@
         "memberOf" : ""
       },
       {
-        "name" : "cellpadding",
-        "type" : "Number",
-        "desc" : "Specifies the space between the cell wall and the cell content",
-        "memberOf" : ""
-      },
-      {
-        "name" : "cellspacing",
-        "type" : "Number",
-        "desc" : "Specifies the space between cells",
-        "memberOf" : ""
-      },
-      {
         "name" : "cls",
         "type" : "String",
         "desc" : "table class",
+        "memberOf" : ""
+      },
+      {
+        "name" : "cm[]",
+        "type" : "Roo.grid.ColumnModel",
+        "desc" : "A column for th grid.",
         "memberOf" : ""
       },
       {
@@ -56319,12 +56291,6 @@
         "memberOf" : ""
       },
       {
-        "name" : "frame",
-        "type" : "String",
-        "desc" : "Specifies which parts of the outside borders that should be visible",
-        "memberOf" : ""
-      },
-      {
         "name" : "headerShow",
         "type" : "Boolean",
         "desc" : [
@@ -56346,12 +56312,6 @@
         "name" : "hover",
         "type" : "boolean",
         "desc" : "Add hover highlighting",
-        "memberOf" : ""
-      },
-      {
-        "name" : "layout",
-        "type" : "String",
-        "desc" : "table layout (auto | fixed | initial | inherit)",
         "memberOf" : ""
       },
       {
@@ -56397,12 +56357,6 @@
         "memberOf" : ""
       },
       {
-        "name" : "rules",
-        "type" : "String",
-        "desc" : "Specifies which parts of the inside borders that should be visible",
-        "memberOf" : ""
-      },
-      {
         "name" : "scrollBody",
         "type" : "Boolean",
         "desc" : [
@@ -56412,9 +56366,15 @@
         "memberOf" : ""
       },
       {
-        "name" : "sortable",
-        "type" : "String",
-        "desc" : "Specifies that the table should be sortable",
+        "name" : "sm",
+        "type" : "Roo.grid.RowSelectionModel|Roo.grid.CellSelectionModel",
+        "desc" : "The selection model to use (cell selection is not supported yet)",
+        "memberOf" : ""
+      },
+      {
+        "name" : "store",
+        "type" : "Roo.data.Store|Roo.data.SimpleStore",
+        "desc" : "The data store to use",
         "memberOf" : ""
       },
       {
@@ -56430,12 +56390,6 @@
         "memberOf" : "Roo.bootstrap.Component"
       },
       {
-        "name" : "summary",
-        "type" : "String",
-        "desc" : "Specifies a summary of the content of a table",
-        "memberOf" : ""
-      },
-      {
         "name" : "tooltip",
         "type" : "string",
         "desc" : "Text for the tooltip",
@@ -56449,12 +56403,6 @@
           "parent)"
         ],
         "memberOf" : "Roo.bootstrap.Component"
-      },
-      {
-        "name" : "width",
-        "type" : "Number",
-        "desc" : "Specifies the width of a table",
-        "memberOf" : ""
       },
       {
         "name" : "xattr",
@@ -56874,426 +56822,6 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
-      }
-    ]
-  },
-  "Roo.bootstrap.Table.AbstractSelectionModel" : {
-    "props" : [
-      {
-        "name" : "listeners",
-        "type" : "Object",
-        "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-        "memberOf" : "Roo.util.Observable"
-      }
-    ],
-    "events" : [],
-    "methods" : [
-      {
-        "name" : "addEvents",
-        "type" : "function",
-        "desc" : "Used to define events on this Observable",
-        "sig" : "(object)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "addListener",
-        "type" : "function",
-        "desc" : "Appends an event handler to this component",
-        "sig" : "(eventName, handler, scope, options)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "capture",
-        "type" : "function",
-        "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
-        "sig" : "(o, fn, scope)",
-        "static" : true,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "fireEvent",
-        "type" : "function",
-        "desc" : "Fires the specified event with the passed parameters (minus the event name).",
-        "sig" : "(eventName, args)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "hasListener",
-        "type" : "function",
-        "desc" : "Checks to see if this object has any listeners for a specified event",
-        "sig" : "(eventName)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "isLocked",
-        "type" : "function",
-        "desc" : "Returns true if the selections are locked.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "lock",
-        "type" : "function",
-        "desc" : "Locks the selections.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "on",
-        "type" : "function",
-        "desc" : "Appends an event handler to this element (shorthand for addListener)",
-        "sig" : "(eventName, handler, scope, options)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "purgeListeners",
-        "type" : "function",
-        "desc" : "Removes all listeners for this object",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "releaseCapture",
-        "type" : "function",
-        "desc" : "Removes <b>all</b> added captures from the Observable.",
-        "sig" : "(o)",
-        "static" : true,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "removeListener",
-        "type" : "function",
-        "desc" : "Removes a listener",
-        "sig" : "(eventName, handler, scope)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "un",
-        "type" : "function",
-        "desc" : "Removes a listener (shorthand for removeListener)",
-        "sig" : "(eventName, handler, scope)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "unlock",
-        "type" : "function",
-        "desc" : "Unlocks the selections.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      }
-    ]
-  },
-  "Roo.bootstrap.Table.RowSelectionModel" : {
-    "props" : [
-      {
-        "name" : "listeners",
-        "type" : "Object",
-        "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "singleSelect",
-        "type" : "Boolean",
-        "desc" : "True to allow selection of only one row at a time (defaults to false)",
-        "memberOf" : ""
-      }
-    ],
-    "events" : [
-      {
-        "name" : "afterselectionchange",
-        "type" : "function",
-        "desc" : "Fires after the selection changes (eg. by key press or clicking)",
-        "sig" : "function (_self)\n{\n\n}",
-        "memberOf" : ""
-      },
-      {
-        "name" : "beforerowselect",
-        "type" : "function",
-        "desc" : "Fires when a row is selected being selected, return false to cancel.",
-        "sig" : "function (_self, rowIndex, keepExisting)\n{\n\n}",
-        "memberOf" : ""
-      },
-      {
-        "name" : "rowdeselect",
-        "type" : "function",
-        "desc" : "Fires when a row is deselected.",
-        "sig" : "function (_self, rowIndex)\n{\n\n}",
-        "memberOf" : ""
-      },
-      {
-        "name" : "rowselect",
-        "type" : "function",
-        "desc" : "Fires when a row is selected.",
-        "sig" : "function (_self, rowIndex, r)\n{\n\n}",
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectionchange",
-        "type" : "function",
-        "desc" : "Fires when the selection changes",
-        "sig" : "function (_self)\n{\n\n}",
-        "memberOf" : ""
-      }
-    ],
-    "methods" : [
-      {
-        "name" : "addEvents",
-        "type" : "function",
-        "desc" : "Used to define events on this Observable",
-        "sig" : "(object)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "addListener",
-        "type" : "function",
-        "desc" : "Appends an event handler to this component",
-        "sig" : "(eventName, handler, scope, options)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "capture",
-        "type" : "function",
-        "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
-        "sig" : "(o, fn, scope)",
-        "static" : true,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "clearSelections",
-        "type" : "function",
-        "desc" : "Clears all selections.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "deselectRange",
-        "type" : "function",
-        "desc" : "Deselects a range of rows. All rows in between startRow and endRow are also deselected.",
-        "sig" : "(startRow, endRow)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "deselectRow",
-        "type" : "function",
-        "desc" : "Deselects a row.",
-        "sig" : "(row)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "fireEvent",
-        "type" : "function",
-        "desc" : "Fires the specified event with the passed parameters (minus the event name).",
-        "sig" : "(eventName, args)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "getCount",
-        "type" : "function",
-        "desc" : "Gets the number of selected rows.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "getSelected",
-        "type" : "function",
-        "desc" : "Returns the first selected record.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "getSelections",
-        "type" : "function",
-        "desc" : "Returns the selected records",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "hasListener",
-        "type" : "function",
-        "desc" : "Checks to see if this object has any listeners for a specified event",
-        "sig" : "(eventName)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "hasSelection",
-        "type" : "function",
-        "desc" : "Returns True if there is a selection.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "isIdSelected",
-        "type" : "function",
-        "desc" : "Returns True if the specified record id is selected.",
-        "sig" : "(id)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "isLocked",
-        "type" : "function",
-        "desc" : "Returns true if the selections are locked.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : "Roo.bootstrap.Table.AbstractSelectionModel"
-      },
-      {
-        "name" : "isSelected",
-        "type" : "function",
-        "desc" : "Returns True if the specified row is selected.",
-        "sig" : "(record)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "lock",
-        "type" : "function",
-        "desc" : "Locks the selections.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : "Roo.bootstrap.Table.AbstractSelectionModel"
-      },
-      {
-        "name" : "on",
-        "type" : "function",
-        "desc" : "Appends an event handler to this element (shorthand for addListener)",
-        "sig" : "(eventName, handler, scope, options)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "purgeListeners",
-        "type" : "function",
-        "desc" : "Removes all listeners for this object",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "releaseCapture",
-        "type" : "function",
-        "desc" : "Removes <b>all</b> added captures from the Observable.",
-        "sig" : "(o)",
-        "static" : true,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "removeListener",
-        "type" : "function",
-        "desc" : "Removes a listener",
-        "sig" : "(eventName, handler, scope)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "selectAll",
-        "type" : "function",
-        "desc" : "Selects all rows.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectFirstRow",
-        "type" : "function",
-        "desc" : "Selects the first row in the grid.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectLastRow",
-        "type" : "function",
-        "desc" : "Select the last row.",
-        "sig" : "(keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectNext",
-        "type" : "function",
-        "desc" : "Selects the row immediately following the last selected row.",
-        "sig" : "(keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectPrevious",
-        "type" : "function",
-        "desc" : "Selects the row that precedes the last selected row.",
-        "sig" : "(keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectRange",
-        "type" : "function",
-        "desc" : "Selects a range of rows. All rows in between startRow and endRow are also selected.",
-        "sig" : "(startRow, endRow, keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectRecords",
-        "type" : "function",
-        "desc" : "Select records.",
-        "sig" : "(records, keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectRow",
-        "type" : "function",
-        "desc" : "Selects a row.",
-        "sig" : "(row, keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectRows",
-        "type" : "function",
-        "desc" : "Selects multiple rows.",
-        "sig" : "(rows, keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "un",
-        "type" : "function",
-        "desc" : "Removes a listener (shorthand for removeListener)",
-        "sig" : "(eventName, handler, scope)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "unlock",
-        "type" : "function",
-        "desc" : "Unlocks the selections.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : "Roo.bootstrap.Table.AbstractSelectionModel"
       }
     ]
   },

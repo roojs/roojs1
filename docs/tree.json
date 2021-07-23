@@ -743,18 +743,7 @@
           },
           {
             "name" : "Roo.bootstrap.Table",
-            "cn" : [
-              {
-                "name" : "Roo.bootstrap.Table.AbstractSelectionModel",
-                "cn" : [],
-                "is_class" : true
-              },
-              {
-                "name" : "Roo.bootstrap.Table.RowSelectionModel",
-                "cn" : [],
-                "is_class" : true
-              }
-            ],
+            "cn" : [],
             "is_class" : true
           },
           {

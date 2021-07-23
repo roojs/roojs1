@@ -1,26 +1,74 @@
-<html><head><title>Roo/bootstrap/Table.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
- * - LGPL
- *
- * table
- * 
- */
-
-/**
+<html><head><title>Roo/bootstrap/Table.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
  * @class Roo.bootstrap.Table
+ * @licence LGBL
  * @extends Roo.bootstrap.Component
- * Bootstrap Table class
+ * Bootstrap Table class.  This class represents the primary interface of a component based grid control.
+ * Similar to Roo.grid.Grid
+ * &lt;pre&gt;&lt;code&gt;
+ var table = Roo.factory({
+    xtype : 'Table',
+    xns : Roo.bootstrap,
+    autoSizeColumns: true,
+    
+    
+    store : {
+        xtype : 'Store',
+        xns : Roo.data,
+        remoteSort : true,
+        sortInfo : { direction : 'ASC', field: 'name' },
+        proxy : {
+           xtype : 'HttpProxy',
+           xns : Roo.data,
+           method : 'GET',
+           url : 'https://example.com/some.data.url.json'
+        },
+        reader : {
+           xtype : 'JsonReader',
+           xns : Roo.data,
+           fields : [ 'id', 'name', whatever' ],
+           id : 'id',
+           root : 'data'
+        }
+    },
+    cm : [
+        {
+            xtype : 'ColumnModel',
+            xns : Roo.grid,
+            align : 'center',
+            cursor : 'pointer',
+            dataIndex : 'is_in_group',
+            header : &quot;Name&quot;,
+            sortable : true,
+            renderer : function(v, x , r) {  
+            
+                return String.format(&quot;{0}&quot;, v)
+            }
+            width : 3
+        } // more columns..
+    ],
+    selModel : {
+        xtype : 'RowSelectionModel',
+        xns : Roo.bootstrap.Table
+        // you can add listeners to catch selection change here....
+    }
+     
+
+ });
+ // set any options
+ grid.render(Roo.get(&quot;some-div&quot;));
+&lt;/code&gt;&lt;/pre&gt;
+
+Currently the Table  uses multiple headers to try and handle XL / Medium etc... styling
+
+
+
+ *
+ * @cfg {Roo.grid.RowSelectionModel|Roo.grid.CellSelectionModel} sm The selection model to use (cell selection is not supported yet)
+ * @cfg {Roo.data.Store|Roo.data.SimpleStore} store The data store to use
+ * @cfg {Roo.grid.ColumnModel} cm[] A column for th grid.
+ * 
  * @cfg {String} cls table class
- * @cfg {String} align (left|center|right) Specifies the alignment of a table according to surrounding text
- * @cfg {String} bgcolor Specifies the background color for a table
- * @cfg {Number} border Specifies whether the table cells should have borders or not
- * @cfg {Number} cellpadding Specifies the space between the cell wall and the cell content
- * @cfg {Number} cellspacing Specifies the space between cells
- * @cfg {String} frame Specifies which parts of the outside borders that should be visible
- * @cfg {String} rules Specifies which parts of the inside borders that should be visible
- * @cfg {String} sortable Specifies that the table should be sortable
- * @cfg {String} summary Specifies a summary of the content of a table
- * @cfg {Number} width Specifies the width of a table
- * @cfg {String} layout table layout (auto | fixed | initial | inherit)
+ *
  * 
  * @cfg {boolean} striped Should the rows be alternative striped
  * @cfg {boolean} bordered Add borders to the table
@@ -43,10 +91,9 @@
  * @param {Object} config The config object
  */
 
-</span><span class="jsdoc-var">Roo.bootstrap.Table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+</span><span class="jsdoc-var">Roo.bootstrap.Table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
     </span><span class="jsdoc-var">Roo.bootstrap.Table.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-
-
 
     </span><span class="jsdoc-comment">// BC...
     </span><span class="jsdoc-var">this.rowSelection </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.rowSelection</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">config.rowSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.rowSelection</span><span class="jsdoc-syntax">;
@@ -188,16 +235,7 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Table</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
 
     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">bgcolor</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">cellpadding</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">cellspacing</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">frame</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">rules</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">sortable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">summary</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
     </span><span class="jsdoc-var">striped </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">scrollBody </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">bordered</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -237,6 +275,7 @@
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
         };
+        </span><span class="jsdoc-comment">// this get's auto added by panel.Grid
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.scrollBody</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' table-body-fixed'</span><span class="jsdoc-syntax">;
         }
@@ -253,6 +292,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.condensed</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' table-condensed'</span><span class="jsdoc-syntax">;
         }
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.responsive</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' table-responsive'</span><span class="jsdoc-syntax">;
         }
@@ -261,24 +301,6 @@
             </span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">+=  </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-comment">// this lot should be simplifed...
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cp </span><span class="jsdoc-syntax">= [
-            </span><span class="jsdoc-string">'align'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'bgcolor'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'border'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'cellpadding'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'cellspacing'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'frame'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'rules'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'sortable'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'summary'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'width'
-        </span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]) {
-                </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">_t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">];
-            }
-        });
 
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">) {
@@ -1259,4 +1281,8 @@
 
 
 
- </span></code></body></html>
+</span><span class="jsdoc-comment">/**
+ * @depricated
+*/
+</span><span class="jsdoc-var">Roo.bootstrap.Table.AbstractSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.grid.AbstractSelectionModel</span><span class="jsdoc-syntax">;
+</span><span class="jsdoc-var">Roo.bootstrap.Table.RowSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.grid.RowSelectionModel</span><span class="jsdoc-syntax">;</span></code></body></html>
