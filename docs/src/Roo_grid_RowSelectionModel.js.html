@@ -125,7 +125,7 @@
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onRefresh </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.view</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.view</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">s.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ds.indexOfId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.id</span><span class="jsdoc-syntax">)) != -1){
@@ -158,7 +158,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
         }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.ds</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">records.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
             </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]), </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         }
@@ -192,7 +192,7 @@
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     </span><span class="jsdoc-var">selectNext </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">+1) &lt; </span><span class="jsdoc-var">this.grid.dataSource.getCount</span><span class="jsdoc-syntax">()){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">+1) &lt; </span><span class="jsdoc-var">this.grid.ds.getCount</span><span class="jsdoc-syntax">()){
             </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">+1, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.view </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.grid.view </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">view.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">);
@@ -206,7 +206,8 @@
     </span><span class="jsdoc-var">selectPrevious </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">-1, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.view </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.grid.view </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">view.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">);
         }
     },
 
@@ -235,7 +236,7 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fast </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.ds</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">s.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.deselectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds.indexOfId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.id</span><span class="jsdoc-syntax">));
@@ -256,7 +257,7 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">this.selections.clear</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource.getCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.ds.getCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
             </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         }
     },
@@ -275,7 +276,7 @@
      * @return {Boolean}
      */
     </span><span class="jsdoc-var">isSelected </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;number&quot; </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.grid.dataSource.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;number&quot; </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.grid.ds.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.selections.key</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.id</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
     },
 
@@ -383,18 +384,19 @@
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     </span><span class="jsdoc-var">selectRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">preventViewNotify</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.locked </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&lt; 0 || </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">this.grid.dataSource.getCount</span><span class="jsdoc-syntax">())) {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.locked </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&lt; 0 || </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">this.grid.ds.getCount</span><span class="jsdoc-syntax">())) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforerowselect&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">keepExisting </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.singleSelect</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
             }
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.ds.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.selections.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.lastActive </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">preventViewNotify</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.onRowSelect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.view </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.grid.view </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">view.onRowSelect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
             }
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;rowselect&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;selectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -415,10 +417,11 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastActive </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.lastActive </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.ds.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.selections.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">preventViewNotify</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.onRowDeselect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.view </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.grid.view </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">view.onRowDeselect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;rowdeselect&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;selectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);

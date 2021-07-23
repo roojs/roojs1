@@ -903,6 +903,17 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;rowupdated&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">);
     },
 
+    </span><span class="jsdoc-var">onRowSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRowDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">row.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bg-info'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">]);
+    },
+
+    </span><span class="jsdoc-var">onRowDeselect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRowDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">row.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bg-info'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">]);
+    },
+
+
     </span><span class="jsdoc-var">insertRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isUpdate</span><span class="jsdoc-syntax">){
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">isUpdate</span><span class="jsdoc-syntax">){
