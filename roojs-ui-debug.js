@@ -36095,7 +36095,8 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
             this.selections.add(r);
             this.last = this.lastActive = index;
             if(!preventViewNotify){
-                this.grid.getView().onRowSelect(index);
+                var view = this.grid.view ? this.grid.view : this.grid;
+                view.onRowSelect(index);
             }
             this.fireEvent("rowselect", this, index, r);
             this.fireEvent("selectionchange", this);

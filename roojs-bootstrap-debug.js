@@ -7556,7 +7556,8 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
     selectPrevious : function(keepExisting){
         if(this.last){
             this.selectRow(this.last-1, keepExisting);
-            this.grid.getView().focusRow(this.last);
+            var view = this.grid.view ? this.grid.view : this.grid;
+            view.focusRow(this.last);
         }
     },
 
@@ -7744,7 +7745,8 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
             this.selections.add(r);
             this.last = this.lastActive = index;
             if(!preventViewNotify){
-                this.grid.getView().onRowSelect(index);
+                var view = this.grid.view ? this.grid.view : this.grid;
+                view.onRowSelect(index);
             }
             this.fireEvent("rowselect", this, index, r);
             this.fireEvent("selectionchange", this);
@@ -7768,7 +7770,8 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
         var r = this.grid.ds.getAt(index);
         this.selections.remove(r);
         if(!preventViewNotify){
-            this.grid.getView().onRowDeselect(index);
+            var view = this.grid.view ? this.grid.view : this.grid;
+            view.onRowDeselect(index);
         }
         this.fireEvent("rowdeselect", this, index);
         this.fireEvent("selectionchange", this);
