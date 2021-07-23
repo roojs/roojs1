@@ -3599,7 +3599,7 @@ html.bootstrap-sticky body {
   text-overflow: ellipsis; }
 
 /** -- the dragable column bar */
-.table-body-fixed thead > tr .roo-hd-split {
+.table-body-fixed thead > tr:hover th.d-block .roo-hd-split {
   position: absolute;
   top: 0px;
   right: 0;
@@ -3608,7 +3608,7 @@ html.bootstrap-sticky body {
   background: transparent;
   cursor: col-resize; }
 
-.table-body-fixed thead > tr .roo-hd-split:before {
+.table-body-fixed thead > tr:hover th.d-block .roo-hd-split:before {
   position: absolute;
   content: " ";
   top: 15%;
@@ -3618,9 +3618,6 @@ html.bootstrap-sticky body {
   background: black;
   cursor: col-resize; }
 
-/*.table-body-fixed thead > tr:hover > th {
-    border-right: 1px solid $secondary;
-}*/
 /* fake infinate widt.. */
 .table-body-fixed thead > tr,
 .table-body-fixed tbody > tr {
