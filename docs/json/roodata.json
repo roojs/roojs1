@@ -56511,6 +56511,13 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "mousedown",
+        "type" : "function",
+        "desc" : "The raw mousedown event for the entire grid.",
+        "sig" : "function (e)\n{\n\n}",
+        "memberOf" : ""
+      },
+      {
         "name" : "mouseout",
         "type" : "function",
         "desc" : "Fires when a mouseout occur",

@@ -104,7 +104,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
     </span><span class="jsdoc-var">this.sm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.sm </span><span class="jsdoc-syntax">|| {</span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'RowSelectionModel'</span><span class="jsdoc-syntax">};
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sm</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.sm.grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.selModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Table</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.selModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.grid</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.sm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selModel</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.sm.xmodule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xmodule </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     }
@@ -228,7 +228,14 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
          * @param {Number} columnIndex
          * @param {Roo.EventObject} e
          */
-        </span><span class="jsdoc-string">&quot;headercontextmenu&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;headercontextmenu&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event mousedown
+         * The raw mousedown event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;mousedown&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+
     </span><span class="jsdoc-syntax">});
 };
 
@@ -347,8 +354,6 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
             </span><span class="jsdoc-var">e.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.sort</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-var">this.mainBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.mainBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;dblclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDblClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-comment">// why is this done????? = it breaks dialogs??
         //this.parent().el.setStyle('position', 'relative');
@@ -375,11 +380,20 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
 
         </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;contextmenu&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onContextMenu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-var">this.mainBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBodyScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">this.cm.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;headerchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onHeaderChange</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-
         </span><span class="jsdoc-var">this.cm.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hiddenchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onHiddenChange</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+
+
+        </span><span class="jsdoc-var">this.mainBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.mainBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;dblclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDblClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.mainBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBodyScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// guessing mainbody will work - this relays usually caught by selmodel at present.
+        </span><span class="jsdoc-var">this.relayEvents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mainBody</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;mouseup&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;keypress&quot;</span><span class="jsdoc-syntax">]);
+
+
+
 
     },
 
@@ -559,7 +573,19 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowdblclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
         }
     },
+    </span><span class="jsdoc-var">findRowIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
 
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getRowIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">);
+    },
     </span><span class="jsdoc-var">sort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);

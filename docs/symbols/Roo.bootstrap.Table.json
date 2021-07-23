@@ -1060,6 +1060,24 @@
       "returns" : []
     },
     {
+      "name" : "mousedown",
+      "desc" : "The raw mousedown event for the entire grid.",
+      "memberOf" : "Roo.bootstrap.Table",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "rowcontextmenu",
       "desc" : "Fires when a row is right clicked",
       "memberOf" : "Roo.bootstrap.Table",
