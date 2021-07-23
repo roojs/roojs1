@@ -63,7 +63,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
 
 
  *
- * @cfg {Roo.bootstrap.Table.RowSelectionModel|Roo.bootstrap.Table.CellSelectionModel} sm The selection model to use (cell selection is not supported yet)
+ * @cfg {Roo.grid.RowSelectionModel|Roo.grid.CellSelectionModel} sm The selection model to use (cell selection is not supported yet)
  * @cfg {Roo.data.Store|Roo.data.SimpleStore} store The data store to use
  * @cfg {Roo.grid.ColumnModel} cm[] A column for th grid.
  * 
@@ -1285,3 +1285,4 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
  * @depricated
 */
 Roo.bootstrap.Table.AbstractSelectionModel = Roo.grid.AbstractSelectionModel;
+Roo.bootstrap.Table.RowSelectionModel = Roo.grid.RowSelectionModel;
