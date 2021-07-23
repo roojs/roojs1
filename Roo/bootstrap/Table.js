@@ -1,12 +1,6 @@
-/*
- * - LGPL
- *
- * table
- * 
- */
-
 /**
  * @class Roo.bootstrap.Table
+ * @licence LGBL
  * @extends Roo.bootstrap.Component
  * Bootstrap Table class.  This class represents the primary interface of a component based grid control.
  * Similar to Roo.grid.Grid
@@ -70,17 +64,7 @@
  * @cfg {Roo.grid.ColumnModel} cm[] A column for th grid.
  * 
  * @cfg {String} cls table class
- * @cfg {String} align (left|center|right) Specifies the alignment of a table according to surrounding text
- * @cfg {String} bgcolor Specifies the background color for a table
- * @cfg {Number} border Specifies whether the table cells should have borders or not
- * @cfg {Number} cellpadding Specifies the space between the cell wall and the cell content
- * @cfg {Number} cellspacing Specifies the space between cells
- * @cfg {String} frame Specifies which parts of the outside borders that should be visible
- * @cfg {String} rules Specifies which parts of the inside borders that should be visible
- * @cfg {String} sortable Specifies that the table should be sortable
- * @cfg {String} summary Specifies a summary of the content of a table
- * @cfg {Number} width Specifies the width of a table
- * @cfg {String} layout table layout (auto | fixed | initial | inherit)
+ *
  * 
  * @cfg {boolean} striped Should the rows be alternative striped
  * @cfg {boolean} bordered Add borders to the table
@@ -103,7 +87,8 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Table = function(config){
+Roo.bootstrap.Table = function(config)
+{
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
      
     // BC...
@@ -246,16 +231,7 @@ Roo.bootstrap.Table = function(config){
 Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     cls: false,
-    align: false,
-    bgcolor: false,
-    border: false,
-    cellpadding: false,
-    cellspacing: false,
-    frame: false,
-    rules: false,
-    sortable: false,
-    summary: false,
-    width: false,
+    
     striped : false,
     scrollBody : false,
     bordered: false,
@@ -295,6 +271,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cls : 'table',
             cn : []
         };
+        // this get's auto added by panel.Grid
         if (this.scrollBody) {
             cfg.cls += ' table-body-fixed';
         }    
@@ -311,6 +288,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if (this.condensed) {
             cfg.cls += ' table-condensed';
         }
+        
         if (this.responsive) {
             cfg.cls += ' table-responsive';
         }
@@ -319,24 +297,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cfg.cls+=  ' ' +this.cls;
         }
         
-        // this lot should be simplifed...
-        var _t = this;
-        var cp = [
-            'align',
-            'bgcolor',
-            'border',
-            'cellpadding',
-            'cellspacing',
-            'frame',
-            'rules',
-            'sortable',
-            'summary',
-            'width'
-        ].forEach(function(k) {
-            if (_t[k]) {
-                cfg[k] = _t[k];
-            }
-        });
         
         
         if (this.layout) {
