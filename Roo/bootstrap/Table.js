@@ -228,7 +228,14 @@ Roo.bootstrap.Table = function(config)
          * @param {Number} columnIndex
          * @param {Roo.EventObject} e
          */
-        "headercontextmenu" : true
+        "headercontextmenu" : true,
+        /**
+         * @event mousedown
+         * The raw mousedown event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mousedown" : true
+        
     });
 };
 
@@ -347,8 +354,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             e.on('click', this.sort, this);
         }, this);
         
-        this.mainBody.on("click", this.onClick, this);
-        this.mainBody.on("dblclick", this.onDblClick, this);
         
         // why is this done????? = it breaks dialogs??
         //this.parent().el.setStyle('position', 'relative');
@@ -375,11 +380,20 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.el.on("contextmenu", this.onContextMenu, this);
         
-        this.mainBody.on('scroll', this.onBodyScroll, this);
         
         this.cm.on("headerchange", this.onHeaderChange, this);
-        
         this.cm.on("hiddenchange", this.onHiddenChange, this, arguments);
+
+        
+        this.mainBody.on("click", this.onClick, this);
+        this.mainBody.on("dblclick", this.onDblClick, this);        
+        this.mainBody.on('scroll', this.onBodyScroll, this);
+
+        // guessing mainbody will work - this relays usually caught by selmodel at present.
+        this.relayEvents(this.mainBody, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
+  
+        
+        
         
     },
     
@@ -559,7 +573,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.fireEvent('rowdblclick', this, row, rowIndex, e);
         }
     },
-    
+    findRowIndex : function(el)
+    {
+        var cell = Roo.get(el);
+        var row = cell.findParent('tr', false, true);
+        
+        if(!row || typeof(row) == 'undefined'){
+            return false;
+        }
+        return this.getRowIndex(row);
+    },
     sort : function(e,el)
     {
         var col = Roo.get(el);
