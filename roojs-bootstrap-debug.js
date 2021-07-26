@@ -7346,7 +7346,21 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
                     this.view.headEl.getHeight() + this.view.bodyEl.getHeight()
         );
         this.proxy.setHeight(h);
+        
+        // for old system colWidth really stored the actual width?
+        // in bootstrap we tried using xs/ms/etc.. to do % sizing?
+        // which in reality did not work.. - it worked only for fixed sizes
+        // for resizable we need to use actual sizes.
         var w = this.cm.getColumnWidth(this.cellIndex);
+        if (!this.view.mainWrap) {
+            // bootstrap.
+            w = this.view.getHeaderIndex(this.celIndex).getWidth();
+        }
+        
+        
+        
+        // this was w-this.grid.minColumnWidth;
+        // doesnt really make sense? - w = thie curren width or the rendered one?
         var minw = Math.max(w-this.grid.minColumnWidth, 0);
         this.resetConstraints();
         this.setXConstraint(minw, 1000);
@@ -7354,6 +7368,10 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
         this.minX = x - minw;
         this.maxX = x + 1000;
         this.startPos = x;
+        if (!this.view.mainWrap) { // this is Bootstrap code..
+            this.getDragEl().style.display='block';
+        }
+        
         Roo.dd.DDProxy.prototype.b4StartDrag.call(this, x, y);
     },
 
@@ -8669,7 +8687,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
  * @cfg {Boolean} enableColumnResize default true if columns can be resized (drag/drop)
- * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
+ * @cfg {Number} minColumnWidth default 10 pixels minimum column width 
  * 
  * @constructor
  * Create a new Table
@@ -8848,7 +8866,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     cellSelection : false,
     layout : false,
 
-    minColumnWidth : 50,
+    minColumnWidth : 10,
     
     // Roo.Element - the tbody
     bodyEl: false,  // <tbody> Roo.Element - thead element    
@@ -9308,6 +9326,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(typeof(config.cls) != 'undefined'){
                 c.cls = (typeof(c.cls) == 'undefined') ? config.cls : (c.cls + ' ' + config.cls);
             }
+            // this is the bit that doesnt reall work at all...
+            
+            
             
             ['xs','sm','md','lg'].map(function(size){
                 
@@ -9328,7 +9349,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
             });
             // at the end?
-            c.html +=' <span class="x-grid-split x-grid-split-' + i + '"></span>';
+            if (i > 0) {
+                c.html +=' <span class="x-grid-split x-grid-split-' + (i-1) + '"></span>';
+            }
+            
             
             
             header.cn.push(c)
@@ -9865,6 +9889,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         });
         
         return rowIndex;
+    },
+    /**
+     * get the header TH element for columnIndex
+     * @param {Number} columnIndex
+     * @returns {Roo.Element}
+     */
+    getHeaderIndex: function(colIndex)
+    {
+        var cols = this.headEl.select('th', true).elements;
+        return cols[colIndex]; 
     },
     /**
      * get the Column Index from a dom element. (using regex on x-hcol-{colid})
