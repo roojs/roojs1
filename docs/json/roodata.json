@@ -364,6 +364,14 @@
         "memberOf" : ""
       },
       {
+        "name" : "getGridSize",
+        "type" : "function",
+        "desc" : "Find the current bootstrap width Grid size\nNote xs is the default for smaller.. - this is currently used by grids to render correct columns",
+        "sig" : "()\n{\n\n}",
+        "static" : true,
+        "memberOf" : ""
+      },
+      {
         "name" : "id",
         "type" : "function",
         "desc" : "Generates unique ids. If the element already has an id, it is unchanged",
@@ -97047,6 +97055,12 @@
         "memberOf" : ""
       },
       {
+        "name" : "lgHeader",
+        "type" : "String",
+        "desc" : "Header at Bootsrap Large width",
+        "memberOf" : ""
+      },
+      {
         "name" : "listeners",
         "type" : "Object",
         "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
@@ -97065,6 +97079,12 @@
         "memberOf" : ""
       },
       {
+        "name" : "mdHeader",
+        "type" : "String",
+        "desc" : "Header at Bootsrap Medium width",
+        "memberOf" : ""
+      },
+      {
         "name" : "renderer",
         "type" : "Function",
         "desc" : "(Optional) A function used to generate HTML markup for a cell\ngiven the cell's data value. See {@link #setRenderer}. If not specified, the\ndefault renderer returns the escaped data value. If an object is returned (bootstrap only)\nthen it is treated as a Roo Component object instance, and it is rendered after the initial row is rendered",
@@ -97080,6 +97100,12 @@
         "name" : "sm",
         "type" : "Number",
         "desc" : "(Optional)",
+        "memberOf" : ""
+      },
+      {
+        "name" : "smHeader",
+        "type" : "String",
+        "desc" : "Header at Bootsrap Small width",
         "memberOf" : ""
       },
       {
@@ -97107,9 +97133,27 @@
         "memberOf" : ""
       },
       {
+        "name" : "xl",
+        "type" : "Number",
+        "desc" : "(Optional)",
+        "memberOf" : ""
+      },
+      {
+        "name" : "xlHeader",
+        "type" : "String",
+        "desc" : "Header at Bootsrap extra Large width",
+        "memberOf" : ""
+      },
+      {
         "name" : "xs",
         "type" : "Number",
         "desc" : "(Optional)",
+        "memberOf" : ""
+      },
+      {
+        "name" : "xsHeader",
+        "type" : "String",
+        "desc" : "Header at Bootsrap Extra Small width (default for all)",
         "memberOf" : ""
       }
     ],
@@ -97259,7 +97303,7 @@
         "name" : "getColumnWidth",
         "type" : "function",
         "desc" : "Returns the width for the specified column.",
-        "sig" : "(col)",
+        "sig" : "(col, (optional))",
         "static" : false,
         "memberOf" : ""
       },

@@ -410,13 +410,51 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.SplitDragZone</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.headEl.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// not sure what 'lockedHd is for this implementation..)
         </span><span class="jsdoc-syntax">}
 
-
+        </span><span class="jsdoc-var">this.initCSS</span><span class="jsdoc-syntax">();
     },
     </span><span class="jsdoc-comment">// Compatibility with grid - we implement all the view features at present.
     </span><span class="jsdoc-var">getView </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
     },
+
+    </span><span class="jsdoc-var">initCSS </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.CSS.removeStyleSheet</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-cssrules'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// we can honour xs/sm/md/xl  as widths...
+        // we first have to decide what widht we are currently at...
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sz </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.getGridSize</span><span class="jsdoc-syntax">();
+
+
+
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'display:none;'</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// we can honour xs/sm/md/xl ?
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sz</span><span class="jsdoc-syntax">);
+
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width:&quot; </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) || 100) + </span><span class="jsdoc-string">&quot;px;&quot;</span><span class="jsdoc-syntax">;
+
+
+            </span><span class="jsdoc-var">styles.push</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-col-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; {\n&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cm.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.css</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;\n}\n&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-hcol-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; {\n&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;}\n&quot;
+            </span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styles.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.CSS.createStyleSheet</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">styles.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-cssrules'</span><span class="jsdoc-syntax">);
+
+    },
+
+
 
     </span><span class="jsdoc-var">onContextMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">)
     {
@@ -698,11 +736,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
                 </span><span class="jsdoc-var">c.colspan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.colspan</span><span class="jsdoc-syntax">;
             }
 
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.hidden</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.hidden</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' d-none'</span><span class="jsdoc-syntax">;
-            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' d-block'</span><span class="jsdoc-syntax">;
-            }
+            </span><span class="jsdoc-comment">// hidden is handled by CSS now
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.dataIndex</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">c.sort </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.dataIndex</span><span class="jsdoc-syntax">;
@@ -726,27 +760,28 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
             }
             </span><span class="jsdoc-comment">// this is the bit that doesnt reall work at all...
 
-
-
-            </span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">){
-
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+           /*
+            
+            ['xs','sm','md','lg'].map(function(size){
+                
+                if(typeof(config[size]) == 'undefined'){
+                    return;
                 }
-
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) { </span><span class="jsdoc-comment">// 0 = hidden
+                 
+                if (!config[size]) { // 0 = hidden
                     // BS 4 '0' is treated as hide that column and below.
-                    </span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' hidden-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' hidden' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-down'</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    c.cls += ' hidden-' + size + ' hidden' + size + '-down';
+                    return;
                 }
-
-                </span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">] + (
-                    </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">] ) : </span><span class="jsdoc-string">'' </span><span class="jsdoc-comment">// bs4 col-{num} replaces col-xs
-                </span><span class="jsdoc-syntax">);
-
-
+                
+                c.cls += ' col-' + size + '-' + config[size] + (
+                    size == 'xs' ? (' col-' + config[size] ) : '' // bs4 col-{num} replaces col-xs
+                );
+                
+                
             });
-            </span><span class="jsdoc-comment">// at the end?
+            */
+            // at the end?
 
             </span><span class="jsdoc-var">c.html </span><span class="jsdoc-syntax">+=</span><span class="jsdoc-string">' &lt;span class=&quot;x-grid-split x-grid-split-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;&lt;/span&gt;'</span><span class="jsdoc-syntax">;
 
@@ -1154,11 +1189,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
                 </span><span class="jsdoc-var">td.colspan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.colspan</span><span class="jsdoc-syntax">;
             }
 
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.hidden</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.hidden</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">td.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' d-none'</span><span class="jsdoc-syntax">;
-            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-var">td.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' d-block'</span><span class="jsdoc-syntax">;
-            }
+
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.align</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.align.length</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">td.style </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' text-align:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.align </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">;
@@ -1178,28 +1209,28 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.cls</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">td.cls </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td.cls</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">config.cls </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">td.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.cls</span><span class="jsdoc-syntax">);
             }
-
-            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">){
-
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">/*
+            ['xs','sm','md','lg'].map(function(size){
+                
+                if(typeof(config[size]) == 'undefined'){
+                    return;
                 }
-
-
-
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) { </span><span class="jsdoc-comment">// 0 = hidden
+                
+                
+                  
+                if (!config[size]) { // 0 = hidden
                     // BS 4 '0' is treated as hide that column and below.
-                    </span><span class="jsdoc-var">td.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' hidden-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' hidden' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-down'</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    td.cls += ' hidden-' + size + ' hidden' + size + '-down';
+                    return;
                 }
-
-                </span><span class="jsdoc-var">td.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">] + (
-                    </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+   </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">] ) : </span><span class="jsdoc-string">'' </span><span class="jsdoc-comment">// bs4 col-{num} replaces col-xs
-                </span><span class="jsdoc-syntax">);
-
+                
+                td.cls += ' col-' + size + '-' + config[size] + (
+                    size == 'xs' ? (' col-' +   config[size] ) : '' // bs4 col-{num} replaces col-xs
+                );
+                 
 
             });
-
+            */
             </span><span class="jsdoc-var">row.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
 
         }
@@ -1389,12 +1420,23 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
 
         }
     },
-    </span><span class="jsdoc-var">onColumnSplitterMoved </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    </span><span class="jsdoc-var">onColumnSplitterMoved </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-comment">// resize it..  
+        </span><span class="jsdoc-var">this.userResized </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.colModel</span><span class="jsdoc-syntax">;
 
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-var">cm.setColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//var cid = cm.getColumnId(i); &lt;&lt; not used in this version?
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' .x-col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;width&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">]);
+
+        </span><span class="jsdoc-var">this.CSS.updateRule</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' .x-col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;width&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.CSS.updateRule</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' .x-hcol-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;width&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">//this.updateSplitters();
+        //this.layout(); &lt;&lt; ??
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;columnresize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">);
+    },
     </span><span class="jsdoc-var">onHeaderChange </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.renderHeader</span><span class="jsdoc-syntax">();
@@ -1418,16 +1460,11 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thSelector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' .x-hcol-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tdSelector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' .x-col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-comment">//this.CSS.updateRule(thSelector, &quot;display&quot;, &quot;&quot;);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.headEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'d-block'</span><span class="jsdoc-syntax">]);
-            </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'d-none' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d-block'</span><span class="jsdoc-syntax">);
-        }
+        </span><span class="jsdoc-var">this.CSS.updateRule</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thSelector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;display&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.CSS.updateRule</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tdSelector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;display&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">){
-          </span><span class="jsdoc-comment">//  this.CSS.updateRule(thSelector, &quot;display&quot;, &quot;none&quot;);
+            </span><span class="jsdoc-var">this.CSS.updateRule</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thSelector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;display&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;none&quot;</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.CSS.updateRule</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tdSelector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;display&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;none&quot;</span><span class="jsdoc-syntax">);
         }
 
@@ -1508,4 +1545,5 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @depricated
 */
 </span><span class="jsdoc-var">Roo.bootstrap.Table.AbstractSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.grid.AbstractSelectionModel</span><span class="jsdoc-syntax">;
-</span><span class="jsdoc-var">Roo.bootstrap.Table.RowSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.grid.RowSelectionModel</span><span class="jsdoc-syntax">;</span></code></body></html>
+</span><span class="jsdoc-var">Roo.bootstrap.Table.RowSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.grid.RowSelectionModel</span><span class="jsdoc-syntax">;
+</span></code></body></html>
