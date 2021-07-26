@@ -9063,7 +9063,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var cm = this.cm, styles = [];
         this.CSS.removeStyleSheet(this.id + '-cssrules');
-        
+        var headHeight = this.headEl.dom.clientHeight;
         // we can honour xs/sm/md/xl  as widths...
         // we first have to decide what widht we are currently at...
         var sz = Roo.getGridSize();
@@ -9124,7 +9124,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             styles.push(
                     '#' , this.id , ' .x-col-' , i, " {\n", cm.config[i].css, width, hidden, "\n}\n",
                     '#' , this.id , ' .x-hcol-' , i, " {\n", width, hidden,"}\n",
-                    '#' , this.id , ' .x-grid-split-' , i, " {\n", left,"}\n"
+                    '#' , this.id , ' .x-grid-split-' , i, " {\n", left, 'height:', (headHeight - 4), "px;}\n"
             );
         }
         Roo.log(styles.join(''));
