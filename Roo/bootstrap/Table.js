@@ -1373,7 +1373,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
         }
     },
-    
+    onColumnSplitterMoved : function()
+    {
+        // resize it..  
+        
+        
+    },
     onHeaderChange : function()
     {
         var header = this.renderHeader();
