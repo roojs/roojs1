@@ -677,7 +677,19 @@ Roo.factory(conf, Roo.data);
 		
 		getGridSize : function()
 		{
-			
+			var w = Roo.lib.getViewWidth();
+			switch(true) {
+				case w > 1200:
+					return 'xl';
+				case w > 992:
+					return 'lg';
+				case w > 768:
+					return 'md';
+				case w > 576:
+					return 'sm';
+				default:
+					return 'xs'
+			}
 			
 		}
         
