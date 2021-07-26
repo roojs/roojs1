@@ -9022,8 +9022,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     initCSS : function()
     {
+        
+        
         var cm = this.cm, styles = [];
         this.CSS.removeStyleSheet(this.id + '-cssrules');
+        
+        // we can honour xs/sm/md/xl  as widths...
+        // we first have to decide what widht we are currently at...
+        
+        
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
             
@@ -9031,7 +9038,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(cm.isHidden(i)){
                 hidden = 'display:none;';
             }
+            // we can honour xs/sm/md/xl ?
+            
+            
             var width = "width:" + (cm.getColumnWidth(i) || 100) + "px;";
+            
+            
             styles.push(
                     '#' , this.id , ' .x-col-' , i, " {\n", cm.config[i].css, width, "\n}\n",
                     '#' , this.id , ' .x-hcol-' , i, " {\n", width, "}\n"
