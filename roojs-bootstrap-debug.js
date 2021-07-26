@@ -8102,6 +8102,9 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {Number} lg (Optional)
      */
+	/**
+     * @cfg {Number} xl (Optional)
+     */
     /**
      * Returns the id of the column at the specified index.
      * @param {Number} index The column index
