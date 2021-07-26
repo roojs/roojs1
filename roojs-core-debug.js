@@ -677,7 +677,7 @@ Roo.factory(conf, Roo.data);
 		
 		getGridSize : function()
 		{
-			var w = Roo.lib.getViewWidth();
+			var w = Roo.lib.Dom.getViewWidth();
 			switch(true) {
 				case w > 1200:
 					return 'xl';
