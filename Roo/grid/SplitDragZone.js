@@ -55,7 +55,7 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
         var w = this.cm.getColumnWidth(this.cellIndex);
         if (!this.view.mainWrap) {
             // bootstrap.
-            w = this.view.getHeaderIndex(this.celIndex).getWidth();
+            w = this.view.getHeaderIndex(this.cellIndex).getWidth();
         }
         
         
