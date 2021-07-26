@@ -1356,7 +1356,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.on('click', this.sort, this);
         }, this);
-        
+        if(this.grid.enableColumnResize !== false && Roo.grid.SplitDragZone){
+            new Roo.grid.SplitDragZone(this.grid, this.headEl.dom, false);
+        }
         
     },
     

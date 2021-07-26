@@ -34948,7 +34948,10 @@ Roo.grid.SplitDragZone = function(grid, hd, hd2){
     );
     
     this.setHandleElId(Roo.id(hd));
-    this.setOuterHandleElId(Roo.id(hd2));
+    if (hd2 !== false) {
+        this.setOuterHandleElId(Roo.id(hd2));
+    }
+    
     this.scroll = false;
 };
 Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
