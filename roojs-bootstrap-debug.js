@@ -8844,9 +8844,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     layout : false,
     
     // Roo.Element - the tbody
-    bodyEl: false,  // <tbody> Roo.Element - thead element
-    
+    bodyEl: false,  // <tbody> Roo.Element - thead element    
     headEl: false,  // <thead> Roo.Element - thead element
+    proxy : false, // proxy element for dragging?
     
     container: false, // used by gridpanel...
     
@@ -8976,6 +8976,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 
         // guessing mainbody will work - this relays usually caught by selmodel at present.
         this.relayEvents(this.bodyEl, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
+  
+  
+        this.proxy = table.createChild({ cls:"x-grid-resize-proxy", html: '&#160;' });
+        
   
         if(this.enableColumnResize !== false && Roo.grid.SplitDragZone){
             new Roo.grid.SplitDragZone(this, this.headEl.dom, false); // not sure what 'lockedHd is for this implementation..)

@@ -263,9 +263,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     layout : false,
     
     // Roo.Element - the tbody
-    bodyEl: false,  // <tbody> Roo.Element - thead element
-    
+    bodyEl: false,  // <tbody> Roo.Element - thead element    
     headEl: false,  // <thead> Roo.Element - thead element
+    proxy : false, // proxy element for dragging?
     
     container: false, // used by gridpanel...
     
