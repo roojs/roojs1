@@ -452,6 +452,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             // we can honour xs/sm/md/xl ?
             var w = cm.getColumnWidth(i, sz) * unitWidth;
+            if (w===0) {
+                hidden = 'display:none;';
+            }
             // width should return a small number...
             if (i == last) {
                 w+=rem; // add the remaining with..
