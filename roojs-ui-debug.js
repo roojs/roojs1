@@ -34924,17 +34924,29 @@ Roo.extend(Roo.grid.GridView.ColumnDragZone, Roo.grid.HeaderDragZone, {
  * Fork - LGPL
  * <script type="text/javascript">
  */
- 
+ /**
+ * @extends Roo.dd.DDProxy
+ * @class Roo.grid.SplitDragZone
+ * Support for Column Header resizing
+ * @constructor
+ * @param {Object} config
+ */
 // private
 // This is a support class used internally by the Grid components
 Roo.grid.SplitDragZone = function(grid, hd, hd2){
     this.grid = grid;
     this.view = grid.getView();
     this.proxy = this.view.resizeProxy;
-    Roo.grid.SplitDragZone.superclass.constructor.call(this, hd,
-        "gridSplitters" + this.grid.getGridEl().id, {
-        dragElId : Roo.id(this.proxy.dom), resizeFrame:false
-    });
+    Roo.grid.SplitDragZone.superclass.constructor.call(
+        this,
+        hd, // ID
+        "gridSplitters" + this.grid.getGridEl().id, // SGROUP
+        {  // CONFIG
+            dragElId : Roo.id(this.proxy.dom),
+            resizeFrame:false
+        }
+    );
+    
     this.setHandleElId(Roo.id(hd));
     this.setOuterHandleElId(Roo.id(hd2));
     this.scroll = false;
