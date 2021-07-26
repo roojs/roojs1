@@ -427,6 +427,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         // we can honour xs/sm/md/xl  as widths...
         // we first have to decide what widht we are currently at...
+        var sz = Roo.bootstrap.getGridSize();
         
         
         
@@ -437,6 +438,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 hidden = 'display:none;';
             }
             // we can honour xs/sm/md/xl ?
+            var w = cm.getColumnWidth(i, sz);
             
             
             var width = "width:" + (cm.getColumnWidth(i) || 100) + "px;";
