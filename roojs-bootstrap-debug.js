@@ -7393,7 +7393,12 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
         this.view.headersDisabled = false;
         var endX = Math.max(this.minX, Roo.lib.Event.getPageX(e));
         var diff = endX - this.startPos;
-        this.view.onColumnSplitterMoved(this.cellIndex, this.cm.getColumnWidth(this.cellIndex)+diff);
+        // 
+        var w = this.cm.getColumnWidth(this.cellIndex);
+        if (!this.view.mainWrap) {
+            w = 0;
+        }
+        this.view.onColumnSplitterMoved(this.cellIndex, w+diff);
     },
 
     autoOffset : function(){
@@ -9063,7 +9068,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var cm = this.cm, styles = [];
         this.CSS.removeStyleSheet(this.id + '-cssrules');
-        var headHeight = this.headEl.dom.clientHeight;
+        var headHeight = this.headEl ? this.headEl.dom.clientHeight : 0;
         // we can honour xs/sm/md/xl  as widths...
         // we first have to decide what widht we are currently at...
         var sz = Roo.getGridSize();
@@ -9081,6 +9086,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if (w !== false) {
                 cols.push( { rel : false, abs : w });
                 total_abs += w;
+                last = i; // not really..
                 continue;
             }
             var w = cm.getColumnWidth(i, sz);
@@ -9096,12 +9102,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var unitWidth = Math.floor(avail / total);
         var rem = avail - (unitWidth * total);
         
-        var hidden, width, pos = 0;
+        var hidden, width, pos = 0 , splithide , left;
         for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
             
-            var hidden = 'display:none;';
-            var left = '';
-            var width  = 'width:0px;';
+            hidden = 'display:none;';
+            left = '';
+            width  = 'width:0px;';
+            splithide = '';
             if(!cm.isHidden(i)){
                 hidden = '';
                 
@@ -9116,16 +9123,22 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     w+=rem; // add the remaining with..
                 }
                 pos += w;
-                left = "left:" + pos + "px;";
+                left = "left:" + (pos -4) + "px;";
                 width = "width:" + w+ "px;";
                 
             }
             
-            styles.push(
-                    '#' , this.id , ' .x-col-' , i, " {\n", cm.config[i].css, width, hidden, "\n}\n",
-                    '#' , this.id , ' .x-hcol-' , i, " {\n", width, hidden,"}\n",
-                    '#' , this.id , ' .x-grid-split-' , i, " {\n", left, 'height:', (headHeight - 4), "px;}\n"
-            );
+            styles.push( '#' , this.id , ' .x-col-' , i, " {", cm.config[i].css, width, hidden, "}\n" );
+            if (this.headEl) {
+                if (i == last) {
+                    splithide = 'display:none;';
+                }
+                
+                styles.push('#' , this.id , ' .x-hcol-' , i, " { ", width, hidden," }\n",
+                            '#' , this.id , ' .x-grid-split-' , i, " { ", left, splithide,'height:', (headHeight - 4), "px;}\n"
+                );
+            }
+            
         }
         Roo.log(styles.join(''));
         this.CSS.createStyleSheet( styles.join(''), this.id + '-cssrules');
@@ -9426,12 +9439,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.style += ' text-align:' + config.align + ';';
             }
             
-            if(typeof(config.width) != 'undefined'){
+            /* width is done in CSS
+             *if(typeof(config.width) != 'undefined'){
                 c.style += ' width:' + config.width + 'px;';
                 this.totalWidth += config.width;
             } else {
                 this.totalWidth += 100; // assume minimum of 100 per column?
             }
+            */
             
             if(typeof(config.cls) != 'undefined'){
                 c.cls = (typeof(c.cls) == 'undefined') ? config.cls : (c.cls + ' ' + config.cls);
@@ -9651,13 +9666,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         //this.layout();
         this.fireEvent("rowupdated", this, index, record);
     },
-    
+    // private - called by RowSelection
     onRowSelect : function(rowIndex){
         var row = this.getRowDom(rowIndex);
         row.addClass(['bg-info','info']);
     },
-
-    onRowDeselect : function(rowIndex){
+    // private - called by RowSelection
+    onRowDeselect : function(rowIndex)
+    {
+        if (rowIndex < 0) {
+            return;
+        }
         var row = this.getRowDom(rowIndex);
         row.removeClass(['bg-info','info']);
     },
@@ -9879,10 +9898,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(typeof(config.valign) != 'undefined' && config.valign.length){
                 td.style += ' vertical-align:' + config.valign + ';';
             }
-            
+            /*
             if(typeof(config.width) != 'undefined'){
                 td.style += ' width:' +  config.width + 'px;';
             }
+            */
             
             if(typeof(config.cursor) != 'undefined'){
                 td.style += ' cursor:' +  config.cursor + ';';
@@ -10060,7 +10080,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         cw = Math.max(cw, this.totalWidth);
         this.getGridEl().select('tbody tr',true).setWidth(cw);
-        
+        this.initCSS();
         
         // resize 'expandable coloumn?
         
@@ -10103,11 +10123,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
         }
     },
-    onColumnSplitterMoved : function(i, w)
+    onColumnSplitterMoved : function(i, diff)
     {
         this.userResized = true;
         
         var cm = this.colModel;
+        
+        var w = this.getHeaderIndex(i).getWidth() + diff;
+        
         
         cm.setColumnWidth(i, w, true);
         this.initCSS();
