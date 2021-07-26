@@ -668,7 +668,18 @@ Roo.factory(conf, Roo.data);
         {
             var node = Roo.DomQuery.selectNode(selector,root);
             return node ? Roo.get(node) : new Roo.Element(false);
-        }
+        },
+		/**
+		 * Find the current bootstrap width Grid size
+		 * Note xs is the default for smaller.. - this is currently used by grids to render correct columns
+		 * @returns {String} (xs|sm|md|lg|xl)
+		 */
+		
+		getGridSize : function()
+		{
+			
+			
+		}
         
     });
 
