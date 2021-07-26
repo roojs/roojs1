@@ -35010,7 +35010,12 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
         this.view.headersDisabled = false;
         var endX = Math.max(this.minX, Roo.lib.Event.getPageX(e));
         var diff = endX - this.startPos;
-        this.view.onColumnSplitterMoved(this.cellIndex, this.cm.getColumnWidth(this.cellIndex)+diff);
+        // 
+        var w = this.cm.getColumnWidth(this.cellIndex);
+        if (!this.view.mainWrap) {
+            w = 0;
+        }
+        this.view.onColumnSplitterMoved(this.cellIndex, w+diff);
     },
 
     autoOffset : function(){

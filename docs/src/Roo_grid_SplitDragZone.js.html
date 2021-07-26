@@ -94,7 +94,12 @@
         </span><span class="jsdoc-var">this.view.headersDisabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">endX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.lib.Event.getPageX</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">diff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">endX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.startPos</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.view.onColumnSplitterMoved</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellIndex</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-var">diff</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellIndex</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.view.mainWrap</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= 0;
+        }
+        </span><span class="jsdoc-var">this.view.onColumnSplitterMoved</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">diff</span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-var">autoOffset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
