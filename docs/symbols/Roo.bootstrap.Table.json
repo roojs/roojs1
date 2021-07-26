@@ -5,7 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "desc" : "Bootstrap Table class",
+  "desc" : "Bootstrap Table class.  This class represents the primary interface of a component based grid control.\nSimilar to Roo.grid.Grid\n<pre><code>\n var table = Roo.factory({\n    xtype : 'Table',\n    xns : Roo.bootstrap,\n    autoSizeColumns: true,\n    \n    \n    store : {\n        xtype : 'Store',\n        xns : Roo.data,\n        remoteSort : true,\n        sortInfo : { direction : 'ASC', field: 'name' },\n        proxy : {\n           xtype : 'HttpProxy',\n           xns : Roo.data,\n           method : 'GET',\n           url : 'https://example.com/some.data.url.json'\n        },\n        reader : {\n           xtype : 'JsonReader',\n           xns : Roo.data,\n           fields : [ 'id', 'name', whatever' ],\n           id : 'id',\n           root : 'data'\n        }\n    },\n    cm : [\n        {\n            xtype : 'ColumnModel',\n            xns : Roo.grid,\n            align : 'center',\n            cursor : 'pointer',\n            dataIndex : 'is_in_group',\n            header : \"Name\",\n            sortable : true,\n            renderer : function(v, x , r) {  \n            \n                return String.format(\"{0}\", v)\n            }\n            width : 3\n        } // more columns..\n    ],\n    selModel : {\n        xtype : 'RowSelectionModel',\n        xns : Roo.bootstrap.Table\n        // you can add listeners to catch selection change here....\n    }\n     \n\n });\n // set any options\n grid.render(Roo.get(\"some-div\"));\n</code></pre>\n\nCurrently the Table  uses multiple headers to try and handle XL / Medium etc... styling",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
@@ -62,17 +62,17 @@
       ]
     },
     {
+      "name" : "cm[]",
+      "type" : "Roo.grid.ColumnModel",
+      "desc" : "A column for th grid.",
+      "memberOf" : "Roo.bootstrap.Table",
+      "values" : []
+    },
+    {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
-    },
-    {
-      "name" : "border",
-      "type" : "Number",
-      "desc" : "Specifies whether the table cells should have borders or not",
-      "memberOf" : "Roo.bootstrap.Table",
       "values" : []
     },
     {
@@ -83,9 +83,9 @@
       "values" : []
     },
     {
-      "name" : "width",
+      "name" : "minColumnWidth",
       "type" : "Number",
-      "desc" : "Specifies the width of a table",
+      "desc" : "default 50 pixels minimum column width",
       "memberOf" : "Roo.bootstrap.Table",
       "values" : []
     },
@@ -93,13 +93,6 @@
       "name" : "bordered",
       "type" : "boolean",
       "desc" : "Add borders to the table",
-      "memberOf" : "Roo.bootstrap.Table",
-      "values" : []
-    },
-    {
-      "name" : "rules",
-      "type" : "String",
-      "desc" : "Specifies which parts of the inside borders that should be visible",
       "memberOf" : "Roo.bootstrap.Table",
       "values" : []
     },
@@ -118,13 +111,6 @@
       "values" : []
     },
     {
-      "name" : "layout",
-      "type" : "String",
-      "desc" : "table layout (auto | fixed | initial | inherit)",
-      "memberOf" : "Roo.bootstrap.Table",
-      "values" : []
-    },
-    {
       "name" : "condensed",
       "type" : "boolean",
       "desc" : "Format condensed",
@@ -139,9 +125,9 @@
       "values" : []
     },
     {
-      "name" : "frame",
-      "type" : "String",
-      "desc" : "Specifies which parts of the outside borders that should be visible",
+      "name" : "store",
+      "type" : "Roo.data.Store|Roo.data.SimpleStore",
+      "desc" : "The data store to use",
       "memberOf" : "Roo.bootstrap.Table",
       "values" : []
     },
@@ -156,17 +142,17 @@
       ]
     },
     {
-      "name" : "sortable",
-      "type" : "String",
-      "desc" : "Specifies that the table should be sortable",
-      "memberOf" : "Roo.bootstrap.Table",
-      "values" : []
-    },
-    {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
+      "values" : []
+    },
+    {
+      "name" : "sm",
+      "type" : "Roo.grid.RowSelectionModel|Roo.grid.CellSelectionModel",
+      "desc" : "The selection model to use (cell selection is not supported yet)",
+      "memberOf" : "Roo.bootstrap.Table",
       "values" : []
     },
     {
@@ -191,24 +177,6 @@
       "values" : []
     },
     {
-      "name" : "cellspacing",
-      "type" : "Number",
-      "desc" : "Specifies the space between cells",
-      "memberOf" : "Roo.bootstrap.Table",
-      "values" : []
-    },
-    {
-      "name" : "align",
-      "type" : "String",
-      "desc" : "Specifies the alignment of a table according to surrounding text",
-      "memberOf" : "Roo.bootstrap.Table",
-      "values" : [
-        "(left",
-        "center",
-        "right)"
-      ]
-    },
-    {
       "name" : "lazyLoad",
       "type" : "Boolean",
       "desc" : "auto load data while scrolling to the end (default false)",
@@ -226,13 +194,6 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "table class",
-      "memberOf" : "Roo.bootstrap.Table",
-      "values" : []
-    },
-    {
-      "name" : "bgcolor",
-      "type" : "String",
-      "desc" : "Specifies the background color for a table",
       "memberOf" : "Roo.bootstrap.Table",
       "values" : []
     },
@@ -271,13 +232,6 @@
       "values" : []
     },
     {
-      "name" : "cellpadding",
-      "type" : "Number",
-      "desc" : "Specifies the space between the cell wall and the cell content",
-      "memberOf" : "Roo.bootstrap.Table",
-      "values" : []
-    },
-    {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -295,17 +249,17 @@
       ]
     },
     {
+      "name" : "enableColumnResize",
+      "type" : "Boolean",
+      "desc" : "default true if columns can be resized (drag/drop)",
+      "memberOf" : "Roo.bootstrap.Table",
+      "values" : []
+    },
+    {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
-    },
-    {
-      "name" : "summary",
-      "type" : "String",
-      "desc" : "Specifies a summary of the content of a table",
-      "memberOf" : "Roo.bootstrap.Table",
       "values" : []
     },
     {
@@ -349,6 +303,123 @@
           "name" : "state",
           "type" : "Boolean",
           "desc" : "hide",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "getRowIndex",
+      "desc" : "get the Row Index from a dom element.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Table",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "row",
+          "type" : "Roo.Element",
+          "desc" : "The row to look for",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "ensureVisible",
+      "desc" : "Scrolls the specified cell into view",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Table",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "row",
+          "type" : "Number",
+          "desc" : "The row index",
+          "isOptional" : false
+        },
+        {
+          "name" : "col",
+          "type" : "Number",
+          "desc" : "The column index",
+          "isOptional" : false
+        },
+        {
+          "name" : "hscroll",
+          "type" : "Boolean",
+          "desc" : "false to disable horizontal scrolling",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "getCellIndex",
+      "desc" : "get the Column Index from a dom element. (using regex on x-hcol-{colid})",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Table",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "cell",
+          "type" : "domElement",
+          "desc" : "to look for",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "getHeaderIndex",
+      "desc" : "get the header TH element for columnIndex",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Table",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "columnIndex",
+          "type" : "Number",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "focusRow",
+      "desc" : "Focuses the specified row.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Table",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "row",
+          "type" : "Number",
+          "desc" : "The row index",
           "isOptional" : false
         }
       ],
@@ -406,6 +477,39 @@
       "since" : "",
       "see" : "",
       "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "focusCell",
+      "desc" : "Focuses the specified cell.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Table",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "row",
+          "type" : "Number",
+          "desc" : "The row index",
+          "isOptional" : false
+        },
+        {
+          "name" : "col",
+          "type" : "Number",
+          "desc" : "The column index",
+          "isOptional" : false
+        },
+        {
+          "name" : "hscroll",
+          "type" : "Boolean",
+          "desc" : "false to disable horizontal scrolling",
+          "isOptional" : false
+        }
+      ],
       "returns" : []
     },
     {
@@ -1104,6 +1208,24 @@
     {
       "name" : "contextmenu",
       "desc" : "The raw contextmenu event for the entire grid.",
+      "memberOf" : "Roo.bootstrap.Table",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "mousedown",
+      "desc" : "The raw mousedown event for the entire grid.",
       "memberOf" : "Roo.bootstrap.Table",
       "example" : "",
       "deprecated" : "",

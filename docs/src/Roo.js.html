@@ -668,7 +668,30 @@ Roo.factory(conf, Roo.data);
         {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomQuery.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Element</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
-        }
+        },
+		</span><span class="jsdoc-comment">/**
+		 * Find the current bootstrap width Grid size
+		 * Note xs is the default for smaller.. - this is currently used by grids to render correct columns
+		 * @returns {String} (xs|sm|md|lg|xl)
+		 */
+
+		</span><span class="jsdoc-var">getGridSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+		{
+			</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">();
+			</span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
+				</span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">&gt; 1200:
+					</span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'xl'</span><span class="jsdoc-syntax">;
+				</span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">&gt; 992:
+					</span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">;
+				</span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">&gt; 768:
+					</span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">;
+				</span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">&gt; 576:
+					</span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">;
+				</span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+					</span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'xs'
+			</span><span class="jsdoc-syntax">}
+
+		}
 
     });
 

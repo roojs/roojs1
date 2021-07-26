@@ -53,6 +53,9 @@ Roo.bootstrap.Pagination
 Roo.bootstrap.PaginationItem
 Roo.bootstrap.Slider
 
+Roo.grid.SplitDragZone
+Roo.grid.AbstractSelectionModel
+Roo.grid.RowSelectionModel
 Roo.grid.ColumnModel
 Roo.LoadMask
 Roo.bootstrap.Table
@@ -111,8 +114,8 @@ Roo.bootstrap.htmleditor.ToolbarStandard
 
 Roo.bootstrap.Markdown
 
-Roo.bootstrap.Table.AbstractSelectionModel
-Roo.bootstrap.Table.RowSelectionModel
+
+
 
 Roo.bootstrap.PagingToolbar
 Roo.bootstrap.MessageBar

@@ -23,6 +23,13 @@
   "returns" : [],
   "config" : [
     {
+      "name" : "mdHeader",
+      "type" : "String",
+      "desc" : "Header at Bootsrap Medium width",
+      "memberOf" : "Roo.grid.ColumnModel",
+      "values" : []
+    },
+    {
       "name" : "editor",
       "type" : "Roo.grid.GridEditor",
       "desc" : "(Optional) For grid editors - returns the grid editor",
@@ -44,6 +51,13 @@
       "values" : []
     },
     {
+      "name" : "smHeader",
+      "type" : "String",
+      "desc" : "Header at Bootsrap Small width",
+      "memberOf" : "Roo.grid.ColumnModel",
+      "values" : []
+    },
+    {
       "name" : "tooltip",
       "type" : "String",
       "desc" : "(Optional)",
@@ -53,7 +67,7 @@
     {
       "name" : "md",
       "type" : "Number",
-      "desc" : "(Optional)",
+      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
       "memberOf" : "Roo.grid.ColumnModel",
       "values" : []
     },
@@ -61,6 +75,20 @@
       "name" : "align",
       "type" : "String",
       "desc" : "(Optional) Set the CSS text-align property of the column.  Defaults to undefined.",
+      "memberOf" : "Roo.grid.ColumnModel",
+      "values" : []
+    },
+    {
+      "name" : "lgHeader",
+      "type" : "String",
+      "desc" : "Header at Bootsrap Large width",
+      "memberOf" : "Roo.grid.ColumnModel",
+      "values" : []
+    },
+    {
+      "name" : "xlHeader",
+      "type" : "String",
+      "desc" : "Header at Bootsrap extra Large width",
       "memberOf" : "Roo.grid.ColumnModel",
       "values" : []
     },
@@ -95,7 +123,7 @@
     {
       "name" : "lg",
       "type" : "Number",
-      "desc" : "(Optional)",
+      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
       "memberOf" : "Roo.grid.ColumnModel",
       "values" : []
     },
@@ -109,7 +137,14 @@
     {
       "name" : "xs",
       "type" : "Number",
-      "desc" : "(Optional)",
+      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
+      "memberOf" : "Roo.grid.ColumnModel",
+      "values" : []
+    },
+    {
+      "name" : "xsHeader",
+      "type" : "String",
+      "desc" : "Header at Bootsrap Extra Small width (default for all)",
       "memberOf" : "Roo.grid.ColumnModel",
       "values" : []
     },
@@ -121,13 +156,6 @@
       "values" : []
     },
     {
-      "name" : "width",
-      "type" : "Number",
-      "desc" : "(Optional) The initial width in pixels of the column. Using this\ninstead of {@link Roo.grid.Grid#autoSizeColumns} is more efficient.",
-      "memberOf" : "Roo.grid.ColumnModel",
-      "values" : []
-    },
-    {
       "name" : "header",
       "type" : "String",
       "desc" : "The header text to display in the Grid view.",
@@ -135,9 +163,23 @@
       "values" : []
     },
     {
+      "name" : "width",
+      "type" : "Number",
+      "desc" : "(Optional) The initial width in pixels of the column. Using this\ninstead of {@link Roo.grid.Grid#autoSizeColumns} is more efficient.",
+      "memberOf" : "Roo.grid.ColumnModel",
+      "values" : []
+    },
+    {
       "name" : "resizable",
       "type" : "Boolean",
       "desc" : "(Optional) False to disable column resizing. Defaults to true.",
+      "memberOf" : "Roo.grid.ColumnModel",
+      "values" : []
+    },
+    {
+      "name" : "xl",
+      "type" : "Number",
+      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
       "memberOf" : "Roo.grid.ColumnModel",
       "values" : []
     },
@@ -151,7 +193,7 @@
     {
       "name" : "sm",
       "type" : "Number",
-      "desc" : "(Optional)",
+      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
       "memberOf" : "Roo.grid.ColumnModel",
       "values" : []
     }
@@ -496,6 +538,12 @@
           "name" : "col",
           "type" : "Number",
           "desc" : "The column index",
+          "isOptional" : false
+        },
+        {
+          "name" : "(optional)",
+          "type" : "",
+          "desc" : "{String} gridSize bootstrap width size.",
           "isOptional" : false
         }
       ],

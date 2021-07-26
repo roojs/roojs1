@@ -1,26 +1,74 @@
-<html><head><title>Roo/bootstrap/Table.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
- * - LGPL
- *
- * table
- * 
- */
-
-/**
+<html><head><title>Roo/bootstrap/Table.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
  * @class Roo.bootstrap.Table
+ * @licence LGBL
  * @extends Roo.bootstrap.Component
- * Bootstrap Table class
+ * Bootstrap Table class.  This class represents the primary interface of a component based grid control.
+ * Similar to Roo.grid.Grid
+ * &lt;pre&gt;&lt;code&gt;
+ var table = Roo.factory({
+    xtype : 'Table',
+    xns : Roo.bootstrap,
+    autoSizeColumns: true,
+    
+    
+    store : {
+        xtype : 'Store',
+        xns : Roo.data,
+        remoteSort : true,
+        sortInfo : { direction : 'ASC', field: 'name' },
+        proxy : {
+           xtype : 'HttpProxy',
+           xns : Roo.data,
+           method : 'GET',
+           url : 'https://example.com/some.data.url.json'
+        },
+        reader : {
+           xtype : 'JsonReader',
+           xns : Roo.data,
+           fields : [ 'id', 'name', whatever' ],
+           id : 'id',
+           root : 'data'
+        }
+    },
+    cm : [
+        {
+            xtype : 'ColumnModel',
+            xns : Roo.grid,
+            align : 'center',
+            cursor : 'pointer',
+            dataIndex : 'is_in_group',
+            header : &quot;Name&quot;,
+            sortable : true,
+            renderer : function(v, x , r) {  
+            
+                return String.format(&quot;{0}&quot;, v)
+            }
+            width : 3
+        } // more columns..
+    ],
+    selModel : {
+        xtype : 'RowSelectionModel',
+        xns : Roo.bootstrap.Table
+        // you can add listeners to catch selection change here....
+    }
+     
+
+ });
+ // set any options
+ grid.render(Roo.get(&quot;some-div&quot;));
+&lt;/code&gt;&lt;/pre&gt;
+
+Currently the Table  uses multiple headers to try and handle XL / Medium etc... styling
+
+
+
+ *
+ * @cfg {Roo.grid.RowSelectionModel|Roo.grid.CellSelectionModel} sm The selection model to use (cell selection is not supported yet)
+ * @cfg {Roo.data.Store|Roo.data.SimpleStore} store The data store to use
+ * @cfg {Roo.grid.ColumnModel} cm[] A column for th grid.
+ * 
  * @cfg {String} cls table class
- * @cfg {String} align (left|center|right) Specifies the alignment of a table according to surrounding text
- * @cfg {String} bgcolor Specifies the background color for a table
- * @cfg {Number} border Specifies whether the table cells should have borders or not
- * @cfg {Number} cellpadding Specifies the space between the cell wall and the cell content
- * @cfg {Number} cellspacing Specifies the space between cells
- * @cfg {String} frame Specifies which parts of the outside borders that should be visible
- * @cfg {String} rules Specifies which parts of the inside borders that should be visible
- * @cfg {String} sortable Specifies that the table should be sortable
- * @cfg {String} summary Specifies a summary of the content of a table
- * @cfg {Number} width Specifies the width of a table
- * @cfg {String} layout table layout (auto | fixed | initial | inherit)
+ *
  * 
  * @cfg {boolean} striped Should the rows be alternative striped
  * @cfg {boolean} bordered Add borders to the table
@@ -36,17 +84,17 @@
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
- 
+ * @cfg {Boolean} enableColumnResize default true if columns can be resized (drag/drop)
+ * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
  * 
  * @constructor
  * Create a new Table
  * @param {Object} config The config object
  */
 
-</span><span class="jsdoc-var">Roo.bootstrap.Table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+</span><span class="jsdoc-var">Roo.bootstrap.Table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+{
     </span><span class="jsdoc-var">Roo.bootstrap.Table.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-
-
 
     </span><span class="jsdoc-comment">// BC...
     </span><span class="jsdoc-var">this.rowSelection </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.rowSelection</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">config.rowSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.rowSelection</span><span class="jsdoc-syntax">;
@@ -54,10 +102,12 @@
     </span><span class="jsdoc-var">this.headerShow </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.thead</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">config.thead </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.headerShow</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.footerShow </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.tfoot</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">config.tfoot </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.footerShow</span><span class="jsdoc-syntax">;
 
+    </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// compat with grid.
+
     </span><span class="jsdoc-var">this.sm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.sm </span><span class="jsdoc-syntax">|| {</span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'RowSelectionModel'</span><span class="jsdoc-syntax">};
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sm</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.sm.grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.selModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Table</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.selModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.grid</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.sm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selModel</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.sm.xmodule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xmodule </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     }
@@ -181,23 +231,21 @@
          * @param {Number} columnIndex
          * @param {Roo.EventObject} e
          */
-        </span><span class="jsdoc-string">&quot;headercontextmenu&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;headercontextmenu&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event mousedown
+         * The raw mousedown event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;mousedown&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+
     </span><span class="jsdoc-syntax">});
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Table</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
 
     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">bgcolor</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">cellpadding</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">cellspacing</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">frame</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">rules</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">sortable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">summary</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
     </span><span class="jsdoc-var">striped </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">scrollBody </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">bordered</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -210,15 +258,20 @@
     </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">footerShow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">headerShow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">enableColumnResize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">rowSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">cellSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">layout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
+    </span><span class="jsdoc-var">minColumnWidth </span><span class="jsdoc-syntax">: 50,
+
     </span><span class="jsdoc-comment">// Roo.Element - the tbody
-    </span><span class="jsdoc-var">mainBody</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-comment">// Roo.Element - thead element
-    </span><span class="jsdoc-var">mainHead</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">bodyEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-comment">// &lt;tbody&gt; Roo.Element - thead element    
+    </span><span class="jsdoc-var">headEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-comment">// &lt;thead&gt; Roo.Element - thead element
+    </span><span class="jsdoc-var">resizeProxy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// proxy element for dragging?
+
+
 
     </span><span class="jsdoc-var">container</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// used by gridpanel...
 
@@ -227,6 +280,8 @@
     </span><span class="jsdoc-var">CSS </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.util.CSS</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">auto_hide_footer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">view</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// actually points to this..
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -237,6 +292,7 @@
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
         };
+        </span><span class="jsdoc-comment">// this get's auto added by panel.Grid
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.scrollBody</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' table-body-fixed'</span><span class="jsdoc-syntax">;
         }
@@ -253,6 +309,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.condensed</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' table-condensed'</span><span class="jsdoc-syntax">;
         }
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.responsive</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' table-responsive'</span><span class="jsdoc-syntax">;
         }
@@ -261,24 +318,6 @@
             </span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">+=  </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-comment">// this lot should be simplifed...
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cp </span><span class="jsdoc-syntax">= [
-            </span><span class="jsdoc-string">'align'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'bgcolor'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'border'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'cellpadding'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'cellspacing'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'frame'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'rules'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'sortable'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'summary'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'width'
-        </span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">]) {
-                </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">_t</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">];
-            }
-        });
 
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">) {
@@ -314,8 +353,8 @@
 
         </span><span class="jsdoc-comment">//Roo.log('initEvents with ds!!!!');
 
-        </span><span class="jsdoc-var">this.mainBody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.mainHead </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'thead'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.headEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'thead'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.mainFoot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
 
 
@@ -325,8 +364,6 @@
             </span><span class="jsdoc-var">e.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.sort</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-var">this.mainBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.mainBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;dblclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDblClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-comment">// why is this done????? = it breaks dialogs??
         //this.parent().el.setStyle('position', 'relative');
@@ -353,13 +390,118 @@
 
         </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;contextmenu&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onContextMenu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-var">this.mainBody.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBodyScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">this.cm.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;headerchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onHeaderChange</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-
         </span><span class="jsdoc-var">this.cm.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hiddenchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onHiddenChange</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
 
+ </span><span class="jsdoc-comment">//?? does bodyEl get replaced on render?
+        </span><span class="jsdoc-var">this.bodyEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;dblclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDblClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBodyScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// guessing mainbody will work - this relays usually caught by selmodel at present.
+        </span><span class="jsdoc-var">this.relayEvents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;mouseup&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;keypress&quot;</span><span class="jsdoc-syntax">]);
+
+
+        </span><span class="jsdoc-var">this.resizeProxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;x-grid-resize-proxy&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;#160;' </span><span class="jsdoc-syntax">});
+
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headEl </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.enableColumnResize </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.grid.SplitDragZone</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.SplitDragZone</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.headEl.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// not sure what 'lockedHd is for this implementation..)
+        </span><span class="jsdoc-syntax">}
+
+        </span><span class="jsdoc-var">this.initCSS</span><span class="jsdoc-syntax">();
     },
+    </span><span class="jsdoc-comment">// Compatibility with grid - we implement all the view features at present.
+    </span><span class="jsdoc-var">getView </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">initCSS </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.CSS.removeStyleSheet</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-cssrules'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.headEl </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.headEl.dom.clientHeight </span><span class="jsdoc-syntax">: 0;
+        </span><span class="jsdoc-comment">// we can honour xs/sm/md/xl  as widths...
+        // we first have to decide what widht we are currently at...
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sz </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getGridSize</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">total </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">= -1;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= []; </span><span class="jsdoc-comment">// visable cols.
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">total_abs </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-var">cols.push</span><span class="jsdoc-syntax">( { </span><span class="jsdoc-var">rel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">abs </span><span class="jsdoc-syntax">: 0 });
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cols.push</span><span class="jsdoc-syntax">( { </span><span class="jsdoc-var">rel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">abs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">});
+                </span><span class="jsdoc-var">total_abs </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// not really..
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sz</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">&gt; 0) {
+                </span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i
+            </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-var">total </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">cols.push</span><span class="jsdoc-syntax">( { </span><span class="jsdoc-var">rel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">abs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">});
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">avail </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.dom.clientWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">total_abs</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">unitWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">avail </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">total</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">avail </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">total</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= 0 , </span><span class="jsdoc-var">splithide </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+
+            </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'display:none;'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">left </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">width  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'width:0px;'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">splithide </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cm.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+
+
+                </span><span class="jsdoc-comment">// we can honour xs/sm/md/xl ?
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.rel </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.abs </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.rel </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">unitWidth</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">===0) {
+                    </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'display:none;'</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-comment">// width should return a small number...
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">last</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">+=</span><span class="jsdoc-var">rem</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// add the remaining with..
+                </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">left </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;left:&quot; </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">-4) + </span><span class="jsdoc-string">&quot;px;&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width:&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px;&quot;</span><span class="jsdoc-syntax">;
+
+            }
+
+            </span><span class="jsdoc-var">styles.push</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-col-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; {&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cm.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.css</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;}\n&quot; </span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headEl</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">last</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">splithide </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'display:none;'</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-var">styles.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-hcol-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; { &quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot; }\n&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-grid-split-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; { &quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">splithide</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'height:'</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">headHeight </span><span class="jsdoc-syntax">- 4), </span><span class="jsdoc-string">&quot;px;}\n&quot;
+                </span><span class="jsdoc-syntax">);
+            }
+
+        }
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styles.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.CSS.createStyleSheet</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">styles.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-cssrules'</span><span class="jsdoc-syntax">);
+
+    },
+
+
 
     </span><span class="jsdoc-var">onContextMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">)
     {
@@ -537,7 +679,19 @@
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowdblclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
         }
     },
+    </span><span class="jsdoc-var">findRowIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
 
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getRowIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">);
+    },
     </span><span class="jsdoc-var">sort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
@@ -595,7 +749,7 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.sortable</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.sortable</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'sortable'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' sortable'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">c.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;fa&quot;&gt;&lt;/i&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">c.html</span><span class="jsdoc-syntax">;
             }
 
@@ -629,9 +783,7 @@
                 </span><span class="jsdoc-var">c.colspan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.colspan</span><span class="jsdoc-syntax">;
             }
 
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.hidden</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.hidden</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">c.style </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' display:none;'</span><span class="jsdoc-syntax">;
-            }
+            </span><span class="jsdoc-comment">// hidden is handled by CSS now
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.dataIndex</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">c.sort </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.dataIndex</span><span class="jsdoc-syntax">;
@@ -643,35 +795,47 @@
                 </span><span class="jsdoc-var">c.style </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' text-align:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.align </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">;
             }
 
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.width</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">c.style </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' width:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px;'</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">this.totalWidth </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">config.width</span><span class="jsdoc-syntax">;
-            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-var">this.totalWidth </span><span class="jsdoc-syntax">+= 100; </span><span class="jsdoc-comment">// assume minimum of 100 per column?
-            </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-comment">/* width is done in CSS
+             *if(typeof(config.width) != 'undefined'){
+                c.style += ' width:' + config.width + 'px;';
+                this.totalWidth += config.width;
+            } else {
+                this.totalWidth += 100; // assume minimum of 100 per column?
+            }
+            */
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.cls</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.cls</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">config.cls </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.cls</span><span class="jsdoc-syntax">);
             }
+            </span><span class="jsdoc-comment">// this is the bit that doesnt reall work at all...
 
-            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">){
-
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+           /*
+            
+            ['xs','sm','md','lg'].map(function(size){
+                
+                if(typeof(config[size]) == 'undefined'){
+                    return;
                 }
-
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) { </span><span class="jsdoc-comment">// 0 = hidden
+                 
+                if (!config[size]) { // 0 = hidden
                     // BS 4 '0' is treated as hide that column and below.
-                    </span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' hidden-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' hidden' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-down'</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    c.cls += ' hidden-' + size + ' hidden' + size + '-down';
+                    return;
                 }
-
-                </span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">] + (
-                    </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">] ) : </span><span class="jsdoc-string">'' </span><span class="jsdoc-comment">// bs4 col-{num} replaces col-xs
-                </span><span class="jsdoc-syntax">);
-
-
+                
+                c.cls += ' col-' + size + '-' + config[size] + (
+                    size == 'xs' ? (' col-' + config[size] ) : '' // bs4 col-{num} replaces col-xs
+                );
+                
+                
             });
+            */
+            // at the end?
+
+            </span><span class="jsdoc-var">c.html </span><span class="jsdoc-syntax">+=</span><span class="jsdoc-string">' &lt;span class=&quot;x-grid-split x-grid-split-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;&lt;/span&gt;'</span><span class="jsdoc-syntax">;
+
+
+
 
             </span><span class="jsdoc-var">header.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
         }
@@ -744,7 +908,7 @@
             }
         });
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbody </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.mainBody</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbody </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds.getCount</span><span class="jsdoc-syntax">() &gt; 0){
             </span><span class="jsdoc-var">ds.data.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">){
@@ -786,7 +950,11 @@
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowsrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">this.autoSize</span><span class="jsdoc-syntax">();
-    },
+
+        </span><span class="jsdoc-var">this.initCSS</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">/// resize cols
+
+
+    </span><span class="jsdoc-syntax">},
 
 
     </span><span class="jsdoc-var">onUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">)
@@ -799,7 +967,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isUpdate </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforerowremoved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">);
         }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody &gt; tr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">;
 
@@ -823,7 +991,7 @@
     {
         </span><span class="jsdoc-comment">//Roo.log('on Add called');
         // - note this does not handle multiple adding very well..
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0 ; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">records.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
             </span><span class="jsdoc-comment">//Roo.log('call insert row Add called on ' + rowIndex + ':' + i);
             //Roo.log(records[i]);
@@ -854,6 +1022,120 @@
         //this.layout();
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;rowupdated&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">);
     },
+    </span><span class="jsdoc-comment">// private - called by RowSelection
+    </span><span class="jsdoc-var">onRowSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRowDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">row.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bg-info'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">]);
+    },
+    </span><span class="jsdoc-comment">// private - called by RowSelection
+    </span><span class="jsdoc-var">onRowDeselect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">&lt; 0) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRowDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">row.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bg-info'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'info'</span><span class="jsdoc-syntax">]);
+    },
+      </span><span class="jsdoc-comment">/**
+     * Focuses the specified row.
+     * @param {Number} row The row index
+     */
+    </span><span class="jsdoc-var">focusRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log('GridView.focusRow');
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.dom.scrollLeft</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.focusCell</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, 0, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.bodyEl.dom.scrollLeft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
+
+    },
+     </span><span class="jsdoc-comment">/**
+     * Focuses the specified cell.
+     * @param {Number} row The row index
+     * @param {Number} col The column index
+     * @param {Boolean} hscroll false to disable horizontal scrolling
+     */
+    </span><span class="jsdoc-var">focusCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hscroll</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log('GridView.focusCell');
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ensureVisible</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hscroll</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// not sure what focusEL achives = it's a &lt;a&gt; pos relative 
+        //this.focusEl.alignTo(el, &quot;tl-tl&quot;);
+        //if(Roo.isGecko){
+        //    this.focusEl.focus();
+        //}else{
+        //    this.focusEl.focus.defer(1, this.focusEl);
+        //}
+    </span><span class="jsdoc-syntax">},
+
+     </span><span class="jsdoc-comment">/**
+     * Scrolls the specified cell into view
+     * @param {Number} row The row index
+     * @param {Number} col The column index
+     * @param {Boolean} hscroll false to disable horizontal scrolling
+     */
+    </span><span class="jsdoc-var">ensureVisible </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hscroll</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log('GridView.ensureVisible,' + row + ',' + col);
+        //return null; //disable for testing.
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;number&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">row.rowIndex</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">&lt; 0 &amp;&amp; </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">this.ds.getCount</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">return  null</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">: 0);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">++;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getCellDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.offsetTop</span><span class="jsdoc-syntax">, 10);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cleft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.offsetLeft</span><span class="jsdoc-syntax">, 10);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cbot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ctop </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">el.offsetHeight</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cright </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cleft </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">el.offsetWidth</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">//var ch = c.clientHeight - this.mainHd.dom.offsetHeight;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ch </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-comment">//?? header is not withing the area?
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.scrollTop</span><span class="jsdoc-syntax">, 10);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sleft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.scrollLeft</span><span class="jsdoc-syntax">, 10);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sbot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">stop </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ch</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sright </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sleft </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">c.clientWidth</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">/*
+        Roo.log('GridView.ensureVisible:' +
+                ' ctop:' + ctop +
+                ' c.clientHeight:' + c.clientHeight +
+                ' this.mainHd.dom.offsetHeight:' + this.mainHd.dom.offsetHeight +
+                ' stop:' + stop +
+                ' cbot:' + cbot +
+                ' sbot:' + sbot +
+                ' ch:' + ch  
+                );
+        */
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ctop </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">stop</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">c.scrollTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ctop</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">//Roo.log(&quot;set scrolltop to ctop DISABLE?&quot;);
+        </span><span class="jsdoc-syntax">}</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cbot </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">sbot</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-comment">//Roo.log(&quot;set scrolltop to cbot-ch&quot;);
+            </span><span class="jsdoc-var">c.scrollTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cbot</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">ch</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hscroll </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cleft </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">sleft</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">c.scrollLeft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cleft</span><span class="jsdoc-syntax">;
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cright </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">sright</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">c.scrollLeft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cright</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">c.clientWidth</span><span class="jsdoc-syntax">;
+            }
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+    },
+
 
     </span><span class="jsdoc-var">insertRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isUpdate</span><span class="jsdoc-syntax">){
 
@@ -863,7 +1145,7 @@
             </span><span class="jsdoc-comment">//var s = this.getScrollState();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.renderRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// insert before rowIndex..
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.getRowDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.getRowDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">));
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
 
@@ -890,6 +1172,17 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">];
 
     },
+    </span><span class="jsdoc-var">getCellDom </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRowDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">row.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">];
+
+    },
+
     </span><span class="jsdoc-comment">// returns the object tree for a tr..
 
 
@@ -953,9 +1246,7 @@
                 </span><span class="jsdoc-var">td.colspan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.colspan</span><span class="jsdoc-syntax">;
             }
 
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.hidden</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.hidden</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">td.style </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' display:none;'</span><span class="jsdoc-syntax">;
-            }
+
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.align</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.align.length</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">td.style </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' text-align:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.align </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">;
@@ -963,10 +1254,11 @@
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.valign</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.valign.length</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">td.style </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' vertical-align:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.valign </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">;
             }
-
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.width</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">td.style </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' width:' </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">config.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px;'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">/*
+            if(typeof(config.width) != 'undefined'){
+                td.style += ' width:' +  config.width + 'px;';
             }
+            */
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.cursor</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">td.style </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' cursor:' </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">config.cursor </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">;
@@ -975,28 +1267,28 @@
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.cls</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">td.cls </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td.cls</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">config.cls </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">td.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.cls</span><span class="jsdoc-syntax">);
             }
-
-            [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">){
-
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">/*
+            ['xs','sm','md','lg'].map(function(size){
+                
+                if(typeof(config[size]) == 'undefined'){
+                    return;
                 }
-
-
-
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) { </span><span class="jsdoc-comment">// 0 = hidden
+                
+                
+                  
+                if (!config[size]) { // 0 = hidden
                     // BS 4 '0' is treated as hide that column and below.
-                    </span><span class="jsdoc-var">td.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' hidden-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' hidden' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-down'</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    td.cls += ' hidden-' + size + ' hidden' + size + '-down';
+                    return;
                 }
-
-                </span><span class="jsdoc-var">td.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">] + (
-                    </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'xs' </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+   </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">] ) : </span><span class="jsdoc-string">'' </span><span class="jsdoc-comment">// bs4 col-{num} replaces col-xs
-                </span><span class="jsdoc-syntax">);
-
+                
+                td.cls += ' col-' + size + '-' + config[size] + (
+                    size == 'xs' ? (' col-' +   config[size] ) : '' // bs4 col-{num} replaces col-xs
+                );
+                 
 
             });
-
+            */
             </span><span class="jsdoc-var">row.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);
 
         }
@@ -1027,14 +1319,15 @@
      */
     </span><span class="jsdoc-var">setRowVisibility </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.dom</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.dom</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody &gt; tr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.dom.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">][ </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'removeClass' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'addClass'</span><span class="jsdoc-syntax">](</span><span class="jsdoc-string">'d-none'</span><span class="jsdoc-syntax">);
+
     },
 
 
@@ -1065,7 +1358,11 @@
             })
         }
     },
-
+    </span><span class="jsdoc-comment">/**
+     * get the Row Index from a dom element.
+     * @param {Roo.Element} row The row to look for
+     * @returns {Number} the row
+     */
     </span><span class="jsdoc-var">getRowIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">= -1;
@@ -1079,6 +1376,29 @@
         });
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * get the header TH element for columnIndex
+     * @param {Number} columnIndex
+     * @returns {Roo.Element}
+     */
+    </span><span class="jsdoc-var">getHeaderIndex</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.headEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">];
+    },
+    </span><span class="jsdoc-comment">/**
+     * get the Column Index from a dom element. (using regex on x-hcol-{colid})
+     * @param {domElement} cell to look for
+     * @returns {Number} the column
+     */
+    </span><span class="jsdoc-var">getCellIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cell.className</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Table.cellRE</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">[1], 10);
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">0;
     },
      </span><span class="jsdoc-comment">/**
      * Returns the grid's underlying element = used by panel.Grid
@@ -1116,6 +1436,7 @@
         }
         </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.totalWidth</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody tr'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.initCSS</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-comment">// resize 'expandable coloumn?
 
@@ -1124,21 +1445,21 @@
     </span><span class="jsdoc-syntax">},
     </span><span class="jsdoc-var">onBodyScroll</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-comment">//Roo.log(&quot;body scrolled');&quot; + this.mainBody.dom.scrollLeft);
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mainHead</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.mainHead.setStyle</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">//Roo.log(&quot;body scrolled');&quot; + this.bodyEl.dom.scrollLeft);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.headEl.setStyle</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-string">'position' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">: (-1* </span><span class="jsdoc-var">this.mainBody.dom.scrollLeft</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'px'
+                </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">: (-1* </span><span class="jsdoc-var">this.bodyEl.dom.scrollLeft</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'px'
             </span><span class="jsdoc-syntax">});
         }
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lazyLoad</span><span class="jsdoc-syntax">){
 
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.dom.scrollHeight</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.dom.scrollHeight</span><span class="jsdoc-syntax">;
 
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mainBody.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollTop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bodyEl.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top</span><span class="jsdoc-syntax">);
 
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.getHeight</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.getHeight</span><span class="jsdoc-syntax">();
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scrollHeight </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">scrollTop</span><span class="jsdoc-syntax">) {
 
@@ -1158,19 +1479,43 @@
 
         }
     },
+    </span><span class="jsdoc-var">onColumnSplitterMoved </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">diff</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.userResized </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.colModel</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getHeaderIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">diff</span><span class="jsdoc-syntax">;
+
+
+        </span><span class="jsdoc-var">cm.setColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.initCSS</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//var cid = cm.getColumnId(i); &lt;&lt; not used in this version?
+       /* Roo.log(['#' + this.id + ' .x-col-' + i, &quot;width&quot;, w + &quot;px&quot;]);
+        
+        this.CSS.updateRule( '#' + this.id + ' .x-col-' + i, &quot;width&quot;, w + &quot;px&quot;);
+        this.CSS.updateRule('#' + this.id + ' .x-hcol-' + i, &quot;width&quot;, w + &quot;px&quot;);
+        this.CSS.updateRule('#' + this.id + ' .x-grid-split-' + i, &quot;left&quot;, w + &quot;px&quot;);
+*/
+        //this.updateSplitters();
+        //this.layout(); &lt;&lt; ??
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;columnresize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">);
+    },
     </span><span class="jsdoc-var">onHeaderChange </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.renderHeader</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
 
-        </span><span class="jsdoc-var">this.mainHead.remove</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.mainHead </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">table.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.mainBody</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.headEl.remove</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.headEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">table.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.bodyEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'thead th.sortable'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">e.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.sort</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableColumnResize </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.grid.SplitDragZone</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.SplitDragZone</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.headEl.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// not sure what 'lockedHd is for this implementation..)
+        </span><span class="jsdoc-syntax">}
 
     },
 
@@ -1257,6 +1602,12 @@
     }
 });
 
+</span><span class="jsdoc-comment">// currently only used to find the split on drag.. 
+</span><span class="jsdoc-var">Roo.bootstrap.Table.cellRE </span><span class="jsdoc-syntax">= /(?:.*?)x-grid-(?:hd|cell|split)-([\d]+)(?:.*?)/;
 
-
- </span></code></body></html>
+</span><span class="jsdoc-comment">/**
+ * @depricated
+*/
+</span><span class="jsdoc-var">Roo.bootstrap.Table.AbstractSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.grid.AbstractSelectionModel</span><span class="jsdoc-syntax">;
+</span><span class="jsdoc-var">Roo.bootstrap.Table.RowSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.grid.RowSelectionModel</span><span class="jsdoc-syntax">;
+</span></code></body></html>

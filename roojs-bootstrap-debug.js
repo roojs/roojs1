@@ -7307,6 +7307,631 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  * Fork - LGPL
  * <script type="text/javascript">
  */
+ /**
+ * @extends Roo.dd.DDProxy
+ * @class Roo.grid.SplitDragZone
+ * Support for Column Header resizing
+ * @constructor
+ * @param {Object} config
+ */
+// private
+// This is a support class used internally by the Grid components
+Roo.grid.SplitDragZone = function(grid, hd, hd2){
+    this.grid = grid;
+    this.view = grid.getView();
+    this.proxy = this.view.resizeProxy;
+    Roo.grid.SplitDragZone.superclass.constructor.call(
+        this,
+        hd, // ID
+        "gridSplitters" + this.grid.getGridEl().id, // SGROUP
+        {  // CONFIG
+            dragElId : Roo.id(this.proxy.dom),
+            resizeFrame:false
+        }
+    );
+    
+    this.setHandleElId(Roo.id(hd));
+    if (hd2 !== false) {
+        this.setOuterHandleElId(Roo.id(hd2));
+    }
+    
+    this.scroll = false;
+};
+Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
+    fly: Roo.Element.fly,
+
+    b4StartDrag : function(x, y){
+        this.view.headersDisabled = true;
+        var h = this.view.mainWrap ? this.view.mainWrap.getHeight() : (
+                    this.view.headEl.getHeight() + this.view.bodyEl.getHeight()
+        );
+        this.proxy.setHeight(h);
+        
+        // for old system colWidth really stored the actual width?
+        // in bootstrap we tried using xs/ms/etc.. to do % sizing?
+        // which in reality did not work.. - it worked only for fixed sizes
+        // for resizable we need to use actual sizes.
+        var w = this.cm.getColumnWidth(this.cellIndex);
+        if (!this.view.mainWrap) {
+            // bootstrap.
+            w = this.view.getHeaderIndex(this.cellIndex).getWidth();
+        }
+        
+        
+        
+        // this was w-this.grid.minColumnWidth;
+        // doesnt really make sense? - w = thie curren width or the rendered one?
+        var minw = Math.max(w-this.grid.minColumnWidth, 0);
+        this.resetConstraints();
+        this.setXConstraint(minw, 1000);
+        this.setYConstraint(0, 0);
+        this.minX = x - minw;
+        this.maxX = x + 1000;
+        this.startPos = x;
+        if (!this.view.mainWrap) { // this is Bootstrap code..
+            this.getDragEl().style.display='block';
+        }
+        
+        Roo.dd.DDProxy.prototype.b4StartDrag.call(this, x, y);
+    },
+
+
+    handleMouseDown : function(e){
+        ev = Roo.EventObject.setEvent(e);
+        var t = this.fly(ev.getTarget());
+        if(t.hasClass("x-grid-split")){
+            this.cellIndex = this.view.getCellIndex(t.dom);
+            this.split = t.dom;
+            this.cm = this.grid.colModel;
+            if(this.cm.isResizable(this.cellIndex) && !this.cm.isFixed(this.cellIndex)){
+                Roo.grid.SplitDragZone.superclass.handleMouseDown.apply(this, arguments);
+            }
+        }
+    },
+
+    endDrag : function(e){
+        this.view.headersDisabled = false;
+        var endX = Math.max(this.minX, Roo.lib.Event.getPageX(e));
+        var diff = endX - this.startPos;
+        // 
+        var w = this.cm.getColumnWidth(this.cellIndex);
+        if (!this.view.mainWrap) {
+            w = 0;
+        }
+        this.view.onColumnSplitterMoved(this.cellIndex, w+diff);
+    },
+
+    autoOffset : function(){
+        this.setDelta(0,0);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.grid.AbstractSelectionModel
+ * @extends Roo.util.Observable
+ * Abstract base class for grid SelectionModels.  It provides the interface that should be
+ * implemented by descendant classes.  This class should not be directly instantiated.
+ * @constructor
+ */
+Roo.grid.AbstractSelectionModel = function(){
+    this.locked = false;
+    Roo.grid.AbstractSelectionModel.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.grid.AbstractSelectionModel, Roo.util.Observable,  {
+    /** @ignore Called by the grid automatically. Do not call directly. */
+    init : function(grid){
+        this.grid = grid;
+        this.initEvents();
+    },
+
+    /**
+     * Locks the selections.
+     */
+    lock : function(){
+        this.locked = true;
+    },
+
+    /**
+     * Unlocks the selections.
+     */
+    unlock : function(){
+        this.locked = false;
+    },
+
+    /**
+     * Returns true if the selections are locked.
+     * @return {Boolean}
+     */
+    isLocked : function(){
+        return this.locked;
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @extends Roo.grid.AbstractSelectionModel
+ * @class Roo.grid.RowSelectionModel
+ * The default SelectionModel used by {@link Roo.grid.Grid}.
+ * It supports multiple selections and keyboard selection/navigation. 
+ * @constructor
+ * @param {Object} config
+ */
+Roo.grid.RowSelectionModel = function(config){
+    Roo.apply(this, config);
+    this.selections = new Roo.util.MixedCollection(false, function(o){
+        return o.id;
+    });
+
+    this.last = false;
+    this.lastActive = false;
+
+    this.addEvents({
+        /**
+        * @event selectionchange
+        * Fires when the selection changes
+        * @param {SelectionModel} this
+        */
+       "selectionchange" : true,
+       /**
+        * @event afterselectionchange
+        * Fires after the selection changes (eg. by key press or clicking)
+        * @param {SelectionModel} this
+        */
+       "afterselectionchange" : true,
+       /**
+        * @event beforerowselect
+        * Fires when a row is selected being selected, return false to cancel.
+        * @param {SelectionModel} this
+        * @param {Number} rowIndex The selected index
+        * @param {Boolean} keepExisting False if other selections will be cleared
+        */
+       "beforerowselect" : true,
+       /**
+        * @event rowselect
+        * Fires when a row is selected.
+        * @param {SelectionModel} this
+        * @param {Number} rowIndex The selected index
+        * @param {Roo.data.Record} r The record
+        */
+       "rowselect" : true,
+       /**
+        * @event rowdeselect
+        * Fires when a row is deselected.
+        * @param {SelectionModel} this
+        * @param {Number} rowIndex The selected index
+        */
+        "rowdeselect" : true
+    });
+    Roo.grid.RowSelectionModel.superclass.constructor.call(this);
+    this.locked = false;
+};
+
+Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
+    /**
+     * @cfg {Boolean} singleSelect
+     * True to allow selection of only one row at a time (defaults to false)
+     */
+    singleSelect : false,
+
+    // private
+    initEvents : function(){
+
+        if(!this.grid.enableDragDrop && !this.grid.enableDrag){
+            this.grid.on("mousedown", this.handleMouseDown, this);
+        }else{ // allow click to work like normal
+            this.grid.on("rowclick", this.handleDragableRowClick, this);
+        }
+        // bootstrap does not have a view..
+        var view = this.grid.view ? this.grid.view : this.grid;
+        this.rowNav = new Roo.KeyNav(this.grid.getGridEl(), {
+            "up" : function(e){
+                if(!e.shiftKey){
+                    this.selectPrevious(e.shiftKey);
+                }else if(this.last !== false && this.lastActive !== false){
+                    var last = this.last;
+                    this.selectRange(this.last,  this.lastActive-1);
+                    view.focusRow(this.lastActive);
+                    if(last !== false){
+                        this.last = last;
+                    }
+                }else{
+                    this.selectFirstRow();
+                }
+                this.fireEvent("afterselectionchange", this);
+            },
+            "down" : function(e){
+                if(!e.shiftKey){
+                    this.selectNext(e.shiftKey);
+                }else if(this.last !== false && this.lastActive !== false){
+                    var last = this.last;
+                    this.selectRange(this.last,  this.lastActive+1);
+                    view.focusRow(this.lastActive);
+                    if(last !== false){
+                        this.last = last;
+                    }
+                }else{
+                    this.selectFirstRow();
+                }
+                this.fireEvent("afterselectionchange", this);
+            },
+            scope: this
+        });
+
+         
+        view.on("refresh", this.onRefresh, this);
+        view.on("rowupdated", this.onRowUpdated, this);
+        view.on("rowremoved", this.onRemove, this);
+    },
+
+    // private
+    onRefresh : function(){
+        var ds = this.grid.ds, i, v = this.grid.view;
+        var s = this.selections;
+        s.each(function(r){
+            if((i = ds.indexOfId(r.id)) != -1){
+                v.onRowSelect(i);
+                s.add(ds.getAt(i)); // updating the selection relate data
+            }else{
+                s.remove(r);
+            }
+        });
+    },
+
+    // private
+    onRemove : function(v, index, r){
+        this.selections.remove(r);
+    },
+
+    // private
+    onRowUpdated : function(v, index, r){
+        if(this.isSelected(r)){
+            v.onRowSelect(index);
+        }
+    },
+
+    /**
+     * Select records.
+     * @param {Array} records The records to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectRecords : function(records, keepExisting){
+        if(!keepExisting){
+            this.clearSelections();
+        }
+        var ds = this.grid.ds;
+        for(var i = 0, len = records.length; i < len; i++){
+            this.selectRow(ds.indexOf(records[i]), true);
+        }
+    },
+
+    /**
+     * Gets the number of selected rows.
+     * @return {Number}
+     */
+    getCount : function(){
+        return this.selections.length;
+    },
+
+    /**
+     * Selects the first row in the grid.
+     */
+    selectFirstRow : function(){
+        this.selectRow(0);
+    },
+
+    /**
+     * Select the last row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectLastRow : function(keepExisting){
+        this.selectRow(this.grid.ds.getCount() - 1, keepExisting);
+    },
+
+    /**
+     * Selects the row immediately following the last selected row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectNext : function(keepExisting){
+        if(this.last !== false && (this.last+1) < this.grid.ds.getCount()){
+            this.selectRow(this.last+1, keepExisting);
+            var view = this.grid.view ? this.grid.view : this.grid;
+            view.focusRow(this.last);
+        }
+    },
+
+    /**
+     * Selects the row that precedes the last selected row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectPrevious : function(keepExisting){
+        if(this.last){
+            this.selectRow(this.last-1, keepExisting);
+            var view = this.grid.view ? this.grid.view : this.grid;
+            view.focusRow(this.last);
+        }
+    },
+
+    /**
+     * Returns the selected records
+     * @return {Array} Array of selected records
+     */
+    getSelections : function(){
+        return [].concat(this.selections.items);
+    },
+
+    /**
+     * Returns the first selected record.
+     * @return {Record}
+     */
+    getSelected : function(){
+        return this.selections.itemAt(0);
+    },
+
+
+    /**
+     * Clears all selections.
+     */
+    clearSelections : function(fast){
+        if(this.locked) {
+            return;
+        }
+        if(fast !== true){
+            var ds = this.grid.ds;
+            var s = this.selections;
+            s.each(function(r){
+                this.deselectRow(ds.indexOfId(r.id));
+            }, this);
+            s.clear();
+        }else{
+            this.selections.clear();
+        }
+        this.last = false;
+    },
+
+
+    /**
+     * Selects all rows.
+     */
+    selectAll : function(){
+        if(this.locked) {
+            return;
+        }
+        this.selections.clear();
+        for(var i = 0, len = this.grid.ds.getCount(); i < len; i++){
+            this.selectRow(i, true);
+        }
+    },
+
+    /**
+     * Returns True if there is a selection.
+     * @return {Boolean}
+     */
+    hasSelection : function(){
+        return this.selections.length > 0;
+    },
+
+    /**
+     * Returns True if the specified row is selected.
+     * @param {Number/Record} record The record or index of the record to check
+     * @return {Boolean}
+     */
+    isSelected : function(index){
+        var r = typeof index == "number" ? this.grid.ds.getAt(index) : index;
+        return (r && this.selections.key(r.id) ? true : false);
+    },
+
+    /**
+     * Returns True if the specified record id is selected.
+     * @param {String} id The id of record to check
+     * @return {Boolean}
+     */
+    isIdSelected : function(id){
+        return (this.selections.key(id) ? true : false);
+    },
+
+    // private
+    handleMouseDown : function(e, t)
+    {
+        var view = this.grid.view ? this.grid.view : this.grid;
+        var rowIndex;
+        if(this.isLocked() || (rowIndex = view.findRowIndex(t)) === false){
+            return;
+        };
+        if(e.shiftKey && this.last !== false){
+            var last = this.last;
+            this.selectRange(last, rowIndex, e.ctrlKey);
+            this.last = last; // reset the last
+            view.focusRow(rowIndex);
+        }else{
+            var isSelected = this.isSelected(rowIndex);
+            if(e.button !== 0 && isSelected){
+                view.focusRow(rowIndex);
+            }else if(e.ctrlKey && isSelected){
+                this.deselectRow(rowIndex);
+            }else if(!isSelected){
+                this.selectRow(rowIndex, e.button === 0 && (e.ctrlKey || e.shiftKey));
+                view.focusRow(rowIndex);
+            }
+        }
+        this.fireEvent("afterselectionchange", this);
+    },
+    // private
+    handleDragableRowClick :  function(grid, rowIndex, e) 
+    {
+        if(e.button === 0 && !e.shiftKey && !e.ctrlKey) {
+            this.selectRow(rowIndex, false);
+            var view = this.grid.view ? this.grid.view : this.grid;
+            view.focusRow(rowIndex);
+             this.fireEvent("afterselectionchange", this);
+        }
+    },
+    
+    /**
+     * Selects multiple rows.
+     * @param {Array} rows Array of the indexes of the row to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectRows : function(rows, keepExisting){
+        if(!keepExisting){
+            this.clearSelections();
+        }
+        for(var i = 0, len = rows.length; i < len; i++){
+            this.selectRow(rows[i], true);
+        }
+    },
+
+    /**
+     * Selects a range of rows. All rows in between startRow and endRow are also selected.
+     * @param {Number} startRow The index of the first row in the range
+     * @param {Number} endRow The index of the last row in the range
+     * @param {Boolean} keepExisting (optional) True to retain existing selections
+     */
+    selectRange : function(startRow, endRow, keepExisting){
+        if(this.locked) {
+            return;
+        }
+        if(!keepExisting){
+            this.clearSelections();
+        }
+        if(startRow <= endRow){
+            for(var i = startRow; i <= endRow; i++){
+                this.selectRow(i, true);
+            }
+        }else{
+            for(var i = startRow; i >= endRow; i--){
+                this.selectRow(i, true);
+            }
+        }
+    },
+
+    /**
+     * Deselects a range of rows. All rows in between startRow and endRow are also deselected.
+     * @param {Number} startRow The index of the first row in the range
+     * @param {Number} endRow The index of the last row in the range
+     */
+    deselectRange : function(startRow, endRow, preventViewNotify){
+        if(this.locked) {
+            return;
+        }
+        for(var i = startRow; i <= endRow; i++){
+            this.deselectRow(i, preventViewNotify);
+        }
+    },
+
+    /**
+     * Selects a row.
+     * @param {Number} row The index of the row to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectRow : function(index, keepExisting, preventViewNotify){
+        if(this.locked || (index < 0 || index >= this.grid.ds.getCount())) {
+            return;
+        }
+        if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
+            if(!keepExisting || this.singleSelect){
+                this.clearSelections();
+            }
+            var r = this.grid.ds.getAt(index);
+            this.selections.add(r);
+            this.last = this.lastActive = index;
+            if(!preventViewNotify){
+                var view = this.grid.view ? this.grid.view : this.grid;
+                view.onRowSelect(index);
+            }
+            this.fireEvent("rowselect", this, index, r);
+            this.fireEvent("selectionchange", this);
+        }
+    },
+
+    /**
+     * Deselects a row.
+     * @param {Number} row The index of the row to deselect
+     */
+    deselectRow : function(index, preventViewNotify){
+        if(this.locked) {
+            return;
+        }
+        if(this.last == index){
+            this.last = false;
+        }
+        if(this.lastActive == index){
+            this.lastActive = false;
+        }
+        var r = this.grid.ds.getAt(index);
+        this.selections.remove(r);
+        if(!preventViewNotify){
+            var view = this.grid.view ? this.grid.view : this.grid;
+            view.onRowDeselect(index);
+        }
+        this.fireEvent("rowdeselect", this, index);
+        this.fireEvent("selectionchange", this);
+    },
+
+    // private
+    restoreLast : function(){
+        if(this._last){
+            this.last = this._last;
+        }
+    },
+
+    // private
+    acceptsNav : function(row, col, cm){
+        return !cm.isHidden(col) && cm.isCellEditable(col, row);
+    },
+
+    // private
+    onEditorKey : function(field, e){
+        var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
+        if(k == e.TAB){
+            e.stopEvent();
+            ed.completeEdit();
+            if(e.shiftKey){
+                newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
+            }else{
+                newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
+            }
+        }else if(k == e.ENTER && !e.ctrlKey){
+            e.stopEvent();
+            ed.completeEdit();
+            if(e.shiftKey){
+                newCell = g.walkCells(ed.row-1, ed.col, -1, this.acceptsNav, this);
+            }else{
+                newCell = g.walkCells(ed.row+1, ed.col, 1, this.acceptsNav, this);
+            }
+        }else if(k == e.ESC){
+            ed.cancelEdit();
+        }
+        if(newCell){
+            g.startEditing(newCell[0], newCell[1]);
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
  
 
 /**
@@ -7408,6 +8033,21 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} header The header text to display in the Grid view.
      */
+	/**
+     * @cfg {String} xsHeader Header at Bootsrap Extra Small width (default for all)
+     */
+	/**
+     * @cfg {String} smHeader Header at Bootsrap Small width
+     */
+	/**
+     * @cfg {String} mdHeader Header at Bootsrap Medium width
+     */
+	/**
+     * @cfg {String} lgHeader Header at Bootsrap Large width
+     */
+	/**
+     * @cfg {String} xlHeader Header at Bootsrap extra Large width
+     */
     /**
      * @cfg {String} dataIndex (Optional) The name of the field in the grid's {@link Roo.data.Store}'s
      * {@link Roo.data.Record} definition from which to draw the column's value. If not
@@ -7456,16 +8096,19 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {String} tooltip (Optional)
      */
     /**
-     * @cfg {Number} xs (Optional)
+     * @cfg {Number} xs (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} sm (Optional)
+     * @cfg {Number} sm (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} md (Optional)
+     * @cfg {Number} md (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} lg (Optional)
+     * @cfg {Number} lg (Optional) can be '0' for hidden at this size (number less than 12)
+     */
+	/**
+     * @cfg {Number} xl (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
      * Returns the id of the column at the specified index.
@@ -7648,10 +8291,29 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * Returns the width for the specified column.
      * @param {Number} col The column index
+     * @param (optional) {String} gridSize bootstrap width size.
      * @return {Number}
      */
-    getColumnWidth : function(col){
-        return this.config[col].width * 1 || this.defaultWidth;
+    getColumnWidth : function(col, gridSize)
+	{
+		var cfg = this.config[col];
+		
+		if (typeof(gridSize) == 'undefined') {
+			return cfg.width * 1 || this.defaultWidth;
+		}
+		if (gridSize === false) { // if we set it..
+			return cfg.width || false;
+		}
+		var sizes = ['xl', 'lg', 'md', 'sm', 'xs'];
+		
+		for(var i = sizes.indexOf(gridSize); i < sizes.length; i++) {
+			if (typeof(cfg[ sizes[i] ] ) == 'undefined') {
+				continue;
+			}
+			return cfg[ sizes[i] ];
+		}
+		return 1;
+		
     },
 
     /**
@@ -7980,29 +8642,77 @@ Roo.LoadMask.prototype = {
             um.un('failure', this.onLoad, this);
         }
     }
-};/*
- * - LGPL
- *
- * table
- * 
- */
-
-/**
+};/**
  * @class Roo.bootstrap.Table
+ * @licence LGBL
  * @extends Roo.bootstrap.Component
- * Bootstrap Table class
+ * Bootstrap Table class.  This class represents the primary interface of a component based grid control.
+ * Similar to Roo.grid.Grid
+ * <pre><code>
+ var table = Roo.factory({
+    xtype : 'Table',
+    xns : Roo.bootstrap,
+    autoSizeColumns: true,
+    
+    
+    store : {
+        xtype : 'Store',
+        xns : Roo.data,
+        remoteSort : true,
+        sortInfo : { direction : 'ASC', field: 'name' },
+        proxy : {
+           xtype : 'HttpProxy',
+           xns : Roo.data,
+           method : 'GET',
+           url : 'https://example.com/some.data.url.json'
+        },
+        reader : {
+           xtype : 'JsonReader',
+           xns : Roo.data,
+           fields : [ 'id', 'name', whatever' ],
+           id : 'id',
+           root : 'data'
+        }
+    },
+    cm : [
+        {
+            xtype : 'ColumnModel',
+            xns : Roo.grid,
+            align : 'center',
+            cursor : 'pointer',
+            dataIndex : 'is_in_group',
+            header : "Name",
+            sortable : true,
+            renderer : function(v, x , r) {  
+            
+                return String.format("{0}", v)
+            }
+            width : 3
+        } // more columns..
+    ],
+    selModel : {
+        xtype : 'RowSelectionModel',
+        xns : Roo.bootstrap.Table
+        // you can add listeners to catch selection change here....
+    }
+     
+
+ });
+ // set any options
+ grid.render(Roo.get("some-div"));
+</code></pre>
+
+Currently the Table  uses multiple headers to try and handle XL / Medium etc... styling
+
+
+
+ *
+ * @cfg {Roo.grid.RowSelectionModel|Roo.grid.CellSelectionModel} sm The selection model to use (cell selection is not supported yet)
+ * @cfg {Roo.data.Store|Roo.data.SimpleStore} store The data store to use
+ * @cfg {Roo.grid.ColumnModel} cm[] A column for th grid.
+ * 
  * @cfg {String} cls table class
- * @cfg {String} align (left|center|right) Specifies the alignment of a table according to surrounding text
- * @cfg {String} bgcolor Specifies the background color for a table
- * @cfg {Number} border Specifies whether the table cells should have borders or not
- * @cfg {Number} cellpadding Specifies the space between the cell wall and the cell content
- * @cfg {Number} cellspacing Specifies the space between cells
- * @cfg {String} frame Specifies which parts of the outside borders that should be visible
- * @cfg {String} rules Specifies which parts of the inside borders that should be visible
- * @cfg {String} sortable Specifies that the table should be sortable
- * @cfg {String} summary Specifies a summary of the content of a table
- * @cfg {Number} width Specifies the width of a table
- * @cfg {String} layout table layout (auto | fixed | initial | inherit)
+ *
  * 
  * @cfg {boolean} striped Should the rows be alternative striped
  * @cfg {boolean} bordered Add borders to the table
@@ -8018,28 +8728,30 @@ Roo.LoadMask.prototype = {
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
- 
+ * @cfg {Boolean} enableColumnResize default true if columns can be resized (drag/drop)
+ * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
  * 
  * @constructor
  * Create a new Table
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Table = function(config){
+Roo.bootstrap.Table = function(config)
+{
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
-    
-  
-    
+     
     // BC...
     this.rowSelection = (typeof(config.rowSelection) != 'undefined') ? config.rowSelection : this.rowSelection;
     this.cellSelection = (typeof(config.cellSelection) != 'undefined') ? config.cellSelection : this.cellSelection;
     this.headerShow = (typeof(config.thead) != 'undefined') ? config.thead : this.headerShow;
     this.footerShow = (typeof(config.tfoot) != 'undefined') ? config.tfoot : this.footerShow;
     
+    this.view = this; // compat with grid.
+    
     this.sm = this.sm || {xtype: 'RowSelectionModel'};
     if (this.sm) {
         this.sm.grid = this;
-        this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
+        this.selModel = Roo.factory(this.sm, Roo.grid);
         this.sm = this.selModel;
         this.sm.xmodule = this.xmodule || false;
     }
@@ -8163,23 +8875,21 @@ Roo.bootstrap.Table = function(config){
          * @param {Number} columnIndex
          * @param {Roo.EventObject} e
          */
-        "headercontextmenu" : true
+        "headercontextmenu" : true,
+        /**
+         * @event mousedown
+         * The raw mousedown event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "mousedown" : true
+        
     });
 };
 
 Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     cls: false,
-    align: false,
-    bgcolor: false,
-    border: false,
-    cellpadding: false,
-    cellspacing: false,
-    frame: false,
-    rules: false,
-    sortable: false,
-    summary: false,
-    width: false,
+    
     striped : false,
     scrollBody : false,
     bordered: false,
@@ -8192,15 +8902,20 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     loadMask : false,
     footerShow : true,
     headerShow : true,
+    enableColumnResize: true,
   
     rowSelection : false,
     cellSelection : false,
     layout : false,
+
+    minColumnWidth : 50,
     
     // Roo.Element - the tbody
-    mainBody: false,
-    // Roo.Element - thead element
-    mainHead: false,
+    bodyEl: false,  // <tbody> Roo.Element - thead element    
+    headEl: false,  // <thead> Roo.Element - thead element
+    resizeProxy : false, // proxy element for dragging?
+
+
     
     container: false, // used by gridpanel...
     
@@ -8210,15 +8925,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     auto_hide_footer : false,
     
+    view: false, // actually points to this..
+    
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
         
         cfg = {
             tag: 'table',
-            cls : 'table',
+            cls : 'table', 
             cn : []
         };
+        // this get's auto added by panel.Grid
         if (this.scrollBody) {
             cfg.cls += ' table-body-fixed';
         }    
@@ -8235,6 +8953,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if (this.condensed) {
             cfg.cls += ' table-condensed';
         }
+        
         if (this.responsive) {
             cfg.cls += ' table-responsive';
         }
@@ -8243,24 +8962,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cfg.cls+=  ' ' +this.cls;
         }
         
-        // this lot should be simplifed...
-        var _t = this;
-        var cp = [
-            'align',
-            'bgcolor',
-            'border',
-            'cellpadding',
-            'cellspacing',
-            'frame',
-            'rules',
-            'sortable',
-            'summary',
-            'width'
-        ].forEach(function(k) {
-            if (_t[k]) {
-                cfg[k] = _t[k];
-            }
-        });
         
         
         if (this.layout) {
@@ -8296,8 +8997,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         //Roo.log('initEvents with ds!!!!');
         
-        this.mainBody = this.el.select('tbody', true).first();
-        this.mainHead = this.el.select('thead', true).first();
+        this.bodyEl = this.el.select('tbody', true).first();
+        this.headEl = this.el.select('thead', true).first();
         this.mainFoot = this.el.select('tfoot', true).first();
         
         
@@ -8307,8 +9008,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             e.on('click', this.sort, this);
         }, this);
         
-        this.mainBody.on("click", this.onClick, this);
-        this.mainBody.on("dblclick", this.onDblClick, this);
         
         // why is this done????? = it breaks dialogs??
         //this.parent().el.setStyle('position', 'relative');
@@ -8335,13 +9034,118 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.el.on("contextmenu", this.onContextMenu, this);
         
-        this.mainBody.on('scroll', this.onBodyScroll, this);
         
         this.cm.on("headerchange", this.onHeaderChange, this);
-        
         this.cm.on("hiddenchange", this.onHiddenChange, this, arguments);
+
+ //?? does bodyEl get replaced on render?
+        this.bodyEl.on("click", this.onClick, this);
+        this.bodyEl.on("dblclick", this.onDblClick, this);        
+        this.bodyEl.on('scroll', this.onBodyScroll, this);
+
+        // guessing mainbody will work - this relays usually caught by selmodel at present.
+        this.relayEvents(this.bodyEl, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
+  
+  
+        this.resizeProxy = Roo.get(document.body).createChild({ cls:"x-grid-resize-proxy", html: '&#160;' });
+        
+  
+        if(this.headEl && this.enableColumnResize !== false && Roo.grid.SplitDragZone){
+            new Roo.grid.SplitDragZone(this, this.headEl.dom, false); // not sure what 'lockedHd is for this implementation..)
+        }
+        
+        this.initCSS();
+    },
+    // Compatibility with grid - we implement all the view features at present.
+    getView : function()
+    {
+        return this;
+    },
+    
+    initCSS : function()
+    {
+        
+        
+        var cm = this.cm, styles = [];
+        this.CSS.removeStyleSheet(this.id + '-cssrules');
+        var headHeight = this.headEl ? this.headEl.dom.clientHeight : 0;
+        // we can honour xs/sm/md/xl  as widths...
+        // we first have to decide what widht we are currently at...
+        var sz = Roo.getGridSize();
+        
+        var total = 0;
+        var last = -1;
+        var cols = []; // visable cols.
+        var total_abs = 0;
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
+            var w = cm.getColumnWidth(i, false);
+            if(cm.isHidden(i)){
+                cols.push( { rel : false, abs : 0 });
+                continue;
+            }
+            if (w !== false) {
+                cols.push( { rel : false, abs : w });
+                total_abs += w;
+                last = i; // not really..
+                continue;
+            }
+            var w = cm.getColumnWidth(i, sz);
+            if (w > 0) {
+                last = i
+            }
+            total += w;
+            cols.push( { rel : w, abs : false });
+        }
+        
+        var avail = this.bodyEl.dom.clientWidth - total_abs;
+        
+        var unitWidth = Math.floor(avail / total);
+        var rem = avail - (unitWidth * total);
+        
+        var hidden, width, pos = 0 , splithide , left;
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
+            
+            hidden = 'display:none;';
+            left = '';
+            width  = 'width:0px;';
+            splithide = '';
+            if(!cm.isHidden(i)){
+                hidden = '';
+                
+                
+                // we can honour xs/sm/md/xl ?
+                var w = cols[i].rel == false ? cols[i].abs : (cols[i].rel * unitWidth);
+                if (w===0) {
+                    hidden = 'display:none;';
+                }
+                // width should return a small number...
+                if (i == last) {
+                    w+=rem; // add the remaining with..
+                }
+                pos += w;
+                left = "left:" + (pos -4) + "px;";
+                width = "width:" + w+ "px;";
+                
+            }
+            
+            styles.push( '#' , this.id , ' .x-col-' , i, " {", cm.config[i].css, width, hidden, "}\n" );
+            if (this.headEl) {
+                if (i == last) {
+                    splithide = 'display:none;';
+                }
+                
+                styles.push('#' , this.id , ' .x-hcol-' , i, " { ", width, hidden," }\n",
+                            '#' , this.id , ' .x-grid-split-' , i, " { ", left, splithide,'height:', (headHeight - 4), "px;}\n"
+                );
+            }
+            
+        }
+        Roo.log(styles.join(''));
+        this.CSS.createStyleSheet( styles.join(''), this.id + '-cssrules');
         
     },
+    
+    
     
     onContextMenu : function(e, t)
     {
@@ -8519,7 +9323,19 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.fireEvent('rowdblclick', this, row, rowIndex, e);
         }
     },
-    
+    findRowIndex : function(el)
+    {
+        var cell = Roo.get(el);
+        if(!cell) {
+            return false;
+        }
+        var row = cell.findParent('tr', false, true);
+        
+        if(!row || typeof(row) == 'undefined'){
+            return false;
+        }
+        return this.getRowIndex(row);
+    },
     sort : function(e,el)
     {
         var col = Roo.get(el);
@@ -8577,7 +9393,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             var hh = '';
             
             if(typeof(config.sortable) != 'undefined' && config.sortable){
-                c.cls = 'sortable';
+                c.cls += ' sortable';
                 c.html = '<i class="fa"></i>' + c.html;
             }
             
@@ -8611,9 +9427,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.colspan = config.colspan;
             }
             
-            if(typeof(config.hidden) != 'undefined' && config.hidden){
-                c.style += ' display:none;';
-            }
+            // hidden is handled by CSS now
             
             if(typeof(config.dataIndex) != 'undefined'){
                 c.sort = config.dataIndex;
@@ -8625,16 +9439,21 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.style += ' text-align:' + config.align + ';';
             }
             
-            if(typeof(config.width) != 'undefined'){
+            /* width is done in CSS
+             *if(typeof(config.width) != 'undefined'){
                 c.style += ' width:' + config.width + 'px;';
                 this.totalWidth += config.width;
             } else {
                 this.totalWidth += 100; // assume minimum of 100 per column?
             }
+            */
             
             if(typeof(config.cls) != 'undefined'){
                 c.cls = (typeof(c.cls) == 'undefined') ? config.cls : (c.cls + ' ' + config.cls);
             }
+            // this is the bit that doesnt reall work at all...
+            
+           /*
             
             ['xs','sm','md','lg'].map(function(size){
                 
@@ -8654,6 +9473,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 
             });
+            */
+            // at the end?
+            
+            c.html +=' <span class="x-grid-split x-grid-split-' + i + '"></span>';
+            
+            
+            
             
             header.cn.push(c)
         }
@@ -8726,7 +9552,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         });
         
-        var tbody =  this.mainBody;
+        var tbody =  this.bodyEl;
               
         if(ds.getCount() > 0){
             ds.data.each(function(d,rowIndex){
@@ -8768,6 +9594,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.fireEvent('rowsrendered', this);
         
         this.autoSize();
+        
+        this.initCSS(); /// resize cols
+
+        
     },
     
     
@@ -8781,7 +9611,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(isUpdate !== true){
             this.fireEvent("beforerowremoved", this, index, record);
         }
-        var bt = this.mainBody.dom;
+        var bt = this.bodyEl.dom;
         
         var rows = this.el.select('tbody > tr', true).elements;
         
@@ -8805,7 +9635,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         //Roo.log('on Add called');
         // - note this does not handle multiple adding very well..
-        var bt = this.mainBody.dom;
+        var bt = this.bodyEl.dom;
         for (var i =0 ; i < records.length;i++) {
             //Roo.log('call insert row Add called on ' + rowIndex + ':' + i);
             //Roo.log(records[i]);
@@ -8836,6 +9666,120 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         //this.layout();
         this.fireEvent("rowupdated", this, index, record);
     },
+    // private - called by RowSelection
+    onRowSelect : function(rowIndex){
+        var row = this.getRowDom(rowIndex);
+        row.addClass(['bg-info','info']);
+    },
+    // private - called by RowSelection
+    onRowDeselect : function(rowIndex)
+    {
+        if (rowIndex < 0) {
+            return;
+        }
+        var row = this.getRowDom(rowIndex);
+        row.removeClass(['bg-info','info']);
+    },
+      /**
+     * Focuses the specified row.
+     * @param {Number} row The row index
+     */
+    focusRow : function(row)
+    {
+        //Roo.log('GridView.focusRow');
+        var x = this.bodyEl.dom.scrollLeft;
+        this.focusCell(row, 0, false);
+        this.bodyEl.dom.scrollLeft = x;
+
+    },
+     /**
+     * Focuses the specified cell.
+     * @param {Number} row The row index
+     * @param {Number} col The column index
+     * @param {Boolean} hscroll false to disable horizontal scrolling
+     */
+    focusCell : function(row, col, hscroll)
+    {
+        //Roo.log('GridView.focusCell');
+        var el = this.ensureVisible(row, col, hscroll);
+        // not sure what focusEL achives = it's a <a> pos relative 
+        //this.focusEl.alignTo(el, "tl-tl");
+        //if(Roo.isGecko){
+        //    this.focusEl.focus();
+        //}else{
+        //    this.focusEl.focus.defer(1, this.focusEl);
+        //}
+    },
+    
+     /**
+     * Scrolls the specified cell into view
+     * @param {Number} row The row index
+     * @param {Number} col The column index
+     * @param {Boolean} hscroll false to disable horizontal scrolling
+     */
+    ensureVisible : function(row, col, hscroll)
+    {
+        //Roo.log('GridView.ensureVisible,' + row + ',' + col);
+        //return null; //disable for testing.
+        if(typeof row != "number"){
+            row = row.rowIndex;
+        }
+        if(row < 0 && row >= this.ds.getCount()){
+            return  null;
+        }
+        col = (col !== undefined ? col : 0);
+        var cm = this.cm;
+        while(cm.isHidden(col)){
+            col++;
+        }
+
+        var el = this.getCellDom(row, col);
+        if(!el){
+            return null;
+        }
+        var c = this.bodyEl.dom;
+
+        var ctop = parseInt(el.offsetTop, 10);
+        var cleft = parseInt(el.offsetLeft, 10);
+        var cbot = ctop + el.offsetHeight;
+        var cright = cleft + el.offsetWidth;
+
+        //var ch = c.clientHeight - this.mainHd.dom.offsetHeight;
+        var ch = 0; //?? header is not withing the area?
+        var stop = parseInt(c.scrollTop, 10);
+        var sleft = parseInt(c.scrollLeft, 10);
+        var sbot = stop + ch;
+        var sright = sleft + c.clientWidth;
+        /*
+        Roo.log('GridView.ensureVisible:' +
+                ' ctop:' + ctop +
+                ' c.clientHeight:' + c.clientHeight +
+                ' this.mainHd.dom.offsetHeight:' + this.mainHd.dom.offsetHeight +
+                ' stop:' + stop +
+                ' cbot:' + cbot +
+                ' sbot:' + sbot +
+                ' ch:' + ch  
+                );
+        */
+        if(ctop < stop){
+            c.scrollTop = ctop;
+            //Roo.log("set scrolltop to ctop DISABLE?");
+        }else if(cbot > sbot){
+            //Roo.log("set scrolltop to cbot-ch");
+            c.scrollTop = cbot-ch;
+        }
+
+        if(hscroll !== false){
+            if(cleft < sleft){
+                c.scrollLeft = cleft;
+            }else if(cright > sright){
+                c.scrollLeft = cright-c.clientWidth;
+            }
+        }
+
+        return el;
+    },
+    
     
     insertRow : function(dm, rowIndex, isUpdate){
         
@@ -8845,7 +9789,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             //var s = this.getScrollState();
         var row = this.renderRow(this.cm, this.store, rowIndex);
         // insert before rowIndex..
-        var e = this.mainBody.createChild(row,this.getRowDom(rowIndex));
+        var e = this.bodyEl.createChild(row,this.getRowDom(rowIndex));
         
         var _this = this;
                 
@@ -8872,6 +9816,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         return (typeof(rows[rowIndex]) == 'undefined') ? false : rows[rowIndex];
         
     },
+    getCellDom : function(rowIndex, colIndex)
+    {
+        var row = this.getRowDom(rowIndex);
+        if (row === false) {
+            return false;
+        }
+        var cols = row.select('td', true).elements;
+        return (typeof(cols[colIndex]) == 'undefined') ? false : cols[colIndex];
+        
+    },
+    
     // returns the object tree for a tr..
   
     
@@ -8935,9 +9890,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 td.colspan = config.colspan;
             }
             
-            if(typeof(config.hidden) != 'undefined' && config.hidden){
-                td.style += ' display:none;';
-            }
+            
             
             if(typeof(config.align) != 'undefined' && config.align.length){
                 td.style += ' text-align:' + config.align + ';';
@@ -8945,10 +9898,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(typeof(config.valign) != 'undefined' && config.valign.length){
                 td.style += ' vertical-align:' + config.valign + ';';
             }
-            
+            /*
             if(typeof(config.width) != 'undefined'){
                 td.style += ' width:' +  config.width + 'px;';
             }
+            */
             
             if(typeof(config.cursor) != 'undefined'){
                 td.style += ' cursor:' +  config.cursor + ';';
@@ -8957,7 +9911,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(typeof(config.cls) != 'undefined'){
                 td.cls = (typeof(td.cls) == 'undefined') ? config.cls : (td.cls + ' ' + config.cls);
             }
-            
+            /*
             ['xs','sm','md','lg'].map(function(size){
                 
                 if(typeof(config[size]) == 'undefined'){
@@ -8978,7 +9932,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                  
 
             });
-            
+            */
             row.cn.push(td);
            
         }
@@ -9009,14 +9963,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      */
     setRowVisibility : function(rowIndex, state)
     {
-        var bt = this.mainBody.dom;
+        var bt = this.bodyEl.dom;
         
         var rows = this.el.select('tbody > tr', true).elements;
         
         if(typeof(rows[rowIndex]) == 'undefined'){
             return;
         }
-        rows[rowIndex].dom.style.display = state ? '' : 'none';
+        rows[rowIndex][ state ? 'removeClass' : 'addClass']('d-none');
+        
     },
     
     
@@ -9047,7 +10002,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             })
         }
     },
-    
+    /**
+     * get the Row Index from a dom element.
+     * @param {Roo.Element} row The row to look for
+     * @returns {Number} the row
+     */
     getRowIndex : function(row)
     {
         var rowIndex = -1;
@@ -9061,6 +10020,29 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         });
         
         return rowIndex;
+    },
+    /**
+     * get the header TH element for columnIndex
+     * @param {Number} columnIndex
+     * @returns {Roo.Element}
+     */
+    getHeaderIndex: function(colIndex)
+    {
+        var cols = this.headEl.select('th', true).elements;
+        return cols[colIndex]; 
+    },
+    /**
+     * get the Column Index from a dom element. (using regex on x-hcol-{colid})
+     * @param {domElement} cell to look for
+     * @returns {Number} the column
+     */
+    getCellIndex : function(cell)
+    {
+        var id = String(cell.className).match(Roo.bootstrap.Table.cellRE);
+        if(id){
+            return parseInt(id[1], 10);
+        }
+        return 0;
     },
      /**
      * Returns the grid's underlying element = used by panel.Grid
@@ -9098,6 +10080,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         cw = Math.max(cw, this.totalWidth);
         this.getGridEl().select('tbody tr',true).setWidth(cw);
+        this.initCSS();
         
         // resize 'expandable coloumn?
         
@@ -9106,21 +10089,21 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     },
     onBodyScroll: function()
     {
-        //Roo.log("body scrolled');" + this.mainBody.dom.scrollLeft);
-        if(this.mainHead){
-            this.mainHead.setStyle({
+        //Roo.log("body scrolled');" + this.bodyEl.dom.scrollLeft);
+        if(this.headEl){
+            this.headEl.setStyle({
                 'position' : 'relative',
-                'left': (-1* this.mainBody.dom.scrollLeft) + 'px'
+                'left': (-1* this.bodyEl.dom.scrollLeft) + 'px'
             });
         }
         
         if(this.lazyLoad){
             
-            var scrollHeight = this.mainBody.dom.scrollHeight;
+            var scrollHeight = this.bodyEl.dom.scrollHeight;
             
-            var scrollTop = Math.ceil(this.mainBody.getScroll().top);
+            var scrollTop = Math.ceil(this.bodyEl.getScroll().top);
             
-            var height = this.mainBody.getHeight();
+            var height = this.bodyEl.getHeight();
             
             if(scrollHeight - height == scrollTop) {
                 
@@ -9140,19 +10123,43 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
         }
     },
-    
+    onColumnSplitterMoved : function(i, diff)
+    {
+        this.userResized = true;
+        
+        var cm = this.colModel;
+        
+        var w = this.getHeaderIndex(i).getWidth() + diff;
+        
+        
+        cm.setColumnWidth(i, w, true);
+        this.initCSS();
+        //var cid = cm.getColumnId(i); << not used in this version?
+       /* Roo.log(['#' + this.id + ' .x-col-' + i, "width", w + "px"]);
+        
+        this.CSS.updateRule( '#' + this.id + ' .x-col-' + i, "width", w + "px");
+        this.CSS.updateRule('#' + this.id + ' .x-hcol-' + i, "width", w + "px");
+        this.CSS.updateRule('#' + this.id + ' .x-grid-split-' + i, "left", w + "px");
+*/
+        //this.updateSplitters();
+        //this.layout(); << ??
+        this.fireEvent("columnresize", i, w);
+    },
     onHeaderChange : function()
     {
         var header = this.renderHeader();
         var table = this.el.select('table', true).first();
         
-        this.mainHead.remove();
-        this.mainHead = table.createChild(header, this.mainBody, false);
+        this.headEl.remove();
+        this.headEl = table.createChild(header, this.bodyEl, false);
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.on('click', this.sort, this);
         }, this);
         
+        if(this.enableColumnResize !== false && Roo.grid.SplitDragZone){
+            new Roo.grid.SplitDragZone(this, this.headEl.dom, false); // not sure what 'lockedHd is for this implementation..)
+        }
         
     },
     
@@ -9239,9 +10246,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     }
 });
 
- 
+// currently only used to find the split on drag.. 
+Roo.bootstrap.Table.cellRE = /(?:.*?)x-grid-(?:hd|cell|split)-([\d]+)(?:.*?)/;
 
- /*
+/**
+ * @depricated
+*/
+Roo.bootstrap.Table.AbstractSelectionModel = Roo.grid.AbstractSelectionModel;
+Roo.bootstrap.Table.RowSelectionModel = Roo.grid.RowSelectionModel;
+/*
  * - LGPL
  *
  * table cell
@@ -27020,553 +28033,7 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
     }
 
 
-});
-/**
- * @class Roo.bootstrap.Table.AbstractSelectionModel
- * @extends Roo.util.Observable
- * Abstract base class for grid SelectionModels.  It provides the interface that should be
- * implemented by descendant classes.  This class should not be directly instantiated.
- * @constructor
- */
-Roo.bootstrap.Table.AbstractSelectionModel = function(){
-    this.locked = false;
-    Roo.bootstrap.Table.AbstractSelectionModel.superclass.constructor.call(this);
-};
-
-
-Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
-    /** @ignore Called by the grid automatically. Do not call directly. */
-    init : function(grid){
-        this.grid = grid;
-        this.initEvents();
-    },
-
-    /**
-     * Locks the selections.
-     */
-    lock : function(){
-        this.locked = true;
-    },
-
-    /**
-     * Unlocks the selections.
-     */
-    unlock : function(){
-        this.locked = false;
-    },
-
-    /**
-     * Returns true if the selections are locked.
-     * @return {Boolean}
-     */
-    isLocked : function(){
-        return this.locked;
-    },
-    
-    
-    initEvents : function ()
-    {
-        
-    }
-});
-/**
- * @extends Roo.bootstrap.Table.AbstractSelectionModel
- * @class Roo.bootstrap.Table.RowSelectionModel
- * The default SelectionModel used by {@link Roo.bootstrap.Table}.
- * It supports multiple selections and keyboard selection/navigation. 
- * @constructor
- * @param {Object} config
- */
-
-Roo.bootstrap.Table.RowSelectionModel = function(config){
-    Roo.apply(this, config);
-    this.selections = new Roo.util.MixedCollection(false, function(o){
-        return o.id;
-    });
-
-    this.last = false;
-    this.lastActive = false;
-
-    this.addEvents({
-        /**
-	     * @event selectionchange
-	     * Fires when the selection changes
-	     * @param {SelectionModel} this
-	     */
-	    "selectionchange" : true,
-        /**
-	     * @event afterselectionchange
-	     * Fires after the selection changes (eg. by key press or clicking)
-	     * @param {SelectionModel} this
-	     */
-	    "afterselectionchange" : true,
-        /**
-	     * @event beforerowselect
-	     * Fires when a row is selected being selected, return false to cancel.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected index
-	     * @param {Boolean} keepExisting False if other selections will be cleared
-	     */
-	    "beforerowselect" : true,
-        /**
-	     * @event rowselect
-	     * Fires when a row is selected.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected index
-	     * @param {Roo.data.Record} r The record
-	     */
-	    "rowselect" : true,
-        /**
-	     * @event rowdeselect
-	     * Fires when a row is deselected.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected index
-	     */
-        "rowdeselect" : true
-    });
-    Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call(this);
-    this.locked = false;
- };
-
-Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSelectionModel,  {
-    /**
-     * @cfg {Boolean} singleSelect
-     * True to allow selection of only one row at a time (defaults to false)
-     */
-    singleSelect : false,
-
-    // private
-    initEvents : function()
-    {
-
-        //if(!this.grid.enableDragDrop && !this.grid.enableDrag){
-        //    this.growclickrid.on("mousedown", this.handleMouseDown, this);
-        //}else{ // allow click to work like normal
-         //   this.grid.on("rowclick", this.handleDragableRowClick, this);
-        //}
-        //this.grid.on("rowdblclick", this.handleMouseDBClick, this);
-        this.grid.on("rowclick", this.handleMouseDown, this);
-        
-        this.rowNav = new Roo.KeyNav(this.grid.getGridEl(), {
-            "up" : function(e){
-                if(!e.shiftKey){
-                    this.selectPrevious(e.shiftKey);
-                }else if(this.last !== false && this.lastActive !== false){
-                    var last = this.last;
-                    this.selectRange(this.last,  this.lastActive-1);
-                    this.grid.getView().focusRow(this.lastActive);
-                    if(last !== false){
-                        this.last = last;
-                    }
-                }else{
-                    this.selectFirstRow();
-                }
-                this.fireEvent("afterselectionchange", this);
-            },
-            "down" : function(e){
-                if(!e.shiftKey){
-                    this.selectNext(e.shiftKey);
-                }else if(this.last !== false && this.lastActive !== false){
-                    var last = this.last;
-                    this.selectRange(this.last,  this.lastActive+1);
-                    this.grid.getView().focusRow(this.lastActive);
-                    if(last !== false){
-                        this.last = last;
-                    }
-                }else{
-                    this.selectFirstRow();
-                }
-                this.fireEvent("afterselectionchange", this);
-            },
-            scope: this
-        });
-        this.grid.store.on('load', function(){
-            this.selections.clear();
-        },this);
-        /*
-        var view = this.grid.view;
-        view.on("refresh", this.onRefresh, this);
-        view.on("rowupdated", this.onRowUpdated, this);
-        view.on("rowremoved", this.onRemove, this);
-        */
-    },
-
-    // private
-    onRefresh : function()
-    {
-        var ds = this.grid.store, i, v = this.grid.view;
-        var s = this.selections;
-        s.each(function(r){
-            if((i = ds.indexOfId(r.id)) != -1){
-                v.onRowSelect(i);
-            }else{
-                s.remove(r);
-            }
-        });
-    },
-
-    // private
-    onRemove : function(v, index, r){
-        this.selections.remove(r);
-    },
-
-    // private
-    onRowUpdated : function(v, index, r){
-        if(this.isSelected(r)){
-            v.onRowSelect(index);
-        }
-    },
-
-    /**
-     * Select records.
-     * @param {Array} records The records to select
-     * @param {Boolean} keepExisting (optional) True to keep existing selections
-     */
-    selectRecords : function(records, keepExisting)
-    {
-        if(!keepExisting){
-            this.clearSelections();
-        }
-	    var ds = this.grid.store;
-        for(var i = 0, len = records.length; i < len; i++){
-            this.selectRow(ds.indexOf(records[i]), true);
-        }
-    },
-
-    /**
-     * Gets the number of selected rows.
-     * @return {Number}
-     */
-    getCount : function(){
-        return this.selections.length;
-    },
-
-    /**
-     * Selects the first row in the grid.
-     */
-    selectFirstRow : function(){
-        this.selectRow(0);
-    },
-
-    /**
-     * Select the last row.
-     * @param {Boolean} keepExisting (optional) True to keep existing selections
-     */
-    selectLastRow : function(keepExisting){
-        //this.selectRow(this.grid.dataSource.getCount() - 1, keepExisting);
-        this.selectRow(this.grid.store.getCount() - 1, keepExisting);
-    },
-
-    /**
-     * Selects the row immediately following the last selected row.
-     * @param {Boolean} keepExisting (optional) True to keep existing selections
-     */
-    selectNext : function(keepExisting)
-    {
-	    if(this.last !== false && (this.last+1) < this.grid.store.getCount()){
-            this.selectRow(this.last+1, keepExisting);
-            this.grid.getView().focusRow(this.last);
-        }
-    },
-
-    /**
-     * Selects the row that precedes the last selected row.
-     * @param {Boolean} keepExisting (optional) True to keep existing selections
-     */
-    selectPrevious : function(keepExisting){
-        if(this.last){
-            this.selectRow(this.last-1, keepExisting);
-            this.grid.getView().focusRow(this.last);
-        }
-    },
-
-    /**
-     * Returns the selected records
-     * @return {Array} Array of selected records
-     */
-    getSelections : function(){
-        return [].concat(this.selections.items);
-    },
-
-    /**
-     * Returns the first selected record.
-     * @return {Record}
-     */
-    getSelected : function(){
-        return this.selections.itemAt(0);
-    },
-
-
-    /**
-     * Clears all selections.
-     */
-    clearSelections : function(fast)
-    {
-        if(this.locked) {
-            return;
-        }
-        if(fast !== true){
-	        var ds = this.grid.store;
-            var s = this.selections;
-            s.each(function(r){
-                this.deselectRow(ds.indexOfId(r.id));
-            }, this);
-            s.clear();
-        }else{
-            this.selections.clear();
-        }
-        this.last = false;
-    },
-
-
-    /**
-     * Selects all rows.
-     */
-    selectAll : function(){
-        if(this.locked) {
-            return;
-        }
-        this.selections.clear();
-        for(var i = 0, len = this.grid.store.getCount(); i < len; i++){
-            this.selectRow(i, true);
-        }
-    },
-
-    /**
-     * Returns True if there is a selection.
-     * @return {Boolean}
-     */
-    hasSelection : function(){
-        return this.selections.length > 0;
-    },
-
-    /**
-     * Returns True if the specified row is selected.
-     * @param {Number/Record} record The record or index of the record to check
-     * @return {Boolean}
-     */
-    isSelected : function(index){
-	    var r = typeof index == "number" ? this.grid.store.getAt(index) : index;
-        return (r && this.selections.key(r.id) ? true : false);
-    },
-
-    /**
-     * Returns True if the specified record id is selected.
-     * @param {String} id The id of record to check
-     * @return {Boolean}
-     */
-    isIdSelected : function(id){
-        return (this.selections.key(id) ? true : false);
-    },
-
-
-    // private
-    handleMouseDBClick : function(e, t){
-	
-    },
-    // private
-    handleMouseDown : function(e, t)
-    {
-	    var rowIndex = this.grid.headerShow  ? t.dom.rowIndex - 1 : t.dom.rowIndex ; // first row is header???
-        if(this.isLocked() || rowIndex < 0 ){
-            return;
-        };
-        if(e.shiftKey && this.last !== false){
-            var last = this.last;
-            this.selectRange(last, rowIndex, e.ctrlKey);
-            this.last = last; // reset the last
-            t.focus();
-    
-        }else{
-            var isSelected = this.isSelected(rowIndex);
-            //Roo.log("select row:" + rowIndex);
-            if(isSelected){
-                this.deselectRow(rowIndex);
-            } else {
-		        this.selectRow(rowIndex, true);
-            }
-    
-            /*
-                if(e.button !== 0 && isSelected){
-                alert('rowIndex 2: ' + rowIndex);
-                    view.focusRow(rowIndex);
-                }else if(e.ctrlKey && isSelected){
-                    this.deselectRow(rowIndex);
-                }else if(!isSelected){
-                    this.selectRow(rowIndex, e.button === 0 && (e.ctrlKey || e.shiftKey));
-                    view.focusRow(rowIndex);
-                }
-            */
-        }
-        this.fireEvent("afterselectionchange", this);
-    },
-    // private
-    handleDragableRowClick :  function(grid, rowIndex, e) 
-    {
-        if(e.button === 0 && !e.shiftKey && !e.ctrlKey) {
-            this.selectRow(rowIndex, false);
-            grid.view.focusRow(rowIndex);
-             this.fireEvent("afterselectionchange", this);
-        }
-    },
-    
-    /**
-     * Selects multiple rows.
-     * @param {Array} rows Array of the indexes of the row to select
-     * @param {Boolean} keepExisting (optional) True to keep existing selections
-     */
-    selectRows : function(rows, keepExisting){
-        if(!keepExisting){
-            this.clearSelections();
-        }
-        for(var i = 0, len = rows.length; i < len; i++){
-            this.selectRow(rows[i], true);
-        }
-    },
-
-    /**
-     * Selects a range of rows. All rows in between startRow and endRow are also selected.
-     * @param {Number} startRow The index of the first row in the range
-     * @param {Number} endRow The index of the last row in the range
-     * @param {Boolean} keepExisting (optional) True to retain existing selections
-     */
-    selectRange : function(startRow, endRow, keepExisting){
-        if(this.locked) {
-            return;
-        }
-        if(!keepExisting){
-            this.clearSelections();
-        }
-        if(startRow <= endRow){
-            for(var i = startRow; i <= endRow; i++){
-                this.selectRow(i, true);
-            }
-        }else{
-            for(var i = startRow; i >= endRow; i--){
-                this.selectRow(i, true);
-            }
-        }
-    },
-
-    /**
-     * Deselects a range of rows. All rows in between startRow and endRow are also deselected.
-     * @param {Number} startRow The index of the first row in the range
-     * @param {Number} endRow The index of the last row in the range
-     */
-    deselectRange : function(startRow, endRow, preventViewNotify){
-        if(this.locked) {
-            return;
-        }
-        for(var i = startRow; i <= endRow; i++){
-            this.deselectRow(i, preventViewNotify);
-        }
-    },
-
-    /**
-     * Selects a row.
-     * @param {Number} row The index of the row to select
-     * @param {Boolean} keepExisting (optional) True to keep existing selections
-     */
-    selectRow : function(index, keepExisting, preventViewNotify)
-    {
-	    if(this.locked || (index < 0 || index > this.grid.store.getCount())) {
-            return;
-        }
-        if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
-            if(!keepExisting || this.singleSelect){
-                this.clearSelections();
-            }
-  	    
-            var r = this.grid.store.getAt(index);
-            //console.log('selectRow - record id :' + r.id);
-            
-            this.selections.add(r);
-            this.last = this.lastActive = index;
-            if(!preventViewNotify){
-                var proxy = new Roo.Element(
-                                this.grid.getRowDom(index)
-                );
-                proxy.addClass('bg-info info');
-            }
-            this.fireEvent("rowselect", this, index, r);
-            this.fireEvent("selectionchange", this);
-        }
-    },
-
-    /**
-     * Deselects a row.
-     * @param {Number} row The index of the row to deselect
-     */
-    deselectRow : function(index, preventViewNotify)
-    {
-        if(this.locked) {
-            return;
-        }
-        if(this.last == index){
-            this.last = false;
-        }
-        if(this.lastActive == index){
-            this.lastActive = false;
-        }
-	
-        var r = this.grid.store.getAt(index);
-        if (!r) {
-            return;
-        }
-        
-        this.selections.remove(r);
-        //.console.log('deselectRow - record id :' + r.id);
-        if(!preventViewNotify){
-   	
-    	    var proxy = new Roo.Element(
-                this.grid.getRowDom(index)
-            );
-            proxy.removeClass('bg-info info');
-        }
-        this.fireEvent("rowdeselect", this, index);
-        this.fireEvent("selectionchange", this);
-    },
-
-    // private
-    restoreLast : function(){
-        if(this._last){
-            this.last = this._last;
-        }
-    },
-
-    // private
-    acceptsNav : function(row, col, cm){
-        return !cm.isHidden(col) && cm.isCellEditable(col, row);
-    },
-
-    // private
-    onEditorKey : function(field, e){
-        var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
-        if(k == e.TAB){
-            e.stopEvent();
-            ed.completeEdit();
-            if(e.shiftKey){
-                newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
-            }else{
-                newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
-            }
-        }else if(k == e.ENTER && !e.ctrlKey){
-            e.stopEvent();
-            ed.completeEdit();
-            if(e.shiftKey){
-                newCell = g.walkCells(ed.row-1, ed.col, -1, this.acceptsNav, this);
-            }else{
-                newCell = g.walkCells(ed.row+1, ed.col, 1, this.acceptsNav, this);
-            }
-        }else if(k == e.ESC){
-            ed.cancelEdit();
-        }
-        if(newCell){
-            g.startEditing(newCell[0], newCell[1]);
-        }
-    }
-});
-/*
+});/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.

@@ -364,6 +364,14 @@
         "memberOf" : ""
       },
       {
+        "name" : "getGridSize",
+        "type" : "function",
+        "desc" : "Find the current bootstrap width Grid size\nNote xs is the default for smaller.. - this is currently used by grids to render correct columns",
+        "sig" : "()\n{\n\n}",
+        "static" : true,
+        "memberOf" : ""
+      },
+      {
         "name" : "id",
         "type" : "function",
         "desc" : "Generates unique ids. If the element already has an id, it is unchanged",
@@ -56207,16 +56215,6 @@
         "memberOf" : "Roo.Component"
       },
       {
-        "name" : "align",
-        "type" : "String",
-        "desc" : [
-          "(left",
-          "center",
-          "right)"
-        ],
-        "memberOf" : ""
-      },
-      {
         "name" : "allowDomMove",
         "type" : "Boolean",
         "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
@@ -56226,18 +56224,6 @@
         "name" : "auto_hide_footer",
         "type" : "Boolean",
         "desc" : "auto hide footer if only one page (default false)",
-        "memberOf" : ""
-      },
-      {
-        "name" : "bgcolor",
-        "type" : "String",
-        "desc" : "Specifies the background color for a table",
-        "memberOf" : ""
-      },
-      {
-        "name" : "border",
-        "type" : "Number",
-        "desc" : "Specifies whether the table cells should have borders or not",
         "memberOf" : ""
       },
       {
@@ -56262,21 +56248,15 @@
         "memberOf" : ""
       },
       {
-        "name" : "cellpadding",
-        "type" : "Number",
-        "desc" : "Specifies the space between the cell wall and the cell content",
-        "memberOf" : ""
-      },
-      {
-        "name" : "cellspacing",
-        "type" : "Number",
-        "desc" : "Specifies the space between cells",
-        "memberOf" : ""
-      },
-      {
         "name" : "cls",
         "type" : "String",
         "desc" : "table class",
+        "memberOf" : ""
+      },
+      {
+        "name" : "cm[]",
+        "type" : "Roo.grid.ColumnModel",
+        "desc" : "A column for th grid.",
         "memberOf" : ""
       },
       {
@@ -56304,6 +56284,12 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "enableColumnResize",
+        "type" : "Boolean",
+        "desc" : "default true if columns can be resized (drag/drop)",
+        "memberOf" : ""
+      },
+      {
         "name" : "footer",
         "type" : "Roo.bootstrap.PagingToolbar",
         "desc" : "a paging toolbar",
@@ -56316,12 +56302,6 @@
           "(true",
           "false)"
         ],
-        "memberOf" : ""
-      },
-      {
-        "name" : "frame",
-        "type" : "String",
-        "desc" : "Specifies which parts of the outside borders that should be visible",
         "memberOf" : ""
       },
       {
@@ -56349,12 +56329,6 @@
         "memberOf" : ""
       },
       {
-        "name" : "layout",
-        "type" : "String",
-        "desc" : "table layout (auto | fixed | initial | inherit)",
-        "memberOf" : ""
-      },
-      {
         "name" : "lazyLoad",
         "type" : "Boolean",
         "desc" : "auto load data while scrolling to the end (default false)",
@@ -56373,6 +56347,12 @@
           "(true",
           "false)"
         ],
+        "memberOf" : ""
+      },
+      {
+        "name" : "minColumnWidth",
+        "type" : "Number",
+        "desc" : "default 50 pixels minimum column width",
         "memberOf" : ""
       },
       {
@@ -56397,12 +56377,6 @@
         "memberOf" : ""
       },
       {
-        "name" : "rules",
-        "type" : "String",
-        "desc" : "Specifies which parts of the inside borders that should be visible",
-        "memberOf" : ""
-      },
-      {
         "name" : "scrollBody",
         "type" : "Boolean",
         "desc" : [
@@ -56412,9 +56386,15 @@
         "memberOf" : ""
       },
       {
-        "name" : "sortable",
-        "type" : "String",
-        "desc" : "Specifies that the table should be sortable",
+        "name" : "sm",
+        "type" : "Roo.grid.RowSelectionModel|Roo.grid.CellSelectionModel",
+        "desc" : "The selection model to use (cell selection is not supported yet)",
+        "memberOf" : ""
+      },
+      {
+        "name" : "store",
+        "type" : "Roo.data.Store|Roo.data.SimpleStore",
+        "desc" : "The data store to use",
         "memberOf" : ""
       },
       {
@@ -56430,12 +56410,6 @@
         "memberOf" : "Roo.bootstrap.Component"
       },
       {
-        "name" : "summary",
-        "type" : "String",
-        "desc" : "Specifies a summary of the content of a table",
-        "memberOf" : ""
-      },
-      {
         "name" : "tooltip",
         "type" : "string",
         "desc" : "Text for the tooltip",
@@ -56449,12 +56423,6 @@
           "parent)"
         ],
         "memberOf" : "Roo.bootstrap.Component"
-      },
-      {
-        "name" : "width",
-        "type" : "Number",
-        "desc" : "Specifies the width of a table",
-        "memberOf" : ""
       },
       {
         "name" : "xattr",
@@ -56561,6 +56529,13 @@
         "desc" : "Fires after the component is hidden.",
         "sig" : "function (_self)\n{\n\n}",
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "mousedown",
+        "type" : "function",
+        "desc" : "The raw mousedown event for the entire grid.",
+        "sig" : "function (e)\n{\n\n}",
+        "memberOf" : ""
       },
       {
         "name" : "mouseout",
@@ -56692,6 +56667,14 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "ensureVisible",
+        "type" : "function",
+        "desc" : "Scrolls the specified cell into view",
+        "sig" : "(row, col, hscroll)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "fireEvent",
         "type" : "function",
         "desc" : "Fires the specified event with the passed parameters (minus the event name).",
@@ -56706,6 +56689,30 @@
         "sig" : "(selectText)",
         "static" : false,
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "focusCell",
+        "type" : "function",
+        "desc" : "Focuses the specified cell.",
+        "sig" : "(row, col, hscroll)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
+        "name" : "focusRow",
+        "type" : "function",
+        "desc" : "Focuses the specified row.",
+        "sig" : "(row)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
+        "name" : "getCellIndex",
+        "type" : "function",
+        "desc" : "get the Column Index from a dom element. (using regex on x-hcol-{colid})",
+        "sig" : "(cell)",
+        "static" : false,
+        "memberOf" : ""
       },
       {
         "name" : "getChildContainer",
@@ -56732,12 +56739,28 @@
         "memberOf" : ""
       },
       {
+        "name" : "getHeaderIndex",
+        "type" : "function",
+        "desc" : "get the header TH element for columnIndex",
+        "sig" : "(columnIndex)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "getId",
         "type" : "function",
         "desc" : "Returns the id of this component.",
         "sig" : "()\n{\n\n}",
         "static" : false,
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "getRowIndex",
+        "type" : "function",
+        "desc" : "get the Row Index from a dom element.",
+        "sig" : "(row)",
+        "static" : false,
+        "memberOf" : ""
       },
       {
         "name" : "getVisibilityEl",
@@ -56874,426 +56897,6 @@
         "sig" : "(eventName, handler, scope)",
         "static" : false,
         "memberOf" : "Roo.util.Observable"
-      }
-    ]
-  },
-  "Roo.bootstrap.Table.AbstractSelectionModel" : {
-    "props" : [
-      {
-        "name" : "listeners",
-        "type" : "Object",
-        "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-        "memberOf" : "Roo.util.Observable"
-      }
-    ],
-    "events" : [],
-    "methods" : [
-      {
-        "name" : "addEvents",
-        "type" : "function",
-        "desc" : "Used to define events on this Observable",
-        "sig" : "(object)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "addListener",
-        "type" : "function",
-        "desc" : "Appends an event handler to this component",
-        "sig" : "(eventName, handler, scope, options)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "capture",
-        "type" : "function",
-        "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
-        "sig" : "(o, fn, scope)",
-        "static" : true,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "fireEvent",
-        "type" : "function",
-        "desc" : "Fires the specified event with the passed parameters (minus the event name).",
-        "sig" : "(eventName, args)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "hasListener",
-        "type" : "function",
-        "desc" : "Checks to see if this object has any listeners for a specified event",
-        "sig" : "(eventName)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "isLocked",
-        "type" : "function",
-        "desc" : "Returns true if the selections are locked.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "lock",
-        "type" : "function",
-        "desc" : "Locks the selections.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "on",
-        "type" : "function",
-        "desc" : "Appends an event handler to this element (shorthand for addListener)",
-        "sig" : "(eventName, handler, scope, options)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "purgeListeners",
-        "type" : "function",
-        "desc" : "Removes all listeners for this object",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "releaseCapture",
-        "type" : "function",
-        "desc" : "Removes <b>all</b> added captures from the Observable.",
-        "sig" : "(o)",
-        "static" : true,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "removeListener",
-        "type" : "function",
-        "desc" : "Removes a listener",
-        "sig" : "(eventName, handler, scope)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "un",
-        "type" : "function",
-        "desc" : "Removes a listener (shorthand for removeListener)",
-        "sig" : "(eventName, handler, scope)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "unlock",
-        "type" : "function",
-        "desc" : "Unlocks the selections.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      }
-    ]
-  },
-  "Roo.bootstrap.Table.RowSelectionModel" : {
-    "props" : [
-      {
-        "name" : "listeners",
-        "type" : "Object",
-        "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "singleSelect",
-        "type" : "Boolean",
-        "desc" : "True to allow selection of only one row at a time (defaults to false)",
-        "memberOf" : ""
-      }
-    ],
-    "events" : [
-      {
-        "name" : "afterselectionchange",
-        "type" : "function",
-        "desc" : "Fires after the selection changes (eg. by key press or clicking)",
-        "sig" : "function (_self)\n{\n\n}",
-        "memberOf" : ""
-      },
-      {
-        "name" : "beforerowselect",
-        "type" : "function",
-        "desc" : "Fires when a row is selected being selected, return false to cancel.",
-        "sig" : "function (_self, rowIndex, keepExisting)\n{\n\n}",
-        "memberOf" : ""
-      },
-      {
-        "name" : "rowdeselect",
-        "type" : "function",
-        "desc" : "Fires when a row is deselected.",
-        "sig" : "function (_self, rowIndex)\n{\n\n}",
-        "memberOf" : ""
-      },
-      {
-        "name" : "rowselect",
-        "type" : "function",
-        "desc" : "Fires when a row is selected.",
-        "sig" : "function (_self, rowIndex, r)\n{\n\n}",
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectionchange",
-        "type" : "function",
-        "desc" : "Fires when the selection changes",
-        "sig" : "function (_self)\n{\n\n}",
-        "memberOf" : ""
-      }
-    ],
-    "methods" : [
-      {
-        "name" : "addEvents",
-        "type" : "function",
-        "desc" : "Used to define events on this Observable",
-        "sig" : "(object)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "addListener",
-        "type" : "function",
-        "desc" : "Appends an event handler to this component",
-        "sig" : "(eventName, handler, scope, options)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "capture",
-        "type" : "function",
-        "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
-        "sig" : "(o, fn, scope)",
-        "static" : true,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "clearSelections",
-        "type" : "function",
-        "desc" : "Clears all selections.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "deselectRange",
-        "type" : "function",
-        "desc" : "Deselects a range of rows. All rows in between startRow and endRow are also deselected.",
-        "sig" : "(startRow, endRow)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "deselectRow",
-        "type" : "function",
-        "desc" : "Deselects a row.",
-        "sig" : "(row)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "fireEvent",
-        "type" : "function",
-        "desc" : "Fires the specified event with the passed parameters (minus the event name).",
-        "sig" : "(eventName, args)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "getCount",
-        "type" : "function",
-        "desc" : "Gets the number of selected rows.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "getSelected",
-        "type" : "function",
-        "desc" : "Returns the first selected record.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "getSelections",
-        "type" : "function",
-        "desc" : "Returns the selected records",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "hasListener",
-        "type" : "function",
-        "desc" : "Checks to see if this object has any listeners for a specified event",
-        "sig" : "(eventName)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "hasSelection",
-        "type" : "function",
-        "desc" : "Returns True if there is a selection.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "isIdSelected",
-        "type" : "function",
-        "desc" : "Returns True if the specified record id is selected.",
-        "sig" : "(id)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "isLocked",
-        "type" : "function",
-        "desc" : "Returns true if the selections are locked.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : "Roo.bootstrap.Table.AbstractSelectionModel"
-      },
-      {
-        "name" : "isSelected",
-        "type" : "function",
-        "desc" : "Returns True if the specified row is selected.",
-        "sig" : "(record)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "lock",
-        "type" : "function",
-        "desc" : "Locks the selections.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : "Roo.bootstrap.Table.AbstractSelectionModel"
-      },
-      {
-        "name" : "on",
-        "type" : "function",
-        "desc" : "Appends an event handler to this element (shorthand for addListener)",
-        "sig" : "(eventName, handler, scope, options)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "purgeListeners",
-        "type" : "function",
-        "desc" : "Removes all listeners for this object",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "releaseCapture",
-        "type" : "function",
-        "desc" : "Removes <b>all</b> added captures from the Observable.",
-        "sig" : "(o)",
-        "static" : true,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "removeListener",
-        "type" : "function",
-        "desc" : "Removes a listener",
-        "sig" : "(eventName, handler, scope)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "selectAll",
-        "type" : "function",
-        "desc" : "Selects all rows.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectFirstRow",
-        "type" : "function",
-        "desc" : "Selects the first row in the grid.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectLastRow",
-        "type" : "function",
-        "desc" : "Select the last row.",
-        "sig" : "(keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectNext",
-        "type" : "function",
-        "desc" : "Selects the row immediately following the last selected row.",
-        "sig" : "(keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectPrevious",
-        "type" : "function",
-        "desc" : "Selects the row that precedes the last selected row.",
-        "sig" : "(keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectRange",
-        "type" : "function",
-        "desc" : "Selects a range of rows. All rows in between startRow and endRow are also selected.",
-        "sig" : "(startRow, endRow, keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectRecords",
-        "type" : "function",
-        "desc" : "Select records.",
-        "sig" : "(records, keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectRow",
-        "type" : "function",
-        "desc" : "Selects a row.",
-        "sig" : "(row, keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "selectRows",
-        "type" : "function",
-        "desc" : "Selects multiple rows.",
-        "sig" : "(rows, keepExisting)",
-        "static" : false,
-        "memberOf" : ""
-      },
-      {
-        "name" : "un",
-        "type" : "function",
-        "desc" : "Removes a listener (shorthand for removeListener)",
-        "sig" : "(eventName, handler, scope)",
-        "static" : false,
-        "memberOf" : "Roo.util.Observable"
-      },
-      {
-        "name" : "unlock",
-        "type" : "function",
-        "desc" : "Unlocks the selections.",
-        "sig" : "()\n{\n\n}",
-        "static" : false,
-        "memberOf" : "Roo.bootstrap.Table.AbstractSelectionModel"
       }
     ]
   },
@@ -97448,7 +97051,13 @@
       {
         "name" : "lg",
         "type" : "Number",
-        "desc" : "(Optional)",
+        "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
+        "memberOf" : ""
+      },
+      {
+        "name" : "lgHeader",
+        "type" : "String",
+        "desc" : "Header at Bootsrap Large width",
         "memberOf" : ""
       },
       {
@@ -97466,7 +97075,13 @@
       {
         "name" : "md",
         "type" : "Number",
-        "desc" : "(Optional)",
+        "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
+        "memberOf" : ""
+      },
+      {
+        "name" : "mdHeader",
+        "type" : "String",
+        "desc" : "Header at Bootsrap Medium width",
         "memberOf" : ""
       },
       {
@@ -97484,7 +97099,13 @@
       {
         "name" : "sm",
         "type" : "Number",
-        "desc" : "(Optional)",
+        "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
+        "memberOf" : ""
+      },
+      {
+        "name" : "smHeader",
+        "type" : "String",
+        "desc" : "Header at Bootsrap Small width",
         "memberOf" : ""
       },
       {
@@ -97512,9 +97133,27 @@
         "memberOf" : ""
       },
       {
+        "name" : "xl",
+        "type" : "Number",
+        "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
+        "memberOf" : ""
+      },
+      {
+        "name" : "xlHeader",
+        "type" : "String",
+        "desc" : "Header at Bootsrap extra Large width",
+        "memberOf" : ""
+      },
+      {
         "name" : "xs",
         "type" : "Number",
-        "desc" : "(Optional)",
+        "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
+        "memberOf" : ""
+      },
+      {
+        "name" : "xsHeader",
+        "type" : "String",
+        "desc" : "Header at Bootsrap Extra Small width (default for all)",
         "memberOf" : ""
       }
     ],
@@ -97664,7 +97303,7 @@
         "name" : "getColumnWidth",
         "type" : "function",
         "desc" : "Returns the width for the specified column.",
-        "sig" : "(col)",
+        "sig" : "(col, (optional))",
         "static" : false,
         "memberOf" : ""
       },
@@ -100526,6 +100165,491 @@
         "sig" : "()\n{\n\n}",
         "static" : false,
         "memberOf" : "Roo.grid.AbstractSelectionModel"
+      }
+    ]
+  },
+  "Roo.grid.SplitDragZone" : {
+    "props" : [
+      {
+        "name" : "listeners",
+        "type" : "Object",
+        "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+        "memberOf" : "Roo.util.Observable"
+      }
+    ],
+    "events" : [],
+    "methods" : [
+      {
+        "name" : "addEvents",
+        "type" : "function",
+        "desc" : "Used to define events on this Observable",
+        "sig" : "(object)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addInvalidHandleClass",
+        "type" : "function",
+        "desc" : "Lets you specify a css class of elements that will not initiate a drag",
+        "sig" : "(cssClass)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "addInvalidHandleId",
+        "type" : "function",
+        "desc" : "Lets you to specify an element id for a child of a drag handle\nthat should not initiate a drag",
+        "sig" : "(id)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "addInvalidHandleType",
+        "type" : "function",
+        "desc" : "Allows you to specify a tag name that should not start a drag operation\nwhen clicked.  This is designed to facilitate embedding links within a\ndrag handle that do something other than start the drag.",
+        "sig" : "(tagName)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "addListener",
+        "type" : "function",
+        "desc" : "Appends an event handler to this component",
+        "sig" : "(eventName, handler, scope, options)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "addToGroup",
+        "type" : "function",
+        "desc" : "Add this instance to a group of related drag/drop objects.  All\ninstances belong to at least one group, and can belong to as many\ngroups as needed.",
+        "sig" : "(sGroup)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "alignElWithMouse",
+        "type" : "function",
+        "desc" : "Sets the element to the location of the mousedown or click event,\nmaintaining the cursor location relative to the location on the element\nthat was clicked.  Override this if you want to place the element in a\nlocation other than where the cursor is.",
+        "sig" : "(el, iPageX, iPageY)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DD"
+      },
+      {
+        "name" : "applyConfig",
+        "type" : "function",
+        "desc" : "Applies the configuration parameters that were passed into the constructor.\nThis is supposed to happen at each level through the inheritance chain.  So\na DDProxy implentation will execute apply config on DDProxy, DD, and\nDragDrop in order to get all of the parameters that are available in\neach object.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "autoOffset",
+        "type" : "function",
+        "desc" : "Sets the pointer offset to the distance between the linked element's top\nleft corner and the location the element was clicked",
+        "sig" : "(iPageX, iPageY)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DD"
+      },
+      {
+        "name" : "cachePosition",
+        "type" : "function",
+        "desc" : "Saves the most recent position so that we can reset the constraints and\ntick marks on-demand.  We need to know this so that we can calculate the\nnumber of pixels the element is offset from its original position.",
+        "sig" : "(iPageX, iPageY)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DD"
+      },
+      {
+        "name" : "capture",
+        "type" : "function",
+        "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+        "sig" : "(o, fn, scope)",
+        "static" : true,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "clearConstraints",
+        "type" : "function",
+        "desc" : "Clears any constraints applied to this instance.  Also clears ticks\nsince they can't exist independent of a constraint at this time.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "clearTicks",
+        "type" : "function",
+        "desc" : "Clears any tick interval defined for this instance",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "createFrame",
+        "type" : "function",
+        "desc" : "Creates the proxy element if it does not yet exist",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DDProxy"
+      },
+      {
+        "name" : "endDrag",
+        "type" : "function",
+        "desc" : "Fired when we are done dragging the object",
+        "sig" : "(e)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "fireEvent",
+        "type" : "function",
+        "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+        "sig" : "(eventName, args)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "getDragEl",
+        "type" : "function",
+        "desc" : "Returns a reference to the actual element to drag.  By default this is\nthe same as the html element, but it can be assigned to another\nelement. An example of this can be found in Roo.dd.DDProxy",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "getEl",
+        "type" : "function",
+        "desc" : "Returns a reference to the linked element",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "hasListener",
+        "type" : "function",
+        "desc" : "Checks to see if this object has any listeners for a specified event",
+        "sig" : "(eventName)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "init",
+        "type" : "function",
+        "desc" : "Sets up the DragDrop object.  Must be called in the constructor of any\nRoo.dd.DragDrop subclass",
+        "sig" : "(id, sGroup, config)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "initFrame",
+        "type" : "function",
+        "desc" : "Initialization for the drag frame element.  Must be called in the\nconstructor of all subclasses",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DDProxy"
+      },
+      {
+        "name" : "initTarget",
+        "type" : "function",
+        "desc" : "Initializes Targeting functionality only... the object does not\nget a mousedown handler.",
+        "sig" : "(id, sGroup, config)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "isLocked",
+        "type" : "function",
+        "desc" : "Returns true if this instance is locked, or the drag drop mgr is locked\n(meaning that all drag/drop is disabled on the page.)",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "isTarget",
+        "type" : "function",
+        "desc" : "By default, all insances can be a drop target.  This can be disabled by\nsetting isTarget to false.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "isValidHandleChild",
+        "type" : "function",
+        "desc" : "Checks the tag exclusion list to see if this click should be ignored",
+        "sig" : "(node)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "lock",
+        "type" : "function",
+        "desc" : "Lock this instance",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "on",
+        "type" : "function",
+        "desc" : "Appends an event handler to this element (shorthand for addListener)",
+        "sig" : "(eventName, handler, scope, options)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "onAvailable",
+        "type" : "function",
+        "desc" : "Override the onAvailable method to do what is needed after the initial\nposition was determined.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "onDrag",
+        "type" : "function",
+        "desc" : "Abstract method called during the onMouseMove event while dragging an\nobject.",
+        "sig" : "(e)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "onDragDrop",
+        "type" : "function",
+        "desc" : "Abstract method called when this item is dropped on another DragDrop\nobj",
+        "sig" : "(e, id)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "onDragEnter",
+        "type" : "function",
+        "desc" : "Abstract method called when this element fist begins hovering over\nanother DragDrop obj",
+        "sig" : "(e, id)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "onDragOut",
+        "type" : "function",
+        "desc" : "Abstract method called when we are no longer hovering over an element",
+        "sig" : "(e, id)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "onDragOver",
+        "type" : "function",
+        "desc" : "Abstract method called when this element is hovering over another\nDragDrop obj",
+        "sig" : "(e, id)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "onInvalidDrop",
+        "type" : "function",
+        "desc" : "Abstract method called when this item is dropped on an area with no\ndrop target",
+        "sig" : "(e)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "onMouseDown",
+        "type" : "function",
+        "desc" : "Event handler that fires when a drag/drop obj gets a mousedown",
+        "sig" : "(e)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "onMouseUp",
+        "type" : "function",
+        "desc" : "Event handler that fires when a drag/drop obj gets a mouseup",
+        "sig" : "(e)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "padding",
+        "type" : "function",
+        "desc" : "The padding configured for this drag and drop object for calculating\nthe drop zone intersection with this object.",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "purgeListeners",
+        "type" : "function",
+        "desc" : "Removes all listeners for this object",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "releaseCapture",
+        "type" : "function",
+        "desc" : "Removes <b>all</b> added captures from the Observable.",
+        "sig" : "(o)",
+        "static" : true,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "removeFromGroup",
+        "type" : "function",
+        "desc" : "Remove's this instance from the supplied interaction group",
+        "sig" : "(sGroup)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "removeInvalidHandleClass",
+        "type" : "function",
+        "desc" : "Unsets an invalid css class",
+        "sig" : "(cssClass)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "removeInvalidHandleId",
+        "type" : "function",
+        "desc" : "Unsets an invalid handle id",
+        "sig" : "(id)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "removeInvalidHandleType",
+        "type" : "function",
+        "desc" : "Unsets an excluded tag name set by addInvalidHandleType",
+        "sig" : "(tagName)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "removeListener",
+        "type" : "function",
+        "desc" : "Removes a listener",
+        "sig" : "(eventName, handler, scope)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "resetConstraints",
+        "type" : "function",
+        "desc" : "resetConstraints must be called if you manually reposition a dd element.",
+        "sig" : "(maintainOffset)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "setDelta",
+        "type" : "function",
+        "desc" : "Sets the pointer offset.  You can call this directly to force the\noffset to be in a particular location (e.g., pass in 0,0 to set it\nto the center of the object)",
+        "sig" : "(iDeltaX, iDeltaY)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DD"
+      },
+      {
+        "name" : "setDragElId",
+        "type" : "function",
+        "desc" : "Allows you to specify that an element other than the linked element\nwill be moved with the cursor during a drag",
+        "sig" : "(id)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "setDragElPos",
+        "type" : "function",
+        "desc" : "Sets the drag element to the location of the mousedown or click event,\nmaintaining the cursor location relative to the location on the element\nthat was clicked.  Override this if you want to place the element in a\nlocation other than where the cursor is.",
+        "sig" : "(iPageX, iPageY)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DD"
+      },
+      {
+        "name" : "setHandleElId",
+        "type" : "function",
+        "desc" : "Allows you to specify a child of the linked element that should be\nused to initiate the drag operation.  An example of this would be if\nyou have a content div with text and links.  Clicking anywhere in the\ncontent area would normally start the drag operation.  Use this method\nto specify that an element inside of the content div is the element\nthat starts the drag operation.",
+        "sig" : "(id)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "setInitPosition",
+        "type" : "function",
+        "desc" : "Stores the initial placement of the linked element.",
+        "sig" : "(diffX, diffY)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "setOuterHandleElId",
+        "type" : "function",
+        "desc" : "Allows you to set an element outside of the linked element as a drag\nhandle",
+        "sig" : "(id)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "setPadding",
+        "type" : "function",
+        "desc" : "Configures the padding for the target zone in px.  Effectively expands\n(or reduces) the virtual object size for targeting calculations.\nSupports css-style shorthand; if only one parameter is passed, all sides\nwill have that padding, and if only two are passed, the top and bottom\nwill have the first param, the left and right the second.",
+        "sig" : "(iTop, iRight, iBot, iLeft)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "setXConstraint",
+        "type" : "function",
+        "desc" : "By default, the element can be dragged any place on the screen.  Use\nthis method to limit the horizontal travel of the element.  Pass in\n0,0 for the parameters if you want to lock the drag to the y axis.",
+        "sig" : "(iLeft, iRight, iTickSize)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "setYConstraint",
+        "type" : "function",
+        "desc" : "By default, the element can be dragged any place on the screen.  Set\nthis to limit the vertical travel of the element.  Pass in 0,0 for the\nparameters if you want to lock the drag to the x axis.",
+        "sig" : "(iUp, iDown, iTickSize)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "startDrag",
+        "type" : "function",
+        "desc" : "Abstract method called after a drag/drop object is clicked\nand the drag or mousedown time thresholds have beeen met.",
+        "sig" : "(X, Y)",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "toString",
+        "type" : "function",
+        "desc" : "toString method",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "un",
+        "type" : "function",
+        "desc" : "Removes a listener (shorthand for removeListener)",
+        "sig" : "(eventName, handler, scope)",
+        "static" : false,
+        "memberOf" : "Roo.util.Observable"
+      },
+      {
+        "name" : "unlock",
+        "type" : "function",
+        "desc" : "Unlock this instace",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
+      },
+      {
+        "name" : "unreg",
+        "type" : "function",
+        "desc" : "Remove all drag and drop hooks for this element",
+        "sig" : "()\n{\n\n}",
+        "static" : false,
+        "memberOf" : "Roo.dd.DragDrop"
       }
     ]
   },

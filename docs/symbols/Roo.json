@@ -193,6 +193,20 @@
       "returns" : []
     },
     {
+      "name" : "getGridSize",
+      "desc" : "Find the current bootstrap width Grid size\nNote xs is the default for smaller.. - this is currently used by grids to render correct columns",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
       "name" : "factory",
       "desc" : "Creates namespaces to be used for scoping variables and classes so that they are not global.  Usage:\n<pre><code>\nRoo.factory({ xns: Roo.data, xtype : 'Store', .....});\nRoo.factory(conf, Roo.data);\n</code></pre>",
       "isStatic" : true,

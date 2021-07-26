@@ -109,6 +109,21 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} header The header text to display in the Grid view.
      */
+	/**
+     * @cfg {String} xsHeader Header at Bootsrap Extra Small width (default for all)
+     */
+	/**
+     * @cfg {String} smHeader Header at Bootsrap Small width
+     */
+	/**
+     * @cfg {String} mdHeader Header at Bootsrap Medium width
+     */
+	/**
+     * @cfg {String} lgHeader Header at Bootsrap Large width
+     */
+	/**
+     * @cfg {String} xlHeader Header at Bootsrap extra Large width
+     */
     /**
      * @cfg {String} dataIndex (Optional) The name of the field in the grid's {@link Roo.data.Store}'s
      * {@link Roo.data.Record} definition from which to draw the column's value. If not
@@ -157,16 +172,19 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {String} tooltip (Optional)
      */
     /**
-     * @cfg {Number} xs (Optional)
+     * @cfg {Number} xs (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} sm (Optional)
+     * @cfg {Number} sm (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} md (Optional)
+     * @cfg {Number} md (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} lg (Optional)
+     * @cfg {Number} lg (Optional) can be '0' for hidden at this size (number less than 12)
+     */
+	/**
+     * @cfg {Number} xl (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
      * Returns the id of the column at the specified index.
@@ -349,10 +367,29 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * Returns the width for the specified column.
      * @param {Number} col The column index
+     * @param (optional) {String} gridSize bootstrap width size.
      * @return {Number}
      */
-    getColumnWidth : function(col){
-        return this.config[col].width * 1 || this.defaultWidth;
+    getColumnWidth : function(col, gridSize)
+	{
+		var cfg = this.config[col];
+		
+		if (typeof(gridSize) == 'undefined') {
+			return cfg.width * 1 || this.defaultWidth;
+		}
+		if (gridSize === false) { // if we set it..
+			return cfg.width || false;
+		}
+		var sizes = ['xl', 'lg', 'md', 'sm', 'xs'];
+		
+		for(var i = sizes.indexOf(gridSize); i < sizes.length; i++) {
+			if (typeof(cfg[ sizes[i] ] ) == 'undefined') {
+				continue;
+			}
+			return cfg[ sizes[i] ];
+		}
+		return 1;
+		
     },
 
     /**

@@ -8,19 +8,34 @@
  * Fork - LGPL
  * &lt;script type=&quot;text/javascript&quot;&gt;
  */
-
+ /**
+ * @extends Roo.dd.DDProxy
+ * @class Roo.grid.SplitDragZone
+ * Support for Column Header resizing
+ * @constructor
+ * @param {Object} config
+ */
 // private
 // This is a support class used internally by the Grid components
 </span><span class="jsdoc-var">Roo.grid.SplitDragZone </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hd2</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">this.grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid.getView</span><span class="jsdoc-syntax">();
     </span><span class="jsdoc-var">this.proxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.resizeProxy</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-var">Roo.grid.SplitDragZone.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hd</span><span class="jsdoc-syntax">,
-        </span><span class="jsdoc-string">&quot;gridSplitters&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">, {
-        </span><span class="jsdoc-var">dragElId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.proxy.dom</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">resizeFrame</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false
-    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">Roo.grid.SplitDragZone.superclass.constructor.call</span><span class="jsdoc-syntax">(
+        </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">hd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// ID
+        </span><span class="jsdoc-string">&quot;gridSplitters&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// SGROUP
+        </span><span class="jsdoc-syntax">{  </span><span class="jsdoc-comment">// CONFIG
+            </span><span class="jsdoc-var">dragElId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.proxy.dom</span><span class="jsdoc-syntax">),
+            </span><span class="jsdoc-var">resizeFrame</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false
+        </span><span class="jsdoc-syntax">}
+    );
+
     </span><span class="jsdoc-var">this.setHandleElId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hd</span><span class="jsdoc-syntax">));
-    </span><span class="jsdoc-var">this.setOuterHandleElId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hd2</span><span class="jsdoc-syntax">));
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hd2 </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.setOuterHandleElId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hd2</span><span class="jsdoc-syntax">));
+    }
+
     </span><span class="jsdoc-var">this.scroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.grid.SplitDragZone</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.dd.DDProxy</span><span class="jsdoc-syntax">, {
@@ -28,8 +43,25 @@
 
     </span><span class="jsdoc-var">b4StartDrag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.view.headersDisabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.proxy.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.mainWrap.getHeight</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.mainWrap </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.view.mainWrap.getHeight</span><span class="jsdoc-syntax">() : (
+                    </span><span class="jsdoc-var">this.view.headEl.getHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.view.bodyEl.getHeight</span><span class="jsdoc-syntax">()
+        );
+        </span><span class="jsdoc-var">this.proxy.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// for old system colWidth really stored the actual width?
+        // in bootstrap we tried using xs/ms/etc.. to do % sizing?
+        // which in reality did not work.. - it worked only for fixed sizes
+        // for resizable we need to use actual sizes.
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellIndex</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.view.mainWrap</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// bootstrap.
+            </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.getHeaderIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellIndex</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">();
+        }
+
+
+
+        </span><span class="jsdoc-comment">// this was w-this.grid.minColumnWidth;
+        // doesnt really make sense? - w = thie curren width or the rendered one?
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">-</span><span class="jsdoc-var">this.grid.minColumnWidth</span><span class="jsdoc-syntax">, 0);
         </span><span class="jsdoc-var">this.resetConstraints</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.setXConstraint</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">minw</span><span class="jsdoc-syntax">, 1000);
@@ -37,6 +69,10 @@
         </span><span class="jsdoc-var">this.minX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">minw</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ 1000;
         </span><span class="jsdoc-var">this.startPos </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.view.mainWrap</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// this is Bootstrap code..
+            </span><span class="jsdoc-var">this.getDragEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.style.display</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        }
+
         </span><span class="jsdoc-var">Roo.dd.DDProxy.prototype.b4StartDrag.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">);
     },
 
@@ -58,7 +94,12 @@
         </span><span class="jsdoc-var">this.view.headersDisabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">endX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.lib.Event.getPageX</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">diff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">endX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.startPos</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.view.onColumnSplitterMoved</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellIndex</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-var">diff</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellIndex</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.view.mainWrap</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= 0;
+        }
+        </span><span class="jsdoc-var">this.view.onColumnSplitterMoved</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cellIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">diff</span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-var">autoOffset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){

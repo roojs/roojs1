@@ -1,11 +1,8 @@
 
 /**
- * @extends Roo.bootstrap.Table.AbstractSelectionModel
- * @class Roo.bootstrap.Table.RowSelectionModel
- * The default SelectionModel used by {@link Roo.bootstrap.Table}.
- * It supports multiple selections and keyboard selection/navigation. 
- * @constructor
- * @param {Object} config
+ *  @deprecated
+ *
+ *  
  */
 
 Roo.bootstrap.Table.RowSelectionModel = function(config){

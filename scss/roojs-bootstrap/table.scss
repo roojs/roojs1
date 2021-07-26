@@ -68,6 +68,7 @@
 }
 .table-body-fixed thead {
     overflow:  hidden;
+    user-select: none;
 }
 
 
@@ -82,6 +83,42 @@
 
 }
 
+/** -- the dragable column bar */
+.table-body-fixed thead > tr:hover th .x-grid-split {
+    position: absolute;
+    top: 0px;
+    /*right: 0;*/
+    width: 9px;
+    
+    height: 100%;
+    background: transparent;
+    cursor: col-resize;
+}
+.table-body-fixed thead > tr:hover th .x-grid-split:before {
+    position: absolute;
+    content: " ";
+    top: 15%;
+    right: 4px;
+    width: 1px;
+    
+    height: 70%;
+    background: black;
+    cursor: col-resize;
+}
+/** vertical bar indicating that columns are being moved.  */
+.x-grid-resize-proxy {
+    z-index: 40009;
+    position: absolute;
+    background: #666;
+    border: 1px solid #000;
+    overflow: hidden;
+    cursor: col-resize;
+    overflow: hidden;
+    width: 2px;
+} 
+ 
+ 
+ 
 /* fake infinate widt.. */
 .table-body-fixed thead > tr,
 .table-body-fixed tbody > tr

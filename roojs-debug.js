@@ -668,7 +668,30 @@ Roo.factory(conf, Roo.data);
         {
             var node = Roo.DomQuery.selectNode(selector,root);
             return node ? Roo.get(node) : new Roo.Element(false);
-        }
+        },
+		/**
+		 * Find the current bootstrap width Grid size
+		 * Note xs is the default for smaller.. - this is currently used by grids to render correct columns
+		 * @returns {String} (xs|sm|md|lg|xl)
+		 */
+		
+		getGridSize : function()
+		{
+			var w = Roo.lib.Dom.getViewWidth();
+			switch(true) {
+				case w > 1200:
+					return 'xl';
+				case w > 992:
+					return 'lg';
+				case w > 768:
+					return 'md';
+				case w > 576:
+					return 'sm';
+				default:
+					return 'xs'
+			}
+			
+		}
         
     });
 
@@ -58063,19 +58086,34 @@ Roo.extend(Roo.grid.GridView.ColumnDragZone, Roo.grid.HeaderDragZone, {
  * Fork - LGPL
  * <script type="text/javascript">
  */
- 
+ /**
+ * @extends Roo.dd.DDProxy
+ * @class Roo.grid.SplitDragZone
+ * Support for Column Header resizing
+ * @constructor
+ * @param {Object} config
+ */
 // private
 // This is a support class used internally by the Grid components
 Roo.grid.SplitDragZone = function(grid, hd, hd2){
     this.grid = grid;
     this.view = grid.getView();
     this.proxy = this.view.resizeProxy;
-    Roo.grid.SplitDragZone.superclass.constructor.call(this, hd,
-        "gridSplitters" + this.grid.getGridEl().id, {
-        dragElId : Roo.id(this.proxy.dom), resizeFrame:false
-    });
+    Roo.grid.SplitDragZone.superclass.constructor.call(
+        this,
+        hd, // ID
+        "gridSplitters" + this.grid.getGridEl().id, // SGROUP
+        {  // CONFIG
+            dragElId : Roo.id(this.proxy.dom),
+            resizeFrame:false
+        }
+    );
+    
     this.setHandleElId(Roo.id(hd));
-    this.setOuterHandleElId(Roo.id(hd2));
+    if (hd2 !== false) {
+        this.setOuterHandleElId(Roo.id(hd2));
+    }
+    
     this.scroll = false;
 };
 Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
@@ -58083,8 +58121,25 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
 
     b4StartDrag : function(x, y){
         this.view.headersDisabled = true;
-        this.proxy.setHeight(this.view.mainWrap.getHeight());
+        var h = this.view.mainWrap ? this.view.mainWrap.getHeight() : (
+                    this.view.headEl.getHeight() + this.view.bodyEl.getHeight()
+        );
+        this.proxy.setHeight(h);
+        
+        // for old system colWidth really stored the actual width?
+        // in bootstrap we tried using xs/ms/etc.. to do % sizing?
+        // which in reality did not work.. - it worked only for fixed sizes
+        // for resizable we need to use actual sizes.
         var w = this.cm.getColumnWidth(this.cellIndex);
+        if (!this.view.mainWrap) {
+            // bootstrap.
+            w = this.view.getHeaderIndex(this.cellIndex).getWidth();
+        }
+        
+        
+        
+        // this was w-this.grid.minColumnWidth;
+        // doesnt really make sense? - w = thie curren width or the rendered one?
         var minw = Math.max(w-this.grid.minColumnWidth, 0);
         this.resetConstraints();
         this.setXConstraint(minw, 1000);
@@ -58092,6 +58147,10 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
         this.minX = x - minw;
         this.maxX = x + 1000;
         this.startPos = x;
+        if (!this.view.mainWrap) { // this is Bootstrap code..
+            this.getDragEl().style.display='block';
+        }
+        
         Roo.dd.DDProxy.prototype.b4StartDrag.call(this, x, y);
     },
 
@@ -58113,7 +58172,12 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
         this.view.headersDisabled = false;
         var endX = Math.max(this.minX, Roo.lib.Event.getPageX(e));
         var diff = endX - this.startPos;
-        this.view.onColumnSplitterMoved(this.cellIndex, this.cm.getColumnWidth(this.cellIndex)+diff);
+        // 
+        var w = this.cm.getColumnWidth(this.cellIndex);
+        if (!this.view.mainWrap) {
+            w = 0;
+        }
+        this.view.onColumnSplitterMoved(this.cellIndex, w+diff);
     },
 
     autoOffset : function(){
@@ -58337,6 +58401,21 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} header The header text to display in the Grid view.
      */
+	/**
+     * @cfg {String} xsHeader Header at Bootsrap Extra Small width (default for all)
+     */
+	/**
+     * @cfg {String} smHeader Header at Bootsrap Small width
+     */
+	/**
+     * @cfg {String} mdHeader Header at Bootsrap Medium width
+     */
+	/**
+     * @cfg {String} lgHeader Header at Bootsrap Large width
+     */
+	/**
+     * @cfg {String} xlHeader Header at Bootsrap extra Large width
+     */
     /**
      * @cfg {String} dataIndex (Optional) The name of the field in the grid's {@link Roo.data.Store}'s
      * {@link Roo.data.Record} definition from which to draw the column's value. If not
@@ -58385,16 +58464,19 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {String} tooltip (Optional)
      */
     /**
-     * @cfg {Number} xs (Optional)
+     * @cfg {Number} xs (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} sm (Optional)
+     * @cfg {Number} sm (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} md (Optional)
+     * @cfg {Number} md (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} lg (Optional)
+     * @cfg {Number} lg (Optional) can be '0' for hidden at this size (number less than 12)
+     */
+	/**
+     * @cfg {Number} xl (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
      * Returns the id of the column at the specified index.
@@ -58577,10 +58659,29 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * Returns the width for the specified column.
      * @param {Number} col The column index
+     * @param (optional) {String} gridSize bootstrap width size.
      * @return {Number}
      */
-    getColumnWidth : function(col){
-        return this.config[col].width * 1 || this.defaultWidth;
+    getColumnWidth : function(col, gridSize)
+	{
+		var cfg = this.config[col];
+		
+		if (typeof(gridSize) == 'undefined') {
+			return cfg.width * 1 || this.defaultWidth;
+		}
+		if (gridSize === false) { // if we set it..
+			return cfg.width || false;
+		}
+		var sizes = ['xl', 'lg', 'md', 'sm', 'xs'];
+		
+		for(var i = sizes.indexOf(gridSize); i < sizes.length; i++) {
+			if (typeof(cfg[ sizes[i] ] ) == 'undefined') {
+				continue;
+			}
+			return cfg[ sizes[i] ];
+		}
+		return 1;
+		
     },
 
     /**
@@ -58867,39 +58968,39 @@ Roo.grid.RowSelectionModel = function(config){
 
     this.addEvents({
         /**
-	     * @event selectionchange
-	     * Fires when the selection changes
-	     * @param {SelectionModel} this
-	     */
-	    "selectionchange" : true,
-        /**
-	     * @event afterselectionchange
-	     * Fires after the selection changes (eg. by key press or clicking)
-	     * @param {SelectionModel} this
-	     */
-	    "afterselectionchange" : true,
-        /**
-	     * @event beforerowselect
-	     * Fires when a row is selected being selected, return false to cancel.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected index
-	     * @param {Boolean} keepExisting False if other selections will be cleared
-	     */
-	    "beforerowselect" : true,
-        /**
-	     * @event rowselect
-	     * Fires when a row is selected.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected index
-	     * @param {Roo.data.Record} r The record
-	     */
-	    "rowselect" : true,
-        /**
-	     * @event rowdeselect
-	     * Fires when a row is deselected.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected index
-	     */
+        * @event selectionchange
+        * Fires when the selection changes
+        * @param {SelectionModel} this
+        */
+       "selectionchange" : true,
+       /**
+        * @event afterselectionchange
+        * Fires after the selection changes (eg. by key press or clicking)
+        * @param {SelectionModel} this
+        */
+       "afterselectionchange" : true,
+       /**
+        * @event beforerowselect
+        * Fires when a row is selected being selected, return false to cancel.
+        * @param {SelectionModel} this
+        * @param {Number} rowIndex The selected index
+        * @param {Boolean} keepExisting False if other selections will be cleared
+        */
+       "beforerowselect" : true,
+       /**
+        * @event rowselect
+        * Fires when a row is selected.
+        * @param {SelectionModel} this
+        * @param {Number} rowIndex The selected index
+        * @param {Roo.data.Record} r The record
+        */
+       "rowselect" : true,
+       /**
+        * @event rowdeselect
+        * Fires when a row is deselected.
+        * @param {SelectionModel} this
+        * @param {Number} rowIndex The selected index
+        */
         "rowdeselect" : true
     });
     Roo.grid.RowSelectionModel.superclass.constructor.call(this);
@@ -58921,7 +59022,8 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
         }else{ // allow click to work like normal
             this.grid.on("rowclick", this.handleDragableRowClick, this);
         }
-
+        // bootstrap does not have a view..
+        var view = this.grid.view ? this.grid.view : this.grid;
         this.rowNav = new Roo.KeyNav(this.grid.getGridEl(), {
             "up" : function(e){
                 if(!e.shiftKey){
@@ -58929,7 +59031,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
                 }else if(this.last !== false && this.lastActive !== false){
                     var last = this.last;
                     this.selectRange(this.last,  this.lastActive-1);
-                    this.grid.getView().focusRow(this.lastActive);
+                    view.focusRow(this.lastActive);
                     if(last !== false){
                         this.last = last;
                     }
@@ -58944,7 +59046,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
                 }else if(this.last !== false && this.lastActive !== false){
                     var last = this.last;
                     this.selectRange(this.last,  this.lastActive+1);
-                    this.grid.getView().focusRow(this.lastActive);
+                    view.focusRow(this.lastActive);
                     if(last !== false){
                         this.last = last;
                     }
@@ -58956,7 +59058,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
             scope: this
         });
 
-        var view = this.grid.view;
+         
         view.on("refresh", this.onRefresh, this);
         view.on("rowupdated", this.onRowUpdated, this);
         view.on("rowremoved", this.onRemove, this);
@@ -58964,7 +59066,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
 
     // private
     onRefresh : function(){
-        var ds = this.grid.dataSource, i, v = this.grid.view;
+        var ds = this.grid.ds, i, v = this.grid.view;
         var s = this.selections;
         s.each(function(r){
             if((i = ds.indexOfId(r.id)) != -1){
@@ -58997,7 +59099,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
         if(!keepExisting){
             this.clearSelections();
         }
-        var ds = this.grid.dataSource;
+        var ds = this.grid.ds;
         for(var i = 0, len = records.length; i < len; i++){
             this.selectRow(ds.indexOf(records[i]), true);
         }
@@ -59023,7 +59125,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     selectLastRow : function(keepExisting){
-        this.selectRow(this.grid.dataSource.getCount() - 1, keepExisting);
+        this.selectRow(this.grid.ds.getCount() - 1, keepExisting);
     },
 
     /**
@@ -59031,9 +59133,10 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     selectNext : function(keepExisting){
-        if(this.last !== false && (this.last+1) < this.grid.dataSource.getCount()){
+        if(this.last !== false && (this.last+1) < this.grid.ds.getCount()){
             this.selectRow(this.last+1, keepExisting);
-            this.grid.getView().focusRow(this.last);
+            var view = this.grid.view ? this.grid.view : this.grid;
+            view.focusRow(this.last);
         }
     },
 
@@ -59044,7 +59147,8 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
     selectPrevious : function(keepExisting){
         if(this.last){
             this.selectRow(this.last-1, keepExisting);
-            this.grid.getView().focusRow(this.last);
+            var view = this.grid.view ? this.grid.view : this.grid;
+            view.focusRow(this.last);
         }
     },
 
@@ -59073,7 +59177,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
             return;
         }
         if(fast !== true){
-            var ds = this.grid.dataSource;
+            var ds = this.grid.ds;
             var s = this.selections;
             s.each(function(r){
                 this.deselectRow(ds.indexOfId(r.id));
@@ -59094,7 +59198,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
             return;
         }
         this.selections.clear();
-        for(var i = 0, len = this.grid.dataSource.getCount(); i < len; i++){
+        for(var i = 0, len = this.grid.ds.getCount(); i < len; i++){
             this.selectRow(i, true);
         }
     },
@@ -59113,7 +59217,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @return {Boolean}
      */
     isSelected : function(index){
-        var r = typeof index == "number" ? this.grid.dataSource.getAt(index) : index;
+        var r = typeof index == "number" ? this.grid.ds.getAt(index) : index;
         return (r && this.selections.key(r.id) ? true : false);
     },
 
@@ -59127,8 +59231,10 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
     },
 
     // private
-    handleMouseDown : function(e, t){
-        var view = this.grid.getView(), rowIndex;
+    handleMouseDown : function(e, t)
+    {
+        var view = this.grid.view ? this.grid.view : this.grid;
+        var rowIndex;
         if(this.isLocked() || (rowIndex = view.findRowIndex(t)) === false){
             return;
         };
@@ -59155,7 +59261,8 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
     {
         if(e.button === 0 && !e.shiftKey && !e.ctrlKey) {
             this.selectRow(rowIndex, false);
-            grid.view.focusRow(rowIndex);
+            var view = this.grid.view ? this.grid.view : this.grid;
+            view.focusRow(rowIndex);
              this.fireEvent("afterselectionchange", this);
         }
     },
@@ -59218,18 +59325,19 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
      * @param {Boolean} keepExisting (optional) True to keep existing selections
      */
     selectRow : function(index, keepExisting, preventViewNotify){
-        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) {
+        if(this.locked || (index < 0 || index >= this.grid.ds.getCount())) {
             return;
         }
         if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
             if(!keepExisting || this.singleSelect){
                 this.clearSelections();
             }
-            var r = this.grid.dataSource.getAt(index);
+            var r = this.grid.ds.getAt(index);
             this.selections.add(r);
             this.last = this.lastActive = index;
             if(!preventViewNotify){
-                this.grid.getView().onRowSelect(index);
+                var view = this.grid.view ? this.grid.view : this.grid;
+                view.onRowSelect(index);
             }
             this.fireEvent("rowselect", this, index, r);
             this.fireEvent("selectionchange", this);
@@ -59250,10 +59358,11 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
         if(this.lastActive == index){
             this.lastActive = false;
         }
-        var r = this.grid.dataSource.getAt(index);
+        var r = this.grid.ds.getAt(index);
         this.selections.remove(r);
         if(!preventViewNotify){
-            this.grid.getView().onRowDeselect(index);
+            var view = this.grid.view ? this.grid.view : this.grid;
+            view.onRowDeselect(index);
         }
         this.fireEvent("rowdeselect", this, index);
         this.fireEvent("selectionchange", this);
