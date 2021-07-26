@@ -923,6 +923,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.fireEvent('rowsrendered', this);
         
         this.autoSize();
+        
+        this.initCSS(); /// resize cols
+
+        
     },
     
     
