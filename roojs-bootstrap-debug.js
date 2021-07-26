@@ -9012,13 +9012,37 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             new Roo.grid.SplitDragZone(this, this.headEl.dom, false); // not sure what 'lockedHd is for this implementation..)
         }
         
-        
+        this.initCSS();
     },
     // Compatibility with grid - we implement all the view features at present.
     getView : function()
     {
         return this;
     },
+    
+    initCSS : function()
+    {
+        var cm = this.cm, styles = [];
+        this.CSS.removeStyleSheet(this.id + '-cssrules');
+        
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
+            
+            var hidden = '';
+            if(cm.isHidden(i)){
+                hidden = 'display:none;';
+            }
+            var width = "width:" + (cm.getColumnWidth(i) || 100) + "px;";
+            styles.push(
+                    '#' , this.id , ' .x-col-' , i, " {\n", cm.config[i].css, width, "\n}\n",
+                    '#' , this.id , ' .x-hcol-' , i, " {\n", width, "}\n"
+            );
+        }
+        Roo.log(styles.join(''));
+        this.CSS.createStyleSheet( styles.join(''), this.id + '-cssrules');
+        
+    },
+    
+    
     
     onContextMenu : function(e, t)
     {
@@ -9300,11 +9324,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.colspan = config.colspan;
             }
             
-            if(typeof(config.hidden) != 'undefined' && config.hidden){
-                c.cls += ' d-none';
-            } else {
-                c.cls += ' d-block';
-            }
+            // hidden is handled by CSS now
             
             if(typeof(config.dataIndex) != 'undefined'){
                 c.sort = config.dataIndex;
@@ -9328,7 +9348,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             // this is the bit that doesnt reall work at all...
             
-            
+            /*
             
             ['xs','sm','md','lg'].map(function(size){
                 
@@ -9348,6 +9368,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 
             });
+            */
             // at the end?
             
             c.html +=' <span class="x-grid-split x-grid-split-' + i + '"></span>';
@@ -9756,11 +9777,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 td.colspan = config.colspan;
             }
             
-            if(typeof(config.hidden) != 'undefined' && config.hidden){
-                td.cls += ' d-none';
-            } else {
-                td.cls += ' d-block';
-            }
+            
             
             if(typeof(config.align) != 'undefined' && config.align.length){
                 td.style += ' text-align:' + config.align + ';';
@@ -9991,11 +10008,22 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
         }
     },
-    onColumnSplitterMoved : function()
+    onColumnSplitterMoved : function(i, w)
     {
-        // resize it..  
+        this.userResized = true;
         
+        var cm = this.colModel;
         
+        cm.setColumnWidth(i, w, true);
+        //var cid = cm.getColumnId(i); << not used in this version?
+        Roo.log(['#' + this.id + ' .x-col-' + i, "width", w + "px"]);
+        
+        this.CSS.updateRule( '#' + this.id + ' .x-col-' + i, "width", w + "px");
+        this.CSS.updateRule('#' + this.id + ' .x-hcol-' + i, "width", w + "px");
+        
+        //this.updateSplitters();
+        //this.layout(); << ??
+        this.fireEvent("columnresize", i, w);
     },
     onHeaderChange : function()
     {
@@ -10020,16 +10048,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var thSelector = '#' + this.id + ' .x-hcol-' + colIndex;
         var tdSelector = '#' + this.id + ' .x-col-' + colIndex;
         
-        //this.CSS.updateRule(thSelector, "display", "");
-        var cols = this.headEl.select('th', true).elements;
-        if (typeof(cols[colIndex]) != 'undefined') {
-            cols[colIndex].removeClass(['d-none', 'd-block']);
-            cols[colIndex].addClass( hidden ? 'd-none' : 'd-block');
-        }
+        this.CSS.updateRule(thSelector, "display", "");
         this.CSS.updateRule(tdSelector, "display", "");
         
         if(hidden){
-          //  this.CSS.updateRule(thSelector, "display", "none");
+            this.CSS.updateRule(thSelector, "display", "none");
             this.CSS.updateRule(tdSelector, "display", "none");
         }
         
@@ -10110,7 +10133,8 @@ Roo.bootstrap.Table.cellRE = /(?:.*?)x-grid-(?:hd|cell|split)-([\d]+)(?:.*?)/;
  * @depricated
 */
 Roo.bootstrap.Table.AbstractSelectionModel = Roo.grid.AbstractSelectionModel;
-Roo.bootstrap.Table.RowSelectionModel = Roo.grid.RowSelectionModel;/*
+Roo.bootstrap.Table.RowSelectionModel = Roo.grid.RowSelectionModel;
+/*
  * - LGPL
  *
  * table cell
