@@ -305,6 +305,13 @@ Roo.bootstrap.PaginationItem=function(A){Roo.bootstrap.PaginationItem.superclass
 // Roo/bootstrap/Slider.js
 Roo.bootstrap.Slider=function(A){Roo.bootstrap.Slider.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Slider,Roo.bootstrap.Component,{getAutoCreate:function(){var A={tag:'div',cls:'slider slider-sample1 vertical-handler ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all',cn:[{tag:'a',cls:'ui-slider-handle ui-state-default ui-corner-all'}
 ]};return A;}});
+// Roo/grid/SplitDragZone.js
+Roo.grid.SplitDragZone=function(A,hd,B){this.grid=A;this.view=A.getView();this.proxy=this.view.resizeProxy;Roo.grid.SplitDragZone.superclass.constructor.call(this,hd,"gridSplitters"+this.grid.getGridEl().id,{dragElId:Roo.id(this.proxy.dom),resizeFrame:false}
+);this.setHandleElId(Roo.id(hd));if(B!==false){this.setOuterHandleElId(Roo.id(B));}this.scroll=false;};Roo.extend(Roo.grid.SplitDragZone,Roo.dd.DDProxy,{fly:Roo.Element.fly,b4StartDrag:function(x,y){this.view.headersDisabled=true;this.proxy.setHeight(this.view.mainWrap.getHeight());
+var w=this.cm.getColumnWidth(this.cellIndex);var A=Math.max(w-this.grid.minColumnWidth,0);this.resetConstraints();this.setXConstraint(A,1000);this.setYConstraint(0,0);this.minX=x-A;this.maxX=x+1000;this.startPos=x;Roo.dd.DDProxy.prototype.b4StartDrag.call(this,x,y);
+},handleMouseDown:function(e){ev=Roo.EventObject.setEvent(e);var t=this.fly(ev.getTarget());if(t.hasClass("x-grid-split")){this.cellIndex=this.view.getCellIndex(t.dom);this.split=t.dom;this.cm=this.grid.colModel;if(this.cm.isResizable(this.cellIndex)&&!this.cm.isFixed(this.cellIndex)){Roo.grid.SplitDragZone.superclass.handleMouseDown.apply(this,arguments);
+}}},endDrag:function(e){this.view.headersDisabled=false;var A=Math.max(this.minX,Roo.lib.Event.getPageX(e));var B=A-this.startPos;this.view.onColumnSplitterMoved(this.cellIndex,this.cm.getColumnWidth(this.cellIndex)+B);},autoOffset:function(){this.setDelta(0,0);
+}});
 // Roo/grid/AbstractSelectionModel.js
 Roo.grid.AbstractSelectionModel=function(){this.locked=false;Roo.grid.AbstractSelectionModel.superclass.constructor.call(this);};Roo.extend(Roo.grid.AbstractSelectionModel,Roo.util.Observable,{init:function(A){this.grid=A;this.initEvents();},lock:function(){this.locked=true;
 },unlock:function(){this.locked=false;},isLocked:function(){return this.locked;}});
