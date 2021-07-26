@@ -7342,7 +7342,10 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
 
     b4StartDrag : function(x, y){
         this.view.headersDisabled = true;
-        this.proxy.setHeight(this.view.mainWrap.getHeight());
+        var h = this.view.mainWrap ? this.view.mainWrap.getHeight() : (
+                    this.view.headEl.getHeight() + this.view.bodyEl.getHeight()
+        );
+        this.proxy.setHeight(h);
         var w = this.cm.getColumnWidth(this.cellIndex);
         var minw = Math.max(w-this.grid.minColumnWidth, 0);
         this.resetConstraints();
@@ -8665,7 +8668,8 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
- 
+ * @cfg {Boolean} enableColumnResize default true if columns can be resized (drag/drop)
+ * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
  * 
  * @constructor
  * Create a new Table
@@ -8838,15 +8842,20 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     loadMask : false,
     footerShow : true,
     headerShow : true,
+    enableColumnResize: true,
   
     rowSelection : false,
     cellSelection : false,
     layout : false,
+
+    minColumnWidth : 50,
     
     // Roo.Element - the tbody
     bodyEl: false,  // <tbody> Roo.Element - thead element    
     headEl: false,  // <thead> Roo.Element - thead element
-    proxy : false, // proxy element for dragging?
+    resizeProxy : false, // proxy element for dragging?
+
+
     
     container: false, // used by gridpanel...
     
@@ -8978,10 +8987,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.relayEvents(this.bodyEl, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
   
   
-        this.resizeProxy = this.el.createChild({ cls:"x-grid-resize-proxy", html: '&#160;' });
+        this.resizeProxy = Roo.get(document.body).createChild({ cls:"x-grid-resize-proxy", html: '&#160;' });
         
   
-        if(this.enableColumnResize !== false && Roo.grid.SplitDragZone){
+        if(this.headEl && this.enableColumnResize !== false && Roo.grid.SplitDragZone){
             new Roo.grid.SplitDragZone(this, this.headEl.dom, false); // not sure what 'lockedHd is for this implementation..)
         }
         
@@ -9239,7 +9248,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             var hh = '';
             
             if(typeof(config.sortable) != 'undefined' && config.sortable){
-                c.cls = 'sortable';
+                c.cls += ' sortable';
                 c.html = '<i class="fa"></i>' + c.html;
             }
             
@@ -9319,7 +9328,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
             });
             // at the end?
-            c.html +=' <span class="roo-hd-split"></span>';
+            c.html +=' <span class="x-grid-split x-grid-split-' + i + '"></span>';
             
             
             header.cn.push(c)
@@ -9838,7 +9847,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             })
         }
     },
-    
+    /**
+     * get the Row Index from a dom element.
+     * @param {Roo.Element} row The row to look for
+     * @returns {Number} the row
+     */
     getRowIndex : function(row)
     {
         var rowIndex = -1;
@@ -9852,6 +9865,19 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         });
         
         return rowIndex;
+    },
+    /**
+     * get the Column Index from a dom element. (using regex on x-hcol-{colid})
+     * @param {domElement} cell to look for
+     * @returns {Number} the column
+     */
+    getCellIndex : function(cell)
+    {
+        var id = String(cell.className).match(Roo.bootstrap.Table.cellRE);
+        if(id){
+            return parseInt(id[1], 10);
+        }
+        return 0;
     },
      /**
      * Returns the grid's underlying element = used by panel.Grid
@@ -10038,7 +10064,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     }
 });
 
- 
+// currently only used to find the split on drag.. 
+Roo.bootstrap.Table.cellRE = /(?:.*?)x-grid-(?:hd|cell|split)-([\d]+)(?:.*?)/;
 
 /**
  * @depricated
