@@ -9349,9 +9349,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
             });
             // at the end?
-            if (i > 0) {
-                c.html +=' <span class="x-grid-split x-grid-split-' + (i-1) + '"></span>';
-            }
+            
+            c.html +=' <span class="x-grid-split x-grid-split-' + i + '"></span>';
+            
             
             
             
