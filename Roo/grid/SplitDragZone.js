@@ -43,8 +43,25 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
 
     b4StartDrag : function(x, y){
         this.view.headersDisabled = true;
-        this.proxy.setHeight(this.view.mainWrap.getHeight());
+        var h = this.view.mainWrap ? this.view.mainWrap.getHeight() : (
+                    this.view.headEl.getHeight() + this.view.bodyEl.getHeight()
+        );
+        this.proxy.setHeight(h);
+        
+        // for old system colWidth really stored the actual width?
+        // in bootstrap we tried using xs/ms/etc.. to do % sizing?
+        // which in reality did not work.. - it worked only for fixed sizes
+        // for resizable we need to use actual sizes.
         var w = this.cm.getColumnWidth(this.cellIndex);
+        if (!this.view.mainWrap) {
+            // bootstrap.
+            w = this.view.getHeaderIndex(this.celIndex).getWidth();
+        }
+        
+        
+        
+        // this was w-this.grid.minColumnWidth;
+        // doesnt really make sense? - w = thie curren width or the rendered one?
         var minw = Math.max(w-this.grid.minColumnWidth, 0);
         this.resetConstraints();
         this.setXConstraint(minw, 1000);
@@ -52,6 +69,10 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
         this.minX = x - minw;
         this.maxX = x + 1000;
         this.startPos = x;
+        if (!this.view.mainWrap) { // this is Bootstrap code..
+            this.getDragEl().style.display='block';
+        }
+        
         Roo.dd.DDProxy.prototype.b4StartDrag.call(this, x, y);
     },
 

@@ -56276,6 +56276,12 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "enableColumnResize",
+        "type" : "Boolean",
+        "desc" : "default true if columns can be resized (drag/drop)",
+        "memberOf" : ""
+      },
+      {
         "name" : "footer",
         "type" : "Roo.bootstrap.PagingToolbar",
         "desc" : "a paging toolbar",
@@ -56333,6 +56339,12 @@
           "(true",
           "false)"
         ],
+        "memberOf" : ""
+      },
+      {
+        "name" : "minColumnWidth",
+        "type" : "Number",
+        "desc" : "default 10 pixels minimum column width",
         "memberOf" : ""
       },
       {
@@ -56687,6 +56699,14 @@
         "memberOf" : ""
       },
       {
+        "name" : "getCellIndex",
+        "type" : "function",
+        "desc" : "get the Column Index from a dom element. (using regex on x-hcol-{colid})",
+        "sig" : "(cell)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "getChildContainer",
         "type" : "function",
         "desc" : "Fetch the element to add children to",
@@ -56711,12 +56731,28 @@
         "memberOf" : ""
       },
       {
+        "name" : "getHeaderIndex",
+        "type" : "function",
+        "desc" : "get the header TH element for columnIndex",
+        "sig" : "(columnIndex)",
+        "static" : false,
+        "memberOf" : ""
+      },
+      {
         "name" : "getId",
         "type" : "function",
         "desc" : "Returns the id of this component.",
         "sig" : "()\n{\n\n}",
         "static" : false,
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "getRowIndex",
+        "type" : "function",
+        "desc" : "get the Row Index from a dom element.",
+        "sig" : "(row)",
+        "static" : false,
+        "memberOf" : ""
       },
       {
         "name" : "getVisibilityEl",
