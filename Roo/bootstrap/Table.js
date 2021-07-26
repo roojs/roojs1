@@ -397,7 +397,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.relayEvents(this.bodyEl, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
   
   
-        this.proxy = table.createChild({ cls:"x-grid-resize-proxy", html: '&#160;' });
+        this.proxy = this.el.createChild({ cls:"x-grid-resize-proxy", html: '&#160;' });
         
   
         if(this.enableColumnResize !== false && Roo.grid.SplitDragZone){
