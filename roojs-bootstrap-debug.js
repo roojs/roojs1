@@ -9061,9 +9061,22 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         // we can honour xs/sm/md/xl  as widths...
         // we first have to decide what widht we are currently at...
-        var sz = Roo.bootstrap.getGridSize();
+        var sz = Roo.getGridSize();
+        
+        var total = 0;
+        var cols = []; // visable cols.
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
+            var w = cm.getColumnWidth(i, sz);
+            if (w > 0) {
+                cols.push(i);
+            }
+            total += w;
+        }
         
         
+        var unitWidth = Math.floor(this.bodyEl.dom.clientWidth / total);
+        var rem = this.bodyEl.dom.clientWidth - (unitWidth * total);
+        var last = cols.pop();
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
             
@@ -9072,11 +9085,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 hidden = 'display:none;';
             }
             // we can honour xs/sm/md/xl ?
-            var w = cm.getColumnWidth(i, sz);
+            var w = cm.getColumnWidth(i, sz) * unitWidth;
+            // width should return a small number...
+            if (i == last) {
+                w+=rem; // add the remaining with..
+            }
             
-            
-            var width = "width:" + (cm.getColumnWidth(i) || 100) + "px;";
-            
+            var width = "width:" + w+ "px;";
             
             styles.push(
                     '#' , this.id , ' .x-col-' , i, " {\n", cm.config[i].css, width, "\n}\n",
