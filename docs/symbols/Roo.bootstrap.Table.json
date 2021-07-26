@@ -85,7 +85,7 @@
     {
       "name" : "minColumnWidth",
       "type" : "Number",
-      "desc" : "default 10 pixels minimum column width",
+      "desc" : "default 50 pixels minimum column width",
       "memberOf" : "Roo.bootstrap.Table",
       "values" : []
     },

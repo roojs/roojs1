@@ -1389,11 +1389,20 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
         }
     },
-    onColumnSplitterMoved : function()
+    onColumnSplitterMoved : function(i, w)
     {
-        // resize it..  
+        this.userResized = true;
         
+        var cm = this.grid.colModel;
         
+        cm.setColumnWidth(i, w, true);
+        var cid = cm.getColumnId(i);
+        this.css.updateRule(this.colSelector + this.idToCssName(cid), "width", (w-this.borderWidth) + "px");
+        this.css.updateRule(this.hdSelector + this.idToCssName(cid), "width", (w-this.borderWidth) + "px");
+        
+        //this.updateSplitters();
+        //this.layout(); << ??
+        this.grid.fireEvent("columnresize", i, w);
     },
     onHeaderChange : function()
     {
