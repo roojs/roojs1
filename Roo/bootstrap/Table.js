@@ -430,11 +430,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var sz = Roo.getGridSize();
         
         var total = 0;
+        var last = -1;
         var cols = []; // visable cols.
         for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
             var w = cm.getColumnWidth(i, sz);
             if (w > 0) {
-                cols.push(i);
+                last = i
             }
             total += w;
         }
@@ -442,7 +443,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var unitWidth = Math.floor(this.bodyEl.dom.clientWidth / total);
         var rem = this.bodyEl.dom.clientWidth - (unitWidth * total);
-        var last = cols.pop();
+        
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
             
