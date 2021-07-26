@@ -444,24 +444,26 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var unitWidth = Math.floor(this.bodyEl.dom.clientWidth / total);
         var rem = this.bodyEl.dom.clientWidth - (unitWidth * total);
         
-        
+        var hidden, width;
         for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
             
-            var hidden = '';
-            if(cm.isHidden(i)){
-                hidden = 'display:none;';
+            var hidden = 'display:none;';
+            var width  = 'width:0px';
+            if(!cm.isHidden(i)){
+                hidden = '';
+                
+                // we can honour xs/sm/md/xl ?
+                var w = cm.getColumnWidth(i, sz) * unitWidth;
+                if (w===0) {
+                    hidden = 'display:none;';
+                }
+                // width should return a small number...
+                if (i == last) {
+                    w+=rem; // add the remaining with..
+                }
+                
+                width = "width:" + w+ "px;";
             }
-            // we can honour xs/sm/md/xl ?
-            var w = cm.getColumnWidth(i, sz) * unitWidth;
-            if (w===0) {
-                hidden = 'display:none;';
-            }
-            // width should return a small number...
-            if (i == last) {
-                w+=rem; // add the remaining with..
-            }
-            
-            var width = "width:" + w+ "px;";
             
             styles.push(
                     '#' , this.id , ' .x-col-' , i, " {\n", cm.config[i].css, width, hidden, "\n}\n",
