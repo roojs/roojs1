@@ -9075,7 +9075,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
             var w = cm.getColumnWidth(i, false);
             if(!cm.isHidden(i)){
-                w = 0;
+                cols.push( { rel : false, abs : 0 });
+                continue;
             }
             if (w !== false) {
                 cols.push( { rel : false, abs : w });
