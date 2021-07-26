@@ -396,6 +396,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         // guessing mainbody will work - this relays usually caught by selmodel at present.
         this.relayEvents(this.bodyEl, ["mousedown","mouseup","mouseover","mouseout","keypress"]);
   
+  
+        this.proxy = table.createChild({ cls:"x-grid-resize-proxy", html: '&#160;' });
+        
+  
         if(this.enableColumnResize !== false && Roo.grid.SplitDragZone){
             new Roo.grid.SplitDragZone(this, this.headEl.dom, false); // not sure what 'lockedHd is for this implementation..)
         }
