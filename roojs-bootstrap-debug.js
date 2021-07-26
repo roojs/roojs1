@@ -9348,7 +9348,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             // this is the bit that doesnt reall work at all...
             
-            /*
+           /*
             
             ['xs','sm','md','lg'].map(function(size){
                 
