@@ -427,26 +427,65 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
 
         </span><span class="jsdoc-comment">// we can honour xs/sm/md/xl  as widths...
         // we first have to decide what widht we are currently at...
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sz </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.getGridSize</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sz </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getGridSize</span><span class="jsdoc-syntax">();
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">total </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">= -1;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">= []; </span><span class="jsdoc-comment">// visable cols.
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">total_abs </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-var">cols.push</span><span class="jsdoc-syntax">( { </span><span class="jsdoc-var">rel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">abs </span><span class="jsdoc-syntax">: 0 });
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cols.push</span><span class="jsdoc-syntax">( { </span><span class="jsdoc-var">rel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">abs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">});
+                </span><span class="jsdoc-var">total_abs </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sz</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">&gt; 0) {
+                </span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i
+            </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-var">total </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">cols.push</span><span class="jsdoc-syntax">( { </span><span class="jsdoc-var">rel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">abs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">});
+        }
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">avail </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bodyEl.dom.clientWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">total_abs</span><span class="jsdoc-syntax">;
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">unitWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">avail </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">total</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">avail </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">unitWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">total</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= 0;
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
 
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)){
-                </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'display:none;'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'display:none;'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">left </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'width:0px;'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cm.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+
+
+                </span><span class="jsdoc-comment">// we can honour xs/sm/md/xl ?
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.rel </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.abs </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">cols</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.rel </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">unitWidth</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">===0) {
+                    </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'display:none;'</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-comment">// width should return a small number...
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">last</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">+=</span><span class="jsdoc-var">rem</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// add the remaining with..
+                </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">left </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;left:&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px;&quot;</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width:&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px;&quot;</span><span class="jsdoc-syntax">;
+
             }
-            </span><span class="jsdoc-comment">// we can honour xs/sm/md/xl ?
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sz</span><span class="jsdoc-syntax">);
-
-
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;width:&quot; </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">cm.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) || 100) + </span><span class="jsdoc-string">&quot;px;&quot;</span><span class="jsdoc-syntax">;
-
 
             </span><span class="jsdoc-var">styles.push</span><span class="jsdoc-syntax">(
-                    </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-col-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; {\n&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cm.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.css</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;\n}\n&quot;</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-hcol-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; {\n&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;}\n&quot;
+                    </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-col-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; {\n&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cm.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.css</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;\n}\n&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-hcol-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; {\n&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;}\n&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-grid-split-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; {\n&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;}\n&quot;
             </span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styles.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">));
@@ -901,7 +940,11 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowsrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">this.autoSize</span><span class="jsdoc-syntax">();
-    },
+
+        </span><span class="jsdoc-var">this.initCSS</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">/// resize cols
+
+
+    </span><span class="jsdoc-syntax">},
 
 
     </span><span class="jsdoc-var">onUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">)
@@ -1379,6 +1422,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
         </span><span class="jsdoc-var">cw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.totalWidth</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody tr'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cw</span><span class="jsdoc-syntax">);
 
+
         </span><span class="jsdoc-comment">// resize 'expandable coloumn?
 
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// we doe not have a view in this design..
@@ -1427,13 +1471,15 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.colModel</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-var">cm.setColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.initCSS</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">//var cid = cm.getColumnId(i); &lt;&lt; not used in this version?
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' .x-col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;width&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">]);
-
-        </span><span class="jsdoc-var">this.CSS.updateRule</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' .x-col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;width&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.CSS.updateRule</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' .x-hcol-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;width&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;px&quot;</span><span class="jsdoc-syntax">);
-
-        </span><span class="jsdoc-comment">//this.updateSplitters();
+       /* Roo.log(['#' + this.id + ' .x-col-' + i, &quot;width&quot;, w + &quot;px&quot;]);
+        
+        this.CSS.updateRule( '#' + this.id + ' .x-col-' + i, &quot;width&quot;, w + &quot;px&quot;);
+        this.CSS.updateRule('#' + this.id + ' .x-hcol-' + i, &quot;width&quot;, w + &quot;px&quot;);
+        this.CSS.updateRule('#' + this.id + ' .x-grid-split-' + i, &quot;left&quot;, w + &quot;px&quot;);
+*/
+        //this.updateSplitters();
         //this.layout(); &lt;&lt; ??
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;columnresize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">);
     },

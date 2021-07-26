@@ -172,19 +172,19 @@
      * @cfg {String} tooltip (Optional)
      */
     /**
-     * @cfg {Number} xs (Optional)
+     * @cfg {Number} xs (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} sm (Optional)
+     * @cfg {Number} sm (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} md (Optional)
+     * @cfg {Number} md (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} lg (Optional)
+     * @cfg {Number} lg (Optional) can be '0' for hidden at this size (number less than 12)
      */
 	/**
-     * @cfg {Number} xl (Optional)
+     * @cfg {Number} xl (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
      * Returns the id of the column at the specified index.
@@ -372,11 +372,23 @@
      */
     </span><span class="jsdoc-var">getColumnWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">gridSize</span><span class="jsdoc-syntax">)
 	{
-		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.width </span><span class="jsdoc-syntax">* 1 || </span><span class="jsdoc-var">this.defaultWidth</span><span class="jsdoc-syntax">;
-		</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">gridSize</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
-			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
-		}
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">];
 
+		</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">gridSize</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg.width </span><span class="jsdoc-syntax">* 1 || </span><span class="jsdoc-var">this.defaultWidth</span><span class="jsdoc-syntax">;
+		}
+		</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">gridSize </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// if we set it..
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg.width </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+		}
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sizes </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'xl'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">];
+
+		</span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sizes.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">gridSize</span><span class="jsdoc-syntax">); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">sizes.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+			</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">[ </span><span class="jsdoc-var">sizes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] ] ) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+				</span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+			}
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">[ </span><span class="jsdoc-var">sizes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] ];
+		}
+		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">1;
 
     },
 

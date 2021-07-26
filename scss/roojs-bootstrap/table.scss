@@ -84,17 +84,17 @@
 }
 
 /** -- the dragable column bar */
-.table-body-fixed thead > tr:hover th .x-grid-split {
+.table-body-fixed thead > tr th .x-grid-split {
     position: absolute;
     top: 0px;
-    right: 0;
+    /*right: 0;*/
     width: 9px;
     
     height: 100%;
     background: transparent;
     cursor: col-resize;
 }
-.table-body-fixed thead > tr:hover th .x-grid-split:before {
+.table-body-fixed thead > tr th .x-grid-split:before {
     position: absolute;
     content: " ";
     top: 15%;

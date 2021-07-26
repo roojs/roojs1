@@ -97051,7 +97051,7 @@
       {
         "name" : "lg",
         "type" : "Number",
-        "desc" : "(Optional)",
+        "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
         "memberOf" : ""
       },
       {
@@ -97075,7 +97075,7 @@
       {
         "name" : "md",
         "type" : "Number",
-        "desc" : "(Optional)",
+        "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
         "memberOf" : ""
       },
       {
@@ -97099,7 +97099,7 @@
       {
         "name" : "sm",
         "type" : "Number",
-        "desc" : "(Optional)",
+        "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
         "memberOf" : ""
       },
       {
@@ -97135,7 +97135,7 @@
       {
         "name" : "xl",
         "type" : "Number",
-        "desc" : "(Optional)",
+        "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
         "memberOf" : ""
       },
       {
@@ -97147,7 +97147,7 @@
       {
         "name" : "xs",
         "type" : "Number",
-        "desc" : "(Optional)",
+        "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
         "memberOf" : ""
       },
       {

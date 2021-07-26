@@ -67,7 +67,7 @@
     {
       "name" : "md",
       "type" : "Number",
-      "desc" : "(Optional)",
+      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
       "memberOf" : "Roo.grid.ColumnModel",
       "values" : []
     },
@@ -123,7 +123,7 @@
     {
       "name" : "lg",
       "type" : "Number",
-      "desc" : "(Optional)",
+      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
       "memberOf" : "Roo.grid.ColumnModel",
       "values" : []
     },
@@ -137,7 +137,7 @@
     {
       "name" : "xs",
       "type" : "Number",
-      "desc" : "(Optional)",
+      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
       "memberOf" : "Roo.grid.ColumnModel",
       "values" : []
     },
@@ -179,7 +179,7 @@
     {
       "name" : "xl",
       "type" : "Number",
-      "desc" : "(Optional)",
+      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
       "memberOf" : "Roo.grid.ColumnModel",
       "values" : []
     },
@@ -193,7 +193,7 @@
     {
       "name" : "sm",
       "type" : "Number",
-      "desc" : "(Optional)",
+      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
       "memberOf" : "Roo.grid.ColumnModel",
       "values" : []
     }
