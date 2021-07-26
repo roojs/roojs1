@@ -110,10 +110,10 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {String} header The header text to display in the Grid view.
      */
 	/**
-     * @cfg {String} xsHeader Header at Bootsrap Medium width
+     * @cfg {String} xsHeader Header at Bootsrap Extra Small width (default for all)
      */
 	/**
-     * @cfg {String} smHeader Header at Bootsrap Medium width
+     * @cfg {String} smHeader Header at Bootsrap Small width
      */
 	/**
      * @cfg {String} mdHeader Header at Bootsrap Medium width

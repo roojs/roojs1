@@ -35234,6 +35234,21 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} header The header text to display in the Grid view.
      */
+	/**
+     * @cfg {String} xsHeader Header at Bootsrap Extra Small width (default for all)
+     */
+	/**
+     * @cfg {String} smHeader Header at Bootsrap Small width
+     */
+	/**
+     * @cfg {String} mdHeader Header at Bootsrap Medium width
+     */
+	/**
+     * @cfg {String} lgHeader Header at Bootsrap Large width
+     */
+	/**
+     * @cfg {String} xlHeader Header at Bootsrap extra Large width
+     */
     /**
      * @cfg {String} dataIndex (Optional) The name of the field in the grid's {@link Roo.data.Store}'s
      * {@link Roo.data.Record} definition from which to draw the column's value. If not
@@ -35474,10 +35489,17 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * Returns the width for the specified column.
      * @param {Number} col The column index
+     * @param (optional) {String} gridSize bootstrap width size.
      * @return {Number}
      */
-    getColumnWidth : function(col){
-        return this.config[col].width * 1 || this.defaultWidth;
+    getColumnWidth : function(col, gridSize)
+	{
+		var ret = this.config[col].width * 1 || this.defaultWidth;
+		if (typeof(gridSize) == 'undefined') {
+			return ret;
+		}
+		
+		
     },
 
     /**
