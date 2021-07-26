@@ -9797,7 +9797,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(typeof(config.cls) != 'undefined'){
                 td.cls = (typeof(td.cls) == 'undefined') ? config.cls : (td.cls + ' ' + config.cls);
             }
-            
+            /*
             ['xs','sm','md','lg'].map(function(size){
                 
                 if(typeof(config[size]) == 'undefined'){
@@ -9818,7 +9818,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                  
 
             });
-            
+            */
             row.cn.push(td);
            
         }
