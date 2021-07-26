@@ -8,19 +8,34 @@
  * Fork - LGPL
  * &lt;script type=&quot;text/javascript&quot;&gt;
  */
-
+ /**
+ * @extends Roo.dd.DDProxy
+ * @class Roo.grid.SplitDragZone
+ * Support for Column Header resizing
+ * @constructor
+ * @param {Object} config
+ */
 // private
 // This is a support class used internally by the Grid components
 </span><span class="jsdoc-var">Roo.grid.SplitDragZone </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hd2</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">this.grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid.getView</span><span class="jsdoc-syntax">();
     </span><span class="jsdoc-var">this.proxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.resizeProxy</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-var">Roo.grid.SplitDragZone.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hd</span><span class="jsdoc-syntax">,
-        </span><span class="jsdoc-string">&quot;gridSplitters&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">, {
-        </span><span class="jsdoc-var">dragElId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.proxy.dom</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">resizeFrame</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false
-    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">Roo.grid.SplitDragZone.superclass.constructor.call</span><span class="jsdoc-syntax">(
+        </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">hd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// ID
+        </span><span class="jsdoc-string">&quot;gridSplitters&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.grid.getGridEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// SGROUP
+        </span><span class="jsdoc-syntax">{  </span><span class="jsdoc-comment">// CONFIG
+            </span><span class="jsdoc-var">dragElId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.proxy.dom</span><span class="jsdoc-syntax">),
+            </span><span class="jsdoc-var">resizeFrame</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false
+        </span><span class="jsdoc-syntax">}
+    );
+
     </span><span class="jsdoc-var">this.setHandleElId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hd</span><span class="jsdoc-syntax">));
-    </span><span class="jsdoc-var">this.setOuterHandleElId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hd2</span><span class="jsdoc-syntax">));
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hd2 </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.setOuterHandleElId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hd2</span><span class="jsdoc-syntax">));
+    }
+
     </span><span class="jsdoc-var">this.scroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.grid.SplitDragZone</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.dd.DDProxy</span><span class="jsdoc-syntax">, {

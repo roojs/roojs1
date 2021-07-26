@@ -1302,6 +1302,11 @@
             "name" : "Roo.grid.RowSelectionModel",
             "cn" : [],
             "is_class" : true
+          },
+          {
+            "name" : "Roo.grid.SplitDragZone",
+            "cn" : [],
+            "is_class" : true
           }
         ],
         "is_class" : false

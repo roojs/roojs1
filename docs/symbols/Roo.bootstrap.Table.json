@@ -295,6 +295,60 @@
       "returns" : []
     },
     {
+      "name" : "ensureVisible",
+      "desc" : "Scrolls the specified cell into view",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Table",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "row",
+          "type" : "Number",
+          "desc" : "The row index",
+          "isOptional" : false
+        },
+        {
+          "name" : "col",
+          "type" : "Number",
+          "desc" : "The column index",
+          "isOptional" : false
+        },
+        {
+          "name" : "hscroll",
+          "type" : "Boolean",
+          "desc" : "false to disable horizontal scrolling",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "focusRow",
+      "desc" : "Focuses the specified row.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Table",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "row",
+          "type" : "Number",
+          "desc" : "The row index",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "getGridEl",
       "desc" : "Returns the grid's underlying element = used by panel.Grid",
       "isStatic" : false,
@@ -346,6 +400,39 @@
       "since" : "",
       "see" : "",
       "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "focusCell",
+      "desc" : "Focuses the specified cell.",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "memberOf" : "Roo.bootstrap.Table",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "row",
+          "type" : "Number",
+          "desc" : "The row index",
+          "isOptional" : false
+        },
+        {
+          "name" : "col",
+          "type" : "Number",
+          "desc" : "The column index",
+          "isOptional" : false
+        },
+        {
+          "name" : "hscroll",
+          "type" : "Boolean",
+          "desc" : "false to disable horizontal scrolling",
+          "isOptional" : false
+        }
+      ],
       "returns" : []
     },
     {
