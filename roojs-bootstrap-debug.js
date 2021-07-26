@@ -9072,6 +9072,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 last = i
             }
             total += w;
+            cols.push(w);
         }
         
         
@@ -9087,7 +9088,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 hidden = '';
                 
                 // we can honour xs/sm/md/xl ?
-                var w = cm.getColumnWidth(i, sz) * unitWidth;
+                var w = cols[i] * unitWidth;
                 if (w===0) {
                     hidden = 'display:none;';
                 }
