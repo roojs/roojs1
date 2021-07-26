@@ -3621,7 +3621,6 @@ html.bootstrap-sticky body {
 /** vertical bar indicating that columns are being moved.  */
 .x-grid-resize-proxy {
   z-index: 40009;
-  display: none;
   position: absolute;
   background: #666;
   border: 1px solid #000;

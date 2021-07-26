@@ -84,7 +84,7 @@
 }
 
 /** -- the dragable column bar */
-.table-body-fixed thead > tr:hover th.d-block .roo-hd-split {
+.table-body-fixed thead > tr:hover th.d-block .x-grid-split {
     position: absolute;
     top: 0px;
     right: 0;
@@ -94,7 +94,7 @@
     background: transparent;
     cursor: col-resize;
 }
-.table-body-fixed thead > tr:hover th.d-block .roo-hd-split:before {
+.table-body-fixed thead > tr:hover th.d-block .x-grid-split:before {
     position: absolute;
     content: " ";
     top: 15%;
@@ -105,6 +105,19 @@
     background: black;
     cursor: col-resize;
 }
+/** vertical bar indicating that columns are being moved.  */
+.x-grid-resize-proxy {
+    z-index: 40009;
+    position: absolute;
+    background: #666;
+    border: 1px solid #000;
+    overflow: hidden;
+    cursor: col-resize;
+    overflow: hidden;
+    width: 2px;
+} 
+ 
+ 
  
 /* fake infinate widt.. */
 .table-body-fixed thead > tr,
