@@ -432,29 +432,42 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var total = 0;
         var last = -1;
         var cols = []; // visable cols.
+        var total_abs = 0;
         for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
+            var w = cm.getColumnWidth(i, false);
+            if(!cm.isHidden(i)){
+                w = 0;
+            }
+            if (w !== false) {
+                cols.push( { rel : false, abs : w });
+                total_abs += w;
+                continue;
+            }
             var w = cm.getColumnWidth(i, sz);
             if (w > 0) {
                 last = i
             }
             total += w;
-            cols.push(w);
+            cols.push( { rel : w, abs : false });
         }
         
+        var avail = this.bodyEl.dom.clientWidth - total_abs;
         
-        var unitWidth = Math.floor(this.bodyEl.dom.clientWidth / total);
-        var rem = this.bodyEl.dom.clientWidth - (unitWidth * total);
+        var unitWidth = Math.floor(avail / total);
+        var rem = avail - (unitWidth * total);
         
-        var hidden, width;
+        var hidden, width, pos = 0;
         for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
             
             var hidden = 'display:none;';
+            var left = '';
             var width  = 'width:0px;';
             if(!cm.isHidden(i)){
                 hidden = '';
                 
+                
                 // we can honour xs/sm/md/xl ?
-                var w = cols[i] * unitWidth;
+                var w = cols[i].rel == false ? cols[i].abs : (cols[i].rel * unitWidth);
                 if (w===0) {
                     hidden = 'display:none;';
                 }
@@ -462,13 +475,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 if (i == last) {
                     w+=rem; // add the remaining with..
                 }
-                
+                pos += w;
+                left = "left:" + pos + "px;";
                 width = "width:" + w+ "px;";
+                
             }
             
             styles.push(
                     '#' , this.id , ' .x-col-' , i, " {\n", cm.config[i].css, width, hidden, "\n}\n",
-                    '#' , this.id , ' .x-hcol-' , i, " {\n", width, hidden,"}\n"
+                    '#' , this.id , ' .x-hcol-' , i, " {\n", width, hidden,"}\n",
+                    '#' , this.id , ' .x-grid-split-' , i, " {\n", left,"}\n"
             );
         }
         Roo.log(styles.join(''));
@@ -1454,12 +1470,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cm = this.colModel;
         
         cm.setColumnWidth(i, w, true);
+        this.initCSS();
         //var cid = cm.getColumnId(i); << not used in this version?
-        Roo.log(['#' + this.id + ' .x-col-' + i, "width", w + "px"]);
+       /* Roo.log(['#' + this.id + ' .x-col-' + i, "width", w + "px"]);
         
         this.CSS.updateRule( '#' + this.id + ' .x-col-' + i, "width", w + "px");
         this.CSS.updateRule('#' + this.id + ' .x-hcol-' + i, "width", w + "px");
-        
+        this.CSS.updateRule('#' + this.id + ' .x-grid-split-' + i, "left", w + "px");
+*/
         //this.updateSplitters();
         //this.layout(); << ??
         this.fireEvent("columnresize", i, w);
