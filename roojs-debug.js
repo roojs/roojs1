@@ -58664,11 +58664,16 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
 		if (typeof(gridSize) == 'undefined') {
 			return cfg.width * 1 || this.defaultWidth;
 		}
-		for(var i in ['xl', 'lg', 'md', 'sm', 'xs']) {
-			if (typeof(cfg[i]) == 'undefined') {
+		if (gridSize === false) { // if we set it..
+			return cfg.width || false;
+		}
+		var sizes = ['xl', 'lg', 'md', 'sm', 'xs'];
+		
+		for(var i = sizes.indexOf(gridSize); i < sizes.length; i++) {
+			if (typeof(cfg[ sizes[i] ] ) == 'undefined') {
 				continue;
 			}
-			return cfg[i];
+			return cfg[ sizes[i] ];
 		}
 		return 1;
 		
