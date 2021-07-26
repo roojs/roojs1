@@ -463,8 +463,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             var width = "width:" + w+ "px;";
             
             styles.push(
-                    '#' , this.id , ' .x-col-' , i, " {\n", cm.config[i].css, width, "\n}\n",
-                    '#' , this.id , ' .x-hcol-' , i, " {\n", width, "}\n"
+                    '#' , this.id , ' .x-col-' , i, " {\n", cm.config[i].css, width, hidden, "\n}\n",
+                    '#' , this.id , ' .x-hcol-' , i, " {\n", width, hidden,"}\n"
             );
         }
         Roo.log(styles.join(''));
