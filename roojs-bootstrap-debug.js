@@ -9083,7 +9083,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         for(var i = 0, len = cm.getColumnCount(); i < len; i++) {
             
             var hidden = 'display:none;';
-            var width  = 'width:0px';
+            var width  = 'width:0px;';
             if(!cm.isHidden(i)){
                 hidden = '';
                 
