@@ -58660,9 +58660,9 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     getColumnWidth : function(col, gridSize)
 	{
 		var cfg = this.config[col];
-		var ret = cfg.width * 1 || this.defaultWidth;
+		
 		if (typeof(gridSize) == 'undefined') {
-			return ret;
+			return cfg.width * 1 || this.defaultWidth;
 		}
 		for(var i in ['xl', 'lg', 'md', 'sm', 'xs']) {
 			if (typeof(cfg[i]) == 'undefined') {
