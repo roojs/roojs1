@@ -172,19 +172,19 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {String} tooltip (Optional)
      */
     /**
-     * @cfg {Number} xs (Optional)
+     * @cfg {Number} xs (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} sm (Optional)
+     * @cfg {Number} sm (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} md (Optional)
+     * @cfg {Number} md (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} lg (Optional)
+     * @cfg {Number} lg (Optional) can be '0' for hidden at this size (number less than 12)
      */
 	/**
-     * @cfg {Number} xl (Optional)
+     * @cfg {Number} xl (Optional) can be '0' for hidden at this size (number less than 12)
      */
     /**
      * Returns the id of the column at the specified index.
@@ -372,11 +372,18 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      */
     getColumnWidth : function(col, gridSize)
 	{
-		var ret = this.config[col].width * 1 || this.defaultWidth;
+		var cfg = this.config[col];
+		var ret = cfg.width * 1 || this.defaultWidth;
 		if (typeof(gridSize) == 'undefined') {
 			return ret;
 		}
-		
+		for(var i in ['xl', 'lg', 'md', 'sm', 'xs']) {
+			if (typeof(cfg[i]) == 'undefined') {
+				continue;
+			}
+			return cfg[i];
+		}
+		return ret;
 		
     },
 
