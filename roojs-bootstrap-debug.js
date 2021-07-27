@@ -9453,27 +9453,28 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             // this is the bit that doesnt reall work at all...
             
-           /*
-            
-            ['xs','sm','md','lg'].map(function(size){
-                
-                if(typeof(config[size]) == 'undefined'){
-                    return;
-                }
+            if (this.responsive) {
                  
-                if (!config[size]) { // 0 = hidden
-                    // BS 4 '0' is treated as hide that column and below.
-                    c.cls += ' hidden-' + size + ' hidden' + size + '-down';
-                    return;
-                }
-                
-                c.cls += ' col-' + size + '-' + config[size] + (
-                    size == 'xs' ? (' col-' + config[size] ) : '' // bs4 col-{num} replaces col-xs
-                );
-                
-                
-            });
-            */
+            
+                ['xs','sm','md','lg'].map(function(size){
+                    
+                    if(typeof(config[size]) == 'undefined'){
+                        return;
+                    }
+                     
+                    if (!config[size]) { // 0 = hidden
+                        // BS 4 '0' is treated as hide that column and below.
+                        c.cls += ' hidden-' + size + ' hidden' + size + '-down';
+                        return;
+                    }
+                    
+                    c.cls += ' col-' + size + '-' + config[size] + (
+                        size == 'xs' ? (' col-' + config[size] ) : '' // bs4 col-{num} replaces col-xs
+                    );
+                    
+                    
+                });
+            }
             // at the end?
             
             c.html +=' <span class="x-grid-split x-grid-split-' + i + '"></span>';
