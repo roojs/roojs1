@@ -729,10 +729,12 @@ Roo.extend(Roo.ScrollPanel, Roo.ContentPanel, {
 /**
  * @class Roo.TreePanel
  * @extends Roo.ContentPanel
- * @constructor
- * Create a new TreePanel. - defaults to fit/scoll contents.
- * @param {String/Object} config A string to set only the panel's title, or a config object
  * @cfg {Roo.tree.TreePanel} tree The tree TreePanel, with config etc.
+*/
+/**
+ * Create a new TreePanel. - defaults to fit/scoll contents.
+ * @constructor
+ * @param {String/Object} config A string to set only the panel's title, or a config object
  */
 Roo.TreePanel = function(config){
     var el = config.el;
