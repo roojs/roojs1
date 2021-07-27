@@ -18,42 +18,42 @@
       "type" : "String",
       "desc" : "The default text for the create link prompt",
       "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "btns",
       "type" : "Array",
       "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
       "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "defaultFont",
       "type" : "String",
       "desc" : "default font to use.",
       "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "defaultLinkValue",
       "type" : "String",
       "desc" : "The default value for the create link prompt (defaults to http:/ /)",
       "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "fontFamilies",
       "type" : "Array",
       "desc" : "An array of available font families",
       "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "disable",
       "type" : "Object",
       "desc" : "List of elements to disable..",
       "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
-      "values" : []
+      "optvals" : []
     }
   ],
   "methods" : [

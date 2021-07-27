@@ -21,56 +21,56 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "method",
       "type" : "String",
       "desc" : "(Optional)  The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)",
       "memberOf" : "Roo.Ajax",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "timeout",
       "type" : "Number",
       "desc" : "(Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)",
       "memberOf" : "Roo.Ajax",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "autoAbort",
       "type" : "Boolean",
       "desc" : "(Optional) Whether a new request should abort any pending requests. (defaults to false)",
       "memberOf" : "Roo.Ajax",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "The default URL to be used for requests to the server. (defaults to undefined)",
       "memberOf" : "Roo.Ajax",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "extraParams",
       "type" : "Object",
       "desc" : "An object containing properties which are used as extra parameters to each request made by this object. (defaults to undefined)",
       "memberOf" : "Roo.Ajax",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "disableCaching",
       "type" : "Boolean",
       "desc" : "(Optional)   True to add a unique cache-buster param to GET requests. (defaults to true)",
       "memberOf" : "Roo.Ajax",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "defaultHeaders",
       "type" : "Object",
       "desc" : "An object containing request headers which are added to each request made by this object. (defaults to undefined)",
       "memberOf" : "Roo.Ajax",
-      "values" : []
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -29,79 +29,79 @@
       "type" : "String",
       "desc" : "image source",
       "memberOf" : "Roo.bootstrap.Img",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "border",
       "type" : "String",
       "desc" : "rounded | circle | thumbnail",
       "memberOf" : "Roo.bootstrap.Img",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "xsUrl",
       "type" : "String",
       "desc" : "xs image source",
       "memberOf" : "Roo.bootstrap.Img",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "smUrl",
       "type" : "String",
       "desc" : "sm image source",
       "memberOf" : "Roo.bootstrap.Img",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "mdUrl",
       "type" : "String",
       "desc" : "md image source",
       "memberOf" : "Roo.bootstrap.Img",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "lgUrl",
       "type" : "String",
       "desc" : "lg image source",
       "memberOf" : "Roo.bootstrap.Img",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "backgroundContain",
       "type" : "Boolean",
       "desc" : "(use style background and contain image in content)",
       "memberOf" : "Roo.bootstrap.Img",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
-        "(el",
-        "parent)"
+      "optvals" : [
+        "el",
+        "parent"
       ]
     },
     {
@@ -109,16 +109,16 @@
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
@@ -126,67 +126,67 @@
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "imgResponsive",
       "type" : "Boolean",
       "desc" : "false | true",
       "memberOf" : "Roo.bootstrap.Img",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "alt",
       "type" : "String",
       "desc" : "image alternative text",
       "memberOf" : "Roo.bootstrap.Img",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "target",
       "type" : "String",
-      "desc" : "target for a href.",
+      "desc" : "p)target for a href.",
       "memberOf" : "Roo.bootstrap.Img",
-      "values" : [
-        "(_self",
+      "optvals" : [
+        "_self",
         "_blank",
         "_parent",
-        "_top)"
+        "_top"
       ]
     },
     {
@@ -194,21 +194,21 @@
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "href",
       "type" : "String",
       "desc" : "a tag href",
       "memberOf" : "Roo.bootstrap.Img",
-      "values" : []
+      "optvals" : []
     }
   ],
   "methods" : [
