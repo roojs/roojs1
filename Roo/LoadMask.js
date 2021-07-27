@@ -44,6 +44,7 @@ Roo.LoadMask.prototype = {
      * True to create a single-use mask that is automatically destroyed after loading (useful for page loads),
      * False to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.
      */
+    removeMask : false,
     /**
      * @cfg {String} msg
      * The text to display in a centered loading message box (defaults to 'Loading...')
