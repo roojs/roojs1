@@ -1268,28 +1268,28 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(typeof(config.cls) != 'undefined'){
                 td.cls = (typeof(td.cls) == 'undefined') ? config.cls : (td.cls + ' ' + config.cls);
             }
-            /*
-            ['xs','sm','md','lg'].map(function(size){
-                
-                if(typeof(config[size]) == 'undefined'){
-                    return;
-                }
-                
-                
-                  
-                if (!config[size]) { // 0 = hidden
-                    // BS 4 '0' is treated as hide that column and below.
-                    td.cls += ' hidden-' + size + ' hidden' + size + '-down';
-                    return;
-                }
-                
-                td.cls += ' col-' + size + '-' + config[size] + (
-                    size == 'xs' ? (' col-' +   config[size] ) : '' // bs4 col-{num} replaces col-xs
-                );
-                 
-
-            });
-            */
+            if (this.responsive) {
+                ['xs','sm','md','lg'].map(function(size){
+                    
+                    if(typeof(config[size]) == 'undefined'){
+                        return;
+                    }
+                    
+                    
+                      
+                    if (!config[size]) { // 0 = hidden
+                        // BS 4 '0' is treated as hide that column and below.
+                        td.cls += ' hidden-' + size + ' hidden' + size + '-down';
+                        return;
+                    }
+                    
+                    td.cls += ' col-' + size + '-' + config[size] + (
+                        size == 'xs' ? (' col-' +   config[size] ) : '' // bs4 col-{num} replaces col-xs
+                    );
+                     
+    
+                });
+            }
             row.cn.push(td);
            
         }
