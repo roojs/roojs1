@@ -552,6 +552,7 @@ Roo.docs = new Roo.XComponent({
        items  : [
         {
          xtype : 'Table',
+         responsive : true,
          rowSelection : true,
          striped : true,
          listeners : {
@@ -646,6 +647,7 @@ Roo.docs = new Roo.XComponent({
        items  : [
         {
          xtype : 'Table',
+         responsive : true,
          rowSelection : true,
          listeners : {
           render : function (_self)
@@ -741,6 +743,7 @@ Roo.docs = new Roo.XComponent({
        items  : [
         {
          xtype : 'Table',
+         responsive : true,
          rowSelection : true,
          listeners : {
           render : function (_self)

@@ -294,6 +294,7 @@
          },
          "boolean striped" : true,
          "xtype" : "Table",
+         "boolean responsive" : true,
          "Boolean rowSelection" : true,
          "$ xns" : "Roo.bootstrap",
          "items" : [
@@ -356,6 +357,7 @@
           "rowclick" : "function (_self, el, rowIndex, e)\n{\n      if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {\n        return false;\n    }\n     var r = this.store.getAt(rowIndex);\n    r.json.expanded = !r.json.expanded ;\n    this.refreshRow(r);\n}"
          },
          "xtype" : "Table",
+         "boolean responsive" : true,
          "Boolean rowSelection" : true,
          "$ xns" : "Roo.bootstrap",
          "items" : [
@@ -420,6 +422,7 @@
           "rowclick" : "function (_self, el, rowIndex, e)\n{\n        if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {\n        return false;\n    }\n    var r = this.store.getAt(rowIndex);\n    r.json.expanded = !r.json.expanded ;\n    this.refreshRow(r);\n}"
          },
          "xtype" : "Table",
+         "boolean responsive" : true,
          "Boolean rowSelection" : true,
          "$ xns" : "Roo.bootstrap",
          "items" : [

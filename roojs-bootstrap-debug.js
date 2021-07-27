@@ -10172,6 +10172,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onHiddenChange : function(colModel, colIndex, hidden)
     {
+        /*
+        this.cm.setHidden()
         var thSelector = '#' + this.id + ' .x-hcol-' + colIndex;
         var tdSelector = '#' + this.id + ' .x-col-' + colIndex;
         
@@ -10182,7 +10184,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.CSS.updateRule(thSelector, "display", "none");
             this.CSS.updateRule(tdSelector, "display", "none");
         }
-        
+        */
+        // onload calls initCSS()
         this.onHeaderChange();
         this.onLoad();
     },
