@@ -496,7 +496,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
         }
-        Roo.log(styles.join(''));
+        //Roo.log(styles.join(''));
         this.CSS.createStyleSheet( styles.join(''), this.id + '-cssrules');
         
     },
