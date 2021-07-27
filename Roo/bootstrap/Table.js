@@ -486,6 +486,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if (this.responsive) {
                 width = '';
                 left = '';
+                hidden = cm.isHidden(i) ? 'display:none' : '';
                 splithide = 'display: none';
             }
             
