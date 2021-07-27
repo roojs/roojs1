@@ -483,6 +483,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 width = "width:" + w+ "px;";
                 
             }
+            if (this.responsive) {
+                width = '';
+                left = '';
+                splithide = 'display: none';
+            }
             
             styles.push( '#' , this.id , ' .x-col-' , i, " {", cm.config[i].css, width, hidden, "}\n" );
             if (this.headEl) {
