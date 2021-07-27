@@ -364,10 +364,10 @@
            "String dataIndex" : "name",
            "$ Function renderer" : "function(v,x,r) { \n\n    return Roo.docs.template.method(r.json);\n\t\t \n\t\t\t\n}",
            "xtype" : "ColumnModel",
-           "Number xs" : 11,
            "$ xns" : "Roo.grid",
            "Boolean sortable" : false,
-           "* prop" : "cm[]"
+           "* prop" : "cm[]",
+           "Number sm" : 11
           },
           {
            "String header" : "<small>Defined by</small>",

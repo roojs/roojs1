@@ -698,8 +698,8 @@ Roo.docs = new Roo.XComponent({
            		 
            			
            },
+           sm : 11,
            sortable : false,
-           xs : 11,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           },
