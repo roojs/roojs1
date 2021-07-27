@@ -29,40 +29,40 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
-        "(el",
-        "parent)"
+      "optvals" : [
+        "el",
+        "parent"
       ]
     },
     {
       "name" : "placetitle",
       "type" : "String",
-      "desc" : "",
+      "desc" : "m)",
       "memberOf" : "Roo.bootstrap.MasonryBrick",
-      "values" : [
-        "(center",
-        "bottom)"
+      "optvals" : [
+        "center",
+        "bottom"
       ]
     },
     {
@@ -70,23 +70,23 @@
       "type" : "Boolean",
       "desc" : "defalut false",
       "memberOf" : "Roo.bootstrap.MasonryBrick",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
@@ -94,84 +94,84 @@
       "type" : "String",
       "desc" : "",
       "memberOf" : "Roo.bootstrap.MasonryBrick",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "videourl",
       "type" : "String",
       "desc" : "",
       "memberOf" : "Roo.bootstrap.MasonryBrick",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "",
       "memberOf" : "Roo.bootstrap.MasonryBrick",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "",
       "memberOf" : "Roo.bootstrap.MasonryBrick",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "preventDefault",
       "type" : "Boolean",
       "desc" : "defalut false",
       "memberOf" : "Roo.bootstrap.MasonryBrick",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "size",
       "type" : "String",
-      "desc" : "",
+      "desc" : "e)",
       "memberOf" : "Roo.bootstrap.MasonryBrick",
-      "values" : [
-        "(xs",
+      "optvals" : [
+        "xs",
         "sm",
         "md",
         "md-left",
         "md-right",
         "tall",
-        "wide)"
+        "wide"
       ]
     },
     {
@@ -179,35 +179,35 @@
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "bgimage",
       "type" : "String",
       "desc" : "",
       "memberOf" : "Roo.bootstrap.MasonryBrick",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "isFitContainer",
       "type" : "Boolean",
       "desc" : "defalut true",
       "memberOf" : "Roo.bootstrap.MasonryBrick",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "href",
       "type" : "String",
       "desc" : "",
       "memberOf" : "Roo.bootstrap.MasonryBrick",
-      "values" : []
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -25,21 +25,21 @@
       "type" : "string",
       "desc" : "",
       "memberOf" : "Roo.Toolbar",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "container",
       "type" : "String/HTMLElement/Element",
       "desc" : "The id or element that will contain the toolbar",
       "memberOf" : "Roo.Toolbar",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "items",
       "type" : "Array",
       "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
-      "memberOf" : "Roo",
-      "values" : []
+      "memberOf" : "Roo.Toolbar",
+      "optvals" : []
     }
   ],
   "methods" : [

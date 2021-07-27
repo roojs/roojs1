@@ -20,7 +20,7 @@
       "type" : "string",
       "desc" : "",
       "memberOf" : "Roo.Toolbar",
-      "values" : []
+      "optvals" : []
     }
   ],
   "methods" : [

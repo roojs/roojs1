@@ -29,44 +29,44 @@
       "type" : "Boolean",
       "desc" : "- popovers that are modal will mask the screen, and must be closed with another event.",
       "memberOf" : "Roo.bootstrap.Popover",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "add",
       "type" : "String|Boolean|Roo.Element",
       "desc" : "click hander to trigger show over what element\n     - if false and it has a 'parent' then it will be automatically added to that element\n     - if string - Roo.get  will be called",
       "memberOf" : "Roo.bootstrap.Popover",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
-        "(el",
-        "parent)"
+      "optvals" : [
+        "el",
+        "parent"
       ]
     },
     {
@@ -74,30 +74,30 @@
       "type" : "Number",
       "desc" : "- delay before showing",
       "memberOf" : "Roo.bootstrap.Popover",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "trigger",
       "type" : "String",
       "desc" : "click || hover (or false to trigger manually)",
       "memberOf" : "Roo.bootstrap.Popover",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
@@ -105,77 +105,77 @@
       "type" : "String",
       "desc" : "of popover (or false to hide)",
       "memberOf" : "Roo.bootstrap.Popover",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "(right|top|bottom|left|auto)",
       "type" : "String|function",
       "desc" : "placement how it is placed",
       "memberOf" : "Roo.bootstrap.Popover",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "contents of the popover   (or false to use children..)",
       "memberOf" : "Roo.bootstrap.Popover",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     }
   ],
   "methods" : [

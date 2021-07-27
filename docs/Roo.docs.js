@@ -552,6 +552,7 @@ Roo.docs = new Roo.XComponent({
        items  : [
         {
          xtype : 'Table',
+         responsive : true,
          rowSelection : true,
          striped : true,
          listeners : {
@@ -598,13 +599,13 @@ Roo.docs = new Roo.XComponent({
            xtype : 'ColumnModel',
            dataIndex : 'name',
            header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
-           md : 11,
            renderer : function(v,x,r) { 
            
                return Roo.docs.template.config(r.json);
            
            			
            },
+           xs : 11,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           },
@@ -612,7 +613,6 @@ Roo.docs = new Roo.XComponent({
            xtype : 'ColumnModel',
            dataIndex : 'memberOf',
            header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
-           md : 1,
            renderer : function(v,x,r) { 
             if (r.json.memberOf  == Roo.docs.init.currentClass) {
                        return '';
@@ -621,7 +621,7 @@ Roo.docs = new Roo.XComponent({
            		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
            			
            },
-           xs : 0,
+           xs : 1,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           }
@@ -647,6 +647,7 @@ Roo.docs = new Roo.XComponent({
        items  : [
         {
          xtype : 'Table',
+         responsive : true,
          rowSelection : true,
          listeners : {
           render : function (_self)
@@ -693,13 +694,13 @@ Roo.docs = new Roo.XComponent({
            xtype : 'ColumnModel',
            dataIndex : 'name',
            header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*   */,
-           md : 11,
            renderer : function(v,x,r) { 
            
                return Roo.docs.template.method(r.json);
            		 
            			
            },
+           sm : 11,
            sortable : false,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
@@ -708,7 +709,6 @@ Roo.docs = new Roo.XComponent({
            xtype : 'ColumnModel',
            dataIndex : 'memberOf',
            header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
-           md : 1,
            renderer : function(v,x,r) { 
            
             if (r.json.memberOf  == Roo.docs.init.currentClass) {
@@ -717,7 +717,7 @@ Roo.docs = new Roo.XComponent({
            		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
            			
            },
-           xs : 0,
+           sm : 1,
            xns : Roo.grid,
            '|xns' : 'Roo.grid'
           }
@@ -743,6 +743,7 @@ Roo.docs = new Roo.XComponent({
        items  : [
         {
          xtype : 'Table',
+         responsive : true,
          rowSelection : true,
          listeners : {
           render : function (_self)

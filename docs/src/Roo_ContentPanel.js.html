@@ -720,19 +720,14 @@ panel.addxtype({
 
 
 
-
-
-
-
-
-
 </span><span class="jsdoc-comment">/**
  * @class Roo.TreePanel
  * @extends Roo.ContentPanel
+ * Treepanel component
+ * 
  * @constructor
  * Create a new TreePanel. - defaults to fit/scoll contents.
  * @param {String/Object} config A string to set only the panel's title, or a config object
- * @cfg {Roo.tree.TreePanel} tree The tree TreePanel, with config etc.
  */
 </span><span class="jsdoc-var">Roo.TreePanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.el</span><span class="jsdoc-syntax">;
@@ -775,7 +770,12 @@ panel.addxtype({
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.TreePanel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.ContentPanel</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-var">fitToFrame </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">autoScroll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-var">autoScroll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/*
+     * @cfg {Roo.tree.TreePanel} tree The tree TreePanel, with config etc.
+     */
+    </span><span class="jsdoc-var">tree </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+
 </span><span class="jsdoc-syntax">});
 
 

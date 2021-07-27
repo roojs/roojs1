@@ -21,18 +21,18 @@
   "returns" : [],
   "config" : [
     {
+      "name" : "mode",
+      "type" : "String",
+      "desc" : "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
+      "memberOf" : "Roo.Shadow",
+      "optvals" : []
+    },
+    {
       "name" : "offset",
       "type" : "String",
       "desc" : "The number of pixels to offset the shadow from the element (defaults to 4)",
       "memberOf" : "Roo.Shadow",
-      "values" : []
-    },
-    {
-      "name" : "mode",
-      "type" : "String",
-      "desc" : "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
-      "memberOf" : "Roo",
-      "values" : []
+      "optvals" : []
     }
   ],
   "methods" : [

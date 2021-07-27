@@ -27,25 +27,25 @@
     {
       "name" : "header_size",
       "type" : "Number",
-      "desc" : "H1 or H2 etc.. 0 indicates default",
+      "desc" : "5) H1 or H2 etc.. 0 indicates default",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
-        "5)"
+        "5"
       ]
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component",
-      "values" : [
-        "(display",
-        "visibility)"
+      "optvals" : [
+        "display",
+        "visibility"
       ]
     },
     {
@@ -53,21 +53,21 @@
       "type" : "String",
       "desc" : "src url of image.",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "margin_right",
       "type" : "String",
-      "desc" : "",
+      "desc" : "o)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
         "5",
-        "auto)"
+        "auto"
       ]
     },
     {
@@ -75,52 +75,52 @@
       "type" : "String|Object",
       "desc" : "",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "title",
       "type" : "String",
       "desc" : "",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "weight",
       "type" : "String",
-      "desc" : "",
+      "desc" : "k)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(primary",
+      "optvals" : [
+        "primary",
         "warning",
         "info",
         "danger",
         "secondary",
         "success",
         "light",
-        "dark)"
+        "dark"
       ]
     },
     {
       "name" : "display",
       "type" : "String",
-      "desc" : "",
+      "desc" : "x)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(none",
+      "optvals" : [
+        "none",
         "inline",
         "inline-block",
         "block",
@@ -128,36 +128,36 @@
         "table-cell",
         "table-row",
         "flex",
-        "inline-flex)"
+        "inline-flex"
       ]
     },
     {
       "name" : "margin_left",
       "type" : "String",
-      "desc" : "",
+      "desc" : "o)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
         "5",
-        "auto)"
+        "auto"
       ]
     },
     {
       "name" : "padding_top",
       "type" : "String",
-      "desc" : "next_to_card",
+      "desc" : "5)next_to_card",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
-        "5)"
+        "5"
       ]
     },
     {
@@ -165,41 +165,41 @@
       "type" : "String",
       "desc" : "",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "padding_right",
       "type" : "String",
-      "desc" : "",
+      "desc" : "5)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
-        "5)"
+        "5"
       ]
     },
     {
       "name" : "padding",
       "type" : "String",
-      "desc" : "",
+      "desc" : "5)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
-        "5)"
+        "5"
       ]
     },
     {
@@ -207,22 +207,22 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "header_weight",
       "type" : "Number",
-      "desc" : "",
+      "desc" : "k)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(primary",
+      "optvals" : [
+        "primary",
         "secondary",
         "success",
         "info",
         "warning",
         "danger",
         "light",
-        "dark)"
+        "dark"
       ]
     },
     {
@@ -230,15 +230,15 @@
       "type" : "String",
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "display_xl",
       "type" : "String",
-      "desc" : "",
+      "desc" : "x)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(none",
+      "optvals" : [
+        "none",
         "inline",
         "inline-block",
         "block",
@@ -246,22 +246,22 @@
         "table-cell",
         "table-row",
         "flex",
-        "inline-flex)"
+        "inline-flex"
       ]
     },
     {
       "name" : "margin",
       "type" : "String",
-      "desc" : "",
+      "desc" : "o)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
         "5",
-        "auto)"
+        "auto"
       ]
     },
     {
@@ -269,20 +269,20 @@
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "padding_bottom",
       "type" : "String",
-      "desc" : "",
+      "desc" : "5)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
-        "5)"
+        "5"
       ]
     },
     {
@@ -290,22 +290,22 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "display_lg",
       "type" : "String",
-      "desc" : "",
+      "desc" : "x)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(none",
+      "optvals" : [
+        "none",
         "inline",
         "inline-block",
         "block",
@@ -313,7 +313,7 @@
         "table-cell",
         "table-row",
         "flex",
-        "inline-flex)"
+        "inline-flex"
       ]
     },
     {
@@ -321,15 +321,15 @@
       "type" : "String",
       "desc" : "",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "display_xs",
       "type" : "String",
-      "desc" : "",
+      "desc" : "x)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(none",
+      "optvals" : [
+        "none",
         "inline",
         "inline-block",
         "block",
@@ -337,7 +337,7 @@
         "table-cell",
         "table-row",
         "flex",
-        "inline-flex)"
+        "inline-flex"
       ]
     },
     {
@@ -345,28 +345,28 @@
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "margin_bottom",
       "type" : "String",
-      "desc" : "",
+      "desc" : "o)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
         "5",
-        "auto)"
+        "auto"
       ]
     },
     {
@@ -374,31 +374,31 @@
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "What element to use for visibility (@see getVisibilityEl())",
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : [
-        "(el",
-        "parent)"
+      "optvals" : [
+        "el",
+        "parent"
       ]
     },
     {
       "name" : "margin_top",
       "type" : "String",
-      "desc" : "",
+      "desc" : "o)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
         "5",
-        "auto)"
+        "auto"
       ]
     },
     {
@@ -406,50 +406,50 @@
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "padding_left",
       "type" : "String",
-      "desc" : "",
+      "desc" : "5)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
-        "5)"
+        "5"
       ]
     },
     {
       "name" : "margin_x",
       "type" : "String",
-      "desc" : "",
+      "desc" : "o)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
         "5",
-        "auto)"
+        "auto"
       ]
     },
     {
       "name" : "margin_y",
       "type" : "String",
-      "desc" : "",
+      "desc" : "o)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
         "5",
-        "auto)"
+        "auto"
       ]
     },
     {
@@ -457,29 +457,29 @@
       "type" : "String|Boolean",
       "desc" : "-- html contents - or just use children.. use false to hide it..",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "padding_x",
       "type" : "String",
-      "desc" : "",
+      "desc" : "5)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
-        "5)"
+        "5"
       ]
     },
     {
       "name" : "display_sm",
       "type" : "String",
-      "desc" : "",
+      "desc" : "x)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(none",
+      "optvals" : [
+        "none",
         "inline",
         "inline-block",
         "block",
@@ -487,21 +487,21 @@
         "table-cell",
         "table-row",
         "flex",
-        "inline-flex)"
+        "inline-flex"
       ]
     },
     {
       "name" : "padding_y",
       "type" : "String",
-      "desc" : "",
+      "desc" : "5)",
       "memberOf" : "Roo.bootstrap.Card",
-      "values" : [
-        "(0",
+      "optvals" : [
+        "0",
         "1",
         "2",
         "3",
         "4",
-        "5)"
+        "5"
       ]
     }
   ],

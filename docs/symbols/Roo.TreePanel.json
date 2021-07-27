@@ -4,7 +4,7 @@
     "Roo.ContentPanel",
     "Roo.util.Observable"
   ],
-  "desc" : "Create a new TreePanel. - defaults to fit/scoll contents.",
+  "desc" : "Treepanel component",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
@@ -28,54 +28,54 @@
       "type" : "Boolean",
       "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "autoScroll",
       "type" : "Boolean",
       "desc" : "True to scroll overflow in this panel (use with {@link #fitToFrame})",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "fitToFrame",
       "type" : "Boolean",
       "desc" : "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "background",
       "type" : "Boolean",
       "desc" : "True if the panel should not be activated when it is added (defaults to false)",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "toolbar",
       "type" : "Toolbar",
       "desc" : "A toolbar for this panel",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "region",
       "type" : "String",
-      "desc" : "which region to put this panel on (when used with xtype constructors)",
+      "desc" : "t) which region to put this panel on (when used with xtype constructors)",
       "memberOf" : "Roo.ContentPanel",
-      "values" : [
-        "(center",
+      "optvals" : [
+        "center",
         "north",
         "south",
         "east",
-        "west)"
+        "west"
       ]
     },
     {
@@ -83,77 +83,70 @@
       "type" : "String",
       "desc" : "Raw content to fill content panel with (uses setContent on construction.)",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "title",
       "type" : "String",
       "desc" : "The title for this panel",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "Extra style to add to the content panel",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "autoCreate",
       "type" : "Boolean/Object",
       "desc" : "True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "fitContainer",
       "type" : "Boolean",
       "desc" : "When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "closable",
       "type" : "Boolean",
       "desc" : "True if the panel can be closed/removed",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "params",
       "type" : "String/Object",
       "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
-    },
-    {
-      "name" : "tree",
-      "type" : "Roo.tree.TreePanel",
-      "desc" : "The tree TreePanel, with config etc.",
-      "memberOf" : "Roo",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "adjustments",
       "type" : "Array",
       "desc" : "Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "Calls {@link #setUrl} with this value",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "resizeEl",
       "type" : "String/HTMLElement/Element",
       "desc" : "An element to resize if {@link #fitToFrame} is true (instead of this panel's element)",
       "memberOf" : "Roo.ContentPanel",
-      "values" : []
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -31,42 +31,42 @@
       "type" : "Boolean",
       "desc" : "True to sort leaf nodes under non leaf nodes",
       "memberOf" : "Roo.tree.TreeSorter",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "leafAttr",
       "type" : "String",
       "desc" : "The attribute used to determine leaf nodes in folder sort (defaults to \"leaf\")",
       "memberOf" : "Roo.tree.TreeSorter",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "caseSensitive",
       "type" : "Boolean",
       "desc" : "true for case sensitive sort (defaults to false)",
       "memberOf" : "Roo.tree.TreeSorter",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "dir",
       "type" : "String",
       "desc" : "The direction to sort (asc or desc) (defaults to asc)",
       "memberOf" : "Roo.tree.TreeSorter",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "sortType",
       "type" : "Function",
       "desc" : "A custom \"casting\" function used to convert node values before sorting",
       "memberOf" : "Roo.tree.TreeSorter",
-      "values" : []
+      "optvals" : []
     },
     {
       "name" : "property",
       "type" : "String",
       "desc" : "The named attribute on the node to sort by (defaults to text)",
       "memberOf" : "Roo.tree.TreeSorter",
-      "values" : []
+      "optvals" : []
     }
   ],
   "methods" : [],

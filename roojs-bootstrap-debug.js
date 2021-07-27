@@ -95,6 +95,7 @@ Roo.Shadow.prototype = {
      * frame: Shadow displays equally on all four sides<br />
      * drop: Traditional bottom-right drop shadow (default)
      */
+    mode: false,
     /**
      * @cfg {String} offset
      * The number of pixels to offset the shadow from the element (defaults to 4)
@@ -8566,6 +8567,7 @@ Roo.LoadMask.prototype = {
      * True to create a single-use mask that is automatically destroyed after loading (useful for page loads),
      * False to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.
      */
+    removeMask : false,
     /**
      * @cfg {String} msg
      * The text to display in a centered loading message box (defaults to 'Loading...')
@@ -8718,7 +8720,8 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {boolean} bordered Add borders to the table
  * @cfg {boolean} hover Add hover highlighting
  * @cfg {boolean} condensed Format condensed
- * @cfg {boolean} responsive Format condensed
+ * @cfg {boolean} responsive default false - if this is on, columns are rendered with col-xs-4 etc. classes, otherwise columns will be sized by CSS,
+ *                also adds table-responsive (see bootstrap docs for details)
  * @cfg {Boolean} loadMask (true|false) default false
  * @cfg {Boolean} footerShow (true|false) generate tfoot, default true
  * @cfg {Boolean} headerShow (true|false) generate thead, default true
@@ -9127,6 +9130,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 width = "width:" + w+ "px;";
                 
             }
+            if (this.responsive) {
+                width = '';
+                left = '';
+                hidden = cm.isHidden(i) ? 'display:none' : '';
+                splithide = 'display: none';
+            }
             
             styles.push( '#' , this.id , ' .x-col-' , i, " {", cm.config[i].css, width, hidden, "}\n" );
             if (this.headEl) {
@@ -9140,7 +9149,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
         }
-        Roo.log(styles.join(''));
+        //Roo.log(styles.join(''));
         this.CSS.createStyleSheet( styles.join(''), this.id + '-cssrules');
         
     },
@@ -9453,27 +9462,28 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             // this is the bit that doesnt reall work at all...
             
-           /*
-            
-            ['xs','sm','md','lg'].map(function(size){
-                
-                if(typeof(config[size]) == 'undefined'){
-                    return;
-                }
+            if (this.responsive) {
                  
-                if (!config[size]) { // 0 = hidden
-                    // BS 4 '0' is treated as hide that column and below.
-                    c.cls += ' hidden-' + size + ' hidden' + size + '-down';
-                    return;
-                }
-                
-                c.cls += ' col-' + size + '-' + config[size] + (
-                    size == 'xs' ? (' col-' + config[size] ) : '' // bs4 col-{num} replaces col-xs
-                );
-                
-                
-            });
-            */
+            
+                ['xs','sm','md','lg'].map(function(size){
+                    
+                    if(typeof(config[size]) == 'undefined'){
+                        return;
+                    }
+                     
+                    if (!config[size]) { // 0 = hidden
+                        // BS 4 '0' is treated as hide that column and below.
+                        c.cls += ' hidden-' + size + ' hidden' + size + '-down';
+                        return;
+                    }
+                    
+                    c.cls += ' col-' + size + '-' + config[size] + (
+                        size == 'xs' ? (' col-' + config[size] ) : '' // bs4 col-{num} replaces col-xs
+                    );
+                    
+                    
+                });
+            }
             // at the end?
             
             c.html +=' <span class="x-grid-split x-grid-split-' + i + '"></span>';
@@ -9911,28 +9921,28 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(typeof(config.cls) != 'undefined'){
                 td.cls = (typeof(td.cls) == 'undefined') ? config.cls : (td.cls + ' ' + config.cls);
             }
-            /*
-            ['xs','sm','md','lg'].map(function(size){
-                
-                if(typeof(config[size]) == 'undefined'){
-                    return;
-                }
-                
-                
-                  
-                if (!config[size]) { // 0 = hidden
-                    // BS 4 '0' is treated as hide that column and below.
-                    td.cls += ' hidden-' + size + ' hidden' + size + '-down';
-                    return;
-                }
-                
-                td.cls += ' col-' + size + '-' + config[size] + (
-                    size == 'xs' ? (' col-' +   config[size] ) : '' // bs4 col-{num} replaces col-xs
-                );
-                 
-
-            });
-            */
+            if (this.responsive) {
+                ['xs','sm','md','lg'].map(function(size){
+                    
+                    if(typeof(config[size]) == 'undefined'){
+                        return;
+                    }
+                    
+                    
+                      
+                    if (!config[size]) { // 0 = hidden
+                        // BS 4 '0' is treated as hide that column and below.
+                        td.cls += ' hidden-' + size + ' hidden' + size + '-down';
+                        return;
+                    }
+                    
+                    td.cls += ' col-' + size + '-' + config[size] + (
+                        size == 'xs' ? (' col-' +   config[size] ) : '' // bs4 col-{num} replaces col-xs
+                    );
+                     
+    
+                });
+            }
             row.cn.push(td);
            
         }
@@ -10165,6 +10175,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onHiddenChange : function(colModel, colIndex, hidden)
     {
+        /*
+        this.cm.setHidden()
         var thSelector = '#' + this.id + ' .x-hcol-' + colIndex;
         var tdSelector = '#' + this.id + ' .x-col-' + colIndex;
         
@@ -10175,7 +10187,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.CSS.updateRule(thSelector, "display", "none");
             this.CSS.updateRule(tdSelector, "display", "none");
         }
-        
+        */
+        // onload calls initCSS()
         this.onHeaderChange();
         this.onLoad();
     },

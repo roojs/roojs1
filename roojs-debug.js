@@ -26217,6 +26217,7 @@ Roo.Shadow.prototype = {
      * frame: Shadow displays equally on all four sides<br />
      * drop: Traditional bottom-right drop shadow (default)
      */
+    mode: false,
     /**
      * @cfg {String} offset
      * The number of pixels to offset the shadow from the element (defaults to 4)
@@ -30193,7 +30194,7 @@ Roo.Toolbar.prototype = {
      * @cfg {Array} items
      * array of button configs or elements to add (will be converted to a MixedCollection)
      */
-    
+    items: false,
     /**
      * @cfg {String/HTMLElement/Element} container
      * The id or element that will contain the toolbar
@@ -55067,19 +55068,14 @@ Roo.extend(Roo.ScrollPanel, Roo.ContentPanel, {
 
 
 
-
-
-
-
-
-
 /**
  * @class Roo.TreePanel
  * @extends Roo.ContentPanel
+ * Treepanel component
+ * 
  * @constructor
  * Create a new TreePanel. - defaults to fit/scoll contents.
  * @param {String/Object} config A string to set only the panel's title, or a config object
- * @cfg {Roo.tree.TreePanel} tree The tree TreePanel, with config etc.
  */
 Roo.TreePanel = function(config){
     var el = config.el;
@@ -55122,7 +55118,12 @@ Roo.TreePanel = function(config){
 
 Roo.extend(Roo.TreePanel, Roo.ContentPanel, {   
     fitToFrame : true,
-    autoScroll : true
+    autoScroll : true,
+    /*
+     * @cfg {Roo.tree.TreePanel} tree The tree TreePanel, with config etc.
+     */
+    tree : false
+
 });
 
 
@@ -61576,6 +61577,7 @@ Roo.LoadMask.prototype = {
      * True to create a single-use mask that is automatically destroyed after loading (useful for page loads),
      * False to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.
      */
+    removeMask : false,
     /**
      * @cfg {String} msg
      * The text to display in a centered loading message box (defaults to 'Loading...')

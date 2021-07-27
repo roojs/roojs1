@@ -68,7 +68,11 @@ h6,
     padding: 12px 5px 12px 20px;
 }
 
-.left-menu-sidebar.sidebar .sidebar-menu>li>a, .sidebar .sidebar-menu li.open li.treeview-menu > a {
+
+ 
+
+.left-menu-sidebar.sidebar .sidebar-menu>li>a,
+.sidebar .sidebar-menu li.open li.treeview-menu > a {
  /*   color: #16114C; */
 }
 
@@ -123,7 +127,8 @@ h6,
  
 /**-----subsubsub menuds... **/
 .left-menu-sidebar.sidebar .sidebar-menu .treeview-menu.dropdown-toggle > a.dropdown-item,
-.left-menu-sidebar.sidebar .sidebar-menu .treeview-menu.dropdown-toggle > li.treeview-menu
+.left-menu-sidebar.sidebar .sidebar-menu .treeview-menu.dropdown-toggle > li.treeview-menu,
+.left-menu-sidebar.sidebar .sidebar-menu ul.treeview-menu ul.treeview-menu 
 {
     display: none;
 }
