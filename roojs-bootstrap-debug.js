@@ -9133,8 +9133,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if (this.responsive) {
                 width = '';
                 left = '';
-                hidden = cm.isHidden(i) ? 'display:none' : '';
-                splithide = 'display: none';
+                hidden = cm.isHidden(i) ? 'display:none;' : '';
+                splithide = 'display: none;';
             }
             
             styles.push( '#' , this.id , ' .x-col-' , i, " {", cm.config[i].css, width, hidden, "}\n" );
