@@ -10560,7 +10560,7 @@
         "name" : "removeMask",
         "type" : "Boolean",
         "desc" : "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
-        "memberOf" : "Roo"
+        "memberOf" : ""
       }
     ],
     "events" : [],
@@ -11093,7 +11093,7 @@
         "name" : "items",
         "type" : "Array",
         "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
-        "memberOf" : "Roo"
+        "memberOf" : "Roo.Toolbar"
       },
       {
         "name" : "pageSize",
@@ -11867,7 +11867,7 @@
         "name" : "mode",
         "type" : "String",
         "desc" : "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
-        "memberOf" : "Roo"
+        "memberOf" : ""
       },
       {
         "name" : "offset",
@@ -13640,7 +13640,7 @@
         "name" : "items",
         "type" : "Array",
         "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
-        "memberOf" : "Roo"
+        "memberOf" : ""
       },
       {
         "name" : "text",
@@ -15043,12 +15043,6 @@
         "type" : "Toolbar",
         "desc" : "A toolbar for this panel",
         "memberOf" : "Roo.ContentPanel"
-      },
-      {
-        "name" : "tree",
-        "type" : "Roo.tree.TreePanel",
-        "desc" : "The tree TreePanel, with config etc.",
-        "memberOf" : "Roo"
       },
       {
         "name" : "url",
@@ -56773,7 +56767,7 @@
       {
         "name" : "responsive",
         "type" : "boolean",
-        "desc" : "Format condensed",
+        "desc" : "default false - if this is on, columns are rendered with col-xs-4 etc. classes, otherwise columns will be sized by CSS,\n               also adds table-responsive (see bootstrap docs for details)",
         "memberOf" : ""
       },
       {

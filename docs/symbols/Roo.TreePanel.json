@@ -4,7 +4,7 @@
     "Roo.ContentPanel",
     "Roo.util.Observable"
   ],
-  "desc" : "Create a new TreePanel. - defaults to fit/scoll contents.",
+  "desc" : "Treepanel component",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
@@ -125,13 +125,6 @@
       "type" : "String/Object",
       "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
       "memberOf" : "Roo.ContentPanel",
-      "optvals" : []
-    },
-    {
-      "name" : "tree",
-      "type" : "Roo.tree.TreePanel",
-      "desc" : "The tree TreePanel, with config etc.",
-      "memberOf" : "Roo",
       "optvals" : []
     },
     {

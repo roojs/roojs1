@@ -38,7 +38,7 @@
       "name" : "items",
       "type" : "Array",
       "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
-      "memberOf" : "Roo",
+      "memberOf" : "Roo.Toolbar",
       "optvals" : []
     }
   ],
