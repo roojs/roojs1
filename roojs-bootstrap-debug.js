@@ -8720,7 +8720,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {boolean} bordered Add borders to the table
  * @cfg {boolean} hover Add hover highlighting
  * @cfg {boolean} condensed Format condensed
- * @cfg {boolean} responsive Format condensed
+ * @cfg {boolean} responsive default false - if this is on, columns are rendered with col-xs-4 etc. classes, otherwise columns will be sized by CSS
  * @cfg {Boolean} loadMask (true|false) default false
  * @cfg {Boolean} footerShow (true|false) generate tfoot, default true
  * @cfg {Boolean} headerShow (true|false) generate thead, default true
