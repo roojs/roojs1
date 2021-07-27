@@ -3055,6 +3055,7 @@ Roo.Shadow.prototype = {
      * frame: Shadow displays equally on all four sides<br />
      * drop: Traditional bottom-right drop shadow (default)
      */
+    mode: null,
     /**
      * @cfg {String} offset
      * The number of pixels to offset the shadow from the element (defaults to 4)
