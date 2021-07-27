@@ -30193,7 +30193,7 @@ Roo.Toolbar.prototype = {
      * @cfg {Array} items
      * array of button configs or elements to add (will be converted to a MixedCollection)
      */
-    
+    items: false,
     /**
      * @cfg {String/HTMLElement/Element} container
      * The id or element that will contain the toolbar
