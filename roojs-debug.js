@@ -43773,7 +43773,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     /**
      * @cfg {boolean} allowComments - default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.
      */
-    
     allowComments: false,
     // id of frame..
     frameId: false,
@@ -44688,8 +44687,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // clean up silly Windows -- stuff?
             return; 
         }
-        if (node.nodeName == "#comment" && !this.allowComments) {
-            node.parentNode.removeChild(node);
+        if (node.nodeName == "#comment") {
+            if (!this.allowComments) {
+                node.parentNode.removeChild(node);
+            }
             // clean up silly Windows -- stuff?
             return; 
         }
