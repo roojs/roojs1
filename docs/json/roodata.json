@@ -7197,6 +7197,12 @@
         "memberOf" : "Roo.Component"
       },
       {
+        "name" : "allowComments",
+        "type" : "boolean",
+        "desc" : "- default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.",
+        "memberOf" : ""
+      },
+      {
         "name" : "allowDomMove",
         "type" : "Boolean",
         "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
@@ -88229,6 +88235,12 @@
         "type" : "String",
         "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
         "memberOf" : "Roo.Component"
+      },
+      {
+        "name" : "allowComments",
+        "type" : "boolean",
+        "desc" : "- default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.",
+        "memberOf" : ""
       },
       {
         "name" : "allowDomMove",

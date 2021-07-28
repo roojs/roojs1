@@ -114,6 +114,11 @@
      */
     </span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
+    </span><span class="jsdoc-comment">/**
+     * @cfg {boolean} allowComments - default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.
+     */
+
+    </span><span class="jsdoc-var">allowComments</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">// id of frame..
     </span><span class="jsdoc-var">frameId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
@@ -1027,7 +1032,7 @@
             </span><span class="jsdoc-comment">// clean up silly Windows -- stuff?
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;#comment&quot;</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;#comment&quot; </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.allowComments</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-comment">// clean up silly Windows -- stuff?
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;

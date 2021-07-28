@@ -26,34 +26,6 @@
       "optvals" : []
     },
     {
-      "name" : "listeners",
-      "type" : "Object",
-      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
-    },
-    {
-      "name" : "fieldLabel",
-      "type" : "String",
-      "desc" : "Label to use when rendering a form.",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
-    },
-    {
-      "name" : "validationDelay",
-      "type" : "Number",
-      "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
-    },
-    {
-      "name" : "msgTarget",
-      "type" : "String",
-      "desc" : "The location where error text should display.  Should be one of the following values (defaults to 'qtip'):\n<pre>\nValue         Description\n-----------   ----------------------------------------------------------------------\nqtip          Display a quick tip when the user hovers over the field\ntitle         Display a default browser title attribute popup\nunder         Add a block div beneath the field containing the error text\nside          Add an error icon to the right of the field with a popup on hover\n[element id]  Add the error text directly to the innerHTML of the specified element\n</pre>",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
-    },
-    {
       "name" : "hideMode",
       "type" : "String",
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
@@ -71,10 +43,38 @@
       "optvals" : []
     },
     {
-      "name" : "value",
-      "type" : "Mixed",
-      "desc" : "A value to initialize this field with.",
+      "name" : "name",
+      "type" : "String",
+      "desc" : "The field's HTML name attribute.",
       "memberOf" : "Roo.form.Field",
+      "optvals" : []
+    },
+    {
+      "name" : "resizable",
+      "type" : "String",
+      "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
+      "memberOf" : "Roo.form.HtmlEditor",
+      "optvals" : []
+    },
+    {
+      "name" : "toolbars",
+      "type" : "Array",
+      "desc" : "Array of toolbars. - defaults to just the Standard one",
+      "memberOf" : "Roo.form.HtmlEditor",
+      "optvals" : []
+    },
+    {
+      "name" : "width",
+      "type" : "Number",
+      "desc" : "(in pixels)",
+      "memberOf" : "Roo.form.HtmlEditor",
+      "optvals" : []
+    },
+    {
+      "name" : "allowComments",
+      "type" : "boolean",
+      "desc" : "- default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.",
+      "memberOf" : "Roo.form.HtmlEditor",
       "optvals" : []
     },
     {
@@ -85,10 +85,45 @@
       "optvals" : []
     },
     {
-      "name" : "tabIndex",
+      "name" : "height",
       "type" : "Number",
-      "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
+      "desc" : "(in pixels)",
+      "memberOf" : "Roo.form.HtmlEditor",
+      "optvals" : []
+    },
+    {
+      "name" : "clearUp",
+      "type" : "Boolean",
+      "desc" : "",
+      "memberOf" : "Roo.form.HtmlEditor",
+      "optvals" : []
+    },
+    {
+      "name" : "value",
+      "type" : "Mixed",
+      "desc" : "A value to initialize this field with.",
       "memberOf" : "Roo.form.Field",
+      "optvals" : []
+    },
+    {
+      "name" : "actionMode",
+      "type" : "String",
+      "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
+      "memberOf" : "Roo.Component",
+      "optvals" : []
+    },
+    {
+      "name" : "msgTarget",
+      "type" : "String",
+      "desc" : "The location where error text should display.  Should be one of the following values (defaults to 'qtip'):\n<pre>\nValue         Description\n-----------   ----------------------------------------------------------------------\nqtip          Display a quick tip when the user hovers over the field\ntitle         Display a default browser title attribute popup\nunder         Add a block div beneath the field containing the error text\nside          Add an error icon to the right of the field with a popup on hover\n[element id]  Add the error text directly to the innerHTML of the specified element\n</pre>",
+      "memberOf" : "Roo.form.Field",
+      "optvals" : []
+    },
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable",
       "optvals" : []
     },
     {
@@ -106,34 +141,6 @@
       "optvals" : []
     },
     {
-      "name" : "toolbars",
-      "type" : "Array",
-      "desc" : "Array of toolbars. - defaults to just the Standard one",
-      "memberOf" : "Roo.form.HtmlEditor",
-      "optvals" : []
-    },
-    {
-      "name" : "actionMode",
-      "type" : "String",
-      "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
-    },
-    {
-      "name" : "width",
-      "type" : "Number",
-      "desc" : "(in pixels)",
-      "memberOf" : "Roo.form.HtmlEditor",
-      "optvals" : []
-    },
-    {
-      "name" : "resizable",
-      "type" : "String",
-      "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
-      "memberOf" : "Roo.form.HtmlEditor",
-      "optvals" : []
-    },
-    {
       "name" : "validationEvent",
       "type" : "String/Boolean",
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -141,23 +148,9 @@
       "optvals" : []
     },
     {
-      "name" : "height",
-      "type" : "Number",
-      "desc" : "(in pixels)",
-      "memberOf" : "Roo.form.HtmlEditor",
-      "optvals" : []
-    },
-    {
-      "name" : "name",
+      "name" : "fieldLabel",
       "type" : "String",
-      "desc" : "The field's HTML name attribute.",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
-    },
-    {
-      "name" : "qtip",
-      "type" : "String",
-      "desc" : "Mouse over tip",
+      "desc" : "Label to use when rendering a form.",
       "memberOf" : "Roo.form.Field",
       "optvals" : []
     },
@@ -169,10 +162,24 @@
       "optvals" : []
     },
     {
+      "name" : "validationDelay",
+      "type" : "Number",
+      "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
+      "memberOf" : "Roo.form.Field",
+      "optvals" : []
+    },
+    {
       "name" : "stylesheets",
       "type" : "Array",
       "desc" : "url of stylesheets. set to [] to disable stylesheets.",
       "memberOf" : "Roo.form.HtmlEditor",
+      "optvals" : []
+    },
+    {
+      "name" : "tabIndex",
+      "type" : "Number",
+      "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
+      "memberOf" : "Roo.form.Field",
       "optvals" : []
     },
     {
@@ -183,10 +190,10 @@
       "optvals" : []
     },
     {
-      "name" : "clearUp",
-      "type" : "Boolean",
-      "desc" : "",
-      "memberOf" : "Roo.form.HtmlEditor",
+      "name" : "qtip",
+      "type" : "String",
+      "desc" : "Mouse over tip",
+      "memberOf" : "Roo.form.Field",
       "optvals" : []
     }
   ],

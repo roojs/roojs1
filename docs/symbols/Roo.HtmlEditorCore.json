@@ -24,6 +24,13 @@
       "optvals" : []
     },
     {
+      "name" : "allowComments",
+      "type" : "boolean",
+      "desc" : "- default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.",
+      "memberOf" : "Roo.HtmlEditorCore",
+      "optvals" : []
+    },
+    {
       "name" : "the",
       "type" : "Roo.form.HtmlEditor|Roo.bootstrap.HtmlEditor",
       "desc" : "owner field",
