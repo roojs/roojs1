@@ -75,6 +75,12 @@
       "memberOf" : ""
     },
     {
+      "name" : "menu",
+      "type" : "Roo.bootstrap.Menu",
+      "desc" : "a Menu",
+      "memberOf" : ""
+    },
+    {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",

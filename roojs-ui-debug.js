@@ -7690,10 +7690,7 @@ Roo.PagingToolbar = function(el, ds, config)
 };
 
 Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
-    /**
-     * @cfg {Roo.data.Store} dataSource
-     * The underlying data store providing the paged data
-     */
+   
     /**
      * @cfg {String/HTMLElement/Element} container
      * container The id or element that will contain the toolbar
@@ -7702,6 +7699,8 @@ Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
      * @cfg {Boolean} displayInfo
      * True to display the displayMsg (defaults to false)
      */
+    
+    
     /**
      * @cfg {Number} pageSize
      * The number of records to display per page (defaults to 20)

@@ -31,7 +31,8 @@
  * @cfg {Boolean} removeClass remove the standard class..
  * @cfg {String} target (_self|_blank|_parent|_top|other) target for a href. 
  * @cfg {Boolean} grpup if parent is a btn group - then it turns it into a toogleGroup.
- * 
+ * @cfg {Roo.bootstrap.Menu} menu a Menu 
+
  * @constructor
  * Create a new button
  * @param {Object} config The config object

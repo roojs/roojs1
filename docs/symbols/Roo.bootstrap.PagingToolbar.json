@@ -71,6 +71,12 @@
       "memberOf" : "Roo.bootstrap.NavSimplebar"
     },
     {
+      "name" : "buttons[]",
+      "type" : "Roo.bootstrap.Button",
+      "desc" : "Buttons for the toolbar",
+      "memberOf" : ""
+    },
+    {
       "name" : "pageSize",
       "type" : "Number",
       "desc" : "The number of records to display per page (defaults to 20)",
@@ -89,6 +95,12 @@
       "memberOf" : "Roo.Component"
     },
     {
+      "name" : "store",
+      "type" : "Roo.data.Store",
+      "desc" : "The underlying data store providing the paged data",
+      "memberOf" : ""
+    },
+    {
       "name" : "tag",
       "type" : "String",
       "desc" : "v) default is nav",
@@ -105,12 +117,6 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component"
-    },
-    {
-      "name" : "dataSource",
-      "type" : "Roo.data.Store",
-      "desc" : "The underlying data store providing the paged data",
-      "memberOf" : ""
     },
     {
       "name" : "container",

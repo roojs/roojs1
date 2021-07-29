@@ -1,14 +1,8 @@
-/*
- * - LGPL
- *
- * menu separator
- * 
- */
-Roo.bootstrap.menu = Roo.bootstrap.menu || {};
-
+ 
 /**
  * @class Roo.bootstrap.menu.Separator
  * @extends Roo.bootstrap.Component
+ * @licence LGPL
  * Bootstrap Separator class
  * 
  * @constructor

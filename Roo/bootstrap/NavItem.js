@@ -1,14 +1,9 @@
-/*
- * - LGPL
- *
- * row
- * 
- */
-
 /**
  * @class Roo.bootstrap.NavItem
  * @extends Roo.bootstrap.Component
+ * @licence LGPL
  * Bootstrap Navbar.NavItem class
+ * 
  * @cfg {String} href  link to
  * @cfg {String} button_weight (default|primary|secondary|success|info|warning|danger|link|light|dark) default none
  * @cfg {Boolean} button_outline show and outlined button
@@ -25,7 +20,7 @@
  * @cfg {String} tabId the tab that this item activates.
  * @cfg {String} tagtype (a|span) render as a href or span?
  * @cfg {Boolean} animateRef (true|false) link to element default false  
- * @cfg {Roo.bootstrap.Menu} menu a Menu 
+ * @cfg {Roo.bootstrap.menu.Menu} menu a Menu 
   
  * @constructor
  * Create a new Navbar Item

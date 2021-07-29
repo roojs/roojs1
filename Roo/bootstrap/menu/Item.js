@@ -1,26 +1,20 @@
-/*
- * - LGPL
- *
- * menu item
- * 
- */
-Roo.bootstrap.menu = Roo.bootstrap.menu || {};
-
-/**
+ /**
  * @class Roo.bootstrap.menu.Item
  * @extends Roo.bootstrap.Component
+ * @licence LGPL
  * Bootstrap MenuItem class
- * @cfg {Boolean} submenu (true | false) default false
+ * @cfg {Boolean} submenu default false - 
  * @cfg {String} html text of the item
  * @cfg {String} href the link
- * @cfg {Boolean} disable (true | false) default false
- * @cfg {Boolean} preventDefault (true | false) default true
- * @cfg {String} icon Font awesome icon
- * @cfg {String} pos Submenu align to (left | right) default right 
- * 
+ * @cfg {Boolean} disabled  is the item disabled - default false 
+ * @cfg {Boolean} preventDefault stop trigger click event to parent elements - default true
+ * @cfg {String} fa  Font awesome icon
+ * @cfg {String} pos (left|right) Submenu align to  default right 
+ * @cfg {Roo.bootsrap.Menu} menu the child menu.
+ 
  * 
  * @constructor
- * Create a new Item
+ * Create a new Menu  Item
  * @param {Object} config The config object
  */
 
@@ -59,54 +53,85 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     html : '',
     preventDefault: true,
     disable : false,
-    icon : false,
+    active : false,    
+    fa : false,
     pos : 'right',
+    
+    isContainer : false, // ?? only a <li drowdonw-menu-item">
     
     getAutoCreate : function()
     {
-        var text = [
-            {
-                tag : 'span',
-                cls : 'roo-menu-item-text',
-                html : this.html
-            }
-        ];
         
-        if(this.icon){
-            text.unshift({
-                tag : 'i',
-                cls : 'fa ' + this.icon
-            })
+        if(this.isContainer){
+            return {
+                tag: 'li',
+                cls: 'dropdown-menu-item '
+            };
         }
         
-        var cfg = {
-            tag : 'li',
-            cn : [
-                {
-                    tag : 'a',
-                    href : this.href || '#',
-                    cn : text
-                }
-            ]
+        var ctag = {
+            tag: 'span',
+            cls : 'roo-menu-item-text',
+            html : this.html
         };
         
-        if(this.disable){
-            cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'disabled' : (cfg.cls + ' disabled');
+        var anc = {
+            tag : 'a',
+            cls : 'dropdown-item',
+            href : this.href || '#',
+            cn : [  ]
+        };
+        
+        if (this.fa !== false) {
+            anc.cn.push({
+                tag : 'i',
+                cls : 'fa fa-' + this.fa
+            });
+        }
+        
+        anc.cn.push(ctag);
+        
+        
+        var cfg= {
+            tag: 'li',
+            cls: 'dropdown-menu-item',
+            cn: [ anc ]
+        };
+        if (this.parent().type == 'treeview') {
+            cfg.cls = 'treeview-menu';
+        }
+        if (this.active) {
+            cfg.cls += ' active';
+        }
+        
+        if(this.disabled){
+            cfg.cls +=  ' disabled' 
         }
         
         if(this.submenu){
-            cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'dropdown-submenu' : (cfg.cls + ' dropdown-submenu');
+            cfg.cls +=  'dropdown-submenu';
             
             if(this.pos == 'left'){
-                cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'pull-left' : (cfg.cls + ' pull-left');
+                cfg.cls +=  ' pull-left';
             }
         }
-        
+        anc.href = this.href || cfg.cn[0].href ;
+        ctag.html = this.html || cfg.cn[0].html ;
         return cfg;
+         
+         
     },
     
     initEvents : function() 
     {
+        if (this.parent().type == 'treeview') {
+            this.el.select('a').on('click', this.onClick, this);
+        }
+        if (this.menu) {
+            this.menu.parentType = this.xtype;
+            this.menu.triggerEl = this.el;
+            this.menu = this.addxtype(Roo.apply({}, this.menu));
+        }
         this.el.on('mouseover', this.onMouseOver, this);
         this.el.on('mouseout', this.onMouseOut, this);
         

@@ -8,7 +8,10 @@
 /**
  * @class Roo.bootstrap.CardFooter
  * @extends Roo.bootstrap.Element
+ * @parent Roo.bootstrap.Card
+ * @children Roo.bootstrap.Component
  * Bootstrap CardFooter class
+ * 
  * @constructor
  * Create a new Card Footer - that you can embed children into
  * @param {Object} config The config object

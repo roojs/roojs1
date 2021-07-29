@@ -53,7 +53,7 @@
     {
       "name" : "cm[]",
       "type" : "Roo.grid.ColumnModel",
-      "desc" : "A column for th grid.",
+      "desc" : "A column for the grid.",
       "memberOf" : ""
     },
     {

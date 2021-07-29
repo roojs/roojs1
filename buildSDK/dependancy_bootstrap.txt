@@ -27,10 +27,12 @@ Roo.bootstrap.Link
 
 Roo.bootstrap.Header
 
-Roo.bootstrap.MenuMgr
-Roo.bootstrap.Menu
-Roo.bootstrap.MenuItem
-Roo.bootstrap.MenuSeparator
+Roo.bootstrap.menu.namespace
+Roo.bootstrap.menu.Manager
+Roo.bootstrap.menu.Menu
+Roo.bootstrap.menu.Item
+Roo.bootstrap.menu.Separator
+
 Roo.bootstrap.Modal
 Roo.bootstrap.MessageBox
 

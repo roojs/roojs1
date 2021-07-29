@@ -33,15 +33,15 @@
       "memberOf" : "Roo.util.Observable"
     },
     {
-      "name" : "container_method",
-      "type" : "string",
-      "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component"
-    },
-    {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "container_method",
+      "type" : "string",
+      "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component"
     },
     {
@@ -97,6 +97,12 @@
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "NavProgressBar:bullets[]",
+      "type" : "Roo.bootstrap.NavProgressItem",
+      "desc" : "Bullets for the Nav Progress bar for the toolbar",
+      "memberOf" : ""
     },
     {
       "name" : "name",

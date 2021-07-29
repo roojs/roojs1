@@ -8,7 +8,10 @@
 /**
  * @class Roo.bootstrap.TableCell
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
+ * @parent Roo.bootstrap.TableRow
  * Bootstrap TableCell class
+ * 
  * @cfg {String} html cell contain text
  * @cfg {String} cls cell class
  * @cfg {String} tag cell tag (td|th) default td

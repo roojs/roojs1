@@ -5,7 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "desc" : "Bootstrap Card class\n\n\npossible... may not be implemented..",
+  "desc" : "Bootstrap Card class - note this has children as CardHeader/ImageTop/Footer.. - which should really be listed properties?\n\n\npossible... may not be implemented..",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,

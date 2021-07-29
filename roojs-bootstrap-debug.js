@@ -906,6 +906,8 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.ButtonGroup
  * @extends Roo.bootstrap.Component
  * Bootstrap ButtonGroup class
+ * @children Roo.bootstrap.Button Roo.bootstrap.Form
+ * 
  * @cfg {String} size lg | sm | xs (default empty normal)
  * @cfg {String} align vertical | justified  (default none)
  * @cfg {String} direction up | down (default down)
@@ -1012,7 +1014,8 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {Boolean} removeClass remove the standard class..
  * @cfg {String} target (_self|_blank|_parent|_top|other) target for a href. 
  * @cfg {Boolean} grpup if parent is a btn group - then it turns it into a toogleGroup.
- * 
+ * @cfg {Roo.bootstrap.Menu} menu a Menu 
+
  * @constructor
  * Create a new button
  * @param {Object} config The config object
@@ -1966,17 +1969,12 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     }
 });
 
- /*
- *  - LGPL
- *
- *  This is BS4's Card element.. - similar to our containers probably..
- * 
- */
-/**
+ /**
  * @class Roo.bootstrap.Card
  * @extends Roo.bootstrap.Component
  * @children Roo.bootstrap.Component
- * Bootstrap Card class
+ * @licence LGPL
+ * Bootstrap Card class - note this has children as CardHeader/ImageTop/Footer.. - which should really be listed properties?
  *
  *
  * possible... may not be implemented..
@@ -2777,6 +2775,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.CardHeader
  * @extends Roo.bootstrap.Element
+ * @parent Roo.bootstrap.Card
+ * @children Roo.bootstrap.Component
  * Bootstrap CardHeader class
  * @constructor
  * Create a new Card Header - that you can embed children into
@@ -2810,7 +2810,10 @@ Roo.extend(Roo.bootstrap.CardHeader, Roo.bootstrap.Element,  {
 /**
  * @class Roo.bootstrap.CardFooter
  * @extends Roo.bootstrap.Element
+ * @parent Roo.bootstrap.Card
+ * @children Roo.bootstrap.Component
  * Bootstrap CardFooter class
+ * 
  * @constructor
  * Create a new Card Footer - that you can embed children into
  * @param {Object} config The config object
@@ -2843,7 +2846,10 @@ Roo.extend(Roo.bootstrap.CardFooter, Roo.bootstrap.Element,  {
 /**
  * @class Roo.bootstrap.CardImageTop
  * @extends Roo.bootstrap.Element
+ * @parent Roo.bootstrap.Card
+ * @children Roo.bootstrap.Component
  * Bootstrap CardImageTop class
+ * 
  * @constructor
  * Create a new Card Image Top container
  * @param {Object} config The config object
@@ -3620,7 +3626,9 @@ Roo.bootstrap.MenuMgr = function(){
 /**
  * @class Roo.bootstrap.Menu
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.MenuItem
  * Bootstrap Menu class - container for MenuItems
+ * 
  * @cfg {String} type (dropdown|treeview|submenu) type of menu
  * @cfg {bool} hidden  if the menu should be hidden when rendered.
  * @cfg {bool} stopEvent (true|false)  Stop event after trigger press (default true)
@@ -6375,6 +6383,7 @@ Roo.apply(Roo.bootstrap.NavGroup, {
  * @cfg {String} tabId the tab that this item activates.
  * @cfg {String} tagtype (a|span) render as a href or span?
  * @cfg {Boolean} animateRef (true|false) link to element default false  
+ * @cfg {Roo.bootstrap.Menu} menu a Menu 
   
  * @constructor
  * Create a new Navbar Item
@@ -8666,6 +8675,7 @@ Roo.LoadMask.prototype = {
  * @class Roo.bootstrap.Table
  * @licence LGBL
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.TableBody
  * Bootstrap Table class.  This class represents the primary interface of a component based grid control.
  * Similar to Roo.grid.Grid
  * <pre><code>
@@ -8729,7 +8739,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  *
  * @cfg {Roo.grid.AbstractSelectionModel} sm The selection model to use (cell selection is not supported yet)
  * @cfg {Roo.data.Store} store The data store to use
- * @cfg {Roo.grid.ColumnModel} cm[] A column for th grid.
+ * @cfg {Roo.grid.ColumnModel} cm[] A column for the grid.
  * 
  * @cfg {String} cls table class
  *
@@ -10295,7 +10305,10 @@ Roo.bootstrap.Table.RowSelectionModel = Roo.grid.RowSelectionModel;
 /**
  * @class Roo.bootstrap.TableCell
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
+ * @parent Roo.bootstrap.TableRow
  * Bootstrap TableCell class
+ * 
  * @cfg {String} html cell contain text
  * @cfg {String} cls cell class
  * @cfg {String} tag cell tag (td|th) default td
@@ -10417,6 +10430,8 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.TableRow
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.TableCell
+ * @parent Roo.bootstrap.TableBody
  * Bootstrap TableRow class
  * @cfg {String} cls row class
  * @cfg {String} align Aligns the content in a table row
@@ -10481,6 +10496,8 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.TableBody
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.TableRow
+ * @parent Roo.bootstrap.Table
  * Bootstrap TableBody class
  * @cfg {String} cls element class
  * @cfg {String} tag element tag (thead|tbody|tfoot) default tbody
@@ -21595,6 +21612,7 @@ Roo.extend(Roo.bootstrap.PopoverNav, Roo.bootstrap.NavSimplebar,  {
 /**
  * @class Roo.bootstrap.Progress
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.ProgressBar
  * Bootstrap Progress class
  * @cfg {Boolean} striped striped of the progress bar
  * @cfg {Boolean} active animated of the progress bar
@@ -21731,16 +21749,10 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
 
  
 
- /*
- * - LGPL
- *
- * column
- * 
- */
-
-/**
+ /**
  * @class Roo.bootstrap.TabGroup
  * @extends Roo.bootstrap.Column
+ * @children Roo.bootstrap.TabPanel
  * Bootstrap Column class
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
@@ -28139,7 +28151,11 @@ Roo.bootstrap.PagingToolbar = function(config)
 
 Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     /**
-     * @cfg {Roo.data.Store} dataSource
+     * @cfg {Roo.bootstrap.Button} buttons[]
+     * Buttons for the toolbar
+     */
+     /**
+     * @cfg {Roo.data.Store} store
      * The underlying data store providing the paged data
      */
     /**
@@ -33339,7 +33355,7 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
  * Bootstrap NavProgressBar class
  * 
  * @constructor
- * Create a new nav progress bar
+ * Create a new nav progress bar - a bar indicating step along a process
  * @param {Object} config The config object
  */
 
@@ -33363,7 +33379,10 @@ Roo.bootstrap.NavProgressBar = function(config){
 };
 
 Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
-    
+    /**
+     * @cfg {Roo.bootstrap.NavProgressItem} NavProgressBar:bullets[]
+     * Bullets for the Nav Progress bar for the toolbar
+     */
     bullets : [],
     barItems : [],
     
@@ -37406,6 +37425,7 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.RadioSet
  * @extends Roo.bootstrap.Input
+ * @children Roo.bootstrap.Radio
  * Bootstrap RadioSet class
  * @cfg {String} indicatorpos (left|right) default left
  * @cfg {Boolean} inline (true|false) inline the element (default true)

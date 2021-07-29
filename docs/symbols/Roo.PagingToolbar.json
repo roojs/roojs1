@@ -37,12 +37,6 @@
       "memberOf" : ""
     },
     {
-      "name" : "dataSource",
-      "type" : "Roo.data.Store",
-      "desc" : "The underlying data store providing the paged data",
-      "memberOf" : ""
-    },
-    {
       "name" : "container",
       "type" : "String/HTMLElement/Element",
       "desc" : "container The id or element that will contain the toolbar",
@@ -61,15 +55,15 @@
       "memberOf" : "Roo.Toolbar"
     },
     {
-      "name" : "displayInfo",
-      "type" : "Boolean",
-      "desc" : "True to display the displayMsg (defaults to false)",
-      "memberOf" : ""
-    },
-    {
       "name" : "displayMsg",
       "type" : "String",
       "desc" : "The paging status message to display (defaults to \"Displaying {start} - {end} of {total}\")",
+      "memberOf" : ""
+    },
+    {
+      "name" : "displayInfo",
+      "type" : "Boolean",
+      "desc" : "True to display the displayMsg (defaults to false)",
       "memberOf" : ""
     }
   ],

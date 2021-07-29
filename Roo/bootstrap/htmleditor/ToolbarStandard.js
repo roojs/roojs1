@@ -246,7 +246,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         // hides menus... - so this cant be on a menu...
         Roo.bootstrap.MenuMgr.hideAll();
         */
-        Roo.bootstrap.MenuMgr.hideAll();
+        Roo.bootstrap.menu.Manager.hideAll();
         //this.editorsyncValue();
     },
     onFirstFocus: function() {

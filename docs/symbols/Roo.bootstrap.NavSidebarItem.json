@@ -76,6 +76,12 @@
       "memberOf" : "Roo.bootstrap.NavItem"
     },
     {
+      "name" : "menu",
+      "type" : "Roo.bootstrap.Menu",
+      "desc" : "a Menu",
+      "memberOf" : "Roo.bootstrap.NavItem"
+    },
+    {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",

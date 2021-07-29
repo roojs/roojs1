@@ -260,6 +260,12 @@
       "type" : "Boolean",
       "desc" : "default null - if the button ahs active state",
       "memberOf" : "Roo.bootstrap.Button"
+    },
+    {
+      "name" : "menu",
+      "type" : "Roo.bootstrap.Menu",
+      "desc" : "a Menu",
+      "memberOf" : "Roo.bootstrap.Button"
     }
   ],
   "methods" : [

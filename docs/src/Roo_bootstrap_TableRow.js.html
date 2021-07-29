@@ -8,6 +8,8 @@
 /**
  * @class Roo.bootstrap.TableRow
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.TableCell
+ * @parent Roo.bootstrap.TableBody
  * Bootstrap TableRow class
  * @cfg {String} cls row class
  * @cfg {String} align Aligns the content in a table row
