@@ -652,7 +652,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
 /**
  * @class Roo.bootstrap.Element
  * @extends Roo.bootstrap.Component
- * Bootstrap Element class
+ * @children Roo.bootstrap.Component
+ * Bootstrap Element class (basically a DIV used to make random stuff )
+ * 
  * @cfg {String} html contents of the element
  * @cfg {String} tag tag of the element
  * @cfg {String} cls class of the element
