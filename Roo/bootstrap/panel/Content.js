@@ -13,7 +13,7 @@
  * @extends Roo.util.Observable
  * @builder-top
  * @children Roo.bootstrap.Component
- * A basic ContentPanel element.
+ * A basic ContentPanel element. - a panel that contain any content (eg. forms etc.)
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
  * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
