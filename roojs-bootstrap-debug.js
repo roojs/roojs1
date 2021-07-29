@@ -4258,6 +4258,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.Modal
  * @extends Roo.bootstrap.Component
  * @builder-top
+ * @parent none
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
  * @cfg {String} html - the body of the dialog (for simple ones) - you can also use template..
