@@ -9,6 +9,8 @@
  * @class Roo.bootstrap.Body
  * @extends Roo.bootstrap.Component
  * @builder-top
+ * @children Roo.bootstrap.Component
+ * @parent none
  * Bootstrap Body class
  *
  * @constructor
