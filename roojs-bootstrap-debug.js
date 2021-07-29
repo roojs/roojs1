@@ -14761,7 +14761,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     * @cfg {Array} data Inline data to be loaded when the store is initialized.
     */
     /**
-    * @cfg {Roo.data.Reader} reader [required]  The Reader object which processes the data object and returns
+    * @cfg {Roo.data.DataReader} reader [required]  The Reader object which processes the data object and returns
     * an Array of Roo.data.record objects which are cached keyed by their <em>id</em> property.
     */
     /**
@@ -15517,6 +15517,7 @@ Roo.data.Field.prototype = {
 
 /**
  * @class Roo.data.DataReader
+ * @abstract
  * Base class for reading structured data from a data source.  This class is intended to be
  * extended (see {Roo.data.ArrayReader}, {Roo.data.JsonReader} and {Roo.data.XmlReader}) and should not be created directly.
  */
