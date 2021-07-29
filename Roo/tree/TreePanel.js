@@ -13,7 +13,7 @@
 /**
  * @class Roo.tree.TreePanel
  * @extends Roo.data.Tree
-
+ * @cfg {Roo.tree.TreeNode} root The root node
  * @cfg {Boolean} rootVisible false to hide the root node (defaults to true)
  * @cfg {Boolean} lines false to disable tree lines (defaults to true)
  * @cfg {Boolean} enableDD true to enable drag and drop
