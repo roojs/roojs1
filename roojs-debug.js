@@ -23673,13 +23673,13 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     */
     
     /**
-    * @cfg {Roo.data.DataProxy} proxy The Proxy object which provides access to a data object.
+    * @cfg {Roo.data.DataProxy} proxy [required] The Proxy object which provides access to a data object.
     */
     /**
     * @cfg {Array} data Inline data to be loaded when the store is initialized.
     */
     /**
-    * @cfg {Roo.data.Reader} reader The Reader object which processes the data object and returns
+    * @cfg {Roo.data.Reader} reader [required]  The Reader object which processes the data object and returns
     * an Array of Roo.data.record objects which are cached keyed by their <em>id</em> property.
     */
     /**
