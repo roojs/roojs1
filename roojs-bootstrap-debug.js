@@ -7419,6 +7419,7 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
 /**
  * @class Roo.grid.AbstractSelectionModel
  * @extends Roo.util.Observable
+ * @abstract
  * Abstract base class for grid SelectionModels.  It provides the interface that should be
  * implemented by descendant classes.  This class should not be directly instantiated.
  * @constructor
@@ -8709,8 +8710,8 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
 
 
  *
- * @cfg {Roo.grid.RowSelectionModel|Roo.grid.CellSelectionModel} sm The selection model to use (cell selection is not supported yet)
- * @cfg {Roo.data.Store|Roo.data.SimpleStore} store The data store to use
+ * @cfg {Roo.grid.AbstractSelectionModel} sm The selection model to use (cell selection is not supported yet)
+ * @cfg {Roo.data.Store} store The data store to use
  * @cfg {Roo.grid.ColumnModel} cm[] A column for th grid.
  * 
  * @cfg {String} cls table class
