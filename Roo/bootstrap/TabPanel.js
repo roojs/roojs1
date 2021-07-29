@@ -8,6 +8,7 @@
 /**
  * @class Roo.bootstrap.TabPanel
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap TabPanel class
  * @cfg {Boolean} active panel active
  * @cfg {String} html panel content

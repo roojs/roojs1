@@ -7097,6 +7097,7 @@ Roo.extend(Roo.bootstrap.breadcrumb.Item, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Row
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Row class (contains columns...)
  * 
  * @constructor
@@ -22127,6 +22128,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
 /**
  * @class Roo.bootstrap.TabPanel
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap TabPanel class
  * @cfg {Boolean} active panel active
  * @cfg {String} html panel content
