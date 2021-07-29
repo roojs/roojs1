@@ -56115,7 +56115,13 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
  * Fork - LGPL
  * <script type="text/javascript">
  */
- 
+ /**
+ * @class Roo.grid.AbstractGridView
+ * @extends Roo.util.Observable
+ * @abstract
+ * Abstract base class for grid Views
+ * @constructor
+ */
 Roo.grid.AbstractGridView = function(){
 	this.grid = null;
 	
@@ -58989,6 +58995,7 @@ Roo.grid.DefaultColumnModel = Roo.grid.ColumnModel;
 /**
  * @class Roo.grid.AbstractSelectionModel
  * @extends Roo.util.Observable
+ * @abstract
  * Abstract base class for grid SelectionModels.  It provides the interface that should be
  * implemented by descendant classes.  This class should not be directly instantiated.
  * @constructor
