@@ -318,6 +318,10 @@ Roo.grid.Grid = function(container, config){
 Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     
     /**
+	 * @cfg {Roo.grid.AbstractSelectionModel} sm [default={Roo.grid.RowSelectionModel}] The selection Model
+	 */
+	
+	/**
      * @cfg {String} ddGroup - drag drop group.
      */
       /**
