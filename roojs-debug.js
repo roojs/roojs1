@@ -38313,6 +38313,7 @@ Roo.menu.MenuMgr = function(){
 /**
  * @class Roo.menu.BaseItem
  * @extends Roo.Component
+ * @abstract
  * The base class for all items that render into menus.  BaseItem provides default rendering, activated state
  * management and base configuration options shared by all menu components.
  * @constructor
