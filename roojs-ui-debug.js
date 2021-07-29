@@ -32475,7 +32475,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
 	 * @cfg {Roo.grid.AbstractSelectionModel} sm [default={Roo.grid.RowSelectionModel}] The selection Model
 	 */
 	/**
-	 * @cfg {Roo.grid.GridView} vuew [default={Roo.grid.GridView}] The view that renders the grid
+	 * @cfg {Roo.grid.GridView} view [default={Roo.grid.GridView}] The view that renders the grid
 	 */
 	/**
      * @cfg {String} ddGroup - drag drop group.
