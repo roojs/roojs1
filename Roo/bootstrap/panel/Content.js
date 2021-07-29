@@ -12,7 +12,6 @@
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
  * @builder-top
- * @children Roo.boootstrap.Component
  * A basic ContentPanel element.
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
@@ -33,6 +32,7 @@
  * @cfg {Boolean} badges render the badges
  * @cfg {String} cls  extra classes to use  
  * @cfg {String} background (primary|secondary|success|info|warning|danger|light|dark)
+ * @cfg {Roo.bootstrap.Component} cn[] children
 
  * @constructor
  * Create a new ContentPanel.
