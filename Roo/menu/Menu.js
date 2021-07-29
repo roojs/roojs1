@@ -12,7 +12,7 @@
 /**
  * @class Roo.menu.Menu
  * @extends Roo.util.Observable
- * @children Roo.menu.Item
+ * @children Roo.menu.BaseItem
  * A menu object.  This is the container to which you add all other menu items.  Menu can also serve a as a base class
  * when you want a specialzed menu based off of another component (like {@link Roo.menu.DateMenu} for example).
  * @constructor
