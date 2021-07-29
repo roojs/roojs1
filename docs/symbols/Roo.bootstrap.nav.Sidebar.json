@@ -1,0 +1,28 @@
+{
+  "name" : "Roo.bootstrap.nav.Sidebar",
+  "augments" : [],
+  "childClasses" : [],
+  "desc" : "Bootstrap Sidebar class",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "memberOf" : "Sidebar",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "The config object",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [],
+  "methods" : [],
+  "events" : []
+}
