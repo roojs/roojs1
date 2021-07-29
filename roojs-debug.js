@@ -33260,6 +33260,7 @@ Roo.DialogManager = function(){
  * @class Roo.LayoutDialog
  * @extends Roo.BasicDialog
  * @children Roo.ContentPanel
+ * @builder-top
  * Dialog which provides adjustments for working with a layout in a Dialog.
  * Add your necessary layout config options to the dialog's config.<br>
  * Example usage (including a nested layout):
