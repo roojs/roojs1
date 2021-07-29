@@ -55644,6 +55644,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
 	 * @cfg {Roo.grid.ColumnModel} cm[] The columns of the grid
 	 */
 	/**
+	 * @cfg {Roo.grid.Store} ds The data store for the grid
+	 */
+	/**
 	 * @cfg {Roo.Toolbar} toolbar a toolbar for buttons etc.
 	 */
 	/**
