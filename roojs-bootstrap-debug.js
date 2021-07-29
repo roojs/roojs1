@@ -848,6 +848,7 @@ Roo.extend(Roo.bootstrap.DropTarget, Roo.bootstrap.Element,  {
 /**
  * @class Roo.bootstrap.Body
  * @extends Roo.bootstrap.Component
+ * @builder-top
  * Bootstrap Body class
  *
  * @constructor
@@ -4253,6 +4254,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Modal
  * @extends Roo.bootstrap.Component
+ * @builder-top
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
  * @cfg {String} html - the body of the dialog (for simple ones) - you can also use template..
@@ -38370,6 +38372,7 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
 /**
  * @class Roo.bootstrap.layout.Border
  * @extends Roo.bootstrap.layout.Manager
+ * @builder-top
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: examples/bootstrap/nested.html<br><br>
  

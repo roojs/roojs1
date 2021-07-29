@@ -11,6 +11,7 @@
 /**
  * @class Roo.bootstrap.layout.Border
  * @extends Roo.bootstrap.layout.Manager
+ * @builder-top
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: examples/bootstrap/nested.html<br><br>
  
