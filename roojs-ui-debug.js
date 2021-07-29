@@ -31274,7 +31274,7 @@ Roo.LayoutStateManager.prototype = {
  * @cfg {Boolean}   closable      True if the panel can be closed/removed
  * @cfg {Boolean}   background    True if the panel should not be activated when it is added (defaults to false)
  * @cfg {String|HTMLElement|Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
- * @cfg {Toolbar}   toolbar       A toolbar for this panel
+ * @cfg {Roo.Toolbar}   toolbar       A toolbar for this panel
  * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
  * @cfg {String} title          The title for this panel
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
@@ -31283,7 +31283,8 @@ Roo.LayoutStateManager.prototype = {
  * @cfg {String|Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
- * @cfg {String}    style  Extra style to add to the content panel 
+ * @cfg {String}    style  Extra style to add to the content panel
+ * @cfg {Roo.menu.Menu} menu  popup menu
 
  * @constructor
  * Create a new ContentPanel.
