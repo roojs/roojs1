@@ -1970,6 +1970,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Card
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Card class
  *
  *
@@ -4260,6 +4261,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * @builder-top
  * @parent none
+ * @children Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
  * @cfg {String} html - the body of the dialog (for simple ones) - you can also use template..
