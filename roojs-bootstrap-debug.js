@@ -3268,7 +3268,9 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Link
  * @extends Roo.bootstrap.Component
- * Bootstrap Link Class
+ * @children Roo.bootstrap.Component
+ * Bootstrap Link Class (eg. '<a href>')
+ 
  * @cfg {String} alt image alternative text
  * @cfg {String} href a tag href
  * @cfg {String} target (_self|_blank|_parent|_top) target for a href.
