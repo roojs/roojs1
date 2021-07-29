@@ -8,6 +8,7 @@
 /**
  * @class Roo.bootstrap.Row
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Row class (contains columns...)
  * 
  * @constructor

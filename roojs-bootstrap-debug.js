@@ -223,6 +223,8 @@ Roo.bootstrap = Roo.bootstrap || {};
 /**
  * @class Roo.bootstrap.Component
  * @extends Roo.Component
+ * @abstract
+ * @children Roo.bootstrap.Component
  * Bootstrap Component base class
  * @cfg {String} cls css class
  * @cfg {String} style any extra css
@@ -1469,6 +1471,7 @@ Roo.bootstrap.Button.weights = [
 /**
  * @class Roo.bootstrap.Column
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Column class
  * @cfg {Number} xs colspan out of 12 for mobile-sized screens or 0 for hidden
  * @cfg {Number} sm colspan out of 12 for tablet-sized screens or 0 for hidden
