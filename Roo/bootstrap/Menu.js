@@ -8,7 +8,9 @@
 /**
  * @class Roo.bootstrap.Menu
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.MenuItem
  * Bootstrap Menu class - container for MenuItems
+ * 
  * @cfg {String} type (dropdown|treeview|submenu) type of menu
  * @cfg {bool} hidden  if the menu should be hidden when rendered.
  * @cfg {bool} stopEvent (true|false)  Stop event after trigger press (default true)

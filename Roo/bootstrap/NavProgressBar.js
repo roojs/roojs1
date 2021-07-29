@@ -11,7 +11,7 @@
  * Bootstrap NavProgressBar class
  * 
  * @constructor
- * Create a new nav progress bar
+ * Create a new nav progress bar - a bar indicating step along a process
  * @param {Object} config The config object
  */
 
@@ -35,7 +35,10 @@ Roo.bootstrap.NavProgressBar = function(config){
 };
 
 Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
-    
+    /**
+     * @cfg {Roo.bootstrap.NavProgressItem} NavProgressBar:bullets[]
+     * Bullets for the Nav Progress bar for the toolbar
+     */
     bullets : [],
     barItems : [],
     

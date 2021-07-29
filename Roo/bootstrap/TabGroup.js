@@ -1,13 +1,7 @@
-/*
- * - LGPL
- *
- * column
- * 
- */
-
 /**
  * @class Roo.bootstrap.TabGroup
  * @extends Roo.bootstrap.Column
+ * @children Roo.bootstrap.TabPanel
  * Bootstrap Column class
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel

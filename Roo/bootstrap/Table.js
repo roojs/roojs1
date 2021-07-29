@@ -2,6 +2,7 @@
  * @class Roo.bootstrap.Table
  * @licence LGBL
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.TableBody
  * Bootstrap Table class.  This class represents the primary interface of a component based grid control.
  * Similar to Roo.grid.Grid
  * <pre><code>
@@ -65,7 +66,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  *
  * @cfg {Roo.grid.AbstractSelectionModel} sm The selection model to use (cell selection is not supported yet)
  * @cfg {Roo.data.Store} store The data store to use
- * @cfg {Roo.grid.ColumnModel} cm[] A column for th grid.
+ * @cfg {Roo.grid.ColumnModel} cm[] A column for the grid.
  * 
  * @cfg {String} cls table class
  *

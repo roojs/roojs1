@@ -76,7 +76,7 @@
     {
       "name" : "region",
       "type" : "String",
-      "desc" : "t) which region to put this panel on (when used with xtype constructors)",
+      "desc" : "[required] (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
       "memberOf" : "Roo.bootstrap.panel.Content"
     },
     {

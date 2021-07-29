@@ -14,27 +14,9 @@
   "see" : "",
   "params" : [
     {
-      "name" : "el",
-      "type" : "String/HTMLElement/Roo.Element",
-      "desc" : "The container element for this panel",
-      "isOptional" : false
-    },
-    {
       "name" : "config",
       "type" : "String/Object",
       "desc" : "A string to set only the title or a config object",
-      "isOptional" : false
-    },
-    {
-      "name" : "content",
-      "type" : "String",
-      "desc" : "(optional) Set the HTML content for this panel",
-      "isOptional" : false
-    },
-    {
-      "name" : "region",
-      "type" : "String",
-      "desc" : "(optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)",
       "isOptional" : false
     }
   ],
@@ -87,7 +69,7 @@
     {
       "name" : "region",
       "type" : "String",
-      "desc" : "t) which region to put this panel on (when used with xtype constructors)",
+      "desc" : "[required] (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
       "memberOf" : ""
     },
     {

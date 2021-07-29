@@ -40584,7 +40584,7 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
  * @cfg {String} title          The title for this panel
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
  * @cfg {String} url            Calls {@link #setUrl} with this value
- * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String} region  [required] (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
@@ -40595,10 +40595,8 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
  
  * @constructor
  * Create a new ContentPanel.
- * @param {String/HTMLElement/Roo.Element} el The container element for this panel
  * @param {String/Object} config A string to set only the title or a config object
- * @param {String} content (optional) Set the HTML content for this panel
- * @param {String} region (optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)
+ 
  */
 Roo.bootstrap.panel.Content = function( config){
     

@@ -54,7 +54,11 @@ Roo.bootstrap.PagingToolbar = function(config)
 
 Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     /**
-     * @cfg {Roo.data.Store} dataSource
+     * @cfg {Roo.bootstrap.Button} buttons[]
+     * Buttons for the toolbar
+     */
+     /**
+     * @cfg {Roo.data.Store} store
      * The underlying data store providing the paged data
      */
     /**

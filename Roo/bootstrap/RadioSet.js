@@ -9,6 +9,7 @@
 /**
  * @class Roo.bootstrap.RadioSet
  * @extends Roo.bootstrap.Input
+ * @children Roo.bootstrap.Radio
  * Bootstrap RadioSet class
  * @cfg {String} indicatorpos (left|right) default left
  * @cfg {Boolean} inline (true|false) inline the element (default true)

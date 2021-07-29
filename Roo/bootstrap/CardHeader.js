@@ -8,6 +8,8 @@
 /**
  * @class Roo.bootstrap.CardHeader
  * @extends Roo.bootstrap.Element
+ * @parent Roo.bootstrap.Card
+ * @children Roo.bootstrap.Component
  * Bootstrap CardHeader class
  * @constructor
  * Create a new Card Header - that you can embed children into
