@@ -9,9 +9,10 @@
  * <script type="text/javascript">
  */
 /**
- * @class Roo.ContentPanel
+ * @class Roo.bootstrap.paenl.Content
  * @extends Roo.util.Observable
  * @builder-top
+ * @children Roo.bootstrap.Component
  * A basic ContentPanel element.
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
