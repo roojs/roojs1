@@ -5,7 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "desc" : "Bootstrap Menu class - container for Menu",
+  "desc" : "Bootstrap Menu class - container for MenuItems",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
@@ -18,7 +18,7 @@
     {
       "name" : "config",
       "type" : "Object",
-      "desc" : "The config object",
+      "desc" : "The config objectQ",
       "isOptional" : false
     }
   ],
@@ -26,6 +26,12 @@
   "throws" : "",
   "requires" : "",
   "config" : [
+    {
+      "name" : "isLink",
+      "type" : "bool",
+      "desc" : "e)  the menu has link disable auto expand and collaspe (default false)",
+      "memberOf" : ""
+    },
     {
       "name" : "listeners",
       "type" : "Object",
@@ -51,6 +57,18 @@
       "memberOf" : "Roo.bootstrap.Component"
     },
     {
+      "name" : "align",
+      "type" : "String",
+      "desc" : "default tl-bl? == below  - how the menu should be aligned.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "hidden",
+      "type" : "bool",
+      "desc" : "if the menu should be hidden when rendered.",
+      "memberOf" : ""
+    },
+    {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
@@ -63,6 +81,12 @@
       "memberOf" : "Roo.Component"
     },
     {
+      "name" : "stopEvent",
+      "type" : "bool",
+      "desc" : "e)  Stop event after trigger press (default true)",
+      "memberOf" : ""
+    },
+    {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
@@ -73,18 +97,6 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component"
-    },
-    {
-      "name" : "html",
-      "type" : "String",
-      "desc" : "Text of the menu",
-      "memberOf" : ""
-    },
-    {
-      "name" : "pos",
-      "type" : "String",
-      "desc" : "Menu align to (top | bottom) default bottom",
-      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -105,9 +117,15 @@
       "memberOf" : "Roo.Component"
     },
     {
-      "name" : "icon",
-      "type" : "String",
-      "desc" : "Font awesome icon",
+      "name" : "hideTrigger",
+      "type" : "bool",
+      "desc" : "e)  default false - hide the carret for trigger.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "registerMenu",
+      "type" : "Boolean",
+      "desc" : "True (default) - means that clicking on screen etc. hides it.",
       "memberOf" : ""
     },
     {
@@ -117,9 +135,9 @@
       "memberOf" : "Roo.bootstrap.Component"
     },
     {
-      "name" : "weight",
+      "name" : "type",
       "type" : "String",
-      "desc" : "e)",
+      "desc" : "u) type of menu",
       "memberOf" : ""
     },
     {
@@ -136,6 +154,102 @@
     }
   ],
   "methods" : [
+    {
+      "name" : "hide",
+      "type" : "function",
+      "desc" : "Hides this menu and optionally all parent menus",
+      "sig" : "(deep)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "deep",
+          "type" : "Boolean",
+          "desc" : "(optional) True to hide all parent menus recursively, if any (defaults to false)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "show",
+      "type" : "function",
+      "desc" : "Displays this menu relative to another element",
+      "sig" : "(element, position, parentMenu)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "element",
+          "type" : "String/HTMLElement/Roo.Element",
+          "desc" : "The element to align to",
+          "isOptional" : false
+        },
+        {
+          "name" : "position",
+          "type" : "String",
+          "desc" : "(optional) The {@link Roo.Element#alignTo} anchor position to use in aligning to\nthe element (defaults to this.defaultAlign)",
+          "isOptional" : false
+        },
+        {
+          "name" : "parentMenu",
+          "type" : "Roo.menu.Menu",
+          "desc" : "(optional) This menu's parent menu, if applicable (defaults to undefined)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "showAt",
+      "type" : "function",
+      "desc" : "Displays this menu at a specific xy position",
+      "sig" : "(xyPosition, parentMenu)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "xyPosition",
+          "type" : "Array",
+          "desc" : "Contains X & Y [x, y] values for the position at which to show the menu (coordinates are page-based)",
+          "isOptional" : false
+        },
+        {
+          "name" : "parentMenu",
+          "type" : "Roo.menu.Menu",
+          "desc" : "(optional) This menu's parent menu, if applicable (defaults to undefined)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
     {
       "name" : "tooltipEl",
       "type" : "function",
@@ -160,44 +274,6 @@
           "desc" : "defaults to this.el"
         }
       ]
-    },
-    {
-      "name" : "hide",
-      "type" : "function",
-      "desc" : "Hide a component - adds 'hidden' class",
-      "sig" : "()\n{\n\n}",
-      "static" : false,
-      "memberOf" : "Roo.bootstrap.Component",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "exceptions" : "",
-      "requires" : "",
-      "params" : [],
-      "returns" : []
-    },
-    {
-      "name" : "show",
-      "type" : "function",
-      "desc" : "Show a component - removes 'hidden' class",
-      "sig" : "()\n{\n\n}",
-      "static" : false,
-      "memberOf" : "Roo.bootstrap.Component",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "exceptions" : "",
-      "requires" : "",
-      "params" : [],
-      "returns" : []
     },
     {
       "name" : "setVisibilityEl",
@@ -884,7 +960,7 @@
       "name" : "click",
       "type" : "function",
       "desc" : "Fires when this menu is clicked (or when the enter key is pressed while it is active)",
-      "sig" : "function (_self, e)\n{\n\n}",
+      "sig" : "function (_self, menuItem, e)\n{\n\n}",
       "memberOf" : "",
       "example" : "",
       "deprecated" : "",
@@ -893,8 +969,14 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "Roo.bootstrap.menu.Menu",
+          "type" : "Roo.menu.Menu",
           "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "menuItem",
+          "type" : "Roo.menu.Item",
+          "desc" : "The menu item that was clicked",
           "isOptional" : false
         },
         {
@@ -907,9 +989,67 @@
       "returns" : []
     },
     {
+      "name" : "itemclick",
+      "type" : "function",
+      "desc" : "Fires when a menu item contained in this menu is clicked",
+      "sig" : "function (baseItem, e)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "baseItem",
+          "type" : "Roo.menu.BaseItem",
+          "desc" : "The BaseItem that was clicked",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "mouseout",
+      "type" : "function",
+      "desc" : "Fires when the mouse exits this menu",
+      "sig" : "function (_self, e, menuItem)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.menu.Menu",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "menuItem",
+          "type" : "Roo.menu.Item",
+          "desc" : "The menu item that was clicked",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "beforehide",
       "type" : "function",
-      "desc" : "Fires before this menu is hidden",
+      "desc" : "Fires before this menu is hidden (return false to block)",
       "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "",
       "example" : "",
@@ -919,7 +1059,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "Roo.bootstrap.menu.Menu",
+          "type" : "Roo.menu.Menu",
           "desc" : "",
           "isOptional" : false
         }
@@ -929,7 +1069,7 @@
     {
       "name" : "beforeshow",
       "type" : "function",
-      "desc" : "Fires before this menu is displayed",
+      "desc" : "Fires before this menu is displayed (return false to block)",
       "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "",
       "example" : "",
@@ -939,7 +1079,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "Roo.bootstrap.menu.Menu",
+          "type" : "Roo.menu.Menu",
           "desc" : "",
           "isOptional" : false
         }
@@ -959,7 +1099,7 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "Roo.bootstrap.menu.Menu",
+          "type" : "Roo.menu.Menu",
           "desc" : "",
           "isOptional" : false
         }
@@ -979,8 +1119,40 @@
       "params" : [
         {
           "name" : "this",
-          "type" : "Roo.bootstrap.menu.Menu",
+          "type" : "Roo.menu.Menu",
           "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "mouseover",
+      "type" : "function",
+      "desc" : "Fires when the mouse is hovering over this menu",
+      "sig" : "function (_self, e, menuItem)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.menu.Menu",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Roo.EventObject",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "menuItem",
+          "type" : "Roo.menu.Item",
+          "desc" : "The menu item that was clicked",
           "isOptional" : false
         }
       ],

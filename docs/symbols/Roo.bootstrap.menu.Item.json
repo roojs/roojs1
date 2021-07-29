@@ -51,6 +51,12 @@
       "memberOf" : "Roo.bootstrap.Component"
     },
     {
+      "name" : "menu",
+      "type" : "Roo.bootsrap.Menu",
+      "desc" : "the child menu.",
+      "memberOf" : ""
+    },
+    {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
@@ -61,6 +67,12 @@
       "type" : "String",
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "disabled",
+      "type" : "Boolean",
+      "desc" : "is the item disabled - default false",
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -83,13 +95,13 @@
     {
       "name" : "preventDefault",
       "type" : "Boolean",
-      "desc" : "e) default true",
+      "desc" : "stop trigger click event to parent elements - default true",
       "memberOf" : ""
     },
     {
       "name" : "pos",
       "type" : "String",
-      "desc" : "Submenu align to (left | right) default right",
+      "desc" : "t) Submenu align to  default right",
       "memberOf" : ""
     },
     {
@@ -101,13 +113,7 @@
     {
       "name" : "submenu",
       "type" : "Boolean",
-      "desc" : "e) default false",
-      "memberOf" : ""
-    },
-    {
-      "name" : "disable",
-      "type" : "Boolean",
-      "desc" : "e) default false",
+      "desc" : "default false -",
       "memberOf" : ""
     },
     {
@@ -123,16 +129,16 @@
       "memberOf" : "Roo.Component"
     },
     {
-      "name" : "icon",
-      "type" : "String",
-      "desc" : "Font awesome icon",
-      "memberOf" : ""
-    },
-    {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "fa",
+      "type" : "String",
+      "desc" : "Font awesome icon",
+      "memberOf" : ""
     },
     {
       "name" : "name",

@@ -77,7 +77,7 @@
     },
     {
       "name" : "menu",
-      "type" : "Roo.bootstrap.Menu",
+      "type" : "Roo.bootstrap.menu.Menu",
       "desc" : "a Menu",
       "memberOf" : "Roo.bootstrap.NavItem"
     },

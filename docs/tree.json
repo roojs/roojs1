@@ -556,26 +556,6 @@
             "is_class" : true
           },
           {
-            "name" : "Roo.bootstrap.Menu",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.MenuItem",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.MenuMgr",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.MenuSeparator",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
             "name" : "Roo.bootstrap.MessageBar",
             "cn" : [],
             "is_class" : true
@@ -870,6 +850,11 @@
             "cn" : [
               {
                 "name" : "Roo.bootstrap.menu.Item",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.menu.Manager",
                 "cn" : [],
                 "is_class" : true
               },
