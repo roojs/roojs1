@@ -1100,6 +1100,8 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
  * @cfg {Array} fields An array of field definition objects, or field name strings.
  * @cfg {Object} an existing reader (eg. copied from another store)
  * @cfg {Array} data The multi-dimensional array of data
+ * @cfg {Roo.data.DataProxy} proxy [not-required]  
+ * @cfg {Roo.data.Reader} reader  [not-required] 
  * @constructor
  * @param {Object} config
  */
