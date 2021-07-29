@@ -5,6 +5,7 @@
     "Roo.Button",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "A menu button that renders into a toolbar.",
   "isSingleton" : false,
   "isStatic" : false,

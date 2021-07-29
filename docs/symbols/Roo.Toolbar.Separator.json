@@ -3,6 +3,7 @@
   "augments" : [
     "Roo.Toolbar.Item"
   ],
+  "childClasses" : [],
   "desc" : "A simple toolbar separator class",
   "isSingleton" : false,
   "isStatic" : false,

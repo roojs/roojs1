@@ -4,6 +4,7 @@
     "Roo.data.Store",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Small helper class to make creating Stores from Array data easier.",
   "isSingleton" : false,
   "isStatic" : false,

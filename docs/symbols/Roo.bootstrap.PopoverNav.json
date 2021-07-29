@@ -1,12 +1,14 @@
 {
   "name" : "Roo.bootstrap.PopoverNav",
   "augments" : [
-    "Roo.bootstrap.NavGroup",
+    "Roo.bootstrap.nav.Simplebar",
+    "Roo.bootstrap.nav.Bar",
     "Roo.bootstrap.Component",
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "desc" : "Bootstrap Popover header navigation class",
+  "childClasses" : [],
+  "desc" : "Bootstrap Popover header navigation class\nFIXME? should this go under nav?",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
@@ -34,15 +36,15 @@
       "memberOf" : "Roo.util.Observable"
     },
     {
-      "name" : "tooltip",
-      "type" : "string",
-      "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component"
-    },
-    {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+      "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "tooltip",
+      "type" : "string",
+      "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component"
     },
     {
@@ -52,28 +54,16 @@
       "memberOf" : "Roo.bootstrap.Component"
     },
     {
-      "name" : "pilltype",
+      "name" : "inverse",
       "type" : "Boolean",
-      "desc" : "default true (turn to off to disable active toggle)",
-      "memberOf" : "Roo.bootstrap.NavGroup"
+      "desc" : "is inverted color",
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "align",
       "type" : "String",
-      "desc" : "t)",
-      "memberOf" : "Roo.bootstrap.NavGroup"
-    },
-    {
-      "name" : "inverse",
-      "type" : "Boolean",
-      "desc" : "",
-      "memberOf" : "Roo.bootstrap.NavGroup"
-    },
-    {
-      "name" : "navId",
-      "type" : "String",
-      "desc" : "- reference Id for navbar.",
-      "memberOf" : "Roo.bootstrap.NavGroup"
+      "desc" : "t) alignment",
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "can_build_overlaid",
@@ -86,6 +76,12 @@
       "type" : "String",
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
       "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "tag",
+      "type" : "String",
+      "desc" : "v) default is nav",
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "style",
@@ -106,6 +102,18 @@
       "memberOf" : "Roo.bootstrap.Component"
     },
     {
+      "name" : "arrangement",
+      "type" : "Boolean",
+      "desc" : "stacked | justified",
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
+    },
+    {
+      "name" : "loadMask",
+      "type" : "Boolean",
+      "desc" : "e) loadMask on the bar",
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
+    },
+    {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
@@ -118,6 +126,12 @@
       "memberOf" : "Roo.Component"
     },
     {
+      "name" : "main",
+      "type" : "Boolean",
+      "desc" : "e) main nav bar? default false",
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
+    },
+    {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
@@ -126,8 +140,14 @@
     {
       "name" : "type",
       "type" : "String",
-      "desc" : "b) default nav",
-      "memberOf" : "Roo.bootstrap.NavGroup"
+      "desc" : "s)",
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
+    },
+    {
+      "name" : "weight",
+      "type" : "String",
+      "desc" : "e) default is light.",
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "name",
@@ -144,38 +164,12 @@
   ],
   "methods" : [
     {
-      "name" : "register",
+      "name" : "collapse",
       "type" : "function",
-      "desc" : "register a Navigation item",
-      "sig" : "(the)",
-      "static" : false,
-      "memberOf" : "Roo.bootstrap.NavGroup",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "exceptions" : "",
-      "requires" : "",
-      "params" : [
-        {
-          "name" : "the",
-          "type" : "Roo.bootstrap.NavItem",
-          "desc" : "navitem to add",
-          "isOptional" : false
-        }
-      ],
-      "returns" : []
-    },
-    {
-      "name" : "getActive",
-      "type" : "function",
-      "desc" : "gets the active Navigation item",
+      "desc" : "Collapse the navbar pulldown",
       "sig" : "()\n{\n\n}",
       "static" : false,
-      "memberOf" : "Roo.bootstrap.NavGroup",
+      "memberOf" : "Roo.bootstrap.nav.Bar",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
@@ -186,99 +180,15 @@
       "exceptions" : "",
       "requires" : "",
       "params" : [],
-      "returns" : [
-        {
-          "name" : "",
-          "type" : "Roo.bootstrap.NavItem",
-          "desc" : "the current navitem"
-        }
-      ]
-    },
-    {
-      "name" : "addItem",
-      "type" : "function",
-      "desc" : "adds a Navigation item",
-      "sig" : "(the)",
-      "static" : false,
-      "memberOf" : "Roo.bootstrap.NavGroup",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "exceptions" : "",
-      "requires" : "",
-      "params" : [
-        {
-          "name" : "the",
-          "type" : "Roo.bootstrap.NavItem",
-          "desc" : "navitem to add",
-          "isOptional" : false
-        }
-      ],
       "returns" : []
     },
     {
-      "name" : "get",
+      "name" : "expand",
       "type" : "function",
-      "desc" : "fetch a Navigation Group based on the navigation ID",
-      "sig" : "(the)",
-      "static" : true,
-      "memberOf" : "Roo.bootstrap.NavGroup",
-      "isStatic" : true,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "exceptions" : "",
-      "requires" : "",
-      "params" : [
-        {
-          "name" : "the",
-          "type" : "string",
-          "desc" : "navgroup to add",
-          "isOptional" : false
-        }
-      ],
-      "returns" : []
-    },
-    {
-      "name" : "setActiveItem",
-      "type" : "function",
-      "desc" : "sets the active Navigation item",
-      "sig" : "(the)",
-      "static" : false,
-      "memberOf" : "Roo.bootstrap.NavGroup",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "exceptions" : "",
-      "requires" : "",
-      "params" : [
-        {
-          "name" : "the",
-          "type" : "Roo.bootstrap.NavItem",
-          "desc" : "new current navitem",
-          "isOptional" : false
-        }
-      ],
-      "returns" : []
-    },
-    {
-      "name" : "clearAll",
-      "type" : "function",
-      "desc" : "clear all the Navigation item",
+      "desc" : "Expand the navbar pulldown",
       "sig" : "()\n{\n\n}",
       "static" : false,
-      "memberOf" : "Roo.bootstrap.NavGroup",
+      "memberOf" : "Roo.bootstrap.nav.Bar",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
@@ -1036,32 +946,20 @@
   ],
   "events" : [
     {
-      "name" : "changed",
+      "name" : "beforetoggle",
       "type" : "function",
-      "desc" : "Fires when the active item changes",
-      "sig" : "function (_self, selected, prev)\n{\n\n}",
-      "memberOf" : "Roo.bootstrap.NavGroup",
+      "desc" : "Fire before toggle the menu",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "Roo.bootstrap.nav.Bar",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
       "params" : [
         {
-          "name" : "this",
-          "type" : "Roo.bootstrap.NavGroup",
+          "name" : "e",
+          "type" : "Roo.EventObject",
           "desc" : "",
-          "isOptional" : false
-        },
-        {
-          "name" : "selected",
-          "type" : "Roo.bootstrap.Navbar.Item",
-          "desc" : "The item selected",
-          "isOptional" : false
-        },
-        {
-          "name" : "prev",
-          "type" : "Roo.bootstrap.Navbar.Item",
-          "desc" : "The previously selected item",
           "isOptional" : false
         }
       ],

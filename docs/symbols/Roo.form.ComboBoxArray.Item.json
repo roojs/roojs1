@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "A selected item in the list\n Fred [x]  Brian [x]  [Pick another |v]",
   "isSingleton" : false,
   "isStatic" : false,

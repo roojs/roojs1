@@ -1,6 +1,7 @@
 {
   "name" : "Roo.data.SortTypes",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Defines the default sorting (casting?) comparison functions used when sorting data.",
   "isSingleton" : true,
   "isStatic" : false,

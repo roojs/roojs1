@@ -5,6 +5,9 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.menu.CheckItem"
+  ],
   "desc" : "A base class for all menu items that require menu-related functionality (like sub-menus) and are not static\ndisplay items.  Item extends the base functionality of {@link Roo.menu.BaseItem} by adding menu-specific\nactivation and click handling.",
   "isSingleton" : false,
   "isStatic" : false,

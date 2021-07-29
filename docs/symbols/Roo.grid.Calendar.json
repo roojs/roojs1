@@ -1,6 +1,7 @@
 {
   "name" : "Roo.grid.Calendar",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "This class extends the Grid to provide a calendar widget\n<br><br>Usage:<pre><code>\n var grid = new Roo.grid.Calendar(\"my-container-id\", {\n     ds: myDataStore,\n     cm: myColModel,\n     selModel: mySelectionModel,\n     autoSizeColumns: true,\n     monitorWindowResize: false,\n     trackMouseOver: true\n     eventstore : real data store..\n });\n // set any options\n grid.render();",
   "isSingleton" : false,
   "isStatic" : false,

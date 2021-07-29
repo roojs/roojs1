@@ -5,6 +5,7 @@
     "Roo.BasicLayoutRegion",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Adds a splitbar and other (private) useful functionality to a {@link Roo.LayoutRegion}.",
   "isSingleton" : false,
   "isStatic" : false,

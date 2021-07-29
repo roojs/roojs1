@@ -8,6 +8,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Wrapper around the FCKEditor http://www.fckeditor.net",
   "isSingleton" : false,
   "isStatic" : false,

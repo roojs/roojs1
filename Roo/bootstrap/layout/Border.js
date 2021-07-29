@@ -12,6 +12,7 @@
  * @class Roo.bootstrap.layout.Border
  * @extends Roo.bootstrap.layout.Manager
  * @builder-top
+ * @children Roo.bootstrap.panel.Content Roo.bootstrap.panel.Nest Roo.bootstrap.panel.Grid
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: examples/bootstrap/nested.html<br><br>
  
@@ -43,6 +44,25 @@ Roo.bootstrap.layout.Border.regions =  ["center", "north","south","east","west"]
 
 Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} center region to go in center
+	 */
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} west region to go in west
+	 */
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} east region to go in east
+	 */
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} south region to go in south
+	 */
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} north region to go in north
+	 */
+	
+	
+	
+	
     parent : false, // this might point to a 'nest' or a ???
     
     /**

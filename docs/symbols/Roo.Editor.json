@@ -4,6 +4,10 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.tree.TreeEditor",
+    "Roo.grid.GridEditor"
+  ],
   "desc" : "A base editor field that handles displaying/hiding on demand and has some built-in sizing and event handling logic.",
   "isSingleton" : false,
   "isStatic" : false,

@@ -581,51 +581,6 @@
             "is_class" : true
           },
           {
-            "name" : "Roo.bootstrap.NavGroup",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavHeaderbar",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavItem",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavProgressBar",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavProgressItem",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavSidebar",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavSidebarItem",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavSimplebar",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.Navbar",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
             "name" : "Roo.bootstrap.NumberField",
             "cn" : [],
             "is_class" : true
@@ -865,6 +820,57 @@
               },
               {
                 "name" : "Roo.bootstrap.menu.Separator",
+                "cn" : [],
+                "is_class" : true
+              }
+            ],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.bootstrap.nav",
+            "cn" : [
+              {
+                "name" : "Roo.bootstrap.nav.Bar",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.Group",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.Headerbar",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.Item",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.ProgressBar",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.ProgressBarItem",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.Sidebar",
+                "cn" : [],
+                "is_class" : false
+              },
+              {
+                "name" : "Roo.bootstrap.nav.SidebarItem",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.Simplebar",
                 "cn" : [],
                 "is_class" : true
               }

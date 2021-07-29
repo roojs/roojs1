@@ -6,6 +6,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap Column class",
   "isSingleton" : false,
   "isStatic" : false,
@@ -252,7 +253,7 @@
       "params" : [
         {
           "name" : "the",
-          "type" : "Roo.bootstrap.NavItem",
+          "type" : "Roo.bootstrap.nav.Item",
           "desc" : "navitem to add",
           "isOptional" : false
         }
@@ -278,7 +279,7 @@
       "params" : [
         {
           "name" : "the",
-          "type" : "Roo.bootstrap.NavGroup",
+          "type" : "Roo.bootstrap.nav.Group",
           "desc" : "navgroup to add",
           "isOptional" : false
         }

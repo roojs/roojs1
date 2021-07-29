@@ -1,6 +1,7 @@
 {
   "name" : "Roo.tree.TreeSorter",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Provides sorting of nodes in a TreePanel",
   "isSingleton" : false,
   "isStatic" : false,

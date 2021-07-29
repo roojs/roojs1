@@ -3,6 +3,7 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "The default single selection for a TreePanel.",
   "isSingleton" : false,
   "isStatic" : false,

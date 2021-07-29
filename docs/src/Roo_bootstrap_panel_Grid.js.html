@@ -5,6 +5,7 @@
  * @constructor
  * Create a new GridPanel.
  * @cfg {Roo.bootstrap.Table} grid The grid for this panel
+ * @cfg {Roo.bootstrap.nav.Simplebar} toolbar the toolbar at the top of the grid.
  * @param {Object} config A the config object
   
  */

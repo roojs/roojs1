@@ -11,7 +11,7 @@
 
 /**
  * @class Roo.bootstrap.PagingToolbar
- * @extends Roo.bootstrap.NavSimplebar
+ * @extends Roo.bootstrap.nav.Simplebar
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
@@ -47,12 +47,12 @@
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">== 4) {
         </span><span class="jsdoc-var">this.navgroup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.ButtonGroup</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'pagination' </span><span class="jsdoc-syntax">});
     } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-        </span><span class="jsdoc-var">this.navgroup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.NavGroup</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'pagination' </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.navgroup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.nav.Group</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'pagination' </span><span class="jsdoc-syntax">});
     }
 
 };
 
-</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.NavSimplebar</span><span class="jsdoc-syntax">, {
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.nav.Simplebar</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-comment">/**
      * @cfg {Roo.bootstrap.Button} buttons[]
      * Buttons for the toolbar

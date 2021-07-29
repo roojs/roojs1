@@ -9,6 +9,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "A combobox for that allows selection of nested items in a list,\neg.\n\n Book\n   -> red\n   -> green\n Table\n   -> square\n     ->red\n     ->green\n   -> rectangle\n     ->green",
   "isSingleton" : false,
   "isStatic" : false,

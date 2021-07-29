@@ -4,6 +4,7 @@
     "Roo.Toolbar.Spacer",
     "Roo.Toolbar.Item"
   ],
+  "childClasses" : [],
   "desc" : "A simple element that adds a greedy (100% width) horizontal space to a toolbar.",
   "isSingleton" : false,
   "isStatic" : false,

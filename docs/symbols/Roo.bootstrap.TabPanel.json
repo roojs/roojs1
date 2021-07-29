@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap TabPanel class",
   "isSingleton" : false,
   "isStatic" : false,
@@ -59,7 +60,7 @@
     {
       "name" : "navId",
       "type" : "String",
-      "desc" : "The Roo.bootstrap.NavGroup which triggers show hide ()",
+      "desc" : "The Roo.bootstrap.nav.Group which triggers show hide ()",
       "memberOf" : ""
     },
     {

@@ -4,6 +4,7 @@
     "Roo.ContentPanel",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Treepanel component",
   "isSingleton" : false,
   "isStatic" : false,

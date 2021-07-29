@@ -5,7 +5,8 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "desc" : "Bootstrap Layout Masonry class",
+  "childClasses" : [],
+  "desc" : "Bootstrap Layout Masonry class\n\nThis is based on \nhttp://masonry.desandro.com\n\nThe idea is to render all the bricks based on vertical width...\n\nThe original code extends 'outlayer' - we might need to use that....",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,

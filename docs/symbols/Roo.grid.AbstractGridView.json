@@ -3,6 +3,7 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Abstract base class for grid Views",
   "isSingleton" : false,
   "isStatic" : false,

@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap Modal class",
   "isSingleton" : false,
   "isStatic" : false,
@@ -69,8 +70,8 @@
       "memberOf" : "Roo.bootstrap.Component"
     },
     {
-      "name" : "buttons",
-      "type" : "Array",
+      "name" : "buttons[]",
+      "type" : "Roo.bootstrap.Button",
       "desc" : "Array of buttons or standard button set..",
       "memberOf" : ""
     },

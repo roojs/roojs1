@@ -4,6 +4,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.menu.DateItem",
+    "Roo.menu.Separator",
+    "Roo.menu.ColorItem",
+    "Roo.menu.TextItem",
+    "Roo.menu.Adapter",
+    "Roo.menu.Item",
+    "Roo.menu.CheckItem"
+  ],
   "desc" : "The base class for all items that render into menus.  BaseItem provides default rendering, activated state\nmanagement and base configuration options shared by all menu components.",
   "isSingleton" : false,
   "isStatic" : false,

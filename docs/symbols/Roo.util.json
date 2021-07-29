@@ -1,6 +1,7 @@
 {
   "name" : "Roo.util",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : true,

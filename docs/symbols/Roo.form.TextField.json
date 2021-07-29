@@ -6,6 +6,20 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.form.TextArea",
+    "Roo.form.MonthField",
+    "Roo.form.ComboBox",
+    "Roo.form.ComboNested",
+    "Roo.form.TriggerField",
+    "Roo.form.Hidden",
+    "Roo.form.ComboCheck",
+    "Roo.form.DateField",
+    "Roo.form.ComboBoxArray",
+    "Roo.form.FCKeditor",
+    "Roo.form.Select",
+    "Roo.form.NumberField"
+  ],
   "desc" : "Basic text field.  Can be used as a direct replacement for traditional text inputs, or as the base\nclass for more sophisticated input controls (like {@link Roo.form.TextArea} and {@link Roo.form.ComboBox}).",
   "isSingleton" : false,
   "isStatic" : false,

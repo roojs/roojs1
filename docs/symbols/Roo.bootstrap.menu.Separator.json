@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap Separator class",
   "isSingleton" : false,
   "isStatic" : false,

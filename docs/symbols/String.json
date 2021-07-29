@@ -1,6 +1,7 @@
 {
   "name" : "String",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,

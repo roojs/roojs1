@@ -3,6 +3,10 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.tree.TreeNode",
+    "Roo.tree.AsyncTreeNode"
+  ],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,

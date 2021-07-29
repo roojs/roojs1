@@ -6,6 +6,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Adds a menu item that contains a checkbox by default, but can also be part of a radio group.",
   "isSingleton" : false,
   "isStatic" : false,

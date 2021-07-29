@@ -4,6 +4,7 @@
     "Roo.ContentPanel",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Create a new GridPanel.",
   "isSingleton" : false,
   "isStatic" : false,

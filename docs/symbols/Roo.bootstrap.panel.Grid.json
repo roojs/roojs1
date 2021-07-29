@@ -4,6 +4,7 @@
     "Roo.bootstrap.panel.Content",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Create a new GridPanel.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -26,16 +27,16 @@
   "requires" : "",
   "config" : [
     {
-      "name" : "listeners",
-      "type" : "Object",
-      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
-    },
-    {
       "name" : "loadOnce",
       "type" : "Boolean",
       "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
       "memberOf" : "Roo.bootstrap.panel.Content"
+    },
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "badges",
@@ -50,6 +51,12 @@
       "memberOf" : "Roo.bootstrap.panel.Content"
     },
     {
+      "name" : "toolbar",
+      "type" : "Roo.bootstrap.nav.Simplebar",
+      "desc" : "the toolbar at the top of the grid.",
+      "memberOf" : ""
+    },
+    {
       "name" : "fitToFrame",
       "type" : "Boolean",
       "desc" : "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
@@ -59,12 +66,6 @@
       "name" : "background",
       "type" : "Boolean",
       "desc" : "True if the panel should not be activated when it is added (defaults to false)",
-      "memberOf" : "Roo.bootstrap.panel.Content"
-    },
-    {
-      "name" : "toolbar",
-      "type" : "Toolbar",
-      "desc" : "A toolbar for this panel",
       "memberOf" : "Roo.bootstrap.panel.Content"
     },
     {

@@ -7,6 +7,7 @@
     "Roo.dd.DragDrop",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "This class provides a container DD instance that proxies for multiple child node sources.<br />\nBy default, this class requires that draggable child nodes are registered with {@link Roo.dd.Registry}.",
   "isSingleton" : false,
   "isStatic" : false,

@@ -7,6 +7,9 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.form.FCKeditor"
+  ],
   "desc" : "Multiline text field.  Can be used as a direct replacement for traditional textarea fields, plus adds\nsupport for auto-sizing.",
   "isSingleton" : false,
   "isStatic" : false,

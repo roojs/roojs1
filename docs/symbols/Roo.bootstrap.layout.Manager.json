@@ -5,6 +5,9 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.bootstrap.layout.Border"
+  ],
   "desc" : "Base class for layout managers.",
   "isSingleton" : false,
   "isStatic" : false,

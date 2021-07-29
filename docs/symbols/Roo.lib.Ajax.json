@@ -1,6 +1,7 @@
 {
   "name" : "Roo.lib.Ajax",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,

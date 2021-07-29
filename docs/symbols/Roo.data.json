@@ -1,6 +1,7 @@
 {
   "name" : "Roo.data",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : true,

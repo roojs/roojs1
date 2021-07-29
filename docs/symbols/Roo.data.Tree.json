@@ -3,6 +3,9 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.tree.TreePanel"
+  ],
   "desc" : "Represents a tree data structure and bubbles all the events for its nodes. The nodes\nin the tree have most standard DOM functionality.",
   "isSingleton" : false,
   "isStatic" : false,

@@ -4,6 +4,7 @@
     "Roo.data.Connection",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Global Ajax request class.",
   "isSingleton" : false,
   "isStatic" : false,

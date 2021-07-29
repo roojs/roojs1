@@ -1,6 +1,7 @@
 {
   "name" : "Roo.form.Action",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Internal Class used to handle form actions",
   "isSingleton" : false,
   "isStatic" : false,

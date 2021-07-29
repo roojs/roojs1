@@ -6,6 +6,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "A Day picker show [M] [T] [W] ....",
   "isSingleton" : false,
   "isStatic" : false,

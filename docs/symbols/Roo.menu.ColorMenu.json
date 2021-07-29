@@ -4,6 +4,7 @@
     "Roo.menu.Menu",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "A menu containing a {@link Roo.menu.ColorItem} component (which provides a basic color picker).",
   "isSingleton" : false,
   "isStatic" : false,

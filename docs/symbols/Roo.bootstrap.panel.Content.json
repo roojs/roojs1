@@ -3,6 +3,10 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.bootstrap.panel.Nest",
+    "Roo.bootstrap.panel.Grid"
+  ],
   "desc" : "A basic ContentPanel element. - a panel that contain any content (eg. forms etc.)",
   "isSingleton" : false,
   "isStatic" : false,

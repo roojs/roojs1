@@ -4,6 +4,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Simple date picker class.",
   "isSingleton" : false,
   "isStatic" : false,

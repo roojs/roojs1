@@ -3,6 +3,7 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Represents an individual item (tab plus body) in a TabPanel.",
   "isSingleton" : false,
   "isStatic" : false,

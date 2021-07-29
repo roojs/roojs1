@@ -4,6 +4,7 @@
     "Roo.grid.AbstractSelectionModel",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "This class provides the basic implementation for cell selection in a grid.",
   "isSingleton" : false,
   "isStatic" : false,

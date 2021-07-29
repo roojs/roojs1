@@ -1,6 +1,7 @@
 {
   "name" : "Roo.dd.StatusProxy",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "A specialized drag proxy that supports a drop status icon, {@link Roo.Layer} styles and auto-repair.  This is the\ndefault drag proxy used by all Roo.dd components.",
   "isSingleton" : false,
   "isStatic" : false,

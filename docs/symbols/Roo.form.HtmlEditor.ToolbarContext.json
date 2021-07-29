@@ -1,6 +1,7 @@
 {
   "name" : "Roo.form.HtmlEditor.ToolbarContext",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Context Toolbar\n\nUsage:\n\n new Roo.form.HtmlEditor({\n    ....\n    toolbars : [\n        { xtype: 'ToolbarStandard', styles : {} }\n        { xtype: 'ToolbarContext', disable : {} }\n    ]\n})",
   "isSingleton" : false,
   "isStatic" : false,

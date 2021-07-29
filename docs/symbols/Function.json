@@ -1,6 +1,7 @@
 {
   "name" : "Function",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "These functions are available on every Function object (any JavaScript function).",
   "isSingleton" : false,
   "isStatic" : false,

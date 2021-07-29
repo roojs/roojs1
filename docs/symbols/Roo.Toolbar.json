@@ -1,6 +1,9 @@
 {
   "name" : "Roo.Toolbar",
   "augments" : [],
+  "childClasses" : [
+    "Roo.PagingToolbar"
+  ],
   "desc" : "Basic Toolbar class.",
   "isSingleton" : false,
   "isStatic" : false,

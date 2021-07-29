@@ -1,6 +1,7 @@
 {
   "name" : "Roo",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Roo core utilities and functions.",
   "isSingleton" : true,
   "isStatic" : false,

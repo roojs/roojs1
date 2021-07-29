@@ -1,6 +1,7 @@
 {
   "name" : "Roo.ComponentMgr",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Provides a common registry of all components on a page so that they can be easily accessed by component id (see {@link Roo.getCmp}).",
   "isSingleton" : true,
   "isStatic" : false,

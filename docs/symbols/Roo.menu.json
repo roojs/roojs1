@@ -1,6 +1,7 @@
 {
   "name" : "Roo.menu",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : true,

@@ -3,6 +3,7 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,

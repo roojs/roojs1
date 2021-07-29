@@ -4,6 +4,7 @@
     "Roo.bootstrap.layout.Basic",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "This class represents a region in a layout manager.",
   "isSingleton" : false,
   "isStatic" : false,

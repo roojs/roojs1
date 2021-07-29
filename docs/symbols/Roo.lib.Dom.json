@@ -1,6 +1,7 @@
 {
   "name" : "Roo.lib.Dom",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Dom utils (from YIU afaik)",
   "isSingleton" : false,
   "isStatic" : false,

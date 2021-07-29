@@ -6,6 +6,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap CardFooter class",
   "isSingleton" : false,
   "isStatic" : false,

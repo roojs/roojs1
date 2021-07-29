@@ -5,6 +5,22 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.bootstrap.DateField",
+    "Roo.bootstrap.TriggerField",
+    "Roo.bootstrap.MonthField",
+    "Roo.bootstrap.CheckBox",
+    "Roo.bootstrap.TimeField",
+    "Roo.bootstrap.RadioSet",
+    "Roo.bootstrap.PhoneInput",
+    "Roo.bootstrap.Markdown",
+    "Roo.bootstrap.HtmlEditor",
+    "Roo.bootstrap.SecurePass",
+    "Roo.bootstrap.NumberField",
+    "Roo.bootstrap.TextArea",
+    "Roo.bootstrap.ComboBox",
+    "Roo.bootstrap.MoneyField"
+  ],
   "desc" : "Bootstrap Input class",
   "isSingleton" : false,
   "isStatic" : false,
@@ -45,9 +61,9 @@
       "memberOf" : ""
     },
     {
-      "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
-      "type" : "String",
-      "desc" : "inputType",
+      "name" : "afterButton",
+      "type" : "Roo.bootstrap.Button",
+      "desc" : "to show before",
       "memberOf" : ""
     },
     {
@@ -235,6 +251,12 @@
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component"
+    },
+    {
+      "name" : "inputType",
+      "type" : "String",
+      "desc" : "t)",
+      "memberOf" : ""
     },
     {
       "name" : "invalidClass",

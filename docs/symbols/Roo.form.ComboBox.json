@@ -8,6 +8,10 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.form.ComboNested",
+    "Roo.form.ComboCheck"
+  ],
   "desc" : "A combobox control with support for autocomplete, remote-loading, paging and many other features.",
   "isSingleton" : false,
   "isStatic" : false,

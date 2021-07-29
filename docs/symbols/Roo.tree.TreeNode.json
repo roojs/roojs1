@@ -4,6 +4,9 @@
     "Roo.data.Node",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.tree.AsyncTreeNode"
+  ],
   "desc" : "is to use the cls or iconCls attributes and add the icon via a CSS background image.",
   "isSingleton" : false,
   "isStatic" : false,

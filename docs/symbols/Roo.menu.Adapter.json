@@ -5,6 +5,10 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.menu.DateItem",
+    "Roo.menu.ColorItem"
+  ],
   "desc" : "A base utility class that adapts a non-menu component so that it can be wrapped by a menu item and added to a menu.\nIt provides basic rendering, activation management and enable/disable logic required to work in menus.",
   "isSingleton" : false,
   "isStatic" : false,

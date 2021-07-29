@@ -1,6 +1,7 @@
 {
   "name" : "Array",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,

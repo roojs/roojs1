@@ -10,11 +10,11 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Input class
  * @cfg {Boolean} disabled is it disabled
- * @cfg {String} (button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text) inputType 
+ * @cfg {String} inputType (button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)  
  * @cfg {String} name name of the input
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string} placeholder - placeholder to put in text.
- * @cfg {string}  before - input group add on before
+ * @cfg {string} before - input group add on before
  * @cfg {string} after - input group add on after
  * @cfg {string} size - (lg|sm) or leave empty..
  * @cfg {Number} xs colspan out of 12 for mobile-sized screens
@@ -34,7 +34,8 @@
  * @cfg {String} capture (user|camera) use for file input only. (default empty)
  * @cfg {String} accept (image|video|audio) use for file input only. (default empty)
  * @cfg {Boolean} preventMark Do not show tick or cross if error/success
-
+ * @cfg {Roo.bootstrap.Button} before Button to show before
+ * @cfg {Roo.bootstrap.Button} afterButton to show before
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
  * 

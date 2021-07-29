@@ -1,6 +1,7 @@
 {
   "name" : "Roo.UpdateManager.BasicRenderer",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Default Content renderer. Updates the elements innerHTML with the responseText.",
   "isSingleton" : false,
   "isStatic" : false,

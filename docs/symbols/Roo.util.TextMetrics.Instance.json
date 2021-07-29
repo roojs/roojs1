@@ -1,6 +1,7 @@
 {
   "name" : "Roo.util.TextMetrics.Instance",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : true,

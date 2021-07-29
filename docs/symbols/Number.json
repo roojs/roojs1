@@ -1,6 +1,7 @@
 {
   "name" : "Number",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,

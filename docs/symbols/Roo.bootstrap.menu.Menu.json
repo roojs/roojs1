@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap Menu class - container for MenuItems",
   "isSingleton" : false,
   "isStatic" : false,

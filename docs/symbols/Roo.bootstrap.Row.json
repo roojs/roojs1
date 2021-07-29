@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap Row class (contains columns...)",
   "isSingleton" : false,
   "isStatic" : false,

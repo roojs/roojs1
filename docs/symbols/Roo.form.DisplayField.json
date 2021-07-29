@@ -6,6 +6,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "A generic Field to display non-editable data.",
   "isSingleton" : false,
   "isStatic" : false,

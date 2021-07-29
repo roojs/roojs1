@@ -4,6 +4,9 @@
     "Roo.grid.Grid",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.grid.PropertyGrid"
+  ],
   "desc" : "Class for creating and editable grid.",
   "isSingleton" : false,
   "isStatic" : false,

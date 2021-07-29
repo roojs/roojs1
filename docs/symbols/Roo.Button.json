@@ -3,6 +3,11 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.Toolbar.SplitButton",
+    "Roo.SplitButton",
+    "Roo.Toolbar.Button"
+  ],
   "desc" : "Simple Button class",
   "isSingleton" : false,
   "isStatic" : false,

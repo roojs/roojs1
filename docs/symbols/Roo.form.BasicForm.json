@@ -3,6 +3,9 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.form.Form"
+  ],
   "desc" : "Supplies the functionality to do \"actions\" on forms and initialize Roo.form.Field types on existing markup.",
   "isSingleton" : false,
   "isStatic" : false,

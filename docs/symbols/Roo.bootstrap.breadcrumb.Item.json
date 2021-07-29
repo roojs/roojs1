@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap Breadcrumb Nav Class",
   "isSingleton" : false,
   "isStatic" : false,

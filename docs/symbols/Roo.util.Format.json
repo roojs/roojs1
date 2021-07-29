@@ -1,6 +1,7 @@
 {
   "name" : "Roo.util.Format",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Reusable data formatting functions",
   "isSingleton" : true,
   "isStatic" : false,

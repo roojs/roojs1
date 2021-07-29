@@ -1,6 +1,7 @@
 {
   "name" : "Roo.bootstrap",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : true,

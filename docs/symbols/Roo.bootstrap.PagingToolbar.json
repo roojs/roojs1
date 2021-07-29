@@ -1,12 +1,13 @@
 {
   "name" : "Roo.bootstrap.PagingToolbar",
   "augments" : [
-    "Roo.bootstrap.NavSimplebar",
-    "Roo.bootstrap.Navbar",
+    "Roo.bootstrap.nav.Simplebar",
+    "Roo.bootstrap.nav.Bar",
     "Roo.bootstrap.Component",
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -62,13 +63,13 @@
       "name" : "inverse",
       "type" : "Boolean",
       "desc" : "is inverted color",
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "align",
       "type" : "String",
       "desc" : "t) alignment",
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "buttons[]",
@@ -104,7 +105,7 @@
       "name" : "tag",
       "type" : "String",
       "desc" : "v) default is nav",
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "style",
@@ -134,13 +135,13 @@
       "name" : "arrangement",
       "type" : "Boolean",
       "desc" : "stacked | justified",
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "loadMask",
       "type" : "Boolean",
       "desc" : "e) loadMask on the bar",
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "xattr",
@@ -164,7 +165,7 @@
       "name" : "main",
       "type" : "Boolean",
       "desc" : "e) main nav bar? default false",
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "displayInfo",
@@ -188,13 +189,13 @@
       "name" : "type",
       "type" : "String",
       "desc" : "s)",
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "weight",
       "type" : "String",
       "desc" : "e) default is light.",
-      "memberOf" : "Roo.bootstrap.NavSimplebar"
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "name",
@@ -268,7 +269,7 @@
       "desc" : "Collapse the navbar pulldown",
       "sig" : "()\n{\n\n}",
       "static" : false,
-      "memberOf" : "Roo.bootstrap.Navbar",
+      "memberOf" : "Roo.bootstrap.nav.Bar",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
@@ -287,7 +288,7 @@
       "desc" : "Expand the navbar pulldown",
       "sig" : "()\n{\n\n}",
       "static" : false,
-      "memberOf" : "Roo.bootstrap.Navbar",
+      "memberOf" : "Roo.bootstrap.nav.Bar",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
@@ -1049,7 +1050,7 @@
       "type" : "function",
       "desc" : "Fire before toggle the menu",
       "sig" : "function (e)\n{\n\n}",
-      "memberOf" : "Roo.bootstrap.Navbar",
+      "memberOf" : "Roo.bootstrap.nav.Bar",
       "example" : "",
       "deprecated" : "",
       "since" : "",

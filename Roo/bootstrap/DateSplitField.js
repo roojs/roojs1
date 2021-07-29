@@ -174,7 +174,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     {
         var _this = this;
         
-        Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.DateSplitFiel.superclass.onRender.call(this, ct, position);
         
         this.inputEl = this.el.select('.roo-date-split-field-group-value', true).first();
         

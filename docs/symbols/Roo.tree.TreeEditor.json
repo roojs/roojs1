@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Provides editor functionality for inline tree node editing.  Any valid {@link Roo.form.Field} can be used\nas the editor field.",
   "isSingleton" : false,
   "isStatic" : false,

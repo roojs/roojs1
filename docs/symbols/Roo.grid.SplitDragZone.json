@@ -6,6 +6,7 @@
     "Roo.dd.DragDrop",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Support for Column Header resizing",
   "isSingleton" : false,
   "isStatic" : false,

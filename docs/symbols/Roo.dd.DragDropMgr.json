@@ -1,6 +1,7 @@
 {
   "name" : "Roo.dd.DragDropMgr",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "DragDropMgr is a singleton that tracks the element interaction for\nall DragDrop items in the window.  Generally, you will not call\nthis class directly, but it does have helper methods that could\nbe useful in your DragDrop implementations.",
   "isSingleton" : true,
   "isStatic" : false,

@@ -3,6 +3,7 @@
   "augments" : [
     "Roo.Element"
   ],
+  "childClasses" : [],
   "desc" : "An extended {@link Roo.Element} object that supports a shadow and shim, constrain to viewport and\nautomatic maintaining of shadow/shim positions.",
   "isSingleton" : false,
   "isStatic" : false,

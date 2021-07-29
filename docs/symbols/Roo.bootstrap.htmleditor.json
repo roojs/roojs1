@@ -1,6 +1,7 @@
 {
   "name" : "Roo.bootstrap.htmleditor",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : true,

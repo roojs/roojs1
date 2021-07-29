@@ -5,6 +5,9 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.bootstrap.TabGroup"
+  ],
   "desc" : "Bootstrap Column class",
   "isSingleton" : false,
   "isStatic" : false,

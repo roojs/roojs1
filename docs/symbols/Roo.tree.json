@@ -1,6 +1,7 @@
 {
   "name" : "Roo.tree",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : true,

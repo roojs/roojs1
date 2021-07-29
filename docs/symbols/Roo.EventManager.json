@@ -1,6 +1,7 @@
 {
   "name" : "Roo.EventManager",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Registers event handlers that want to receive a normalized EventObject instead of the standard browser event and provides \nseveral useful events directly.\nSee {@link Roo.EventObject} for more details on normalized event objects.",
   "isSingleton" : true,
   "isStatic" : false,

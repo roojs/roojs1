@@ -4,6 +4,10 @@
     "Roo.BasicLayoutRegion",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.SplitLayoutRegion",
+    "Roo.bootstrap.layout.Split"
+  ],
   "desc" : "This class represents a region in a layout manager.",
   "isSingleton" : false,
   "isStatic" : false,

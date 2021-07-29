@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap MenuItem class",
   "isSingleton" : false,
   "isStatic" : false,
@@ -51,6 +52,12 @@
       "memberOf" : "Roo.bootstrap.Component"
     },
     {
+      "name" : "isContainer",
+      "type" : "Boolean",
+      "desc" : "is it a container - just returns a drop down item..",
+      "memberOf" : ""
+    },
+    {
       "name" : "menu",
       "type" : "Roo.bootsrap.Menu",
       "desc" : "the child menu.",
@@ -69,12 +76,6 @@
       "memberOf" : "Roo.Component"
     },
     {
-      "name" : "disabled",
-      "type" : "Boolean",
-      "desc" : "is the item disabled - default false",
-      "memberOf" : ""
-    },
-    {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
@@ -87,21 +88,15 @@
       "memberOf" : "Roo.Component"
     },
     {
-      "name" : "html",
-      "type" : "String",
-      "desc" : "text of the item",
-      "memberOf" : ""
-    },
-    {
       "name" : "preventDefault",
       "type" : "Boolean",
-      "desc" : "stop trigger click event to parent elements - default true",
+      "desc" : "do not trigger A href on clicks (default false).",
       "memberOf" : ""
     },
     {
-      "name" : "pos",
+      "name" : "html",
       "type" : "String",
-      "desc" : "t) Submenu align to  default right",
+      "desc" : "the menu label",
       "memberOf" : ""
     },
     {
@@ -109,12 +104,6 @@
       "type" : "String",
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component"
-    },
-    {
-      "name" : "submenu",
-      "type" : "Boolean",
-      "desc" : "default false -",
-      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -135,9 +124,15 @@
       "memberOf" : "Roo.bootstrap.Component"
     },
     {
+      "name" : "active",
+      "type" : "Boolean",
+      "desc" : "used on sidebars to highlight active itesm",
+      "memberOf" : ""
+    },
+    {
       "name" : "fa",
       "type" : "String",
-      "desc" : "Font awesome icon",
+      "desc" : "favicon to show on left of menu item.",
       "memberOf" : ""
     },
     {
@@ -905,68 +900,22 @@
   ],
   "events" : [
     {
-      "name" : "mouseover",
-      "type" : "function",
-      "desc" : "Fires when the mouse is hovering over this menu",
-      "sig" : "function (_self, e)\n{\n\n}",
-      "memberOf" : "",
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "params" : [
-        {
-          "name" : "this",
-          "type" : "Roo.bootstrap.menu.Item",
-          "desc" : "",
-          "isOptional" : false
-        },
-        {
-          "name" : "e",
-          "type" : "Roo.EventObject",
-          "desc" : "",
-          "isOptional" : false
-        }
-      ],
-      "returns" : []
-    },
-    {
-      "name" : "mouseout",
-      "type" : "function",
-      "desc" : "Fires when the mouse exits this menu",
-      "sig" : "function (_self, e)\n{\n\n}",
-      "memberOf" : "",
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "params" : [
-        {
-          "name" : "this",
-          "type" : "Roo.bootstrap.menu.Item",
-          "desc" : "",
-          "isOptional" : false
-        },
-        {
-          "name" : "e",
-          "type" : "Roo.EventObject",
-          "desc" : "",
-          "isOptional" : false
-        }
-      ],
-      "returns" : []
-    },
-    {
       "name" : "click",
       "type" : "function",
       "desc" : "The raw click event for the entire grid.",
-      "sig" : "function (e)\n{\n\n}",
+      "sig" : "function (_self, e)\n{\n\n}",
       "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
       "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.bootstrap.menu.Item",
+          "desc" : "",
+          "isOptional" : false
+        },
         {
           "name" : "e",
           "type" : "Roo.EventObject",

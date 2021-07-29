@@ -4,6 +4,7 @@
     "Roo.bootstrap.panel.Content",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Create a new Panel, that can contain a layout.Border.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -14,12 +15,6 @@
   "since" : "",
   "see" : "",
   "params" : [
-    {
-      "name" : "layout",
-      "type" : "Roo.BorderLayout",
-      "desc" : "The layout for this panel",
-      "isOptional" : false
-    },
     {
       "name" : "config",
       "type" : "String/Object",
@@ -32,16 +27,16 @@
   "requires" : "",
   "config" : [
     {
-      "name" : "loadOnce",
-      "type" : "Boolean",
-      "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
-      "memberOf" : "Roo.bootstrap.panel.Content"
-    },
-    {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable"
+    },
+    {
+      "name" : "loadOnce",
+      "type" : "Boolean",
+      "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
+      "memberOf" : "Roo.bootstrap.panel.Content"
     },
     {
       "name" : "badges",
@@ -126,6 +121,12 @@
       "type" : "String/Object",
       "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
       "memberOf" : "Roo.bootstrap.panel.Content"
+    },
+    {
+      "name" : "layout",
+      "type" : "Roo.BorderLayout",
+      "desc" : "The layout for this panel",
+      "memberOf" : ""
     },
     {
       "name" : "adjustments",

@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap Graph class\n> Prameters\n -sm {number} sm 4\n -md {number} md 5",
   "isSingleton" : false,
   "isStatic" : false,

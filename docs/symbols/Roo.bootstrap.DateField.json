@@ -6,6 +6,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap DateField class",
   "isSingleton" : false,
   "isStatic" : false,
@@ -46,9 +47,9 @@
       "memberOf" : "Roo.bootstrap.Input"
     },
     {
-      "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
-      "type" : "String",
-      "desc" : "inputType",
+      "name" : "afterButton",
+      "type" : "Roo.bootstrap.Button",
+      "desc" : "to show before",
       "memberOf" : "Roo.bootstrap.Input"
     },
     {
@@ -284,6 +285,12 @@
       "type" : "Boolean",
       "desc" : "default true",
       "memberOf" : ""
+    },
+    {
+      "name" : "inputType",
+      "type" : "String",
+      "desc" : "t)",
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "invalidClass",

@@ -6,7 +6,6 @@
  * Create a new Panel, that can contain a layout.Border.
  * 
  * 
- * @param {Roo.BorderLayout} layout The layout for this panel
  * @param {String/Object} config A string to set only the title or a config object
  */
 </span><span class="jsdoc-var">Roo.bootstrap.panel.Nest </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
@@ -39,6 +38,10 @@
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.panel.Nest</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.panel.Content</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+    * @cfg {Roo.BorderLayout} layout The layout for this panel
+    */
+    </span><span class="jsdoc-var">layout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.ignoreResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">)){

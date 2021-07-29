@@ -1,6 +1,7 @@
 {
   "name" : "Roo.util.Clipboard",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Clipboard UTILS",
   "isSingleton" : false,
   "isStatic" : false,

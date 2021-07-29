@@ -6,6 +6,9 @@
     "Roo.dd.DragDrop",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.dd.DragZone"
+  ],
   "desc" : "A simple class that provides the basic implementation needed to make any element draggable.",
   "isSingleton" : false,
   "isStatic" : false,

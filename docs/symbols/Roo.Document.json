@@ -3,6 +3,7 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "This is a convience class to wrap up the main document loading code.. , rather than adding Roo.onReady(......)",
   "isSingleton" : false,
   "isStatic" : false,

@@ -3380,7 +3380,10 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Header
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Header class
+ *
+ * 
  * @cfg {String} html content of header
  * @cfg {Number} level (1|2|3|4|5|6) default 1
  * 
@@ -3419,11 +3422,6 @@ Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
  
 
  Roo.bootstrap.menu = Roo.bootstrap.menu || {};
-// deprciated 
-Roo.bootstrap.Menu = Roo.bootstrap.menu.Menu;
-Roo.bootstrap.MenuItem =  Roo.bootstrap.menu.Item;
-Roo.bootstrap.MenuSeparator = Roo.bootstrap.menu.Separator
-
 /**
  * @class Roo.bootstrap.MenuMgr
  * @licence LGPL
@@ -4088,23 +4086,24 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
 });
 
  
-  /**
+ /**
  * @class Roo.bootstrap.menu.Item
  * @extends Roo.bootstrap.Component
+ * @children  Roo.bootstrap.Button Roo.bootstrap.ButtonUploader Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Container
  * @licence LGPL
  * Bootstrap MenuItem class
- * @cfg {Boolean} submenu default false - 
- * @cfg {String} html text of the item
+ * 
+ * @cfg {String} html the menu label
  * @cfg {String} href the link
- * @cfg {Boolean} disabled  is the item disabled - default false 
- * @cfg {Boolean} preventDefault stop trigger click event to parent elements - default true
- * @cfg {String} fa  Font awesome icon
- * @cfg {String} pos (left|right) Submenu align to  default right 
+ * @cfg {Boolean} preventDefault do not trigger A href on clicks (default false).
+ * @cfg {Boolean} isContainer is it a container - just returns a drop down item..
+ * @cfg {Boolean} active  used on sidebars to highlight active itesm
+ * @cfg {String} fa favicon to show on left of menu item.
  * @cfg {Roo.bootsrap.Menu} menu the child menu.
- 
+ * 
  * 
  * @constructor
- * Create a new Menu  Item
+ * Create a new MenuItem
  * @param {Object} config The config object
  */
 
@@ -4112,45 +4111,27 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
 Roo.bootstrap.menu.Item = function(config){
     Roo.bootstrap.menu.Item.superclass.constructor.call(this, config);
     this.addEvents({
-        /**
-         * @event mouseover
-         * Fires when the mouse is hovering over this menu
-         * @param {Roo.bootstrap.menu.Item} this
-         * @param {Roo.EventObject} e
-         */
-        mouseover : true,
-        /**
-         * @event mouseout
-         * Fires when the mouse exits this menu
-         * @param {Roo.bootstrap.menu.Item} this
-         * @param {Roo.EventObject} e
-         */
-        mouseout : true,
         // raw events
         /**
          * @event click
          * The raw click event for the entire grid.
+         * @param {Roo.bootstrap.menu.Item} this
          * @param {Roo.EventObject} e
          */
-        click : true
+        "click" : true
     });
 };
 
 Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
-    submenu : false,
-    href : '',
-    html : '',
-    preventDefault: true,
-    disable : false,
-    active : false,    
-    fa : false,
-    pos : 'right',
+    href : false,
+    html : false,
+    preventDefault: false,
+    isContainer : false,
+    active : false,
+    fa: false,
     
-    isContainer : false, // ?? only a <li drowdonw-menu-item">
-    
-    getAutoCreate : function()
-    {
+    getAutoCreate : function(){
         
         if(this.isContainer){
             return {
@@ -4158,17 +4139,15 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
                 cls: 'dropdown-menu-item '
             };
         }
-        
         var ctag = {
             tag: 'span',
-            cls : 'roo-menu-item-text',
-            html : this.html
+            html: 'Link'
         };
         
         var anc = {
             tag : 'a',
             cls : 'dropdown-item',
-            href : this.href || '#',
+            href : '#',
             cn : [  ]
         };
         
@@ -4194,64 +4173,44 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
             cfg.cls += ' active';
         }
         
-        if(this.disabled){
-            cfg.cls +=  ' disabled' 
-        }
         
-        if(this.submenu){
-            cfg.cls +=  'dropdown-submenu';
-            
-            if(this.pos == 'left'){
-                cfg.cls +=  ' pull-left';
-            }
-        }
+        
         anc.href = this.href || cfg.cn[0].href ;
         ctag.html = this.html || cfg.cn[0].html ;
         return cfg;
-         
-         
     },
     
-    initEvents : function() 
+    initEvents: function()
     {
         if (this.parent().type == 'treeview') {
             this.el.select('a').on('click', this.onClick, this);
         }
+        
         if (this.menu) {
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
             this.menu = this.addxtype(Roo.apply({}, this.menu));
         }
-        this.el.on('mouseover', this.onMouseOver, this);
-        this.el.on('mouseout', this.onMouseOut, this);
-        
-        this.el.select('a', true).first().on('click', this.onClick, this);
         
     },
-    
     onClick : function(e)
     {
+        Roo.log('item on click ');
+        
         if(this.preventDefault){
             e.preventDefault();
         }
+        //this.parent().hideMenuItems();
         
-        this.fireEvent("click", this, e);
+        this.fireEvent('click', this, e);
     },
-    
-    onMouseOver : function(e)
+    getEl : function()
     {
-        if(this.submenu && this.pos == 'left'){
-            this.el.select('ul.dropdown-menu', true).first().setLeft(this.el.select('ul.dropdown-menu', true).first().getWidth() * -1);
-        }
-        
-        this.fireEvent("mouseover", this, e);
-    },
-    
-    onMouseOut : function(e)
-    {
-        this.fireEvent("mouseout", this, e);
-    }
+        return this.el;
+    } 
 });
+
+ 
 
  
 
@@ -4287,7 +4246,12 @@ Roo.extend(Roo.bootstrap.menu.Separator, Roo.bootstrap.Component,  {
 
  
 
- 
+ // deprciated 
+Roo.bootstrap.Menu = Roo.bootstrap.menu.Menu;
+Roo.bootstrap.MenuItem =  Roo.bootstrap.menu.Item;
+Roo.bootstrap.MenuSeparator = Roo.bootstrap.menu.Separator
+
+
 /*
 * Licence: LGPL
 */
@@ -4303,7 +4267,7 @@ Roo.extend(Roo.bootstrap.menu.Separator, Roo.bootstrap.Component,  {
  * @cfg {String} html - the body of the dialog (for simple ones) - you can also use template..
  * @cfg {Roo.Template} tmpl - a template with variables. to use it, add a handler in show:method  adn
  * @cfg {Boolean} specificTitle default false
- * @cfg {Array} buttons Array of buttons or standard button set..
+ * @cfg {Roo.bootstrap.Button} buttons[] Array of buttons or standard button set..
  * @cfg {String} buttonPosition (left|right|center) default right (DEPRICATED) - use mr-auto on buttons to put them on the left
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
@@ -5551,6 +5515,8 @@ Roo.Msg.show({
  */
 Roo.MessageBox = Roo.MessageBox || Roo.bootstrap.MessageBox;
 Roo.Msg = Roo.Msg || Roo.MessageBox;
+Roo.bootstrap.nav = {};
+
 /*
  * - LGPL
  *
@@ -5559,8 +5525,9 @@ Roo.Msg = Roo.Msg || Roo.MessageBox;
  */
 
 /**
- * @class Roo.bootstrap.Navbar
+ * @class Roo.bootstrap.nav.Bar
  * @extends Roo.bootstrap.Component
+ * @abstract
  * Bootstrap Navbar class
 
  * @constructor
@@ -5569,8 +5536,8 @@ Roo.Msg = Roo.Msg || Roo.MessageBox;
  */
 
 
-Roo.bootstrap.Navbar = function(config){
-    Roo.bootstrap.Navbar.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.Bar = function(config){
+    Roo.bootstrap.nav.Bar.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
         /**
@@ -5582,7 +5549,7 @@ Roo.bootstrap.Navbar = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.nav.Bar, Roo.bootstrap.Component,  {
     
     
    
@@ -5729,8 +5696,9 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.NavSimplebar
- * @extends Roo.bootstrap.Navbar
+ * @class Roo.bootstrap.nav.Simplebar
+ * @extends Roo.bootstrap.nav.Bar
+ * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container Roo.bootstrap.Form Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Link
  * Bootstrap Sidebar class
  *
  * @cfg {Boolean} inverse is inverted color
@@ -5753,11 +5721,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
  */
 
 
-Roo.bootstrap.NavSimplebar = function(config){
-    Roo.bootstrap.NavSimplebar.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.Simplebar = function(config){
+    Roo.bootstrap.nav.Simplebar.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
+Roo.extend(Roo.bootstrap.nav.Simplebar, Roo.bootstrap.nav.Bar,  {
     
     inverse: false,
     
@@ -5857,8 +5825,9 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
  */
 
 /**
- * @class Roo.bootstrap.NavHeaderbar
- * @extends Roo.bootstrap.NavSimplebar
+ * @class Roo.bootstrap.nav.Headerbar
+ * @extends Roo.bootstrap.nav.Simplebar
+ * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container Roo.bootstrap.Form Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Link
  * Bootstrap Sidebar class
  *
  * @cfg {String} brand what is brand
@@ -5875,12 +5844,12 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
  */
 
 
-Roo.bootstrap.NavHeaderbar = function(config){
-    Roo.bootstrap.NavHeaderbar.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.Headerbar = function(config){
+    Roo.bootstrap.nav.Headerbar.superclass.constructor.call(this, config);
       
 };
 
-Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
+Roo.extend(Roo.bootstrap.nav.Headerbar, Roo.bootstrap.nav.Simplebar,  {
     
     position: '',
     brand: '',
@@ -6003,7 +5972,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     
     initEvents : function()
     {
-        Roo.bootstrap.NavHeaderbar.superclass.initEvents.call(this);
+        Roo.bootstrap.nav.Headerbar.superclass.initEvents.call(this);
         
         if (this.autohide) {
             
@@ -6042,8 +6011,9 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
  */
 
 /**
- * @class Roo.bootstrap.NavSidebar
+ * @class Roo.bootstrap.nav.Sidebar
  * @extends Roo.bootstrap.Navbar
+ * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container Roo.bootstrap.Form Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Link
  * Bootstrap Sidebar class
  * 
  * @constructor
@@ -6052,11 +6022,11 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
  */
 
 
-Roo.bootstrap.NavSidebar = function(config){
-    Roo.bootstrap.NavSidebar.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.Sidebar = function(config){
+    Roo.bootstrap.nav.Sidebar.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
+Roo.extend(Roo.bootstrap.nav.Sidebar, Roo.bootstrap.nav.Bar,  {
     
     sidebar : true, // used by Navbar Item and NavbarGroup at present...
     
@@ -6087,8 +6057,9 @@ Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
  */
 
 /**
- * @class Roo.bootstrap.NavGroup
+ * @class Roo.bootstrap.nav.Group
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.nav.Item
  * Bootstrap NavGroup class
  * @cfg {String} align (left|right)
  * @cfg {Boolean} inverse
@@ -6101,16 +6072,16 @@ Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.NavGroup = function(config){
-    Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.Group = function(config){
+    Roo.bootstrap.nav.Group.superclass.constructor.call(this, config);
     this.navItems = [];
    
-    Roo.bootstrap.NavGroup.register(this);
+    Roo.bootstrap.nav.Group.register(this);
      this.addEvents({
         /**
 	     * @event changed
 	     * Fires when the active item changes
-	     * @param {Roo.bootstrap.NavGroup} this
+	     * @param {Roo.bootstrap.nav.Group} this
 	     * @param {Roo.bootstrap.Navbar.Item} selected The item selected
 	     * @param {Roo.bootstrap.Navbar.Item} prev The previously selected item 
          */
@@ -6119,7 +6090,7 @@ Roo.bootstrap.NavGroup = function(config){
     
 };
 
-Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.nav.Group, Roo.bootstrap.Component,  {
     
     align: '',
     inverse: false,
@@ -6133,7 +6104,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.nav.Group.superclass.getAutoCreate.call(this));
         
         cfg = {
             tag : 'ul',
@@ -6199,7 +6170,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     },
     /**
     * sets the active Navigation item
-    * @param {Roo.bootstrap.NavItem} the new current navitem
+    * @param {Roo.bootstrap.nav.Item} the new current navitem
     */
     setActiveItem : function(item)
     {
@@ -6223,7 +6194,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     },
     /**
     * gets the active Navigation item
-    * @return {Roo.bootstrap.NavItem} the current navitem
+    * @return {Roo.bootstrap.nav.Item} the current navitem
     */
     getActive : function()
     {
@@ -6256,14 +6227,14 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     },
     /**
     * adds a Navigation item
-    * @param {Roo.bootstrap.NavItem} the navitem to add
+    * @param {Roo.bootstrap.nav.Item} the navitem to add
     */
     addItem : function(cfg)
     {
         if (this.form && Roo.bootstrap.version == 4) {
 	    cfg.tag = 'div';
 	}
-	var cn = new Roo.bootstrap.NavItem(cfg);
+	var cn = new Roo.bootstrap.nav.Item(cfg);
         this.register(cn);
         cn.parentId = this.id;
         cn.onRender(this.el, null);
@@ -6271,7 +6242,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     },
     /**
     * register a Navigation item
-    * @param {Roo.bootstrap.NavItem} the navitem to add
+    * @param {Roo.bootstrap.nav.Item} the navitem to add
     */
     register : function(item)
     {
@@ -6348,12 +6319,12 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
 });
 
  
-Roo.apply(Roo.bootstrap.NavGroup, {
+Roo.apply(Roo.bootstrap.nav.Group, {
     
     groups: {},
      /**
     * register a Navigation Group
-    * @param {Roo.bootstrap.NavGroup} the navgroup to add
+    * @param {Roo.bootstrap.nav.Group} the navgroup to add
     */
     register : function(navgrp)
     {
@@ -6363,12 +6334,12 @@ Roo.apply(Roo.bootstrap.NavGroup, {
     /**
     * fetch a Navigation Group based on the navigation ID
     * @param {string} the navgroup to add
-    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    * @returns {Roo.bootstrap.nav.Group} the navgroup 
     */
     get: function(navId) {
         if (typeof(this.groups[navId]) == 'undefined') {
             return false;
-            //this.register(new Roo.bootstrap.NavGroup({ navId : navId }));
+            //this.register(new Roo.bootstrap.nav.Group({ navId : navId }));
         }
         return this.groups[navId] ;
     }
@@ -6378,8 +6349,9 @@ Roo.apply(Roo.bootstrap.NavGroup, {
 });
 
  /**
- * @class Roo.bootstrap.NavItem
+ * @class Roo.bootstrap.nav.Item
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Container Roo.bootstrap.Button
  * @licence LGPL
  * Bootstrap Navbar.NavItem class
  * 
@@ -6405,8 +6377,8 @@ Roo.apply(Roo.bootstrap.NavGroup, {
  * Create a new Navbar Item
  * @param {Object} config The config object
  */
-Roo.bootstrap.NavItem = function(config){
-    Roo.bootstrap.NavItem.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.Item = function(config){
+    Roo.bootstrap.nav.Item.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
         /**
@@ -6418,7 +6390,7 @@ Roo.bootstrap.NavItem = function(config){
 	 /**
 	    * @event changed
 	    * Fires when the active item active state changes
-	    * @param {Roo.bootstrap.NavItem} this
+	    * @param {Roo.bootstrap.nav.Item} this
 	    * @param {boolean} state the new state
 	     
          */
@@ -6426,7 +6398,7 @@ Roo.bootstrap.NavItem = function(config){
         /**
 	    * @event scrollto
 	    * Fires when scroll to element
-	    * @param {Roo.bootstrap.NavItem} this
+	    * @param {Roo.bootstrap.nav.Item} this
 	    * @param {Object} options
             * @param {Roo.EventObject} e
 	     
@@ -6436,7 +6408,7 @@ Roo.bootstrap.NavItem = function(config){
    
 };
 
-Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.nav.Item, Roo.bootstrap.Component,  {
     
     href: false,
     html: '',
@@ -6540,7 +6512,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	    this.tag = 'div';
 	}
 	
-        var ret = Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
+        var ret = Roo.bootstrap.nav.Item.superclass.onRender.call(this, ct, position);
 	this.navLink = this.el.select('.nav-link',true).first();
 	this.htmlEl = this.el.hasClass('nav-html') ? this.el : this.el.select('.nav-html',true).first();
 	return ret;
@@ -6638,7 +6610,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     {
         if (this.active && !state && this.navId) {
             this.was_active = true;
-            var nv = Roo.bootstrap.NavGroup.get(this.navId);
+            var nv = Roo.bootstrap.nav.Group.get(this.navId);
             if (nv) {
                 nv.clearWasActive(this);
             }
@@ -6677,7 +6649,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         // if we can not flip to new panel - go back to old nav highlight..
         if (false == tg.showPanel(pan)) {
-            var nv = Roo.bootstrap.NavGroup.get(this.navId);
+            var nv = Roo.bootstrap.nav.Group.get(this.navId);
             if (nv) {
                 var onav = nv.getWasActive();
                 if (onav) {
@@ -6766,9 +6738,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.NavSidebarItem
- * @extends Roo.bootstrap.NavItem
+ * @class Roo.bootstrap.nav.SidebarItem
+ * @extends Roo.bootstrap.nav.Item
  * Bootstrap Navbar.NavSidebarItem class
+ * 
  * {String} badgeWeight (default|primary|success|info|warning|danger)the extra classes for the badge
  * {Boolean} open is the menu open
  * {Boolean} buttonView use button as the tigger el rather that a (default false)
@@ -6779,8 +6752,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
  * Create a new Navbar Button
  * @param {Object} config The config object
  */
-Roo.bootstrap.NavSidebarItem = function(config){
-    Roo.bootstrap.NavSidebarItem.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.SidebarItem = function(config){
+    Roo.bootstrap.nav.SidebarItem.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
         /**
@@ -6792,7 +6765,7 @@ Roo.bootstrap.NavSidebarItem = function(config){
 	 /**
 	    * @event changed
 	    * Fires when the active item active state changes
-	    * @param {Roo.bootstrap.NavSidebarItem} this
+	    * @param {Roo.bootstrap.nav.SidebarItem} this
 	    * @param {boolean} state the new state
 	     
          */
@@ -6801,7 +6774,7 @@ Roo.bootstrap.NavSidebarItem = function(config){
    
 };
 
-Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
+Roo.extend(Roo.bootstrap.nav.SidebarItem, Roo.bootstrap.nav.Item,  {
     
     badgeWeight : 'default',
     
@@ -6983,6 +6956,421 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
  /*
  * - LGPL
  *
+ * nav progress bar
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.nav.ProgressBar
+ * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.nav.ProgressBarItem
+ * Bootstrap NavProgressBar class
+ * 
+ * @constructor
+ * Create a new nav progress bar - a bar indicating step along a process
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.nav.ProgressBar = function(config){
+    Roo.bootstrap.nav.ProgressBar.superclass.constructor.call(this, config);
+
+    this.bullets = this.bullets || [];
+   
+//    Roo.bootstrap.nav.ProgressBar.register(this);
+     this.addEvents({
+        /**
+	     * @event changed
+	     * Fires when the active item changes
+	     * @param {Roo.bootstrap.nav.ProgressBar} this
+	     * @param {Roo.bootstrap.nav.ProgressItem} selected The item selected
+	     * @param {Roo.bootstrap.nav.ProgressItem} prev The previously selected item 
+         */
+        'changed': true
+     });
+    
+};
+
+Roo.extend(Roo.bootstrap.nav.ProgressBar, Roo.bootstrap.Component,  {
+    /**
+     * @cfg {Roo.bootstrap.nav.ProgressItem} NavProgressBar:bullets[]
+     * Bullets for the Nav Progress bar for the toolbar
+     */
+    bullets : [],
+    barItems : [],
+    
+    getAutoCreate : function()
+    {
+        var cfg = Roo.apply({}, Roo.bootstrap.nav.ProgressBar.superclass.getAutoCreate.call(this));
+        
+        cfg = {
+            tag : 'div',
+            cls : 'roo-navigation-bar-group',
+            cn : [
+                {
+                    tag : 'div',
+                    cls : 'roo-navigation-top-bar'
+                },
+                {
+                    tag : 'div',
+                    cls : 'roo-navigation-bullets-bar',
+                    cn : [
+                        {
+                            tag : 'ul',
+                            cls : 'roo-navigation-bar'
+                        }
+                    ]
+                },
+                
+                {
+                    tag : 'div',
+                    cls : 'roo-navigation-bottom-bar'
+                }
+            ]
+            
+        };
+        
+        return cfg;
+        
+    },
+    
+    initEvents: function() 
+    {
+        
+    },
+    
+    onRender : function(ct, position) 
+    {
+        Roo.bootstrap.nav.ProgressBar.superclass.onRender.call(this, ct, position);
+        
+        if(this.bullets.length){
+            Roo.each(this.bullets, function(b){
+               this.addItem(b);
+            }, this);
+        }
+        
+        this.format();
+        
+    },
+    
+    addItem : function(cfg)
+    {
+        var item = new Roo.bootstrap.nav.ProgressItem(cfg);
+        
+        item.parentId = this.id;
+        item.render(this.el.select('.roo-navigation-bar', true).first(), null);
+        
+        if(cfg.html){
+            var top = new Roo.bootstrap.Element({
+                tag : 'div',
+                cls : 'roo-navigation-bar-text'
+            });
+            
+            var bottom = new Roo.bootstrap.Element({
+                tag : 'div',
+                cls : 'roo-navigation-bar-text'
+            });
+            
+            top.onRender(this.el.select('.roo-navigation-top-bar', true).first(), null);
+            bottom.onRender(this.el.select('.roo-navigation-bottom-bar', true).first(), null);
+            
+            var topText = new Roo.bootstrap.Element({
+                tag : 'span',
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
+            });
+            
+            var bottomText = new Roo.bootstrap.Element({
+                tag : 'span',
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
+            });
+            
+            topText.onRender(top.el, null);
+            bottomText.onRender(bottom.el, null);
+            
+            item.topEl = top;
+            item.bottomEl = bottom;
+        }
+        
+        this.barItems.push(item);
+        
+        return item;
+    },
+    
+    getActive : function()
+    {
+        var active = false;
+        
+        Roo.each(this.barItems, function(v){
+            
+            if (!v.isActive()) {
+                return;
+            }
+            
+            active = v;
+            return false;
+            
+        });
+        
+        return active;
+    },
+    
+    setActiveItem : function(item)
+    {
+        var prev = false;
+        
+        Roo.each(this.barItems, function(v){
+            if (v.rid == item.rid) {
+                return ;
+            }
+            
+            if (v.isActive()) {
+                v.setActive(false);
+                prev = v;
+            }
+        });
+
+        item.setActive(true);
+        
+        this.fireEvent('changed', this, item, prev);
+    },
+    
+    getBarItem: function(rid)
+    {
+        var ret = false;
+        
+        Roo.each(this.barItems, function(e) {
+            if (e.rid != rid) {
+                return;
+            }
+            
+            ret =  e;
+            return false;
+        });
+        
+        return ret;
+    },
+    
+    indexOfItem : function(item)
+    {
+        var index = false;
+        
+        Roo.each(this.barItems, function(v, i){
+            
+            if (v.rid != item.rid) {
+                return;
+            }
+            
+            index = i;
+            return false
+        });
+        
+        return index;
+    },
+    
+    setActiveNext : function()
+    {
+        var i = this.indexOfItem(this.getActive());
+        
+        if (i > this.barItems.length) {
+            return;
+        }
+        
+        this.setActiveItem(this.barItems[i+1]);
+    },
+    
+    setActivePrev : function()
+    {
+        var i = this.indexOfItem(this.getActive());
+        
+        if (i  < 1) {
+            return;
+        }
+        
+        this.setActiveItem(this.barItems[i-1]);
+    },
+    
+    format : function()
+    {
+        if(!this.barItems.length){
+            return;
+        }
+     
+        var width = 100 / this.barItems.length;
+        
+        Roo.each(this.barItems, function(i){
+            i.el.setStyle('width', width + '%');
+            i.topEl.el.setStyle('width', width + '%');
+            i.bottomEl.el.setStyle('width', width + '%');
+        }, this);
+        
+    }
+    
+});
+/*
+ * - LGPL
+ *
+ * Nav Progress Item
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.nav.ProgressBarItem
+ * @extends Roo.bootstrap.Component
+ * Bootstrap NavProgressBarItem class
+ * @cfg {String} rid the reference id
+ * @cfg {Boolean} active (true|false) Is item active default false
+ * @cfg {Boolean} disabled (true|false) Is item active default false
+ * @cfg {String} html
+ * @cfg {String} position (top|bottom) text position default bottom
+ * @cfg {String} icon show icon instead of number
+ * 
+ * @constructor
+ * Create a new NavProgressBarItem
+ * @param {Object} config The config object
+ */
+Roo.bootstrap.nav.ProgressBarItem = function(config){
+    Roo.bootstrap.nav.ProgressBarItem.superclass.constructor.call(this, config);
+    this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.bootstrap.nav.ProgressBarItem} this
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
+   
+};
+
+Roo.extend(Roo.bootstrap.nav.ProgressBarItem, Roo.bootstrap.Component,  {
+    
+    rid : '',
+    active : false,
+    disabled : false,
+    html : '',
+    position : 'bottom',
+    icon : false,
+    
+    getAutoCreate : function()
+    {
+        var iconCls = 'roo-navigation-bar-item-icon';
+        
+        iconCls += ((this.icon) ? (' ' + this.icon) : (' step-number')) ;
+        
+        var cfg = {
+            tag: 'li',
+            cls: 'roo-navigation-bar-item',
+            cn : [
+                {
+                    tag : 'i',
+                    cls : iconCls
+                }
+            ]
+        };
+        
+        if(this.active){
+            cfg.cls += ' active';
+        }
+        if(this.disabled){
+            cfg.cls += ' disabled';
+        }
+        
+        return cfg;
+    },
+    
+    disable : function()
+    {
+        this.setDisabled(true);
+    },
+    
+    enable : function()
+    {
+        this.setDisabled(false);
+    },
+    
+    initEvents: function() 
+    {
+        this.iconEl = this.el.select('.roo-navigation-bar-item-icon', true).first();
+        
+        this.iconEl.on('click', this.onClick, this);
+    },
+    
+    onClick : function(e)
+    {
+        e.preventDefault();
+        
+        if(this.disabled){
+            return;
+        }
+        
+        if(this.fireEvent('click', this, e) === false){
+            return;
+        };
+        
+        this.parent().setActiveItem(this);
+    },
+    
+    isActive: function () 
+    {
+        return this.active;
+    },
+    
+    setActive : function(state)
+    {
+        if(this.active == state){
+            return;
+        }
+        
+        this.active = state;
+        
+        if (state) {
+            this.el.addClass('active');
+            return;
+        }
+        
+        this.el.removeClass('active');
+        
+        return;
+    },
+    
+    setDisabled : function(state)
+    {
+        if(this.disabled == state){
+            return;
+        }
+        
+        this.disabled = state;
+        
+        if (state) {
+            this.el.addClass('disabled');
+            return;
+        }
+        
+        this.el.removeClass('disabled');
+    },
+    
+    tooltipEl : function()
+    {
+        return this.el.select('.roo-navigation-bar-item-icon', true).first();;
+    }
+});
+ 
+
+ // depricated.
+Roo.bootstrap.Navbar            = Roo.bootstrap.nav.Bar;
+Roo.bootstrap.NavGroup          = Roo.bootstrap.nav.Group;
+Roo.bootstrap.NavHeaderbar      = Roo.bootstrap.nav.Headerbar;
+Roo.bootstrap.NavItem           = Roo.bootstrap.nav.Item;
+
+Roo.bootstrap.NavProgressBar     = Roo.bootstrap.nav.ProgressBar;
+Roo.bootstrap.NavProgressBarItem = Roo.bootstrap.nav.ProgressBarItem;
+
+Roo.bootstrap.NavSidebar        = Roo.bootstrap.nav.Sidebar;
+Roo.bootstrap.NavSidebarItem    = Roo.bootstrap.nav.SidebarItem;
+
+Roo.bootstrap.NavSimplebar      = Roo.bootstrap.nav.Simplebar;/*
+ * - LGPL
+ *
  *  Breadcrumb Nav
  * 
  */
@@ -7161,9 +7549,11 @@ Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Pagination
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Pagination
  * Bootstrap Pagination class
- * @cfg {String} size xs | sm | md | lg
- * @cfg {Boolean} inverse false | true
+ * 
+ * @cfg {String} size (xs|sm|md|lg|xl)
+ * @cfg {Boolean} inverse 
  * 
  * @constructor
  * Create a new Pagination
@@ -11840,11 +12230,11 @@ Roo.form.VTypes = function(){
  * @extends Roo.bootstrap.Component
  * Bootstrap Input class
  * @cfg {Boolean} disabled is it disabled
- * @cfg {String} (button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text) inputType 
+ * @cfg {String} inputType (button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)  
  * @cfg {String} name name of the input
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string} placeholder - placeholder to put in text.
- * @cfg {string}  before - input group add on before
+ * @cfg {string} before - input group add on before
  * @cfg {string} after - input group add on after
  * @cfg {string} size - (lg|sm) or leave empty..
  * @cfg {Number} xs colspan out of 12 for mobile-sized screens
@@ -11864,7 +12254,8 @@ Roo.form.VTypes = function(){
  * @cfg {String} capture (user|camera) use for file input only. (default empty)
  * @cfg {String} accept (image|video|audio) use for file input only. (default empty)
  * @cfg {Boolean} preventMark Do not show tick or cross if error/success
-
+ * @cfg {Roo.bootstrap.Button} before Button to show before
+ * @cfg {Roo.bootstrap.Button} afterButton to show before
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
  * 
@@ -21594,8 +21985,13 @@ Roo.apply(Roo.bootstrap.Popover, {
 
 /**
  * @class Roo.bootstrap.PopoverNav
- * @extends Roo.bootstrap.NavGroup
+ * @extends Roo.bootstrap.nav.Simplebar
+ * @parent Roo.bootstrap.Popover
+ * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container
  * Bootstrap Popover header navigation class
+ * FIXME? should this go under nav?
+ *
+ * 
  * @constructor
  * Create a new Popover Header Navigation 
  * @param {Object} config The config object
@@ -21605,7 +22001,7 @@ Roo.bootstrap.PopoverNav = function(config){
     Roo.bootstrap.PopoverNav.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.PopoverNav, Roo.bootstrap.NavSimplebar,  {
+Roo.extend(Roo.bootstrap.PopoverNav, Roo.bootstrap.nav.Simplebar,  {
     
     
     container_method : 'getPopoverHeader' 
@@ -21908,7 +22304,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     /**
     * register a Navigation item
-    * @param {Roo.bootstrap.NavItem} the navitem to add
+    * @param {Roo.bootstrap.nav.Item} the navitem to add
     */
     register : function(item)
     {
@@ -22128,7 +22524,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
     groups: {},
      /**
     * register a Navigation Group
-    * @param {Roo.bootstrap.NavGroup} the navgroup to add
+    * @param {Roo.bootstrap.nav.Group} the navgroup to add
     */
     register : function(navgrp)
     {
@@ -22139,7 +22535,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
     * fetch a Navigation Group based on the navigation ID
     * if one does not exist , it will get created.
     * @param {string} the navgroup to add
-    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    * @returns {Roo.bootstrap.nav.Group} the navgroup 
     */
     get: function(navId) {
         if (typeof(this.groups[navId]) == 'undefined') {
@@ -22167,7 +22563,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
  * @cfg {Boolean} active panel active
  * @cfg {String} html panel content
  * @cfg {String} tabId  unique tab ID (will be autogenerated if not set. - used to match TabItem to Panel)
- * @cfg {String} navId The Roo.bootstrap.NavGroup which triggers show hide ()
+ * @cfg {String} navId The Roo.bootstrap.nav.Group which triggers show hide ()
  * @cfg {String} href click to link..
  * @cfg {Boolean} touchSlide if swiping slides tab to next panel (default off)
  * 
@@ -27734,6 +28130,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
 Roo.namespace('Roo.bootstrap.htmleditor');
 /**
  * @class Roo.bootstrap.HtmlEditorToolbar1
+ * @extends Roo.bootstrap.nav.Simplebar
  * Basic Toolbar
  * 
  * @example
@@ -27779,7 +28176,7 @@ Roo.bootstrap.htmleditor.ToolbarStandard = function(config)
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
 }
-Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,  {
+Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.nav.Simplebar,  {
      
     bar : true,
     
@@ -28124,7 +28521,7 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
  
 /**
  * @class Roo.bootstrap.PagingToolbar
- * @extends Roo.bootstrap.NavSimplebar
+ * @extends Roo.bootstrap.nav.Simplebar
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
@@ -28160,12 +28557,12 @@ Roo.bootstrap.PagingToolbar = function(config)
     if (Roo.bootstrap.version == 4) {
         this.navgroup = new Roo.bootstrap.ButtonGroup({ cls: 'pagination' });
     } else {
-        this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
+        this.navgroup = new Roo.bootstrap.nav.Group({ cls: 'pagination' });
     }
     
 };
 
-Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
+Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.nav.Simplebar, {
     /**
      * @cfg {Roo.bootstrap.Button} buttons[]
      * Buttons for the toolbar
@@ -28956,6 +29353,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 /**
  * @class Roo.bootstrap.dash.TabBox
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.dash.TabPane
  * Bootstrap TabBox class
  * @cfg {String} title Title of the TabBox
  * @cfg {String} icon Icon of the TabBox
@@ -29156,6 +29554,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 /**
  * @class Roo.bootstrap.TabPane
  * @extends Roo.bootstrap.Component
+ * @children  Roo.bootstrap.Graph Roo.bootstrap.Column
  * Bootstrap TabPane class
  * @cfg {Boolean} active (false | true) Default false
  * @cfg {String} title title of panel
@@ -32958,408 +33357,6 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
 /*
  * - LGPL
  *
- * nav progress bar
- * 
- */
-
-/**
- * @class Roo.bootstrap.NavProgressBar
- * @extends Roo.bootstrap.Component
- * Bootstrap NavProgressBar class
- * 
- * @constructor
- * Create a new nav progress bar - a bar indicating step along a process
- * @param {Object} config The config object
- */
-
-Roo.bootstrap.NavProgressBar = function(config){
-    Roo.bootstrap.NavProgressBar.superclass.constructor.call(this, config);
-
-    this.bullets = this.bullets || [];
-   
-//    Roo.bootstrap.NavProgressBar.register(this);
-     this.addEvents({
-        /**
-	     * @event changed
-	     * Fires when the active item changes
-	     * @param {Roo.bootstrap.NavProgressBar} this
-	     * @param {Roo.bootstrap.NavProgressItem} selected The item selected
-	     * @param {Roo.bootstrap.NavProgressItem} prev The previously selected item 
-         */
-        'changed': true
-     });
-    
-};
-
-Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
-    /**
-     * @cfg {Roo.bootstrap.NavProgressItem} NavProgressBar:bullets[]
-     * Bullets for the Nav Progress bar for the toolbar
-     */
-    bullets : [],
-    barItems : [],
-    
-    getAutoCreate : function()
-    {
-        var cfg = Roo.apply({}, Roo.bootstrap.NavProgressBar.superclass.getAutoCreate.call(this));
-        
-        cfg = {
-            tag : 'div',
-            cls : 'roo-navigation-bar-group',
-            cn : [
-                {
-                    tag : 'div',
-                    cls : 'roo-navigation-top-bar'
-                },
-                {
-                    tag : 'div',
-                    cls : 'roo-navigation-bullets-bar',
-                    cn : [
-                        {
-                            tag : 'ul',
-                            cls : 'roo-navigation-bar'
-                        }
-                    ]
-                },
-                
-                {
-                    tag : 'div',
-                    cls : 'roo-navigation-bottom-bar'
-                }
-            ]
-            
-        };
-        
-        return cfg;
-        
-    },
-    
-    initEvents: function() 
-    {
-        
-    },
-    
-    onRender : function(ct, position) 
-    {
-        Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
-        
-        if(this.bullets.length){
-            Roo.each(this.bullets, function(b){
-               this.addItem(b);
-            }, this);
-        }
-        
-        this.format();
-        
-    },
-    
-    addItem : function(cfg)
-    {
-        var item = new Roo.bootstrap.NavProgressItem(cfg);
-        
-        item.parentId = this.id;
-        item.render(this.el.select('.roo-navigation-bar', true).first(), null);
-        
-        if(cfg.html){
-            var top = new Roo.bootstrap.Element({
-                tag : 'div',
-                cls : 'roo-navigation-bar-text'
-            });
-            
-            var bottom = new Roo.bootstrap.Element({
-                tag : 'div',
-                cls : 'roo-navigation-bar-text'
-            });
-            
-            top.onRender(this.el.select('.roo-navigation-top-bar', true).first(), null);
-            bottom.onRender(this.el.select('.roo-navigation-bottom-bar', true).first(), null);
-            
-            var topText = new Roo.bootstrap.Element({
-                tag : 'span',
-                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
-            });
-            
-            var bottomText = new Roo.bootstrap.Element({
-                tag : 'span',
-                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
-            });
-            
-            topText.onRender(top.el, null);
-            bottomText.onRender(bottom.el, null);
-            
-            item.topEl = top;
-            item.bottomEl = bottom;
-        }
-        
-        this.barItems.push(item);
-        
-        return item;
-    },
-    
-    getActive : function()
-    {
-        var active = false;
-        
-        Roo.each(this.barItems, function(v){
-            
-            if (!v.isActive()) {
-                return;
-            }
-            
-            active = v;
-            return false;
-            
-        });
-        
-        return active;
-    },
-    
-    setActiveItem : function(item)
-    {
-        var prev = false;
-        
-        Roo.each(this.barItems, function(v){
-            if (v.rid == item.rid) {
-                return ;
-            }
-            
-            if (v.isActive()) {
-                v.setActive(false);
-                prev = v;
-            }
-        });
-
-        item.setActive(true);
-        
-        this.fireEvent('changed', this, item, prev);
-    },
-    
-    getBarItem: function(rid)
-    {
-        var ret = false;
-        
-        Roo.each(this.barItems, function(e) {
-            if (e.rid != rid) {
-                return;
-            }
-            
-            ret =  e;
-            return false;
-        });
-        
-        return ret;
-    },
-    
-    indexOfItem : function(item)
-    {
-        var index = false;
-        
-        Roo.each(this.barItems, function(v, i){
-            
-            if (v.rid != item.rid) {
-                return;
-            }
-            
-            index = i;
-            return false
-        });
-        
-        return index;
-    },
-    
-    setActiveNext : function()
-    {
-        var i = this.indexOfItem(this.getActive());
-        
-        if (i > this.barItems.length) {
-            return;
-        }
-        
-        this.setActiveItem(this.barItems[i+1]);
-    },
-    
-    setActivePrev : function()
-    {
-        var i = this.indexOfItem(this.getActive());
-        
-        if (i  < 1) {
-            return;
-        }
-        
-        this.setActiveItem(this.barItems[i-1]);
-    },
-    
-    format : function()
-    {
-        if(!this.barItems.length){
-            return;
-        }
-     
-        var width = 100 / this.barItems.length;
-        
-        Roo.each(this.barItems, function(i){
-            i.el.setStyle('width', width + '%');
-            i.topEl.el.setStyle('width', width + '%');
-            i.bottomEl.el.setStyle('width', width + '%');
-        }, this);
-        
-    }
-    
-});
-/*
- * - LGPL
- *
- * Nav Progress Item
- * 
- */
-
-/**
- * @class Roo.bootstrap.NavProgressItem
- * @extends Roo.bootstrap.Component
- * Bootstrap NavProgressItem class
- * @cfg {String} rid the reference id
- * @cfg {Boolean} active (true|false) Is item active default false
- * @cfg {Boolean} disabled (true|false) Is item active default false
- * @cfg {String} html
- * @cfg {String} position (top|bottom) text position default bottom
- * @cfg {String} icon show icon instead of number
- * 
- * @constructor
- * Create a new NavProgressItem
- * @param {Object} config The config object
- */
-Roo.bootstrap.NavProgressItem = function(config){
-    Roo.bootstrap.NavProgressItem.superclass.constructor.call(this, config);
-    this.addEvents({
-        // raw events
-        /**
-         * @event click
-         * The raw click event for the entire grid.
-         * @param {Roo.bootstrap.NavProgressItem} this
-         * @param {Roo.EventObject} e
-         */
-        "click" : true
-    });
-   
-};
-
-Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
-    
-    rid : '',
-    active : false,
-    disabled : false,
-    html : '',
-    position : 'bottom',
-    icon : false,
-    
-    getAutoCreate : function()
-    {
-        var iconCls = 'roo-navigation-bar-item-icon';
-        
-        iconCls += ((this.icon) ? (' ' + this.icon) : (' step-number')) ;
-        
-        var cfg = {
-            tag: 'li',
-            cls: 'roo-navigation-bar-item',
-            cn : [
-                {
-                    tag : 'i',
-                    cls : iconCls
-                }
-            ]
-        };
-        
-        if(this.active){
-            cfg.cls += ' active';
-        }
-        if(this.disabled){
-            cfg.cls += ' disabled';
-        }
-        
-        return cfg;
-    },
-    
-    disable : function()
-    {
-        this.setDisabled(true);
-    },
-    
-    enable : function()
-    {
-        this.setDisabled(false);
-    },
-    
-    initEvents: function() 
-    {
-        this.iconEl = this.el.select('.roo-navigation-bar-item-icon', true).first();
-        
-        this.iconEl.on('click', this.onClick, this);
-    },
-    
-    onClick : function(e)
-    {
-        e.preventDefault();
-        
-        if(this.disabled){
-            return;
-        }
-        
-        if(this.fireEvent('click', this, e) === false){
-            return;
-        };
-        
-        this.parent().setActiveItem(this);
-    },
-    
-    isActive: function () 
-    {
-        return this.active;
-    },
-    
-    setActive : function(state)
-    {
-        if(this.active == state){
-            return;
-        }
-        
-        this.active = state;
-        
-        if (state) {
-            this.el.addClass('active');
-            return;
-        }
-        
-        this.el.removeClass('active');
-        
-        return;
-    },
-    
-    setDisabled : function(state)
-    {
-        if(this.disabled == state){
-            return;
-        }
-        
-        this.disabled = state;
-        
-        if (state) {
-            this.el.addClass('disabled');
-            return;
-        }
-        
-        this.el.removeClass('disabled');
-    },
-    
-    tooltipEl : function()
-    {
-        return this.el.select('.roo-navigation-bar-item-icon', true).first();;
-    }
-});
- 
-
- /*
- * - LGPL
- *
  * FieldLabel
  * 
  */
@@ -33742,7 +33739,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     {
         var _this = this;
         
-        Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.DateSplitFiel.superclass.onRender.call(this, ct, position);
         
         this.inputEl = this.el.select('.roo-date-split-field-group-value', true).first();
         
@@ -33997,7 +33994,13 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
 });
 
- /**
+ 
+
+/**
+ * @class Roo.bootstrap.LayoutMasonry
+ * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Element Roo.bootstrap.Image Roo.bootstrap.MasonryBrick
+ * Bootstrap Layout Masonry class
  *
  * This is based on 
  * http://masonry.desandro.com
@@ -34005,15 +34008,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
  * The idea is to render all the bricks based on vertical width...
  *
  * The original code extends 'outlayer' - we might need to use that....
- * 
- */
 
-
-/**
- * @class Roo.bootstrap.LayoutMasonry
- * @extends Roo.bootstrap.Component
- * Bootstrap Layout Masonry class
- * 
  * @constructor
  * Create a new Element
  * @param {Object} config The config object
@@ -38025,6 +38020,7 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
  * @class Roo.bootstrap.layout.Border
  * @extends Roo.bootstrap.layout.Manager
  * @builder-top
+ * @children Roo.bootstrap.panel.Content Roo.bootstrap.panel.Nest Roo.bootstrap.panel.Grid
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: examples/bootstrap/nested.html<br><br>
  
@@ -38056,6 +38052,25 @@ Roo.bootstrap.layout.Border.regions =  ["center", "north","south","east","west"]
 
 Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} center region to go in center
+	 */
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} west region to go in west
+	 */
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} east region to go in east
+	 */
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} south region to go in south
+	 */
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} north region to go in north
+	 */
+	
+	
+	
+	
     parent : false, // this might point to a 'nest' or a ???
     
     /**
@@ -40791,6 +40806,7 @@ layout.addxtype({
  * @constructor
  * Create a new GridPanel.
  * @cfg {Roo.bootstrap.Table} grid The grid for this panel
+ * @cfg {Roo.bootstrap.nav.Simplebar} toolbar the toolbar at the top of the grid.
  * @param {Object} config A the config object
   
  */
@@ -40950,7 +40966,6 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
  * Create a new Panel, that can contain a layout.Border.
  * 
  * 
- * @param {Roo.BorderLayout} layout The layout for this panel
  * @param {String/Object} config A string to set only the title or a config object
  */
 Roo.bootstrap.panel.Nest = function(config)
@@ -40983,6 +40998,10 @@ Roo.bootstrap.panel.Nest = function(config)
 };
 
 Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
+    /**
+    * @cfg {Roo.BorderLayout} layout The layout for this panel
+    */
+    layout : false,
 
     setSize : function(width, height){
         if(!this.ignoreResize(width, height)){
@@ -43910,7 +43929,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     inputmd : 9,
     inputsm : 9,
     inputxs : 6,
-    
+     /**
+     * @cfg {Roo.data.Store} store  Store to lookup currency??
+     */
     store : false,
     
     getAutoCreate : function()

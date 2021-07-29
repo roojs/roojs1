@@ -80,7 +80,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     inputmd : 9,
     inputsm : 9,
     inputxs : 6,
-    
+     /**
+     * @cfg {Roo.data.Store} store  Store to lookup currency??
+     */
     store : false,
     
     getAutoCreate : function()

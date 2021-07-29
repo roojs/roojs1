@@ -6,6 +6,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap DropTarget class",
   "isSingleton" : false,
   "isStatic" : false,

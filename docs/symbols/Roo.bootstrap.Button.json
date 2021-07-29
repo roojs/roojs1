@@ -5,6 +5,10 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.bootstrap.CardUploader",
+    "Roo.bootstrap.ButtonUploader"
+  ],
   "desc" : "Bootstrap Button class",
   "isSingleton" : false,
   "isStatic" : false,

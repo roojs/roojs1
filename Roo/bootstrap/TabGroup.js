@@ -141,7 +141,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     /**
     * register a Navigation item
-    * @param {Roo.bootstrap.NavItem} the navitem to add
+    * @param {Roo.bootstrap.nav.Item} the navitem to add
     */
     register : function(item)
     {
@@ -361,7 +361,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
     groups: {},
      /**
     * register a Navigation Group
-    * @param {Roo.bootstrap.NavGroup} the navgroup to add
+    * @param {Roo.bootstrap.nav.Group} the navgroup to add
     */
     register : function(navgrp)
     {
@@ -372,7 +372,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
     * fetch a Navigation Group based on the navigation ID
     * if one does not exist , it will get created.
     * @param {string} the navgroup to add
-    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    * @returns {Roo.bootstrap.nav.Group} the navgroup 
     */
     get: function(navId) {
         if (typeof(this.groups[navId]) == 'undefined') {

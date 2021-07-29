@@ -8,6 +8,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "A combobox control with support for autocomplete, remote-loading, paging and many other features.",
   "isSingleton" : false,
   "isStatic" : false,

@@ -1,6 +1,9 @@
 {
   "name" : "Roo.state.Provider",
   "augments" : [],
+  "childClasses" : [
+    "Roo.state.CookieProvider"
+  ],
   "desc" : "Abstract base class for state provider implementations. This class provides methods\nfor encoding and decoding <b>typed</b> variables including dates and defines the \nProvider interface.",
   "isSingleton" : false,
   "isStatic" : false,

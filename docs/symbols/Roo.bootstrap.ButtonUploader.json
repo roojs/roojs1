@@ -6,6 +6,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap Button Uploader class - it's a button which when you add files to it",
   "isSingleton" : false,
   "isStatic" : false,

@@ -1,6 +1,7 @@
 {
   "name" : "_global_",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,

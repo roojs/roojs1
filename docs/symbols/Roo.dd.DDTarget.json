@@ -4,6 +4,10 @@
     "Roo.dd.DragDrop",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.dd.DropZone",
+    "Roo.dd.DropTarget"
+  ],
   "desc" : "A DragDrop implementation that does not move, but can be a drop\ntarget.  You would get the same result by simply omitting implementation\nfor the event callbacks, but this way we reduce the processing cost of the\nevent listener and the callbacks.",
   "isSingleton" : false,
   "isStatic" : false,

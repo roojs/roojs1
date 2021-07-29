@@ -2,6 +2,7 @@
 Roo.namespace('Roo.bootstrap.htmleditor');
 /**
  * @class Roo.bootstrap.HtmlEditorToolbar1
+ * @extends Roo.bootstrap.nav.Simplebar
  * Basic Toolbar
  * 
  * @example
@@ -47,7 +48,7 @@ Roo.bootstrap.htmleditor.ToolbarStandard = function(config)
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
 }
-Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,  {
+Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.nav.Simplebar,  {
      
     bar : true,
     

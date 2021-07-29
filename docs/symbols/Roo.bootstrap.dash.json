@@ -1,6 +1,7 @@
 {
   "name" : "Roo.bootstrap.dash",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : true,

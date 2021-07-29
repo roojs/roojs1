@@ -1,6 +1,7 @@
 {
   "name" : "Roo.DDView",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "A DnD enabled version of Roo.View.",
   "isSingleton" : false,
   "isStatic" : false,

@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Base class for form fields that provides default event handling, sizing, value handling and other functionality.",
   "isSingleton" : false,
   "isStatic" : false,

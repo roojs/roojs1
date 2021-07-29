@@ -6,6 +6,9 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.form.Radio"
+  ],
   "desc" : "Single checkbox field.  Can be used as a direct replacement for traditional checkbox fields.",
   "isSingleton" : false,
   "isStatic" : false,

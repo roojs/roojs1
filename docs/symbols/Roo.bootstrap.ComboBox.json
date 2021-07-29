@@ -7,6 +7,9 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.bootstrap.MoneyField"
+  ],
   "desc" : "A combobox control with support for autocomplete, remote-loading, paging and many other features.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -221,12 +224,6 @@
       "memberOf" : "Roo.bootstrap.Input"
     },
     {
-      "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
-      "type" : "String",
-      "desc" : "inputType",
-      "memberOf" : "Roo.bootstrap.Input"
-    },
-    {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
@@ -332,6 +329,12 @@
       "name" : "labelxs",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
+      "memberOf" : "Roo.bootstrap.Input"
+    },
+    {
+      "name" : "afterButton",
+      "type" : "Roo.bootstrap.Button",
+      "desc" : "to show before",
       "memberOf" : "Roo.bootstrap.Input"
     },
     {
@@ -507,6 +510,12 @@
       "type" : "String",
       "desc" : "The underlying data field name to bind to this CombBox (defaults to undefined if\nmode = 'remote' or 'text' if mode = 'local')",
       "memberOf" : ""
+    },
+    {
+      "name" : "inputType",
+      "type" : "String",
+      "desc" : "t)",
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "tooltip",

@@ -1,6 +1,7 @@
 {
   "name" : "Roo.XComponent.event.events",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : true,

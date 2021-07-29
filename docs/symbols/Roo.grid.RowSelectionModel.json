@@ -4,6 +4,7 @@
     "Roo.grid.AbstractSelectionModel",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "The default SelectionModel used by {@link Roo.grid.Grid}.\nIt supports multiple selections and keyboard selection/navigation.",
   "isSingleton" : false,
   "isStatic" : false,

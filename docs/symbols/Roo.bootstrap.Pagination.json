@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap Pagination class",
   "isSingleton" : false,
   "isStatic" : false,
@@ -53,7 +54,7 @@
     {
       "name" : "inverse",
       "type" : "Boolean",
-      "desc" : "false | true",
+      "desc" : "",
       "memberOf" : ""
     },
     {
@@ -107,7 +108,7 @@
     {
       "name" : "size",
       "type" : "String",
-      "desc" : "xs | sm | md | lg",
+      "desc" : "l)",
       "memberOf" : ""
     },
     {

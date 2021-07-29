@@ -1,6 +1,7 @@
 {
   "name" : "Roo.dd",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : true,

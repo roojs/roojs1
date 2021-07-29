@@ -5,6 +5,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Bootstrap Link Class (eg. '<a href>')",
   "isSingleton" : false,
   "isStatic" : false,

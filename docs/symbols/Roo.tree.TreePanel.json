@@ -4,6 +4,7 @@
     "Roo.data.Tree",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,

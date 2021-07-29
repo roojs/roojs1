@@ -1,6 +1,12 @@
 {
   "name" : "Roo.Toolbar.Item",
   "augments" : [],
+  "childClasses" : [
+    "Roo.Toolbar.Separator",
+    "Roo.Toolbar.TextItem",
+    "Roo.Toolbar.Spacer",
+    "Roo.Toolbar.Fill"
+  ],
   "desc" : "The base class that other classes should extend in order to get some basic common toolbar item functionality.",
   "isSingleton" : false,
   "isStatic" : false,

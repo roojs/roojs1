@@ -1,6 +1,7 @@
 {
   "name" : "Roo.util.CSS",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Utility class for manipulating CSS rules",
   "isSingleton" : true,
   "isStatic" : false,

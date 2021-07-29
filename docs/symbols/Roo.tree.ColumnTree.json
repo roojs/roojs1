@@ -1,6 +1,7 @@
 {
   "name" : "Roo.tree.ColumnTree",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,

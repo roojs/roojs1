@@ -3,6 +3,11 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : [
+    "Roo.TreePanel",
+    "Roo.NestedLayoutPanel",
+    "Roo.GridPanel"
+  ],
   "desc" : "A basic ContentPanel element.",
   "isSingleton" : false,
   "isStatic" : false,

@@ -4,6 +4,7 @@
     "Roo.form.BasicForm",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Adds the ability to dynamically render forms with JavaScript to {@link Roo.form.BasicForm}.",
   "isSingleton" : false,
   "isStatic" : false,

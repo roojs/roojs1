@@ -4,6 +4,7 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : [],
   "desc" : "Provides a the editing component for the HTML editors in Roo. (bootstrap and Roo.form)\n\nany element that has display set to 'none' can cause problems in Safari and Firefox.<br/><br/>",
   "isSingleton" : false,
   "isStatic" : false,

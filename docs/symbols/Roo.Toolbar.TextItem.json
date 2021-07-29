@@ -3,6 +3,7 @@
   "augments" : [
     "Roo.Toolbar.Item"
   ],
+  "childClasses" : [],
   "desc" : "A simple class that renders text directly into a toolbar.",
   "isSingleton" : false,
   "isStatic" : false,

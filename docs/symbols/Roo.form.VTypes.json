@@ -1,6 +1,7 @@
 {
   "name" : "Roo.form.VTypes",
   "augments" : [],
+  "childClasses" : [],
   "desc" : "Overridable validation definitions. The validations provided are basic and intended to be easily customizable and extended.",
   "isSingleton" : true,
   "isStatic" : false,
