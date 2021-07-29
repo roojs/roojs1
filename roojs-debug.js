@@ -55643,6 +55643,9 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
 	 * @cfg {Roo.grid.ColumnModel} cm[] The columns of the grid
 	 */
 	/**
+	 * @cfg {Roo.Toolbar} toolbar a toolbar for buttons etc.
+	 */
+	/**
      * @cfg {String} ddGroup - drag drop group.
      */
       /**
