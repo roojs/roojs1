@@ -32,8 +32,7 @@
  * @cfg {Boolean} badges render the badges
  * @cfg {String} cls  extra classes to use  
  * @cfg {String} background (primary|secondary|success|info|warning|danger|light|dark)
- * @cfg {Roo.bootstrap.Component} cn[] children
-
+ 
  * @constructor
  * Create a new ContentPanel.
  * @param {String/HTMLElement/Roo.Element} el The container element for this panel
