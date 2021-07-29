@@ -55191,7 +55191,7 @@ Roo.extend(Roo.TreePanel, Roo.ContentPanel, {
     fitToFrame : true,
     autoScroll : true,
     /*
-     * @cfg {Roo.tree.TreePanel} tree The tree TreePanel, with config etc.
+     * @cfg {Roo.tree.TreePanel} tree [required] The tree TreePanel, with config etc.
      */
     tree : false
 
