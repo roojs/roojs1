@@ -93,7 +93,9 @@ Roo.BorderLayout = function(container, config){
 };
 
 Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
-	
+	/*
+	* @cfg {Roo.bootstrap.Component} cn[] children
+	*/
 	/**
 	 * @cfg {Roo.LayoutRegion} east
 	 */
