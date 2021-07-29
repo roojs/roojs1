@@ -1594,6 +1594,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Container
  * @extends Roo.bootstrap.Component
+ * @builder-top
  * Bootstrap Container class
  * @cfg {Boolean} jumbotron is it a jumbotron element
  * @cfg {String} html content of element
@@ -40551,6 +40552,7 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
 /**
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
+ * @builder-top
  * A basic ContentPanel element.
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
