@@ -6369,7 +6369,7 @@ Roo.extend(Roo.Button, Roo.util.Observable, {
      */
     enableToggle: false,
     /**
-     * @cfg {Mixed} menu
+     * @cfg {Roo.menu.Menu} menu
      * Standard menu attribute consisting of a reference to a menu object, a menu id or a menu config blob (defaults to undefined).
      */
     menu : undefined,
@@ -6991,6 +6991,7 @@ Roo.MenuButton = Roo.SplitButton;/*
 
 /**
  * @class Roo.Toolbar
+ * @children   Roo.Toolbar.Item Roo.form.Field
  * Basic Toolbar class.
  * @constructor
  * Creates a new Toolbar
@@ -7540,7 +7541,10 @@ Roo.extend(Roo.Toolbar.TextItem, Roo.Toolbar.Item, {
 Roo.Toolbar.Button = function(config){
     Roo.Toolbar.Button.superclass.constructor.call(this, null, config);
 };
-Roo.extend(Roo.Toolbar.Button, Roo.Button, {
+Roo.extend(Roo.Toolbar.Button, Roo.Button,
+{
+    
+    
     render : function(td){
         this.td = td;
         Roo.Toolbar.Button.superclass.render.call(this, td);
@@ -7646,6 +7650,7 @@ Roo.Toolbar.MenuButton = Roo.Toolbar.SplitButton;/*
 /**
  * @class Roo.PagingToolbar
  * @extends Roo.Toolbar
+ * @children   Roo.Toolbar.Item Roo.form.Field
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
@@ -10088,6 +10093,7 @@ Roo.DialogManager = function(){
 /**
  * @class Roo.LayoutDialog
  * @extends Roo.BasicDialog
+ * @children Roo.ContentPanel
  * Dialog which provides adjustments for working with a layout in a Dialog.
  * Add your necessary layout config options to the dialog's config.<br>
  * Example usage (including a nested layout):
@@ -10173,6 +10179,28 @@ Roo.LayoutDialog = function(el, cfg){
     
 };
 Roo.extend(Roo.LayoutDialog, Roo.BasicDialog, {
+    
+    
+    /**
+     * @cfg {Roo.LayoutRegion} east  
+     */
+    /**
+     * @cfg {Roo.LayoutRegion} west
+     */
+    /**
+     * @cfg {Roo.LayoutRegion} south
+     */
+    /**
+     * @cfg {Roo.LayoutRegion} north
+     */
+    /**
+     * @cfg {Roo.LayoutRegion} center
+     */
+    /**
+     * @cfg {Roo.Button} buttons[]  Bottom buttons..
+     */
+    
+    
     /**
      * Ends update of the layout <strike>and resets display to none</strike>. Use standard beginUpdate/endUpdate on the layout.
      * @deprecated
@@ -15437,7 +15465,10 @@ Roo.menu.Item = function(config){
     }
 };
 Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
-    
+    /**
+     * @cfg {Roo.menu.Menu} menu
+     * A Sub menu
+     */
     /**
      * @cfg {String} text
      * The text to show on the menu item.
@@ -25321,6 +25352,7 @@ Roo.apply(Roo.form.BasicForm, {
 /**
  * @class Roo.form.Form
  * @extends Roo.form.BasicForm
+ * @children Roo.form.Column Roo.form.FieldSet Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
  * Adds the ability to dynamically render forms with JavaScript to {@link Roo.form.BasicForm}.
  * @constructor
  * @param {Object} config Configuration options
@@ -25378,6 +25410,10 @@ Roo.form.Form = function(config){
 };
 
 Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
+     /**
+     * @cfg {Roo.Button} buttons[] buttons at bottom of form
+     */
+    
     /**
      * @cfg {Number} labelWidth The width of labels. This property cascades to child containers.
      */
@@ -26117,6 +26153,7 @@ Roo.form.Action.ACTION_TYPES = {
 /**
  * @class Roo.form.Layout
  * @extends Roo.Component
+ * @children Roo.form.Column Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
  * Creates a container for layout and rendering of fields in an {@link Roo.form.Form}.
  * @constructor
  * @param {Object} config Configuration options
@@ -26301,6 +26338,7 @@ Roo.extend(Roo.form.Column, Roo.form.Layout, {
 /**
  * @class Roo.form.Row
  * @extends Roo.form.Layout
+ * @children Roo.form.Column Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
  * Creates a row container for layout and rendering of fields in an {@link Roo.form.Form}.
  * @constructor
  * @param {Object} config Configuration options
@@ -26377,6 +26415,7 @@ Roo.extend(Roo.form.Row, Roo.form.Layout, {
 /**
  * @class Roo.form.FieldSet
  * @extends Roo.form.Layout
+ * @children Roo.form.Column Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
  * Creates a fieldset container for layout and rendering of fields in an {@link Roo.form.Form}.
  * @constructor
  * @param {Object} config Configuration options
@@ -29022,6 +29061,7 @@ Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
 /**
  * @class Roo.BorderLayout
  * @extends Roo.LayoutManager
+ * @children Roo.ContentPanel
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: <br><br>
  * <a href="http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/">Cross Browser Layouts - Part 1</a><br>
@@ -29103,6 +29143,22 @@ Roo.BorderLayout = function(container, config){
 };
 
 Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
+	
+	/**
+	 * @cfg {Roo.LayoutRegion} east
+	 */
+	/**
+	 * @cfg {Roo.LayoutRegion} west
+	 */
+	/**
+	 * @cfg {Roo.LayoutRegion} north
+	 */
+	/**
+	 * @cfg {Roo.LayoutRegion} south
+	 */
+	/**
+	 * @cfg {Roo.LayoutRegion} center
+	 */
     /**
      * Creates and adds a new region if it doesn't already exist.
      * @param {String} target The target region key (north, south, east, west or center).
@@ -31207,20 +31263,21 @@ Roo.LayoutStateManager.prototype = {
 /**
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
+ * @children Roo.form.Form Roo.JsonView Roo.View
  * A basic ContentPanel element.
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
- * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
+ * @cfg {Boolean|Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
  * @cfg {Boolean}   closable      True if the panel can be closed/removed
  * @cfg {Boolean}   background    True if the panel should not be activated when it is added (defaults to false)
- * @cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
+ * @cfg {String|HTMLElement|Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
  * @cfg {Toolbar}   toolbar       A toolbar for this panel
  * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
  * @cfg {String} title          The title for this panel
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
  * @cfg {String} url            Calls {@link #setUrl} with this value
- * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
- * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {String} region [required]   (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String|Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
  * @cfg {String}    style  Extra style to add to the content panel 
@@ -31735,7 +31792,7 @@ Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
  * Create a new NestedLayoutPanel.
  * 
  * 
- * @param {Roo.BorderLayout} layout The layout for this panel
+ * @param {Roo.BorderLayout} layout [required] The layout for this panel
  * @param {String/Object} config A string to set only the title or a config object
  */
 Roo.NestedLayoutPanel = function(layout, config)
