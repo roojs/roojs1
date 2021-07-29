@@ -11,20 +11,21 @@
 /**
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
+ * @children Roo.form.Form Roo.JsonView Roo.View
  * A basic ContentPanel element.
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
- * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
+ * @cfg {Boolean|Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
  * @cfg {Boolean}   closable      True if the panel can be closed/removed
  * @cfg {Boolean}   background    True if the panel should not be activated when it is added (defaults to false)
- * @cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
+ * @cfg {String|HTMLElement|Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
  * @cfg {Toolbar}   toolbar       A toolbar for this panel
  * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
  * @cfg {String} title          The title for this panel
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
  * @cfg {String} url            Calls {@link #setUrl} with this value
- * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
- * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {String} region [required]   (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String|Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
  * @cfg {String}    style  Extra style to add to the content panel 
@@ -539,7 +540,7 @@ Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
  * Create a new NestedLayoutPanel.
  * 
  * 
- * @param {Roo.BorderLayout} layout The layout for this panel
+ * @param {Roo.BorderLayout} layout [required] The layout for this panel
  * @param {String/Object} config A string to set only the title or a config object
  */
 Roo.NestedLayoutPanel = function(layout, config)
