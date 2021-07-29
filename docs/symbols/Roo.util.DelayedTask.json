@@ -31,6 +31,8 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [],
   "methods" : [],
   "events" : []

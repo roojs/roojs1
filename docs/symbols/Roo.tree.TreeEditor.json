@@ -29,170 +29,153 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "alignment",
       "type" : "String",
       "desc" : "The position to align to (see {@link Roo.Element#alignTo} for more details, defaults to \"l-l\").",
-      "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "hideEl",
       "type" : "Boolean",
       "desc" : "True to hide the bound element while the editor is displayed (defaults to false)",
-      "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "maxWidth",
       "type" : "Number",
       "desc" : "The maximum width in pixels of the editor field (defaults to 250).  Note that if the maxWidth would exceed\nthe containing tree element's size, it will be automatically limited for you to the container width, taking\nscroll and client offsets into account prior to each edit.",
-      "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "constrain",
       "type" : "Boolean",
       "desc" : "True to constrain the editor to the viewport",
-      "memberOf" : "Roo.Editor",
-      "optvals" : []
+      "memberOf" : "Roo.Editor"
     },
     {
       "name" : "shadow",
       "type" : "Boolean/String",
       "desc" : "\"sides\" for sides/bottom only, \"frame\" for 4-way shadow, and \"drop\"\nfor bottom-right shadow (defaults to \"frame\")",
-      "memberOf" : "Roo.Editor",
-      "optvals" : []
+      "memberOf" : "Roo.Editor"
     },
     {
       "name" : "field",
-      "type" : "Roo.form.TextField|Object",
-      "desc" : "The field configuration",
-      "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : []
+      "type" : "Roo.form.TextField",
+      "desc" : "[required] The field configuration",
+      "memberOf" : ""
     },
     {
       "name" : "hideMode",
       "type" : "String",
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-      "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
-      ]
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "value",
       "type" : "Mixed",
       "desc" : "The data value of the underlying field (defaults to \"\")",
-      "memberOf" : "Roo.Editor",
-      "optvals" : []
+      "memberOf" : "Roo.Editor"
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "CSS class to apply to the editor (defaults to \"x-small-editor x-tree-editor\")",
-      "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "shim",
       "type" : "Boolean",
       "desc" : "True to shim the editor if selects/iframes could be displayed beneath it (defaults to false)",
-      "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "cancelOnEsc",
       "type" : "Boolean",
       "desc" : "True to cancel the edit when the escape key is pressed (defaults to false)",
-      "memberOf" : "Roo.Editor",
-      "optvals" : []
+      "memberOf" : "Roo.Editor"
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "completeOnEnter",
       "type" : "Boolean",
       "desc" : "True to complete the edit when the enter key is pressed (defaults to false)",
-      "memberOf" : "Roo.Editor",
-      "optvals" : []
+      "memberOf" : "Roo.Editor"
     },
     {
       "name" : "revertInvalid",
       "type" : "Boolean",
       "desc" : "True to automatically revert the field value and cancel the edit when the user completes an edit and the field\nvalidation fails (defaults to true)",
-      "memberOf" : "Roo.Editor",
-      "optvals" : []
+      "memberOf" : "Roo.Editor"
     },
     {
       "name" : "tree",
       "type" : "Roo.tree.TreePanel",
       "desc" : "The tree to bind to.",
-      "memberOf" : "Roo.tree.TreeEditor",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "ignoreNoChange",
       "type" : "Boolean",
       "desc" : "True to skip the the edit completion process (no save, no events fired) if the user completes an edit and\nthe value has not changed (defaults to false).  Applies only to string values - edits for other data types\nwill never be ignored.",
-      "memberOf" : "Roo.Editor",
-      "optvals" : []
+      "memberOf" : "Roo.Editor"
     },
     {
       "name" : "autosize",
       "type" : "Boolean/String",
       "desc" : "True for the editor to automatically adopt the size of the underlying field, \"width\" to adopt the width only,\nor \"height\" to adopt the height only (defaults to false)",
-      "memberOf" : "Roo.Editor",
-      "optvals" : []
+      "memberOf" : "Roo.Editor"
     },
     {
       "name" : "updateEl",
       "type" : "Boolean",
       "desc" : "True to update the innerHTML of the bound element when the update completes (defaults to false)",
-      "memberOf" : "Roo.Editor",
-      "optvals" : []
+      "memberOf" : "Roo.Editor"
     }
   ],
   "methods" : [
     {
       "name" : "cancelEdit",
+      "type" : "function",
       "desc" : "Cancels the editing process and hides the editor without persisting any changes.  The field value will be\nreverted to the original starting value.",
+      "sig" : "(remainVisible)",
+      "static" : false,
+      "memberOf" : "Roo.Editor",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "remainVisible",
@@ -205,15 +188,20 @@
     },
     {
       "name" : "setSize",
+      "type" : "function",
       "desc" : "Sets the height and width of this editor.",
+      "sig" : "(width, height)",
+      "static" : false,
+      "memberOf" : "Roo.Editor",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "width",
@@ -232,29 +220,39 @@
     },
     {
       "name" : "realign",
+      "type" : "function",
       "desc" : "Realigns the editor to the bound field based on the current alignment config value.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Editor",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "getValue",
+      "type" : "function",
       "desc" : "Gets the data value of the editor",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Editor",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -266,15 +264,20 @@
     },
     {
       "name" : "completeEdit",
+      "type" : "function",
       "desc" : "Ends the editing process, persists the changed value to the underlying field, and hides the editor.",
+      "sig" : "(remainVisible)",
+      "static" : false,
+      "memberOf" : "Roo.Editor",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "remainVisible",
@@ -287,15 +290,20 @@
     },
     {
       "name" : "setValue",
+      "type" : "function",
       "desc" : "Sets the data value of the editor",
+      "sig" : "(value)",
+      "static" : false,
+      "memberOf" : "Roo.Editor",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "value",
@@ -308,15 +316,20 @@
     },
     {
       "name" : "startEdit",
+      "type" : "function",
       "desc" : "Starts the editing process and shows the editor.",
+      "sig" : "(el, value)",
+      "static" : false,
+      "memberOf" : "Roo.Editor",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "el",
@@ -335,15 +348,20 @@
     },
     {
       "name" : "getId",
+      "type" : "function",
       "desc" : "Returns the id of this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -355,15 +373,20 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "If this is a lazy rendering component, render it to its container element.",
+      "sig" : "(container)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "container",
@@ -376,43 +399,58 @@
     },
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "isVisible",
+      "type" : "function",
       "desc" : "Returns true if this component is visible.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "setDisabled",
+      "type" : "function",
       "desc" : "Convenience function for setting disabled/enabled by boolean.",
+      "sig" : "(disabled)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "disabled",
@@ -425,15 +463,20 @@
     },
     {
       "name" : "hide",
+      "type" : "function",
       "desc" : "Hide this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -445,15 +488,20 @@
     },
     {
       "name" : "focus",
+      "type" : "function",
       "desc" : "Try to focus this component.",
+      "sig" : "(selectText)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "selectText",
@@ -472,15 +520,20 @@
     },
     {
       "name" : "show",
+      "type" : "function",
       "desc" : "Show this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -492,15 +545,20 @@
     },
     {
       "name" : "enable",
+      "type" : "function",
       "desc" : "Enable this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -512,15 +570,20 @@
     },
     {
       "name" : "setVisible",
+      "type" : "function",
       "desc" : "Convenience function to hide or show this component by boolean.",
+      "sig" : "(visible)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "visible",
@@ -539,15 +602,20 @@
     },
     {
       "name" : "disable",
+      "type" : "function",
       "desc" : "Disable this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -559,15 +627,20 @@
     },
     {
       "name" : "getEl",
+      "type" : "function",
       "desc" : "Returns the underlying {@link Roo.Element}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -579,29 +652,39 @@
     },
     {
       "name" : "purgeListeners",
+      "type" : "function",
       "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "on",
+      "type" : "function",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -632,15 +715,20 @@
     },
     {
       "name" : "un",
+      "type" : "function",
       "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -665,15 +753,20 @@
     },
     {
       "name" : "addEvents",
+      "type" : "function",
       "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "object",
@@ -686,15 +779,20 @@
     },
     {
       "name" : "releaseCapture",
+      "type" : "function",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -707,15 +805,20 @@
     },
     {
       "name" : "removeListener",
+      "type" : "function",
       "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -740,15 +843,20 @@
     },
     {
       "name" : "fireEvent",
+      "type" : "function",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -773,15 +881,20 @@
     },
     {
       "name" : "hasListener",
+      "type" : "function",
       "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -800,15 +913,20 @@
     },
     {
       "name" : "capture",
+      "type" : "function",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -833,15 +951,20 @@
     },
     {
       "name" : "addListener",
+      "type" : "function",
       "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -874,8 +997,10 @@
   "events" : [
     {
       "name" : "beforenodeedit",
+      "type" : "function",
       "desc" : "Fires when editing is initiated, but before the value changes.  Editing can be canceled by returning\nfalse from the handler of this event.",
-      "memberOf" : "Roo.tree.TreeEditor",
+      "sig" : "function (_self, node)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -898,7 +1023,9 @@
     },
     {
       "name" : "beforestartedit",
+      "type" : "function",
       "desc" : "Fires when editing is initiated, but before the value changes.  Editing can be canceled by returning\nfalse from the handler of this event.",
+      "sig" : "function (_self, boundEl, value)\n{\n\n}",
       "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
@@ -928,7 +1055,9 @@
     },
     {
       "name" : "beforecomplete",
+      "type" : "function",
       "desc" : "Fires after a change has been made to the field, but before the change is reflected in the underlying\nfield.  Saving the change to the field can be canceled by returning false from the handler of this event.\nNote that if the value has not changed and ignoreNoChange = true, the editing will still end but this\nevent will not fire since no edit actually occurred.",
+      "sig" : "function (_self, value, startValue)\n{\n\n}",
       "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
@@ -958,7 +1087,9 @@
     },
     {
       "name" : "complete",
+      "type" : "function",
       "desc" : "Fires after editing is complete and any changed value has been written to the underlying field.",
+      "sig" : "function (_self, value, startValue)\n{\n\n}",
       "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
@@ -988,7 +1119,9 @@
     },
     {
       "name" : "specialkey",
+      "type" : "function",
       "desc" : "Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check\n{@link Roo.EventObject#getKey} to determine which key was pressed.",
+      "sig" : "function (_self, e)\n{\n\n}",
       "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
@@ -1012,7 +1145,9 @@
     },
     {
       "name" : "startedit",
+      "type" : "function",
       "desc" : "Fires when this editor is displayed",
+      "sig" : "function (boundEl, value)\n{\n\n}",
       "memberOf" : "Roo.Editor",
       "example" : "",
       "deprecated" : "",
@@ -1036,7 +1171,9 @@
     },
     {
       "name" : "beforerender",
+      "type" : "function",
       "desc" : "Fires before the component is rendered. Return false to stop the render.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1054,7 +1191,9 @@
     },
     {
       "name" : "disable",
+      "type" : "function",
       "desc" : "Fires after the component is disabled.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1072,7 +1211,9 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "Fires after the component is rendered.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1090,7 +1231,9 @@
     },
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Fires after the component is destroyed.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1108,7 +1251,9 @@
     },
     {
       "name" : "hide",
+      "type" : "function",
       "desc" : "Fires after the component is hidden.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1126,7 +1271,9 @@
     },
     {
       "name" : "beforehide",
+      "type" : "function",
       "desc" : "Fires before the component is hidden. Return false to stop the hide.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1144,7 +1291,9 @@
     },
     {
       "name" : "show",
+      "type" : "function",
       "desc" : "Fires after the component is shown.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1162,7 +1311,9 @@
     },
     {
       "name" : "beforeshow",
+      "type" : "function",
       "desc" : "Fires before the component is shown.  Return false to stop the show.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1180,7 +1331,9 @@
     },
     {
       "name" : "enable",
+      "type" : "function",
       "desc" : "Fires after the component is enabled.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1198,7 +1351,9 @@
     },
     {
       "name" : "beforedestroy",
+      "type" : "function",
       "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",

@@ -12,19 +12,26 @@
   "see" : "",
   "params" : [],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [],
   "methods" : [
     {
       "name" : "constrain",
+      "type" : "function",
       "desc" : "Checks whether or not the current number is within a desired range.  If the number is already within the\nrange it is returned, otherwise the min or max value is returned depending on which side of the range is\nexceeded.  Note that this method returns the constrained value but does not change the current number.",
+      "sig" : "(min, max)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Number",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "min",

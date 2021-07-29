@@ -12,62 +12,63 @@
   "see" : "",
   "params" : [],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "createLinkText",
       "type" : "String",
       "desc" : "The default text for the create link prompt",
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "btns",
       "type" : "Array",
       "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "defaultFont",
       "type" : "String",
       "desc" : "default font to use.",
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "defaultLinkValue",
       "type" : "String",
       "desc" : "The default value for the create link prompt (defaults to http:/ /)",
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "fontFamilies",
       "type" : "Array",
       "desc" : "An array of available font families",
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "disable",
       "type" : "Object",
       "desc" : "List of elements to disable..",
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
-      "optvals" : []
+      "memberOf" : ""
     }
   ],
   "methods" : [
     {
       "name" : "updateToolbar",
+      "type" : "function",
       "desc" : "Protected method that will not generally be called directly. It triggers\na toolbar update by reading the markup state of the current selection in the editor.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     }

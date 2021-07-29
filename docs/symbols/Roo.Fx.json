@@ -12,97 +12,93 @@
   "see" : "",
   "params" : [],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "easing",
       "type" : "String",
       "desc" : "A valid Easing value for the effect",
-      "memberOf" : "Roo.Fx",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "afterCls",
       "type" : "String",
       "desc" : "A css class to apply after the effect",
-      "memberOf" : "Roo.Fx",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "useDisplay",
       "type" : "Boolean",
       "desc" : "Whether to use the <i>display</i> CSS property instead of <i>visibility</i> when hiding Elements (only applies to \neffects that end with the element being visually hidden, ignored otherwise)",
-      "memberOf" : "Roo.Fx",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "stopFx",
       "type" : "Boolean",
       "desc" : "Whether subsequent effects should be stopped and removed after the current effect finishes",
-      "memberOf" : "Roo.Fx",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "callback",
       "type" : "Function",
       "desc" : "A function called when the effect is finished",
-      "memberOf" : "Roo.Fx",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "scope",
       "type" : "Object",
       "desc" : "The scope of the effect function",
-      "memberOf" : "Roo.Fx",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "remove",
       "type" : "Boolean",
       "desc" : "Whether the Element should be removed from the DOM and destroyed after the effect finishes",
-      "memberOf" : "Roo.Fx",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "concurrent",
       "type" : "Boolean",
       "desc" : "Whether to allow subsequently-queued effects to run at the same time as the current effect, or to ensure that they run in sequence",
-      "memberOf" : "Roo.Fx",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "duration",
       "type" : "Number",
       "desc" : "The length of time (in seconds) that the effect should last",
-      "memberOf" : "Roo.Fx",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "afterStyle",
       "type" : "String/Object/Function",
       "desc" : "A style specification string, e.g. \"width:100px\", or an object in the form {width:\"100px\"}, or\na function which returns such a specification that will be applied to the Element after the effect finishes",
-      "memberOf" : "Roo.Fx",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "block",
       "type" : "Boolean",
       "desc" : "Whether the effect should block other effects from queueing while it runs",
-      "memberOf" : "Roo.Fx",
-      "optvals" : []
+      "memberOf" : ""
     }
   ],
   "methods" : [
     {
       "name" : "fadeOut",
+      "type" : "function",
       "desc" : "Fade an element out (from opaque to transparent).  The ending opacity can be specified\nusing the \"endOpacity\" config option.\nUsage:\n<pre><code>\n// default: fade out from the element's current opacity to 0\nel.fadeOut();\n\n// custom: fade out from the element's current opacity to 25% over 2 seconds\nel.fadeOut({ endOpacity: .25, duration: 2});\n\n// common config options shown with default values\nel.fadeOut({\n    endOpacity: 0, //can be any value between 0 and 1 (e.g. .5)\n    easing: 'easeOut',\n    duration: .5\n    remove: false,\n    useDisplay: false\n});\n</code></pre>",
+      "sig" : "(options)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "options",
@@ -121,15 +117,20 @@
     },
     {
       "name" : "stopFx",
+      "type" : "function",
       "desc" : "Stops any running effects and clears the element's internal effects queue if it contains\nany additional effects that haven't started yet.",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -141,15 +142,20 @@
     },
     {
       "name" : "frame",
+      "type" : "function",
       "desc" : "Shows a ripple of exploding, attenuating borders to draw attention to an Element.\nUsage:\n<pre><code>\n// default: a single light blue ripple\nel.frame();\n\n// custom: 3 red ripples lasting 3 seconds total\nel.frame(\"ff0000\", 3, { duration: 3 });\n\n// common config options shown with default values\nel.frame(\"C3DAF9\", 1, {\n    duration: 1 //duration of entire animation (not each individual ripple)\n    // Note: Easing is not configurable and will be ignored if included\n});\n</code></pre>",
+      "sig" : "(color, count, options)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "color",
@@ -180,15 +186,20 @@
     },
     {
       "name" : "pause",
+      "type" : "function",
       "desc" : "Creates a pause before any subsequent queued effects begin.  If there are\nno effects queued after the pause it will have no effect.\nUsage:\n<pre><code>\nel.pause(1);\n</code></pre>",
+      "sig" : "(seconds)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "seconds",
@@ -207,15 +218,20 @@
     },
     {
       "name" : "hasFxBlock",
+      "type" : "function",
       "desc" : "Returns true if the element is currently blocking so that no other effect can be queued\nuntil this effect is finished, else returns false if blocking is not set.  This is commonly\nused to ensure that an effect initiated by a user action runs to completion prior to the\nsame effect being restarted (e.g., firing only one effect even if the user clicks several times).",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -227,15 +243,20 @@
     },
     {
       "name" : "hasActiveFx",
+      "type" : "function",
       "desc" : "Returns true if the element has any effects actively running or queued, else returns false.",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -247,15 +268,20 @@
     },
     {
       "name" : "highlight",
+      "type" : "function",
       "desc" : "Highlights the Element by setting a color (applies to the background-color by default, but can be\nchanged using the \"attr\" config option) and then fading back to the original color. If no original\ncolor is available, you should provide the \"endColor\" config option which will be cleared after the animation.\nUsage:\n<pre><code>\n// default: highlight background to yellow\nel.highlight();\n\n// custom: highlight foreground text to blue for 2 seconds\nel.highlight(\"0000ff\", { attr: 'color', duration: 2 });\n\n// common config options shown with default values\nel.highlight(\"ffff9c\", {\n    attr: \"background-color\", //can be any valid CSS property (attribute) that supports a color value\n    endColor: (current color) or \"ffffff\",\n    easing: 'easeIn',\n    duration: 1\n});\n</code></pre>",
+      "sig" : "(color, options)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "color",
@@ -280,15 +306,20 @@
     },
     {
       "name" : "syncFx",
+      "type" : "function",
       "desc" : "Ensures that all effects queued after syncFx is called on the element are\nrun concurrently.  This is the opposite of {@link #sequenceFx}.",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -300,15 +331,20 @@
     },
     {
       "name" : "puff",
+      "type" : "function",
       "desc" : "Fades the element out while slowly expanding it in all directions.  When the effect is completed, the \nelement will be hidden (visibility = 'hidden') but block elements will still take up space in the document. \nThe element must be removed from the DOM using the 'remove' config option if desired.\nUsage:\n<pre><code>\n// default\nel.puff();\n\n// common config options shown with default values\nel.puff({\n    easing: 'easeOut',\n    duration: .5,\n    remove: false,\n    useDisplay: false\n});\n</code></pre>",
+      "sig" : "(options)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "options",
@@ -327,15 +363,20 @@
     },
     {
       "name" : "fadeIn",
+      "type" : "function",
       "desc" : "Fade an element in (from transparent to opaque).  The ending opacity can be specified\nusing the \"endOpacity\" config option.\nUsage:\n<pre><code>\n// default: fade in from opacity 0 to 100%\nel.fadeIn();\n\n// custom: fade in from opacity 0 to 75% over 2 seconds\nel.fadeIn({ endOpacity: .75, duration: 2});\n\n// common config options shown with default values\nel.fadeIn({\n    endOpacity: 1, //can be any value between 0 and 1 (e.g. .5)\n    easing: 'easeOut',\n    duration: .5\n});\n</code></pre>",
+      "sig" : "(options)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "options",
@@ -354,15 +395,20 @@
     },
     {
       "name" : "sequenceFx",
+      "type" : "function",
       "desc" : "Ensures that all effects queued after sequenceFx is called on the element are\nrun in sequence.  This is the opposite of {@link #syncFx}.",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -374,15 +420,20 @@
     },
     {
       "name" : "slideIn",
+      "type" : "function",
       "desc" : "Slides the element into view.  An anchor point can be optionally passed to set the point of\norigin for the slide effect.  This function automatically handles wrapping the element with\na fixed-size container if needed.  See the Fx class overview for valid anchor point options.\nUsage:\n<pre><code>\n// default: slide the element in from the top\nel.slideIn();\n\n// custom: slide the element in from the right with a 2-second duration\nel.slideIn('r', { duration: 2 });\n\n// common config options shown with default values\nel.slideIn('t', {\n    easing: 'easeOut',\n    duration: .5\n});\n</code></pre>",
+      "sig" : "(anchor, options)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "anchor",
@@ -407,15 +458,20 @@
     },
     {
       "name" : "ghost",
+      "type" : "function",
       "desc" : "Slides the element while fading it out of view.  An anchor point can be optionally passed to set the \nending point of the effect.\nUsage:\n<pre><code>\n// default: slide the element downward while fading out\nel.ghost();\n\n// custom: slide the element out to the right with a 2-second duration\nel.ghost('r', { duration: 2 });\n\n// common config options shown with default values\nel.ghost('b', {\n    easing: 'easeOut',\n    duration: .5\n    remove: false,\n    useDisplay: false\n});\n</code></pre>",
+      "sig" : "(anchor, options)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "anchor",
@@ -440,15 +496,20 @@
     },
     {
       "name" : "slideOut",
+      "type" : "function",
       "desc" : "Slides the element out of view.  An anchor point can be optionally passed to set the end point\nfor the slide effect.  When the effect is completed, the element will be hidden (visibility = \n'hidden') but block elements will still take up space in the document.  The element must be removed\nfrom the DOM using the 'remove' config option if desired.  This function automatically handles \nwrapping the element with a fixed-size container if needed.  See the Fx class overview for valid anchor point options.\nUsage:\n<pre><code>\n// default: slide the element out to the top\nel.slideOut();\n\n// custom: slide the element out to the right with a 2-second duration\nel.slideOut('r', { duration: 2 });\n\n// common config options shown with default values\nel.slideOut('t', {\n    easing: 'easeOut',\n    duration: .5,\n    remove: false,\n    useDisplay: false\n});\n</code></pre>",
+      "sig" : "(anchor, options)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "anchor",
@@ -473,15 +534,20 @@
     },
     {
       "name" : "scale",
+      "type" : "function",
       "desc" : "Animates the transition of an element's dimensions from a starting height/width\nto an ending height/width.\nUsage:\n<pre><code>\n// change height and width to 100x100 pixels\nel.scale(100, 100);\n\n// common config options shown with default values.  The height and width will default to\n// the element's existing values if passed as null.\nel.scale(\n    [element's width],\n    [element's height], {\n    easing: 'easeOut',\n    duration: .35\n});\n</code></pre>",
+      "sig" : "(width, height, options)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "width",
@@ -512,15 +578,20 @@
     },
     {
       "name" : "switchOff",
+      "type" : "function",
       "desc" : "Blinks the element as if it was clicked and then collapses on its center (similar to switching off a television).\nWhen the effect is completed, the element will be hidden (visibility = 'hidden') but block elements will still \ntake up space in the document. The element must be removed from the DOM using the 'remove' config option if desired.\nUsage:\n<pre><code>\n// default\nel.switchOff();\n\n// all config options shown with default values\nel.switchOff({\n    easing: 'easeIn',\n    duration: .3,\n    remove: false,\n    useDisplay: false\n});\n</code></pre>",
+      "sig" : "(options)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "options",
@@ -539,15 +610,20 @@
     },
     {
       "name" : "shift",
+      "type" : "function",
       "desc" : "Animates the transition of any combination of an element's dimensions, xy position and/or opacity.\nAny of these properties not specified in the config object will not be changed.  This effect \nrequires that at least one new dimension, position or opacity setting must be passed in on\nthe config object in order for the function to have any effect.\nUsage:\n<pre><code>\n// slide the element horizontally to x position 200 while changing the height and opacity\nel.shift({ x: 200, height: 50, opacity: .8 });\n\n// common config options shown with default values.\nel.shift({\n    width: [element's width],\n    height: [element's height],\n    x: [element's x position],\n    y: [element's y position],\n    opacity: [element's opacity],\n    easing: 'easeOut',\n    duration: .35\n});\n</code></pre>",
+      "sig" : "(options)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Fx",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "options",

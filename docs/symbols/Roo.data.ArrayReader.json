@@ -27,34 +27,39 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "id",
       "type" : "String",
       "desc" : "Name of the property within a row object that contains a record identifier value.\nas specified to {@link Roo.data.Record#create},\nor an {@link Roo.data.Record} object\n\n\ncreated using {@link Roo.data.Record#create}.",
-      "memberOf" : "Roo.data.ArrayReader",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "fields",
       "type" : "Array",
       "desc" : "Array of field definition objects",
-      "memberOf" : "Roo.data.ArrayReader",
-      "optvals" : []
+      "memberOf" : ""
     }
   ],
   "methods" : [
     {
       "name" : "readRecords",
+      "type" : "function",
       "desc" : "Create a data block containing Roo.data.Records from an XML document.",
+      "sig" : "(o)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.data.ArrayReader",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -73,15 +78,20 @@
     },
     {
       "name" : "newRow",
+      "type" : "function",
       "desc" : "Create an empty record",
+      "sig" : "(data)",
+      "static" : false,
+      "memberOf" : "Roo.data.DataReader",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.data.DataReader",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "data",

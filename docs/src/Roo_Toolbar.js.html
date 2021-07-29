@@ -11,6 +11,7 @@
 
 /**
  * @class Roo.Toolbar
+ * @children   Roo.Toolbar.Item Roo.form.Field
  * Basic Toolbar class.
  * @constructor
  * Creates a new Toolbar
@@ -560,7 +561,10 @@
 </span><span class="jsdoc-var">Roo.Toolbar.Button </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.Toolbar.Button.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
 };
-</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Toolbar.Button</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Button</span><span class="jsdoc-syntax">, {
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Toolbar.Button</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Button</span><span class="jsdoc-syntax">,
+{
+
+
     </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">Roo.Toolbar.Button.superclass.render.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);

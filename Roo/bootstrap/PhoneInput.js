@@ -24,7 +24,9 @@ Roo.bootstrap.PhoneInput = function(config) {
 };
 
 Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
-        
+        /**
+        * @cfg {Roo.data.Store} store [required] The data store to which this combo is bound (defaults to undefined)
+        */
         listWidth: undefined,
         
         selectedClass: 'active',

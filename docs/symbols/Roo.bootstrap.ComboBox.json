@@ -25,916 +25,747 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "growMax",
       "type" : "Number",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "selectOnFocus",
       "type" : "Boolean",
       "desc" : "True to select any existing text in the field immediately on focus.  Only applies\nwhen editable = true (defaults to false)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "md",
       "type" : "Number",
       "desc" : "colspan out of 12 for computer-sized screens",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "grow",
       "type" : "Boolean",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "capture",
       "type" : "String",
       "desc" : "a) use for file input only. (default empty)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-        "user",
-        "camera"
-      ]
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "queryDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds to delay between the start of typing and sending the\nquery to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "triggerAction",
       "type" : "String",
       "desc" : "The action to execute when the trigger field is activated.  Use 'all' to run the\nquery specified by the allQuery config option (defaults to 'query')",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "minLength",
       "type" : "Number",
       "desc" : "Minimum input field length required (defaults to 0)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "resizable",
       "type" : "Boolean",
       "desc" : "True to add a resize handle to the bottom of the dropdown list (defaults to false)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "mobileTouchView",
       "type" : "Boolean",
       "desc" : "e) show mobile touch view when using a mobile default true",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "memberOf" : ""
     },
     {
       "name" : "labelmd",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "editable",
       "type" : "Boolean",
       "desc" : "False to prevent the user from typing text directly into the field, just like a\ntraditional select (defaults to true)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "t)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-        "top",
-        "left"
-      ]
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "listWidth",
       "type" : "Number",
       "desc" : "The width in pixels of the dropdown list (defaults to the width of the ComboBox field)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "alwaysQuery",
       "type" : "Boolean",
       "desc" : "Disable caching of results, and always send query",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "handleHeight",
       "type" : "Number",
       "desc" : "The height in pixels of the dropdown list resize handle if resizable = true (defaults to 8)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
       "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-        "el",
-        "parent"
-      ]
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "emptyResultText",
       "type" : "Boolean",
       "desc" : "only for touch device",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "title",
       "type" : "String",
       "desc" : "If supplied, a header element is created containing this text and added into the top of\nthe dropdown list (defaults to undefined, with no header element)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "after",
       "type" : "string",
       "desc" : "- input group add on after",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "maxLength",
       "type" : "Number",
       "desc" : "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "name",
       "type" : "String",
       "desc" : "name of the input",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "queryParam",
       "type" : "String",
       "desc" : "Name of the query as it will be passed on the querystring (defaults to 'query')",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "tpl",
       "type" : "String/Roo.Template",
       "desc" : "The template to use to render the output default is  '<a class=\"dropdown-item\" href=\"#\">{' + this.displayField + '}</a>'",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "selectedClass",
       "type" : "String",
       "desc" : "CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "autocomplete",
       "type" : "String",
       "desc" : "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "hasFeedback",
       "type" : "Boolean",
       "desc" : "e) default true",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "(button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)",
       "type" : "String",
       "desc" : "inputType",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "validator",
       "type" : "Function",
       "desc" : "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "hiddenName",
       "type" : "String",
       "desc" : "If specified, a hidden form field with this name is dynamically generated to store the\nfield's data value (defaults to the underlying DOM element's name)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "sm",
       "type" : "Number",
       "desc" : "colspan out of 12 for tablet-sized screens",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "autoCreate",
       "type" : "Boolean/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to:\n{tag: \"input\", type: \"text\", size: \"24\", autocomplete: \"off\"})",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "removable",
       "type" : "Boolean",
       "desc" : "e) special filter default false",
-      "memberOf" : "Roo.bootstrap.TriggerField",
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "memberOf" : "Roo.bootstrap.TriggerField"
     },
     {
       "name" : "minChars",
       "type" : "Number",
       "desc" : "The minimum number of characters the user must type before autocomplete and typeahead activate\n(defaults to 4, does not apply if editable = false)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "animate",
       "type" : "Boolean",
       "desc" : "default true",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "btnPosition",
       "type" : "String",
       "desc" : "set the position of the trigger button (left | right) default right",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "validationEvent",
       "type" : "String/Boolean",
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "disableClear",
       "type" : "Boolean",
       "desc" : "Disable showing of clear button.",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "xs",
       "type" : "Number",
       "desc" : "colspan out of 12 for mobile-sized screens",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "lazyRender",
       "type" : "Boolean",
       "desc" : "True to prevent the ComboBox from rendering until requested (should always be used when\nrendering into an Roo.Editor, defaults to false)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "labelsm",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "indicatorpos",
       "type" : "String",
       "desc" : "t) default left",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-        "left",
-        "right"
-      ]
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "minLengthText",
       "type" : "String",
       "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "labelxs",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "listAlign",
       "type" : "String",
       "desc" : "A valid anchor position value. See {@link Roo.Element#alignTo} for details on supported\nanchor positions (defaults to 'tl-bl')",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "showToggleBtn",
       "type" : "Boolean",
       "desc" : "show toggle button or not (true|false) default true",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "invalidFeedbackIcon",
       "type" : "String",
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "triggerList",
       "type" : "Boolean",
       "desc" : "trigger show the list or not (true|false) default true",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "forceFeedback",
       "type" : "Boolean",
       "desc" : "e) Default false",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "mode",
       "type" : "String",
       "desc" : "Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "maskRe",
       "type" : "String",
       "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "typeAhead",
       "type" : "Boolean",
       "desc" : "True to populate and autoselect the remainder of the text being typed after a configurable\ndelay (typeAheadDelay) if it matches a known value (defaults to false)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "disableKeyFilter",
       "type" : "Boolean",
       "desc" : "True to disable input keystroke filtering (defaults to false)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "triggerText",
       "type" : "String",
       "desc" : "multiple combobox trigger button text default 'Select'",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "regexText",
       "type" : "String",
       "desc" : "-- Depricated - use Invalid Text",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "fieldLabel",
       "type" : "string",
       "desc" : "- the label associated",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "growMin",
       "type" : "Number",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "is it disabled",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "triggerClass",
       "type" : "String",
       "desc" : "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",
-      "memberOf" : "Roo.bootstrap.TriggerField",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.TriggerField"
     },
     {
       "name" : "validClass",
       "type" : "String",
       "desc" : "DEPRICATED - uses BS4 is-valid now",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "modalTitle",
       "type" : "String",
       "desc" : "The title of the dialog that pops up on mobile views.",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "preventMark",
       "type" : "Boolean",
       "desc" : "Do not show tick or cross if error/success",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "accept",
       "type" : "String",
       "desc" : "o) use for file input only. (default empty)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-        "image",
-        "video",
-        "audio"
-      ]
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "validateOnBlur",
       "type" : "Boolean",
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "valueField",
       "type" : "String",
       "desc" : "The underlying data value name to bind to this CombBox (defaults to undefined if\nmode = 'remote' or 'value' if mode = 'local'). \nNote: use of a valueField requires the user make a selection\nin order for a value to be mapped.",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "focusClass",
       "type" : "String",
       "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "allowBlank",
       "type" : "Boolean",
       "desc" : "False to validate that the value length > 0 (defaults to true)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "store",
       "type" : "Roo.data.Store",
       "desc" : "The data store to which this combo is bound (defaults to undefined)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "invalidClass",
       "type" : "String",
       "desc" : "DEPRICATED - uses BS4 is-valid now",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "listClass",
       "type" : "String",
       "desc" : "CSS class to apply to the dropdown list element (defaults to '')",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "displayField",
       "type" : "String",
       "desc" : "The underlying data field name to bind to this CombBox (defaults to undefined if\nmode = 'remote' or 'text' if mode = 'local')",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "tickable",
       "type" : "Boolean",
       "desc" : "ComboBox with tickable selections (true|false), default false",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "specialFilter",
       "type" : "Boolean",
       "desc" : "e) special filter default false",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "memberOf" : ""
     },
     {
       "name" : "emptyTitle",
       "type" : "String",
       "desc" : "default ''",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "typeAheadDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds to wait until the typeahead text is displayed\nif typeAhead = true (defaults to 250)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "loadingText",
       "type" : "String",
       "desc" : "The text to display in the dropdown list while data is loading.  Only applies\nwhen mode = 'remote' (defaults to 'Loading...')",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "size",
       "type" : "string",
       "desc" : "- (lg|sm) or leave empty..",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "fixed with? experimental",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "caret",
       "type" : "String",
       "desc" : "r) BS3 only - carat fa name",
-      "memberOf" : "Roo.bootstrap.TriggerField",
-      "optvals" : [
-        "search",
-        "calendar"
-      ]
+      "memberOf" : "Roo.bootstrap.TriggerField"
     },
     {
       "name" : "hideTrigger",
       "type" : "Boolean",
       "desc" : "True to hide the trigger element and display only the base text field (defaults to false)",
-      "memberOf" : "Roo.bootstrap.TriggerField",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.TriggerField"
     },
     {
       "name" : "minListWidth",
       "type" : "Number",
       "desc" : "The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if\nlistWidth has a higher value)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "multiple",
       "type" : "Boolean",
       "desc" : "e) ComboBobArray, default false",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "memberOf" : ""
     },
     {
       "name" : "invalidText",
       "type" : "String",
       "desc" : "The error text to display if {@link #validator} test fails during validation (defaults to \"\")",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "placeholder",
       "type" : "string",
       "desc" : "- placeholder to put in text.",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "before",
       "type" : "string",
       "desc" : "- input group add on before",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "blankText",
       "type" : "String",
       "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "readOnly",
       "type" : "Boolean",
       "desc" : "Specifies that the field should be read-only",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "hideMode",
       "type" : "String",
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-      "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
-      ]
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "vtype",
       "type" : "String",
       "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "maxHeight",
       "type" : "Number",
       "desc" : "The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "mobile_restrict_height",
       "type" : "Boolean",
       "desc" : "e) restrict height for touch view",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "memberOf" : ""
     },
     {
       "name" : "valueNotFoundText",
       "type" : "String",
       "desc" : "When using a name/value combo, if the value passed to setValue is not found in\nthe store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "validFeedbackIcon",
       "type" : "String",
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "autoFocus",
       "type" : "Boolean",
       "desc" : "e) auto focus the first item, default true",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "memberOf" : ""
     },
     {
       "name" : "lg",
       "type" : "Number",
       "desc" : "colspan out of 12 for large computer-sized screens",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "pageSize",
       "type" : "Number",
       "desc" : "If greater than 0, a paging toolbar is displayed in the footer of the dropdown list and the\nfilter queries will execute with page start and limit parameters.  Only applies when mode = 'remote' (defaults to 0)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "useNativeIOS",
       "type" : "Boolean",
       "desc" : "e) render it as classic select for ios, not support dynamic load data (default false)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "memberOf" : ""
     },
     {
       "name" : "forceSelection",
       "type" : "Boolean",
       "desc" : "True to restrict the selected value to one of the values in the list, false to\nallow the user to set arbitrary text into the field (defaults to false)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "labelWidth",
       "type" : "Number",
       "desc" : "set the width of label",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "append",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : [
-        "true",
-        "false"
-      ]
+      "memberOf" : ""
     },
     {
       "name" : "validationDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "labellg",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "allQuery",
       "type" : "String",
       "desc" : "The text query to send to the server to return all records for the list with no filtering (defaults to '')",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "blockFocus",
       "type" : "Boolean",
       "desc" : "Prevents all focus calls, so it can work with things like HTML edtor bar",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "shadow",
       "type" : "Boolean/String",
       "desc" : "True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\" for bottom-right",
-      "memberOf" : "Roo.bootstrap.ComboBox",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "maxLengthText",
       "type" : "String",
       "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "value",
       "type" : "string",
       "desc" : "default value of the input",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "regex",
       "type" : "RegExp",
       "desc" : "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Input"
     },
     {
       "name" : "align",
       "type" : "String",
       "desc" : "t) Default left",
-      "memberOf" : "Roo.bootstrap.Input",
-      "optvals" : [
-        "left",
-        "center",
-        "right"
-      ]
+      "memberOf" : "Roo.bootstrap.Input"
     }
   ],
   "methods" : [
     {
       "name" : "select",
+      "type" : "function",
       "desc" : "Select an item in the dropdown list by its numeric index in the list. This function does NOT cause the select event to fire.\nThe store must be loaded and the list expanded for this function to work, otherwise use setValue.",
+      "sig" : "(index, scrollIntoView)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "index",
@@ -953,43 +784,58 @@
     },
     {
       "name" : "expand",
+      "type" : "function",
       "desc" : "Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "collapse",
+      "type" : "function",
       "desc" : "Hides the dropdown list if it is currently expanded. Fires the 'collapse' event on completion.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "getValue",
+      "type" : "function",
       "desc" : "Returns the currently selected field value or empty string if no value is set.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -1001,15 +847,20 @@
     },
     {
       "name" : "selectByValue",
+      "type" : "function",
       "desc" : "Select an item in the dropdown list by its data value. This function does NOT cause the select event to fire.\nThe store must be loaded and the list expanded for this function to work, otherwise use setValue.",
+      "sig" : "(value, scrollIntoView)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "value",
@@ -1034,15 +885,20 @@
     },
     {
       "name" : "setValue",
+      "type" : "function",
       "desc" : "Sets the specified value into the field.  If the value finds a match, the corresponding record text\nwill be displayed in the field.  If the value does not match the data value of an existing item,\nand the valueNotFoundText config option is defined, it will be displayed as the default field text.\nOtherwise the field will be blank (although the value will still be set).",
+      "sig" : "(value)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "value",
@@ -1055,15 +911,20 @@
     },
     {
       "name" : "setFromData",
+      "type" : "function",
       "desc" : "Sets the value of the field based on a object which is related to the record format for the store.",
+      "sig" : "(value)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "value",
@@ -1076,15 +937,20 @@
     },
     {
       "name" : "setEditable",
+      "type" : "function",
       "desc" : "Allow or prevent the user from directly editing the field text.  If false is passed,\nthe user will only be able to select from the items defined in the dropdown list.  This method\nis the runtime equivalent of setting the 'editable' config option at config time.",
+      "sig" : "(value)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "value",
@@ -1097,43 +963,58 @@
     },
     {
       "name" : "clearValue",
+      "type" : "function",
       "desc" : "Clears any text/value currently set in the field",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "isExpanded",
+      "type" : "function",
       "desc" : "Returns true if the dropdown list is expanded, else false.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "doQuery",
+      "type" : "function",
       "desc" : "Execute a query to filter the dropdown list.  Fires the beforequery event prior to performing the\nquery allowing the query action to be canceled if needed.",
+      "sig" : "(query, forceAll)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.ComboBox",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "query",
@@ -1152,15 +1033,20 @@
     },
     {
       "name" : "onTriggerClick",
+      "type" : "function",
       "desc" : "The function that should handle the trigger's click event.  This method does nothing by default until overridden\nby an implementing function.",
+      "sig" : "(e)",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.TriggerField",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.TriggerField",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "e",
@@ -1173,43 +1059,58 @@
     },
     {
       "name" : "autoSize",
+      "type" : "function",
       "desc" : "",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.TriggerField",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.TriggerField",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "clearInvalid",
+      "type" : "function",
       "desc" : "Clear any invalid styles/messages for this field",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Input",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "validate",
+      "type" : "function",
       "desc" : "Validates the field value",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Input",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -1221,15 +1122,20 @@
     },
     {
       "name" : "markInvalid",
+      "type" : "function",
       "desc" : "Mark this field as invalid",
+      "sig" : "(msg)",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Input",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "msg",
@@ -1242,15 +1148,20 @@
     },
     {
       "name" : "getRawValue",
+      "type" : "function",
       "desc" : "Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Input",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -1262,29 +1173,39 @@
     },
     {
       "name" : "markValid",
+      "type" : "function",
       "desc" : "Mark this field as valid",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Input",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "getName",
+      "type" : "function",
       "desc" : "Returns the name of the field",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Input",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -1296,29 +1217,39 @@
     },
     {
       "name" : "reset",
+      "type" : "function",
       "desc" : "Resets the current field value to the originally loaded value and clears any validation messages",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Input",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "setRawValue",
+      "type" : "function",
       "desc" : "Sets the underlying DOM field's value directly, bypassing validation.  To set the value with validation see {@link #setValue}.",
+      "sig" : "(value)",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Input",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "value",
@@ -1331,29 +1262,39 @@
     },
     {
       "name" : "inputEl",
+      "type" : "function",
       "desc" : "return the real input element.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Input",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "validateValue",
+      "type" : "function",
       "desc" : "Validates a value according to the field's validation rules and marks the field as invalid\nif the validation fails",
+      "sig" : "(value)",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Input",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "value",
@@ -1372,15 +1313,20 @@
     },
     {
       "name" : "tooltipEl",
+      "type" : "function",
       "desc" : "Fetch the element to display the tooltip on.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -1392,85 +1338,115 @@
     },
     {
       "name" : "hide",
+      "type" : "function",
       "desc" : "Hide a component - adds 'hidden' class",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "show",
+      "type" : "function",
       "desc" : "Show a component - removes 'hidden' class",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "setVisibilityEl",
+      "type" : "function",
       "desc" : "Set the element that will be used to show or hide",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "getVisibilityEl",
+      "type" : "function",
       "desc" : "Get the element that will be used to show or hide",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "initEvents",
+      "type" : "function",
       "desc" : "Initialize Events for the element",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "getChildContainer",
+      "type" : "function",
       "desc" : "Fetch the element to add children to",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -1482,15 +1458,20 @@
     },
     {
       "name" : "getId",
+      "type" : "function",
       "desc" : "Returns the id of this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -1502,15 +1483,20 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "If this is a lazy rendering component, render it to its container element.",
+      "sig" : "(container)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "container",
@@ -1523,43 +1509,58 @@
     },
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "isVisible",
+      "type" : "function",
       "desc" : "Returns true if this component is visible.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "setDisabled",
+      "type" : "function",
       "desc" : "Convenience function for setting disabled/enabled by boolean.",
+      "sig" : "(disabled)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "disabled",
@@ -1572,15 +1573,20 @@
     },
     {
       "name" : "focus",
+      "type" : "function",
       "desc" : "Try to focus this component.",
+      "sig" : "(selectText)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "selectText",
@@ -1599,15 +1605,20 @@
     },
     {
       "name" : "enable",
+      "type" : "function",
       "desc" : "Enable this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -1619,15 +1630,20 @@
     },
     {
       "name" : "setVisible",
+      "type" : "function",
       "desc" : "Convenience function to hide or show this component by boolean.",
+      "sig" : "(visible)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "visible",
@@ -1646,15 +1662,20 @@
     },
     {
       "name" : "disable",
+      "type" : "function",
       "desc" : "Disable this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -1666,15 +1687,20 @@
     },
     {
       "name" : "getEl",
+      "type" : "function",
       "desc" : "Returns the underlying {@link Roo.Element}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -1686,29 +1712,39 @@
     },
     {
       "name" : "purgeListeners",
+      "type" : "function",
       "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "on",
+      "type" : "function",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1739,15 +1775,20 @@
     },
     {
       "name" : "un",
+      "type" : "function",
       "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1772,15 +1813,20 @@
     },
     {
       "name" : "addEvents",
+      "type" : "function",
       "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "object",
@@ -1793,15 +1839,20 @@
     },
     {
       "name" : "releaseCapture",
+      "type" : "function",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -1814,15 +1865,20 @@
     },
     {
       "name" : "removeListener",
+      "type" : "function",
       "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1847,15 +1903,20 @@
     },
     {
       "name" : "fireEvent",
+      "type" : "function",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1880,15 +1941,20 @@
     },
     {
       "name" : "hasListener",
+      "type" : "function",
       "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1907,15 +1973,20 @@
     },
     {
       "name" : "capture",
+      "type" : "function",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -1940,15 +2011,20 @@
     },
     {
       "name" : "addListener",
+      "type" : "function",
       "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1981,8 +2057,10 @@
   "events" : [
     {
       "name" : "edit",
+      "type" : "function",
       "desc" : "Fires when the 'edit' icon is pressed (add a listener to enable add button)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
+      "sig" : "function (combo, record)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2005,8 +2083,10 @@
     },
     {
       "name" : "afterremove",
+      "type" : "function",
       "desc" : "Fires when the remove value from the combobox array",
-      "memberOf" : "Roo.bootstrap.ComboBox",
+      "sig" : "function (combo)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2023,8 +2103,10 @@
     },
     {
       "name" : "touchviewdisplay",
+      "type" : "function",
       "desc" : "Fires when touch view require special display (default is using displayField)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
+      "sig" : "function (combo, cfg)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2047,8 +2129,10 @@
     },
     {
       "name" : "beforequery",
+      "type" : "function",
       "desc" : "Fires before all queries are processed. Return false to cancel the query or set cancel to true.\nThe event object passed has these properties:",
-      "memberOf" : "Roo.bootstrap.ComboBox",
+      "sig" : "function (combo, query, forceAll, cancel, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2089,8 +2173,10 @@
     },
     {
       "name" : "remove",
+      "type" : "function",
       "desc" : "Fires when the remove value from the combobox array",
-      "memberOf" : "Roo.bootstrap.ComboBox",
+      "sig" : "function (combo)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2107,8 +2193,10 @@
     },
     {
       "name" : "beforeselect",
+      "type" : "function",
       "desc" : "Fires before a list item is selected. Return false to cancel the selection.",
-      "memberOf" : "Roo.bootstrap.ComboBox",
+      "sig" : "function (combo, record, index)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2137,8 +2225,10 @@
     },
     {
       "name" : "tick",
+      "type" : "function",
       "desc" : "Fires when tick the element",
-      "memberOf" : "Roo.bootstrap.ComboBox",
+      "sig" : "function (combo)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2155,8 +2245,10 @@
     },
     {
       "name" : "add",
+      "type" : "function",
       "desc" : "Fires when the 'add' icon is pressed (add a listener to enable add button)",
-      "memberOf" : "Roo.bootstrap.ComboBox",
+      "sig" : "function (combo)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2173,8 +2265,10 @@
     },
     {
       "name" : "expand",
+      "type" : "function",
       "desc" : "Fires when the dropdown list is expanded",
-      "memberOf" : "Roo.bootstrap.ComboBox",
+      "sig" : "function (combo)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2191,8 +2285,10 @@
     },
     {
       "name" : "specialfilter",
+      "type" : "function",
       "desc" : "Fires when specialfilter",
-      "memberOf" : "Roo.bootstrap.ComboBox",
+      "sig" : "function (combo)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2209,8 +2305,10 @@
     },
     {
       "name" : "collapse",
+      "type" : "function",
       "desc" : "Fires when the dropdown list is collapsed",
-      "memberOf" : "Roo.bootstrap.ComboBox",
+      "sig" : "function (combo)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2227,8 +2325,10 @@
     },
     {
       "name" : "select",
+      "type" : "function",
       "desc" : "Fires when a list item is selected",
-      "memberOf" : "Roo.bootstrap.ComboBox",
+      "sig" : "function (combo, record, index)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -2257,7 +2357,9 @@
     },
     {
       "name" : "paste",
+      "type" : "function",
       "desc" : "Fires after the user pastes into input",
+      "sig" : "function (_self, e)\n{\n\n}",
       "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
@@ -2281,7 +2383,9 @@
     },
     {
       "name" : "change",
+      "type" : "function",
       "desc" : "Fires just before the field blurs if the field value has changed.",
+      "sig" : "function (_self, newValue, oldValue)\n{\n\n}",
       "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
@@ -2311,7 +2415,9 @@
     },
     {
       "name" : "invalid",
+      "type" : "function",
       "desc" : "Fires after the field has been marked as invalid.",
+      "sig" : "function (_self, msg)\n{\n\n}",
       "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
@@ -2335,7 +2441,9 @@
     },
     {
       "name" : "valid",
+      "type" : "function",
       "desc" : "Fires after the field has been validated with no errors.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
@@ -2353,7 +2461,9 @@
     },
     {
       "name" : "blur",
+      "type" : "function",
       "desc" : "Fires when this field loses input focus.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
@@ -2371,7 +2481,9 @@
     },
     {
       "name" : "specialkey",
+      "type" : "function",
       "desc" : "Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check\n{@link Roo.EventObject#getKey} to determine which key was pressed.",
+      "sig" : "function (_self, e)\n{\n\n}",
       "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
@@ -2395,7 +2507,9 @@
     },
     {
       "name" : "focus",
+      "type" : "function",
       "desc" : "Fires when this field receives input focus.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
@@ -2413,7 +2527,9 @@
     },
     {
       "name" : "keyup",
+      "type" : "function",
       "desc" : "Fires after the key up",
+      "sig" : "function (_self, e)\n{\n\n}",
       "memberOf" : "Roo.bootstrap.Input",
       "example" : "",
       "deprecated" : "",
@@ -2437,7 +2553,9 @@
     },
     {
       "name" : "childrenrendered",
+      "type" : "function",
       "desc" : "Fires when the children have been rendered..",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
@@ -2455,7 +2573,9 @@
     },
     {
       "name" : "beforerender",
+      "type" : "function",
       "desc" : "Fires before the component is rendered. Return false to stop the render.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -2473,7 +2593,9 @@
     },
     {
       "name" : "disable",
+      "type" : "function",
       "desc" : "Fires after the component is disabled.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -2491,7 +2613,9 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "Fires after the component is rendered.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -2509,7 +2633,9 @@
     },
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Fires after the component is destroyed.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -2527,7 +2653,9 @@
     },
     {
       "name" : "hide",
+      "type" : "function",
       "desc" : "Fires after the component is hidden.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -2545,7 +2673,9 @@
     },
     {
       "name" : "beforehide",
+      "type" : "function",
       "desc" : "Fires before the component is hidden. Return false to stop the hide.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -2563,7 +2693,9 @@
     },
     {
       "name" : "show",
+      "type" : "function",
       "desc" : "Fires after the component is shown.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -2581,7 +2713,9 @@
     },
     {
       "name" : "beforeshow",
+      "type" : "function",
       "desc" : "Fires before the component is shown.  Return false to stop the show.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -2599,7 +2733,9 @@
     },
     {
       "name" : "enable",
+      "type" : "function",
       "desc" : "Fires after the component is enabled.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -2617,7 +2753,9 @@
     },
     {
       "name" : "beforedestroy",
+      "type" : "function",
       "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",

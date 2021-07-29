@@ -12,19 +12,26 @@
   "see" : "",
   "params" : [],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [],
   "methods" : [
     {
       "name" : "request",
+      "type" : "function",
       "desc" : "",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.lib.Ajax",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     }

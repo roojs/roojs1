@@ -34,223 +34,232 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "autoSizeColumns",
       "type" : "Boolean",
       "desc" : "True to automatically resize the columns to fit their content\n<b>on initial render.</b> It is more efficient to explicitly size the columns\nthrough the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "cm[]",
+      "type" : "Roo.grid.ColumnModel",
+      "desc" : "The columns of the grid",
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "maxRowsToMeasure",
       "type" : "Boolean",
       "desc" : "If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of\nrows measured to get a columns size. Default is 0 (all rows).",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "minColumnWidth",
       "type" : "Number",
       "desc" : "The minimum width a column can be resized to. Default is 25.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "ddText",
       "type" : "String",
       "desc" : "Configures the text is the drag proxy (defaults to \"%0 selected row(s)\").\n%0 is replaced with the number of selected rows.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "toolbar",
+      "type" : "Roo.Toolbar",
+      "desc" : "a toolbar for buttons etc.",
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "autoExpandColumn",
       "type" : "String",
       "desc" : "The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "autoExpandMax",
       "type" : "Number",
       "desc" : "The maximum width the autoExpandColumn can have (if enabled). Default is 1000.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "enableRowHeightSync",
       "type" : "Boolean",
       "desc" : "True to manually sync row heights across locked and not locked rows. Default is false.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "enableDrop",
       "type" : "Boolean",
       "desc" : "True to enable drop of elements. Default is false. (double check if this is needed?)",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "monitorWindowResize",
       "type" : "Boolean",
       "desc" : "True to autoSize the grid when the window resizes. Default is true.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "autoExpandMin",
       "type" : "Number",
       "desc" : "The minimum width the autoExpandColumn can have (if enabled).\nDefault is 50.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "view",
-      "type" : "Object",
-      "desc" : "The {@link Roo.grid.GridView} used by the grid. This can be set before a call to render().",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "type" : "Roo.grid.GridView",
+      "desc" : "The view that renders the grid (default = Roo.grid.GridView)",
+      "memberOf" : "Roo.grid.Grid"
     },
     {
-      "name" : "enableDrag",
-      "type" : "Boolean",
-      "desc" : "True to enable drag of rows. Default is false. (double check if this is needed?)",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "name" : "ds",
+      "type" : "Roo.grid.Store",
+      "desc" : "The data store for the grid",
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "ddGroup",
       "type" : "String",
       "desc" : "- drag drop group.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "enableDrag",
+      "type" : "Boolean",
+      "desc" : "True to enable drag of rows. Default is false. (double check if this is needed?)",
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "autoWidth",
       "type" : "Boolean",
       "desc" : "True to set the grid's width to the default total width of the grid's columns instead\nof a fixed width. Default is false.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "maxHeight",
       "type" : "Number",
       "desc" : "Sets the maximum height of the grid - ignored if autoHeight is not on.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "trackMouseOver",
       "type" : "Boolean",
       "desc" : "True to highlight rows when the mouse is over. Default is true.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "loadMask",
       "type" : "Object",
       "desc" : "An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "stripeRows",
       "type" : "Boolean",
       "desc" : "True to stripe the rows.  Default is true.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "enableColumnMove",
       "type" : "Boolean",
       "desc" : "True to enable drag and drop reorder of columns. Default is true.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "enableColumnHide",
       "type" : "Boolean",
       "desc" : "True to enable hiding of columns with the header context menu. Default is true.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "clicksToEdit",
       "type" : "Number",
       "desc" : "The number of clicks on a cell required to display the cell's editor (defaults to 2)",
-      "memberOf" : "Roo.grid.EditorGrid",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "autoSizeHeaders",
       "type" : "Boolean",
       "desc" : "True to measure headers with column data when auto sizing columns. Default is true.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "enableDragDrop",
       "type" : "Boolean",
       "desc" : "True to enable drag and drop of rows. Default is false.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "dropTarget",
       "type" : "Roo.dd.DropTarget",
       "desc" : "An {@link Roo.dd.DropTarget} config",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "sm",
+      "type" : "Roo.grid.AbstractSelectionModel",
+      "desc" : "The selection Model (default = Roo.grid.RowSelectionModel)",
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "dragGroup",
       "type" : "String",
       "desc" : "- drag group (?? not sure if needed.)",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     },
     {
       "name" : "autoHeight",
       "type" : "Boolean",
       "desc" : "True to fit the height of the grid container to the height of the data. Default is false.",
-      "memberOf" : "Roo.grid.Grid",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Grid"
     }
   ],
   "methods" : [
     {
       "name" : "stopEditing",
+      "type" : "function",
       "desc" : "Stops any active editing",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.EditorGrid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "getDragDropText",
+      "type" : "function",
       "desc" : "Called to get grid's drag proxy text, by default returns this.ddText.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.EditorGrid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -262,15 +271,20 @@
     },
     {
       "name" : "startEditing",
+      "type" : "function",
       "desc" : "Starts editing the specified for the specified row/column",
+      "sig" : "(rowIndex, colIndex)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.EditorGrid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "rowIndex",
@@ -289,15 +303,20 @@
     },
     {
       "name" : "getSelectionModel",
+      "type" : "function",
       "desc" : "Returns the grid's SelectionModel.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -309,15 +328,20 @@
     },
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Destroy this grid.",
+      "sig" : "(removeEl)",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "removeEl",
@@ -330,15 +354,20 @@
     },
     {
       "name" : "getColumnModel",
+      "type" : "function",
       "desc" : "Returns the grid's ColumnModel.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -350,15 +379,20 @@
     },
     {
       "name" : "getGridEl",
+      "type" : "function",
       "desc" : "Returns the grid's underlying element.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -370,15 +404,20 @@
     },
     {
       "name" : "getDataSource",
+      "type" : "function",
       "desc" : "Returns the grid's DataSource.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -390,29 +429,39 @@
     },
     {
       "name" : "autoSize",
+      "type" : "function",
       "desc" : "Causes the grid to manually recalculate its dimensions. Generally this is done automatically,\nbut if manual update is required this method will initiate it.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "getView",
+      "type" : "function",
       "desc" : "Returns the grid's GridView object.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -424,15 +473,20 @@
     },
     {
       "name" : "reconfigure",
+      "type" : "function",
       "desc" : "Reconfigures the grid to use a different Store and Column Model.\nThe View will be bound to the new objects and refreshed.",
+      "sig" : "(dataSource, The)",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "dataSource",
@@ -451,15 +505,20 @@
     },
     {
       "name" : "addColumns",
+      "type" : "function",
       "desc" : "addColumns\nAdd's a column, default at the end..",
+      "sig" : "(position, of)",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "position",
@@ -478,15 +537,20 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "Called once after all setup has been completed and the grid is ready to be rendered.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -498,29 +562,39 @@
     },
     {
       "name" : "purgeListeners",
+      "type" : "function",
       "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "on",
+      "type" : "function",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -551,15 +625,20 @@
     },
     {
       "name" : "un",
+      "type" : "function",
       "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -584,15 +663,20 @@
     },
     {
       "name" : "addEvents",
+      "type" : "function",
       "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "object",
@@ -605,15 +689,20 @@
     },
     {
       "name" : "releaseCapture",
+      "type" : "function",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -626,15 +715,20 @@
     },
     {
       "name" : "removeListener",
+      "type" : "function",
       "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -659,15 +753,20 @@
     },
     {
       "name" : "fireEvent",
+      "type" : "function",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -692,15 +791,20 @@
     },
     {
       "name" : "hasListener",
+      "type" : "function",
       "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -719,15 +823,20 @@
     },
     {
       "name" : "capture",
+      "type" : "function",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -752,15 +861,20 @@
     },
     {
       "name" : "addListener",
+      "type" : "function",
       "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -793,8 +907,10 @@
   "events" : [
     {
       "name" : "validateedit",
+      "type" : "function",
       "desc" : "Fires after a cell is edited, but before the value is set in the record. \nYou can use this to modify the value being set in the field, Return false\nto cancel the change. The edit event object has the following properties <br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>editor - This editor</li>\n<li>grid - This grid</li>\n<li>record - The record being edited</li>\n<li>field - The field name being edited</li>\n<li>value - The value being set</li>\n<li>originalValue - The original value for the field, before the edit.</li>\n<li>row - The grid row index</li>\n<li>column - The grid column index</li>\n<li>cancel - Set this to true to cancel the edit or return false from your handler.</li>\n</ul>",
-      "memberOf" : "Roo.grid.EditorGrid",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -811,8 +927,10 @@
     },
     {
       "name" : "beforeedit",
+      "type" : "function",
       "desc" : "Fires before cell editing is triggered. The edit event object has the following properties <br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>grid - This grid</li>\n<li>record - The record being edited</li>\n<li>field - The field name being edited</li>\n<li>value - The value for the field being edited.</li>\n<li>row - The grid row index</li>\n<li>column - The grid column index</li>\n<li>cancel - Set this to true to cancel the edit or return false from your handler.</li>\n</ul>",
-      "memberOf" : "Roo.grid.EditorGrid",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -829,8 +947,10 @@
     },
     {
       "name" : "afteredit",
+      "type" : "function",
       "desc" : "Fires after a cell is edited. <br />\n<ul style=\"padding:5px;padding-left:16px;\">\n<li>grid - This grid</li>\n<li>record - The record being edited</li>\n<li>field - The field name being edited</li>\n<li>value - The value being set</li>\n<li>originalValue - The original value for the field, before the edit.</li>\n<li>row - The grid row index</li>\n<li>column - The grid column index</li>\n</ul>",
-      "memberOf" : "Roo.grid.EditorGrid",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -847,7 +967,9 @@
     },
     {
       "name" : "rowcontextmenu",
+      "type" : "function",
       "desc" : "Fires when a row is right clicked",
+      "sig" : "function (_self, rowIndex, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -877,7 +999,9 @@
     },
     {
       "name" : "columnmove",
+      "type" : "function",
       "desc" : "Fires when the user moves a column",
+      "sig" : "function (oldIndex, newIndex)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -901,7 +1025,9 @@
     },
     {
       "name" : "headercontextmenu",
+      "type" : "function",
       "desc" : "Fires when a header is right clicked",
+      "sig" : "function (_self, columnIndex, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -931,7 +1057,9 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "Fires when the grid is rendered",
+      "sig" : "function (grid)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -949,7 +1077,9 @@
     },
     {
       "name" : "bodyscroll",
+      "type" : "function",
       "desc" : "Fires when the body element is scrolled",
+      "sig" : "function (scrollLeft, scrollTop)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -973,7 +1103,9 @@
     },
     {
       "name" : "columnresize",
+      "type" : "function",
       "desc" : "Fires when the user resizes a column",
+      "sig" : "function (columnIndex, newSize)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -997,7 +1129,9 @@
     },
     {
       "name" : "enddrag",
+      "type" : "function",
       "desc" : "Fires when a drag operation is complete",
+      "sig" : "function (_self, dd, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1027,7 +1161,9 @@
     },
     {
       "name" : "mouseout",
+      "type" : "function",
       "desc" : "The raw mouseout event for the entire grid.",
+      "sig" : "function (e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1045,7 +1181,9 @@
     },
     {
       "name" : "cellclick",
+      "type" : "function",
       "desc" : "Fires when a cell is clicked",
+      "sig" : "function (_self, rowIndex, columnIndex, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1081,7 +1219,9 @@
     },
     {
       "name" : "dragover",
+      "type" : "function",
       "desc" : "Fires while row(s) are being dragged. \"targetId\" is the id of the Yahoo.util.DD object the selected rows are being dragged over.",
+      "sig" : "function (_self, dd, targetId, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1117,7 +1257,9 @@
     },
     {
       "name" : "rowclass",
+      "type" : "function",
       "desc" : "Fires when a row is rendered, so you can change add a style to it.",
+      "sig" : "function (gridview, rowcfg)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1141,7 +1283,9 @@
     },
     {
       "name" : "keydown",
+      "type" : "function",
       "desc" : "The raw keydown event for the entire grid.",
+      "sig" : "function (e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1159,7 +1303,9 @@
     },
     {
       "name" : "mousedown",
+      "type" : "function",
       "desc" : "The raw mousedown event for the entire grid.",
+      "sig" : "function (e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1177,7 +1323,9 @@
     },
     {
       "name" : "dragenter",
+      "type" : "function",
       "desc" : "Fires when the dragged row(s) first cross another DD target while being dragged",
+      "sig" : "function (_self, dd, targetId, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1213,7 +1361,9 @@
     },
     {
       "name" : "dragout",
+      "type" : "function",
       "desc" : "Fires when the dragged row(s) leave another DD target while being dragged",
+      "sig" : "function (_self, dd, targetId, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1249,7 +1399,9 @@
     },
     {
       "name" : "mouseup",
+      "type" : "function",
       "desc" : "The raw mouseup event for the entire grid.",
+      "sig" : "function (e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1267,7 +1419,9 @@
     },
     {
       "name" : "keypress",
+      "type" : "function",
       "desc" : "The raw keypress event for the entire grid.",
+      "sig" : "function (e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1285,7 +1439,9 @@
     },
     {
       "name" : "headerclick",
+      "type" : "function",
       "desc" : "Fires when a header is clicked",
+      "sig" : "function (_self, columnIndex, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1315,7 +1471,9 @@
     },
     {
       "name" : "mouseover",
+      "type" : "function",
       "desc" : "The raw mouseover event for the entire grid.",
+      "sig" : "function (e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1333,7 +1491,9 @@
     },
     {
       "name" : "headerdblclick",
+      "type" : "function",
       "desc" : "Fires when a header cell is double clicked",
+      "sig" : "function (_self, columnIndex, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1363,7 +1523,9 @@
     },
     {
       "name" : "dragdrop",
+      "type" : "function",
       "desc" : "Fires when dragged row(s) are dropped on a valid DD target",
+      "sig" : "function (_self, dd, targetId, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1399,7 +1561,9 @@
     },
     {
       "name" : "rowclick",
+      "type" : "function",
       "desc" : "Fires when a row is clicked",
+      "sig" : "function (_self, rowIndex, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1429,7 +1593,9 @@
     },
     {
       "name" : "click",
+      "type" : "function",
       "desc" : "The raw click event for the entire grid.",
+      "sig" : "function (e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1447,7 +1613,9 @@
     },
     {
       "name" : "rowdblclick",
+      "type" : "function",
       "desc" : "Fires when a row is double clicked",
+      "sig" : "function (_self, rowIndex, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1477,7 +1645,9 @@
     },
     {
       "name" : "startdrag",
+      "type" : "function",
       "desc" : "Fires when row(s) start being dragged",
+      "sig" : "function (_self, dd, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1507,7 +1677,9 @@
     },
     {
       "name" : "dblclick",
+      "type" : "function",
       "desc" : "The raw dblclick event for the entire grid.",
+      "sig" : "function (e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1525,7 +1697,9 @@
     },
     {
       "name" : "cellcontextmenu",
+      "type" : "function",
       "desc" : "Fires when a cell is right clicked",
+      "sig" : "function (_self, rowIndex, cellIndex, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1561,7 +1735,9 @@
     },
     {
       "name" : "contextmenu",
+      "type" : "function",
       "desc" : "The raw contextmenu event for the entire grid.",
+      "sig" : "function (e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",
@@ -1579,7 +1755,9 @@
     },
     {
       "name" : "celldblclick",
+      "type" : "function",
       "desc" : "Fires when a cell is double clicked",
+      "sig" : "function (_self, rowIndex, columnIndex, e)\n{\n\n}",
       "memberOf" : "Roo.grid.Grid",
       "example" : "",
       "deprecated" : "",

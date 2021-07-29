@@ -8,6 +8,7 @@
 /**
  * @class Roo.bootstrap.Column
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Column class
  * @cfg {Number} xs colspan out of 12 for mobile-sized screens or 0 for hidden
  * @cfg {Number} sm colspan out of 12 for tablet-sized screens or 0 for hidden

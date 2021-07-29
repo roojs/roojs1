@@ -23,173 +23,153 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "modal",
       "type" : "Boolean",
       "desc" : "- popovers that are modal will mask the screen, and must be closed with another event.",
-      "memberOf" : "Roo.bootstrap.Popover",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "add",
       "type" : "String|Boolean|Roo.Element",
       "desc" : "click hander to trigger show over what element\n     - if false and it has a 'parent' then it will be automatically added to that element\n     - if string - Roo.get  will be called",
-      "memberOf" : "Roo.bootstrap.Popover",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
       "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : [
-        "el",
-        "parent"
-      ]
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "delay",
       "type" : "Number",
       "desc" : "- delay before showing",
-      "memberOf" : "Roo.bootstrap.Popover",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "trigger",
       "type" : "String",
       "desc" : "click || hover (or false to trigger manually)",
-      "memberOf" : "Roo.bootstrap.Popover",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "hideMode",
       "type" : "String",
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-      "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
-      ]
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "title",
       "type" : "String",
       "desc" : "of popover (or false to hide)",
-      "memberOf" : "Roo.bootstrap.Popover",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "(right|top|bottom|left|auto)",
       "type" : "String|function",
       "desc" : "placement how it is placed",
-      "memberOf" : "Roo.bootstrap.Popover",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "contents of the popover   (or false to use children..)",
-      "memberOf" : "Roo.bootstrap.Popover",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
-      "memberOf" : "Roo.bootstrap.Component",
-      "optvals" : []
+      "memberOf" : "Roo.bootstrap.Component"
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     }
   ],
   "methods" : [
     {
       "name" : "setContent",
+      "type" : "function",
       "desc" : "",
+      "sig" : "(the)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Popover",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "the",
@@ -202,15 +182,20 @@
     },
     {
       "name" : "setTitle",
+      "type" : "function",
       "desc" : "",
+      "sig" : "(the)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Popover",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "the",
@@ -223,15 +208,20 @@
     },
     {
       "name" : "updatePosition",
+      "type" : "function",
       "desc" : "fire this manually after loading a grid in the table for example",
+      "sig" : "((left|right|top|bottom), try)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Popover",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "(left|right|top|bottom)",
@@ -250,15 +240,20 @@
     },
     {
       "name" : "show",
+      "type" : "function",
       "desc" : "Show the popover",
+      "sig" : "(-, (left|right|top|bottom))",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Popover",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "-",
@@ -277,15 +272,20 @@
     },
     {
       "name" : "tooltipEl",
+      "type" : "function",
       "desc" : "Fetch the element to display the tooltip on.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -297,71 +297,96 @@
     },
     {
       "name" : "hide",
+      "type" : "function",
       "desc" : "Hide a component - adds 'hidden' class",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "setVisibilityEl",
+      "type" : "function",
       "desc" : "Set the element that will be used to show or hide",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "getVisibilityEl",
+      "type" : "function",
       "desc" : "Get the element that will be used to show or hide",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "initEvents",
+      "type" : "function",
       "desc" : "Initialize Events for the element",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "getChildContainer",
+      "type" : "function",
       "desc" : "Fetch the element to add children to",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -373,15 +398,20 @@
     },
     {
       "name" : "getId",
+      "type" : "function",
       "desc" : "Returns the id of this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -393,15 +423,20 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "If this is a lazy rendering component, render it to its container element.",
+      "sig" : "(container)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "container",
@@ -414,43 +449,58 @@
     },
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "isVisible",
+      "type" : "function",
       "desc" : "Returns true if this component is visible.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "setDisabled",
+      "type" : "function",
       "desc" : "Convenience function for setting disabled/enabled by boolean.",
+      "sig" : "(disabled)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "disabled",
@@ -463,15 +513,20 @@
     },
     {
       "name" : "focus",
+      "type" : "function",
       "desc" : "Try to focus this component.",
+      "sig" : "(selectText)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "selectText",
@@ -490,15 +545,20 @@
     },
     {
       "name" : "enable",
+      "type" : "function",
       "desc" : "Enable this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -510,15 +570,20 @@
     },
     {
       "name" : "setVisible",
+      "type" : "function",
       "desc" : "Convenience function to hide or show this component by boolean.",
+      "sig" : "(visible)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "visible",
@@ -537,15 +602,20 @@
     },
     {
       "name" : "disable",
+      "type" : "function",
       "desc" : "Disable this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -557,15 +627,20 @@
     },
     {
       "name" : "getEl",
+      "type" : "function",
       "desc" : "Returns the underlying {@link Roo.Element}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -577,29 +652,39 @@
     },
     {
       "name" : "purgeListeners",
+      "type" : "function",
       "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "on",
+      "type" : "function",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -630,15 +715,20 @@
     },
     {
       "name" : "un",
+      "type" : "function",
       "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -663,15 +753,20 @@
     },
     {
       "name" : "addEvents",
+      "type" : "function",
       "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "object",
@@ -684,15 +779,20 @@
     },
     {
       "name" : "releaseCapture",
+      "type" : "function",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -705,15 +805,20 @@
     },
     {
       "name" : "removeListener",
+      "type" : "function",
       "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -738,15 +843,20 @@
     },
     {
       "name" : "fireEvent",
+      "type" : "function",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -771,15 +881,20 @@
     },
     {
       "name" : "hasListener",
+      "type" : "function",
       "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -798,15 +913,20 @@
     },
     {
       "name" : "capture",
+      "type" : "function",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -831,15 +951,20 @@
     },
     {
       "name" : "addListener",
+      "type" : "function",
       "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -872,8 +997,10 @@
   "events" : [
     {
       "name" : "hide",
+      "type" : "function",
       "desc" : "After the popover hide",
-      "memberOf" : "Roo.bootstrap.Popover",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -890,8 +1017,10 @@
     },
     {
       "name" : "show",
+      "type" : "function",
       "desc" : "After the popover show",
-      "memberOf" : "Roo.bootstrap.Popover",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -908,7 +1037,9 @@
     },
     {
       "name" : "childrenrendered",
+      "type" : "function",
       "desc" : "Fires when the children have been rendered..",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.bootstrap.Component",
       "example" : "",
       "deprecated" : "",
@@ -926,7 +1057,9 @@
     },
     {
       "name" : "beforerender",
+      "type" : "function",
       "desc" : "Fires before the component is rendered. Return false to stop the render.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -944,7 +1077,9 @@
     },
     {
       "name" : "disable",
+      "type" : "function",
       "desc" : "Fires after the component is disabled.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -962,7 +1097,9 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "Fires after the component is rendered.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -980,7 +1117,9 @@
     },
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Fires after the component is destroyed.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -998,7 +1137,9 @@
     },
     {
       "name" : "beforehide",
+      "type" : "function",
       "desc" : "Fires before the component is hidden. Return false to stop the hide.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1016,7 +1157,9 @@
     },
     {
       "name" : "beforeshow",
+      "type" : "function",
       "desc" : "Fires before the component is shown.  Return false to stop the show.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1034,7 +1177,9 @@
     },
     {
       "name" : "enable",
+      "type" : "function",
       "desc" : "Fires after the component is enabled.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1052,7 +1197,9 @@
     },
     {
       "name" : "beforedestroy",
+      "type" : "function",
       "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",

@@ -12,6 +12,8 @@
   "see" : "",
   "params" : [],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [],
   "methods" : [],
   "events" : []

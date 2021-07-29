@@ -7,6 +7,7 @@
 /**
  * @class Roo.bootstrap.Card
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Card class
  *
  *

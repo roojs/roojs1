@@ -27,216 +27,195 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "easing",
       "type" : "String",
       "desc" : "Animation easing if animate = true (defaults to 'easingOutStrong')",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "maxWidth",
       "type" : "Number",
       "desc" : "The maximum width for the element (defaults to 10000)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "minWidth",
       "type" : "Number",
       "desc" : "The minimum width for the element (defaults to 5)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "dynamic",
       "type" : "Boolean",
       "desc" : "True to resize the element while dragging instead of using a proxy (defaults to false)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "pinned",
       "type" : "Boolean",
       "desc" : "True to ensure that the resize handles are always visible, false to display them only when the\nuser mouses over the resizable borders. This is only applied at config time. (defaults to false)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "enabled",
       "type" : "Boolean",
       "desc" : "False to disable resizing (defaults to true)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "handles",
       "type" : "String",
       "desc" : "String consisting of the resize handles to display (defaults to undefined)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "preserveRatio",
       "type" : "Boolean",
       "desc" : "True to preserve the original ratio between height and width during resize (defaults to false)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "minHeight",
       "type" : "Number",
       "desc" : "The minimum height for the element (defaults to 5)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "maxHeight",
       "type" : "Number",
       "desc" : "The maximum height for the element (defaults to 10000)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "widthIncrement",
       "type" : "Number",
       "desc" : "The increment to snap the width resize in pixels (dynamic must be true, defaults to 0)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "resizeChild",
       "type" : "Boolean/String/Element",
       "desc" : "True to resize the first child, or id/element to resize (defaults to false)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "The width of the element in pixels (defaults to null)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "transparent",
       "type" : "Boolean",
       "desc" : "True for transparent handles. This is only applied at config time. (defaults to false)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "minX",
       "type" : "Number",
       "desc" : "The minimum allowed page X for the element (only used for west resizing, defaults to 0)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "constrainTo",
       "type" : "String/HTMLElement/Element",
       "desc" : "Constrain the resize to a particular element",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "disableTrackOver",
       "type" : "Boolean",
       "desc" : "True to disable mouse tracking. This is only applied at config time. (defaults to false)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "minY",
       "type" : "Number",
       "desc" : "The minimum allowed page Y for the element (only used for north resizing, defaults to 0)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "adjustments",
       "type" : "Array/String",
       "desc" : "String \"auto\" or an array [width, height] with values to be <b>added</b> to the\nresize operation's new size (defaults to [0, 0])",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "wrap",
       "type" : "Boolean",
       "desc" : "True to wrap an element with a div if needed (required for textareas and images, defaults to false)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "The height of the element in pixels (defaults to null)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "duration",
       "type" : "Number",
       "desc" : "Animation duration if animate = true (defaults to .35)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "animate",
       "type" : "Boolean",
       "desc" : "True to animate the resize (not compatible with dynamic sizing, defaults to false)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "multiDirectional",
       "type" : "Boolean",
       "desc" : "<b>Deprecated</b>.  The old style of adding multi-direction resize handles, deprecated\nin favor of the handles config option (defaults to false)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "heightIncrement",
       "type" : "Number",
       "desc" : "The increment to snap the height resize in pixels (dynamic must be true, defaults to 0)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "draggable",
       "type" : "Boolean",
       "desc" : "Convenience to initialize drag drop (defaults to false)",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "resizeRegion",
       "type" : "Roo.lib.Region",
       "desc" : "Constrain the resize to a particular region",
-      "memberOf" : "Roo.Resizable",
-      "optvals" : []
+      "memberOf" : ""
     }
   ],
   "methods" : [
     {
       "name" : "getEl",
+      "type" : "function",
       "desc" : "Returns the element this component is bound to.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Resizable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -248,15 +227,20 @@
     },
     {
       "name" : "getResizeChild",
+      "type" : "function",
       "desc" : "Returns the resizeChild element (or null).",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Resizable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -268,15 +252,20 @@
     },
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Destroys this resizable. If the element was wrapped and\nremoveEl is not true then the element remains.",
+      "sig" : "(removeEl)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Resizable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "removeEl",
@@ -289,15 +278,20 @@
     },
     {
       "name" : "resizeTo",
+      "type" : "function",
       "desc" : "Perform a manual resize",
+      "sig" : "(width, height)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Resizable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "width",
@@ -316,29 +310,39 @@
     },
     {
       "name" : "purgeListeners",
+      "type" : "function",
       "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "on",
+      "type" : "function",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -369,15 +373,20 @@
     },
     {
       "name" : "un",
+      "type" : "function",
       "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -402,15 +411,20 @@
     },
     {
       "name" : "addEvents",
+      "type" : "function",
       "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "object",
@@ -423,15 +437,20 @@
     },
     {
       "name" : "releaseCapture",
+      "type" : "function",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -444,15 +463,20 @@
     },
     {
       "name" : "removeListener",
+      "type" : "function",
       "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -477,15 +501,20 @@
     },
     {
       "name" : "fireEvent",
+      "type" : "function",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -510,15 +539,20 @@
     },
     {
       "name" : "hasListener",
+      "type" : "function",
       "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -537,15 +571,20 @@
     },
     {
       "name" : "capture",
+      "type" : "function",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -570,15 +609,20 @@
     },
     {
       "name" : "addListener",
+      "type" : "function",
       "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -611,8 +655,10 @@
   "events" : [
     {
       "name" : "resize",
+      "type" : "function",
       "desc" : "Fired after a resize.",
-      "memberOf" : "Roo.Resizable",
+      "sig" : "function (_self, width, height, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -647,8 +693,10 @@
     },
     {
       "name" : "resizing",
+      "type" : "function",
       "desc" : "Fired a resizing.",
-      "memberOf" : "Roo.Resizable",
+      "sig" : "function (_self, x, y, w, h, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -695,8 +743,10 @@
     },
     {
       "name" : "beforeresize",
+      "type" : "function",
       "desc" : "Fired before resize is allowed. Set enabled to false to cancel resize.",
-      "memberOf" : "Roo.Resizable",
+      "sig" : "function (_self, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",

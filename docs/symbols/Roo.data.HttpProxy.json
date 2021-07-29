@@ -21,69 +21,69 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "method",
       "type" : "String",
       "desc" : "(Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)",
-      "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "timeout",
       "type" : "Number",
       "desc" : "(Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)",
-      "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "autoAbort",
       "type" : "Boolean",
       "desc" : "(Optional) Whether this request should abort any pending requests. (defaults to false)",
-      "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "(Optional) The default URL to be used for requests to the server. (defaults to undefined)",
-      "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "extraParams",
       "type" : "Object",
       "desc" : "(Optional) An object containing properties which are used as\nextra parameters to each request made by this object. (defaults to undefined)",
-      "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "disableCaching",
       "type" : "Boolean",
       "desc" : "(Optional) True to add a unique cache-buster param to GET requests. (defaults to true)",
-      "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "defaultHeaders",
       "type" : "Object",
       "desc" : "(Optional) An object containing request headers which are added\n to each request made by this object. (defaults to undefined)",
-      "memberOf" : "Roo.data.HttpProxy",
-      "optvals" : []
+      "memberOf" : ""
     }
   ],
   "methods" : [
     {
       "name" : "getConnection",
+      "type" : "function",
       "desc" : "Return the {@link Roo.data.Connection} object being used by this Proxy.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.data.HttpProxy",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -95,15 +95,20 @@
     },
     {
       "name" : "load",
+      "type" : "function",
       "desc" : "Load data from the configured {@link Roo.data.Connection}, read the data object into\na block of Roo.data.Records using the passed {@link Roo.data.DataReader} implementation, and\nprocess that block using the passed callback.",
+      "sig" : "(params, reader, callback, scope, arg)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.data.HttpProxy",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "params",
@@ -142,7 +147,9 @@
   "events" : [
     {
       "name" : "load",
+      "type" : "function",
       "desc" : "Fires before the load method's callback is called.",
+      "sig" : "function (This, o, arg)\n{\n\n}",
       "memberOf" : "Roo.data.DataProxy",
       "example" : "",
       "deprecated" : "",
@@ -172,7 +179,9 @@
     },
     {
       "name" : "beforeload",
+      "type" : "function",
       "desc" : "Fires before a network request is made to retrieve a data object.",
+      "sig" : "function (This, params)\n{\n\n}",
       "memberOf" : "Roo.data.DataProxy",
       "example" : "",
       "deprecated" : "",
@@ -196,7 +205,9 @@
     },
     {
       "name" : "loadexception",
+      "type" : "function",
       "desc" : "Fires if an Exception occurs during data retrieval.",
+      "sig" : "function (This, o, arg, e)\n{\n\n}",
       "memberOf" : "Roo.data.DataProxy",
       "example" : "",
       "deprecated" : "",

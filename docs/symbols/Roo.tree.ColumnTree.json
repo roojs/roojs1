@@ -25,28 +25,30 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "columns",
       "type" : "Object",
       "desc" : "Including width, header, renderer, cls, dataIndex",
-      "memberOf" : "Roo.tree.ColumnTree",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "borderWidth",
       "type" : "int",
       "desc" : "compined right/left border allowance",
-      "memberOf" : "Roo.tree.ColumnTree",
-      "optvals" : []
+      "memberOf" : ""
     }
   ],
   "methods" : [],
   "events" : [
     {
       "name" : "resize",
+      "type" : "function",
       "desc" : "Fire this event on a container when it resizes",
-      "memberOf" : "Roo.tree.ColumnTree",
+      "sig" : "function (w, h)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",

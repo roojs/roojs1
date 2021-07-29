@@ -8,6 +8,7 @@
 /**
  * @class Roo.bootstrap.Form
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Form class
  * @cfg {String} method  GET | POST (default POST)
  * @cfg {String} labelAlign top | left (default top)

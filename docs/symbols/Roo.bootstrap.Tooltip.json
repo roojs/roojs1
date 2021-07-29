@@ -19,19 +19,26 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [],
   "methods" : [
     {
       "name" : "currentEl",
+      "type" : "function",
       "desc" : "",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.bootstrap.Tooltip",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     }

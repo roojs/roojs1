@@ -21,83 +21,81 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "clearOnLoad",
       "type" : "Boolean",
       "desc" : "(optional) Default to true. Remove previously existing\nchild nodes before loading.",
-      "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "dataUrl",
       "type" : "String",
       "desc" : "The URL from which to request a Json string which\nspecifies an array of node definition object representing the child nodes\nto be loaded.",
-      "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "root",
       "type" : "String",
       "desc" : "(optional) Default to false. Use this to read data from an object \nproperty on loading, rather than expecting an array. (eg. more compatible to a standard\nGrid query { data : [ .....] }",
-      "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "requestMethod",
       "type" : "String",
       "desc" : "either GET or POST\ndefaults to POST (due to BC)\nto be loaded.",
-      "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "baseParams",
       "type" : "Object",
       "desc" : "(optional) An object containing properties which\nspecify HTTP parameters to be passed to each request for child nodes.",
-      "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "baseAttrs",
       "type" : "Object",
       "desc" : "(optional) An object containing attributes to be added to all nodes\ncreated by this loader. If the attributes sent by the server have an attribute in this object,\nthey take priority.",
-      "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "uiProviders",
       "type" : "Object",
       "desc" : "(optional) An object containing properties which\n\nDEPRECATED - use 'create' event handler to modify attributes - which affect creation.\nspecify custom {@link Roo.tree.TreeNodeUI} implementations. If the optional\n<i>uiProvider</i> attribute of a returned child node is a string rather\nthan a reference to a TreeNodeUI implementation, this that string value\nis used as a property name in the uiProviders object. You can define the provider named\n'default' , and this will be used for all nodes (if no uiProvider is delivered by the node data)",
-      "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "queryParam",
       "type" : "String",
       "desc" : "(optional) \nName of the query as it will be passed on the querystring (defaults to 'node')\neg. the request will be ?node=[id]",
-      "memberOf" : "Roo.tree.TreeLoader",
-      "optvals" : []
+      "memberOf" : ""
     }
   ],
   "methods" : [
     {
       "name" : "load",
+      "type" : "function",
       "desc" : "Load an {@link Roo.tree.TreeNode} from the URL specified in the constructor.\nThis is called automatically when a node is expanded, but may be used to reload\na node (or append new children if the {@link #clearOnLoad} option is false.)",
+      "sig" : "(node, callback)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.tree.TreeLoader",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "node",
@@ -116,29 +114,39 @@
     },
     {
       "name" : "purgeListeners",
+      "type" : "function",
       "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "on",
+      "type" : "function",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -169,15 +177,20 @@
     },
     {
       "name" : "un",
+      "type" : "function",
       "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -202,15 +215,20 @@
     },
     {
       "name" : "addEvents",
+      "type" : "function",
       "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "object",
@@ -223,15 +241,20 @@
     },
     {
       "name" : "releaseCapture",
+      "type" : "function",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -244,15 +267,20 @@
     },
     {
       "name" : "removeListener",
+      "type" : "function",
       "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -277,15 +305,20 @@
     },
     {
       "name" : "fireEvent",
+      "type" : "function",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -310,15 +343,20 @@
     },
     {
       "name" : "hasListener",
+      "type" : "function",
       "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -337,15 +375,20 @@
     },
     {
       "name" : "capture",
+      "type" : "function",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -370,15 +413,20 @@
     },
     {
       "name" : "addListener",
+      "type" : "function",
       "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -411,8 +459,10 @@
   "events" : [
     {
       "name" : "create",
+      "type" : "function",
       "desc" : "Fires before a node is created, enabling you to return custom Node types",
-      "memberOf" : "Roo.tree.TreeLoader",
+      "sig" : "function (This, attr)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -435,8 +485,10 @@
     },
     {
       "name" : "beforeload",
+      "type" : "function",
       "desc" : "Fires before a network request is made to retrieve the Json text which specifies a node's children.",
-      "memberOf" : "Roo.tree.TreeLoader",
+      "sig" : "function (This, node, callback)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -465,8 +517,10 @@
     },
     {
       "name" : "load",
+      "type" : "function",
       "desc" : "Fires when the node has been successfuly loaded.",
-      "memberOf" : "Roo.tree.TreeLoader",
+      "sig" : "function (This, node, response)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -495,8 +549,10 @@
     },
     {
       "name" : "loadexception",
+      "type" : "function",
       "desc" : "Fires if the network request failed.",
-      "memberOf" : "Roo.tree.TreeLoader",
+      "sig" : "function (This, node, response)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",

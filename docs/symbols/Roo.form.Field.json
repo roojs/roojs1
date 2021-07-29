@@ -23,205 +23,183 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "inputType",
       "type" : "String",
       "desc" : "The type attribute for input fields -- e.g. radio, text, password (defaults to \"text\").",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "msgFx",
       "type" : "String",
       "desc" : "<b>Experimental</b> The effect used when displaying a validation message under the field (defaults to 'normal').",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "fieldLabel",
       "type" : "String",
       "desc" : "Label to use when rendering a form.",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "validationDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "msgTarget",
       "type" : "String",
       "desc" : "The location where error text should display.  Should be one of the following values (defaults to 'qtip'):\n<pre>\nValue         Description\n-----------   ----------------------------------------------------------------------\nqtip          Display a quick tip when the user hovers over the field\ntitle         Display a default browser title attribute popup\nunder         Add a block div beneath the field containing the error text\nside          Add an error icon to the right of the field with a popup on hover\n[element id]  Add the error text directly to the innerHTML of the specified element\n</pre>",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "hideMode",
       "type" : "String",
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-      "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
-      ]
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "True to disable the field (defaults to false).",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "value",
       "type" : "Mixed",
       "desc" : "A value to initialize this field with.",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "tabIndex",
       "type" : "Number",
       "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "readOnly",
       "type" : "Boolean",
       "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "invalidClass",
       "type" : "String",
       "desc" : "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the field's underlying element.",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"20\", autocomplete: \"off\"})",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "invalidText",
       "type" : "String",
       "desc" : "The error text to use when marking a field invalid and no message is provided (defaults to \"The value in this field is invalid\")",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "width (optional) size of component",
-      "memberOf" : "Roo.BoxComponent",
-      "optvals" : []
+      "memberOf" : "Roo.BoxComponent"
     },
     {
       "name" : "validateOnBlur",
       "type" : "Boolean",
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "validationEvent",
       "type" : "String/Boolean",
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "name",
       "type" : "String",
       "desc" : "The field's HTML name attribute.",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "qtip",
       "type" : "String",
       "desc" : "Mouse over tip",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "focusClass",
       "type" : "String",
       "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "fieldClass",
       "type" : "String",
       "desc" : "The default CSS class for the field (defaults to \"x-form-field\")",
-      "memberOf" : "Roo.form.Field",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "height (optional) size of component",
-      "memberOf" : "Roo.BoxComponent",
-      "optvals" : []
+      "memberOf" : "Roo.BoxComponent"
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     }
   ],
   "methods" : [
     {
       "name" : "validate",
+      "type" : "function",
       "desc" : "Validates the field value",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -233,15 +211,20 @@
     },
     {
       "name" : "getValue",
+      "type" : "function",
       "desc" : "Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -253,15 +236,20 @@
     },
     {
       "name" : "setValue",
+      "type" : "function",
       "desc" : "Sets a data value into the field and validates it.  To set the value directly without validation see {@link #setRawValue}.",
+      "sig" : "(value)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "value",
@@ -274,15 +262,20 @@
     },
     {
       "name" : "getName",
+      "type" : "function",
       "desc" : "Returns the name attribute of the field if available",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -294,15 +287,20 @@
     },
     {
       "name" : "markInvalid",
+      "type" : "function",
       "desc" : "Mark this field as invalid",
+      "sig" : "(msg)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "msg",
@@ -315,15 +313,20 @@
     },
     {
       "name" : "getRawValue",
+      "type" : "function",
       "desc" : "Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -335,15 +338,20 @@
     },
     {
       "name" : "applyTo",
+      "type" : "function",
       "desc" : "Apply the behaviors of this component to an existing element. <b>This is used instead of render().</b>",
+      "sig" : "(el)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "el",
@@ -362,43 +370,58 @@
     },
     {
       "name" : "resetHasChanged",
+      "type" : "function",
       "desc" : "stores the current value in loadedValue",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "isDirty",
+      "type" : "function",
       "desc" : "Returns true if this field has been changed since it was originally loaded and is not disabled.\nDEPRICATED  - it never worked well - use hasChanged/resetHasChanged.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "setRawValue",
+      "type" : "function",
       "desc" : "Sets the underlying DOM field's value directly, bypassing validation.  To set the value with validation see {@link #setValue}.",
+      "sig" : "(value)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "value",
@@ -411,29 +434,39 @@
     },
     {
       "name" : "clearInvalid",
+      "type" : "function",
       "desc" : "Clear any invalid styles/messages for this field",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "isValid",
+      "type" : "function",
       "desc" : "Returns whether or not the field value is currently valid",
+      "sig" : "(preventMark)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "preventMark",
@@ -452,43 +485,58 @@
     },
     {
       "name" : "reset",
+      "type" : "function",
       "desc" : "Resets the current field value to the originally loaded value and clears any validation messages",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "hasChanged",
+      "type" : "function",
       "desc" : "checks the current value against the 'loaded' value.\nNote - will return false if 'resetHasChanged' has not been called first.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Field",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "updateBox",
+      "type" : "function",
       "desc" : "Sets the current box measurements of the component's underlying element.",
+      "sig" : "(box)",
+      "static" : false,
+      "memberOf" : "Roo.BoxComponent",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "box",
@@ -501,15 +549,20 @@
     },
     {
       "name" : "setPagePosition",
+      "type" : "function",
       "desc" : "Sets the page XY position of the component.  To set the left and top instead, use {@link #setPosition}.\nThis method fires the move event.",
+      "sig" : "(x, y)",
+      "static" : false,
+      "memberOf" : "Roo.BoxComponent",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "x",
@@ -528,29 +581,39 @@
     },
     {
       "name" : "syncSize",
+      "type" : "function",
       "desc" : "Force the component's size to recalculate based on the underlying element's current height and width.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.BoxComponent",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "setSize",
+      "type" : "function",
       "desc" : "Sets the width and height of the component.  This method fires the resize event.  This method can accept\neither width and height as separate numeric arguments, or you can pass a size object like {width:10, height:20}.",
+      "sig" : "(width, height)",
+      "static" : false,
+      "memberOf" : "Roo.BoxComponent",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "width",
@@ -575,15 +638,20 @@
     },
     {
       "name" : "getPosition",
+      "type" : "function",
       "desc" : "Gets the current XY position of the component's underlying element.",
+      "sig" : "(local)",
+      "static" : false,
+      "memberOf" : "Roo.BoxComponent",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "local",
@@ -602,15 +670,20 @@
     },
     {
       "name" : "onResize",
+      "type" : "function",
       "desc" : "Called after the component is resized, this method is empty by default but can be implemented by any\nsubclass that needs to perform custom logic after a resize occurs.",
+      "sig" : "(adjWidth, adjHeight, rawWidth, rawHeight)",
+      "static" : false,
+      "memberOf" : "Roo.BoxComponent",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "adjWidth",
@@ -641,15 +714,20 @@
     },
     {
       "name" : "getBox",
+      "type" : "function",
       "desc" : "Gets the current box measurements of the component's underlying element.",
+      "sig" : "(local)",
+      "static" : false,
+      "memberOf" : "Roo.BoxComponent",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "local",
@@ -662,15 +740,20 @@
     },
     {
       "name" : "getSize",
+      "type" : "function",
       "desc" : "Gets the current size of the component's underlying element.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.BoxComponent",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -682,15 +765,20 @@
     },
     {
       "name" : "onPosition",
+      "type" : "function",
       "desc" : "Called after the component is moved, this method is empty by default but can be implemented by any\nsubclass that needs to perform custom logic after a move occurs.",
+      "sig" : "(x, y)",
+      "static" : false,
+      "memberOf" : "Roo.BoxComponent",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "x",
@@ -709,15 +797,20 @@
     },
     {
       "name" : "setPosition",
+      "type" : "function",
       "desc" : "Sets the left and top of the component.  To set the page XY position instead, use {@link #setPagePosition}.\nThis method fires the move event.",
+      "sig" : "(left, top)",
+      "static" : false,
+      "memberOf" : "Roo.BoxComponent",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "left",
@@ -736,15 +829,20 @@
     },
     {
       "name" : "getId",
+      "type" : "function",
       "desc" : "Returns the id of this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -756,15 +854,20 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "If this is a lazy rendering component, render it to its container element.",
+      "sig" : "(container)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "container",
@@ -777,43 +880,58 @@
     },
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "isVisible",
+      "type" : "function",
       "desc" : "Returns true if this component is visible.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "setDisabled",
+      "type" : "function",
       "desc" : "Convenience function for setting disabled/enabled by boolean.",
+      "sig" : "(disabled)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "disabled",
@@ -826,15 +944,20 @@
     },
     {
       "name" : "hide",
+      "type" : "function",
       "desc" : "Hide this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -846,15 +969,20 @@
     },
     {
       "name" : "focus",
+      "type" : "function",
       "desc" : "Try to focus this component.",
+      "sig" : "(selectText)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "selectText",
@@ -873,15 +1001,20 @@
     },
     {
       "name" : "show",
+      "type" : "function",
       "desc" : "Show this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -893,15 +1026,20 @@
     },
     {
       "name" : "enable",
+      "type" : "function",
       "desc" : "Enable this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -913,15 +1051,20 @@
     },
     {
       "name" : "setVisible",
+      "type" : "function",
       "desc" : "Convenience function to hide or show this component by boolean.",
+      "sig" : "(visible)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "visible",
@@ -940,15 +1083,20 @@
     },
     {
       "name" : "disable",
+      "type" : "function",
       "desc" : "Disable this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -960,15 +1108,20 @@
     },
     {
       "name" : "getEl",
+      "type" : "function",
       "desc" : "Returns the underlying {@link Roo.Element}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -980,29 +1133,39 @@
     },
     {
       "name" : "purgeListeners",
+      "type" : "function",
       "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "on",
+      "type" : "function",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1033,15 +1196,20 @@
     },
     {
       "name" : "un",
+      "type" : "function",
       "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1066,15 +1234,20 @@
     },
     {
       "name" : "addEvents",
+      "type" : "function",
       "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "object",
@@ -1087,15 +1260,20 @@
     },
     {
       "name" : "releaseCapture",
+      "type" : "function",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -1108,15 +1286,20 @@
     },
     {
       "name" : "removeListener",
+      "type" : "function",
       "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1141,15 +1324,20 @@
     },
     {
       "name" : "fireEvent",
+      "type" : "function",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1174,15 +1362,20 @@
     },
     {
       "name" : "hasListener",
+      "type" : "function",
       "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1201,15 +1394,20 @@
     },
     {
       "name" : "capture",
+      "type" : "function",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -1234,15 +1432,20 @@
     },
     {
       "name" : "addListener",
+      "type" : "function",
       "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1275,8 +1478,10 @@
   "events" : [
     {
       "name" : "blur",
+      "type" : "function",
       "desc" : "Fires when this field loses input focus.",
-      "memberOf" : "Roo.form.Field",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1293,8 +1498,10 @@
     },
     {
       "name" : "valid",
+      "type" : "function",
       "desc" : "Fires after the field has been validated with no errors.",
-      "memberOf" : "Roo.form.Field",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1311,8 +1518,10 @@
     },
     {
       "name" : "specialkey",
+      "type" : "function",
       "desc" : "Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check\n{@link Roo.EventObject#getKey} to determine which key was pressed.",
-      "memberOf" : "Roo.form.Field",
+      "sig" : "function (_self, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1335,8 +1544,10 @@
     },
     {
       "name" : "focus",
+      "type" : "function",
       "desc" : "Fires when this field receives input focus.",
-      "memberOf" : "Roo.form.Field",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1353,8 +1564,10 @@
     },
     {
       "name" : "keyup",
+      "type" : "function",
       "desc" : "Fires after the key up",
-      "memberOf" : "Roo.form.Field",
+      "sig" : "function (_self, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1377,8 +1590,10 @@
     },
     {
       "name" : "invalid",
+      "type" : "function",
       "desc" : "Fires after the field has been marked as invalid.",
-      "memberOf" : "Roo.form.Field",
+      "sig" : "function (_self, msg)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1401,8 +1616,10 @@
     },
     {
       "name" : "change",
+      "type" : "function",
       "desc" : "Fires just before the field blurs if the field value has changed.",
-      "memberOf" : "Roo.form.Field",
+      "sig" : "function (_self, newValue, oldValue)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1431,7 +1648,9 @@
     },
     {
       "name" : "move",
+      "type" : "function",
       "desc" : "Fires after the component is moved.",
+      "sig" : "function (_self, x, y)\n{\n\n}",
       "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
@@ -1461,7 +1680,9 @@
     },
     {
       "name" : "resize",
+      "type" : "function",
       "desc" : "Fires after the component is resized.",
+      "sig" : "function (_self, adjWidth, adjHeight, rawWidth, rawHeight)\n{\n\n}",
       "memberOf" : "Roo.BoxComponent",
       "example" : "",
       "deprecated" : "",
@@ -1503,7 +1724,9 @@
     },
     {
       "name" : "beforerender",
+      "type" : "function",
       "desc" : "Fires before the component is rendered. Return false to stop the render.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1521,7 +1744,9 @@
     },
     {
       "name" : "disable",
+      "type" : "function",
       "desc" : "Fires after the component is disabled.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1539,7 +1764,9 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "Fires after the component is rendered.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1557,7 +1784,9 @@
     },
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Fires after the component is destroyed.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1575,7 +1804,9 @@
     },
     {
       "name" : "hide",
+      "type" : "function",
       "desc" : "Fires after the component is hidden.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1593,7 +1824,9 @@
     },
     {
       "name" : "beforehide",
+      "type" : "function",
       "desc" : "Fires before the component is hidden. Return false to stop the hide.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1611,7 +1844,9 @@
     },
     {
       "name" : "show",
+      "type" : "function",
       "desc" : "Fires after the component is shown.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1629,7 +1864,9 @@
     },
     {
       "name" : "beforeshow",
+      "type" : "function",
       "desc" : "Fires before the component is shown.  Return false to stop the show.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1647,7 +1884,9 @@
     },
     {
       "name" : "enable",
+      "type" : "function",
       "desc" : "Fires after the component is enabled.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1665,7 +1904,9 @@
     },
     {
       "name" : "beforedestroy",
+      "type" : "function",
       "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",

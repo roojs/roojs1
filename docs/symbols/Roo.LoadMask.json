@@ -25,55 +25,64 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "msg",
       "type" : "String",
       "desc" : "The text to display in a centered loading message box (defaults to 'Loading...')",
-      "memberOf" : "Roo.LoadMask",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "removeMask",
       "type" : "Boolean",
       "desc" : "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
-      "memberOf" : "Roo.LoadMask",
-      "optvals" : []
+      "memberOf" : ""
     },
     {
       "name" : "msgCls",
       "type" : "String",
       "desc" : "The CSS class to apply to the loading message element (defaults to \"x-mask-loading\")",
-      "memberOf" : "Roo.LoadMask",
-      "optvals" : []
+      "memberOf" : ""
     }
   ],
   "methods" : [
     {
       "name" : "disable",
+      "type" : "function",
       "desc" : "Disables the mask to prevent it from being displayed",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.LoadMask",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "enable",
+      "type" : "function",
       "desc" : "Enables the mask so that it can be displayed",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.LoadMask",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     }

@@ -1251,7 +1251,7 @@
           {
             "name" : "Roo.grid.AbstractGridView",
             "cn" : [],
-            "is_class" : false
+            "is_class" : true
           },
           {
             "name" : "Roo.grid.AbstractSelectionModel",

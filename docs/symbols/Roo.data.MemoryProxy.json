@@ -19,19 +19,26 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [],
   "methods" : [
     {
       "name" : "load",
+      "type" : "function",
       "desc" : "Load data from the requested source (in this case an in-memory\ndata object passed to the constructor), read the data object into\na block of Roo.data.Records using the passed Roo.data.DataReader implementation, and\nprocess that block using the passed callback.",
+      "sig" : "(params, reader, callback, scope, arg)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.data.MemoryProxy",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "params",
