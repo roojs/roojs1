@@ -25,7 +25,10 @@ Roo.menu.Item = function(config){
     }
 };
 Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
-    
+    /**
+     * @cfg {Roo.menu.Menu} menu
+     * A Sub menu
+     */
     /**
      * @cfg {String} text
      * The text to show on the menu item.
