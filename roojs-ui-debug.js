@@ -13976,7 +13976,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
  * @param {Object} oldconfig DEPRECIATED Either a prebuilt {@link Roo.form.Field} instance or a Field config object
  * 
  * @cfg {Roo.tree.TreePanel} tree The tree to bind to.
- * @cfg {Roo.form.TextField|Object} field The field configuration
+ * @cfg {Roo.form.TextField} field [required] The field configuration
  *
  * 
  */
