@@ -3,11 +3,15 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Represents an individual item (tab plus body) in a TabPanel.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "TabItem",
   "example" : "",
   "deprecated" : "",

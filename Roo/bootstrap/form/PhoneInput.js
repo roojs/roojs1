@@ -7,8 +7,8 @@
 **/
 
 /**
- * @class Roo.bootstrap.PhoneInput
- * @extends Roo.bootstrap.TriggerField
+ * @class Roo.bootstrap.form.PhoneInput
+ * @extends Roo.bootstrap.form.TriggerField
  * An input with International dial-code selection
  
  * @cfg {String} defaultDialCode default '+852'
@@ -19,11 +19,11 @@
  * @param {Object} config Configuration options
  */
 
-Roo.bootstrap.PhoneInput = function(config) {
-    Roo.bootstrap.PhoneInput.superclass.constructor.call(this, config);
+Roo.bootstrap.form.PhoneInput = function(config) {
+    Roo.bootstrap.form.PhoneInput.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
+Roo.extend(Roo.bootstrap.form.PhoneInput, Roo.bootstrap.form.TriggerField, {
         /**
         * @cfg {Roo.data.Store} store [required] The data store to which this combo is bound (defaults to undefined)
         */
@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         getAutoCreate : function()
         {
-            var data = Roo.bootstrap.PhoneInputData();
+            var data = Roo.bootstrap.form.PhoneInputData();
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
             
@@ -279,7 +279,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         initEvents : function()
         {
             this.createList();
-            Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
+            Roo.bootstrap.form.PhoneInput.superclass.initEvents.call(this);
             
             this.indicator = this.indicatorEl();
             this.flag = this.flagEl();

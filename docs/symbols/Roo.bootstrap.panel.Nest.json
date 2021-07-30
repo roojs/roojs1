@@ -4,11 +4,15 @@
     "Roo.bootstrap.panel.Content",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Create a new Panel, that can contain a layout.Border.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Nest",
   "example" : "",
   "deprecated" : "",
@@ -126,7 +130,7 @@
       "name" : "layout",
       "type" : "Roo.BorderLayout",
       "desc" : "The layout for this panel",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.panel.Nest"
     },
     {
       "name" : "adjustments",

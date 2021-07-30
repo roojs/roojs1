@@ -3,11 +3,15 @@
   "augments" : [
     "Roo.SplitBar.BasicLayoutAdapter"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Adapter that  moves the splitter element to align with the resized sizing element. \nUsed with an absolute positioned SplitBar.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "AbsoluteLayoutAdapter",
   "example" : "",
   "deprecated" : "",

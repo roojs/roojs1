@@ -7,11 +7,23 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.nav.Group",
+    "Roo.bootstrap.Container",
+    "Roo.bootstrap.Form",
+    "Roo.bootstrap.Row",
+    "Roo.bootstrap.Column",
+    "Roo.bootstrap.TabGroup",
+    "Roo.bootstrap.Link"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap Sidebar class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Headerbar",
   "example" : "",
   "deprecated" : "",
@@ -33,13 +45,13 @@
       "name" : "brand_href",
       "type" : "String",
       "desc" : "href of the brand",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Headerbar"
     },
     {
       "name" : "desktopCenter",
       "type" : "Boolean",
       "desc" : "should the header be centered on desktop using a container class",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Headerbar"
     },
     {
       "name" : "listeners",
@@ -81,13 +93,13 @@
       "name" : "brand",
       "type" : "String",
       "desc" : "what is brand",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Headerbar"
     },
     {
       "name" : "position",
       "type" : "String",
       "desc" : "p) position",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Headerbar"
     },
     {
       "name" : "can_build_overlaid",
@@ -105,7 +117,7 @@
       "name" : "srButton",
       "type" : "Boolean",
       "desc" : "generate the (screen reader / mobile) sr-only button   default true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Headerbar"
     },
     {
       "name" : "tag",
@@ -129,7 +141,7 @@
       "name" : "mobilerow",
       "type" : "Roo.bootstrap.Row",
       "desc" : "- a row to display on mobile only..",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Headerbar"
     },
     {
       "name" : "cls",
@@ -201,7 +213,7 @@
       "name" : "autohide",
       "type" : "Boolean",
       "desc" : "a top nav bar header that hides on scroll.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Headerbar"
     }
   ],
   "methods" : [

@@ -7,11 +7,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Basic Toolbar",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "ToolbarStandard",
   "example" : "Usage:\n\n new Roo.bootstrap.HtmlEditor({\n    ....\n    toolbars : [\n        new Roo.bootstrap.HtmlEditorToolbar1({\n            disable : { fonts: 1 , format: 1, ..., ... , ...],\n            btns : [ .... ]\n        })\n    }",
   "deprecated" : "",
@@ -32,7 +36,7 @@
       "name" : "btns",
       "type" : "Array",
       "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.htmleditor.ToolbarStandard"
     },
     {
       "name" : "tooltip",
@@ -104,7 +108,7 @@
       "name" : "disable",
       "type" : "Object",
       "desc" : "List of elements to disable..",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.htmleditor.ToolbarStandard"
     },
     {
       "name" : "arrangement",

@@ -6,11 +6,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "A generic Field to display non-editable data.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "DisplayField",
   "example" : "",
   "deprecated" : "",
@@ -50,7 +54,7 @@
       "name" : "valueRenderer",
       "type" : "Function",
       "desc" : "The renderer for the field (so you can reformat output). should return raw HTML",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.DisplayField"
     },
     {
       "name" : "fieldLabel",
@@ -122,7 +126,7 @@
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"checkbox\", autocomplete: \"off\"})",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.DisplayField"
     },
     {
       "name" : "invalidText",
@@ -146,7 +150,7 @@
       "name" : "closable",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.DisplayField"
     },
     {
       "name" : "validateOnBlur",
@@ -164,13 +168,13 @@
       "name" : "fieldClass",
       "type" : "String",
       "desc" : "The default CSS class for the checkbox (defaults to \"x-form-field\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.DisplayField"
     },
     {
       "name" : "focusClass",
       "type" : "String",
       "desc" : "The CSS class to use when the checkbox receives focus (defaults to undefined)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.DisplayField"
     },
     {
       "name" : "name",

@@ -5,17 +5,26 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.bootstrap.PagingToolbar",
-    "Roo.bootstrap.htmleditor.ToolbarStandard",
-    "Roo.bootstrap.PopoverNav",
-    "Roo.bootstrap.nav.Simplebar",
-    "Roo.bootstrap.nav.Headerbar"
-  ],
+  "childClasses" : {
+    "Roo.bootstrap.nav.Bar" : [
+      "Roo.bootstrap.nav.Sidebar",
+      "Roo.bootstrap.nav.Simplebar"
+    ],
+    "Roo.bootstrap.nav.Simplebar" : [
+      "Roo.bootstrap.PagingToolbar",
+      "Roo.bootstrap.PopoverNav",
+      "Roo.bootstrap.htmleditor.ToolbarStandard",
+      "Roo.bootstrap.nav.Headerbar"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap Navbar class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : true,
+  "isBuilderTop" : false,
   "memberOf" : "Bar",
   "example" : "",
   "deprecated" : "",

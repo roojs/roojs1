@@ -6,7 +6,7 @@
  */
 
 /**
- * @class Roo.bootstrap.Form
+ * @class Roo.bootstrap.form.Form
  * @extends Roo.bootstrap.Component
  * @children Roo.bootstrap.Component
  * Bootstrap Form class
@@ -22,11 +22,11 @@
  */
 
 
-Roo.bootstrap.Form = function(config){
+Roo.bootstrap.form.Form = function(config){
     
-    Roo.bootstrap.Form.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.Form.superclass.constructor.call(this, config);
     
-    Roo.bootstrap.Form.popover.apply();
+    Roo.bootstrap.form.Form.popover.apply();
     
     this.addEvents({
         /**
@@ -60,7 +60,7 @@ Roo.bootstrap.Form = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.form.Form, Roo.bootstrap.Component,  {
 
      /**
      * @cfg {String} method
@@ -190,7 +190,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         });
         
         if(this.errorMask && !valid){
-            Roo.bootstrap.Form.popover.mask(this, target);
+            Roo.bootstrap.form.Form.popover.mask(this, target);
         }
         
         return valid;
@@ -607,7 +607,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 
 });
 
-Roo.apply(Roo.bootstrap.Form, {
+Roo.apply(Roo.bootstrap.form.Form, {
     
     popover : {
         
@@ -743,7 +743,7 @@ Roo.apply(Roo.bootstrap.Form, {
             this.toolTip.show(tip);
 
             this.intervalID = window.setInterval(function() {
-                Roo.bootstrap.Form.popover.unmask();
+                Roo.bootstrap.form.Form.popover.unmask();
             }, 10000);
 
             window.onwheel = function(){ return false;};

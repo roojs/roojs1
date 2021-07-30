@@ -3,14 +3,27 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.menu.ColorMenu",
-    "Roo.menu.DateMenu"
+  "childClasses" : {
+    "Roo.menu.Menu" : [
+      "Roo.menu.ColorMenu",
+      "Roo.menu.DateMenu"
+    ]
+  },
+  "tree_children" : [
+    "Roo.menu.CheckItem",
+    "Roo.menu.ColorItem",
+    "Roo.menu.DateItem",
+    "Roo.menu.Item",
+    "Roo.menu.Separator",
+    "Roo.menu.TextItem"
   ],
+  "tree_parent" : [],
   "desc" : "A menu object.  This is the container to which you add all other menu items.  Menu can also serve a as a base class\nwhen you want a specialzed menu based off of another component (like {@link Roo.menu.DateMenu} for example).",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Menu",
   "example" : "",
   "deprecated" : "",
@@ -38,37 +51,37 @@
       "name" : "shadow",
       "type" : "Boolean/String",
       "desc" : "True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\"\nfor bottom-right shadow (defaults to \"sides\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.menu.Menu"
     },
     {
       "name" : "defaultAlign",
       "type" : "String",
       "desc" : "The default {@link Roo.Element#alignTo) anchor position value for this menu\nrelative to its element of origin (defaults to \"tl-bl?\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.menu.Menu"
     },
     {
       "name" : "subMenuAlign",
       "type" : "String",
       "desc" : "The {@link Roo.Element#alignTo} anchor position value to use for submenus of\nthis menu (defaults to \"tl-tr?\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.menu.Menu"
     },
     {
       "name" : "minWidth",
       "type" : "Number",
       "desc" : "The minimum width of the menu in pixels (defaults to 120)",
-      "memberOf" : ""
+      "memberOf" : "Roo.menu.Menu"
     },
     {
       "name" : "registerMenu",
       "type" : "Boolean",
       "desc" : "True (default) - means that clicking on screen etc. hides it.",
-      "memberOf" : ""
+      "memberOf" : "Roo.menu.Menu"
     },
     {
       "name" : "allowOtherMenus",
       "type" : "Boolean",
       "desc" : "True to allow multiple menus to be displayed at the same time (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.menu.Menu"
     }
   ],
   "methods" : [

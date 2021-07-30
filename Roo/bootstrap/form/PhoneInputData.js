@@ -6,7 +6,7 @@
 *    Availability: https://github.com/jackocnr/intl-tel-input.git
 **/
 
-Roo.bootstrap.PhoneInputData = function() {
+Roo.bootstrap.form.PhoneInputData = function() {
     var d = [
       [
         "Afghanistan (‫افغانستان‬‎)",

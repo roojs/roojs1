@@ -3,13 +3,19 @@
   "augments" : [
     "Roo.Toolbar.Item"
   ],
-  "childClasses" : [
-    "Roo.Toolbar.Fill"
-  ],
+  "childClasses" : {
+    "Roo.Toolbar.Spacer" : [
+      "Roo.Toolbar.Fill"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "A simple element that adds extra horizontal space to a toolbar.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Spacer",
   "example" : "",
   "deprecated" : "",

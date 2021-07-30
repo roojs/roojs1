@@ -6,11 +6,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Embed a grid (or editable grid into a form)\nSTATUS ALPHA\n\nThis embeds a grid in a form, the value of the field should be the json encoded array of rows\nit needs \nxgrid.store = Roo.data.Store\nxgrid.store.proxy = Roo.data.MemoryProxy (data = [] )\nxgrid.store.reader = Roo.data.JsonReader",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "GridField",
   "example" : "",
   "deprecated" : "",
@@ -62,7 +66,7 @@
       "name" : "xgrid",
       "type" : "Object",
       "desc" : "(xtype'd description of grid) { xtype : 'Grid', dataSource: .... }\n\n}",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.GridField"
     },
     {
       "name" : "msgTarget",
@@ -122,7 +126,7 @@
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"checkbox\", autocomplete: \"off\"})",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.GridField"
     },
     {
       "name" : "invalidText",
@@ -140,13 +144,13 @@
       "name" : "width",
       "type" : "Number",
       "desc" : "- used to restrict width of grid..",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.GridField"
     },
     {
       "name" : "addTitle",
       "type" : "String",
       "desc" : "Text to include for adding a title.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.GridField"
     },
     {
       "name" : "validateOnBlur",
@@ -164,7 +168,7 @@
       "name" : "height",
       "type" : "Number",
       "desc" : "- used to restrict height of grid..",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.GridField"
     },
     {
       "name" : "name",

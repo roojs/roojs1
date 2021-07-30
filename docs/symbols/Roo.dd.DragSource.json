@@ -6,13 +6,19 @@
     "Roo.dd.DragDrop",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.dd.DragZone"
-  ],
+  "childClasses" : {
+    "Roo.dd.DragSource" : [
+      "Roo.dd.DragZone"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "A simple class that provides the basic implementation needed to make any element draggable.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "DragSource",
   "example" : "",
   "deprecated" : "",
@@ -46,13 +52,13 @@
       "name" : "dropNotAllowed",
       "type" : "String",
       "desc" : "The CSS class returned to the drag source when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
-      "memberOf" : ""
+      "memberOf" : "Roo.dd.DragSource"
     },
     {
       "name" : "dropAllowed",
       "type" : "String",
       "desc" : "The CSS class returned to the drag source when drop is allowed (defaults to \"x-dd-drop-ok\").",
-      "memberOf" : ""
+      "memberOf" : "Roo.dd.DragSource"
     }
   ],
   "methods" : [

@@ -5,11 +5,94 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.Alert",
+    "Roo.bootstrap.BezierSignature",
+    "Roo.bootstrap.Brick",
+    "Roo.bootstrap.Button",
+    "Roo.bootstrap.ButtonGroup",
+    "Roo.bootstrap.ButtonUploader",
+    "Roo.bootstrap.Calendar",
+    "Roo.bootstrap.Card",
+    "Roo.bootstrap.CardFooter",
+    "Roo.bootstrap.CardHeader",
+    "Roo.bootstrap.CardImageTop",
+    "Roo.bootstrap.CardUploader",
+    "Roo.bootstrap.CheckBox",
+    "Roo.bootstrap.Column",
+    "Roo.bootstrap.ComboBox",
+    "Roo.bootstrap.Container",
+    "Roo.bootstrap.DateField",
+    "Roo.bootstrap.DateSplitField",
+    "Roo.bootstrap.DocumentManager",
+    "Roo.bootstrap.DocumentSlider",
+    "Roo.bootstrap.DocumentViewer",
+    "Roo.bootstrap.DropTarget",
+    "Roo.bootstrap.Element",
+    "Roo.bootstrap.FieldLabel",
+    "Roo.bootstrap.Form",
+    "Roo.bootstrap.Graph",
+    "Roo.bootstrap.Header",
+    "Roo.bootstrap.HtmlEditor",
+    "Roo.bootstrap.Img",
+    "Roo.bootstrap.Input",
+    "Roo.bootstrap.LayoutMasonry",
+    "Roo.bootstrap.LayoutMasonryAuto",
+    "Roo.bootstrap.Link",
+    "Roo.bootstrap.LocationPicker",
+    "Roo.bootstrap.Markdown",
+    "Roo.bootstrap.MasonryBrick",
+    "Roo.bootstrap.MessageBar",
+    "Roo.bootstrap.MoneyField",
+    "Roo.bootstrap.MonthField",
+    "Roo.bootstrap.NumberField",
+    "Roo.bootstrap.Pagination",
+    "Roo.bootstrap.PaginationItem",
+    "Roo.bootstrap.PagingToolbar",
+    "Roo.bootstrap.PhoneInput",
+    "Roo.bootstrap.Popover",
+    "Roo.bootstrap.Progress",
+    "Roo.bootstrap.ProgressBar",
+    "Roo.bootstrap.Radio",
+    "Roo.bootstrap.RadioSet",
+    "Roo.bootstrap.Row",
+    "Roo.bootstrap.SecurePass",
+    "Roo.bootstrap.Slider",
+    "Roo.bootstrap.TabGroup",
+    "Roo.bootstrap.TabPanel",
+    "Roo.bootstrap.Table",
+    "Roo.bootstrap.TextArea",
+    "Roo.bootstrap.TimeField",
+    "Roo.bootstrap.TriggerField",
+    "Roo.bootstrap.UploadCropbox",
+    "Roo.bootstrap.breadcrumb.Item",
+    "Roo.bootstrap.breadcrumb.Nav",
+    "Roo.bootstrap.dash.NumberBox",
+    "Roo.bootstrap.dash.TabBox",
+    "Roo.bootstrap.dash.TabPane",
+    "Roo.bootstrap.htmleditor.ToolbarStandard",
+    "Roo.bootstrap.layout.Border",
+    "Roo.bootstrap.layout.Manager",
+    "Roo.bootstrap.menu.Item",
+    "Roo.bootstrap.menu.Menu",
+    "Roo.bootstrap.menu.Separator",
+    "Roo.bootstrap.nav.Group",
+    "Roo.bootstrap.nav.Headerbar",
+    "Roo.bootstrap.nav.Item",
+    "Roo.bootstrap.nav.ProgressBar",
+    "Roo.bootstrap.nav.ProgressBarItem",
+    "Roo.bootstrap.nav.Sidebar",
+    "Roo.bootstrap.nav.SidebarItem",
+    "Roo.bootstrap.nav.Simplebar"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap Card class - note this has children as CardHeader/ImageTop/Footer.. - which should really be listed properties?\n\n\npossible... may not be implemented..",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Card",
   "example" : "",
   "deprecated" : "",
@@ -31,7 +114,7 @@
       "name" : "header_size",
       "type" : "Number",
       "desc" : "5) H1 or H2 etc.. 0 indicates default",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "hideMode",
@@ -43,25 +126,25 @@
       "name" : "header_image",
       "type" : "String",
       "desc" : "src url of image.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "margin_right",
       "type" : "String",
       "desc" : "o)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "header",
       "type" : "String|Object",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "title",
       "type" : "String",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "xattr",
@@ -79,31 +162,31 @@
       "name" : "weight",
       "type" : "String",
       "desc" : "k)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "display",
       "type" : "String",
       "desc" : "x)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "margin_left",
       "type" : "String",
       "desc" : "o)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "padding_top",
       "type" : "String",
       "desc" : "5)next_to_card",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "subtitle",
       "type" : "String",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "tooltip",
@@ -115,13 +198,13 @@
       "name" : "padding_right",
       "type" : "String",
       "desc" : "5)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "padding",
       "type" : "String",
       "desc" : "5)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "allowDomMove",
@@ -133,7 +216,7 @@
       "name" : "header_weight",
       "type" : "Number",
       "desc" : "k)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "style",
@@ -145,13 +228,13 @@
       "name" : "display_xl",
       "type" : "String",
       "desc" : "x)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "margin",
       "type" : "String",
       "desc" : "o)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "actionMode",
@@ -163,7 +246,7 @@
       "name" : "padding_bottom",
       "type" : "String",
       "desc" : "5)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "listeners",
@@ -181,19 +264,19 @@
       "name" : "display_lg",
       "type" : "String",
       "desc" : "x)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "footer",
       "type" : "String",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "display_xs",
       "type" : "String",
       "desc" : "x)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "cls",
@@ -211,7 +294,7 @@
       "name" : "margin_bottom",
       "type" : "String",
       "desc" : "o)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "disableClass",
@@ -229,7 +312,7 @@
       "name" : "margin_top",
       "type" : "String",
       "desc" : "o)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "dataId",
@@ -241,43 +324,43 @@
       "name" : "padding_left",
       "type" : "String",
       "desc" : "5)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "margin_x",
       "type" : "String",
       "desc" : "o)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "margin_y",
       "type" : "String",
       "desc" : "o)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "html",
       "type" : "String|Boolean",
       "desc" : "-- html contents - or just use children.. use false to hide it..",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "padding_x",
       "type" : "String",
       "desc" : "5)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "display_sm",
       "type" : "String",
       "desc" : "x)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     },
     {
       "name" : "padding_y",
       "type" : "String",
       "desc" : "5)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Card"
     }
   ],
   "methods" : [

@@ -6,11 +6,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap MonthField class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "MonthField",
   "example" : "",
   "deprecated" : "",
@@ -206,7 +210,7 @@
       "name" : "language",
       "type" : "String",
       "desc" : "default en",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.MonthField"
     },
     {
       "name" : "size",

@@ -6,11 +6,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap NumberField class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "NumberField",
   "example" : "",
   "deprecated" : "",
@@ -116,7 +120,7 @@
       "name" : "nanText",
       "type" : "String",
       "desc" : "Error text to display if the value is not a valid number.  For example, this can happen\nif a valid character like '.' or '-' is left in the field with no number (defaults to \"{value} is not a valid number\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.NumberField"
     },
     {
       "name" : "regexText",
@@ -128,7 +132,7 @@
       "name" : "maxValue",
       "type" : "Number",
       "desc" : "The maximum allowed value (defaults to Number.MAX_VALUE)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.NumberField"
     },
     {
       "name" : "allowDomMove",
@@ -140,19 +144,19 @@
       "name" : "minValue",
       "type" : "Number",
       "desc" : "The minimum allowed value (defaults to Number.NEGATIVE_INFINITY)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.NumberField"
     },
     {
       "name" : "decimalPrecision",
       "type" : "Number",
       "desc" : "The maximum precision to display after the decimal separator (defaults to 2)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.NumberField"
     },
     {
       "name" : "minText",
       "type" : "String",
       "desc" : "Error text to display if the minimum value validation fails (defaults to \"The minimum value for this field is {minValue}\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.NumberField"
     },
     {
       "name" : "style",
@@ -236,13 +240,13 @@
       "name" : "allowDecimals",
       "type" : "Boolean",
       "desc" : "False to disallow decimal values (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.NumberField"
     },
     {
       "name" : "allowNegative",
       "type" : "Boolean",
       "desc" : "False to prevent entering a negative sign (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.NumberField"
     },
     {
       "name" : "focusClass",
@@ -314,7 +318,7 @@
       "name" : "valueAlign",
       "type" : "String",
       "desc" : "alignment of value",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.NumberField"
     },
     {
       "name" : "fieldLabel",
@@ -362,7 +366,7 @@
       "name" : "thousandsDelimiter",
       "type" : "String",
       "desc" : "Symbol of thousandsDelimiter",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.NumberField"
     },
     {
       "name" : "invalidFeedbackIcon",
@@ -380,7 +384,7 @@
       "name" : "decimalSeparator",
       "type" : "String",
       "desc" : "Character(s) to allow as the decimal separator (defaults to '.')",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.NumberField"
     },
     {
       "name" : "placeholder",
@@ -422,7 +426,7 @@
       "name" : "maxText",
       "type" : "String",
       "desc" : "Error text to display if the maximum value validation fails (defaults to \"The maximum value for this field is {maxValue}\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.NumberField"
     },
     {
       "name" : "capture",
@@ -476,7 +480,7 @@
       "name" : "allowZero",
       "type" : "Boolean",
       "desc" : "False to blank out if the user enters '0' (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.NumberField"
     },
     {
       "name" : "invalidText",

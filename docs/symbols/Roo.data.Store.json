@@ -3,14 +3,20 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.data.JsonStore",
-    "Roo.data.SimpleStore"
-  ],
+  "childClasses" : {
+    "Roo.data.Store" : [
+      "Roo.data.JsonStore",
+      "Roo.data.SimpleStore"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "The Store class encapsulates a client side cache of {@link Roo.data.Record} objects which provide input data\nfor widgets such as the Roo.grid.Grid, or the Roo.form.ComboBox.<br>\n<p>\nA Store object uses an implementation of {@link Roo.data.DataProxy} to access a data object unless you call loadData() directly and pass in your data. The Store object\nhas no knowledge of the format of the data returned by the Proxy.<br>\n<p>\nA Store object uses its configured implementation of {@link Roo.data.DataReader} to create {@link Roo.data.Record}\ninstances from the data object. These records are cached and made available through accessor functions.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Store",
   "example" : "",
   "deprecated" : "",
@@ -38,55 +44,55 @@
       "name" : "proxy",
       "type" : "Roo.data.DataProxy",
       "desc" : "[required] The Proxy object which provides access to a data object.",
-      "memberOf" : ""
+      "memberOf" : "Roo.data.Store"
     },
     {
       "name" : "multiSort",
       "type" : "Boolean",
       "desc" : "enable multi column sorting (sort is based on the order of columns, remote only at present)",
-      "memberOf" : ""
+      "memberOf" : "Roo.data.Store"
     },
     {
       "name" : "pruneModifiedRecords",
       "type" : "boolean",
       "desc" : "True to clear all modified record information each time the store is\nloaded or when a record is removed. (defaults to false).",
-      "memberOf" : ""
+      "memberOf" : "Roo.data.Store"
     },
     {
       "name" : "remoteSort",
       "type" : "boolean",
       "desc" : "True if sorting is to be handled by requesting the Proxy to provide a refreshed\nversion of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false).",
-      "memberOf" : ""
+      "memberOf" : "Roo.data.Store"
     },
     {
       "name" : "data",
       "type" : "Array",
       "desc" : "Inline data to be loaded when the store is initialized.",
-      "memberOf" : ""
+      "memberOf" : "Roo.data.Store"
     },
     {
       "name" : "sortInfo",
       "type" : "Object",
       "desc" : "A config object in the format: {field: \"fieldName\", direction: \"ASC|DESC\"}",
-      "memberOf" : ""
+      "memberOf" : "Roo.data.Store"
     },
     {
       "name" : "baseParams",
       "type" : "Object",
       "desc" : "An object containing properties which are to be sent as parameters\non any HTTP request",
-      "memberOf" : ""
+      "memberOf" : "Roo.data.Store"
     },
     {
       "name" : "reader",
       "type" : "Roo.data.DataReader",
       "desc" : "[required]  The Reader object which processes the data object and returns\nan Array of Roo.data.record objects which are cached keyed by their <em>id</em> property.",
-      "memberOf" : ""
+      "memberOf" : "Roo.data.Store"
     },
     {
       "name" : "isLocal",
       "type" : "boolean",
       "desc" : "flag if data is locally available (and can be always looked up\nwithout a remote query - used by combo/forms at present.",
-      "memberOf" : ""
+      "memberOf" : "Roo.data.Store"
     }
   ],
   "methods" : [

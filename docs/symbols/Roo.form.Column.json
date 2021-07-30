@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Creates a column container for layout and rendering of fields in an {@link Roo.form.Form}.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Column",
   "example" : "",
   "deprecated" : "",
@@ -79,7 +83,7 @@
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec used to autocreate the column (defaults to {tag: 'div', cls: 'x-form-ct x-form-column'})",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Column"
     },
     {
       "name" : "clear",
@@ -97,7 +101,7 @@
       "name" : "width",
       "type" : "Number/String",
       "desc" : "The fixed width of the column in pixels or CSS value (defaults to \"auto\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Column"
     },
     {
       "name" : "disableClass",

@@ -5,11 +5,19 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.TableRow"
+  ],
+  "tree_parent" : [
+    "Roo.bootstrap.Table"
+  ],
   "desc" : "Bootstrap TableBody class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "TableBody",
   "example" : "",
   "deprecated" : "",
@@ -31,7 +39,7 @@
       "name" : "charoff",
       "type" : "Number",
       "desc" : "Sets the number of characters the content inside the element will be aligned from the character specified by the char attribute",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableBody"
     },
     {
       "name" : "listeners",
@@ -61,13 +69,13 @@
       "name" : "align",
       "type" : "String",
       "desc" : "Aligns the content inside the element",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableBody"
     },
     {
       "name" : "valign",
       "type" : "String",
       "desc" : "Vertical aligns the content inside the <tbody> element",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableBody"
     },
     {
       "name" : "can_build_overlaid",
@@ -85,7 +93,7 @@
       "name" : "tag",
       "type" : "String",
       "desc" : "element tag (thead|tbody|tfoot) default tbody",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableBody"
     },
     {
       "name" : "style",
@@ -103,7 +111,7 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "element class",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableBody"
     },
     {
       "name" : "xattr",

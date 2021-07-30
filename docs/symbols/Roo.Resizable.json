@@ -3,11 +3,15 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "<p>Applies drag handles to an element to make it resizable. The drag handles are inserted into the element\nand positioned absolute. Some elements, such as a textarea or image, don't support this. To overcome that, you can wrap\nthe textarea in a div and set \"resizeChild\" to true (or to the id of the element), <b>or</b> set wrap:true in your config and\nthe element will be wrapped for you automatically.</p>\n<p>Here is the list of valid resize handles:</p>\n<pre>\nValue   Description\n------  -------------------\n 'n'     north\n 's'     south\n 'e'     east\n 'w'     west\n 'nw'    northwest\n 'sw'    southwest\n 'se'    southeast\n 'ne'    northeast\n 'hd'    horizontal drag\n 'all'   all\n</pre>\n<p>Here's an example showing the creation of a typical Resizable:</p>\n<pre><code>\nvar resizer = new Roo.Resizable(\"element-id\", {\n    handles: 'all',\n    minWidth: 200,\n    minHeight: 100,\n    maxWidth: 500,\n    maxHeight: 400,\n    pinned: true\n});\nresizer.on(\"resize\", myHandler);\n</code></pre>\n<p>To hide a particular handle, set its display to none in CSS, or through script:<br>\nresizer.east.setDisplayed(false);</p>",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Resizable",
   "example" : "",
   "deprecated" : "",
@@ -35,7 +39,7 @@
       "name" : "easing",
       "type" : "String",
       "desc" : "Animation easing if animate = true (defaults to 'easingOutStrong')",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "listeners",
@@ -47,157 +51,157 @@
       "name" : "maxWidth",
       "type" : "Number",
       "desc" : "The maximum width for the element (defaults to 10000)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "minWidth",
       "type" : "Number",
       "desc" : "The minimum width for the element (defaults to 5)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "dynamic",
       "type" : "Boolean",
       "desc" : "True to resize the element while dragging instead of using a proxy (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "pinned",
       "type" : "Boolean",
       "desc" : "True to ensure that the resize handles are always visible, false to display them only when the\nuser mouses over the resizable borders. This is only applied at config time. (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "enabled",
       "type" : "Boolean",
       "desc" : "False to disable resizing (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "handles",
       "type" : "String",
       "desc" : "String consisting of the resize handles to display (defaults to undefined)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "preserveRatio",
       "type" : "Boolean",
       "desc" : "True to preserve the original ratio between height and width during resize (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "minHeight",
       "type" : "Number",
       "desc" : "The minimum height for the element (defaults to 5)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "maxHeight",
       "type" : "Number",
       "desc" : "The maximum height for the element (defaults to 10000)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "widthIncrement",
       "type" : "Number",
       "desc" : "The increment to snap the width resize in pixels (dynamic must be true, defaults to 0)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "resizeChild",
       "type" : "Boolean/String/Element",
       "desc" : "True to resize the first child, or id/element to resize (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "The width of the element in pixels (defaults to null)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "transparent",
       "type" : "Boolean",
       "desc" : "True for transparent handles. This is only applied at config time. (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "minX",
       "type" : "Number",
       "desc" : "The minimum allowed page X for the element (only used for west resizing, defaults to 0)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "constrainTo",
       "type" : "String/HTMLElement/Element",
       "desc" : "Constrain the resize to a particular element",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "disableTrackOver",
       "type" : "Boolean",
       "desc" : "True to disable mouse tracking. This is only applied at config time. (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "minY",
       "type" : "Number",
       "desc" : "The minimum allowed page Y for the element (only used for north resizing, defaults to 0)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "adjustments",
       "type" : "Array/String",
       "desc" : "String \"auto\" or an array [width, height] with values to be <b>added</b> to the\nresize operation's new size (defaults to [0, 0])",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "wrap",
       "type" : "Boolean",
       "desc" : "True to wrap an element with a div if needed (required for textareas and images, defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "The height of the element in pixels (defaults to null)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "duration",
       "type" : "Number",
       "desc" : "Animation duration if animate = true (defaults to .35)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "animate",
       "type" : "Boolean",
       "desc" : "True to animate the resize (not compatible with dynamic sizing, defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "multiDirectional",
       "type" : "Boolean",
       "desc" : "<b>Deprecated</b>.  The old style of adding multi-direction resize handles, deprecated\nin favor of the handles config option (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "heightIncrement",
       "type" : "Number",
       "desc" : "The increment to snap the height resize in pixels (dynamic must be true, defaults to 0)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "draggable",
       "type" : "Boolean",
       "desc" : "Convenience to initialize drag drop (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     },
     {
       "name" : "resizeRegion",
       "type" : "Roo.lib.Region",
       "desc" : "Constrain the resize to a particular region",
-      "memberOf" : ""
+      "memberOf" : "Roo.Resizable"
     }
   ],
   "methods" : [

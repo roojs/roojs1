@@ -5,11 +5,93 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.Alert",
+    "Roo.bootstrap.BezierSignature",
+    "Roo.bootstrap.Brick",
+    "Roo.bootstrap.Button",
+    "Roo.bootstrap.ButtonGroup",
+    "Roo.bootstrap.ButtonUploader",
+    "Roo.bootstrap.Calendar",
+    "Roo.bootstrap.Card",
+    "Roo.bootstrap.CardUploader",
+    "Roo.bootstrap.CheckBox",
+    "Roo.bootstrap.Column",
+    "Roo.bootstrap.ComboBox",
+    "Roo.bootstrap.Container",
+    "Roo.bootstrap.DateField",
+    "Roo.bootstrap.DateSplitField",
+    "Roo.bootstrap.DocumentManager",
+    "Roo.bootstrap.DocumentSlider",
+    "Roo.bootstrap.DocumentViewer",
+    "Roo.bootstrap.DropTarget",
+    "Roo.bootstrap.Element",
+    "Roo.bootstrap.FieldLabel",
+    "Roo.bootstrap.Form",
+    "Roo.bootstrap.Graph",
+    "Roo.bootstrap.Header",
+    "Roo.bootstrap.HtmlEditor",
+    "Roo.bootstrap.Img",
+    "Roo.bootstrap.Input",
+    "Roo.bootstrap.LayoutMasonry",
+    "Roo.bootstrap.LayoutMasonryAuto",
+    "Roo.bootstrap.Link",
+    "Roo.bootstrap.LocationPicker",
+    "Roo.bootstrap.Markdown",
+    "Roo.bootstrap.MasonryBrick",
+    "Roo.bootstrap.MessageBar",
+    "Roo.bootstrap.MoneyField",
+    "Roo.bootstrap.MonthField",
+    "Roo.bootstrap.NumberField",
+    "Roo.bootstrap.Pagination",
+    "Roo.bootstrap.PaginationItem",
+    "Roo.bootstrap.PagingToolbar",
+    "Roo.bootstrap.PhoneInput",
+    "Roo.bootstrap.Popover",
+    "Roo.bootstrap.Progress",
+    "Roo.bootstrap.ProgressBar",
+    "Roo.bootstrap.Radio",
+    "Roo.bootstrap.RadioSet",
+    "Roo.bootstrap.Row",
+    "Roo.bootstrap.SecurePass",
+    "Roo.bootstrap.Slider",
+    "Roo.bootstrap.TabGroup",
+    "Roo.bootstrap.TabPanel",
+    "Roo.bootstrap.Table",
+    "Roo.bootstrap.TextArea",
+    "Roo.bootstrap.TimeField",
+    "Roo.bootstrap.TriggerField",
+    "Roo.bootstrap.UploadCropbox",
+    "Roo.bootstrap.breadcrumb.Item",
+    "Roo.bootstrap.breadcrumb.Nav",
+    "Roo.bootstrap.dash.NumberBox",
+    "Roo.bootstrap.dash.TabBox",
+    "Roo.bootstrap.dash.TabPane",
+    "Roo.bootstrap.htmleditor.ToolbarStandard",
+    "Roo.bootstrap.layout.Border",
+    "Roo.bootstrap.layout.Manager",
+    "Roo.bootstrap.menu.Item",
+    "Roo.bootstrap.menu.Menu",
+    "Roo.bootstrap.menu.Separator",
+    "Roo.bootstrap.nav.Group",
+    "Roo.bootstrap.nav.Headerbar",
+    "Roo.bootstrap.nav.Item",
+    "Roo.bootstrap.nav.ProgressBar",
+    "Roo.bootstrap.nav.ProgressBarItem",
+    "Roo.bootstrap.nav.Sidebar",
+    "Roo.bootstrap.nav.SidebarItem",
+    "Roo.bootstrap.nav.Simplebar"
+  ],
+  "tree_parent" : [
+    "Roo.bootstrap.TableRow"
+  ],
   "desc" : "Bootstrap TableCell class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "TableCell",
   "example" : "",
   "deprecated" : "",
@@ -31,13 +113,13 @@
       "name" : "abbr",
       "type" : "String",
       "desc" : "Specifies an abbreviated version of the content in a cell",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "charoff",
       "type" : "Number",
       "desc" : "Sets the number of characters the content will be aligned from the character specified by the char attribute",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "listeners",
@@ -49,13 +131,13 @@
       "name" : "axis",
       "type" : "String",
       "desc" : "Categorizes cells",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "bgcolor",
       "type" : "String",
       "desc" : "Specifies the background color of a cell",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "tooltip",
@@ -79,13 +161,13 @@
       "name" : "align",
       "type" : "String",
       "desc" : "Aligns the content in a cell",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "valign",
       "type" : "String",
       "desc" : "Vertical aligns the content in a cell",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "can_build_overlaid",
@@ -103,13 +185,13 @@
       "name" : "tag",
       "type" : "String",
       "desc" : "cell tag (td|th) default td",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "scope",
       "type" : "String",
       "desc" : "Defines a way to associate header cells and data cells in a table",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "style",
@@ -127,25 +209,25 @@
       "name" : "html",
       "type" : "String",
       "desc" : "cell contain text",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "cell class",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "headers",
       "type" : "String",
       "desc" : "Specifies one or more header cells a cell is related to",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "nowrap",
       "type" : "String",
       "desc" : "Specifies that the content inside a cell should not wrap",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "xattr",
@@ -163,13 +245,13 @@
       "name" : "width",
       "type" : "Number",
       "desc" : "Specifies the width of a cell",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "colspan",
       "type" : "Number",
       "desc" : "Specifies the number of columns a cell should span",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "dataId",
@@ -181,7 +263,7 @@
       "name" : "height",
       "type" : "Number",
       "desc" : "Sets the height of a cell",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     },
     {
       "name" : "name",
@@ -199,7 +281,7 @@
       "name" : "rowspan",
       "type" : "Number",
       "desc" : "Sets the number of rows a cell should span",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableCell"
     }
   ],
   "methods" : [

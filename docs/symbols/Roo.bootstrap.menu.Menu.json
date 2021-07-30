@@ -5,11 +5,17 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.menu.Item"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap Menu class - container for MenuItems",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Menu",
   "example" : "",
   "deprecated" : "",
@@ -31,7 +37,7 @@
       "name" : "isLink",
       "type" : "bool",
       "desc" : "e)  the menu has link disable auto expand and collaspe (default false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Menu"
     },
     {
       "name" : "listeners",
@@ -61,13 +67,13 @@
       "name" : "align",
       "type" : "String",
       "desc" : "default tl-bl? == below  - how the menu should be aligned.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Menu"
     },
     {
       "name" : "hidden",
       "type" : "bool",
       "desc" : "if the menu should be hidden when rendered.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Menu"
     },
     {
       "name" : "can_build_overlaid",
@@ -85,7 +91,7 @@
       "name" : "stopEvent",
       "type" : "bool",
       "desc" : "e)  Stop event after trigger press (default true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Menu"
     },
     {
       "name" : "style",
@@ -121,13 +127,13 @@
       "name" : "hideTrigger",
       "type" : "bool",
       "desc" : "e)  default false - hide the carret for trigger.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Menu"
     },
     {
       "name" : "registerMenu",
       "type" : "Boolean",
       "desc" : "True (default) - means that clicking on screen etc. hides it.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Menu"
     },
     {
       "name" : "dataId",
@@ -139,7 +145,7 @@
       "name" : "type",
       "type" : "String",
       "desc" : "u) type of menu",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Menu"
     },
     {
       "name" : "name",

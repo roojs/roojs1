@@ -6,16 +6,30 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.bootstrap.PagingToolbar",
-    "Roo.bootstrap.htmleditor.ToolbarStandard",
-    "Roo.bootstrap.PopoverNav",
-    "Roo.bootstrap.nav.Headerbar"
+  "childClasses" : {
+    "Roo.bootstrap.nav.Simplebar" : [
+      "Roo.bootstrap.PagingToolbar",
+      "Roo.bootstrap.PopoverNav",
+      "Roo.bootstrap.htmleditor.ToolbarStandard",
+      "Roo.bootstrap.nav.Headerbar"
+    ]
+  },
+  "tree_children" : [
+    "Roo.bootstrap.nav.Group",
+    "Roo.bootstrap.Container",
+    "Roo.bootstrap.Form",
+    "Roo.bootstrap.Row",
+    "Roo.bootstrap.Column",
+    "Roo.bootstrap.TabGroup",
+    "Roo.bootstrap.Link"
   ],
+  "tree_parent" : [],
   "desc" : "Bootstrap Sidebar class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Simplebar",
   "example" : "",
   "deprecated" : "",
@@ -61,13 +75,13 @@
       "name" : "inverse",
       "type" : "Boolean",
       "desc" : "is inverted color",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "align",
       "type" : "String",
       "desc" : "t) alignment",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "can_build_overlaid",
@@ -85,7 +99,7 @@
       "name" : "tag",
       "type" : "String",
       "desc" : "v) default is nav",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "style",
@@ -109,13 +123,13 @@
       "name" : "arrangement",
       "type" : "Boolean",
       "desc" : "stacked | justified",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "loadMask",
       "type" : "Boolean",
       "desc" : "e) loadMask on the bar",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "xattr",
@@ -133,7 +147,7 @@
       "name" : "main",
       "type" : "Boolean",
       "desc" : "e) main nav bar? default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "dataId",
@@ -145,13 +159,13 @@
       "name" : "type",
       "type" : "String",
       "desc" : "s)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "weight",
       "type" : "String",
       "desc" : "e) default is light.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Simplebar"
     },
     {
       "name" : "name",

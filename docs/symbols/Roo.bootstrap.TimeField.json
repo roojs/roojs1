@@ -6,11 +6,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap DateField class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "TimeField",
   "example" : "",
   "deprecated" : "",
@@ -332,7 +336,7 @@
       "name" : "format",
       "type" : "String",
       "desc" : "The default time format string which can be overriden for localization support.  The format must be\nvalid according to {@link Date#parseDate} (defaults to 'H:i').",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TimeField"
     },
     {
       "name" : "dataId",

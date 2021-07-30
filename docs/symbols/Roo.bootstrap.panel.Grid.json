@@ -4,11 +4,15 @@
     "Roo.bootstrap.panel.Content",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Create a new GridPanel.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Grid",
   "example" : "",
   "deprecated" : "",
@@ -54,7 +58,7 @@
       "name" : "toolbar",
       "type" : "Roo.bootstrap.nav.Simplebar",
       "desc" : "the toolbar at the top of the grid.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.panel.Grid"
     },
     {
       "name" : "fitToFrame",
@@ -114,7 +118,7 @@
       "name" : "grid",
       "type" : "Roo.bootstrap.Table",
       "desc" : "The grid for this panel",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.panel.Grid"
     },
     {
       "name" : "closable",

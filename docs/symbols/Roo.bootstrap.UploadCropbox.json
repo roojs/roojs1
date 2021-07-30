@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap UploadCropbox class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "UploadCropbox",
   "example" : "",
   "deprecated" : "",
@@ -55,13 +59,13 @@
       "name" : "errorTimeout",
       "type" : "Number",
       "desc" : "default 3000",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.UploadCropbox"
     },
     {
       "name" : "buttons",
       "type" : "Array",
       "desc" : "default ['rotateLeft', 'pictureBtn', 'rotateRight']",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.UploadCropbox"
     },
     {
       "name" : "can_build_overlaid",
@@ -79,19 +83,19 @@
       "name" : "emptyText",
       "type" : "String",
       "desc" : "show when image has been loaded",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.UploadCropbox"
     },
     {
       "name" : "minWidth",
       "type" : "Number",
       "desc" : "default 300",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.UploadCropbox"
     },
     {
       "name" : "method",
       "type" : "String",
       "desc" : "default POST",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.UploadCropbox"
     },
     {
       "name" : "style",
@@ -109,7 +113,7 @@
       "name" : "paramName",
       "type" : "String",
       "desc" : "default 'imageUpload'",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.UploadCropbox"
     },
     {
       "name" : "cls",
@@ -121,19 +125,19 @@
       "name" : "minHeight",
       "type" : "Number",
       "desc" : "default 300",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.UploadCropbox"
     },
     {
       "name" : "isDocument",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.UploadCropbox"
     },
     {
       "name" : "loadMask",
       "type" : "Boolean",
       "desc" : "e) default true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.UploadCropbox"
     },
     {
       "name" : "xattr",
@@ -157,13 +161,13 @@
       "name" : "rotateNotify",
       "type" : "String",
       "desc" : "show when image too small to rotate",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.UploadCropbox"
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "action url",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.UploadCropbox"
     },
     {
       "name" : "name",
@@ -181,7 +185,7 @@
       "name" : "loadingText",
       "type" : "Boolean",
       "desc" : "default 'Loading...'",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.UploadCropbox"
     }
   ],
   "methods" : [

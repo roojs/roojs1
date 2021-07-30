@@ -6,8 +6,8 @@
  */
 
 /**
- * @class Roo.bootstrap.TextArea
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.TextArea
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap TextArea class
  * @cfg {Number} cols Specifies the visible width of a text area
  * @cfg {Number} rows Specifies the visible number of lines in a text area
@@ -20,12 +20,12 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.TextArea = function(config){
-    Roo.bootstrap.TextArea.superclass.constructor.call(this, config);
+Roo.bootstrap.form.TextArea = function(config){
+    Roo.bootstrap.form.TextArea.superclass.constructor.call(this, config);
    
 };
 
-Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
      
     cols : false,
     rows : 5,

@@ -4,11 +4,15 @@
     "Roo.data.Store",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "/**",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "JsonStore",
   "example" : "",
   "deprecated" : "",
@@ -36,7 +40,7 @@
       "name" : "fields",
       "type" : "Array",
       "desc" : "An array of field definition objects, or field name strings.",
-      "memberOf" : ""
+      "memberOf" : "Roo.data.JsonStore"
     },
     {
       "name" : "proxy",

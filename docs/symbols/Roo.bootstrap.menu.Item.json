@@ -5,11 +5,24 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.Button",
+    "Roo.bootstrap.ButtonUploader",
+    "Roo.bootstrap.CardUploader",
+    "Roo.bootstrap.ButtonUploader",
+    "Roo.bootstrap.Row",
+    "Roo.bootstrap.Column",
+    "Roo.bootstrap.TabGroup",
+    "Roo.bootstrap.Container"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap MenuItem class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Item",
   "example" : "",
   "deprecated" : "",
@@ -55,13 +68,13 @@
       "name" : "isContainer",
       "type" : "Boolean",
       "desc" : "is it a container - just returns a drop down item..",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Item"
     },
     {
       "name" : "menu",
       "type" : "Roo.bootsrap.Menu",
       "desc" : "the child menu.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Item"
     },
     {
       "name" : "can_build_overlaid",
@@ -91,13 +104,13 @@
       "name" : "preventDefault",
       "type" : "Boolean",
       "desc" : "do not trigger A href on clicks (default false).",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Item"
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "the menu label",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Item"
     },
     {
       "name" : "cls",
@@ -127,13 +140,13 @@
       "name" : "active",
       "type" : "Boolean",
       "desc" : "used on sidebars to highlight active itesm",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Item"
     },
     {
       "name" : "fa",
       "type" : "String",
       "desc" : "favicon to show on left of menu item.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Item"
     },
     {
       "name" : "name",
@@ -151,7 +164,7 @@
       "name" : "href",
       "type" : "String",
       "desc" : "the link",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.menu.Item"
     }
   ],
   "methods" : [

@@ -3,15 +3,23 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.Toolbar.SplitButton",
-    "Roo.SplitButton",
-    "Roo.Toolbar.Button"
-  ],
+  "childClasses" : {
+    "Roo.Button" : [
+      "Roo.SplitButton",
+      "Roo.Toolbar.Button"
+    ],
+    "Roo.SplitButton" : [
+      "Roo.Toolbar.SplitButton"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Simple Button class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Button",
   "example" : "",
   "deprecated" : "",
@@ -39,139 +47,139 @@
       "name" : "tooltip",
       "type" : "String/Object",
       "desc" : "The tooltip for the button - can be a string or QuickTips config object",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "The button text",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "renderTo",
       "type" : "String/HTMLElement/Element",
       "desc" : "The element to append the button to",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
       "desc" : "True to start hidden (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "toggleGroup",
       "type" : "String",
       "desc" : "The group this toggle button is a member of (only 1 per group can be pressed, only\n   applies if enableToggle = true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "handleMouseEvents",
       "type" : "Boolean",
       "desc" : "False to disable visual cues on mouseover, mouseout and mousedown (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "menu",
       "type" : "Roo.menu.Menu",
       "desc" : "Standard menu attribute consisting of a reference to a menu object, a menu id or a menu config blob (defaults to undefined).",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "enableToggle",
       "type" : "Boolean",
       "desc" : "True to enable pressed/not pressed toggling (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "handler",
       "type" : "Function",
       "desc" : "A function called when the button is clicked (can be used instead of click event)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "scope",
       "type" : "Object",
       "desc" : "The scope of the handler",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "minWidth",
       "type" : "Number",
       "desc" : "The minimum width for this button (used to give a set of buttons a common width)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "True to start disabled (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "pressed",
       "type" : "Boolean",
       "desc" : "True to start pressed (only if enableToggle = true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "template",
       "type" : "Roo.Template",
       "desc" : "(Optional)\nAn {@link Roo.Template} with which to create the Button's main element. This Template must\ncontain numeric substitution parameter 0 if it is to display the tRoo property. Changing the template could\nrequire code modifications if required elements (e.g. a button) aren't present.",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the button's main element.",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "tabIndex",
       "type" : "Number",
       "desc" : "The DOM tabIndex for this button (defaults to undefined)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "iconCls",
       "type" : "String",
       "desc" : "A css class which sets a background image to be used as the icon for this button (defaults to undefined).",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "menuAlign",
       "type" : "String",
       "desc" : "The position to align the menu to (see {@link Roo.Element#alignTo} for more details, defaults to 'tl-bl?').",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "icon",
       "type" : "String",
       "desc" : "The path to an image to display in the button (the image will be set as the background-image\nCSS property of the button by default, so if you want a mixed icon/text button, set cls:\"x-btn-text-icon\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "tooltipType",
       "type" : "String",
       "desc" : "The type of tooltip to use. Either \"qtip\" (default) for QuickTips or \"title\" for title attribute.",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "clickEvent",
       "type" : "String",
       "desc" : "The type of event to map to the button's event handler (defaults to 'click')",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "repeat",
       "type" : "Boolean/Object",
       "desc" : "True to repeat fire the click event while the mouse is down. This can also be\n  an {@link Roo.util.ClickRepeater} config object (defaults to false).",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "type",
       "type" : "String",
       "desc" : "The button's type, corresponding to the DOM input element type attribute.  Either \"submit,\" \"reset\" or \"button\" (default).",
-      "memberOf" : ""
+      "memberOf" : "Roo.Button"
     }
   ],
   "methods" : [

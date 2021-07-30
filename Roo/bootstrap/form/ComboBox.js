@@ -4,8 +4,8 @@
  */
 
 /**
- * @class Roo.bootstrap.ComboBox
- * @extends Roo.bootstrap.TriggerField
+ * @class Roo.bootstrap.form.ComboBox
+ * @extends Roo.bootstrap.form.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @cfg {Boolean} append (true|false) default false
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
@@ -22,25 +22,25 @@
  * Create a new ComboBox.
  * @param {Object} config Configuration options
  */
-Roo.bootstrap.ComboBox = function(config){
-    Roo.bootstrap.ComboBox.superclass.constructor.call(this, config);
+Roo.bootstrap.form.ComboBox = function(config){
+    Roo.bootstrap.form.ComboBox.superclass.constructor.call(this, config);
     this.addEvents({
         /**
          * @event expand
          * Fires when the dropdown list is expanded
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         */
         'expand' : true,
         /**
          * @event collapse
          * Fires when the dropdown list is collapsed
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         */
         'collapse' : true,
         /**
          * @event beforeselect
          * Fires before a list item is selected. Return false to cancel the selection.
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         * @param {Roo.data.Record} record The data record returned from the underlying store
         * @param {Number} index The index of the selected item in the dropdown list
         */
@@ -48,7 +48,7 @@ Roo.bootstrap.ComboBox = function(config){
         /**
          * @event select
          * Fires when a list item is selected
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
         * @param {Number} index The index of the selected item in the dropdown list
         */
@@ -57,7 +57,7 @@ Roo.bootstrap.ComboBox = function(config){
          * @event beforequery
          * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
          * The event object passed has these properties:
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         * @param {String} query The query
         * @param {Boolean} forceAll true to force "all" query
         * @param {Boolean} cancel true to cancel the query
@@ -67,44 +67,44 @@ Roo.bootstrap.ComboBox = function(config){
          /**
          * @event add
          * Fires when the 'add' icon is pressed (add a listener to enable add button)
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         */
         'add' : true,
         /**
          * @event edit
          * Fires when the 'edit' icon is pressed (add a listener to enable add button)
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
         */
         'edit' : true,
         /**
          * @event remove
          * Fires when the remove value from the combobox array
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         */
         'remove' : true,
         /**
          * @event afterremove
          * Fires when the remove value from the combobox array
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         */
         'afterremove' : true,
         /**
          * @event specialfilter
          * Fires when specialfilter
-            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            * @param {Roo.bootstrap.form.ComboBox} combo This combo box
             */
         'specialfilter' : true,
         /**
          * @event tick
          * Fires when tick the element
-            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            * @param {Roo.bootstrap.form.ComboBox} combo This combo box
             */
         'tick' : true,
         /**
          * @event touchviewdisplay
          * Fires when touch view require special display (default is using displayField)
-            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            * @param {Roo.bootstrap.form.ComboBox} combo This combo box
             * @param {Object} cfg set html .
             */
         'touchviewdisplay' : true
@@ -125,7 +125,7 @@ Roo.bootstrap.ComboBox = function(config){
     }
 };
 
-Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
+Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
      
     /**
      * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
@@ -374,7 +374,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          *  Normal ComboBox
          */
         if(!this.tickable){
-            cfg = Roo.bootstrap.ComboBox.superclass.getAutoCreate.call(this);
+            cfg = Roo.bootstrap.form.ComboBox.superclass.getAutoCreate.call(this);
             return cfg;
         }
         
@@ -694,7 +694,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
+        Roo.bootstrap.form.ComboBox.superclass.initEvents.call(this);
         
         if(this.hiddenName){
             
@@ -1074,7 +1074,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.store.un('load', this.onLoad, this);
             this.store.un('loadexception', this.onLoadException, this);
         }
-        Roo.bootstrap.ComboBox.superclass.onDestroy.call(this);
+        Roo.bootstrap.form.ComboBox.superclass.onDestroy.call(this);
     },
 
     // private
@@ -1089,7 +1089,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         
         
-//        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
+//        Roo.bootstrap.form.ComboBox.superclass.onResize.apply(this, arguments);
 //        
 //        if(typeof w != 'number'){
 //            // we do not handle it!?!?
@@ -1262,7 +1262,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.valueField){
             return typeof this.value != 'undefined' ? this.value : '';
         }else{
-            return Roo.bootstrap.ComboBox.superclass.getValue.call(this);
+            return Roo.bootstrap.form.ComboBox.superclass.getValue.call(this);
         }
     },
     
@@ -1332,7 +1332,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.hiddenField){
             this.hiddenField.dom.value = v;
         }
-        Roo.bootstrap.ComboBox.superclass.setValue.call(this, text);
+        Roo.bootstrap.form.ComboBox.superclass.setValue.call(this, text);
         this.value = v;
         
         var close = this.closeTriggerEl();
@@ -1388,14 +1388,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.hiddenField.dom.value = vv;
             
             this.lastSelectionText = dv;
-            Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+            Roo.bootstrap.form.ComboBox.superclass.setValue.call(this, dv);
             this.value = vv;
             return;
         }
         // no hidden field.. - we store the value in 'value', but still display
         // display field!!!!
         this.lastSelectionText = dv;
-        Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+        Roo.bootstrap.form.ComboBox.superclass.setValue.call(this, dv);
         this.value = vv;
         
         
@@ -2536,7 +2536,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     renderTouchView : function()
     {
-        this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.ComboBox.touchViewTemplate);
+        this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.form.ComboBox.touchViewTemplate);
         this.touchViewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.touchViewHeaderEl = this.touchViewEl.select('.modal-header', true).first();
@@ -2671,7 +2671,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var rawValue = this.getRawValue();
         
-        var template = (this.multiple) ? Roo.bootstrap.ComboBox.listItemCheckbox : Roo.bootstrap.ComboBox.listItemRadio;
+        var template = (this.multiple) ? Roo.bootstrap.form.ComboBox.listItemCheckbox : Roo.bootstrap.form.ComboBox.listItemRadio;
         
         this.tickItems = [];
         
@@ -2745,7 +2745,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.clearTouchView();
         
-        this.touchViewListGroup.createChild(Roo.bootstrap.ComboBox.emptyResult);
+        this.touchViewListGroup.createChild(Roo.bootstrap.form.ComboBox.emptyResult);
         
         this.touchViewListGroup.select('.roo-combobox-touch-view-empty-result', true).first().dom.innerHTML = this.emptyResultText;
         
@@ -2963,7 +2963,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
 });
 
-Roo.apply(Roo.bootstrap.ComboBox,  {
+Roo.apply(Roo.bootstrap.form.ComboBox,  {
     
     header : {
         tag: 'div',
@@ -3073,7 +3073,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
     }
 });
 
-Roo.apply(Roo.bootstrap.ComboBox,  {
+Roo.apply(Roo.bootstrap.form.ComboBox,  {
     
     touchViewTemplate : {
         tag: 'div',
@@ -3088,9 +3088,9 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                         tag: 'div',
                         cls: 'modal-content',
                         cn: [
-                            Roo.bootstrap.ComboBox.header,
-                            Roo.bootstrap.ComboBox.body,
-                            Roo.bootstrap.ComboBox.footer
+                            Roo.bootstrap.form.ComboBox.header,
+                            Roo.bootstrap.form.ComboBox.body,
+                            Roo.bootstrap.form.ComboBox.footer
                         ]
                     }
                 ]

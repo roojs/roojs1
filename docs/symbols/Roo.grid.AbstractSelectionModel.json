@@ -3,14 +3,20 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.grid.CellSelectionModel",
-    "Roo.grid.RowSelectionModel"
-  ],
+  "childClasses" : {
+    "Roo.grid.AbstractSelectionModel" : [
+      "Roo.grid.CellSelectionModel",
+      "Roo.grid.RowSelectionModel"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Abstract base class for grid SelectionModels.  It provides the interface that should be\nimplemented by descendant classes.  This class should not be directly instantiated.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : true,
+  "isBuilderTop" : false,
   "memberOf" : "AbstractSelectionModel",
   "example" : "",
   "deprecated" : "",

@@ -6,11 +6,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap DateField class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "DateField",
   "example" : "",
   "deprecated" : "",
@@ -62,7 +66,7 @@
       "name" : "todayHighlight",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "hideMode",
@@ -128,13 +132,13 @@
       "name" : "altFormats",
       "type" : "String",
       "desc" : "Multiple date formats separated by \"|\" to try when parsing a user input value and it doesn't match the defined\nformat (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "viewMode",
       "type" : "String",
       "desc" : "default empty, (months|years)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "allowDomMove",
@@ -158,7 +162,7 @@
       "name" : "singleMode",
       "type" : "Boolean",
       "desc" : "default false (true | false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "value",
@@ -170,7 +174,7 @@
       "name" : "daysOfWeekDisabled",
       "type" : "Object",
       "desc" : "default empty",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "hasFeedback",
@@ -212,7 +216,7 @@
       "name" : "endDate",
       "type" : "Number",
       "desc" : "default Infinity",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "container_method",
@@ -242,7 +246,7 @@
       "name" : "language",
       "type" : "String",
       "desc" : "default en",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "focusClass",
@@ -284,7 +288,7 @@
       "name" : "keyboardNavigation",
       "type" : "Boolean",
       "desc" : "default true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "inputType",
@@ -320,13 +324,13 @@
       "name" : "calendarWeeks",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "minViewMode",
       "type" : "String",
       "desc" : "default empty, (months|years)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "fieldLabel",
@@ -374,7 +378,7 @@
       "name" : "startDate",
       "type" : "Number",
       "desc" : "default -Infinity",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "invalidFeedbackIcon",
@@ -398,7 +402,7 @@
       "name" : "format",
       "type" : "String",
       "desc" : "The default date format string which can be overriden for localization support.  The format must be\nvalid according to {@link Date#parseDate} (defaults to 'm/d/y').",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "dataId",
@@ -410,7 +414,7 @@
       "name" : "weekStart",
       "type" : "Number",
       "desc" : "default 0",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "md",
@@ -458,7 +462,7 @@
       "name" : "todayBtn",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateField"
     },
     {
       "name" : "preventMark",

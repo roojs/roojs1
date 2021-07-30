@@ -6,8 +6,8 @@
  */
 
 /**
- * @class Roo.bootstrap.MonthField
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.MonthField
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap MonthField class
  * 
  * @cfg {String} language default en
@@ -17,28 +17,28 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.MonthField = function(config){
-    Roo.bootstrap.MonthField.superclass.constructor.call(this, config);
+Roo.bootstrap.form.MonthField = function(config){
+    Roo.bootstrap.form.MonthField.superclass.constructor.call(this, config);
     
     this.addEvents({
         /**
          * @event show
          * Fires when this field show.
-         * @param {Roo.bootstrap.MonthField} this
+         * @param {Roo.bootstrap.form.MonthField} this
          * @param {Mixed} date The date value
          */
         show : true,
         /**
          * @event show
          * Fires when this field hide.
-         * @param {Roo.bootstrap.MonthField} this
+         * @param {Roo.bootstrap.form.MonthField} this
          * @param {Mixed} date The date value
          */
         hide : true,
         /**
          * @event select
          * Fires when select a date.
-         * @param {Roo.bootstrap.MonthField} this
+         * @param {Roo.bootstrap.form.MonthField} this
          * @param {String} oldvalue The old value
          * @param {String} newvalue The new value
          */
@@ -46,25 +46,25 @@ Roo.bootstrap.MonthField = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.MonthField, Roo.bootstrap.form.Input,  {
     
     onRender: function(ct, position)
     {
         
-        Roo.bootstrap.MonthField.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.form.MonthField.superclass.onRender.call(this, ct, position);
         
         this.language = this.language || 'en';
-        this.language = this.language in Roo.bootstrap.MonthField.dates ? this.language : this.language.split('-')[0];
-        this.language = this.language in Roo.bootstrap.MonthField.dates ? this.language : "en";
+        this.language = this.language in Roo.bootstrap.form.MonthField.dates ? this.language : this.language.split('-')[0];
+        this.language = this.language in Roo.bootstrap.form.MonthField.dates ? this.language : "en";
         
-        this.isRTL = Roo.bootstrap.MonthField.dates[this.language].rtl || false;
+        this.isRTL = Roo.bootstrap.form.MonthField.dates[this.language].rtl || false;
         this.isInline = false;
         this.isInput = true;
         this.component = this.el.select('.add-on', true).first() || false;
         this.component = (this.component && this.component.length === 0) ? false : this.component;
         this.hasInput = this.component && this.inputEL().length;
         
-        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.MonthField.template);
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.MonthField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -91,7 +91,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     {   
         var o = this.getValue();
         
-        Roo.bootstrap.MonthField.superclass.setValue.call(this, v);
+        Roo.bootstrap.form.MonthField.superclass.setValue.call(this, v);
         
         this.update();
 
@@ -125,9 +125,9 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             return;
         }
         
-        this.vIndex = Roo.bootstrap.MonthField.dates[this.language].monthsShort.indexOf(html);
+        this.vIndex = Roo.bootstrap.form.MonthField.dates[this.language].monthsShort.indexOf(html);
         
-        this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+        this.setValue(Roo.bootstrap.form.MonthField.dates[this.language].months[this.vIndex]);
         
         this.hide();
                         
@@ -149,7 +149,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             var month = {
                 tag: 'span',
                 cls: 'month',
-                html: Roo.bootstrap.MonthField.dates[this.language].monthsShort[i++]
+                html: Roo.bootstrap.form.MonthField.dates[this.language].monthsShort[i++]
             };
             
             months.createChild(month);
@@ -162,7 +162,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         var _this = this;
         
         if(typeof(this.vIndex) == 'undefined' && this.value.length){
-            this.vIndex = Roo.bootstrap.MonthField.dates[this.language].months.indexOf(this.value);
+            this.vIndex = Roo.bootstrap.form.MonthField.dates[this.language].months.indexOf(this.value);
         }
         
         Roo.each(this.pickerEl.select('> .datepicker-months tbody > tr > td > span', true).elements, function(e, k){
@@ -201,13 +201,13 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     onFocus : function()
     {
-        Roo.bootstrap.MonthField.superclass.onFocus.call(this);
+        Roo.bootstrap.form.MonthField.superclass.onFocus.call(this);
         this.show();
     },
     
     onBlur : function()
     {
-        Roo.bootstrap.MonthField.superclass.onBlur.call(this);
+        Roo.bootstrap.form.MonthField.superclass.onBlur.call(this);
         
         var d = this.inputEl().getValue();
         
@@ -244,7 +244,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     keyup: function(e)
     {
-        Roo.bootstrap.MonthField.superclass.keyup.call(this);
+        Roo.bootstrap.form.MonthField.superclass.keyup.call(this);
         this.update();
     },
 
@@ -282,7 +282,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                     this.vIndex = 0;
                 }
                 
-                this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+                this.setValue(Roo.bootstrap.form.MonthField.dates[this.language].months[this.vIndex]);
                 
                 break;
             case 38: // up
@@ -304,13 +304,13 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                     this.vIndex = 0;
                 }
                 
-                this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+                this.setValue(Roo.bootstrap.form.MonthField.dates[this.language].months[this.vIndex]);
                 break;
                 
             case 13: // enter
                 
                 if(typeof(this.vIndex) != 'undefined' && !isNaN(this.vIndex)){
-                    this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+                    this.setValue(Roo.bootstrap.form.MonthField.dates[this.language].months[this.vIndex]);
                 }
                 
                 this.hide();
@@ -318,7 +318,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 break;
             case 9: // tab
                 if(typeof(this.vIndex) != 'undefined' && !isNaN(this.vIndex)){
-                    this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+                    this.setValue(Roo.bootstrap.form.MonthField.dates[this.language].months[this.vIndex]);
                 }
                 this.hide();
                 break;
@@ -339,7 +339,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
    
 });
 
-Roo.apply(Roo.bootstrap.MonthField,  {
+Roo.apply(Roo.bootstrap.form.MonthField,  {
     
     content : {
         tag: 'tbody',
@@ -364,7 +364,7 @@ Roo.apply(Roo.bootstrap.MonthField,  {
     }
 });
 
-Roo.apply(Roo.bootstrap.MonthField,  {
+Roo.apply(Roo.bootstrap.form.MonthField,  {
   
     template : {
         tag: 'div',
@@ -378,7 +378,7 @@ Roo.apply(Roo.bootstrap.MonthField,  {
                     tag: 'table',
                     cls: 'table-condensed',
                     cn:[
-                        Roo.bootstrap.DateField.content
+                        Roo.bootstrap.form.DateField.content
                     ]
                 }
                 ]

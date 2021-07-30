@@ -5,14 +5,20 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.bootstrap.CardUploader",
-    "Roo.bootstrap.ButtonUploader"
-  ],
+  "childClasses" : {
+    "Roo.bootstrap.Button" : [
+      "Roo.bootstrap.ButtonUploader",
+      "Roo.bootstrap.CardUploader"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap Button class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Button",
   "example" : "",
   "deprecated" : "",
@@ -34,19 +40,19 @@
       "name" : "toggle",
       "type" : "Boolean",
       "desc" : "is it a slidy toggle button",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "inverse",
       "type" : "Boolean",
       "desc" : "dark themed version",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "badge",
       "type" : "String",
       "desc" : "text for badge",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "hideMode",
@@ -64,7 +70,7 @@
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "default false;",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "name",
@@ -76,13 +82,13 @@
       "name" : "weight",
       "type" : "String",
       "desc" : "k) default",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "grpup",
       "type" : "Boolean",
       "desc" : "if parent is a btn group - then it turns it into a toogleGroup.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "tooltip",
@@ -94,31 +100,31 @@
       "name" : "ontext",
       "type" : "String",
       "desc" : "text for on slidy toggle state",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "preventDefault",
       "type" : "Boolean",
       "desc" : "default true (stop click event triggering the URL if it's a link.)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "theme",
       "type" : "String",
       "desc" : "w)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "target",
       "type" : "String",
       "desc" : "r) target for a href.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "glyphicon",
       "type" : "String",
       "desc" : "depricated - use fa",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "allowDomMove",
@@ -136,7 +142,7 @@
       "name" : "isClose",
       "type" : "Boolean",
       "desc" : "default false;",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "actionMode",
@@ -160,13 +166,13 @@
       "name" : "fa",
       "type" : "String",
       "desc" : "fontawesome icon - eg. 'comment' - without the fa/fas etc..",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "size",
       "type" : "String",
       "desc" : "s)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "cls",
@@ -178,7 +184,7 @@
       "name" : "badge_weight",
       "type" : "String",
       "desc" : "k) default (same as button)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "can_build_overlaid",
@@ -202,13 +208,13 @@
       "name" : "href",
       "type" : "String",
       "desc" : "empty or href",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "tag",
       "type" : "String",
       "desc" : "t)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "dataId",
@@ -220,37 +226,37 @@
       "name" : "outline",
       "type" : "Boolean",
       "desc" : "default false (except for weight=default which emulates old behaveiour with an outline)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "offtext",
       "type" : "String",
       "desc" : "text for off slidy toggle state",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "removeClass",
       "type" : "Boolean",
       "desc" : "remove the standard class..",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "The button content",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "pressed",
       "type" : "Boolean",
       "desc" : "default null - if the button ahs active state",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     },
     {
       "name" : "menu",
       "type" : "Roo.bootstrap.menu.Menu",
       "desc" : "a Menu",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Button"
     }
   ],
   "methods" : [

@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Adds a static text string to a menu, usually used as either a heading or group separator.\nNote: old style constructor with text is still supported.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "TextItem",
   "example" : "",
   "deprecated" : "",
@@ -37,7 +41,7 @@
       "name" : "text",
       "type" : "String",
       "desc" : "Text to show on item.",
-      "memberOf" : ""
+      "memberOf" : "Roo.menu.TextItem"
     },
     {
       "name" : "activeClass",
@@ -61,7 +65,7 @@
       "name" : "hideOnClick",
       "type" : "Boolean",
       "desc" : "True to hide the containing menu after this item is clicked (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.menu.TextItem"
     },
     {
       "name" : "handler",
@@ -85,7 +89,7 @@
       "name" : "itemCls",
       "type" : "String",
       "desc" : "The default CSS class to use for text items (defaults to \"x-menu-text\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.menu.TextItem"
     },
     {
       "name" : "actionMode",

@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap DocumentManager class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "DocumentManager",
   "example" : "",
   "deprecated" : "",
@@ -31,13 +35,13 @@
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "p) default left",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "labellg",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "listeners",
@@ -49,7 +53,7 @@
       "name" : "labelxs",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "tooltip",
@@ -73,13 +77,13 @@
       "name" : "fieldLabel",
       "type" : "String",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "toolTipName",
       "type" : "String",
       "desc" : "default 'filename'",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "can_build_overlaid",
@@ -97,7 +101,7 @@
       "name" : "method",
       "type" : "String",
       "desc" : "default POST",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "style",
@@ -115,13 +119,13 @@
       "name" : "paramName",
       "type" : "String",
       "desc" : "default 'imageUpload'",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "labelWidth",
       "type" : "Number",
       "desc" : "default 4",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "cls",
@@ -133,13 +137,13 @@
       "name" : "editable",
       "type" : "Boolean",
       "desc" : "e) allow edit when upload a image default true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "labelsm",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "xattr",
@@ -157,25 +161,25 @@
       "name" : "boxes",
       "type" : "Number",
       "desc" : "number of boxes, 0 is no limit.. default 0",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "multiple",
       "type" : "Boolean",
       "desc" : "multiple upload default true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "thumbSize",
       "type" : "Number",
       "desc" : "default 300",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "labelmd",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "dataId",
@@ -187,7 +191,7 @@
       "name" : "url",
       "type" : "String",
       "desc" : "action url",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentManager"
     },
     {
       "name" : "name",

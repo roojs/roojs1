@@ -4,11 +4,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Simple date picker class.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "DatePicker",
   "example" : "",
   "deprecated" : "",
@@ -30,19 +34,19 @@
       "name" : "startDay",
       "type" : "Number",
       "desc" : "Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "monthYearText",
       "type" : "String",
       "desc" : "The header month selector tooltip (defaults to 'Choose a month (Control+Up/Down to move years)')",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "monthNames",
       "type" : "Array",
       "desc" : "An array of textual month names which can be overriden for localization support (defaults to Date.monthNames)",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "listeners",
@@ -54,43 +58,43 @@
       "name" : "format",
       "type" : "String",
       "desc" : "The default date format string which can be overriden for localization support.  The format must be\nvalid according to {@link Date#parseDate} (defaults to 'm/d/y').",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "nextText",
       "type" : "String",
       "desc" : "The next month navigation button tooltip (defaults to 'Next Month (Control+Right)')",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "maxText",
       "type" : "String",
       "desc" : "The error text to display if the maxDate validation fails (defaults to \"This date is after the maximum date\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "constrainToViewport",
       "type" : "Boolean",
       "desc" : "True to constrain the date picker to the viewport (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "minText",
       "type" : "String",
       "desc" : "The error text to display if the minDate validation fails (defaults to \"This date is before the minimum date\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "disabledDatesText",
       "type" : "String",
       "desc" : "The tooltip text to display when the date falls on a disabled date (defaults to \"\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "todayTip",
       "type" : "String",
       "desc" : "The tooltip to display for the button that selects the current date (defaults to \"{current date} (Spacebar)\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "hideMode",
@@ -102,13 +106,13 @@
       "name" : "todayText",
       "type" : "String",
       "desc" : "The text to display on the button that selects the current date (defaults to \"Today\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "cancelText",
       "type" : "String",
       "desc" : "The text to display on the cancel button",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "allowDomMove",
@@ -120,19 +124,19 @@
       "name" : "showClear",
       "type" : "Bool",
       "desc" : "Show a clear button (usefull for date form elements that can be blank.)",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "prevText",
       "type" : "String",
       "desc" : "The previous month navigation button tooltip (defaults to 'Previous Month (Control+Left)')",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "dayNames",
       "type" : "Array",
       "desc" : "An array of textual day names which can be overriden for localization support (defaults to Date.dayNames)",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "actionMode",
@@ -144,37 +148,37 @@
       "name" : "disabledDaysText",
       "type" : "String",
       "desc" : "The tooltip to display when the date falls on a disabled day (defaults to \"\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "disabledDatesRE",
       "type" : "RegExp",
       "desc" : "JavaScript regular expression used to disable a pattern of dates (defaults to null)",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "minDate",
       "type" : "Date",
       "desc" : "Minimum allowable date (JavaScript date object, defaults to null)",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "disabledDays",
       "type" : "Array",
       "desc" : "An array of days to disable, 0-based. For example, [0, 6] disables Sunday and Saturday (defaults to null).",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "okText",
       "type" : "String",
       "desc" : "The text to display on the ok button",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "maxDate",
       "type" : "Date",
       "desc" : "Maximum allowable date (JavaScript date object, defaults to null)",
-      "memberOf" : ""
+      "memberOf" : "Roo.DatePicker"
     },
     {
       "name" : "disableClass",

@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap ProgressBar class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "ProgressBar",
   "example" : "",
   "deprecated" : "",
@@ -31,13 +35,13 @@
       "name" : "label",
       "type" : "String",
       "desc" : "label for the progress bar",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ProgressBar"
     },
     {
       "name" : "panel",
       "type" : "String",
       "desc" : ")",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ProgressBar"
     },
     {
       "name" : "listeners",
@@ -79,7 +83,7 @@
       "name" : "aria_valuenow",
       "type" : "Number",
       "desc" : "aria-value now",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ProgressBar"
     },
     {
       "name" : "style",
@@ -97,7 +101,7 @@
       "name" : "aria_valuemax",
       "type" : "Number",
       "desc" : "aria-value max",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ProgressBar"
     },
     {
       "name" : "cls",
@@ -109,7 +113,7 @@
       "name" : "aria_valuemin",
       "type" : "Number",
       "desc" : "aria-value min",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ProgressBar"
     },
     {
       "name" : "xattr",
@@ -133,7 +137,7 @@
       "name" : "role",
       "type" : "String",
       "desc" : "role of the progress bar",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ProgressBar"
     },
     {
       "name" : "name",
@@ -151,7 +155,7 @@
       "name" : "sr_only",
       "type" : "String",
       "desc" : "text",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ProgressBar"
     }
   ],
   "methods" : [

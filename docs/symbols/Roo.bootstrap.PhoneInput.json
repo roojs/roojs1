@@ -7,11 +7,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "An input with International dial-code selection",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "PhoneInput",
   "example" : "",
   "deprecated" : "",
@@ -153,7 +157,7 @@
       "name" : "store",
       "type" : "Roo.data.Store",
       "desc" : "[required] The data store to which this combo is bound (defaults to undefined)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.PhoneInput"
     },
     {
       "name" : "hasFeedback",
@@ -357,7 +361,7 @@
       "name" : "defaultDialCode",
       "type" : "String",
       "desc" : "default '+852'",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.PhoneInput"
     },
     {
       "name" : "placeholder",
@@ -417,7 +421,7 @@
       "name" : "preferedCountries",
       "type" : "Array",
       "desc" : "default []",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.PhoneInput"
     },
     {
       "name" : "preventMark",

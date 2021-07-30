@@ -1,11 +1,15 @@
 {
   "name" : "Roo.form.HtmlEditor.ToolbarContext",
   "augments" : [],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Context Toolbar\n\nUsage:\n\n new Roo.form.HtmlEditor({\n    ....\n    toolbars : [\n        { xtype: 'ToolbarStandard', styles : {} }\n        { xtype: 'ToolbarContext', disable : {} }\n    ]\n})",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "ToolbarContext",
   "example" : "",
   "deprecated" : "",
@@ -20,13 +24,13 @@
       "name" : "disable",
       "type" : "Object",
       "desc" : "List of toolbar elements to disable",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarContext"
     },
     {
       "name" : "styles",
       "type" : "Object",
       "desc" : "List of styles \n   eg. { '*' : [ 'headline' ] , 'TD' : [ 'underline', 'double-underline' ] } \n\nThese must be defined in the page, so they get rendered correctly..\n.headline { }\nTD.underline { }",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.HtmlEditor.ToolbarContext"
     }
   ],
   "methods" : [

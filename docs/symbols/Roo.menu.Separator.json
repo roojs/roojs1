@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Adds a separator bar to a menu, used to divide logical groups of menu items. Generally you will\nadd one of these by using \"-\" in you call to add() or in your items config rather than creating one directly.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Separator",
   "example" : "",
   "deprecated" : "",
@@ -55,7 +59,7 @@
       "name" : "hideOnClick",
       "type" : "Boolean",
       "desc" : "True to hide the containing menu after this item is clicked (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.menu.Separator"
     },
     {
       "name" : "handler",
@@ -79,7 +83,7 @@
       "name" : "itemCls",
       "type" : "String",
       "desc" : "The default CSS class to use for separators (defaults to \"x-menu-sep\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.menu.Separator"
     },
     {
       "name" : "actionMode",

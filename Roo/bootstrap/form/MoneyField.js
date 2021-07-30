@@ -1,7 +1,7 @@
 
 /**
- * @class Roo.bootstrap.MoneyField
- * @extends Roo.bootstrap.ComboBox
+ * @class Roo.bootstrap.form.MoneyField
+ * @extends Roo.bootstrap.form.ComboBox
  * Bootstrap MoneyField class
  * 
  * @constructor
@@ -9,13 +9,13 @@
  * @param {Object} config Configuration options
  */
 
-Roo.bootstrap.MoneyField = function(config) {
+Roo.bootstrap.form.MoneyField = function(config) {
     
-    Roo.bootstrap.MoneyField.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.MoneyField.superclass.constructor.call(this, config);
     
 };
 
-Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
+Roo.extend(Roo.bootstrap.form.MoneyField, Roo.bootstrap.form.ComboBox, {
     
     /**
      * @cfg {Boolean} allowDecimals False to disallow decimal values (defaults to true)
@@ -621,7 +621,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     validateValue : function(value)
     {
-        if(!Roo.bootstrap.MoneyField.superclass.validateValue.call(this, value)){
+        if(!Roo.bootstrap.form.MoneyField.superclass.validateValue.call(this, value)){
             return false;
         }
         

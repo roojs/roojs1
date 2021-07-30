@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap DocumentViewer class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "DocumentViewer",
   "example" : "",
   "deprecated" : "",
@@ -85,7 +89,7 @@
       "name" : "showTrash",
       "type" : "Boolean",
       "desc" : "e) show trash button (default true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentViewer"
     },
     {
       "name" : "xattr",
@@ -109,7 +113,7 @@
       "name" : "showDownload",
       "type" : "Boolean",
       "desc" : "e) show download button (default true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DocumentViewer"
     },
     {
       "name" : "name",

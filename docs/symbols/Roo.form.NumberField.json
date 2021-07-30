@@ -7,11 +7,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Numeric text field that provides automatic keystroke filtering and numeric validation.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "NumberField",
   "example" : "",
   "deprecated" : "",
@@ -69,7 +73,7 @@
       "name" : "nanText",
       "type" : "String",
       "desc" : "Error text to display if the value is not a valid number.  For example, this can happen\nif a valid character like '.' or '-' is left in the field with no number (defaults to \"{value} is not a valid number\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.NumberField"
     },
     {
       "name" : "regexText",
@@ -81,7 +85,7 @@
       "name" : "maxValue",
       "type" : "Number",
       "desc" : "The maximum allowed value (defaults to Number.MAX_VALUE)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.NumberField"
     },
     {
       "name" : "allowDomMove",
@@ -93,7 +97,7 @@
       "name" : "minValue",
       "type" : "Number",
       "desc" : "The minimum allowed value (defaults to Number.NEGATIVE_INFINITY)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.NumberField"
     },
     {
       "name" : "height",
@@ -105,13 +109,13 @@
       "name" : "decimalPrecision",
       "type" : "Number",
       "desc" : "The maximum precision to display after the decimal separator (defaults to 2)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.NumberField"
     },
     {
       "name" : "minText",
       "type" : "String",
       "desc" : "Error text to display if the minimum value validation fails (defaults to \"The minimum value for this field is {minValue}\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.NumberField"
     },
     {
       "name" : "emptyText",
@@ -171,13 +175,13 @@
       "name" : "allowDecimals",
       "type" : "Boolean",
       "desc" : "False to disallow decimal values (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.NumberField"
     },
     {
       "name" : "allowNegative",
       "type" : "Boolean",
       "desc" : "False to prevent entering a negative sign (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.NumberField"
     },
     {
       "name" : "focusClass",
@@ -201,7 +205,7 @@
       "name" : "fieldClass",
       "type" : "String",
       "desc" : "The default CSS class for the field (defaults to \"x-form-field x-form-num-field\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.NumberField"
     },
     {
       "name" : "inputType",
@@ -291,7 +295,7 @@
       "name" : "decimalSeparator",
       "type" : "String",
       "desc" : "Character(s) to allow as the decimal separator (defaults to '.')",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.NumberField"
     },
     {
       "name" : "growMax",
@@ -321,7 +325,7 @@
       "name" : "maxText",
       "type" : "String",
       "desc" : "Error text to display if the maximum value validation fails (defaults to \"The maximum value for this field is {maxValue}\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.NumberField"
     },
     {
       "name" : "allowBlank",

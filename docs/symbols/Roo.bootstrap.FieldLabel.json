@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap FieldLabel class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "FieldLabel",
   "example" : "",
   "deprecated" : "",
@@ -55,7 +59,7 @@
       "name" : "validClass",
       "type" : "String",
       "desc" : "DEPRICATED - BS4 uses is-valid",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.FieldLabel"
     },
     {
       "name" : "can_build_overlaid",
@@ -73,13 +77,13 @@
       "name" : "tag",
       "type" : "String",
       "desc" : "tag of the element default label",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.FieldLabel"
     },
     {
       "name" : "indicatorpos",
       "type" : "String",
       "desc" : "t) default left",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.FieldLabel"
     },
     {
       "name" : "style",
@@ -97,25 +101,25 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "class of the element",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.FieldLabel"
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "contents of the element",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.FieldLabel"
     },
     {
       "name" : "allowBlank",
       "type" : "Boolean",
       "desc" : "e) target allowBlank default true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.FieldLabel"
     },
     {
       "name" : "invalidClass",
       "type" : "String",
       "desc" : "DEPRICATED - BS4 uses is-invalid",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.FieldLabel"
     },
     {
       "name" : "xattr",
@@ -133,7 +137,7 @@
       "name" : "iconTooltip",
       "type" : "String",
       "desc" : "default \"This field is required\"",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.FieldLabel"
     },
     {
       "name" : "dataId",
@@ -145,7 +149,7 @@
       "name" : "target",
       "type" : "String",
       "desc" : "label target",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.FieldLabel"
     },
     {
       "name" : "name",

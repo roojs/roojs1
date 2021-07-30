@@ -5,11 +5,92 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.Alert",
+    "Roo.bootstrap.BezierSignature",
+    "Roo.bootstrap.Brick",
+    "Roo.bootstrap.Button",
+    "Roo.bootstrap.ButtonGroup",
+    "Roo.bootstrap.ButtonUploader",
+    "Roo.bootstrap.Calendar",
+    "Roo.bootstrap.Card",
+    "Roo.bootstrap.CardUploader",
+    "Roo.bootstrap.CheckBox",
+    "Roo.bootstrap.Column",
+    "Roo.bootstrap.ComboBox",
+    "Roo.bootstrap.Container",
+    "Roo.bootstrap.DateField",
+    "Roo.bootstrap.DateSplitField",
+    "Roo.bootstrap.DocumentManager",
+    "Roo.bootstrap.DocumentSlider",
+    "Roo.bootstrap.DocumentViewer",
+    "Roo.bootstrap.DropTarget",
+    "Roo.bootstrap.Element",
+    "Roo.bootstrap.FieldLabel",
+    "Roo.bootstrap.Form",
+    "Roo.bootstrap.Graph",
+    "Roo.bootstrap.Header",
+    "Roo.bootstrap.HtmlEditor",
+    "Roo.bootstrap.Img",
+    "Roo.bootstrap.Input",
+    "Roo.bootstrap.LayoutMasonry",
+    "Roo.bootstrap.LayoutMasonryAuto",
+    "Roo.bootstrap.Link",
+    "Roo.bootstrap.LocationPicker",
+    "Roo.bootstrap.Markdown",
+    "Roo.bootstrap.MasonryBrick",
+    "Roo.bootstrap.MessageBar",
+    "Roo.bootstrap.MoneyField",
+    "Roo.bootstrap.MonthField",
+    "Roo.bootstrap.NumberField",
+    "Roo.bootstrap.Pagination",
+    "Roo.bootstrap.PaginationItem",
+    "Roo.bootstrap.PagingToolbar",
+    "Roo.bootstrap.PhoneInput",
+    "Roo.bootstrap.Popover",
+    "Roo.bootstrap.PopoverNav",
+    "Roo.bootstrap.Progress",
+    "Roo.bootstrap.ProgressBar",
+    "Roo.bootstrap.Radio",
+    "Roo.bootstrap.RadioSet",
+    "Roo.bootstrap.Row",
+    "Roo.bootstrap.SecurePass",
+    "Roo.bootstrap.Slider",
+    "Roo.bootstrap.TabGroup",
+    "Roo.bootstrap.TabPanel",
+    "Roo.bootstrap.Table",
+    "Roo.bootstrap.TextArea",
+    "Roo.bootstrap.TimeField",
+    "Roo.bootstrap.TriggerField",
+    "Roo.bootstrap.UploadCropbox",
+    "Roo.bootstrap.breadcrumb.Item",
+    "Roo.bootstrap.breadcrumb.Nav",
+    "Roo.bootstrap.dash.NumberBox",
+    "Roo.bootstrap.dash.TabBox",
+    "Roo.bootstrap.dash.TabPane",
+    "Roo.bootstrap.htmleditor.ToolbarStandard",
+    "Roo.bootstrap.layout.Border",
+    "Roo.bootstrap.layout.Manager",
+    "Roo.bootstrap.menu.Item",
+    "Roo.bootstrap.menu.Menu",
+    "Roo.bootstrap.menu.Separator",
+    "Roo.bootstrap.nav.Group",
+    "Roo.bootstrap.nav.Headerbar",
+    "Roo.bootstrap.nav.Item",
+    "Roo.bootstrap.nav.ProgressBar",
+    "Roo.bootstrap.nav.ProgressBarItem",
+    "Roo.bootstrap.nav.Sidebar",
+    "Roo.bootstrap.nav.SidebarItem",
+    "Roo.bootstrap.nav.Simplebar"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap Popover class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : true,
   "memberOf" : "Popover",
   "example" : "",
   "deprecated" : "",
@@ -31,7 +112,7 @@
       "name" : "modal",
       "type" : "Boolean",
       "desc" : "- popovers that are modal will mask the screen, and must be closed with another event.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Popover"
     },
     {
       "name" : "listeners",
@@ -43,7 +124,7 @@
       "name" : "add",
       "type" : "String|Boolean|Roo.Element",
       "desc" : "click hander to trigger show over what element\n     - if false and it has a 'parent' then it will be automatically added to that element\n     - if string - Roo.get  will be called",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Popover"
     },
     {
       "name" : "tooltip",
@@ -67,13 +148,13 @@
       "name" : "delay",
       "type" : "Number",
       "desc" : "- delay before showing",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Popover"
     },
     {
       "name" : "trigger",
       "type" : "String",
       "desc" : "click || hover (or false to trigger manually)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Popover"
     },
     {
       "name" : "can_build_overlaid",
@@ -91,7 +172,7 @@
       "name" : "title",
       "type" : "String",
       "desc" : "of popover (or false to hide)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Popover"
     },
     {
       "name" : "style",
@@ -109,13 +190,13 @@
       "name" : "(right|top|bottom|left|auto)",
       "type" : "String|function",
       "desc" : "placement how it is placed",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Popover"
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "contents of the popover   (or false to use children..)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Popover"
     },
     {
       "name" : "cls",

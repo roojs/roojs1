@@ -7,7 +7,7 @@
 
 
 /**
- * @class Roo.bootstrap.DateSplitField
+ * @class Roo.bootstrap.form.DateSplitField
  * @extends Roo.bootstrap.Component
  * Bootstrap DateSplitField class
  * @cfg {string} fieldLabel - the label associated
@@ -33,22 +33,22 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.DateSplitField = function(config){
-    Roo.bootstrap.DateSplitField.superclass.constructor.call(this, config);
+Roo.bootstrap.form.DateSplitField = function(config){
+    Roo.bootstrap.form.DateSplitField.superclass.constructor.call(this, config);
     
     this.addEvents({
         // raw events
          /**
          * @event years
          * getting the data of years
-         * @param {Roo.bootstrap.DateSplitField} this
+         * @param {Roo.bootstrap.form.DateSplitField} this
          * @param {Object} years
          */
         "years" : true,
         /**
          * @event days
          * getting the data of days
-         * @param {Roo.bootstrap.DateSplitField} this
+         * @param {Roo.bootstrap.form.DateSplitField} this
          * @param {Object} days
          */
         "days" : true,
@@ -68,7 +68,7 @@ Roo.bootstrap.DateSplitField = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.form.DateSplitField, Roo.bootstrap.Component,  {
     
     fieldLabel : '',
     labelAlign : 'top',
@@ -178,7 +178,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         
         this.inputEl = this.el.select('.roo-date-split-field-group-value', true).first();
         
-        this.dayField = new Roo.bootstrap.ComboBox({
+        this.dayField = new Roo.bootstrap.form.ComboBox({
             allowBlank : this.dayAllowBlank,
             alwaysQuery : true,
             displayField : 'value',
@@ -210,7 +210,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
 
         this.dayField.render(this.el.select('.roo-date-split-field-day', true).first(), null);
         
-        this.monthField = new Roo.bootstrap.MonthField({
+        this.monthField = new Roo.bootstrap.form.MonthField({
             after : '<i class=\"fa fa-calendar\"></i>',
             allowBlank : this.monthAllowBlank,
             placeholder : this.monthPlaceholder,
@@ -232,7 +232,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         
         this.monthField.render(this.el.select('.roo-date-split-field-month', true).first(), null);
         
-        this.yearField = new Roo.bootstrap.ComboBox({
+        this.yearField = new Roo.bootstrap.form.ComboBox({
             allowBlank : this.yearAllowBlank,
             alwaysQuery : true,
             displayField : 'value',

@@ -1,11 +1,15 @@
 {
   "name" : "Roo.KeyNav",
   "augments" : [],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "<p>Provides a convenient wrapper for normalized keyboard navigation.  KeyNav allows you to bind\nnavigation keys to function calls that will get called when the keys are pressed, providing an easy\nway to implement custom navigation schemes for any UI component.</p>\n<p>The following are all of the possible keys that can be implemented: enter, left, right, up, down, tab, esc,\npageUp, pageDown, del, home, end.  Usage:</p>\n <pre><code>\nvar nav = new Roo.KeyNav(\"my-element\", {\n    \"left\" : function(e){\n        this.moveLeft(e.ctrlKey);\n    },\n    \"right\" : function(e){\n        this.moveRight(e.ctrlKey);\n    },\n    \"enter\" : function(e){\n        this.save();\n    },\n    scope : this\n});\n</code></pre>",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "KeyNav",
   "example" : "",
   "deprecated" : "",
@@ -33,19 +37,19 @@
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "True to disable this KeyNav instance (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.KeyNav"
     },
     {
       "name" : "defaultEventAction",
       "type" : "String",
       "desc" : "The method to call on the {@link Roo.EventObject} after this KeyNav intercepts a key.  Valid values are\n{@link Roo.EventObject#stopEvent}, {@link Roo.EventObject#preventDefault} and\n{@link Roo.EventObject#stopPropagation} (defaults to 'stopEvent')",
-      "memberOf" : ""
+      "memberOf" : "Roo.KeyNav"
     },
     {
       "name" : "forceKeyDown",
       "type" : "Boolean",
       "desc" : "Handle the keydown event instead of keypress (defaults to false).  KeyNav automatically does this for IE since\nIE does not propagate special keys on keypress, but setting this to true will force other browsers to also\nhandle keydown instead of keypress.",
-      "memberOf" : ""
+      "memberOf" : "Roo.KeyNav"
     }
   ],
   "methods" : [

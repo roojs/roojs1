@@ -7,11 +7,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap Showdown editable area",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Markdown",
   "example" : "",
   "deprecated" : "",
@@ -206,7 +210,7 @@
       "name" : "content",
       "type" : "string",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Markdown"
     },
     {
       "name" : "focusClass",

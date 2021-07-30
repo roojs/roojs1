@@ -3,14 +3,22 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.tree.TreeNode",
-    "Roo.tree.AsyncTreeNode"
-  ],
+  "childClasses" : {
+    "Roo.data.Node" : [
+      "Roo.tree.TreeNode"
+    ],
+    "Roo.tree.TreeNode" : [
+      "Roo.tree.AsyncTreeNode"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Node",
   "example" : "",
   "deprecated" : "",
@@ -38,13 +46,13 @@
       "name" : "id",
       "type" : "String",
       "desc" : "The id for this node. If one is not specified, one is generated.",
-      "memberOf" : ""
+      "memberOf" : "Roo.data.Node"
     },
     {
       "name" : "leaf",
       "type" : "Boolean",
       "desc" : "true if this node is a leaf and does not have children",
-      "memberOf" : ""
+      "memberOf" : "Roo.data.Node"
     }
   ],
   "methods" : [

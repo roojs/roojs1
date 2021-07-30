@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap NumberBox class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "NumberBox",
   "example" : "",
   "deprecated" : "",
@@ -31,7 +35,7 @@
       "name" : "footer",
       "type" : "String",
       "desc" : "Footer text",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.dash.NumberBox"
     },
     {
       "name" : "listeners",
@@ -61,7 +65,7 @@
       "name" : "content",
       "type" : "String",
       "desc" : "Box content",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.dash.NumberBox"
     },
     {
       "name" : "can_build_overlaid",
@@ -91,7 +95,7 @@
       "name" : "fhref",
       "type" : "String",
       "desc" : "Footer href",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.dash.NumberBox"
     },
     {
       "name" : "cls",
@@ -115,13 +119,13 @@
       "name" : "icon",
       "type" : "String",
       "desc" : "Box icon",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.dash.NumberBox"
     },
     {
       "name" : "headline",
       "type" : "String",
       "desc" : "Box headline",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.dash.NumberBox"
     },
     {
       "name" : "dataId",

@@ -6,11 +6,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Provides a lightweight HTML Editor component.\n\nThis has been tested on Fireforx / Chrome.. IE may not be so great..\n\n<br><br><b>Note: The focus/blur and validation marking functionality inherited from Ext.form.Field is NOT\nsupported by this editor.</b><br/><br/>\nAn Editor is a sensitive component that can't be used in all spots standard fields can be used. Putting an Editor within\nany element that has display set to 'none' can cause problems in Safari and Firefox.<br/><br/>",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "HtmlEditor",
   "example" : "",
   "deprecated" : "",
@@ -25,7 +29,7 @@
       "name" : "whitelist",
       "type" : "Array",
       "desc" : "of html tags - in addition to statndard whitelist",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.HtmlEditor"
     },
     {
       "name" : "hideMode",
@@ -49,25 +53,25 @@
       "name" : "resizable",
       "type" : "String",
       "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.HtmlEditor"
     },
     {
       "name" : "toolbars",
       "type" : "Array",
       "desc" : "Array of toolbars. - defaults to just the Standard one",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.HtmlEditor"
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.HtmlEditor"
     },
     {
       "name" : "allowComments",
       "type" : "boolean",
       "desc" : "- default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.HtmlEditor"
     },
     {
       "name" : "allowDomMove",
@@ -79,13 +83,13 @@
       "name" : "height",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.HtmlEditor"
     },
     {
       "name" : "clearUp",
       "type" : "Boolean",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.HtmlEditor"
     },
     {
       "name" : "value",
@@ -151,7 +155,7 @@
       "name" : "stylesheets",
       "type" : "Array",
       "desc" : "url of stylesheets. set to [] to disable stylesheets.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.HtmlEditor"
     },
     {
       "name" : "tabIndex",
@@ -163,7 +167,7 @@
       "name" : "blacklist",
       "type" : "Array",
       "desc" : "of html tags - in addition to standard blacklist.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.HtmlEditor"
     },
     {
       "name" : "qtip",

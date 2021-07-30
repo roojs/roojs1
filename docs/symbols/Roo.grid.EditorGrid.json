@@ -4,13 +4,19 @@
     "Roo.grid.Grid",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.grid.PropertyGrid"
-  ],
+  "childClasses" : {
+    "Roo.grid.EditorGrid" : [
+      "Roo.grid.PropertyGrid"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Class for creating and editable grid.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "EditorGrid",
   "example" : "",
   "deprecated" : "",
@@ -188,7 +194,7 @@
       "name" : "clicksToEdit",
       "type" : "Number",
       "desc" : "The number of clicks on a cell required to display the cell's editor (defaults to 2)",
-      "memberOf" : ""
+      "memberOf" : "Roo.grid.EditorGrid"
     },
     {
       "name" : "autoSizeHeaders",

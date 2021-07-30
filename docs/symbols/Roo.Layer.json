@@ -3,11 +3,15 @@
   "augments" : [
     "Roo.Element"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "An extended {@link Roo.Element} object that supports a shadow and shim, constrain to viewport and\nautomatic maintaining of shadow/shim positions.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Layer",
   "example" : "",
   "deprecated" : "",
@@ -35,43 +39,43 @@
       "name" : "shadow",
       "type" : "String/Boolean",
       "desc" : "True to create a shadow element with default class \"x-layer-shadow\", or\nyou can pass a string with a CSS class name. False turns off the shadow.",
-      "memberOf" : ""
+      "memberOf" : "Roo.Layer"
     },
     {
       "name" : "constrain",
       "type" : "Boolean",
       "desc" : "False to disable constrain to viewport (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Layer"
     },
     {
       "name" : "zindex",
       "type" : "Number",
       "desc" : "Starting z-index (defaults to 11000)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Layer"
     },
     {
       "name" : "shadowOffset",
       "type" : "Number",
       "desc" : "Number of pixels to offset the shadow (defaults to 3)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Layer"
     },
     {
       "name" : "dh",
       "type" : "Object",
       "desc" : "DomHelper object config to create element with (defaults to {tag: \"div\", cls: \"x-layer\"}).",
-      "memberOf" : ""
+      "memberOf" : "Roo.Layer"
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "CSS class to add to the element",
-      "memberOf" : ""
+      "memberOf" : "Roo.Layer"
     },
     {
       "name" : "shim",
       "type" : "Boolean",
       "desc" : "False to disable the iframe shim in browsers which need one (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Layer"
     }
   ],
   "methods" : [

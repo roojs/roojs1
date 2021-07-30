@@ -6,24 +6,36 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.form.TextArea",
-    "Roo.form.MonthField",
-    "Roo.form.ComboBox",
-    "Roo.form.ComboNested",
-    "Roo.form.TriggerField",
-    "Roo.form.Hidden",
-    "Roo.form.ComboCheck",
-    "Roo.form.DateField",
-    "Roo.form.ComboBoxArray",
-    "Roo.form.FCKeditor",
-    "Roo.form.Select",
-    "Roo.form.NumberField"
-  ],
+  "childClasses" : {
+    "Roo.form.TextArea" : [
+      "Roo.form.FCKeditor"
+    ],
+    "Roo.form.TextField" : [
+      "Roo.form.ComboBoxArray",
+      "Roo.form.Hidden",
+      "Roo.form.NumberField",
+      "Roo.form.TextArea",
+      "Roo.form.TriggerField"
+    ],
+    "Roo.form.ComboBox" : [
+      "Roo.form.ComboCheck",
+      "Roo.form.ComboNested"
+    ],
+    "Roo.form.TriggerField" : [
+      "Roo.form.ComboBox",
+      "Roo.form.DateField",
+      "Roo.form.MonthField",
+      "Roo.form.Select"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Basic text field.  Can be used as a direct replacement for traditional text inputs, or as the base\nclass for more sophisticated input controls (like {@link Roo.form.TextArea} and {@link Roo.form.ComboBox}).",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "TextField",
   "example" : "",
   "deprecated" : "",
@@ -51,7 +63,7 @@
       "name" : "disableKeyFilter",
       "type" : "Boolean",
       "desc" : "True to disable input keystroke filtering (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "disabled",
@@ -63,7 +75,7 @@
       "name" : "validator",
       "type" : "Function",
       "desc" : "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "name",
@@ -81,7 +93,7 @@
       "name" : "regexText",
       "type" : "String",
       "desc" : "The error text to display if {@link #regex} is used and the test fails during validation (defaults to \"\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "allowDomMove",
@@ -105,7 +117,7 @@
       "name" : "emptyText",
       "type" : "String",
       "desc" : "The default text to display in an empty field - placeholder... (defaults to null).",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "msgFx",
@@ -129,13 +141,13 @@
       "name" : "maxLengthText",
       "type" : "String",
       "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "minLengthText",
       "type" : "String",
       "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "listeners",
@@ -183,7 +195,7 @@
       "name" : "allowLeadingSpace",
       "type" : "Boolean",
       "desc" : "True to prevent the stripping of leading white space",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "autoCreate",
@@ -201,19 +213,19 @@
       "name" : "maskRe",
       "type" : "String",
       "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "vtype",
       "type" : "String",
       "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "growMin",
       "type" : "Number",
       "desc" : "The minimum width to allow when grow = true (defaults to 30)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "validationEvent",
@@ -231,7 +243,7 @@
       "name" : "blankText",
       "type" : "String",
       "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "validationDelay",
@@ -243,7 +255,7 @@
       "name" : "selectOnFocus",
       "type" : "Boolean",
       "desc" : "True to automatically select any existing field text when the field receives input focus (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "disableClass",
@@ -261,31 +273,31 @@
       "name" : "growMax",
       "type" : "Number",
       "desc" : "The maximum width to allow when grow = true (defaults to 800)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "regex",
       "type" : "RegExp",
       "desc" : "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "minLength",
       "type" : "Number",
       "desc" : "Minimum input field length required (defaults to 0)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "grow",
       "type" : "Boolean",
       "desc" : "True if this field should automatically grow and shrink to its content",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "allowBlank",
       "type" : "Boolean",
       "desc" : "False to validate that the value length > 0 (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "qtip",
@@ -297,7 +309,7 @@
       "name" : "maxLength",
       "type" : "Number",
       "desc" : "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.TextField"
     },
     {
       "name" : "invalidText",

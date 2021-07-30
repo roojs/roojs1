@@ -6,35 +6,35 @@
  */
  
 /**
- * @class Roo.bootstrap.TriggerField
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.TriggerField
+ * @extends Roo.bootstrap.form.Input
  * Provides a convenient wrapper for TextFields that adds a clickable trigger button (looks like a combobox by default).
  * The trigger has no default action, so you must assign a function to implement the trigger click handler by
  * overriding {@link #onTriggerClick}. You can create a TriggerField directly, as it renders exactly like a combobox
  * for which you can provide a custom implementation.  For example:
  * <pre><code>
-var trigger = new Roo.bootstrap.TriggerField();
+var trigger = new Roo.bootstrap.form.TriggerField();
 trigger.onTriggerClick = myTriggerFn;
 trigger.applyTo('my-field');
 </code></pre>
  *
  * However, in general you will most likely want to use TriggerField as the base class for a reusable component.
- * {@link Roo.bootstrap.DateField} and {@link Roo.bootstrap.ComboBox} are perfect examples of this.
+ * {@link Roo.bootstrap.form.DateField} and {@link Roo.bootstrap.form.ComboBox} are perfect examples of this.
  * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
  * class 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.
  * @cfg {String} caret (search|calendar) BS3 only - carat fa name
 
  * @constructor
  * Create a new TriggerField.
- * @param {Object} config Configuration options (valid {@Roo.bootstrap.Input} config options will also be applied
+ * @param {Object} config Configuration options (valid {@Roo.bootstrap.form.Input} config options will also be applied
  * to the base TextField)
  */
-Roo.bootstrap.TriggerField = function(config){
+Roo.bootstrap.form.TriggerField = function(config){
     this.mimicing = false;
-    Roo.bootstrap.TriggerField.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.TriggerField.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.TriggerField, Roo.bootstrap.form.Input,  {
     /**
      * @cfg {String} triggerClass A CSS class to apply to the trigger
      */
@@ -400,7 +400,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     // private
     onResize : function(w, h){
-//        Roo.bootstrap.TriggerField.superclass.onResize.apply(this, arguments);
+//        Roo.bootstrap.form.TriggerField.superclass.onResize.apply(this, arguments);
 //        if(typeof w == 'number'){
 //            var x = w - this.trigger.getWidth();
 //            this.inputEl().setWidth(this.adjustWidth('input', x));
@@ -431,7 +431,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         this.createList();
         
-        Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
+        Roo.bootstrap.form.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         if(!this.multiple && this.showToggleBtn){
             this.trigger = this.el.select('span.dropdown-toggle',true).first();
@@ -504,12 +504,12 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         //if(this.wrap){
         //    this.wrap.remove();
         //}
-        Roo.bootstrap.TriggerField.superclass.onDestroy.call(this);
+        Roo.bootstrap.form.TriggerField.superclass.onDestroy.call(this);
     },
 
     // private
     onFocus : function(){
-        Roo.bootstrap.TriggerField.superclass.onFocus.call(this);
+        Roo.bootstrap.form.TriggerField.superclass.onFocus.call(this);
         /*
         if(!this.mimicing){
             this.wrap.addClass('x-trigger-wrap-focus');
@@ -551,7 +551,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             this.el.un("keydown", this.checkTab, this);
         }
         //this.wrap.removeClass('x-trigger-wrap-focus');
-        Roo.bootstrap.TriggerField.superclass.onBlur.call(this);
+        Roo.bootstrap.form.TriggerField.superclass.onBlur.call(this);
     },
 
     // private
@@ -563,7 +563,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     // private
     onDisable : function(){
         this.inputEl().dom.disabled = true;
-        //Roo.bootstrap.TriggerField.superclass.onDisable.call(this);
+        //Roo.bootstrap.form.TriggerField.superclass.onDisable.call(this);
         //if(this.wrap){
         //    this.wrap.addClass('x-item-disabled');
         //}
@@ -572,7 +572,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     // private
     onEnable : function(){
         this.inputEl().dom.disabled = false;
-        //Roo.bootstrap.TriggerField.superclass.onEnable.call(this);
+        //Roo.bootstrap.form.TriggerField.superclass.onEnable.call(this);
         //if(this.wrap){
         //    this.el.removeClass('x-item-disabled');
         //}

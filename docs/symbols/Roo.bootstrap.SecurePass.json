@@ -6,11 +6,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap SecurePass class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "SecurePass",
   "example" : "",
   "deprecated" : "",
@@ -122,7 +126,7 @@
       "name" : "errors",
       "type" : "String/Object",
       "desc" : "A Error spec, or true for a default spec (defaults to\n{\n PwdEmpty: \"Please type a password, and then retype it to confirm.\",\n PwdShort: \"Your password must be at least 6 characters long. Please type a different password.\",\n PwdLong: \"Your password can't contain more than 16 characters. Please type a different password.\",\n PwdBadChar: \"The password contains characters that aren't allowed. Please type a different password.\",\n IDInPwd: \"Your password can't include the part of your ID. Please type a different password.\",\n FNInPwd: \"Your password can't contain your first name. Please type a different password.\",\n LNInPwd: \"Your password can't contain your last name. Please type a different password.\"\n})",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.SecurePass"
     },
     {
       "name" : "allowDomMove",
@@ -152,7 +156,7 @@
       "name" : "Label",
       "type" : "String/Object",
       "desc" : "for the strength meter (defaults to\n'Password strength:')",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.SecurePass"
     },
     {
       "name" : "hasFeedback",
@@ -284,7 +288,7 @@
       "name" : "pwdStrengths",
       "type" : "String/Object",
       "desc" : "A pwdStrengths spec, or true for a default spec (defaults to\n['Weak', 'Medium', 'Strong'])",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.SecurePass"
     },
     {
       "name" : "fieldLabel",

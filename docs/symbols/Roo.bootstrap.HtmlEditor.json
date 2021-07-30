@@ -7,11 +7,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap HtmlEditor class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "HtmlEditor",
   "example" : "",
   "deprecated" : "",
@@ -99,19 +103,19 @@
       "name" : "resizable",
       "type" : "String",
       "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.HtmlEditor"
     },
     {
       "name" : "toolbars",
       "type" : "Array",
       "desc" : "Array of toolbars. - defaults to just the Standard one",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.HtmlEditor"
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.HtmlEditor"
     },
     {
       "name" : "autocomplete",
@@ -147,7 +151,7 @@
       "name" : "height",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.HtmlEditor"
     },
     {
       "name" : "style",
@@ -249,7 +253,7 @@
       "name" : "buttons",
       "type" : "Array",
       "desc" : "Array of toolbar's buttons. - defaults to empty",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.HtmlEditor"
     },
     {
       "name" : "rows",
@@ -357,7 +361,7 @@
       "name" : "stylesheets",
       "type" : "Array",
       "desc" : "url of stylesheets. set to [] to disable stylesheets.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.HtmlEditor"
     },
     {
       "name" : "resize",

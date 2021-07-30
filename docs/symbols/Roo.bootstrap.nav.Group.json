@@ -5,11 +5,18 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.nav.Item",
+    "Roo.bootstrap.nav.SidebarItem"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap NavGroup class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Group",
   "example" : "",
   "deprecated" : "",
@@ -55,25 +62,25 @@
       "name" : "align",
       "type" : "String",
       "desc" : "t)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Group"
     },
     {
       "name" : "inverse",
       "type" : "Boolean",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Group"
     },
     {
       "name" : "pilltype",
       "type" : "Boolean",
       "desc" : "default true (turn to off to disable active toggle)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Group"
     },
     {
       "name" : "navId",
       "type" : "String",
       "desc" : "- reference Id for navbar.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Group"
     },
     {
       "name" : "can_build_overlaid",
@@ -127,7 +134,7 @@
       "name" : "type",
       "type" : "String",
       "desc" : "b) default nav",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Group"
     },
     {
       "name" : "name",

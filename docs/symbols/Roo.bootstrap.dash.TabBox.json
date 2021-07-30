@@ -5,11 +5,17 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.dash.TabPane"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap TabBox class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "TabBox",
   "example" : "",
   "deprecated" : "",
@@ -67,7 +73,7 @@
       "name" : "title",
       "type" : "String",
       "desc" : "Title of the TabBox",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.dash.TabBox"
     },
     {
       "name" : "style",
@@ -103,7 +109,7 @@
       "name" : "icon",
       "type" : "String",
       "desc" : "Icon of the TabBox",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.dash.TabBox"
     },
     {
       "name" : "dataId",
@@ -115,7 +121,7 @@
       "name" : "tabScrollable",
       "type" : "Boolean",
       "desc" : "e) tab scrollable when mobile view default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.dash.TabBox"
     },
     {
       "name" : "name",
@@ -133,7 +139,7 @@
       "name" : "showtabs",
       "type" : "Boolean",
       "desc" : "e) show the tabs default true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.dash.TabBox"
     }
   ],
   "methods" : [

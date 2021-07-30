@@ -6,11 +6,21 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.panel.Content",
+    "Roo.bootstrap.panel.Grid",
+    "Roo.bootstrap.panel.Nest",
+    "Roo.bootstrap.panel.Nest",
+    "Roo.bootstrap.panel.Grid"
+  ],
+  "tree_parent" : [],
   "desc" : "This class represents a common layout manager used in desktop applications. For screenshots and more details,\nplease see: examples/bootstrap/nested.html<br><br>\n \n<b>The container the layout is rendered into can be either the body element or any other element.\nIf it is not the body element, the container needs to either be an absolute positioned element,\nor you will need to add \"position:relative\" to the css of the container.  You will also need to specify\nthe container size if it is not the body element.</b>",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : true,
   "memberOf" : "Border",
   "example" : "",
   "deprecated" : "",
@@ -32,7 +42,7 @@
       "name" : "center",
       "type" : "Roo.bootstrap.layout.Region",
       "desc" : "region to go in center",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.layout.Border"
     },
     {
       "name" : "listeners",
@@ -62,13 +72,13 @@
       "name" : "east",
       "type" : "Roo.bootstrap.layout.Region",
       "desc" : "region to go in east",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.layout.Border"
     },
     {
       "name" : "west",
       "type" : "Roo.bootstrap.layout.Region",
       "desc" : "region to go in west",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.layout.Border"
     },
     {
       "name" : "can_build_overlaid",
@@ -116,13 +126,13 @@
       "name" : "south",
       "type" : "Roo.bootstrap.layout.Region",
       "desc" : "region to go in south",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.layout.Border"
     },
     {
       "name" : "north",
       "type" : "Roo.bootstrap.layout.Region",
       "desc" : "region to go in north",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.layout.Border"
     },
     {
       "name" : "dataId",

@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap BezierSignature class\nThis script refer to:\n   Title: Signature Pad\n   Author: szimek\n   Availability: https://github.com/szimek/signature_pad",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "BezierSignature",
   "example" : "",
   "deprecated" : "",
@@ -31,7 +35,7 @@
       "name" : "Callback",
       "type" : "function",
       "desc" : "when stroke begin.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.BezierSignature"
     },
     {
       "name" : "listeners",
@@ -43,19 +47,19 @@
       "name" : "Radius",
       "type" : "float|function",
       "desc" : "of a single dot.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.BezierSignature"
     },
     {
       "name" : "canvas",
       "type" : "int",
       "desc" : "height",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.BezierSignature"
     },
     {
       "name" : "Add",
       "type" : "integer",
       "desc" : "the next point only if the previous one is farther than x pixels. Defaults to 5.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.BezierSignature"
     },
     {
       "name" : "tooltip",
@@ -79,7 +83,7 @@
       "name" : "Weight",
       "type" : "float",
       "desc" : "used to modify new velocity based on the previous velocity. Defaults to 0.7.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.BezierSignature"
     },
     {
       "name" : "can_build_overlaid",
@@ -109,7 +113,7 @@
       "name" : "Draw",
       "type" : "integer",
       "desc" : "the next point at most once per every x milliseconds. Set it to 0 to turn off throttling. Defaults to 16.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.BezierSignature"
     },
     {
       "name" : "cls",
@@ -121,7 +125,7 @@
       "name" : "Color",
       "type" : "string",
       "desc" : "used to draw the lines. Can be any color format accepted by context.fillStyle. Defaults to \"black\".",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.BezierSignature"
     },
     {
       "name" : "xattr",
@@ -145,13 +149,13 @@
       "name" : "Minimum",
       "type" : "float",
       "desc" : "width of a line. Defaults to 0.5.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.BezierSignature"
     },
     {
       "name" : "Maximum",
       "type" : "float",
       "desc" : "width of a line. Defaults to 2.5.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.BezierSignature"
     },
     {
       "name" : "name",

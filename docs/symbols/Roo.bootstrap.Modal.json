@@ -5,11 +5,93 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.Alert",
+    "Roo.bootstrap.BezierSignature",
+    "Roo.bootstrap.Brick",
+    "Roo.bootstrap.Button",
+    "Roo.bootstrap.ButtonGroup",
+    "Roo.bootstrap.ButtonUploader",
+    "Roo.bootstrap.Calendar",
+    "Roo.bootstrap.Card",
+    "Roo.bootstrap.CardUploader",
+    "Roo.bootstrap.CheckBox",
+    "Roo.bootstrap.Column",
+    "Roo.bootstrap.ComboBox",
+    "Roo.bootstrap.Container",
+    "Roo.bootstrap.DateField",
+    "Roo.bootstrap.DateSplitField",
+    "Roo.bootstrap.DocumentManager",
+    "Roo.bootstrap.DocumentSlider",
+    "Roo.bootstrap.DocumentViewer",
+    "Roo.bootstrap.DropTarget",
+    "Roo.bootstrap.Element",
+    "Roo.bootstrap.FieldLabel",
+    "Roo.bootstrap.Form",
+    "Roo.bootstrap.Graph",
+    "Roo.bootstrap.Header",
+    "Roo.bootstrap.HtmlEditor",
+    "Roo.bootstrap.Img",
+    "Roo.bootstrap.Input",
+    "Roo.bootstrap.LayoutMasonry",
+    "Roo.bootstrap.LayoutMasonryAuto",
+    "Roo.bootstrap.Link",
+    "Roo.bootstrap.LocationPicker",
+    "Roo.bootstrap.Markdown",
+    "Roo.bootstrap.MasonryBrick",
+    "Roo.bootstrap.MessageBar",
+    "Roo.bootstrap.MoneyField",
+    "Roo.bootstrap.MonthField",
+    "Roo.bootstrap.NumberField",
+    "Roo.bootstrap.Pagination",
+    "Roo.bootstrap.PaginationItem",
+    "Roo.bootstrap.PagingToolbar",
+    "Roo.bootstrap.PhoneInput",
+    "Roo.bootstrap.Popover",
+    "Roo.bootstrap.Progress",
+    "Roo.bootstrap.ProgressBar",
+    "Roo.bootstrap.Radio",
+    "Roo.bootstrap.RadioSet",
+    "Roo.bootstrap.Row",
+    "Roo.bootstrap.SecurePass",
+    "Roo.bootstrap.Slider",
+    "Roo.bootstrap.TabGroup",
+    "Roo.bootstrap.TabPanel",
+    "Roo.bootstrap.Table",
+    "Roo.bootstrap.TextArea",
+    "Roo.bootstrap.TimeField",
+    "Roo.bootstrap.TriggerField",
+    "Roo.bootstrap.UploadCropbox",
+    "Roo.bootstrap.breadcrumb.Item",
+    "Roo.bootstrap.breadcrumb.Nav",
+    "Roo.bootstrap.dash.NumberBox",
+    "Roo.bootstrap.dash.TabBox",
+    "Roo.bootstrap.dash.TabPane",
+    "Roo.bootstrap.htmleditor.ToolbarStandard",
+    "Roo.bootstrap.layout.Border",
+    "Roo.bootstrap.layout.Manager",
+    "Roo.bootstrap.menu.Item",
+    "Roo.bootstrap.menu.Menu",
+    "Roo.bootstrap.menu.Separator",
+    "Roo.bootstrap.nav.Group",
+    "Roo.bootstrap.nav.Headerbar",
+    "Roo.bootstrap.nav.Item",
+    "Roo.bootstrap.nav.ProgressBar",
+    "Roo.bootstrap.nav.ProgressBarItem",
+    "Roo.bootstrap.nav.Sidebar",
+    "Roo.bootstrap.nav.SidebarItem",
+    "Roo.bootstrap.nav.Simplebar"
+  ],
+  "tree_parent" : [
+    "none"
+  ],
   "desc" : "Bootstrap Modal class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : true,
   "memberOf" : "Modal",
   "example" : "",
   "deprecated" : "",
@@ -31,7 +113,7 @@
       "name" : "editableTitle",
       "type" : "Boolean",
       "desc" : "can the title be edited",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "listeners",
@@ -43,13 +125,13 @@
       "name" : "bodyOverflow",
       "type" : "Boolean",
       "desc" : "should the body element have overflow auto added default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "max_width",
       "type" : "Number",
       "desc" : "set the max width of modal",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "tooltip",
@@ -73,7 +155,7 @@
       "name" : "buttons[]",
       "type" : "Roo.bootstrap.Button",
       "desc" : "Array of buttons or standard button set..",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "can_build_overlaid",
@@ -91,7 +173,7 @@
       "name" : "title",
       "type" : "String",
       "desc" : "Title of dialog",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "style",
@@ -109,19 +191,19 @@
       "name" : "tmpl",
       "type" : "Roo.Template",
       "desc" : "- a template with variables. to use it, add a handler in show:method  adn",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "- the body of the dialog (for simple ones) - you can also use template..",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "buttonPosition",
       "type" : "String",
       "desc" : "r) default right (DEPRICATED) - use mr-auto on buttons to put them on the left",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "cls",
@@ -133,7 +215,7 @@
       "name" : "fitwindow",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "xattr",
@@ -151,13 +233,13 @@
       "name" : "specificTitle",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "fixed width - usefull for chrome extension only really.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "dataId",
@@ -169,19 +251,19 @@
       "name" : "allow_close",
       "type" : "Boolean",
       "desc" : "default true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "fixed height - usefull for chrome extension only really.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "size",
       "type" : "String",
       "desc" : "l) default empty",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     },
     {
       "name" : "name",
@@ -199,7 +281,7 @@
       "name" : "animate",
       "type" : "Boolean",
       "desc" : "default true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Modal"
     }
   ],
   "methods" : [

@@ -5,11 +5,19 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.Graph",
+    "Roo.bootstrap.Column",
+    "Roo.bootstrap.TabGroup"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap TabPane class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "TabPane",
   "example" : "",
   "deprecated" : "",
@@ -67,7 +75,7 @@
       "name" : "title",
       "type" : "String",
       "desc" : "title of panel",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.dash.TabPane"
     },
     {
       "name" : "style",
@@ -109,7 +117,7 @@
       "name" : "active",
       "type" : "Boolean",
       "desc" : "e) Default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.dash.TabPane"
     },
     {
       "name" : "name",

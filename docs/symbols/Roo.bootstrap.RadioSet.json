@@ -6,11 +6,17 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.Radio"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap RadioSet class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "RadioSet",
   "example" : "",
   "deprecated" : "",
@@ -98,7 +104,7 @@
       "name" : "weight",
       "type" : "String",
       "desc" : "s) The text that appears beside the radio",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.RadioSet"
     },
     {
       "name" : "autocomplete",
@@ -200,7 +206,7 @@
       "name" : "indicatorpos",
       "type" : "String",
       "desc" : "t) default left",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.RadioSet"
     },
     {
       "name" : "align",
@@ -212,7 +218,7 @@
       "name" : "inline",
       "type" : "Boolean",
       "desc" : "e) inline the element (default true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.RadioSet"
     },
     {
       "name" : "size",

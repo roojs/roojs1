@@ -6,8 +6,8 @@
  */
 
 /**
- * @class Roo.bootstrap.DateField
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.DateField
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap DateField class
  * @cfg {Number} weekStart default 0
  * @cfg {String} viewMode default empty, (months|years)
@@ -28,41 +28,41 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.DateField = function(config){
-    Roo.bootstrap.DateField.superclass.constructor.call(this, config);
+Roo.bootstrap.form.DateField = function(config){
+    Roo.bootstrap.form.DateField.superclass.constructor.call(this, config);
      this.addEvents({
             /**
              * @event show
              * Fires when this field show.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.form.DateField} this
              * @param {Mixed} date The date value
              */
             show : true,
             /**
              * @event show
              * Fires when this field hide.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.form.DateField} this
              * @param {Mixed} date The date value
              */
             hide : true,
             /**
              * @event select
              * Fires when select a date.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.form.DateField} this
              * @param {Mixed} date The date value
              */
             select : true,
             /**
              * @event beforeselect
              * Fires when before select a date.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.form.DateField} this
              * @param {Mixed} date The date value
              */
             beforeselect : true
         });
 };
 
-Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     /**
      * @cfg {String} format
@@ -135,13 +135,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onRender: function(ct, position)
     {
         
-        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.form.DateField.superclass.onRender.call(this, ct, position);
         
         this.language = this.language || 'en';
-        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
-        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : "en";
+        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : this.language.split('-')[0];
+        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : "en";
         
-        this.isRTL = Roo.bootstrap.DateField.dates[this.language].rtl || false;
+        this.isRTL = Roo.bootstrap.form.DateField.dates[this.language].rtl || false;
         this.format = this.format || 'm/d/y';
         this.isInline = false;
         this.isInput = true;
@@ -177,9 +177,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
         }
                 
-        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.DateField.template);
         
-//        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
+//        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.form.DateField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -207,7 +207,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 return;
             }
             
-            v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today;
+            v.dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].today;
             v.attr('colspan', function(i, val){
                 return parseInt(val) + 1;
             });
@@ -260,7 +260,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             dow.cn.push({
                 tag: 'th',
                 cls: 'dow',
-                html: Roo.bootstrap.DateField.dates[this.language].daysMin[(dowCnt++)%7]
+                html: Roo.bootstrap.form.DateField.dates[this.language].daysMin[(dowCnt++)%7]
             });
         }
         
@@ -278,7 +278,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             var month = {
                 tag: 'span',
                 cls: 'month',
-                html: Roo.bootstrap.DateField.dates[this.language].monthsShort[i++]
+                html: Roo.bootstrap.form.DateField.dates[this.language].monthsShort[i++]
             };
             
             months.createChild(month);
@@ -313,9 +313,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 currentDate = this.date && this.date.valueOf(),
                 today = this.UTCToday();
         
-        this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
+        this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].months[month]+' '+year;
         
-//        this.picker().select('>tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today;
+//        this.picker().select('>tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].today;
         
 //        this.picker.select('>tfoot th.today').
 //						.text(dates[this.language].today)
@@ -453,7 +453,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
             v.hide();
         });
-        this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
+        this.picker().select('>.datepicker-'+Roo.bootstrap.form.DateField.modes[this.viewMode].clsName, true).first().show();
     },
     
     place: function()
@@ -509,13 +509,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     onFocus : function()
     {
-        Roo.bootstrap.DateField.superclass.onFocus.call(this);
+        Roo.bootstrap.form.DateField.superclass.onFocus.call(this);
         this.showPopup();
     },
     
     onBlur : function()
     {
-        Roo.bootstrap.DateField.superclass.onBlur.call(this);
+        Roo.bootstrap.form.DateField.superclass.onBlur.call(this);
         
         var d = this.inputEl().getValue();
         
@@ -554,7 +554,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     keyup: function(e)
     {
-        Roo.bootstrap.DateField.superclass.keyup.call(this);
+        Roo.bootstrap.form.DateField.superclass.keyup.call(this);
         this.update();
     },
 
@@ -565,13 +565,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
             if(isNaN(d.getTime())){
                 this.date = this.viewDate = '';
-                Roo.bootstrap.DateField.superclass.setValue.call(this, '');
+                Roo.bootstrap.form.DateField.superclass.setValue.call(this, '');
                 return;
             }
 
             v = this.formatDate(d);
 
-            Roo.bootstrap.DateField.superclass.setValue.call(this, v);
+            Roo.bootstrap.form.DateField.superclass.setValue.call(this, v);
 
             this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
 
@@ -703,7 +703,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         break;
                     case 'prev':
                     case 'next':
-                        var dir = Roo.bootstrap.DateField.modes[this.viewMode].navStep * (className == 'prev' ? -1 : 1);
+                        var dir = Roo.bootstrap.form.DateField.modes[this.viewMode].navStep * (className == 'prev' ? -1 : 1);
                         switch(this.viewMode){
                                 case 0:
                                         this.viewDate = this.moveMonth(this.viewDate, dir);
@@ -732,7 +732,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
                 this.viewDate.setUTCDate(1);
                     if (className.indexOf('month') > -1) {
-                        this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
+                        this.viewDate.setUTCMonth(Roo.bootstrap.form.DateField.dates[this.language].monthsShort.indexOf(html));
                     } else {
                         var year = parseInt(html, 10) || 0;
                         this.viewDate.setUTCFullYear(year);
@@ -987,12 +987,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         this.date = this.viewDate = '';
         
-        Roo.bootstrap.DateField.superclass.setValue.call(this, '');
+        Roo.bootstrap.form.DateField.superclass.setValue.call(this, '');
     }
    
 });
 
-Roo.apply(Roo.bootstrap.DateField,  {
+Roo.apply(Roo.bootstrap.form.DateField,  {
     
     head : {
         tag: 'thead',
@@ -1082,7 +1082,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
     }]
 });
 
-Roo.apply(Roo.bootstrap.DateField,  {
+Roo.apply(Roo.bootstrap.form.DateField,  {
   
     template : {
         tag: 'div',
@@ -1096,11 +1096,11 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 tag: 'table',
                 cls: 'table-condensed',
                 cn:[
-                Roo.bootstrap.DateField.head,
+                Roo.bootstrap.form.DateField.head,
                 {
                     tag: 'tbody'
                 },
-                Roo.bootstrap.DateField.footer
+                Roo.bootstrap.form.DateField.footer
                 ]
             }
             ]
@@ -1113,9 +1113,9 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 tag: 'table',
                 cls: 'table-condensed',
                 cn:[
-                Roo.bootstrap.DateField.head,
-                Roo.bootstrap.DateField.content,
-                Roo.bootstrap.DateField.footer
+                Roo.bootstrap.form.DateField.head,
+                Roo.bootstrap.form.DateField.content,
+                Roo.bootstrap.form.DateField.footer
                 ]
             }
             ]
@@ -1128,9 +1128,9 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 tag: 'table',
                 cls: 'table-condensed',
                 cn:[
-                Roo.bootstrap.DateField.head,
-                Roo.bootstrap.DateField.content,
-                Roo.bootstrap.DateField.footer
+                Roo.bootstrap.form.DateField.head,
+                Roo.bootstrap.form.DateField.content,
+                Roo.bootstrap.form.DateField.footer
                 ]
             }
             ]

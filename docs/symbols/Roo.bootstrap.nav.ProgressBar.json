@@ -5,11 +5,17 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.nav.ProgressBarItem"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap NavProgressBar class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "ProgressBar",
   "example" : "",
   "deprecated" : "",
@@ -103,7 +109,7 @@
       "name" : "NavProgressBar:bullets[]",
       "type" : "Roo.bootstrap.nav.ProgressItem",
       "desc" : "Bullets for the Nav Progress bar for the toolbar",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.ProgressBar"
     },
     {
       "name" : "name",

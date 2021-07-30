@@ -6,11 +6,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "A Day picker show [M] [T] [W] ....",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "DayPicker",
   "example" : "",
   "deprecated" : "",
@@ -116,7 +120,7 @@
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"checkbox\", autocomplete: \"off\"})",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.DayPicker"
     },
     {
       "name" : "invalidText",
@@ -152,13 +156,13 @@
       "name" : "fieldClass",
       "type" : "String",
       "desc" : "The default CSS class for the checkbox (defaults to \"x-form-field\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.DayPicker"
     },
     {
       "name" : "focusClass",
       "type" : "String",
       "desc" : "The CSS class to use when the checkbox receives focus (defaults to undefined)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.DayPicker"
     },
     {
       "name" : "name",

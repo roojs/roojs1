@@ -6,7 +6,7 @@
  */
 
 /**
- * @class Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.Input
  * @extends Roo.bootstrap.Component
  * Bootstrap Input class
  * @cfg {Boolean} disabled is it disabled
@@ -44,9 +44,9 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Input = function(config){
+Roo.bootstrap.form.Input = function(config){
     
-    Roo.bootstrap.Input.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.Input.superclass.constructor.call(this, config);
     
     this.addEvents({
         /**
@@ -107,7 +107,7 @@ Roo.bootstrap.Input = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      /**
      * @cfg {String/Boolean} validationEvent The event that should initiate field validation. Set to false to disable
       automatic validation (defaults to "keyup").

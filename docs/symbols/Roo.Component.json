@@ -3,140 +3,195 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.bootstrap.Card",
-    "Roo.form.TextArea",
-    "Roo.form.MonthField",
-    "Roo.form.ComboBox",
-    "Roo.form.GridField",
-    "Roo.bootstrap.DocumentViewer",
-    "Roo.bootstrap.DateField",
-    "Roo.bootstrap.Button",
-    "Roo.form.DisplayField",
-    "Roo.form.ComboNested",
-    "Roo.bootstrap.Calendar",
-    "Roo.bootstrap.TabGroup",
-    "Roo.bootstrap.Component",
-    "Roo.menu.DateItem",
-    "Roo.form.Checkbox",
-    "Roo.bootstrap.Form",
-    "Roo.bootstrap.Graph",
-    "Roo.bootstrap.BezierSignature",
-    "Roo.tree.TreeEditor",
-    "Roo.bootstrap.dash.NumberBox",
-    "Roo.bootstrap.Alert",
-    "Roo.bootstrap.TriggerField",
-    "Roo.bootstrap.MonthField",
-    "Roo.bootstrap.PagingToolbar",
-    "Roo.bootstrap.htmleditor.ToolbarStandard",
-    "Roo.bootstrap.TabPanel",
-    "Roo.bootstrap.DateSplitField",
-    "Roo.bootstrap.Container",
-    "Roo.Editor",
-    "Roo.bootstrap.CardHeader",
-    "Roo.bootstrap.Modal",
-    "Roo.bootstrap.TableRow",
-    "Roo.bootstrap.CheckBox",
-    "Roo.bootstrap.DocumentSlider",
-    "Roo.form.Radio",
-    "Roo.bootstrap.TimeField",
-    "Roo.bootstrap.Radio",
-    "Roo.bootstrap.TableBody",
-    "Roo.form.TriggerField",
-    "Roo.bootstrap.Input",
-    "Roo.bootstrap.dash.TabBox",
-    "Roo.bootstrap.DocumentManager",
-    "Roo.form.Column",
-    "Roo.bootstrap.nav.SidebarItem",
-    "Roo.bootstrap.Progress",
-    "Roo.bootstrap.RadioSet",
-    "Roo.bootstrap.menu.Menu",
-    "Roo.bootstrap.dash.TabPane",
-    "Roo.CalendarPanel",
-    "Roo.bootstrap.Brick",
-    "Roo.form.Field",
-    "Roo.form.Row",
-    "Roo.bootstrap.DropTarget",
-    "Roo.form.Hidden",
-    "Roo.form.ComboCheck",
-    "Roo.bootstrap.LocationPicker",
-    "Roo.menu.Separator",
-    "Roo.form.DayPicker",
-    "Roo.bootstrap.Link",
-    "Roo.bootstrap.MessageBar",
-    "Roo.BoxComponent",
-    "Roo.bootstrap.nav.Bar",
-    "Roo.bootstrap.breadcrumb.Nav",
-    "Roo.form.HtmlEditor",
-    "Roo.bootstrap.Img",
-    "Roo.bootstrap.PopoverNav",
-    "Roo.bootstrap.LayoutMasonry",
-    "Roo.bootstrap.PhoneInput",
-    "Roo.bootstrap.breadcrumb.Item",
-    "Roo.form.ComboBoxArray.Item",
-    "Roo.grid.GridEditor",
-    "Roo.form.Layout",
-    "Roo.bootstrap.nav.ProgressBarItem",
-    "Roo.bootstrap.nav.Item",
-    "Roo.bootstrap.CardUploader",
-    "Roo.DatePicker",
-    "Roo.bootstrap.Element",
-    "Roo.bootstrap.Pagination",
-    "Roo.bootstrap.MasonryBrick",
-    "Roo.bootstrap.Markdown",
-    "Roo.bootstrap.HtmlEditor",
-    "Roo.HtmlEditorCore",
-    "Roo.bootstrap.Table",
-    "Roo.form.TextField",
-    "Roo.bootstrap.Body",
-    "Roo.menu.ColorItem",
-    "Roo.form.TextItem",
-    "Roo.bootstrap.SecurePass",
-    "Roo.form.Signature",
-    "Roo.bootstrap.PaginationItem",
-    "Roo.bootstrap.menu.Item",
-    "Roo.bootstrap.nav.ProgressBar",
-    "Roo.bootstrap.Slider",
-    "Roo.menu.TextItem",
-    "Roo.form.DateField",
-    "Roo.bootstrap.ProgressBar",
-    "Roo.bootstrap.Row",
-    "Roo.menu.BaseItem",
-    "Roo.menu.Adapter",
-    "Roo.bootstrap.NumberField",
-    "Roo.bootstrap.TextArea",
-    "Roo.bootstrap.TableCell",
-    "Roo.form.ComboBoxArray",
-    "Roo.bootstrap.Column",
-    "Roo.bootstrap.ComboBox",
-    "Roo.form.FCKeditor",
-    "Roo.bootstrap.FieldLabel",
-    "Roo.bootstrap.ButtonUploader",
-    "Roo.bootstrap.ButtonGroup",
-    "Roo.bootstrap.MoneyField",
-    "Roo.bootstrap.menu.Separator",
-    "Roo.bootstrap.layout.Manager",
-    "Roo.menu.Item",
-    "Roo.bootstrap.nav.Simplebar",
-    "Roo.bootstrap.Popover",
-    "Roo.bootstrap.CardImageTop",
-    "Roo.form.Select",
-    "Roo.bootstrap.UploadCropbox",
-    "Roo.form.NumberField",
-    "Roo.ColorPalette",
-    "Roo.form.FieldSet",
-    "Roo.bootstrap.layout.Border",
-    "Roo.bootstrap.CardFooter",
-    "Roo.bootstrap.LayoutMasonryAuto",
-    "Roo.menu.CheckItem",
-    "Roo.bootstrap.nav.Headerbar",
-    "Roo.bootstrap.Header",
-    "Roo.bootstrap.nav.Group"
-  ],
+  "childClasses" : {
+    "Roo.bootstrap.nav.Bar" : [
+      "Roo.bootstrap.nav.Sidebar",
+      "Roo.bootstrap.nav.Simplebar"
+    ],
+    "Roo.form.Field" : [
+      "Roo.form.Checkbox",
+      "Roo.form.DayPicker",
+      "Roo.form.DisplayField",
+      "Roo.form.GridField",
+      "Roo.form.HtmlEditor",
+      "Roo.form.Signature",
+      "Roo.form.TextField"
+    ],
+    "Roo.bootstrap.ComboBox" : [
+      "Roo.bootstrap.MoneyField"
+    ],
+    "Roo.bootstrap.nav.Simplebar" : [
+      "Roo.bootstrap.PagingToolbar",
+      "Roo.bootstrap.PopoverNav",
+      "Roo.bootstrap.htmleditor.ToolbarStandard",
+      "Roo.bootstrap.nav.Headerbar"
+    ],
+    "Roo.bootstrap.Button" : [
+      "Roo.bootstrap.ButtonUploader",
+      "Roo.bootstrap.CardUploader"
+    ],
+    "Roo.bootstrap.Column" : [
+      "Roo.bootstrap.TabGroup"
+    ],
+    "Roo.form.TextArea" : [
+      "Roo.form.FCKeditor"
+    ],
+    "Roo.Component" : [
+      "Roo.BoxComponent",
+      "Roo.CalendarPanel",
+      "Roo.ColorPalette",
+      "Roo.DatePicker",
+      "Roo.Editor",
+      "Roo.HtmlEditorCore",
+      "Roo.bootstrap.Component",
+      "Roo.form.Layout",
+      "Roo.menu.BaseItem"
+    ],
+    "Roo.bootstrap.layout.Manager" : [
+      "Roo.bootstrap.layout.Border"
+    ],
+    "Roo.BoxComponent" : [
+      "Roo.form.ComboBoxArray.Item",
+      "Roo.form.Field",
+      "Roo.form.TextItem"
+    ],
+    "Roo.bootstrap.Element" : [
+      "Roo.bootstrap.CardFooter",
+      "Roo.bootstrap.CardHeader",
+      "Roo.bootstrap.CardImageTop",
+      "Roo.bootstrap.DropTarget"
+    ],
+    "Roo.bootstrap.Input" : [
+      "Roo.bootstrap.CheckBox",
+      "Roo.bootstrap.DateField",
+      "Roo.bootstrap.MonthField",
+      "Roo.bootstrap.NumberField",
+      "Roo.bootstrap.RadioSet",
+      "Roo.bootstrap.SecurePass",
+      "Roo.bootstrap.TextArea",
+      "Roo.bootstrap.TimeField",
+      "Roo.bootstrap.TriggerField"
+    ],
+    "Roo.form.Checkbox" : [
+      "Roo.form.Radio"
+    ],
+    "Roo.Editor" : [
+      "Roo.grid.GridEditor",
+      "Roo.tree.TreeEditor"
+    ],
+    "Roo.menu.BaseItem" : [
+      "Roo.menu.Adapter",
+      "Roo.menu.Item",
+      "Roo.menu.Separator",
+      "Roo.menu.TextItem"
+    ],
+    "Roo.bootstrap.TextArea" : [
+      "Roo.bootstrap.HtmlEditor",
+      "Roo.bootstrap.Markdown"
+    ],
+    "Roo.bootstrap.nav.Item" : [
+      "Roo.bootstrap.nav.SidebarItem"
+    ],
+    "Roo.form.TextField" : [
+      "Roo.form.ComboBoxArray",
+      "Roo.form.Hidden",
+      "Roo.form.NumberField",
+      "Roo.form.TextArea",
+      "Roo.form.TriggerField"
+    ],
+    "Roo.form.Layout" : [
+      "Roo.form.Column",
+      "Roo.form.FieldSet",
+      "Roo.form.Row"
+    ],
+    "Roo.menu.Item" : [
+      "Roo.menu.CheckItem"
+    ],
+    "Roo.menu.Adapter" : [
+      "Roo.menu.ColorItem",
+      "Roo.menu.DateItem"
+    ],
+    "Roo.bootstrap.Component" : [
+      "Roo.bootstrap.Alert",
+      "Roo.bootstrap.BezierSignature",
+      "Roo.bootstrap.Body",
+      "Roo.bootstrap.Brick",
+      "Roo.bootstrap.Button",
+      "Roo.bootstrap.ButtonGroup",
+      "Roo.bootstrap.Calendar",
+      "Roo.bootstrap.Card",
+      "Roo.bootstrap.Column",
+      "Roo.bootstrap.Container",
+      "Roo.bootstrap.DateSplitField",
+      "Roo.bootstrap.DocumentManager",
+      "Roo.bootstrap.DocumentSlider",
+      "Roo.bootstrap.DocumentViewer",
+      "Roo.bootstrap.Element",
+      "Roo.bootstrap.FieldLabel",
+      "Roo.bootstrap.Form",
+      "Roo.bootstrap.Graph",
+      "Roo.bootstrap.Header",
+      "Roo.bootstrap.Img",
+      "Roo.bootstrap.Input",
+      "Roo.bootstrap.LayoutMasonry",
+      "Roo.bootstrap.LayoutMasonryAuto",
+      "Roo.bootstrap.Link",
+      "Roo.bootstrap.LocationPicker",
+      "Roo.bootstrap.MasonryBrick",
+      "Roo.bootstrap.MessageBar",
+      "Roo.bootstrap.Modal",
+      "Roo.bootstrap.Pagination",
+      "Roo.bootstrap.PaginationItem",
+      "Roo.bootstrap.Popover",
+      "Roo.bootstrap.Progress",
+      "Roo.bootstrap.ProgressBar",
+      "Roo.bootstrap.Radio",
+      "Roo.bootstrap.Row",
+      "Roo.bootstrap.Slider",
+      "Roo.bootstrap.TabPanel",
+      "Roo.bootstrap.Table",
+      "Roo.bootstrap.TableBody",
+      "Roo.bootstrap.TableCell",
+      "Roo.bootstrap.TableRow",
+      "Roo.bootstrap.UploadCropbox",
+      "Roo.bootstrap.breadcrumb.Item",
+      "Roo.bootstrap.breadcrumb.Nav",
+      "Roo.bootstrap.dash.NumberBox",
+      "Roo.bootstrap.dash.TabBox",
+      "Roo.bootstrap.dash.TabPane",
+      "Roo.bootstrap.layout.Manager",
+      "Roo.bootstrap.menu.Item",
+      "Roo.bootstrap.menu.Menu",
+      "Roo.bootstrap.menu.Separator",
+      "Roo.bootstrap.nav.Bar",
+      "Roo.bootstrap.nav.Group",
+      "Roo.bootstrap.nav.Item",
+      "Roo.bootstrap.nav.ProgressBar",
+      "Roo.bootstrap.nav.ProgressBarItem"
+    ],
+    "Roo.bootstrap.TriggerField" : [
+      "Roo.bootstrap.ComboBox",
+      "Roo.bootstrap.PhoneInput"
+    ],
+    "Roo.form.TriggerField" : [
+      "Roo.form.ComboBox",
+      "Roo.form.DateField",
+      "Roo.form.MonthField",
+      "Roo.form.Select"
+    ],
+    "Roo.form.ComboBox" : [
+      "Roo.form.ComboCheck",
+      "Roo.form.ComboNested"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Base class for all major Roo components.  All subclasses of Component can automatically participate in the standard\nRoo component lifecycle of creation, rendering and destruction.  They also have automatic support for basic hide/show\nand enable/disable behavior.  Component allows any subclass to be lazy-rendered into any {@link Roo.Container} and\nto be automatically registered with the {@link Roo.ComponentMgr} so that it can be referenced at any time via {@link Roo.getCmp}.\nAll visual components (widgets) that require rendering into a layout should subclass Component.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Component",
   "example" : "",
   "deprecated" : "",
@@ -164,25 +219,25 @@
       "name" : "hideMode",
       "type" : "String",
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-      "memberOf" : ""
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : ""
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
-      "memberOf" : ""
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : ""
+      "memberOf" : "Roo.Component"
     }
   ],
   "methods" : [

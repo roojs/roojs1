@@ -5,8 +5,8 @@
  */
 
 /**
- * @class Roo.bootstrap.NumberField
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.NumberField
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap NumberField class
  * 
  * 
@@ -17,11 +17,11 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.NumberField = function(config){
-    Roo.bootstrap.NumberField.superclass.constructor.call(this, config);
+Roo.bootstrap.form.NumberField = function(config){
+    Roo.bootstrap.form.NumberField.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
+Roo.extend(Roo.bootstrap.form.NumberField, Roo.bootstrap.form.Input, {
     
     /**
      * @cfg {Boolean} allowDecimals False to disallow decimal values (defaults to true)
@@ -89,7 +89,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         this.name = '';
         
-        var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
+        var cfg = Roo.bootstrap.form.NumberField.superclass.getAutoCreate.call(this);
         
         this.name = hiddenInput.name;
         
@@ -103,7 +103,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     // private
     initEvents : function()
     {   
-        Roo.bootstrap.NumberField.superclass.initEvents.call(this);
+        Roo.bootstrap.form.NumberField.superclass.initEvents.call(this);
         
         var allowed = "0123456789";
         
@@ -150,7 +150,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     validateValue : function(value)
     {
         
-        if(!Roo.bootstrap.NumberField.superclass.validateValue.call(this, value)){
+        if(!Roo.bootstrap.form.NumberField.superclass.validateValue.call(this, value)){
             return false;
         }
         

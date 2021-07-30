@@ -5,11 +5,17 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.breadcrumb.Item"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap Breadcrumb Nav Class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Nav",
   "example" : "",
   "deprecated" : "",

@@ -5,13 +5,24 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.bootstrap.nav.SidebarItem"
+  "childClasses" : {
+    "Roo.bootstrap.nav.Item" : [
+      "Roo.bootstrap.nav.SidebarItem"
+    ]
+  },
+  "tree_children" : [
+    "Roo.bootstrap.Container",
+    "Roo.bootstrap.Button",
+    "Roo.bootstrap.ButtonUploader",
+    "Roo.bootstrap.CardUploader"
   ],
+  "tree_parent" : [],
   "desc" : "Bootstrap Navbar.NavItem class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Item",
   "example" : "",
   "deprecated" : "",
@@ -39,19 +50,19 @@
       "name" : "linkcls",
       "type" : "String",
       "desc" : "Link Class",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "tagtype",
       "type" : "String",
       "desc" : "n) render as a href or span?",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "animateRef",
       "type" : "Boolean",
       "desc" : "e) link to element default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "tooltip",
@@ -75,13 +86,13 @@
       "name" : "tabId",
       "type" : "String",
       "desc" : "the tab that this item activates.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "menu",
       "type" : "Roo.bootstrap.menu.Menu",
       "desc" : "a Menu",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "can_build_overlaid",
@@ -99,13 +110,13 @@
       "name" : "badge",
       "type" : "String",
       "desc" : "text inside badge",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "Is item disabled",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "style",
@@ -123,19 +134,19 @@
       "name" : "button_outline",
       "type" : "Boolean",
       "desc" : "show and outlined button",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "content of button",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "preventDefault",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "cls",
@@ -147,7 +158,7 @@
       "name" : "glyphicon",
       "type" : "String",
       "desc" : "DEPRICATED - use fa",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "xattr",
@@ -165,13 +176,13 @@
       "name" : "icon",
       "type" : "String",
       "desc" : "DEPRICATED - use fa",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "badgecls",
       "type" : "String",
       "desc" : "w)the extra classes for the badge",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "dataId",
@@ -183,19 +194,19 @@
       "name" : "button_weight",
       "type" : "String",
       "desc" : "k) default none",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "fa",
       "type" : "String",
       "desc" : "- Fontawsome icon name (can add stuff to it like fa-2x)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "active",
       "type" : "Boolean",
       "desc" : "Is item active",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     },
     {
       "name" : "name",
@@ -213,7 +224,7 @@
       "name" : "href",
       "type" : "String",
       "desc" : "link to",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.nav.Item"
     }
   ],
   "methods" : [

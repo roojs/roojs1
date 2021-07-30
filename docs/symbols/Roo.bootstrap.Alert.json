@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap Alert class - shows an alert area box\neg\n<div class=\"alert alert-danger\" role=\"alert\"><span class=\"fa fa-exclamation-triangle\"></span><span class=\"sr-only\">Error:</span>\n  Enter a valid email address\n</div>",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Alert",
   "example" : "",
   "deprecated" : "",
@@ -67,19 +71,19 @@
       "name" : "title",
       "type" : "String",
       "desc" : "The title of alert",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Alert"
     },
     {
       "name" : "seconds",
       "type" : "Number",
       "desc" : "default:-1 Number of seconds until it disapears (-1 means never.)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Alert"
     },
     {
       "name" : "close",
       "type" : "Boolean",
       "desc" : "true to show a x closer",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Alert"
     },
     {
       "name" : "style",
@@ -97,7 +101,7 @@
       "name" : "html",
       "type" : "String",
       "desc" : "The content of alert",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Alert"
     },
     {
       "name" : "cls",
@@ -127,13 +131,13 @@
       "name" : "weight",
       "type" : "String",
       "desc" : "r) Weight of the message",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Alert"
     },
     {
       "name" : "fa",
       "type" : "String",
       "desc" : "font-awesomeicon",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Alert"
     },
     {
       "name" : "name",

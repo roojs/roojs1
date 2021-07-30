@@ -4,16 +4,26 @@
     "Roo.dd.DragDrop",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.dd.DragSource",
-    "Roo.grid.SplitDragZone",
-    "Roo.dd.DragZone",
-    "Roo.dd.DDProxy"
-  ],
+  "childClasses" : {
+    "Roo.dd.DDProxy" : [
+      "Roo.dd.DragSource",
+      "Roo.grid.SplitDragZone"
+    ],
+    "Roo.dd.DD" : [
+      "Roo.dd.DDProxy"
+    ],
+    "Roo.dd.DragSource" : [
+      "Roo.dd.DragZone"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "A DragDrop implementation where the linked element follows the\nmouse cursor during a drag.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "DD",
   "example" : "",
   "deprecated" : "",

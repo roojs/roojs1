@@ -4,11 +4,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Provides a the editing component for the HTML editors in Roo. (bootstrap and Roo.form)\n\nany element that has display set to 'none' can cause problems in Safari and Firefox.<br/><br/>",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "HtmlEditorCore",
   "example" : "",
   "deprecated" : "",
@@ -29,13 +33,13 @@
       "name" : "allowComments",
       "type" : "boolean",
       "desc" : "- default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.",
-      "memberOf" : ""
+      "memberOf" : "Roo.HtmlEditorCore"
     },
     {
       "name" : "the",
       "type" : "Roo.form.HtmlEditor|Roo.bootstrap.HtmlEditor",
       "desc" : "owner field",
-      "memberOf" : ""
+      "memberOf" : "Roo.HtmlEditorCore"
     },
     {
       "name" : "hideMode",
@@ -59,19 +63,19 @@
       "name" : "width",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : ""
+      "memberOf" : "Roo.HtmlEditorCore"
     },
     {
       "name" : "resizable",
       "type" : "String",
       "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
-      "memberOf" : ""
+      "memberOf" : "Roo.HtmlEditorCore"
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : ""
+      "memberOf" : "Roo.HtmlEditorCore"
     },
     {
       "name" : "disableClass",
@@ -83,7 +87,7 @@
       "name" : "stylesheets",
       "type" : "Array",
       "desc" : "url of stylesheets. set to [] to disable stylesheets.",
-      "memberOf" : ""
+      "memberOf" : "Roo.HtmlEditorCore"
     }
   ],
   "methods" : [

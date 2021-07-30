@@ -9,7 +9,7 @@
 /**
  * @class Roo.bootstrap.nav.Headerbar
  * @extends Roo.bootstrap.nav.Simplebar
- * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container Roo.bootstrap.Form Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Link
+ * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container Roo.bootstrap.form.Form Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Link
  * Bootstrap Sidebar class
  *
  * @cfg {String} brand what is brand

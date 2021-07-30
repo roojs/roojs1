@@ -6,7 +6,7 @@
  */
 
 /**
- * @class Roo.bootstrap.Radio
+ * @class Roo.bootstrap.form.Radio
  * @extends Roo.bootstrap.Component
  * Bootstrap Radio class
  * @cfg {String} boxLabel - the label associated
@@ -16,12 +16,12 @@
  * Create a new Radio
  * @param {Object} config The config object
  */
-Roo.bootstrap.Radio = function(config){
-    Roo.bootstrap.Radio.superclass.constructor.call(this, config);
+Roo.bootstrap.form.Radio = function(config){
+    Roo.bootstrap.form.Radio.superclass.constructor.call(this, config);
     
 };
 
-Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
+Roo.extend(Roo.bootstrap.form.Radio, Roo.bootstrap.Component, {
     
     boxLabel : '',
     

@@ -4,35 +4,53 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.form.TextArea",
-    "Roo.form.MonthField",
-    "Roo.form.ComboBox",
-    "Roo.form.GridField",
-    "Roo.form.DisplayField",
-    "Roo.form.ComboNested",
-    "Roo.form.Checkbox",
-    "Roo.form.Radio",
-    "Roo.form.TriggerField",
-    "Roo.form.Field",
-    "Roo.form.Hidden",
-    "Roo.form.ComboCheck",
-    "Roo.form.DayPicker",
-    "Roo.form.HtmlEditor",
-    "Roo.form.ComboBoxArray.Item",
-    "Roo.form.TextField",
-    "Roo.form.TextItem",
-    "Roo.form.Signature",
-    "Roo.form.DateField",
-    "Roo.form.ComboBoxArray",
-    "Roo.form.FCKeditor",
-    "Roo.form.Select",
-    "Roo.form.NumberField"
-  ],
+  "childClasses" : {
+    "Roo.form.Field" : [
+      "Roo.form.Checkbox",
+      "Roo.form.DayPicker",
+      "Roo.form.DisplayField",
+      "Roo.form.GridField",
+      "Roo.form.HtmlEditor",
+      "Roo.form.Signature",
+      "Roo.form.TextField"
+    ],
+    "Roo.form.TextArea" : [
+      "Roo.form.FCKeditor"
+    ],
+    "Roo.BoxComponent" : [
+      "Roo.form.ComboBoxArray.Item",
+      "Roo.form.Field",
+      "Roo.form.TextItem"
+    ],
+    "Roo.form.Checkbox" : [
+      "Roo.form.Radio"
+    ],
+    "Roo.form.TextField" : [
+      "Roo.form.ComboBoxArray",
+      "Roo.form.Hidden",
+      "Roo.form.NumberField",
+      "Roo.form.TextArea",
+      "Roo.form.TriggerField"
+    ],
+    "Roo.form.TriggerField" : [
+      "Roo.form.ComboBox",
+      "Roo.form.DateField",
+      "Roo.form.MonthField",
+      "Roo.form.Select"
+    ],
+    "Roo.form.ComboBox" : [
+      "Roo.form.ComboCheck",
+      "Roo.form.ComboNested"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Base class for any visual {@link Roo.Component} that uses a box container.  BoxComponent provides automatic box\nmodel adjustments for sizing and positioning and will work correctly withnin the Component rendering model.  All\ncontainer classes should subclass BoxComponent so that they will work consistently when nested within other Roo\nlayout containers.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "BoxComponent",
   "example" : "",
   "deprecated" : "",
@@ -78,13 +96,13 @@
       "name" : "width",
       "type" : "Number",
       "desc" : "width (optional) size of component",
-      "memberOf" : ""
+      "memberOf" : "Roo.BoxComponent"
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "height (optional) size of component",
-      "memberOf" : ""
+      "memberOf" : "Roo.BoxComponent"
     },
     {
       "name" : "disableClass",

@@ -6,8 +6,8 @@
  */
 
 /**
- * @class Roo.bootstrap.CheckBox
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.CheckBox
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap CheckBox class
  * 
  * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
@@ -24,28 +24,28 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.CheckBox = function(config){
-    Roo.bootstrap.CheckBox.superclass.constructor.call(this, config);
+Roo.bootstrap.form.CheckBox = function(config){
+    Roo.bootstrap.form.CheckBox.superclass.constructor.call(this, config);
    
     this.addEvents({
         /**
         * @event check
         * Fires when the element is checked or unchecked.
-        * @param {Roo.bootstrap.CheckBox} this This input
+        * @param {Roo.bootstrap.form.CheckBox} this This input
         * @param {Boolean} checked The new checked value
         */
        check : true,
        /**
         * @event click
         * Fires when the element is click.
-        * @param {Roo.bootstrap.CheckBox} this This input
+        * @param {Roo.bootstrap.form.CheckBox} this This input
         */
        click : true
     });
     
 };
 
-Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.CheckBox, Roo.bootstrap.form.Input,  {
   
     inputType: 'checkbox',
     inputValue: 1,
@@ -297,7 +297,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     initEvents : function()
     {
-//        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
+//        Roo.bootstrap.form.CheckBox.superclass.initEvents.call(this);
         
         this.inputEl().on('click', this.onClick,  this);
         
@@ -308,7 +308,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         this.startValue = this.getValue();
         
         if(this.groupId){
-            Roo.bootstrap.CheckBox.register(this);
+            Roo.bootstrap.form.CheckBox.register(this);
         }
     },
     
@@ -460,7 +460,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             //return (this.getValue() == this.inputValue) ? true : false;
         }
         
-        var group = Roo.bootstrap.CheckBox.get(this.groupId);
+        var group = Roo.bootstrap.form.CheckBox.get(this.groupId);
         
         if(!group){
             return false;
@@ -497,10 +497,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.fireEvent('valid', this);
         
-        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        var label = Roo.bootstrap.form.FieldLabel.get(this.name + '-group');
         
         if(this.groupId){
-            label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
+            label = Roo.bootstrap.form.FieldLabel.get(this.groupId + '-group');
         }
         
         if(label){
@@ -534,7 +534,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             return;
         }
         
-        var group = Roo.bootstrap.CheckBox.get(this.groupId);
+        var group = Roo.bootstrap.form.CheckBox.get(this.groupId);
         
         if(!group){
             return;
@@ -566,10 +566,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.fireEvent('invalid', this, msg);
         
-        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        var label = Roo.bootstrap.form.FieldLabel.get(this.name + '-group');
         
         if(this.groupId){
-            label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
+            label = Roo.bootstrap.form.FieldLabel.get(this.groupId + '-group');
         }
         
         if(label){
@@ -604,7 +604,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             return;
         }
         
-        var group = Roo.bootstrap.CheckBox.get(this.groupId);
+        var group = Roo.bootstrap.form.CheckBox.get(this.groupId);
         
         if(!group){
             return;
@@ -625,11 +625,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     clearInvalid : function()
     {
-        Roo.bootstrap.Input.prototype.clearInvalid.call(this);
+        Roo.bootstrap.form.Input.prototype.clearInvalid.call(this);
         
         // this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
         
-        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        var label = Roo.bootstrap.form.FieldLabel.get(this.name + '-group');
         
         if (label && label.iconEl) {
             label.iconEl.removeClass([ label.validClass, label.invalidClass ]);
@@ -640,7 +640,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     disable : function()
     {
         if(this.inputType != 'radio'){
-            Roo.bootstrap.CheckBox.superclass.disable.call(this);
+            Roo.bootstrap.form.CheckBox.superclass.disable.call(this);
             return;
         }
         
@@ -661,7 +661,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     enable : function()
     {
         if(this.inputType != 'radio'){
-            Roo.bootstrap.CheckBox.superclass.enable.call(this);
+            Roo.bootstrap.form.CheckBox.superclass.enable.call(this);
             return;
         }
         
@@ -690,13 +690,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 
 });
 
-Roo.apply(Roo.bootstrap.CheckBox, {
+Roo.apply(Roo.bootstrap.form.CheckBox, {
     
     groups: {},
     
      /**
     * register a CheckBox Group
-    * @param {Roo.bootstrap.CheckBox} the CheckBox to add
+    * @param {Roo.bootstrap.form.CheckBox} the CheckBox to add
     */
     register : function(checkbox)
     {
@@ -714,7 +714,7 @@ Roo.apply(Roo.bootstrap.CheckBox, {
     /**
     * fetch a CheckBox Group based on the group ID
     * @param {string} the group ID
-    * @returns {Roo.bootstrap.CheckBox} the CheckBox group
+    * @returns {Roo.bootstrap.form.CheckBox} the CheckBox group
     */
     get: function(groupId) {
         if (typeof(this.groups[groupId]) == 'undefined') {

@@ -6,11 +6,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap Button Uploader class - it's a button which when you add files to it",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "ButtonUploader",
   "example" : "",
   "deprecated" : "",
@@ -56,7 +60,7 @@
       "name" : "images",
       "type" : "Array",
       "desc" : "an array of ?? Img objects ??? when loading existing files..",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ButtonUploader"
     },
     {
       "name" : "xattr",
@@ -146,7 +150,7 @@
       "name" : "errorTimeout",
       "type" : "Number",
       "desc" : "default 3000",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ButtonUploader"
     },
     {
       "name" : "actionMode",
@@ -206,7 +210,7 @@
       "name" : "multiple",
       "type" : "Boolean",
       "desc" : "(default true) Should the upload allow multiple files to be uploaded.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ButtonUploader"
     },
     {
       "name" : "visibilityEl",
@@ -254,7 +258,7 @@
       "name" : "html",
       "type" : "Array",
       "desc" : "The button text.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ButtonUploader"
     },
     {
       "name" : "pressed",

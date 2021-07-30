@@ -5,11 +5,17 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.Pagination"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap Pagination class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Pagination",
   "example" : "",
   "deprecated" : "",
@@ -55,7 +61,7 @@
       "name" : "inverse",
       "type" : "Boolean",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Pagination"
     },
     {
       "name" : "can_build_overlaid",
@@ -109,7 +115,7 @@
       "name" : "size",
       "type" : "String",
       "desc" : "l)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Pagination"
     },
     {
       "name" : "name",

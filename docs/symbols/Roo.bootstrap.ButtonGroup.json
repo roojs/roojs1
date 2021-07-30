@@ -5,11 +5,20 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.Button",
+    "Roo.bootstrap.ButtonUploader",
+    "Roo.bootstrap.CardUploader",
+    "Roo.bootstrap.Form"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap ButtonGroup class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "ButtonGroup",
   "example" : "",
   "deprecated" : "",
@@ -31,7 +40,7 @@
       "name" : "btn",
       "type" : "Boolean",
       "desc" : "true | false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ButtonGroup"
     },
     {
       "name" : "listeners",
@@ -61,19 +70,19 @@
       "name" : "align",
       "type" : "String",
       "desc" : "vertical | justified  (default none)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ButtonGroup"
     },
     {
       "name" : "direction",
       "type" : "String",
       "desc" : "up | down (default down)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ButtonGroup"
     },
     {
       "name" : "toolbar",
       "type" : "Boolean",
       "desc" : "false | true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ButtonGroup"
     },
     {
       "name" : "can_build_overlaid",
@@ -127,7 +136,7 @@
       "name" : "size",
       "type" : "String",
       "desc" : "lg | sm | xs (default empty normal)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.ButtonGroup"
     },
     {
       "name" : "name",

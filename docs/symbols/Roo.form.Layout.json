@@ -4,15 +4,50 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
+  "childClasses" : {
+    "Roo.form.Layout" : [
+      "Roo.form.Column",
+      "Roo.form.FieldSet",
+      "Roo.form.Row"
+    ]
+  },
+  "tree_children" : [
     "Roo.form.Column",
     "Roo.form.Row",
-    "Roo.form.FieldSet"
+    "Roo.form.Field",
+    "Roo.form.Checkbox",
+    "Roo.form.ComboBox",
+    "Roo.form.ComboBoxArray",
+    "Roo.form.ComboCheck",
+    "Roo.form.ComboNested",
+    "Roo.form.DateField",
+    "Roo.form.DayPicker",
+    "Roo.form.DisplayField",
+    "Roo.form.FCKeditor",
+    "Roo.form.GridField",
+    "Roo.form.Hidden",
+    "Roo.form.HtmlEditor",
+    "Roo.form.MonthField",
+    "Roo.form.NumberField",
+    "Roo.form.Radio",
+    "Roo.form.Select",
+    "Roo.form.Signature",
+    "Roo.form.TextArea",
+    "Roo.form.TextField",
+    "Roo.form.TriggerField",
+    "Roo.Button",
+    "Roo.SplitButton",
+    "Roo.Toolbar.Button",
+    "Roo.Toolbar.SplitButton",
+    "Roo.form.TextItem"
   ],
+  "tree_parent" : [],
   "desc" : "Creates a container for layout and rendering of fields in an {@link Roo.form.Form}.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Layout",
   "example" : "",
   "deprecated" : "",
@@ -34,7 +69,7 @@
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Layout"
     },
     {
       "name" : "listeners",
@@ -46,7 +81,7 @@
       "name" : "hideLabels",
       "type" : "Boolean",
       "desc" : "True to suppress the display of field labels in this layout (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Layout"
     },
     {
       "name" : "hideMode",
@@ -58,7 +93,7 @@
       "name" : "style",
       "type" : "String/Object/Function",
       "desc" : "A style specification string, e.g. \"width:100px\", or object in the form {width:\"100px\"}, or\na function which returns such a specification.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Layout"
     },
     {
       "name" : "allowDomMove",
@@ -70,25 +105,25 @@
       "name" : "labelWidth",
       "type" : "Number",
       "desc" : "Fixed width in pixels of all field labels (defaults to undefined)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Layout"
     },
     {
       "name" : "labelSeparator",
       "type" : "String",
       "desc" : "The separator to use after field labels (defaults to ':')",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Layout"
     },
     {
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec used to autocreate the layout (defaults to {tag: 'div', cls: 'x-form-ct'})",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Layout"
     },
     {
       "name" : "clear",
       "type" : "Boolean",
       "desc" : "True to add a clearing element at the end of this layout, equivalent to CSS clear: both (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Layout"
     },
     {
       "name" : "actionMode",

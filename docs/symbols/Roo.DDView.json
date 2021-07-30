@@ -1,11 +1,15 @@
 {
   "name" : "Roo.DDView",
   "augments" : [],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "A DnD enabled version of Roo.View.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "DDView",
   "example" : "",
   "deprecated" : "",
@@ -39,25 +43,25 @@
       "name" : "dropGroup",
       "type" : "String/Array",
       "desc" : "The ddgroup name(s) for the View's DropZone.",
-      "memberOf" : ""
+      "memberOf" : "Roo.DDView"
     },
     {
       "name" : "allowCopy",
       "type" : "Boolean",
       "desc" : "Causes ctrl/drag operations to copy nodes rather than move.",
-      "memberOf" : ""
+      "memberOf" : "Roo.DDView"
     },
     {
       "name" : "copy",
       "type" : "Boolean",
       "desc" : "Causes drag operations to copy nodes rather than move.",
-      "memberOf" : ""
+      "memberOf" : "Roo.DDView"
     },
     {
       "name" : "dragGroup",
       "type" : "String/Array",
       "desc" : "The ddgroup name(s) for the View's DragZone.",
-      "memberOf" : ""
+      "memberOf" : "Roo.DDView"
     }
   ],
   "methods" : [

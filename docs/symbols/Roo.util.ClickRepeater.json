@@ -3,11 +3,15 @@
   "augments" : [
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "A wrapper class which can be applied to any element. Fires a \"click\" event while the\nmouse is pressed. The interval between firings may be specified in the config but\ndefaults to 10 milliseconds.\n\nOptionally, a CSS class may be applied to the element during the time it is pressed.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "ClickRepeater",
   "example" : "",
   "deprecated" : "",
@@ -35,7 +39,7 @@
       "name" : "stopDefault",
       "type" : "Boolean",
       "desc" : "True to stop the default click event",
-      "memberOf" : ""
+      "memberOf" : "Roo.util.ClickRepeater"
     },
     {
       "name" : "listeners",
@@ -47,37 +51,37 @@
       "name" : "delay",
       "type" : "Number",
       "desc" : "The initial delay before the repeating event begins firing.\nSimilar to an autorepeat key delay.",
-      "memberOf" : ""
+      "memberOf" : "Roo.util.ClickRepeater"
     },
     {
       "name" : "accelerate",
       "type" : "Boolean",
       "desc" : "True if autorepeating should start slowly and accelerate.\n          \"interval\" and \"delay\" are ignored. \"immediate\" is honored.",
-      "memberOf" : ""
+      "memberOf" : "Roo.util.ClickRepeater"
     },
     {
       "name" : "preventDefault",
       "type" : "Boolean",
       "desc" : "True to prevent the default click event",
-      "memberOf" : ""
+      "memberOf" : "Roo.util.ClickRepeater"
     },
     {
       "name" : "interval",
       "type" : "Number",
       "desc" : "The interval between firings of the \"click\" event. Default 10 ms.",
-      "memberOf" : ""
+      "memberOf" : "Roo.util.ClickRepeater"
     },
     {
       "name" : "el",
       "type" : "String/HTMLElement/Element",
       "desc" : "The element to act as a button.",
-      "memberOf" : ""
+      "memberOf" : "Roo.util.ClickRepeater"
     },
     {
       "name" : "pressClass",
       "type" : "String",
       "desc" : "A CSS class name to be applied to the element while pressed.",
-      "memberOf" : ""
+      "memberOf" : "Roo.util.ClickRepeater"
     }
   ],
   "methods" : [

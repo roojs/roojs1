@@ -6,7 +6,7 @@
  */
 
 /**
- * @class Roo.bootstrap.FieldLabel
+ * @class Roo.bootstrap.form.FieldLabel
  * @extends Roo.bootstrap.Component
  * Bootstrap FieldLabel class
  * @cfg {String} html contents of the element
@@ -24,7 +24,7 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.FieldLabel = function(config){
+Roo.bootstrap.form.FieldLabel = function(config){
     Roo.bootstrap.Element.superclass.constructor.call(this, config);
     
     this.addEvents({
@@ -44,7 +44,7 @@ Roo.bootstrap.FieldLabel = function(config){
         });
 };
 
-Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.form.FieldLabel, Roo.bootstrap.Component,  {
     
     tag: 'label',
     cls: '',
@@ -113,7 +113,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             this.indicator.addClass('invisible');
         }
         
-        Roo.bootstrap.FieldLabel.register(this);
+        Roo.bootstrap.form.FieldLabel.register(this);
     },
     
     indicatorEl : function()
@@ -174,13 +174,13 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
    
 });
 
-Roo.apply(Roo.bootstrap.FieldLabel, {
+Roo.apply(Roo.bootstrap.form.FieldLabel, {
     
     groups: {},
     
      /**
     * register a FieldLabel Group
-    * @param {Roo.bootstrap.FieldLabel} the FieldLabel to add
+    * @param {Roo.bootstrap.form.FieldLabel} the FieldLabel to add
     */
     register : function(label)
     {
@@ -194,7 +194,7 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
     /**
     * fetch a FieldLabel Group based on the target
     * @param {string} target
-    * @returns {Roo.bootstrap.FieldLabel} the CheckBox group
+    * @returns {Roo.bootstrap.form.FieldLabel} the CheckBox group
     */
     get: function(target) {
         if (typeof(this.groups[target]) == 'undefined') {

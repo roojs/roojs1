@@ -1,11 +1,15 @@
 {
   "name" : "Roo.tree.TreeSorter",
   "augments" : [],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Provides sorting of nodes in a TreePanel",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "TreeSorter",
   "example" : "",
   "deprecated" : "",
@@ -33,37 +37,37 @@
       "name" : "folderSort",
       "type" : "Boolean",
       "desc" : "True to sort leaf nodes under non leaf nodes",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeSorter"
     },
     {
       "name" : "leafAttr",
       "type" : "String",
       "desc" : "The attribute used to determine leaf nodes in folder sort (defaults to \"leaf\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeSorter"
     },
     {
       "name" : "caseSensitive",
       "type" : "Boolean",
       "desc" : "true for case sensitive sort (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeSorter"
     },
     {
       "name" : "dir",
       "type" : "String",
       "desc" : "The direction to sort (asc or desc) (defaults to asc)",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeSorter"
     },
     {
       "name" : "sortType",
       "type" : "Function",
       "desc" : "A custom \"casting\" function used to convert node values before sorting",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeSorter"
     },
     {
       "name" : "property",
       "type" : "String",
       "desc" : "The named attribute on the node to sort by (defaults to text)",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeSorter"
     }
   ],
   "methods" : [],

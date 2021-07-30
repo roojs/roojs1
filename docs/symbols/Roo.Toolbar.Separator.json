@@ -3,11 +3,15 @@
   "augments" : [
     "Roo.Toolbar.Item"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "A simple toolbar separator class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Separator",
   "example" : "",
   "deprecated" : "",

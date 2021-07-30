@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap MessageBar class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "MessageBar",
   "example" : "",
   "deprecated" : "",
@@ -55,13 +59,13 @@
       "name" : "beforeClass",
       "type" : "String",
       "desc" : "insert the bar before the given class",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.MessageBar"
     },
     {
       "name" : "fixed",
       "type" : "Boolean",
       "desc" : "e) default false, fix the bar at the top",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.MessageBar"
     },
     {
       "name" : "can_build_overlaid",
@@ -91,7 +95,7 @@
       "name" : "html",
       "type" : "String",
       "desc" : "contents of the MessageBar",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.MessageBar"
     },
     {
       "name" : "cls",
@@ -115,7 +119,7 @@
       "name" : "closable",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.MessageBar"
     },
     {
       "name" : "dataId",
@@ -127,7 +131,7 @@
       "name" : "weight",
       "type" : "String",
       "desc" : "r) default info",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.MessageBar"
     },
     {
       "name" : "name",

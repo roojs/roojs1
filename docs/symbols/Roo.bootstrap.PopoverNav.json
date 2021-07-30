@@ -7,11 +7,20 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.nav.Group",
+    "Roo.bootstrap.Container"
+  ],
+  "tree_parent" : [
+    "Roo.bootstrap.Popover"
+  ],
   "desc" : "Bootstrap Popover header navigation class\nFIXME? should this go under nav?",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "PopoverNav",
   "example" : "",
   "deprecated" : "",

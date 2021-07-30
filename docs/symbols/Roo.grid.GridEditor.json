@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Class for creating and editable grid elements.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "GridEditor",
   "example" : "",
   "deprecated" : "",
@@ -61,7 +65,7 @@
       "name" : "field",
       "type" : "Roo.form.Field",
       "desc" : "Field to wrap (or xtyped)",
-      "memberOf" : ""
+      "memberOf" : "Roo.grid.GridEditor"
     },
     {
       "name" : "hideMode",

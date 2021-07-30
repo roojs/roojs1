@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap DateSplitField class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "DateSplitField",
   "example" : "",
   "deprecated" : "",
@@ -31,13 +35,13 @@
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "t)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "labellg",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "listeners",
@@ -49,19 +53,19 @@
       "name" : "yearPlaceholder",
       "type" : "string",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "monthFormat",
       "type" : "string",
       "desc" : "default 'm'",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "labelxs",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "tooltip",
@@ -85,13 +89,13 @@
       "name" : "fieldLabel",
       "type" : "string",
       "desc" : "- the label associated",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "monthAllowBlank",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "can_build_overlaid",
@@ -121,19 +125,19 @@
       "name" : "labelWidth",
       "type" : "Number",
       "desc" : "set the width of label (0-12)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "monthPlaceholder",
       "type" : "string",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "yearFormat",
       "type" : "string",
       "desc" : "default 'Y'",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "cls",
@@ -145,7 +149,7 @@
       "name" : "labelsm",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "xattr",
@@ -163,25 +167,25 @@
       "name" : "dayAllowBlank",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "yearAllowBlank",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "dayPlaceholder",
       "type" : "string",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "labelmd",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "dataId",
@@ -193,7 +197,7 @@
       "name" : "dayFormat",
       "type" : "string",
       "desc" : "default 'd'",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.DateSplitField"
     },
     {
       "name" : "name",

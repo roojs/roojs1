@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap Radio class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Radio",
   "example" : "",
   "deprecated" : "",
@@ -67,7 +71,7 @@
       "name" : "value",
       "type" : "String",
       "desc" : "- the value of radio",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Radio"
     },
     {
       "name" : "style",
@@ -103,7 +107,7 @@
       "name" : "boxLabel",
       "type" : "String",
       "desc" : "- the label associated",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Radio"
     },
     {
       "name" : "dataId",

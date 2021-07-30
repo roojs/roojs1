@@ -6,14 +6,20 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.bootstrap.Markdown",
-    "Roo.bootstrap.HtmlEditor"
-  ],
+  "childClasses" : {
+    "Roo.bootstrap.TextArea" : [
+      "Roo.bootstrap.HtmlEditor",
+      "Roo.bootstrap.Markdown"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Bootstrap TextArea class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "TextArea",
   "example" : "",
   "deprecated" : "",
@@ -209,7 +215,7 @@
       "name" : "wrap",
       "type" : "string",
       "desc" : "d)Specifies how the text in a text area is to be wrapped when submitted in a form",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TextArea"
     },
     {
       "name" : "focusClass",
@@ -233,7 +239,7 @@
       "name" : "rows",
       "type" : "Number",
       "desc" : "Specifies the visible number of lines in a text area",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TextArea"
     },
     {
       "name" : "labelxs",
@@ -299,7 +305,7 @@
       "name" : "cols",
       "type" : "Number",
       "desc" : "Specifies the visible width of a text area",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TextArea"
     },
     {
       "name" : "before",
@@ -347,7 +353,7 @@
       "name" : "resize",
       "type" : "string",
       "desc" : "l)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TextArea"
     },
     {
       "name" : "placeholder",
@@ -407,7 +413,7 @@
       "name" : "html",
       "type" : "string",
       "desc" : "text",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TextArea"
     },
     {
       "name" : "preventMark",

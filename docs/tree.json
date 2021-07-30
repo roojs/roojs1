@@ -862,7 +862,7 @@
               {
                 "name" : "Roo.bootstrap.nav.Sidebar",
                 "cn" : [],
-                "is_class" : false
+                "is_class" : true
               },
               {
                 "name" : "Roo.bootstrap.nav.SidebarItem",
@@ -1017,11 +1017,6 @@
           },
           {
             "name" : "Roo.dd.DragDrop",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.dd.DragDropMgr",
             "cn" : [],
             "is_class" : true
           },

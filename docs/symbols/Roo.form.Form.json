@@ -4,11 +4,45 @@
     "Roo.form.BasicForm",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.form.Column",
+    "Roo.form.FieldSet",
+    "Roo.form.Row",
+    "Roo.form.Field",
+    "Roo.form.Checkbox",
+    "Roo.form.ComboBox",
+    "Roo.form.ComboBoxArray",
+    "Roo.form.ComboCheck",
+    "Roo.form.ComboNested",
+    "Roo.form.DateField",
+    "Roo.form.DayPicker",
+    "Roo.form.DisplayField",
+    "Roo.form.FCKeditor",
+    "Roo.form.GridField",
+    "Roo.form.Hidden",
+    "Roo.form.HtmlEditor",
+    "Roo.form.MonthField",
+    "Roo.form.NumberField",
+    "Roo.form.Radio",
+    "Roo.form.Select",
+    "Roo.form.Signature",
+    "Roo.form.TextArea",
+    "Roo.form.TextField",
+    "Roo.form.TriggerField",
+    "Roo.Button",
+    "Roo.SplitButton",
+    "Roo.Toolbar.Button",
+    "Roo.Toolbar.SplitButton",
+    "Roo.form.TextItem"
+  ],
+  "tree_parent" : [],
   "desc" : "Adds the ability to dynamically render forms with JavaScript to {@link Roo.form.BasicForm}.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Form",
   "example" : "",
   "deprecated" : "",
@@ -30,7 +64,7 @@
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\").\nThis property cascades to child containers if not set.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "listeners",
@@ -42,13 +76,13 @@
       "name" : "formData",
       "type" : "boolean|FormData",
       "desc" : "- true to use new 'FormData' post, or set to a new FormData({dom form}) Object, if\nsending a formdata with extra parameters - eg uploaded elements.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "monitorValid",
       "type" : "Boolean",
       "desc" : "If true the form monitors its valid state <b>client-side</b> and\nfires a looping event with that state. This is required to bind buttons to the valid\nstate using the config value formBind:true on the button.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "fileUpload",
@@ -60,25 +94,25 @@
       "name" : "progressUrl",
       "type" : "String",
       "desc" : "- Url to return progress data",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "buttons[]",
       "type" : "Roo.Button",
       "desc" : "buttons at bottom of form",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "minButtonWidth",
       "type" : "Number",
       "desc" : "Minimum width of all buttons in pixels (defaults to 75)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "buttonAlign",
       "type" : "String",
       "desc" : "Valid values are \"left,\" \"center\" and \"right\" (defaults to \"center\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "method",
@@ -96,13 +130,13 @@
       "name" : "itemCls",
       "type" : "String",
       "desc" : "A css class to apply to the x-form-item of fields. This property cascades to child containers.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "labelWidth",
       "type" : "Number",
       "desc" : "The width of labels. This property cascades to child containers.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "timeout",
@@ -114,7 +148,7 @@
       "name" : "monitorPoll",
       "type" : "Number",
       "desc" : "The milliseconds to poll valid state, ignored if monitorValid is not true (defaults to 200)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "baseParams",

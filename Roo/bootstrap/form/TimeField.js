@@ -6,8 +6,8 @@
  */
 
 /**
- * @class Roo.bootstrap.TimeField
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.TimeField
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap DateField class
  * 
  * 
@@ -16,34 +16,34 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.TimeField = function(config){
-    Roo.bootstrap.TimeField.superclass.constructor.call(this, config);
+Roo.bootstrap.form.TimeField = function(config){
+    Roo.bootstrap.form.TimeField.superclass.constructor.call(this, config);
     this.addEvents({
             /**
              * @event show
              * Fires when this field show.
-             * @param {Roo.bootstrap.DateField} thisthis
+             * @param {Roo.bootstrap.form.DateField} thisthis
              * @param {Mixed} date The date value
              */
             show : true,
             /**
              * @event show
              * Fires when this field hide.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.form.DateField} this
              * @param {Mixed} date The date value
              */
             hide : true,
             /**
              * @event select
              * Fires when select a date.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.form.DateField} this
              * @param {Mixed} date The date value
              */
             select : true
         });
 };
 
-Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     
     /**
      * @cfg {String} format
@@ -55,16 +55,16 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     getAutoCreate : function()
     {
         this.after = '<i class="fa far fa-clock"></i>';
-        return Roo.bootstrap.TimeField.superclass.getAutoCreate.call(this);
+        return Roo.bootstrap.form.TimeField.superclass.getAutoCreate.call(this);
         
          
     },
     onRender: function(ct, position)
     {
         
-        Roo.bootstrap.TimeField.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.form.TimeField.superclass.onRender.call(this, ct, position);
                 
-        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.TimeField.template);
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.TimeField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -370,13 +370,13 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
   
     onFocus : function()
     {
-        Roo.bootstrap.TimeField.superclass.onFocus.call(this);
+        Roo.bootstrap.form.TimeField.superclass.onFocus.call(this);
         this.show();
     },
     
     onBlur : function()
     {
-        Roo.bootstrap.TimeField.superclass.onBlur.call(this);
+        Roo.bootstrap.form.TimeField.superclass.onBlur.call(this);
         this.hide();
     },
     
@@ -453,7 +453,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
 });
  
 
-Roo.apply(Roo.bootstrap.TimeField,  {
+Roo.apply(Roo.bootstrap.form.TimeField,  {
   
     template : {
         tag: 'div',

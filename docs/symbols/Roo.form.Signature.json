@@ -6,11 +6,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Signature field.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Signature",
   "example" : "",
   "deprecated" : "",
@@ -92,7 +96,7 @@
       "name" : "allowBlank",
       "type" : "Boolean",
       "desc" : "False to validate that the value length > 0 (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Signature"
     },
     {
       "name" : "tabIndex",
@@ -140,13 +144,13 @@
       "name" : "width",
       "type" : "Number",
       "desc" : "The signature panel width (defaults to 300)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Signature"
     },
     {
       "name" : "labels",
       "type" : "Object",
       "desc" : "Label to use when rendering a form.\ndefaults to \nlabels : { \n     clear : \"Clear\",\n     confirm : \"Confirm\"\n }",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Signature"
     },
     {
       "name" : "validateOnBlur",
@@ -164,7 +168,7 @@
       "name" : "height",
       "type" : "Number",
       "desc" : "The signature panel height (defaults to 100)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Signature"
     },
     {
       "name" : "name",

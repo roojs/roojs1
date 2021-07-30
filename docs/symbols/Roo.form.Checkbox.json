@@ -6,13 +6,19 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.form.Radio"
-  ],
+  "childClasses" : {
+    "Roo.form.Checkbox" : [
+      "Roo.form.Radio"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Single checkbox field.  Can be used as a direct replacement for traditional checkbox fields.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Checkbox",
   "example" : "",
   "deprecated" : "",
@@ -52,7 +58,7 @@
       "name" : "inputValue",
       "type" : "String",
       "desc" : "The value that should go into the generated input element's value attribute",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Checkbox"
     },
     {
       "name" : "fieldLabel",
@@ -124,13 +130,13 @@
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"checkbox\", autocomplete: \"off\"})",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Checkbox"
     },
     {
       "name" : "valueOff",
       "type" : "String",
       "desc" : "The value that should go into the generated input element's value when unchecked.",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Checkbox"
     },
     {
       "name" : "invalidText",
@@ -148,7 +154,7 @@
       "name" : "boxLabel",
       "type" : "String",
       "desc" : "The text that appears beside the checkbox",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Checkbox"
     },
     {
       "name" : "width",
@@ -172,19 +178,19 @@
       "name" : "fieldClass",
       "type" : "String",
       "desc" : "The default CSS class for the checkbox (defaults to \"x-form-field\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Checkbox"
     },
     {
       "name" : "checked",
       "type" : "Boolean",
       "desc" : "True if the the checkbox should render already checked (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Checkbox"
     },
     {
       "name" : "focusClass",
       "type" : "String",
       "desc" : "The CSS class to use when the checkbox receives focus (defaults to undefined)",
-      "memberOf" : ""
+      "memberOf" : "Roo.form.Checkbox"
     },
     {
       "name" : "name",

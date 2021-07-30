@@ -1,13 +1,19 @@
 {
   "name" : "Roo.SplitBar.BasicLayoutAdapter",
   "augments" : [],
-  "childClasses" : [
-    "Roo.SplitBar.AbsoluteLayoutAdapter"
-  ],
+  "childClasses" : {
+    "Roo.SplitBar.BasicLayoutAdapter" : [
+      "Roo.SplitBar.AbsoluteLayoutAdapter"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Default Adapter. It assumes the splitter and resizing element are not positioned\nelements and only gets/sets the width of the element. Generally used for table based layouts.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "BasicLayoutAdapter",
   "example" : "",
   "deprecated" : "",

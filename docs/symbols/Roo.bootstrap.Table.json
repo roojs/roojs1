@@ -5,11 +5,17 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.TableBody"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap Table class.  This class represents the primary interface of a component based grid control.\nSimilar to Roo.grid.Grid\n<pre><code>\n var table = Roo.factory({\n    xtype : 'Table',\n    xns : Roo.bootstrap,\n    autoSizeColumns: true,\n    \n    \n    store : {\n        xtype : 'Store',\n        xns : Roo.data,\n        remoteSort : true,\n        sortInfo : { direction : 'ASC', field: 'name' },\n        proxy : {\n           xtype : 'HttpProxy',\n           xns : Roo.data,\n           method : 'GET',\n           url : 'https://example.com/some.data.url.json'\n        },\n        reader : {\n           xtype : 'JsonReader',\n           xns : Roo.data,\n           fields : [ 'id', 'name', whatever' ],\n           id : 'id',\n           root : 'data'\n        }\n    },\n    cm : [\n        {\n            xtype : 'ColumnModel',\n            xns : Roo.grid,\n            align : 'center',\n            cursor : 'pointer',\n            dataIndex : 'is_in_group',\n            header : \"Name\",\n            sortable : true,\n            renderer : function(v, x , r) {  \n            \n                return String.format(\"{0}\", v)\n            }\n            width : 3\n        } // more columns..\n    ],\n    selModel : {\n        xtype : 'RowSelectionModel',\n        xns : Roo.bootstrap.Table\n        // you can add listeners to catch selection change here....\n    }\n     \n\n });\n // set any options\n grid.render(Roo.get(\"some-div\"));\n</code></pre>\n\nCurrently the Table  uses multiple headers to try and handle XL / Medium etc... styling",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Table",
   "example" : "",
   "deprecated" : "",
@@ -31,7 +37,7 @@
       "name" : "footerShow",
       "type" : "Boolean",
       "desc" : "e) generate tfoot, default true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "hideMode",
@@ -43,19 +49,19 @@
       "name" : "auto_hide_footer",
       "type" : "Boolean",
       "desc" : "auto hide footer if only one page (default false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "scrollBody",
       "type" : "Boolean",
       "desc" : "e) default false - body scrolled / fixed header",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "cm[]",
       "type" : "Roo.grid.ColumnModel",
       "desc" : "A column for the grid.",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "xattr",
@@ -73,13 +79,13 @@
       "name" : "minColumnWidth",
       "type" : "Number",
       "desc" : "default 50 pixels minimum column width",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "bordered",
       "type" : "boolean",
       "desc" : "Add borders to the table",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "tooltip",
@@ -97,7 +103,7 @@
       "name" : "condensed",
       "type" : "boolean",
       "desc" : "Format condensed",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "style",
@@ -109,13 +115,13 @@
       "name" : "store",
       "type" : "Roo.data.Store",
       "desc" : "The data store to use",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "cellSelection",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "actionMode",
@@ -127,7 +133,7 @@
       "name" : "sm",
       "type" : "Roo.grid.AbstractSelectionModel",
       "desc" : "The selection model to use (cell selection is not supported yet)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "listeners",
@@ -139,7 +145,7 @@
       "name" : "striped",
       "type" : "boolean",
       "desc" : "Should the rows be alternative striped",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "container_method",
@@ -151,37 +157,37 @@
       "name" : "lazyLoad",
       "type" : "Boolean",
       "desc" : "auto load data while scrolling to the end (default false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "footer",
       "type" : "Roo.bootstrap.PagingToolbar",
       "desc" : "a paging toolbar",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "table class",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "headerShow",
       "type" : "Boolean",
       "desc" : "e) generate thead, default true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "loadMask",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "hover",
       "type" : "boolean",
       "desc" : "Add hover highlighting",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "can_build_overlaid",
@@ -205,7 +211,7 @@
       "name" : "enableColumnResize",
       "type" : "Boolean",
       "desc" : "default true if columns can be resized (drag/drop)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "dataId",
@@ -217,13 +223,13 @@
       "name" : "rowSelection",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     },
     {
       "name" : "responsive",
       "type" : "boolean",
       "desc" : "default false - if this is on, columns are rendered with col-xs-4 etc. classes, otherwise columns will be sized by CSS,\n               also adds table-responsive (see bootstrap docs for details)",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.Table"
     }
   ],
   "methods" : [

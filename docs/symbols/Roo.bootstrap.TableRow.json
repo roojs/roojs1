@@ -5,11 +5,19 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.TableCell"
+  ],
+  "tree_parent" : [
+    "Roo.bootstrap.TableBody"
+  ],
   "desc" : "Bootstrap TableRow class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "TableRow",
   "example" : "",
   "deprecated" : "",
@@ -31,7 +39,7 @@
       "name" : "charoff",
       "type" : "Number",
       "desc" : "Sets the number of characters the content will be aligned from the character specified by the char attribute",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableRow"
     },
     {
       "name" : "listeners",
@@ -43,7 +51,7 @@
       "name" : "bgcolor",
       "type" : "String",
       "desc" : "Specifies a background color for a table row",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableRow"
     },
     {
       "name" : "tooltip",
@@ -67,13 +75,13 @@
       "name" : "align",
       "type" : "String",
       "desc" : "Aligns the content in a table row",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableRow"
     },
     {
       "name" : "valign",
       "type" : "String",
       "desc" : "Vertical aligns the content in a table row",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableRow"
     },
     {
       "name" : "can_build_overlaid",
@@ -103,7 +111,7 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "row class",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.TableRow"
     },
     {
       "name" : "xattr",

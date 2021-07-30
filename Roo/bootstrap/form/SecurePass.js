@@ -6,8 +6,8 @@
  */
 
 /**
- * @class Roo.bootstrap.SecurePass
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.SecurePass
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap SecurePass class
  *
  * 
@@ -16,7 +16,7 @@
  * @param {Object} config The config object
  */
  
-Roo.bootstrap.SecurePass = function (config) {
+Roo.bootstrap.form.SecurePass = function (config) {
     // these go here, so the translation tool can replace them..
     this.errors = {
         PwdEmpty: "Please type a password, and then retype it to confirm.",
@@ -40,10 +40,10 @@ Roo.bootstrap.SecurePass = function (config) {
     
     this.errors = {};
     
-    Roo.bootstrap.SecurePass.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.SecurePass.superclass.constructor.call(this, config);
 }
 
-Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
+Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
     /**
      * @cfg {String/Object} errors A Error spec, or true for a default spec (defaults to
      * {
@@ -88,7 +88,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     // private
     initEvents: function ()
     {
-        Roo.bootstrap.SecurePass.superclass.initEvents.call(this);
+        Roo.bootstrap.form.SecurePass.superclass.initEvents.call(this);
 
         if (this.el.is('input[type=password]') && Roo.isSafari) {
             this.el.on('keydown', this.SafariOnKeyDown, this);
@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     // private
     onRender: function (ct, position)
     {
-        Roo.bootstrap.SecurePass.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.form.SecurePass.superclass.onRender.call(this, ct, position);
         this.wrap = this.el.wrap({cls: 'x-form-field-wrap'});
         this.trigger = this.wrap.createChild({tag: 'div', cls: 'StrengthMeter ' + this.triggerClass});
 
@@ -136,7 +136,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         if (this.wrap) {
             this.wrap.remove();
         }
-        Roo.bootstrap.TriggerField.superclass.onDestroy.call(this);
+        Roo.bootstrap.form.TriggerField.superclass.onDestroy.call(this);
     },
     // private
     checkStrength: function ()
@@ -173,7 +173,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     },
     reset: function ()
     {
-        Roo.bootstrap.SecurePass.superclass.reset.call(this);
+        Roo.bootstrap.form.SecurePass.superclass.reset.call(this);
         
         this._lastPwd = '';
         
@@ -190,7 +190,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     // private
     validateValue: function (value)
     {
-        if (!Roo.bootstrap.SecurePass.superclass.validateValue.call(this, value)) {
+        if (!Roo.bootstrap.form.SecurePass.superclass.validateValue.call(this, value)) {
             return false;
         }
         if (value.length == 0) {

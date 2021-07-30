@@ -5,13 +5,19 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [
-    "Roo.bootstrap.layout.Border"
-  ],
+  "childClasses" : {
+    "Roo.bootstrap.layout.Manager" : [
+      "Roo.bootstrap.layout.Border"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Base class for layout managers.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Manager",
   "example" : "",
   "deprecated" : "",

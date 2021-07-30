@@ -72,6 +72,10 @@ Roo.docs.template  = {
 		if (!data.tree_children ||  data.tree_children < 1) { 
 			return '';
 		}
+		
+		var ar = data.tree_children;
+		
+		
 		var linkSymbol  = this.linkSymbol;
 		//var linkSymbol  = this.linkSymbol;
 		var output = '<ul class="doc-children-list res-block"> ';

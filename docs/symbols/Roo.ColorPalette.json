@@ -4,11 +4,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Simple color palette class for choosing colors.  The palette can be rendered to any container.<br />\nHere's an example of typical usage:\n<pre><code>\nvar cp = new Roo.ColorPalette({value:'993300'});  // initial selected color\ncp.render('my-div');\n\ncp.on('select', function(palette, selColor){\n    // do something with selColor\n});\n</code></pre>",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "ColorPalette",
   "example" : "",
   "deprecated" : "",
@@ -36,7 +40,7 @@
       "name" : "allowReselect",
       "type" : "Boolean",
       "desc" : "If set to true then reselecting a color that is already selected fires the selection event",
-      "memberOf" : ""
+      "memberOf" : "Roo.ColorPalette"
     },
     {
       "name" : "hideMode",
@@ -48,7 +52,7 @@
       "name" : "value",
       "type" : "String",
       "desc" : "The initial color to highlight (should be a valid 6-digit color hex code without the # symbol).  Note that\nthe hex codes are case-sensitive.",
-      "memberOf" : ""
+      "memberOf" : "Roo.ColorPalette"
     },
     {
       "name" : "allowDomMove",
@@ -60,7 +64,7 @@
       "name" : "itemCls",
       "type" : "String",
       "desc" : "The CSS class to apply to the containing element (defaults to \"x-color-palette\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.ColorPalette"
     },
     {
       "name" : "actionMode",

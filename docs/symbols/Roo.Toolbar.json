@@ -1,13 +1,46 @@
 {
   "name" : "Roo.Toolbar",
   "augments" : [],
-  "childClasses" : [
-    "Roo.PagingToolbar"
+  "childClasses" : {
+    "Roo.Toolbar" : [
+      "Roo.PagingToolbar"
+    ]
+  },
+  "tree_children" : [
+    "Roo.Toolbar.Item",
+    "Roo.Toolbar.Fill",
+    "Roo.Toolbar.Separator",
+    "Roo.Toolbar.Spacer",
+    "Roo.Toolbar.TextItem",
+    "Roo.form.Field",
+    "Roo.form.Checkbox",
+    "Roo.form.ComboBox",
+    "Roo.form.ComboBoxArray",
+    "Roo.form.ComboCheck",
+    "Roo.form.ComboNested",
+    "Roo.form.DateField",
+    "Roo.form.DayPicker",
+    "Roo.form.DisplayField",
+    "Roo.form.FCKeditor",
+    "Roo.form.GridField",
+    "Roo.form.Hidden",
+    "Roo.form.HtmlEditor",
+    "Roo.form.MonthField",
+    "Roo.form.NumberField",
+    "Roo.form.Radio",
+    "Roo.form.Select",
+    "Roo.form.Signature",
+    "Roo.form.TextArea",
+    "Roo.form.TextField",
+    "Roo.form.TriggerField"
   ],
+  "tree_parent" : [],
   "desc" : "Basic Toolbar class.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Toolbar",
   "example" : "",
   "deprecated" : "",
@@ -29,19 +62,19 @@
       "name" : "text",
       "type" : "string",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "Roo.Toolbar"
     },
     {
       "name" : "container",
       "type" : "String/HTMLElement/Element",
       "desc" : "The id or element that will contain the toolbar",
-      "memberOf" : ""
+      "memberOf" : "Roo.Toolbar"
     },
     {
       "name" : "items",
       "type" : "Array",
       "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
-      "memberOf" : ""
+      "memberOf" : "Roo.Toolbar"
     }
   ],
   "methods" : [

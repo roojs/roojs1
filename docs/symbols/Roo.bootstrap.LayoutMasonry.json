@@ -5,11 +5,20 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.bootstrap.Element",
+    "Roo.bootstrap.DropTarget",
+    "Roo.bootstrap.Img",
+    "Roo.bootstrap.MasonryBrick"
+  ],
+  "tree_parent" : [],
   "desc" : "Bootstrap Layout Masonry class\n\nThis is based on \nhttp://masonry.desandro.com\n\nThe idea is to render all the bricks based on vertical width...\n\nThe original code extends 'outlayer' - we might need to use that....",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "LayoutMasonry",
   "example" : "",
   "deprecated" : "",
@@ -31,7 +40,7 @@
       "name" : "alternativePadWidth",
       "type" : "Number",
       "desc" : "padding below box..",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.LayoutMasonry"
     },
     {
       "name" : "listeners",
@@ -43,7 +52,7 @@
       "name" : "maxCols",
       "type" : "Number",
       "desc" : "maximum number of columns",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.LayoutMasonry"
     },
     {
       "name" : "tooltip",
@@ -67,19 +76,19 @@
       "name" : "isLayoutInstant",
       "type" : "Boolean",
       "desc" : "= no animation?",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.LayoutMasonry"
     },
     {
       "name" : "boxWidth",
       "type" : "Number",
       "desc" : "width of the columns",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.LayoutMasonry"
     },
     {
       "name" : "isHorizontal",
       "type" : "Boolean",
       "desc" : "defalut false",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.LayoutMasonry"
     },
     {
       "name" : "can_build_overlaid",
@@ -109,7 +118,7 @@
       "name" : "isAutoInitial",
       "type" : "Boolean",
       "desc" : "defalut true",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.LayoutMasonry"
     },
     {
       "name" : "cls",
@@ -121,7 +130,7 @@
       "name" : "padWidth",
       "type" : "Number",
       "desc" : "padding below box..",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.LayoutMasonry"
     },
     {
       "name" : "xattr",
@@ -139,7 +148,7 @@
       "name" : "gutter",
       "type" : "Number",
       "desc" : "gutter width..",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.LayoutMasonry"
     },
     {
       "name" : "dataId",
@@ -151,7 +160,7 @@
       "name" : "boxHeight",
       "type" : "Number",
       "desc" : "- 0 for square, or fix it at a certian height",
-      "memberOf" : ""
+      "memberOf" : "Roo.bootstrap.LayoutMasonry"
     },
     {
       "name" : "name",

@@ -5,11 +5,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
-  "childClasses" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Provides editor functionality for inline tree node editing.  Any valid {@link Roo.form.Field} can be used\nas the editor field.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "TreeEditor",
   "example" : "",
   "deprecated" : "",
@@ -43,19 +47,19 @@
       "name" : "alignment",
       "type" : "String",
       "desc" : "The position to align to (see {@link Roo.Element#alignTo} for more details, defaults to \"l-l\").",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeEditor"
     },
     {
       "name" : "hideEl",
       "type" : "Boolean",
       "desc" : "True to hide the bound element while the editor is displayed (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeEditor"
     },
     {
       "name" : "maxWidth",
       "type" : "Number",
       "desc" : "The maximum width in pixels of the editor field (defaults to 250).  Note that if the maxWidth would exceed\nthe containing tree element's size, it will be automatically limited for you to the container width, taking\nscroll and client offsets into account prior to each edit.",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeEditor"
     },
     {
       "name" : "constrain",
@@ -73,7 +77,7 @@
       "name" : "field",
       "type" : "Roo.form.TextField",
       "desc" : "[required] The field configuration",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeEditor"
     },
     {
       "name" : "hideMode",
@@ -97,13 +101,13 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "CSS class to apply to the editor (defaults to \"x-small-editor x-tree-editor\")",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeEditor"
     },
     {
       "name" : "shim",
       "type" : "Boolean",
       "desc" : "True to shim the editor if selects/iframes could be displayed beneath it (defaults to false)",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeEditor"
     },
     {
       "name" : "cancelOnEsc",
@@ -133,7 +137,7 @@
       "name" : "tree",
       "type" : "Roo.tree.TreePanel",
       "desc" : "The tree to bind to.",
-      "memberOf" : ""
+      "memberOf" : "Roo.tree.TreeEditor"
     },
     {
       "name" : "disableClass",

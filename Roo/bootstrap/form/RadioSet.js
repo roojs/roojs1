@@ -7,9 +7,9 @@
  */
 
 /**
- * @class Roo.bootstrap.RadioSet
- * @extends Roo.bootstrap.Input
- * @children Roo.bootstrap.Radio
+ * @class Roo.bootstrap.form.RadioSet
+ * @extends Roo.bootstrap.form.Input
+ * @children Roo.bootstrap.form.Radio
  * Bootstrap RadioSet class
  * @cfg {String} indicatorpos (left|right) default left
  * @cfg {Boolean} inline (true|false) inline the element (default true)
@@ -19,27 +19,27 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.RadioSet = function(config){
+Roo.bootstrap.form.RadioSet = function(config){
     
-    Roo.bootstrap.RadioSet.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.RadioSet.superclass.constructor.call(this, config);
     
     this.radioes = [];
     
-    Roo.bootstrap.RadioSet.register(this);
+    Roo.bootstrap.form.RadioSet.register(this);
     
     this.addEvents({
         /**
         * @event check
         * Fires when the element is checked or unchecked.
-        * @param {Roo.bootstrap.RadioSet} this This radio
-        * @param {Roo.bootstrap.Radio} item The checked item
+        * @param {Roo.bootstrap.form.RadioSet} this This radio
+        * @param {Roo.bootstrap.form.Radio} item The checked item
         */
        check : true,
        /**
         * @event click
         * Fires when the element is click.
-        * @param {Roo.bootstrap.RadioSet} this This radio set
-        * @param {Roo.bootstrap.Radio} item The checked item
+        * @param {Roo.bootstrap.form.RadioSet} this This radio set
+        * @param {Roo.bootstrap.form.Radio} item The checked item
         * @param {Roo.EventObject} e The event object
         */
        click : true
@@ -47,7 +47,7 @@ Roo.bootstrap.RadioSet = function(config){
     
 };
 
-Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.RadioSet, Roo.bootstrap.form.Input,  {
 
     radioes : false,
     
@@ -323,7 +323,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
 });
 
-Roo.apply(Roo.bootstrap.RadioSet, {
+Roo.apply(Roo.bootstrap.form.RadioSet, {
     
     groups: {},
     
