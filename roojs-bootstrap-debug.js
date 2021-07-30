@@ -33999,7 +33999,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.LayoutMasonry
  * @extends Roo.bootstrap.Component
- * @children Roo.bootstrap.Element Roo.bootstrap.Image Roo.bootstrap.MasonryBrick
+ * @children Roo.bootstrap.Element Roo.bootstrap.Img Roo.bootstrap.MasonryBrick
  * Bootstrap Layout Masonry class
  *
  * This is based on 
