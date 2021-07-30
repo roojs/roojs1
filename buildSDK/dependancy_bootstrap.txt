@@ -78,11 +78,11 @@ Roo.bootstrap.TableRow
 Roo.bootstrap.TableBody
 
 Roo.form.Action
-Roo.bootstrap.Form
+Roo.bootstrap.form.Form
 Roo.form.VTypes
-Roo.bootstrap.Input
-Roo.bootstrap.TextArea
-Roo.bootstrap.TriggerField
+Roo.bootstrap.form.Input
+Roo.bootstrap.form.TextArea
+Roo.bootstrap.form.TriggerField
 Roo.bootstrap.CardUploader
 
 
@@ -100,7 +100,7 @@ Roo.data.ScriptTagProxy
 Roo.data.JsonReader
 Roo.data.ArrayReader
 
-Roo.bootstrap.ComboBox
+Roo.bootstrap.form.ComboBox
 Roo.View
 
 
@@ -114,13 +114,12 @@ Roo.bootstrap.ProgressBar
 Roo.bootstrap.TabGroup
 Roo.bootstrap.TabPanel
 
-Roo.bootstrap.DateField
-Roo.bootstrap.TimeField
-Roo.bootstrap.MonthField
-
-Roo.bootstrap.CheckBox
-Roo.bootstrap.Radio
-Roo.bootstrap.SecurePass
+Roo.bootstrap.form.DateField
+Roo.bootstrap.form.TimeField
+Roo.bootstrap.form.MonthField
+Roo.bootstrap.form.CheckBox
+Roo.bootstrap.form.Radio
+Roo.bootstrap.form.SecurePass
 
 Roo.HtmlEditorCore
 Roo.bootstrap.HtmlEditor
@@ -154,20 +153,20 @@ Roo.bootstrap.DocumentManager
 Roo.bootstrap.DocumentViewer
 
 
-Roo.bootstrap.FieldLabel
+Roo.bootstrap.form.FieldLabel
 
-Roo.bootstrap.DateSplitField
+Roo.bootstrap.form.DateSplitField
 
 Roo.bootstrap.LayoutMasonry
 Roo.bootstrap.LayoutMasonryAuto
 Roo.bootstrap.MasonryBrick
 Roo.bootstrap.Brick
 
-Roo.bootstrap.NumberField
+Roo.bootstrap.form.NumberField
 
 Roo.bootstrap.DocumentSlider
 
-Roo.bootstrap.RadioSet
+Roo.bootstrap.form.RadioSet
 
 Roo.bootstrap.SplitBar
 
@@ -192,9 +191,9 @@ Roo.bootstrap.panel.Nest
 Roo.bootstrap.panel.Tabs
 Roo.bootstrap.panel.TabItem
 
-Roo.bootstrap.PhoneInputData
-Roo.bootstrap.PhoneInput
+Roo.bootstrap.form.PhoneInputData
+Roo.bootstrap.form.PhoneInput
 
-Roo.bootstrap.MoneyField
+Roo.bootstrap.form.MoneyField
 
 Roo.bootstrap.BezierSignature
