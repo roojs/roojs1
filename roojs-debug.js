@@ -4359,7 +4359,7 @@ Roo.DomHelper = function(){
     var ieTable = function(depth, s, h, e){
         tempTableEl.innerHTML = [s, h, e].join('');
         var i = -1, el = tempTableEl;
-        while(++i < depth){
+        while(++i < depth && el.firstChild){
             el = el.firstChild;
         }
         return el;

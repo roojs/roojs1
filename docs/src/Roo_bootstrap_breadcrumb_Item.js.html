@@ -10,6 +10,7 @@
  * @class Roo.bootstrap.breadcrumb.Nav
  * @extends Roo.bootstrap.Component
  * @children Roo.bootstrap.Component
+ * @parent Roo.bootstrap.breadcrumb.Nav
  * Bootstrap Breadcrumb Nav Class
  *  
  * 

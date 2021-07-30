@@ -16,7 +16,7 @@
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
-  "isAbstract" : false,
+  "isAbstract" : true,
   "isBuilderTop" : false,
   "memberOf" : "Manager",
   "example" : "",

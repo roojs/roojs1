@@ -16,7 +16,9 @@
     "Roo.bootstrap.TabGroup",
     "Roo.bootstrap.Container"
   ],
-  "tree_parent" : [],
+  "tree_parent" : [
+    "Roo.bootstrap.menu.Menu"
+  ],
   "desc" : "Bootstrap MenuItem class",
   "isSingleton" : false,
   "isStatic" : false,

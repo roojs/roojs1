@@ -7,7 +7,9 @@
   ],
   "childClasses" : {  },
   "tree_children" : [],
-  "tree_parent" : [],
+  "tree_parent" : [
+    "Roo.bootstrap.menu.Menu"
+  ],
   "desc" : "Bootstrap Separator class",
   "isSingleton" : false,
   "isStatic" : false,

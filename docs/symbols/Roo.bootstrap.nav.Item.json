@@ -16,7 +16,9 @@
     "Roo.bootstrap.ButtonUploader",
     "Roo.bootstrap.form.CardUploader"
   ],
-  "tree_parent" : [],
+  "tree_parent" : [
+    "Roo.bootstrap.nav.Group"
+  ],
   "desc" : "Bootstrap Navbar.NavItem class",
   "isSingleton" : false,
   "isStatic" : false,

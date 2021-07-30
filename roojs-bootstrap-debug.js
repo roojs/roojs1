@@ -3618,7 +3618,8 @@ Roo.bootstrap.menu.Manager = function(){
  * @extends Roo.bootstrap.Component
  * @licence LGPL
  * @children Roo.bootstrap.menu.Item
- * Bootstrap Menu class - container for MenuItems
+ * @parent none
+ * Bootstrap Menu class - container for MenuItems - normally has to be added to a object that supports the menu property
  * 
  * @cfg {String} type (dropdown|treeview|submenu) type of menu
  * @cfg {bool} hidden  if the menu should be hidden when rendered.
@@ -4092,6 +4093,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.menu.Item
  * @extends Roo.bootstrap.Component
  * @children  Roo.bootstrap.Button Roo.bootstrap.ButtonUploader Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Container
+ * @parent Roo.bootstrap.menu.Menu
  * @licence LGPL
  * Bootstrap MenuItem class
  * 
@@ -4221,6 +4223,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.menu.Separator
  * @extends Roo.bootstrap.Component
  * @licence LGPL
+ * @parent Roo.bootstrap.menu.Menu
  * Bootstrap Separator class
  * 
  * @constructor
@@ -6347,6 +6350,7 @@ Roo.apply(Roo.bootstrap.nav.Group, {
  * @class Roo.bootstrap.nav.Item
  * @extends Roo.bootstrap.Component
  * @children Roo.bootstrap.Container Roo.bootstrap.Button
+ * @parent Roo.bootstrap.nav.Group
  * @licence LGPL
  * Bootstrap Navbar.NavItem class
  * 
@@ -7421,6 +7425,7 @@ Roo.extend(Roo.bootstrap.breadcrumb.Nav, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.breadcrumb.Nav
  * @extends Roo.bootstrap.Component
  * @children Roo.bootstrap.Component
+ * @parent Roo.bootstrap.breadcrumb.Nav
  * Bootstrap Breadcrumb Nav Class
  *  
  * 
@@ -21485,6 +21490,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.Popover
  * @extends Roo.bootstrap.Component
  * @builder-top
+ * @parent none
  * @children Roo.bootstrap.Component
  * Bootstrap Popover class
  * @cfg {String} html contents of the popover   (or false to use children..)
@@ -21960,18 +21966,13 @@ Roo.apply(Roo.bootstrap.Popover, {
         Roo.bootstrap.Popover.popups.remove(this);
     } 
 
-});/*
- * - LGPL
- *
- * Card header - holder for the card header elements.
- * 
- */
-
+});
 /**
  * @class Roo.bootstrap.PopoverNav
  * @extends Roo.bootstrap.nav.Simplebar
  * @parent Roo.bootstrap.Popover
  * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container
+ * @licence LGPL
  * Bootstrap Popover header navigation class
  * FIXME? should this go under nav?
  *
@@ -28113,7 +28114,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
       
 Roo.namespace('Roo.bootstrap.form.HtmlEditor');
 /**
- * @class Roo.bootstrap.form.HtmlEditorToolbar1
+ * @class Roo.bootstrap.form.HtmlEditorToolbarStandard
+ * @parent Roo.bootstrap.form.HtmlEditor
  * @extends Roo.bootstrap.nav.Simplebar
  * Basic Toolbar
  * 
@@ -28123,7 +28125,7 @@ Roo.namespace('Roo.bootstrap.form.HtmlEditor');
  new Roo.bootstrap.form.HtmlEditor({
     ....
     toolbars : [
-        new Roo.bootstrap.form.HtmlEditorToolbar1({
+        new Roo.bootstrap.form.HtmlEditorToolbarStandard({
             disable : { fonts: 1 , format: 1, ..., ... , ...],
             btns : [ .... ]
         })
@@ -37815,6 +37817,7 @@ Roo.bootstrap.SplitBar.BOTTOM = 4;
 /**
  * @class Roo.bootstrap.layout.Manager
  * @extends Roo.bootstrap.Component
+ * @abstract
  * Base class for layout managers.
  */
 Roo.bootstrap.layout.Manager = function(config)

@@ -9,8 +9,10 @@
   "tree_children" : [
     "Roo.bootstrap.menu.Item"
   ],
-  "tree_parent" : [],
-  "desc" : "Bootstrap Menu class - container for MenuItems",
+  "tree_parent" : [
+    "none"
+  ],
+  "desc" : "Bootstrap Menu class - container for MenuItems - normally has to be added to a object that supports the menu property",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
