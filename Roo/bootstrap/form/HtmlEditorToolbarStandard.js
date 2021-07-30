@@ -1,7 +1,8 @@
   
 Roo.namespace('Roo.bootstrap.form.HtmlEditor');
 /**
- * @class Roo.bootstrap.form.HtmlEditorToolbar1
+ * @class Roo.bootstrap.form.HtmlEditorToolbarStandard
+ * @parent Roo.bootstrap.form.HtmlEditor
  * @extends Roo.bootstrap.nav.Simplebar
  * Basic Toolbar
  * 
@@ -11,7 +12,7 @@ Roo.namespace('Roo.bootstrap.form.HtmlEditor');
  new Roo.bootstrap.form.HtmlEditor({
     ....
     toolbars : [
-        new Roo.bootstrap.form.HtmlEditorToolbar1({
+        new Roo.bootstrap.form.HtmlEditorToolbarStandard({
             disable : { fonts: 1 , format: 1, ..., ... , ...],
             btns : [ .... ]
         })

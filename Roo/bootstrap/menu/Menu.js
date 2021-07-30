@@ -4,7 +4,8 @@
  * @extends Roo.bootstrap.Component
  * @licence LGPL
  * @children Roo.bootstrap.menu.Item
- * Bootstrap Menu class - container for MenuItems
+ * @parent none
+ * Bootstrap Menu class - container for MenuItems - normally has to be added to a object that supports the menu property
  * 
  * @cfg {String} type (dropdown|treeview|submenu) type of menu
  * @cfg {bool} hidden  if the menu should be hidden when rendered.

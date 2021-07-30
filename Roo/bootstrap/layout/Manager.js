@@ -12,6 +12,7 @@
 /**
  * @class Roo.bootstrap.layout.Manager
  * @extends Roo.bootstrap.Component
+ * @abstract
  * Base class for layout managers.
  */
 Roo.bootstrap.layout.Manager = function(config)

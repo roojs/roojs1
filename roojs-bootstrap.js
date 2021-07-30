@@ -5,7 +5,7 @@ Roo.bootstrap.menu=Roo.bootstrap.menu||{};
 // Roo/bootstrap/nav/namespace.js
 Roo.bootstrap.nav={};
 // Roo/bootstrap/form/namespace.js
-Roo.bootstrap.form.Form={};
+Roo.bootstrap.form={};
 // Roo/bootstrap/panel/namespace.js
 Roo.bootstrap.panel={};
 // Roo/bootstrap/layout/namespace.js
@@ -1892,10 +1892,10 @@ if(i>0){var C=cx-px;var D=cy-py;B+=Math.sqrt(C*C+D*D);}px=cx;py=cy;}return B;};B
 }var B=0;var C=null;var D;var E;var F;var G=function(){B=Date.now();C=null;D=fn.apply(E,F);if(!C){E=null;F=[];}};return function H(){var I=[];for(var _i=0;_i<arguments.length;_i++){I[_i]=arguments[_i];}var J=Date.now();var K=A-(J-B);E=this;F=I;if(K<=0||K>A){if(C){clearTimeout(C);
 C=null;}B=J;D=fn.apply(E,F);if(!C){E=null;F=[];}}else if(!C){C=window.setTimeout(G,K);}return D;};}});
 // Roo/bootstrap/form/deprecated.js
-Roo.bootstrap.Form=Roo.bootstrap.form.Form.Form;Roo.bootstrap.Input=Roo.bootstrap.form.Form.Input;Roo.bootstrap.TextArea=Roo.bootstrap.form.Form.TextArea;Roo.bootstrap.TriggerField=Roo.bootstrap.form.Form.TriggerField;Roo.bootstrap.ComboBox=Roo.bootstrap.form.Form.ComboBox;
-Roo.bootstrap.DateField=Roo.bootstrap.form.Form.DateField;Roo.bootstrap.TimeField=Roo.bootstrap.form.Form.TimeField;Roo.bootstrap.MonthField=Roo.bootstrap.form.Form.MonthField;Roo.bootstrap.CheckBox=Roo.bootstrap.form.Form.CheckBox;Roo.bootstrap.Radio=Roo.bootstrap.form.Form.Radio;
-Roo.bootstrap.RadioSet=Roo.bootstrap.form.Form.RadioSet;Roo.bootstrap.SecurePass=Roo.bootstrap.form.Form.SecurePass;Roo.bootstrap.FieldLabel=Roo.bootstrap.form.Form.FieldLabel;Roo.bootstrap.DateSplitField=Roo.bootstrap.form.Form.DateSplitField;Roo.bootstrap.NumberField=Roo.bootstrap.form.Form.NumberField;
-Roo.bootstrap.PhoneInput=Roo.bootstrap.form.Form.PhoneInput;Roo.bootstrap.PhoneInputData=Roo.bootstrap.form.Form.PhoneInputData;Roo.bootstrap.MoneyField=Roo.bootstrap.form.Form.MoneyField;Roo.bootstrap.HtmlEditor=Roo.bootstrap.form.Form.HtmlEditor;Roo.bootstrap.HtmlEditor.ToolbarStandard=Roo.bootstrap.form.Form.HtmlEditorToolbarStandard;
+Roo.bootstrap.Form=Roo.bootstrap.form.Form;Roo.bootstrap.Input=Roo.bootstrap.form.Input;Roo.bootstrap.TextArea=Roo.bootstrap.form.TextArea;Roo.bootstrap.TriggerField=Roo.bootstrap.form.TriggerField;Roo.bootstrap.ComboBox=Roo.bootstrap.form.ComboBox;Roo.bootstrap.DateField=Roo.bootstrap.form.DateField;
+Roo.bootstrap.TimeField=Roo.bootstrap.form.TimeField;Roo.bootstrap.MonthField=Roo.bootstrap.form.MonthField;Roo.bootstrap.CheckBox=Roo.bootstrap.form.CheckBox;Roo.bootstrap.Radio=Roo.bootstrap.form.Radio;Roo.bootstrap.RadioSet=Roo.bootstrap.form.RadioSet;
+Roo.bootstrap.SecurePass=Roo.bootstrap.form.SecurePass;Roo.bootstrap.FieldLabel=Roo.bootstrap.form.FieldLabel;Roo.bootstrap.DateSplitField=Roo.bootstrap.form.DateSplitField;Roo.bootstrap.NumberField=Roo.bootstrap.form.NumberField;Roo.bootstrap.PhoneInput=Roo.bootstrap.form.PhoneInput;
+Roo.bootstrap.PhoneInputData=Roo.bootstrap.form.PhoneInputData;Roo.bootstrap.MoneyField=Roo.bootstrap.form.MoneyField;Roo.bootstrap.HtmlEditor=Roo.bootstrap.form.HtmlEditor;Roo.bootstrap.HtmlEditor.ToolbarStandard=Roo.bootstrap.form.HtmlEditorToolbarStandard;
 Roo.bootstrap.Markdown=Roo.bootstrap.form.Markdown;Roo.bootstrap.CardUploader=Roo.bootstrap.form.CardUploader;
 // Roo/bootstrap/nav/deprecated.js
 Roo.bootstrap.Navbar=Roo.bootstrap.nav.Bar;Roo.bootstrap.NavGroup=Roo.bootstrap.nav.Group;Roo.bootstrap.NavHeaderbar=Roo.bootstrap.nav.Headerbar;Roo.bootstrap.NavItem=Roo.bootstrap.nav.Item;Roo.bootstrap.NavProgressBar=Roo.bootstrap.nav.ProgressBar;Roo.bootstrap.NavProgressBarItem=Roo.bootstrap.nav.ProgressBarItem;

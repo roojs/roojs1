@@ -1,1 +1,1 @@
-Roo.bootstrap.form.Form = {};
+Roo.bootstrap.form = {};

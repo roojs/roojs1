@@ -11,6 +11,7 @@ Roo.docs = new Roo.XComponent({
   'ae635f08107a69569e636835f24e6f6f' :" extends ",
   '87f9f735a1d36793ceaecd4e47124b63' :"Events",
   'd41d8cd98f00b204e9800998ecf8427e' :"",
+  '4d9ee8f98abde282da987fed0aac295c' :"Children that can be added using addxtype({...})",
   '9b34238e8113db140b452beec500024b' :"Roo JS Documentation",
   '50f33d14f129e4548c1c270fd6725a78' :"Configuration options",
   'e64b94523532dbac62df6795a5153f04' :"doc-desc",
@@ -22,8 +23,7 @@ Roo.docs = new Roo.XComponent({
   'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx",
   '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
   'a1d108496af420635536a4e29e87d42b' :"Constructor, Static and Public Methods",
-  'd41d8cd98f00b204e9800998ecf8427e' :" ",
-  '11410a0e42ed3bd4fc2f239a79f947dc' :"Children that can be added using Roo.factory"
+  'd41d8cd98f00b204e9800998ecf8427e' :" "
  },
 
   part     :  ["docs", "docs" ],
@@ -819,7 +819,7 @@ Roo.docs = new Roo.XComponent({
           {
            xtype : 'Container',
            cls : 'doc-children',
-           header : _this._strings['11410a0e42ed3bd4fc2f239a79f947dc'] /* Children that can be added using Roo.factory */,
+           header : _this._strings['4d9ee8f98abde282da987fed0aac295c'] /* Children that can be added using addxtype({...}) */,
            panel : 'primary',
            listeners : {
             render : function (_self)

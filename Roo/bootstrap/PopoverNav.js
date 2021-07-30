@@ -1,15 +1,10 @@
-/*
- * - LGPL
- *
- * Card header - holder for the card header elements.
- * 
- */
 
 /**
  * @class Roo.bootstrap.PopoverNav
  * @extends Roo.bootstrap.nav.Simplebar
  * @parent Roo.bootstrap.Popover
  * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container
+ * @licence LGPL
  * Bootstrap Popover header navigation class
  * FIXME? should this go under nav?
  *

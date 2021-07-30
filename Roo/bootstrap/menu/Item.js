@@ -2,6 +2,7 @@
  * @class Roo.bootstrap.menu.Item
  * @extends Roo.bootstrap.Component
  * @children  Roo.bootstrap.Button Roo.bootstrap.ButtonUploader Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Container
+ * @parent Roo.bootstrap.menu.Menu
  * @licence LGPL
  * Bootstrap MenuItem class
  * 

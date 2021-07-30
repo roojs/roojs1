@@ -79,7 +79,9 @@ Roo.docs.template  = {
 		var linkSymbol  = this.linkSymbol;
 		//var linkSymbol  = this.linkSymbol;
 		var output = '<ul class="doc-children-list res-block"> ';
-		 
+		ar.sort(function (a, b) {
+			return a.toLowerCase().localeCompare(b.toLowerCase());
+		})
 		for(var i = 0; i < ar.length; i++) {
 			output += '<li>' +linkSymbol(ar[i])  + "</li>";
 			

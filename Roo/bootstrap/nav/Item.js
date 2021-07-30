@@ -2,6 +2,7 @@
  * @class Roo.bootstrap.nav.Item
  * @extends Roo.bootstrap.Component
  * @children Roo.bootstrap.Container Roo.bootstrap.Button
+ * @parent Roo.bootstrap.nav.Group
  * @licence LGPL
  * Bootstrap Navbar.NavItem class
  * 

@@ -3,6 +3,7 @@
  * @class Roo.bootstrap.menu.Separator
  * @extends Roo.bootstrap.Component
  * @licence LGPL
+ * @parent Roo.bootstrap.menu.Menu
  * Bootstrap Separator class
  * 
  * @constructor
