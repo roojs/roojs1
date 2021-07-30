@@ -69,27 +69,20 @@ Roo.docs.template  = {
 	
 	doc_children : function(data)
     {
-		if (!data.tree_children || typeof(data.tree_children) { 
+		if (!data.tree_children ||  data.tree_children < 1) { 
 			return '';
 		}
 		var linkSymbol  = this.linkSymbol;
 		//var linkSymbol  = this.linkSymbol;
-		var output = '<ul class="inheritance res-block"> ';
-		
-		var iterArray  = function(ar) {
-			for(var i = 0; i < ar.length; i++) {
-				output += '<li>' +linkSymbol(ar[i]) ; // a href...
-				if (typeof(data.childClasses[ar[i]]) != 'undefined') {
-					output += '<ul>';
-					iterArray(data.childClasses[ar[i]]);
-					output += '</ul>';
-				}
-				output +=  "</li>";
-				
-			}
+		var output = '<ul class="doc-children-list res-block"> ';
+		 
+		for(var i = 0; i < ar.length; i++) {
+			output += '<li>' +linkSymbol(ar[i])  + "</li>";
 			
 		}
-		iterArray(data.childClasses[data.name]);
+		
+	
+		
 		 
 		return output +   '</ul>'
 	
