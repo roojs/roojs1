@@ -14286,7 +14286,7 @@ Roo.tree.ColumnNodeUI = Roo.extend(Roo.tree.TreeNodeUI, {
 
 /**
  * @class Roo.tree.ColumnTree
- * @extends Roo.data.TreePanel
+ * @extends Roo.tree.TreePanel
  * @cfg {Object} columns  Including width, header, renderer, cls, dataIndex 
  * @cfg {int} borderWidth  compined right/left border allowance
  * @constructor

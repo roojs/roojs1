@@ -7,7 +7,7 @@
 
 /**
  * @class Roo.bootstrap.nav.Sidebar
- * @extends Roo.bootstrap.Navbar
+ * @extends Roo.bootstrap.nav.Bar
  * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container Roo.bootstrap.Form Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Link
  * Bootstrap Sidebar class
  * 
