@@ -7437,9 +7437,10 @@ Roo.extend(Roo.bootstrap.breadcrumb.Nav, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.breadcrumb.Nav
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Breadcrumb Nav Class
  *  
- * @children Roo.bootstrap.breadcrumb.Component
+ * 
  * @cfg {String} html the content of the link.
  * @cfg {String} href where it links to if '#' is used the link will be handled by onClick.
  * @cfg {Boolean} active is it active
