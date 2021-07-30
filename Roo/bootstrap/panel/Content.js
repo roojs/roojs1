@@ -9,9 +9,11 @@
  * <script type="text/javascript">
  */
 /**
- * @class Roo.ContentPanel
+ * @class Roo.bootstrap.paenl.Content
  * @extends Roo.util.Observable
- * A basic ContentPanel element.
+ * @builder-top
+ * @children Roo.bootstrap.Component
+ * A basic ContentPanel element. - a panel that contain any content (eg. forms etc.)
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
  * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
@@ -23,7 +25,7 @@
  * @cfg {String} title          The title for this panel
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
  * @cfg {String} url            Calls {@link #setUrl} with this value
- * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String} region  [required] (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
@@ -31,13 +33,11 @@
  * @cfg {Boolean} badges render the badges
  * @cfg {String} cls  extra classes to use  
  * @cfg {String} background (primary|secondary|success|info|warning|danger|light|dark)
-
+ 
  * @constructor
  * Create a new ContentPanel.
- * @param {String/HTMLElement/Roo.Element} el The container element for this panel
  * @param {String/Object} config A string to set only the title or a config object
- * @param {String} content (optional) Set the HTML content for this panel
- * @param {String} region (optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)
+ 
  */
 Roo.bootstrap.panel.Content = function( config){
     

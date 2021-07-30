@@ -12,6 +12,7 @@
 /**
  * @class Roo.grid.AbstractSelectionModel
  * @extends Roo.util.Observable
+ * @abstract
  * Abstract base class for grid SelectionModels.  It provides the interface that should be
  * implemented by descendant classes.  This class should not be directly instantiated.
  * @constructor

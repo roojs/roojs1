@@ -14,7 +14,10 @@ Roo.bootstrap.version = ( function() {
          Roo.Element.prototype.visibilityMode = Roo.Element.DISPLAY;
     }
     return ret;
-})(); /*
+})(); Roo.bootstrap.menu = Roo.bootstrap.menu || {};
+Roo.bootstrap.nav = {};
+
+Roo.bootstrap.form = {};Roo.bootstrap.panel = {};Roo.bootstrap.layout = {};/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -223,6 +226,8 @@ Roo.bootstrap = Roo.bootstrap || {};
 /**
  * @class Roo.bootstrap.Component
  * @extends Roo.Component
+ * @abstract
+ * @children Roo.bootstrap.Component
  * Bootstrap Component base class
  * @cfg {String} cls css class
  * @cfg {String} style any extra css
@@ -650,7 +655,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
 /**
  * @class Roo.bootstrap.Element
  * @extends Roo.bootstrap.Component
- * Bootstrap Element class
+ * @children Roo.bootstrap.Component
+ * Bootstrap Element class (basically a DIV used to make random stuff )
+ * 
  * @cfg {String} html contents of the element
  * @cfg {String} tag tag of the element
  * @cfg {String} cls class of the element
@@ -848,6 +855,9 @@ Roo.extend(Roo.bootstrap.DropTarget, Roo.bootstrap.Element,  {
 /**
  * @class Roo.bootstrap.Body
  * @extends Roo.bootstrap.Component
+ * @builder-top
+ * @children Roo.bootstrap.Component
+ * @parent none
  * Bootstrap Body class
  *
  * @constructor
@@ -899,6 +909,8 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.ButtonGroup
  * @extends Roo.bootstrap.Component
  * Bootstrap ButtonGroup class
+ * @children Roo.bootstrap.Button Roo.bootstrap.form.Form
+ * 
  * @cfg {String} size lg | sm | xs (default empty normal)
  * @cfg {String} align vertical | justified  (default none)
  * @cfg {String} direction up | down (default down)
@@ -1005,7 +1017,8 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @cfg {Boolean} removeClass remove the standard class..
  * @cfg {String} target (_self|_blank|_parent|_top|other) target for a href. 
  * @cfg {Boolean} grpup if parent is a btn group - then it turns it into a toogleGroup.
- * 
+ * @cfg {Roo.bootstrap.menu.Menu} menu a Menu 
+
  * @constructor
  * Create a new button
  * @param {Object} config The config object
@@ -1466,6 +1479,7 @@ Roo.bootstrap.Button.weights = [
 /**
  * @class Roo.bootstrap.Column
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Column class
  * @cfg {Number} xs colspan out of 12 for mobile-sized screens or 0 for hidden
  * @cfg {Number} sm colspan out of 12 for tablet-sized screens or 0 for hidden
@@ -1593,6 +1607,8 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Container
  * @extends Roo.bootstrap.Component
+ * @builder-top
+ * @children Roo.bootstrap.Component
  * Bootstrap Container class
  * @cfg {Boolean} jumbotron is it a jumbotron element
  * @cfg {String} html content of element
@@ -1956,16 +1972,12 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     }
 });
 
- /*
- *  - LGPL
- *
- *  This is BS4's Card element.. - similar to our containers probably..
- * 
- */
-/**
+ /**
  * @class Roo.bootstrap.Card
  * @extends Roo.bootstrap.Component
- * Bootstrap Card class
+ * @children Roo.bootstrap.Component
+ * @licence LGPL
+ * Bootstrap Card class - note this has children as CardHeader/ImageTop/Footer.. - which should really be listed properties?
  *
  *
  * possible... may not be implemented..
@@ -2766,6 +2778,8 @@ Roo.extend(Roo.bootstrap.Card, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.CardHeader
  * @extends Roo.bootstrap.Element
+ * @parent Roo.bootstrap.Card
+ * @children Roo.bootstrap.Component
  * Bootstrap CardHeader class
  * @constructor
  * Create a new Card Header - that you can embed children into
@@ -2799,7 +2813,10 @@ Roo.extend(Roo.bootstrap.CardHeader, Roo.bootstrap.Element,  {
 /**
  * @class Roo.bootstrap.CardFooter
  * @extends Roo.bootstrap.Element
+ * @parent Roo.bootstrap.Card
+ * @children Roo.bootstrap.Component
  * Bootstrap CardFooter class
+ * 
  * @constructor
  * Create a new Card Footer - that you can embed children into
  * @param {Object} config The config object
@@ -2832,7 +2849,10 @@ Roo.extend(Roo.bootstrap.CardFooter, Roo.bootstrap.Element,  {
 /**
  * @class Roo.bootstrap.CardImageTop
  * @extends Roo.bootstrap.Element
+ * @parent Roo.bootstrap.Card
+ * @children Roo.bootstrap.Component
  * Bootstrap CardImageTop class
+ * 
  * @constructor
  * Create a new Card Image Top container
  * @param {Object} config The config object
@@ -3257,7 +3277,9 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Link
  * @extends Roo.bootstrap.Component
- * Bootstrap Link Class
+ * @children Roo.bootstrap.Component
+ * Bootstrap Link Class (eg. '<a href>')
+ 
  * @cfg {String} alt image alternative text
  * @cfg {String} href a tag href
  * @cfg {String} target (_self|_blank|_parent|_top) target for a href.
@@ -3361,7 +3383,10 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Header
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Header class
+ *
+ * 
  * @cfg {String} html content of header
  * @cfg {Number} level (1|2|3|4|5|6) default 1
  * 
@@ -3399,23 +3424,13 @@ Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
 
  
 
- /*
- * Based on:
- * Ext JS Library 1.1.1
- * Copyright(c) 2006-2007, Ext JS, LLC.
- *
- * Originally Released Under LGPL - original licence link has changed is not relivant.
- *
- * Fork - LGPL
- * <script type="text/javascript">
- */
- 
-/**
+ /**
  * @class Roo.bootstrap.MenuMgr
+ * @licence LGPL
  * Provides a common registry of all menu items on a page so that they can be easily accessed by id.
  * @singleton
  */
-Roo.bootstrap.MenuMgr = function(){
+Roo.bootstrap.menu.Manager = function(){
    var menus, active, groups = {}, attached = false, lastShow = new Date();
 
    // private - called when first menu is created
@@ -3597,17 +3612,15 @@ Roo.bootstrap.MenuMgr = function(){
            }
        }
    };
-}();/*
- * - LGPL
- *
- * menu
- * 
- */
-
+}(); 
 /**
- * @class Roo.bootstrap.Menu
+ * @class Roo.bootstrap.menu.Menu
  * @extends Roo.bootstrap.Component
- * Bootstrap Menu class - container for MenuItems
+ * @licence LGPL
+ * @children Roo.bootstrap.menu.Item
+ * @parent none
+ * Bootstrap Menu class - container for MenuItems - normally has to be added to a object that supports the menu property
+ * 
  * @cfg {String} type (dropdown|treeview|submenu) type of menu
  * @cfg {bool} hidden  if the menu should be hidden when rendered.
  * @cfg {bool} stopEvent (true|false)  Stop event after trigger press (default true)
@@ -3617,11 +3630,11 @@ Roo.bootstrap.MenuMgr = function(){
  
  * @constructor
  * Create a new Menu
- * @param {Object} config The config object
+ * @param {Object} config The config objectQ
  */
 
 
-Roo.bootstrap.Menu = function(config){
+Roo.bootstrap.menu.Menu = function(config){
     
     if (config.type == 'treeview') {
 	// normally menu's are drawn attached to the document to handle layering etc..
@@ -3629,9 +3642,9 @@ Roo.bootstrap.Menu = function(config){
 	this.container_method = 'getChildContainer'; 
     }
     
-    Roo.bootstrap.Menu.superclass.constructor.call(this, config);
+    Roo.bootstrap.menu.Menu.superclass.constructor.call(this, config);
     if (this.registerMenu && this.type != 'treeview')  {
-        Roo.bootstrap.MenuMgr.register(this);
+        Roo.bootstrap.menu.Manager.register(this);
     }
     
     
@@ -3695,7 +3708,7 @@ Roo.bootstrap.Menu = function(config){
     this.menuitems = new Roo.util.MixedCollection(false, function(o) { return o.el.id; });
 };
 
-Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
    /// html : false,
    
@@ -4056,7 +4069,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         });
     },
     addxtypeChild : function (tree, cntr) {
-        var comp= Roo.bootstrap.Menu.superclass.addxtypeChild.call(this, tree, cntr);
+        var comp= Roo.bootstrap.menu.Menu.superclass.addxtypeChild.call(this, tree, cntr);
           
         this.menuitems.add(comp);
         return comp;
@@ -4076,18 +4089,14 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
 });
 
  
- /*
- * - LGPL
- *
- * menu item
- * 
- */
-
-
-/**
- * @class Roo.bootstrap.MenuItem
+ /**
+ * @class Roo.bootstrap.menu.Item
  * @extends Roo.bootstrap.Component
+ * @children  Roo.bootstrap.Button Roo.bootstrap.ButtonUploader Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Container
+ * @parent Roo.bootstrap.menu.Menu
+ * @licence LGPL
  * Bootstrap MenuItem class
+ * 
  * @cfg {String} html the menu label
  * @cfg {String} href the link
  * @cfg {Boolean} preventDefault do not trigger A href on clicks (default false).
@@ -4103,21 +4112,21 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
  */
 
 
-Roo.bootstrap.MenuItem = function(config){
-    Roo.bootstrap.MenuItem.superclass.constructor.call(this, config);
+Roo.bootstrap.menu.Item = function(config){
+    Roo.bootstrap.menu.Item.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
         /**
          * @event click
          * The raw click event for the entire grid.
-         * @param {Roo.bootstrap.MenuItem} this
+         * @param {Roo.bootstrap.menu.Item} this
          * @param {Roo.EventObject} e
          */
         "click" : true
     });
 };
 
-Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
     href : false,
     html : false,
@@ -4207,35 +4216,32 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
 
  
 
- /*
- * - LGPL
- *
- * menu separator
- * 
- */
+ 
 
-
+  
 /**
- * @class Roo.bootstrap.MenuSeparator
+ * @class Roo.bootstrap.menu.Separator
  * @extends Roo.bootstrap.Component
- * Bootstrap MenuSeparator class
+ * @licence LGPL
+ * @parent Roo.bootstrap.menu.Menu
+ * Bootstrap Separator class
  * 
  * @constructor
- * Create a new MenuItem
+ * Create a new Separator
  * @param {Object} config The config object
  */
 
 
-Roo.bootstrap.MenuSeparator = function(config){
-    Roo.bootstrap.MenuSeparator.superclass.constructor.call(this, config);
+Roo.bootstrap.menu.Separator = function(config){
+    Roo.bootstrap.menu.Separator.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.menu.Separator, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         var cfg = {
-            cls: 'divider',
-            tag : 'li'
+            tag : 'li',
+            cls: 'dropdown-divider divider'
         };
         
         return cfg;
@@ -4253,12 +4259,15 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Modal
  * @extends Roo.bootstrap.Component
+ * @builder-top
+ * @parent none
+ * @children Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
  * @cfg {String} html - the body of the dialog (for simple ones) - you can also use template..
  * @cfg {Roo.Template} tmpl - a template with variables. to use it, add a handler in show:method  adn
  * @cfg {Boolean} specificTitle default false
- * @cfg {Array} buttons Array of buttons or standard button set..
+ * @cfg {Roo.bootstrap.Button} buttons[] Array of buttons or standard button set..
  * @cfg {String} buttonPosition (left|right|center) default right (DEPRICATED) - use mr-auto on buttons to put them on the left
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} allow_close default true
@@ -5514,8 +5523,9 @@ Roo.Msg = Roo.Msg || Roo.MessageBox;
  */
 
 /**
- * @class Roo.bootstrap.Navbar
+ * @class Roo.bootstrap.nav.Bar
  * @extends Roo.bootstrap.Component
+ * @abstract
  * Bootstrap Navbar class
 
  * @constructor
@@ -5524,8 +5534,8 @@ Roo.Msg = Roo.Msg || Roo.MessageBox;
  */
 
 
-Roo.bootstrap.Navbar = function(config){
-    Roo.bootstrap.Navbar.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.Bar = function(config){
+    Roo.bootstrap.nav.Bar.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
         /**
@@ -5537,7 +5547,7 @@ Roo.bootstrap.Navbar = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.nav.Bar, Roo.bootstrap.Component,  {
     
     
    
@@ -5684,8 +5694,9 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.NavSimplebar
- * @extends Roo.bootstrap.Navbar
+ * @class Roo.bootstrap.nav.Simplebar
+ * @extends Roo.bootstrap.nav.Bar
+ * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container Roo.bootstrap.form.Form Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Link
  * Bootstrap Sidebar class
  *
  * @cfg {Boolean} inverse is inverted color
@@ -5708,11 +5719,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
  */
 
 
-Roo.bootstrap.NavSimplebar = function(config){
-    Roo.bootstrap.NavSimplebar.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.Simplebar = function(config){
+    Roo.bootstrap.nav.Simplebar.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
+Roo.extend(Roo.bootstrap.nav.Simplebar, Roo.bootstrap.nav.Bar,  {
     
     inverse: false,
     
@@ -5812,8 +5823,9 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
  */
 
 /**
- * @class Roo.bootstrap.NavHeaderbar
- * @extends Roo.bootstrap.NavSimplebar
+ * @class Roo.bootstrap.nav.Headerbar
+ * @extends Roo.bootstrap.nav.Simplebar
+ * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container Roo.bootstrap.form.Form Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Link
  * Bootstrap Sidebar class
  *
  * @cfg {String} brand what is brand
@@ -5830,12 +5842,12 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
  */
 
 
-Roo.bootstrap.NavHeaderbar = function(config){
-    Roo.bootstrap.NavHeaderbar.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.Headerbar = function(config){
+    Roo.bootstrap.nav.Headerbar.superclass.constructor.call(this, config);
       
 };
 
-Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
+Roo.extend(Roo.bootstrap.nav.Headerbar, Roo.bootstrap.nav.Simplebar,  {
     
     position: '',
     brand: '',
@@ -5958,7 +5970,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     
     initEvents : function()
     {
-        Roo.bootstrap.NavHeaderbar.superclass.initEvents.call(this);
+        Roo.bootstrap.nav.Headerbar.superclass.initEvents.call(this);
         
         if (this.autohide) {
             
@@ -5997,8 +6009,9 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
  */
 
 /**
- * @class Roo.bootstrap.NavSidebar
- * @extends Roo.bootstrap.Navbar
+ * @class Roo.bootstrap.nav.Sidebar
+ * @extends Roo.bootstrap.nav.Bar
+ * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container Roo.bootstrap.form.Form Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Link
  * Bootstrap Sidebar class
  * 
  * @constructor
@@ -6007,11 +6020,11 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
  */
 
 
-Roo.bootstrap.NavSidebar = function(config){
-    Roo.bootstrap.NavSidebar.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.Sidebar = function(config){
+    Roo.bootstrap.nav.Sidebar.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
+Roo.extend(Roo.bootstrap.nav.Sidebar, Roo.bootstrap.nav.Bar,  {
     
     sidebar : true, // used by Navbar Item and NavbarGroup at present...
     
@@ -6042,8 +6055,9 @@ Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
  */
 
 /**
- * @class Roo.bootstrap.NavGroup
+ * @class Roo.bootstrap.nav.Group
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.nav.Item
  * Bootstrap NavGroup class
  * @cfg {String} align (left|right)
  * @cfg {Boolean} inverse
@@ -6056,16 +6070,16 @@ Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.NavGroup = function(config){
-    Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.Group = function(config){
+    Roo.bootstrap.nav.Group.superclass.constructor.call(this, config);
     this.navItems = [];
    
-    Roo.bootstrap.NavGroup.register(this);
+    Roo.bootstrap.nav.Group.register(this);
      this.addEvents({
         /**
 	     * @event changed
 	     * Fires when the active item changes
-	     * @param {Roo.bootstrap.NavGroup} this
+	     * @param {Roo.bootstrap.nav.Group} this
 	     * @param {Roo.bootstrap.Navbar.Item} selected The item selected
 	     * @param {Roo.bootstrap.Navbar.Item} prev The previously selected item 
          */
@@ -6074,7 +6088,7 @@ Roo.bootstrap.NavGroup = function(config){
     
 };
 
-Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.nav.Group, Roo.bootstrap.Component,  {
     
     align: '',
     inverse: false,
@@ -6088,7 +6102,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.nav.Group.superclass.getAutoCreate.call(this));
         
         cfg = {
             tag : 'ul',
@@ -6154,7 +6168,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     },
     /**
     * sets the active Navigation item
-    * @param {Roo.bootstrap.NavItem} the new current navitem
+    * @param {Roo.bootstrap.nav.Item} the new current navitem
     */
     setActiveItem : function(item)
     {
@@ -6178,7 +6192,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     },
     /**
     * gets the active Navigation item
-    * @return {Roo.bootstrap.NavItem} the current navitem
+    * @return {Roo.bootstrap.nav.Item} the current navitem
     */
     getActive : function()
     {
@@ -6211,14 +6225,14 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     },
     /**
     * adds a Navigation item
-    * @param {Roo.bootstrap.NavItem} the navitem to add
+    * @param {Roo.bootstrap.nav.Item} the navitem to add
     */
     addItem : function(cfg)
     {
         if (this.form && Roo.bootstrap.version == 4) {
 	    cfg.tag = 'div';
 	}
-	var cn = new Roo.bootstrap.NavItem(cfg);
+	var cn = new Roo.bootstrap.nav.Item(cfg);
         this.register(cn);
         cn.parentId = this.id;
         cn.onRender(this.el, null);
@@ -6226,7 +6240,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     },
     /**
     * register a Navigation item
-    * @param {Roo.bootstrap.NavItem} the navitem to add
+    * @param {Roo.bootstrap.nav.Item} the navitem to add
     */
     register : function(item)
     {
@@ -6303,12 +6317,12 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
 });
 
  
-Roo.apply(Roo.bootstrap.NavGroup, {
+Roo.apply(Roo.bootstrap.nav.Group, {
     
     groups: {},
      /**
     * register a Navigation Group
-    * @param {Roo.bootstrap.NavGroup} the navgroup to add
+    * @param {Roo.bootstrap.nav.Group} the navgroup to add
     */
     register : function(navgrp)
     {
@@ -6318,12 +6332,12 @@ Roo.apply(Roo.bootstrap.NavGroup, {
     /**
     * fetch a Navigation Group based on the navigation ID
     * @param {string} the navgroup to add
-    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    * @returns {Roo.bootstrap.nav.Group} the navgroup 
     */
     get: function(navId) {
         if (typeof(this.groups[navId]) == 'undefined') {
             return false;
-            //this.register(new Roo.bootstrap.NavGroup({ navId : navId }));
+            //this.register(new Roo.bootstrap.nav.Group({ navId : navId }));
         }
         return this.groups[navId] ;
     }
@@ -6332,17 +6346,14 @@ Roo.apply(Roo.bootstrap.NavGroup, {
     
 });
 
- /*
- * - LGPL
- *
- * row
- * 
- */
-
-/**
- * @class Roo.bootstrap.NavItem
+ /**
+ * @class Roo.bootstrap.nav.Item
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Container Roo.bootstrap.Button
+ * @parent Roo.bootstrap.nav.Group
+ * @licence LGPL
  * Bootstrap Navbar.NavItem class
+ * 
  * @cfg {String} href  link to
  * @cfg {String} button_weight (default|primary|secondary|success|info|warning|danger|link|light|dark) default none
  * @cfg {Boolean} button_outline show and outlined button
@@ -6359,13 +6370,14 @@ Roo.apply(Roo.bootstrap.NavGroup, {
  * @cfg {String} tabId the tab that this item activates.
  * @cfg {String} tagtype (a|span) render as a href or span?
  * @cfg {Boolean} animateRef (true|false) link to element default false  
+ * @cfg {Roo.bootstrap.menu.Menu} menu a Menu 
   
  * @constructor
  * Create a new Navbar Item
  * @param {Object} config The config object
  */
-Roo.bootstrap.NavItem = function(config){
-    Roo.bootstrap.NavItem.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.Item = function(config){
+    Roo.bootstrap.nav.Item.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
         /**
@@ -6377,7 +6389,7 @@ Roo.bootstrap.NavItem = function(config){
 	 /**
 	    * @event changed
 	    * Fires when the active item active state changes
-	    * @param {Roo.bootstrap.NavItem} this
+	    * @param {Roo.bootstrap.nav.Item} this
 	    * @param {boolean} state the new state
 	     
          */
@@ -6385,7 +6397,7 @@ Roo.bootstrap.NavItem = function(config){
         /**
 	    * @event scrollto
 	    * Fires when scroll to element
-	    * @param {Roo.bootstrap.NavItem} this
+	    * @param {Roo.bootstrap.nav.Item} this
 	    * @param {Object} options
             * @param {Roo.EventObject} e
 	     
@@ -6395,7 +6407,7 @@ Roo.bootstrap.NavItem = function(config){
    
 };
 
-Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.nav.Item, Roo.bootstrap.Component,  {
     
     href: false,
     html: '',
@@ -6499,7 +6511,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
 	    this.tag = 'div';
 	}
 	
-        var ret = Roo.bootstrap.NavItem.superclass.onRender.call(this, ct, position);
+        var ret = Roo.bootstrap.nav.Item.superclass.onRender.call(this, ct, position);
 	this.navLink = this.el.select('.nav-link',true).first();
 	this.htmlEl = this.el.hasClass('nav-html') ? this.el : this.el.select('.nav-html',true).first();
 	return ret;
@@ -6597,7 +6609,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     {
         if (this.active && !state && this.navId) {
             this.was_active = true;
-            var nv = Roo.bootstrap.NavGroup.get(this.navId);
+            var nv = Roo.bootstrap.nav.Group.get(this.navId);
             if (nv) {
                 nv.clearWasActive(this);
             }
@@ -6636,7 +6648,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         // if we can not flip to new panel - go back to old nav highlight..
         if (false == tg.showPanel(pan)) {
-            var nv = Roo.bootstrap.NavGroup.get(this.navId);
+            var nv = Roo.bootstrap.nav.Group.get(this.navId);
             if (nv) {
                 var onav = nv.getWasActive();
                 if (onav) {
@@ -6725,9 +6737,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.NavSidebarItem
- * @extends Roo.bootstrap.NavItem
+ * @class Roo.bootstrap.nav.SidebarItem
+ * @extends Roo.bootstrap.nav.Item
  * Bootstrap Navbar.NavSidebarItem class
+ * 
  * {String} badgeWeight (default|primary|success|info|warning|danger)the extra classes for the badge
  * {Boolean} open is the menu open
  * {Boolean} buttonView use button as the tigger el rather that a (default false)
@@ -6738,8 +6751,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
  * Create a new Navbar Button
  * @param {Object} config The config object
  */
-Roo.bootstrap.NavSidebarItem = function(config){
-    Roo.bootstrap.NavSidebarItem.superclass.constructor.call(this, config);
+Roo.bootstrap.nav.SidebarItem = function(config){
+    Roo.bootstrap.nav.SidebarItem.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
         /**
@@ -6751,7 +6764,7 @@ Roo.bootstrap.NavSidebarItem = function(config){
 	 /**
 	    * @event changed
 	    * Fires when the active item active state changes
-	    * @param {Roo.bootstrap.NavSidebarItem} this
+	    * @param {Roo.bootstrap.nav.SidebarItem} this
 	    * @param {boolean} state the new state
 	     
          */
@@ -6760,7 +6773,7 @@ Roo.bootstrap.NavSidebarItem = function(config){
    
 };
 
-Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
+Roo.extend(Roo.bootstrap.nav.SidebarItem, Roo.bootstrap.nav.Item,  {
     
     badgeWeight : 'default',
     
@@ -6942,6 +6955,409 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
  /*
  * - LGPL
  *
+ * nav progress bar
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.nav.ProgressBar
+ * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.nav.ProgressBarItem
+ * Bootstrap NavProgressBar class
+ * 
+ * @constructor
+ * Create a new nav progress bar - a bar indicating step along a process
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.nav.ProgressBar = function(config){
+    Roo.bootstrap.nav.ProgressBar.superclass.constructor.call(this, config);
+
+    this.bullets = this.bullets || [];
+   
+//    Roo.bootstrap.nav.ProgressBar.register(this);
+     this.addEvents({
+        /**
+	     * @event changed
+	     * Fires when the active item changes
+	     * @param {Roo.bootstrap.nav.ProgressBar} this
+	     * @param {Roo.bootstrap.nav.ProgressItem} selected The item selected
+	     * @param {Roo.bootstrap.nav.ProgressItem} prev The previously selected item 
+         */
+        'changed': true
+     });
+    
+};
+
+Roo.extend(Roo.bootstrap.nav.ProgressBar, Roo.bootstrap.Component,  {
+    /**
+     * @cfg {Roo.bootstrap.nav.ProgressItem} NavProgressBar:bullets[]
+     * Bullets for the Nav Progress bar for the toolbar
+     */
+    bullets : [],
+    barItems : [],
+    
+    getAutoCreate : function()
+    {
+        var cfg = Roo.apply({}, Roo.bootstrap.nav.ProgressBar.superclass.getAutoCreate.call(this));
+        
+        cfg = {
+            tag : 'div',
+            cls : 'roo-navigation-bar-group',
+            cn : [
+                {
+                    tag : 'div',
+                    cls : 'roo-navigation-top-bar'
+                },
+                {
+                    tag : 'div',
+                    cls : 'roo-navigation-bullets-bar',
+                    cn : [
+                        {
+                            tag : 'ul',
+                            cls : 'roo-navigation-bar'
+                        }
+                    ]
+                },
+                
+                {
+                    tag : 'div',
+                    cls : 'roo-navigation-bottom-bar'
+                }
+            ]
+            
+        };
+        
+        return cfg;
+        
+    },
+    
+    initEvents: function() 
+    {
+        
+    },
+    
+    onRender : function(ct, position) 
+    {
+        Roo.bootstrap.nav.ProgressBar.superclass.onRender.call(this, ct, position);
+        
+        if(this.bullets.length){
+            Roo.each(this.bullets, function(b){
+               this.addItem(b);
+            }, this);
+        }
+        
+        this.format();
+        
+    },
+    
+    addItem : function(cfg)
+    {
+        var item = new Roo.bootstrap.nav.ProgressItem(cfg);
+        
+        item.parentId = this.id;
+        item.render(this.el.select('.roo-navigation-bar', true).first(), null);
+        
+        if(cfg.html){
+            var top = new Roo.bootstrap.Element({
+                tag : 'div',
+                cls : 'roo-navigation-bar-text'
+            });
+            
+            var bottom = new Roo.bootstrap.Element({
+                tag : 'div',
+                cls : 'roo-navigation-bar-text'
+            });
+            
+            top.onRender(this.el.select('.roo-navigation-top-bar', true).first(), null);
+            bottom.onRender(this.el.select('.roo-navigation-bottom-bar', true).first(), null);
+            
+            var topText = new Roo.bootstrap.Element({
+                tag : 'span',
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
+            });
+            
+            var bottomText = new Roo.bootstrap.Element({
+                tag : 'span',
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
+            });
+            
+            topText.onRender(top.el, null);
+            bottomText.onRender(bottom.el, null);
+            
+            item.topEl = top;
+            item.bottomEl = bottom;
+        }
+        
+        this.barItems.push(item);
+        
+        return item;
+    },
+    
+    getActive : function()
+    {
+        var active = false;
+        
+        Roo.each(this.barItems, function(v){
+            
+            if (!v.isActive()) {
+                return;
+            }
+            
+            active = v;
+            return false;
+            
+        });
+        
+        return active;
+    },
+    
+    setActiveItem : function(item)
+    {
+        var prev = false;
+        
+        Roo.each(this.barItems, function(v){
+            if (v.rid == item.rid) {
+                return ;
+            }
+            
+            if (v.isActive()) {
+                v.setActive(false);
+                prev = v;
+            }
+        });
+
+        item.setActive(true);
+        
+        this.fireEvent('changed', this, item, prev);
+    },
+    
+    getBarItem: function(rid)
+    {
+        var ret = false;
+        
+        Roo.each(this.barItems, function(e) {
+            if (e.rid != rid) {
+                return;
+            }
+            
+            ret =  e;
+            return false;
+        });
+        
+        return ret;
+    },
+    
+    indexOfItem : function(item)
+    {
+        var index = false;
+        
+        Roo.each(this.barItems, function(v, i){
+            
+            if (v.rid != item.rid) {
+                return;
+            }
+            
+            index = i;
+            return false
+        });
+        
+        return index;
+    },
+    
+    setActiveNext : function()
+    {
+        var i = this.indexOfItem(this.getActive());
+        
+        if (i > this.barItems.length) {
+            return;
+        }
+        
+        this.setActiveItem(this.barItems[i+1]);
+    },
+    
+    setActivePrev : function()
+    {
+        var i = this.indexOfItem(this.getActive());
+        
+        if (i  < 1) {
+            return;
+        }
+        
+        this.setActiveItem(this.barItems[i-1]);
+    },
+    
+    format : function()
+    {
+        if(!this.barItems.length){
+            return;
+        }
+     
+        var width = 100 / this.barItems.length;
+        
+        Roo.each(this.barItems, function(i){
+            i.el.setStyle('width', width + '%');
+            i.topEl.el.setStyle('width', width + '%');
+            i.bottomEl.el.setStyle('width', width + '%');
+        }, this);
+        
+    }
+    
+});
+/*
+ * - LGPL
+ *
+ * Nav Progress Item
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.nav.ProgressBarItem
+ * @extends Roo.bootstrap.Component
+ * Bootstrap NavProgressBarItem class
+ * @cfg {String} rid the reference id
+ * @cfg {Boolean} active (true|false) Is item active default false
+ * @cfg {Boolean} disabled (true|false) Is item active default false
+ * @cfg {String} html
+ * @cfg {String} position (top|bottom) text position default bottom
+ * @cfg {String} icon show icon instead of number
+ * 
+ * @constructor
+ * Create a new NavProgressBarItem
+ * @param {Object} config The config object
+ */
+Roo.bootstrap.nav.ProgressBarItem = function(config){
+    Roo.bootstrap.nav.ProgressBarItem.superclass.constructor.call(this, config);
+    this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.bootstrap.nav.ProgressBarItem} this
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
+   
+};
+
+Roo.extend(Roo.bootstrap.nav.ProgressBarItem, Roo.bootstrap.Component,  {
+    
+    rid : '',
+    active : false,
+    disabled : false,
+    html : '',
+    position : 'bottom',
+    icon : false,
+    
+    getAutoCreate : function()
+    {
+        var iconCls = 'roo-navigation-bar-item-icon';
+        
+        iconCls += ((this.icon) ? (' ' + this.icon) : (' step-number')) ;
+        
+        var cfg = {
+            tag: 'li',
+            cls: 'roo-navigation-bar-item',
+            cn : [
+                {
+                    tag : 'i',
+                    cls : iconCls
+                }
+            ]
+        };
+        
+        if(this.active){
+            cfg.cls += ' active';
+        }
+        if(this.disabled){
+            cfg.cls += ' disabled';
+        }
+        
+        return cfg;
+    },
+    
+    disable : function()
+    {
+        this.setDisabled(true);
+    },
+    
+    enable : function()
+    {
+        this.setDisabled(false);
+    },
+    
+    initEvents: function() 
+    {
+        this.iconEl = this.el.select('.roo-navigation-bar-item-icon', true).first();
+        
+        this.iconEl.on('click', this.onClick, this);
+    },
+    
+    onClick : function(e)
+    {
+        e.preventDefault();
+        
+        if(this.disabled){
+            return;
+        }
+        
+        if(this.fireEvent('click', this, e) === false){
+            return;
+        };
+        
+        this.parent().setActiveItem(this);
+    },
+    
+    isActive: function () 
+    {
+        return this.active;
+    },
+    
+    setActive : function(state)
+    {
+        if(this.active == state){
+            return;
+        }
+        
+        this.active = state;
+        
+        if (state) {
+            this.el.addClass('active');
+            return;
+        }
+        
+        this.el.removeClass('active');
+        
+        return;
+    },
+    
+    setDisabled : function(state)
+    {
+        if(this.disabled == state){
+            return;
+        }
+        
+        this.disabled = state;
+        
+        if (state) {
+            this.el.addClass('disabled');
+            return;
+        }
+        
+        this.el.removeClass('disabled');
+    },
+    
+    tooltipEl : function()
+    {
+        return this.el.select('.roo-navigation-bar-item-icon', true).first();;
+    }
+});
+ 
+
+ /*
+ * - LGPL
+ *
  *  Breadcrumb Nav
  * 
  */
@@ -7008,9 +7424,11 @@ Roo.extend(Roo.bootstrap.breadcrumb.Nav, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.breadcrumb.Nav
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
+ * @parent Roo.bootstrap.breadcrumb.Nav
  * Bootstrap Breadcrumb Nav Class
  *  
- * @children Roo.bootstrap.breadcrumb.Component
+ * 
  * @cfg {String} html the content of the link.
  * @cfg {String} href where it links to if '#' is used the link will be handled by onClick.
  * @cfg {Boolean} active is it active
@@ -7085,6 +7503,7 @@ Roo.extend(Roo.bootstrap.breadcrumb.Item, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Row
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Row class (contains columns...)
  * 
  * @constructor
@@ -7119,9 +7538,11 @@ Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Pagination
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Pagination
  * Bootstrap Pagination class
- * @cfg {String} size xs | sm | md | lg
- * @cfg {Boolean} inverse false | true
+ * 
+ * @cfg {String} size (xs|sm|md|lg|xl)
+ * @cfg {Boolean} inverse 
  * 
  * @constructor
  * Create a new Pagination
@@ -7419,6 +7840,7 @@ Roo.extend(Roo.grid.SplitDragZone, Roo.dd.DDProxy, {
 /**
  * @class Roo.grid.AbstractSelectionModel
  * @extends Roo.util.Observable
+ * @abstract
  * Abstract base class for grid SelectionModels.  It provides the interface that should be
  * implemented by descendant classes.  This class should not be directly instantiated.
  * @constructor
@@ -8648,6 +9070,7 @@ Roo.LoadMask.prototype = {
  * @class Roo.bootstrap.Table
  * @licence LGBL
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.TableBody
  * Bootstrap Table class.  This class represents the primary interface of a component based grid control.
  * Similar to Roo.grid.Grid
  * <pre><code>
@@ -8709,9 +9132,9 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
 
 
  *
- * @cfg {Roo.grid.RowSelectionModel|Roo.grid.CellSelectionModel} sm The selection model to use (cell selection is not supported yet)
- * @cfg {Roo.data.Store|Roo.data.SimpleStore} store The data store to use
- * @cfg {Roo.grid.ColumnModel} cm[] A column for th grid.
+ * @cfg {Roo.grid.AbstractSelectionModel} sm The selection model to use (cell selection is not supported yet)
+ * @cfg {Roo.data.Store} store The data store to use
+ * @cfg {Roo.grid.ColumnModel} cm[] A column for the grid.
  * 
  * @cfg {String} cls table class
  *
@@ -10277,7 +10700,10 @@ Roo.bootstrap.Table.RowSelectionModel = Roo.grid.RowSelectionModel;
 /**
  * @class Roo.bootstrap.TableCell
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
+ * @parent Roo.bootstrap.TableRow
  * Bootstrap TableCell class
+ * 
  * @cfg {String} html cell contain text
  * @cfg {String} cls cell class
  * @cfg {String} tag cell tag (td|th) default td
@@ -10399,6 +10825,8 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.TableRow
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.TableCell
+ * @parent Roo.bootstrap.TableBody
  * Bootstrap TableRow class
  * @cfg {String} cls row class
  * @cfg {String} align Aligns the content in a table row
@@ -10463,6 +10891,8 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.TableBody
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.TableRow
+ * @parent Roo.bootstrap.Table
  * Bootstrap TableBody class
  * @cfg {String} cls element class
  * @cfg {String} tag element tag (thead|tbody|tfoot) default tbody
@@ -10899,8 +11329,9 @@ Roo.form.Action.ACTION_TYPES = {
  */
 
 /**
- * @class Roo.bootstrap.Form
+ * @class Roo.bootstrap.form.Form
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Form class
  * @cfg {String} method  GET | POST (default POST)
  * @cfg {String} labelAlign top | left (default top)
@@ -10914,11 +11345,11 @@ Roo.form.Action.ACTION_TYPES = {
  */
 
 
-Roo.bootstrap.Form = function(config){
+Roo.bootstrap.form.Form = function(config){
     
-    Roo.bootstrap.Form.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.Form.superclass.constructor.call(this, config);
     
-    Roo.bootstrap.Form.popover.apply();
+    Roo.bootstrap.form.Form.popover.apply();
     
     this.addEvents({
         /**
@@ -10952,7 +11383,7 @@ Roo.bootstrap.Form = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.form.Form, Roo.bootstrap.Component,  {
 
      /**
      * @cfg {String} method
@@ -11082,7 +11513,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
         });
         
         if(this.errorMask && !valid){
-            Roo.bootstrap.Form.popover.mask(this, target);
+            Roo.bootstrap.form.Form.popover.mask(this, target);
         }
         
         return valid;
@@ -11499,7 +11930,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 
 });
 
-Roo.apply(Roo.bootstrap.Form, {
+Roo.apply(Roo.bootstrap.form.Form, {
     
     popover : {
         
@@ -11635,7 +12066,7 @@ Roo.apply(Roo.bootstrap.Form, {
             this.toolTip.show(tip);
 
             this.intervalID = window.setInterval(function() {
-                Roo.bootstrap.Form.popover.unmask();
+                Roo.bootstrap.form.Form.popover.unmask();
             }, 10000);
 
             window.onwheel = function(){ return false;};
@@ -11784,15 +12215,15 @@ Roo.form.VTypes = function(){
  */
 
 /**
- * @class Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.Input
  * @extends Roo.bootstrap.Component
  * Bootstrap Input class
  * @cfg {Boolean} disabled is it disabled
- * @cfg {String} (button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text) inputType 
+ * @cfg {String} inputType (button|checkbox|email|file|hidden|image|number|password|radio|range|reset|search|submit|text)  
  * @cfg {String} name name of the input
  * @cfg {string} fieldLabel - the label associated
  * @cfg {string} placeholder - placeholder to put in text.
- * @cfg {string}  before - input group add on before
+ * @cfg {string} before - input group add on before
  * @cfg {string} after - input group add on after
  * @cfg {string} size - (lg|sm) or leave empty..
  * @cfg {Number} xs colspan out of 12 for mobile-sized screens
@@ -11812,7 +12243,8 @@ Roo.form.VTypes = function(){
  * @cfg {String} capture (user|camera) use for file input only. (default empty)
  * @cfg {String} accept (image|video|audio) use for file input only. (default empty)
  * @cfg {Boolean} preventMark Do not show tick or cross if error/success
-
+ * @cfg {Roo.bootstrap.Button} before Button to show before
+ * @cfg {Roo.bootstrap.Button} afterButton to show before
  * @cfg {String} align (left|center|right) Default left
  * @cfg {Boolean} forceFeedback (true|false) Default false
  * 
@@ -11821,9 +12253,9 @@ Roo.form.VTypes = function(){
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Input = function(config){
+Roo.bootstrap.form.Input = function(config){
     
-    Roo.bootstrap.Input.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.Input.superclass.constructor.call(this, config);
     
     this.addEvents({
         /**
@@ -11884,7 +12316,7 @@ Roo.bootstrap.Input = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      /**
      * @cfg {String/Boolean} validationEvent The event that should initiate field validation. Set to false to disable
       automatic validation (defaults to "keyup").
@@ -12890,8 +13322,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.TextArea
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.TextArea
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap TextArea class
  * @cfg {Number} cols Specifies the visible width of a text area
  * @cfg {Number} rows Specifies the visible number of lines in a text area
@@ -12904,12 +13336,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.TextArea = function(config){
-    Roo.bootstrap.TextArea.superclass.constructor.call(this, config);
+Roo.bootstrap.form.TextArea = function(config){
+    Roo.bootstrap.form.TextArea.superclass.constructor.call(this, config);
    
 };
 
-Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
      
     cols : false,
     rows : 5,
@@ -13259,35 +13691,35 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
  */
  
 /**
- * @class Roo.bootstrap.TriggerField
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.TriggerField
+ * @extends Roo.bootstrap.form.Input
  * Provides a convenient wrapper for TextFields that adds a clickable trigger button (looks like a combobox by default).
  * The trigger has no default action, so you must assign a function to implement the trigger click handler by
  * overriding {@link #onTriggerClick}. You can create a TriggerField directly, as it renders exactly like a combobox
  * for which you can provide a custom implementation.  For example:
  * <pre><code>
-var trigger = new Roo.bootstrap.TriggerField();
+var trigger = new Roo.bootstrap.form.TriggerField();
 trigger.onTriggerClick = myTriggerFn;
 trigger.applyTo('my-field');
 </code></pre>
  *
  * However, in general you will most likely want to use TriggerField as the base class for a reusable component.
- * {@link Roo.bootstrap.DateField} and {@link Roo.bootstrap.ComboBox} are perfect examples of this.
+ * {@link Roo.bootstrap.form.DateField} and {@link Roo.bootstrap.form.ComboBox} are perfect examples of this.
  * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
  * class 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.
  * @cfg {String} caret (search|calendar) BS3 only - carat fa name
 
  * @constructor
  * Create a new TriggerField.
- * @param {Object} config Configuration options (valid {@Roo.bootstrap.Input} config options will also be applied
+ * @param {Object} config Configuration options (valid {@Roo.bootstrap.form.Input} config options will also be applied
  * to the base TextField)
  */
-Roo.bootstrap.TriggerField = function(config){
+Roo.bootstrap.form.TriggerField = function(config){
     this.mimicing = false;
-    Roo.bootstrap.TriggerField.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.TriggerField.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.TriggerField, Roo.bootstrap.form.Input,  {
     /**
      * @cfg {String} triggerClass A CSS class to apply to the trigger
      */
@@ -13653,7 +14085,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     // private
     onResize : function(w, h){
-//        Roo.bootstrap.TriggerField.superclass.onResize.apply(this, arguments);
+//        Roo.bootstrap.form.TriggerField.superclass.onResize.apply(this, arguments);
 //        if(typeof w == 'number'){
 //            var x = w - this.trigger.getWidth();
 //            this.inputEl().setWidth(this.adjustWidth('input', x));
@@ -13684,7 +14116,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         this.createList();
         
-        Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
+        Roo.bootstrap.form.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         if(!this.multiple && this.showToggleBtn){
             this.trigger = this.el.select('span.dropdown-toggle',true).first();
@@ -13757,12 +14189,12 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         //if(this.wrap){
         //    this.wrap.remove();
         //}
-        Roo.bootstrap.TriggerField.superclass.onDestroy.call(this);
+        Roo.bootstrap.form.TriggerField.superclass.onDestroy.call(this);
     },
 
     // private
     onFocus : function(){
-        Roo.bootstrap.TriggerField.superclass.onFocus.call(this);
+        Roo.bootstrap.form.TriggerField.superclass.onFocus.call(this);
         /*
         if(!this.mimicing){
             this.wrap.addClass('x-trigger-wrap-focus');
@@ -13804,7 +14236,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             this.el.un("keydown", this.checkTab, this);
         }
         //this.wrap.removeClass('x-trigger-wrap-focus');
-        Roo.bootstrap.TriggerField.superclass.onBlur.call(this);
+        Roo.bootstrap.form.TriggerField.superclass.onBlur.call(this);
     },
 
     // private
@@ -13816,7 +14248,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     // private
     onDisable : function(){
         this.inputEl().dom.disabled = true;
-        //Roo.bootstrap.TriggerField.superclass.onDisable.call(this);
+        //Roo.bootstrap.form.TriggerField.superclass.onDisable.call(this);
         //if(this.wrap){
         //    this.wrap.addClass('x-item-disabled');
         //}
@@ -13825,7 +14257,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     // private
     onEnable : function(){
         this.inputEl().dom.disabled = false;
-        //Roo.bootstrap.TriggerField.superclass.onEnable.call(this);
+        //Roo.bootstrap.form.TriggerField.superclass.onEnable.call(this);
         //if(this.wrap){
         //    this.el.removeClass('x-item-disabled');
         //}
@@ -13862,7 +14294,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 */
 
 /**
- * @class Roo.bootstrap.CardUploader
+ * @class Roo.bootstrap.form.CardUploader
  * @extends Roo.bootstrap.Button
  * Bootstrap Card Uploader class - it's a button which when you add files to it, adds cards below with preview and the name...
  * @cfg {Number} errorTimeout default 3000
@@ -13875,11 +14307,11 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.CardUploader = function(config){
+Roo.bootstrap.form.CardUploader = function(config){
     
  
     
-    Roo.bootstrap.CardUploader.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.CardUploader.superclass.constructor.call(this, config);
     
     
     this.fileCollection   = new Roo.util.MixedCollection(false,function(r) {
@@ -13907,7 +14339,7 @@ Roo.bootstrap.CardUploader = function(config){
     });
 };
  
-Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.CardUploader, Roo.bootstrap.form.Input,  {
     
      
     errorTimeout : 3000,
@@ -13973,7 +14405,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
     initEvents : function()
     {
         
-        Roo.bootstrap.Input.prototype.initEvents.call(this);
+        Roo.bootstrap.form.Input.prototype.initEvents.call(this);
         
         var t = this;
         this.addxtype({
@@ -14063,7 +14495,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
         var url = _this.urlAPI.createObjectURL( file);
            
         this.addCard({
-            id : Roo.bootstrap.CardUploader.ID--,
+            id : Roo.bootstrap.form.CardUploader.ID--,
             is_uploaded : false,
             src : url,
             srcfile : file,
@@ -14241,7 +14673,7 @@ Roo.extend(Roo.bootstrap.CardUploader, Roo.bootstrap.Input,  {
 });
 
 
-Roo.bootstrap.CardUploader.ID = -1;/*
+Roo.bootstrap.form.CardUploader.ID = -1;/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -14754,13 +15186,13 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     */
     
     /**
-    * @cfg {Roo.data.DataProxy} proxy The Proxy object which provides access to a data object.
+    * @cfg {Roo.data.DataProxy} proxy [required] The Proxy object which provides access to a data object.
     */
     /**
     * @cfg {Array} data Inline data to be loaded when the store is initialized.
     */
     /**
-    * @cfg {Roo.data.Reader} reader The Reader object which processes the data object and returns
+    * @cfg {Roo.data.DataReader} reader [required]  The Reader object which processes the data object and returns
     * an Array of Roo.data.record objects which are cached keyed by their <em>id</em> property.
     */
     /**
@@ -15343,6 +15775,8 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
  * @cfg {Array} fields An array of field definition objects, or field name strings.
  * @cfg {Object} an existing reader (eg. copied from another store)
  * @cfg {Array} data The multi-dimensional array of data
+ * @cfg {Roo.data.DataProxy} proxy [not-required]  
+ * @cfg {Roo.data.Reader} reader  [not-required] 
  * @constructor
  * @param {Object} config
  */
@@ -15514,6 +15948,7 @@ Roo.data.Field.prototype = {
 
 /**
  * @class Roo.data.DataReader
+ * @abstract
  * Base class for reading structured data from a data source.  This class is intended to be
  * extended (see {Roo.data.ArrayReader}, {Roo.data.JsonReader} and {Roo.data.XmlReader}) and should not be created directly.
  */
@@ -15564,7 +15999,8 @@ Roo.data.DataReader.prototype = {
 
 /**
  * @class Roo.data.DataProxy
- * @extends Roo.data.Observable
+ * @extends Roo.util.Observable
+ * @abstract
  * This class is an abstract base class for implementations which provide retrieval of
  * unformatted data objects.<br>
  * <p>
@@ -16343,8 +16779,8 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  */
 
 /**
- * @class Roo.bootstrap.ComboBox
- * @extends Roo.bootstrap.TriggerField
+ * @class Roo.bootstrap.form.ComboBox
+ * @extends Roo.bootstrap.form.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @cfg {Boolean} append (true|false) default false
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
@@ -16361,25 +16797,25 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  * Create a new ComboBox.
  * @param {Object} config Configuration options
  */
-Roo.bootstrap.ComboBox = function(config){
-    Roo.bootstrap.ComboBox.superclass.constructor.call(this, config);
+Roo.bootstrap.form.ComboBox = function(config){
+    Roo.bootstrap.form.ComboBox.superclass.constructor.call(this, config);
     this.addEvents({
         /**
          * @event expand
          * Fires when the dropdown list is expanded
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         */
         'expand' : true,
         /**
          * @event collapse
          * Fires when the dropdown list is collapsed
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         */
         'collapse' : true,
         /**
          * @event beforeselect
          * Fires before a list item is selected. Return false to cancel the selection.
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         * @param {Roo.data.Record} record The data record returned from the underlying store
         * @param {Number} index The index of the selected item in the dropdown list
         */
@@ -16387,7 +16823,7 @@ Roo.bootstrap.ComboBox = function(config){
         /**
          * @event select
          * Fires when a list item is selected
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
         * @param {Number} index The index of the selected item in the dropdown list
         */
@@ -16396,7 +16832,7 @@ Roo.bootstrap.ComboBox = function(config){
          * @event beforequery
          * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
          * The event object passed has these properties:
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         * @param {String} query The query
         * @param {Boolean} forceAll true to force "all" query
         * @param {Boolean} cancel true to cancel the query
@@ -16406,44 +16842,44 @@ Roo.bootstrap.ComboBox = function(config){
          /**
          * @event add
          * Fires when the 'add' icon is pressed (add a listener to enable add button)
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         */
         'add' : true,
         /**
          * @event edit
          * Fires when the 'edit' icon is pressed (add a listener to enable add button)
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
         */
         'edit' : true,
         /**
          * @event remove
          * Fires when the remove value from the combobox array
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         */
         'remove' : true,
         /**
          * @event afterremove
          * Fires when the remove value from the combobox array
-        * @param {Roo.bootstrap.ComboBox} combo This combo box
+        * @param {Roo.bootstrap.form.ComboBox} combo This combo box
         */
         'afterremove' : true,
         /**
          * @event specialfilter
          * Fires when specialfilter
-            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            * @param {Roo.bootstrap.form.ComboBox} combo This combo box
             */
         'specialfilter' : true,
         /**
          * @event tick
          * Fires when tick the element
-            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            * @param {Roo.bootstrap.form.ComboBox} combo This combo box
             */
         'tick' : true,
         /**
          * @event touchviewdisplay
          * Fires when touch view require special display (default is using displayField)
-            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            * @param {Roo.bootstrap.form.ComboBox} combo This combo box
             * @param {Object} cfg set html .
             */
         'touchviewdisplay' : true
@@ -16464,7 +16900,7 @@ Roo.bootstrap.ComboBox = function(config){
     }
 };
 
-Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
+Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
      
     /**
      * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
@@ -16713,7 +17149,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          *  Normal ComboBox
          */
         if(!this.tickable){
-            cfg = Roo.bootstrap.ComboBox.superclass.getAutoCreate.call(this);
+            cfg = Roo.bootstrap.form.ComboBox.superclass.getAutoCreate.call(this);
             return cfg;
         }
         
@@ -17033,7 +17469,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
+        Roo.bootstrap.form.ComboBox.superclass.initEvents.call(this);
         
         if(this.hiddenName){
             
@@ -17413,7 +17849,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.store.un('load', this.onLoad, this);
             this.store.un('loadexception', this.onLoadException, this);
         }
-        Roo.bootstrap.ComboBox.superclass.onDestroy.call(this);
+        Roo.bootstrap.form.ComboBox.superclass.onDestroy.call(this);
     },
 
     // private
@@ -17428,7 +17864,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         
         
-//        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
+//        Roo.bootstrap.form.ComboBox.superclass.onResize.apply(this, arguments);
 //        
 //        if(typeof w != 'number'){
 //            // we do not handle it!?!?
@@ -17601,7 +18037,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.valueField){
             return typeof this.value != 'undefined' ? this.value : '';
         }else{
-            return Roo.bootstrap.ComboBox.superclass.getValue.call(this);
+            return Roo.bootstrap.form.ComboBox.superclass.getValue.call(this);
         }
     },
     
@@ -17671,7 +18107,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.hiddenField){
             this.hiddenField.dom.value = v;
         }
-        Roo.bootstrap.ComboBox.superclass.setValue.call(this, text);
+        Roo.bootstrap.form.ComboBox.superclass.setValue.call(this, text);
         this.value = v;
         
         var close = this.closeTriggerEl();
@@ -17727,14 +18163,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.hiddenField.dom.value = vv;
             
             this.lastSelectionText = dv;
-            Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+            Roo.bootstrap.form.ComboBox.superclass.setValue.call(this, dv);
             this.value = vv;
             return;
         }
         // no hidden field.. - we store the value in 'value', but still display
         // display field!!!!
         this.lastSelectionText = dv;
-        Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+        Roo.bootstrap.form.ComboBox.superclass.setValue.call(this, dv);
         this.value = vv;
         
         
@@ -18875,7 +19311,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     renderTouchView : function()
     {
-        this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.ComboBox.touchViewTemplate);
+        this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.form.ComboBox.touchViewTemplate);
         this.touchViewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.touchViewHeaderEl = this.touchViewEl.select('.modal-header', true).first();
@@ -19010,7 +19446,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var rawValue = this.getRawValue();
         
-        var template = (this.multiple) ? Roo.bootstrap.ComboBox.listItemCheckbox : Roo.bootstrap.ComboBox.listItemRadio;
+        var template = (this.multiple) ? Roo.bootstrap.form.ComboBox.listItemCheckbox : Roo.bootstrap.form.ComboBox.listItemRadio;
         
         this.tickItems = [];
         
@@ -19084,7 +19520,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.clearTouchView();
         
-        this.touchViewListGroup.createChild(Roo.bootstrap.ComboBox.emptyResult);
+        this.touchViewListGroup.createChild(Roo.bootstrap.form.ComboBox.emptyResult);
         
         this.touchViewListGroup.select('.roo-combobox-touch-view-empty-result', true).first().dom.innerHTML = this.emptyResultText;
         
@@ -19302,7 +19738,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
 });
 
-Roo.apply(Roo.bootstrap.ComboBox,  {
+Roo.apply(Roo.bootstrap.form.ComboBox,  {
     
     header : {
         tag: 'div',
@@ -19412,7 +19848,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
     }
 });
 
-Roo.apply(Roo.bootstrap.ComboBox,  {
+Roo.apply(Roo.bootstrap.form.ComboBox,  {
     
     touchViewTemplate : {
         tag: 'div',
@@ -19427,9 +19863,9 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                         tag: 'div',
                         cls: 'modal-content',
                         cn: [
-                            Roo.bootstrap.ComboBox.header,
-                            Roo.bootstrap.ComboBox.body,
-                            Roo.bootstrap.ComboBox.footer
+                            Roo.bootstrap.form.ComboBox.header,
+                            Roo.bootstrap.form.ComboBox.body,
+                            Roo.bootstrap.form.ComboBox.footer
                         ]
                     }
                 ]
@@ -20199,6 +20635,11 @@ Roo.bootstrap.Calendar = function(config){
 
 Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
+	  /**
+     * @cfg {Roo.data.Store} store
+     * The data source for the calendar
+     */
+	store : false,
      /**
      * @cfg {Number} startDay
      * Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)
@@ -21048,6 +21489,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Popover
  * @extends Roo.bootstrap.Component
+ * @builder-top
+ * @parent none
+ * @children Roo.bootstrap.Component
  * Bootstrap Popover class
  * @cfg {String} html contents of the popover   (or false to use children..)
  * @cfg {String} title of popover (or false to hide)
@@ -21522,17 +21966,17 @@ Roo.apply(Roo.bootstrap.Popover, {
         Roo.bootstrap.Popover.popups.remove(this);
     } 
 
-});/*
- * - LGPL
- *
- * Card header - holder for the card header elements.
- * 
- */
-
+});
 /**
  * @class Roo.bootstrap.PopoverNav
- * @extends Roo.bootstrap.NavGroup
+ * @extends Roo.bootstrap.nav.Simplebar
+ * @parent Roo.bootstrap.Popover
+ * @children Roo.bootstrap.nav.Group Roo.bootstrap.Container
+ * @licence LGPL
  * Bootstrap Popover header navigation class
+ * FIXME? should this go under nav?
+ *
+ * 
  * @constructor
  * Create a new Popover Header Navigation 
  * @param {Object} config The config object
@@ -21542,7 +21986,7 @@ Roo.bootstrap.PopoverNav = function(config){
     Roo.bootstrap.PopoverNav.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.PopoverNav, Roo.bootstrap.NavSimplebar,  {
+Roo.extend(Roo.bootstrap.PopoverNav, Roo.bootstrap.nav.Simplebar,  {
     
     
     container_method : 'getPopoverHeader' 
@@ -21565,6 +22009,7 @@ Roo.extend(Roo.bootstrap.PopoverNav, Roo.bootstrap.NavSimplebar,  {
 /**
  * @class Roo.bootstrap.Progress
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.ProgressBar
  * Bootstrap Progress class
  * @cfg {Boolean} striped striped of the progress bar
  * @cfg {Boolean} active animated of the progress bar
@@ -21701,16 +22146,10 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
 
  
 
- /*
- * - LGPL
- *
- * column
- * 
- */
-
-/**
+ /**
  * @class Roo.bootstrap.TabGroup
  * @extends Roo.bootstrap.Column
+ * @children Roo.bootstrap.TabPanel
  * Bootstrap Column class
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
@@ -21850,7 +22289,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     /**
     * register a Navigation item
-    * @param {Roo.bootstrap.NavItem} the navitem to add
+    * @param {Roo.bootstrap.nav.Item} the navitem to add
     */
     register : function(item)
     {
@@ -22070,7 +22509,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
     groups: {},
      /**
     * register a Navigation Group
-    * @param {Roo.bootstrap.NavGroup} the navgroup to add
+    * @param {Roo.bootstrap.nav.Group} the navgroup to add
     */
     register : function(navgrp)
     {
@@ -22081,7 +22520,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
     * fetch a Navigation Group based on the navigation ID
     * if one does not exist , it will get created.
     * @param {string} the navgroup to add
-    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    * @returns {Roo.bootstrap.nav.Group} the navgroup 
     */
     get: function(navId) {
         if (typeof(this.groups[navId]) == 'undefined') {
@@ -22104,11 +22543,12 @@ Roo.apply(Roo.bootstrap.TabGroup, {
 /**
  * @class Roo.bootstrap.TabPanel
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap TabPanel class
  * @cfg {Boolean} active panel active
  * @cfg {String} html panel content
  * @cfg {String} tabId  unique tab ID (will be autogenerated if not set. - used to match TabItem to Panel)
- * @cfg {String} navId The Roo.bootstrap.NavGroup which triggers show hide ()
+ * @cfg {String} navId The Roo.bootstrap.nav.Group which triggers show hide ()
  * @cfg {String} href click to link..
  * @cfg {Boolean} touchSlide if swiping slides tab to next panel (default off)
  * 
@@ -22290,8 +22730,8 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.DateField
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.DateField
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap DateField class
  * @cfg {Number} weekStart default 0
  * @cfg {String} viewMode default empty, (months|years)
@@ -22312,41 +22752,41 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.DateField = function(config){
-    Roo.bootstrap.DateField.superclass.constructor.call(this, config);
+Roo.bootstrap.form.DateField = function(config){
+    Roo.bootstrap.form.DateField.superclass.constructor.call(this, config);
      this.addEvents({
             /**
              * @event show
              * Fires when this field show.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.form.DateField} this
              * @param {Mixed} date The date value
              */
             show : true,
             /**
              * @event show
              * Fires when this field hide.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.form.DateField} this
              * @param {Mixed} date The date value
              */
             hide : true,
             /**
              * @event select
              * Fires when select a date.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.form.DateField} this
              * @param {Mixed} date The date value
              */
             select : true,
             /**
              * @event beforeselect
              * Fires when before select a date.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.form.DateField} this
              * @param {Mixed} date The date value
              */
             beforeselect : true
         });
 };
 
-Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     /**
      * @cfg {String} format
@@ -22419,13 +22859,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onRender: function(ct, position)
     {
         
-        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.form.DateField.superclass.onRender.call(this, ct, position);
         
         this.language = this.language || 'en';
-        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
-        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : "en";
+        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : this.language.split('-')[0];
+        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : "en";
         
-        this.isRTL = Roo.bootstrap.DateField.dates[this.language].rtl || false;
+        this.isRTL = Roo.bootstrap.form.DateField.dates[this.language].rtl || false;
         this.format = this.format || 'm/d/y';
         this.isInline = false;
         this.isInput = true;
@@ -22461,9 +22901,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
         }
                 
-        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.DateField.template);
         
-//        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
+//        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.form.DateField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -22491,7 +22931,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 return;
             }
             
-            v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today;
+            v.dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].today;
             v.attr('colspan', function(i, val){
                 return parseInt(val) + 1;
             });
@@ -22544,7 +22984,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             dow.cn.push({
                 tag: 'th',
                 cls: 'dow',
-                html: Roo.bootstrap.DateField.dates[this.language].daysMin[(dowCnt++)%7]
+                html: Roo.bootstrap.form.DateField.dates[this.language].daysMin[(dowCnt++)%7]
             });
         }
         
@@ -22562,7 +23002,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             var month = {
                 tag: 'span',
                 cls: 'month',
-                html: Roo.bootstrap.DateField.dates[this.language].monthsShort[i++]
+                html: Roo.bootstrap.form.DateField.dates[this.language].monthsShort[i++]
             };
             
             months.createChild(month);
@@ -22597,9 +23037,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 currentDate = this.date && this.date.valueOf(),
                 today = this.UTCToday();
         
-        this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
+        this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].months[month]+' '+year;
         
-//        this.picker().select('>tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today;
+//        this.picker().select('>tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].today;
         
 //        this.picker.select('>tfoot th.today').
 //						.text(dates[this.language].today)
@@ -22737,7 +23177,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
             v.hide();
         });
-        this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
+        this.picker().select('>.datepicker-'+Roo.bootstrap.form.DateField.modes[this.viewMode].clsName, true).first().show();
     },
     
     place: function()
@@ -22793,13 +23233,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     onFocus : function()
     {
-        Roo.bootstrap.DateField.superclass.onFocus.call(this);
+        Roo.bootstrap.form.DateField.superclass.onFocus.call(this);
         this.showPopup();
     },
     
     onBlur : function()
     {
-        Roo.bootstrap.DateField.superclass.onBlur.call(this);
+        Roo.bootstrap.form.DateField.superclass.onBlur.call(this);
         
         var d = this.inputEl().getValue();
         
@@ -22838,7 +23278,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     keyup: function(e)
     {
-        Roo.bootstrap.DateField.superclass.keyup.call(this);
+        Roo.bootstrap.form.DateField.superclass.keyup.call(this);
         this.update();
     },
 
@@ -22849,13 +23289,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
             if(isNaN(d.getTime())){
                 this.date = this.viewDate = '';
-                Roo.bootstrap.DateField.superclass.setValue.call(this, '');
+                Roo.bootstrap.form.DateField.superclass.setValue.call(this, '');
                 return;
             }
 
             v = this.formatDate(d);
 
-            Roo.bootstrap.DateField.superclass.setValue.call(this, v);
+            Roo.bootstrap.form.DateField.superclass.setValue.call(this, v);
 
             this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
 
@@ -22987,7 +23427,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         break;
                     case 'prev':
                     case 'next':
-                        var dir = Roo.bootstrap.DateField.modes[this.viewMode].navStep * (className == 'prev' ? -1 : 1);
+                        var dir = Roo.bootstrap.form.DateField.modes[this.viewMode].navStep * (className == 'prev' ? -1 : 1);
                         switch(this.viewMode){
                                 case 0:
                                         this.viewDate = this.moveMonth(this.viewDate, dir);
@@ -23016,7 +23456,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
                 this.viewDate.setUTCDate(1);
                     if (className.indexOf('month') > -1) {
-                        this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
+                        this.viewDate.setUTCMonth(Roo.bootstrap.form.DateField.dates[this.language].monthsShort.indexOf(html));
                     } else {
                         var year = parseInt(html, 10) || 0;
                         this.viewDate.setUTCFullYear(year);
@@ -23271,12 +23711,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         this.date = this.viewDate = '';
         
-        Roo.bootstrap.DateField.superclass.setValue.call(this, '');
+        Roo.bootstrap.form.DateField.superclass.setValue.call(this, '');
     }
    
 });
 
-Roo.apply(Roo.bootstrap.DateField,  {
+Roo.apply(Roo.bootstrap.form.DateField,  {
     
     head : {
         tag: 'thead',
@@ -23366,7 +23806,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
     }]
 });
 
-Roo.apply(Roo.bootstrap.DateField,  {
+Roo.apply(Roo.bootstrap.form.DateField,  {
   
     template : {
         tag: 'div',
@@ -23380,11 +23820,11 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 tag: 'table',
                 cls: 'table-condensed',
                 cn:[
-                Roo.bootstrap.DateField.head,
+                Roo.bootstrap.form.DateField.head,
                 {
                     tag: 'tbody'
                 },
-                Roo.bootstrap.DateField.footer
+                Roo.bootstrap.form.DateField.footer
                 ]
             }
             ]
@@ -23397,9 +23837,9 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 tag: 'table',
                 cls: 'table-condensed',
                 cn:[
-                Roo.bootstrap.DateField.head,
-                Roo.bootstrap.DateField.content,
-                Roo.bootstrap.DateField.footer
+                Roo.bootstrap.form.DateField.head,
+                Roo.bootstrap.form.DateField.content,
+                Roo.bootstrap.form.DateField.footer
                 ]
             }
             ]
@@ -23412,9 +23852,9 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 tag: 'table',
                 cls: 'table-condensed',
                 cn:[
-                Roo.bootstrap.DateField.head,
-                Roo.bootstrap.DateField.content,
-                Roo.bootstrap.DateField.footer
+                Roo.bootstrap.form.DateField.head,
+                Roo.bootstrap.form.DateField.content,
+                Roo.bootstrap.form.DateField.footer
                 ]
             }
             ]
@@ -23433,8 +23873,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
  */
 
 /**
- * @class Roo.bootstrap.TimeField
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.TimeField
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap DateField class
  * 
  * 
@@ -23443,34 +23883,34 @@ Roo.apply(Roo.bootstrap.DateField,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.TimeField = function(config){
-    Roo.bootstrap.TimeField.superclass.constructor.call(this, config);
+Roo.bootstrap.form.TimeField = function(config){
+    Roo.bootstrap.form.TimeField.superclass.constructor.call(this, config);
     this.addEvents({
             /**
              * @event show
              * Fires when this field show.
-             * @param {Roo.bootstrap.DateField} thisthis
+             * @param {Roo.bootstrap.form.DateField} thisthis
              * @param {Mixed} date The date value
              */
             show : true,
             /**
              * @event show
              * Fires when this field hide.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.form.DateField} this
              * @param {Mixed} date The date value
              */
             hide : true,
             /**
              * @event select
              * Fires when select a date.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.form.DateField} this
              * @param {Mixed} date The date value
              */
             select : true
         });
 };
 
-Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     
     /**
      * @cfg {String} format
@@ -23482,16 +23922,16 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     getAutoCreate : function()
     {
         this.after = '<i class="fa far fa-clock"></i>';
-        return Roo.bootstrap.TimeField.superclass.getAutoCreate.call(this);
+        return Roo.bootstrap.form.TimeField.superclass.getAutoCreate.call(this);
         
          
     },
     onRender: function(ct, position)
     {
         
-        Roo.bootstrap.TimeField.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.form.TimeField.superclass.onRender.call(this, ct, position);
                 
-        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.TimeField.template);
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.TimeField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -23797,13 +24237,13 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
   
     onFocus : function()
     {
-        Roo.bootstrap.TimeField.superclass.onFocus.call(this);
+        Roo.bootstrap.form.TimeField.superclass.onFocus.call(this);
         this.show();
     },
     
     onBlur : function()
     {
-        Roo.bootstrap.TimeField.superclass.onBlur.call(this);
+        Roo.bootstrap.form.TimeField.superclass.onBlur.call(this);
         this.hide();
     },
     
@@ -23880,7 +24320,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
 });
  
 
-Roo.apply(Roo.bootstrap.TimeField,  {
+Roo.apply(Roo.bootstrap.form.TimeField,  {
   
     template : {
         tag: 'div',
@@ -23949,8 +24389,8 @@ Roo.apply(Roo.bootstrap.TimeField,  {
  */
 
 /**
- * @class Roo.bootstrap.MonthField
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.MonthField
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap MonthField class
  * 
  * @cfg {String} language default en
@@ -23960,28 +24400,28 @@ Roo.apply(Roo.bootstrap.TimeField,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.MonthField = function(config){
-    Roo.bootstrap.MonthField.superclass.constructor.call(this, config);
+Roo.bootstrap.form.MonthField = function(config){
+    Roo.bootstrap.form.MonthField.superclass.constructor.call(this, config);
     
     this.addEvents({
         /**
          * @event show
          * Fires when this field show.
-         * @param {Roo.bootstrap.MonthField} this
+         * @param {Roo.bootstrap.form.MonthField} this
          * @param {Mixed} date The date value
          */
         show : true,
         /**
          * @event show
          * Fires when this field hide.
-         * @param {Roo.bootstrap.MonthField} this
+         * @param {Roo.bootstrap.form.MonthField} this
          * @param {Mixed} date The date value
          */
         hide : true,
         /**
          * @event select
          * Fires when select a date.
-         * @param {Roo.bootstrap.MonthField} this
+         * @param {Roo.bootstrap.form.MonthField} this
          * @param {String} oldvalue The old value
          * @param {String} newvalue The new value
          */
@@ -23989,25 +24429,25 @@ Roo.bootstrap.MonthField = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.MonthField, Roo.bootstrap.form.Input,  {
     
     onRender: function(ct, position)
     {
         
-        Roo.bootstrap.MonthField.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.form.MonthField.superclass.onRender.call(this, ct, position);
         
         this.language = this.language || 'en';
-        this.language = this.language in Roo.bootstrap.MonthField.dates ? this.language : this.language.split('-')[0];
-        this.language = this.language in Roo.bootstrap.MonthField.dates ? this.language : "en";
+        this.language = this.language in Roo.bootstrap.form.MonthField.dates ? this.language : this.language.split('-')[0];
+        this.language = this.language in Roo.bootstrap.form.MonthField.dates ? this.language : "en";
         
-        this.isRTL = Roo.bootstrap.MonthField.dates[this.language].rtl || false;
+        this.isRTL = Roo.bootstrap.form.MonthField.dates[this.language].rtl || false;
         this.isInline = false;
         this.isInput = true;
         this.component = this.el.select('.add-on', true).first() || false;
         this.component = (this.component && this.component.length === 0) ? false : this.component;
         this.hasInput = this.component && this.inputEL().length;
         
-        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.MonthField.template);
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.MonthField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -24034,7 +24474,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     {   
         var o = this.getValue();
         
-        Roo.bootstrap.MonthField.superclass.setValue.call(this, v);
+        Roo.bootstrap.form.MonthField.superclass.setValue.call(this, v);
         
         this.update();
 
@@ -24068,9 +24508,9 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             return;
         }
         
-        this.vIndex = Roo.bootstrap.MonthField.dates[this.language].monthsShort.indexOf(html);
+        this.vIndex = Roo.bootstrap.form.MonthField.dates[this.language].monthsShort.indexOf(html);
         
-        this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+        this.setValue(Roo.bootstrap.form.MonthField.dates[this.language].months[this.vIndex]);
         
         this.hide();
                         
@@ -24092,7 +24532,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             var month = {
                 tag: 'span',
                 cls: 'month',
-                html: Roo.bootstrap.MonthField.dates[this.language].monthsShort[i++]
+                html: Roo.bootstrap.form.MonthField.dates[this.language].monthsShort[i++]
             };
             
             months.createChild(month);
@@ -24105,7 +24545,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         var _this = this;
         
         if(typeof(this.vIndex) == 'undefined' && this.value.length){
-            this.vIndex = Roo.bootstrap.MonthField.dates[this.language].months.indexOf(this.value);
+            this.vIndex = Roo.bootstrap.form.MonthField.dates[this.language].months.indexOf(this.value);
         }
         
         Roo.each(this.pickerEl.select('> .datepicker-months tbody > tr > td > span', true).elements, function(e, k){
@@ -24144,13 +24584,13 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     onFocus : function()
     {
-        Roo.bootstrap.MonthField.superclass.onFocus.call(this);
+        Roo.bootstrap.form.MonthField.superclass.onFocus.call(this);
         this.show();
     },
     
     onBlur : function()
     {
-        Roo.bootstrap.MonthField.superclass.onBlur.call(this);
+        Roo.bootstrap.form.MonthField.superclass.onBlur.call(this);
         
         var d = this.inputEl().getValue();
         
@@ -24187,7 +24627,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     keyup: function(e)
     {
-        Roo.bootstrap.MonthField.superclass.keyup.call(this);
+        Roo.bootstrap.form.MonthField.superclass.keyup.call(this);
         this.update();
     },
 
@@ -24225,7 +24665,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                     this.vIndex = 0;
                 }
                 
-                this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+                this.setValue(Roo.bootstrap.form.MonthField.dates[this.language].months[this.vIndex]);
                 
                 break;
             case 38: // up
@@ -24247,13 +24687,13 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                     this.vIndex = 0;
                 }
                 
-                this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+                this.setValue(Roo.bootstrap.form.MonthField.dates[this.language].months[this.vIndex]);
                 break;
                 
             case 13: // enter
                 
                 if(typeof(this.vIndex) != 'undefined' && !isNaN(this.vIndex)){
-                    this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+                    this.setValue(Roo.bootstrap.form.MonthField.dates[this.language].months[this.vIndex]);
                 }
                 
                 this.hide();
@@ -24261,7 +24701,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 break;
             case 9: // tab
                 if(typeof(this.vIndex) != 'undefined' && !isNaN(this.vIndex)){
-                    this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+                    this.setValue(Roo.bootstrap.form.MonthField.dates[this.language].months[this.vIndex]);
                 }
                 this.hide();
                 break;
@@ -24282,7 +24722,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
    
 });
 
-Roo.apply(Roo.bootstrap.MonthField,  {
+Roo.apply(Roo.bootstrap.form.MonthField,  {
     
     content : {
         tag: 'tbody',
@@ -24307,7 +24747,7 @@ Roo.apply(Roo.bootstrap.MonthField,  {
     }
 });
 
-Roo.apply(Roo.bootstrap.MonthField,  {
+Roo.apply(Roo.bootstrap.form.MonthField,  {
   
     template : {
         tag: 'div',
@@ -24321,7 +24761,7 @@ Roo.apply(Roo.bootstrap.MonthField,  {
                     tag: 'table',
                     cls: 'table-condensed',
                     cn:[
-                        Roo.bootstrap.DateField.content
+                        Roo.bootstrap.form.DateField.content
                     ]
                 }
                 ]
@@ -24341,8 +24781,8 @@ Roo.apply(Roo.bootstrap.MonthField,  {
  */
 
 /**
- * @class Roo.bootstrap.CheckBox
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.CheckBox
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap CheckBox class
  * 
  * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
@@ -24359,28 +24799,28 @@ Roo.apply(Roo.bootstrap.MonthField,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.CheckBox = function(config){
-    Roo.bootstrap.CheckBox.superclass.constructor.call(this, config);
+Roo.bootstrap.form.CheckBox = function(config){
+    Roo.bootstrap.form.CheckBox.superclass.constructor.call(this, config);
    
     this.addEvents({
         /**
         * @event check
         * Fires when the element is checked or unchecked.
-        * @param {Roo.bootstrap.CheckBox} this This input
+        * @param {Roo.bootstrap.form.CheckBox} this This input
         * @param {Boolean} checked The new checked value
         */
        check : true,
        /**
         * @event click
         * Fires when the element is click.
-        * @param {Roo.bootstrap.CheckBox} this This input
+        * @param {Roo.bootstrap.form.CheckBox} this This input
         */
        click : true
     });
     
 };
 
-Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.CheckBox, Roo.bootstrap.form.Input,  {
   
     inputType: 'checkbox',
     inputValue: 1,
@@ -24632,7 +25072,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     initEvents : function()
     {
-//        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
+//        Roo.bootstrap.form.CheckBox.superclass.initEvents.call(this);
         
         this.inputEl().on('click', this.onClick,  this);
         
@@ -24643,7 +25083,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         this.startValue = this.getValue();
         
         if(this.groupId){
-            Roo.bootstrap.CheckBox.register(this);
+            Roo.bootstrap.form.CheckBox.register(this);
         }
     },
     
@@ -24795,7 +25235,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             //return (this.getValue() == this.inputValue) ? true : false;
         }
         
-        var group = Roo.bootstrap.CheckBox.get(this.groupId);
+        var group = Roo.bootstrap.form.CheckBox.get(this.groupId);
         
         if(!group){
             return false;
@@ -24832,10 +25272,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.fireEvent('valid', this);
         
-        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        var label = Roo.bootstrap.form.FieldLabel.get(this.name + '-group');
         
         if(this.groupId){
-            label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
+            label = Roo.bootstrap.form.FieldLabel.get(this.groupId + '-group');
         }
         
         if(label){
@@ -24869,7 +25309,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             return;
         }
         
-        var group = Roo.bootstrap.CheckBox.get(this.groupId);
+        var group = Roo.bootstrap.form.CheckBox.get(this.groupId);
         
         if(!group){
             return;
@@ -24901,10 +25341,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.fireEvent('invalid', this, msg);
         
-        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        var label = Roo.bootstrap.form.FieldLabel.get(this.name + '-group');
         
         if(this.groupId){
-            label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
+            label = Roo.bootstrap.form.FieldLabel.get(this.groupId + '-group');
         }
         
         if(label){
@@ -24939,7 +25379,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             return;
         }
         
-        var group = Roo.bootstrap.CheckBox.get(this.groupId);
+        var group = Roo.bootstrap.form.CheckBox.get(this.groupId);
         
         if(!group){
             return;
@@ -24960,11 +25400,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     clearInvalid : function()
     {
-        Roo.bootstrap.Input.prototype.clearInvalid.call(this);
+        Roo.bootstrap.form.Input.prototype.clearInvalid.call(this);
         
         // this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
         
-        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        var label = Roo.bootstrap.form.FieldLabel.get(this.name + '-group');
         
         if (label && label.iconEl) {
             label.iconEl.removeClass([ label.validClass, label.invalidClass ]);
@@ -24975,7 +25415,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     disable : function()
     {
         if(this.inputType != 'radio'){
-            Roo.bootstrap.CheckBox.superclass.disable.call(this);
+            Roo.bootstrap.form.CheckBox.superclass.disable.call(this);
             return;
         }
         
@@ -24996,7 +25436,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     enable : function()
     {
         if(this.inputType != 'radio'){
-            Roo.bootstrap.CheckBox.superclass.enable.call(this);
+            Roo.bootstrap.form.CheckBox.superclass.enable.call(this);
             return;
         }
         
@@ -25025,13 +25465,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 
 });
 
-Roo.apply(Roo.bootstrap.CheckBox, {
+Roo.apply(Roo.bootstrap.form.CheckBox, {
     
     groups: {},
     
      /**
     * register a CheckBox Group
-    * @param {Roo.bootstrap.CheckBox} the CheckBox to add
+    * @param {Roo.bootstrap.form.CheckBox} the CheckBox to add
     */
     register : function(checkbox)
     {
@@ -25049,7 +25489,7 @@ Roo.apply(Roo.bootstrap.CheckBox, {
     /**
     * fetch a CheckBox Group based on the group ID
     * @param {string} the group ID
-    * @returns {Roo.bootstrap.CheckBox} the CheckBox group
+    * @returns {Roo.bootstrap.form.CheckBox} the CheckBox group
     */
     get: function(groupId) {
         if (typeof(this.groups[groupId]) == 'undefined') {
@@ -25069,7 +25509,7 @@ Roo.apply(Roo.bootstrap.CheckBox, {
  */
 
 /**
- * @class Roo.bootstrap.Radio
+ * @class Roo.bootstrap.form.Radio
  * @extends Roo.bootstrap.Component
  * Bootstrap Radio class
  * @cfg {String} boxLabel - the label associated
@@ -25079,12 +25519,12 @@ Roo.apply(Roo.bootstrap.CheckBox, {
  * Create a new Radio
  * @param {Object} config The config object
  */
-Roo.bootstrap.Radio = function(config){
-    Roo.bootstrap.Radio.superclass.constructor.call(this, config);
+Roo.bootstrap.form.Radio = function(config){
+    Roo.bootstrap.form.Radio.superclass.constructor.call(this, config);
     
 };
 
-Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
+Roo.extend(Roo.bootstrap.form.Radio, Roo.bootstrap.Component, {
     
     boxLabel : '',
     
@@ -25148,8 +25588,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
  */
 
 /**
- * @class Roo.bootstrap.SecurePass
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.SecurePass
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap SecurePass class
  *
  * 
@@ -25158,7 +25598,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.Component, {
  * @param {Object} config The config object
  */
  
-Roo.bootstrap.SecurePass = function (config) {
+Roo.bootstrap.form.SecurePass = function (config) {
     // these go here, so the translation tool can replace them..
     this.errors = {
         PwdEmpty: "Please type a password, and then retype it to confirm.",
@@ -25182,10 +25622,10 @@ Roo.bootstrap.SecurePass = function (config) {
     
     this.errors = {};
     
-    Roo.bootstrap.SecurePass.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.SecurePass.superclass.constructor.call(this, config);
 }
 
-Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
+Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
     /**
      * @cfg {String/Object} errors A Error spec, or true for a default spec (defaults to
      * {
@@ -25230,7 +25670,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     // private
     initEvents: function ()
     {
-        Roo.bootstrap.SecurePass.superclass.initEvents.call(this);
+        Roo.bootstrap.form.SecurePass.superclass.initEvents.call(this);
 
         if (this.el.is('input[type=password]') && Roo.isSafari) {
             this.el.on('keydown', this.SafariOnKeyDown, this);
@@ -25241,7 +25681,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     // private
     onRender: function (ct, position)
     {
-        Roo.bootstrap.SecurePass.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.form.SecurePass.superclass.onRender.call(this, ct, position);
         this.wrap = this.el.wrap({cls: 'x-form-field-wrap'});
         this.trigger = this.wrap.createChild({tag: 'div', cls: 'StrengthMeter ' + this.triggerClass});
 
@@ -25278,7 +25718,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
         if (this.wrap) {
             this.wrap.remove();
         }
-        Roo.bootstrap.TriggerField.superclass.onDestroy.call(this);
+        Roo.bootstrap.form.TriggerField.superclass.onDestroy.call(this);
     },
     // private
     checkStrength: function ()
@@ -25315,7 +25755,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     },
     reset: function ()
     {
-        Roo.bootstrap.SecurePass.superclass.reset.call(this);
+        Roo.bootstrap.form.SecurePass.superclass.reset.call(this);
         
         this._lastPwd = '';
         
@@ -25332,7 +25772,7 @@ Roo.extend(Roo.bootstrap.SecurePass, Roo.bootstrap.Input, {
     // private
     validateValue: function (value)
     {
-        if (!Roo.bootstrap.SecurePass.superclass.validateValue.call(this, value)) {
+        if (!Roo.bootstrap.form.SecurePass.superclass.validateValue.call(this, value)) {
             return false;
         }
         if (value.length == 0) {
@@ -27245,8 +27685,8 @@ Roo.HtmlEditorCore.swapCodes   =[
  */
 
 /**
- * @class Roo.bootstrap.HtmlEditor
- * @extends Roo.bootstrap.TextArea
+ * @class Roo.bootstrap.form.HtmlEditor
+ * @extends Roo.bootstrap.form.TextArea
  * Bootstrap HtmlEditor class
 
  * @constructor
@@ -27254,8 +27694,8 @@ Roo.HtmlEditorCore.swapCodes   =[
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.HtmlEditor = function(config){
-    Roo.bootstrap.HtmlEditor.superclass.constructor.call(this, config);
+Roo.bootstrap.form.HtmlEditor = function(config){
+    Roo.bootstrap.form.HtmlEditor.superclass.constructor.call(this, config);
     if (!this.toolbars) {
         this.toolbars = [];
     }
@@ -27340,7 +27780,7 @@ Roo.bootstrap.HtmlEditor = function(config){
 };
 
 
-Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
+Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
     
     
       /**
@@ -27404,20 +27844,20 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         Roo.log('renewing');
         Roo.log("create toolbars");
         
-        this.toolbars = [ new Roo.bootstrap.htmleditor.ToolbarStandard({editor: this} ) ];
+        this.toolbars = [ new Roo.bootstrap.form.HtmlEditorToolbarStandard({editor: this} ) ];
         this.toolbars[0].render(this.toolbarContainer());
         
         return;
         
 //        if (!editor.toolbars || !editor.toolbars.length) {
-//            editor.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard() ]; // can be empty?
+//            editor.toolbars = [ new Roo.bootstrap.form.HtmlEditorToolbarStandard() ]; // can be empty?
 //        }
 //        
 //        for (var i =0 ; i < editor.toolbars.length;i++) {
 //            editor.toolbars[i] = Roo.factory(
 //                    typeof(editor.toolbars[i]) == 'string' ?
 //                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
-//                Roo.bootstrap.HtmlEditor);
+//                Roo.bootstrap.form.HtmlEditor);
 //            editor.toolbars[i].init(editor);
 //        }
     },
@@ -27428,7 +27868,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     {
        // Roo.log("Call onRender: " + this.xtype);
         var _t = this;
-        Roo.bootstrap.HtmlEditor.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.form.HtmlEditor.superclass.onRender.call(this, ct, position);
       
         this.wrap = this.inputEl().wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
@@ -27470,7 +27910,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     onResize : function(w, h)
     {
         Roo.log('resize: ' +w + ',' + h );
-        Roo.bootstrap.HtmlEditor.superclass.onResize.apply(this, arguments);
+        Roo.bootstrap.form.HtmlEditor.superclass.onResize.apply(this, arguments);
         var ew = false;
         var eh = false;
         
@@ -27570,7 +28010,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
 //    clearInvalid : Roo.emptyFn,
 
     setValue : function(v){
-        Roo.bootstrap.HtmlEditor.superclass.setValue.call(this, v);
+        Roo.bootstrap.form.HtmlEditor.superclass.setValue.call(this, v);
         this.editorcore.pushValue();
     },
 
@@ -27672,18 +28112,20 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
    
    
       
-Roo.namespace('Roo.bootstrap.htmleditor');
+Roo.namespace('Roo.bootstrap.form.HtmlEditor');
 /**
- * @class Roo.bootstrap.HtmlEditorToolbar1
+ * @class Roo.bootstrap.form.HtmlEditorToolbarStandard
+ * @parent Roo.bootstrap.form.HtmlEditor
+ * @extends Roo.bootstrap.nav.Simplebar
  * Basic Toolbar
  * 
  * @example
  * Usage:
  *
- new Roo.bootstrap.HtmlEditor({
+ new Roo.bootstrap.form.HtmlEditor({
     ....
     toolbars : [
-        new Roo.bootstrap.HtmlEditorToolbar1({
+        new Roo.bootstrap.form.HtmlEditorToolbarStandard({
             disable : { fonts: 1 , format: 1, ..., ... , ...],
             btns : [ .... ]
         })
@@ -27698,7 +28140,7 @@ Roo.namespace('Roo.bootstrap.htmleditor');
  * .x-html-editor-tb .x-edit-none .x-btn-text { background: none; }
  */
  
-Roo.bootstrap.htmleditor.ToolbarStandard = function(config)
+Roo.bootstrap.form.HtmlEditorToolbarStandard = function(config)
 {
     
     Roo.apply(this, config);
@@ -27710,7 +28152,7 @@ Roo.bootstrap.htmleditor.ToolbarStandard = function(config)
         colors : true,
         specialElements : true
     });
-    Roo.bootstrap.htmleditor.ToolbarStandard.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.HtmlEditorToolbarStandard.superclass.constructor.call(this, config);
     
     this.editor = config.editor;
     this.editorcore = config.editor.editorcore;
@@ -27720,7 +28162,7 @@ Roo.bootstrap.htmleditor.ToolbarStandard = function(config)
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
 }
-Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,  {
+Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simplebar,  {
      
     bar : true,
     
@@ -27740,7 +28182,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
     {
        // Roo.log("Call onRender: " + this.xtype);
         
-       Roo.bootstrap.htmleditor.ToolbarStandard.superclass.onRender.call(this, ct, position);
+       Roo.bootstrap.form.HtmlEditorToolbarStandard.superclass.onRender.call(this, ct, position);
        Roo.log(this.el);
        this.el.dom.style.marginBottom = '0';
        var _this = this;
@@ -27919,7 +28361,7 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
         // hides menus... - so this cant be on a menu...
         Roo.bootstrap.MenuMgr.hideAll();
         */
-        Roo.bootstrap.MenuMgr.hideAll();
+        Roo.bootstrap.menu.Manager.hideAll();
         //this.editorsyncValue();
     },
     onFirstFocus: function() {
@@ -27963,8 +28405,8 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
  */
 
 /**
- * @class Roo.bootstrap.Markdown
- * @extends Roo.bootstrap.TextArea
+ * @class Roo.bootstrap.form.Markdown
+ * @extends Roo.bootstrap.form.TextArea
  * Bootstrap Showdown editable area
  * @cfg {string} content
  * 
@@ -27972,19 +28414,19 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
  * Create a new Showdown
  */
 
-Roo.bootstrap.Markdown = function(config){
-    Roo.bootstrap.Markdown.superclass.constructor.call(this, config);
+Roo.bootstrap.form.Markdown = function(config){
+    Roo.bootstrap.form.Markdown.superclass.constructor.call(this, config);
    
 };
 
-Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
+Roo.extend(Roo.bootstrap.form.Markdown, Roo.bootstrap.form.TextArea,  {
     
     editing :false,
     
     initEvents : function()
     {
         
-        Roo.bootstrap.TextArea.prototype.initEvents.call(this);
+        Roo.bootstrap.form.TextArea.prototype.initEvents.call(this);
         this.markdownEl = this.el.createChild({
             cls : 'roo-markdown-area'
         });
@@ -28037,7 +28479,7 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
     },
     setValue : function(val)
     {
-        Roo.bootstrap.TextArea.prototype.setValue.call(this,val);
+        Roo.bootstrap.form.TextArea.prototype.setValue.call(this,val);
         if (!this.editing) {
             this.updateMarkdown();
         }
@@ -28065,7 +28507,7 @@ Roo.extend(Roo.bootstrap.Markdown, Roo.bootstrap.TextArea,  {
  
 /**
  * @class Roo.bootstrap.PagingToolbar
- * @extends Roo.bootstrap.NavSimplebar
+ * @extends Roo.bootstrap.nav.Simplebar
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
@@ -28101,14 +28543,18 @@ Roo.bootstrap.PagingToolbar = function(config)
     if (Roo.bootstrap.version == 4) {
         this.navgroup = new Roo.bootstrap.ButtonGroup({ cls: 'pagination' });
     } else {
-        this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
+        this.navgroup = new Roo.bootstrap.nav.Group({ cls: 'pagination' });
     }
     
 };
 
-Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
+Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.nav.Simplebar, {
     /**
-     * @cfg {Roo.data.Store} dataSource
+     * @cfg {Roo.bootstrap.Button} buttons[]
+     * Buttons for the toolbar
+     */
+     /**
+     * @cfg {Roo.data.Store} store
      * The underlying data store providing the paged data
      */
     /**
@@ -28893,6 +29339,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 /**
  * @class Roo.bootstrap.dash.TabBox
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.dash.TabPane
  * Bootstrap TabBox class
  * @cfg {String} title Title of the TabBox
  * @cfg {String} icon Icon of the TabBox
@@ -29093,6 +29540,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 /**
  * @class Roo.bootstrap.TabPane
  * @extends Roo.bootstrap.Component
+ * @children  Roo.bootstrap.Graph Roo.bootstrap.Column
  * Bootstrap TabPane class
  * @cfg {Boolean} active (false | true) Default false
  * @cfg {String} title title of panel
@@ -29165,409 +29613,6 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
 
  
 
-
- /*
- * - LGPL
- *
- * menu
- * 
- */
-Roo.bootstrap.menu = Roo.bootstrap.menu || {};
-
-/**
- * @class Roo.bootstrap.menu.Menu
- * @extends Roo.bootstrap.Component
- * Bootstrap Menu class - container for Menu
- * @cfg {String} html Text of the menu
- * @cfg {String} weight (default | primary | success | info | warning | danger | inverse)
- * @cfg {String} icon Font awesome icon
- * @cfg {String} pos Menu align to (top | bottom) default bottom
- * 
- * 
- * @constructor
- * Create a new Menu
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.menu.Menu = function(config){
-    Roo.bootstrap.menu.Menu.superclass.constructor.call(this, config);
-    
-    this.addEvents({
-        /**
-         * @event beforeshow
-         * Fires before this menu is displayed
-         * @param {Roo.bootstrap.menu.Menu} this
-         */
-        beforeshow : true,
-        /**
-         * @event beforehide
-         * Fires before this menu is hidden
-         * @param {Roo.bootstrap.menu.Menu} this
-         */
-        beforehide : true,
-        /**
-         * @event show
-         * Fires after this menu is displayed
-         * @param {Roo.bootstrap.menu.Menu} this
-         */
-        show : true,
-        /**
-         * @event hide
-         * Fires after this menu is hidden
-         * @param {Roo.bootstrap.menu.Menu} this
-         */
-        hide : true,
-        /**
-         * @event click
-         * Fires when this menu is clicked (or when the enter key is pressed while it is active)
-         * @param {Roo.bootstrap.menu.Menu} this
-         * @param {Roo.EventObject} e
-         */
-        click : true
-    });
-    
-};
-
-Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
-    
-    submenu : false,
-    html : '',
-    weight : 'default',
-    icon : false,
-    pos : 'bottom',
-    
-    
-    getChildContainer : function() {
-        if(this.isSubMenu){
-            return this.el;
-        }
-        
-        return this.el.select('ul.dropdown-menu', true).first();  
-    },
-    
-    getAutoCreate : function()
-    {
-        var text = [
-            {
-                tag : 'span',
-                cls : 'roo-menu-text',
-                html : this.html
-            }
-        ];
-        
-        if(this.icon){
-            text.unshift({
-                tag : 'i',
-                cls : 'fa ' + this.icon
-            })
-        }
-        
-        
-        var cfg = {
-            tag : 'div',
-            cls : 'btn-group',
-            cn : [
-                {
-                    tag : 'button',
-                    cls : 'dropdown-button btn btn-' + this.weight,
-                    cn : text
-                },
-                {
-                    tag : 'button',
-                    cls : 'dropdown-toggle btn btn-' + this.weight,
-                    cn : [
-                        {
-                            tag : 'span',
-                            cls : 'caret'
-                        }
-                    ]
-                },
-                {
-                    tag : 'ul',
-                    cls : 'dropdown-menu'
-                }
-            ]
-            
-        };
-        
-        if(this.pos == 'top'){
-            cfg.cls += ' dropup';
-        }
-        
-        if(this.isSubMenu){
-            cfg = {
-                tag : 'ul',
-                cls : 'dropdown-menu'
-            }
-        }
-	
-        return cfg;
-    },
-    
-    onRender : function(ct, position)
-    {
-        this.isSubMenu = ct.hasClass('dropdown-submenu');
-        
-        Roo.bootstrap.menu.Menu.superclass.onRender.call(this, ct, position);
-    },
-    
-    initEvents : function() 
-    {
-        if(this.isSubMenu){
-            return;
-        }
-        
-        this.hidden = true;
-        
-        this.triggerEl = this.el.select('button.dropdown-toggle', true).first();
-        this.triggerEl.on('click', this.onTriggerPress, this);
-        
-        this.buttonEl = this.el.select('button.dropdown-button', true).first();
-        this.buttonEl.on('click', this.onClick, this);
-        
-    },
-    
-    list : function()
-    {
-        if(this.isSubMenu){
-            return this.el;
-        }
-        
-        return this.el.select('ul.dropdown-menu', true).first();
-    },
-    
-    onClick : function(e)
-    {
-        this.fireEvent("click", this, e);
-    },
-    
-    onTriggerPress  : function(e)
-    {   
-        if (this.isVisible()) {
-            this.hide();
-        } else {
-            this.show();
-        }
-    },
-    
-    isVisible : function(){
-        return !this.hidden;
-    },
-    
-    show : function()
-    {
-        this.fireEvent("beforeshow", this);
-        
-        this.hidden = false;
-        this.el.addClass('open');
-        
-        Roo.get(document).on("mouseup", this.onMouseUp, this);
-        
-        this.fireEvent("show", this);
-        
-        
-    },
-    
-    hide : function()
-    {
-        this.fireEvent("beforehide", this);
-        
-        this.hidden = true;
-        this.el.removeClass('open');
-        
-        Roo.get(document).un("mouseup", this.onMouseUp);
-        
-        this.fireEvent("hide", this);
-    },
-    
-    onMouseUp : function()
-    {
-        this.hide();
-    }
-    
-});
-
- 
- /*
- * - LGPL
- *
- * menu item
- * 
- */
-Roo.bootstrap.menu = Roo.bootstrap.menu || {};
-
-/**
- * @class Roo.bootstrap.menu.Item
- * @extends Roo.bootstrap.Component
- * Bootstrap MenuItem class
- * @cfg {Boolean} submenu (true | false) default false
- * @cfg {String} html text of the item
- * @cfg {String} href the link
- * @cfg {Boolean} disable (true | false) default false
- * @cfg {Boolean} preventDefault (true | false) default true
- * @cfg {String} icon Font awesome icon
- * @cfg {String} pos Submenu align to (left | right) default right 
- * 
- * 
- * @constructor
- * Create a new Item
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.menu.Item = function(config){
-    Roo.bootstrap.menu.Item.superclass.constructor.call(this, config);
-    this.addEvents({
-        /**
-         * @event mouseover
-         * Fires when the mouse is hovering over this menu
-         * @param {Roo.bootstrap.menu.Item} this
-         * @param {Roo.EventObject} e
-         */
-        mouseover : true,
-        /**
-         * @event mouseout
-         * Fires when the mouse exits this menu
-         * @param {Roo.bootstrap.menu.Item} this
-         * @param {Roo.EventObject} e
-         */
-        mouseout : true,
-        // raw events
-        /**
-         * @event click
-         * The raw click event for the entire grid.
-         * @param {Roo.EventObject} e
-         */
-        click : true
-    });
-};
-
-Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
-    
-    submenu : false,
-    href : '',
-    html : '',
-    preventDefault: true,
-    disable : false,
-    icon : false,
-    pos : 'right',
-    
-    getAutoCreate : function()
-    {
-        var text = [
-            {
-                tag : 'span',
-                cls : 'roo-menu-item-text',
-                html : this.html
-            }
-        ];
-        
-        if(this.icon){
-            text.unshift({
-                tag : 'i',
-                cls : 'fa ' + this.icon
-            })
-        }
-        
-        var cfg = {
-            tag : 'li',
-            cn : [
-                {
-                    tag : 'a',
-                    href : this.href || '#',
-                    cn : text
-                }
-            ]
-        };
-        
-        if(this.disable){
-            cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'disabled' : (cfg.cls + ' disabled');
-        }
-        
-        if(this.submenu){
-            cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'dropdown-submenu' : (cfg.cls + ' dropdown-submenu');
-            
-            if(this.pos == 'left'){
-                cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'pull-left' : (cfg.cls + ' pull-left');
-            }
-        }
-        
-        return cfg;
-    },
-    
-    initEvents : function() 
-    {
-        this.el.on('mouseover', this.onMouseOver, this);
-        this.el.on('mouseout', this.onMouseOut, this);
-        
-        this.el.select('a', true).first().on('click', this.onClick, this);
-        
-    },
-    
-    onClick : function(e)
-    {
-        if(this.preventDefault){
-            e.preventDefault();
-        }
-        
-        this.fireEvent("click", this, e);
-    },
-    
-    onMouseOver : function(e)
-    {
-        if(this.submenu && this.pos == 'left'){
-            this.el.select('ul.dropdown-menu', true).first().setLeft(this.el.select('ul.dropdown-menu', true).first().getWidth() * -1);
-        }
-        
-        this.fireEvent("mouseover", this, e);
-    },
-    
-    onMouseOut : function(e)
-    {
-        this.fireEvent("mouseout", this, e);
-    }
-});
-
- 
-
- /*
- * - LGPL
- *
- * menu separator
- * 
- */
-Roo.bootstrap.menu = Roo.bootstrap.menu || {};
-
-/**
- * @class Roo.bootstrap.menu.Separator
- * @extends Roo.bootstrap.Component
- * Bootstrap Separator class
- * 
- * @constructor
- * Create a new Separator
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.menu.Separator = function(config){
-    Roo.bootstrap.menu.Separator.superclass.constructor.call(this, config);
-};
-
-Roo.extend(Roo.bootstrap.menu.Separator, Roo.bootstrap.Component,  {
-    
-    getAutoCreate : function(){
-        var cfg = {
-            tag : 'li',
-            cls: 'dropdown-divider divider'
-        };
-        
-        return cfg;
-    }
-   
-});
-
- 
 
  /*
  * - LGPL
@@ -33298,411 +33343,12 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
 /*
  * - LGPL
  *
- * nav progress bar
- * 
- */
-
-/**
- * @class Roo.bootstrap.NavProgressBar
- * @extends Roo.bootstrap.Component
- * Bootstrap NavProgressBar class
- * 
- * @constructor
- * Create a new nav progress bar
- * @param {Object} config The config object
- */
-
-Roo.bootstrap.NavProgressBar = function(config){
-    Roo.bootstrap.NavProgressBar.superclass.constructor.call(this, config);
-
-    this.bullets = this.bullets || [];
-   
-//    Roo.bootstrap.NavProgressBar.register(this);
-     this.addEvents({
-        /**
-	     * @event changed
-	     * Fires when the active item changes
-	     * @param {Roo.bootstrap.NavProgressBar} this
-	     * @param {Roo.bootstrap.NavProgressItem} selected The item selected
-	     * @param {Roo.bootstrap.NavProgressItem} prev The previously selected item 
-         */
-        'changed': true
-     });
-    
-};
-
-Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
-    
-    bullets : [],
-    barItems : [],
-    
-    getAutoCreate : function()
-    {
-        var cfg = Roo.apply({}, Roo.bootstrap.NavProgressBar.superclass.getAutoCreate.call(this));
-        
-        cfg = {
-            tag : 'div',
-            cls : 'roo-navigation-bar-group',
-            cn : [
-                {
-                    tag : 'div',
-                    cls : 'roo-navigation-top-bar'
-                },
-                {
-                    tag : 'div',
-                    cls : 'roo-navigation-bullets-bar',
-                    cn : [
-                        {
-                            tag : 'ul',
-                            cls : 'roo-navigation-bar'
-                        }
-                    ]
-                },
-                
-                {
-                    tag : 'div',
-                    cls : 'roo-navigation-bottom-bar'
-                }
-            ]
-            
-        };
-        
-        return cfg;
-        
-    },
-    
-    initEvents: function() 
-    {
-        
-    },
-    
-    onRender : function(ct, position) 
-    {
-        Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
-        
-        if(this.bullets.length){
-            Roo.each(this.bullets, function(b){
-               this.addItem(b);
-            }, this);
-        }
-        
-        this.format();
-        
-    },
-    
-    addItem : function(cfg)
-    {
-        var item = new Roo.bootstrap.NavProgressItem(cfg);
-        
-        item.parentId = this.id;
-        item.render(this.el.select('.roo-navigation-bar', true).first(), null);
-        
-        if(cfg.html){
-            var top = new Roo.bootstrap.Element({
-                tag : 'div',
-                cls : 'roo-navigation-bar-text'
-            });
-            
-            var bottom = new Roo.bootstrap.Element({
-                tag : 'div',
-                cls : 'roo-navigation-bar-text'
-            });
-            
-            top.onRender(this.el.select('.roo-navigation-top-bar', true).first(), null);
-            bottom.onRender(this.el.select('.roo-navigation-bottom-bar', true).first(), null);
-            
-            var topText = new Roo.bootstrap.Element({
-                tag : 'span',
-                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
-            });
-            
-            var bottomText = new Roo.bootstrap.Element({
-                tag : 'span',
-                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
-            });
-            
-            topText.onRender(top.el, null);
-            bottomText.onRender(bottom.el, null);
-            
-            item.topEl = top;
-            item.bottomEl = bottom;
-        }
-        
-        this.barItems.push(item);
-        
-        return item;
-    },
-    
-    getActive : function()
-    {
-        var active = false;
-        
-        Roo.each(this.barItems, function(v){
-            
-            if (!v.isActive()) {
-                return;
-            }
-            
-            active = v;
-            return false;
-            
-        });
-        
-        return active;
-    },
-    
-    setActiveItem : function(item)
-    {
-        var prev = false;
-        
-        Roo.each(this.barItems, function(v){
-            if (v.rid == item.rid) {
-                return ;
-            }
-            
-            if (v.isActive()) {
-                v.setActive(false);
-                prev = v;
-            }
-        });
-
-        item.setActive(true);
-        
-        this.fireEvent('changed', this, item, prev);
-    },
-    
-    getBarItem: function(rid)
-    {
-        var ret = false;
-        
-        Roo.each(this.barItems, function(e) {
-            if (e.rid != rid) {
-                return;
-            }
-            
-            ret =  e;
-            return false;
-        });
-        
-        return ret;
-    },
-    
-    indexOfItem : function(item)
-    {
-        var index = false;
-        
-        Roo.each(this.barItems, function(v, i){
-            
-            if (v.rid != item.rid) {
-                return;
-            }
-            
-            index = i;
-            return false
-        });
-        
-        return index;
-    },
-    
-    setActiveNext : function()
-    {
-        var i = this.indexOfItem(this.getActive());
-        
-        if (i > this.barItems.length) {
-            return;
-        }
-        
-        this.setActiveItem(this.barItems[i+1]);
-    },
-    
-    setActivePrev : function()
-    {
-        var i = this.indexOfItem(this.getActive());
-        
-        if (i  < 1) {
-            return;
-        }
-        
-        this.setActiveItem(this.barItems[i-1]);
-    },
-    
-    format : function()
-    {
-        if(!this.barItems.length){
-            return;
-        }
-     
-        var width = 100 / this.barItems.length;
-        
-        Roo.each(this.barItems, function(i){
-            i.el.setStyle('width', width + '%');
-            i.topEl.el.setStyle('width', width + '%');
-            i.bottomEl.el.setStyle('width', width + '%');
-        }, this);
-        
-    }
-    
-});
-/*
- * - LGPL
- *
- * Nav Progress Item
- * 
- */
-
-/**
- * @class Roo.bootstrap.NavProgressItem
- * @extends Roo.bootstrap.Component
- * Bootstrap NavProgressItem class
- * @cfg {String} rid the reference id
- * @cfg {Boolean} active (true|false) Is item active default false
- * @cfg {Boolean} disabled (true|false) Is item active default false
- * @cfg {String} html
- * @cfg {String} position (top|bottom) text position default bottom
- * @cfg {String} icon show icon instead of number
- * 
- * @constructor
- * Create a new NavProgressItem
- * @param {Object} config The config object
- */
-Roo.bootstrap.NavProgressItem = function(config){
-    Roo.bootstrap.NavProgressItem.superclass.constructor.call(this, config);
-    this.addEvents({
-        // raw events
-        /**
-         * @event click
-         * The raw click event for the entire grid.
-         * @param {Roo.bootstrap.NavProgressItem} this
-         * @param {Roo.EventObject} e
-         */
-        "click" : true
-    });
-   
-};
-
-Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
-    
-    rid : '',
-    active : false,
-    disabled : false,
-    html : '',
-    position : 'bottom',
-    icon : false,
-    
-    getAutoCreate : function()
-    {
-        var iconCls = 'roo-navigation-bar-item-icon';
-        
-        iconCls += ((this.icon) ? (' ' + this.icon) : (' step-number')) ;
-        
-        var cfg = {
-            tag: 'li',
-            cls: 'roo-navigation-bar-item',
-            cn : [
-                {
-                    tag : 'i',
-                    cls : iconCls
-                }
-            ]
-        };
-        
-        if(this.active){
-            cfg.cls += ' active';
-        }
-        if(this.disabled){
-            cfg.cls += ' disabled';
-        }
-        
-        return cfg;
-    },
-    
-    disable : function()
-    {
-        this.setDisabled(true);
-    },
-    
-    enable : function()
-    {
-        this.setDisabled(false);
-    },
-    
-    initEvents: function() 
-    {
-        this.iconEl = this.el.select('.roo-navigation-bar-item-icon', true).first();
-        
-        this.iconEl.on('click', this.onClick, this);
-    },
-    
-    onClick : function(e)
-    {
-        e.preventDefault();
-        
-        if(this.disabled){
-            return;
-        }
-        
-        if(this.fireEvent('click', this, e) === false){
-            return;
-        };
-        
-        this.parent().setActiveItem(this);
-    },
-    
-    isActive: function () 
-    {
-        return this.active;
-    },
-    
-    setActive : function(state)
-    {
-        if(this.active == state){
-            return;
-        }
-        
-        this.active = state;
-        
-        if (state) {
-            this.el.addClass('active');
-            return;
-        }
-        
-        this.el.removeClass('active');
-        
-        return;
-    },
-    
-    setDisabled : function(state)
-    {
-        if(this.disabled == state){
-            return;
-        }
-        
-        this.disabled = state;
-        
-        if (state) {
-            this.el.addClass('disabled');
-            return;
-        }
-        
-        this.el.removeClass('disabled');
-    },
-    
-    tooltipEl : function()
-    {
-        return this.el.select('.roo-navigation-bar-item-icon', true).first();;
-    }
-});
- 
-
- /*
- * - LGPL
- *
  * FieldLabel
  * 
  */
 
 /**
- * @class Roo.bootstrap.FieldLabel
+ * @class Roo.bootstrap.form.FieldLabel
  * @extends Roo.bootstrap.Component
  * Bootstrap FieldLabel class
  * @cfg {String} html contents of the element
@@ -33720,7 +33366,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.FieldLabel = function(config){
+Roo.bootstrap.form.FieldLabel = function(config){
     Roo.bootstrap.Element.superclass.constructor.call(this, config);
     
     this.addEvents({
@@ -33740,7 +33386,7 @@ Roo.bootstrap.FieldLabel = function(config){
         });
 };
 
-Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.form.FieldLabel, Roo.bootstrap.Component,  {
     
     tag: 'label',
     cls: '',
@@ -33809,7 +33455,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             this.indicator.addClass('invisible');
         }
         
-        Roo.bootstrap.FieldLabel.register(this);
+        Roo.bootstrap.form.FieldLabel.register(this);
     },
     
     indicatorEl : function()
@@ -33870,13 +33516,13 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
    
 });
 
-Roo.apply(Roo.bootstrap.FieldLabel, {
+Roo.apply(Roo.bootstrap.form.FieldLabel, {
     
     groups: {},
     
      /**
     * register a FieldLabel Group
-    * @param {Roo.bootstrap.FieldLabel} the FieldLabel to add
+    * @param {Roo.bootstrap.form.FieldLabel} the FieldLabel to add
     */
     register : function(label)
     {
@@ -33890,7 +33536,7 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
     /**
     * fetch a FieldLabel Group based on the target
     * @param {string} target
-    * @returns {Roo.bootstrap.FieldLabel} the CheckBox group
+    * @returns {Roo.bootstrap.form.FieldLabel} the CheckBox group
     */
     get: function(target) {
         if (typeof(this.groups[target]) == 'undefined') {
@@ -33912,7 +33558,7 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
 
 
 /**
- * @class Roo.bootstrap.DateSplitField
+ * @class Roo.bootstrap.form.DateSplitField
  * @extends Roo.bootstrap.Component
  * Bootstrap DateSplitField class
  * @cfg {string} fieldLabel - the label associated
@@ -33938,22 +33584,22 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.DateSplitField = function(config){
-    Roo.bootstrap.DateSplitField.superclass.constructor.call(this, config);
+Roo.bootstrap.form.DateSplitField = function(config){
+    Roo.bootstrap.form.DateSplitField.superclass.constructor.call(this, config);
     
     this.addEvents({
         // raw events
          /**
          * @event years
          * getting the data of years
-         * @param {Roo.bootstrap.DateSplitField} this
+         * @param {Roo.bootstrap.form.DateSplitField} this
          * @param {Object} years
          */
         "years" : true,
         /**
          * @event days
          * getting the data of days
-         * @param {Roo.bootstrap.DateSplitField} this
+         * @param {Roo.bootstrap.form.DateSplitField} this
          * @param {Object} days
          */
         "days" : true,
@@ -33973,7 +33619,7 @@ Roo.bootstrap.DateSplitField = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.form.DateSplitField, Roo.bootstrap.Component,  {
     
     fieldLabel : '',
     labelAlign : 'top',
@@ -34079,11 +33725,11 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     {
         var _this = this;
         
-        Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.DateSplitFiel.superclass.onRender.call(this, ct, position);
         
         this.inputEl = this.el.select('.roo-date-split-field-group-value', true).first();
         
-        this.dayField = new Roo.bootstrap.ComboBox({
+        this.dayField = new Roo.bootstrap.form.ComboBox({
             allowBlank : this.dayAllowBlank,
             alwaysQuery : true,
             displayField : 'value',
@@ -34115,7 +33761,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
 
         this.dayField.render(this.el.select('.roo-date-split-field-day', true).first(), null);
         
-        this.monthField = new Roo.bootstrap.MonthField({
+        this.monthField = new Roo.bootstrap.form.MonthField({
             after : '<i class=\"fa fa-calendar\"></i>',
             allowBlank : this.monthAllowBlank,
             placeholder : this.monthPlaceholder,
@@ -34137,7 +33783,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         
         this.monthField.render(this.el.select('.roo-date-split-field-month', true).first(), null);
         
-        this.yearField = new Roo.bootstrap.ComboBox({
+        this.yearField = new Roo.bootstrap.form.ComboBox({
             allowBlank : this.yearAllowBlank,
             alwaysQuery : true,
             displayField : 'value',
@@ -34334,7 +33980,13 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
 });
 
- /**
+ 
+
+/**
+ * @class Roo.bootstrap.LayoutMasonry
+ * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Element Roo.bootstrap.Img Roo.bootstrap.MasonryBrick
+ * Bootstrap Layout Masonry class
  *
  * This is based on 
  * http://masonry.desandro.com
@@ -34342,15 +33994,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
  * The idea is to render all the bricks based on vertical width...
  *
  * The original code extends 'outlayer' - we might need to use that....
- * 
- */
 
-
-/**
- * @class Roo.bootstrap.LayoutMasonry
- * @extends Roo.bootstrap.Component
- * Bootstrap Layout Masonry class
- * 
  * @constructor
  * Create a new Element
  * @param {Object} config The config object
@@ -36921,8 +36565,8 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.NumberField
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.NumberField
+ * @extends Roo.bootstrap.form.Input
  * Bootstrap NumberField class
  * 
  * 
@@ -36933,11 +36577,11 @@ Roo.extend(Roo.bootstrap.Brick, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.NumberField = function(config){
-    Roo.bootstrap.NumberField.superclass.constructor.call(this, config);
+Roo.bootstrap.form.NumberField = function(config){
+    Roo.bootstrap.form.NumberField.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
+Roo.extend(Roo.bootstrap.form.NumberField, Roo.bootstrap.form.Input, {
     
     /**
      * @cfg {Boolean} allowDecimals False to disallow decimal values (defaults to true)
@@ -37005,7 +36649,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
         
         this.name = '';
         
-        var cfg = Roo.bootstrap.NumberField.superclass.getAutoCreate.call(this);
+        var cfg = Roo.bootstrap.form.NumberField.superclass.getAutoCreate.call(this);
         
         this.name = hiddenInput.name;
         
@@ -37019,7 +36663,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     // private
     initEvents : function()
     {   
-        Roo.bootstrap.NumberField.superclass.initEvents.call(this);
+        Roo.bootstrap.form.NumberField.superclass.initEvents.call(this);
         
         var allowed = "0123456789";
         
@@ -37066,7 +36710,7 @@ Roo.extend(Roo.bootstrap.NumberField, Roo.bootstrap.Input, {
     validateValue : function(value)
     {
         
-        if(!Roo.bootstrap.NumberField.superclass.validateValue.call(this, value)){
+        if(!Roo.bootstrap.form.NumberField.superclass.validateValue.call(this, value)){
             return false;
         }
         
@@ -37373,8 +37017,9 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
  */
 
 /**
- * @class Roo.bootstrap.RadioSet
- * @extends Roo.bootstrap.Input
+ * @class Roo.bootstrap.form.RadioSet
+ * @extends Roo.bootstrap.form.Input
+ * @children Roo.bootstrap.form.Radio
  * Bootstrap RadioSet class
  * @cfg {String} indicatorpos (left|right) default left
  * @cfg {Boolean} inline (true|false) inline the element (default true)
@@ -37384,27 +37029,27 @@ Roo.extend(Roo.bootstrap.DocumentSlider, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.RadioSet = function(config){
+Roo.bootstrap.form.RadioSet = function(config){
     
-    Roo.bootstrap.RadioSet.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.RadioSet.superclass.constructor.call(this, config);
     
     this.radioes = [];
     
-    Roo.bootstrap.RadioSet.register(this);
+    Roo.bootstrap.form.RadioSet.register(this);
     
     this.addEvents({
         /**
         * @event check
         * Fires when the element is checked or unchecked.
-        * @param {Roo.bootstrap.RadioSet} this This radio
-        * @param {Roo.bootstrap.Radio} item The checked item
+        * @param {Roo.bootstrap.form.RadioSet} this This radio
+        * @param {Roo.bootstrap.form.Radio} item The checked item
         */
        check : true,
        /**
         * @event click
         * Fires when the element is click.
-        * @param {Roo.bootstrap.RadioSet} this This radio set
-        * @param {Roo.bootstrap.Radio} item The checked item
+        * @param {Roo.bootstrap.form.RadioSet} this This radio set
+        * @param {Roo.bootstrap.form.Radio} item The checked item
         * @param {Roo.EventObject} e The event object
         */
        click : true
@@ -37412,7 +37057,7 @@ Roo.bootstrap.RadioSet = function(config){
     
 };
 
-Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
+Roo.extend(Roo.bootstrap.form.RadioSet, Roo.bootstrap.form.Input,  {
 
     radioes : false,
     
@@ -37688,7 +37333,7 @@ Roo.extend(Roo.bootstrap.RadioSet, Roo.bootstrap.Input,  {
     
 });
 
-Roo.apply(Roo.bootstrap.RadioSet, {
+Roo.apply(Roo.bootstrap.form.RadioSet, {
     
     groups: {},
     
@@ -38158,7 +37803,7 @@ Roo.bootstrap.SplitBar.TOP = 3;
  * @type Number
  */
 Roo.bootstrap.SplitBar.BOTTOM = 4;
-Roo.namespace("Roo.bootstrap.layout");/*
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -38172,6 +37817,7 @@ Roo.namespace("Roo.bootstrap.layout");/*
 /**
  * @class Roo.bootstrap.layout.Manager
  * @extends Roo.bootstrap.Component
+ * @abstract
  * Base class for layout managers.
  */
 Roo.bootstrap.layout.Manager = function(config)
@@ -38360,6 +38006,8 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
 /**
  * @class Roo.bootstrap.layout.Border
  * @extends Roo.bootstrap.layout.Manager
+ * @builder-top
+ * @children Roo.bootstrap.panel.Content Roo.bootstrap.panel.Nest Roo.bootstrap.panel.Grid
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: examples/bootstrap/nested.html<br><br>
  
@@ -38391,6 +38039,25 @@ Roo.bootstrap.layout.Border.regions =  ["center", "north","south","east","west"]
 
 Roo.extend(Roo.bootstrap.layout.Border, Roo.bootstrap.layout.Manager, {
     
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} center region to go in center
+	 */
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} west region to go in west
+	 */
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} east region to go in east
+	 */
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} south region to go in south
+	 */
+	/**
+	 * @cfg {Roo.bootstrap.layout.Region} north region to go in north
+	 */
+	
+	
+	
+	
     parent : false, // this might point to a 'nest' or a ???
     
     /**
@@ -40525,7 +40192,7 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
         }
         Roo.bootstrap.layout.Region.prototype.updateBox.call(this, box);
     }
-});Roo.namespace("Roo.bootstrap.panel");/*
+});/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -40536,9 +40203,11 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
  * <script type="text/javascript">
  */
 /**
- * @class Roo.ContentPanel
+ * @class Roo.bootstrap.paenl.Content
  * @extends Roo.util.Observable
- * A basic ContentPanel element.
+ * @builder-top
+ * @children Roo.bootstrap.Component
+ * A basic ContentPanel element. - a panel that contain any content (eg. forms etc.)
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
  * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
@@ -40550,7 +40219,7 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
  * @cfg {String} title          The title for this panel
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
  * @cfg {String} url            Calls {@link #setUrl} with this value
- * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String} region  [required] (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
  * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
@@ -40558,13 +40227,11 @@ Roo.extend(Roo.bootstrap.layout.West, Roo.bootstrap.layout.Split, {
  * @cfg {Boolean} badges render the badges
  * @cfg {String} cls  extra classes to use  
  * @cfg {String} background (primary|secondary|success|info|warning|danger|light|dark)
-
+ 
  * @constructor
  * Create a new ContentPanel.
- * @param {String/HTMLElement/Roo.Element} el The container element for this panel
  * @param {String/Object} config A string to set only the title or a config object
- * @param {String} content (optional) Set the HTML content for this panel
- * @param {String} region (optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)
+ 
  */
 Roo.bootstrap.panel.Content = function( config){
     
@@ -41126,6 +40793,7 @@ layout.addxtype({
  * @constructor
  * Create a new GridPanel.
  * @cfg {Roo.bootstrap.Table} grid The grid for this panel
+ * @cfg {Roo.bootstrap.nav.Simplebar} toolbar the toolbar at the top of the grid.
  * @param {Object} config A the config object
   
  */
@@ -41285,7 +40953,6 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
  * Create a new Panel, that can contain a layout.Border.
  * 
  * 
- * @param {Roo.BorderLayout} layout The layout for this panel
  * @param {String/Object} config A string to set only the title or a config object
  */
 Roo.bootstrap.panel.Nest = function(config)
@@ -41318,6 +40985,10 @@ Roo.bootstrap.panel.Nest = function(config)
 };
 
 Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
+    /**
+    * @cfg {Roo.BorderLayout} layout The layout for this panel
+    */
+    layout : false,
 
     setSize : function(width, height){
         if(!this.ignoreResize(width, height)){
@@ -42351,7 +42022,7 @@ Roo.extend(Roo.bootstrap.panel.TabItem, Roo.util.Observable,
 *    Availability: https://github.com/jackocnr/intl-tel-input.git
 **/
 
-Roo.bootstrap.PhoneInputData = function() {
+Roo.bootstrap.form.PhoneInputData = function() {
     var d = [
       [
         "Afghanistan (‫افغانستان‬‎)",
@@ -43611,8 +43282,8 @@ Roo.bootstrap.PhoneInputData = function() {
 **/
 
 /**
- * @class Roo.bootstrap.PhoneInput
- * @extends Roo.bootstrap.TriggerField
+ * @class Roo.bootstrap.form.PhoneInput
+ * @extends Roo.bootstrap.form.TriggerField
  * An input with International dial-code selection
  
  * @cfg {String} defaultDialCode default '+852'
@@ -43623,12 +43294,14 @@ Roo.bootstrap.PhoneInputData = function() {
  * @param {Object} config Configuration options
  */
 
-Roo.bootstrap.PhoneInput = function(config) {
-    Roo.bootstrap.PhoneInput.superclass.constructor.call(this, config);
+Roo.bootstrap.form.PhoneInput = function(config) {
+    Roo.bootstrap.form.PhoneInput.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
-        
+Roo.extend(Roo.bootstrap.form.PhoneInput, Roo.bootstrap.form.TriggerField, {
+        /**
+        * @cfg {Roo.data.Store} store [required] The data store to which this combo is bound (defaults to undefined)
+        */
         listWidth: undefined,
         
         selectedClass: 'active',
@@ -43653,7 +43326,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
         getAutoCreate : function()
         {
-            var data = Roo.bootstrap.PhoneInputData();
+            var data = Roo.bootstrap.form.PhoneInputData();
             var align = this.labelAlign || this.parentLabelAlign();
             var id = Roo.id();
             
@@ -43881,7 +43554,7 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         initEvents : function()
         {
             this.createList();
-            Roo.bootstrap.PhoneInput.superclass.initEvents.call(this);
+            Roo.bootstrap.form.PhoneInput.superclass.initEvents.call(this);
             
             this.indicator = this.indicatorEl();
             this.flag = this.flagEl();
@@ -44163,8 +43836,8 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
         
 });
 /**
- * @class Roo.bootstrap.MoneyField
- * @extends Roo.bootstrap.ComboBox
+ * @class Roo.bootstrap.form.MoneyField
+ * @extends Roo.bootstrap.form.ComboBox
  * Bootstrap MoneyField class
  * 
  * @constructor
@@ -44172,13 +43845,13 @@ Roo.extend(Roo.bootstrap.PhoneInput, Roo.bootstrap.TriggerField, {
  * @param {Object} config Configuration options
  */
 
-Roo.bootstrap.MoneyField = function(config) {
+Roo.bootstrap.form.MoneyField = function(config) {
     
-    Roo.bootstrap.MoneyField.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.MoneyField.superclass.constructor.call(this, config);
     
 };
 
-Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
+Roo.extend(Roo.bootstrap.form.MoneyField, Roo.bootstrap.form.ComboBox, {
     
     /**
      * @cfg {Boolean} allowDecimals False to disallow decimal values (defaults to true)
@@ -44243,7 +43916,9 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     inputmd : 9,
     inputsm : 9,
     inputxs : 6,
-    
+     /**
+     * @cfg {Roo.data.Store} store  Store to lookup currency??
+     */
     store : false,
     
     getAutoCreate : function()
@@ -44782,7 +44457,7 @@ Roo.extend(Roo.bootstrap.MoneyField, Roo.bootstrap.ComboBox, {
     
     validateValue : function(value)
     {
-        if(!Roo.bootstrap.MoneyField.superclass.validateValue.call(this, value)){
+        if(!Roo.bootstrap.form.MoneyField.superclass.validateValue.call(this, value)){
             return false;
         }
         
@@ -45477,4 +45152,42 @@ Roo.extend(Roo.bootstrap.BezierSignature, Roo.bootstrap.Component,
 
  
 
- 
+ // old names for form elements
+Roo.bootstrap.Form          =   Roo.bootstrap.form.Form;
+Roo.bootstrap.Input         =   Roo.bootstrap.form.Input;
+Roo.bootstrap.TextArea      =   Roo.bootstrap.form.TextArea;
+Roo.bootstrap.TriggerField  =   Roo.bootstrap.form.TriggerField;
+Roo.bootstrap.ComboBox      =   Roo.bootstrap.form.ComboBox;
+Roo.bootstrap.DateField     =   Roo.bootstrap.form.DateField;
+Roo.bootstrap.TimeField     =   Roo.bootstrap.form.TimeField;
+Roo.bootstrap.MonthField    =   Roo.bootstrap.form.MonthField;
+Roo.bootstrap.CheckBox      =   Roo.bootstrap.form.CheckBox;
+Roo.bootstrap.Radio         =   Roo.bootstrap.form.Radio;
+Roo.bootstrap.RadioSet      =   Roo.bootstrap.form.RadioSet;
+Roo.bootstrap.SecurePass    =   Roo.bootstrap.form.SecurePass;
+Roo.bootstrap.FieldLabel    =   Roo.bootstrap.form.FieldLabel;
+Roo.bootstrap.DateSplitField=   Roo.bootstrap.form.DateSplitField;
+Roo.bootstrap.NumberField   =   Roo.bootstrap.form.NumberField;
+Roo.bootstrap.PhoneInput    =   Roo.bootstrap.form.PhoneInput;
+Roo.bootstrap.PhoneInputData=   Roo.bootstrap.form.PhoneInputData;
+Roo.bootstrap.MoneyField    =   Roo.bootstrap.form.MoneyField;
+Roo.bootstrap.HtmlEditor    =   Roo.bootstrap.form.HtmlEditor;
+Roo.bootstrap.HtmlEditor.ToolbarStandard =   Roo.bootstrap.form.HtmlEditorToolbarStandard;
+Roo.bootstrap.Markdown      = Roo.bootstrap.form.Markdown;
+Roo.bootstrap.CardUploader  = Roo.bootstrap.form.CardUploader;// depricated.
+Roo.bootstrap.Navbar            = Roo.bootstrap.nav.Bar;
+Roo.bootstrap.NavGroup          = Roo.bootstrap.nav.Group;
+Roo.bootstrap.NavHeaderbar      = Roo.bootstrap.nav.Headerbar;
+Roo.bootstrap.NavItem           = Roo.bootstrap.nav.Item;
+
+Roo.bootstrap.NavProgressBar     = Roo.bootstrap.nav.ProgressBar;
+Roo.bootstrap.NavProgressBarItem = Roo.bootstrap.nav.ProgressBarItem;
+
+Roo.bootstrap.NavSidebar        = Roo.bootstrap.nav.Sidebar;
+Roo.bootstrap.NavSidebarItem    = Roo.bootstrap.nav.SidebarItem;
+
+Roo.bootstrap.NavSimplebar      = Roo.bootstrap.nav.Simplebar;// deprciated 
+Roo.bootstrap.Menu = Roo.bootstrap.menu.Menu;
+Roo.bootstrap.MenuItem =  Roo.bootstrap.menu.Item;
+Roo.bootstrap.MenuSeparator = Roo.bootstrap.menu.Separator
+

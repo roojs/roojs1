@@ -1,13 +1,7 @@
-<html><head><title>Roo/bootstrap/TabGroup.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
- * - LGPL
- *
- * column
- * 
- */
-
-/**
+<html><head><title>Roo/bootstrap/TabGroup.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
  * @class Roo.bootstrap.TabGroup
  * @extends Roo.bootstrap.Column
+ * @children Roo.bootstrap.TabPanel
  * Bootstrap Column class
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
@@ -147,7 +141,7 @@
 
     </span><span class="jsdoc-comment">/**
     * register a Navigation item
-    * @param {Roo.bootstrap.NavItem} the navitem to add
+    * @param {Roo.bootstrap.nav.Item} the navitem to add
     */
     </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">)
     {
@@ -367,7 +361,7 @@
     </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">: {},
      </span><span class="jsdoc-comment">/**
     * register a Navigation Group
-    * @param {Roo.bootstrap.NavGroup} the navgroup to add
+    * @param {Roo.bootstrap.nav.Group} the navgroup to add
     */
     </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">navgrp</span><span class="jsdoc-syntax">)
     {
@@ -378,7 +372,7 @@
     * fetch a Navigation Group based on the navigation ID
     * if one does not exist , it will get created.
     * @param {string} the navgroup to add
-    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    * @returns {Roo.bootstrap.nav.Group} the navgroup 
     */
     </span><span class="jsdoc-var">get</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">navId</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">navId</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {

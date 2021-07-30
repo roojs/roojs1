@@ -45,6 +45,7 @@ Roo.PagingToolbar
 Roo.Resizable
 Roo.Editor
 Roo.BasicDialog
+Roo.LayoutDialog
 Roo.MessageBox
 Roo.QuickTips
 

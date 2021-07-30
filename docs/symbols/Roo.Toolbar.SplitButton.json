@@ -5,10 +5,15 @@
     "Roo.Button",
     "Roo.util.Observable"
   ],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "A menu button that renders into a toolbar.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "SplitButton",
   "example" : "",
   "deprecated" : "",
@@ -23,244 +28,240 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "tooltip",
       "type" : "String/Object",
       "desc" : "The tooltip for the button - can be a string or QuickTips config object",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "The button text",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "renderTo",
       "type" : "String/HTMLElement/Element",
       "desc" : "The element to append the button to",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
       "desc" : "True to start hidden (defaults to false)",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "toggleGroup",
       "type" : "String",
       "desc" : "The group this toggle button is a member of (only 1 per group can be pressed, only\n   applies if enableToggle = true)",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "handleMouseEvents",
       "type" : "Boolean",
       "desc" : "False to disable visual cues on mouseover, mouseout and mousedown (defaults to true)",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "menu",
-      "type" : "Mixed",
+      "type" : "Roo.menu.Menu",
       "desc" : "Standard menu attribute consisting of a reference to a menu object, a menu id or a menu config blob (defaults to undefined).",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "enableToggle",
       "type" : "Boolean",
       "desc" : "True to enable pressed/not pressed toggling (defaults to false)",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "arrowHandler",
       "type" : "Function",
       "desc" : "A function called when the arrow button is clicked (can be used instead of click event)",
-      "memberOf" : "Roo.SplitButton",
-      "optvals" : []
+      "memberOf" : "Roo.SplitButton"
     },
     {
       "name" : "handler",
       "type" : "Function",
       "desc" : "A function called when the button is clicked (can be used instead of click event)",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "scope",
       "type" : "Object",
       "desc" : "The scope of the handler",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "minWidth",
       "type" : "Number",
       "desc" : "The minimum width for this button (used to give a set of buttons a common width)",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "True to start disabled (defaults to false)",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "pressed",
       "type" : "Boolean",
       "desc" : "True to start pressed (only if enableToggle = true)",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "template",
       "type" : "Roo.Template",
       "desc" : "(Optional)\nAn {@link Roo.Template} with which to create the Button's main element. This Template must\ncontain numeric substitution parameter 0 if it is to display the tRoo property. Changing the template could\nrequire code modifications if required elements (e.g. a button) aren't present.",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the button's main element.",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "tabIndex",
       "type" : "Number",
       "desc" : "The DOM tabIndex for this button (defaults to undefined)",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "iconCls",
       "type" : "String",
       "desc" : "A css class which sets a background image to be used as the icon for this button (defaults to undefined).",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "menuAlign",
       "type" : "String",
       "desc" : "The position to align the menu to (see {@link Roo.Element#alignTo} for more details, defaults to 'tl-bl?').",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "icon",
       "type" : "String",
       "desc" : "The path to an image to display in the button (the image will be set as the background-image\nCSS property of the button by default, so if you want a mixed icon/text button, set cls:\"x-btn-text-icon\")",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "tooltipType",
       "type" : "String",
       "desc" : "The type of tooltip to use. Either \"qtip\" (default) for QuickTips or \"title\" for title attribute.",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "arrowTooltip",
       "type" : "String",
       "desc" : "The title attribute of the arrow",
-      "memberOf" : "Roo.SplitButton",
-      "optvals" : []
+      "memberOf" : "Roo.SplitButton"
     },
     {
       "name" : "clickEvent",
       "type" : "String",
       "desc" : "The type of event to map to the button's event handler (defaults to 'click')",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "repeat",
       "type" : "Boolean/Object",
       "desc" : "True to repeat fire the click event while the mouse is down. This can also be\n  an {@link Roo.util.ClickRepeater} config object (defaults to false).",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     },
     {
       "name" : "type",
       "type" : "String",
       "desc" : "The button's type, corresponding to the DOM input element type attribute.  Either \"submit,\" \"reset\" or \"button\" (default).",
-      "memberOf" : "Roo.Button",
-      "optvals" : []
+      "memberOf" : "Roo.Button"
     }
   ],
   "methods" : [
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Removes and destroys this button",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Toolbar.SplitButton",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "hide",
+      "type" : "function",
       "desc" : "Hides this button",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Toolbar.SplitButton",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "show",
+      "type" : "function",
       "desc" : "Shows this button",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Toolbar.SplitButton",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "setArrowHandler",
+      "type" : "function",
       "desc" : "Sets this button's arrow click handler",
+      "sig" : "(handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.SplitButton",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.SplitButton",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "handler",
@@ -279,29 +280,39 @@
     },
     {
       "name" : "focus",
+      "type" : "function",
       "desc" : "Focus the button",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.SplitButton",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.SplitButton",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "setHandler",
+      "type" : "function",
       "desc" : "Sets this button's click handler",
+      "sig" : "(handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.SplitButton",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.SplitButton",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "handler",
@@ -320,43 +331,58 @@
     },
     {
       "name" : "disable",
+      "type" : "function",
       "desc" : "Disable this button",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Button",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "enable",
+      "type" : "function",
       "desc" : "Enable this button",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Button",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "getEl",
+      "type" : "function",
       "desc" : "Returns the button's underlying element",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Button",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -368,15 +394,20 @@
     },
     {
       "name" : "setDisabled",
+      "type" : "function",
       "desc" : "Convenience function for boolean enable/disable",
+      "sig" : "(enabled)",
+      "static" : false,
+      "memberOf" : "Roo.Button",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "enabled",
@@ -389,15 +420,20 @@
     },
     {
       "name" : "setVisible",
+      "type" : "function",
       "desc" : "Convenience function for boolean show/hide",
+      "sig" : "(visible)",
+      "static" : false,
+      "memberOf" : "Roo.Button",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "visible",
@@ -410,15 +446,20 @@
     },
     {
       "name" : "getText",
+      "type" : "function",
       "desc" : "Gets the text for this button",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Button",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -430,15 +471,20 @@
     },
     {
       "name" : "setText",
+      "type" : "function",
       "desc" : "Sets this button's text",
+      "sig" : "(text)",
+      "static" : false,
+      "memberOf" : "Roo.Button",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "text",
@@ -451,15 +497,20 @@
     },
     {
       "name" : "toggle",
+      "type" : "function",
       "desc" : "If a state it passed, it becomes the pressed state otherwise the current state is toggled.",
+      "sig" : "(state)",
+      "static" : false,
+      "memberOf" : "Roo.Button",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "state",
@@ -472,29 +523,39 @@
     },
     {
       "name" : "purgeListeners",
+      "type" : "function",
       "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "on",
+      "type" : "function",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -525,15 +586,20 @@
     },
     {
       "name" : "un",
+      "type" : "function",
       "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -558,15 +624,20 @@
     },
     {
       "name" : "addEvents",
+      "type" : "function",
       "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "object",
@@ -579,15 +650,20 @@
     },
     {
       "name" : "releaseCapture",
+      "type" : "function",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -600,15 +676,20 @@
     },
     {
       "name" : "removeListener",
+      "type" : "function",
       "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -633,15 +714,20 @@
     },
     {
       "name" : "fireEvent",
+      "type" : "function",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -666,15 +752,20 @@
     },
     {
       "name" : "hasListener",
+      "type" : "function",
       "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -693,15 +784,20 @@
     },
     {
       "name" : "capture",
+      "type" : "function",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -726,15 +822,20 @@
     },
     {
       "name" : "addListener",
+      "type" : "function",
       "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -767,7 +868,9 @@
   "events" : [
     {
       "name" : "arrowclick",
+      "type" : "function",
       "desc" : "Fires when this button's arrow is clicked",
+      "sig" : "function (_self, e)\n{\n\n}",
       "memberOf" : "Roo.SplitButton",
       "example" : "",
       "deprecated" : "",
@@ -791,7 +894,9 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "Fires when the button is rendered",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",
@@ -809,7 +914,9 @@
     },
     {
       "name" : "click",
+      "type" : "function",
       "desc" : "Fires when this button is clicked",
+      "sig" : "function (_self, e)\n{\n\n}",
       "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",
@@ -833,7 +940,9 @@
     },
     {
       "name" : "mouseover",
+      "type" : "function",
       "desc" : "Fires when the mouse hovers over the button",
+      "sig" : "function (_self, e)\n{\n\n}",
       "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",
@@ -857,7 +966,9 @@
     },
     {
       "name" : "toggle",
+      "type" : "function",
       "desc" : "Fires when the \"pressed\" state of this button changes (only if enableToggle = true)",
+      "sig" : "function (_self, pressed)\n{\n\n}",
       "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",
@@ -881,7 +992,9 @@
     },
     {
       "name" : "mouseout",
+      "type" : "function",
       "desc" : "Fires when the mouse exits the button",
+      "sig" : "function (_self, e)\n{\n\n}",
       "memberOf" : "Roo.Button",
       "example" : "",
       "deprecated" : "",

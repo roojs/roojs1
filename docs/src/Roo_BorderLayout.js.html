@@ -11,6 +11,7 @@
 /**
  * @class Roo.BorderLayout
  * @extends Roo.LayoutManager
+ * @children Roo.ContentPanel
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: &lt;br&gt;&lt;br&gt;
  * &lt;a href=&quot;http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/&quot;&gt;Cross Browser Layouts - Part 1&lt;/a&gt;&lt;br&gt;
@@ -92,7 +93,23 @@ the container size if it is not the body element.&lt;/b&gt;
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.BorderLayout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.LayoutManager</span><span class="jsdoc-syntax">, {
-    </span><span class="jsdoc-comment">/**
+
+	</span><span class="jsdoc-comment">/**
+	 * @cfg {Roo.LayoutRegion} east
+	 */
+	/**
+	 * @cfg {Roo.LayoutRegion} west
+	 */
+	/**
+	 * @cfg {Roo.LayoutRegion} north
+	 */
+	/**
+	 * @cfg {Roo.LayoutRegion} south
+	 */
+	/**
+	 * @cfg {Roo.LayoutRegion} center
+	 */
+    /**
      * Creates and adds a new region if it doesn't already exist.
      * @param {String} target The target region key (north, south, east, west or center).
      * @param {Object} config The regions config object

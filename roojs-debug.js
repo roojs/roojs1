@@ -4359,7 +4359,7 @@ Roo.DomHelper = function(){
     var ieTable = function(depth, s, h, e){
         tempTableEl.innerHTML = [s, h, e].join('');
         var i = -1, el = tempTableEl;
-        while(++i < depth){
+        while(++i < depth && el.firstChild){
             el = el.firstChild;
         }
         return el;
@@ -23673,13 +23673,13 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     */
     
     /**
-    * @cfg {Roo.data.DataProxy} proxy The Proxy object which provides access to a data object.
+    * @cfg {Roo.data.DataProxy} proxy [required] The Proxy object which provides access to a data object.
     */
     /**
     * @cfg {Array} data Inline data to be loaded when the store is initialized.
     */
     /**
-    * @cfg {Roo.data.Reader} reader The Reader object which processes the data object and returns
+    * @cfg {Roo.data.DataReader} reader [required]  The Reader object which processes the data object and returns
     * an Array of Roo.data.record objects which are cached keyed by their <em>id</em> property.
     */
     /**
@@ -24262,6 +24262,8 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
  * @cfg {Array} fields An array of field definition objects, or field name strings.
  * @cfg {Object} an existing reader (eg. copied from another store)
  * @cfg {Array} data The multi-dimensional array of data
+ * @cfg {Roo.data.DataProxy} proxy [not-required]  
+ * @cfg {Roo.data.Reader} reader  [not-required] 
  * @constructor
  * @param {Object} config
  */
@@ -24433,6 +24435,7 @@ Roo.data.Field.prototype = {
 
 /**
  * @class Roo.data.DataReader
+ * @abstract
  * Base class for reading structured data from a data source.  This class is intended to be
  * extended (see {Roo.data.ArrayReader}, {Roo.data.JsonReader} and {Roo.data.XmlReader}) and should not be created directly.
  */
@@ -24483,7 +24486,8 @@ Roo.data.DataReader.prototype = {
 
 /**
  * @class Roo.data.DataProxy
- * @extends Roo.data.Observable
+ * @extends Roo.util.Observable
+ * @abstract
  * This class is an abstract base class for implementations which provide retrieval of
  * unformatted data objects.<br>
  * <p>
@@ -29531,7 +29535,7 @@ Roo.extend(Roo.Button, Roo.util.Observable, {
      */
     enableToggle: false,
     /**
-     * @cfg {Mixed} menu
+     * @cfg {Roo.menu.Menu} menu
      * Standard menu attribute consisting of a reference to a menu object, a menu id or a menu config blob (defaults to undefined).
      */
     menu : undefined,
@@ -30153,6 +30157,7 @@ Roo.MenuButton = Roo.SplitButton;/*
 
 /**
  * @class Roo.Toolbar
+ * @children   Roo.Toolbar.Item Roo.form.Field
  * Basic Toolbar class.
  * @constructor
  * Creates a new Toolbar
@@ -30702,7 +30707,10 @@ Roo.extend(Roo.Toolbar.TextItem, Roo.Toolbar.Item, {
 Roo.Toolbar.Button = function(config){
     Roo.Toolbar.Button.superclass.constructor.call(this, null, config);
 };
-Roo.extend(Roo.Toolbar.Button, Roo.Button, {
+Roo.extend(Roo.Toolbar.Button, Roo.Button,
+{
+    
+    
     render : function(td){
         this.td = td;
         Roo.Toolbar.Button.superclass.render.call(this, td);
@@ -30808,6 +30816,7 @@ Roo.Toolbar.MenuButton = Roo.Toolbar.SplitButton;/*
 /**
  * @class Roo.PagingToolbar
  * @extends Roo.Toolbar
+ * @children   Roo.Toolbar.Item Roo.form.Field
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
@@ -30843,10 +30852,7 @@ Roo.PagingToolbar = function(el, ds, config)
 };
 
 Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
-    /**
-     * @cfg {Roo.data.Store} dataSource
-     * The underlying data store providing the paged data
-     */
+   
     /**
      * @cfg {String/HTMLElement/Element} container
      * container The id or element that will contain the toolbar
@@ -30855,6 +30861,8 @@ Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
      * @cfg {Boolean} displayInfo
      * True to display the displayMsg (defaults to false)
      */
+    
+    
     /**
      * @cfg {Number} pageSize
      * The number of records to display per page (defaults to 20)
@@ -33250,6 +33258,8 @@ Roo.DialogManager = function(){
 /**
  * @class Roo.LayoutDialog
  * @extends Roo.BasicDialog
+ * @children Roo.ContentPanel
+ * @builder-top
  * Dialog which provides adjustments for working with a layout in a Dialog.
  * Add your necessary layout config options to the dialog's config.<br>
  * Example usage (including a nested layout):
@@ -33335,6 +33345,28 @@ Roo.LayoutDialog = function(el, cfg){
     
 };
 Roo.extend(Roo.LayoutDialog, Roo.BasicDialog, {
+    
+    
+    /**
+     * @cfg {Roo.LayoutRegion} east  
+     */
+    /**
+     * @cfg {Roo.LayoutRegion} west
+     */
+    /**
+     * @cfg {Roo.LayoutRegion} south
+     */
+    /**
+     * @cfg {Roo.LayoutRegion} north
+     */
+    /**
+     * @cfg {Roo.LayoutRegion} center
+     */
+    /**
+     * @cfg {Roo.Button} buttons[]  Bottom buttons..
+     */
+    
+    
     /**
      * Ends update of the layout <strike>and resets display to none</strike>. Use standard beginUpdate/endUpdate on the layout.
      * @deprecated
@@ -34347,7 +34379,7 @@ Roo.QuickTips.tips = Roo.QuickTips.register;/*
 /**
  * @class Roo.tree.TreePanel
  * @extends Roo.data.Tree
-
+ * @cfg {Roo.tree.TreeNode} root The root node
  * @cfg {Boolean} rootVisible false to hide the root node (defaults to true)
  * @cfg {Boolean} lines false to disable tree lines (defaults to true)
  * @cfg {Boolean} enableDD true to enable drag and drop
@@ -34364,8 +34396,8 @@ Roo.QuickTips.tips = Roo.QuickTips.register;/*
  * @cfg {Boolean} animate true to enable animated expand/collapse (defaults to the value of Roo.enableFx)
  * @cfg {Boolean} singleExpand true if only 1 node per branch may be expanded
  * @cfg {Boolean} selModel A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})
- * @cfg {Boolean} loader A TreeLoader for use with this TreePanel
- * @cfg {Object|Roo.tree.TreeEditor} editor The TreeEditor or xtype data to display when clicked.
+ * @cfg {Roo.tree.TreeLoader} loader A TreeLoader for use with this TreePanel
+ * @cfg {Roo.tree.TreeEditor} editor The TreeEditor to display when clicked.
  * @cfg {String} pathSeparator The token used to separate sub-paths in path strings (defaults to '/')
  * @cfg {Function} renderer DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
  * @cfg {Function} rendererTip DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>
@@ -37110,7 +37142,7 @@ Roo.extend(Roo.tree.TreeDragZone, Roo.dd.DragZone, {
  * @param {Object} oldconfig DEPRECIATED Either a prebuilt {@link Roo.form.Field} instance or a Field config object
  * 
  * @cfg {Roo.tree.TreePanel} tree The tree to bind to.
- * @cfg {Roo.form.TextField|Object} field The field configuration
+ * @cfg {Roo.form.TextField} field [required] The field configuration
  *
  * 
  */
@@ -37416,7 +37448,7 @@ Roo.tree.ColumnNodeUI = Roo.extend(Roo.tree.TreeNodeUI, {
 
 /**
  * @class Roo.tree.ColumnTree
- * @extends Roo.data.TreePanel
+ * @extends Roo.tree.TreePanel
  * @cfg {Object} columns  Including width, header, renderer, cls, dataIndex 
  * @cfg {int} borderWidth  compined right/left border allowance
  * @constructor
@@ -37527,6 +37559,7 @@ Roo.extend(Roo.tree.ColumnTree, Roo.tree.TreePanel, {
 /**
  * @class Roo.menu.Menu
  * @extends Roo.util.Observable
+ * @children Roo.menu.BaseItem
  * A menu object.  This is the container to which you add all other menu items.  Menu can also serve a as a base class
  * when you want a specialzed menu based off of another component (like {@link Roo.menu.DateMenu} for example).
  * @constructor
@@ -38284,6 +38317,7 @@ Roo.menu.MenuMgr = function(){
 /**
  * @class Roo.menu.BaseItem
  * @extends Roo.Component
+ * @abstract
  * The base class for all items that render into menus.  BaseItem provides default rendering, activated state
  * management and base configuration options shared by all menu components.
  * @constructor
@@ -38430,6 +38464,7 @@ Roo.extend(Roo.menu.BaseItem, Roo.Component, {
 /**
  * @class Roo.menu.Adapter
  * @extends Roo.menu.BaseItem
+ * @abstract
  * A base utility class that adapts a non-menu component so that it can be wrapped by a menu item and added to a menu.
  * It provides basic rendering, activation management and enable/disable logic required to work in menus.
  * @constructor
@@ -38599,7 +38634,10 @@ Roo.menu.Item = function(config){
     }
 };
 Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
-    
+    /**
+     * @cfg {Roo.menu.Menu} menu
+     * A Sub menu
+     */
     /**
      * @cfg {String} text
      * The text to show on the menu item.
@@ -42525,7 +42563,7 @@ Roo.form.ComboBoxArray = function(config)
 Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
 { 
     /**
-     * @cfg {Roo.form.Combo} combo The combo box that is wrapped
+     * @cfg {Roo.form.ComboBox} combo [required] The combo box that is wrapped
      */
     
     lastData : false,
@@ -48483,6 +48521,7 @@ Roo.apply(Roo.form.BasicForm, {
 /**
  * @class Roo.form.Form
  * @extends Roo.form.BasicForm
+ * @children Roo.form.Column Roo.form.FieldSet Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
  * Adds the ability to dynamically render forms with JavaScript to {@link Roo.form.BasicForm}.
  * @constructor
  * @param {Object} config Configuration options
@@ -48540,6 +48579,10 @@ Roo.form.Form = function(config){
 };
 
 Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
+     /**
+     * @cfg {Roo.Button} buttons[] buttons at bottom of form
+     */
+    
     /**
      * @cfg {Number} labelWidth The width of labels. This property cascades to child containers.
      */
@@ -49279,6 +49322,7 @@ Roo.form.Action.ACTION_TYPES = {
 /**
  * @class Roo.form.Layout
  * @extends Roo.Component
+ * @children Roo.form.Column Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
  * Creates a container for layout and rendering of fields in an {@link Roo.form.Form}.
  * @constructor
  * @param {Object} config Configuration options
@@ -49463,6 +49507,7 @@ Roo.extend(Roo.form.Column, Roo.form.Layout, {
 /**
  * @class Roo.form.Row
  * @extends Roo.form.Layout
+ * @children Roo.form.Column Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
  * Creates a row container for layout and rendering of fields in an {@link Roo.form.Form}.
  * @constructor
  * @param {Object} config Configuration options
@@ -49539,6 +49584,7 @@ Roo.extend(Roo.form.Row, Roo.form.Layout, {
 /**
  * @class Roo.form.FieldSet
  * @extends Roo.form.Layout
+ * @children Roo.form.Column Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
  * Creates a fieldset container for layout and rendering of fields in an {@link Roo.form.Form}.
  * @constructor
  * @param {Object} config Configuration options
@@ -52184,6 +52230,7 @@ Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
 /**
  * @class Roo.BorderLayout
  * @extends Roo.LayoutManager
+ * @children Roo.ContentPanel
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: <br><br>
  * <a href="http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/">Cross Browser Layouts - Part 1</a><br>
@@ -52265,6 +52312,22 @@ Roo.BorderLayout = function(container, config){
 };
 
 Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
+	
+	/**
+	 * @cfg {Roo.LayoutRegion} east
+	 */
+	/**
+	 * @cfg {Roo.LayoutRegion} west
+	 */
+	/**
+	 * @cfg {Roo.LayoutRegion} north
+	 */
+	/**
+	 * @cfg {Roo.LayoutRegion} south
+	 */
+	/**
+	 * @cfg {Roo.LayoutRegion} center
+	 */
     /**
      * Creates and adds a new region if it doesn't already exist.
      * @param {String} target The target region key (north, south, east, west or center).
@@ -54369,23 +54432,26 @@ Roo.LayoutStateManager.prototype = {
 /**
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
+ * @children Roo.form.Form Roo.JsonView Roo.View
+ * @builder-top
  * A basic ContentPanel element.
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
- * @cfg {Boolean/Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
+ * @cfg {Boolean|Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
  * @cfg {Boolean}   closable      True if the panel can be closed/removed
  * @cfg {Boolean}   background    True if the panel should not be activated when it is added (defaults to false)
- * @cfg {String/HTMLElement/Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
- * @cfg {Toolbar}   toolbar       A toolbar for this panel
+ * @cfg {String|HTMLElement|Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
+ * @cfg {Roo.Toolbar}   toolbar       A toolbar for this panel
  * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
  * @cfg {String} title          The title for this panel
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
  * @cfg {String} url            Calls {@link #setUrl} with this value
- * @cfg {String} region         (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
- * @cfg {String/Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
+ * @cfg {String} region [required]   (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String|Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
- * @cfg {String}    style  Extra style to add to the content panel 
+ * @cfg {String}    style  Extra style to add to the content panel
+ * @cfg {Roo.menu.Menu} menu  popup menu
 
  * @constructor
  * Create a new ContentPanel.
@@ -54897,7 +54963,7 @@ Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
  * Create a new NestedLayoutPanel.
  * 
  * 
- * @param {Roo.BorderLayout} layout The layout for this panel
+ * @param {Roo.BorderLayout} layout [required] The layout for this panel
  * @param {String/Object} config A string to set only the title or a config object
  */
 Roo.NestedLayoutPanel = function(layout, config)
@@ -55130,7 +55196,7 @@ Roo.extend(Roo.TreePanel, Roo.ContentPanel, {
     fitToFrame : true,
     autoScroll : true,
     /*
-     * @cfg {Roo.tree.TreePanel} tree The tree TreePanel, with config etc.
+     * @cfg {Roo.tree.TreePanel} tree [required] The tree TreePanel, with config etc.
      */
     tree : false
 
@@ -55574,6 +55640,21 @@ Roo.grid.Grid = function(container, config){
 Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     
     /**
+	 * @cfg {Roo.grid.AbstractSelectionModel} sm The selection Model (default = Roo.grid.RowSelectionModel)
+	 */
+	/**
+	 * @cfg {Roo.grid.GridView} view  The view that renders the grid (default = Roo.grid.GridView)
+	 */
+	/**
+	 * @cfg {Roo.grid.ColumnModel} cm[] The columns of the grid
+	 */
+	/**
+	 * @cfg {Roo.grid.Store} ds The data store for the grid
+	 */
+	/**
+	 * @cfg {Roo.Toolbar} toolbar a toolbar for buttons etc.
+	 */
+	/**
      * @cfg {String} ddGroup - drag drop group.
      */
       /**
@@ -56039,7 +56120,13 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
  * Fork - LGPL
  * <script type="text/javascript">
  */
- 
+ /**
+ * @class Roo.grid.AbstractGridView
+ * @extends Roo.util.Observable
+ * @abstract
+ * Abstract base class for grid Views
+ * @constructor
+ */
 Roo.grid.AbstractGridView = function(){
 	this.grid = null;
 	
@@ -58913,6 +59000,7 @@ Roo.grid.DefaultColumnModel = Roo.grid.ColumnModel;
 /**
  * @class Roo.grid.AbstractSelectionModel
  * @extends Roo.util.Observable
+ * @abstract
  * Abstract base class for grid SelectionModels.  It provides the interface that should be
  * implemented by descendant classes.  This class should not be directly instantiated.
  * @constructor
@@ -60272,7 +60360,7 @@ Roo.extend(Roo.grid.PropertyGrid, Roo.grid.EditorGrid, {
  
 /**
  * @class Roo.grid.Calendar
- * @extends Roo.util.Grid
+ * @extends Roo.grid.Grid
  * This class extends the Grid to provide a calendar widget
  * <br><br>Usage:<pre><code>
  var grid = new Roo.grid.Calendar("my-container-id", {

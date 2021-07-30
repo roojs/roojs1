@@ -9,6 +9,8 @@ Roo.bootstrap = Roo.bootstrap || {};
 /**
  * @class Roo.bootstrap.Component
  * @extends Roo.Component
+ * @abstract
+ * @children Roo.bootstrap.Component
  * Bootstrap Component base class
  * @cfg {String} cls css class
  * @cfg {String} style any extra css
@@ -493,6 +495,11 @@ Roo.bootstrap.Calendar = function(config){
 
 Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
+	  /**
+     * @cfg {Roo.data.Store} store
+     * The data source for the calendar
+     */
+	store : false,
      /**
      * @cfg {Number} startDay
      * Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)

@@ -318,6 +318,21 @@ Roo.grid.Grid = function(container, config){
 Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     
     /**
+	 * @cfg {Roo.grid.AbstractSelectionModel} sm The selection Model (default = Roo.grid.RowSelectionModel)
+	 */
+	/**
+	 * @cfg {Roo.grid.GridView} view  The view that renders the grid (default = Roo.grid.GridView)
+	 */
+	/**
+	 * @cfg {Roo.grid.ColumnModel} cm[] The columns of the grid
+	 */
+	/**
+	 * @cfg {Roo.grid.Store} ds The data store for the grid
+	 */
+	/**
+	 * @cfg {Roo.Toolbar} toolbar a toolbar for buttons etc.
+	 */
+	/**
      * @cfg {String} ddGroup - drag drop group.
      */
       /**

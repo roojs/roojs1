@@ -14,6 +14,7 @@
 
 /**
  * @class Roo.data.DataReader
+ * @abstract
  * Base class for reading structured data from a data source.  This class is intended to be
  * extended (see {Roo.data.ArrayReader}, {Roo.data.JsonReader} and {Roo.data.XmlReader}) and should not be created directly.
  */

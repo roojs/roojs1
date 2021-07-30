@@ -6,10 +6,15 @@
     "Roo.Component",
     "Roo.util.Observable"
   ],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Adds a menu item that contains a checkbox by default, but can also be part of a radio group.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "CheckItem",
   "example" : "",
   "deprecated" : "",
@@ -24,156 +29,147 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "showDelay",
       "type" : "Number",
       "desc" : "Length of time in milliseconds to wait before showing this item (defaults to 200)",
-      "memberOf" : "Roo.menu.Item",
-      "optvals" : []
+      "memberOf" : "Roo.menu.Item"
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "The text to show on the menu item.",
-      "memberOf" : "Roo.menu.Item",
-      "optvals" : []
+      "memberOf" : "Roo.menu.Item"
+    },
+    {
+      "name" : "menu",
+      "type" : "Roo.menu.Menu",
+      "desc" : "A Sub menu",
+      "memberOf" : "Roo.menu.Item"
     },
     {
       "name" : "activeClass",
       "type" : "String",
       "desc" : "The CSS class to use when the item becomes activated (defaults to \"x-menu-item-active\")",
-      "memberOf" : "Roo.menu.BaseItem",
-      "optvals" : []
+      "memberOf" : "Roo.menu.BaseItem"
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
       "desc" : "True to prevent creation of this menu item (defaults to false)",
-      "memberOf" : "Roo.menu.BaseItem",
-      "optvals" : []
+      "memberOf" : "Roo.menu.BaseItem"
     },
     {
       "name" : "hideMode",
       "type" : "String",
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-      "memberOf" : "Roo.Component",
-      "optvals" : [
-        "display",
-        "visibility"
-      ]
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "group",
       "type" : "String",
       "desc" : "All check items with the same group name will automatically be grouped into a single-select\nradio button group (defaults to '')",
-      "memberOf" : "Roo.menu.CheckItem",
-      "optvals" : []
+      "memberOf" : "Roo.menu.CheckItem"
     },
     {
       "name" : "handler",
       "type" : "Function",
       "desc" : "A function that will handle the click event of this menu item (defaults to undefined)",
-      "memberOf" : "Roo.menu.BaseItem",
-      "optvals" : []
+      "memberOf" : "Roo.menu.BaseItem"
     },
     {
       "name" : "hideDelay",
       "type" : "Number",
       "desc" : "Length of time in milliseconds to wait before hiding after a click (defaults to 100)",
-      "memberOf" : "Roo.menu.BaseItem",
-      "optvals" : []
+      "memberOf" : "Roo.menu.BaseItem"
     },
     {
       "name" : "hideOnClick",
       "type" : "Boolean",
       "desc" : "True to hide the containing menu after this item is clicked (defaults to true)",
-      "memberOf" : "Roo.menu.BaseItem",
-      "optvals" : []
+      "memberOf" : "Roo.menu.BaseItem"
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "itemCls",
       "type" : "String",
       "desc" : "The default CSS class to use for check items (defaults to \"x-menu-item x-menu-check-item\")",
-      "memberOf" : "Roo.menu.CheckItem",
-      "optvals" : []
+      "memberOf" : "Roo.menu.CheckItem"
     },
     {
       "name" : "HTML",
       "type" : "String",
       "desc" : "to render in menu\nThe text to show on the menu item (HTML version).",
-      "memberOf" : "Roo.menu.Item",
-      "optvals" : []
+      "memberOf" : "Roo.menu.Item"
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     },
     {
       "name" : "groupClass",
       "type" : "String",
       "desc" : "The default CSS class to use for radio group check items (defaults to \"x-menu-group-item\")",
-      "memberOf" : "Roo.menu.CheckItem",
-      "optvals" : []
+      "memberOf" : "Roo.menu.CheckItem"
     },
     {
       "name" : "canActivate",
       "type" : "Boolean",
       "desc" : "True if this item can be visually activated (defaults to true)",
-      "memberOf" : "Roo.menu.Item",
-      "optvals" : []
+      "memberOf" : "Roo.menu.Item"
     },
     {
       "name" : "icon",
       "type" : "String",
       "desc" : "The path to an icon to display in this menu item (defaults to Roo.BLANK_IMAGE_URL)",
-      "memberOf" : "Roo.menu.Item",
-      "optvals" : []
+      "memberOf" : "Roo.menu.Item"
     },
     {
       "name" : "checked",
       "type" : "Boolean",
       "desc" : "True to initialize this checkbox as checked (defaults to false).  Note that\nif this checkbox is part of a radio group (group = true) only the last item in the group that is\ninitialized with checked = true will be rendered as checked.",
-      "memberOf" : "Roo.menu.CheckItem",
-      "optvals" : []
+      "memberOf" : "Roo.menu.CheckItem"
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component",
-      "optvals" : []
+      "memberOf" : "Roo.Component"
     }
   ],
   "methods" : [
     {
       "name" : "setChecked",
+      "type" : "function",
       "desc" : "Set the checked state of this item",
+      "sig" : "(checked, suppressEvent)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.menu.CheckItem",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "checked",
@@ -192,15 +188,20 @@
     },
     {
       "name" : "setText",
+      "type" : "function",
       "desc" : "Sets the text to display in this menu item",
+      "sig" : "(text, isHTML)",
+      "static" : false,
+      "memberOf" : "Roo.menu.Item",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.menu.Item",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "text",
@@ -219,15 +220,20 @@
     },
     {
       "name" : "getId",
+      "type" : "function",
       "desc" : "Returns the id of this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -239,15 +245,20 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "If this is a lazy rendering component, render it to its container element.",
+      "sig" : "(container)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "container",
@@ -260,43 +271,58 @@
     },
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "isVisible",
+      "type" : "function",
       "desc" : "Returns true if this component is visible.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "setDisabled",
+      "type" : "function",
       "desc" : "Convenience function for setting disabled/enabled by boolean.",
+      "sig" : "(disabled)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "disabled",
@@ -309,15 +335,20 @@
     },
     {
       "name" : "hide",
+      "type" : "function",
       "desc" : "Hide this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -329,15 +360,20 @@
     },
     {
       "name" : "focus",
+      "type" : "function",
       "desc" : "Try to focus this component.",
+      "sig" : "(selectText)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "selectText",
@@ -356,15 +392,20 @@
     },
     {
       "name" : "show",
+      "type" : "function",
       "desc" : "Show this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -376,15 +417,20 @@
     },
     {
       "name" : "enable",
+      "type" : "function",
       "desc" : "Enable this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -396,15 +442,20 @@
     },
     {
       "name" : "setVisible",
+      "type" : "function",
       "desc" : "Convenience function to hide or show this component by boolean.",
+      "sig" : "(visible)",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "visible",
@@ -423,15 +474,20 @@
     },
     {
       "name" : "disable",
+      "type" : "function",
       "desc" : "Disable this component.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -443,15 +499,20 @@
     },
     {
       "name" : "getEl",
+      "type" : "function",
       "desc" : "Returns the underlying {@link Roo.Element}.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.Component",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -463,29 +524,39 @@
     },
     {
       "name" : "purgeListeners",
+      "type" : "function",
       "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "on",
+      "type" : "function",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -516,15 +587,20 @@
     },
     {
       "name" : "un",
+      "type" : "function",
       "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -549,15 +625,20 @@
     },
     {
       "name" : "addEvents",
+      "type" : "function",
       "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "object",
@@ -570,15 +651,20 @@
     },
     {
       "name" : "releaseCapture",
+      "type" : "function",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -591,15 +677,20 @@
     },
     {
       "name" : "removeListener",
+      "type" : "function",
       "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -624,15 +715,20 @@
     },
     {
       "name" : "fireEvent",
+      "type" : "function",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -657,15 +753,20 @@
     },
     {
       "name" : "hasListener",
+      "type" : "function",
       "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -684,15 +785,20 @@
     },
     {
       "name" : "capture",
+      "type" : "function",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -717,15 +823,20 @@
     },
     {
       "name" : "addListener",
+      "type" : "function",
       "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -758,8 +869,10 @@
   "events" : [
     {
       "name" : "beforecheckchange",
+      "type" : "function",
       "desc" : "Fires before the checked value is set, providing an opportunity to cancel if needed",
-      "memberOf" : "Roo.menu.CheckItem",
+      "sig" : "function (_self, checked)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -782,8 +895,10 @@
     },
     {
       "name" : "checkchange",
+      "type" : "function",
       "desc" : "Fires after the checked value has been set",
-      "memberOf" : "Roo.menu.CheckItem",
+      "sig" : "function (_self, checked)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -806,7 +921,9 @@
     },
     {
       "name" : "click",
+      "type" : "function",
       "desc" : "Fires when this item is clicked",
+      "sig" : "function (_self, e)\n{\n\n}",
       "memberOf" : "Roo.menu.BaseItem",
       "example" : "",
       "deprecated" : "",
@@ -830,7 +947,9 @@
     },
     {
       "name" : "activate",
+      "type" : "function",
       "desc" : "Fires when this item is activated",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.menu.BaseItem",
       "example" : "",
       "deprecated" : "",
@@ -848,7 +967,9 @@
     },
     {
       "name" : "deactivate",
+      "type" : "function",
       "desc" : "Fires when this item is deactivated",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.menu.BaseItem",
       "example" : "",
       "deprecated" : "",
@@ -866,7 +987,9 @@
     },
     {
       "name" : "beforerender",
+      "type" : "function",
       "desc" : "Fires before the component is rendered. Return false to stop the render.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -884,7 +1007,9 @@
     },
     {
       "name" : "disable",
+      "type" : "function",
       "desc" : "Fires after the component is disabled.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -902,7 +1027,9 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "Fires after the component is rendered.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -920,7 +1047,9 @@
     },
     {
       "name" : "destroy",
+      "type" : "function",
       "desc" : "Fires after the component is destroyed.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -938,7 +1067,9 @@
     },
     {
       "name" : "hide",
+      "type" : "function",
       "desc" : "Fires after the component is hidden.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -956,7 +1087,9 @@
     },
     {
       "name" : "beforehide",
+      "type" : "function",
       "desc" : "Fires before the component is hidden. Return false to stop the hide.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -974,7 +1107,9 @@
     },
     {
       "name" : "show",
+      "type" : "function",
       "desc" : "Fires after the component is shown.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -992,7 +1127,9 @@
     },
     {
       "name" : "beforeshow",
+      "type" : "function",
       "desc" : "Fires before the component is shown.  Return false to stop the show.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1010,7 +1147,9 @@
     },
     {
       "name" : "enable",
+      "type" : "function",
       "desc" : "Fires after the component is enabled.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",
@@ -1028,7 +1167,9 @@
     },
     {
       "name" : "beforedestroy",
+      "type" : "function",
       "desc" : "Fires before the component is destroyed. Return false to stop the destroy.",
+      "sig" : "function (_self)\n{\n\n}",
       "memberOf" : "Roo.Component",
       "example" : "",
       "deprecated" : "",

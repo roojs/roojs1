@@ -3,10 +3,19 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : {
+    "Roo.View" : [
+      "Roo.JsonView"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Create a \"View\" for an element based on a data model or UpdateManager and the supplied DomHelper template. \nThis class also supports single and multi selection modes. <br>\nCreate a data model bound view:\n <pre><code>\n var store = new Roo.data.Store(...);\n\n var view = new Roo.View({\n    el : \"my-element\",\n    tpl : '&lt;div id=\"{0}\"&gt;{2} - {1}&lt;/div&gt;', // auto create template\n \n    singleSelect: true,\n    selectedClass: \"ydataview-selected\",\n    store: store\n });\n\n // listen for node click?\n view.on(\"click\", function(vw, index, node, e){\n alert('Node \"' + node.id + '\" at index: ' + index + \" was clicked.\");\n });\n\n // load XML data\n dataModel.load(\"foobar.xml\");\n </code></pre>\n For an example of creating a JSON/UpdateManager view, see {@link Roo.JsonView}.\n<br><br>\n<b>Note: The root of your template must be a single node. Table/row implementations may work but are not supported due to\nIE\"s limited insertion support with tables and Opera\"s faulty event bubbling.</b>\n\nNote: old style constructor is still suported (container, template, config)",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "View",
   "example" : "",
   "deprecated" : "",
@@ -21,104 +30,99 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "selectedClass",
       "type" : "String",
       "desc" : "The css class to add to selected nodes",
-      "memberOf" : "Roo.View",
-      "optvals" : []
+      "memberOf" : "Roo.View"
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "dataName",
       "type" : "String",
       "desc" : "the named area of the template to use as the data area\n                         Works with domtemplates roo-name=\"name\"",
-      "memberOf" : "Roo.View",
-      "optvals" : []
+      "memberOf" : "Roo.View"
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "to display on mask (default Loading)",
-      "memberOf" : "Roo.View",
-      "optvals" : []
+      "memberOf" : "Roo.View"
     },
     {
       "name" : "multiSelect",
       "type" : "Boolean",
       "desc" : "Allow multiple selection",
-      "memberOf" : "Roo.View",
-      "optvals" : []
+      "memberOf" : "Roo.View"
     },
     {
       "name" : "emptyText",
       "type" : "String",
       "desc" : "The empty text to show when nothing is loaded.",
-      "memberOf" : "Roo.View",
-      "optvals" : []
+      "memberOf" : "Roo.View"
     },
     {
       "name" : "store",
       "type" : "Roo.data.Store",
       "desc" : "Data store to load data from.",
-      "memberOf" : "Roo.View",
-      "optvals" : []
+      "memberOf" : "Roo.View"
     },
     {
       "name" : "toggleSelect",
       "type" : "Boolean",
       "desc" : "- selecting",
-      "memberOf" : "Roo.View",
-      "optvals" : []
+      "memberOf" : "Roo.View"
     },
     {
       "name" : "singleSelect",
       "type" : "Boolean",
       "desc" : "Allow single selection",
-      "memberOf" : "Roo.View",
-      "optvals" : []
+      "memberOf" : "Roo.View"
     },
     {
       "name" : "tickable",
       "type" : "Boolean",
       "desc" : "- selecting",
-      "memberOf" : "Roo.View",
-      "optvals" : []
+      "memberOf" : "Roo.View"
     },
     {
       "name" : "el",
       "type" : "String|Roo.Element",
       "desc" : "The container element.",
-      "memberOf" : "Roo.View",
-      "optvals" : []
+      "memberOf" : "Roo.View"
     },
     {
       "name" : "tpl",
       "type" : "String|Roo.Template",
       "desc" : "The template used by this View",
-      "memberOf" : "Roo.View",
-      "optvals" : []
+      "memberOf" : "Roo.View"
     }
   ],
   "methods" : [
     {
       "name" : "getSelectedNodes",
+      "type" : "function",
       "desc" : "Get the currently selected nodes.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -130,15 +134,20 @@
     },
     {
       "name" : "getNodes",
+      "type" : "function",
       "desc" : "Gets a range template nodes.",
+      "sig" : "(startIndex, endIndex)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "startIndex",
@@ -163,15 +172,20 @@
     },
     {
       "name" : "select",
+      "type" : "function",
       "desc" : "Selects nodes.",
+      "sig" : "(nodeInfo, keepExisting, suppressEvent)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "nodeInfo",
@@ -196,15 +210,20 @@
     },
     {
       "name" : "clearSelections",
+      "type" : "function",
       "desc" : "Clear all selections",
+      "sig" : "(suppressEvent)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "suppressEvent",
@@ -217,15 +236,20 @@
     },
     {
       "name" : "isSelected",
+      "type" : "function",
       "desc" : "Returns true if the passed node is selected",
+      "sig" : "(node)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "node",
@@ -244,43 +268,58 @@
     },
     {
       "name" : "refresh",
+      "type" : "function",
       "desc" : "Refreshes the view. - called by datachanged on the store. - do not call directly.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "onBeforeLoad",
+      "type" : "function",
       "desc" : "onbeforeLoad - masks the loading area.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "getSelectedIndexes",
+      "type" : "function",
       "desc" : "Get the indexes of the selected nodes.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -292,15 +331,20 @@
     },
     {
       "name" : "indexOf",
+      "type" : "function",
       "desc" : "Finds the index of the passed node",
+      "sig" : "(nodeInfo)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "nodeInfo",
@@ -319,15 +363,20 @@
     },
     {
       "name" : "getEl",
+      "type" : "function",
       "desc" : "Returns the element this view is bound to.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -339,15 +388,20 @@
     },
     {
       "name" : "setStore",
+      "type" : "function",
       "desc" : "Changes the data store this view uses and refresh the view.",
+      "sig" : "(store)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "store",
@@ -360,15 +414,20 @@
     },
     {
       "name" : "refreshNode",
+      "type" : "function",
       "desc" : "Refresh an individual node.",
+      "sig" : "(index)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "index",
@@ -381,15 +440,20 @@
     },
     {
       "name" : "prepareData",
+      "type" : "function",
       "desc" : "Function to override to reformat the data that is sent to\nthe template for each node.\nDEPRICATED - use the preparedata event handler.",
+      "sig" : "(data)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "data",
@@ -402,15 +466,20 @@
     },
     {
       "name" : "getSelectionCount",
+      "type" : "function",
       "desc" : "Get the number of selected nodes.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -422,15 +491,20 @@
     },
     {
       "name" : "findItemFromChild",
+      "type" : "function",
       "desc" : "Returns the template node the passed child belongs to or null if it doesn't belong to one.",
+      "sig" : "(node)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "node",
@@ -449,15 +523,20 @@
     },
     {
       "name" : "unselect",
+      "type" : "function",
       "desc" : "Unselects nodes.",
+      "sig" : "(nodeInfo, keepExisting, suppressEvent)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "nodeInfo",
@@ -482,15 +561,20 @@
     },
     {
       "name" : "getNode",
+      "type" : "function",
       "desc" : "Gets a template node.",
+      "sig" : "(nodeInfo)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.View",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "nodeInfo",
@@ -509,29 +593,39 @@
     },
     {
       "name" : "purgeListeners",
+      "type" : "function",
       "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "on",
+      "type" : "function",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -562,15 +656,20 @@
     },
     {
       "name" : "un",
+      "type" : "function",
       "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -595,15 +694,20 @@
     },
     {
       "name" : "addEvents",
+      "type" : "function",
       "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "object",
@@ -616,15 +720,20 @@
     },
     {
       "name" : "releaseCapture",
+      "type" : "function",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -637,15 +746,20 @@
     },
     {
       "name" : "removeListener",
+      "type" : "function",
       "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -670,15 +784,20 @@
     },
     {
       "name" : "fireEvent",
+      "type" : "function",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -703,15 +822,20 @@
     },
     {
       "name" : "hasListener",
+      "type" : "function",
       "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -730,15 +854,20 @@
     },
     {
       "name" : "capture",
+      "type" : "function",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -763,15 +892,20 @@
     },
     {
       "name" : "addListener",
+      "type" : "function",
       "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -804,8 +938,10 @@
   "events" : [
     {
       "name" : "dblclick",
+      "type" : "function",
       "desc" : "Fires when a template node is double clicked.",
-      "memberOf" : "Roo.View",
+      "sig" : "function (_self, index, node, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -840,8 +976,10 @@
     },
     {
       "name" : "preparedata",
+      "type" : "function",
       "desc" : "Fires on every row to render, to allow you to change the data.",
-      "memberOf" : "Roo.View",
+      "sig" : "function (_self, data)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -864,8 +1002,10 @@
     },
     {
       "name" : "selectionchange",
+      "type" : "function",
       "desc" : "Fires when the selected nodes change.",
-      "memberOf" : "Roo.View",
+      "sig" : "function (_self, selections)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -888,8 +1028,10 @@
     },
     {
       "name" : "beforeselect",
+      "type" : "function",
       "desc" : "Fires before a selection is made. If any handlers return false, the selection is cancelled.",
-      "memberOf" : "Roo.View",
+      "sig" : "function (_self, node, selections)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -918,8 +1060,10 @@
     },
     {
       "name" : "beforeclick",
+      "type" : "function",
       "desc" : "Fires before a click is processed. Returns false to cancel the default action.",
-      "memberOf" : "Roo.View",
+      "sig" : "function (_self, index, node, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -954,8 +1098,10 @@
     },
     {
       "name" : "click",
+      "type" : "function",
       "desc" : "Fires when a template node is clicked.",
-      "memberOf" : "Roo.View",
+      "sig" : "function (_self, index, node, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -990,8 +1136,10 @@
     },
     {
       "name" : "contextmenu",
+      "type" : "function",
       "desc" : "Fires when a template node is right clicked.",
-      "memberOf" : "Roo.View",
+      "sig" : "function (_self, index, node, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",

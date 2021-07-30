@@ -12,6 +12,7 @@
 /**
  * @class Roo.form.Form
  * @extends Roo.form.BasicForm
+ * @children Roo.form.Column Roo.form.FieldSet Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
  * Adds the ability to dynamically render forms with JavaScript to {@link Roo.form.BasicForm}.
  * @constructor
  * @param {Object} config Configuration options
@@ -69,6 +70,10 @@ Roo.form.Form = function(config){
 };
 
 Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
+     /**
+     * @cfg {Roo.Button} buttons[] buttons at bottom of form
+     */
+    
     /**
      * @cfg {Number} labelWidth The width of labels. This property cascades to child containers.
      */

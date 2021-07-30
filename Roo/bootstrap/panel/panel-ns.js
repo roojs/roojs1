@@ -1,1 +1,0 @@
-Roo.namespace("Roo.bootstrap.panel");

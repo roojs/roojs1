@@ -956,3 +956,20 @@ a.dropdown-toggle::before {
     overflow-x: hidden;
     padding-left: 0;
 }
+
+.doc-implementors .inheritance,
+.doc-implementors .inheritance ul,
+.doc-implementors .inheritance ul ul
+{
+    list-style: none;
+    padding-left: 5px;
+}
+.doc-implementors .inheritance li
+{
+    background: url('../images/default/tree/elbow-end.gif')  no-repeat left 2px;
+    padding-left: 20px;
+}
+.doc-children ul {
+    padding-left: 10px;
+
+}

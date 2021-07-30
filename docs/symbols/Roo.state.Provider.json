@@ -1,10 +1,19 @@
 {
   "name" : "Roo.state.Provider",
   "augments" : [],
+  "childClasses" : {
+    "Roo.state.Provider" : [
+      "Roo.state.CookieProvider"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "Abstract base class for state provider implementations. This class provides methods\nfor encoding and decoding <b>typed</b> variables including dates and defines the \nProvider interface.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Provider",
   "example" : "",
   "deprecated" : "",
@@ -12,19 +21,26 @@
   "see" : "",
   "params" : [],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [],
   "methods" : [
     {
       "name" : "clear",
+      "type" : "function",
       "desc" : "Clears a value from the state",
+      "sig" : "(name)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.state.Provider",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "name",
@@ -37,15 +53,20 @@
     },
     {
       "name" : "decodeValue",
+      "type" : "function",
       "desc" : "Decodes a string previously encoded with {@link #encodeValue}.",
+      "sig" : "(value)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.state.Provider",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "value",
@@ -64,15 +85,20 @@
     },
     {
       "name" : "get",
+      "type" : "function",
       "desc" : "Returns the current value for a key",
+      "sig" : "(name, defaultValue)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.state.Provider",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "name",
@@ -97,15 +123,20 @@
     },
     {
       "name" : "set",
+      "type" : "function",
       "desc" : "Sets the value for a key",
+      "sig" : "(name, value)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.state.Provider",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "name",
@@ -124,15 +155,20 @@
     },
     {
       "name" : "encodeValue",
+      "type" : "function",
       "desc" : "Encodes a value including type information.  Decode with {@link #decodeValue}.",
+      "sig" : "(value)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.state.Provider",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "value",
@@ -153,8 +189,10 @@
   "events" : [
     {
       "name" : "statechange",
+      "type" : "function",
       "desc" : "Fires when a state change occurs.",
-      "memberOf" : "Roo.state.Provider",
+      "sig" : "function (_self, key, value)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",

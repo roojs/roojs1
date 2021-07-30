@@ -1,13 +1,9 @@
-/*
- *  - LGPL
- *
- *  This is BS4's Card element.. - similar to our containers probably..
- * 
- */
 /**
  * @class Roo.bootstrap.Card
  * @extends Roo.bootstrap.Component
- * Bootstrap Card class
+ * @children Roo.bootstrap.Component
+ * @licence LGPL
+ * Bootstrap Card class - note this has children as CardHeader/ImageTop/Footer.. - which should really be listed properties?
  *
  *
  * possible... may not be implemented..

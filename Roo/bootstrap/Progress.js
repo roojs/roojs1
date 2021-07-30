@@ -8,6 +8,7 @@
 /**
  * @class Roo.bootstrap.Progress
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.ProgressBar
  * Bootstrap Progress class
  * @cfg {Boolean} striped striped of the progress bar
  * @cfg {Boolean} active animated of the progress bar

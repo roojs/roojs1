@@ -8,6 +8,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 /**
  * @class Roo.bootstrap.TabPane
  * @extends Roo.bootstrap.Component
+ * @children  Roo.bootstrap.Graph Roo.bootstrap.Column
  * Bootstrap TabPane class
  * @cfg {Boolean} active (false | true) Default false
  * @cfg {String} title title of panel

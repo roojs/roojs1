@@ -6,7 +6,6 @@
  * Create a new Panel, that can contain a layout.Border.
  * 
  * 
- * @param {Roo.BorderLayout} layout The layout for this panel
  * @param {String/Object} config A string to set only the title or a config object
  */
 Roo.bootstrap.panel.Nest = function(config)
@@ -39,6 +38,10 @@ Roo.bootstrap.panel.Nest = function(config)
 };
 
 Roo.extend(Roo.bootstrap.panel.Nest, Roo.bootstrap.panel.Content, {
+    /**
+    * @cfg {Roo.BorderLayout} layout The layout for this panel
+    */
+    layout : false,
 
     setSize : function(width, height){
         if(!this.ignoreResize(width, height)){

@@ -3,10 +3,15 @@
   "augments" : [
     "Roo.util.Observable"
   ],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "A delayed Element creator...\nOr a way to group chunks of interface together.\ntechnically this is a wrapper around a tree of Roo elements (which defines a 'module'),\n used in conjunction with XComponent.build() it will create an instance of each element,\n then call addxtype() to build the User interface.\n\nMypart.xyx = new Roo.XComponent({\n\n    parent : 'Mypart.xyz', // empty == document.element.!!\n    order : '001',\n    name : 'xxxx'\n    region : 'xxxx'\n    disabled : function() {} \n     \n    tree : function() { // return an tree of xtype declared components\n        var MODULE = this;\n        return \n        {\n            xtype : 'NestedLayoutPanel',\n            // technicall\n        }\n     ]\n})\n\n\nIt can be used to build a big heiracy, with parent etc.\nor you can just use this to render a single compoent to a dom element\nMYPART.render(Roo.Element | String(id) | dom_element )\n\n\nUsage patterns.\n\nClassic Roo\n\nRoo is designed primarily as a single page application, so the UI build for a standard interface will\nexpect a single 'TOP' level module normally indicated by the 'parent' of the XComponent definition being defined as false.\n\nEach sub module is expected to have a parent pointing to the class name of it's parent module.\n\nWhen the top level is false, a 'Roo.BorderLayout' is created and the element is flagged as 'topModule'\n- if mulitple topModules exist, the last one is defined as the top module.\n\nEmbeded Roo\n\nWhen the top level or multiple modules are to embedded into a existing HTML page,\nthe parent element can container '#id' of the element where the module will be drawn.\n\nBootstrap Roo\n\nUnlike classic Roo, the bootstrap tends not to be used as a single page.\nit relies more on a include mechanism, where sub modules are included into an outer page.\nThis is normally managed by the builder tools using Roo.apply( options, Included.Sub.Module )\n\nBootstrap Roo Included elements\n\nOur builder application needs the ability to preview these sub compoennts. They will normally have parent=false set,\nhence confusing the component builder as it thinks there are multiple top level elements. \n\nString Over-ride & Translations\n\nOur builder application writes all the strings as _strings and _named_strings. This is to enable the translation of elements,\nand also the 'overlaying of string values - needed when different versions of the same application with different text content\nare needed. @see Roo.XComponent.overlayString",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "XComponent",
   "example" : "",
   "deprecated" : "",
@@ -21,69 +26,69 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "region",
       "type" : "String",
       "desc" : "Region to render component to (defaults to center)",
-      "memberOf" : "Roo.XComponent",
-      "optvals" : []
+      "memberOf" : "Roo.XComponent"
     },
     {
       "name" : "disabled",
       "type" : "Function|boolean",
       "desc" : "If this module is disabled by some rule, return true from the funtion",
-      "memberOf" : "Roo.XComponent",
-      "optvals" : []
+      "memberOf" : "Roo.XComponent"
     },
     {
       "name" : "order",
       "type" : "String",
       "desc" : "Used to set the order in which elements are created (usefull for multiple tabs)",
-      "memberOf" : "Roo.XComponent",
-      "optvals" : []
+      "memberOf" : "Roo.XComponent"
     },
     {
       "name" : "items",
       "type" : "Array",
       "desc" : "A single item array - the first element is the root of the tree..\nIt's done this way to stay compatible with the Xtype system...",
-      "memberOf" : "Roo.XComponent",
-      "optvals" : []
+      "memberOf" : "Roo.XComponent"
     },
     {
       "name" : "parent",
       "type" : "String",
       "desc" : "Name of parent element which it get xtype added to..",
-      "memberOf" : "Roo.XComponent",
-      "optvals" : []
+      "memberOf" : "Roo.XComponent"
     },
     {
       "name" : "name",
       "type" : "String",
       "desc" : "String to display while loading.",
-      "memberOf" : "Roo.XComponent",
-      "optvals" : []
+      "memberOf" : "Roo.XComponent"
     }
   ],
   "methods" : [
     {
       "name" : "overlayStrings",
+      "type" : "function",
       "desc" : "Overlay a set of modified strings onto a component\nThis is dependant on our builder exporting the strings and 'named strings' elements.",
+      "sig" : "(element, associative)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.XComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "element",
@@ -102,43 +107,58 @@
     },
     {
       "name" : "preBuild",
+      "type" : "function",
       "desc" : "move modules into their correct place in the tree..",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.XComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "toObject",
+      "type" : "function",
       "desc" : "convert a string to an object..\neg. 'AAA.BBB' -> finds AAA.BBB",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.XComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "render\nrender element to dom or tree",
+      "sig" : "(optional)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.XComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "optional",
@@ -151,15 +171,20 @@
     },
     {
       "name" : "buildOrder",
+      "type" : "function",
       "desc" : "make a list of modules to build.",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.XComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -171,29 +196,39 @@
     },
     {
       "name" : "register",
+      "type" : "function",
       "desc" : "Register components to be built later.\n\nThis solves the following issues\n- Building is not done on page load, but after an authentication process has occured.\n- Interface elements are registered on page load\n- Parent Interface elements may not be loaded before child, so this handles that..\n\n\nexample:\n\nMyApp.register({\n          order : '000001',\n          module : 'Pman.Tab.projectMgr',\n          region : 'center',\n          parent : 'Pman.layout',\n          disabled : false,  // or use a function..\n        })\n* @param {Object} details about module",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.XComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "build",
+      "type" : "function",
       "desc" : "Build the registered modules.",
+      "sig" : "(parent, optional)",
+      "static" : true,
+      "memberOf" : "",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.XComponent",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "parent",
@@ -212,29 +247,39 @@
     },
     {
       "name" : "purgeListeners",
+      "type" : "function",
       "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "un",
+      "type" : "function",
       "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -259,15 +304,20 @@
     },
     {
       "name" : "addEvents",
+      "type" : "function",
       "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "object",
@@ -280,15 +330,20 @@
     },
     {
       "name" : "releaseCapture",
+      "type" : "function",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -301,15 +356,20 @@
     },
     {
       "name" : "removeListener",
+      "type" : "function",
       "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -334,15 +394,20 @@
     },
     {
       "name" : "fireEvent",
+      "type" : "function",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -367,15 +432,20 @@
     },
     {
       "name" : "hasListener",
+      "type" : "function",
       "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -394,15 +464,20 @@
     },
     {
       "name" : "capture",
+      "type" : "function",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -427,15 +502,20 @@
     },
     {
       "name" : "addListener",
+      "type" : "function",
       "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -468,8 +548,10 @@
   "events" : [
     {
       "name" : "built",
+      "type" : "function",
       "desc" : "Fires when this the componnt is built",
-      "memberOf" : "Roo.XComponent",
+      "sig" : "function (c)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",

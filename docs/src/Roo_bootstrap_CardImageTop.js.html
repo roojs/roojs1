@@ -8,7 +8,10 @@
 /**
  * @class Roo.bootstrap.CardImageTop
  * @extends Roo.bootstrap.Element
+ * @parent Roo.bootstrap.Card
+ * @children Roo.bootstrap.Component
  * Bootstrap CardImageTop class
+ * 
  * @constructor
  * Create a new Card Image Top container
  * @param {Object} config The config object

@@ -8,6 +8,8 @@
 /**
  * @class Roo.bootstrap.TableBody
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.TableRow
+ * @parent Roo.bootstrap.Table
  * Bootstrap TableBody class
  * @cfg {String} cls element class
  * @cfg {String} tag element tag (thead|tbody|tfoot) default tbody

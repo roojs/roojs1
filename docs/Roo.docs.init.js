@@ -417,11 +417,18 @@ Roo.docs.init = {
             Roo.docs.augments.hide();
         }
         
-        if (d.realImplementors && d.realImplementors.length) { 
+        if (d.childClasses && typeof(d.childClasses[d.name]) != 'undefined') { 
             Roo.docs.implementors.show();
             Roo.docs.implementors.bodyEl().dom.innerHTML = Roo.docs.template.implementors(d);
         } else {
             Roo.docs.implementors.hide();
+        }
+        
+        if (d.tree_children && d.tree_children.length > 0) {
+            Roo.docs.doc_children.show();
+            Roo.docs.doc_children.bodyEl().dom.innerHTML = Roo.docs.template.doc_children(d);
+        } else {
+            Roo.docs.doc_children.hide();
         }
         
         

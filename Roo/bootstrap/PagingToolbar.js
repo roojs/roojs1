@@ -11,7 +11,7 @@
  
 /**
  * @class Roo.bootstrap.PagingToolbar
- * @extends Roo.bootstrap.NavSimplebar
+ * @extends Roo.bootstrap.nav.Simplebar
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
@@ -47,14 +47,18 @@ Roo.bootstrap.PagingToolbar = function(config)
     if (Roo.bootstrap.version == 4) {
         this.navgroup = new Roo.bootstrap.ButtonGroup({ cls: 'pagination' });
     } else {
-        this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
+        this.navgroup = new Roo.bootstrap.nav.Group({ cls: 'pagination' });
     }
     
 };
 
-Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
+Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.nav.Simplebar, {
     /**
-     * @cfg {Roo.data.Store} dataSource
+     * @cfg {Roo.bootstrap.Button} buttons[]
+     * Buttons for the toolbar
+     */
+     /**
+     * @cfg {Roo.data.Store} store
      * The underlying data store providing the paged data
      */
     /**

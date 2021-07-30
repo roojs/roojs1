@@ -1,0 +1,386 @@
+<html><head><title>Roo/bootstrap/form/CardUploader.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/*
+* Licence: LGPL
+*/
+
+/**
+ * @class Roo.bootstrap.form.CardUploader
+ * @extends Roo.bootstrap.Button
+ * Bootstrap Card Uploader class - it's a button which when you add files to it, adds cards below with preview and the name...
+ * @cfg {Number} errorTimeout default 3000
+ * @cfg {Array}  images  an array of ?? Img objects ??? when loading existing files..
+ * @cfg {Array}  html The button text.
+
+ *
+ * @constructor
+ * Create a new CardUploader
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.form.CardUploader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+
+
+
+    </span><span class="jsdoc-var">Roo.bootstrap.form.CardUploader.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+
+
+    </span><span class="jsdoc-var">this.fileCollection   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r.data.id
+     </span><span class="jsdoc-syntax">});
+
+     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+         </span><span class="jsdoc-comment">// raw events
+        /**
+         * @event preview
+         * When a image is clicked on - and needs to display a slideshow or similar..
+         * @param {Roo.bootstrap.Card} this
+         * @param {Object} The image information data 
+         *
+         */
+        </span><span class="jsdoc-string">'preview' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+         </span><span class="jsdoc-comment">/**
+         * @event download
+         * When a the download link is clicked
+         * @param {Roo.bootstrap.Card} this
+         * @param {Object} The image information data  contains 
+         */
+        </span><span class="jsdoc-string">'download' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+
+    </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.form.CardUploader</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.form.Input</span><span class="jsdoc-syntax">,  {
+
+
+    </span><span class="jsdoc-var">errorTimeout </span><span class="jsdoc-syntax">: 3000,
+
+    </span><span class="jsdoc-var">images </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">fileCollection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">allowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">=  {
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'form-group' </span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                   </span><span class="jsdoc-comment">//cls : 'input-group-addon',
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
+
+                </span><span class="jsdoc-syntax">},
+
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d-none  form-control'
+                </span><span class="jsdoc-syntax">},
+
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">multiple </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'multiple'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'file'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d-none  roo-card-upload-selector'
+                </span><span class="jsdoc-syntax">},
+
+                {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-card-uploader-button-container w-100 mb-2'
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'card-columns roo-card-uploader-container'
+                </span><span class="jsdoc-syntax">}
+
+            ]
+        };
+
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() </span><span class="jsdoc-comment">/// what children are added to.
+    </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.containerEl</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getButtonContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() </span><span class="jsdoc-comment">/// what children are added to.
+    </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;.roo-card-uploader-button-container&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+
+        </span><span class="jsdoc-var">Roo.bootstrap.form.Input.prototype.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+
+            </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">container_method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'getButtonContainer' </span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// fix changable?
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'w-100 '</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-string">'click' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">t.onClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                }
+            }
+        });
+
+
+
+
+        </span><span class="jsdoc-var">this.urlAPI </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">window.createObjectURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">) ||
+                                (</span><span class="jsdoc-var">window.URL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">URL.revokeObjectURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">URL</span><span class="jsdoc-syntax">) ||
+                                (</span><span class="jsdoc-var">window.webkitURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">webkitURL</span><span class="jsdoc-syntax">);
+
+
+
+
+        </span><span class="jsdoc-var">this.selectorEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-card-upload-selector'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">this.selectorEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onFileSelected</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.images</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.images.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">t.addCard</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">)
+            });
+            </span><span class="jsdoc-var">this.images </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.containerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-card-uploader-container'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+
+
+    },
+
+
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">this.selectorEl.dom.click</span><span class="jsdoc-syntax">();
+
+    },
+
+    </span><span class="jsdoc-var">onFileSelected </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectorEl.dom.files</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.selectorEl.dom.files.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectorEl.dom.files</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.addFile</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+    },
+
+
+
+
+
+    </span><span class="jsdoc-var">addFile </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">)
+    {
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;Add file by name?&quot;</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// should not happen
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">file </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.urlAPI</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-comment">// file;
+        // file.type;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_this.urlAPI.createObjectURL</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.addCard</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap.form.CardUploader.ID</span><span class="jsdoc-syntax">--,
+            </span><span class="jsdoc-var">is_uploaded </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">srcfile </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">file.name</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">mimetype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">file.type</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">preview </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">is_deleted </span><span class="jsdoc-syntax">: 0
+        });
+
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * addCard - add an Attachment to the uploader
+     * @param data - the data about the image to upload
+     *
+     * {
+          id : 123
+          title : &quot;Title of file&quot;,
+          is_uploaded : false,
+          src : &quot;http://.....&quot;,
+          srcfile : { the File upload object },
+          mimetype : file.type,
+          preview : false,
+          is_deleted : 0
+          .. any other data...
+        }
+     *
+     * 
+    */
+
+    </span><span class="jsdoc-var">addCard </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// hidden input element?
+        // if the file is not an image...
+        //then we need to use something other that and header_image
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">//   remove.....
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">footer </span><span class="jsdoc-syntax">= [
+            {
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'CardFooter'</span><span class="jsdoc-syntax">,
+                 </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">: [
+                    {
+                        </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Element'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d-flex'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">: [
+
+                            {
+                                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&lt;small&gt;{0}&lt;/small&gt;&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data.title</span><span class="jsdoc-syntax">),
+                                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'col-10 text-left'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">weight</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">fa </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'download'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                                    </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+
+                                        </span><span class="jsdoc-var">t.fireEvent</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">&quot;download&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">);
+                                    }
+                                }
+                            },
+
+                            {
+                                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'max-height: 28px; '</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">weight</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'danger'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'col-2'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">fa </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'times'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                                    </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                                        </span><span class="jsdoc-var">t.removeCard</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.id</span><span class="jsdoc-syntax">)
+                                    }
+                                }
+                            }
+                        ]
+                    }
+
+                ]
+            }
+
+        ];
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">(
+            {
+
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Card'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">closeable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">: !</span><span class="jsdoc-var">data.mimetype.match</span><span class="jsdoc-syntax">(/image/) &amp;&amp; !</span><span class="jsdoc-var">data.preview </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;Document&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">header_image </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data.mimetype.match</span><span class="jsdoc-syntax">(/image/) ? </span><span class="jsdoc-var">data.src  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data.preview</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">header_image_fit_square</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// fixme  - we probably need to use the 'Img' element to do stuff like this.
+                </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+                </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">footer</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                    </span><span class="jsdoc-var">Roo.bootstrap.Card.prototype.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">card </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.imgEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.card-img-top'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imgEl</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">this.imgEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">t.fireEvent</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">&quot;preview&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">); }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">this.imgEl.set</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-string">'pointer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'cursor' </span><span class="jsdoc-syntax">});
+
+                    }
+                    </span><span class="jsdoc-var">this.getCardFooter</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'p-1'</span><span class="jsdoc-syntax">);
+
+
+                }
+
+            }
+        );
+        </span><span class="jsdoc-comment">// dont' really need ot update items.
+        // this.items.push(cn);
+        </span><span class="jsdoc-var">this.fileCollection.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">data.srcfile</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.updateInput</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FileReader</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">reader.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;load&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">data.srcdata </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">reader.result</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">_t.updateInput</span><span class="jsdoc-syntax">();
+        });
+        </span><span class="jsdoc-var">reader.readAsDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.srcfile</span><span class="jsdoc-syntax">);
+
+
+
+    },
+    </span><span class="jsdoc-var">removeCard </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">)
+    {
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">card  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.fileCollection.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">card.data.is_deleted </span><span class="jsdoc-syntax">= 1;
+        </span><span class="jsdoc-var">card.data.src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">/// delete the source - so it reduces size of not uploaded images etc.
+        //this.fileCollection.remove(card);
+        //this.items = this.items.filter(function(e) { return e != card });
+        // dont' really need ot update items.
+        </span><span class="jsdoc-var">card.el.dom.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">card.el.dom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.updateInput</span><span class="jsdoc-syntax">();
+
+
+    },
+    </span><span class="jsdoc-var">reset</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.fileCollection.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">card</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">card.el.dom </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">card.el.dom.parentNode</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">card.el.dom.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">card.el.dom</span><span class="jsdoc-syntax">);
+            }
+        });
+        </span><span class="jsdoc-var">this.fileCollection.clear</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.updateInput</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">updateInput </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.fileCollection.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">data.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.data</span><span class="jsdoc-syntax">);
+
+        });
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">JSON.stringify</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+
+
+
+    }
+
+
+});
+
+
+</span><span class="jsdoc-var">Roo.bootstrap.form.CardUploader.ID </span><span class="jsdoc-syntax">= -1;</span></code></body></html>

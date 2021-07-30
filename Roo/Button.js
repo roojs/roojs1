@@ -121,7 +121,7 @@ Roo.extend(Roo.Button, Roo.util.Observable, {
      */
     enableToggle: false,
     /**
-     * @cfg {Mixed} menu
+     * @cfg {Roo.menu.Menu} menu
      * Standard menu attribute consisting of a reference to a menu object, a menu id or a menu config blob (defaults to undefined).
      */
     menu : undefined,

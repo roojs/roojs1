@@ -8,7 +8,10 @@
 /**
  * @class Roo.bootstrap.Header
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Component
  * Bootstrap Header class
+ *
+ * 
  * @cfg {String} html content of header
  * @cfg {Number} level (1|2|3|4|5|6) default 1
  * 

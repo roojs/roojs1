@@ -1,10 +1,18 @@
 {
   "name" : "Roo.grid.Calendar",
-  "augments" : [],
+  "augments" : [
+    "Roo.grid.Grid",
+    "Roo.util.Observable"
+  ],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
   "desc" : "This class extends the Grid to provide a calendar widget\n<br><br>Usage:<pre><code>\n var grid = new Roo.grid.Calendar(\"my-container-id\", {\n     ds: myDataStore,\n     cm: myColModel,\n     selModel: mySelectionModel,\n     autoSizeColumns: true,\n     monitorWindowResize: false,\n     trackMouseOver: true\n     eventstore : real data store..\n });\n // set any options\n grid.render();",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Calendar",
   "example" : "",
   "deprecated" : "",
@@ -25,27 +33,213 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "eventStore",
       "type" : "Store",
       "desc" : "The store that loads events.",
-      "memberOf" : "Roo.grid.Calendar",
-      "optvals" : []
+      "memberOf" : "Roo.grid.Calendar"
+    },
+    {
+      "name" : "autoSizeColumns",
+      "type" : "Boolean",
+      "desc" : "True to automatically resize the columns to fit their content\n<b>on initial render.</b> It is more efficient to explicitly size the columns\nthrough the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "listeners",
+      "type" : "Object",
+      "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+      "memberOf" : "Roo.util.Observable"
+    },
+    {
+      "name" : "cm[]",
+      "type" : "Roo.grid.ColumnModel",
+      "desc" : "The columns of the grid",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "maxRowsToMeasure",
+      "type" : "Boolean",
+      "desc" : "If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of\nrows measured to get a columns size. Default is 0 (all rows).",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "minColumnWidth",
+      "type" : "Number",
+      "desc" : "The minimum width a column can be resized to. Default is 25.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "ddText",
+      "type" : "String",
+      "desc" : "Configures the text is the drag proxy (defaults to \"%0 selected row(s)\").\n%0 is replaced with the number of selected rows.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "toolbar",
+      "type" : "Roo.Toolbar",
+      "desc" : "a toolbar for buttons etc.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "autoExpandColumn",
+      "type" : "String",
+      "desc" : "The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "autoExpandMax",
+      "type" : "Number",
+      "desc" : "The maximum width the autoExpandColumn can have (if enabled). Default is 1000.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "enableRowHeightSync",
+      "type" : "Boolean",
+      "desc" : "True to manually sync row heights across locked and not locked rows. Default is false.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "enableDrop",
+      "type" : "Boolean",
+      "desc" : "True to enable drop of elements. Default is false. (double check if this is needed?)",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "monitorWindowResize",
+      "type" : "Boolean",
+      "desc" : "True to autoSize the grid when the window resizes. Default is true.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "autoExpandMin",
+      "type" : "Number",
+      "desc" : "The minimum width the autoExpandColumn can have (if enabled).\nDefault is 50.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "view",
+      "type" : "Roo.grid.GridView",
+      "desc" : "The view that renders the grid (default = Roo.grid.GridView)",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "ds",
+      "type" : "Roo.grid.Store",
+      "desc" : "The data store for the grid",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "ddGroup",
+      "type" : "String",
+      "desc" : "- drag drop group.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "enableDrag",
+      "type" : "Boolean",
+      "desc" : "True to enable drag of rows. Default is false. (double check if this is needed?)",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "autoWidth",
+      "type" : "Boolean",
+      "desc" : "True to set the grid's width to the default total width of the grid's columns instead\nof a fixed width. Default is false.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "maxHeight",
+      "type" : "Number",
+      "desc" : "Sets the maximum height of the grid - ignored if autoHeight is not on.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "trackMouseOver",
+      "type" : "Boolean",
+      "desc" : "True to highlight rows when the mouse is over. Default is true.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "loadMask",
+      "type" : "Object",
+      "desc" : "An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "stripeRows",
+      "type" : "Boolean",
+      "desc" : "True to stripe the rows.  Default is true.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "enableColumnMove",
+      "type" : "Boolean",
+      "desc" : "True to enable drag and drop reorder of columns. Default is true.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "enableColumnHide",
+      "type" : "Boolean",
+      "desc" : "True to enable hiding of columns with the header context menu. Default is true.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "autoSizeHeaders",
+      "type" : "Boolean",
+      "desc" : "True to measure headers with column data when auto sizing columns. Default is true.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "enableDragDrop",
+      "type" : "Boolean",
+      "desc" : "True to enable drag and drop of rows. Default is false.",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "dropTarget",
+      "type" : "Roo.dd.DropTarget",
+      "desc" : "An {@link Roo.dd.DropTarget} config",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "sm",
+      "type" : "Roo.grid.AbstractSelectionModel",
+      "desc" : "The selection Model (default = Roo.grid.RowSelectionModel)",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "dragGroup",
+      "type" : "String",
+      "desc" : "- drag group (?? not sure if needed.)",
+      "memberOf" : "Roo.grid.Grid"
+    },
+    {
+      "name" : "autoHeight",
+      "type" : "Boolean",
+      "desc" : "True to fit the height of the grid container to the height of the data. Default is false.",
+      "memberOf" : "Roo.grid.Grid"
     }
   ],
   "methods" : [
     {
       "name" : "getSelectionModel",
+      "type" : "function",
       "desc" : "Returns the grid's SelectionModel.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.grid.Calendar",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -54,13 +248,617 @@
           "desc" : ""
         }
       ]
+    },
+    {
+      "name" : "destroy",
+      "type" : "function",
+      "desc" : "Destroy this grid.",
+      "sig" : "(removeEl)",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "removeEl",
+          "type" : "Boolean",
+          "desc" : "True to remove the element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "getColumnModel",
+      "type" : "function",
+      "desc" : "Returns the grid's ColumnModel.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "ColumnModel",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "getGridEl",
+      "type" : "function",
+      "desc" : "Returns the grid's underlying element.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Element",
+          "desc" : "The element"
+        }
+      ]
+    },
+    {
+      "name" : "getDataSource",
+      "type" : "function",
+      "desc" : "Returns the grid's DataSource.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "DataSource",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "autoSize",
+      "type" : "function",
+      "desc" : "Causes the grid to manually recalculate its dimensions. Generally this is done automatically,\nbut if manual update is required this method will initiate it.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "getView",
+      "type" : "function",
+      "desc" : "Returns the grid's GridView object.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "GridView",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "getDragDropText",
+      "type" : "function",
+      "desc" : "Called to get grid's drag proxy text, by default returns this.ddText.\nOverride this to put something different in the dragged text.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : ""
+        }
+      ]
+    },
+    {
+      "name" : "reconfigure",
+      "type" : "function",
+      "desc" : "Reconfigures the grid to use a different Store and Column Model.\nThe View will be bound to the new objects and refreshed.",
+      "sig" : "(dataSource, The)",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "dataSource",
+          "type" : "Roo.data.Store",
+          "desc" : "The new {@link Roo.data.Store} object",
+          "isOptional" : false
+        },
+        {
+          "name" : "The",
+          "type" : "Roo.grid.ColumnModel",
+          "desc" : "new {@link Roo.grid.ColumnModel} object",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "addColumns",
+      "type" : "function",
+      "desc" : "addColumns\nAdd's a column, default at the end..",
+      "sig" : "(position, of)",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "position",
+          "type" : "int",
+          "desc" : "to add (default end)",
+          "isOptional" : false
+        },
+        {
+          "name" : "of",
+          "type" : "Array",
+          "desc" : "objects of column configuration see {@link Roo.grid.ColumnModel}",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "render",
+      "type" : "function",
+      "desc" : "Called once after all setup has been completed and the grid is ready to be rendered.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.grid.Grid",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Roo.grid.Grid",
+          "desc" : "this"
+        }
+      ]
+    },
+    {
+      "name" : "purgeListeners",
+      "type" : "function",
+      "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "on",
+      "type" : "function",
+      "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "un",
+      "type" : "function",
+      "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "addEvents",
+      "type" : "function",
+      "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "object",
+          "type" : "Object",
+          "desc" : "The object with the events defined",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "releaseCapture",
+      "type" : "function",
+      "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to release",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "removeListener",
+      "type" : "function",
+      "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The handler to remove",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the handler",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "fireEvent",
+      "type" : "function",
+      "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "args",
+          "type" : "Object...",
+          "desc" : "Variable number of parameters are passed to handlers",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "returns false if any of the handlers return false otherwise it returns true"
+        }
+      ]
+    },
+    {
+      "name" : "hasListener",
+      "type" : "function",
+      "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The name of the event to check for",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Boolean",
+          "desc" : "True if the event is being listened for, else false"
+        }
+      ]
+    },
+    {
+      "name" : "capture",
+      "type" : "function",
+      "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Observable",
+          "desc" : "The Observable to capture",
+          "isOptional" : false
+        },
+        {
+          "name" : "fn",
+          "type" : "Function",
+          "desc" : "The function to call",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope (this object) for the fn",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "addListener",
+      "type" : "function",
+      "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "eventName",
+          "type" : "String",
+          "desc" : "The type of event to listen for",
+          "isOptional" : false
+        },
+        {
+          "name" : "handler",
+          "type" : "Function",
+          "desc" : "The method the event invokes",
+          "isOptional" : false
+        },
+        {
+          "name" : "scope",
+          "type" : "Object",
+          "desc" : "(optional) The scope in which to execute the handler\nfunction. The handler function's \"this\" context.",
+          "isOptional" : false
+        },
+        {
+          "name" : "options",
+          "type" : "Object",
+          "desc" : "(optional) An object containing handler configuration\nproperties. This may contain any of the following properties:<ul>\n<li>scope {Object} The scope in which to execute the handler function. The handler function's \"this\" context.</li>\n<li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li>\n<li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li>\n<li>buffer {Number} Causes the handler to be scheduled to run in an {@link Roo.util.DelayedTask} delayed\nby the specified number of milliseconds. If the event fires again within that time, the original\nhandler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>\n</ul><br>\n<p>\n<b>Combining Options</b><br>\nUsing the options argument, it is possible to combine different types of listeners:<br>\n<br>\nA normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)\n\t\t<pre><code>\n\t\tel.on('click', this.onClick, this, {\n \t\t\tsingle: true,\n    \t\tdelay: 100,\n    \t\tforumId: 4\n\t\t});\n\t\t</code></pre>\n<p>\n<b>Attaching multiple handlers in 1 call</b><br>\nThe method also allows for a single argument to be passed which is a config object containing properties\nwhich specify multiple handlers.\n<pre><code>\n\t\tel.on({\n\t\t\t'click': {\n        \t\tfn: this.onClick,\n        \t\tscope: this,\n        \t\tdelay: 100\n    \t\t}, \n    \t\t'mouseover': {\n        \t\tfn: this.onMouseOver,\n        \t\tscope: this\n    \t\t},\n    \t\t'mouseout': {\n        \t\tfn: this.onMouseOut,\n        \t\tscope: this\n    \t\t}\n\t\t});\n\t\t</code></pre>\n<p>\nOr a shorthand syntax which passes the same scope object to all handlers:\n     \t<pre><code>\n\t\tel.on({\n\t\t\t'click': this.onClick,\n    \t\t'mouseover': this.onMouseOver,\n    \t\t'mouseout': this.onMouseOut,\n    \t\tscope: this\n\t\t});\n\t\t</code></pre>",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
     }
   ],
   "events" : [
     {
       "name" : "eventclick",
+      "type" : "function",
       "desc" : "Fires when the mouse click an",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, )\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -83,8 +881,10 @@
     },
     {
       "name" : "select",
+      "type" : "function",
       "desc" : "Fires when a date is selected",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, date)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -107,8 +907,10 @@
     },
     {
       "name" : "mouseout",
+      "type" : "function",
       "desc" : "The raw mouseout event for the entire grid.",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -125,8 +927,10 @@
     },
     {
       "name" : "monthchange",
+      "type" : "function",
       "desc" : "Fires when the displayed month changes",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, date)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -149,8 +953,10 @@
     },
     {
       "name" : "dragdrop",
+      "type" : "function",
       "desc" : "Fires when dragged row(s) are dropped on a valid DD target",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, dd, targetId, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -185,8 +991,10 @@
     },
     {
       "name" : "rowclick",
+      "type" : "function",
       "desc" : "Fires when a row is clicked",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, rowIndex, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -215,8 +1023,10 @@
     },
     {
       "name" : "headerclick",
+      "type" : "function",
       "desc" : "Fires when a header is clicked",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, columnIndex, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -245,8 +1055,10 @@
     },
     {
       "name" : "startdrag",
+      "type" : "function",
       "desc" : "Fires when row(s) start being dragged",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, dd, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -275,8 +1087,10 @@
     },
     {
       "name" : "enddrag",
+      "type" : "function",
       "desc" : "Fires when a drag operation is complete",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, dd, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -305,8 +1119,10 @@
     },
     {
       "name" : "headerdblclick",
+      "type" : "function",
       "desc" : "Fires when a header cell is double clicked",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, columnIndex, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -335,8 +1151,10 @@
     },
     {
       "name" : "dragenter",
+      "type" : "function",
       "desc" : "Fires when the dragged row(s) first cross another DD target while being dragged",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, dd, targetId, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -371,8 +1189,10 @@
     },
     {
       "name" : "keydown",
+      "type" : "function",
       "desc" : "The raw keydown event for the entire grid.",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -389,8 +1209,10 @@
     },
     {
       "name" : "dblclick",
+      "type" : "function",
       "desc" : "The raw dblclick event for the entire grid.",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -407,8 +1229,10 @@
     },
     {
       "name" : "dragout",
+      "type" : "function",
       "desc" : "Fires when the dragged row(s) leave another DD target while being dragged",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, dd, targetId, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -443,8 +1267,10 @@
     },
     {
       "name" : "columnmove",
+      "type" : "function",
       "desc" : "Fires when the user moves a column",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (oldIndex, newIndex)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -467,8 +1293,10 @@
     },
     {
       "name" : "mouseup",
+      "type" : "function",
       "desc" : "The raw mouseup event for the entire grid.",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -485,8 +1313,10 @@
     },
     {
       "name" : "eventrender",
+      "type" : "function",
       "desc" : "Fires before each cell is rendered, so you can modify the contents, like cls / title / qtip",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, data)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -509,8 +1339,10 @@
     },
     {
       "name" : "bodyscroll",
+      "type" : "function",
       "desc" : "Fires when the body element is scrolled",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (scrollLeft, scrollTop)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -533,8 +1365,10 @@
     },
     {
       "name" : "rowdblclick",
+      "type" : "function",
       "desc" : "Fires when a row is double clicked",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, rowIndex, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -563,8 +1397,10 @@
     },
     {
       "name" : "cellclick",
+      "type" : "function",
       "desc" : "Fires when a cell is clicked",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, rowIndex, columnIndex, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -599,8 +1435,10 @@
     },
     {
       "name" : "evententer",
+      "type" : "function",
       "desc" : "Fires when mouse over an event",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, Event)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -623,8 +1461,10 @@
     },
     {
       "name" : "mousedown",
+      "type" : "function",
       "desc" : "The raw mousedown event for the entire grid.",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -641,8 +1481,10 @@
     },
     {
       "name" : "click",
+      "type" : "function",
       "desc" : "The raw click event for the entire grid.",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -659,8 +1501,10 @@
     },
     {
       "name" : "contextmenu",
+      "type" : "function",
       "desc" : "The raw contextmenu event for the entire grid.",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -677,8 +1521,10 @@
     },
     {
       "name" : "eventleave",
+      "type" : "function",
       "desc" : "Fires when the mouse leaves an",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, )\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -701,8 +1547,10 @@
     },
     {
       "name" : "dragover",
+      "type" : "function",
       "desc" : "Fires while row(s) are being dragged. \"targetId\" is the id of the Yahoo.util.DD object the selected rows are being dragged over.",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, dd, targetId, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -737,8 +1585,10 @@
     },
     {
       "name" : "rowcontextmenu",
+      "type" : "function",
       "desc" : "Fires when a row is right clicked",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, rowIndex, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -767,8 +1617,10 @@
     },
     {
       "name" : "celldblclick",
+      "type" : "function",
       "desc" : "Fires when a cell is double clicked",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, rowIndex, columnIndex, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -803,8 +1655,10 @@
     },
     {
       "name" : "headercontextmenu",
+      "type" : "function",
       "desc" : "Fires when a header is right clicked",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, columnIndex, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -833,8 +1687,10 @@
     },
     {
       "name" : "rowclass",
+      "type" : "function",
       "desc" : "Fires when a row is rendered, so you can change add a style to it.",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (gridview, rowcfg)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -857,8 +1713,10 @@
     },
     {
       "name" : "mouseover",
+      "type" : "function",
       "desc" : "The raw mouseover event for the entire grid.",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -875,8 +1733,10 @@
     },
     {
       "name" : "keypress",
+      "type" : "function",
       "desc" : "The raw keypress event for the entire grid.",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -893,8 +1753,10 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "Fires when the grid is rendered",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (grid)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -911,8 +1773,10 @@
     },
     {
       "name" : "columnresize",
+      "type" : "function",
       "desc" : "Fires when the user resizes a column",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (columnIndex, newSize)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -935,8 +1799,10 @@
     },
     {
       "name" : "cellcontextmenu",
+      "type" : "function",
       "desc" : "Fires when a cell is right clicked",
-      "memberOf" : "Roo.grid.Calendar",
+      "sig" : "function (_self, rowIndex, cellIndex, e)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",

@@ -123,7 +123,6 @@ Bootstrap Widgets
         Roo.bootstrap.Graph a graph (using g.raphael)
 
     Panel Layout (like Classic Roo North/East/South/West Center)
-        Roo.bootstrap.layout.layout-ns
         Roo.bootstrap.layout.Manager
         Roo.bootstrap.layout.Border
         Roo.bootstrap.layout.Basic
@@ -135,9 +134,6 @@ Bootstrap Widgets
         Roo.bootstrap.layout.East
         Roo.bootstrap.layout.West
 
-
-
-        Roo.bootstrap.panel.panel-ns
         Roo.bootstrap.panel.Content
         Roo.bootstrap.panel.Grid
         Roo.bootstrap.panel.Nest
@@ -159,26 +155,24 @@ Bootstrap Widgets
         Roo.bootstrap.Header (Headers)
 
     Menus
-        Roo.bootstrap.MenuMgr
-        Roo.bootstrap.Menu
-        Roo.bootstrap.MenuItem
-        Roo.bootstrap.MenuSeparator
-        Roo.bootstrap.menu.Menu (fixme these are dupes)
-        Roo.bootstrap.menu.Item (fixme these are dupes)
-        Roo.bootstrap.menu.Separator (fixme these are dupes)
+        Roo.bootstrap.menu.Manager
+        Roo.bootstrap.menu.Menu
+        Roo.bootstrap.menu.Item
+        Roo.bootstrap.menu.Separator
+        
 
     Dialogs
         Roo.bootstrap.Modal
         Roo.bootstrap.MessageBox
 
     Navigation Bars 
-        Roo.bootstrap.Navbar
-        Roo.bootstrap.NavSimplebar
-        Roo.bootstrap.NavHeaderbar
-        Roo.bootstrap.NavSidebar
-        Roo.bootstrap.NavGroup
-        Roo.bootstrap.NavItem
-        Roo.bootstrap.NavSidebarItem
+        Roo.bootstrap.nav.Bar
+        Roo.bootstrap.nav.Simplebar
+        Roo.bootstrap.nav.Headerbar
+        Roo.bootstrap.nav.Sidebar
+        Roo.bootstrap.nav.Group
+        Roo.bootstrap.nav.Item
+        Roo.bootstrap.nav.SidebarItem
 
         Roo.bootstrap.NavProgressBar
         Roo.bootstrap.NavProgressItem
@@ -188,8 +182,9 @@ Bootstrap Widgets
         Roo.bootstrap.Pagination
         Roo.bootstrap.PaginationItem
         Roo.bootstrap.Table
-        Roo.bootstrap.Table.AbstractSelectionModel
-        Roo.bootstrap.Table.RowSelectionModel
+        Roo.grid.AbstractSelectionModel
+        Roo.grid.RowSelectionModel
+        Roo.grid.CellSelectionModel
         Roo.bootstrap.PagingToolbar
     Raw Table creation.
         Roo.bootstrap.TableCell
@@ -200,33 +195,33 @@ Bootstrap Widgets
         Roo.form.Action
         Roo.bootstrap.Form
         Roo.form.VTypes
-        Roo.bootstrap.Input
-        Roo.bootstrap.TextArea
-        Roo.bootstrap.TriggerField
-        Roo.bootstrap.ComboBox
+        Roo.bootstrap.form.Iput
+        Roo.bootstrap.form.TextArea
+        Roo.bootstrap.form.TriggerField
+        Roo.bootstrap.form.ComboBox
  
-        Roo.bootstrap.DateField
-        Roo.bootstrap.TimeField
-        Roo.bootstrap.MonthField
+        Roo.bootstrap.form.DateField
+        Roo.bootstrap.form.TimeField
+        Roo.bootstrap.form.MonthField
 
-        Roo.bootstrap.CheckBox
-        Roo.bootstrap.Radio
-        Roo.bootstrap.SecurePass Secure password       
+        Roo.bootstrap.form.CheckBox
+        Roo.bootstrap.form.Radio
+        Roo.bootstrap.form.SecurePass Secure password       
         Roo.HtmlEditorCore
-        Roo.bootstrap.HtmlEditor
-        Roo.bootstrap.htmleditor.ToolbarStandard
-        Roo.bootstrap.FieldLabel
+        Roo.bootstrap.form.HtmlEditor - rich HTML editor
+        Roo.bootstrap.form.HtmlEditorToolbarStandard
+        Roo.bootstrap.form.FieldLabel
 
-        Roo.bootstrap.DateSplitField
-        Roo.bootstrap.NumberField
-        Roo.bootstrap.PhoneInputData
-        Roo.bootstrap.PhoneInput
+        Roo.bootstrap.form.DateSplitField
+        Roo.bootstrap.form.NumberField
+        Roo.bootstrap.form.PhoneInputData
+        Roo.bootstrap.form.PhoneInput
 
-        Roo.bootstrap.MoneyField
+        Roo.bootstrap.form.MoneyField
 
-        Roo.bootstrap.BezierSignature
-        Roo.bootstrap.RadioSet
-        Roo.bootstrap.Markdown - textarea that views as a markdown rendered display
+        Roo.bootstrap.form.BezierSignature
+        Roo.bootstrap.form.RadioSet
+        Roo.bootstrap.form.Markdown - textarea that views as a markdown rendered display
         Examples
             [examples/bootstrap4/TimePicker.html] Timepicker on a dialog
         

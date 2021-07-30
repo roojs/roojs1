@@ -41,27 +41,59 @@ Roo.docs.template  = {
     
     implementors : function(data)
     {
-	if (!data.realImplementors.length) {
-	    return '';
-	}
-	var linkSymbol  = this.linkSymbol;
-	var output = '<ul class="inheritance res-block"> ';
-	
-	data.realImplementors.sort();
-	
-	
-	var iblock_indent = 0;
-	data.realImplementors.map(
-	    function($) {  
-	
-		output += '<li>' + linkSymbol($) + '</li>';
+		if (!data.childClasses || typeof(data.childClasses[data.name]) == 'undefined') { 
+			return '';
+		}
+		var linkSymbol  = this.linkSymbol;
+		//var linkSymbol  = this.linkSymbol;
+		var output = '<ul class="inheritance res-block"> ';
 		
-	    }
-	)
-	 
-	return output +   '</ul>'
+		var iterArray  = function(ar) {
+			for(var i = 0; i < ar.length; i++) {
+				output += '<li>' +linkSymbol(ar[i]) ; // a href...
+				if (typeof(data.childClasses[ar[i]]) != 'undefined') {
+					output += '<ul>';
+					iterArray(data.childClasses[ar[i]]);
+					output += '</ul>';
+				}
+				output +=  "</li>";
+				
+			}
+			
+		}
+		iterArray(data.childClasses[data.name]);
+		 
+		return output +   '</ul>'
 	
     },
+	
+	doc_children : function(data)
+    {
+		if (!data.tree_children ||  data.tree_children < 1) { 
+			return '';
+		}
+		
+		var ar = data.tree_children;
+		
+		
+		var linkSymbol  = this.linkSymbol;
+		//var linkSymbol  = this.linkSymbol;
+		var output = '<ul class="doc-children-list res-block"> ';
+		ar.sort(function (a, b) {
+			return a.toLowerCase().localeCompare(b.toLowerCase());
+		})
+		for(var i = 0; i < ar.length; i++) {
+			output += '<li>' +linkSymbol(ar[i])  + "</li>";
+			
+		}
+		
+	
+		
+		 
+		return output +   '</ul>'
+	
+    },
+	
     
     config : function(dtag)
     {

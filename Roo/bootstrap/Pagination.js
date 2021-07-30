@@ -8,9 +8,11 @@
 /**
  * @class Roo.bootstrap.Pagination
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Pagination
  * Bootstrap Pagination class
- * @cfg {String} size xs | sm | md | lg
- * @cfg {Boolean} inverse false | true
+ * 
+ * @cfg {String} size (xs|sm|md|lg|xl)
+ * @cfg {Boolean} inverse 
  * 
  * @constructor
  * Create a new Pagination

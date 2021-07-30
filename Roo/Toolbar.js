@@ -11,6 +11,7 @@
 
 /**
  * @class Roo.Toolbar
+ * @children   Roo.Toolbar.Item Roo.form.Field
  * Basic Toolbar class.
  * @constructor
  * Creates a new Toolbar
@@ -560,7 +561,10 @@ Roo.extend(Roo.Toolbar.TextItem, Roo.Toolbar.Item, {
 Roo.Toolbar.Button = function(config){
     Roo.Toolbar.Button.superclass.constructor.call(this, null, config);
 };
-Roo.extend(Roo.Toolbar.Button, Roo.Button, {
+Roo.extend(Roo.Toolbar.Button, Roo.Button,
+{
+    
+    
     render : function(td){
         this.td = td;
         Roo.Toolbar.Button.superclass.render.call(this, td);

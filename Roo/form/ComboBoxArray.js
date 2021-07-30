@@ -72,7 +72,7 @@ Roo.form.ComboBoxArray = function(config)
 Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
 { 
     /**
-     * @cfg {Roo.form.Combo} combo The combo box that is wrapped
+     * @cfg {Roo.form.ComboBox} combo [required] The combo box that is wrapped
      */
     
     lastData : false,

@@ -426,22 +426,7 @@
             "is_class" : true
           },
           {
-            "name" : "Roo.bootstrap.CardUploader",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.CheckBox",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
             "name" : "Roo.bootstrap.Column",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.ComboBox",
             "cn" : [],
             "is_class" : true
           },
@@ -452,16 +437,6 @@
           },
           {
             "name" : "Roo.bootstrap.Container",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.DateField",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.DateSplitField",
             "cn" : [],
             "is_class" : true
           },
@@ -491,16 +466,6 @@
             "is_class" : true
           },
           {
-            "name" : "Roo.bootstrap.FieldLabel",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.Form",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
             "name" : "Roo.bootstrap.Graph",
             "cn" : [],
             "is_class" : true
@@ -511,17 +476,7 @@
             "is_class" : true
           },
           {
-            "name" : "Roo.bootstrap.HtmlEditor",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
             "name" : "Roo.bootstrap.Img",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.Input",
             "cn" : [],
             "is_class" : true
           },
@@ -546,32 +501,7 @@
             "is_class" : true
           },
           {
-            "name" : "Roo.bootstrap.Markdown",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
             "name" : "Roo.bootstrap.MasonryBrick",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.Menu",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.MenuItem",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.MenuMgr",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.MenuSeparator",
             "cn" : [],
             "is_class" : true
           },
@@ -591,66 +521,6 @@
             "is_class" : true
           },
           {
-            "name" : "Roo.bootstrap.MoneyField",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.MonthField",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavGroup",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavHeaderbar",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavItem",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavProgressBar",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavProgressItem",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavSidebar",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavSidebarItem",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NavSimplebar",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.Navbar",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.NumberField",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
             "name" : "Roo.bootstrap.Pagination",
             "cn" : [],
             "is_class" : true
@@ -662,11 +532,6 @@
           },
           {
             "name" : "Roo.bootstrap.PagingToolbar",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.PhoneInput",
             "cn" : [],
             "is_class" : true
           },
@@ -691,22 +556,7 @@
             "is_class" : true
           },
           {
-            "name" : "Roo.bootstrap.Radio",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.RadioSet",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
             "name" : "Roo.bootstrap.Row",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.SecurePass",
             "cn" : [],
             "is_class" : true
           },
@@ -762,22 +612,7 @@
             "is_class" : true
           },
           {
-            "name" : "Roo.bootstrap.TextArea",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.TimeField",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
             "name" : "Roo.bootstrap.Tooltip",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.bootstrap.TriggerField",
             "cn" : [],
             "is_class" : true
           },
@@ -824,10 +659,110 @@
             "is_class" : false
           },
           {
-            "name" : "Roo.bootstrap.htmleditor",
+            "name" : "Roo.bootstrap.form",
             "cn" : [
               {
-                "name" : "Roo.bootstrap.htmleditor.ToolbarStandard",
+                "name" : "Roo.bootstrap.form.CardUploader",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.CheckBox",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.ComboBox",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.DateField",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.DateSplitField",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.FieldLabel",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.Form",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.HtmlEditor",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.HtmlEditorToolbarStandard",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.Input",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.Markdown",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.MoneyField",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.MonthField",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.NumberField",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.PhoneInput",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.Radio",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.RadioSet",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.SecurePass",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.TextArea",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.TimeField",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.form.TriggerField",
                 "cn" : [],
                 "is_class" : true
               }
@@ -874,12 +809,68 @@
                 "is_class" : true
               },
               {
+                "name" : "Roo.bootstrap.menu.Manager",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
                 "name" : "Roo.bootstrap.menu.Menu",
                 "cn" : [],
                 "is_class" : true
               },
               {
                 "name" : "Roo.bootstrap.menu.Separator",
+                "cn" : [],
+                "is_class" : true
+              }
+            ],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.bootstrap.nav",
+            "cn" : [
+              {
+                "name" : "Roo.bootstrap.nav.Bar",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.Group",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.Headerbar",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.Item",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.ProgressBar",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.ProgressBarItem",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.Sidebar",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.SidebarItem",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
+                "name" : "Roo.bootstrap.nav.Simplebar",
                 "cn" : [],
                 "is_class" : true
               }
@@ -1026,11 +1017,6 @@
           },
           {
             "name" : "Roo.dd.DragDrop",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
-            "name" : "Roo.dd.DragDropMgr",
             "cn" : [],
             "is_class" : true
           },
@@ -1251,7 +1237,7 @@
           {
             "name" : "Roo.grid.AbstractGridView",
             "cn" : [],
-            "is_class" : false
+            "is_class" : true
           },
           {
             "name" : "Roo.grid.AbstractSelectionModel",

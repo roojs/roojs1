@@ -8,7 +8,13 @@
  * Fork - LGPL
  * <script type="text/javascript">
  */
- 
+ /**
+ * @class Roo.grid.AbstractGridView
+ * @extends Roo.util.Observable
+ * @abstract
+ * Abstract base class for grid Views
+ * @constructor
+ */
 Roo.grid.AbstractGridView = function(){
 	this.grid = null;
 	

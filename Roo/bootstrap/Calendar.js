@@ -65,6 +65,11 @@ Roo.bootstrap.Calendar = function(config){
 
 Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
+	  /**
+     * @cfg {Roo.data.Store} store
+     * The data source for the calendar
+     */
+	store : false,
      /**
      * @cfg {Number} startDay
      * Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)

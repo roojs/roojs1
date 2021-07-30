@@ -1,4 +1,10 @@
+
+
 /**
+ * @class Roo.bootstrap.LayoutMasonry
+ * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.Element Roo.bootstrap.Img Roo.bootstrap.MasonryBrick
+ * Bootstrap Layout Masonry class
  *
  * This is based on 
  * http://masonry.desandro.com
@@ -6,15 +12,7 @@
  * The idea is to render all the bricks based on vertical width...
  *
  * The original code extends 'outlayer' - we might need to use that....
- * 
- */
 
-
-/**
- * @class Roo.bootstrap.LayoutMasonry
- * @extends Roo.bootstrap.Component
- * Bootstrap Layout Masonry class
- * 
  * @constructor
  * Create a new Element
  * @param {Object} config The config object

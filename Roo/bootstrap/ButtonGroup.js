@@ -10,6 +10,8 @@
  * @class Roo.bootstrap.ButtonGroup
  * @extends Roo.bootstrap.Component
  * Bootstrap ButtonGroup class
+ * @children Roo.bootstrap.Button Roo.bootstrap.form.Form
+ * 
  * @cfg {String} size lg | sm | xs (default empty normal)
  * @cfg {String} align vertical | justified  (default none)
  * @cfg {String} direction up | down (default down)

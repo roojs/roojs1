@@ -12,6 +12,7 @@
 /**
  * @class Roo.PagingToolbar
  * @extends Roo.Toolbar
+ * @children   Roo.Toolbar.Item Roo.form.Field
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
@@ -47,11 +48,8 @@
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.PagingToolbar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">, {
+
     </span><span class="jsdoc-comment">/**
-     * @cfg {Roo.data.Store} dataSource
-     * The underlying data store providing the paged data
-     */
-    /**
      * @cfg {String/HTMLElement/Element} container
      * container The id or element that will contain the toolbar
      */
@@ -59,6 +57,8 @@
      * @cfg {Boolean} displayInfo
      * True to display the displayMsg (defaults to false)
      */
+
+
     /**
      * @cfg {Number} pageSize
      * The number of records to display per page (defaults to 20)

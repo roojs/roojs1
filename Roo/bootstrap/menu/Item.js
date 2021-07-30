@@ -1,26 +1,22 @@
-/*
- * - LGPL
- *
- * menu item
- * 
- */
-Roo.bootstrap.menu = Roo.bootstrap.menu || {};
-
 /**
  * @class Roo.bootstrap.menu.Item
  * @extends Roo.bootstrap.Component
+ * @children  Roo.bootstrap.Button Roo.bootstrap.ButtonUploader Roo.bootstrap.Row Roo.bootstrap.Column Roo.bootstrap.Container
+ * @parent Roo.bootstrap.menu.Menu
+ * @licence LGPL
  * Bootstrap MenuItem class
- * @cfg {Boolean} submenu (true | false) default false
- * @cfg {String} html text of the item
+ * 
+ * @cfg {String} html the menu label
  * @cfg {String} href the link
- * @cfg {Boolean} disable (true | false) default false
- * @cfg {Boolean} preventDefault (true | false) default true
- * @cfg {String} icon Font awesome icon
- * @cfg {String} pos Submenu align to (left | right) default right 
+ * @cfg {Boolean} preventDefault do not trigger A href on clicks (default false).
+ * @cfg {Boolean} isContainer is it a container - just returns a drop down item..
+ * @cfg {Boolean} active  used on sidebars to highlight active itesm
+ * @cfg {String} fa favicon to show on left of menu item.
+ * @cfg {Roo.bootsrap.Menu} menu the child menu.
  * 
  * 
  * @constructor
- * Create a new Item
+ * Create a new MenuItem
  * @param {Object} config The config object
  */
 
@@ -28,115 +24,106 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
 Roo.bootstrap.menu.Item = function(config){
     Roo.bootstrap.menu.Item.superclass.constructor.call(this, config);
     this.addEvents({
-        /**
-         * @event mouseover
-         * Fires when the mouse is hovering over this menu
-         * @param {Roo.bootstrap.menu.Item} this
-         * @param {Roo.EventObject} e
-         */
-        mouseover : true,
-        /**
-         * @event mouseout
-         * Fires when the mouse exits this menu
-         * @param {Roo.bootstrap.menu.Item} this
-         * @param {Roo.EventObject} e
-         */
-        mouseout : true,
         // raw events
         /**
          * @event click
          * The raw click event for the entire grid.
+         * @param {Roo.bootstrap.menu.Item} this
          * @param {Roo.EventObject} e
          */
-        click : true
+        "click" : true
     });
 };
 
 Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
-    submenu : false,
-    href : '',
-    html : '',
-    preventDefault: true,
-    disable : false,
-    icon : false,
-    pos : 'right',
+    href : false,
+    html : false,
+    preventDefault: false,
+    isContainer : false,
+    active : false,
+    fa: false,
     
-    getAutoCreate : function()
-    {
-        var text = [
-            {
-                tag : 'span',
-                cls : 'roo-menu-item-text',
-                html : this.html
-            }
-        ];
+    getAutoCreate : function(){
         
-        if(this.icon){
-            text.unshift({
-                tag : 'i',
-                cls : 'fa ' + this.icon
-            })
+        if(this.isContainer){
+            return {
+                tag: 'li',
+                cls: 'dropdown-menu-item '
+            };
         }
-        
-        var cfg = {
-            tag : 'li',
-            cn : [
-                {
-                    tag : 'a',
-                    href : this.href || '#',
-                    cn : text
-                }
-            ]
+        var ctag = {
+            tag: 'span',
+            html: 'Link'
         };
         
-        if(this.disable){
-            cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'disabled' : (cfg.cls + ' disabled');
+        var anc = {
+            tag : 'a',
+            cls : 'dropdown-item',
+            href : '#',
+            cn : [  ]
+        };
+        
+        if (this.fa !== false) {
+            anc.cn.push({
+                tag : 'i',
+                cls : 'fa fa-' + this.fa
+            });
         }
         
-        if(this.submenu){
-            cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'dropdown-submenu' : (cfg.cls + ' dropdown-submenu');
-            
-            if(this.pos == 'left'){
-                cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'pull-left' : (cfg.cls + ' pull-left');
-            }
+        anc.cn.push(ctag);
+        
+        
+        var cfg= {
+            tag: 'li',
+            cls: 'dropdown-menu-item',
+            cn: [ anc ]
+        };
+        if (this.parent().type == 'treeview') {
+            cfg.cls = 'treeview-menu';
+        }
+        if (this.active) {
+            cfg.cls += ' active';
         }
         
+        
+        
+        anc.href = this.href || cfg.cn[0].href ;
+        ctag.html = this.html || cfg.cn[0].html ;
         return cfg;
     },
     
-    initEvents : function() 
+    initEvents: function()
     {
-        this.el.on('mouseover', this.onMouseOver, this);
-        this.el.on('mouseout', this.onMouseOut, this);
+        if (this.parent().type == 'treeview') {
+            this.el.select('a').on('click', this.onClick, this);
+        }
         
-        this.el.select('a', true).first().on('click', this.onClick, this);
+        if (this.menu) {
+            this.menu.parentType = this.xtype;
+            this.menu.triggerEl = this.el;
+            this.menu = this.addxtype(Roo.apply({}, this.menu));
+        }
         
     },
-    
     onClick : function(e)
     {
+        Roo.log('item on click ');
+        
         if(this.preventDefault){
             e.preventDefault();
         }
+        //this.parent().hideMenuItems();
         
-        this.fireEvent("click", this, e);
+        this.fireEvent('click', this, e);
     },
-    
-    onMouseOver : function(e)
+    getEl : function()
     {
-        if(this.submenu && this.pos == 'left'){
-            this.el.select('ul.dropdown-menu', true).first().setLeft(this.el.select('ul.dropdown-menu', true).first().getWidth() * -1);
-        }
-        
-        this.fireEvent("mouseover", this, e);
-    },
-    
-    onMouseOut : function(e)
-    {
-        this.fireEvent("mouseout", this, e);
-    }
+        return this.el;
+    } 
 });
+
+ 
 
  
 

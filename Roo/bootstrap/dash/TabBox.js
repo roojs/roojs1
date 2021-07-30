@@ -9,6 +9,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 /**
  * @class Roo.bootstrap.dash.TabBox
  * @extends Roo.bootstrap.Component
+ * @children Roo.bootstrap.dash.TabPane
  * Bootstrap TabBox class
  * @cfg {String} title Title of the TabBox
  * @cfg {String} icon Icon of the TabBox

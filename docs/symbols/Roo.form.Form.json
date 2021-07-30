@@ -4,10 +4,45 @@
     "Roo.form.BasicForm",
     "Roo.util.Observable"
   ],
+  "childClasses" : {  },
+  "tree_children" : [
+    "Roo.form.Column",
+    "Roo.form.FieldSet",
+    "Roo.form.Row",
+    "Roo.form.Field",
+    "Roo.form.Checkbox",
+    "Roo.form.ComboBox",
+    "Roo.form.ComboBoxArray",
+    "Roo.form.ComboCheck",
+    "Roo.form.ComboNested",
+    "Roo.form.DateField",
+    "Roo.form.DayPicker",
+    "Roo.form.DisplayField",
+    "Roo.form.FCKeditor",
+    "Roo.form.GridField",
+    "Roo.form.Hidden",
+    "Roo.form.HtmlEditor",
+    "Roo.form.MonthField",
+    "Roo.form.NumberField",
+    "Roo.form.Radio",
+    "Roo.form.Select",
+    "Roo.form.Signature",
+    "Roo.form.TextArea",
+    "Roo.form.TextField",
+    "Roo.form.TriggerField",
+    "Roo.Button",
+    "Roo.SplitButton",
+    "Roo.Toolbar.Button",
+    "Roo.Toolbar.SplitButton",
+    "Roo.form.TextItem"
+  ],
+  "tree_parent" : [],
   "desc" : "Adds the ability to dynamically render forms with JavaScript to {@link Roo.form.BasicForm}.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
   "memberOf" : "Form",
   "example" : "",
   "deprecated" : "",
@@ -22,163 +57,153 @@
     }
   ],
   "returns" : [],
+  "throws" : "",
+  "requires" : "",
   "config" : [
     {
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\").\nThis property cascades to child containers if not set.",
-      "memberOf" : "Roo.form.Form",
-      "optvals" : []
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable",
-      "optvals" : []
+      "memberOf" : "Roo.util.Observable"
     },
     {
       "name" : "formData",
       "type" : "boolean|FormData",
       "desc" : "- true to use new 'FormData' post, or set to a new FormData({dom form}) Object, if\nsending a formdata with extra parameters - eg uploaded elements.",
-      "memberOf" : "Roo.form.Form",
-      "optvals" : []
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "monitorValid",
       "type" : "Boolean",
       "desc" : "If true the form monitors its valid state <b>client-side</b> and\nfires a looping event with that state. This is required to bind buttons to the valid\nstate using the config value formBind:true on the button.",
-      "memberOf" : "Roo.form.Form",
-      "optvals" : []
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "fileUpload",
       "type" : "Boolean",
       "desc" : "Set to true if this form is a file upload.",
-      "memberOf" : "Roo.form.BasicForm",
-      "optvals" : []
+      "memberOf" : "Roo.form.BasicForm"
     },
     {
       "name" : "progressUrl",
       "type" : "String",
       "desc" : "- Url to return progress data",
-      "memberOf" : "Roo.form.Form",
-      "optvals" : []
+      "memberOf" : "Roo.form.Form"
+    },
+    {
+      "name" : "buttons[]",
+      "type" : "Roo.Button",
+      "desc" : "buttons at bottom of form",
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "minButtonWidth",
       "type" : "Number",
       "desc" : "Minimum width of all buttons in pixels (defaults to 75)",
-      "memberOf" : "Roo.form.Form",
-      "optvals" : []
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "buttonAlign",
       "type" : "String",
       "desc" : "Valid values are \"left,\" \"center\" and \"right\" (defaults to \"center\")",
-      "memberOf" : "Roo.form.Form",
-      "optvals" : []
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "method",
       "type" : "String",
       "desc" : "The request method to use (GET or POST) for form actions if one isn't supplied in the action options.",
-      "memberOf" : "Roo.form.BasicForm",
-      "optvals" : []
+      "memberOf" : "Roo.form.BasicForm"
     },
     {
       "name" : "errorMask",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : "Roo.form.BasicForm",
-      "optvals" : [
-        "true",
-        "false"
-      ]
-    },
-    {
-      "name" : "labelWidth",
-      "type" : "Number",
-      "desc" : "The width of labels. This property cascades to child containers.",
-      "memberOf" : "Roo.form.Form",
-      "optvals" : []
+      "memberOf" : "Roo.form.BasicForm"
     },
     {
       "name" : "itemCls",
       "type" : "String",
       "desc" : "A css class to apply to the x-form-item of fields. This property cascades to child containers.",
-      "memberOf" : "Roo.form.Form",
-      "optvals" : []
+      "memberOf" : "Roo.form.Form"
+    },
+    {
+      "name" : "labelWidth",
+      "type" : "Number",
+      "desc" : "The width of labels. This property cascades to child containers.",
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "timeout",
       "type" : "Number",
       "desc" : "Timeout for form actions in seconds (default is 30 seconds).",
-      "memberOf" : "Roo.form.BasicForm",
-      "optvals" : []
+      "memberOf" : "Roo.form.BasicForm"
     },
     {
       "name" : "monitorPoll",
       "type" : "Number",
       "desc" : "The milliseconds to poll valid state, ignored if monitorValid is not true (defaults to 200)",
-      "memberOf" : "Roo.form.Form",
-      "optvals" : []
+      "memberOf" : "Roo.form.Form"
     },
     {
       "name" : "baseParams",
       "type" : "Object",
       "desc" : "Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.",
-      "memberOf" : "Roo.form.BasicForm",
-      "optvals" : []
+      "memberOf" : "Roo.form.BasicForm"
     },
     {
       "name" : "trackResetOnLoad",
       "type" : "Boolean",
       "desc" : "If set to true, form.reset() resets to the last loaded\nor setValues() data instead of when the form was first created.",
-      "memberOf" : "Roo.form.BasicForm",
-      "optvals" : []
+      "memberOf" : "Roo.form.BasicForm"
     },
     {
       "name" : "reader",
       "type" : "DataReader",
       "desc" : "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when executing \"load\" actions.\nThis is optional as there is built-in support for processing JSON.",
-      "memberOf" : "Roo.form.BasicForm",
-      "optvals" : []
+      "memberOf" : "Roo.form.BasicForm"
     },
     {
       "name" : "errorReader",
       "type" : "DataReader",
       "desc" : "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when reading validation errors on \"submit\" actions.\nThis is completely optional as there is built-in support for processing JSON.",
-      "memberOf" : "Roo.form.BasicForm",
-      "optvals" : []
+      "memberOf" : "Roo.form.BasicForm"
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "The URL to use for form actions if one isn't supplied in the action options.",
-      "memberOf" : "Roo.form.BasicForm",
-      "optvals" : []
+      "memberOf" : "Roo.form.BasicForm"
     },
     {
       "name" : "maskOffset",
       "type" : "Number",
       "desc" : "Default 100",
-      "memberOf" : "Roo.form.BasicForm",
-      "optvals" : []
+      "memberOf" : "Roo.form.BasicForm"
     }
   ],
   "methods" : [
     {
       "name" : "addxtype",
+      "type" : "function",
       "desc" : "Adds a series of form elements (using the xtype property as the factory method.\nValid xtypes are:  TextField, TextArea .... Button, Layout, FieldSet, Column, (and 'end' to close a block)",
+      "sig" : "(config)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "config",
@@ -191,15 +216,20 @@
     },
     {
       "name" : "fieldset",
+      "type" : "function",
       "desc" : "Opens a new {@link Roo.form.FieldSet} container in the layout stack. If fields are passed after the config, the\nfields are added and the fieldset is closed. If no fields are passed the fieldset remains open\nuntil end() is called.",
+      "sig" : "(config, field1, field2, etc)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "config",
@@ -236,15 +266,20 @@
     },
     {
       "name" : "start",
+      "type" : "function",
       "desc" : "Opens the passed container in the layout stack. The container can be any {@link Roo.form.Layout} or subclass.",
+      "sig" : "(container)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "container",
@@ -263,15 +298,20 @@
     },
     {
       "name" : "container",
+      "type" : "function",
       "desc" : "Opens a new {@link Roo.form.Layout} container in the layout stack. If fields are passed after the config, the\nfields are added and the container is closed. If no fields are passed the container remains open\nuntil end() is called.",
+      "sig" : "(config, field1, field2, etc)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "config",
@@ -308,15 +348,20 @@
     },
     {
       "name" : "render",
+      "type" : "function",
       "desc" : "Render this form into the passed container. This should only be called once!",
+      "sig" : "(container)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "container",
@@ -335,29 +380,39 @@
     },
     {
       "name" : "startMonitoring",
+      "type" : "function",
       "desc" : "Starts monitoring of the valid state of this form. Usually this is done by passing the config\noption \"monitorValid\"",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "addButton",
+      "type" : "function",
       "desc" : "Adds a button to the footer of the form - this <b>must</b> be called before the form is rendered.",
+      "sig" : "(config, handler, scope)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "config",
@@ -388,29 +443,39 @@
     },
     {
       "name" : "stopMonitoring",
+      "type" : "function",
       "desc" : "Stops monitoring of the valid state of this form",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "add",
+      "type" : "function",
       "desc" : "Add Roo.form components to the current open container (e.g. column, fieldset, etc.).  Fields added via this method\ncan also be passed with an additional property of fieldLabel, which if supplied, will provide the text to display\nas the label of the field.",
+      "sig" : "(field1, field2)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "field1",
@@ -435,15 +500,20 @@
     },
     {
       "name" : "findbyId",
+      "type" : "function",
       "desc" : "Find any element that has been added to a form, using it's ID or name\nThis can include framesets, columns etc. along with regular fields..",
+      "sig" : "(id)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "id",
@@ -462,15 +532,20 @@
     },
     {
       "name" : "column",
+      "type" : "function",
       "desc" : "Opens a new {@link Roo.form.Column} container in the layout stack. If fields are passed after the config, the\nfields are added and the column is closed. If no fields are passed the column remains open\nuntil end() is called.",
+      "sig" : "(config, field1, field2, etc)",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "config",
@@ -507,15 +582,20 @@
     },
     {
       "name" : "end",
+      "type" : "function",
       "desc" : "Closes the current open container",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.Form",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -527,15 +607,20 @@
     },
     {
       "name" : "remove",
+      "type" : "function",
       "desc" : "Removes a field from the items collection (does NOT remove its markup).",
+      "sig" : "(field)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "field",
@@ -554,15 +639,20 @@
     },
     {
       "name" : "loadRecord",
+      "type" : "function",
       "desc" : "Loads an Roo.data.Record into this form.",
+      "sig" : "(record)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "record",
@@ -581,15 +671,20 @@
     },
     {
       "name" : "load",
+      "type" : "function",
       "desc" : "Shortcut to do a load action.",
+      "sig" : "(options)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "options",
@@ -608,15 +703,20 @@
     },
     {
       "name" : "doAction",
+      "type" : "function",
       "desc" : "Performs a predefined action (submit or load) or custom actions you define on this form.",
+      "sig" : "(actionName, options)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "actionName",
@@ -641,15 +741,20 @@
     },
     {
       "name" : "getValues",
+      "type" : "function",
       "desc" : "Returns the fields in this form as an object with key/value pairs. If multiple fields exist with the same name\nthey are returned as an array.",
+      "sig" : "(asString)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "asString",
@@ -668,15 +773,20 @@
     },
     {
       "name" : "resetHasChanged",
+      "type" : "function",
       "desc" : "Resets all hasChanged to 'false' -\nThe old 'isDirty' used 'original value..' however this breaks reset() and a few other things.\nSo hasChanged storage is only to be used for this purpose",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -688,15 +798,20 @@
     },
     {
       "name" : "clearInvalid",
+      "type" : "function",
       "desc" : "Clears all invalid messages in this form.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -708,15 +823,20 @@
     },
     {
       "name" : "isDirty",
+      "type" : "function",
       "desc" : "DEPRICATED Returns true if any fields in this form have changed since their original load.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -728,15 +848,20 @@
     },
     {
       "name" : "updateRecord",
+      "type" : "function",
       "desc" : "Persists the values in this form into the passed Roo.data.Record object in a beginEdit/endEdit block.",
+      "sig" : "(record)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "record",
@@ -755,15 +880,20 @@
     },
     {
       "name" : "hasChanged",
+      "type" : "function",
       "desc" : "Returns true if any fields in this form have changed since their original load. (New version)",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -775,15 +905,20 @@
     },
     {
       "name" : "applyToFields",
+      "type" : "function",
       "desc" : "Calls {@link Ext#apply} for all fields in this form with the passed object.",
+      "sig" : "(values)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "values",
@@ -802,15 +937,20 @@
     },
     {
       "name" : "getFieldValues",
+      "type" : "function",
       "desc" : "Returns the fields in this form as an object with key/value pairs. \nThis differs from getValues as it calls getValue on each child item, rather than using dom data.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -822,15 +962,20 @@
     },
     {
       "name" : "submit",
+      "type" : "function",
       "desc" : "Shortcut to do a submit action.",
+      "sig" : "(options)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "options",
@@ -849,15 +994,20 @@
     },
     {
       "name" : "markInvalid",
+      "type" : "function",
       "desc" : "Mark fields in this form invalid in bulk.",
+      "sig" : "(errors)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "errors",
@@ -876,15 +1026,20 @@
     },
     {
       "name" : "setValues",
+      "type" : "function",
       "desc" : "Set values for fields in this form in bulk.",
+      "sig" : "(values)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "values",
@@ -903,15 +1058,20 @@
     },
     {
       "name" : "isValid",
+      "type" : "function",
       "desc" : "Returns true if client-side validation on the form is successful.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -923,15 +1083,20 @@
     },
     {
       "name" : "invalidFields",
+      "type" : "function",
       "desc" : "Returns array of invalid form fields.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -943,15 +1108,20 @@
     },
     {
       "name" : "applyIfToFields",
+      "type" : "function",
       "desc" : "Calls {@link Ext#applyIf} for all field in this form with the passed object.",
+      "sig" : "(values)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "values",
@@ -970,15 +1140,20 @@
     },
     {
       "name" : "findField",
+      "type" : "function",
       "desc" : "Find a Roo.form.Field in this form by id, dataIndex, name or hiddenName",
+      "sig" : "(id)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "id",
@@ -997,15 +1172,20 @@
     },
     {
       "name" : "reset",
+      "type" : "function",
       "desc" : "Resets this form.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : [
         {
@@ -1017,15 +1197,20 @@
     },
     {
       "name" : "addForm",
+      "type" : "function",
       "desc" : "Add a secondary form to this one, \nUsed to provide tabbed forms. One form is primary, with hidden values \nwhich mirror the elements from the other forms.",
+      "sig" : "(form)",
+      "static" : false,
+      "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "form",
@@ -1038,29 +1223,39 @@
     },
     {
       "name" : "purgeListeners",
+      "type" : "function",
       "desc" : "Removes all listeners for this object",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [],
       "returns" : []
     },
     {
       "name" : "on",
+      "type" : "function",
       "desc" : "Appends an event handler to this element (shorthand for addListener)",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1091,15 +1286,20 @@
     },
     {
       "name" : "un",
+      "type" : "function",
       "desc" : "Removes a listener (shorthand for removeListener)",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1124,15 +1324,20 @@
     },
     {
       "name" : "addEvents",
+      "type" : "function",
       "desc" : "Used to define events on this Observable",
+      "sig" : "(object)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "object",
@@ -1145,15 +1350,20 @@
     },
     {
       "name" : "releaseCapture",
+      "type" : "function",
       "desc" : "Removes <b>all</b> added captures from the Observable.",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -1166,15 +1376,20 @@
     },
     {
       "name" : "removeListener",
+      "type" : "function",
       "desc" : "Removes a listener",
+      "sig" : "(eventName, handler, scope)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1199,15 +1414,20 @@
     },
     {
       "name" : "fireEvent",
+      "type" : "function",
       "desc" : "Fires the specified event with the passed parameters (minus the event name).",
+      "sig" : "(eventName, args)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1232,15 +1452,20 @@
     },
     {
       "name" : "hasListener",
+      "type" : "function",
       "desc" : "Checks to see if this object has any listeners for a specified event",
+      "sig" : "(eventName)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1259,15 +1484,20 @@
     },
     {
       "name" : "capture",
+      "type" : "function",
       "desc" : "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire.",
+      "sig" : "(o, fn, scope)",
+      "static" : true,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : true,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "o",
@@ -1292,15 +1522,20 @@
     },
     {
       "name" : "addListener",
+      "type" : "function",
       "desc" : "Appends an event handler to this component",
+      "sig" : "(eventName, handler, scope, options)",
+      "static" : false,
+      "memberOf" : "Roo.util.Observable",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,
-      "memberOf" : "Roo.util.Observable",
       "example" : "",
       "deprecated" : "",
       "since" : "",
       "see" : "",
+      "exceptions" : "",
+      "requires" : "",
       "params" : [
         {
           "name" : "eventName",
@@ -1333,8 +1568,10 @@
   "events" : [
     {
       "name" : "rendered",
+      "type" : "function",
       "desc" : "Fires when the form is rendered",
-      "memberOf" : "Roo.form.Form",
+      "sig" : "function (form)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1351,8 +1588,10 @@
     },
     {
       "name" : "clientvalidation",
+      "type" : "function",
       "desc" : "If the monitorValid config option is true, this event fires repetitively to notify of valid state",
-      "memberOf" : "Roo.form.Form",
+      "sig" : "function (_self, valid)\n{\n\n}",
+      "memberOf" : "",
       "example" : "",
       "deprecated" : "",
       "since" : "",
@@ -1375,7 +1614,9 @@
     },
     {
       "name" : "beforeaction",
+      "type" : "function",
       "desc" : "Fires before any action is performed. Return false to cancel the action.",
+      "sig" : "function (_self, action)\n{\n\n}",
       "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
@@ -1399,7 +1640,9 @@
     },
     {
       "name" : "actioncomplete",
+      "type" : "function",
       "desc" : "Fires when an action is completed.",
+      "sig" : "function (_self, action)\n{\n\n}",
       "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
@@ -1423,7 +1666,9 @@
     },
     {
       "name" : "actionfailed",
+      "type" : "function",
       "desc" : "Fires when an action fails.",
+      "sig" : "function (_self, action)\n{\n\n}",
       "memberOf" : "Roo.form.BasicForm",
       "example" : "",
       "deprecated" : "",
