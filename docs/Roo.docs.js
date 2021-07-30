@@ -22,7 +22,8 @@ Roo.docs = new Roo.XComponent({
   'f561aaf6ef0bf14d4208bb46a4ccb3ad' :"xxx",
   '9bd81329febf6efe22788e03ddeaf0af' :" Class ",
   'a1d108496af420635536a4e29e87d42b' :"Constructor, Static and Public Methods",
-  'd41d8cd98f00b204e9800998ecf8427e' :" "
+  'd41d8cd98f00b204e9800998ecf8427e' :" ",
+  '11410a0e42ed3bd4fc2f239a79f947dc' :"Children that can be added using Roo.factory"
  },
 
   part     :  ["docs", "docs" ],
@@ -492,6 +493,292 @@ Roo.docs = new Roo.XComponent({
            html : _this._strings['d2b697ad8e989a6c4592987f22f5bbfc'] /* doc-comments */,
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
+          },
+          {
+           xtype : 'Container',
+           cls : 'doc-table-container',
+           expandable : true,
+           expanded : true,
+           header : _this._strings['50f33d14f129e4548c1c270fd6725a78'] /* Configuration options */,
+           panel : 'primary',
+           style : 'margin-top:15px',
+           listeners : {
+            render : function (_self)
+             {
+                 _this.configTableContainer = this;
+             }
+           },
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap',
+           items  : [
+            {
+             xtype : 'Table',
+             responsive : true,
+             rowSelection : true,
+             striped : true,
+             listeners : {
+              render : function (_self)
+               {
+                   _this.configTable = this;
+               },
+              rowclass : function (_self, rowcfg)
+               {
+                     rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : 'doc-not-member ';
+                     rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');
+               },
+              rowclick : function (_self, el, rowIndex, e)
+               {
+                   if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {
+                       return false;
+                   }
+                   
+                   var r = this.store.getAt(rowIndex);
+                   r.json.expanded = !r.json.expanded ;
+                   this.refreshRow(r);
+               }
+             },
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap',
+             store : {
+              xtype : 'Store',
+              xns : Roo.data,
+              '|xns' : 'Roo.data',
+              proxy : {
+               xtype : 'MemoryProxy',
+               xns : Roo.data,
+               '|xns' : 'Roo.data'
+              },
+              reader : {
+               xtype : 'ArrayReader',
+               fields : [ 'name', 'type', 'desc', 'memberOf' ],
+               xns : Roo.data,
+               '|xns' : 'Roo.data'
+              }
+             },
+             cm : [
+              {
+               xtype : 'ColumnModel',
+               dataIndex : 'name',
+               header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
+               renderer : function(v,x,r) { 
+               
+                   return Roo.docs.template.config(r.json);
+               
+               			
+               },
+               xs : 11,
+               xns : Roo.grid,
+               '|xns' : 'Roo.grid'
+              },
+              {
+               xtype : 'ColumnModel',
+               dataIndex : 'memberOf',
+               header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
+               renderer : function(v,x,r) { 
+                if (r.json.memberOf  == Roo.docs.init.currentClass) {
+                           return '';
+                       }
+               
+               		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
+               			
+               },
+               xs : 1,
+               xns : Roo.grid,
+               '|xns' : 'Roo.grid'
+              }
+             ]
+            }
+           ]
+          },
+          {
+           xtype : 'Container',
+           cls : 'doc-table-container',
+           expandable : true,
+           expanded : true,
+           header : _this._strings['a1d108496af420635536a4e29e87d42b'] /* Constructor, Static and Public Methods */,
+           panel : 'primary',
+           listeners : {
+            render : function (_self)
+             {
+                 _this.methodsTableContainer = this;
+             }
+           },
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap',
+           items  : [
+            {
+             xtype : 'Table',
+             responsive : true,
+             rowSelection : true,
+             listeners : {
+              render : function (_self)
+               {
+                   _this.methodsTable = this;
+               },
+              rowclass : function (_self, rowcfg)
+               {
+                     var j = rowcfg.record.json;
+                     var rc = j.memberOf == Roo.docs.init.currentClass || j.isConstructor ? 'doc-added-member '  : 'doc-not-member ';
+                     rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');
+               },
+              rowclick : function (_self, el, rowIndex, e)
+               {
+                     if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {
+                       return false;
+                   }
+                    var r = this.store.getAt(rowIndex);
+                   r.json.expanded = !r.json.expanded ;
+                   this.refreshRow(r);
+               }
+             },
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap',
+             store : {
+              xtype : 'Store',
+              sortInfo : { field : 'name', direction : 'ASC' },
+              xns : Roo.data,
+              '|xns' : 'Roo.data',
+              proxy : {
+               xtype : 'MemoryProxy',
+               xns : Roo.data,
+               '|xns' : 'Roo.data'
+              },
+              reader : {
+               xtype : 'ArrayReader',
+               fields : [ 'name', 'type', 'desc', 'memberOf' ],
+               xns : Roo.data,
+               '|xns' : 'Roo.data'
+              }
+             },
+             cm : [
+              {
+               xtype : 'ColumnModel',
+               dataIndex : 'name',
+               header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*   */,
+               renderer : function(v,x,r) { 
+               
+                   return Roo.docs.template.method(r.json);
+               		 
+               			
+               },
+               sm : 11,
+               sortable : false,
+               xns : Roo.grid,
+               '|xns' : 'Roo.grid'
+              },
+              {
+               xtype : 'ColumnModel',
+               dataIndex : 'memberOf',
+               header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
+               renderer : function(v,x,r) { 
+               
+                if (r.json.memberOf  == Roo.docs.init.currentClass) {
+                           return '';
+                       }
+               		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
+               			
+               },
+               sm : 1,
+               xns : Roo.grid,
+               '|xns' : 'Roo.grid'
+              }
+             ]
+            }
+           ]
+          },
+          {
+           xtype : 'Container',
+           cls : 'doc-table-container',
+           expandable : true,
+           expanded : true,
+           header : _this._strings['87f9f735a1d36793ceaecd4e47124b63'] /* Events */,
+           panel : 'primary',
+           listeners : {
+            render : function (_self)
+             {
+                 _this.eventsTableContainer   = this;
+             }
+           },
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap',
+           items  : [
+            {
+             xtype : 'Table',
+             responsive : true,
+             rowSelection : true,
+             listeners : {
+              render : function (_self)
+               {
+                   _this.eventsTable = this;
+               },
+              rowclass : function (_self, rowcfg)
+               {
+                     rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : 'doc-not-member ';
+                     rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');
+               },
+              rowclick : function (_self, el, rowIndex, e)
+               {
+                       if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {
+                       return false;
+                   }
+                   var r = this.store.getAt(rowIndex);
+                   r.json.expanded = !r.json.expanded ;
+                   this.refreshRow(r);
+               }
+             },
+             xns : Roo.bootstrap,
+             '|xns' : 'Roo.bootstrap',
+             store : {
+              xtype : 'Store',
+              xns : Roo.data,
+              '|xns' : 'Roo.data',
+              proxy : {
+               xtype : 'MemoryProxy',
+               xns : Roo.data,
+               '|xns' : 'Roo.data'
+              },
+              reader : {
+               xtype : 'ArrayReader',
+               fields : [ 'name', 'type', 'desc', 'memberOf' ],
+               xns : Roo.data,
+               '|xns' : 'Roo.data'
+              }
+             },
+             cm : [
+              {
+               xtype : 'ColumnModel',
+               dataIndex : 'name',
+               header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
+               md : 11,
+               renderer : function(v,x,r) { 
+               
+                   return Roo.docs.template.event(r.json);
+               		 
+               			
+               },
+               xns : Roo.grid,
+               '|xns' : 'Roo.grid'
+              },
+              {
+               xtype : 'ColumnModel',
+               dataIndex : 'memberOf',
+               header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
+               md : 1,
+               renderer : function(v,x,r) { 
+                       if (r.json.memberOf  == Roo.docs.init.currentClass) {
+                           return '';
+                       }
+               
+               		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
+               			
+               },
+               xs : 0,
+               xns : Roo.grid,
+               '|xns' : 'Roo.grid'
+              }
+             ]
+            }
+           ]
           }
          ]
         },
@@ -528,292 +815,20 @@ Roo.docs = new Roo.XComponent({
            },
            xns : Roo.bootstrap,
            '|xns' : 'Roo.bootstrap'
-          }
-         ]
-        }
-       ]
-      },
-      {
-       xtype : 'Container',
-       cls : 'doc-table-container',
-       expandable : true,
-       expanded : true,
-       header : _this._strings['50f33d14f129e4548c1c270fd6725a78'] /* Configuration options */,
-       panel : 'primary',
-       style : 'margin-top:15px',
-       listeners : {
-        render : function (_self)
-         {
-             _this.configTableContainer = this;
-         }
-       },
-       xns : Roo.bootstrap,
-       '|xns' : 'Roo.bootstrap',
-       items  : [
-        {
-         xtype : 'Table',
-         responsive : true,
-         rowSelection : true,
-         striped : true,
-         listeners : {
-          render : function (_self)
-           {
-               _this.configTable = this;
-           },
-          rowclass : function (_self, rowcfg)
-           {
-                 rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : 'doc-not-member ';
-                 rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');
-           },
-          rowclick : function (_self, el, rowIndex, e)
-           {
-               if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {
-                   return false;
-               }
-               
-               var r = this.store.getAt(rowIndex);
-               r.json.expanded = !r.json.expanded ;
-               this.refreshRow(r);
-           }
-         },
-         xns : Roo.bootstrap,
-         '|xns' : 'Roo.bootstrap',
-         store : {
-          xtype : 'Store',
-          xns : Roo.data,
-          '|xns' : 'Roo.data',
-          proxy : {
-           xtype : 'MemoryProxy',
-           xns : Roo.data,
-           '|xns' : 'Roo.data'
-          },
-          reader : {
-           xtype : 'ArrayReader',
-           fields : [ 'name', 'type', 'desc', 'memberOf' ],
-           xns : Roo.data,
-           '|xns' : 'Roo.data'
-          }
-         },
-         cm : [
-          {
-           xtype : 'ColumnModel',
-           dataIndex : 'name',
-           header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
-           renderer : function(v,x,r) { 
-           
-               return Roo.docs.template.config(r.json);
-           
-           			
-           },
-           xs : 11,
-           xns : Roo.grid,
-           '|xns' : 'Roo.grid'
           },
           {
-           xtype : 'ColumnModel',
-           dataIndex : 'memberOf',
-           header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
-           renderer : function(v,x,r) { 
-            if (r.json.memberOf  == Roo.docs.init.currentClass) {
-                       return '';
-                   }
-           
-           		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
-           			
+           xtype : 'Container',
+           cls : 'doc-children',
+           header : _this._strings['11410a0e42ed3bd4fc2f239a79f947dc'] /* Children that can be added using Roo.factory */,
+           panel : 'primary',
+           listeners : {
+            render : function (_self)
+             {
+                 _this.tree_children  = this;
+             }
            },
-           xs : 1,
-           xns : Roo.grid,
-           '|xns' : 'Roo.grid'
-          }
-         ]
-        }
-       ]
-      },
-      {
-       xtype : 'Container',
-       cls : 'doc-table-container',
-       expandable : true,
-       expanded : true,
-       header : _this._strings['a1d108496af420635536a4e29e87d42b'] /* Constructor, Static and Public Methods */,
-       panel : 'primary',
-       listeners : {
-        render : function (_self)
-         {
-             _this.methodsTableContainer = this;
-         }
-       },
-       xns : Roo.bootstrap,
-       '|xns' : 'Roo.bootstrap',
-       items  : [
-        {
-         xtype : 'Table',
-         responsive : true,
-         rowSelection : true,
-         listeners : {
-          render : function (_self)
-           {
-               _this.methodsTable = this;
-           },
-          rowclass : function (_self, rowcfg)
-           {
-                 var j = rowcfg.record.json;
-                 var rc = j.memberOf == Roo.docs.init.currentClass || j.isConstructor ? 'doc-added-member '  : 'doc-not-member ';
-                 rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');
-           },
-          rowclick : function (_self, el, rowIndex, e)
-           {
-                 if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {
-                   return false;
-               }
-                var r = this.store.getAt(rowIndex);
-               r.json.expanded = !r.json.expanded ;
-               this.refreshRow(r);
-           }
-         },
-         xns : Roo.bootstrap,
-         '|xns' : 'Roo.bootstrap',
-         store : {
-          xtype : 'Store',
-          sortInfo : { field : 'name', direction : 'ASC' },
-          xns : Roo.data,
-          '|xns' : 'Roo.data',
-          proxy : {
-           xtype : 'MemoryProxy',
-           xns : Roo.data,
-           '|xns' : 'Roo.data'
-          },
-          reader : {
-           xtype : 'ArrayReader',
-           fields : [ 'name', 'type', 'desc', 'memberOf' ],
-           xns : Roo.data,
-           '|xns' : 'Roo.data'
-          }
-         },
-         cm : [
-          {
-           xtype : 'ColumnModel',
-           dataIndex : 'name',
-           header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*   */,
-           renderer : function(v,x,r) { 
-           
-               return Roo.docs.template.method(r.json);
-           		 
-           			
-           },
-           sm : 11,
-           sortable : false,
-           xns : Roo.grid,
-           '|xns' : 'Roo.grid'
-          },
-          {
-           xtype : 'ColumnModel',
-           dataIndex : 'memberOf',
-           header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
-           renderer : function(v,x,r) { 
-           
-            if (r.json.memberOf  == Roo.docs.init.currentClass) {
-                       return '';
-                   }
-           		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
-           			
-           },
-           sm : 1,
-           xns : Roo.grid,
-           '|xns' : 'Roo.grid'
-          }
-         ]
-        }
-       ]
-      },
-      {
-       xtype : 'Container',
-       cls : 'doc-table-container',
-       expandable : true,
-       expanded : true,
-       header : _this._strings['87f9f735a1d36793ceaecd4e47124b63'] /* Events */,
-       panel : 'primary',
-       listeners : {
-        render : function (_self)
-         {
-             _this.eventsTableContainer   = this;
-         }
-       },
-       xns : Roo.bootstrap,
-       '|xns' : 'Roo.bootstrap',
-       items  : [
-        {
-         xtype : 'Table',
-         responsive : true,
-         rowSelection : true,
-         listeners : {
-          render : function (_self)
-           {
-               _this.eventsTable = this;
-           },
-          rowclass : function (_self, rowcfg)
-           {
-                 rc = rowcfg.record.json.memberOf == Roo.docs.init.currentClass ? 'doc-added-member '  : 'doc-not-member ';
-                 rowcfg.rowClass = rc + (rowcfg.record.json.expanded ? 'expanded' : '');
-           },
-          rowclick : function (_self, el, rowIndex, e)
-           {
-                   if (e.target.className != 'fixedFont' && e.target.parentNode.className != 'fixedFont') {
-                   return false;
-               }
-               var r = this.store.getAt(rowIndex);
-               r.json.expanded = !r.json.expanded ;
-               this.refreshRow(r);
-           }
-         },
-         xns : Roo.bootstrap,
-         '|xns' : 'Roo.bootstrap',
-         store : {
-          xtype : 'Store',
-          xns : Roo.data,
-          '|xns' : 'Roo.data',
-          proxy : {
-           xtype : 'MemoryProxy',
-           xns : Roo.data,
-           '|xns' : 'Roo.data'
-          },
-          reader : {
-           xtype : 'ArrayReader',
-           fields : [ 'name', 'type', 'desc', 'memberOf' ],
-           xns : Roo.data,
-           '|xns' : 'Roo.data'
-          }
-         },
-         cm : [
-          {
-           xtype : 'ColumnModel',
-           dataIndex : 'name',
-           header : _this._strings['d41d8cd98f00b204e9800998ecf8427e'] /*  */,
-           md : 11,
-           renderer : function(v,x,r) { 
-           
-               return Roo.docs.template.event(r.json);
-           		 
-           			
-           },
-           xns : Roo.grid,
-           '|xns' : 'Roo.grid'
-          },
-          {
-           xtype : 'ColumnModel',
-           dataIndex : 'memberOf',
-           header : _this._strings['f361257612a512f9be2fdc2abfb25aef'] /* <small>Defined by</small> */,
-           md : 1,
-           renderer : function(v,x,r) { 
-                   if (r.json.memberOf  == Roo.docs.init.currentClass) {
-                       return '';
-                   }
-           
-           		return 	'<small><a href="#' + r.json.memberOf + '">' + r.json.memberOf + '</a></small>';
-           			
-           },
-           xs : 0,
-           xns : Roo.grid,
-           '|xns' : 'Roo.grid'
+           xns : Roo.bootstrap,
+           '|xns' : 'Roo.bootstrap'
           }
          ]
         }
