@@ -17,21 +17,26 @@
       "Roo.form.Signature",
       "Roo.form.TextField"
     ],
-    "Roo.bootstrap.ComboBox" : [
-      "Roo.bootstrap.MoneyField"
-    ],
     "Roo.bootstrap.nav.Simplebar" : [
       "Roo.bootstrap.PagingToolbar",
       "Roo.bootstrap.PopoverNav",
-      "Roo.bootstrap.htmleditor.ToolbarStandard",
+      "Roo.bootstrap.form.HtmlEditorToolbarStandard",
       "Roo.bootstrap.nav.Headerbar"
     ],
     "Roo.bootstrap.Button" : [
       "Roo.bootstrap.ButtonUploader",
-      "Roo.bootstrap.CardUploader"
+      "Roo.bootstrap.form.CardUploader"
     ],
     "Roo.bootstrap.Column" : [
       "Roo.bootstrap.TabGroup"
+    ],
+    "Roo.bootstrap.form.TriggerField" : [
+      "Roo.bootstrap.form.ComboBox",
+      "Roo.bootstrap.form.PhoneInput"
+    ],
+    "Roo.bootstrap.form.TextArea" : [
+      "Roo.bootstrap.form.HtmlEditor",
+      "Roo.bootstrap.form.Markdown"
     ],
     "Roo.form.TextArea" : [
       "Roo.form.FCKeditor"
@@ -61,17 +66,6 @@
       "Roo.bootstrap.CardImageTop",
       "Roo.bootstrap.DropTarget"
     ],
-    "Roo.bootstrap.Input" : [
-      "Roo.bootstrap.CheckBox",
-      "Roo.bootstrap.DateField",
-      "Roo.bootstrap.MonthField",
-      "Roo.bootstrap.NumberField",
-      "Roo.bootstrap.RadioSet",
-      "Roo.bootstrap.SecurePass",
-      "Roo.bootstrap.TextArea",
-      "Roo.bootstrap.TimeField",
-      "Roo.bootstrap.TriggerField"
-    ],
     "Roo.form.Checkbox" : [
       "Roo.form.Radio"
     ],
@@ -84,10 +78,6 @@
       "Roo.menu.Item",
       "Roo.menu.Separator",
       "Roo.menu.TextItem"
-    ],
-    "Roo.bootstrap.TextArea" : [
-      "Roo.bootstrap.HtmlEditor",
-      "Roo.bootstrap.Markdown"
     ],
     "Roo.bootstrap.nav.Item" : [
       "Roo.bootstrap.nav.SidebarItem"
@@ -122,17 +112,13 @@
       "Roo.bootstrap.Card",
       "Roo.bootstrap.Column",
       "Roo.bootstrap.Container",
-      "Roo.bootstrap.DateSplitField",
       "Roo.bootstrap.DocumentManager",
       "Roo.bootstrap.DocumentSlider",
       "Roo.bootstrap.DocumentViewer",
       "Roo.bootstrap.Element",
-      "Roo.bootstrap.FieldLabel",
-      "Roo.bootstrap.Form",
       "Roo.bootstrap.Graph",
       "Roo.bootstrap.Header",
       "Roo.bootstrap.Img",
-      "Roo.bootstrap.Input",
       "Roo.bootstrap.LayoutMasonry",
       "Roo.bootstrap.LayoutMasonryAuto",
       "Roo.bootstrap.Link",
@@ -145,7 +131,6 @@
       "Roo.bootstrap.Popover",
       "Roo.bootstrap.Progress",
       "Roo.bootstrap.ProgressBar",
-      "Roo.bootstrap.Radio",
       "Roo.bootstrap.Row",
       "Roo.bootstrap.Slider",
       "Roo.bootstrap.TabPanel",
@@ -159,6 +144,11 @@
       "Roo.bootstrap.dash.NumberBox",
       "Roo.bootstrap.dash.TabBox",
       "Roo.bootstrap.dash.TabPane",
+      "Roo.bootstrap.form.DateSplitField",
+      "Roo.bootstrap.form.FieldLabel",
+      "Roo.bootstrap.form.Form",
+      "Roo.bootstrap.form.Input",
+      "Roo.bootstrap.form.Radio",
       "Roo.bootstrap.layout.Manager",
       "Roo.bootstrap.menu.Item",
       "Roo.bootstrap.menu.Menu",
@@ -169,9 +159,8 @@
       "Roo.bootstrap.nav.ProgressBar",
       "Roo.bootstrap.nav.ProgressBarItem"
     ],
-    "Roo.bootstrap.TriggerField" : [
-      "Roo.bootstrap.ComboBox",
-      "Roo.bootstrap.PhoneInput"
+    "Roo.bootstrap.form.ComboBox" : [
+      "Roo.bootstrap.form.MoneyField"
     ],
     "Roo.form.TriggerField" : [
       "Roo.form.ComboBox",
@@ -182,6 +171,17 @@
     "Roo.form.ComboBox" : [
       "Roo.form.ComboCheck",
       "Roo.form.ComboNested"
+    ],
+    "Roo.bootstrap.form.Input" : [
+      "Roo.bootstrap.form.CheckBox",
+      "Roo.bootstrap.form.DateField",
+      "Roo.bootstrap.form.MonthField",
+      "Roo.bootstrap.form.NumberField",
+      "Roo.bootstrap.form.RadioSet",
+      "Roo.bootstrap.form.SecurePass",
+      "Roo.bootstrap.form.TextArea",
+      "Roo.bootstrap.form.TimeField",
+      "Roo.bootstrap.form.TriggerField"
     ]
   },
   "tree_children" : [],

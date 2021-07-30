@@ -9,8 +9,8 @@
   "tree_children" : [
     "Roo.bootstrap.Button",
     "Roo.bootstrap.ButtonUploader",
-    "Roo.bootstrap.CardUploader",
-    "Roo.bootstrap.Form"
+    "Roo.bootstrap.form.CardUploader",
+    "Roo.bootstrap.form.Form"
   ],
   "tree_parent" : [],
   "desc" : "Bootstrap ButtonGroup class",

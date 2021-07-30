@@ -19,5 +19,5 @@ Roo.bootstrap.PhoneInputData=   Roo.bootstrap.form.Form.PhoneInputData;
 Roo.bootstrap.MoneyField    =   Roo.bootstrap.form.Form.MoneyField;
 Roo.bootstrap.HtmlEditor    =   Roo.bootstrap.form.Form.HtmlEditor;
 Roo.bootstrap.HtmlEditor.ToolbarStandard =   Roo.bootstrap.form.Form.HtmlEditorToolbarStandard;
-Roo.bootstrap.Markdown      = Roo.bootstrap.form.Markdown
-Roo.bootstrap.CardUploader  = Roo.bootstrap.form.CardUploader
+Roo.bootstrap.Markdown      = Roo.bootstrap.form.Markdown;
+Roo.bootstrap.CardUploader  = Roo.bootstrap.form.CardUploader;

@@ -14,7 +14,7 @@
     "Roo.bootstrap.Container",
     "Roo.bootstrap.Button",
     "Roo.bootstrap.ButtonUploader",
-    "Roo.bootstrap.CardUploader"
+    "Roo.bootstrap.form.CardUploader"
   ],
   "tree_parent" : [],
   "desc" : "Bootstrap Navbar.NavItem class",

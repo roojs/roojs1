@@ -9,7 +9,7 @@
   "tree_children" : [
     "Roo.bootstrap.Button",
     "Roo.bootstrap.ButtonUploader",
-    "Roo.bootstrap.CardUploader",
+    "Roo.bootstrap.form.CardUploader",
     "Roo.bootstrap.ButtonUploader",
     "Roo.bootstrap.Row",
     "Roo.bootstrap.Column",

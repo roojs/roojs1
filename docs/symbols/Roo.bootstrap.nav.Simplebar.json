@@ -10,14 +10,14 @@
     "Roo.bootstrap.nav.Simplebar" : [
       "Roo.bootstrap.PagingToolbar",
       "Roo.bootstrap.PopoverNav",
-      "Roo.bootstrap.htmleditor.ToolbarStandard",
+      "Roo.bootstrap.form.HtmlEditorToolbarStandard",
       "Roo.bootstrap.nav.Headerbar"
     ]
   },
   "tree_children" : [
     "Roo.bootstrap.nav.Group",
     "Roo.bootstrap.Container",
-    "Roo.bootstrap.Form",
+    "Roo.bootstrap.form.Form",
     "Roo.bootstrap.Row",
     "Roo.bootstrap.Column",
     "Roo.bootstrap.TabGroup",

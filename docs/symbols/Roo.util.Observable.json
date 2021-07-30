@@ -57,8 +57,9 @@
       "Roo.menu.ColorMenu",
       "Roo.menu.DateMenu"
     ],
-    "Roo.bootstrap.ComboBox" : [
-      "Roo.bootstrap.MoneyField"
+    "Roo.bootstrap.form.TriggerField" : [
+      "Roo.bootstrap.form.ComboBox",
+      "Roo.bootstrap.form.PhoneInput"
     ],
     "Roo.dd.DragDrop" : [
       "Roo.dd.DD",
@@ -110,17 +111,6 @@
       "Roo.util.ClickRepeater",
       "Roo.util.MixedCollection"
     ],
-    "Roo.bootstrap.Input" : [
-      "Roo.bootstrap.CheckBox",
-      "Roo.bootstrap.DateField",
-      "Roo.bootstrap.MonthField",
-      "Roo.bootstrap.NumberField",
-      "Roo.bootstrap.RadioSet",
-      "Roo.bootstrap.SecurePass",
-      "Roo.bootstrap.TextArea",
-      "Roo.bootstrap.TimeField",
-      "Roo.bootstrap.TriggerField"
-    ],
     "Roo.bootstrap.layout.Manager" : [
       "Roo.bootstrap.layout.Border"
     ],
@@ -140,6 +130,10 @@
     ],
     "Roo.menu.Item" : [
       "Roo.menu.CheckItem"
+    ],
+    "Roo.bootstrap.form.TextArea" : [
+      "Roo.bootstrap.form.HtmlEditor",
+      "Roo.bootstrap.form.Markdown"
     ],
     "Roo.form.Field" : [
       "Roo.form.Checkbox",
@@ -192,10 +186,6 @@
     "Roo.bootstrap.layout.Basic" : [
       "Roo.bootstrap.layout.Region"
     ],
-    "Roo.bootstrap.TriggerField" : [
-      "Roo.bootstrap.ComboBox",
-      "Roo.bootstrap.PhoneInput"
-    ],
     "Roo.form.TextField" : [
       "Roo.form.ComboBoxArray",
       "Roo.form.Hidden",
@@ -206,16 +196,30 @@
     "Roo.form.Checkbox" : [
       "Roo.form.Radio"
     ],
+    "Roo.bootstrap.form.Input" : [
+      "Roo.bootstrap.form.CheckBox",
+      "Roo.bootstrap.form.DateField",
+      "Roo.bootstrap.form.MonthField",
+      "Roo.bootstrap.form.NumberField",
+      "Roo.bootstrap.form.RadioSet",
+      "Roo.bootstrap.form.SecurePass",
+      "Roo.bootstrap.form.TextArea",
+      "Roo.bootstrap.form.TimeField",
+      "Roo.bootstrap.form.TriggerField"
+    ],
     "Roo.grid.AbstractSelectionModel" : [
       "Roo.grid.CellSelectionModel",
       "Roo.grid.RowSelectionModel"
+    ],
+    "Roo.bootstrap.form.ComboBox" : [
+      "Roo.bootstrap.form.MoneyField"
     ],
     "Roo.dd.DDTarget" : [
       "Roo.dd.DropTarget"
     ],
     "Roo.bootstrap.Button" : [
       "Roo.bootstrap.ButtonUploader",
-      "Roo.bootstrap.CardUploader"
+      "Roo.bootstrap.form.CardUploader"
     ],
     "Roo.bootstrap.Component" : [
       "Roo.bootstrap.Alert",
@@ -228,17 +232,13 @@
       "Roo.bootstrap.Card",
       "Roo.bootstrap.Column",
       "Roo.bootstrap.Container",
-      "Roo.bootstrap.DateSplitField",
       "Roo.bootstrap.DocumentManager",
       "Roo.bootstrap.DocumentSlider",
       "Roo.bootstrap.DocumentViewer",
       "Roo.bootstrap.Element",
-      "Roo.bootstrap.FieldLabel",
-      "Roo.bootstrap.Form",
       "Roo.bootstrap.Graph",
       "Roo.bootstrap.Header",
       "Roo.bootstrap.Img",
-      "Roo.bootstrap.Input",
       "Roo.bootstrap.LayoutMasonry",
       "Roo.bootstrap.LayoutMasonryAuto",
       "Roo.bootstrap.Link",
@@ -251,7 +251,6 @@
       "Roo.bootstrap.Popover",
       "Roo.bootstrap.Progress",
       "Roo.bootstrap.ProgressBar",
-      "Roo.bootstrap.Radio",
       "Roo.bootstrap.Row",
       "Roo.bootstrap.Slider",
       "Roo.bootstrap.TabPanel",
@@ -265,6 +264,11 @@
       "Roo.bootstrap.dash.NumberBox",
       "Roo.bootstrap.dash.TabBox",
       "Roo.bootstrap.dash.TabPane",
+      "Roo.bootstrap.form.DateSplitField",
+      "Roo.bootstrap.form.FieldLabel",
+      "Roo.bootstrap.form.Form",
+      "Roo.bootstrap.form.Input",
+      "Roo.bootstrap.form.Radio",
       "Roo.bootstrap.layout.Manager",
       "Roo.bootstrap.menu.Item",
       "Roo.bootstrap.menu.Menu",
@@ -295,7 +299,7 @@
     "Roo.bootstrap.nav.Simplebar" : [
       "Roo.bootstrap.PagingToolbar",
       "Roo.bootstrap.PopoverNav",
-      "Roo.bootstrap.htmleditor.ToolbarStandard",
+      "Roo.bootstrap.form.HtmlEditorToolbarStandard",
       "Roo.bootstrap.nav.Headerbar"
     ],
     "Roo.data.Connection" : [
@@ -310,10 +314,6 @@
     ],
     "Roo.BasicLayoutRegion" : [
       "Roo.LayoutRegion"
-    ],
-    "Roo.bootstrap.TextArea" : [
-      "Roo.bootstrap.HtmlEditor",
-      "Roo.bootstrap.Markdown"
     ],
     "Roo.data.Node" : [
       "Roo.tree.TreeNode"
