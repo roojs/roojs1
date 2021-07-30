@@ -24486,7 +24486,7 @@ Roo.data.DataReader.prototype = {
 
 /**
  * @class Roo.data.DataProxy
- * @extends Roo.data.Observable
+ * @extends Roo.util.Observable
  * @abstract
  * This class is an abstract base class for implementations which provide retrieval of
  * unformatted data objects.<br>
@@ -60360,7 +60360,7 @@ Roo.extend(Roo.grid.PropertyGrid, Roo.grid.EditorGrid, {
  
 /**
  * @class Roo.grid.Calendar
- * @extends Roo.util.Grid
+ * @extends Roo.grid.Grid
  * This class extends the Grid to provide a calendar widget
  * <br><br>Usage:<pre><code>
  var grid = new Roo.grid.Calendar("my-container-id", {
