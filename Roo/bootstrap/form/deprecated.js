@@ -1,0 +1,23 @@
+// old names for form elements
+Roo.bootstrap.Form          =   Roo.bootstrap.form.Form.Form;
+Roo.bootstrap.Input         =   Roo.bootstrap.form.Form.Input;
+Roo.bootstrap.TextArea      =   Roo.bootstrap.form.Form.TextArea;
+Roo.bootstrap.TriggerField  =   Roo.bootstrap.form.Form.TriggerField;
+Roo.bootstrap.ComboBox      =   Roo.bootstrap.form.Form.ComboBox;
+Roo.bootstrap.DateField     =   Roo.bootstrap.form.Form.DateField;
+Roo.bootstrap.TimeField     =   Roo.bootstrap.form.Form.TimeField;
+Roo.bootstrap.MonthField    =   Roo.bootstrap.form.Form.MonthField;
+Roo.bootstrap.CheckBox      =   Roo.bootstrap.form.Form.CheckBox;
+Roo.bootstrap.Radio         =   Roo.bootstrap.form.Form.Radio;
+Roo.bootstrap.RadioSet      =   Roo.bootstrap.form.Form.RadioSet;
+Roo.bootstrap.SecurePass    =   Roo.bootstrap.form.Form.SecurePass;
+Roo.bootstrap.FieldLabel    =   Roo.bootstrap.form.Form.FieldLabel;
+Roo.bootstrap.DateSplitField=   Roo.bootstrap.form.Form.DateSplitField;
+Roo.bootstrap.NumberField   =   Roo.bootstrap.form.Form.NumberField;
+Roo.bootstrap.PhoneInput    =   Roo.bootstrap.form.Form.PhoneInput;
+Roo.bootstrap.PhoneInputData=   Roo.bootstrap.form.Form.PhoneInputData;
+Roo.bootstrap.MoneyField    =   Roo.bootstrap.form.Form.MoneyField;
+Roo.bootstrap.HtmlEditor    =   Roo.bootstrap.form.Form.HtmlEditor;
+Roo.bootstrap.HtmlEditor.ToolbarStandard =   Roo.bootstrap.form.Form.HtmlEditorToolbarStandard;
+Roo.bootstrap.Markdown      = Roo.bootstrap.form.Markdown
+Roo.bootstrap.CardUploader  = Roo.bootstrap.form.CardUploader
