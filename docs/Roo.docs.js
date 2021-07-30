@@ -824,7 +824,7 @@ Roo.docs = new Roo.XComponent({
            listeners : {
             render : function (_self)
              {
-                 _this.tree_children  = this;
+                 _this.doc_children  = this;
              }
            },
            xns : Roo.bootstrap,

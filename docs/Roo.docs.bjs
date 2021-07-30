@@ -466,7 +466,7 @@
           },
           {
            "listeners" : {
-            "render" : "function (_self)\n{\n    _this.tree_children  = this;\n}"
+            "render" : "function (_self)\n{\n    _this.doc_children  = this;\n}"
            },
            "String header" : "Children that can be added using Roo.factory",
            "String cls" : "doc-children",
