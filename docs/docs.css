@@ -969,6 +969,7 @@ a.dropdown-toggle::before {
     background: url('../images/default/tree/elbow-end.gif')  no-repeat left 2px;
     padding-left: 20px;
 }
-.doc-children li {
-    
+.doc-children ul {
+    padding-left: 10px;
+
 }
