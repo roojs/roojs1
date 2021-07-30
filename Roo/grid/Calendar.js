@@ -6,7 +6,7 @@
  
 /**
  * @class Roo.grid.Calendar
- * @extends Roo.util.Grid
+ * @extends Roo.grid.Grid
  * This class extends the Grid to provide a calendar widget
  * <br><br>Usage:<pre><code>
  var grid = new Roo.grid.Calendar("my-container-id", {
