@@ -28,7 +28,7 @@ if (!Roo.dd.DragDropMgr) {
  * all DragDrop items in the window.  Generally, you will not call
  * this class directly, but it does have helper methods that could
  * be useful in your DragDrop implementations.
- * @singleton
+ * @static
  */
 Roo.dd.DragDropMgr = function() {
 

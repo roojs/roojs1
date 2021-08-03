@@ -576,7 +576,7 @@ Roo.onReady(function(){
  Roo.EventManager.on("myDiv", 'click', handleClick);
  Roo.EventManager.addListener("myDiv", 'click', handleClick);
  </code></pre>
- * @singleton
+ * @static
  */
 Roo.EventObject = function(){
     

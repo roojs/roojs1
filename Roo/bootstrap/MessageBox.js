@@ -28,7 +28,7 @@ Roo.Msg.show({
    animEl: 'elId'
 });
 </code></pre>
- * @singleton
+ * @static
  */
 Roo.bootstrap.MessageBox = function(){
     var dlg, opt, mask, waitTimer;

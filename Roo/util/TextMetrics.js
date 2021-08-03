@@ -14,7 +14,7 @@
  * @class Roo.util.TextMetrics
  * Provides precise pixel measurements for blocks of text so that you can determine exactly how high and
  * wide, in pixels, a given block of text will be.
- * @singleton
+ * @static
  */
 Roo.util.TextMetrics = function(){
     var shared;

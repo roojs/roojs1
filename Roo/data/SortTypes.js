@@ -12,7 +12,7 @@
 
 /**
  * @class Roo.data.SortTypes
- * @singleton
+ * @static
  * Defines the default sorting (casting?) comparison functions used when sorting data.
  */
 Roo.data.SortTypes = {

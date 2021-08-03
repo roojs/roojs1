@@ -13,7 +13,8 @@
 /**
  * @class Roo.util.CSS
  * Utility class for manipulating CSS rules
- * @singleton
+ * @static
+
  */
 Roo.util.CSS = function(){
 	var rules = null;

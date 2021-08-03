@@ -11,7 +11,7 @@
 /**
  * @class Roo.QuickTips
  * Provides attractive and customizable tooltips for any element.
- * @singleton
+ * @static
  */
 Roo.QuickTips = function(){
     var el, tipBody, tipBodyText, tipTitle, tm, cfg, close, tagEls = {}, esc, removeCls = null, bdLeft, bdRight;
