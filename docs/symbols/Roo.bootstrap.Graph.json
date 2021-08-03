@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Graph class\n> Prameters\n -sm {number} sm 4\n -md {number} md 5",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -35,13 +35,13 @@
       "name" : "g_y",
       "type" : "number",
       "desc" : "coodinator | centre y (pie)",
-      "memberOf" : "Roo.bootstrap.Graph"
+      "memberOf" : ""
     },
     {
       "name" : "g_height",
       "type" : "number",
       "desc" : "height of the chart (respected by all elements in the set)",
-      "memberOf" : "Roo.bootstrap.Graph"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -83,13 +83,13 @@
       "name" : "g_r",
       "type" : "number",
       "desc" : "radius (pie)",
-      "memberOf" : "Roo.bootstrap.Graph"
+      "memberOf" : ""
     },
     {
       "name" : "title",
       "type" : "Object",
       "desc" : "The title of the chart\n    \n -{Array}  values\n -opts (object) options for the chart \n     o {\n     o type (string) type of endings of the bar. Default: 'square'. Other options are: 'round', 'sharp', 'soft'.\n     o gutter (number)(string) default '20%' (WHAT DOES IT DO?)\n     o vgutter (number)\n     o colors (array) colors be used repeatedly to plot the bars. If multicolumn bar is used each sequence of bars with use a different color.\n     o stacked (boolean) whether or not to tread values as in a stacked bar chart\n     o to\n     o stretch (boolean)\n     o }\n -opts (object) options for the pie\n     o{\n     o cut\n     o startAngle (number)\n     o endAngle (number)\n     }",
-      "memberOf" : "Roo.bootstrap.Graph"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -107,7 +107,7 @@
       "name" : "graphtype",
       "type" : "String",
       "desc" : "bar | vbar | pie",
-      "memberOf" : "Roo.bootstrap.Graph"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -137,7 +137,7 @@
       "name" : "g_width",
       "type" : "number",
       "desc" : "width of the chart (respected by all elements in the set)",
-      "memberOf" : "Roo.bootstrap.Graph"
+      "memberOf" : ""
     },
     {
       "name" : "name",
@@ -155,7 +155,7 @@
       "name" : "g_x",
       "type" : "number",
       "desc" : "coodinator | centre x (pie)",
-      "memberOf" : "Roo.bootstrap.Graph"
+      "memberOf" : ""
     }
   ],
   "methods" : [

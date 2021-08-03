@@ -44,7 +44,7 @@
   "tree_parent" : [],
   "desc" : "Creates a container for layout and rendering of fields in an {@link Roo.form.Form}.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -69,7 +69,7 @@
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\")",
-      "memberOf" : "Roo.form.Layout"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -81,7 +81,7 @@
       "name" : "hideLabels",
       "type" : "Boolean",
       "desc" : "True to suppress the display of field labels in this layout (defaults to false)",
-      "memberOf" : "Roo.form.Layout"
+      "memberOf" : ""
     },
     {
       "name" : "hideMode",
@@ -93,7 +93,7 @@
       "name" : "style",
       "type" : "String/Object/Function",
       "desc" : "A style specification string, e.g. \"width:100px\", or object in the form {width:\"100px\"}, or\na function which returns such a specification.",
-      "memberOf" : "Roo.form.Layout"
+      "memberOf" : ""
     },
     {
       "name" : "allowDomMove",
@@ -105,25 +105,25 @@
       "name" : "labelWidth",
       "type" : "Number",
       "desc" : "Fixed width in pixels of all field labels (defaults to undefined)",
-      "memberOf" : "Roo.form.Layout"
+      "memberOf" : ""
     },
     {
       "name" : "labelSeparator",
       "type" : "String",
       "desc" : "The separator to use after field labels (defaults to ':')",
-      "memberOf" : "Roo.form.Layout"
+      "memberOf" : ""
     },
     {
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec used to autocreate the layout (defaults to {tag: 'div', cls: 'x-form-ct'})",
-      "memberOf" : "Roo.form.Layout"
+      "memberOf" : ""
     },
     {
       "name" : "clear",
       "type" : "Boolean",
       "desc" : "True to add a clearing element at the end of this layout, equivalent to CSS clear: both (defaults to true)",
-      "memberOf" : "Roo.form.Layout"
+      "memberOf" : ""
     },
     {
       "name" : "actionMode",

@@ -19,7 +19,7 @@ window["undefined"] = window["undefined"];
 /**
  * @class Roo
  * Roo core utilities and functions.
- * @singleton
+ * @static
  */
 var Roo = {}; 
 /**

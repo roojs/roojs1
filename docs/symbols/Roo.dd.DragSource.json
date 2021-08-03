@@ -15,7 +15,7 @@
   "tree_parent" : [],
   "desc" : "A simple class that provides the basic implementation needed to make any element draggable.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -52,13 +52,13 @@
       "name" : "dropNotAllowed",
       "type" : "String",
       "desc" : "The CSS class returned to the drag source when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
-      "memberOf" : "Roo.dd.DragSource"
+      "memberOf" : ""
     },
     {
       "name" : "dropAllowed",
       "type" : "String",
       "desc" : "The CSS class returned to the drag source when drop is allowed (defaults to \"x-dd-drop-ok\").",
-      "memberOf" : "Roo.dd.DragSource"
+      "memberOf" : ""
     }
   ],
   "methods" : [

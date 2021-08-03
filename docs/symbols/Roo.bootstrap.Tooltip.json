@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Tooltip class\nThis is basic at present - all componets support it by default, however they should add tooltipEl() method\nto determine which dom element triggers the tooltip.\n\nIt needs to add support for additional attributes like tooltip-position",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

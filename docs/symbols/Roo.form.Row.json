@@ -39,7 +39,7 @@
   "tree_parent" : [],
   "desc" : "Creates a row container for layout and rendering of fields in an {@link Roo.form.Form}.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -130,13 +130,13 @@
       "name" : "width",
       "type" : "Number/String",
       "desc" : "The fixed width of the column in pixels or CSS value (defaults to \"auto\")",
-      "memberOf" : "Roo.form.Row"
+      "memberOf" : ""
     },
     {
       "name" : "height",
       "type" : "Number/String",
       "desc" : "The fixed height of the column in pixels or CSS value (defaults to \"auto\")",
-      "memberOf" : "Roo.form.Row"
+      "memberOf" : ""
     },
     {
       "name" : "disableClass",

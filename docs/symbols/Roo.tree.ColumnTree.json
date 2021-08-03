@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -59,7 +59,7 @@
       "name" : "columns",
       "type" : "Object",
       "desc" : "Including width, header, renderer, cls, dataIndex",
-      "memberOf" : "Roo.tree.ColumnTree"
+      "memberOf" : ""
     },
     {
       "name" : "root",
@@ -137,7 +137,7 @@
       "name" : "borderWidth",
       "type" : "int",
       "desc" : "compined right/left border allowance",
-      "memberOf" : "Roo.tree.ColumnTree"
+      "memberOf" : ""
     },
     {
       "name" : "lines",

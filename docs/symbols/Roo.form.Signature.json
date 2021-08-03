@@ -11,7 +11,7 @@
   "tree_parent" : [],
   "desc" : "Signature field.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -96,7 +96,7 @@
       "name" : "allowBlank",
       "type" : "Boolean",
       "desc" : "False to validate that the value length > 0 (defaults to false)",
-      "memberOf" : "Roo.form.Signature"
+      "memberOf" : ""
     },
     {
       "name" : "tabIndex",
@@ -144,13 +144,13 @@
       "name" : "width",
       "type" : "Number",
       "desc" : "The signature panel width (defaults to 300)",
-      "memberOf" : "Roo.form.Signature"
+      "memberOf" : ""
     },
     {
       "name" : "labels",
       "type" : "Object",
       "desc" : "Label to use when rendering a form.\ndefaults to \nlabels : { \n     clear : \"Clear\",\n     confirm : \"Confirm\"\n }",
-      "memberOf" : "Roo.form.Signature"
+      "memberOf" : ""
     },
     {
       "name" : "validateOnBlur",
@@ -168,7 +168,7 @@
       "name" : "height",
       "type" : "Number",
       "desc" : "The signature panel height (defaults to 100)",
-      "memberOf" : "Roo.form.Signature"
+      "memberOf" : ""
     },
     {
       "name" : "name",

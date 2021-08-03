@@ -8,7 +8,7 @@
   "tree_parent" : [],
   "desc" : "",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

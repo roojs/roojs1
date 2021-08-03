@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Basic Toolbar\n\nUsage:\n\n new Roo.form.HtmlEditor({\n    ....\n    toolbars : [\n        new Roo.form.HtmlEditorToolbar1({\n            disable : { fonts: 1 , format: 1, ..., ... , ...],\n            btns : [ .... ]\n        })\n    }",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -24,37 +24,37 @@
       "name" : "createLinkText",
       "type" : "String",
       "desc" : "The default text for the create link prompt",
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard"
+      "memberOf" : ""
     },
     {
       "name" : "btns",
       "type" : "Array",
       "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard"
+      "memberOf" : ""
     },
     {
       "name" : "defaultFont",
       "type" : "String",
       "desc" : "default font to use.",
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard"
+      "memberOf" : ""
     },
     {
       "name" : "defaultLinkValue",
       "type" : "String",
       "desc" : "The default value for the create link prompt (defaults to http:/ /)",
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard"
+      "memberOf" : ""
     },
     {
       "name" : "fontFamilies",
       "type" : "Array",
       "desc" : "An array of available font families",
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard"
+      "memberOf" : ""
     },
     {
       "name" : "disable",
       "type" : "Object",
       "desc" : "List of elements to disable..",
-      "memberOf" : "Roo.form.HtmlEditor.ToolbarStandard"
+      "memberOf" : ""
     }
   ],
   "methods" : [

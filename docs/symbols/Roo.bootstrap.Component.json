@@ -187,7 +187,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Component base class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : true,
   "isBuilderTop" : false,
@@ -218,25 +218,25 @@
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : ""
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : ""
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
       "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : ""
     },
     {
       "name" : "hideMode",
@@ -248,7 +248,7 @@
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : ""
     },
     {
       "name" : "allowDomMove",
@@ -260,13 +260,13 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : ""
     },
     {
       "name" : "actionMode",
@@ -278,13 +278,13 @@
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : ""
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : ""
     },
     {
       "name" : "disableClass",

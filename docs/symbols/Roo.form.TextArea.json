@@ -16,7 +16,7 @@
   "tree_parent" : [],
   "desc" : "Multiline text field.  Can be used as a direct replacement for traditional textarea fields, plus adds\nsupport for auto-sizing.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -143,7 +143,7 @@
       "name" : "preventScrollbars",
       "type" : "Boolean",
       "desc" : "True to prevent scrollbars from appearing regardless of how much text is\nin the field (equivalent to setting overflow: hidden, defaults to false)",
-      "memberOf" : "Roo.form.TextArea"
+      "memberOf" : ""
     },
     {
       "name" : "readOnly",
@@ -191,7 +191,7 @@
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"textarea\", style: \"width:300px;height:60px;\", autocomplete: \"off\"})",
-      "memberOf" : "Roo.form.TextArea"
+      "memberOf" : ""
     },
     {
       "name" : "invalidClass",
@@ -215,7 +215,7 @@
       "name" : "growMin",
       "type" : "Number",
       "desc" : "The minimum height to allow when grow = true (defaults to 60)",
-      "memberOf" : "Roo.form.TextArea"
+      "memberOf" : ""
     },
     {
       "name" : "validationEvent",
@@ -263,7 +263,7 @@
       "name" : "growMax",
       "type" : "Number",
       "desc" : "The maximum height to allow when grow = true (defaults to 1000)",
-      "memberOf" : "Roo.form.TextArea"
+      "memberOf" : ""
     },
     {
       "name" : "regex",

@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "Simple Hidden element used on forms \n\nusage: form.add(new Roo.form.HiddenField({ 'name' : 'test1' }));",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

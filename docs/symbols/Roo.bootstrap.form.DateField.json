@@ -11,7 +11,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap DateField class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -66,7 +66,7 @@
       "name" : "todayHighlight",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "hideMode",
@@ -132,13 +132,13 @@
       "name" : "altFormats",
       "type" : "String",
       "desc" : "Multiple date formats separated by \"|\" to try when parsing a user input value and it doesn't match the defined\nformat (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "viewMode",
       "type" : "String",
       "desc" : "default empty, (months|years)",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "allowDomMove",
@@ -162,7 +162,7 @@
       "name" : "singleMode",
       "type" : "Boolean",
       "desc" : "default false (true | false)",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "value",
@@ -174,7 +174,7 @@
       "name" : "daysOfWeekDisabled",
       "type" : "Object",
       "desc" : "default empty",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "hasFeedback",
@@ -216,7 +216,7 @@
       "name" : "endDate",
       "type" : "Number",
       "desc" : "default Infinity",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "container_method",
@@ -246,7 +246,7 @@
       "name" : "language",
       "type" : "String",
       "desc" : "default en",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "size",
@@ -288,7 +288,7 @@
       "name" : "keyboardNavigation",
       "type" : "Boolean",
       "desc" : "default true",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "inputType",
@@ -324,13 +324,13 @@
       "name" : "calendarWeeks",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "minViewMode",
       "type" : "String",
       "desc" : "default empty, (months|years)",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "fieldLabel",
@@ -378,7 +378,7 @@
       "name" : "startDate",
       "type" : "Number",
       "desc" : "default -Infinity",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "invalidFeedbackIcon",
@@ -402,7 +402,7 @@
       "name" : "format",
       "type" : "String",
       "desc" : "The default date format string which can be overriden for localization support.  The format must be\nvalid according to {@link Date#parseDate} (defaults to 'm/d/y').",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",
@@ -414,7 +414,7 @@
       "name" : "weekStart",
       "type" : "Number",
       "desc" : "default 0",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "md",
@@ -462,7 +462,7 @@
       "name" : "todayBtn",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : "Roo.bootstrap.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "preventMark",

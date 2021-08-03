@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap DocumentViewer class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -89,7 +89,7 @@
       "name" : "showTrash",
       "type" : "Boolean",
       "desc" : "e) show trash button (default true)",
-      "memberOf" : "Roo.bootstrap.DocumentViewer"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -113,7 +113,7 @@
       "name" : "showDownload",
       "type" : "Boolean",
       "desc" : "e) show download button (default true)",
-      "memberOf" : "Roo.bootstrap.DocumentViewer"
+      "memberOf" : ""
     },
     {
       "name" : "name",

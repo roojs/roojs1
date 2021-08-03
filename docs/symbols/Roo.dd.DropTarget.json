@@ -14,7 +14,7 @@
   "tree_parent" : [],
   "desc" : "A simple class that provides the basic implementation needed to make any element a drop target that can have\ndraggable items dropped onto it.  The drop has no effect until an implementation of notifyDrop is provided.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -51,37 +51,37 @@
       "name" : "dropNotAllowed",
       "type" : "String",
       "desc" : "The CSS class returned to the drag source when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
-      "memberOf" : "Roo.dd.DropTarget"
+      "memberOf" : ""
     },
     {
       "name" : "valid",
       "type" : "boolean|String",
       "desc" : "true/false or string (ok-add/ok-sub/ok/nodrop)\nif the drop point is valid for over/enter..",
-      "memberOf" : "Roo.dd.DropTarget"
+      "memberOf" : ""
     },
     {
       "name" : "success",
       "type" : "boolean",
       "desc" : "set this after drop listener..",
-      "memberOf" : "Roo.dd.DropTarget"
+      "memberOf" : ""
     },
     {
       "name" : "dropAllowed",
       "type" : "String",
       "desc" : "The CSS class returned to the drag source when drop is allowed (defaults to \"x-dd-drop-ok\").",
-      "memberOf" : "Roo.dd.DropTarget"
+      "memberOf" : ""
     },
     {
       "name" : "overClass",
       "type" : "String",
       "desc" : "The CSS class applied to the drop target element while the drag source is over it (defaults to \"\").",
-      "memberOf" : "Roo.dd.DropTarget"
+      "memberOf" : ""
     },
     {
       "name" : "ddGroup",
       "type" : "String",
       "desc" : "The drag drop group to handle drop events for",
-      "memberOf" : "Roo.dd.DropTarget"
+      "memberOf" : ""
     }
   ],
   "methods" : [

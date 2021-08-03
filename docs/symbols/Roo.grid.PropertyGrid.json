@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "This class represents the  interface of a component based property grid control.\n<br><br>Usage:<pre><code>\n var grid = new Roo.grid.PropertyGrid(\"my-container-id\", {\n      \n });\n // set any options\n grid.render();\n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -53,7 +53,7 @@
       "name" : "propertyNames",
       "type" : "Object",
       "desc" : "map of property Names to their displayed value",
-      "memberOf" : "Roo.grid.PropertyGrid"
+      "memberOf" : ""
     },
     {
       "name" : "autoExpandMax",
@@ -191,7 +191,7 @@
       "name" : "customEditors",
       "type" : "Object",
       "desc" : "map of colnames=> custom editors.\nthe custom editor can be one of the standard ones (date|string|number|int|boolean), or a\ngrid editor eg. Roo.grid.GridEditor(new Roo.form.TextArea({selectOnFocus:true})),\nfalse disables editing of the field.",
-      "memberOf" : "Roo.grid.PropertyGrid"
+      "memberOf" : ""
     },
     {
       "name" : "autoHeight",

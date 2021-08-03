@@ -17,7 +17,7 @@
   "tree_parent" : [],
   "desc" : "This class represents a common layout manager used in desktop applications. For screenshots and more details,\nplease see: examples/bootstrap/nested.html<br><br>\n \n<b>The container the layout is rendered into can be either the body element or any other element.\nIf it is not the body element, the container needs to either be an absolute positioned element,\nor you will need to add \"position:relative\" to the css of the container.  You will also need to specify\nthe container size if it is not the body element.</b>",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : true,
@@ -42,7 +42,7 @@
       "name" : "center",
       "type" : "Roo.bootstrap.layout.Region",
       "desc" : "region to go in center",
-      "memberOf" : "Roo.bootstrap.layout.Border"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -72,13 +72,13 @@
       "name" : "east",
       "type" : "Roo.bootstrap.layout.Region",
       "desc" : "region to go in east",
-      "memberOf" : "Roo.bootstrap.layout.Border"
+      "memberOf" : ""
     },
     {
       "name" : "west",
       "type" : "Roo.bootstrap.layout.Region",
       "desc" : "region to go in west",
-      "memberOf" : "Roo.bootstrap.layout.Border"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -126,13 +126,13 @@
       "name" : "south",
       "type" : "Roo.bootstrap.layout.Region",
       "desc" : "region to go in south",
-      "memberOf" : "Roo.bootstrap.layout.Border"
+      "memberOf" : ""
     },
     {
       "name" : "north",
       "type" : "Roo.bootstrap.layout.Region",
       "desc" : "region to go in north",
-      "memberOf" : "Roo.bootstrap.layout.Border"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",

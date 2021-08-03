@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap PaginationItem class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -71,7 +71,7 @@
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : "Roo.bootstrap.PaginationItem"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -89,13 +89,13 @@
       "name" : "preventDefault",
       "type" : "Boolean",
       "desc" : "e) default true",
-      "memberOf" : "Roo.bootstrap.PaginationItem"
+      "memberOf" : ""
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "text",
-      "memberOf" : "Roo.bootstrap.PaginationItem"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -125,7 +125,7 @@
       "name" : "active",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : "Roo.bootstrap.PaginationItem"
+      "memberOf" : ""
     },
     {
       "name" : "name",
@@ -143,7 +143,7 @@
       "name" : "href",
       "type" : "String",
       "desc" : "the link",
-      "memberOf" : "Roo.bootstrap.PaginationItem"
+      "memberOf" : ""
     }
   ],
   "methods" : [

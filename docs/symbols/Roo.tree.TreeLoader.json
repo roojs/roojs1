@@ -8,7 +8,7 @@
   "tree_parent" : [],
   "desc" : "A TreeLoader provides for lazy loading of an {@link Roo.tree.TreeNode}'s child\nnodes from a specified URL. The response must be a javascript Array definition\nwho's elements are node definition objects. eg:\n<pre><code>\n{  success : true,\n   data :      [\n   \n    { 'id': 1, 'text': 'A folder Node', 'leaf': false },\n    { 'id': 2, 'text': 'A leaf Node', 'leaf': true }\n    ]\n}\n\n\n</code></pre>\n<br><br>\nThe old style respose with just an array is still supported, but not recommended.\n<br><br>\n\nA server request is sent, and child nodes are loaded only when a node is expanded.\nThe loading node's id is passed to the server under the parameter name \"node\" to\nenable the server to produce the correct child nodes.\n<br><br>\nTo pass extra parameters, an event handler may be attached to the \"beforeload\"\nevent, and the parameters specified in the TreeLoader's baseParams property:\n<pre><code>\n    myTreeLoader.on(\"beforeload\", function(treeLoader, node) {\n        this.baseParams.category = node.attributes.category;\n    }, this);\n    \n</code></pre>\n\nThis would pass an HTTP parameter called \"category\" to the server containing\nthe value of the Node's \"category\" attribute.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -39,49 +39,49 @@
       "name" : "clearOnLoad",
       "type" : "Boolean",
       "desc" : "(optional) Default to true. Remove previously existing\nchild nodes before loading.",
-      "memberOf" : "Roo.tree.TreeLoader"
+      "memberOf" : ""
     },
     {
       "name" : "dataUrl",
       "type" : "String",
       "desc" : "The URL from which to request a Json string which\nspecifies an array of node definition object representing the child nodes\nto be loaded.",
-      "memberOf" : "Roo.tree.TreeLoader"
+      "memberOf" : ""
     },
     {
       "name" : "root",
       "type" : "String",
       "desc" : "(optional) Default to false. Use this to read data from an object \nproperty on loading, rather than expecting an array. (eg. more compatible to a standard\nGrid query { data : [ .....] }",
-      "memberOf" : "Roo.tree.TreeLoader"
+      "memberOf" : ""
     },
     {
       "name" : "requestMethod",
       "type" : "String",
       "desc" : "either GET or POST\ndefaults to POST (due to BC)\nto be loaded.",
-      "memberOf" : "Roo.tree.TreeLoader"
+      "memberOf" : ""
     },
     {
       "name" : "baseParams",
       "type" : "Object",
       "desc" : "(optional) An object containing properties which\nspecify HTTP parameters to be passed to each request for child nodes.",
-      "memberOf" : "Roo.tree.TreeLoader"
+      "memberOf" : ""
     },
     {
       "name" : "baseAttrs",
       "type" : "Object",
       "desc" : "(optional) An object containing attributes to be added to all nodes\ncreated by this loader. If the attributes sent by the server have an attribute in this object,\nthey take priority.",
-      "memberOf" : "Roo.tree.TreeLoader"
+      "memberOf" : ""
     },
     {
       "name" : "uiProviders",
       "type" : "Object",
       "desc" : "(optional) An object containing properties which\n\nDEPRECATED - use 'create' event handler to modify attributes - which affect creation.\nspecify custom {@link Roo.tree.TreeNodeUI} implementations. If the optional\n<i>uiProvider</i> attribute of a returned child node is a string rather\nthan a reference to a TreeNodeUI implementation, this that string value\nis used as a property name in the uiProviders object. You can define the provider named\n'default' , and this will be used for all nodes (if no uiProvider is delivered by the node data)",
-      "memberOf" : "Roo.tree.TreeLoader"
+      "memberOf" : ""
     },
     {
       "name" : "queryParam",
       "type" : "String",
       "desc" : "(optional) \nName of the query as it will be passed on the querystring (defaults to 'node')\neg. the request will be ?node=[id]",
-      "memberOf" : "Roo.tree.TreeLoader"
+      "memberOf" : ""
     }
   ],
   "methods" : [

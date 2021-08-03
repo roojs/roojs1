@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "This class represents a lightweight region in a layout manager. This region does not move dom nodes\nand does not have a titlebar, tabs or any other features. All it does is size and position \npanels. To create a BasicLayoutRegion, add lightweight:true or basic:true to your regions config.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -36,19 +36,19 @@
       "name" : "skipConfig",
       "type" : "bool",
       "desc" : "skip config?",
-      "memberOf" : "Roo.bootstrap.layout.Basic"
+      "memberOf" : ""
     },
     {
       "name" : "region",
       "type" : "string",
       "desc" : "the region that it inhabits..",
-      "memberOf" : "Roo.bootstrap.layout.Basic"
+      "memberOf" : ""
     },
     {
       "name" : "mgr",
       "type" : "Roo.bootstrap.layout.Manager",
       "desc" : "The manager",
-      "memberOf" : "Roo.bootstrap.layout.Basic"
+      "memberOf" : ""
     }
   ],
   "methods" : [

@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "Create a new GridPanel.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -58,7 +58,7 @@
       "name" : "toolbar",
       "type" : "Roo.bootstrap.nav.Simplebar",
       "desc" : "the toolbar at the top of the grid.",
-      "memberOf" : "Roo.bootstrap.panel.Grid"
+      "memberOf" : ""
     },
     {
       "name" : "fitToFrame",
@@ -118,7 +118,7 @@
       "name" : "grid",
       "type" : "Roo.bootstrap.Table",
       "desc" : "The grid for this panel",
-      "memberOf" : "Roo.bootstrap.panel.Grid"
+      "memberOf" : ""
     },
     {
       "name" : "closable",

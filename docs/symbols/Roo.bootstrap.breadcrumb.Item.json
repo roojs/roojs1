@@ -80,7 +80,7 @@
   ],
   "desc" : "Bootstrap Breadcrumb Nav Class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -153,7 +153,7 @@
       "name" : "html",
       "type" : "String",
       "desc" : "the content of the link.",
-      "memberOf" : "Roo.bootstrap.breadcrumb.Item"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -183,7 +183,7 @@
       "name" : "active",
       "type" : "Boolean",
       "desc" : "is it active",
-      "memberOf" : "Roo.bootstrap.breadcrumb.Item"
+      "memberOf" : ""
     },
     {
       "name" : "name",
@@ -201,7 +201,7 @@
       "name" : "href",
       "type" : "String",
       "desc" : "where it links to if '#' is used the link will be handled by onClick.",
-      "memberOf" : "Roo.bootstrap.breadcrumb.Item"
+      "memberOf" : ""
     }
   ],
   "methods" : [

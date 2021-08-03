@@ -80,7 +80,7 @@
   ],
   "desc" : "Bootstrap Modal class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : true,
@@ -105,7 +105,7 @@
       "name" : "editableTitle",
       "type" : "Boolean",
       "desc" : "can the title be edited",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -117,13 +117,13 @@
       "name" : "bodyOverflow",
       "type" : "Boolean",
       "desc" : "should the body element have overflow auto added default false",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "max_width",
       "type" : "Number",
       "desc" : "set the max width of modal",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "tooltip",
@@ -147,7 +147,7 @@
       "name" : "buttons[]",
       "type" : "Roo.bootstrap.Button",
       "desc" : "Array of buttons or standard button set..",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -165,7 +165,7 @@
       "name" : "title",
       "type" : "String",
       "desc" : "Title of dialog",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -183,19 +183,19 @@
       "name" : "tmpl",
       "type" : "Roo.Template",
       "desc" : "- a template with variables. to use it, add a handler in show:method  adn",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "- the body of the dialog (for simple ones) - you can also use template..",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "buttonPosition",
       "type" : "String",
       "desc" : "r) default right (DEPRICATED) - use mr-auto on buttons to put them on the left",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -207,7 +207,7 @@
       "name" : "fitwindow",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -225,13 +225,13 @@
       "name" : "specificTitle",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "fixed width - usefull for chrome extension only really.",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",
@@ -243,19 +243,19 @@
       "name" : "allow_close",
       "type" : "Boolean",
       "desc" : "default true",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "fixed height - usefull for chrome extension only really.",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "size",
       "type" : "String",
       "desc" : "l) default empty",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     },
     {
       "name" : "name",
@@ -273,7 +273,7 @@
       "name" : "animate",
       "type" : "Boolean",
       "desc" : "default true",
-      "memberOf" : "Roo.bootstrap.Modal"
+      "memberOf" : ""
     }
   ],
   "methods" : [

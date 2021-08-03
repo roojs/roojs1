@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Progress class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -43,7 +43,7 @@
       "name" : "striped",
       "type" : "Boolean",
       "desc" : "striped of the progress bar",
-      "memberOf" : "Roo.bootstrap.Progress"
+      "memberOf" : ""
     },
     {
       "name" : "tooltip",
@@ -115,7 +115,7 @@
       "name" : "active",
       "type" : "Boolean",
       "desc" : "animated of the progress bar",
-      "memberOf" : "Roo.bootstrap.Progress"
+      "memberOf" : ""
     },
     {
       "name" : "name",

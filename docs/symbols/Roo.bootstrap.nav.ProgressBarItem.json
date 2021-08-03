@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap NavProgressBarItem class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -41,7 +41,7 @@
       "name" : "rid",
       "type" : "String",
       "desc" : "the reference id",
-      "memberOf" : "Roo.bootstrap.nav.ProgressBarItem"
+      "memberOf" : ""
     },
     {
       "name" : "tooltip",
@@ -65,7 +65,7 @@
       "name" : "position",
       "type" : "String",
       "desc" : "m) text position default bottom",
-      "memberOf" : "Roo.bootstrap.nav.ProgressBarItem"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -83,7 +83,7 @@
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "e) Is item active default false",
-      "memberOf" : "Roo.bootstrap.nav.ProgressBarItem"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -101,7 +101,7 @@
       "name" : "html",
       "type" : "String",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.nav.ProgressBarItem"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -125,7 +125,7 @@
       "name" : "icon",
       "type" : "String",
       "desc" : "show icon instead of number",
-      "memberOf" : "Roo.bootstrap.nav.ProgressBarItem"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",
@@ -137,7 +137,7 @@
       "name" : "active",
       "type" : "Boolean",
       "desc" : "e) Is item active default false",
-      "memberOf" : "Roo.bootstrap.nav.ProgressBarItem"
+      "memberOf" : ""
     },
     {
       "name" : "name",

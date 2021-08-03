@@ -11,7 +11,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Card Uploader class - it's a button which when you add files to it, adds cards below with preview and the name...",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -60,7 +60,7 @@
       "name" : "images",
       "type" : "Array",
       "desc" : "an array of ?? Img objects ??? when loading existing files..",
-      "memberOf" : "Roo.bootstrap.form.CardUploader"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -150,7 +150,7 @@
       "name" : "errorTimeout",
       "type" : "Number",
       "desc" : "default 3000",
-      "memberOf" : "Roo.bootstrap.form.CardUploader"
+      "memberOf" : ""
     },
     {
       "name" : "actionMode",
@@ -252,7 +252,7 @@
       "name" : "html",
       "type" : "Array",
       "desc" : "The button text.",
-      "memberOf" : "Roo.bootstrap.form.CardUploader"
+      "memberOf" : ""
     },
     {
       "name" : "pressed",

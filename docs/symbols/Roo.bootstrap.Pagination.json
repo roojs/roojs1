@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Pagination class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -61,7 +61,7 @@
       "name" : "inverse",
       "type" : "Boolean",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.Pagination"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -115,7 +115,7 @@
       "name" : "size",
       "type" : "String",
       "desc" : "l)",
-      "memberOf" : "Roo.bootstrap.Pagination"
+      "memberOf" : ""
     },
     {
       "name" : "name",

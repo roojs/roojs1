@@ -13,7 +13,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Column class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -44,7 +44,7 @@
       "name" : "showarrow",
       "type" : "Boolean",
       "desc" : "e) show arrow default true",
-      "memberOf" : "Roo.bootstrap.TabGroup"
+      "memberOf" : ""
     },
     {
       "name" : "lg",
@@ -68,13 +68,13 @@
       "name" : "navId",
       "type" : "String",
       "desc" : "the navigation id (for use with navbars) - will be auto generated if it does not exist..",
-      "memberOf" : "Roo.bootstrap.TabGroup"
+      "memberOf" : ""
     },
     {
       "name" : "bullets",
       "type" : "Boolean",
       "desc" : "show bullets for the panels",
-      "memberOf" : "Roo.bootstrap.TabGroup"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -92,7 +92,7 @@
       "name" : "timer",
       "type" : "Number",
       "desc" : "auto slide timer .. default 0 millisecond",
-      "memberOf" : "Roo.bootstrap.TabGroup"
+      "memberOf" : ""
     },
     {
       "name" : "tooltip",
@@ -104,7 +104,7 @@
       "name" : "autoslide",
       "type" : "Boolean",
       "desc" : "e) auto slide .. default false",
-      "memberOf" : "Roo.bootstrap.TabGroup"
+      "memberOf" : ""
     },
     {
       "name" : "allowDomMove",
@@ -152,7 +152,7 @@
       "name" : "carousel",
       "type" : "Boolean",
       "desc" : "true to make the group behave like a carousel",
-      "memberOf" : "Roo.bootstrap.TabGroup"
+      "memberOf" : ""
     },
     {
       "name" : "hidden",

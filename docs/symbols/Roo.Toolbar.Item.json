@@ -15,7 +15,7 @@
   "tree_parent" : [],
   "desc" : "The base class that other classes should extend in order to get some basic common toolbar item functionality.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

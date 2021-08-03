@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "An implementation of {@link Roo.data.DataProxy} that reads a data object from an {@link Roo.data.Connection} object\nconfigured to reference a certain URL.<br><br>\n<p>\n<em>Note that this class cannot be used to retrieve data from a domain other than the domain\nfrom which the running page was served.<br><br>\n<p>\nFor cross-domain access to remote data, use an {@link Roo.data.ScriptTagProxy}.</em><br><br>\n<p>\nBe aware that to enable the browser to parse an XML document, the server must set\nthe Content-Type header in the HTTP response to \"text/xml\".",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -40,43 +40,43 @@
       "name" : "method",
       "type" : "String",
       "desc" : "(Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)",
-      "memberOf" : "Roo.data.HttpProxy"
+      "memberOf" : ""
     },
     {
       "name" : "timeout",
       "type" : "Number",
       "desc" : "(Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)",
-      "memberOf" : "Roo.data.HttpProxy"
+      "memberOf" : ""
     },
     {
       "name" : "autoAbort",
       "type" : "Boolean",
       "desc" : "(Optional) Whether this request should abort any pending requests. (defaults to false)",
-      "memberOf" : "Roo.data.HttpProxy"
+      "memberOf" : ""
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "(Optional) The default URL to be used for requests to the server. (defaults to undefined)",
-      "memberOf" : "Roo.data.HttpProxy"
+      "memberOf" : ""
     },
     {
       "name" : "extraParams",
       "type" : "Object",
       "desc" : "(Optional) An object containing properties which are used as\nextra parameters to each request made by this object. (defaults to undefined)",
-      "memberOf" : "Roo.data.HttpProxy"
+      "memberOf" : ""
     },
     {
       "name" : "disableCaching",
       "type" : "Boolean",
       "desc" : "(Optional) True to add a unique cache-buster param to GET requests. (defaults to true)",
-      "memberOf" : "Roo.data.HttpProxy"
+      "memberOf" : ""
     },
     {
       "name" : "defaultHeaders",
       "type" : "Object",
       "desc" : "(Optional) An object containing request headers which are added\n to each request made by this object. (defaults to undefined)",
-      "memberOf" : "Roo.data.HttpProxy"
+      "memberOf" : ""
     }
   ],
   "methods" : [

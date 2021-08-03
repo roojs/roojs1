@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Img class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -35,43 +35,43 @@
       "name" : "src",
       "type" : "String",
       "desc" : "image source",
-      "memberOf" : "Roo.bootstrap.Img"
+      "memberOf" : ""
     },
     {
       "name" : "border",
       "type" : "String",
       "desc" : "rounded | circle | thumbnail",
-      "memberOf" : "Roo.bootstrap.Img"
+      "memberOf" : ""
     },
     {
       "name" : "xsUrl",
       "type" : "String",
       "desc" : "xs image source",
-      "memberOf" : "Roo.bootstrap.Img"
+      "memberOf" : ""
     },
     {
       "name" : "smUrl",
       "type" : "String",
       "desc" : "sm image source",
-      "memberOf" : "Roo.bootstrap.Img"
+      "memberOf" : ""
     },
     {
       "name" : "mdUrl",
       "type" : "String",
       "desc" : "md image source",
-      "memberOf" : "Roo.bootstrap.Img"
+      "memberOf" : ""
     },
     {
       "name" : "lgUrl",
       "type" : "String",
       "desc" : "lg image source",
-      "memberOf" : "Roo.bootstrap.Img"
+      "memberOf" : ""
     },
     {
       "name" : "backgroundContain",
       "type" : "Boolean",
       "desc" : "(use style background and contain image in content)",
-      "memberOf" : "Roo.bootstrap.Img"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -131,13 +131,13 @@
       "name" : "imgResponsive",
       "type" : "Boolean",
       "desc" : "false | true",
-      "memberOf" : "Roo.bootstrap.Img"
+      "memberOf" : ""
     },
     {
       "name" : "alt",
       "type" : "String",
       "desc" : "image alternative text",
-      "memberOf" : "Roo.bootstrap.Img"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -161,7 +161,7 @@
       "name" : "target",
       "type" : "String",
       "desc" : "p)target for a href.",
-      "memberOf" : "Roo.bootstrap.Img"
+      "memberOf" : ""
     },
     {
       "name" : "name",
@@ -179,7 +179,7 @@
       "name" : "href",
       "type" : "String",
       "desc" : "a tag href",
-      "memberOf" : "Roo.bootstrap.Img"
+      "memberOf" : ""
     }
   ],
   "methods" : [

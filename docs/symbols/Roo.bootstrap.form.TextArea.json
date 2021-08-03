@@ -16,7 +16,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap TextArea class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -215,7 +215,7 @@
       "name" : "wrap",
       "type" : "string",
       "desc" : "d)Specifies how the text in a text area is to be wrapped when submitted in a form",
-      "memberOf" : "Roo.bootstrap.form.TextArea"
+      "memberOf" : ""
     },
     {
       "name" : "focusClass",
@@ -251,7 +251,7 @@
       "name" : "rows",
       "type" : "Number",
       "desc" : "Specifies the visible number of lines in a text area",
-      "memberOf" : "Roo.bootstrap.form.TextArea"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -305,7 +305,7 @@
       "name" : "cols",
       "type" : "Number",
       "desc" : "Specifies the visible width of a text area",
-      "memberOf" : "Roo.bootstrap.form.TextArea"
+      "memberOf" : ""
     },
     {
       "name" : "before",
@@ -353,7 +353,7 @@
       "name" : "resize",
       "type" : "string",
       "desc" : "l)",
-      "memberOf" : "Roo.bootstrap.form.TextArea"
+      "memberOf" : ""
     },
     {
       "name" : "placeholder",
@@ -413,7 +413,7 @@
       "name" : "html",
       "type" : "string",
       "desc" : "text",
-      "memberOf" : "Roo.bootstrap.form.TextArea"
+      "memberOf" : ""
     },
     {
       "name" : "preventMark",

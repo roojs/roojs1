@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Provides a common registry of all menu items on a page so that they can be easily accessed by id.",
   "isSingleton" : true,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

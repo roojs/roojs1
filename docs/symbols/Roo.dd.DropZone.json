@@ -11,7 +11,7 @@
   "tree_parent" : [],
   "desc" : "This class provides a container DD instance that proxies for multiple child node targets.<br />\nBy default, this class requires that child nodes accepting drop are registered with {@link Roo.dd.Registry}.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

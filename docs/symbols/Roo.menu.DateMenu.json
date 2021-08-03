@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "A menu containing a {@link Roo.menu.DateItem} component (which provides a date picker).",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

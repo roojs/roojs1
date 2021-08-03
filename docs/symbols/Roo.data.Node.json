@@ -15,7 +15,7 @@
   "tree_parent" : [],
   "desc" : "",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -46,13 +46,13 @@
       "name" : "id",
       "type" : "String",
       "desc" : "The id for this node. If one is not specified, one is generated.",
-      "memberOf" : "Roo.data.Node"
+      "memberOf" : ""
     },
     {
       "name" : "leaf",
       "type" : "Boolean",
       "desc" : "true if this node is a leaf and does not have children",
-      "memberOf" : "Roo.data.Node"
+      "memberOf" : ""
     }
   ],
   "methods" : [

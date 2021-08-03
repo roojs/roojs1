@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "A specialized drag proxy that supports a drop status icon, {@link Roo.Layer} styles and auto-repair.  This is the\ndefault drag proxy used by all Roo.dd components.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -31,13 +31,13 @@
       "name" : "dropNotAllowed",
       "type" : "String",
       "desc" : "The CSS class to apply to the status element when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
-      "memberOf" : "Roo.dd.StatusProxy"
+      "memberOf" : ""
     },
     {
       "name" : "dropAllowed",
       "type" : "String",
       "desc" : "The CSS class to apply to the status element when drop is allowed (defaults to \"x-dd-drop-ok\").",
-      "memberOf" : "Roo.dd.StatusProxy"
+      "memberOf" : ""
     }
   ],
   "methods" : [

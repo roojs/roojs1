@@ -14,7 +14,7 @@
   "tree_parent" : [],
   "desc" : "A combobox for multiple select items.\n\nFIXME - could do with a reset button..",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

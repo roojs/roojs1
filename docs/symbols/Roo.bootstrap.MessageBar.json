@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap MessageBar class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -59,13 +59,13 @@
       "name" : "beforeClass",
       "type" : "String",
       "desc" : "insert the bar before the given class",
-      "memberOf" : "Roo.bootstrap.MessageBar"
+      "memberOf" : ""
     },
     {
       "name" : "fixed",
       "type" : "Boolean",
       "desc" : "e) default false, fix the bar at the top",
-      "memberOf" : "Roo.bootstrap.MessageBar"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -95,7 +95,7 @@
       "name" : "html",
       "type" : "String",
       "desc" : "contents of the MessageBar",
-      "memberOf" : "Roo.bootstrap.MessageBar"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -119,7 +119,7 @@
       "name" : "closable",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : "Roo.bootstrap.MessageBar"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",
@@ -131,7 +131,7 @@
       "name" : "weight",
       "type" : "String",
       "desc" : "r) default info",
-      "memberOf" : "Roo.bootstrap.MessageBar"
+      "memberOf" : ""
     },
     {
       "name" : "name",

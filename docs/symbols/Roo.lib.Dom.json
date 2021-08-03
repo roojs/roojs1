@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Dom utils (from YIU afaik)",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -20,6 +20,71 @@
   "throws" : "",
   "requires" : "",
   "config" : [],
-  "methods" : [],
+  "methods" : [
+    {
+      "name" : "getViewWidth",
+      "type" : "function",
+      "desc" : "Get the view width",
+      "sig" : "(full)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "full",
+          "type" : "Boolean",
+          "desc" : "True will get the full document, otherwise it's the view width",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The width"
+        }
+      ]
+    },
+    {
+      "name" : "getViewHeight",
+      "type" : "function",
+      "desc" : "Get the view height",
+      "sig" : "(full)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "full",
+          "type" : "Boolean",
+          "desc" : "True will get the full document, otherwise it's the view height",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The height"
+        }
+      ]
+    }
+  ],
   "events" : []
 }

@@ -15,7 +15,7 @@
   "tree_parent" : [],
   "desc" : "Single checkbox field.  Can be used as a direct replacement for traditional checkbox fields.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -58,7 +58,7 @@
       "name" : "inputValue",
       "type" : "String",
       "desc" : "The value that should go into the generated input element's value attribute",
-      "memberOf" : "Roo.form.Checkbox"
+      "memberOf" : ""
     },
     {
       "name" : "fieldLabel",
@@ -130,13 +130,13 @@
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"checkbox\", autocomplete: \"off\"})",
-      "memberOf" : "Roo.form.Checkbox"
+      "memberOf" : ""
     },
     {
       "name" : "valueOff",
       "type" : "String",
       "desc" : "The value that should go into the generated input element's value when unchecked.",
-      "memberOf" : "Roo.form.Checkbox"
+      "memberOf" : ""
     },
     {
       "name" : "invalidText",
@@ -154,7 +154,7 @@
       "name" : "boxLabel",
       "type" : "String",
       "desc" : "The text that appears beside the checkbox",
-      "memberOf" : "Roo.form.Checkbox"
+      "memberOf" : ""
     },
     {
       "name" : "width",
@@ -178,19 +178,19 @@
       "name" : "fieldClass",
       "type" : "String",
       "desc" : "The default CSS class for the checkbox (defaults to \"x-form-field\")",
-      "memberOf" : "Roo.form.Checkbox"
+      "memberOf" : ""
     },
     {
       "name" : "checked",
       "type" : "Boolean",
       "desc" : "True if the the checkbox should render already checked (defaults to false)",
-      "memberOf" : "Roo.form.Checkbox"
+      "memberOf" : ""
     },
     {
       "name" : "focusClass",
       "type" : "String",
       "desc" : "The CSS class to use when the checkbox receives focus (defaults to undefined)",
-      "memberOf" : "Roo.form.Checkbox"
+      "memberOf" : ""
     },
     {
       "name" : "name",

@@ -37,7 +37,7 @@
   "tree_parent" : [],
   "desc" : "Basic Toolbar class.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -62,19 +62,19 @@
       "name" : "text",
       "type" : "string",
       "desc" : "",
-      "memberOf" : "Roo.Toolbar"
+      "memberOf" : ""
     },
     {
       "name" : "container",
       "type" : "String/HTMLElement/Element",
       "desc" : "The id or element that will contain the toolbar",
-      "memberOf" : "Roo.Toolbar"
+      "memberOf" : ""
     },
     {
       "name" : "items",
       "type" : "Array",
       "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
-      "memberOf" : "Roo.Toolbar"
+      "memberOf" : ""
     }
   ],
   "methods" : [

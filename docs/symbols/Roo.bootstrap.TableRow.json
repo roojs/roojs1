@@ -14,7 +14,7 @@
   ],
   "desc" : "Bootstrap TableRow class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -39,7 +39,7 @@
       "name" : "charoff",
       "type" : "Number",
       "desc" : "Sets the number of characters the content will be aligned from the character specified by the char attribute",
-      "memberOf" : "Roo.bootstrap.TableRow"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -51,7 +51,7 @@
       "name" : "bgcolor",
       "type" : "String",
       "desc" : "Specifies a background color for a table row",
-      "memberOf" : "Roo.bootstrap.TableRow"
+      "memberOf" : ""
     },
     {
       "name" : "tooltip",
@@ -75,13 +75,13 @@
       "name" : "align",
       "type" : "String",
       "desc" : "Aligns the content in a table row",
-      "memberOf" : "Roo.bootstrap.TableRow"
+      "memberOf" : ""
     },
     {
       "name" : "valign",
       "type" : "String",
       "desc" : "Vertical aligns the content in a table row",
-      "memberOf" : "Roo.bootstrap.TableRow"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -111,7 +111,7 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "row class",
-      "memberOf" : "Roo.bootstrap.TableRow"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",

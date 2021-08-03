@@ -23,7 +23,7 @@
   "tree_parent" : [],
   "desc" : "The base class for all items that render into menus.  BaseItem provides default rendering, activated state\nmanagement and base configuration options shared by all menu components.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : true,
   "isBuilderTop" : false,
@@ -54,13 +54,13 @@
       "name" : "activeClass",
       "type" : "String",
       "desc" : "The CSS class to use when the item becomes activated (defaults to \"x-menu-item-active\")",
-      "memberOf" : "Roo.menu.BaseItem"
+      "memberOf" : ""
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
       "desc" : "True to prevent creation of this menu item (defaults to false)",
-      "memberOf" : "Roo.menu.BaseItem"
+      "memberOf" : ""
     },
     {
       "name" : "hideMode",
@@ -72,19 +72,19 @@
       "name" : "handler",
       "type" : "Function",
       "desc" : "A function that will handle the click event of this menu item (defaults to undefined)",
-      "memberOf" : "Roo.menu.BaseItem"
+      "memberOf" : ""
     },
     {
       "name" : "hideDelay",
       "type" : "Number",
       "desc" : "Length of time in milliseconds to wait before hiding after a click (defaults to 100)",
-      "memberOf" : "Roo.menu.BaseItem"
+      "memberOf" : ""
     },
     {
       "name" : "hideOnClick",
       "type" : "Boolean",
       "desc" : "True to hide the containing menu after this item is clicked (defaults to true)",
-      "memberOf" : "Roo.menu.BaseItem"
+      "memberOf" : ""
     },
     {
       "name" : "allowDomMove",
@@ -102,7 +102,7 @@
       "name" : "canActivate",
       "type" : "Boolean",
       "desc" : "True if this item can be visually activated (defaults to false)",
-      "memberOf" : "Roo.menu.BaseItem"
+      "memberOf" : ""
     },
     {
       "name" : "disableClass",

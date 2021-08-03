@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "The default SelectionModel used by {@link Roo.grid.Grid}.\nIt supports multiple selections and keyboard selection/navigation.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -40,7 +40,7 @@
       "name" : "singleSelect",
       "type" : "Boolean",
       "desc" : "True to allow selection of only one row at a time (defaults to false)",
-      "memberOf" : "Roo.grid.RowSelectionModel"
+      "memberOf" : ""
     }
   ],
   "methods" : [

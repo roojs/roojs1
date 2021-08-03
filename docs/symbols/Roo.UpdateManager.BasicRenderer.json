@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Default Content renderer. Updates the elements innerHTML with the responseText.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

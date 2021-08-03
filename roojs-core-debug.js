@@ -1878,22 +1878,13 @@ Date.prototype.add = function(interval, value){
   }
   return d;
 };
-/*
- * Based on:
- * Ext JS Library 1.1.1
- * Copyright(c) 2006-2007, Ext JS, LLC.
- *
- * Originally Released Under LGPL - original licence link has changed is not relivant.
- *
- * Fork - LGPL
- * <script type="text/javascript">
- */
-
 /**
  * @class Roo.lib.Dom
+ * @licence LGPL
  * @static
  * 
  * Dom utils (from YIU afaik)
+ *
  * 
  **/
 Roo.lib.Dom = {
