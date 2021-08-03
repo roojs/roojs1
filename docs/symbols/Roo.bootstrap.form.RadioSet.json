@@ -13,7 +13,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap RadioSet class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -104,7 +104,7 @@
       "name" : "weight",
       "type" : "String",
       "desc" : "s) The text that appears beside the radio",
-      "memberOf" : "Roo.bootstrap.form.RadioSet"
+      "memberOf" : ""
     },
     {
       "name" : "autocomplete",
@@ -206,7 +206,7 @@
       "name" : "indicatorpos",
       "type" : "String",
       "desc" : "t) default left",
-      "memberOf" : "Roo.bootstrap.form.RadioSet"
+      "memberOf" : ""
     },
     {
       "name" : "align",
@@ -218,7 +218,7 @@
       "name" : "inline",
       "type" : "Boolean",
       "desc" : "e) inline the element (default true)",
-      "memberOf" : "Roo.bootstrap.form.RadioSet"
+      "memberOf" : ""
     },
     {
       "name" : "size",

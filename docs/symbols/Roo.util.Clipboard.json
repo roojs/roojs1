@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Clipboard UTILS",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -20,6 +20,33 @@
   "throws" : "",
   "requires" : "",
   "config" : [],
-  "methods" : [],
+  "methods" : [
+    {
+      "name" : "write",
+      "type" : "function",
+      "desc" : "Writes a string to the clipboard - using the Clipboard API if https, otherwise using text area.",
+      "sig" : "(text)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "to copy to clipboard",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    }
+  ],
   "events" : []
 }

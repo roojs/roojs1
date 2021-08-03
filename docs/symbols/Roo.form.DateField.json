@@ -13,7 +13,7 @@
   "tree_parent" : [],
   "desc" : "Provides a date input field with a {@link Roo.DatePicker} dropdown and automatic date validation.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -38,13 +38,13 @@
       "name" : "triggerClass",
       "type" : "String",
       "desc" : "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x-form-date-trigger'\nwhich displays a calendar icon).",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "useIso",
       "type" : "Boolean",
       "desc" : "if enabled, then the date field will use a hidden field to store the \nreal value as iso formated date. default (false)",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "hideMode",
@@ -80,7 +80,7 @@
       "name" : "disabledDates",
       "type" : "Array",
       "desc" : "An array of \"dates\" to disable, as strings. These strings will be used to build a dynamic regular\nexpression so they are very powerful. Some examples:\n<ul>\n<li>[\"03/08/2003\", \"09/16/2003\"] would disable those exact dates</li>\n<li>[\"03/08\", \"09/16\"] would disable those days for every year</li>\n<li>[\"^03/08\"] would only match the beginning (useful if you are using short years)</li>\n<li>[\"03/../2006\"] would disable every day in March 2006</li>\n<li>[\"^03\"] would disable every day in every March</li>\n</ul>\nIn order to support regular expressions, if you are using a date format that has \".\" in it, you will have to\nescape the dot when restricting dates. For example: [\"03\\\\.08\\\\.03\"].",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "width",
@@ -98,13 +98,13 @@
       "name" : "altFormats",
       "type" : "String",
       "desc" : "Multiple date formats separated by \"|\" to try when parsing a user input value and it doesn't match the defined\nformat (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "maxValue",
       "type" : "Date/String",
       "desc" : "The maximum allowed date. Can be either a Javascript date object or a string date in a\nvalid format (defaults to null).",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "allowDomMove",
@@ -116,7 +116,7 @@
       "name" : "minValue",
       "type" : "Date/String",
       "desc" : "The minimum allowed date. Can be either a Javascript date object or a string date in a\nvalid format (defaults to null).",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "height",
@@ -128,13 +128,13 @@
       "name" : "disabledDaysText",
       "type" : "String",
       "desc" : "The tooltip to display when the date falls on a disabled day (defaults to 'Disabled')",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "minText",
       "type" : "String",
       "desc" : "The error text to display when the date in the cell is before minValue (defaults to\n'The date in this field must be after {minValue}').",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "emptyText",
@@ -170,7 +170,7 @@
       "name" : "disabledDatesText",
       "type" : "String",
       "desc" : "The tooltip text to display when the date falls on a disabled date (defaults to 'Disabled')",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "minLengthText",
@@ -206,7 +206,7 @@
       "name" : "disabledDays",
       "type" : "Array",
       "desc" : "An array of days to disable, 0 based. For example, [0, 6] disables Sunday and Saturday (defaults to null).",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "hideTrigger",
@@ -242,7 +242,7 @@
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"10\", autocomplete: \"off\"})",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "allowLeadingSpace",
@@ -314,7 +314,7 @@
       "name" : "format",
       "type" : "String",
       "desc" : "The default date format string which can be overriden for localization support.  The format must be\nvalid according to {@link Date#parseDate} (defaults to 'm/d/y').",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "regex",
@@ -332,7 +332,7 @@
       "name" : "maxText",
       "type" : "String",
       "desc" : "The error text to display when the date in the cell is after maxValue (defaults to\n'The date in this field must be before {maxValue}').",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     },
     {
       "name" : "allowBlank",
@@ -356,7 +356,7 @@
       "name" : "invalidText",
       "type" : "String",
       "desc" : "The error text to display when the date in the field is invalid (defaults to\n'{value} is not a valid date - it must be in the format {format}').",
-      "memberOf" : "Roo.form.DateField"
+      "memberOf" : ""
     }
   ],
   "methods" : [

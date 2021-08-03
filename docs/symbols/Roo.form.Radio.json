@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "Single radio field.  Same as Checkbox, but provided as a convenience for automatically setting the input type.\nRadio grouping is handled automatically by the browser if you give each radio in a group the same name.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

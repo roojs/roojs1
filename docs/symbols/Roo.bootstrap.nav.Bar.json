@@ -21,7 +21,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Navbar class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : true,
   "isBuilderTop" : false,

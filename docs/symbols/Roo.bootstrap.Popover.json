@@ -81,7 +81,7 @@
   ],
   "desc" : "Bootstrap Popover class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : true,
@@ -106,7 +106,7 @@
       "name" : "modal",
       "type" : "Boolean",
       "desc" : "- popovers that are modal will mask the screen, and must be closed with another event.",
-      "memberOf" : "Roo.bootstrap.Popover"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -118,7 +118,7 @@
       "name" : "add",
       "type" : "String|Boolean|Roo.Element",
       "desc" : "click hander to trigger show over what element\n     - if false and it has a 'parent' then it will be automatically added to that element\n     - if string - Roo.get  will be called",
-      "memberOf" : "Roo.bootstrap.Popover"
+      "memberOf" : ""
     },
     {
       "name" : "tooltip",
@@ -142,13 +142,13 @@
       "name" : "delay",
       "type" : "Number",
       "desc" : "- delay before showing",
-      "memberOf" : "Roo.bootstrap.Popover"
+      "memberOf" : ""
     },
     {
       "name" : "trigger",
       "type" : "String",
       "desc" : "click || hover (or false to trigger manually)",
-      "memberOf" : "Roo.bootstrap.Popover"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -166,7 +166,7 @@
       "name" : "title",
       "type" : "String",
       "desc" : "of popover (or false to hide)",
-      "memberOf" : "Roo.bootstrap.Popover"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -184,13 +184,13 @@
       "name" : "(right|top|bottom|left|auto)",
       "type" : "String|function",
       "desc" : "placement how it is placed",
-      "memberOf" : "Roo.bootstrap.Popover"
+      "memberOf" : ""
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "contents of the popover   (or false to use children..)",
-      "memberOf" : "Roo.bootstrap.Popover"
+      "memberOf" : ""
     },
     {
       "name" : "cls",

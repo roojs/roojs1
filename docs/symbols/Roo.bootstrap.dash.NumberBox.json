@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap NumberBox class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -35,7 +35,7 @@
       "name" : "footer",
       "type" : "String",
       "desc" : "Footer text",
-      "memberOf" : "Roo.bootstrap.dash.NumberBox"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -65,7 +65,7 @@
       "name" : "content",
       "type" : "String",
       "desc" : "Box content",
-      "memberOf" : "Roo.bootstrap.dash.NumberBox"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -95,7 +95,7 @@
       "name" : "fhref",
       "type" : "String",
       "desc" : "Footer href",
-      "memberOf" : "Roo.bootstrap.dash.NumberBox"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -119,13 +119,13 @@
       "name" : "icon",
       "type" : "String",
       "desc" : "Box icon",
-      "memberOf" : "Roo.bootstrap.dash.NumberBox"
+      "memberOf" : ""
     },
     {
       "name" : "headline",
       "type" : "String",
       "desc" : "Box headline",
-      "memberOf" : "Roo.bootstrap.dash.NumberBox"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",

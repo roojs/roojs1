@@ -78,7 +78,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Container class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : true,
@@ -103,13 +103,13 @@
       "name" : "panel",
       "type" : "String",
       "desc" : "r) render as panel  - type - primary/success.....",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "footer",
       "type" : "String",
       "desc" : "content of footer (for panel)",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -139,31 +139,31 @@
       "name" : "jumbotron",
       "type" : "Boolean",
       "desc" : "is it a jumbotron element",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "sticky",
       "type" : "String",
       "desc" : "h) block to use as footer or body- needs css-bootstrap/sticky-footer.css",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
       "desc" : "e) hide the element",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "expanded",
       "type" : "Boolean",
       "desc" : "e) default true",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "rheader",
       "type" : "String",
       "desc" : "contet on the right of header",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -181,7 +181,7 @@
       "name" : "tag",
       "type" : "String",
       "desc" : "n) type of HTML tag.",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -199,13 +199,13 @@
       "name" : "well",
       "type" : "String",
       "desc" : "d) a well, large, small or medium.",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "content of element",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -217,7 +217,7 @@
       "name" : "clickable",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -235,25 +235,25 @@
       "name" : "header",
       "type" : "String",
       "desc" : "content of header (for panel)",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "icon",
       "type" : "String",
       "desc" : ".) glyphicon name",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "expandable",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "alert",
       "type" : "String",
       "desc" : "r) type alert (changes background / border...)",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",
@@ -265,7 +265,7 @@
       "name" : "fa",
       "type" : "String",
       "desc" : "font awesome icon",
-      "memberOf" : "Roo.bootstrap.Container"
+      "memberOf" : ""
     },
     {
       "name" : "name",

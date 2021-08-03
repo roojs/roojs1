@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "A selected item in the list\n Fred [x]  Brian [x]  [Pick another |v]",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

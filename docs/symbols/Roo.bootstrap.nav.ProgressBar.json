@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap NavProgressBar class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -109,7 +109,7 @@
       "name" : "NavProgressBar:bullets[]",
       "type" : "Roo.bootstrap.nav.ProgressItem",
       "desc" : "Bullets for the Nav Progress bar for the toolbar",
-      "memberOf" : "Roo.bootstrap.nav.ProgressBar"
+      "memberOf" : ""
     },
     {
       "name" : "name",

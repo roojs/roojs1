@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Reusable data formatting functions",
   "isSingleton" : true,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

@@ -78,7 +78,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Header class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -109,7 +109,7 @@
       "name" : "level",
       "type" : "Number",
       "desc" : "6) default 1",
-      "memberOf" : "Roo.bootstrap.Header"
+      "memberOf" : ""
     },
     {
       "name" : "tooltip",
@@ -157,7 +157,7 @@
       "name" : "html",
       "type" : "String",
       "desc" : "content of header",
-      "memberOf" : "Roo.bootstrap.Header"
+      "memberOf" : ""
     },
     {
       "name" : "cls",

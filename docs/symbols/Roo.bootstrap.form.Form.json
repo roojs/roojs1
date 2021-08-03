@@ -78,7 +78,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Form class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -103,7 +103,7 @@
       "name" : "labelAlign",
       "type" : "String",
       "desc" : "top | left (default top)",
-      "memberOf" : "Roo.bootstrap.form.Form"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -115,7 +115,7 @@
       "name" : "fileUpload",
       "type" : "Boolean",
       "desc" : "Set to true if this form is a file upload.",
-      "memberOf" : "Roo.bootstrap.form.Form"
+      "memberOf" : ""
     },
     {
       "name" : "tooltip",
@@ -139,7 +139,7 @@
       "name" : "align",
       "type" : "String",
       "desc" : "left  | right - for navbars",
-      "memberOf" : "Roo.bootstrap.form.Form"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -157,13 +157,13 @@
       "name" : "method",
       "type" : "String",
       "desc" : "GET | POST (default POST)",
-      "memberOf" : "Roo.bootstrap.form.Form"
+      "memberOf" : ""
     },
     {
       "name" : "errorMask",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : "Roo.bootstrap.form.Form"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -181,7 +181,7 @@
       "name" : "timeout",
       "type" : "Number",
       "desc" : "Timeout for form actions in seconds (default is 30 seconds).",
-      "memberOf" : "Roo.bootstrap.form.Form"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -193,13 +193,13 @@
       "name" : "loadMask",
       "type" : "Boolean",
       "desc" : "load mask when submit (default true)",
-      "memberOf" : "Roo.bootstrap.form.Form"
+      "memberOf" : ""
     },
     {
       "name" : "baseParams",
       "type" : "Object",
       "desc" : "Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.",
-      "memberOf" : "Roo.bootstrap.form.Form"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -217,7 +217,7 @@
       "name" : "maskBody",
       "type" : "Boolean",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.form.Form"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",
@@ -229,7 +229,7 @@
       "name" : "url",
       "type" : "String",
       "desc" : "The URL to use for form actions if one isn't supplied in the action options.",
-      "memberOf" : "Roo.bootstrap.form.Form"
+      "memberOf" : ""
     },
     {
       "name" : "name",
@@ -247,7 +247,7 @@
       "name" : "maskOffset",
       "type" : "Number",
       "desc" : "Default 100",
-      "memberOf" : "Roo.bootstrap.form.Form"
+      "memberOf" : ""
     }
   ],
   "methods" : [

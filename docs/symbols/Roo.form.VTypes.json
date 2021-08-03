@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Overridable validation definitions. The validations provided are basic and intended to be easily customizable and extended.",
   "isSingleton" : true,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

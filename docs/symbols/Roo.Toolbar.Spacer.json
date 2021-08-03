@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "A simple element that adds extra horizontal space to a toolbar.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

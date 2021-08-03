@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Showdown editable area",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -210,7 +210,7 @@
       "name" : "content",
       "type" : "string",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.form.Markdown"
+      "memberOf" : ""
     },
     {
       "name" : "focusClass",

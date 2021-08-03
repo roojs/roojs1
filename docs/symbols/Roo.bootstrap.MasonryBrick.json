@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap MasonryBrick class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -59,13 +59,13 @@
       "name" : "placetitle",
       "type" : "String",
       "desc" : "m)",
-      "memberOf" : "Roo.bootstrap.MasonryBrick"
+      "memberOf" : ""
     },
     {
       "name" : "inverse",
       "type" : "Boolean",
       "desc" : "defalut false",
-      "memberOf" : "Roo.bootstrap.MasonryBrick"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -83,13 +83,13 @@
       "name" : "title",
       "type" : "String",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.MasonryBrick"
+      "memberOf" : ""
     },
     {
       "name" : "videourl",
       "type" : "String",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.MasonryBrick"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -107,19 +107,19 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.MasonryBrick"
+      "memberOf" : ""
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.MasonryBrick"
+      "memberOf" : ""
     },
     {
       "name" : "preventDefault",
       "type" : "Boolean",
       "desc" : "defalut false",
-      "memberOf" : "Roo.bootstrap.MasonryBrick"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -143,7 +143,7 @@
       "name" : "size",
       "type" : "String",
       "desc" : "e)",
-      "memberOf" : "Roo.bootstrap.MasonryBrick"
+      "memberOf" : ""
     },
     {
       "name" : "name",
@@ -161,19 +161,19 @@
       "name" : "bgimage",
       "type" : "String",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.MasonryBrick"
+      "memberOf" : ""
     },
     {
       "name" : "isFitContainer",
       "type" : "Boolean",
       "desc" : "defalut true",
-      "memberOf" : "Roo.bootstrap.MasonryBrick"
+      "memberOf" : ""
     },
     {
       "name" : "href",
       "type" : "String",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.MasonryBrick"
+      "memberOf" : ""
     }
   ],
   "methods" : [

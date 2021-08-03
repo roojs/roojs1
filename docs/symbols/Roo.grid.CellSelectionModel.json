@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "This class provides the basic implementation for cell selection in a grid.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -40,7 +40,7 @@
       "name" : "enter_is_tab",
       "type" : "Boolean",
       "desc" : "Enter behaves the same as tab. (eg. goes to next cell) default: false",
-      "memberOf" : "Roo.grid.CellSelectionModel"
+      "memberOf" : ""
     }
   ],
   "methods" : [

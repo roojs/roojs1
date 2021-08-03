@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -107,7 +107,7 @@
       "name" : "loader",
       "type" : "TreeLoader",
       "desc" : "A TreeLoader to be used by this node (defaults to the loader defined on the tree)",
-      "memberOf" : "Roo.tree.AsyncTreeNode"
+      "memberOf" : ""
     },
     {
       "name" : "icon",

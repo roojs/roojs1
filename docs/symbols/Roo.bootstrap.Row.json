@@ -78,7 +78,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Row class (contains columns...)",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

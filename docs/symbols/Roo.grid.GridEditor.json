@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Class for creating and editable grid elements.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -65,7 +65,7 @@
       "name" : "field",
       "type" : "Roo.form.Field",
       "desc" : "Field to wrap (or xtyped)",
-      "memberOf" : "Roo.grid.GridEditor"
+      "memberOf" : ""
     },
     {
       "name" : "hideMode",

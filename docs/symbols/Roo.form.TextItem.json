@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Base class for form fields that provides default event handling, sizing, value handling and other functionality.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -47,7 +47,7 @@
       "name" : "tag",
       "type" : "String",
       "desc" : "the tag for this item (default div)",
-      "memberOf" : "Roo.form.TextItem"
+      "memberOf" : ""
     },
     {
       "name" : "allowDomMove",
@@ -59,7 +59,7 @@
       "name" : "html",
       "type" : "String",
       "desc" : "the content for this item",
-      "memberOf" : "Roo.form.TextItem"
+      "memberOf" : ""
     },
     {
       "name" : "actionMode",

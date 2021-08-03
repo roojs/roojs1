@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Layout Masonry class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -35,7 +35,7 @@
       "name" : "isResizingContainer",
       "type" : "Boolean",
       "desc" : "= not sure if this is used..",
-      "memberOf" : "Roo.bootstrap.LayoutMasonryAuto"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -47,13 +47,13 @@
       "name" : "maxCols",
       "type" : "Number",
       "desc" : "maximum number of columns",
-      "memberOf" : "Roo.bootstrap.LayoutMasonryAuto"
+      "memberOf" : ""
     },
     {
       "name" : "isOriginLeft",
       "type" : "Boolean",
       "desc" : "= left align?",
-      "memberOf" : "Roo.bootstrap.LayoutMasonryAuto"
+      "memberOf" : ""
     },
     {
       "name" : "tooltip",
@@ -77,13 +77,13 @@
       "name" : "isLayoutInstant",
       "type" : "Boolean",
       "desc" : "= no animation?",
-      "memberOf" : "Roo.bootstrap.LayoutMasonryAuto"
+      "memberOf" : ""
     },
     {
       "name" : "padHeight",
       "type" : "Number",
       "desc" : "padding below box..",
-      "memberOf" : "Roo.bootstrap.LayoutMasonryAuto"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -113,7 +113,7 @@
       "name" : "isAutoInitial",
       "type" : "Boolean",
       "desc" : "defalut true",
-      "memberOf" : "Roo.bootstrap.LayoutMasonryAuto"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -137,7 +137,7 @@
       "name" : "columnWidth",
       "type" : "Number",
       "desc" : "width of the columns",
-      "memberOf" : "Roo.bootstrap.LayoutMasonryAuto"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",
@@ -149,7 +149,7 @@
       "name" : "isOriginTop",
       "type" : "Boolean",
       "desc" : "= top align?",
-      "memberOf" : "Roo.bootstrap.LayoutMasonryAuto"
+      "memberOf" : ""
     },
     {
       "name" : "name",
@@ -167,7 +167,7 @@
       "name" : "isFitWidth",
       "type" : "Boolean",
       "desc" : "- resize the width..",
-      "memberOf" : "Roo.bootstrap.LayoutMasonryAuto"
+      "memberOf" : ""
     }
   ],
   "methods" : [

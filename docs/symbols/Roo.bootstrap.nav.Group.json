@@ -13,7 +13,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap NavGroup class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -62,25 +62,25 @@
       "name" : "align",
       "type" : "String",
       "desc" : "t)",
-      "memberOf" : "Roo.bootstrap.nav.Group"
+      "memberOf" : ""
     },
     {
       "name" : "inverse",
       "type" : "Boolean",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.nav.Group"
+      "memberOf" : ""
     },
     {
       "name" : "pilltype",
       "type" : "Boolean",
       "desc" : "default true (turn to off to disable active toggle)",
-      "memberOf" : "Roo.bootstrap.nav.Group"
+      "memberOf" : ""
     },
     {
       "name" : "navId",
       "type" : "String",
       "desc" : "- reference Id for navbar.",
-      "memberOf" : "Roo.bootstrap.nav.Group"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -134,7 +134,7 @@
       "name" : "type",
       "type" : "String",
       "desc" : "b) default nav",
-      "memberOf" : "Roo.bootstrap.nav.Group"
+      "memberOf" : ""
     },
     {
       "name" : "name",

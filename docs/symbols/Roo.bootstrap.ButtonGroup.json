@@ -15,7 +15,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap ButtonGroup class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -40,7 +40,7 @@
       "name" : "btn",
       "type" : "Boolean",
       "desc" : "true | false",
-      "memberOf" : "Roo.bootstrap.ButtonGroup"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -70,19 +70,19 @@
       "name" : "align",
       "type" : "String",
       "desc" : "vertical | justified  (default none)",
-      "memberOf" : "Roo.bootstrap.ButtonGroup"
+      "memberOf" : ""
     },
     {
       "name" : "direction",
       "type" : "String",
       "desc" : "up | down (default down)",
-      "memberOf" : "Roo.bootstrap.ButtonGroup"
+      "memberOf" : ""
     },
     {
       "name" : "toolbar",
       "type" : "Boolean",
       "desc" : "false | true",
-      "memberOf" : "Roo.bootstrap.ButtonGroup"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -136,7 +136,7 @@
       "name" : "size",
       "type" : "String",
       "desc" : "lg | sm | xs (default empty normal)",
-      "memberOf" : "Roo.bootstrap.ButtonGroup"
+      "memberOf" : ""
     },
     {
       "name" : "name",

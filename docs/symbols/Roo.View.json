@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "Create a \"View\" for an element based on a data model or UpdateManager and the supplied DomHelper template. \nThis class also supports single and multi selection modes. <br>\nCreate a data model bound view:\n <pre><code>\n var store = new Roo.data.Store(...);\n\n var view = new Roo.View({\n    el : \"my-element\",\n    tpl : '&lt;div id=\"{0}\"&gt;{2} - {1}&lt;/div&gt;', // auto create template\n \n    singleSelect: true,\n    selectedClass: \"ydataview-selected\",\n    store: store\n });\n\n // listen for node click?\n view.on(\"click\", function(vw, index, node, e){\n alert('Node \"' + node.id + '\" at index: ' + index + \" was clicked.\");\n });\n\n // load XML data\n dataModel.load(\"foobar.xml\");\n </code></pre>\n For an example of creating a JSON/UpdateManager view, see {@link Roo.JsonView}.\n<br><br>\n<b>Note: The root of your template must be a single node. Table/row implementations may work but are not supported due to\nIE\"s limited insertion support with tables and Opera\"s faulty event bubbling.</b>\n\nNote: old style constructor is still suported (container, template, config)",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -37,7 +37,7 @@
       "name" : "selectedClass",
       "type" : "String",
       "desc" : "The css class to add to selected nodes",
-      "memberOf" : "Roo.View"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -49,61 +49,61 @@
       "name" : "dataName",
       "type" : "String",
       "desc" : "the named area of the template to use as the data area\n                         Works with domtemplates roo-name=\"name\"",
-      "memberOf" : "Roo.View"
+      "memberOf" : ""
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "to display on mask (default Loading)",
-      "memberOf" : "Roo.View"
+      "memberOf" : ""
     },
     {
       "name" : "multiSelect",
       "type" : "Boolean",
       "desc" : "Allow multiple selection",
-      "memberOf" : "Roo.View"
+      "memberOf" : ""
     },
     {
       "name" : "emptyText",
       "type" : "String",
       "desc" : "The empty text to show when nothing is loaded.",
-      "memberOf" : "Roo.View"
+      "memberOf" : ""
     },
     {
       "name" : "store",
       "type" : "Roo.data.Store",
       "desc" : "Data store to load data from.",
-      "memberOf" : "Roo.View"
+      "memberOf" : ""
     },
     {
       "name" : "toggleSelect",
       "type" : "Boolean",
       "desc" : "- selecting",
-      "memberOf" : "Roo.View"
+      "memberOf" : ""
     },
     {
       "name" : "singleSelect",
       "type" : "Boolean",
       "desc" : "Allow single selection",
-      "memberOf" : "Roo.View"
+      "memberOf" : ""
     },
     {
       "name" : "tickable",
       "type" : "Boolean",
       "desc" : "- selecting",
-      "memberOf" : "Roo.View"
+      "memberOf" : ""
     },
     {
       "name" : "el",
       "type" : "String|Roo.Element",
       "desc" : "The container element.",
-      "memberOf" : "Roo.View"
+      "memberOf" : ""
     },
     {
       "name" : "tpl",
       "type" : "String|Roo.Template",
       "desc" : "The template used by this View",
-      "memberOf" : "Roo.View"
+      "memberOf" : ""
     }
   ],
   "methods" : [

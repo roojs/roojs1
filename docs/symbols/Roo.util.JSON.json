@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Modified version of Douglas Crockford\"s json.js that doesn\"t\nmess with the Object prototype \nhttp://www.json.org/js.html",
   "isSingleton" : true,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "Create a new Panel, that can contain a layout.Border.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -130,7 +130,7 @@
       "name" : "layout",
       "type" : "Roo.BorderLayout",
       "desc" : "The layout for this panel",
-      "memberOf" : "Roo.bootstrap.panel.Nest"
+      "memberOf" : ""
     },
     {
       "name" : "adjustments",

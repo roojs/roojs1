@@ -14,7 +14,7 @@
   ],
   "desc" : "Bootstrap Menu class - container for MenuItems - normally has to be added to a object that supports the menu property",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -39,7 +39,7 @@
       "name" : "isLink",
       "type" : "bool",
       "desc" : "e)  the menu has link disable auto expand and collaspe (default false)",
-      "memberOf" : "Roo.bootstrap.menu.Menu"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -69,13 +69,13 @@
       "name" : "align",
       "type" : "String",
       "desc" : "default tl-bl? == below  - how the menu should be aligned.",
-      "memberOf" : "Roo.bootstrap.menu.Menu"
+      "memberOf" : ""
     },
     {
       "name" : "hidden",
       "type" : "bool",
       "desc" : "if the menu should be hidden when rendered.",
-      "memberOf" : "Roo.bootstrap.menu.Menu"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -93,7 +93,7 @@
       "name" : "stopEvent",
       "type" : "bool",
       "desc" : "e)  Stop event after trigger press (default true)",
-      "memberOf" : "Roo.bootstrap.menu.Menu"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -129,13 +129,13 @@
       "name" : "hideTrigger",
       "type" : "bool",
       "desc" : "e)  default false - hide the carret for trigger.",
-      "memberOf" : "Roo.bootstrap.menu.Menu"
+      "memberOf" : ""
     },
     {
       "name" : "registerMenu",
       "type" : "Boolean",
       "desc" : "True (default) - means that clicking on screen etc. hides it.",
-      "memberOf" : "Roo.bootstrap.menu.Menu"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",
@@ -147,7 +147,7 @@
       "name" : "type",
       "type" : "String",
       "desc" : "u) type of menu",
-      "memberOf" : "Roo.bootstrap.menu.Menu"
+      "memberOf" : ""
     },
     {
       "name" : "name",

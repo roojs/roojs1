@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap LocationPicker class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -41,7 +41,7 @@
       "name" : "streetViewControl",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "tooltip",
@@ -65,7 +65,7 @@
       "name" : "disableDoubleClickZoom",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -95,19 +95,19 @@
       "name" : "latitude",
       "type" : "Number",
       "desc" : "Position when init default 0",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "enableAutocomplete",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "markerTitle",
       "type" : "String",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -119,7 +119,7 @@
       "name" : "zoom",
       "type" : "Number",
       "desc" : "default 15",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -137,19 +137,19 @@
       "name" : "longitude",
       "type" : "Number",
       "desc" : "Position when init default 0",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "mapTypeControl",
       "type" : "Boolean",
       "desc" : "default false",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "radius",
       "type" : "Number",
       "desc" : "default 0",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",
@@ -161,25 +161,25 @@
       "name" : "mapTypeId",
       "type" : "String",
       "desc" : "default google.maps.MapTypeId.ROADMAP",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "scrollwheel",
       "type" : "Boolean",
       "desc" : "default true",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "locationName",
       "type" : "String",
       "desc" : "",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "enableReverseGeocode",
       "type" : "Boolean",
       "desc" : "default true",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     },
     {
       "name" : "name",
@@ -197,7 +197,7 @@
       "name" : "draggable",
       "type" : "Boolean",
       "desc" : "default true",
-      "memberOf" : "Roo.bootstrap.LocationPicker"
+      "memberOf" : ""
     }
   ],
   "methods" : [

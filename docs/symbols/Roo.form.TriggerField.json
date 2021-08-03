@@ -23,7 +23,7 @@
   "tree_parent" : [],
   "desc" : "Provides a convenient wrapper for TextFields that adds a clickable trigger button (looks like a combobox by default).\nThe trigger has no default action, so you must assign a function to implement the trigger click handler by\noverriding {@link #onTriggerClick}. You can create a TriggerField directly, as it renders exactly like a combobox\nfor which you can provide a custom implementation.  For example:\n<pre><code>\nvar trigger = new Roo.form.TriggerField();\ntrigger.onTriggerClick = myTriggerFn;\ntrigger.applyTo('my-field');\n</code></pre>\n\nHowever, in general you will most likely want to use TriggerField as the base class for a reusable component.\n{@link Roo.form.DateField} and {@link Roo.form.ComboBox} are perfect examples of this.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -48,7 +48,7 @@
       "name" : "triggerClass",
       "type" : "String",
       "desc" : "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",
-      "memberOf" : "Roo.form.TriggerField"
+      "memberOf" : ""
     },
     {
       "name" : "hideMode",
@@ -168,7 +168,7 @@
       "name" : "hideTrigger",
       "type" : "Boolean",
       "desc" : "True to hide the trigger element and display only the base text field (defaults to false)",
-      "memberOf" : "Roo.form.TriggerField"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -204,7 +204,7 @@
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"16\", autocomplete: \"off\"})",
-      "memberOf" : "Roo.form.TriggerField"
+      "memberOf" : ""
     },
     {
       "name" : "invalidClass",

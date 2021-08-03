@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "An input with International dial-code selection",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -157,7 +157,7 @@
       "name" : "store",
       "type" : "Roo.data.Store",
       "desc" : "[required] The data store to which this combo is bound (defaults to undefined)",
-      "memberOf" : "Roo.bootstrap.form.PhoneInput"
+      "memberOf" : ""
     },
     {
       "name" : "hasFeedback",
@@ -361,7 +361,7 @@
       "name" : "defaultDialCode",
       "type" : "String",
       "desc" : "default '+852'",
-      "memberOf" : "Roo.bootstrap.form.PhoneInput"
+      "memberOf" : ""
     },
     {
       "name" : "placeholder",
@@ -421,7 +421,7 @@
       "name" : "preferedCountries",
       "type" : "Array",
       "desc" : "default []",
-      "memberOf" : "Roo.bootstrap.form.PhoneInput"
+      "memberOf" : ""
     },
     {
       "name" : "preventMark",

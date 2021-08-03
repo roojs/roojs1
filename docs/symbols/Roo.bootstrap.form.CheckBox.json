@@ -11,7 +11,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap CheckBox class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -102,13 +102,13 @@
       "name" : "inputValue",
       "type" : "String",
       "desc" : "The value that should go into the generated input element's value when checked.",
-      "memberOf" : "Roo.bootstrap.form.CheckBox"
+      "memberOf" : ""
     },
     {
       "name" : "weight",
       "type" : "String",
       "desc" : "s) The text that appears beside the checkbox",
-      "memberOf" : "Roo.bootstrap.form.CheckBox"
+      "memberOf" : ""
     },
     {
       "name" : "autocomplete",
@@ -120,7 +120,7 @@
       "name" : "tooltip",
       "type" : "String",
       "desc" : "label tooltip",
-      "memberOf" : "Roo.bootstrap.form.CheckBox"
+      "memberOf" : ""
     },
     {
       "name" : "labelAlign",
@@ -144,7 +144,7 @@
       "name" : "boxLabel",
       "type" : "String",
       "desc" : "The text that appears beside the checkbox",
-      "memberOf" : "Roo.bootstrap.form.CheckBox"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -198,7 +198,7 @@
       "name" : "groupId",
       "type" : "String",
       "desc" : "the checkbox group id // normal just use for checkbox",
-      "memberOf" : "Roo.bootstrap.form.CheckBox"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -234,13 +234,13 @@
       "name" : "checked",
       "type" : "Boolean",
       "desc" : "initnal the element",
-      "memberOf" : "Roo.bootstrap.form.CheckBox"
+      "memberOf" : ""
     },
     {
       "name" : "inline",
       "type" : "Boolean",
       "desc" : "inline the element (default false)",
-      "memberOf" : "Roo.bootstrap.form.CheckBox"
+      "memberOf" : ""
     },
     {
       "name" : "size",
@@ -420,7 +420,7 @@
       "name" : "valueOff",
       "type" : "String",
       "desc" : "The value that should go into the generated input element's value when unchecked.",
-      "memberOf" : "Roo.bootstrap.form.CheckBox"
+      "memberOf" : ""
     },
     {
       "name" : "preventMark",

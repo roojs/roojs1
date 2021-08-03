@@ -8,7 +8,7 @@
   "tree_parent" : [],
   "desc" : "A Collection class that maintains both numeric indexes and keys and exposes events.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

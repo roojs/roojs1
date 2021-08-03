@@ -14,7 +14,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap TabPane class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -75,7 +75,7 @@
       "name" : "title",
       "type" : "String",
       "desc" : "title of panel",
-      "memberOf" : "Roo.bootstrap.dash.TabPane"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -117,7 +117,7 @@
       "name" : "active",
       "type" : "Boolean",
       "desc" : "e) Default false",
-      "memberOf" : "Roo.bootstrap.dash.TabPane"
+      "memberOf" : ""
     },
     {
       "name" : "name",

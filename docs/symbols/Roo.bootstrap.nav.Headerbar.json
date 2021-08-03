@@ -20,7 +20,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Sidebar class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -45,13 +45,13 @@
       "name" : "brand_href",
       "type" : "String",
       "desc" : "href of the brand",
-      "memberOf" : "Roo.bootstrap.nav.Headerbar"
+      "memberOf" : ""
     },
     {
       "name" : "desktopCenter",
       "type" : "Boolean",
       "desc" : "should the header be centered on desktop using a container class",
-      "memberOf" : "Roo.bootstrap.nav.Headerbar"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -93,13 +93,13 @@
       "name" : "brand",
       "type" : "String",
       "desc" : "what is brand",
-      "memberOf" : "Roo.bootstrap.nav.Headerbar"
+      "memberOf" : ""
     },
     {
       "name" : "position",
       "type" : "String",
       "desc" : "p) position",
-      "memberOf" : "Roo.bootstrap.nav.Headerbar"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -117,7 +117,7 @@
       "name" : "srButton",
       "type" : "Boolean",
       "desc" : "generate the (screen reader / mobile) sr-only button   default true",
-      "memberOf" : "Roo.bootstrap.nav.Headerbar"
+      "memberOf" : ""
     },
     {
       "name" : "tag",
@@ -141,7 +141,7 @@
       "name" : "mobilerow",
       "type" : "Roo.bootstrap.Row",
       "desc" : "- a row to display on mobile only..",
-      "memberOf" : "Roo.bootstrap.nav.Headerbar"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -213,7 +213,7 @@
       "name" : "autohide",
       "type" : "Boolean",
       "desc" : "a top nav bar header that hides on scroll.",
-      "memberOf" : "Roo.bootstrap.nav.Headerbar"
+      "memberOf" : ""
     }
   ],
   "methods" : [

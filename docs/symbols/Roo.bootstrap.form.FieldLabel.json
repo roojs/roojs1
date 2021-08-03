@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap FieldLabel class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -59,7 +59,7 @@
       "name" : "validClass",
       "type" : "String",
       "desc" : "DEPRICATED - BS4 uses is-valid",
-      "memberOf" : "Roo.bootstrap.form.FieldLabel"
+      "memberOf" : ""
     },
     {
       "name" : "can_build_overlaid",
@@ -77,13 +77,13 @@
       "name" : "tag",
       "type" : "String",
       "desc" : "tag of the element default label",
-      "memberOf" : "Roo.bootstrap.form.FieldLabel"
+      "memberOf" : ""
     },
     {
       "name" : "indicatorpos",
       "type" : "String",
       "desc" : "t) default left",
-      "memberOf" : "Roo.bootstrap.form.FieldLabel"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -101,25 +101,25 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "class of the element",
-      "memberOf" : "Roo.bootstrap.form.FieldLabel"
+      "memberOf" : ""
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "contents of the element",
-      "memberOf" : "Roo.bootstrap.form.FieldLabel"
+      "memberOf" : ""
     },
     {
       "name" : "allowBlank",
       "type" : "Boolean",
       "desc" : "e) target allowBlank default true",
-      "memberOf" : "Roo.bootstrap.form.FieldLabel"
+      "memberOf" : ""
     },
     {
       "name" : "invalidClass",
       "type" : "String",
       "desc" : "DEPRICATED - BS4 uses is-invalid",
-      "memberOf" : "Roo.bootstrap.form.FieldLabel"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -137,7 +137,7 @@
       "name" : "iconTooltip",
       "type" : "String",
       "desc" : "default \"This field is required\"",
-      "memberOf" : "Roo.bootstrap.form.FieldLabel"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",
@@ -149,7 +149,7 @@
       "name" : "target",
       "type" : "String",
       "desc" : "label target",
-      "memberOf" : "Roo.bootstrap.form.FieldLabel"
+      "memberOf" : ""
     },
     {
       "name" : "name",

@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap HtmlEditor class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -103,19 +103,19 @@
       "name" : "resizable",
       "type" : "String",
       "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
-      "memberOf" : "Roo.bootstrap.form.HtmlEditor"
+      "memberOf" : ""
     },
     {
       "name" : "toolbars",
       "type" : "Array",
       "desc" : "Array of toolbars. - defaults to just the Standard one",
-      "memberOf" : "Roo.bootstrap.form.HtmlEditor"
+      "memberOf" : ""
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : "Roo.bootstrap.form.HtmlEditor"
+      "memberOf" : ""
     },
     {
       "name" : "autocomplete",
@@ -151,7 +151,7 @@
       "name" : "height",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : "Roo.bootstrap.form.HtmlEditor"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -253,7 +253,7 @@
       "name" : "buttons",
       "type" : "Array",
       "desc" : "Array of toolbar's buttons. - defaults to empty",
-      "memberOf" : "Roo.bootstrap.form.HtmlEditor"
+      "memberOf" : ""
     },
     {
       "name" : "labelxs",
@@ -361,7 +361,7 @@
       "name" : "stylesheets",
       "type" : "Array",
       "desc" : "url of stylesheets. set to [] to disable stylesheets.",
-      "memberOf" : "Roo.bootstrap.form.HtmlEditor"
+      "memberOf" : ""
     },
     {
       "name" : "resize",

@@ -78,7 +78,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Link Class (eg. '<a href>')",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -103,7 +103,7 @@
       "name" : "anchor",
       "type" : "String",
       "desc" : "name for the anchor link",
-      "memberOf" : "Roo.bootstrap.Link"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -157,13 +157,13 @@
       "name" : "html",
       "type" : "String",
       "desc" : "the content of the link.",
-      "memberOf" : "Roo.bootstrap.Link"
+      "memberOf" : ""
     },
     {
       "name" : "preventDefault",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : "Roo.bootstrap.Link"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -175,7 +175,7 @@
       "name" : "alt",
       "type" : "String",
       "desc" : "image alternative text",
-      "memberOf" : "Roo.bootstrap.Link"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -199,13 +199,13 @@
       "name" : "target",
       "type" : "String",
       "desc" : "p) target for a href.",
-      "memberOf" : "Roo.bootstrap.Link"
+      "memberOf" : ""
     },
     {
       "name" : "fa",
       "type" : "String",
       "desc" : "- favicon",
-      "memberOf" : "Roo.bootstrap.Link"
+      "memberOf" : ""
     },
     {
       "name" : "name",
@@ -223,7 +223,7 @@
       "name" : "href",
       "type" : "String",
       "desc" : "a tag href",
-      "memberOf" : "Roo.bootstrap.Link"
+      "memberOf" : ""
     }
   ],
   "methods" : [

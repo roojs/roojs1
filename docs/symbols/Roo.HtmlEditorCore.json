@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "Provides a the editing component for the HTML editors in Roo. (bootstrap and Roo.form)\n\nany element that has display set to 'none' can cause problems in Safari and Firefox.<br/><br/>",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -33,13 +33,13 @@
       "name" : "allowComments",
       "type" : "boolean",
       "desc" : "- default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.",
-      "memberOf" : "Roo.HtmlEditorCore"
+      "memberOf" : ""
     },
     {
       "name" : "the",
       "type" : "Roo.form.HtmlEditor|Roo.bootstrap.HtmlEditor",
       "desc" : "owner field",
-      "memberOf" : "Roo.HtmlEditorCore"
+      "memberOf" : ""
     },
     {
       "name" : "hideMode",
@@ -63,19 +63,19 @@
       "name" : "width",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : "Roo.HtmlEditorCore"
+      "memberOf" : ""
     },
     {
       "name" : "resizable",
       "type" : "String",
       "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
-      "memberOf" : "Roo.HtmlEditorCore"
+      "memberOf" : ""
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : "Roo.HtmlEditorCore"
+      "memberOf" : ""
     },
     {
       "name" : "disableClass",
@@ -87,7 +87,7 @@
       "name" : "stylesheets",
       "type" : "Array",
       "desc" : "url of stylesheets. set to [] to disable stylesheets.",
-      "memberOf" : "Roo.HtmlEditorCore"
+      "memberOf" : ""
     }
   ],
   "methods" : [

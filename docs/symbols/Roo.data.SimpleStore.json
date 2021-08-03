@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "Small helper class to make creating Stores from Array data easier.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -34,7 +34,7 @@
       "name" : "an",
       "type" : "Object",
       "desc" : "existing reader (eg. copied from another store)",
-      "memberOf" : "Roo.data.SimpleStore"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -46,19 +46,19 @@
       "name" : "id",
       "type" : "Number",
       "desc" : "The array index of the record id. Leave blank to auto generate ids.",
-      "memberOf" : "Roo.data.SimpleStore"
+      "memberOf" : ""
     },
     {
       "name" : "fields",
       "type" : "Array",
       "desc" : "An array of field definition objects, or field name strings.",
-      "memberOf" : "Roo.data.SimpleStore"
+      "memberOf" : ""
     },
     {
       "name" : "proxy",
       "type" : "Roo.data.DataProxy",
       "desc" : "[not-required]",
-      "memberOf" : "Roo.data.SimpleStore"
+      "memberOf" : ""
     },
     {
       "name" : "multiSort",
@@ -82,7 +82,7 @@
       "name" : "data",
       "type" : "Array",
       "desc" : "The multi-dimensional array of data",
-      "memberOf" : "Roo.data.SimpleStore"
+      "memberOf" : ""
     },
     {
       "name" : "sortInfo",
@@ -100,7 +100,7 @@
       "name" : "reader",
       "type" : "Roo.data.Reader",
       "desc" : "[not-required]",
-      "memberOf" : "Roo.data.SimpleStore"
+      "memberOf" : ""
     },
     {
       "name" : "isLocal",

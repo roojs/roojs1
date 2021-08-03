@@ -20,7 +20,7 @@
   "tree_parent" : [],
   "desc" : "A DragDrop implementation where the linked element follows the\nmouse cursor during a drag.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

@@ -43,7 +43,7 @@
   "tree_parent" : [],
   "desc" : "Base class for form fields that provides default event handling, sizing, value handling and other functionality.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -68,7 +68,7 @@
       "name" : "inputType",
       "type" : "String",
       "desc" : "The type attribute for input fields -- e.g. radio, text, password (defaults to \"text\").",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "listeners",
@@ -80,25 +80,25 @@
       "name" : "msgFx",
       "type" : "String",
       "desc" : "<b>Experimental</b> The effect used when displaying a validation message under the field (defaults to 'normal').",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "fieldLabel",
       "type" : "String",
       "desc" : "Label to use when rendering a form.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "validationDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "msgTarget",
       "type" : "String",
       "desc" : "The location where error text should display.  Should be one of the following values (defaults to 'qtip'):\n<pre>\nValue         Description\n-----------   ----------------------------------------------------------------------\nqtip          Display a quick tip when the user hovers over the field\ntitle         Display a default browser title attribute popup\nunder         Add a block div beneath the field containing the error text\nside          Add an error icon to the right of the field with a popup on hover\n[element id]  Add the error text directly to the innerHTML of the specified element\n</pre>",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "hideMode",
@@ -110,13 +110,13 @@
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "True to disable the field (defaults to false).",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "value",
       "type" : "Mixed",
       "desc" : "A value to initialize this field with.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "allowDomMove",
@@ -128,37 +128,37 @@
       "name" : "tabIndex",
       "type" : "Number",
       "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "readOnly",
       "type" : "Boolean",
       "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "invalidClass",
       "type" : "String",
       "desc" : "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the field's underlying element.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"20\", autocomplete: \"off\"})",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "invalidText",
       "type" : "String",
       "desc" : "The error text to use when marking a field invalid and no message is provided (defaults to \"The value in this field is invalid\")",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "actionMode",
@@ -176,37 +176,37 @@
       "name" : "validateOnBlur",
       "type" : "Boolean",
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "validationEvent",
       "type" : "String/Boolean",
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "name",
       "type" : "String",
       "desc" : "The field's HTML name attribute.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "qtip",
       "type" : "String",
       "desc" : "Mouse over tip",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "focusClass",
       "type" : "String",
       "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "fieldClass",
       "type" : "String",
       "desc" : "The default CSS class for the field (defaults to \"x-form-field\")",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : ""
     },
     {
       "name" : "height",

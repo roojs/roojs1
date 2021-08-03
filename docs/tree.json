@@ -1308,7 +1308,7 @@
           {
             "name" : "Roo.lib.Dom",
             "cn" : [],
-            "is_class" : false
+            "is_class" : true
           }
         ],
         "is_class" : false
@@ -1477,7 +1477,7 @@
           {
             "name" : "Roo.util.Clipboard",
             "cn" : [],
-            "is_class" : false
+            "is_class" : true
           },
           {
             "name" : "Roo.util.DelayedTask",

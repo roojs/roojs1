@@ -85,7 +85,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Element class (basically a DIV used to make random stuff )",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -146,7 +146,7 @@
       "name" : "tag",
       "type" : "String",
       "desc" : "tag of the element",
-      "memberOf" : "Roo.bootstrap.Element"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -164,25 +164,25 @@
       "name" : "cls",
       "type" : "String",
       "desc" : "class of the element",
-      "memberOf" : "Roo.bootstrap.Element"
+      "memberOf" : ""
     },
     {
       "name" : "html",
       "type" : "String",
       "desc" : "contents of the element",
-      "memberOf" : "Roo.bootstrap.Element"
+      "memberOf" : ""
     },
     {
       "name" : "preventDefault",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : "Roo.bootstrap.Element"
+      "memberOf" : ""
     },
     {
       "name" : "clickable",
       "type" : "Boolean",
       "desc" : "e) default false",
-      "memberOf" : "Roo.bootstrap.Element"
+      "memberOf" : ""
     },
     {
       "name" : "xattr",
@@ -206,7 +206,7 @@
       "name" : "role",
       "type" : "String",
       "desc" : "default blank - set to button to force cursor pointer",
-      "memberOf" : "Roo.bootstrap.Element"
+      "memberOf" : ""
     },
     {
       "name" : "name",

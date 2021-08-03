@@ -13,7 +13,7 @@
   "tree_parent" : [],
   "desc" : "Wrapper around the FCKEditor http://www.fckeditor.net",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -176,7 +176,7 @@
       "name" : "fck",
       "type" : "Object",
       "desc" : "BasePath",
-      "memberOf" : "Roo.form.FCKeditor"
+      "memberOf" : ""
     },
     {
       "name" : "inputType",

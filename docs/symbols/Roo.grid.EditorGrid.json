@@ -13,7 +13,7 @@
   "tree_parent" : [],
   "desc" : "Class for creating and editable grid.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -194,7 +194,7 @@
       "name" : "clicksToEdit",
       "type" : "Number",
       "desc" : "The number of clicks on a cell required to display the cell's editor (defaults to 2)",
-      "memberOf" : "Roo.grid.EditorGrid"
+      "memberOf" : ""
     },
     {
       "name" : "autoSizeHeaders",

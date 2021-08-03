@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Alert class - shows an alert area box\neg\n<div class=\"alert alert-danger\" role=\"alert\"><span class=\"fa fa-exclamation-triangle\"></span><span class=\"sr-only\">Error:</span>\n  Enter a valid email address\n</div>",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -71,19 +71,19 @@
       "name" : "title",
       "type" : "String",
       "desc" : "The title of alert",
-      "memberOf" : "Roo.bootstrap.Alert"
+      "memberOf" : ""
     },
     {
       "name" : "seconds",
       "type" : "Number",
       "desc" : "default:-1 Number of seconds until it disapears (-1 means never.)",
-      "memberOf" : "Roo.bootstrap.Alert"
+      "memberOf" : ""
     },
     {
       "name" : "close",
       "type" : "Boolean",
       "desc" : "true to show a x closer",
-      "memberOf" : "Roo.bootstrap.Alert"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -101,7 +101,7 @@
       "name" : "html",
       "type" : "String",
       "desc" : "The content of alert",
-      "memberOf" : "Roo.bootstrap.Alert"
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -131,13 +131,13 @@
       "name" : "weight",
       "type" : "String",
       "desc" : "r) Weight of the message",
-      "memberOf" : "Roo.bootstrap.Alert"
+      "memberOf" : ""
     },
     {
       "name" : "fa",
       "type" : "String",
       "desc" : "font-awesomeicon",
-      "memberOf" : "Roo.bootstrap.Alert"
+      "memberOf" : ""
     },
     {
       "name" : "name",

@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Simple class that can provide a shadow effect for any element.  Note that the element MUST be absolutely positioned,\nand the shadow does not provide any shimming.  This should be used only in simple cases -- for more advanced\nfunctionality that can also provide the same shadow effect, see the {@link Roo.Layer} class.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -31,13 +31,13 @@
       "name" : "mode",
       "type" : "String",
       "desc" : "The shadow display mode.  Supports the following options:<br />\nsides: Shadow displays on both sides and bottom only<br />\nframe: Shadow displays equally on all four sides<br />\ndrop: Traditional bottom-right drop shadow (default)",
-      "memberOf" : "Roo.Shadow"
+      "memberOf" : ""
     },
     {
       "name" : "offset",
       "type" : "String",
       "desc" : "The number of pixels to offset the shadow from the element (defaults to 4)",
-      "memberOf" : "Roo.Shadow"
+      "memberOf" : ""
     }
   ],
   "methods" : [

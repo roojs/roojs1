@@ -11,7 +11,7 @@
   "tree_parent" : [],
   "desc" : "A menu item that wraps the {@link Roo.ColorPalette} component.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

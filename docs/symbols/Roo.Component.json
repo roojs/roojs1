@@ -188,7 +188,7 @@
   "tree_parent" : [],
   "desc" : "Base class for all major Roo components.  All subclasses of Component can automatically participate in the standard\nRoo component lifecycle of creation, rendering and destruction.  They also have automatic support for basic hide/show\nand enable/disable behavior.  Component allows any subclass to be lazy-rendered into any {@link Roo.Container} and\nto be automatically registered with the {@link Roo.ComponentMgr} so that it can be referenced at any time via {@link Roo.getCmp}.\nAll visual components (widgets) that require rendering into a layout should subclass Component.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -219,25 +219,25 @@
       "name" : "hideMode",
       "type" : "String",
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-      "memberOf" : "Roo.Component"
+      "memberOf" : ""
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : ""
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
-      "memberOf" : "Roo.Component"
+      "memberOf" : ""
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : ""
     }
   ],
   "methods" : [

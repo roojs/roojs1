@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "A DnD enabled version of Roo.View.",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -43,25 +43,25 @@
       "name" : "dropGroup",
       "type" : "String/Array",
       "desc" : "The ddgroup name(s) for the View's DropZone.",
-      "memberOf" : "Roo.DDView"
+      "memberOf" : ""
     },
     {
       "name" : "allowCopy",
       "type" : "Boolean",
       "desc" : "Causes ctrl/drag operations to copy nodes rather than move.",
-      "memberOf" : "Roo.DDView"
+      "memberOf" : ""
     },
     {
       "name" : "copy",
       "type" : "Boolean",
       "desc" : "Causes drag operations to copy nodes rather than move.",
-      "memberOf" : "Roo.DDView"
+      "memberOf" : ""
     },
     {
       "name" : "dragGroup",
       "type" : "String/Array",
       "desc" : "The ddgroup name(s) for the View's DragZone.",
-      "memberOf" : "Roo.DDView"
+      "memberOf" : ""
     }
   ],
   "methods" : [

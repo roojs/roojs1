@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "The defaults collection enables customizing the default properties of UpdateManager",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

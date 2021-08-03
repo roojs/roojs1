@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Radio class",
   "isSingleton" : false,
-  "isStatic" : false,
+  "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -71,7 +71,7 @@
       "name" : "value",
       "type" : "String",
       "desc" : "- the value of radio",
-      "memberOf" : "Roo.bootstrap.form.Radio"
+      "memberOf" : ""
     },
     {
       "name" : "style",
@@ -107,7 +107,7 @@
       "name" : "boxLabel",
       "type" : "String",
       "desc" : "- the label associated",
-      "memberOf" : "Roo.bootstrap.form.Radio"
+      "memberOf" : ""
     },
     {
       "name" : "dataId",
