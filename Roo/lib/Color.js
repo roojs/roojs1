@@ -19,6 +19,7 @@ http://www.safalra.com/web-design/javascript/
 
 /*
  * @class Roo.lib.Color
+ * @constructor
  * An abstract Color implementation. Concrete Color implementations should use
  * an instance of this function as their prototype, and implement the getRGB and
  * getHSL functions. getRGB should return an object representing the RGB
@@ -29,13 +30,15 @@ http://www.safalra.com/web-design/javascript/
  * the range [0,100], and the alpha component in the range [0,1].
  */
 Roo.lib.Color = function(){
-
+  
+}
+Roo.apply(Roo.lib.Color.prototype, {
   /**
    * @returns an object representing the RGBA components of this Color. The red,
    * green, and blue components are converted to integers in the range [0,255].
    * The alpha is a value in the range [0,1].
    */
-  this.getIntegerRGB = function(){
+  getIntegerRGB : function(){
 
     // get the RGB components of this Color
     var rgb = this.getRGB();
@@ -48,14 +51,14 @@ Roo.lib.Color = function(){
       'a' : rgb.a
     };
 
-  };
+  },
 
   /**
    * @returns an object representing the RGBA components of this Color. The red,
    * green, and blue components are converted to numbers in the range [0,100].
    * The alpha is a value in the range [0,1].
    */
-  this.getPercentageRGB = function(){
+  getPercentageRGB : function(){
 
     // get the RGB components of this Color
     var rgb = this.getRGB();
@@ -68,14 +71,15 @@ Roo.lib.Color = function(){
       'a' : rgb.a
     };
 
-  };
+  },
 
   /**
    * @returns a string representing this Color as a CSS hexadecimal RGB Color
    * value - that is, a string of the form #RRGGBB where each of RR, GG, and BB
    * are two-digit hexadecimal numbers.
    */
-  this.getCSSHexadecimalRGB = function(){
+  getCSSHexadecimalRGB : function()
+  {
 
     // get the integer RGB components
     var rgb = this.getIntegerRGB();
@@ -91,14 +95,14 @@ Roo.lib.Color = function(){
         + (g16.length == 2 ? g16 : '0' + g16)
         + (b16.length == 2 ? b16 : '0' + b16);
 
-  };
+  },
 
   /**
    * @returns a string representing this Color as a CSS integer RGB Color
    * value - that is, a string of the form rgb(r,g,b) where each of r, g, and b
    * are integers in the range [0,255].
    */
-  this.getCSSIntegerRGB = function(){
+  getCSSIntegerRGB : function(){
 
     // get the integer RGB components
     var rgb = this.getIntegerRGB();
@@ -106,14 +110,14 @@ Roo.lib.Color = function(){
     // return the CSS RGB Color value
     return 'rgb(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ')';
 
-  };
+  },
 
   /**
    * @returns Returns a string representing this Color as a CSS integer RGBA Color
    * value - that is, a string of the form rgba(r,g,b,a) where each of r, g, and
    * b are integers in the range [0,255] and a is in the range [0,1].
    */
-  this.getCSSIntegerRGBA = function(){
+  getCSSIntegerRGBA : function(){
 
     // get the integer RGB components
     var rgb = this.getIntegerRGB();
@@ -121,14 +125,14 @@ Roo.lib.Color = function(){
     // return the CSS integer RGBA Color value
     return 'rgb(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + rgb.a + ')';
 
-  };
+  },
 
   /**
    * @returns a string representing this Color as a CSS percentage RGB Color
    * value - that is, a string of the form rgb(r%,g%,b%) where each of r, g, and
    * b are in the range [0,100].
    */
-  this.getCSSPercentageRGB = function(){
+  getCSSPercentageRGB : function(){
 
     // get the percentage RGB components
     var rgb = this.getPercentageRGB();
@@ -136,14 +140,14 @@ Roo.lib.Color = function(){
     // return the CSS RGB Color value
     return 'rgb(' + rgb.r + '%,' + rgb.g + '%,' + rgb.b + '%)';
 
-  };
+  },
 
   /**
    * @returns a string representing this Color as a CSS percentage RGBA Color
    * value - that is, a string of the form rgba(r%,g%,b%,a) where each of r, g,
    * and b are in the range [0,100] and a is in the range [0,1].
    */
-  this.getCSSPercentageRGBA = function(){
+  getCSSPercentageRGBA : function(){
 
     // get the percentage RGB components
     var rgb = this.getPercentageRGB();
@@ -151,14 +155,14 @@ Roo.lib.Color = function(){
     // return the CSS percentage RGBA Color value
     return 'rgb(' + rgb.r + '%,' + rgb.g + '%,' + rgb.b + '%,' + rgb.a + ')';
 
-  };
+  },
 
   /**
    * @returns a string representing this Color as a CSS HSL Color value - that
    * is, a string of the form hsl(h,s%,l%) where h is in the range [0,100] and
    * s and l are in the range [0,100].
    */
-  this.getCSSHSL = function(){
+  getCSSHSL : function(){
 
     // get the HSL components
     var hsl = this.getHSL();
@@ -166,14 +170,14 @@ Roo.lib.Color = function(){
     // return the CSS HSL Color value
     return 'hsl(' + hsl.h + ',' + hsl.s + '%,' + hsl.l + '%)';
 
-  };
+  },
 
   /**
    * @returns a string representing this Color as a CSS HSLA Color value - that
    * is, a string of the form hsla(h,s%,l%,a) where h is in the range [0,100],
    * s and l are in the range [0,100], and a is in the range [0,1].
    */
-  this.getCSSHSLA = function(){
+  getCSSHSLA : function(){
 
     // get the HSL components
     var hsl = this.getHSL();
@@ -181,7 +185,7 @@ Roo.lib.Color = function(){
     // return the CSS HSL Color value
     return 'hsl(' + hsl.h + ',' + hsl.s + '%,' + hsl.l + '%,' + hsl.a + ')';
 
-  };
+  },
 
   /**
    * Sets the Color of the specified node to this Color. This functions sets
@@ -189,12 +193,12 @@ Roo.lib.Color = function(){
    * 
    * @param {DomElement} node - the node whose Color should be set
    */
-  this.setNodeColor = function(node){
+  setNodeColor : function(node){
 
     // set the Color of the node
     node.style.color = this.getCSSHexadecimalRGB();
 
-  };
+  },
 
   /**
    * Sets the background Color of the specified node to this Color. This
@@ -203,50 +207,50 @@ Roo.lib.Color = function(){
    *
    * @param {DomElement} node - the node whose background Color should be set
    */
-  this.setNodeBackgroundColor = function(node){
+  setNodeBackgroundColor : function(node){
 
     // set the background Color of the node
     node.style.backgroundColor = this.getCSSHexadecimalRGB();
 
-  };
+  },
   // convert between formats..
-  this.toRGB= function()
+  toRGB: function()
   {
     var r = this.getIntegerRGB();
     return new Roo.lib.RGBColor(r.r,r.g,r.b,r.a);
     
-  }
-  this.toHSL = function()
+  },
+  toHSL : function()
   {
      var hsl = this.getHSL();
   // return the CSS HSL Color value
     return new Roo.lib.HSLColor(hsl.h,  hsl.s, hsl.l ,  hsl.a );
     
-  }
+  },
   
-  this.toHSV = function()
+  toHSV : function()
   {
     var rgb = this.toRGB();
     var hsv = rgb.getHSV();
    // return the CSS HSL Color value
     return new Roo.lib.HSVColor(hsv.h,  hsv.s, hsv.v ,  hsv.a );
     
-  }
+  },
   
   // modify  v = 0 ... 1 (eg. 0.5)
-    this.saturate = function(v)
-    {
-        var rgb = this.toRGB();
-        var hsv = rgb.getHSV();
-        return new Roo.lib.HSVColor(hsv.h,  hsv.s * v, hsv.v ,  hsv.a );
-        
-    
-    }
+  saturate : function(v)
+  {
+      var rgb = this.toRGB();
+      var hsv = rgb.getHSV();
+      return new Roo.lib.HSVColor(hsv.h,  hsv.s * v, hsv.v ,  hsv.a );
+      
+  
+  }
   
    
   
 
-}
+});
 
 
 /*
