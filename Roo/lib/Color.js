@@ -278,7 +278,7 @@ Roo.lib.RGBColor = function (r, g, b, a){
   var hsv = null;
   var hsl = null;
 
-  /**
+  /* 
    * //private returns the HSV or HSL hue component of this RGBColor. The hue is in the
    * range [0,360). The parameters are:
    *
