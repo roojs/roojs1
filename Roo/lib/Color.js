@@ -17,7 +17,9 @@ http://www.safalra.com/web-design/javascript/
 */
 
 
-/* An abstract Colour implementation. Concrete Colour implementations should use
+/*
+ * @class Roo.lib.Color
+ * An abstract Colour implementation. Concrete Colour implementations should use
  * an instance of this function as their prototype, and implement the getRGB and
  * getHSL functions. getRGB should return an object representing the RGB
  * components of this Colour, with the red, green, and blue components in the
@@ -26,7 +28,7 @@ http://www.safalra.com/web-design/javascript/
  * component in the range [0,360), the saturation and lightness components in
  * the range [0,100], and the alpha component in the range [0,1].
  */
-Roo.lib.Colour = function(){
+Roo.lib.Color = function(){
 
   /* Returns an object representing the RGBA components of this Colour. The red,
    * green, and blue components are converted to integers in the range [0,255].
