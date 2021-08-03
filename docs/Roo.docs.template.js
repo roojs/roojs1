@@ -153,7 +153,7 @@ Roo.docs.template  = {
             }
             
             
-            if ($.memberOf.length && $.memberOf != data.name) && $.isStatic){
+            if ($.memberOf.length && ($.memberOf != data.name) && $.isStatic){
                 return true;
             }
             if ($.isStatic) {
