@@ -23,6 +23,7 @@ Roo.lib.Anim
 Roo.lib.AnimBase
 Roo.lib.AnimMgr
 Roo.lib.Beizer
+Roo.lib.Color
 Roo.lib.ColorAnim
 Roo.lib.Easing
 Roo.lib.Motion
