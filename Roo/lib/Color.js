@@ -426,7 +426,10 @@ Roo.lib.RGBColor = function (r, g, b, a){
 Roo.lib.RGBColor.prototype = new Roo.lib.Color();
 
 
-/* Creates a Color specified in the HSV Color space, with an optional alpha
+/*
+ * @class Roo.lib.HSVColor
+ * @extends Roo.lib.Color
+ * Creates a Color specified in the HSV Color space, with an optional alpha
  * component. The parameters are:
  *
  * h - the hue component, wrapped to the range [0,360)
@@ -577,7 +580,11 @@ Roo.lib.HSVColor = function (h, s, v, a){
 Roo.lib.HSVColor.prototype = new Roo.lib.Color();
 
 
-/* Creates a Color specified in the HSL Color space, with an optional alpha
+/**
+ * @class Roo.lib.HSLColor
+ * @extends Roo.lib.Color
+ * 
+ * Creates a Color specified in the HSL Color space, with an optional alpha
  * component. The parameters are:
  *
  * h - the hue component, wrapped to the range [0,360)
