@@ -143,22 +143,22 @@ Roo.docs.template  = {
             
             if (data.isSingleton) {
              
-            if ($.isStatic && $.memberOf != data.name) { // it's a singleton - can not inherit static methods.
-            return true;
+                if ($.isStatic && $.memberOf.length && $.memberOf != data.name) { // it's a singleton - can not inherit static methods.
+                    return true;
+                }
+            
+                $.isInherited = ($.memberOf.length && $.memberOf != data.name);
+                ownMethods.push($);
+                return true;
             }
             
-            $.isInherited = ($.memberOf != data.name);
-            ownMethods.push($);
-            return true;
-            }
             
-            
-            if (($.memberOf != data.name) && $.isStatic){
-            return true;
+            if ($.memberOf.length && $.memberOf != data.name) && $.isStatic){
+                return true;
             }
             if ($.isStatic) {
-            $.isInherited = ($.memberOf != data.name);
-            ownMethods.push($);
+                $.isInherited = ($.memberOf != data.name);
+                ownMethods.push($);
             }
             
             return true;
