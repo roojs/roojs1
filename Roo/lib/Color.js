@@ -29,9 +29,9 @@ http://www.safalra.com/web-design/javascript/
  * component in the range [0,360), the saturation and lightness components in
  * the range [0,100], and the alpha component in the range [0,1].
  */
-Roo.lib.Color = function(){
-  
-}
+Roo.lib.Color = function() { }
+
+
 Roo.apply(Roo.lib.Color.prototype, {
   /**
    * @returns an object representing the RGBA components of this Color. The red,
