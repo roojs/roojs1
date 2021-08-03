@@ -33,6 +33,11 @@ Roo.lib.Color = function() { }
 
 
 Roo.apply(Roo.lib.Color.prototype, {
+  
+  rgb : null,
+  hsv : null,
+  hsl : null,
+  
   /**
    * @returns an object representing the RGBA components of this Color. The red,
    * green, and blue components are converted to integers in the range [0,255].
@@ -271,7 +276,7 @@ Roo.lib.RGBColor = function (r, g, b, a){
   var alpha = (a === undefined ? 1 : Math.max(0, Math.min(1, a)));
 
   // store the RGB components after clipping them if necessary
-  var rgb =
+  this.rgb =
       {
         'r' : Math.max(0, Math.min(255, r)),
         'g' : Math.max(0, Math.min(255, g)),
@@ -279,8 +284,7 @@ Roo.lib.RGBColor = function (r, g, b, a){
       };
 
   // initialise the HSV and HSL components to null
-  var hsv = null;
-  var hsl = null;
+  
 
   /* 
    * //private returns the HSV or HSL hue component of this RGBColor. The hue is in the
@@ -289,48 +293,55 @@ Roo.lib.RGBColor = function (r, g, b, a){
    * maximum - the maximum of the RGB component values
    * range   - the range of the RGB component values
    */
-  function getHue(maximum, range){
+   
 
-    // check whether the range is zero
-    if (range == 0){
+}
+// this does an 'exteds'
+Roo.extend(Roo.lib.RGBColor, Roo.lib.Color, {
 
-      // set the hue to zero (any hue is acceptable as the Color is grey)
-      var hue = 0;
-
-    }else{
-
-      // determine which of the components has the highest value and set the hue
-      switch (maximum){
-
-        // red has the highest value
-        case rgb.r:
-          var hue = (rgb.g - rgb.b) / range * 60;
-          if (hue < 0) hue += 360;
-          break;
-
-        // green has the highest value
-        case rgb.g:
-          var hue = (rgb.b - rgb.r) / range * 60 + 120;
-          break;
-
-        // blue has the highest value
-        case rgb.b:
-          var hue = (rgb.r - rgb.g) / range * 60 + 240;
-          break;
-
+  
+    getHue  : function(maximum, range){
+  
+      // check whether the range is zero
+      if (range == 0){
+  
+        // set the hue to zero (any hue is acceptable as the Color is grey)
+        var hue = 0;
+  
+      }else{
+  
+        // determine which of the components has the highest value and set the hue
+        switch (maximum){
+  
+          // red has the highest value
+          case rgb.r:
+            var hue = (rgb.g - rgb.b) / range * 60;
+            if (hue < 0) hue += 360;
+            break;
+  
+          // green has the highest value
+          case rgb.g:
+            var hue = (rgb.b - rgb.r) / range * 60 + 120;
+            break;
+  
+          // blue has the highest value
+          case rgb.b:
+            var hue = (rgb.r - rgb.g) / range * 60 + 240;
+            break;
+  
+        }
+  
       }
-
-    }
-
-    // return the hue
-    return hue;
-
-  }
+  
+      // return the hue
+      return hue;
+  
+    },
 
   /* //private Calculates and stores the HSV components of this RGBColor so that they can
    * be returned be the getHSV function.
    */
-  function calculateHSV(){
+   calculateHSV : function(){
 
     // get the maximum and range of the RGB component values
     var maximum = Math.max(rgb.r, rgb.g, rgb.b);
@@ -339,17 +350,17 @@ Roo.lib.RGBColor = function (r, g, b, a){
     // store the HSV components
     hsv =
         {
-          'h' : getHue(maximum, range),
+          'h' : this.getHue(maximum, range),
           's' : (maximum == 0 ? 0 : 100 * range / maximum),
           'v' : maximum / 2.55
         };
 
-  }
+  },
 
   /* //private Calculates and stores the HSL components of this RGBColor so that they can
    * be returned be the getHSL function.
    */
-  function calculateHSL(){
+   calculateHSL : function(){
 
     // get the maximum and range of the RGB component values
     var maximum = Math.max(rgb.r, rgb.g, rgb.b);
@@ -361,19 +372,19 @@ Roo.lib.RGBColor = function (r, g, b, a){
     // store the HSL components
     hsl =
         {
-          'h' : getHue(maximum, range),
+          'h' : this.getHue(maximum, range),
           's' : (range == 0 ? 0 : range / 2.55 / (l < 0.5 ? l * 2 : 2 - l * 2)),
           'l' : 100 * l
         };
 
-  }
+  },
 
   /**
    * @returns the RGB and alpha components of this RGBColor as an object with r,
    * g, b, and a properties. r, g, and b are in the range [0,255] and a is in
    * the range [0,1].
    */
-  this.getRGB = function(){
+  getRGB: function(){
 
     // return the RGB components
     return {
@@ -383,17 +394,18 @@ Roo.lib.RGBColor = function (r, g, b, a){
       'a' : alpha
     };
 
-  };
+  },
 
   /**
    * @returns the HSV and alpha components of this RGBColor as an object with h,
    * s, v, and a properties. h is in the range [0,360), s and v are in the range
    * [0,100], and a is in the range [0,1].
    */
-  this.getHSV = function(){
+  getHSV : function()
+  {
 
     // calculate the HSV components if necessary
-    if (hsv == null) calculateHSV();
+    if (hsv == null) this.calculateHSV();
 
     // return the HSV components
     return {
@@ -403,17 +415,17 @@ Roo.lib.RGBColor = function (r, g, b, a){
       'a' : alpha
     };
 
-  };
+  },
 
   /**
    * @returns the HSL and alpha components of this RGBColor as an object with h,
    * s, l, and a properties. h is in the range [0,360), s and l are in the range
    * [0,100], and a is in the range [0,1].
    */
-  this.getHSL = function(){
+  getHSL : function(){
 
     // calculate the HSV components if necessary
-    if (hsl == null) calculateHSL();
+    if (hsl == null) this.calculateHSL();
 
     // return the HSL components
     return {
@@ -423,12 +435,8 @@ Roo.lib.RGBColor = function (r, g, b, a){
       'a' : alpha
     };
 
-  };
-
-}
-// this does an 'exteds'
-Roo.lib.RGBColor.prototype = new Roo.lib.Color();
-
+  }
+});
 
 /*
  * @class Roo.lib.HSVColor
@@ -505,7 +513,7 @@ Roo.lib.HSVColor = function (h, s, v, a){
   /* Calculates and stores the HSL components of this HSVColor so that they can
    * be returned be the getHSL function.
    */
-  function calculateHSL(){
+  calculateHSL : function (){
 
     // determine the lightness in the range [0,100]
     var l = (2 - hsv.s / 100) * hsv.v / 2;
@@ -568,7 +576,7 @@ Roo.lib.HSVColor = function (h, s, v, a){
   this.getHSL = function(){
 
     // calculate the HSL components if necessary
-    if (hsl == null) calculateHSL();
+    if (hsl == null) this.calculateHSL();
 
     // return the HSL components
     return {
@@ -678,7 +686,7 @@ Roo.lib.HSLColor = function(h, s, l, a){
   /* Calculates and stores the HSV components of this HSLColor so that they can
    * be returned be the getHSL function.
    */
-  function calculateHSV(){
+   calculateHSV : function(){
 
     // set a temporary value
     var t = hsl.s * (hsl.l < 50 ? hsl.l : 100 - hsl.l) / 100;
@@ -724,7 +732,7 @@ Roo.lib.HSLColor = function(h, s, l, a){
   this.getHSV = function(){
 
     // calculate the HSV components if necessary
-    if (hsv == null) calculateHSV();
+    if (hsv == null) this.calculateHSV();
 
     // return the HSV components
     return {
