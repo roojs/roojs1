@@ -1,0 +1,27 @@
+{
+  "name" : "Roo.lib.HSLColor",
+  "augments" : [
+    "Roo.lib.Color"
+  ],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "Creates a Color specified in the HSL Color space, with an optional alpha\ncomponent. The parameters are:\n\nh - the hue component, wrapped to the range [0,360)\ns - the saturation component, clipped to the range [0,100]\nl - the lightness component, clipped to the range [0,100]\na - the alpha component, clipped to the range [0,1] - this parameter is\n    optional and defaults to 1",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "HSLColor",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [],
+  "methods" : [],
+  "events" : []
+}

@@ -1,0 +1,29 @@
+{
+  "name" : "Roo.lib.Color",
+  "augments" : [],
+  "childClasses" : {
+    "Roo.lib.Color" : [
+      "Roo.lib.HSLColor"
+    ]
+  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "Roo.lib.Color",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [],
+  "methods" : [],
+  "events" : []
+}

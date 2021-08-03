@@ -1306,9 +1306,19 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.lib.Color",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
             "name" : "Roo.lib.Dom",
             "cn" : [],
             "is_class" : true
+          },
+          {
+            "name" : "Roo.lib.HSLColor",
+            "cn" : [],
+            "is_class" : false
           }
         ],
         "is_class" : false
