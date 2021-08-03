@@ -73,7 +73,7 @@ All selectors, attribute filters and pseudos below can be combined infinitely in
     <li> <b>E{display%=2}</b> css value "display" that is evenly divisible by 2</li>
     <li> <b>E{display!=none}</b> css value "display" that does not equal "none"</li>
 </ul>
- * @singleton
+ * @static
  */
 Roo.DomQuery = function(){
     var cache = {}, simpleCache = {}, valueCache = {};

@@ -13,7 +13,7 @@
  * Modified version of Douglas Crockford"s json.js that doesn"t
  * mess with the Object prototype 
  * http://www.json.org/js.html
- * @singleton
+ * @static
  */
 Roo.util.JSON = new (function(){
     var useHasOwn = {}.hasOwnProperty ? true : false;

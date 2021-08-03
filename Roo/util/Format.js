@@ -12,7 +12,7 @@
 /**
  * @class Roo.util.Format
  * Reusable data formatting functions
- * @singleton
+ * @static
  */
 Roo.util.Format = function(){
     var trimRe = /^\s+|\s+$/g;
