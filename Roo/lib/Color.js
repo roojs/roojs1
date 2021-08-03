@@ -279,7 +279,7 @@ Roo.lib.RGBColor = function (r, g, b, a){
   var hsl = null;
 
   /**
-   * @returns the HSV or HSL hue component of this RGBColor. The hue is in the
+   * //private returns the HSV or HSL hue component of this RGBColor. The hue is in the
    * range [0,360). The parameters are:
    *
    * maximum - the maximum of the RGB component values
@@ -323,7 +323,7 @@ Roo.lib.RGBColor = function (r, g, b, a){
 
   }
 
-  /* Calculates and stores the HSV components of this RGBColor so that they can
+  /* //private Calculates and stores the HSV components of this RGBColor so that they can
    * be returned be the getHSV function.
    */
   function calculateHSV(){
@@ -342,7 +342,7 @@ Roo.lib.RGBColor = function (r, g, b, a){
 
   }
 
-  /* Calculates and stores the HSL components of this RGBColor so that they can
+  /* //private Calculates and stores the HSL components of this RGBColor so that they can
    * be returned be the getHSL function.
    */
   function calculateHSL(){
