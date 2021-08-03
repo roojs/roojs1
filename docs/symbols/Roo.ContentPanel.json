@@ -19,7 +19,7 @@
   "tree_parent" : [],
   "desc" : "A basic ContentPanel element.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : true,

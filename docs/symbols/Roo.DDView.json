@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "A DnD enabled version of Roo.View.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

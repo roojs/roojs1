@@ -47,7 +47,7 @@
   "tree_parent" : [],
   "desc" : "Base class for any visual {@link Roo.Component} that uses a box container.  BoxComponent provides automatic box\nmodel adjustments for sizing and positioning and will work correctly withnin the Component rendering model.  All\ncontainer classes should subclass BoxComponent so that they will work consistently when nested within other Roo\nlayout containers.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

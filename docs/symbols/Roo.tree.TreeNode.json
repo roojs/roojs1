@@ -13,7 +13,7 @@
   "tree_parent" : [],
   "desc" : "is to use the cls or iconCls attributes and add the icon via a CSS background image.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

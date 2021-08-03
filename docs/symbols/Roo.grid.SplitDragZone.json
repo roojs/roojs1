@@ -11,7 +11,7 @@
   "tree_parent" : [],
   "desc" : "Support for Column Header resizing",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

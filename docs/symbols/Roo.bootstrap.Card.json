@@ -81,7 +81,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Card class - note this has children as CardHeader/ImageTop/Footer.. - which should really be listed properties?\n\n\npossible... may not be implemented..",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

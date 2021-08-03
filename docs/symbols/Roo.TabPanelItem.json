@@ -8,7 +8,7 @@
   "tree_parent" : [],
   "desc" : "Represents an individual item (tab plus body) in a TabPanel.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

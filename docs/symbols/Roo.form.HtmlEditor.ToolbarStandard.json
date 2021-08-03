@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Basic Toolbar\n\nUsage:\n\n new Roo.form.HtmlEditor({\n    ....\n    toolbars : [\n        new Roo.form.HtmlEditorToolbar1({\n            disable : { fonts: 1 , format: 1, ..., ... , ...],\n            btns : [ .... ]\n        })\n    }",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

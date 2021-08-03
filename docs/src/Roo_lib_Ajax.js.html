@@ -1,15 +1,17 @@
-<html><head><title>Roo/lib/Ajax.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
- * Portions of this file are based on pieces of Yahoo User Interface Library
- * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
- * YUI licensed under the BSD License:
- * http://developer.yahoo.net/yui/license.txt
- * &lt;script type=&quot;text/javascript&quot;&gt;
- *
- */
+<html><head><title>Roo/lib/Ajax.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
 
-</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+<span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
     </span><span class="jsdoc-comment">/**
      * @class Roo.lib.Ajax
+     *
+     * provide a simple Ajax request utility functions
+     * 
+     * Portions of this file are based on pieces of Yahoo User Interface Library
+    * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+    * YUI licensed under the BSD License:
+    * http://developer.yahoo.net/yui/license.txt
+    * &lt;script type=&quot;text/javascript&quot;&gt;
+    *
      *
      */
     </span><span class="jsdoc-var">Roo.lib.Ajax </span><span class="jsdoc-syntax">= {
@@ -35,7 +37,13 @@
 
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.asyncRequest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">uri</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
         },
-
+        </span><span class="jsdoc-comment">/**
+         * serialize a form
+         *
+         * @static
+         * @param {DomForm} form element
+         * @return {String} urlencode form output.
+         */
         </span><span class="jsdoc-var">serializeForm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">form </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">form </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">document.getElementById</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">document.forms</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">form</span><span class="jsdoc-syntax">]);

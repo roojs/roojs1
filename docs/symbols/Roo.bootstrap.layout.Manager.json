@@ -14,7 +14,7 @@
   "tree_parent" : [],
   "desc" : "Base class for layout managers.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : true,
   "isBuilderTop" : false,

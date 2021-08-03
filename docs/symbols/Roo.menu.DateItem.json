@@ -11,7 +11,7 @@
   "tree_parent" : [],
   "desc" : "A menu item that wraps the {@link Roo.DatPicker} component.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

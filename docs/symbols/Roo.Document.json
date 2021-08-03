@@ -8,7 +8,7 @@
   "tree_parent" : [],
   "desc" : "This is a convience class to wrap up the main document loading code.. , rather than adding Roo.onReady(......)",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

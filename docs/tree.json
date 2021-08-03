@@ -1308,7 +1308,7 @@
           {
             "name" : "Roo.lib.Color",
             "cn" : [],
-            "is_class" : false
+            "is_class" : true
           },
           {
             "name" : "Roo.lib.Dom",
@@ -1318,7 +1318,17 @@
           {
             "name" : "Roo.lib.HSLColor",
             "cn" : [],
-            "is_class" : false
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.lib.HSVColor",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.lib.RGBColor",
+            "cn" : [],
+            "is_class" : true
           }
         ],
         "is_class" : false

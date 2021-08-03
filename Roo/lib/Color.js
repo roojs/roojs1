@@ -1,23 +1,6 @@
-/*
+ 
 
-Color.js
-
-Functions for Color handling and processing.
-
-http://www.safalra.com/web-design/javascript/Color-handling-and-processing/
-
-The author of this program, Safalra (Stephen Morley), irrevocably releases all
-rights to this program, with the intention of it becoming part of the public
-domain. Because this program is released into the public domain, it comes with
-no warranty either expressed or implied, to the extent permitted by law.
-
-For more free and public domain JavaScript code by the same author, visit:
-http://www.safalra.com/web-design/javascript/
-
-*/
-
-
-/*
+/**
  * @class Roo.lib.Color
  * @constructor
  * An abstract Color implementation. Concrete Color implementations should use
@@ -28,6 +11,22 @@ http://www.safalra.com/web-design/javascript/
  * return an object representing the HSL components of this Color, with the hue
  * component in the range [0,360), the saturation and lightness components in
  * the range [0,100], and the alpha component in the range [0,1].
+ *
+ *
+ * Color.js
+ *
+ * Functions for Color handling and processing.
+ *
+ * http://www.safalra.com/web-design/javascript/Color-handling-and-processing/
+ *
+ * The author of this program, Safalra (Stephen Morley), irrevocably releases all
+ * rights to this program, with the intention of it becoming part of the public
+ * domain. Because this program is released into the public domain, it comes with
+ * no warranty either expressed or implied, to the extent permitted by law.
+ * 
+ * For more free and public domain JavaScript code by the same author, visit:
+ * http://www.safalra.com/web-design/javascript/
+ * 
  */
 Roo.lib.Color = function() { }
 
@@ -39,7 +38,8 @@ Roo.apply(Roo.lib.Color.prototype, {
   hsl : null,
   
   /**
-   * @returns an object representing the RGBA components of this Color. The red,
+   * getIntegerRGB
+   * @return {Object} an object representing the RGBA components of this Color. The red,
    * green, and blue components are converted to integers in the range [0,255].
    * The alpha is a value in the range [0,1].
    */
@@ -59,7 +59,8 @@ Roo.apply(Roo.lib.Color.prototype, {
   },
 
   /**
-   * @returns an object representing the RGBA components of this Color. The red,
+   * getPercentageRGB
+   * @return {Object} an object representing the RGBA components of this Color. The red,
    * green, and blue components are converted to numbers in the range [0,100].
    * The alpha is a value in the range [0,1].
    */
@@ -79,7 +80,8 @@ Roo.apply(Roo.lib.Color.prototype, {
   },
 
   /**
-   * @returns a string representing this Color as a CSS hexadecimal RGB Color
+   * getCSSHexadecimalRGB
+   * @return {String} a string representing this Color as a CSS hexadecimal RGB Color
    * value - that is, a string of the form #RRGGBB where each of RR, GG, and BB
    * are two-digit hexadecimal numbers.
    */
@@ -103,7 +105,8 @@ Roo.apply(Roo.lib.Color.prototype, {
   },
 
   /**
-   * @returns a string representing this Color as a CSS integer RGB Color
+   * getCSSIntegerRGB
+   * @return {String} a string representing this Color as a CSS integer RGB Color
    * value - that is, a string of the form rgb(r,g,b) where each of r, g, and b
    * are integers in the range [0,255].
    */
@@ -118,7 +121,8 @@ Roo.apply(Roo.lib.Color.prototype, {
   },
 
   /**
-   * @returns Returns a string representing this Color as a CSS integer RGBA Color
+   * getCSSIntegerRGBA
+   * @return {String} Returns a string representing this Color as a CSS integer RGBA Color
    * value - that is, a string of the form rgba(r,g,b,a) where each of r, g, and
    * b are integers in the range [0,255] and a is in the range [0,1].
    */
@@ -133,7 +137,8 @@ Roo.apply(Roo.lib.Color.prototype, {
   },
 
   /**
-   * @returns a string representing this Color as a CSS percentage RGB Color
+   * getCSSPercentageRGB
+   * @return {String} a string representing this Color as a CSS percentage RGB Color
    * value - that is, a string of the form rgb(r%,g%,b%) where each of r, g, and
    * b are in the range [0,100].
    */
@@ -148,7 +153,8 @@ Roo.apply(Roo.lib.Color.prototype, {
   },
 
   /**
-   * @returns a string representing this Color as a CSS percentage RGBA Color
+   * getCSSPercentageRGBA
+   * @return {String} a string representing this Color as a CSS percentage RGBA Color
    * value - that is, a string of the form rgba(r%,g%,b%,a) where each of r, g,
    * and b are in the range [0,100] and a is in the range [0,1].
    */
@@ -163,7 +169,8 @@ Roo.apply(Roo.lib.Color.prototype, {
   },
 
   /**
-   * @returns a string representing this Color as a CSS HSL Color value - that
+   * getCSSHSL
+   * @return {String} a string representing this Color as a CSS HSL Color value - that
    * is, a string of the form hsl(h,s%,l%) where h is in the range [0,100] and
    * s and l are in the range [0,100].
    */
@@ -178,7 +185,8 @@ Roo.apply(Roo.lib.Color.prototype, {
   },
 
   /**
-   * @returns a string representing this Color as a CSS HSLA Color value - that
+   * getCSSHSLA
+   * @return {String} a string representing this Color as a CSS HSLA Color value - that
    * is, a string of the form hsla(h,s%,l%,a) where h is in the range [0,100],
    * s and l are in the range [0,100], and a is in the range [0,1].
    */
@@ -250,30 +258,93 @@ Roo.apply(Roo.lib.Color.prototype, {
       return new Roo.lib.HSVColor(hsv.h,  hsv.s * v, hsv.v ,  hsv.a );
       
   
-  }
+  },
   
    
+  /**
+   * getRGB
+   * @return {Object} the RGB and alpha components of this Color as an object with r,
+   * g, b, and a properties. r, g, and b are in the range [0,255] and a is in
+   * the range [0,1].
+   */
+  getRGB: function(){
+   
+    // return the RGB components
+    return {
+      'r' : this.rgb.r,
+      'g' : this.rgb.g,
+      'b' : this.rgb.b,
+      'a' : this.alpha
+    };
+
+  },
+
+  /**
+   * getHSV
+   * @return {Object} the HSV and alpha components of this Color as an object with h,
+   * s, v, and a properties. h is in the range [0,360), s and v are in the range
+   * [0,100], and a is in the range [0,1].
+   */
+  getHSV : function()
+  {
+    
+    // calculate the HSV components if necessary
+    if (this.hsv == null) this.calculateHSV();
+
+    // return the HSV components
+    return {
+      'h' : this.hsv.h,
+      's' : this.hsv.s,
+      'v' : this.hsv.v,
+      'a' : this.alpha
+    };
+
+  },
+
+  /**
+   * getHSL
+   * @return {Object} the HSL and alpha components of this Color as an object with h,
+   * s, l, and a properties. h is in the range [0,360), s and l are in the range
+   * [0,100], and a is in the range [0,1].
+   */
+  getHSL : function(){
+    
+     
+    // calculate the HSV components if necessary
+    if (this.hsl == null) this.calculateHSL();
+
+    // return the HSL components
+    return {
+      'h' : this.hsl.h,
+      's' : this.hsl.s,
+      'l' : this.hsl.l,
+      'a' : this.alpha
+    };
+
+  }
   
 
 });
 
 
-/*
+/**
  * @class Roo.lib.RGBColor
  * @extends Roo.lib.Color
  * Creates a Color specified in the RGB Color space, with an optional alpha
  * component. The parameters are:
- *
- * r - the red component, clipped to the range [0,255]
- * g - the green component, clipped to the range [0,255]
- * b - the blue component, clipped to the range [0,255]
- * a - the alpha component, clipped to the range [0,1] - this parameter is
+ * @constructor
+ * 
+
+ * @param {Number} r - the red component, clipped to the range [0,255]
+ * @param {Number} g - the green component, clipped to the range [0,255]
+ * @param {Number} b - the blue component, clipped to the range [0,255]
+ * @param {Number} a - the alpha component, clipped to the range [0,1] - this parameter is
  *     optional and defaults to 1
  */
 Roo.lib.RGBColor = function (r, g, b, a){
 
   // store the alpha component after clipping it if necessary
-  var alpha = (a === undefined ? 1 : Math.max(0, Math.min(1, a)));
+  this.alpha = (a === undefined ? 1 : Math.max(0, Math.min(1, a)));
 
   // store the RGB components after clipping them if necessary
   this.rgb =
@@ -300,8 +371,10 @@ Roo.lib.RGBColor = function (r, g, b, a){
 Roo.extend(Roo.lib.RGBColor, Roo.lib.Color, {
 
   
-    getHue  : function(maximum, range){
-  
+    getHue  : function(maximum, range)
+    {
+      var rgb = this.rgb;
+       
       // check whether the range is zero
       if (range == 0){
   
@@ -342,13 +415,13 @@ Roo.extend(Roo.lib.RGBColor, Roo.lib.Color, {
    * be returned be the getHSV function.
    */
    calculateHSV : function(){
-
+    var rgb = this.rgb;
     // get the maximum and range of the RGB component values
     var maximum = Math.max(rgb.r, rgb.g, rgb.b);
     var range   = maximum - Math.min(rgb.r, rgb.g, rgb.b);
 
     // store the HSV components
-    hsv =
+    this.hsv =
         {
           'h' : this.getHue(maximum, range),
           's' : (maximum == 0 ? 0 : 100 * range / maximum),
@@ -361,7 +434,7 @@ Roo.extend(Roo.lib.RGBColor, Roo.lib.Color, {
    * be returned be the getHSL function.
    */
    calculateHSL : function(){
-
+    var rgb = this.rgb;
     // get the maximum and range of the RGB component values
     var maximum = Math.max(rgb.r, rgb.g, rgb.b);
     var range   = maximum - Math.min(rgb.r, rgb.g, rgb.b);
@@ -370,93 +443,37 @@ Roo.extend(Roo.lib.RGBColor, Roo.lib.Color, {
     var l = maximum / 255 - range / 510;
 
     // store the HSL components
-    hsl =
+    this.hsl =
         {
           'h' : this.getHue(maximum, range),
           's' : (range == 0 ? 0 : range / 2.55 / (l < 0.5 ? l * 2 : 2 - l * 2)),
           'l' : 100 * l
         };
 
-  },
-
-  /**
-   * @returns the RGB and alpha components of this RGBColor as an object with r,
-   * g, b, and a properties. r, g, and b are in the range [0,255] and a is in
-   * the range [0,1].
-   */
-  getRGB: function(){
-
-    // return the RGB components
-    return {
-      'r' : rgb.r,
-      'g' : rgb.g,
-      'b' : rgb.b,
-      'a' : alpha
-    };
-
-  },
-
-  /**
-   * @returns the HSV and alpha components of this RGBColor as an object with h,
-   * s, v, and a properties. h is in the range [0,360), s and v are in the range
-   * [0,100], and a is in the range [0,1].
-   */
-  getHSV : function()
-  {
-
-    // calculate the HSV components if necessary
-    if (hsv == null) this.calculateHSV();
-
-    // return the HSV components
-    return {
-      'h' : hsv.h,
-      's' : hsv.s,
-      'v' : hsv.v,
-      'a' : alpha
-    };
-
-  },
-
-  /**
-   * @returns the HSL and alpha components of this RGBColor as an object with h,
-   * s, l, and a properties. h is in the range [0,360), s and l are in the range
-   * [0,100], and a is in the range [0,1].
-   */
-  getHSL : function(){
-
-    // calculate the HSV components if necessary
-    if (hsl == null) this.calculateHSL();
-
-    // return the HSL components
-    return {
-      'h' : hsl.h,
-      's' : hsl.s,
-      'l' : hsl.l,
-      'a' : alpha
-    };
-
   }
+
 });
 
-/*
+/**
  * @class Roo.lib.HSVColor
  * @extends Roo.lib.Color
  * Creates a Color specified in the HSV Color space, with an optional alpha
  * component. The parameters are:
+ * @constructor
  *
- * h - the hue component, wrapped to the range [0,360)
- * s - the saturation component, clipped to the range [0,100]
- * v - the value component, clipped to the range [0,100]
- * a - the alpha component, clipped to the range [0,1] - this parameter is
+ * @param {Number} h - the hue component, wrapped to the range [0,360)
+ * @param {Number} s - the saturation component, clipped to the range [0,100]
+ * @param {Number} v - the value component, clipped to the range [0,100]
+ * @param {Number} a - the alpha component, clipped to the range [0,1] - this parameter is
  *     optional and defaults to 1
  */
 Roo.lib.HSVColor = function (h, s, v, a){
 
   // store the alpha component after clipping it if necessary
-  var alpha = (a === undefined ? 1 : Math.max(0, Math.min(1, a)));
+  this.alpha = (a === undefined ? 1 : Math.max(0, Math.min(1, a)));
 
   // store the HSV components after clipping or wrapping them if necessary
-  var hsv =
+  this.hsv =
       {
         'h' : (h % 360 + 360) % 360,
         's' : Math.max(0, Math.min(100, s)),
@@ -464,14 +481,17 @@ Roo.lib.HSVColor = function (h, s, v, a){
       };
 
   // initialise the RGB and HSL components to null
-  var rgb = null;
-  var hsl = null;
+  this.rgb = null;
+  this.hsl = null;
+}
 
+Roo.extend(Roo.lib.HSVColor, Roo.lib.Color, {
   /* Calculates and stores the RGB components of this HSVColor so that they can
    * be returned be the getRGB function.
    */
-  function calculateRGB(){
-
+  calculateRGB: function ()
+  {
+    var hsv = this.hsv;
     // check whether the saturation is zero
     if (hsv.s == 0){
 
@@ -501,25 +521,26 @@ Roo.lib.HSVColor = function (h, s, v, a){
     }
 
     // store the RGB components
-    rgb =
+    this.rgb =
         {
           'r' : r * 2.55,
           'g' : g * 2.55,
           'b' : b * 2.55
         };
 
-  }
+  },
 
   /* Calculates and stores the HSL components of this HSVColor so that they can
    * be returned be the getHSL function.
    */
   calculateHSL : function (){
 
+    var hsv = this.hsv;
     // determine the lightness in the range [0,100]
     var l = (2 - hsv.s / 100) * hsv.v / 2;
 
     // store the HSL components
-    hsl =
+    this.hsl =
         {
           'h' : hsv.h,
           's' : hsv.s * hsv.v / (l < 50 ? l * 2 : 200 - l * 2),
@@ -529,90 +550,34 @@ Roo.lib.HSVColor = function (h, s, v, a){
     // correct a division-by-zero error
     if (isNaN(hsl.s)) hsl.s = 0;
 
-  }
+  } 
+ 
 
-  /**
-   * @returns the RGB and alpha components of this HSVColor as an object with r,
-   * g, b, and a properties. r, g, and b are in the range [0,255] and a is in
-   * the range [0,1].
-   */
-  this.getRGB = function(){
-
-    // calculate the RGB components if necessary
-    if (rgb == null) calculateRGB();
-
-    // return the RGB components
-    return {
-      'r' : rgb.r,
-      'g' : rgb.g,
-      'b' : rgb.b,
-      'a' : alpha
-    };
-
-  };
-
-  /**
-   * @returns the HSV and alpha components of this HSVColor as an object with h,
-   * s, v, and a properties. h is in the range [0,360), s and v are in the range
-   * [0,100], and a is in the range [0,1].
-   */
-  this.getHSV = function(){
-
-    // return the HSV components
-    return {
-      'h' : hsv.h,
-      's' : hsv.s,
-      'v' : hsv.v,
-      'a' : alpha
-    };
-
-  };
-
-  /**
-   * @returns the HSL and alpha components of this HSVColor as an object with h,
-   * s, l, and a properties. h is in the range [0,360), s and l are in the range
-   * [0,100], and a is in the range [0,1].
-   */
-  this.getHSL = function(){
-
-    // calculate the HSL components if necessary
-    if (hsl == null) this.calculateHSL();
-
-    // return the HSL components
-    return {
-      'h' : hsl.h,
-      's' : hsl.s,
-      'l' : hsl.l,
-      'a' : alpha
-    };
-
-  };
-
-}
-Roo.lib.HSVColor.prototype = new Roo.lib.Color();
-
+});
+ 
 
 /**
  * @class Roo.lib.HSLColor
  * @extends Roo.lib.Color
- * 
+ *
+ * @constructor
  * Creates a Color specified in the HSL Color space, with an optional alpha
  * component. The parameters are:
  *
- * h - the hue component, wrapped to the range [0,360)
- * s - the saturation component, clipped to the range [0,100]
- * l - the lightness component, clipped to the range [0,100]
- * a - the alpha component, clipped to the range [0,1] - this parameter is
+ * @param {Number} h - the hue component, wrapped to the range [0,360)
+ * @param {Number} s - the saturation component, clipped to the range [0,100]
+ * @param {Number} l - the lightness component, clipped to the range [0,100]
+ * @param {Number} a - the alpha component, clipped to the range [0,1] - this parameter is
  *     optional and defaults to 1
  */
 
 Roo.lib.HSLColor = function(h, s, l, a){
 
   // store the alpha component after clipping it if necessary
-  var alpha = (a === undefined ? 1 : Math.max(0, Math.min(1, a)));
+  this.alpha = (a === undefined ? 1 : Math.max(0, Math.min(1, a)));
 
   // store the HSL components after clipping or wrapping them if necessary
-  var hsl =
+  this.hsl =
       {
         'h' : (h % 360 + 360) % 360,
         's' : Math.max(0, Math.min(100, s)),
@@ -620,35 +585,36 @@ Roo.lib.HSLColor = function(h, s, l, a){
       };
 
   // initialise the RGB and HSV components to null
-  var rgb = null;
-  var hsv = null;
+}
+
+Roo.extend(Roo.lib.HSL, Roo.lib.Color, {
 
   /* Calculates and stores the RGB components of this HSLColor so that they can
    * be returned be the getRGB function.
    */
-  function calculateRGB(){
+  calculateRGB: function (){
 
     // check whether the saturation is zero
-    if (hsl.s == 0){
+    if (this.hsl.s == 0){
 
       // store the RGB components representing the appropriate shade of grey
-      rgb =
+      this.rgb =
           {
-            'r' : hsl.l * 2.55,
-            'g' : hsl.l * 2.55,
-            'b' : hsl.l * 2.55
+            'r' : this.hsl.l * 2.55,
+            'g' : this.hsl.l * 2.55,
+            'b' : this.hsl.l * 2.55
           };
 
     }else{
 
       // set some temporary values
-      var p = hsl.l < 50
-            ? hsl.l * (1 + hsl.s / 100)
-            : hsl.l + hsl.s - hsl.l * hsl.s / 100;
+      var p = this.hsl.l < 50
+            ? this.hsl.l * (1 + hsl.s / 100)
+            : this.hsl.l + hsl.s - hsl.l * hsl.s / 100;
       var q = 2 * hsl.l - p;
 
       // initialise the RGB components
-      rgb =
+      this.rgb =
           {
             'r' : (h + 120) / 60 % 6,
             'g' : h / 60,
@@ -656,24 +622,24 @@ Roo.lib.HSLColor = function(h, s, l, a){
           };
 
       // loop over the RGB components
-      for (var key in rgb){
+      for (var key in this.rgb){
 
         // ensure that the property is not inherited from the root object
-        if (rgb.hasOwnProperty(key)){
+        if (this.rgb.hasOwnProperty(key)){
 
           // set the component to its value in the range [0,100]
-          if (rgb[key] < 1){
-            rgb[key] = q + (p - q) * rgb[key];
-          }else if (rgb[key] < 3){
-            rgb[key] = p;
-          }else if (rgb[key] < 4){
-            rgb[key] = q + (p - q) * (4 - rgb[key]);
+          if (this.rgb[key] < 1){
+            this.rgb[key] = q + (p - q) * this.rgb[key];
+          }else if (this.rgb[key] < 3){
+            this.rgb[key] = p;
+          }else if (this.rgb[key] < 4){
+            this.rgb[key] = q + (p - q) * (4 - this.rgb[key]);
           }else{
-            rgb[key] = q;
+            this.rgb[key] = q;
           }
 
           // set the component to its value in the range [0,255]
-          rgb[key] *= 2.55;
+          this.rgb[key] *= 2.55;
 
         }
 
@@ -681,7 +647,7 @@ Roo.lib.HSLColor = function(h, s, l, a){
 
     }
 
-  }
+  },
 
   /* Calculates and stores the HSV components of this HSLColor so that they can
    * be returned be the getHSL function.
@@ -689,77 +655,20 @@ Roo.lib.HSLColor = function(h, s, l, a){
    calculateHSV : function(){
 
     // set a temporary value
-    var t = hsl.s * (hsl.l < 50 ? hsl.l : 100 - hsl.l) / 100;
+    var t = this.hsl.s * (this.hsl.l < 50 ? this.hsl.l : 100 - this.hsl.l) / 100;
 
     // store the HSV components
-    hsv =
+    this.hsv =
         {
-          'h' : hsl.h,
-          's' : 200 * t / (hsl.l + t),
-          'v' : t + hsl.l
+          'h' : this.hsl.h,
+          's' : 200 * t / (this.hsl.l + t),
+          'v' : t + this.hsl.l
         };
 
     // correct a division-by-zero error
-    if (isNaN(hsv.s)) hsv.s = 0;
+    if (isNaN(this.hsv.s)) this.hsv.s = 0;
 
   }
+ 
 
-  /**
-   * @returns the RGB and alpha components of this HSLColor as an object with r,
-   * g, b, and a properties. r, g, and b are in the range [0,255] and a is in
-   * the range [0,1].
-   */
-  this.getRGB = function(){
-
-    // calculate the RGB components if necessary
-    if (rgb == null) calculateRGB();
-
-    // return the RGB components
-    return {
-      'r' : rgb.r,
-      'g' : rgb.g,
-      'b' : rgb.b,
-      'a' : alpha
-    };
-
-  };
-
-  /**
-   * @returns the HSV and alpha components of this HSLColor as an object with h,
-   * s, v, and a properties. h is in the range [0,360), s and v are in the range
-   * [0,100], and a is in the range [0,1].
-   */
-  this.getHSV = function(){
-
-    // calculate the HSV components if necessary
-    if (hsv == null) this.calculateHSV();
-
-    // return the HSV components
-    return {
-      'h' : hsv.h,
-      's' : hsv.s,
-      'v' : hsv.v,
-      'a' : alpha
-    };
-
-  };
-
-  /**
-   * @returns the HSL and alpha components of this HSLColor as an object with h,
-   * s, l, and a properties. h is in the range [0,360), s and l are in the range
-   * [0,100], and a is in the range [0,1].
-   */
-  this.getHSL = function(){
-
-    // return the HSL components
-    return {
-      'h' : hsl.h,
-      's' : hsl.s,
-      'l' : hsl.l,
-      'a' : alpha
-    };
-
-  };
-
-}
-Roo.lib.HSLColor.prototype = new Roo.lib.Color();
+});

@@ -16,7 +16,7 @@
   "tree_parent" : [],
   "desc" : "Simple Button class",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

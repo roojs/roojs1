@@ -4,9 +4,9 @@
   "childClasses" : {  },
   "tree_children" : [],
   "tree_parent" : [],
-  "desc" : "",
+  "desc" : "provide a simple Ajax request utility functions\n\nPortions of this file are based on pieces of Yahoo User Interface Library\nCopyright (c) 2007, Yahoo! Inc. All rights reserved.\nYUI licensed under the BSD License:\nhttp://developer.yahoo.net/yui/license.txt\n<script type=\"text/javascript\">",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -39,6 +39,38 @@
       "requires" : "",
       "params" : [],
       "returns" : []
+    },
+    {
+      "name" : "serializeForm",
+      "type" : "function",
+      "desc" : "serialize a form",
+      "sig" : "(form)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "form",
+          "type" : "DomForm",
+          "desc" : "element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "urlencode form output."
+        }
+      ]
     }
   ],
   "events" : []

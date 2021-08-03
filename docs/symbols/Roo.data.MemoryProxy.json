@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor\nto the Reader when its load method is called.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

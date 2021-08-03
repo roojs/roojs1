@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "This class represents the  interface of a component based property grid control.\n<br><br>Usage:<pre><code>\n var grid = new Roo.grid.PropertyGrid(\"my-container-id\", {\n      \n });\n // set any options\n grid.render();\n</code></pre>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

@@ -8,7 +8,7 @@
   "tree_parent" : [],
   "desc" : "Abstract base class for grid Views",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : true,
   "isBuilderTop" : false,

@@ -23,7 +23,7 @@
   "tree_parent" : [],
   "desc" : "The base class for all items that render into menus.  BaseItem provides default rendering, activated state\nmanagement and base configuration options shared by all menu components.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : true,
   "isBuilderTop" : false,

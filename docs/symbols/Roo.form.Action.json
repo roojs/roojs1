@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Internal Class used to handle form actions",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

@@ -11,7 +11,7 @@
   "tree_parent" : [],
   "desc" : "A Day picker show [M] [T] [W] ....",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

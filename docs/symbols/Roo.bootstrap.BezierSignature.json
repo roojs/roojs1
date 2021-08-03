@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap BezierSignature class\nThis script refer to:\n   Title: Signature Pad\n   Author: szimek\n   Availability: https://github.com/szimek/signature_pad",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

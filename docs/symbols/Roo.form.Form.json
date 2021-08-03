@@ -39,7 +39,7 @@
   "tree_parent" : [],
   "desc" : "Adds the ability to dynamically render forms with JavaScript to {@link Roo.form.BasicForm}.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

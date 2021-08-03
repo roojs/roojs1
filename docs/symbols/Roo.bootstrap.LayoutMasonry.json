@@ -15,7 +15,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Layout Masonry class\n\nThis is based on \nhttp://masonry.desandro.com\n\nThe idea is to render all the bricks based on vertical width...\n\nThe original code extends 'outlayer' - we might need to use that....",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

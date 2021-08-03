@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "This class provides the basic implementation for cell selection in a grid.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

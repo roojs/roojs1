@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "Supplies the functionality to do \"actions\" on forms and initialize Roo.form.Field types on existing markup.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

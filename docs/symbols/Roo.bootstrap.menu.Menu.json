@@ -14,7 +14,7 @@
   ],
   "desc" : "Bootstrap Menu class - container for MenuItems - normally has to be added to a object that supports the menu property",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
