@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Provides sorting of nodes in a TreePanel",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

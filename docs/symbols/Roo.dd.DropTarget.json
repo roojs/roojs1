@@ -14,7 +14,7 @@
   "tree_parent" : [],
   "desc" : "A simple class that provides the basic implementation needed to make any element a drop target that can have\ndraggable items dropped onto it.  The drop has no effect until an implementation of notifyDrop is provided.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

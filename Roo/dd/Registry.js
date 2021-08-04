@@ -14,7 +14,7 @@
  * @class Roo.dd.Registry
  * Provides easy access to all drag drop components that are registered on a page.  Items can be retrieved either
  * directly by DOM node id, or by passing in the drag drop event that occurred and looking up the event target.
- * @singleton
+ * @static
  */
 Roo.dd.Registry = function(){
     var elements = {}; 

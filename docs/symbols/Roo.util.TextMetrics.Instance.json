@@ -4,22 +4,184 @@
   "childClasses" : {  },
   "tree_children" : [],
   "tree_parent" : [],
-  "desc" : "",
+  "desc" : "Instance of  TextMetrics Calcuation",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
-  "memberOf" : "Roo.util.TextMetrics.Instance",
+  "memberOf" : "Instance",
   "example" : "",
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [],
+  "params" : [
+    {
+      "name" : "bindto",
+      "type" : "Object",
+      "desc" : "",
+      "isOptional" : false
+    },
+    {
+      "name" : "fixedWidth",
+      "type" : "Boolean",
+      "desc" : "",
+      "isOptional" : false
+    }
+  ],
   "returns" : [],
   "throws" : "",
   "requires" : "",
   "config" : [],
-  "methods" : [],
+  "methods" : [
+    {
+      "name" : "getHeight",
+      "type" : "function",
+      "desc" : "Returns the measured height of the specified text.  For multiline text, be sure to call\n{@link #setFixedWidth} if necessary.",
+      "sig" : "(text)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "The text to measure",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "height The height in pixels"
+        }
+      ]
+    },
+    {
+      "name" : "bind",
+      "type" : "function",
+      "desc" : "Binds this TextMetrics instance to an element from which to copy existing CSS styles\nthat can affect the size of the rendered text",
+      "sig" : "(el)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement",
+          "desc" : "The element, dom node or id",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "getWidth",
+      "type" : "function",
+      "desc" : "Returns the measured width of the specified text",
+      "sig" : "(text)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "The text to measure",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "width The width in pixels"
+        }
+      ]
+    },
+    {
+      "name" : "setFixedWidth",
+      "type" : "function",
+      "desc" : "Sets a fixed width on the internal measurement element.  If the text will be multiline, you have\nto set a fixed width in order to accurately measure the text height.",
+      "sig" : "(width)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "width",
+          "type" : "Number",
+          "desc" : "The width to set on the element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "getSize",
+      "type" : "function",
+      "desc" : "Returns the size of the specified text based on the internal element's style and width properties",
+      "sig" : "(text)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "The text to measure",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "An object containing the text's size {width: (width), height: (height)}"
+        }
+      ]
+    }
+  ],
   "events" : []
 }

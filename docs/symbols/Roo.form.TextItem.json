@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Base class for form fields that provides default event handling, sizing, value handling and other functionality.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

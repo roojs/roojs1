@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "Numeric text field that provides automatic keystroke filtering and numeric validation.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

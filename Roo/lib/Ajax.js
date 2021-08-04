@@ -1,15 +1,17 @@
-/*
- * Portions of this file are based on pieces of Yahoo User Interface Library
- * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
- * YUI licensed under the BSD License:
- * http://developer.yahoo.net/yui/license.txt
- * <script type="text/javascript">
- *
- */
+ 
 
 (function() {
     /**
      * @class Roo.lib.Ajax
+     *
+     * provide a simple Ajax request utility functions
+     * 
+     * Portions of this file are based on pieces of Yahoo User Interface Library
+    * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+    * YUI licensed under the BSD License:
+    * http://developer.yahoo.net/yui/license.txt
+    * <script type="text/javascript">
+    *
      *
      */
     Roo.lib.Ajax = {
@@ -35,7 +37,13 @@
 
             return this.asyncRequest(method, uri, cb, data);
         },
-
+        /**
+         * serialize a form
+         *
+         * @static
+         * @param {DomForm} form element
+         * @return {String} urlencode form output.
+         */
         serializeForm : function(form) {
             if(typeof form == 'string') {
                 form = (document.getElementById(form) || document.forms[form]);

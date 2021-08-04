@@ -1,0 +1,405 @@
+{
+  "name" : "Roo.lib.RGBColor",
+  "augments" : [
+    "Roo.lib.Color"
+  ],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "Creates a Color specified in the RGB Color space, with an optional alpha\ncomponent. The parameters are:",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "RGBColor",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "r",
+      "type" : "Number",
+      "desc" : "- the red component, clipped to the range [0,255]",
+      "isOptional" : false
+    },
+    {
+      "name" : "g",
+      "type" : "Number",
+      "desc" : "- the green component, clipped to the range [0,255]",
+      "isOptional" : false
+    },
+    {
+      "name" : "b",
+      "type" : "Number",
+      "desc" : "- the blue component, clipped to the range [0,255]",
+      "isOptional" : false
+    },
+    {
+      "name" : "a",
+      "type" : "Number",
+      "desc" : "- the alpha component, clipped to the range [0,1] - this parameter is\n    optional and defaults to 1",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [],
+  "methods" : [
+    {
+      "name" : "getPercentageRGB",
+      "type" : "function",
+      "desc" : "getPercentageRGB",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "an object representing the RGBA components of this Color. The red,\ngreen, and blue components are converted to numbers in the range [0,100].\nThe alpha is a value in the range [0,1]."
+        }
+      ]
+    },
+    {
+      "name" : "getRGB",
+      "type" : "function",
+      "desc" : "getRGB",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "the RGB and alpha components of this Color as an object with r,\ng, b, and a properties. r, g, and b are in the range [0,255] and a is in\nthe range [0,1]."
+        }
+      ]
+    },
+    {
+      "name" : "getIntegerRGB",
+      "type" : "function",
+      "desc" : "getIntegerRGB",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "an object representing the RGBA components of this Color. The red,\ngreen, and blue components are converted to integers in the range [0,255].\nThe alpha is a value in the range [0,1]."
+        }
+      ]
+    },
+    {
+      "name" : "getCSSIntegerRGBA",
+      "type" : "function",
+      "desc" : "getCSSIntegerRGBA",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "Returns a string representing this Color as a CSS integer RGBA Color\nvalue - that is, a string of the form rgba(r,g,b,a) where each of r, g, and\nb are integers in the range [0,255] and a is in the range [0,1]."
+        }
+      ]
+    },
+    {
+      "name" : "getCSSHSL",
+      "type" : "function",
+      "desc" : "getCSSHSL",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "a string representing this Color as a CSS HSL Color value - that\nis, a string of the form hsl(h,s%,l%) where h is in the range [0,100] and\ns and l are in the range [0,100]."
+        }
+      ]
+    },
+    {
+      "name" : "getCSSHexadecimalRGB",
+      "type" : "function",
+      "desc" : "getCSSHexadecimalRGB",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "a string representing this Color as a CSS hexadecimal RGB Color\nvalue - that is, a string of the form #RRGGBB where each of RR, GG, and BB\nare two-digit hexadecimal numbers."
+        }
+      ]
+    },
+    {
+      "name" : "setNodeBackgroundColor",
+      "type" : "function",
+      "desc" : "Sets the background Color of the specified node to this Color. This\nfunctions sets the CSS 'background-color' property for the node. The\nparameter is:",
+      "sig" : "(node)",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "DomElement",
+          "desc" : "- the node whose background Color should be set",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "getHSL",
+      "type" : "function",
+      "desc" : "getHSL",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "the HSL and alpha components of this Color as an object with h,\ns, l, and a properties. h is in the range [0,360), s and l are in the range\n[0,100], and a is in the range [0,1]."
+        }
+      ]
+    },
+    {
+      "name" : "getHSV",
+      "type" : "function",
+      "desc" : "getHSV",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "the HSV and alpha components of this Color as an object with h,\ns, v, and a properties. h is in the range [0,360), s and v are in the range\n[0,100], and a is in the range [0,1]."
+        }
+      ]
+    },
+    {
+      "name" : "getCSSPercentageRGB",
+      "type" : "function",
+      "desc" : "getCSSPercentageRGB",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "a string representing this Color as a CSS percentage RGB Color\nvalue - that is, a string of the form rgb(r%,g%,b%) where each of r, g, and\nb are in the range [0,100]."
+        }
+      ]
+    },
+    {
+      "name" : "setNodeColor",
+      "type" : "function",
+      "desc" : "Sets the Color of the specified node to this Color. This functions sets\nthe CSS 'color' property for the node. The parameter is:",
+      "sig" : "(node)",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "DomElement",
+          "desc" : "- the node whose Color should be set",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "getCSSIntegerRGB",
+      "type" : "function",
+      "desc" : "getCSSIntegerRGB",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "a string representing this Color as a CSS integer RGB Color\nvalue - that is, a string of the form rgb(r,g,b) where each of r, g, and b\nare integers in the range [0,255]."
+        }
+      ]
+    },
+    {
+      "name" : "getCSSHSLA",
+      "type" : "function",
+      "desc" : "getCSSHSLA",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "a string representing this Color as a CSS HSLA Color value - that\nis, a string of the form hsla(h,s%,l%,a) where h is in the range [0,100],\ns and l are in the range [0,100], and a is in the range [0,1]."
+        }
+      ]
+    },
+    {
+      "name" : "getCSSPercentageRGBA",
+      "type" : "function",
+      "desc" : "getCSSPercentageRGBA",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.lib.Color",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "a string representing this Color as a CSS percentage RGBA Color\nvalue - that is, a string of the form rgba(r%,g%,b%,a) where each of r, g,\nand b are in the range [0,100] and a is in the range [0,1]."
+        }
+      ]
+    }
+  ],
+  "events" : []
+}

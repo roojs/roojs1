@@ -25,7 +25,7 @@ init : function(){
    var dialog = new Roo.BasicDialog(...);
    dialog.restoreState();
  </code></pre>
- * @singleton
+ * @static
  */
 Roo.state.Manager = function(){
     var provider = new Roo.state.Provider();

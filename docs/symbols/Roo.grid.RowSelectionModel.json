@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "The default SelectionModel used by {@link Roo.grid.Grid}.\nIt supports multiple selections and keyboard selection/navigation.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

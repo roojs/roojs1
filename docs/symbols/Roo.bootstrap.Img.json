@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Img class",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

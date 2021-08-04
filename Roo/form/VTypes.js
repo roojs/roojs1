@@ -11,7 +11,7 @@
 /**
  * @class Roo.form.VTypes
  * Overridable validation definitions. The validations provided are basic and intended to be easily customizable and extended.
- * @singleton
+ * @static
  */
 Roo.form.VTypes = function(){
     // closure these in so they are only created once.

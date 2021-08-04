@@ -13,7 +13,7 @@
   "tree_parent" : [],
   "desc" : "A combobox control with support for autocomplete, remote-loading, paging and many other features.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

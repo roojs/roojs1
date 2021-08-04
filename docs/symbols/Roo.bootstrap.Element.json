@@ -85,7 +85,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Element class (basically a DIV used to make random stuff )",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

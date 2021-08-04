@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "Create a new NestedLayoutPanel.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

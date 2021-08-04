@@ -25,17 +25,26 @@ Roo.lib.Dom = {
     getViewHeight : function(full) {
         return full ? this.getDocumentHeight() : this.getViewportHeight();
     },
-
+    /**
+     * Get the Full Document height 
+     * @return {Number} The height
+     */
     getDocumentHeight: function() {
         var scrollHeight = (document.compatMode != "CSS1Compat") ? document.body.scrollHeight : document.documentElement.scrollHeight;
         return Math.max(scrollHeight, this.getViewportHeight());
     },
-
+    /**
+     * Get the Full Document width
+     * @return {Number} The width
+     */
     getDocumentWidth: function() {
         var scrollWidth = (document.compatMode != "CSS1Compat") ? document.body.scrollWidth : document.documentElement.scrollWidth;
         return Math.max(scrollWidth, this.getViewportWidth());
     },
-
+    /**
+     * Get the Window Viewport height
+     * @return {Number} The height
+     */
     getViewportHeight: function() {
         var height = self.innerHeight;
         var mode = document.compatMode;
@@ -48,7 +57,10 @@ Roo.lib.Dom = {
 
         return height;
     },
-
+    /**
+     * Get the Window Viewport width
+     * @return {Number} The width
+     */
     getViewportWidth: function() {
         var width = self.innerWidth;
         var mode = document.compatMode;

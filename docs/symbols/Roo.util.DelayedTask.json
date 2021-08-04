@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Provides a convenient method of performing setTimeout where a new\ntimeout cancels the old timeout. An example would be performing validation on a keypress.\nYou can use this class to buffer\nthe keypress events for a certain number of milliseconds, and perform only if they stop\nfor that amount of time.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
@@ -39,6 +39,70 @@
   "throws" : "",
   "requires" : "",
   "config" : [],
-  "methods" : [],
+  "methods" : [
+    {
+      "name" : "delay",
+      "type" : "function",
+      "desc" : "Cancels any pending timeout and queues a new one",
+      "sig" : "(delay, newFn, newScope, newArgs)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "delay",
+          "type" : "Number",
+          "desc" : "The milliseconds to delay",
+          "isOptional" : false
+        },
+        {
+          "name" : "newFn",
+          "type" : "Function",
+          "desc" : "(optional) Overrides function passed to constructor",
+          "isOptional" : false
+        },
+        {
+          "name" : "newScope",
+          "type" : "Object",
+          "desc" : "(optional) Overrides scope passed to constructor",
+          "isOptional" : false
+        },
+        {
+          "name" : "newArgs",
+          "type" : "Array",
+          "desc" : "(optional) Overrides args passed to constructor",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "cancel",
+      "type" : "function",
+      "desc" : "Cancel the last queued timeout",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    }
+  ],
   "events" : []
 }

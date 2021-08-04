@@ -14,7 +14,7 @@
   "tree_parent" : [],
   "desc" : "A base editor field that handles displaying/hiding on demand and has some built-in sizing and event handling logic.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

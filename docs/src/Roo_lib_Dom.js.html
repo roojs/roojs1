@@ -25,17 +25,26 @@
     </span><span class="jsdoc-var">getViewHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">full</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">full </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.getDocumentHeight</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.getViewportHeight</span><span class="jsdoc-syntax">();
     },
-
+    </span><span class="jsdoc-comment">/**
+     * Get the Full Document height 
+     * @return {Number} The height
+     */
     </span><span class="jsdoc-var">getDocumentHeight</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollHeight </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">document.compatMode </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;CSS1Compat&quot;</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">document.body.scrollHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">document.documentElement.scrollHeight</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scrollHeight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getViewportHeight</span><span class="jsdoc-syntax">());
     },
-
+    </span><span class="jsdoc-comment">/**
+     * Get the Full Document width
+     * @return {Number} The width
+     */
     </span><span class="jsdoc-var">getDocumentWidth</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scrollWidth </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">document.compatMode </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">&quot;CSS1Compat&quot;</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">document.body.scrollWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">document.documentElement.scrollWidth</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scrollWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getViewportWidth</span><span class="jsdoc-syntax">());
     },
-
+    </span><span class="jsdoc-comment">/**
+     * Get the Window Viewport height
+     * @return {Number} The height
+     */
     </span><span class="jsdoc-var">getViewportHeight</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">self.innerHeight</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.compatMode</span><span class="jsdoc-syntax">;
@@ -48,7 +57,10 @@
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
     },
-
+    </span><span class="jsdoc-comment">/**
+     * Get the Window Viewport width
+     * @return {Number} The width
+     */
     </span><span class="jsdoc-var">getViewportWidth</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">self.innerWidth</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.compatMode</span><span class="jsdoc-syntax">;

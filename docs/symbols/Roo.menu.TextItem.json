@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Adds a static text string to a menu, usually used as either a heading or group separator.\nNote: old style constructor with text is still supported.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

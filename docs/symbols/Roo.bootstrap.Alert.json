@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Alert class - shows an alert area box\neg\n<div class=\"alert alert-danger\" role=\"alert\"><span class=\"fa fa-exclamation-triangle\"></span><span class=\"sr-only\">Error:</span>\n  Enter a valid email address\n</div>",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "This class represents a region in a layout manager.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

@@ -14,7 +14,7 @@
  * Registers event handlers that want to receive a normalized EventObject instead of the standard browser event and provides 
  * several useful events directly.
  * See {@link Roo.EventObject} for more details on normalized event objects.
- * @singleton
+ * @static
  */
 Roo.EventManager = function(){
     var docReadyEvent, docReadyProcId, docReadyState = false;
@@ -576,7 +576,7 @@ Roo.onReady(function(){
  Roo.EventManager.on("myDiv", 'click', handleClick);
  Roo.EventManager.addListener("myDiv", 'click', handleClick);
  </code></pre>
- * @singleton
+ * @static
  */
 Roo.EventObject = function(){
     

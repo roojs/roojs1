@@ -8,7 +8,12 @@
  * Fork - LGPL
  * <script type="text/javascript">
  */
- 
+/**
+ * @class Roo.util.TaskRunner
+ * Manage background tasks - not sure why this is better that setInterval?
+ * @static
+ *
+ */
  
 Roo.util.TaskRunner = function(interval){
     interval = interval || 10;
@@ -68,6 +73,12 @@ Roo.util.TaskRunner = function(interval){
     /**
      * Queues a new task.
      * @param {Object} task
+     *
+     * Task property : interval = how frequent to run.
+     * Task object should implement
+     * function run()
+     * Task object may implement
+     * function onStop()
      */
     this.start = function(task){
         tasks.push(task);
@@ -77,12 +88,17 @@ Roo.util.TaskRunner = function(interval){
         startThread();
         return task;
     };
-
+    /**
+     * Stop  new task.
+     * @param {Object} task
+     */
     this.stop = function(task){
         removeTask(task);
         return task;
     };
-
+    /**
+     * Stop all Tasks
+     */
     this.stopAll = function(){
         stopThread();
         for(var i = 0, len = tasks.length; i < len; i++){

@@ -8,7 +8,12 @@
  * Fork - LGPL
  * &lt;script type=&quot;text/javascript&quot;&gt;
  */
-
+/**
+ * @class Roo.util.TaskRunner
+ * Manage background tasks - not sure why this is better that setInterval?
+ * @static
+ *
+ */
 
 </span><span class="jsdoc-var">Roo.util.TaskRunner </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">interval</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">interval </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">interval </span><span class="jsdoc-syntax">|| 10;
@@ -68,6 +73,12 @@
     </span><span class="jsdoc-comment">/**
      * Queues a new task.
      * @param {Object} task
+     *
+     * Task property : interval = how frequent to run.
+     * Task object should implement
+     * function run()
+     * Task object may implement
+     * function onStop()
      */
     </span><span class="jsdoc-var">this.start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">task</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">tasks.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">task</span><span class="jsdoc-syntax">);
@@ -77,12 +88,17 @@
         </span><span class="jsdoc-var">startThread</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">task</span><span class="jsdoc-syntax">;
     };
-
+    </span><span class="jsdoc-comment">/**
+     * Stop  new task.
+     * @param {Object} task
+     */
     </span><span class="jsdoc-var">this.stop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">task</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">removeTask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">task</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">task</span><span class="jsdoc-syntax">;
     };
-
+    </span><span class="jsdoc-comment">/**
+     * Stop all Tasks
+     */
     </span><span class="jsdoc-var">this.stopAll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-var">stopThread</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tasks.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){

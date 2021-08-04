@@ -17,7 +17,7 @@
   ],
   "desc" : "Bootstrap Popover header navigation class\nFIXME? should this go under nav?",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

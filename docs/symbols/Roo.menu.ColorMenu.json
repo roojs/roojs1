@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "A menu containing a {@link Roo.menu.ColorItem} component (which provides a basic color picker).",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

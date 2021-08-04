@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "An input with International dial-code selection",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

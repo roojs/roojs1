@@ -11,7 +11,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Card Uploader class - it's a button which when you add files to it, adds cards below with preview and the name...",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

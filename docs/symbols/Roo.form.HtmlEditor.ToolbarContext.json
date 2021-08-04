@@ -6,7 +6,7 @@
   "tree_parent" : [],
   "desc" : "Context Toolbar\n\nUsage:\n\n new Roo.form.HtmlEditor({\n    ....\n    toolbars : [\n        { xtype: 'ToolbarStandard', styles : {} }\n        { xtype: 'ToolbarContext', disable : {} }\n    ]\n})",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

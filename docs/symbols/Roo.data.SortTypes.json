@@ -5,7 +5,7 @@
   "tree_children" : [],
   "tree_parent" : [],
   "desc" : "Defines the default sorting (casting?) comparison functions used when sorting data.",
-  "isSingleton" : true,
+  "isSingleton" : false,
   "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,

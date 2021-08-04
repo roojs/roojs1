@@ -13,7 +13,7 @@
 /**
  * @class Roo.ComponentMgr
  * Provides a common registry of all components on a page so that they can be easily accessed by component id (see {@link Roo.getCmp}).
- * @singleton
+ * @static
  */
 Roo.ComponentMgr = function(){
     var all = new Roo.util.MixedCollection();

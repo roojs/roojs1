@@ -14,7 +14,7 @@
  * @class Roo.dd.ScrollManager
  * Provides automatic scrolling of overflow regions in the page during drag operations.<br><br>
  * <b>Note: This class uses "Point Mode" and is untested in "Intersect Mode".</b>
- * @singleton
+ * @static
  */
 Roo.dd.ScrollManager = function(){
     var ddm = Roo.dd.DragDropMgr;

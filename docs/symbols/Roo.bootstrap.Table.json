@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Table class.  This class represents the primary interface of a component based grid control.\nSimilar to Roo.grid.Grid\n<pre><code>\n var table = Roo.factory({\n    xtype : 'Table',\n    xns : Roo.bootstrap,\n    autoSizeColumns: true,\n    \n    \n    store : {\n        xtype : 'Store',\n        xns : Roo.data,\n        remoteSort : true,\n        sortInfo : { direction : 'ASC', field: 'name' },\n        proxy : {\n           xtype : 'HttpProxy',\n           xns : Roo.data,\n           method : 'GET',\n           url : 'https://example.com/some.data.url.json'\n        },\n        reader : {\n           xtype : 'JsonReader',\n           xns : Roo.data,\n           fields : [ 'id', 'name', whatever' ],\n           id : 'id',\n           root : 'data'\n        }\n    },\n    cm : [\n        {\n            xtype : 'ColumnModel',\n            xns : Roo.grid,\n            align : 'center',\n            cursor : 'pointer',\n            dataIndex : 'is_in_group',\n            header : \"Name\",\n            sortable : true,\n            renderer : function(v, x , r) {  \n            \n                return String.format(\"{0}\", v)\n            }\n            width : 3\n        } // more columns..\n    ],\n    selModel : {\n        xtype : 'RowSelectionModel',\n        xns : Roo.bootstrap.Table\n        // you can add listeners to catch selection change here....\n    }\n     \n\n });\n // set any options\n grid.render(Roo.get(\"some-div\"));\n</code></pre>\n\nCurrently the Table  uses multiple headers to try and handle XL / Medium etc... styling",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

@@ -12,7 +12,7 @@
   "tree_parent" : [],
   "desc" : "A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

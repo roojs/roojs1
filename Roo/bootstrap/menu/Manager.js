@@ -2,7 +2,7 @@
  * @class Roo.bootstrap.MenuMgr
  * @licence LGPL
  * Provides a common registry of all menu items on a page so that they can be easily accessed by id.
- * @singleton
+ * @static
  */
 Roo.bootstrap.menu.Manager = function(){
    var menus, active, groups = {}, attached = false, lastShow = new Date();

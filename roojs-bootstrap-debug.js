@@ -3428,7 +3428,7 @@ Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.MenuMgr
  * @licence LGPL
  * Provides a common registry of all menu items on a page so that they can be easily accessed by id.
- * @singleton
+ * @static
  */
 Roo.bootstrap.menu.Manager = function(){
    var menus, active, groups = {}, attached = false, lastShow = new Date();
@@ -4980,7 +4980,7 @@ Roo.Msg.show({
    animEl: 'elId'
 });
 </code></pre>
- * @singleton
+ * @static
  */
 Roo.bootstrap.MessageBox = function(){
     var dlg, opt, mask, waitTimer;
@@ -12129,7 +12129,7 @@ Roo.apply(Roo.bootstrap.form.Form, {
 /**
  * @class Roo.form.VTypes
  * Overridable validation definitions. The validations provided are basic and intended to be easily customizable and extended.
- * @singleton
+ * @static
  */
 Roo.form.VTypes = function(){
     // closure these in so they are only created once.
@@ -14687,7 +14687,7 @@ Roo.bootstrap.form.CardUploader.ID = -1;/*
 
 /**
  * @class Roo.data.SortTypes
- * @singleton
+ * @static
  * Defines the default sorting (casting?) comparison functions used when sorting data.
  */
 Roo.data.SortTypes = {

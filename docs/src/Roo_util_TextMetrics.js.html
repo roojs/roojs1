@@ -14,7 +14,7 @@
  * @class Roo.util.TextMetrics
  * Provides precise pixel measurements for blocks of text so that you can determine exactly how high and
  * wide, in pixels, a given block of text will be.
- * @singleton
+ * @static
  */
 </span><span class="jsdoc-var">Roo.util.TextMetrics </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">shared</span><span class="jsdoc-syntax">;
@@ -51,9 +51,17 @@
     };
 }();
 
+</span><span class="jsdoc-comment">/**
+ * @class Roo.util.TextMetrics.Instance
+ * Instance of  TextMetrics Calcuation
+ * @constructor
+ * Create a new TextMetrics Instance
+ * @param {Object} bindto
+ * @param {Boolean} fixedWidth
+ */
 
-
-</span><span class="jsdoc-var">Roo.util.TextMetrics.Instance </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bindTo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fixedWidth</span><span class="jsdoc-syntax">){
+</span><span class="jsdoc-var">Roo.util.TextMetrics.Instance </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bindTo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fixedWidth</span><span class="jsdoc-syntax">)
+{
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ml </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Element</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">));
     </span><span class="jsdoc-var">document.body.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ml.dom</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">ml.position</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'absolute'</span><span class="jsdoc-syntax">);
@@ -67,7 +75,6 @@
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">instance </span><span class="jsdoc-syntax">= {
         </span><span class="jsdoc-comment">/**
          * Returns the size of the specified text based on the internal element's style and width properties
-         * @memberOf Roo.util.TextMetrics.Instance#
          * @param {String} text The text to measure
          * @return {Object} An object containing the text's size {width: (width), height: (height)}
          */
@@ -81,7 +88,6 @@
         </span><span class="jsdoc-comment">/**
          * Binds this TextMetrics instance to an element from which to copy existing CSS styles
          * that can affect the size of the rendered text
-         * @memberOf Roo.util.TextMetrics.Instance#
          * @param {String/HTMLElement} el The element, dom node or id
          */
         </span><span class="jsdoc-var">bind </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
@@ -93,7 +99,6 @@
         </span><span class="jsdoc-comment">/**
          * Sets a fixed width on the internal measurement element.  If the text will be multiline, you have
          * to set a fixed width in order to accurately measure the text height.
-         * @memberOf Roo.util.TextMetrics.Instance#
          * @param {Number} width The width to set on the element
          */
         </span><span class="jsdoc-var">setFixedWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">){
@@ -102,7 +107,6 @@
 
         </span><span class="jsdoc-comment">/**
          * Returns the measured width of the specified text
-         * @memberOf Roo.util.TextMetrics.Instance#
          * @param {String} text The text to measure
          * @return {Number} width The width in pixels
          */
@@ -114,7 +118,6 @@
         </span><span class="jsdoc-comment">/**
          * Returns the measured height of the specified text.  For multiline text, be sure to call
          * {@link #setFixedWidth} if necessary.
-         * @memberOf Roo.util.TextMetrics.Instance#
          * @param {String} text The text to measure
          * @return {Number} height The height in pixels
          */

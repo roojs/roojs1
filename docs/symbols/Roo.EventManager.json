@@ -5,7 +5,7 @@
   "tree_children" : [],
   "tree_parent" : [],
   "desc" : "Registers event handlers that want to receive a normalized EventObject instead of the standard browser event and provides \nseveral useful events directly.\nSee {@link Roo.EventObject} for more details on normalized event objects.",
-  "isSingleton" : true,
+  "isSingleton" : false,
   "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,

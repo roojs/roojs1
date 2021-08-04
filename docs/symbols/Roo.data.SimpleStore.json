@@ -9,7 +9,7 @@
   "tree_parent" : [],
   "desc" : "Small helper class to make creating Stores from Array data easier.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

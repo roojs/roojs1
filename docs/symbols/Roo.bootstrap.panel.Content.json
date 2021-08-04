@@ -81,7 +81,7 @@
   "tree_parent" : [],
   "desc" : "A basic ContentPanel element. - a panel that contain any content (eg. forms etc.)",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : true,

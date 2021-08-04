@@ -33,7 +33,7 @@ Roo.Msg.show({
    animEl: 'elId'
 });
 </code></pre>
- * @singleton
+ * @static
  */
 Roo.MessageBox = function(){
     var dlg, opt, mask, waitTimer;

@@ -78,7 +78,7 @@
   "tree_parent" : [],
   "desc" : "Bootstrap Header class",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

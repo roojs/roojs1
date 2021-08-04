@@ -22,6 +22,56 @@
   "config" : [],
   "methods" : [
     {
+      "name" : "getDocumentWidth",
+      "type" : "function",
+      "desc" : "Get the Full Document width",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The width"
+        }
+      ]
+    },
+    {
+      "name" : "getViewportWidth",
+      "type" : "function",
+      "desc" : "Get the Window Viewport width",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The width"
+        }
+      ]
+    },
+    {
       "name" : "getViewWidth",
       "type" : "function",
       "desc" : "Get the view width",
@@ -54,6 +104,31 @@
       ]
     },
     {
+      "name" : "getDocumentHeight",
+      "type" : "function",
+      "desc" : "Get the Full Document height",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The height"
+        }
+      ]
+    },
+    {
       "name" : "getViewHeight",
       "type" : "function",
       "desc" : "Get the view height",
@@ -77,6 +152,31 @@
           "isOptional" : false
         }
       ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Number",
+          "desc" : "The height"
+        }
+      ]
+    },
+    {
+      "name" : "getViewportHeight",
+      "type" : "function",
+      "desc" : "Get the Window Viewport height",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
       "returns" : [
         {
           "name" : "",

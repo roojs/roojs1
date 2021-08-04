@@ -14,7 +14,7 @@
  * @class Roo.util.TextMetrics
  * Provides precise pixel measurements for blocks of text so that you can determine exactly how high and
  * wide, in pixels, a given block of text will be.
- * @singleton
+ * @static
  */
 Roo.util.TextMetrics = function(){
     var shared;
@@ -51,9 +51,17 @@ Roo.util.TextMetrics = function(){
     };
 }();
 
- 
+/**
+ * @class Roo.util.TextMetrics.Instance
+ * Instance of  TextMetrics Calcuation
+ * @constructor
+ * Create a new TextMetrics Instance
+ * @param {Object} bindto
+ * @param {Boolean} fixedWidth
+ */
 
-Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
+Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth)
+{
     var ml = new Roo.Element(document.createElement('div'));
     document.body.appendChild(ml.dom);
     ml.position('absolute');
@@ -67,7 +75,6 @@ Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
     var instance = {
         /**
          * Returns the size of the specified text based on the internal element's style and width properties
-         * @memberOf Roo.util.TextMetrics.Instance#
          * @param {String} text The text to measure
          * @return {Object} An object containing the text's size {width: (width), height: (height)}
          */
@@ -81,7 +88,6 @@ Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
         /**
          * Binds this TextMetrics instance to an element from which to copy existing CSS styles
          * that can affect the size of the rendered text
-         * @memberOf Roo.util.TextMetrics.Instance#
          * @param {String/HTMLElement} el The element, dom node or id
          */
         bind : function(el){
@@ -93,7 +99,6 @@ Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
         /**
          * Sets a fixed width on the internal measurement element.  If the text will be multiline, you have
          * to set a fixed width in order to accurately measure the text height.
-         * @memberOf Roo.util.TextMetrics.Instance#
          * @param {Number} width The width to set on the element
          */
         setFixedWidth : function(width){
@@ -102,7 +107,6 @@ Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
 
         /**
          * Returns the measured width of the specified text
-         * @memberOf Roo.util.TextMetrics.Instance#
          * @param {String} text The text to measure
          * @return {Number} width The width in pixels
          */
@@ -114,7 +118,6 @@ Roo.util.TextMetrics.Instance = function(bindTo, fixedWidth){
         /**
          * Returns the measured height of the specified text.  For multiline text, be sure to call
          * {@link #setFixedWidth} if necessary.
-         * @memberOf Roo.util.TextMetrics.Instance#
          * @param {String} text The text to measure
          * @return {Number} height The height in pixels
          */

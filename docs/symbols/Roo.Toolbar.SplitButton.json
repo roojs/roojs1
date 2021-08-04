@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "A menu button that renders into a toolbar.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,

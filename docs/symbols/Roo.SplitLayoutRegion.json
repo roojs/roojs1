@@ -10,7 +10,7 @@
   "tree_parent" : [],
   "desc" : "Adds a splitbar and other (private) useful functionality to a {@link Roo.LayoutRegion}.",
   "isSingleton" : false,
-  "isStatic" : true,
+  "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
   "isBuilderTop" : false,
