@@ -39,6 +39,70 @@
   "throws" : "",
   "requires" : "",
   "config" : [],
-  "methods" : [],
+  "methods" : [
+    {
+      "name" : "delay",
+      "type" : "function",
+      "desc" : "Cancels any pending timeout and queues a new one",
+      "sig" : "(delay, newFn, newScope, newArgs)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "delay",
+          "type" : "Number",
+          "desc" : "The milliseconds to delay",
+          "isOptional" : false
+        },
+        {
+          "name" : "newFn",
+          "type" : "Function",
+          "desc" : "(optional) Overrides function passed to constructor",
+          "isOptional" : false
+        },
+        {
+          "name" : "newScope",
+          "type" : "Object",
+          "desc" : "(optional) Overrides scope passed to constructor",
+          "isOptional" : false
+        },
+        {
+          "name" : "newArgs",
+          "type" : "Array",
+          "desc" : "(optional) Overrides args passed to constructor",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "cancel",
+      "type" : "function",
+      "desc" : "Cancel the last queued timeout",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    }
+  ],
   "events" : []
 }

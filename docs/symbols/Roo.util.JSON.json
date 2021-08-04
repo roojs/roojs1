@@ -20,6 +20,71 @@
   "throws" : "",
   "requires" : "",
   "config" : [],
-  "methods" : [],
+  "methods" : [
+    {
+      "name" : "encode",
+      "type" : "function",
+      "desc" : "Encodes an Object, Array or other value",
+      "sig" : "(o)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Mixed",
+          "desc" : "The variable to encode",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The JSON string"
+        }
+      ]
+    },
+    {
+      "name" : "decode",
+      "type" : "function",
+      "desc" : "Decodes (parses) a JSON string to an object. If the JSON is invalid, this function throws a SyntaxError.",
+      "sig" : "(json)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "json",
+          "type" : "String",
+          "desc" : "The JSON string",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "Object",
+          "desc" : "The resulting object"
+        }
+      ]
+    }
+  ],
   "events" : []
 }

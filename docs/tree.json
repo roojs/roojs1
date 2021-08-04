@@ -1021,6 +1021,11 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.dd.DragDropMgr",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.dd.DragSource",
             "cn" : [],
             "is_class" : true
@@ -1502,7 +1507,7 @@
           {
             "name" : "Roo.util.DelayedTask",
             "cn" : [],
-            "is_class" : false
+            "is_class" : true
           },
           {
             "name" : "Roo.util.Format",
@@ -1512,7 +1517,7 @@
           {
             "name" : "Roo.util.JSON",
             "cn" : [],
-            "is_class" : false
+            "is_class" : true
           },
           {
             "name" : "Roo.util.MixedCollection",
@@ -1525,12 +1530,17 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.util.TaskRunner",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.util.TextMetrics",
             "cn" : [
               {
                 "name" : "Roo.util.TextMetrics.Instance",
                 "cn" : [],
-                "is_class" : false
+                "is_class" : true
               }
             ],
             "is_class" : true

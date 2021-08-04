@@ -193,6 +193,44 @@
       ]
     },
     {
+      "name" : "afterDragDrop",
+      "type" : "function",
+      "desc" : "An empty function by default, but provided so that you can perform a custom action\nafter a valid drag drop has occurred by providing an implementation.",
+      "sig" : "(target, e, id)",
+      "static" : false,
+      "memberOf" : "Roo.dd.DragSource",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "target",
+          "type" : "Roo.dd.DragDrop",
+          "desc" : "The drop target",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event object",
+          "isOptional" : false
+        },
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The id of the dropped element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "beforeDragEnter",
       "type" : "function",
       "desc" : "An empty function by default, but provided so that you can perform a custom action\nbefore the dragged item enters the drop target and optionally cancel the onDragEnter.",
@@ -344,6 +382,44 @@
       ]
     },
     {
+      "name" : "afterDragOut",
+      "type" : "function",
+      "desc" : "An empty function by default, but provided so that you can perform a custom action\nafter the dragged item is dragged out of the target without dropping.",
+      "sig" : "(target, e, id)",
+      "static" : false,
+      "memberOf" : "Roo.dd.DragSource",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "target",
+          "type" : "Roo.dd.DragDrop",
+          "desc" : "The drop target",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event object",
+          "isOptional" : false
+        },
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The id of the dragged element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "beforeDragDrop",
       "type" : "function",
       "desc" : "An empty function by default, but provided so that you can perform a custom action before the dragged\nitem is dropped onto the target and optionally cancel the onDragDrop.",
@@ -483,6 +559,82 @@
       "returns" : []
     },
     {
+      "name" : "afterDragOver",
+      "type" : "function",
+      "desc" : "An empty function by default, but provided so that you can perform a custom action\nwhile the dragged item is over the drop target by providing an implementation.",
+      "sig" : "(target, e, id)",
+      "static" : false,
+      "memberOf" : "Roo.dd.DragSource",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "target",
+          "type" : "Roo.dd.DragDrop",
+          "desc" : "The drop target",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event object",
+          "isOptional" : false
+        },
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The id of the dragged element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "afterDragEnter",
+      "type" : "function",
+      "desc" : "An empty function by default, but provided so that you can perform a custom action\nwhen the dragged item enters the drop target by providing an implementation.",
+      "sig" : "(target, e, id)",
+      "static" : false,
+      "memberOf" : "Roo.dd.DragSource",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "target",
+          "type" : "Roo.dd.DragDrop",
+          "desc" : "The drop target",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event object",
+          "isOptional" : false
+        },
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The id of the dragged element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "beforeDragOver",
       "type" : "function",
       "desc" : "An empty function by default, but provided so that you can perform a custom action\nwhile the dragged item is over the drop target and optionally cancel the onDragOver.",
@@ -525,6 +677,76 @@
           "desc" : "isValid True if the drag event is valid, else false to cancel"
         }
       ]
+    },
+    {
+      "name" : "afterInvalidDrop",
+      "type" : "function",
+      "desc" : "An empty function by default, but provided so that you can perform a custom action\nafter an invalid drop has occurred by providing an implementation.",
+      "sig" : "(e, id)",
+      "static" : false,
+      "memberOf" : "Roo.dd.DragSource",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event object",
+          "isOptional" : false
+        },
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The id of the dropped element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "afterValidDrop",
+      "type" : "function",
+      "desc" : "An empty function by default, but provided so that you can perform a custom action\nafter a valid drop has occurred by providing an implementation.",
+      "sig" : "(target, e, id)",
+      "static" : false,
+      "memberOf" : "Roo.dd.DragSource",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "target",
+          "type" : "Object",
+          "desc" : "The target DD",
+          "isOptional" : false
+        },
+        {
+          "name" : "e",
+          "type" : "Event",
+          "desc" : "The event object",
+          "isOptional" : false
+        },
+        {
+          "name" : "id",
+          "type" : "String",
+          "desc" : "The id of the dropped element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
     },
     {
       "name" : "initFrame",
