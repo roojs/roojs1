@@ -5,7 +5,7 @@
   "tree_children" : [],
   "tree_parent" : [],
   "desc" : "Provides attractive and customizable tooltips for any element.",
-  "isSingleton" : true,
+  "isSingleton" : false,
   "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,

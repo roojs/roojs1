@@ -5,7 +5,7 @@
   "tree_children" : [],
   "tree_parent" : [],
   "desc" : "Utility class for manipulating CSS rules",
-  "isSingleton" : true,
+  "isSingleton" : false,
   "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,

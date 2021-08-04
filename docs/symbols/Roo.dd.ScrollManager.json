@@ -5,7 +5,7 @@
   "tree_children" : [],
   "tree_parent" : [],
   "desc" : "Provides automatic scrolling of overflow regions in the page during drag operations.<br><br>\n<b>Note: This class uses \"Point Mode\" and is untested in \"Intersect Mode\".</b>",
-  "isSingleton" : true,
+  "isSingleton" : false,
   "isStatic" : true,
   "isBuiltin" : false,
   "isAbstract" : false,
