@@ -83,6 +83,7 @@ Roo.util.JSON = new (function(){
     
     /**
      * Encodes an Object, Array or other value
+     * @static
      * @param {Mixed} o The variable to encode
      * @return {String} The JSON string
      */
