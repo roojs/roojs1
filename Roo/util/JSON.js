@@ -13,7 +13,7 @@
  * Modified version of Douglas Crockford"s json.js that doesn"t
  * mess with the Object prototype 
  * http://www.json.org/js.html
- * @static
+ * @singleton
  */
 Roo.util.JSON = new (function(){
     var useHasOwn = {}.hasOwnProperty ? true : false;
@@ -83,7 +83,6 @@ Roo.util.JSON = new (function(){
     
     /**
      * Encodes an Object, Array or other value
-     * @static
      * @param {Mixed} o The variable to encode
      * @return {String} The JSON string
      */
@@ -130,7 +129,6 @@ Roo.util.JSON = new (function(){
     
     /**
      * Decodes (parses) a JSON string to an object. If the JSON is invalid, this function throws a SyntaxError.
-     * @static
      * @param {String} json The JSON string
      * @return {Object} The resulting object
      */
@@ -141,13 +139,11 @@ Roo.util.JSON = new (function(){
 })();
 /** 
  * Shorthand for {@link Roo.util.JSON#encode}
- * @member Roo encode
- * @static
+ * @member Roo encode 
  * @method */
 Roo.encode = typeof(JSON) != 'undefined' && JSON.stringify ? JSON.stringify : Roo.util.JSON.encode;
 /** 
  * Shorthand for {@link Roo.util.JSON#decode}
- * @static
  * @member Roo decode 
  * @method */
 Roo.decode = typeof(JSON) != 'undefined' && JSON.parse ? JSON.parse : Roo.util.JSON.decode;
