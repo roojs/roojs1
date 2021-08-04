@@ -265,6 +265,35 @@
             }
         }, </span><span class="jsdoc-var">this.delay.hide</span><span class="jsdoc-syntax">)
     },
+
+    </span><span class="jsdoc-comment">/**
+     * update the position of the dialog
+     * normally this is needed if the popover get's bigger - due to a Table reload etc..
+     * 
+     *
+     */
+
+    </span><span class="jsdoc-var">doAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.updatePosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.placement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-comment">// this is usually just done by the builder = to show the popoup in the middle of the scren.
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">es </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getSize</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">()/2;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">()/2;
+            </span><span class="jsdoc-var">this.el.setXY</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">-(</span><span class="jsdoc-var">es.width</span><span class="jsdoc-syntax">/2),  </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">-(</span><span class="jsdoc-var">es.height</span><span class="jsdoc-syntax">/2)] );
+
+        }
+
+
+
+
+
+    },
+
     </span><span class="jsdoc-comment">/**
      * Show the popover
      * @param {Roo.Element|string|Boolean} - element to align and point to. (set align to [ pos, offset ])
@@ -301,19 +330,7 @@
         </span><span class="jsdoc-var">this.el.show</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.el.dom.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
 
-
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alignEl</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.updatePosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.placement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-
-        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-comment">// this is usually just done by the builder = to show the popoup in the middle of the scren.
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">es </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getSize</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">()/2;
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">()/2;
-            </span><span class="jsdoc-var">this.el.setXY</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">-(</span><span class="jsdoc-var">es.width</span><span class="jsdoc-syntax">/2),  </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">-(</span><span class="jsdoc-var">es.height</span><span class="jsdoc-syntax">/2)] );
-
-        }
-
+        </span><span class="jsdoc-var">this.doAlign</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-comment">//var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 

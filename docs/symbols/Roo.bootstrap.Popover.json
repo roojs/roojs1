@@ -257,6 +257,25 @@
       "returns" : []
     },
     {
+      "name" : "doAlign",
+      "type" : "function",
+      "desc" : "update the position of the dialog\nnormally this is needed if the popover get's bigger - due to a Table reload etc..",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
       "name" : "setTitle",
       "type" : "function",
       "desc" : "",

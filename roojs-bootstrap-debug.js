@@ -21746,6 +21746,35 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             }
         }, this.delay.hide)
     },
+    
+    /**
+     * update the position of the dialog
+     * normally this is needed if the popover get's bigger - due to a Table reload etc..
+     * 
+     *
+     */
+    
+    doAlign : function()
+    {
+        
+        if (this.alignEl) {
+            this.updatePosition(this.placement, true);
+             
+        } else {
+            // this is usually just done by the builder = to show the popoup in the middle of the scren.
+            var es = this.el.getSize();
+            var x = Roo.lib.Dom.getViewWidth()/2;
+            var y = Roo.lib.Dom.getViewHeight()/2;
+            this.el.setXY([ x-(es.width/2),  y-(es.height/2)] );
+            
+        }
+
+         
+         
+        
+        
+    },
+    
     /**
      * Show the popover
      * @param {Roo.Element|string|Boolean} - element to align and point to. (set align to [ pos, offset ])
@@ -21782,19 +21811,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.show();
         this.el.dom.style.display = 'block';
          
- 
-        if (this.alignEl) {
-            this.updatePosition(this.placement, true);
-             
-        } else {
-            // this is usually just done by the builder = to show the popoup in the middle of the scren.
-            var es = this.el.getSize();
-            var x = Roo.lib.Dom.getViewWidth()/2;
-            var y = Roo.lib.Dom.getViewHeight()/2;
-            this.el.setXY([ x-(es.width/2),  y-(es.height/2)] );
-            
-        }
-
+        this.doAlign();
         
         //var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
