@@ -130,6 +130,7 @@ Roo.util.JSON = new (function(){
     
     /**
      * Decodes (parses) a JSON string to an object. If the JSON is invalid, this function throws a SyntaxError.
+     * @static
      * @param {String} json The JSON string
      * @return {Object} The resulting object
      */
@@ -140,11 +141,13 @@ Roo.util.JSON = new (function(){
 })();
 /** 
  * Shorthand for {@link Roo.util.JSON#encode}
- * @member Roo encode 
+ * @member Roo encode
+ * @static
  * @method */
 Roo.encode = typeof(JSON) != 'undefined' && JSON.stringify ? JSON.stringify : Roo.util.JSON.encode;
 /** 
  * Shorthand for {@link Roo.util.JSON#decode}
+ * @static
  * @member Roo decode 
  * @method */
 Roo.decode = typeof(JSON) != 'undefined' && JSON.parse ? JSON.parse : Roo.util.JSON.decode;

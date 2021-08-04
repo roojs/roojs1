@@ -23177,7 +23177,7 @@ Roo.extend(Roo.dd.DropZone, Roo.dd.DropTarget, {
 
 /**
  * @class Roo.data.SortTypes
- * @singleton
+ * @static
  * Defines the default sorting (casting?) comparison functions used when sorting data.
  */
 Roo.data.SortTypes = {
@@ -33451,7 +33451,7 @@ Roo.Msg.show({
    animEl: 'elId'
 });
 </code></pre>
- * @singleton
+ * @static
  */
 Roo.MessageBox = function(){
     var dlg, opt, mask, waitTimer;
@@ -33980,7 +33980,7 @@ Roo.Msg = Roo.MessageBox;/*
 /**
  * @class Roo.QuickTips
  * Provides attractive and customizable tooltips for any element.
- * @singleton
+ * @static
  */
 Roo.QuickTips = function(){
     var el, tipBody, tipBodyText, tipTitle, tm, cfg, close, tagEls = {}, esc, removeCls = null, bdLeft, bdRight;
@@ -38132,7 +38132,7 @@ Roo.extend(Roo.menu.MenuNav, Roo.KeyNav, {
 /**
  * @class Roo.menu.MenuMgr
  * Provides a common registry of all menu items on a page so that they can be easily accessed by id.
- * @singleton
+ * @static
  */
 Roo.menu.MenuMgr = function(){
    var menus, active, groups = {}, attached = false, lastShow = new Date();
@@ -49636,7 +49636,7 @@ Roo.extend(Roo.form.FieldSet, Roo.form.Layout, {
 /**
  * @class Roo.form.VTypes
  * Overridable validation definitions. The validations provided are basic and intended to be easily customizable and extended.
- * @singleton
+ * @static
  */
 Roo.form.VTypes = function(){
     // closure these in so they are only created once.
