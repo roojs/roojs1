@@ -855,9 +855,8 @@ Roo.extend(Roo.bootstrap.DropTarget, Roo.bootstrap.Element,  {
 /**
  * @class Roo.bootstrap.Body
  * @extends Roo.bootstrap.Component
- * @builder-top
- * @children Roo.bootstrap.Component
- * @parent none
+ * @children Roo.bootstrap.Component 
+ * @parent none builder
  * Bootstrap Body class
  *
  * @constructor
@@ -1607,8 +1606,8 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Container
  * @extends Roo.bootstrap.Component
- * @builder-top
  * @children Roo.bootstrap.Component
+ * @parent builder
  * Bootstrap Container class
  * @cfg {Boolean} jumbotron is it a jumbotron element
  * @cfg {String} html content of element
@@ -4259,8 +4258,7 @@ Roo.extend(Roo.bootstrap.menu.Separator, Roo.bootstrap.Component,  {
 /**
  * @class Roo.bootstrap.Modal
  * @extends Roo.bootstrap.Component
- * @builder-top
- * @parent none
+ * @parent none builder
  * @children Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
