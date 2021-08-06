@@ -38020,8 +38020,8 @@ Roo.extend(Roo.bootstrap.layout.Manager, Roo.bootstrap.Component, {
 /**
  * @class Roo.bootstrap.layout.Border
  * @extends Roo.bootstrap.layout.Manager
- * @builder-top
  * @children Roo.bootstrap.panel.Content Roo.bootstrap.panel.Nest Roo.bootstrap.panel.Grid
+ * @parent builder Roo.bootstrap.panel.Nest Roo.bootstrap.panel.Nest Roo.bootstrap.Modal
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: examples/bootstrap/nested.html<br><br>
  
