@@ -9,8 +9,8 @@
 /**
  * @class Roo.bootstrap.Container
  * @extends Roo.bootstrap.Component
- * @builder-top
  * @children Roo.bootstrap.Component
+ * @parent builder
  * Bootstrap Container class
  * @cfg {Boolean} jumbotron is it a jumbotron element
  * @cfg {String} html content of element

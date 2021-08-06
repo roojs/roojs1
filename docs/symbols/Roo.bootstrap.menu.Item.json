@@ -13,8 +13,7 @@
     "Roo.bootstrap.ButtonUploader",
     "Roo.bootstrap.Row",
     "Roo.bootstrap.Column",
-    "Roo.bootstrap.TabGroup",
-    "Roo.bootstrap.Container"
+    "Roo.bootstrap.TabGroup"
   ],
   "tree_parent" : [
     "Roo.bootstrap.menu.Menu"

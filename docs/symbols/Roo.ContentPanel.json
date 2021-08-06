@@ -16,13 +16,17 @@
     "Roo.View",
     "Roo.JsonView"
   ],
-  "tree_parent" : [],
+  "tree_parent" : [
+    "Roo.BorderLayout",
+    "Roo.LayoutDialog",
+    "builder-top"
+  ],
   "desc" : "A basic ContentPanel element.",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
-  "isBuilderTop" : true,
+  "isBuilderTop" : false,
   "memberOf" : "ContentPanel",
   "example" : "",
   "deprecated" : "",

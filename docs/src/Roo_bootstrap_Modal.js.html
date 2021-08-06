@@ -6,8 +6,7 @@
 /**
  * @class Roo.bootstrap.Modal
  * @extends Roo.bootstrap.Component
- * @builder-top
- * @parent none
+ * @parent none builder
  * @children Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog

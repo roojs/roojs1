@@ -8,9 +8,8 @@
 /**
  * @class Roo.bootstrap.Body
  * @extends Roo.bootstrap.Component
- * @builder-top
- * @children Roo.bootstrap.Component
- * @parent none
+ * @children Roo.bootstrap.Component 
+ * @parent none builder
  * Bootstrap Body class
  *
  * @constructor

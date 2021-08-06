@@ -16,7 +16,6 @@
     "Roo.bootstrap.Calendar",
     "Roo.bootstrap.Card",
     "Roo.bootstrap.Column",
-    "Roo.bootstrap.Container",
     "Roo.bootstrap.DocumentManager",
     "Roo.bootstrap.DocumentSlider",
     "Roo.bootstrap.DocumentViewer",
@@ -67,7 +66,6 @@
     "Roo.bootstrap.form.TextArea",
     "Roo.bootstrap.form.TimeField",
     "Roo.bootstrap.form.TriggerField",
-    "Roo.bootstrap.layout.Border",
     "Roo.bootstrap.nav.Group",
     "Roo.bootstrap.nav.Headerbar",
     "Roo.bootstrap.nav.ProgressBar",
@@ -77,14 +75,15 @@
     "Roo.bootstrap.nav.Simplebar"
   ],
   "tree_parent" : [
-    "none"
+    "none",
+    "builder"
   ],
   "desc" : "Bootstrap Popover class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
-  "isBuilderTop" : true,
+  "isBuilderTop" : false,
   "memberOf" : "Popover",
   "example" : "",
   "deprecated" : "",

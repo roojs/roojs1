@@ -16,7 +16,6 @@
     "Roo.bootstrap.Calendar",
     "Roo.bootstrap.Card",
     "Roo.bootstrap.Column",
-    "Roo.bootstrap.Container",
     "Roo.bootstrap.DocumentManager",
     "Roo.bootstrap.DocumentSlider",
     "Roo.bootstrap.DocumentViewer",
@@ -76,14 +75,15 @@
     "Roo.bootstrap.nav.Simplebar"
   ],
   "tree_parent" : [
-    "none"
+    "none",
+    "builder"
   ],
   "desc" : "Bootstrap Modal class",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
   "isAbstract" : false,
-  "isBuilderTop" : true,
+  "isBuilderTop" : false,
   "memberOf" : "Modal",
   "example" : "",
   "deprecated" : "",

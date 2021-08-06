@@ -9,8 +9,7 @@
   ],
   "childClasses" : {  },
   "tree_children" : [
-    "Roo.bootstrap.nav.Group",
-    "Roo.bootstrap.Container"
+    "Roo.bootstrap.nav.Group"
   ],
   "tree_parent" : [
     "Roo.bootstrap.Popover"

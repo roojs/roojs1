@@ -10,7 +10,6 @@
   "childClasses" : {  },
   "tree_children" : [
     "Roo.bootstrap.nav.Group",
-    "Roo.bootstrap.Container",
     "Roo.bootstrap.form.Form",
     "Roo.bootstrap.Row",
     "Roo.bootstrap.Column",

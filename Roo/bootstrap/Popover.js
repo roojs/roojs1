@@ -8,8 +8,7 @@
 /**
  * @class Roo.bootstrap.Popover
  * @extends Roo.bootstrap.Component
- * @builder-top
- * @parent none
+ * @parent none builder
  * @children Roo.bootstrap.Component
  * Bootstrap Popover class
  * @cfg {String} html contents of the popover   (or false to use children..)

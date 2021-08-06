@@ -11,7 +11,6 @@
     ]
   },
   "tree_children" : [
-    "Roo.bootstrap.Container",
     "Roo.bootstrap.Button",
     "Roo.bootstrap.ButtonUploader",
     "Roo.bootstrap.form.CardUploader"
