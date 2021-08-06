@@ -54436,7 +54436,7 @@ Roo.LayoutStateManager.prototype = {
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
  * @children Roo.form.Form Roo.JsonView Roo.View
- * @parent Roo.BorderLayout builder-top
+ * @parent Roo.BorderLayout Roo.LayoutDialog builder-top
  * A basic ContentPanel element.
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
