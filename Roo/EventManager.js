@@ -376,12 +376,14 @@ el.on({
                 resizeTask = new Roo.util.DelayedTask(function(){
                     resizeEvent.fire(D.getViewWidth(), D.getViewHeight());
                 });
-                E.on(window, "resize", function(){
-                    if(Roo.isIE){
+                E.on(window, "resize", function()
+                {
+                    // it seems that even chrome likes to have a slight delay here.
+                    //if(Roo.isIE){
                         resizeTask.delay(50);
-                    }else{
-                        resizeEvent.fire(D.getViewWidth(), D.getViewHeight());
-                    }
+                    //}else{
+                    //    resizeEvent.fire(D.getViewWidth(), D.getViewHeight());
+                    //}
                 });
             }
             resizeEvent.addListener(fn, scope, options);

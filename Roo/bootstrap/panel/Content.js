@@ -285,7 +285,9 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
         this.el.update(content, loadScripts);
     },
 
-    ignoreResize : function(w, h){
+    ignoreResize : function(w, h)
+    {
+        return false; // always resize?
         if(this.lastSize && this.lastSize.width == w && this.lastSize.height == h){
             return true;
         }else{

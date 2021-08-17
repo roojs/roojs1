@@ -40493,7 +40493,9 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
         this.el.update(content, loadScripts);
     },
 
-    ignoreResize : function(w, h){
+    ignoreResize : function(w, h)
+    {
+        return false; // always resize?
         if(this.lastSize && this.lastSize.width == w && this.lastSize.height == h){
             return true;
         }else{
@@ -40898,7 +40900,11 @@ Roo.bootstrap.panel.Grid = function(config)
      
 };
 
-Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
+Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content,
+{
+    // private
+    is_resizing : false,
+    
     getId : function(){
         return this.grid.id;
     },
@@ -40911,7 +40917,13 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
         return this.grid;    
     },
     
-    setSize : function(width, height){
+    setSize : function(width, height)
+    {
+        if (this.is_resizing) {
+            return;
+        
+        }
+        this.is_resizing = true;
         if(!this.ignoreResize(width, height)){
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
@@ -40941,6 +40953,7 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content, {
              
             grid.autoSize();
         }
+        this.is_resizing = false;
     },
      
     
