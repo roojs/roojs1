@@ -285,7 +285,9 @@
         </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">loadScripts</span><span class="jsdoc-syntax">);
     },
 
-    </span><span class="jsdoc-var">ignoreResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">ignoreResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// always resize?
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastSize </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.lastSize.width </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.lastSize.height </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{

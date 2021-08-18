@@ -96,7 +96,11 @@
 
 };
 
-</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.panel.Grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.panel.Content</span><span class="jsdoc-syntax">, {
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.panel.Grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.panel.Content</span><span class="jsdoc-syntax">,
+{
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">is_resizing </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
     </span><span class="jsdoc-var">getId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.grid.id</span><span class="jsdoc-syntax">;
     },
@@ -109,7 +113,13 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">;
     },
 
-    </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">setSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.is_resizing</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+
+        }
+        </span><span class="jsdoc-var">this.is_resizing </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.ignoreResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">)){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.adjustForComponents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
@@ -139,6 +149,7 @@
 
             </span><span class="jsdoc-var">grid.autoSize</span><span class="jsdoc-syntax">();
         }
+        </span><span class="jsdoc-var">this.is_resizing </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     },
 
 
