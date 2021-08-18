@@ -16241,7 +16241,7 @@ Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
             o.request.callback.call(o.request.scope, {
                     success : false,
                     raw : {
-                        errorMsg : response
+                        errorMsg : response.responseText
                     }
                     
                 }, o.request.arg, false);
