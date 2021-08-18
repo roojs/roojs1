@@ -28783,8 +28783,14 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.nav.Simplebar, {
     },
 
     // private
-    onLoadError : function(){
+    onLoadError : function(o){
         this.loading.enable();
+        if (this.ds.events.loadexception.listeners.length  < 2) {
+            // nothing has been assigned to loadexception except this...
+            // so 
+            Roo.MessageBox.alert("Error loading",o.raw.errorMsg);
+
+        }
     },
 
     // private
