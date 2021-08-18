@@ -129,14 +129,10 @@ Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
         try {
             result = o.reader.read(response);
         }catch(e){
+            o.success = false;
+            o.raw = { errorMsg : response.responseText };
             this.fireEvent("loadexception", this, o, response, e);
-            o.request.callback.call(o.request.scope, {
-                    success : false,
-                    raw : {
-                        errorMsg : response.responseText
-                    }
-                    
-                }, o.request.arg, false);
+            o.request.callback.call(o.request.scope, o, o.request.arg, false);
             return;
         }
         
