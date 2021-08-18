@@ -2149,10 +2149,14 @@ a.list-group-item, button.list-group-item {
   display: table;
   min-width: 250px; }
 
+/* this is the 'spinner' */
 .roo-el-mask-msg i {
   font-size: 36px;
   vertical-align: middle;
   float: left; }
+
+.roo-el-mask-msg.no-spinner i {
+  display: none; }
 
 .roo-el-mask-msg div {
   font-family: 'Source Sans Pro', sans-serif;

@@ -9136,7 +9136,8 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * 
  * @cfg {String} cls table class
  *
- * 
+ *
+ * @cfg {string} empty_results  Text to display for no results 
  * @cfg {boolean} striped Should the rows be alternative striped
  * @cfg {boolean} bordered Add borders to the table
  * @cfg {boolean} hover Add hover highlighting
@@ -9153,6 +9154,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
  * @cfg {Boolean} enableColumnResize default true if columns can be resized = needs scrollBody to be set to work (drag/drop)
+ *
  * 
  * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
  * 
@@ -9315,6 +9317,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     cls: false,
     
+    empty_results : '',
     striped : false,
     scrollBody : false,
     bordered: false,
@@ -10003,6 +10006,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
                 
             }, this);
+        } else if (this.empty_results.length) {
+            this.el.mask(this.empty_results, 'no-spinner');
         }
         
         var tfoot = this.el.select('tfoot', true).first();
@@ -10381,7 +10386,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onBeforeLoad : function()
     {
-        
+        this.el.unmask(); // if needed.
     },
      /**
      * Remove all rows

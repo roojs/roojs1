@@ -289,7 +289,9 @@ Roo.apply(Roo.lib.Color.prototype, {
   {
     
     // calculate the HSV components if necessary
-    if (this.hsv == null) this.calculateHSV();
+    if (this.hsv == null) {
+      this.calculateHSV();
+    }
 
     // return the HSV components
     return {
@@ -311,7 +313,7 @@ Roo.apply(Roo.lib.Color.prototype, {
     
      
     // calculate the HSV components if necessary
-    if (this.hsl == null) this.calculateHSL();
+    if (this.hsl == null) { this.calculateHSL(); }
 
     // return the HSL components
     return {
@@ -389,7 +391,7 @@ Roo.extend(Roo.lib.RGBColor, Roo.lib.Color, {
           // red has the highest value
           case rgb.r:
             var hue = (rgb.g - rgb.b) / range * 60;
-            if (hue < 0) hue += 360;
+            if (hue < 0) { hue += 360; }
             break;
   
           // green has the highest value
@@ -548,7 +550,7 @@ Roo.extend(Roo.lib.HSVColor, Roo.lib.Color, {
         };
 
     // correct a division-by-zero error
-    if (isNaN(hsl.s)) hsl.s = 0;
+    if (isNaN(hsl.s)) { hsl.s = 0; }
 
   } 
  
@@ -587,7 +589,7 @@ Roo.lib.HSLColor = function(h, s, l, a){
   // initialise the RGB and HSV components to null
 }
 
-Roo.extend(Roo.lib.HSL, Roo.lib.Color, {
+Roo.extend(Roo.lib.HSLColor, Roo.lib.Color, {
 
   /* Calculates and stores the RGB components of this HSLColor so that they can
    * be returned be the getRGB function.
@@ -666,7 +668,7 @@ Roo.extend(Roo.lib.HSL, Roo.lib.Color, {
         };
 
     // correct a division-by-zero error
-    if (isNaN(this.hsv.s)) this.hsv.s = 0;
+    if (isNaN(this.hsv.s)) { this.hsv.s = 0; }
 
   }
  
