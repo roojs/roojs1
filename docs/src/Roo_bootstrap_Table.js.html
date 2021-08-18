@@ -82,11 +82,12 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Boolean} headerShow (true|false) generate thead, default true
  * @cfg {Boolean} rowSelection (true|false) default false
  * @cfg {Boolean} cellSelection (true|false) default false
- * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header
+ * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header (with resizable columns)
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
- * @cfg {Boolean} enableColumnResize default true if columns can be resized (drag/drop)
+ * @cfg {Boolean} enableColumnResize default true if columns can be resized = needs scrollBody to be set to work (drag/drop)
+ * 
  * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
  * 
  * @constructor
@@ -499,7 +500,9 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
                 }
 
                 </span><span class="jsdoc-var">styles.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-hcol-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; { &quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot; }\n&quot;</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-grid-split-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; { &quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">splithide</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'height:'</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">headHeight </span><span class="jsdoc-syntax">- 4), </span><span class="jsdoc-string">&quot;px;}\n&quot;
+                            </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-grid-split-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; { &quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">splithide</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'height:'</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-var">headHeight </span><span class="jsdoc-syntax">- 4), </span><span class="jsdoc-string">&quot;px;}\n&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-comment">// this is the popover version..
+                            </span><span class="jsdoc-string">'.popover-inner #' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' .x-grid-split-' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot; { &quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">left</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">splithide</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'height:'</span><span class="jsdoc-syntax">, 100, </span><span class="jsdoc-string">&quot;%;}\n&quot;
                 </span><span class="jsdoc-syntax">);
             }
 

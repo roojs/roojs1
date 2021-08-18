@@ -54,7 +54,7 @@
     {
       "name" : "scrollBody",
       "type" : "Boolean",
-      "desc" : "e) default false - body scrolled / fixed header",
+      "desc" : "e) default false - body scrolled / fixed header (with resizable columns)",
       "memberOf" : ""
     },
     {
@@ -210,7 +210,7 @@
     {
       "name" : "enableColumnResize",
       "type" : "Boolean",
-      "desc" : "default true if columns can be resized (drag/drop)",
+      "desc" : "default true if columns can be resized = needs scrollBody to be set to work (drag/drop)",
       "memberOf" : ""
     },
     {
