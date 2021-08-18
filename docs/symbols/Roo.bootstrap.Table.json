@@ -58,6 +58,12 @@
       "memberOf" : ""
     },
     {
+      "name" : "empty_results",
+      "type" : "string",
+      "desc" : "Text to display for no results",
+      "memberOf" : ""
+    },
+    {
       "name" : "cm[]",
       "type" : "Roo.grid.ColumnModel",
       "desc" : "A column for the grid.",

@@ -3313,7 +3313,7 @@
         {
           "name" : "msgCls",
           "type" : "String",
-          "desc" : "(optional) A css class to apply to the msg element",
+          "desc" : "(optional) A css class to apply to the msg element - use no-spinner to hide the spinner on bootstrap",
           "isOptional" : false
         }
       ],

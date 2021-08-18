@@ -70,7 +70,8 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * 
  * @cfg {String} cls table class
  *
- * 
+ *
+ * @cfg {string} empty_results  Text to display for no results 
  * @cfg {boolean} striped Should the rows be alternative striped
  * @cfg {boolean} bordered Add borders to the table
  * @cfg {boolean} hover Add hover highlighting
@@ -87,6 +88,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
  * @cfg {Boolean} enableColumnResize default true if columns can be resized = needs scrollBody to be set to work (drag/drop)
+ *
  * 
  * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
  * 
@@ -249,6 +251,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
 
     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
+    </span><span class="jsdoc-var">empty_results </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">striped </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">scrollBody </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">bordered</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -937,6 +940,8 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
                 }
 
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.empty_results.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.empty_results</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'no-spinner'</span><span class="jsdoc-syntax">);
         }
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tfoot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
@@ -1315,8 +1320,8 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
 
     </span><span class="jsdoc-var">onBeforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-
-    },
+        </span><span class="jsdoc-var">this.el.unmask</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// if needed.
+    </span><span class="jsdoc-syntax">},
      </span><span class="jsdoc-comment">/**
      * Remove all rows
      */

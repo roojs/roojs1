@@ -289,7 +289,9 @@
   {
 
     </span><span class="jsdoc-comment">// calculate the HSV components if necessary
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hsv </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">this.calculateHSV</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hsv </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+      </span><span class="jsdoc-var">this.calculateHSV</span><span class="jsdoc-syntax">();
+    }
 
     </span><span class="jsdoc-comment">// return the HSV components
     </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
@@ -311,7 +313,7 @@
 
 
     </span><span class="jsdoc-comment">// calculate the HSV components if necessary
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hsl </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) </span><span class="jsdoc-var">this.calculateHSL</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hsl </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-var">this.calculateHSL</span><span class="jsdoc-syntax">(); }
 
     </span><span class="jsdoc-comment">// return the HSL components
     </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
@@ -389,7 +391,7 @@
           </span><span class="jsdoc-comment">// red has the highest value
           </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">rgb.r</span><span class="jsdoc-syntax">:
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hue </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">rgb.g </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">rgb.b</span><span class="jsdoc-syntax">) / </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">* 60;
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hue </span><span class="jsdoc-syntax">&lt; 0) </span><span class="jsdoc-var">hue </span><span class="jsdoc-syntax">+= 360;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hue </span><span class="jsdoc-syntax">&lt; 0) { </span><span class="jsdoc-var">hue </span><span class="jsdoc-syntax">+= 360; }
             </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
 
           </span><span class="jsdoc-comment">// green has the highest value
@@ -548,7 +550,7 @@
         </span><span class="jsdoc-syntax">};
 
     </span><span class="jsdoc-comment">// correct a division-by-zero error
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hsl.s</span><span class="jsdoc-syntax">)) </span><span class="jsdoc-var">hsl.s </span><span class="jsdoc-syntax">= 0;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hsl.s</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-var">hsl.s </span><span class="jsdoc-syntax">= 0; }
 
   }
 
@@ -587,7 +589,7 @@
   </span><span class="jsdoc-comment">// initialise the RGB and HSV components to null
 </span><span class="jsdoc-syntax">}
 
-</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.HSL</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.lib.Color</span><span class="jsdoc-syntax">, {
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.HSLColor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.lib.Color</span><span class="jsdoc-syntax">, {
 
   </span><span class="jsdoc-comment">/* Calculates and stores the RGB components of this HSLColor so that they can
    * be returned be the getRGB function.
@@ -666,7 +668,7 @@
         </span><span class="jsdoc-syntax">};
 
     </span><span class="jsdoc-comment">// correct a division-by-zero error
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hsv.s</span><span class="jsdoc-syntax">)) </span><span class="jsdoc-var">this.hsv.s </span><span class="jsdoc-syntax">= 0;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hsv.s</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-var">this.hsv.s </span><span class="jsdoc-syntax">= 0; }
 
   }
 
