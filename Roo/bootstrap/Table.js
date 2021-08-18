@@ -82,11 +82,12 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Boolean} headerShow (true|false) generate thead, default true
  * @cfg {Boolean} rowSelection (true|false) default false
  * @cfg {Boolean} cellSelection (true|false) default false
- * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header
+ * @cfg {Boolean} scrollBody (true|false) default false - body scrolled / fixed header (with resizable columns)
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
- * @cfg {Boolean} enableColumnResize default true if columns can be resized (drag/drop)
+ * @cfg {Boolean} enableColumnResize default true if columns can be resized = needs scrollBody to be set to work (drag/drop)
+ * 
  * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
  * 
  * @constructor
@@ -499,7 +500,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
                 
                 styles.push('#' , this.id , ' .x-hcol-' , i, " { ", width, hidden," }\n",
-                            '#' , this.id , ' .x-grid-split-' , i, " { ", left, splithide,'height:', (headHeight - 4), "px;}\n"
+                            '#' , this.id , ' .x-grid-split-' , i, " { ", left, splithide, 'height:', (headHeight - 4), "px;}\n",
+                            // this is the popover version..
+                            '.popover-inner #' , this.id , ' .x-grid-split-' , i, " { ", left, splithide, 'height:', 100, "%;}\n"
                 );
             }
             
