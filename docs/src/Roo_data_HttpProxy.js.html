@@ -129,14 +129,10 @@
         </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.reader.read</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
         }</span><span class="jsdoc-keyword">catch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">o.success </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">o.raw </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">errorMsg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">response.responseText </span><span class="jsdoc-syntax">};
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;loadexception&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">o.request.callback.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.request.scope</span><span class="jsdoc-syntax">, {
-                    </span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">raw </span><span class="jsdoc-syntax">: {
-                        </span><span class="jsdoc-var">errorMsg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">response.responseText
-                    </span><span class="jsdoc-syntax">}
-
-                }, </span><span class="jsdoc-var">o.request.arg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">o.request.callback.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.request.scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o.request.arg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
 
