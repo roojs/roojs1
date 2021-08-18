@@ -28779,7 +28779,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.nav.Simplebar, {
     },
 
     // private
-    onLoadError : function(o){
+    onLoadError : function(proxy, o){
         this.loading.enable();
         if (this.ds.events.loadexception.listeners.length  < 2) {
             // nothing has been assigned to loadexception except this...
