@@ -1340,7 +1340,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         
         Roo.log('button on click ');
-        if(this.preventDefault){
+        if(this.href === '' || this.preventDefault){
             e.preventDefault();
         }
         
