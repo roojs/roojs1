@@ -166,6 +166,8 @@
             </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">;
 
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-comment">// we force children not to montor widnow resize  - as we do that for them.
+                </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.monitorWindowResize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])));
             }
         }
@@ -373,6 +375,14 @@
         }
 
         </span><span class="jsdoc-var">this.resizeTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// any layout/border etc.. resize..
+        </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-var">this.items.forEach</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">e.layout </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">e.layout</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+            });
+        })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(100,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
     },
 
     </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
@@ -418,7 +428,9 @@
         </span><span class="jsdoc-comment">// set zindex here - otherwise it appears to be ignored...
         </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Modal.zIndex</span><span class="jsdoc-syntax">++);
 
-        (</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+
+        </span><span class="jsdoc-comment">// this is for children that are... layout.Border 
+        </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
             </span><span class="jsdoc-var">this.items.forEach</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">e.layout </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">e.layout</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 

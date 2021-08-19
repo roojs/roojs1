@@ -370,7 +370,8 @@ el.on({
          * @param {Object}   scope    An object that becomes the scope of the handler
          * @param {boolean}  options
          */
-        onWindowResize : function(fn, scope, options){
+        onWindowResize : function(fn, scope, options)
+        {
             if(!resizeEvent){
                 resizeEvent = new Roo.util.Event();
                 resizeTask = new Roo.util.DelayedTask(function(){
@@ -378,12 +379,11 @@ el.on({
                 });
                 E.on(window, "resize", function()
                 {
-                    // it seems that even chrome likes to have a slight delay here.
-                    //if(Roo.isIE){
+                    if (Roo.isIE) {
                         resizeTask.delay(50);
-                    //}else{
-                    //    resizeEvent.fire(D.getViewWidth(), D.getViewHeight());
-                    //}
+                    } else {
+                        resizeEvent.fire(D.getViewWidth(), D.getViewHeight());
+                    }
                 });
             }
             resizeEvent.addListener(fn, scope, options);

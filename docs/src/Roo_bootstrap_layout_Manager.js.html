@@ -17,6 +17,8 @@
  */
 </span><span class="jsdoc-var">Roo.bootstrap.layout.Manager </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
 {
+    </span><span class="jsdoc-var">this.monitorWindowResize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// do this before we apply configuration.
+
     </span><span class="jsdoc-var">Roo.bootstrap.layout.Manager.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
 
 
@@ -24,7 +26,7 @@
 
 
     </span><span class="jsdoc-comment">/** false to disable window resize monitoring @type Boolean */
-    </span><span class="jsdoc-var">this.monitorWindowResize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+
     </span><span class="jsdoc-var">this.regions </span><span class="jsdoc-syntax">= {};
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
