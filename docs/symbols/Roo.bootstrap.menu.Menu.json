@@ -7,7 +7,8 @@
   ],
   "childClasses" : {  },
   "tree_children" : [
-    "Roo.bootstrap.menu.Item"
+    "Roo.bootstrap.menu.Item",
+    "Roo.bootstrap.menu.Separator"
   ],
   "tree_parent" : [
     "none"
