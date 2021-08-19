@@ -197,9 +197,10 @@
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
                 </span><span class="jsdoc-var">this.preventDefault </span><span class="jsdoc-syntax">||
-                </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'#'
+				</span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">||
+                </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'#'
         </span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;NavItem - prevent Default?&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">//Roo.log(&quot;NavItem - prevent Default?&quot;);
             </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         }
 

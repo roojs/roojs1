@@ -187,19 +187,27 @@ var myReader = new Roo.data.JsonReader({
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">records </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">root</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">values </span><span class="jsdoc-syntax">= {};
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">fl</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++){
                 </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fi</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">];
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ef</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">f.convert</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'missing convert for ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+				</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ef</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+				</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">f.convert</span><span class="jsdoc-syntax">) {
+					</span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'missing convert for ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">);
+					</span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">);
+					</span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+				}
+				</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">f.convert</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">f.defaultValue</span><span class="jsdoc-syntax">);
             }
-            </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">f.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">f.convert</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">f.defaultValue</span><span class="jsdoc-syntax">);
-            }
+			</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Record</span><span class="jsdoc-syntax">) {
+				</span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+					</span><span class="jsdoc-var">raw </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">errorMsg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;JSON Reader Error: fields or metadata not available to create Record&quot; </span><span class="jsdoc-syntax">},
+					</span><span class="jsdoc-var">success </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+					</span><span class="jsdoc-var">records </span><span class="jsdoc-syntax">: [],
+					</span><span class="jsdoc-var">totalRecords </span><span class="jsdoc-syntax">: 0
+				};
+			}
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">record </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Record</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">record.json </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">;
