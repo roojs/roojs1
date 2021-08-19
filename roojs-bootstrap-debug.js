@@ -6542,8 +6542,9 @@ Roo.extend(Roo.bootstrap.nav.Item, Roo.bootstrap.Component,  {
         }
         
         if(
-                this.preventDefault || 
-                this.href == '#' 
+                this.preventDefault ||
+				this.href === false ||
+                this.href === '#' 
         ){
             Roo.log("NavItem - prevent Default?");
             e.preventDefault();
