@@ -98,9 +98,7 @@ Roo.bootstrap.panel.Grid = function(config)
 
 Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content,
 {
-    // private
-    is_resizing : false,
-    
+  
     getId : function(){
         return this.grid.id;
     },
@@ -115,12 +113,8 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content,
     
     setSize : function(width, height)
     {
-        if (this.is_resizing) {
-            return;
-        
-        }
-        this.is_resizing = true;
-        if(!this.ignoreResize(width, height)){
+     
+        //if(!this.ignoreResize(width, height)){
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
             // tfoot is not a footer?
@@ -148,8 +142,8 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content,
             //}
              
             grid.autoSize();
-        }
-        this.is_resizing = false;
+        //}
+   
     },
      
     

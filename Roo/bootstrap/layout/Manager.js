@@ -17,6 +17,8 @@
  */
 Roo.bootstrap.layout.Manager = function(config)
 {
+    this.monitorWindowResize = true; // do this before we apply configuration.
+    
     Roo.bootstrap.layout.Manager.superclass.constructor.call(this,config);
 
 
@@ -24,7 +26,7 @@ Roo.bootstrap.layout.Manager = function(config)
 
 
     /** false to disable window resize monitoring @type Boolean */
-    this.monitorWindowResize = true;
+    
     this.regions = {};
     this.addEvents({
         /**

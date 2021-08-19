@@ -4418,6 +4418,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             delete this.items;
 
             for(var i =0;i < items.length;i++) {
+                // we force children not to montor widnow resize  - as we do that for them.
+                items[i].monitorWindowResize = false;
                 nitems.push(this.addxtype(Roo.apply({}, items[i])));
             }
         }
@@ -4625,6 +4627,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         
         this.resizeTo(w,h);
+        // any layout/border etc.. resize..
+        (function () {
+            this.items.forEach( function(e) {
+                e.layout ? e.layout() : false;
+
+            });
+        }).defer(100,this);
+        
     },
 
     show : function() {
@@ -4669,7 +4679,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
         // set zindex here - otherwise it appears to be ignored...
         this.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-
+        
+        
+        // this is for children that are... layout.Border 
         (function () {
             this.items.forEach( function(e) {
                 e.layout ? e.layout() : false;
@@ -37862,6 +37874,8 @@ Roo.bootstrap.SplitBar.BOTTOM = 4;
  */
 Roo.bootstrap.layout.Manager = function(config)
 {
+    this.monitorWindowResize = true; // do this before we apply configuration.
+    
     Roo.bootstrap.layout.Manager.superclass.constructor.call(this,config);
 
 
@@ -37869,7 +37883,7 @@ Roo.bootstrap.layout.Manager = function(config)
 
 
     /** false to disable window resize monitoring @type Boolean */
-    this.monitorWindowResize = true;
+    
     this.regions = {};
     this.addEvents({
         /**
@@ -40521,7 +40535,7 @@ Roo.extend(Roo.bootstrap.panel.Content, Roo.bootstrap.Component, {
 
     ignoreResize : function(w, h)
     {
-        return false; // always resize?
+        //return false; // always resize?
         if(this.lastSize && this.lastSize.width == w && this.lastSize.height == h){
             return true;
         }else{
@@ -40928,9 +40942,7 @@ Roo.bootstrap.panel.Grid = function(config)
 
 Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content,
 {
-    // private
-    is_resizing : false,
-    
+  
     getId : function(){
         return this.grid.id;
     },
@@ -40945,12 +40957,8 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content,
     
     setSize : function(width, height)
     {
-        if (this.is_resizing) {
-            return;
-        
-        }
-        this.is_resizing = true;
-        if(!this.ignoreResize(width, height)){
+     
+        //if(!this.ignoreResize(width, height)){
             var grid = this.grid;
             var size = this.adjustForComponents(width, height);
             // tfoot is not a footer?
@@ -40978,8 +40986,8 @@ Roo.extend(Roo.bootstrap.panel.Grid, Roo.bootstrap.panel.Content,
             //}
              
             grid.autoSize();
-        }
-        this.is_resizing = false;
+        //}
+   
     },
      
     

@@ -166,6 +166,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             delete this.items;
 
             for(var i =0;i < items.length;i++) {
+                // we force children not to montor widnow resize  - as we do that for them.
+                items[i].monitorWindowResize = false;
                 nitems.push(this.addxtype(Roo.apply({}, items[i])));
             }
         }
@@ -373,6 +375,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         
         this.resizeTo(w,h);
+        // any layout/border etc.. resize..
+        (function () {
+            this.items.forEach( function(e) {
+                e.layout ? e.layout() : false;
+
+            });
+        }).defer(100,this);
+        
     },
 
     show : function() {
@@ -417,7 +427,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 
         // set zindex here - otherwise it appears to be ignored...
         this.el.setStyle('z-index', Roo.bootstrap.Modal.zIndex++);
-
+        
+        
+        // this is for children that are... layout.Border 
         (function () {
             this.items.forEach( function(e) {
                 e.layout ? e.layout() : false;
