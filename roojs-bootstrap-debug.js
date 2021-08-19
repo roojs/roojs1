@@ -3616,7 +3616,7 @@ Roo.bootstrap.menu.Manager = function(){
  * @class Roo.bootstrap.menu.Menu
  * @extends Roo.bootstrap.Component
  * @licence LGPL
- * @children Roo.bootstrap.menu.Item
+ * @children Roo.bootstrap.menu.Item Roo.bootstrap.menu.Separator
  * @parent none
  * Bootstrap Menu class - container for MenuItems - normally has to be added to a object that supports the menu property
  * 
@@ -3624,8 +3624,8 @@ Roo.bootstrap.menu.Manager = function(){
  * @cfg {bool} hidden  if the menu should be hidden when rendered.
  * @cfg {bool} stopEvent (true|false)  Stop event after trigger press (default true)
  * @cfg {bool} isLink (true|false)  the menu has link disable auto expand and collaspe (default false)
-  * @cfg {bool} hideTrigger (true|false)  default false - hide the carret for trigger.
-  * @cfg {String} align  default tl-bl? == below  - how the menu should be aligned. 
+* @cfg {bool} hideTrigger (true|false)  default false - hide the carret for trigger.
+* @cfg {String} align  default tl-bl? == below  - how the menu should be aligned. 
  
  * @constructor
  * Create a new Menu
