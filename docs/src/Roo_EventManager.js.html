@@ -370,7 +370,8 @@ el.on({
          * @param {Object}   scope    An object that becomes the scope of the handler
          * @param {boolean}  options
          */
-        </span><span class="jsdoc-var">onWindowResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">onWindowResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">)
+        {
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">resizeEvent</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">resizeEvent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.Event</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">resizeTask </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.DelayedTask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
@@ -378,13 +379,12 @@ el.on({
                 });
                 </span><span class="jsdoc-var">E.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;resize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
                 {
-                    </span><span class="jsdoc-comment">// it seems that even chrome likes to have a slight delay here.
-                    //if(Roo.isIE){
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-var">resizeTask.delay</span><span class="jsdoc-syntax">(50);
-                    </span><span class="jsdoc-comment">//}else{
-                    //    resizeEvent.fire(D.getViewWidth(), D.getViewHeight());
-                    //}
-                </span><span class="jsdoc-syntax">});
+                    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                        </span><span class="jsdoc-var">resizeEvent.fire</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">D.getViewWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">D.getViewHeight</span><span class="jsdoc-syntax">());
+                    }
+                });
             }
             </span><span class="jsdoc-var">resizeEvent.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
         },
