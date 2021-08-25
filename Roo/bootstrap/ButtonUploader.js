@@ -60,22 +60,12 @@ Roo.extend(Roo.bootstrap.ButtonUploader, Roo.bootstrap.Button,  {
     
     getAutoCreate : function()
     {
-        var im = {
-            tag: 'input',
-            type : 'file',
-            cls : 'd-none  roo-card-upload-selector' 
-          
-        };
-        if (this.multiple) {
-            im.multiple = 'multiple';
-        }
+       
         
         return  {
             cls :'div' ,
             cn : [
-                Roo.bootstrap.Button.prototype.getAutoCreate.call(this),
-                im
-
+                Roo.bootstrap.Button.prototype.getAutoCreate.call(this) 
             ]
         };
            
@@ -96,10 +86,18 @@ Roo.extend(Roo.bootstrap.ButtonUploader, Roo.bootstrap.Button,  {
                                 (window.URL && URL.revokeObjectURL && URL) || 
                                 (window.webkitURL && webkitURL);
                         
-         
-         
-         
-        this.selectorEl = this.el.select('.roo-card-upload-selector', true).first();
+        var im = {
+            tag: 'input',
+            type : 'file',
+            cls : 'd-none  roo-card-upload-selector' 
+          
+        };
+        if (this.multiple) {
+            im.multiple = 'multiple';
+        }
+        this.selectorEl = Roo.get(document.body).createChild(im); // so it does not capture click event for navitem.
+       
+        //this.selectorEl = this.el.select('.roo-card-upload-selector', true).first();
         
         this.selectorEl.on('change', this.onFileSelected, this);
          
