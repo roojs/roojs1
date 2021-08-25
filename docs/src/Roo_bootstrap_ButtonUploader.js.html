@@ -60,23 +60,13 @@
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">im </span><span class="jsdoc-syntax">= {
-            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'file'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d-none  roo-card-upload-selector'
 
-        </span><span class="jsdoc-syntax">};
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">im.multiple </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'multiple'</span><span class="jsdoc-syntax">;
-        }
 
         </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'div' </span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
-                </span><span class="jsdoc-var">Roo.bootstrap.Button.prototype.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">),
-                </span><span class="jsdoc-var">im
-
-            </span><span class="jsdoc-syntax">]
+                </span><span class="jsdoc-var">Roo.bootstrap.Button.prototype.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)
+            ]
         };
 
 
@@ -96,10 +86,18 @@
                                 (</span><span class="jsdoc-var">window.URL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">URL.revokeObjectURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">URL</span><span class="jsdoc-syntax">) ||
                                 (</span><span class="jsdoc-var">window.webkitURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">webkitURL</span><span class="jsdoc-syntax">);
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">im </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'file'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'d-none  roo-card-upload-selector'
 
+        </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">im.multiple </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'multiple'</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.selectorEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">im</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// so it does not capture click event for navitem.
 
-
-        </span><span class="jsdoc-var">this.selectorEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-card-upload-selector'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        //this.selectorEl = this.el.select('.roo-card-upload-selector', true).first();
 
         </span><span class="jsdoc-var">this.selectorEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onFileSelected</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
