@@ -21675,7 +21675,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 }
                 //Roo.log()
                 // only allow 'c whitelisted system attributes'
-                if ( cwhite.length &&  cwhite.indexOf(l) < 0) {
+                if ( cwhite.length &&  cwhite.indexOf(l) < 0 && cwhite.indexOf(l.toLowerCase()) < 0 ) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     //node.removeAttribute(n);
                     return true;

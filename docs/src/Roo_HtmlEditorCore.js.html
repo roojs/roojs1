@@ -1132,7 +1132,7 @@
                 }
                 </span><span class="jsdoc-comment">//Roo.log()
                 // only allow 'c whitelisted system attributes'
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cwhite.length </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">cwhite.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">) &lt; 0) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cwhite.length </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">cwhite.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">) &lt; 0 &amp;&amp; </span><span class="jsdoc-var">cwhite.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l.toLowerCase</span><span class="jsdoc-syntax">()) &lt; 0 ) {
 </span><span class="jsdoc-comment">//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     //node.removeAttribute(n);
                     </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
