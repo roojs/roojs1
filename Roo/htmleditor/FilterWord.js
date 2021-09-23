@@ -102,7 +102,7 @@ Roo.htmleditor.FilterWord  =   {
                 node.removeAttribute('style');
             }
         }
-        return true;
+        return true; // do children
         
         
         
