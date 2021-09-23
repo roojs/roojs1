@@ -62,6 +62,12 @@
       "memberOf" : ""
     },
     {
+      "name" : "bodyCls-",
+      "type" : "string",
+      "desc" : "default '' default classes to add to body of editable area - usually undoreset is a good start..",
+      "memberOf" : ""
+    },
+    {
       "name" : "width",
       "type" : "Number",
       "desc" : "(in pixels)",
@@ -140,21 +146,21 @@
       "memberOf" : "Roo.form.Field"
     },
     {
-      "name" : "disableClass",
-      "type" : "String",
-      "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
-    },
-    {
       "name" : "validationDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
       "memberOf" : "Roo.form.Field"
     },
     {
+      "name" : "disableClass",
+      "type" : "String",
+      "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+      "memberOf" : "Roo.Component"
+    },
+    {
       "name" : "stylesheets",
       "type" : "Array",
-      "desc" : "url of stylesheets. set to [] to disable stylesheets.",
+      "desc" : "url of stylesheets. set to [] to disable stylesheets - this is usally a good idea  rootURL + '/roojs1/css/undoreset.css',   .",
       "memberOf" : ""
     },
     {

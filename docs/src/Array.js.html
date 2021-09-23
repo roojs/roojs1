@@ -63,28 +63,48 @@
      */
     </span><span class="jsdoc-var">equals </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-comment">// https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
-	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
-	    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
-	 }
-	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
-	    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
-	}
-	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.length </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">b.length</span><span class="jsdoc-syntax">) {
-	    </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
-	}
+            </span><span class="jsdoc-comment">// https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.length </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">b.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
 
-	</span><span class="jsdoc-comment">// sort?? a.sort().equals(b.sort());
+        </span><span class="jsdoc-comment">// sort?? a.sort().equals(b.sort());
 
-	</span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
-	    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] !== </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) {
-		</span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
-	    }
-	}
-	</span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] !== </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
     }
+
+
+
+
 });
 
+</span><span class="jsdoc-var">Roo.applyIf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">, {
+ </span><span class="jsdoc-comment">/**
+     * from
+     * @static
+     * @param {Array} o Or Array like object (eg. nodelist)
+     * @returns {Array} 
+     */
+    </span><span class="jsdoc-var">from </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">= [];
 
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">o.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
 
+    }
+});
 </span></code></body></html>

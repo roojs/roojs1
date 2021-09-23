@@ -166,6 +166,9 @@
                    </span><span class="jsdoc-string">'&lt;/style&gt;'</span><span class="jsdoc-syntax">;
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.stylesheets</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stylesheets</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
                 </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'&lt;link rel=&quot;stylesheet&quot; href=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.stylesheets</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] +</span><span class="jsdoc-string">'&quot; type=&quot;text/css&quot;&gt;'</span><span class="jsdoc-syntax">;
             }
 
@@ -1201,178 +1204,35 @@
 
     </span><span class="jsdoc-comment">/**
      * Clean up MS wordisms...
+     * @deprecated - use filter directly
      */
     </span><span class="jsdoc-var">cleanWord </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.cleanWord</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.htmleditor.FilterWord.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
-                </span><span class="jsdoc-var">node.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'SPAN' </span><span class="jsdoc-syntax">&amp;&amp;
-                !</span><span class="jsdoc-var">node.hasAttributes</span><span class="jsdoc-syntax">() &amp;&amp;
-                </span><span class="jsdoc-var">node.childNodes.length </span><span class="jsdoc-syntax">== 1 &amp;&amp;
-                </span><span class="jsdoc-var">node.firstChild.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;#text&quot;
-        </span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">textNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.firstChild</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">node.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">textNode</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lang'</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'zh-CN'</span><span class="jsdoc-syntax">) {   </span><span class="jsdoc-comment">// do not space pad on chinese characters..
-                </span><span class="jsdoc-var">node.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.ownerDocument.createTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-            }
-            </span><span class="jsdoc-var">node.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">textNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'lang'</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'zh-CN'</span><span class="jsdoc-syntax">) {   </span><span class="jsdoc-comment">// do not space pad on chinese characters..
-                </span><span class="jsdoc-var">node.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.ownerDocument.createTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">) , </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-            }
-            </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-        }
-
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;#text&quot;</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-comment">// clean up silly Windows -- stuff?
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;#comment&quot;</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-comment">// clean up silly Windows -- stuff?
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/^(style|script|applet|embed|noframes|noscript)$/)) {
-            </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-comment">//Roo.log(node.tagName);
-        // remove - but keep children..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/^(meta|link|\\?xml:|st1:|o:|v:|font)/)) {
-            </span><span class="jsdoc-comment">//Roo.log('-- removed');
-            </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">[0];
-                </span><span class="jsdoc-var">node.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">node.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-comment">// move node to parent - and clean it..
-                </span><span class="jsdoc-var">this.cleanWord</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
-            }
-            </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-comment">/// no need to iterate chidlren = it's got none..
-            //this.iterateChildren(node, this.cleanWord);
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-comment">// clean styles
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.className.length</span><span class="jsdoc-syntax">) {
-
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.className.split</span><span class="jsdoc-syntax">(/\W+/);
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cna </span><span class="jsdoc-syntax">= [];
-            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls.match</span><span class="jsdoc-syntax">(/Mso[a-zA-Z]+/)) {
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                }
-                </span><span class="jsdoc-var">cna.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">);
-            });
-            </span><span class="jsdoc-var">node.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cna.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">cna.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cna.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;class&quot;</span><span class="jsdoc-syntax">);
-            }
-        }
-
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lang&quot;</span><span class="jsdoc-syntax">)) {
-            </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lang&quot;</span><span class="jsdoc-syntax">);
-        }
-
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;style&quot;</span><span class="jsdoc-syntax">)) {
-
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;style&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;;&quot;</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nstyle </span><span class="jsdoc-syntax">= [];
-            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">s.match</span><span class="jsdoc-syntax">(/:/)) {
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                }
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">kv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;:&quot;</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">kv</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/^(mso-|line|font|background|margin|padding|color)/)) {
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                }
-                </span><span class="jsdoc-comment">// what ever is left... we allow.
-                </span><span class="jsdoc-var">nstyle.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
-            });
-            </span><span class="jsdoc-var">node.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;style&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nstyle.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">nstyle.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">nstyle.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">);
-            }
-        }
-        </span><span class="jsdoc-var">this.iterateChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cleanWord</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.htmleditor.FilterWord.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
 
 
 
     },
-    </span><span class="jsdoc-comment">/**
-     * iterateChildren of a Node, calling fn each time, using this as the scole..
-     * @param {DomNode} node node to iterate children of.
-     * @param {Function} fn method of this class to call on each item.
-     */
-    </span><span class="jsdoc-var">iterateChildren </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">)
-    {
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node.childNodes.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.childNodes.length</span><span class="jsdoc-syntax">-1; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt; -1 ; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--) {
-           </span><span class="jsdoc-var">fn.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])
-        }
-    },
 
 
     </span><span class="jsdoc-comment">/**
-     * cleanTableWidths.
-     *
-     * Quite often pasting from word etc.. results in tables with column and widths.
-     * This does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..
-     *
+
+     * @deprecated - use filters
      */
     </span><span class="jsdoc-var">cleanTableWidths </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
 
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.cleanTableWidths</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.htmleditor.FilterTable.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-
-        </span><span class="jsdoc-comment">// ignore list...
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;#text&quot; </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">node.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;#comment&quot;</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/^(table|td|tr)$/)) {
-            </span><span class="jsdoc-var">this.iterateChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cleanTableWidths</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">)) {
-            </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">);
-        }
-
-
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;style&quot;</span><span class="jsdoc-syntax">)) {
-            </span><span class="jsdoc-comment">// pretty basic...
-
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;style&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;;&quot;</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nstyle </span><span class="jsdoc-syntax">= [];
-            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">s.match</span><span class="jsdoc-syntax">(/:/)) {
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                }
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">kv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;:&quot;</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">kv</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/^\s*(width|min-width)\s*$/)) {
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                }
-                </span><span class="jsdoc-comment">// what ever is left... we allow.
-                </span><span class="jsdoc-var">nstyle.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
-            });
-            </span><span class="jsdoc-var">node.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;style&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nstyle.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">nstyle.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">nstyle.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">);
-            }
-        }
-
-        </span><span class="jsdoc-var">this.iterateChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cleanTableWidths</span><span class="jsdoc-syntax">);
-
+        </span><span class="jsdoc-var">Roo.htmleditor.FilterTable.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
 
     },
 

@@ -59,7 +59,7 @@
     </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 500,
 
     </span><span class="jsdoc-comment">/**
-     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
+     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets - this is usally a good idea  rootURL + '/roojs1/css/undoreset.css',   .
      * 
      */
     </span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -90,6 +90,12 @@
      * @cfg {boolean} allowComments - default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.
      */
     </span><span class="jsdoc-var">allowComments</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {string} bodyCls- default '' default classes to add to body of editable area - usually undoreset is a good start..
+     */
+
+
+     </span><span class="jsdoc-var">bodyCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">// id of frame..
     </span><span class="jsdoc-var">frameId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,

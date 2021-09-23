@@ -166,7 +166,7 @@
       "isConstructor" : false,
       "isPrivate" : false,
       "example" : "",
-      "deprecated" : "",
+      "deprecated" : "This has been deprecated: - use filter directly",
       "since" : "",
       "see" : "",
       "exceptions" : "",
@@ -196,7 +196,7 @@
     {
       "name" : "cleanTableWidths",
       "type" : "function",
-      "desc" : "cleanTableWidths.\n\nQuite often pasting from word etc.. results in tables with column and widths.\nThis does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..",
+      "desc" : "",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "",
@@ -204,7 +204,7 @@
       "isConstructor" : false,
       "isPrivate" : false,
       "example" : "",
-      "deprecated" : "",
+      "deprecated" : "This has been deprecated: - use filters",
       "since" : "",
       "see" : "",
       "exceptions" : "",
@@ -281,38 +281,6 @@
       "exceptions" : "",
       "requires" : "",
       "params" : [],
-      "returns" : []
-    },
-    {
-      "name" : "iterateChildren",
-      "type" : "function",
-      "desc" : "iterateChildren of a Node, calling fn each time, using this as the scole..",
-      "sig" : "(node, fn)",
-      "static" : false,
-      "memberOf" : "",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "exceptions" : "",
-      "requires" : "",
-      "params" : [
-        {
-          "name" : "node",
-          "type" : "DomNode",
-          "desc" : "node to iterate children of.",
-          "isOptional" : false
-        },
-        {
-          "name" : "fn",
-          "type" : "Function",
-          "desc" : "method of this class to call on each item.",
-          "isOptional" : false
-        }
-      ],
       "returns" : []
     },
     {

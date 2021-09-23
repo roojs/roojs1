@@ -46220,7 +46220,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     width: 500,
     
     /**
-     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
+     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets - this is usally a good idea  rootURL + '/roojs1/css/undoreset.css',   .
      * 
      */
     stylesheets: false,
@@ -46251,6 +46251,12 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      * @cfg {boolean} allowComments - default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.
      */
     allowComments: false,
+    /**
+     * @cfg {string} bodyCls- default '' default classes to add to body of editable area - usually undoreset is a good start..
+     */
+    
+    
+     bodyCls : '',
     
     // id of frame..
     frameId: false,
