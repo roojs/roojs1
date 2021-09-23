@@ -35,17 +35,10 @@ Roo.htmleditor.FilterWord  =   {
                 node.parentNode.insertBefore(node.ownerDocument.createTextNode(" ") , node);
             }
             node.parentNode.removeChild(node);
+            return false; // dont do chidren
         }
         
-        if (node.nodeName == "#text") {
-            // clean up silly Windows -- stuff?
-            return; 
-        }
-        if (node.nodeName == "#comment") {
-            node.parentNode.removeChild(node);
-            // clean up silly Windows -- stuff?
-            return; 
-        }
+   
         
         if (node.tagName.toLowerCase().match(/^(style|script|applet|embed|noframes|noscript)$/)) {
             node.parentNode.removeChild(node);
