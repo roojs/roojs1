@@ -18,7 +18,7 @@ Roo.htmleditor.FilterWord  =   {
     replace : function(node)
     {
          
-        
+        // no idea what this does?
         if(
                 node.nodeName == 'SPAN' &&
                 !node.hasAttributes() &&
