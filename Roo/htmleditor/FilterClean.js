@@ -45,7 +45,7 @@ Roo.htmleditor.FilterSpan =  {
     {
         if (node.attributes && node.attributes.length > 0) {
             this.walk(node);
-            return;
+            return true;
         }
         for (var i = 0; i < node.childNodes.length; i++) {
             node.removeChild(node.childNodes[i]);
