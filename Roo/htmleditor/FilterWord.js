@@ -49,7 +49,7 @@ Roo.htmleditor.FilterWord  =   {
         
         if (node.tagName.toLowerCase().match(/^(style|script|applet|embed|noframes|noscript)$/)) {
             node.parentNode.removeChild(node);
-            return true;
+            return false; // dont do chidlren
         }
         //Roo.log(node.tagName);
         // remove - but keep children..
