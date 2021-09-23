@@ -35,7 +35,7 @@ Roo.applyIf(Number.prototype,{constrain:function(A,B){return Math.min(Math.max(t
 // Array.js
 Roo.applyIf(Array.prototype,{indexOf:function(o){for(var i=0,A=this.length;i<A;i++){if(this[i]==o){return i;}}return -1;},remove:function(o){var A=this.indexOf(o);if(A!=-1){this.splice(A,1);}},map:function(A){var B=this.length>>>0;if(typeof A!="function"){throw new TypeError();
 }var C=new Array(B);var D=arguments[1];for(var i=0;i<B;i++){if(i in this){C[i]=A.call(D,this[i],i,this);}}return C;},equals:function(b){if(this===b){return true;}if(b==null){return false;}if(this.length!==b.length){return false;}for(var i=0;i<this.length;
-++i){if(this[i]!==b[i]){return false;}}return true;}});
+++i){if(this[i]!==b[i]){return false;}}return true;}});Roo.applyIf(Array,{from:function(o){var A=[];for(var i=0;i<o.length;i++){A[i]=o[i];}return A;}});
 // Date.js
 Date.prototype.getElapsed=function(A){return Math.abs((A||new Date()).getTime()-this.getTime());};Date.parseFunctions={count:0};Date.parseRegexes=[];Date.formatFunctions={count:0};Date.prototype.dateFormat=function(A){if(Date.formatFunctions[A]==null){Date.createNewFormat(A);
 }var B=Date.formatFunctions[A];return this[B]();};Date.prototype.format=Date.prototype.dateFormat;Date.createNewFormat=function(A){var B="format"+Date.formatFunctions.count++;Date.formatFunctions[A]=B;var C="Date.prototype."+B+" = function(){return ";var D=false;
