@@ -94,10 +94,16 @@ Roo.htmleditor.FilterKeepChildren =  {
     }
 }
 Roo.htmleditor.FilterAttributes =  {
-    black : false, // array
-    walkWith : function (node, black, clean, )
+    attrib_black : false, // array
+    attrib_clean : false,
+    style_white : false,
+    style_black : false,
+    walkWith : function (node, attrib_black, attrib_clean, style_white, style_black )
     {
-        this.black = black;
+        this.attrib_black = attrib_black;
+        this.attrib_clean = attrib_clean;
+        this.style_white = style_white ;
+        this.style_black = style_black ;
         this.walk(node);
      
     },
@@ -123,16 +129,16 @@ Roo.htmleditor.FilterAttributes =  {
             }
             
             
-            if (Roo.HtmlEditorCore.this.black.indexOf(a.name.toLowerCase()) > -1) {
+            if (this.black && this.black.indexOf(a.name.toLowerCase()) > -1) {
                 node.removeAttribute(a.name);
                 continue;
             }
-            if (Roo.HtmlEditorCore.aclean.indexOf(a.name.toLowerCase()) > -1) {
-                cleanAttr(a.name,a.value); // fixme..
+            if (this.clean.indexOf(a.name.toLowerCase()) > -1) {
+                this.cleanAttr(node,a.name,a.value); // fixme..
                 continue;
             }
             if (a.name == 'style') {
-                cleanStyle(a.name,a.value);
+                this.cleanStyle(node,a.name,a.value);
                 continue;
             }
             /// clean up MS crap..
@@ -150,31 +156,33 @@ Roo.htmleditor.FilterAttributes =  {
                 continue;
             }
             
+            
             // style cleanup!?
             // class cleanup?
             
         }
+        return true; // clean children
+    },
         
+    cleanAttr: function(node, n,v)
+    {
         
-        function cleanAttr(n,v)
-        {
-            
-            if (v.match(/^\./) || v.match(/^\//)) {
-                return;
-            }
-            if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/) || v.match(/^ftp:/)) {
-                return;
-            }
-            if (v.match(/^#/)) {
-                return;
-            }
-            if (v.match(/^\{/)) { // allow template editing.
-                return;
-            }
-//            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);
-            node.removeAttribute(n);
-            
+        if (v.match(/^\./) || v.match(/^\//)) {
+            return;
         }
+        if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/) || v.match(/^ftp:/)) {
+            return;
+        }
+        if (v.match(/^#/)) {
+            return;
+        }
+        if (v.match(/^\{/)) { // allow template editing.
+            return;
+        }
+//            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);
+        node.removeAttribute(n);
+        
+    }
         
         var cwhite = this.cwhite;
         var cblack = this.cblack;
