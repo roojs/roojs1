@@ -129,11 +129,11 @@ Roo.htmleditor.FilterAttributes =  {
             }
             
             
-            if (this.black && this.black.indexOf(a.name.toLowerCase()) > -1) {
+            if (this.attrib_black.indexOf(a.name.toLowerCase()) > -1) {
                 node.removeAttribute(a.name);
                 continue;
             }
-            if (this.clean.indexOf(a.name.toLowerCase()) > -1) {
+            if (this.attrib_clean.indexOf(a.name.toLowerCase()) > -1) {
                 this.cleanAttr(node,a.name,a.value); // fixme..
                 continue;
             }
@@ -182,60 +182,47 @@ Roo.htmleditor.FilterAttributes =  {
 //            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);
         node.removeAttribute(n);
         
-    }
-        
-        var cwhite = this.cwhite;
-        var cblack = this.cblack;
-            
-        function cleanStyle(n,v)
-        {
-            if (v.match(/expression/)) { //XSS?? should we even bother..
-                node.removeAttribute(n);
-                return;
-            }
-            
-            var parts = v.split(/;/);
-            var clean = [];
-            
-            Roo.each(parts, function(p) {
-                p = p.replace(/^\s+/g,'').replace(/\s+$/g,'');
-                if (!p.length) {
-                    return true;
-                }
-                var l = p.split(':').shift().replace(/\s+/g,'');
-                l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
-                
-                if ( cwhite.length && cblack.indexOf(l) > -1) {
-//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
-                    //node.removeAttribute(n);
-                    return true;
-                }
-                //Roo.log()
-                // only allow 'c whitelisted system attributes'
-                if ( cwhite.length &&  cwhite.indexOf(l) < 0 && cwhite.indexOf(l.toLowerCase()) < 0 ) {
-//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
-                    //node.removeAttribute(n);
-                    return true;
-                }
-                
-                
-                 
-                
-                clean.push(p);
-                return true;
-            });
-            if (clean.length) { 
-                node.setAttribute(n, clean.join(';'));
-            } else {
-                node.removeAttribute(n);
-            }
-            
+    },
+    cleanStyle : function(node,  n,v)
+    {
+        if (v.match(/expression/)) { //XSS?? should we even bother..
+            node.removeAttribute(n);
+            return;
         }
         
+        var parts = v.split(/;/);
+        var clean = [];
+        
+        Roo.each(parts, function(p) {
+            p = p.replace(/^\s+/g,'').replace(/\s+$/g,'');
+            if (!p.length) {
+                return true;
+            }
+            var l = p.split(':').shift().replace(/\s+/g,'');
+            l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
+            
+            if ( this.style_black.length && (this.style_black.indexOf(l) > -1 || this.style_black.indexOf(l.toLowerCase()) > -1)) {
+                return true;
+            }
+            //Roo.log()
+            // only allow 'c whitelisted system attributes'
+            if ( this.style_white.length &&  style_white.indexOf(l) < 0 && style_white.indexOf(l.toLowerCase()) < 0 ) {
+                return true;
+            }
+            
+            
+            clean.push(p);
+            return true;
+        },this);
+        if (clean.length) { 
+            node.setAttribute(n, clean.join(';'));
+        } else {
+            node.removeAttribute(n);
+        }
+        
+    }
         
         
-        
-        this.cleanUpChildren(node);
         
     
 }
