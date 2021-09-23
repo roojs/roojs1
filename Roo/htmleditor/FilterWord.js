@@ -18,7 +18,7 @@ Roo.htmleditor.FilterWord  =   {
     replace : function(node)
     {
          
-        // no idea what this does?
+        // no idea what this does - span with text, replaceds with just text.
         if(
                 node.nodeName == 'SPAN' &&
                 !node.hasAttributes() &&
@@ -34,8 +34,9 @@ Roo.htmleditor.FilterWord  =   {
             if (node.getAttribute('lang') != 'zh-CN') {   // do not space pad on chinese characters..
                 node.parentNode.insertBefore(node.ownerDocument.createTextNode(" ") , node);
             }
+            
             node.parentNode.removeChild(node);
-            return false; // dont do chidren
+            return false; // dont do chidren - we have remove our node - so no need to do chdhilren?
         }
         
    
