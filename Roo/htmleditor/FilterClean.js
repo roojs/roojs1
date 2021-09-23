@@ -94,19 +94,68 @@ Roo.htmleditor.FilterKeepChildren =  {
     }
 }
 Roo.htmleditor.FilterAttributes =  {
-    black = false, // array
-    walkWith : function (node, black)
+    black : false, // array
+    walkWith : function (node, true, clean, )
     {
         this.black = black;
         this.walk(node);
      
     },
-       walk : function (node)
+    walk : function (node)
     {
-        Roo.htmleditor.Filter.walk.call(this, true true );
-     
+        Roo.htmleditor.Filter.walk.call(this, node, this.black);
     },
     
+    
+    replace : function(node)
+    {
+        if (!node.attributes || !node.attributes.length) {
+            return true;
+        }
+        
+        for (var i = node.attributes.length-1; i > -1 ; i--) {
+            var a = node.attributes[i];
+            //console.log(a);
+            
+            if (a.name.toLowerCase().substr(0,2)=='on')  {
+                node.removeAttribute(a.name);
+                continue;
+            }
+            
+            
+            if (Roo.HtmlEditorCore.this.black.indexOf(a.name.toLowerCase()) > -1) {
+                node.removeAttribute(a.name);
+                continue;
+            }
+            if (Roo.HtmlEditorCore.aclean.indexOf(a.name.toLowerCase()) > -1) {
+                cleanAttr(a.name,a.value); // fixme..
+                continue;
+            }
+            if (a.name == 'style') {
+                cleanStyle(a.name,a.value);
+                continue;
+            }
+            /// clean up MS crap..
+            // tecnically this should be a list of valid class'es..
+            
+            
+            if (a.name == 'class') {
+                if (a.value.match(/^Mso/)) {
+                    node.removeAttribute('class');
+                }
+                
+                if (a.value.match(/^body$/)) {
+                    node.removeAttribute('class');
+                }
+                continue;
+            }
+            
+            // style cleanup!?
+            // class cleanup?
+            
+        }
+        
+        
         function cleanAttr(n,v)
         {
             
@@ -176,45 +225,6 @@ Roo.htmleditor.FilterAttributes =  {
         }
         
         
-        for (var i = node.attributes.length-1; i > -1 ; i--) {
-            var a = node.attributes[i];
-            //console.log(a);
-            
-            if (a.name.toLowerCase().substr(0,2)=='on')  {
-                node.removeAttribute(a.name);
-                continue;
-            }
-            if (Roo.HtmlEditorCore.ablack.indexOf(a.name.toLowerCase()) > -1) {
-                node.removeAttribute(a.name);
-                continue;
-            }
-            if (Roo.HtmlEditorCore.aclean.indexOf(a.name.toLowerCase()) > -1) {
-                cleanAttr(a.name,a.value); // fixme..
-                continue;
-            }
-            if (a.name == 'style') {
-                cleanStyle(a.name,a.value);
-                continue;
-            }
-            /// clean up MS crap..
-            // tecnically this should be a list of valid class'es..
-            
-            
-            if (a.name == 'class') {
-                if (a.value.match(/^Mso/)) {
-                    node.removeAttribute('class');
-                }
-                
-                if (a.value.match(/^body$/)) {
-                    node.removeAttribute('class');
-                }
-                continue;
-            }
-            
-            // style cleanup!?
-            // class cleanup?
-            
-        }
         
         
         this.cleanUpChildren(node);
