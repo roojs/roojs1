@@ -95,7 +95,7 @@ Roo.htmleditor.FilterKeepChildren =  {
 }
 Roo.htmleditor.FilterAttributes =  {
     black : false, // array
-    walkWith : function (node, true, clean, )
+    walkWith : function (node, black, clean, )
     {
         this.black = black;
         this.walk(node);
@@ -103,7 +103,7 @@ Roo.htmleditor.FilterAttributes =  {
     },
     walk : function (node)
     {
-        Roo.htmleditor.Filter.walk.call(this, node, this.black);
+        Roo.htmleditor.Filter.walk.call(this, node, true);
     },
     
     
