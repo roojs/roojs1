@@ -44579,7 +44579,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
                    '</style>';
         } else {
-            for (var i in this.stylesheets) { 
+            for (var i in this.stylesheets) {
+                if (typeof(this.stylesheets[i]) != 'string') {
+                    continue;
+                }
                 st += '<link rel="stylesheet" href="' + this.stylesheets[i] +'" type="text/css">';
             }
             
