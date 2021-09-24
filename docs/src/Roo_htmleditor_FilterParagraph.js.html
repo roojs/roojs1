@@ -1,0 +1,50 @@
+<html><head><title>Roo/htmleditor/FilterParagraph.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+ * Filter Paragraph
+ *
+ * paragraphs cause a nightmare for shared content - this filter is designed to be called ? at various points when editing
+ * like on 'push' to remove the &lt;p&gt; tags and replace them with line breaks.
+ * 
+ * 
+ *
+ */
+
+</span><span class="jsdoc-var">Roo.htmleditor.FilterParagraph  </span><span class="jsdoc-syntax">=  {
+
+    </span><span class="jsdoc-var">walk </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.htmleditor.Filter.walk.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'P'</span><span class="jsdoc-syntax">);
+
+    },
+
+
+    </span><span class="jsdoc-var">replace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+    {
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes.length </span><span class="jsdoc-syntax">== 1 &amp;&amp;
+            </span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.nodeType </span><span class="jsdoc-syntax">== 3 &amp;&amp;
+            </span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.nodeType.textContent.trim</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">&lt; 1
+            ) {
+            </span><span class="jsdoc-comment">// remove and replace with '&lt;BR&gt;';
+            </span><span class="jsdoc-var">node.parentNode.replaceChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.documentOwner.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'BR'</span><span class="jsdoc-syntax">),</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// no need to walk..
+        </span><span class="jsdoc-syntax">}
+
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">node.childNodes.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">node.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-comment">// what if we need to walk these???
+            </span><span class="jsdoc-var">node.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-comment">// now what about this?
+        // &lt;p&gt; &amp;nbsp; &lt;/p&gt;
+
+        // double BR.
+        </span><span class="jsdoc-var">node.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.documentOwner.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'BR'</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+
+    }
+
+
+
+};</span></code></body></html>
