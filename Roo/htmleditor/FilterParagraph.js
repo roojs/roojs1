@@ -17,7 +17,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 {
     
      
-    tag : 'P',
+    tag : 'p',
     
      
     replaceTag : function(node)
