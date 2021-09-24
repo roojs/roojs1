@@ -1019,10 +1019,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     cleanUpChild : function (node)
     {
         
-        Roo.htmleditor.FilterComment.walk(node);
-        Roo.htmleditor.FilterAttributes.walkWith(node, this.ablack, this.aclean, this.cwhite, this.cblack )
-        Roo.htmleditor.FilterBlack.walkWith(node,this.black);
-        Roo.htmleditor.FilterKeepChildren.walkWith(node,this.remove);
+        new Roo.htmleditor.FilterComment({node : node});
+        new Roo.htmleditor.FilterAttributes({
+                node : node,
+                attrib_black : this.ablack,
+                attrib_clean : this.aclean,
+                style_white : this.cwhite,
+                style_black : this.cblack
+        });
+        new Roo.htmleditor.FilterBlack({ node : node, black : this.black});
+        new Roo.htmleditor.FilterKeepChildren({node : node, black : this.remove} );
          
         
     },
@@ -1033,7 +1039,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanWord : function(node)
     {
-        Roo.htmleditor.FilterWord.walk(node ? node : this.doc.body);
+        new Roo.htmleditor.FilterWord({ node : node ? node : this.doc.body });
         
     },
    
@@ -1044,7 +1050,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanTableWidths : function(node)
     {
-        Roo.htmleditor.FilterTable.walk(node ? node : this.doc.body);
+        new Roo.htmleditor.FilterTable({ node : node ? node : this.doc.body});
         
  
     },
