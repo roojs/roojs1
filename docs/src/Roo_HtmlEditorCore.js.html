@@ -1019,10 +1019,16 @@
     </span><span class="jsdoc-var">cleanUpChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
 
-        </span><span class="jsdoc-var">Roo.htmleditor.FilterComment.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">Roo.htmleditor.FilterAttributes.walkWith</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.ablack</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.aclean</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cwhite</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cblack </span><span class="jsdoc-syntax">)
-        </span><span class="jsdoc-var">Roo.htmleditor.FilterBlack.walkWith</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.black</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren.walkWith</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.remove</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterComment</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterAttributes</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">attrib_black </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.ablack</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">attrib_clean </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.aclean</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">style_white </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cwhite</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">style_black </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cblack
+        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterBlack</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">black </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.black</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">black </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.remove</span><span class="jsdoc-syntax">} );
 
 
     },
@@ -1033,7 +1039,7 @@
      */
     </span><span class="jsdoc-var">cleanWord </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">Roo.htmleditor.FilterWord.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterWord</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.doc.body </span><span class="jsdoc-syntax">});
 
     },
 
@@ -1044,7 +1050,7 @@
      */
     </span><span class="jsdoc-var">cleanTableWidths </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">Roo.htmleditor.FilterTable.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterTable</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">});
 
 
     },

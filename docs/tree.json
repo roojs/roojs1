@@ -1319,6 +1319,36 @@
             "name" : "Roo.htmleditor.FilterBlack",
             "cn" : [],
             "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterComment",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterKeepChildren",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterParagraph",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterSpan",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterTableWidth",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterWord",
+            "cn" : [],
+            "is_class" : true
           }
         ],
         "is_class" : false
