@@ -26321,9 +26321,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 
     }
     
-    
-    
-};/**
+});/**
  * @class Roo.htmleditor.FilterSpan
  * filter span's with no attributes out..
  * @constructor

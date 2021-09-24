@@ -16,7 +16,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 {
     
   
-    replaceTag : function(n)
+    replaceTag : function(node)
     {
         // walk children...
         for (var i = 0; i < node.childNodes.length; i++) {

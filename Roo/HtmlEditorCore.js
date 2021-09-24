@@ -1050,7 +1050,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanTableWidths : function(node)
     {
-        new Roo.htmleditor.FilterTable({ node : node ? node : this.doc.body});
+        new Roo.htmleditor.FilterTableWidth({ node : node ? node : this.doc.body});
         
  
     },

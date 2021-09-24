@@ -1127,8 +1127,8 @@ Roo.htmleditor.FilterComment=function(A){this.walk(A.node);};Roo.extend(Roo.html
 Roo.htmleditor.FilterKeepChildren=function(A){Roo.apply(this,A);this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterKeepChildren,Roo.htmleditor.FilterBlack,{replaceTag:function(n){for(var i=0;i<node.childNodes.length;i++){node.removeChild(node.childNodes[i]);
 node.insertBefore(node.childNodes[i],node);this.walk(node.childNodes[i]);}n.parentNode.removeChild(n);return false;}});
 // Roo/htmleditor/FilterParagraph.js
-Roo.htmleditor.FilterParagraph=function(A){this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterParagraph,Roo.htmleditor.Filter,{tag:'P',replaceTag:function(node){if(node.childNodes.length==1&&node.childNodes[0].nodeType==3&&node.childNodes[0].nodeType.textContent.trim().length<1){node.parentNode.replaceChild(node.documentOwner.createElement('BR'),node);
-return false;}for(var i=0;i<node.childNodes.length;i++){node.removeChild(node.childNodes[i]);node.insertBefore(node.childNodes[i],node);}node.insertBefore(node.documentOwner.createElement('BR'),node);node.parentNode.removeChild(node);return false;}};
+Roo.htmleditor.FilterParagraph=function(A){this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterParagraph,Roo.htmleditor.Filter,{tag:'P',replaceTag:function(A){if(A.childNodes.length==1&&A.childNodes[0].nodeType==3&&A.childNodes[0].nodeType.textContent.trim().length<1){A.parentNode.replaceChild(A.documentOwner.createElement('BR'),A);
+return false;}for(var i=0;i<A.childNodes.length;i++){A.removeChild(A.childNodes[i]);A.insertBefore(A.childNodes[i],A);}A.insertBefore(A.documentOwner.createElement('BR'),A);A.parentNode.removeChild(A);return false;}});
 // Roo/htmleditor/FilterSpan.js
 Roo.htmleditor.FilterSpan=function(A){this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterSpan,Roo.htmleditor.Filter,{tag:'SPAN',replaceTag:function(A){if(A.attributes&&A.attributes.length>0){this.walk(A);return true;}for(var i=0;i<A.childNodes.length;i++){A.removeChild(A.childNodes[i]);
 A.insertBefore(A.childNodes[i],A);this.walk(A.childNodes[i]);}n.parentNode.removeChild(n);return false;}});

@@ -1,9 +1,4 @@
-/**
- *
- * Base Class for filtering htmleditor stuff.
- *
- */
-
+ 
 /**
  * @class Roo.htmleditor.Filter
  * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.
@@ -46,9 +41,9 @@ Roo.htmleditor.Filter.prototype = {
                 case e.nodeType != 3: //not a node.
                     return;
                 
-                case tag === true: // everything
-                case typeof(tag) == 'object' && tag.indexOf(e.tagName) > -1: // array and it matches.
-                case typeof(tag) == 'string' && tag == e.tagName: // array and it matches.
+                case this.tag === true: // everything
+                case typeof(this.tag) == 'object' && this.tag.indexOf(e.tagName) > -1: // array and it matches.
+                case typeof(this.tag) == 'string' && this.tag == e.tagName: // array and it matches.
                     if (this.replaceTag && false === this.replaceTag(e)) {
                         return;
                     }

@@ -44432,12 +44432,7 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
     } 
     
     
-});Roo.htmleditor = {};/**
- *
- * Base Class for filtering htmleditor stuff.
- *
- */
-
+});Roo.htmleditor = {}; 
 /**
  * @class Roo.htmleditor.Filter
  * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.
@@ -44480,9 +44475,9 @@ Roo.htmleditor.Filter.prototype = {
                 case e.nodeType != 3: //not a node.
                     return;
                 
-                case tag === true: // everything
-                case typeof(tag) == 'object' && tag.indexOf(e.tagName) > -1: // array and it matches.
-                case typeof(tag) == 'string' && tag == e.tagName: // array and it matches.
+                case this.tag === true: // everything
+                case typeof(this.tag) == 'object' && this.tag.indexOf(e.tagName) > -1: // array and it matches.
+                case typeof(this.tag) == 'string' && this.tag == e.tagName: // array and it matches.
                     if (this.replaceTag && false === this.replaceTag(e)) {
                         return;
                     }
@@ -44712,7 +44707,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 {
     
   
-    replaceTag : function(n)
+    replaceTag : function(node)
     {
         // walk children...
         for (var i = 0; i < node.childNodes.length; i++) {
@@ -44776,9 +44771,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 
     }
     
-    
-    
-};/**
+});/**
  * @class Roo.htmleditor.FilterSpan
  * filter span's with no attributes out..
  * @constructor
@@ -46043,7 +46036,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanTableWidths : function(node)
     {
-        new Roo.htmleditor.FilterTable({ node : node ? node : this.doc.body});
+        new Roo.htmleditor.FilterTableWidth({ node : node ? node : this.doc.body});
         
  
     },

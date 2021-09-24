@@ -48,6 +48,4 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 
     }
     
-    
-    
-};
+});
