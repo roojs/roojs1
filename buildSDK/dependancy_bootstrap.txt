@@ -126,7 +126,7 @@ Roo.bootstrap.form.CheckBox
 Roo.bootstrap.form.Radio
 Roo.bootstrap.form.SecurePass
 
-
+Roo.htmleditor.namespace
 Roo.htmleditor.Filter
 Roo.htmleditor.FilterAttributes
 Roo.htmleditor.FilterBlack
