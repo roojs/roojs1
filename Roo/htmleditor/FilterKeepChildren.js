@@ -30,4 +30,4 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
         
         
     }
-}
+});
