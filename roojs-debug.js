@@ -44740,7 +44740,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 {
     
      
-    tag : 'P',
+    tag : 'p',
     
      
     replaceTag : function(node)
@@ -44825,7 +44825,7 @@ Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterTableWidth = function(cfg)
 {
     // no need to apply config.
-    this.tag = ['TABLE', 'TD', 'TR', 'TH', 'THEAD', 'TBODY' ];
+    this.tag = ['table', 'td', 'tr', 'th', 'thead', 'tbody' ];
     this.walk(cfg.node);
 }
 
