@@ -904,6 +904,8 @@ this.el.on('DOMAttrModified',this.setFromHidden,this);this.el.on('propertychange
 Roo.form.Radio=function(){Roo.form.Radio.superclass.constructor.apply(this,arguments);};Roo.extend(Roo.form.Radio,Roo.form.Checkbox,{inputType:'radio',getGroupValue:function(){return this.el.up('form').child('input[name='+this.el.dom.name+']:checked',true).value;
 },onRender:function(ct,A){Roo.form.Checkbox.superclass.onRender.call(this,ct,A);if(this.inputValue!==undefined){this.el.dom.value=this.inputValue;}this.wrap=this.el.wrap({cls:"x-form-check-wrap"});if(this.boxLabel){this.wrap.createChild({tag:'label',htmlFor:this.el.id,cls:'x-form-cb-label',html:this.boxLabel}
 );}if(this.checked){this.el.dom.checked='checked';}}});
+// Roo/htmleditor/namespace.js
+Roo.htmleditor={};
 // Roo/htmleditor/Filter.js
 Roo.htmleditor.Filter=function(A){Roo.apply(this.cfg);};Roo.htmleditor.Filter.prototype={node:false,tag:false,replaceComment:false,replaceTag:false,walk:function(A){Roo.each(Array.from(A.childNodes),function(e){switch(true){case e.nodeType==8&&typeof(this.replaceComment)!='undefined':this.replaceComment(e);
 return;case e.nodeType!=3:return;case tag===true:case typeof(tag)=='object'&&tag.indexOf(e.tagName)>-1:case typeof(tag)=='string'&&tag==e.tagName:if(this.replaceTag&&false===this.replaceTag(e)){return;}if(e.hasChildNodes()){this.walk(e);}return;default:if(e.hasChildNodes()){this.walk(e);
