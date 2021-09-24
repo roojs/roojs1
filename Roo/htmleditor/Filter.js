@@ -7,7 +7,7 @@
 /**
  * @class Roo.htmleditor.Filter
  * Base Class for filtering htmleditor stuff.
- * @cfg {Boolean/DomHelper} node The node to iterate and filter
+ * @cfg {DomElement} node The node to iterate and filter
  * @constructor
  * Create a new Filter.
  * @param {Object} config Configuration options
@@ -15,11 +15,14 @@
 
 
 
-Roo.htmleditor.Filter = function() {}
+Roo.htmleditor.Filter = function(cfg) {
+    Roo.apply(this.cfg);
+}
 
 
 Roo.htmleditor.Filter.prototype = {
     
+    node: false,
     
     tag: false,
 
