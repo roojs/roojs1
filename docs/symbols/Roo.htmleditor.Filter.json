@@ -1,0 +1,39 @@
+{
+  "name" : "Roo.htmleditor.Filter",
+  "augments" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "Base Class for filtering htmleditor stuff.",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "Filter",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [
+    {
+      "name" : "node",
+      "type" : "DomElement",
+      "desc" : "The node to iterate and filter",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [],
+  "events" : []
+}
