@@ -44726,7 +44726,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
         
         
     }
-}/**
+});/**
  * @class Roo.htmleditor.FilterParagraph
  * paragraphs cause a nightmare for shared content - this filter is designed to be called ? at various points when editing
  * like on 'push' to remove the <p> tags and replace them with line breaks.
@@ -44991,7 +44991,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         
         
     }
-};//<script type="text/javascript">
+});//<script type="text/javascript">
 
 /*
  * Based  Ext JS Library 1.1.1
