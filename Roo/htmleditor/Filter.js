@@ -8,6 +8,7 @@
  * @class Roo.htmleditor.Filter
  * Base Class for filtering htmleditor stuff.
  * @cfg {DomElement} node The node to iterate and filter
+ * @cfg {boolean|String|Array} tag Tags to replace 
  * @constructor
  * Create a new Filter.
  * @param {Object} config Configuration options
