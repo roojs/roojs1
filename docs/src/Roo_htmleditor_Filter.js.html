@@ -6,8 +6,9 @@
 
 /**
  * @class Roo.htmleditor.Filter
- * Base Class for filtering htmleditor stuff.
+ * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.
  * @cfg {DomElement} node The node to iterate and filter
+ * @cfg {boolean|String|Array} tag Tags to replace 
  * @constructor
  * Create a new Filter.
  * @param {Object} config Configuration options
@@ -17,7 +18,8 @@
 
 </span><span class="jsdoc-var">Roo.htmleditor.Filter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
     </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cfg</span><span class="jsdoc-syntax">);
-}
+    </span><span class="jsdoc-comment">// this does not actually call walk as it's really just a abstract class
+</span><span class="jsdoc-syntax">}
 
 
 </span><span class="jsdoc-var">Roo.htmleditor.Filter.prototype </span><span class="jsdoc-syntax">= {
