@@ -4,8 +4,8 @@
  * @class Roo.htmleditor.FilterAttributes
  * clean attributes and  styles including http:// etc.. in attribute
  * @constructor
- * Create a new Filter.
- * @param {Object} config Configuration options
+* Run a new Attribute Filter
+* @param {Object} config Configuration options
  */
 Roo.htmleditor.FilterAttributes = function(cfg)
 {

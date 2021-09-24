@@ -1309,6 +1309,11 @@
             "name" : "Roo.htmleditor.Filter",
             "cn" : [],
             "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterAttributes",
+            "cn" : [],
+            "is_class" : false
           }
         ],
         "is_class" : false
