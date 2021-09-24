@@ -7,6 +7,13 @@
  *
  */
 
+/**
+ * @class Roo.htmleditor.FilterAttributes
+ * clean attributes and  styles 
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
 Roo.htmleditor.FilterAttributes = function(cfg)
 {
     Roo.apply(this, cfg);
@@ -22,8 +29,7 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
     style_white : false,
     style_black : false,
      
-    
-    
+     
     replaceTag : function(node)
     {
         if (!node.attributes || !node.attributes.length) {
