@@ -1,15 +1,8 @@
-/**
- * filter attributes of nodes
- *
- * attribute white / clean ( fix http etc..)
- * and clean styles
- * 
- *
- */
+ 
 
 /**
  * @class Roo.htmleditor.FilterAttributes
- * clean attributes and  styles 
+ * clean attributes and  styles including http:// etc.. in attribute
  * @constructor
  * Create a new Filter.
  * @param {Object} config Configuration options
