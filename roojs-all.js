@@ -1844,7 +1844,7 @@ Roo.htmleditor.FilterBlack=function(A){Roo.apply(this,A);this.walk(A.node);};Roo
 Roo.htmleditor.FilterComment=function(A){this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterComment,Roo.htmleditor.Filter,{replaceComment:function(n){n.parentNode.removeChild(n);}});
 // Roo/htmleditor/FilterKeepChildren.js
 Roo.htmleditor.FilterKeepChildren=function(A){Roo.apply(this,A);this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterKeepChildren,Roo.htmleditor.FilterBlack,{replaceTag:function(A){for(var i=0;i<A.childNodes.length;i++){A.removeChild(A.childNodes[i]);A.insertBefore(A.childNodes[i],A);
-this.walk(A.childNodes[i]);}n.parentNode.removeChild(n);return false;}});
+this.walk(A.childNodes[i]);}A.parentNode.removeChild(A);return false;}});
 // Roo/htmleditor/FilterParagraph.js
 Roo.htmleditor.FilterParagraph=function(A){this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterParagraph,Roo.htmleditor.Filter,{tag:'P',replaceTag:function(A){if(A.childNodes.length==1&&A.childNodes[0].nodeType==3&&A.childNodes[0].nodeType.textContent.trim().length<1){A.parentNode.replaceChild(A.documentOwner.createElement('BR'),A);
 return false;}for(var i=0;i<A.childNodes.length;i++){A.removeChild(A.childNodes[i]);A.insertBefore(A.childNodes[i],A);}A.insertBefore(A.documentOwner.createElement('BR'),A);A.parentNode.removeChild(A);return false;}});

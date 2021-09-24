@@ -44716,7 +44716,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
             node.insertBefore(node.childNodes[i], node);
             this.walk(node.childNodes[i]);
         }
-        n.parentNode.removeChild(n);
+        node.parentNode.removeChild(node);
         return false; // don't walk children
         
         
