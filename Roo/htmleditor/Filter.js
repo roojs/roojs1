@@ -1,0 +1,56 @@
+/**
+ *
+ * Base Class for filtering htmleditor stuff.
+ *
+ */
+
+Roo.htmleditor = typeof(Roo.htmleditor) == 'undefined' ? {} : Roo.htmleditor;
+
+
+Roo.htmleditor.Filter = function() {}
+
+
+Roo.htmleditor.Filter.prototype = {
+    
+    
+    tag: false,
+
+    // overrride to do replace comments.
+    replaceComment : false,
+    
+    // overrride to do replace or do stuff with tags..
+    replaceTag : false,
+    
+    walk : function(dom)
+    {
+        Roo.each( Array.from(dom.childNodes), function( e ) {
+            switch(true) {
+                
+                case e.nodeType == 8 && typeof(this.replaceComment) != 'undefined': // comment
+                    this.replaceComment(e);
+                    return;
+                
+                case e.nodeType != 3: //not a node.
+                    return;
+                
+                case tag === true: // everything
+                case typeof(tag) == 'object' && tag.indexOf(e.tagName) > -1: // array and it matches.
+                case typeof(tag) == 'string' && tag == e.tagName: // array and it matches.
+                    if (this.replaceTag && false === this.replaceTag(e)) {
+                        return;
+                    }
+                    if (e.hasChildNodes()) {
+                        this.walk(e);
+                    }
+                    return;
+                
+                default:    // tags .. that do not match.
+                    if (e.hasChildNodes()) {
+                        this.walk(e);
+                    }
+            }
+            
+        }, this);
+        
+    }
+};
