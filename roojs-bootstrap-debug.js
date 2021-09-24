@@ -25977,7 +25977,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         return this.IsLongEnough(pwd, 6) || !this.IsLongEnough(pwd, 0);
     }
           
-})/**
+})Roo.htmleditor = {};/**
  *
  * Base Class for filtering htmleditor stuff.
  *

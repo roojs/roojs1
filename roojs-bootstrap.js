@@ -1106,6 +1106,8 @@ pt.innerHTML=this.meterLabel+'&nbsp;'+this.pwdStrengths[B];this.errorMsg='';retu
 }var B=new Array(new this.CharacterSetChecks(this.kCapitalLetter),new this.CharacterSetChecks(this.kSmallLetter),new this.CharacterSetChecks(this.kDigit),new this.CharacterSetChecks(this.kPunctuation));for(var C=0;C<A.length;++C){for(var D=0;D<B.length;++D){if(!B[D].fResult&&this.isctype(A.charAt(C),B[D].type)){B[D].fResult=true;
 break;}}}var E=0;for(var D=0;D<B.length;++D){if(B[D].fResult){++E;}}if(E<nb){return false;}return true;},ClientSideStrongPassword:function(A){return this.IsLongEnough(A,8)&&this.SpansEnoughCharacterSets(A,3);},ClientSideMediumPassword:function(A){return this.IsLongEnough(A,7)&&this.SpansEnoughCharacterSets(A,2);
 },ClientSideWeakPassword:function(A){return this.IsLongEnough(A,6)||!this.IsLongEnough(A,0);}})
+// Roo/htmleditor/namespace.js
+Roo.htmleditor={};
 // Roo/htmleditor/Filter.js
 Roo.htmleditor.Filter=function(A){Roo.apply(this.cfg);};Roo.htmleditor.Filter.prototype={node:false,tag:false,replaceComment:false,replaceTag:false,walk:function(A){Roo.each(Array.from(A.childNodes),function(e){switch(true){case e.nodeType==8&&typeof(this.replaceComment)!='undefined':this.replaceComment(e);
 return;case e.nodeType!=3:return;case tag===true:case typeof(tag)=='object'&&tag.indexOf(e.tagName)>-1:case typeof(tag)=='string'&&tag==e.tagName:if(this.replaceTag&&false===this.replaceTag(e)){return;}if(e.hasChildNodes()){this.walk(e);}return;default:if(e.hasChildNodes()){this.walk(e);
