@@ -44432,7 +44432,7 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
     } 
     
     
-});/**
+});Roo.htmleditor = {};/**
  *
  * Base Class for filtering htmleditor stuff.
  *
