@@ -4,7 +4,15 @@
  *
  */
 
-Roo.htmleditor = typeof(Roo.htmleditor) == 'undefined' ? {} : Roo.htmleditor;
+/**
+ * @class Roo.htmleditor.Filter
+ * Base Class for filtering htmleditor stuff.
+ * @cfg {Boolean/DomHelper} node The node to iterate and filter
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
 
 
 Roo.htmleditor.Filter = function() {}
