@@ -25977,7 +25977,566 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         return this.IsLongEnough(pwd, 6) || !this.IsLongEnough(pwd, 0);
     }
           
-})//<script type="text/javascript">
+})/**
+ *
+ * Base Class for filtering htmleditor stuff.
+ *
+ */
+
+/**
+ * @class Roo.htmleditor.Filter
+ * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.
+ * @cfg {DomElement} node The node to iterate and filter
+ * @cfg {boolean|String|Array} tag Tags to replace 
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+
+
+Roo.htmleditor.Filter = function(cfg) {
+    Roo.apply(this.cfg);
+    // this does not actually call walk as it's really just a abstract class
+}
+
+
+Roo.htmleditor.Filter.prototype = {
+    
+    node: false,
+    
+    tag: false,
+
+    // overrride to do replace comments.
+    replaceComment : false,
+    
+    // overrride to do replace or do stuff with tags..
+    replaceTag : false,
+    
+    walk : function(dom)
+    {
+        Roo.each( Array.from(dom.childNodes), function( e ) {
+            switch(true) {
+                
+                case e.nodeType == 8 && typeof(this.replaceComment) != 'undefined': // comment
+                    this.replaceComment(e);
+                    return;
+                
+                case e.nodeType != 3: //not a node.
+                    return;
+                
+                case tag === true: // everything
+                case typeof(tag) == 'object' && tag.indexOf(e.tagName) > -1: // array and it matches.
+                case typeof(tag) == 'string' && tag == e.tagName: // array and it matches.
+                    if (this.replaceTag && false === this.replaceTag(e)) {
+                        return;
+                    }
+                    if (e.hasChildNodes()) {
+                        this.walk(e);
+                    }
+                    return;
+                
+                default:    // tags .. that do not match.
+                    if (e.hasChildNodes()) {
+                        this.walk(e);
+                    }
+            }
+            
+        }, this);
+        
+    }
+}; 
+
+/**
+ * @class Roo.htmleditor.FilterAttributes
+ * clean attributes and  styles including http:// etc.. in attribute
+ * @constructor
+* Run a new Attribute Filter
+* @param {Object} config Configuration options
+ */
+Roo.htmleditor.FilterAttributes = function(cfg)
+{
+    Roo.apply(this, cfg);
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
+{
+    tag: true, // all tags
+    
+    attrib_black : false, // array
+    attrib_clean : false,
+    style_white : false,
+    style_black : false,
+     
+     
+    replaceTag : function(node)
+    {
+        if (!node.attributes || !node.attributes.length) {
+            return true;
+        }
+        
+        for (var i = node.attributes.length-1; i > -1 ; i--) {
+            var a = node.attributes[i];
+            //console.log(a);
+            
+            if (a.name.toLowerCase().substr(0,2)=='on')  {
+                node.removeAttribute(a.name);
+                continue;
+            }
+            
+            
+            if (this.attrib_black.indexOf(a.name.toLowerCase()) > -1) {
+                node.removeAttribute(a.name);
+                continue;
+            }
+            if (this.attrib_clean.indexOf(a.name.toLowerCase()) > -1) {
+                this.cleanAttr(node,a.name,a.value); // fixme..
+                continue;
+            }
+            if (a.name == 'style') {
+                this.cleanStyle(node,a.name,a.value);
+                continue;
+            }
+            /// clean up MS crap..
+            // tecnically this should be a list of valid class'es..
+            
+            
+            if (a.name == 'class') {
+                if (a.value.match(/^Mso/)) {
+                    node.removeAttribute('class');
+                }
+                
+                if (a.value.match(/^body$/)) {
+                    node.removeAttribute('class');
+                }
+                continue;
+            }
+            
+            
+            // style cleanup!?
+            // class cleanup?
+            
+        }
+        return true; // clean children
+    },
+        
+    cleanAttr: function(node, n,v)
+    {
+        
+        if (v.match(/^\./) || v.match(/^\//)) {
+            return;
+        }
+        if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/) || v.match(/^ftp:/)) {
+            return;
+        }
+        if (v.match(/^#/)) {
+            return;
+        }
+        if (v.match(/^\{/)) { // allow template editing.
+            return;
+        }
+//            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);
+        node.removeAttribute(n);
+        
+    },
+    cleanStyle : function(node,  n,v)
+    {
+        if (v.match(/expression/)) { //XSS?? should we even bother..
+            node.removeAttribute(n);
+            return;
+        }
+        
+        var parts = v.split(/;/);
+        var clean = [];
+        
+        Roo.each(parts, function(p) {
+            p = p.replace(/^\s+/g,'').replace(/\s+$/g,'');
+            if (!p.length) {
+                return true;
+            }
+            var l = p.split(':').shift().replace(/\s+/g,'');
+            l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
+            
+            if ( this.style_black.length && (this.style_black.indexOf(l) > -1 || this.style_black.indexOf(l.toLowerCase()) > -1)) {
+                return true;
+            }
+            //Roo.log()
+            // only allow 'c whitelisted system attributes'
+            if ( this.style_white.length &&  style_white.indexOf(l) < 0 && style_white.indexOf(l.toLowerCase()) < 0 ) {
+                return true;
+            }
+            
+            
+            clean.push(p);
+            return true;
+        },this);
+        if (clean.length) { 
+            node.setAttribute(n, clean.join(';'));
+        } else {
+            node.removeAttribute(n);
+        }
+        
+    }
+        
+        
+        
+    
+});/**
+ * Filter Clean
+ *
+ * Based on White / Blacklists etc...
+ * 
+ * 
+ * usually call Roo.apply(Roo.htmleditor.FilterClean)
+ *
+ */
+
+/**
+ * @class Roo.htmleditor.FilterBlack
+ * remove blacklisted elements.
+ * @constructor
+ * Run a new Blacklisted Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterBlack = function(cfg)
+{
+    Roo.apply(this, cfg);
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterBlack, Roo.htmleditor.Filter,
+{
+    tag : true, // all elements.
+    /**
+     * @cfg {array} black blacklist of elements
+     */
+    black : false, // array
+    
+     
+    replace : function(n)
+    {
+        n.parentNode.removeChild(n);
+    }
+});
+/**
+ * @class Roo.htmleditor.FilterComment
+ * remove comments.
+ * @constructor
+* Run a new Comments Filter
+* @param {Object} config Configuration options
+ */
+Roo.htmleditor.FilterComment = function(cfg)
+{
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterComment, Roo.htmleditor.Filter,
+{
+  
+    replaceComment : function(n)
+    {
+        n.parentNode.removeChild(n);
+    }
+});/**
+ * @class Roo.htmleditor.FilterKeepChildren
+ * remove tags but keep children
+ * @constructor
+ * Run a new Keep Children Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterKeepChildren = function(cfg)
+{
+    Roo.apply(this, cfg);
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
+{
+    
+  
+    replaceTag : function(n)
+    {
+        // walk children...
+        for (var i = 0; i < node.childNodes.length; i++) {
+            node.removeChild(node.childNodes[i]);
+            // what if we need to walk these???
+            node.insertBefore(node.childNodes[i], node);
+            this.walk(node.childNodes[i]);
+        }
+        n.parentNode.removeChild(n);
+        return false; // don't walk children
+        
+        
+    }
+}/**
+ * @class Roo.htmleditor.FilterParagraph
+ * paragraphs cause a nightmare for shared content - this filter is designed to be called ? at various points when editing
+ * like on 'push' to remove the <p> tags and replace them with line breaks.
+ * @constructor
+ * Run a new Paragraph Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterParagraph = function(cfg)
+{
+    // no need to apply config.
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
+{
+    
+     
+    tag : 'P',
+    
+     
+    replaceTag : function(node)
+    {
+        
+        if (node.childNodes.length == 1 &&
+            node.childNodes[0].nodeType == 3 &&
+            node.childNodes[0].nodeType.textContent.trim().length < 1
+            ) {
+            // remove and replace with '<BR>';
+            node.parentNode.replaceChild(node.documentOwner.createElement('BR'),node);
+            return false; // no need to walk..
+        }
+        
+        for (var i = 0; i < node.childNodes.length; i++) {
+            node.removeChild(node.childNodes[i]);
+            // what if we need to walk these???
+            node.insertBefore(node.childNodes[i], node);
+        }
+        // now what about this?
+        // <p> &nbsp; </p>
+        
+        // double BR.
+        node.insertBefore(node.documentOwner.createElement('BR'), node);
+        node.parentNode.removeChild(node);
+        
+        return false;
+
+    }
+    
+    
+    
+};/**
+ * @class Roo.htmleditor.FilterSpan
+ * filter span's with no attributes out..
+ * @constructor
+ * Run a new Span Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterSpan = function(cfg)
+{
+    // no need to apply config.
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.Filter,
+{
+     
+    tag : 'SPAN',
+     
+ 
+    replaceTag : function(node)
+    {
+        if (node.attributes && node.attributes.length > 0) {
+            this.walk(node);
+            return true;
+        }
+        for (var i = 0; i < node.childNodes.length; i++) {
+            node.removeChild(node.childNodes[i]);
+            // what if we need to walk these???
+            node.insertBefore(node.childNodes[i], node);
+            this.walk(node.childNodes[i]);
+        }
+        n.parentNode.removeChild(n);
+        return false; // don't walk children
+     
+    }
+    
+});/**
+ * @class Roo.htmleditor.FilterTableWidth
+  try and remove table width data - as that frequently messes up other stuff.
+ * 
+ *      was cleanTableWidths.
+ *
+ * Quite often pasting from word etc.. results in tables with column and widths.
+ * This does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..
+ *
+ * @constructor
+ * Run a new Table Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterTableWidth = function(cfg)
+{
+    // no need to apply config.
+    this.tag = ['TABLE', 'TD', 'TR', 'TH', 'THEAD', 'TBODY' ];
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterTableWidth, Roo.htmleditor.Filter,
+{
+     
+     
+    
+    replaceTag: function(node) {
+        
+        
+      
+        if (node.hasAttribute('width')) {
+            node.removeAttribute('width');
+        }
+        
+         
+        if (node.hasAttribute("style")) {
+            // pretty basic...
+            
+            var styles = node.getAttribute("style").split(";");
+            var nstyle = [];
+            Roo.each(styles, function(s) {
+                if (!s.match(/:/)) {
+                    return;
+                }
+                var kv = s.split(":");
+                if (kv[0].match(/^\s*(width|min-width)\s*$/)) {
+                    return;
+                }
+                // what ever is left... we allow.
+                nstyle.push(s);
+            });
+            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
+            if (!nstyle.length) {
+                node.removeAttribute('style');
+            }
+        }
+        
+        this.walk(node);
+    }
+});/**
+ * @class Roo.htmleditor.FilterWord
+ * try and clean up all the mess that Word generates.
+ * 
+ * This is the 'nice version' - see 'Heavy' that white lists a very short list of elements, and multi-filters 
+ 
+ * @constructor
+ * Run a new Span Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterWord = function(cfg)
+{
+    // no need to apply config.
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
+{
+    tag: true,
+     
+    
+    /**
+     * Clean up MS wordisms...
+     */
+    replaceTag : function(node)
+    {
+         
+        // no idea what this does - span with text, replaceds with just text.
+        if(
+                node.nodeName == 'SPAN' &&
+                !node.hasAttributes() &&
+                node.childNodes.length == 1 &&
+                node.firstChild.nodeName == "#text"  
+        ) {
+            var textNode = node.firstChild;
+            node.removeChild(textNode);
+            if (node.getAttribute('lang') != 'zh-CN') {   // do not space pad on chinese characters..
+                node.parentNode.insertBefore(node.ownerDocument.createTextNode(" "), node);
+            }
+            node.parentNode.insertBefore(textNode, node);
+            if (node.getAttribute('lang') != 'zh-CN') {   // do not space pad on chinese characters..
+                node.parentNode.insertBefore(node.ownerDocument.createTextNode(" ") , node);
+            }
+            
+            node.parentNode.removeChild(node);
+            return false; // dont do chidren - we have remove our node - so no need to do chdhilren?
+        }
+        
+   
+        
+        if (node.tagName.toLowerCase().match(/^(style|script|applet|embed|noframes|noscript)$/)) {
+            node.parentNode.removeChild(node);
+            return false; // dont do chidlren
+        }
+        //Roo.log(node.tagName);
+        // remove - but keep children..
+        if (node.tagName.toLowerCase().match(/^(meta|link|\\?xml:|st1:|o:|v:|font)/)) {
+            //Roo.log('-- removed');
+            while (node.childNodes.length) {
+                var cn = node.childNodes[0];
+                node.removeChild(cn);
+                node.parentNode.insertBefore(cn, node);
+                // move node to parent - and clean it..
+                this.replaceTag(cn);
+            }
+            node.parentNode.removeChild(node);
+            /// no need to iterate chidlren = it's got none..
+            //this.iterateChildren(node, this.cleanWord);
+            return false; // no need to iterate children.
+        }
+        // clean styles
+        if (node.className.length) {
+            
+            var cn = node.className.split(/\W+/);
+            var cna = [];
+            Roo.each(cn, function(cls) {
+                if (cls.match(/Mso[a-zA-Z]+/)) {
+                    return;
+                }
+                cna.push(cls);
+            });
+            node.className = cna.length ? cna.join(' ') : '';
+            if (!cna.length) {
+                node.removeAttribute("class");
+            }
+        }
+        
+        if (node.hasAttribute("lang")) {
+            node.removeAttribute("lang");
+        }
+        
+        if (node.hasAttribute("style")) {
+            
+            var styles = node.getAttribute("style").split(";");
+            var nstyle = [];
+            Roo.each(styles, function(s) {
+                if (!s.match(/:/)) {
+                    return;
+                }
+                var kv = s.split(":");
+                if (kv[0].match(/^(mso-|line|font|background|margin|padding|color)/)) {
+                    return;
+                }
+                // what ever is left... we allow.
+                nstyle.push(s);
+            });
+            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
+            if (!nstyle.length) {
+                node.removeAttribute('style');
+            }
+        }
+        return true; // do children
+        
+        
+        
+    }
+};//<script type="text/javascript">
 
 /*
  * Based  Ext JS Library 1.1.1
@@ -26970,7 +27529,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // cleans up the whole document..
         Roo.log('cleanuppaste');
         
-        this.cleanUpChildren(this.doc.body);
+        this.cleanUpChild(this.doc.body);
         var clean = this.cleanWordChars(this.doc.body.innerHTML);
         if (clean != this.doc.body.innerHTML) {
             this.doc.body.innerHTML = clean;
@@ -26991,376 +27550,52 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         return output;
     },
     
-    
-    cleanUpChildren : function (n)
-    {
-        if (!n.childNodes.length) {
-            return;
-        }
-        for (var i = n.childNodes.length-1; i > -1 ; i--) {
-           this.cleanUpChild(n.childNodes[i]);
-        }
-    },
-    
+     
     
         
     
     cleanUpChild : function (node)
     {
-        var ed = this;
-        //console.log(node);
-        if (node.nodeName == "#text") {
-            // clean up silly Windows -- stuff?
-            return; 
-        }
-        if (node.nodeName == "#comment") {
-            if (!this.allowComments) {
-                node.parentNode.removeChild(node);
-            }
-            // clean up silly Windows -- stuff?
-            return; 
-        }
-        var lcname = node.tagName.toLowerCase();
-        // we ignore whitelists... ?? = not really the way to go, but we probably have not got a full
-        // whitelist of tags..
         
-        if (this.black.indexOf(lcname) > -1 && this.clearUp ) {
-            // remove node.
-            node.parentNode.removeChild(node);
-            return;
-            
-        }
-        
-        var remove_keep_children= Roo.HtmlEditorCore.remove.indexOf(node.tagName.toLowerCase()) > -1;
-        
-        // spans with no attributes - just remove them..
-        if ((!node.attributes || !node.attributes.length) && lcname == 'span') { 
-            remove_keep_children = true;
-        }
-        
-        // remove <a name=....> as rendering on yahoo mailer is borked with this.
-        // this will have to be flaged elsewhere - perhaps ablack=name... on the mailer..
-        
-        //if (node.tagName.toLowerCase() == 'a' && !node.hasAttribute('href')) {
-        //    remove_keep_children = true;
-        //}
-        
-        if (remove_keep_children) {
-            this.cleanUpChildren(node);
-            // inserts everything just before this node...
-            while (node.childNodes.length) {
-                var cn = node.childNodes[0];
-                node.removeChild(cn);
-                node.parentNode.insertBefore(cn, node);
-            }
-            node.parentNode.removeChild(node);
-            return;
-        }
-        
-        if (!node.attributes || !node.attributes.length) {
-            
-          
-            
-            
-            this.cleanUpChildren(node);
-            return;
-        }
-        
-        function cleanAttr(n,v)
-        {
-            
-            if (v.match(/^\./) || v.match(/^\//)) {
-                return;
-            }
-            if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/) || v.match(/^ftp:/)) {
-                return;
-            }
-            if (v.match(/^#/)) {
-                return;
-            }
-            if (v.match(/^\{/)) { // allow template editing.
-                return;
-            }
-//            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);
-            node.removeAttribute(n);
-            
-        }
-        
-        var cwhite = this.cwhite;
-        var cblack = this.cblack;
-            
-        function cleanStyle(n,v)
-        {
-            if (v.match(/expression/)) { //XSS?? should we even bother..
-                node.removeAttribute(n);
-                return;
-            }
-            
-            var parts = v.split(/;/);
-            var clean = [];
-            
-            Roo.each(parts, function(p) {
-                p = p.replace(/^\s+/g,'').replace(/\s+$/g,'');
-                if (!p.length) {
-                    return true;
-                }
-                var l = p.split(':').shift().replace(/\s+/g,'');
-                l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
-                
-                if ( cwhite.length && cblack.indexOf(l) > -1) {
-//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
-                    //node.removeAttribute(n);
-                    return true;
-                }
-                //Roo.log()
-                // only allow 'c whitelisted system attributes'
-                if ( cwhite.length &&  cwhite.indexOf(l) < 0 && cwhite.indexOf(l.toLowerCase()) < 0 ) {
-//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
-                    //node.removeAttribute(n);
-                    return true;
-                }
-                
-                
-                 
-                
-                clean.push(p);
-                return true;
-            });
-            if (clean.length) { 
-                node.setAttribute(n, clean.join(';'));
-            } else {
-                node.removeAttribute(n);
-            }
-            
-        }
-        
-        
-        for (var i = node.attributes.length-1; i > -1 ; i--) {
-            var a = node.attributes[i];
-            //console.log(a);
-            
-            if (a.name.toLowerCase().substr(0,2)=='on')  {
-                node.removeAttribute(a.name);
-                continue;
-            }
-            if (Roo.HtmlEditorCore.ablack.indexOf(a.name.toLowerCase()) > -1) {
-                node.removeAttribute(a.name);
-                continue;
-            }
-            if (Roo.HtmlEditorCore.aclean.indexOf(a.name.toLowerCase()) > -1) {
-                cleanAttr(a.name,a.value); // fixme..
-                continue;
-            }
-            if (a.name == 'style') {
-                cleanStyle(a.name,a.value);
-                continue;
-            }
-            /// clean up MS crap..
-            // tecnically this should be a list of valid class'es..
-            
-            
-            if (a.name == 'class') {
-                if (a.value.match(/^Mso/)) {
-                    node.removeAttribute('class');
-                }
-                
-                if (a.value.match(/^body$/)) {
-                    node.removeAttribute('class');
-                }
-                continue;
-            }
-            
-            // style cleanup!?
-            // class cleanup?
-            
-        }
-        
-        
-        this.cleanUpChildren(node);
-        
+        new Roo.htmleditor.FilterComment({node : node});
+        new Roo.htmleditor.FilterAttributes({
+                node : node,
+                attrib_black : this.ablack,
+                attrib_clean : this.aclean,
+                style_white : this.cwhite,
+                style_black : this.cblack
+        });
+        new Roo.htmleditor.FilterBlack({ node : node, black : this.black});
+        new Roo.htmleditor.FilterKeepChildren({node : node, black : this.remove} );
+         
         
     },
     
     /**
      * Clean up MS wordisms...
+     * @deprecated - use filter directly
      */
     cleanWord : function(node)
     {
-        if (!node) {
-            this.cleanWord(this.doc.body);
-            return;
-        }
-        
-        if(
-                node.nodeName == 'SPAN' &&
-                !node.hasAttributes() &&
-                node.childNodes.length == 1 &&
-                node.firstChild.nodeName == "#text"  
-        ) {
-            var textNode = node.firstChild;
-            node.removeChild(textNode);
-            if (node.getAttribute('lang') != 'zh-CN') {   // do not space pad on chinese characters..
-                node.parentNode.insertBefore(node.ownerDocument.createTextNode(" "), node);
-            }
-            node.parentNode.insertBefore(textNode, node);
-            if (node.getAttribute('lang') != 'zh-CN') {   // do not space pad on chinese characters..
-                node.parentNode.insertBefore(node.ownerDocument.createTextNode(" ") , node);
-            }
-            node.parentNode.removeChild(node);
-        }
-        
-        if (node.nodeName == "#text") {
-            // clean up silly Windows -- stuff?
-            return; 
-        }
-        if (node.nodeName == "#comment") {
-            node.parentNode.removeChild(node);
-            // clean up silly Windows -- stuff?
-            return; 
-        }
-        
-        if (node.tagName.toLowerCase().match(/^(style|script|applet|embed|noframes|noscript)$/)) {
-            node.parentNode.removeChild(node);
-            return;
-        }
-        //Roo.log(node.tagName);
-        // remove - but keep children..
-        if (node.tagName.toLowerCase().match(/^(meta|link|\\?xml:|st1:|o:|v:|font)/)) {
-            //Roo.log('-- removed');
-            while (node.childNodes.length) {
-                var cn = node.childNodes[0];
-                node.removeChild(cn);
-                node.parentNode.insertBefore(cn, node);
-                // move node to parent - and clean it..
-                this.cleanWord(cn);
-            }
-            node.parentNode.removeChild(node);
-            /// no need to iterate chidlren = it's got none..
-            //this.iterateChildren(node, this.cleanWord);
-            return;
-        }
-        // clean styles
-        if (node.className.length) {
-            
-            var cn = node.className.split(/\W+/);
-            var cna = [];
-            Roo.each(cn, function(cls) {
-                if (cls.match(/Mso[a-zA-Z]+/)) {
-                    return;
-                }
-                cna.push(cls);
-            });
-            node.className = cna.length ? cna.join(' ') : '';
-            if (!cna.length) {
-                node.removeAttribute("class");
-            }
-        }
-        
-        if (node.hasAttribute("lang")) {
-            node.removeAttribute("lang");
-        }
-        
-        if (node.hasAttribute("style")) {
-            
-            var styles = node.getAttribute("style").split(";");
-            var nstyle = [];
-            Roo.each(styles, function(s) {
-                if (!s.match(/:/)) {
-                    return;
-                }
-                var kv = s.split(":");
-                if (kv[0].match(/^(mso-|line|font|background|margin|padding|color)/)) {
-                    return;
-                }
-                // what ever is left... we allow.
-                nstyle.push(s);
-            });
-            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
-            if (!nstyle.length) {
-                node.removeAttribute('style');
-            }
-        }
-        this.iterateChildren(node, this.cleanWord);
-        
-        
+        new Roo.htmleditor.FilterWord({ node : node ? node : this.doc.body });
         
     },
-    /**
-     * iterateChildren of a Node, calling fn each time, using this as the scole..
-     * @param {DomNode} node node to iterate children of.
-     * @param {Function} fn method of this class to call on each item.
-     */
-    iterateChildren : function(node, fn)
-    {
-        if (!node.childNodes.length) {
-                return;
-        }
-        for (var i = node.childNodes.length-1; i > -1 ; i--) {
-           fn.call(this, node.childNodes[i])
-        }
-    },
-    
+   
     
     /**
-     * cleanTableWidths.
-     *
-     * Quite often pasting from word etc.. results in tables with column and widths.
-     * This does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..
-     *
+
+     * @deprecated - use filters
      */
     cleanTableWidths : function(node)
     {
-         
-         
-        if (!node) {
-            this.cleanTableWidths(this.doc.body);
-            return;
-        }
+        new Roo.htmleditor.FilterTable({ node : node ? node : this.doc.body});
         
-        // ignore list...
-        if (node.nodeName == "#text" || node.nodeName == "#comment") {
-            return; 
-        }
-        Roo.log(node.tagName);
-        if (!node.tagName.toLowerCase().match(/^(table|td|tr)$/)) {
-            this.iterateChildren(node, this.cleanTableWidths);
-            return;
-        }
-        if (node.hasAttribute('width')) {
-            node.removeAttribute('width');
-        }
-        
-         
-        if (node.hasAttribute("style")) {
-            // pretty basic...
-            
-            var styles = node.getAttribute("style").split(";");
-            var nstyle = [];
-            Roo.each(styles, function(s) {
-                if (!s.match(/:/)) {
-                    return;
-                }
-                var kv = s.split(":");
-                if (kv[0].match(/^\s*(width|min-width)\s*$/)) {
-                    return;
-                }
-                // what ever is left... we allow.
-                nstyle.push(s);
-            });
-            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
-            if (!nstyle.length) {
-                node.removeAttribute('style');
-            }
-        }
-        
-        this.iterateChildren(node, this.cleanTableWidths);
-        
-        
+ 
     },
     
     
     
-    
+    /* ?? why ?? */
     domToHTML : function(currentElement, depth, nopadtext) {
         
         depth = depth || 0;
