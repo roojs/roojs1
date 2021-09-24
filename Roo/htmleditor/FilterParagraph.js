@@ -1,23 +1,26 @@
 /**
- * Filter Paragraph
- *
+ * @class Roo.htmleditor.FilterParagraph
  * paragraphs cause a nightmare for shared content - this filter is designed to be called ? at various points when editing
  * like on 'push' to remove the <p> tags and replace them with line breaks.
- * 
- * 
- *
+ * @constructor
+ * Run a new Paragraph Filter
+ * @param {Object} config Configuration options
  */
 
-Roo.htmleditor.FilterParagraph  =  {
+Roo.htmleditor.FilterParagraph = function(cfg)
+{
+    // no need to apply config.
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
+{
     
-    walk : function (body)
-    {
-        Roo.htmleditor.Filter.walk.call(this, body, 'P');
      
-    },
+    tag : 'P',
+    
      
-     
-    replace : function(node)
+    replaceTag : function(node)
     {
         
         if (node.childNodes.length == 1 &&

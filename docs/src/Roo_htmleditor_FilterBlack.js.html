@@ -8,9 +8,28 @@
  *
  */
 
-</span><span class="jsdoc-var">Roo.htmleditor.FilterBlack </span><span class="jsdoc-syntax">=  {
+/**
+ * @class Roo.htmleditor.FilterBlack
+ * remove blacklisted elements.
+ * @constructor
+ * Run a new Blacklisted Filter
+ * @param {Object} config Configuration options
+ */
 
+</span><span class="jsdoc-var">Roo.htmleditor.FilterBlack </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
+}
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.FilterBlack</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.htmleditor.Filter</span><span class="jsdoc-syntax">,
+{
+</span><span class="jsdoc-var">Roo.htmleditor.FilterBlack </span><span class="jsdoc-syntax">=  {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {array} black blacklist of elements
+     */
     </span><span class="jsdoc-var">black </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// array
+
     </span><span class="jsdoc-var">walkWith </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">black</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">this.black </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">black</span><span class="jsdoc-syntax">;

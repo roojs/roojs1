@@ -1,16 +1,24 @@
-
 /**
- *  filter span's with no attributes out..
+ * @class Roo.htmleditor.FilterSpan
+ * filter span's with no attributes out..
+ * @constructor
+ * Run a new Span Filter
+ * @param {Object} config Configuration options
  */
 
-Roo.htmleditor.FilterSpan =  {
+Roo.htmleditor.FilterSpan = function(cfg)
+{
+    // no need to apply config.
+    this.walk(cfg.node);
+}
 
-    walk : function (node)
-    {
-        Roo.htmleditor.Filter.walk.call(this, 'SPAN', true );
+Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.Filter,
+{
      
-    },
-    replace : function(node)
+    tag : 'SPAN',
+     
+ 
+    replaceTag : function(node)
     {
         if (node.attributes && node.attributes.length > 0) {
             this.walk(node);
@@ -27,4 +35,4 @@ Roo.htmleditor.FilterSpan =  {
      
     }
     
-};
+});

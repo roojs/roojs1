@@ -1,21 +1,29 @@
 /**
- *
+ * @class Roo.htmleditor.FilterWord
  * try and clean up all the mess that Word generates.
  * 
  * This is the 'nice version' - see 'Heavy' that white lists a very short list of elements, and multi-filters 
- *
+ 
+ * @constructor
+ * Run a new Span Filter
+ * @param {Object} config Configuration options
  */
-Roo.htmleditor.FilterWord  =   {
-    
-    walk: function (node)
-    {
-         Roo.htmleditor.Filter.walk.call(this, node, true);
-    },
+
+Roo.htmleditor.FilterWord = function(cfg)
+{
+    // no need to apply config.
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
+{
+    tag: true,
+     
     
     /**
      * Clean up MS wordisms...
      */
-    replace : function(node)
+    replaceTag : function(node)
     {
          
         // no idea what this does - span with text, replaceds with just text.
@@ -54,7 +62,7 @@ Roo.htmleditor.FilterWord  =   {
                 node.removeChild(cn);
                 node.parentNode.insertBefore(cn, node);
                 // move node to parent - and clean it..
-                this.replace(cn);
+                this.replaceTag(cn);
             }
             node.parentNode.removeChild(node);
             /// no need to iterate chidlren = it's got none..

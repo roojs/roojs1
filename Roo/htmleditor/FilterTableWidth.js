@@ -1,23 +1,30 @@
 /**
- *
- * try and remove table width data - as that frequently messes up other stuff.
+ * @class Roo.htmleditor.FilterTableWidth
+  try and remove table width data - as that frequently messes up other stuff.
  * 
  *      was cleanTableWidths.
  *
  * Quite often pasting from word etc.. results in tables with column and widths.
  * This does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..
  *
+ * @constructor
+ * Run a new Table Filter
+ * @param {Object} config Configuration options
  */
 
-Roo.htmleditor.FilterParagraph  =   {
+Roo.htmleditor.FilterTableWidth = function(cfg)
+{
+    // no need to apply config.
+    this.tag = ['TABLE', 'TD', 'TR', 'TH', 'THEAD', 'TBODY' ];
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterTableWidth, Roo.htmleditor.Filter,
+{
+     
+     
     
-    walk: function (body)
-    {
-        Roo.htmleditor.Filter.walk.call(this, body, ['TABLE', 'TD', 'TR', 'TH', 'THEAD', 'TBODY' ]); 
-    },
-    
-    
-    replace: function(node) {
+    replaceTag: function(node) {
         
         
       
@@ -50,4 +57,4 @@ Roo.htmleditor.FilterParagraph  =   {
         
         this.walk(node);
     }
-};
+});

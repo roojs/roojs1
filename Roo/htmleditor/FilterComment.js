@@ -1,23 +1,20 @@
 /**
- * Filter Comments
- *
- * Remove Comments..
- * 
- * 
- * 
- *
+ * @class Roo.htmleditor.FilterComment
+ * remove comments.
+ * @constructor
+* Run a new Comments Filter
+* @param {Object} config Configuration options
  */
+Roo.htmleditor.FilterComment = function(cfg)
+{
+    this.walk(cfg.node);
+}
 
-Roo.htmleditor.FilterComment =  {
-
-
-    walk : function (node)
-    {
-        Roo.htmleditor.Filter.walk.call(this, node, false);
-     
-    },
+Roo.extend(Roo.htmleditor.FilterComment, Roo.htmleditor.Filter,
+{
+  
     replaceComment : function(n)
     {
-            n.parentNode.removeChild(n);
+        n.parentNode.removeChild(n);
     }
-}
+});

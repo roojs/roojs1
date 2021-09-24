@@ -1,23 +1,22 @@
 /**
- *  remove tags but keep children
+ * @class Roo.htmleditor.FilterKeepChildren
+ * remove tags but keep children
+ * @constructor
+ * Run a new Keep Children Filter
+ * @param {Object} config Configuration options
  */
-Roo.htmleditor.FilterKeepChildren =  {
+
+Roo.htmleditor.FilterKeepChildren = function(cfg)
+{
+    Roo.apply(this, cfg);
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
+{
     
-    black : false, // array
-    walkWith : function (node, black)
-    {
-        this.black = black;
-        this.walk(node);
-     
-    },
-    walk : function (node)
-    {
-        Roo.htmleditor.Filter.walk.call(this, node, this.black);
-     
-    },
-    
-     
-    replace : function(n)
+  
+    replaceTag : function(n)
     {
         // walk children...
         for (var i = 0; i < node.childNodes.length; i++) {
