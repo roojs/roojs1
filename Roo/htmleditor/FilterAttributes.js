@@ -6,27 +6,25 @@
  * 
  *
  */
-Roo.htmleditor.FilterAttributes =  {
+
+Roo.htmleditor.FilterAttributes = function(cfg)
+{
+    Roo.apply(this, cfg);
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
+{
+    tag: true, // all tags
+    
     attrib_black : false, // array
     attrib_clean : false,
     style_white : false,
     style_black : false,
-    walkWith : function (node, attrib_black, attrib_clean, style_white, style_black )
-    {
-        this.attrib_black = attrib_black;
-        this.attrib_clean = attrib_clean;
-        this.style_white = style_white ;
-        this.style_black = style_black ;
-        this.walk(node);
      
-    },
-    walk : function (node)
-    {
-        Roo.htmleditor.Filter.walk.call(this, node, true);
-    },
     
     
-    replace : function(node)
+    replaceTag : function(node)
     {
         if (!node.attributes || !node.attributes.length) {
             return true;
