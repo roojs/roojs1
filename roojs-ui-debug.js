@@ -24078,6 +24078,14 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
         }
         
     },
+    
+    'FIGURE' : {
+         align: {
+            title: "Align",
+            opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
+            width : 80  
+        }
+    },
     'A' : {
         name : {
             title: "Name",
