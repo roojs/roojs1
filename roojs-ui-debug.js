@@ -21566,10 +21566,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         if(this.sourceEditMode){
  
-            Roo.get(this.iframe).addClass(['x-hidden','hide']);     //FIXME - what's the BS styles for these
+            Roo.get(this.iframe).addClass(['x-hidden','hide', 'd-none']);     //FIXME - what's the BS styles for these
             
         }else{
-            Roo.get(this.iframe).removeClass(['x-hidden','hide']);
+            Roo.get(this.iframe).removeClass(['x-hidden','hide', 'd-none']);
             //this.iframe.className = '';
             this.deferFocus();
         }
