@@ -44472,7 +44472,7 @@ Roo.htmleditor.Filter.prototype = {
                     this.replaceComment(e);
                     return;
                 
-                case e.nodeType != 3: //not a node.
+                case e.nodeType != 1: //not a node.
                     return;
                 
                 case this.tag === true: // everything
@@ -44507,6 +44507,10 @@ Roo.htmleditor.Filter.prototype = {
 Roo.htmleditor.FilterAttributes = function(cfg)
 {
     Roo.apply(this, cfg);
+    this.attrib_black = this.attrib_black || [];
+    this.attrib_clean = this.attrib_clean || [];
+    this.style_white = this.style_white || [];
+    this.style_black = this.style_black || [];
     this.walk(cfg.node);
 }
 
@@ -44633,16 +44637,6 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
         
     
 });/**
- * Filter Clean
- *
- * Based on White / Blacklists etc...
- * 
- * 
- * usually call Roo.apply(Roo.htmleditor.FilterClean)
- *
- */
-
-/**
  * @class Roo.htmleditor.FilterBlack
  * remove blacklisted elements.
  * @constructor
@@ -44659,12 +44653,7 @@ Roo.htmleditor.FilterBlack = function(cfg)
 Roo.extend(Roo.htmleditor.FilterBlack, Roo.htmleditor.Filter,
 {
     tag : true, // all elements.
-    /**
-     * @cfg {array} black blacklist of elements
-     */
-    black : false, // array
-    
-     
+   
     replace : function(n)
     {
         n.parentNode.removeChild(n);
@@ -44710,11 +44699,12 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
     replaceTag : function(node)
     {
         // walk children...
-        for (var i = 0; i < node.childNodes.length; i++) {
-            node.removeChild(node.childNodes[i]);
+        var ar = Array.from(node.childNodes);
+        for (var i = 0; i < ar.length; i++) {
+            node.removeChild(ar[i]);
             // what if we need to walk these???
-            node.insertBefore(node.childNodes[i], node);
-            this.walk(node.childNodes[i]);
+            node.parentNode.insertBefore(ar[i], node);
+            this.walk(ar[i]);
         }
         node.parentNode.removeChild(node);
         return false; // don't walk children
@@ -44740,7 +44730,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
 {
     
      
-    tag : 'p',
+    tag : 'P',
     
      
     replaceTag : function(node)
@@ -44748,23 +44738,23 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         
         if (node.childNodes.length == 1 &&
             node.childNodes[0].nodeType == 3 &&
-            node.childNodes[0].nodeType.textContent.trim().length < 1
+            node.childNodes[0].textContent.trim().length < 1
             ) {
             // remove and replace with '<BR>';
-            node.parentNode.replaceChild(node.documentOwner.createElement('BR'),node);
+            node.parentNode.replaceChild(node.ownerDocument.createElement('BR'),node);
             return false; // no need to walk..
         }
-        
-        for (var i = 0; i < node.childNodes.length; i++) {
-            node.removeChild(node.childNodes[i]);
+        var ar = Array.from(node.childNodes);
+        for (var i = 0; i < ar.length; i++) {
+            node.removeChild(ar[i]);
             // what if we need to walk these???
-            node.insertBefore(node.childNodes[i], node);
+            node.parentNode.insertBefore(ar[i], node);
         }
         // now what about this?
         // <p> &nbsp; </p>
         
         // double BR.
-        node.insertBefore(node.documentOwner.createElement('BR'), node);
+        node.parentNode.insertBefore(node.ownerDocument.createElement('BR'), node);
         node.parentNode.removeChild(node);
         
         return false;
@@ -44825,7 +44815,7 @@ Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterTableWidth = function(cfg)
 {
     // no need to apply config.
-    this.tag = ['table', 'td', 'tr', 'th', 'thead', 'tbody' ];
+    this.tag = ['TABLE', 'TD', 'TR', 'TH', 'THEAD', 'TBODY' ];
     this.walk(cfg.node);
 }
 
@@ -44865,7 +44855,7 @@ Roo.extend(Roo.htmleditor.FilterTableWidth, Roo.htmleditor.Filter,
             }
         }
         
-        this.walk(node);
+        return true; // continue doing children..
     }
 });/**
  * @class Roo.htmleditor.FilterWord
@@ -44984,7 +44974,193 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         
         
     }
-});//<script type="text/javascript">
+});
+/**
+ * @class Roo.htmleditor.Tidy
+ * Tidy HTML 
+ * @cfg {Roo.HtmlEditorCore} core the editor.
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+
+Roo.htmleditor.Tidy = function(cfg) {
+    Roo.apply(this, cfg);
+    
+    this.core.doc.body.innerHTML = this.tidy(this.core.doc.body, -1 , false);
+     
+}
+Roo.htmleditor.Tidy.prototype = {
+    
+    
+    wrap : function(s) {
+        return s.replace(/\n/g, " ").replace(/(?![^\n]{1,80}$)([^\n]{1,80})\s/g, '$1\n');
+    },
+
+    
+    /* ?? why ?? */
+    tidy : function(currentElement, depth, nopadtext) {
+        
+        depth = depth || 0;
+        nopadtext = nopadtext || false;
+        var pad = nopadtext || depth < 1 ? '' : (new Array( depth   )).join( "  " );
+     
+        //Roo.log(currentElement);
+        var j;
+        var allText = false;
+        var nodeName = currentElement.nodeName;
+        //var tagName = Roo.util.Format.htmlEncode(currentElement.tagName);
+        var tagName = currentElement.tagName; /// why encode tagname?
+        
+        if  (nodeName == '#text') {
+            return nopadtext ? currentElement.nodeValue : this.wrap(currentElement.nodeValue.trim()).split("\n").join("\n" + pad);
+        }
+        
+        
+        var ret = '';
+        if (nodeName != 'BODY') {
+             
+            var i = 0;
+            // Prints the node tagName, such as <A>, <IMG>, etc
+            if (tagName) {
+                var attr = [];
+                for(i = 0; i < currentElement.attributes.length;i++) {
+                    
+                    // skip empty values?
+                    if (!currentElement.attributes.item(i).value.length) {
+                        continue;
+                    }
+                    attr.push(
+                        currentElement.attributes.item(i).name + '="' +
+                            Roo.util.Format.htmlEncode(currentElement.attributes.item(i).value) + '"'
+                    );
+                }
+                
+                ret = "<"+currentElement.tagName+ ( attr.length ? (' ' + attr.join(' ') ) : '') ;
+            } 
+            else {
+                // dont add any attributes to body...
+                // eack
+            }
+        } else {
+            tagName = false;
+        }
+        if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(tagName) > -1) {
+            return ret + '/>';
+        }
+        ret += '>';
+        if (['PRE', 'TEXTAREA', 'TD', 'A', 'SPAN'].indexOf(tagName) > -1) { // or code?
+            nopadtext = true;
+        }
+        
+        
+        // Traverse the tree
+        i = 0;
+        var ar = Array.from(currentElement.childNodes);
+        var allText = true;
+        var innerHTML  = '';
+        var lastnode = '';
+        for (var i = 0 ; i < ar.length ; i++) { 
+             
+            // Formatting code (indent the tree so it looks nice on the screen)
+            var nopad = nopadtext;
+            if (lastnode == 'SPAN') {
+                nopad  = true;
+            }
+            // text
+            if  (ar[i].nodeName == '#text') {
+                var toadd = Roo.util.Format.htmlEncode(ar[i].nodeValue);
+                innerHTML  += nopadtext ? toadd : this.wrap(ar[i].nodeValue.trim()).split("\n").join("\n" + pad + "  "); 
+                lastNode = '';
+                continue;
+            }
+            allText = false;
+            
+            innerHTML  += nopad ? '' : "\n"  + pad + "  ";
+                
+            // Recursively traverse the tree structure of the child node
+            innerHTML   += this.tidy(ar[i], depth+1, nopadtext);
+            lastnode = ar[i].nodeName;
+           
+         }
+        
+        ret += innerHTML;
+        
+        if (!allText) {
+                // The remaining code is mostly for formatting the tree
+            ret+= nopadtext ? '' : ("\n" + pad);
+        }
+        
+        
+        if (tagName) {
+            ret+= "</"+tagName+">";
+        }
+        return ret;
+        
+    }
+}
+/**
+ * @class Roo.htmleditor.KeyEnter
+ * Handle Enter press..
+ * @cfg {Roo.HtmlEditorCore} core the editor.
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+
+
+Roo.htmleditor.KeyEnter = function(cfg) {
+    Roo.apply(this, cfg);
+    // this does not actually call walk as it's really just a abstract class
+ 
+    Roo.get(this.core.doc.body).on('keypress', this.keypress, this);
+}
+
+
+Roo.htmleditor.KeyEnter.prototype = {
+    
+    core : false,
+    
+    keypress : function(e) {
+        if (e.charCode != 13) {
+            return true;
+        }
+        e.preventDefault();
+        // https://stackoverflow.com/questions/18552336/prevent-contenteditable-adding-div-on-enter-chrome
+        var doc = this.core.doc;
+        
+        var docFragment = doc.createDocumentFragment();
+    
+        //add a new line
+        var newEle = doc.createTextNode('\n');
+        docFragment.appendChild(newEle);
+    
+        //add the br, or p, or something else
+        newEle = doc.createElement('br');
+        docFragment.appendChild(newEle);
+    
+        //make the br replace selection
+        var range = this.core.win.getSelection().getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(docFragment);
+    
+        //create a new range
+        range = doc.createRange();
+        range.setStartAfter(newEle);
+        range.collapse(true);
+    
+        //make the cursor there
+        var sel = this.core.win.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+    
+        return false;
+         
+    }
+};
+    //<script type="text/javascript">
 
 /*
  * Based  Ext JS Library 1.1.1
@@ -45460,6 +45636,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         this.initialized = true;
 
+        
+        // initialize special key events - enter
+        new Roo.htmleditor.KeyEnter({core : this});
+        
+        
+        
+        
         this.owner.fireEvent('initialize', this);
         this.pushValue();
     },
@@ -46013,8 +46196,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 style_white : this.cwhite,
                 style_black : this.cblack
         });
-        new Roo.htmleditor.FilterBlack({ node : node, black : this.black});
-        new Roo.htmleditor.FilterKeepChildren({node : node, black : this.remove} );
+        new Roo.htmleditor.FilterBlack({ node : node, tag : this.black});
+        new Roo.htmleditor.FilterKeepChildren({node : node, tag : this.tag_remove} );
          
         
     },
@@ -46154,6 +46337,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         var w = typeof(this.owner.white) != 'undefined' && this.owner.white ? this.owner.white  : [];
         var b = typeof(this.owner.black) != 'undefined' && this.owner.black ? this.owner.black :  [];
+        
+        this.aclean = typeof(this.owner.aclean) != 'undefined' && this.owner.aclean ? this.owner.aclean :  Roo.HtmlEditorCore.aclean;
+        this.ablack = typeof(this.owner.ablack) != 'undefined' && this.owner.ablack ? this.owner.ablack :  Roo.HtmlEditorCore.ablack;
+        this.tag_remove = typeof(this.owner.tag_remove) != 'undefined' && this.owner.tag_remove ? this.owner.tag_remove :  Roo.HtmlEditorCore.tag_remove;
         
         this.white = [];
         this.black = [];
@@ -46364,7 +46551,7 @@ Roo.HtmlEditorCore.black = [
 Roo.HtmlEditorCore.clean = [
     'script', 'style', 'title', 'xml'
 ];
-Roo.HtmlEditorCore.remove = [
+Roo.HtmlEditorCore.tag_remove = [
     'font'
 ];
 // attributes..
@@ -47432,7 +47619,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     tabIndex:-1
                 });
             }
-             cmenu.menu.items.push({
+            cmenu.menu.items.push({
                 actiontype : 'tablewidths',
                 html: 'Remove Table Widths',
                 handler: function(a,b) {
