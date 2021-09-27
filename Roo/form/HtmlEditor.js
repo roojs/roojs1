@@ -201,7 +201,12 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             * Fires when press the Sytlesheets button
             * @param {Roo.HtmlEditorCore} this
             */
-            stylesheetsclick: true
+            stylesheetsclick: true,
+            /**
+            * @event paste
+            * Fires when press user pastes into the editor
+            * @param {Roo.HtmlEditorCore} this
+            */
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
