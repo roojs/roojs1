@@ -46231,7 +46231,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     
     
-    /* ?? why ?? */
+    /* == used on tidy feature */
     domToHTML : function(currentElement, depth, nopadtext) {
         
         depth = depth || 0;
