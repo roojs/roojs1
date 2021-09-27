@@ -27055,6 +27055,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
         
+        this.doc.on('paste', function(e,v ) {
+            this.owner.fireEvent('paste', e, v);
+        },this);
+        
         
         this.owner.fireEvent('initialize', this);
         this.pushValue();
