@@ -227,7 +227,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         this.iframe = iframe.dom;
 
-         this.assignDocWin();
+        this.assignDocWin();
         
         this.doc.designMode = 'on';
        
