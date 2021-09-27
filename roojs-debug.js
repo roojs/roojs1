@@ -46948,6 +46948,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.removeClass('x-hidden');
             this.el.dom.removeAttribute('tabIndex');
             this.el.focus();
+            this.el.dom.scrollTop = 0;
+            
             
             for (var i = 0; i < this.toolbars.length; i++) {
                 if(this.toolbars[i] instanceof Roo.form.HtmlEditor.ToolbarContext){
