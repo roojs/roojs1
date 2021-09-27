@@ -82,6 +82,9 @@ Roo.htmleditor.Tidy.prototype = {
                 allText = false;
             }
         }
+        // what if all text?
+        
+        
         return ret.join('');
     },
     
