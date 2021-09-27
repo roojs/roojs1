@@ -447,7 +447,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 actiontype : 'tidy',
                 html: 'Tidy HTML Source',
                 handler: function(a,b) {
-                    editorcore.doc.body.innerHTML = editorcore.domToHTML();
+                    new Roo.htmleditor.Tidy(editorcore.doc.body);
                     editorcore.syncValue();
                 },
                 tabIndex:-1
