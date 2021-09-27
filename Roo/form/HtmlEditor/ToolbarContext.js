@@ -606,6 +606,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                                 tb.selectedNode.style[c.stylename] =  r.get('val');
                                 return;
                             }
+                            if (r === false) {
+                                tb.selectedNode.removeAttribute(c.attrname);
+                                return;
+                            }
                             tb.selectedNode.setAttribute(c.attrname, r.get('val'));
                         }
                     }
