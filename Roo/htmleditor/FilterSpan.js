@@ -12,7 +12,7 @@ Roo.htmleditor.FilterSpan = function(cfg)
     this.walk(cfg.node);
 }
 
-Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.Filter,
+Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
 {
      
     tag : 'SPAN',
@@ -21,17 +21,10 @@ Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.Filter,
     replaceTag : function(node)
     {
         if (node.attributes && node.attributes.length > 0) {
-            this.walk(node);
-            return true;
+            return true; // walk if there are any.
         }
-        for (var i = 0; i < node.childNodes.length; i++) {
-            node.removeChild(node.childNodes[i]);
-            // what if we need to walk these???
-            node.insertBefore(node.childNodes[i], node);
-            this.walk(node.childNodes[i]);
-        }
-        n.parentNode.removeChild(n);
-        return false; // don't walk children
+        Roo.htmleditor.FilterKeepChildren.prototype.replaceTag.call(this, node);
+        return false;
      
     }
     

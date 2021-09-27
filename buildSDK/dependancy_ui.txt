@@ -105,6 +105,8 @@ Roo.htmleditor.FilterParagraph
 Roo.htmleditor.FilterSpan
 Roo.htmleditor.FilterTableWidth
 Roo.htmleditor.FilterWord
+Roo.htmleditor.Tidy
+Roo.htmleditor.KeyEnter
 
 
 Roo.HtmlEditorCore

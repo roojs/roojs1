@@ -474,6 +474,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         this.initialized = true;
 
+        
+        // initialize special key events - enter
+        new Roo.htmleditor.KeyEnter({core : this});
+        
+        
+        
+        
         this.owner.fireEvent('initialize', this);
         this.pushValue();
     },
@@ -1027,8 +1034,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 style_white : this.cwhite,
                 style_black : this.cblack
         });
-        new Roo.htmleditor.FilterBlack({ node : node, black : this.black});
-        new Roo.htmleditor.FilterKeepChildren({node : node, black : this.remove} );
+        new Roo.htmleditor.FilterBlack({ node : node, tag : this.black});
+        new Roo.htmleditor.FilterKeepChildren({node : node, tag : this.tag_remove} );
          
         
     },
@@ -1168,6 +1175,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         var w = typeof(this.owner.white) != 'undefined' && this.owner.white ? this.owner.white  : [];
         var b = typeof(this.owner.black) != 'undefined' && this.owner.black ? this.owner.black :  [];
+        
+        this.aclean = typeof(this.owner.aclean) != 'undefined' && this.owner.aclean ? this.owner.aclean :  Roo.HtmlEditorCore.aclean;
+        this.ablack = typeof(this.owner.ablack) != 'undefined' && this.owner.ablack ? this.owner.ablack :  Roo.HtmlEditorCore.ablack;
+        this.tag_remove = typeof(this.owner.tag_remove) != 'undefined' && this.owner.tag_remove ? this.owner.tag_remove :  Roo.HtmlEditorCore.tag_remove;
         
         this.white = [];
         this.black = [];
@@ -1378,7 +1389,7 @@ Roo.HtmlEditorCore.black = [
 Roo.HtmlEditorCore.clean = [
     'script', 'style', 'title', 'xml'
 ];
-Roo.HtmlEditorCore.remove = [
+Roo.HtmlEditorCore.tag_remove = [
     'font'
 ];
 // attributes..

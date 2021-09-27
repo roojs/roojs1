@@ -10,6 +10,10 @@
 Roo.htmleditor.FilterAttributes = function(cfg)
 {
     Roo.apply(this, cfg);
+    this.attrib_black = this.attrib_black || [];
+    this.attrib_clean = this.attrib_clean || [];
+    this.style_white = this.style_white || [];
+    this.style_black = this.style_black || [];
     this.walk(cfg.node);
 }
 

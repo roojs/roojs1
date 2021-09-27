@@ -44775,7 +44775,7 @@ Roo.htmleditor.FilterSpan = function(cfg)
     this.walk(cfg.node);
 }
 
-Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.Filter,
+Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
 {
      
     tag : 'SPAN',
@@ -44784,17 +44784,10 @@ Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.Filter,
     replaceTag : function(node)
     {
         if (node.attributes && node.attributes.length > 0) {
-            this.walk(node);
-            return true;
+            return true; // walk if there are any.
         }
-        for (var i = 0; i < node.childNodes.length; i++) {
-            node.removeChild(node.childNodes[i]);
-            // what if we need to walk these???
-            node.insertBefore(node.childNodes[i], node);
-            this.walk(node.childNodes[i]);
-        }
-        n.parentNode.removeChild(n);
-        return false; // don't walk children
+        Roo.htmleditor.FilterKeepChildren.prototype.replaceTag.call(this, node);
+        return false;
      
     }
     
@@ -44988,9 +44981,15 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
 Roo.htmleditor.Tidy = function(cfg) {
     Roo.apply(this, cfg);
     
-    this.core.doc.body.innerHTML = this.tidy(this.core.doc.body, -1 , false);
+    this.core.doc.body.innerHTML = this.tidy(this.core.doc.body, '');
      
 }
+
+Roo.htmleditor.Tidy.toString = function(node)
+{
+    return Roo.htmleditor.Tidy.prototype.tidy(node, '');
+}
+
 Roo.htmleditor.Tidy.prototype = {
     
     
@@ -44999,106 +44998,112 @@ Roo.htmleditor.Tidy.prototype = {
     },
 
     
-    /* ?? why ?? */
-    tidy : function(currentElement, depth, nopadtext) {
-        
-        depth = depth || 0;
-        nopadtext = nopadtext || false;
-        var pad = nopadtext || depth < 1 ? '' : (new Array( depth   )).join( "  " );
+    tidy : function(node, indent) {
      
-        //Roo.log(currentElement);
-        var j;
-        var allText = false;
-        var nodeName = currentElement.nodeName;
-        //var tagName = Roo.util.Format.htmlEncode(currentElement.tagName);
-        var tagName = currentElement.tagName; /// why encode tagname?
-        
-        if  (nodeName == '#text') {
-            return nopadtext ? currentElement.nodeValue : this.wrap(currentElement.nodeValue.trim()).split("\n").join("\n" + pad);
-        }
-        
-        
-        var ret = '';
-        if (nodeName != 'BODY') {
-             
-            var i = 0;
-            // Prints the node tagName, such as <A>, <IMG>, etc
-            if (tagName) {
-                var attr = [];
-                for(i = 0; i < currentElement.attributes.length;i++) {
-                    
-                    // skip empty values?
-                    if (!currentElement.attributes.item(i).value.length) {
-                        continue;
-                    }
-                    attr.push(
-                        currentElement.attributes.item(i).name + '="' +
-                            Roo.util.Format.htmlEncode(currentElement.attributes.item(i).value) + '"'
-                    );
-                }
+        if  (node.nodeType == 3) {
+            // text.
+            
+            
+            return indent === false ? node.nodeValue : this.wrap(node.nodeValue.trim()).split("\n").join("\n" + indent);
                 
-                ret = "<"+currentElement.tagName+ ( attr.length ? (' ' + attr.join(' ') ) : '') ;
-            } 
-            else {
-                // dont add any attributes to body...
-                // eack
-            }
-        } else {
-            tagName = false;
+            
         }
-        if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(tagName) > -1) {
-            return ret + '/>';
+        
+        if  (node.nodeType != 1) {
+            return '';
+        }
+        
+        
+        
+        if (node.tagName == 'BODY') {
+            
+            return this.cn(node, '');
+        }
+             
+             // Prints the node tagName, such as <A>, <IMG>, etc
+        var ret = "<" + node.tagName +  this.attr(node) ;
+        
+        // elements with no children..
+        if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(node.tagName) > -1) {
+                return ret + '/>';
         }
         ret += '>';
-        if (['PRE', 'TEXTAREA', 'TD', 'A', 'SPAN'].indexOf(tagName) > -1) { // or code?
-            nopadtext = true;
+        
+        
+        var cindent = indent === false ? '' : (indent + '  ');
+        // tags where we will not pad the children.. (inline text tags etc..)
+        if (['PRE', 'TEXTAREA', 'TD', 'A', 'SPAN', 'B', 'I', 'S'].indexOf(node.tagName) > -1) { // or code?
+            cindent = false;
+            
+            
         }
         
+        var cn = this.cn(node, cindent );
         
-        // Traverse the tree
-        i = 0;
-        var ar = Array.from(currentElement.childNodes);
-        var allText = true;
-        var innerHTML  = '';
-        var lastnode = '';
-        for (var i = 0 ; i < ar.length ; i++) { 
-             
-            // Formatting code (indent the tree so it looks nice on the screen)
-            var nopad = nopadtext;
-            if (lastnode == 'SPAN') {
-                nopad  = true;
+        return ret + cn  + '</' + node.tagName + '>';
+        
+    },
+    cn: function(node, indent)
+    {
+        var ret = [];
+        
+        var ar = Array.from(node.childNodes);
+        for (var i = 0 ; i < ar.length ; i++) {
+            if (indent !== false   // indent==false preservies everything
+                && i > 0
+                && ar[i].nodeType == 3 
+                && ar[i].nodeValue.length > 0
+                && ar[i].nodeValue.match(/^\s+/)
+            ) {
+                ret.push(" "); // add a space if i'm a text item with a space at the front, as tidy will strip spaces.
             }
-            // text
-            if  (ar[i].nodeName == '#text') {
-                var toadd = Roo.util.Format.htmlEncode(ar[i].nodeValue);
-                innerHTML  += nopadtext ? toadd : this.wrap(ar[i].nodeValue.trim()).split("\n").join("\n" + pad + "  "); 
-                lastNode = '';
+            if (indent !== false
+                && ar[i].nodeType == 1 // element - and indent is not set... 
+            ) {
+                ret.push("\n" + indent); 
+            }
+            
+            ret.push(this.tidy(ar[i], indent));
+            // text + trailing indent 
+            if (indent !== false
+                && ar[i].nodeType == 3
+                && ar[i].nodeValue.length > 0
+                && ar[i].nodeValue.match(/\s+$/)
+            ){
+                ret.push("\n" + indent); 
+            }
+            
+            
+            
+            
+        }
+        // what if all text?
+        
+        
+        return ret.join('');
+    },
+    
+         
+        
+    attr : function(node)
+    {
+        var attr = [];
+        for(i = 0; i < node.attributes.length;i++) {
+            
+            // skip empty values?
+            if (!node.attributes.item(i).value.length) {
                 continue;
             }
-            allText = false;
-            
-            innerHTML  += nopad ? '' : "\n"  + pad + "  ";
-                
-            // Recursively traverse the tree structure of the child node
-            innerHTML   += this.tidy(ar[i], depth+1, nopadtext);
-            lastnode = ar[i].nodeName;
-           
-         }
-        
-        ret += innerHTML;
-        
-        if (!allText) {
-                // The remaining code is mostly for formatting the tree
-            ret+= nopadtext ? '' : ("\n" + pad);
+            attr.push(  node.attributes.item(i).name + '="' +
+                    Roo.util.Format.htmlEncode(node.attributes.item(i).value) + '"'
+            );
         }
-        
-        
-        if (tagName) {
-            ret+= "</"+tagName+">";
-        }
-        return ret;
+        return attr.length ? (' ' + attr.join(' ') ) : '';
         
     }
+    
+    
+    
 }
 /**
  * @class Roo.htmleditor.KeyEnter

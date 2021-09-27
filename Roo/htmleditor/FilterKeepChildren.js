@@ -19,11 +19,12 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
     replaceTag : function(node)
     {
         // walk children...
-        for (var i = 0; i < node.childNodes.length; i++) {
-            node.removeChild(node.childNodes[i]);
+        var ar = Array.from(node.childNodes);
+        for (var i = 0; i < ar.length; i++) {
+            node.removeChild(ar[i]);
             // what if we need to walk these???
-            node.insertBefore(node.childNodes[i], node);
-            this.walk(node.childNodes[i]);
+            node.parentNode.insertBefore(ar[i], node);
+            this.walk(ar[i]);
         }
         node.parentNode.removeChild(node);
         return false; // don't walk children

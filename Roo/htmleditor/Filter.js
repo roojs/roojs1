@@ -38,7 +38,7 @@ Roo.htmleditor.Filter.prototype = {
                     this.replaceComment(e);
                     return;
                 
-                case e.nodeType != 3: //not a node.
+                case e.nodeType != 1: //not a node.
                     return;
                 
                 case this.tag === true: // everything

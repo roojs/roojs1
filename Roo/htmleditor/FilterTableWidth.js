@@ -15,7 +15,7 @@
 Roo.htmleditor.FilterTableWidth = function(cfg)
 {
     // no need to apply config.
-    this.tag = ['table', 'td', 'tr', 'th', 'thead', 'tbody' ];
+    this.tag = ['TABLE', 'TD', 'TR', 'TH', 'THEAD', 'TBODY' ];
     this.walk(cfg.node);
 }
 
@@ -55,6 +55,6 @@ Roo.extend(Roo.htmleditor.FilterTableWidth, Roo.htmleditor.Filter,
             }
         }
         
-        this.walk(node);
+        return true; // continue doing children..
     }
 });

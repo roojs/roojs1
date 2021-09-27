@@ -1,10 +1,5 @@
-<html><head><title>Roo/htmleditor/Filter.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
- *
- * Base Class for filtering htmleditor stuff.
- *
- */
-
-/**
+<html><head><title>Roo/htmleditor/Filter.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
  * @class Roo.htmleditor.Filter
  * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.
  * @cfg {DomElement} node The node to iterate and filter
@@ -43,12 +38,12 @@
                     </span><span class="jsdoc-var">this.replaceComment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
 
-                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.nodeType </span><span class="jsdoc-syntax">!= 3: </span><span class="jsdoc-comment">//not a node.
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.nodeType </span><span class="jsdoc-syntax">!= 1: </span><span class="jsdoc-comment">//not a node.
                     </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
 
-                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// everything
-                </span><span class="jsdoc-keyword">case typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tag.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.tagName</span><span class="jsdoc-syntax">) &gt; -1: </span><span class="jsdoc-comment">// array and it matches.
-                </span><span class="jsdoc-keyword">case typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.tagName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// array and it matches.
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">this.tag </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// everything
+                </span><span class="jsdoc-keyword">case typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tag.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.tagName</span><span class="jsdoc-syntax">) &gt; -1: </span><span class="jsdoc-comment">// array and it matches.
+                </span><span class="jsdoc-keyword">case typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tag </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.tagName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// array and it matches.
                     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.replaceTag </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">this.replaceTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)) {
                         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                     }

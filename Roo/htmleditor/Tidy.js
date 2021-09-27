@@ -15,6 +15,12 @@ Roo.htmleditor.Tidy = function(cfg) {
     this.core.doc.body.innerHTML = this.tidy(this.core.doc.body, '');
      
 }
+
+Roo.htmleditor.Tidy.toString = function(node)
+{
+    return Roo.htmleditor.Tidy.prototype.tidy(node, '');
+}
+
 Roo.htmleditor.Tidy.prototype = {
     
     
@@ -23,20 +29,14 @@ Roo.htmleditor.Tidy.prototype = {
     },
 
     
-    /* ?? why ?? */
     tidy : function(node, indent) {
-        
-       
-        //Roo.log(currentElement);
-       
-        var nodeName = node.nodeName;
-        //var tagName = Roo.util.Format.htmlEncode(currentElement.tagName);
-        var tagName = node.tagName; /// why encode tagname?
-        
+     
         if  (node.nodeType == 3) {
             // text.
-            return indent === false ? node.nodeValue :
-                this.wrap(node.nodeValue.trim()).split("\n").join("\n" + indent)
+            
+            
+            return indent === false ? node.nodeValue : this.wrap(node.nodeValue.trim()).split("\n").join("\n" + indent);
+                
             
         }
         
@@ -52,35 +52,61 @@ Roo.htmleditor.Tidy.prototype = {
         }
              
              // Prints the node tagName, such as <A>, <IMG>, etc
-        var ret = (indent === false ? '' : indent ) + "<"+ node.node.tagName +  _this.attr(node) 
+        var ret = "<" + node.tagName +  this.attr(node) ;
         
         // elements with no children..
-        if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(tagName) > -1) {
+        if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(node.tagName) > -1) {
                 return ret + '/>';
         }
         ret += '>';
         
-        var cindent = indent + '  ';
-        if (['PRE', 'TEXTAREA', 'TD', 'A', 'SPAN'].indexOf(tagName) > -1) { // or code?
+        
+        var cindent = indent === false ? '' : (indent + '  ');
+        // tags where we will not pad the children.. (inline text tags etc..)
+        if (['PRE', 'TEXTAREA', 'TD', 'A', 'SPAN', 'B', 'I', 'S'].indexOf(node.tagName) > -1) { // or code?
             cindent = false;
+            
+            
         }
         
-        return ret +
-                this.cn(node, cindent )  +
-            '</' + node.tagName + '>' +
-            (indent === false ? '' : "\n");
+        var cn = this.cn(node, cindent );
+        
+        return ret + cn  + '</' + node.tagName + '>';
         
     },
     cn: function(node, indent)
     {
         var ret = [];
-        var allText = true;
+        
         var ar = Array.from(node.childNodes);
         for (var i = 0 ; i < ar.length ; i++) {
-            ret.push(this.tidy(ar[i], indent));
-            if (ar[i].nodeType != 3) { //text
-                allText = false;
+            if (indent !== false   // indent==false preservies everything
+                && i > 0
+                && ar[i].nodeType == 3 
+                && ar[i].nodeValue.length > 0
+                && ar[i].nodeValue.match(/^\s+/)
+            ) {
+                ret.push(" "); // add a space if i'm a text item with a space at the front, as tidy will strip spaces.
             }
+            if (indent !== false
+                && ar[i].nodeType == 1 // element - and indent is not set... 
+            ) {
+                ret.push("\n" + indent); 
+            }
+            
+            ret.push(this.tidy(ar[i], indent));
+            // text + trailing indent 
+            if (indent !== false
+                && ar[i].nodeType == 3
+                && ar[i].nodeValue.length > 0
+                && ar[i].nodeValue.match(/\s+$/)
+            ){
+                ret.push("\n" + indent); 
+            }
+            
+            
+            
+            
         }
         // what if all text?
         
@@ -100,7 +126,7 @@ Roo.htmleditor.Tidy.prototype = {
                 continue;
             }
             attr.push(  node.attributes.item(i).name + '="' +
-                    Roo.util.Format.htmlEncode(currentElement.attributes.item(i).value) + '"'
+                    Roo.util.Format.htmlEncode(node.attributes.item(i).value) + '"'
             );
         }
         return attr.length ? (' ' + attr.join(' ') ) : '';

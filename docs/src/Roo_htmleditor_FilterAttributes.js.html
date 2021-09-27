@@ -10,6 +10,10 @@
 </span><span class="jsdoc-var">Roo.htmleditor.FilterAttributes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
 {
     </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.attrib_black </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.attrib_black </span><span class="jsdoc-syntax">|| [];
+    </span><span class="jsdoc-var">this.attrib_clean </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.attrib_clean </span><span class="jsdoc-syntax">|| [];
+    </span><span class="jsdoc-var">this.style_white </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.style_white </span><span class="jsdoc-syntax">|| [];
+    </span><span class="jsdoc-var">this.style_black </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.style_black </span><span class="jsdoc-syntax">|| [];
     </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
 }
 

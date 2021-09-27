@@ -474,6 +474,13 @@
         }
         </span><span class="jsdoc-var">this.initialized </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
 
+
+        </span><span class="jsdoc-comment">// initialize special key events - enter
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.KeyEnter</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">core </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">});
+
+
+
+
         </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'initialize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.pushValue</span><span class="jsdoc-syntax">();
     },
@@ -1027,8 +1034,8 @@
                 </span><span class="jsdoc-var">style_white </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cwhite</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">style_black </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cblack
         </span><span class="jsdoc-syntax">});
-        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterBlack</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">black </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.black</span><span class="jsdoc-syntax">});
-        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">black </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.remove</span><span class="jsdoc-syntax">} );
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterBlack</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.black</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tag_remove</span><span class="jsdoc-syntax">} );
 
 
     },
@@ -1050,7 +1057,7 @@
      */
     </span><span class="jsdoc-var">cleanTableWidths </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterTable</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterTableWidth</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">});
 
 
     },
@@ -1168,6 +1175,10 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.owner.white</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.owner.white </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.owner.white  </span><span class="jsdoc-syntax">: [];
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.owner.black</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.owner.black </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.owner.black </span><span class="jsdoc-syntax">:  [];
+
+        </span><span class="jsdoc-var">this.aclean </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.owner.aclean</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.owner.aclean </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.owner.aclean </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">Roo.HtmlEditorCore.aclean</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.ablack </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.owner.ablack</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.owner.ablack </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.owner.ablack </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">Roo.HtmlEditorCore.ablack</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.tag_remove </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.owner.tag_remove</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.owner.tag_remove </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.owner.tag_remove </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">Roo.HtmlEditorCore.tag_remove</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-var">this.white </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-var">this.black </span><span class="jsdoc-syntax">= [];
@@ -1378,7 +1389,7 @@
 </span><span class="jsdoc-var">Roo.HtmlEditorCore.clean </span><span class="jsdoc-syntax">= [
     </span><span class="jsdoc-string">'script'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'title'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xml'
 </span><span class="jsdoc-syntax">];
-</span><span class="jsdoc-var">Roo.HtmlEditorCore.remove </span><span class="jsdoc-syntax">= [
+</span><span class="jsdoc-var">Roo.HtmlEditorCore.tag_remove </span><span class="jsdoc-syntax">= [
     </span><span class="jsdoc-string">'font'
 </span><span class="jsdoc-syntax">];
 </span><span class="jsdoc-comment">// attributes..

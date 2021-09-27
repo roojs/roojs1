@@ -395,7 +395,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     tabIndex:-1
                 });
             }
-             cmenu.menu.items.push({
+            cmenu.menu.items.push({
                 actiontype : 'tablewidths',
                 html: 'Remove Table Widths',
                 handler: function(a,b) {

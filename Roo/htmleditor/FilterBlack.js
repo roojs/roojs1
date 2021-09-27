@@ -1,14 +1,4 @@
 /**
- * Filter Clean
- *
- * Based on White / Blacklists etc...
- * 
- * 
- * usually call Roo.apply(Roo.htmleditor.FilterClean)
- *
- */
-
-/**
  * @class Roo.htmleditor.FilterBlack
  * remove blacklisted elements.
  * @constructor
@@ -25,12 +15,7 @@ Roo.htmleditor.FilterBlack = function(cfg)
 Roo.extend(Roo.htmleditor.FilterBlack, Roo.htmleditor.Filter,
 {
     tag : true, // all elements.
-    /**
-     * @cfg {array} black blacklist of elements
-     */
-    black : false, // array
-    
-     
+   
     replace : function(n)
     {
         n.parentNode.removeChild(n);

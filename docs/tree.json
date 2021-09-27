@@ -1349,6 +1349,16 @@
             "name" : "Roo.htmleditor.FilterWord",
             "cn" : [],
             "is_class" : true
+          },
+          {
+            "name" : "Roo.htmleditor.KeyEnter",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.Tidy",
+            "cn" : [],
+            "is_class" : false
           }
         ],
         "is_class" : false
