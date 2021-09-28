@@ -27060,7 +27060,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             //this.cleanUpPaste(); -- this is done else where and causes havoc..
             
             // remove content editable. (blocks)
-            new Roo.htmleditor.FilterAttribute({node : bd, attrib_black: [ 'contenteditable' ] });
+            new Roo.htmleditor.FilterAttributes({node : bd, attrib_black: [ 'contenteditable' ] });
             
             var html = bd.innerHTML;
             if(Roo.isSafari){
