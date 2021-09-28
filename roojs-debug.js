@@ -45265,7 +45265,7 @@ Roo.htmleditor.BlockFigure.prototype = {
         }
         return {
             tag: 'figure',
-            'data-block' : 'BlockFigure',
+            'data-block' : 'Figure',
             contenteditable : 'false',
             style : 'text-align:' + this.align,
             cn : [
