@@ -45049,12 +45049,19 @@ Roo.htmleditor.Tidy.prototype = {
         
         var ar = Array.from(node.childNodes);
         for (var i = 0 ; i < ar.length ; i++) {
+            
+            
+            
             if (indent !== false   // indent==false preservies everything
                 && i > 0
                 && ar[i].nodeType == 3 
                 && ar[i].nodeValue.length > 0
                 && ar[i].nodeValue.match(/^\s+/)
             ) {
+                if (ret.length && ret[ret.length-1] == "\n" + indent) {
+                    ret.pop(); // remove line break from last?
+                }
+                
                 ret.push(" "); // add a space if i'm a text item with a space at the front, as tidy will strip spaces.
             }
             if (indent !== false
@@ -45394,7 +45401,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         this.iframe = iframe.dom;
 
-         this.assignDocWin();
+        this.assignDocWin();
         
         this.doc.designMode = 'on';
        
@@ -45646,6 +45653,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         new Roo.htmleditor.KeyEnter({core : this});
         
         
+        
+        this.doc.on('paste', function(e,v ) {
+            // default behaveiour should be our local cleanup paste? (optional?)
+            // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
+            this.owner.fireEvent('paste', e, v);
+        },this);
         
         
         this.owner.fireEvent('initialize', this);
@@ -46695,7 +46708,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             * Fires when press the Sytlesheets button
             * @param {Roo.HtmlEditorCore} this
             */
-            stylesheetsclick: true
+            stylesheetsclick: true,
+            /**
+            * @event paste
+            * Fires when press user pastes into the editor
+            * @param {Roo.HtmlEditorCore} this
+            */
+            paste: true 
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
@@ -48266,7 +48285,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // let's see if we can change the selection...
             sel = ev.target;
          
-              var nodeRange = sel.ownerDocument.createRange();
+            var nodeRange = sel.ownerDocument.createRange();
             try {
                 nodeRange.selectNode(sel);
             } catch (e) {
@@ -48279,7 +48298,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }  
         
       
-        var updateFooter = sel ? false : true;
+        //var updateFooter = sel ? false : true; 
         
         
         var ans = this.editorcore.getAllAncestors();
@@ -48366,10 +48385,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
 
         }
         
-        if (!updateFooter) {
+        ///if (!updateFooter) {
             //this.footDisp.dom.innerHTML = ''; 
-            return;
-        }
+         //   return;
+        //}
         // update the footer
         //
         var html = '';
