@@ -26966,7 +26966,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if(this.owner.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
                 d.innerHTML = v;
-                this.cleanUpPaste();
+                //this.cleanUpPaste();
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
             }
@@ -27272,9 +27272,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                         cmd = 'underline';
                         break;
                     
-                    case 'v':
-                        this.cleanUpPaste.defer(100, this);
-                        return;
+                    //case 'v':
+                      //  this.cleanUpPaste.defer(100, this);
+                      //  return;
                         
                 }
                 if(cmd){
@@ -27310,16 +27310,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                         var target = r.parentElement();
                         if(!target || target.tagName.toLowerCase() != 'li'){
                             e.stopEvent();
-                            r.pasteHTML('<br />');
+                            r.pasteHTML('<br/>');
                             r.collapse(false);
                             r.select();
                         }
                     }
                 }
-                if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
-                    this.cleanUpPaste.defer(100, this);
-                    return;
-                }
+                //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                //    this.cleanUpPaste.defer(100, this);
+                //    return;
+                //}
                 
                 
             };
@@ -27332,10 +27332,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.execCmd('InsertHTML','&#160;&#160;&#160;&#160;');
                     this.deferFocus();
                 }
-                if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
-                    this.cleanUpPaste.defer(100, this);
-                    return;
-                }
+                //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                //    this.cleanUpPaste.defer(100, this);
+                 //   return;
+                //}
                 
             };
         }else if(Roo.isSafari){
@@ -27348,10 +27348,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.deferFocus();
                     return;
                 }
-               if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
-                    this.cleanUpPaste.defer(100, this);
-                    return;
-                }
+               //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                 //   this.cleanUpPaste.defer(100, this);
+                 //   return;
+               // }
                 
              };
         }
@@ -27572,7 +27572,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // fully contined.
         return 3;
     },
-
+/*
     // private? - in a new class?
     cleanUpPaste :  function()
     {
@@ -27586,7 +27586,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         
     },
-    
+    */
     cleanWordChars : function(input) {// change the chars to hex code
         var he = Roo.HtmlEditorCore;
         
