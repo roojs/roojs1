@@ -8,10 +8,10 @@
     
     usage:
      -- add to document..
-     new Roo.htmleditor.BlockFigure{
+    new Roo.htmleditor.BlockFigure{
         image_src : 'http://www.google.com',
         caption : 'test',
-     }
+    }
      -- load document, and search for elements of this...
     Roo.DomQuery.select('*[data-block])
     // loop each and call ctor ({node : xxx})
@@ -41,6 +41,8 @@ Roo.htmleditor.BlockFigure.prototype = {
     
     image_width : '',
     image_height : '',
+    
+    // used by context menu
     
     context : { // ?? static really
         image_width : {
@@ -72,7 +74,10 @@ Roo.htmleditor.BlockFigure.prototype = {
             width: 220
         }
     },
-    
+    /**
+     * create a DomHelper friendly object - for use with
+     * Roo.DomHelper.markup / overwrite / etc..
+     */
     toObject : function()
     {
         
@@ -96,7 +101,6 @@ Roo.htmleditor.BlockFigure.prototype = {
                 img,
                 {
                     tag: 'figcaption',
-                    'data-name' : 'caption',
                     contenteditable : true,
                     style : 'text-align:left',
                     html : this.caption 
@@ -104,6 +108,7 @@ Roo.htmleditor.BlockFigure.prototype = {
             ]
         };
     },
+    
     readElement : function(node)
     {
         this.image_src = this.getVal(node, 'img', 'src');
@@ -115,7 +120,10 @@ Roo.htmleditor.BlockFigure.prototype = {
     updateElement : function(node)
     {
         Roo.DomHelper.overwrite(node, this.toObject());
-
+    },
+    toHTML : function()
+    {
+        Roo.DomHelper.markup(this.toObject());
     },
     
     getVal : function(node, tag, attr, style)

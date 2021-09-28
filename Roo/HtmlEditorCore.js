@@ -332,6 +332,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if(this.initialized){
             var bd = (this.doc.body || this.doc.documentElement);
             //this.cleanUpPaste(); -- this is done else where and causes havoc..
+            
+            // remove content editable. (blocks)
+            new Roo.htmleditor.FilterAttribute({node : bd, attrib_black: [ 'contenteditable' ] });
+            
             var html = bd.innerHTML;
             if(Roo.isSafari){
                 var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
