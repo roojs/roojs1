@@ -41,7 +41,7 @@ Roo.htmleditor.BlockFigure.prototype = {
     image_width : '',
     image_height : '',
     
-    edit : { // ?? static really
+    context : { // ?? static really
         image_width : {
             title: "Width",
             width: 40,
@@ -60,7 +60,6 @@ Roo.htmleditor.BlockFigure.prototype = {
             title: "Caption Align",
             opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
             width : 80
-            
         },
         
         alt: {
