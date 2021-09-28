@@ -70,6 +70,14 @@
         }
 
     },
+
+    </span><span class="jsdoc-string">'FIGURE' </span><span class="jsdoc-syntax">: {
+         </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">: {
+            </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Align&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">: [ [</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;left&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;right&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;center&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;top&quot;</span><span class="jsdoc-syntax">]],
+            </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: 80
+        }
+    },
     </span><span class="jsdoc-string">'A' </span><span class="jsdoc-syntax">: {
         </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: {
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Name&quot;</span><span class="jsdoc-syntax">,
@@ -604,6 +612,10 @@
                         </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
                             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.stylename</span><span class="jsdoc-syntax">) {
                                 </span><span class="jsdoc-var">tb.selectedNode.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.stylename</span><span class="jsdoc-syntax">] =  </span><span class="jsdoc-var">r.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">);
+                                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                            }
+                            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                                </span><span class="jsdoc-var">tb.selectedNode.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.attrname</span><span class="jsdoc-syntax">);
                                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                             }
                             </span><span class="jsdoc-var">tb.selectedNode.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.attrname</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">));

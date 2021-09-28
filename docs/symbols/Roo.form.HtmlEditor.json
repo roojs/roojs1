@@ -1534,6 +1534,26 @@
       "returns" : []
     },
     {
+      "name" : "paste",
+      "type" : "function",
+      "desc" : "Fires when press user pastes into the editor",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.HtmlEditorCore",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "editmodechange",
       "type" : "function",
       "desc" : "Fires when the editor switches edit modes",

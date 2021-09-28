@@ -12,7 +12,7 @@
     </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
 }
 
-</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.FilterSpan</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.htmleditor.Filter</span><span class="jsdoc-syntax">,
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.FilterSpan</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">,
 {
 
     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'SPAN'</span><span class="jsdoc-syntax">,
@@ -21,18 +21,11 @@
     </span><span class="jsdoc-var">replaceTag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.attributes </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">node.attributes.length </span><span class="jsdoc-syntax">&gt; 0) {
-            </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">node.childNodes.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-var">node.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
-            </span><span class="jsdoc-comment">// what if we need to walk these???
-            </span><span class="jsdoc-var">node.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
-        }
-        </span><span class="jsdoc-var">n.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// don't walk children
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// walk if there are any.
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren.prototype.replaceTag.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
 
-    </span><span class="jsdoc-syntax">}
+    }
 
 });</span></code></body></html>
