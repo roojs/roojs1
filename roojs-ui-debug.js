@@ -21762,13 +21762,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // initialize special key events - enter
         new Roo.htmleditor.KeyEnter({core : this});
         
-        
-        
-        this.doc.on('paste', function(e,v ) {
-           
-            this.owner.fireEvent('paste', e, v);
-        },this);
-        
+         
         
         this.owner.fireEvent('initialize', this);
         this.pushValue();
