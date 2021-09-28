@@ -47,7 +47,7 @@ Roo.htmleditor.BlockFigure.prototype = {
     context : { // ?? static really
         image_width : {
             title: "Width",
-            width: 40,
+            width: 40
         },
         image_height:  {
             title: "Height",
@@ -65,10 +65,7 @@ Roo.htmleditor.BlockFigure.prototype = {
             width : 80
         },
         
-        alt: {
-            title: "Alt",
-            width: 120
-        },
+       
         src : {
             title: "Src",
             width: 220
@@ -84,7 +81,7 @@ Roo.htmleditor.BlockFigure.prototype = {
         var img = {
             tag : 'img',
             src : this.src,
-            alt : this.alt,
+            alt : this.caption 
         };
         if ((''+this.width).length) {
             img.width = this.width;

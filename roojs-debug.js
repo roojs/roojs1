@@ -45172,7 +45172,158 @@ Roo.htmleditor.KeyEnter.prototype = {
          
     }
 };
-    //<script type="text/javascript">
+    /**
+ *  
+ * <figure data-block="BlockFigure" contenteditable="false" role="group" style="text-align:left">' + 
+        <img data-name="image" src="{SRC}">' + 
+        <figcaption data-name="caption" contenteditable="true" style="text-align:left">XXXX</figcaption>
+    </figure>
+    <br/>
+    
+    usage:
+     -- add to document..
+    new Roo.htmleditor.BlockFigure{
+        image_src : 'http://www.google.com',
+        caption : 'test',
+    }
+     -- load document, and search for elements of this...
+    Roo.DomQuery.select('*[data-block])
+    // loop each and call ctor ({node : xxx})
+    -- html editor click
+    ** see if parent has Element.findParent(*[data-block]);
+    use ?? to 
+    
+ */
+
+Roo.htmleditor.BlockFigure = function(cfg)
+{
+    if (cfg.node) {
+        this.readElement(cfg.node);
+        this.updateElement(cfg.node);
+    }
+    Roo.apply(this, cfg);
+}
+
+Roo.htmleditor.BlockFigure.prototype = {
+    
+    // setable values.
+    image_src: '',
+    
+    align: 'left',
+    caption : '',
+    text_align: 'left',
+    
+    image_width : '',
+    image_height : '',
+    
+    // used by context menu
+    
+    context : { // ?? static really
+        image_width : {
+            title: "Width",
+            width: 40
+        },
+        image_height:  {
+            title: "Height",
+            width: 40
+        },
+        align: {
+            title: "Align",
+            opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
+            width : 80
+            
+        },
+        text_align: {
+            title: "Caption Align",
+            opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
+            width : 80
+        },
+        
+       
+        src : {
+            title: "Src",
+            width: 220
+        }
+    },
+    /**
+     * create a DomHelper friendly object - for use with
+     * Roo.DomHelper.markup / overwrite / etc..
+     */
+    toObject : function()
+    {
+        
+        var img = {
+            tag : 'img',
+            src : this.src,
+            alt : this.caption 
+        };
+        if ((''+this.width).length) {
+            img.width = this.width;
+        }
+        if ((''+ this.height).length) {
+            img.height = this.height;
+        }
+        return {
+            tag: 'figure',
+            'data-block' : 'BlockFigure',
+            contenteditable : 'false',
+            style : 'text-align:' + this.align,
+            cn : [
+                img,
+                {
+                    tag: 'figcaption',
+                    contenteditable : true,
+                    style : 'text-align:left',
+                    html : this.caption 
+                }
+            ]
+        };
+    },
+    
+    readElement : function(node)
+    {
+        this.image_src = this.getVal(node, 'img', 'src');
+        this.align = this.getVal(node, 'figure', 'style', 'text-align');
+        this.caption = this.getVal(node, 'figcaption', 'html');
+        this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
+    },
+    
+    updateElement : function(node)
+    {
+        Roo.DomHelper.overwrite(node, this.toObject());
+    },
+    toHTML : function()
+    {
+        Roo.DomHelper.markup(this.toObject());
+    },
+    
+    getVal : function(node, tag, attr, style)
+    {
+        var n = node;
+        if (n.tagName != tag.toUpperCase()) {
+            // in theory we could do figure[3] << 3rd figure? or some more complex search..?
+            // but kiss for now.
+            n = node.getElementsByTagName(tag).item(0);
+        }
+        if (attr == 'html') {
+            return n.innerHTML;
+        }
+        if (attr == 'style') {
+            return Roo.get(n).getStyle(style);
+        }
+        
+        return Roo.get(n).attr(attr);
+            
+    }
+    
+    
+    
+    
+    
+    
+}
+
+//<script type="text/javascript">
 
 /*
  * Based  Ext JS Library 1.1.1
@@ -45506,6 +45657,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if(this.initialized){
             var bd = (this.doc.body || this.doc.documentElement);
             //this.cleanUpPaste(); -- this is done else where and causes havoc..
+            
+            // remove content editable. (blocks)
+            new Roo.htmleditor.FilterAttribute({node : bd, attrib_black: [ 'contenteditable' ] });
+            
             var html = bd.innerHTML;
             if(Roo.isSafari){
                 var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
@@ -45551,16 +45706,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
 
     /**
+     * TEXTAREA -> EDITABLE
      * Protected method that will not generally be called directly. Pushes the value of the textarea
      * into the iframe editor.
      */
-    pushValue : function(){
+    pushValue : function()
+    {
         if(this.initialized){
             var v = this.el.dom.value.trim();
             
-//            if(v.length < 1){
-//                v = '&#160;';
-//            }
             
             if(this.owner.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
@@ -45569,6 +45723,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
             }
+            
+            Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
+                var cls = Roo.htmleditor['Block' + Roo.get(e).attr('data-block')];
+                if (typeof(cls) == 'undefined') {
+                    Roo.log("OOps missing block : " + 'Block' + Roo.get(e).attr('data-block'));
+                    return;
+                }
+                new cls(e);  /// should trigger update element
+            },this)
+            
+            
         }
     },
 
@@ -48085,7 +48250,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
         }
     },
     'TEXTAREA' : {
-          name : {
+        name : {
             title: "name",
             width: 120
         },
@@ -48118,6 +48283,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             disabled : true
         }
     },
+    /*
     'SPAN' : {
         'font-family'  : {
             title : "Font",
@@ -48145,7 +48311,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             width: 140
         }
     },
-    
+    */
     '*' : {
         // empty..
     }
@@ -48588,7 +48754,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         tb.addFill();
         tb.addButton( {
-            text: 'Remove Tag',
+            text: 'Remove Tag', // remove the tag, and puts the children outside...
     
             listeners : {
                 click : function ()
@@ -48600,7 +48766,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     
                     var pn = sn.parentNode;
                     
-                    var stn =  sn.childNodes[0];
+                    // what i'm going to select after deleting..
+                    var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || pn;
+                    
+                    if (!stn) {
+                        stn = sn.nextSibling;
+                    }
                     var en = sn.childNodes[sn.childNodes.length - 1 ];
                     while (sn.childNodes.length) {
                         var node = sn.childNodes[0];
