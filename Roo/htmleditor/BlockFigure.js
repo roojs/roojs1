@@ -33,22 +33,67 @@ Roo.htmleditor.BlockFigure.prototype = {
     
     // setable values.
     image_src: '',
+    
     align: 'left',
     caption : '',
     text_align: 'left',
     
+    image_width : '',
+    image_height : '',
+    
+    edit : { // ?? static really
+        image_width : {
+            title: "Width",
+            width: 40,
+        },
+        image_height:  {
+            title: "Height",
+            width: 40
+        },
+        align: {
+            title: "Align",
+            opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
+            width : 80
+            
+        },
+        text_align: {
+            title: "Caption Align",
+            opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
+            width : 80
+            
+        },
+        
+        alt: {
+            title: "Alt",
+            width: 120
+        },
+        src : {
+            title: "Src",
+            width: 220
+        }
+    },
+    
     toHtml : function(doc)
     {
+        
+        var img = {
+            tag : 'img',
+            src : this.src,
+            alt : this.alt,
+        };
+        if ((''+this.width).length) {
+            img.width = this.width;
+        }
+        if ((''+ this.height).length) {
+            img.height = this.height;
+        }
         return Roo.DomHelper.markup({
             tag: 'figure',
             'data-block' : 'BlockFigure',
             contenteditable : 'false',
             style : 'text-align:' + this.align,
             cn : [
-                {
-                    tag : 'img',
-                    src : this.src
-                },
+                img,
                 {
                     tag: 'figcaption',
                     'data-name' : 'caption',
