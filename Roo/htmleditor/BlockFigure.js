@@ -120,7 +120,7 @@ Roo.htmleditor.BlockFigure.prototype = {
     },
     toHTML : function()
     {
-        Roo.DomHelper.markup(this.toObject());
+        return Roo.DomHelper.markup(this.toObject());
     },
     
     getVal : function(node, tag, attr, style)
