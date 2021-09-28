@@ -45637,6 +45637,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
+            'paste': this.onPasteEvent,
             buffer:100,
             scope: this
         });
@@ -45655,8 +45656,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
         this.doc.on('paste', function(e,v ) {
-            // default behaveiour should be our local cleanup paste? (optional?)
-            // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
+           
             this.owner.fireEvent('paste', e, v);
         },this);
         
@@ -45664,7 +45664,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.owner.fireEvent('initialize', this);
         this.pushValue();
     },
-
+    
+    onPasteEvent : function(e,v)  {
+         // default behaveiour should be our local cleanup paste? (optional?)
+         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
+         this.owner.fireEvent('paste', e, v);
+    },
     // private
     onDestroy : function(){
         
