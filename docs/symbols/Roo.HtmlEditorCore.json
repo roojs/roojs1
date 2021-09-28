@@ -286,7 +286,7 @@
     {
       "name" : "pushValue",
       "type" : "function",
-      "desc" : "Protected method that will not generally be called directly. Pushes the value of the textarea\ninto the iframe editor.",
+      "desc" : "TEXTAREA -> EDITABLE\nProtected method that will not generally be called directly. Pushes the value of the textarea\ninto the iframe editor.",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "",

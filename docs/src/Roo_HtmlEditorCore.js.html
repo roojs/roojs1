@@ -377,16 +377,15 @@
     },
 
     </span><span class="jsdoc-comment">/**
+     * TEXTAREA -&gt; EDITABLE
      * Protected method that will not generally be called directly. Pushes the value of the textarea
      * into the iframe editor.
      */
-    </span><span class="jsdoc-var">pushValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    </span><span class="jsdoc-var">pushValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.initialized</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom.value.trim</span><span class="jsdoc-syntax">();
 
-</span><span class="jsdoc-comment">//            if(v.length &lt; 1){
-//                v = '&amp;#160;';
-//            }
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforepush'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.doc.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.doc.documentElement</span><span class="jsdoc-syntax">);
@@ -395,6 +394,17 @@
                 </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.innerHTML</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'push'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
             }
+
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.query</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'*[data-block]'</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'Block' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">)];
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;OOps missing block : &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'Block' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">));
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);  </span><span class="jsdoc-comment">/// should trigger update element
+            </span><span class="jsdoc-syntax">},</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)
+
+
         }
     },
 

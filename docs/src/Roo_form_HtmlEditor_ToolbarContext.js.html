@@ -168,7 +168,7 @@
         }
     },
     </span><span class="jsdoc-string">'TEXTAREA' </span><span class="jsdoc-syntax">: {
-          </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: {
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;name&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 120
         },
@@ -201,34 +201,35 @@
             </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         </span><span class="jsdoc-syntax">}
     },
-    </span><span class="jsdoc-string">'SPAN' </span><span class="jsdoc-syntax">: {
-        </span><span class="jsdoc-string">'font-family'  </span><span class="jsdoc-syntax">: {
-            </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Font&quot;</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fontFamily'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">displayField</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">optname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'font-family'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 140
+    </span><span class="jsdoc-comment">/*
+    'SPAN' : {
+        'font-family'  : {
+            title : &quot;Font&quot;,
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
         }
     },
-    </span><span class="jsdoc-string">'DIV' </span><span class="jsdoc-syntax">: {
-        </span><span class="jsdoc-string">'font-family'  </span><span class="jsdoc-syntax">: {
-            </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Font&quot;</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fontFamily'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">displayField</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">optname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'font-family'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 140
+    'DIV' : {
+        'font-family'  : {
+            title : &quot;Font&quot;,
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
         }
     },
-     </span><span class="jsdoc-string">'P' </span><span class="jsdoc-syntax">: {
-        </span><span class="jsdoc-string">'font-family'  </span><span class="jsdoc-syntax">: {
-            </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Font&quot;</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fontFamily'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">displayField</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">optname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'font-family'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 140
+     'P' : {
+        'font-family'  : {
+            title : &quot;Font&quot;,
+            style : 'fontFamily',
+            displayField: 'display',
+            optname : 'font-family',
+            width: 140
         }
     },
-
+    */
     </span><span class="jsdoc-string">'*' </span><span class="jsdoc-syntax">: {
         </span><span class="jsdoc-comment">// empty..
     </span><span class="jsdoc-syntax">}
@@ -671,7 +672,7 @@
 
         </span><span class="jsdoc-var">tb.addFill</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">tb.addButton</span><span class="jsdoc-syntax">( {
-            </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Remove Tag'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Remove Tag'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// remove the tag, and puts the children outside...
 
             </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
                 </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
@@ -683,7 +684,12 @@
 
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.parentNode</span><span class="jsdoc-syntax">;
 
-                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stn </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">sn.childNodes</span><span class="jsdoc-syntax">[0];
+                    </span><span class="jsdoc-comment">// what i'm going to select after deleting..
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stn </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">sn.childNodes</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">sn.nextSibling </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">sn.previousSibling </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">pn</span><span class="jsdoc-syntax">;
+
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">stn</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">stn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.nextSibling</span><span class="jsdoc-syntax">;
+                    }
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">en </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sn.childNodes.length </span><span class="jsdoc-syntax">- 1 ];
                     </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.childNodes.length</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.childNodes</span><span class="jsdoc-syntax">[0];
