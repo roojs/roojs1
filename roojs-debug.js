@@ -45292,9 +45292,12 @@ Roo.htmleditor.BlockFigure.prototype = {
     {
         Roo.DomHelper.overwrite(node, this.toObject());
     },
+    /**
+     * convert to plain HTML for calling insertAtCursor..
+     */
     toHTML : function()
     {
-        Roo.DomHelper.markup(this.toObject());
+        return Roo.DomHelper.markup(this.toObject());
     },
     
     getVal : function(node, tag, attr, style)
