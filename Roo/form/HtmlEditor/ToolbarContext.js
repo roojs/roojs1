@@ -367,7 +367,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // let's see if we can change the selection...
             sel = ev.target;
          
-              var nodeRange = sel.ownerDocument.createRange();
+            var nodeRange = sel.ownerDocument.createRange();
             try {
                 nodeRange.selectNode(sel);
             } catch (e) {
@@ -380,7 +380,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }  
         
       
-        var updateFooter = sel ? false : true;
+        //var updateFooter = sel ? false : true; 
         
         
         var ans = this.editorcore.getAllAncestors();
