@@ -328,15 +328,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      * Protected method that will not generally be called directly. Syncs the contents
      * of the editor iframe with the textarea.
      */
-    syncValue : function(){
+    syncValue : function()
+    {
+        Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
         if(this.initialized){
             var bd = (this.doc.body || this.doc.documentElement);
             //this.cleanUpPaste(); -- this is done else where and causes havoc..
             
+            var div = document.createElement('div');
+            div.innerHTML = bd.innerHTML;
             // remove content editable. (blocks)
-            new Roo.htmleditor.FilterAttributes({node : bd, attrib_black: [ 'contenteditable' ] });
-            
-            var html = bd.innerHTML;
+            new Roo.htmleditor.FilterAttributes({node : div, attrib_black: [ 'contenteditable' ] });
+            //?? tidy?
+            var html = div.innerHTML;
             if(Roo.isSafari){
                 var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
                 var m = bs ? bs.match(/text-align:(.*?);/i) : false;
@@ -387,6 +391,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     pushValue : function()
     {
+        Roo.log("HtmlEditorCore:pushValue (TEXT->EDITOR)");
         if(this.initialized){
             var v = this.el.dom.value.trim();
             

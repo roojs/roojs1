@@ -66,7 +66,7 @@ Roo.htmleditor.BlockFigure.prototype = {
         },
         
        
-        src : {
+        image_src : {
             title: "Src",
             width: 220
         }
@@ -80,14 +80,14 @@ Roo.htmleditor.BlockFigure.prototype = {
         
         var img = {
             tag : 'img',
-            src : this.src,
+            src : this.image_src,
             alt : this.caption 
         };
-        if ((''+this.width).length) {
-            img.width = this.width;
+        if ((''+this.image_width).length) {
+            img.width = this.image_width;
         }
         if ((''+ this.height).length) {
-            img.height = this.height;
+            img.height = this.image_height;
         }
         return {
             tag: 'figure',
