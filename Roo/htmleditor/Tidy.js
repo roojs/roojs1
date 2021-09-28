@@ -80,12 +80,19 @@ Roo.htmleditor.Tidy.prototype = {
         
         var ar = Array.from(node.childNodes);
         for (var i = 0 ; i < ar.length ; i++) {
+            
+            
+            
             if (indent !== false   // indent==false preservies everything
                 && i > 0
                 && ar[i].nodeType == 3 
                 && ar[i].nodeValue.length > 0
                 && ar[i].nodeValue.match(/^\s+/)
             ) {
+                if (ret.length && ret[ret.length-1] == "\n" + indent) {
+                    ret.pop(); // remove line break from last?
+                }
+                
                 ret.push(" "); // add a space if i'm a text item with a space at the front, as tidy will strip spaces.
             }
             if (indent !== false
