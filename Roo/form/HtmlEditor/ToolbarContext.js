@@ -467,10 +467,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
 
         }
         
-        if (!updateFooter) {
+        ///if (!updateFooter) {
             //this.footDisp.dom.innerHTML = ''; 
-            return;
-        }
+         //   return;
+        //}
         // update the footer
         //
         var html = '';
