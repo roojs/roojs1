@@ -108,6 +108,8 @@ Roo.htmleditor.FilterWord
 Roo.htmleditor.Tidy
 Roo.htmleditor.KeyEnter
 
+Roo.htmleditor.BlockFigure
+
 
 Roo.HtmlEditorCore
 Roo.form.HtmlEditor

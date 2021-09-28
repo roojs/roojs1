@@ -139,6 +139,8 @@ Roo.htmleditor.FilterWord
 
 Roo.htmleditor.KeyEnter
 
+Roo.htmleditor.BlockFigure
+
 Roo.HtmlEditorCore
 Roo.bootstrap.form.HtmlEditor
 Roo.bootstrap.form.HtmlEditorToolbarStandard

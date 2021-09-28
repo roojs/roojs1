@@ -24,7 +24,8 @@
 Roo.htmleditor.BlockFigure = function(cfg)
 {
     if (cfg.node) {
-        this.fromElement(cfg.node);
+        this.readElement(cfg.node);
+        this.updateElement(cfg.node);
     }
     Roo.apply(this, cfg);
 }
@@ -72,7 +73,7 @@ Roo.htmleditor.BlockFigure.prototype = {
         }
     },
     
-    toHtml : function(doc)
+    toObject : function()
     {
         
         var img = {
@@ -86,7 +87,7 @@ Roo.htmleditor.BlockFigure.prototype = {
         if ((''+ this.height).length) {
             img.height = this.height;
         }
-        return Roo.DomHelper.markup({
+        return {
             tag: 'figure',
             'data-block' : 'BlockFigure',
             contenteditable : 'false',
@@ -101,14 +102,20 @@ Roo.htmleditor.BlockFigure.prototype = {
                     html : this.caption 
                 }
             ]
-        });
+        };
     },
-    fromElement : function(node)
+    readElement : function(node)
     {
         this.image_src = this.getVal(node, 'img', 'src');
         this.align = this.getVal(node, 'figure', 'style', 'text-align');
         this.caption = this.getVal(node, 'figcaption', 'html');
         this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
+    },
+    
+    updateElement : function(node)
+    {
+        Roo.DomHelper.overwrite(node, this.toObject());
+
     },
     
     getVal : function(node, tag, attr, style)

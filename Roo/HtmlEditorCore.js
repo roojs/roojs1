@@ -377,16 +377,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
 
     /**
+     * TEXTAREA -> EDITABLE
      * Protected method that will not generally be called directly. Pushes the value of the textarea
      * into the iframe editor.
      */
-    pushValue : function(){
+    pushValue : function()
+    {
         if(this.initialized){
             var v = this.el.dom.value.trim();
             
-//            if(v.length < 1){
-//                v = '&#160;';
-//            }
             
             if(this.owner.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
@@ -395,6 +394,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
             }
+            
+            Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
+                var cls = Roo.htmleditor['Block' + Roo.get(e).attr('data-block')];
+                if (typeof(cls) == 'undefined') {
+                    Roo.log("OOps missing block : " + 'Block' + Roo.get(e).attr('data-block'));
+                    return;
+                }
+                new cls(e);  /// should trigger update element
+            },this)
+            
+            
         }
     },
 

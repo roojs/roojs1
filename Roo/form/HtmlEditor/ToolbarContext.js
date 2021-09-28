@@ -168,7 +168,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
         }
     },
     'TEXTAREA' : {
-          name : {
+        name : {
             title: "name",
             width: 120
         },
@@ -201,6 +201,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             disabled : true
         }
     },
+    /*
     'SPAN' : {
         'font-family'  : {
             title : "Font",
@@ -228,7 +229,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             width: 140
         }
     },
-    
+    */
     '*' : {
         // empty..
     }
@@ -671,7 +672,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         tb.addFill();
         tb.addButton( {
-            text: 'Remove Tag',
+            text: 'Remove Tag', // remove the tag, and puts the children outside...
     
             listeners : {
                 click : function ()
@@ -683,7 +684,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     
                     var pn = sn.parentNode;
                     
-                    var stn =  sn.childNodes[0];
+                    // what i'm going to select after deleting..
+                    var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || pn;
+                    
+                    if (!stn) {
+                        stn = sn.nextSibling;
+                    }
                     var en = sn.childNodes[sn.childNodes.length - 1 ];
                     while (sn.childNodes.length) {
                         var node = sn.childNodes[0];

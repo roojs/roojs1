@@ -391,7 +391,7 @@
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforepush'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.doc.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.doc.documentElement</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">d.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">this.cleanUpPaste</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-comment">//this.cleanUpPaste();
                 </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.innerHTML</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'push'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
             }
@@ -463,6 +463,7 @@
             </span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'paste'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onPasteEvent</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">buffer</span><span class="jsdoc-syntax">:100,
             </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this
         </span><span class="jsdoc-syntax">});
@@ -480,17 +481,15 @@
 
 
 
-        </span><span class="jsdoc-var">this.doc.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'paste'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-comment">// default behaveiour should be our local cleanup paste? (optional?)
-            // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
-            </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'paste'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
-        },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-
-
         </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'initialize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.pushValue</span><span class="jsdoc-syntax">();
     },
 
+    </span><span class="jsdoc-var">onPasteEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)  {
+         </span><span class="jsdoc-comment">// default behaveiour should be our local cleanup paste? (optional?)
+         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
+         </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'paste'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+    },
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onDestroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 
@@ -697,11 +696,11 @@
                         </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'underline'</span><span class="jsdoc-syntax">;
                         </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
 
-                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'v'</span><span class="jsdoc-syntax">:
-                        </span><span class="jsdoc-var">this.cleanUpPaste.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-comment">//case 'v':
+                      //  this.cleanUpPaste.defer(100, this);
+                      //  return;
 
-                }
+                </span><span class="jsdoc-syntax">}
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">this.win.focus</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-var">this.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">);
@@ -735,19 +734,19 @@
                         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r.parentElement</span><span class="jsdoc-syntax">();
                         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">target.tagName.toLowerCase</span><span class="jsdoc-syntax">() != </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">){
                             </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
-                            </span><span class="jsdoc-var">r.pasteHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;br /&gt;'</span><span class="jsdoc-syntax">);
+                            </span><span class="jsdoc-var">r.pasteHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;br/&gt;'</span><span class="jsdoc-syntax">);
                             </span><span class="jsdoc-var">r.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                             </span><span class="jsdoc-var">r.select</span><span class="jsdoc-syntax">();
                         }
                     }
                 }
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'v'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// paste
-                    </span><span class="jsdoc-var">this.cleanUpPaste.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                }
+                </span><span class="jsdoc-comment">//if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                //    this.cleanUpPaste.defer(100, this);
+                //    return;
+                //}
 
 
-            };
+            </span><span class="jsdoc-syntax">};
         }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isOpera</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">();
@@ -757,12 +756,12 @@
                     </span><span class="jsdoc-var">this.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'InsertHTML'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'&amp;#160;&amp;#160;&amp;#160;&amp;#160;'</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">this.deferFocus</span><span class="jsdoc-syntax">();
                 }
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'v'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// paste
-                    </span><span class="jsdoc-var">this.cleanUpPaste.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                }
+                </span><span class="jsdoc-comment">//if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                //    this.cleanUpPaste.defer(100, this);
+                 //   return;
+                //}
 
-            };
+            </span><span class="jsdoc-syntax">};
         }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">();
@@ -773,12 +772,12 @@
                     </span><span class="jsdoc-var">this.deferFocus</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                 }
-               </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'v'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// paste
-                    </span><span class="jsdoc-var">this.cleanUpPaste.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                }
+               </span><span class="jsdoc-comment">//if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                 //   this.cleanUpPaste.defer(100, this);
+                 //   return;
+               // }
 
-             };
+             </span><span class="jsdoc-syntax">};
         }
     }(),
 
@@ -997,21 +996,21 @@
         </span><span class="jsdoc-comment">// fully contined.
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">3;
     },
-
-    </span><span class="jsdoc-comment">// private? - in a new class?
-    </span><span class="jsdoc-var">cleanUpPaste </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+</span><span class="jsdoc-comment">/*
+    // private? - in a new class?
+    cleanUpPaste :  function()
     {
-        </span><span class="jsdoc-comment">// cleans up the whole document..
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'cleanuppaste'</span><span class="jsdoc-syntax">);
-
-        </span><span class="jsdoc-var">this.cleanUpChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clean </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cleanWordChars</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body.innerHTML</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">clean </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.doc.body.innerHTML</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.doc.body.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">clean</span><span class="jsdoc-syntax">;
+        // cleans up the whole document..
+        Roo.log('cleanuppaste');
+        
+        this.cleanUpChild(this.doc.body);
+        var clean = this.cleanWordChars(this.doc.body.innerHTML);
+        if (clean != this.doc.body.innerHTML) {
+            this.doc.body.innerHTML = clean;
         }
-
+        
     },
-
+    */
     </span><span class="jsdoc-var">cleanWordChars </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">) {</span><span class="jsdoc-comment">// change the chars to hex code
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">he </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.HtmlEditorCore</span><span class="jsdoc-syntax">;
 

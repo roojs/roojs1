@@ -367,7 +367,7 @@
             // let's see if we can change the selection...
             </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.target</span><span class="jsdoc-syntax">;
 
-              </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.ownerDocument.createRange</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.ownerDocument.createRange</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-var">nodeRange.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);
             } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
@@ -380,7 +380,7 @@
         }
 
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">updateFooter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">//var updateFooter = sel ? false : true; 
 
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.getAllAncestors</span><span class="jsdoc-syntax">();
@@ -467,11 +467,11 @@
 
         }
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">updateFooter</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-comment">//this.footDisp.dom.innerHTML = ''; 
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-comment">// update the footer
+        </span><span class="jsdoc-comment">///if (!updateFooter) {
+            //this.footDisp.dom.innerHTML = ''; 
+         //   return;
+        //}
+        // update the footer
         //
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
 
