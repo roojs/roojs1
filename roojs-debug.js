@@ -48786,7 +48786,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         var tbc = Roo.form.HtmlEditor.ToolbarContext;
-        var tbops = tbc.options;
+        
         
         for (var i in tlist) {
             
@@ -48796,8 +48796,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
             //optname == used so you can configure the options available..
             var opts = item.opts ? item.opts : false;
-            if (item.optname) {
-                opts = tbops[item.optname];
+            if (item.optname) { // use the b
+                opts = Roo.form.HtmlEditor.ToolbarContext.options[item.optname];
            
             }
             
@@ -48810,8 +48810,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                         data : opts  
                     }),
                     name : '-roo-edit-' + i,
+                    
                     attrname : i,
                     stylename : item.style ? item.style : false,
+                    
                     displayField: item.displayField ? item.displayField : 'val',
                     valueField :  'val',
                     typeAhead: false,
@@ -48823,6 +48825,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     width: item.width ? item.width  : 130,
                     listeners : {
                         'select': function(c, r, i) {
+                            if (tb.selectedNode.hasClass('data-block')) {
+                                var b = Roo.htmleditor.Block.factory(tb.selectedNode);
+                                b[c.attrname] = r.get('val');
+                                b.updateElement(tb.selectedNode);
+                                return;
+                            }
+                            
                             if (c.stylename) {
                                 tb.selectedNode.style[c.stylename] =  r.get('val');
                                 return;
