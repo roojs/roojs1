@@ -21769,12 +21769,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // this has to update attributes that get duped.. like alt and caption..
             
             Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
-                var cls = Roo.htmleditor['Block' + Roo.get(e).attr('data-block')];
-                if (typeof(cls) == 'undefined') {
-                    Roo.log("OOps missing block : " + 'Block' + Roo.get(e).attr('data-block'));
-                    return;
-                }
-                new cls({ node: e });  /// should trigger update element
+                 Roo.htmleditor.Block.factory(e);
             },this);
             
             
@@ -21851,12 +21846,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             
             Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
-                var cls = Roo.htmleditor['Block' + Roo.get(e).attr('data-block')];
-                if (typeof(cls) == 'undefined') {
-                    Roo.log("OOps missing block : " + 'Block' + Roo.get(e).attr('data-block'));
-                    return;
-                }
-                new cls({ node: e });  /// should trigger update element
+                
+                Roo.htmleditor.Block.factory(e);
+                
             },this);
             var lc = this.doc.body.lastChild;
             if (lc && lc.nodeType == 1 && lc.getAttribute("contenteditable") == "false") {
