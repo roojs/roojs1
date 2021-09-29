@@ -335,9 +335,21 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var bd = (this.doc.body || this.doc.documentElement);
             //this.cleanUpPaste(); -- this is done else where and causes havoc..
             
+            // not sure if this is really the place for this
+            // the blocks are synced occasionaly - since we currently dont add listeners on the blocks
+            // this has to update attributes that get duped.. like alt and caption..
+            
+            Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
+                 Roo.htmleditor.Block.factory(e);
+            },this);
+            
+            
             var div = document.createElement('div');
             div.innerHTML = bd.innerHTML;
             // remove content editable. (blocks)
+            
+           
+            
             new Roo.htmleditor.FilterAttributes({node : div, attrib_black: [ 'contenteditable' ] });
             //?? tidy?
             var html = div.innerHTML;
@@ -405,13 +417,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             
             Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
-                var cls = Roo.htmleditor['Block' + Roo.get(e).attr('data-block')];
-                if (typeof(cls) == 'undefined') {
-                    Roo.log("OOps missing block : " + 'Block' + Roo.get(e).attr('data-block'));
-                    return;
-                }
-                new cls(e);  /// should trigger update element
-            },this)
+                
+                Roo.htmleditor.Block.factory(e);
+                
+            },this);
+            var lc = this.doc.body.lastChild;
+            if (lc && lc.nodeType == 1 && lc.getAttribute("contenteditable") == "false") {
+                // add an extra line at the end.
+                this.doc.body.appendChild(this.doc.createChild('br'));
+            }
             
             
         }
