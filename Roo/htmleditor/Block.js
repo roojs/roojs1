@@ -4,6 +4,18 @@
  *
  * also includes a few utilitiy function for them.
  */
+ 
+/**
+ * @class Roo.htmleditor.Block
+ * Base class for html editor blocks - do not use it directly .. extend it..
+ * @cfg {DomElement} node The node to apply stuff to.
+ * @cfg {String} friendly_name the name that appears in the context bar about this block
+ * @cfg {Object} Context menu - see Roo.form.HtmlEditor.ToolbarContext
+ 
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
 
 Roo.htmleditor.Block  = function(cfg)
 {
@@ -17,8 +29,14 @@ Roo.htmleditor.Block.prototype = {
     friendly_name : 'Image with caption',
     
     context : false,
-    
-    
+    /**
+     * Update a node with values from this object
+     * @param {DomElement} node
+     */
+    updateElement : function(node)
+    {
+        Roo.DomHelper.update(node, this.toObject());
+    },
      /**
      * convert to plain HTML for calling insertAtCursor..
      */
@@ -26,7 +44,15 @@ Roo.htmleditor.Block.prototype = {
     {
         return Roo.DomHelper.markup(this.toObject());
     },
-    
+    /**
+     * used by readEleemnt to extract data from a node
+     * may need improving as it's pretty basic
+     
+     * @param {DomElement} node
+     * @param {String} tag - tag to find, eg. IMG ?? might be better to use DomQuery ?
+     * @param {String} attribute (use html - for contents, or style for using next param as style)
+     * @param {String} style the style property - eg. text-align
+     */
     getVal : function(node, tag, attr, style)
     {
         var n = node;
