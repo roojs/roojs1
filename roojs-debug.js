@@ -45455,10 +45455,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             src : this.image_src,
             alt : d.innerText.replace(/\n/g, " ") // removeHTML..
         };
-        if ((''+this.image_width).length) {
+        if ((''+this.image_width).length > 0) {
             img.width = this.image_width;
         }
-        if ((''+ this.height).length) {
+        if ((''+ this.image_height).length > 0) {
             img.height = this.image_height;
         }
         return {
