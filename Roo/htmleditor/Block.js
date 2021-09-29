@@ -21,7 +21,7 @@ Roo.htmleditor.Block.factory = function(node)
     var cls = Roo.htmleditor['Block' + Roo.get(e).attr('data-block')];
     if (typeof(cls) == 'undefined') {
         Roo.log("OOps missing block : " + 'Block' + Roo.get(e).attr('data-block'));
-        return;
+        return false;
     }
     return new cls({ node: e });  /// should trigger update element
 }
