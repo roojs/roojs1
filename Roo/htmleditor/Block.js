@@ -1,9 +1,3 @@
-/**
- *
- * Base class for html editor blocks
- *
- * also includes a few utilitiy function for them.
- */
  
 /**
  * @class Roo.htmleditor.Block
@@ -20,6 +14,11 @@
 Roo.htmleditor.Block  = function(cfg)
 {
     // do nothing .. should not be called really.
+}
+
+Roo.htmleditor.Block.factory = function(node)
+{
+    
 }
 
 
@@ -70,6 +69,25 @@ Roo.htmleditor.Block.prototype = {
         
         return Roo.get(n).attr(attr);
             
-    }
+    },
+    /**
+     * create a DomHelper friendly object - for use with 
+     * Roo.DomHelper.markup / overwrite / etc..
+     * (override this)
+     */
+    toObject : function()
+    {
+        return {};
+    },
+      /**
+     * Read a node that has a 'data-block' property - and extract the values from it.
+     * @param {DomElement} node - the node
+     */
+    readElement : function(node)
+    {
+        
+    } 
+    
     
 }
+
