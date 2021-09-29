@@ -408,10 +408,19 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         var db = Roo.get(sel).findParent('*[data-block]');
         if (db) {
-            tn = 'BLOCK.' + db.getAttribute('data-block');
-            this.tb.selectedNode = db;
-            if (typeof(this.toolbars[tn]) == 'undefined') {
-               this.toolbars[tn] = this.buildToolbar(ty[i],tn);
+            var cls = Roo.htmleditor['Block' + Roo.get(e).attr('data-block')];
+            if (typeof(cls) == 'undefined') {
+                tn = '*';
+                Roo.log("OOps missing block : " + 'Block' + Roo.get(e).attr('data-block'));
+                
+            } else {
+               
+            
+                tn = 'BLOCK.' + db.getAttribute('data-block');
+                this.tb.selectedNode = db;
+                if (typeof(this.toolbars[tn]) == 'undefined') {
+                   this.toolbars[tn] = this.buildToolbar( cls.prototype.context,tn ,cls.prototype.friendly_name);
+                }
             }
             
         }
@@ -497,6 +506,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     updateFooter : function(ans)
     {
         var html = '';
+        if (ans === false) {
+            this.footDisp.dom.innerHTML = '';
+            return;
+        }
         
         this.footerEls = ans.reverse();
         Roo.each(this.footerEls, function(a,i) {
@@ -517,7 +530,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.footDisp.dom.innerHTML = html;
             
         
-    }
+    },
    
        
     // private
@@ -542,7 +555,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
            item.enable();
         });
     },
-    buildToolbar: function(tlist, nm)
+    buildToolbar: function(tlist, nm, friendly_name)
     {
         var editor = this.editor;
         var editorcore = this.editorcore;
@@ -553,14 +566,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
        
         var tb = new Roo.Toolbar(wdiv);
-        // add the name..
+        tb.name = nm;
         
-        tb.add(nm+ ":&nbsp;");
+        tb.add((tyeeof(friendly_name) == 'undefined' ? nm : friendly_name) + ":&nbsp;");
         
-        var styles = [];
-        for(var i in this.styles) {
-            styles.push(i);
-        }
+        var styles = Array.from(this.styles);
+        
         
         // styles...
         if (styles && styles.length) {
@@ -647,7 +658,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 continue;
                     
                  
-                
+                /*
                 tb.addField( new Roo.form.TextField({
                     name: i,
                     width: 100,
@@ -655,6 +666,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     value: ''
                 }));
                 continue;
+                */
             }
             tb.addField( new Roo.form.TextField({
                 name: '-roo-edit-' + i,
@@ -691,50 +703,38 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         tb.addFill();
-        tb.addButton( {
-            text: 'Remove Tag', // remove the tag, and puts the children outside...
+        tb.addButton({
+            text: 'Remove', // remove the tag, and puts the children outside...
     
             listeners : {
                 click : function ()
                 {
                     // remove
                     // undo does not work.
-                     
                     var sn = tb.selectedNode;
-                    
-                    var pn = sn.parentNode;
-                    
-                    // what i'm going to select after deleting..
                     var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || pn;
+                    if (sn.hasAttribute('data-block')) {
+                        sn.parentNode.removeChild(sn);
+                    } else {
+                        // remove and keep parents.
+                        a = new Roo.htmleditor.FilterKeepChildren({tag : false});
+                        a.removeTag(sn);
+                    }
                     
-                    if (!stn) {
-                        stn = sn.nextSibling;
-                    }
-                    var en = sn.childNodes[sn.childNodes.length - 1 ];
-                    while (sn.childNodes.length) {
-                        var node = sn.childNodes[0];
-                        sn.removeChild(node);
-                        //Roo.log(node);
-                        pn.insertBefore(node, sn);
-                        
-                    }
-                    pn.removeChild(sn);
+                    
                     var range = editorcore.createRange();
         
                     range.setStart(stn,0);
                     range.setEnd(en,0); //????
-                    //range.selectNode(sel);
-                    
-                    
                     var selection = editorcore.getSelection();
                     selection.removeAllRanges();
                     selection.addRange(range);
                     
                     
-                    
                     //_this.updateToolbar(null, null, pn);
                     _this.updateToolbar(null, null, null);
-                    _this.footDisp.dom.innerHTML = ''; 
+                    _this.updateFooter(false);
+                    
                 }
             }
             
@@ -749,7 +749,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         });
         tb.el.setVisibilityMode( Roo.Element.DISPLAY);
         tb.el.hide();
-        tb.name = nm;
+        
         // dont need to disable them... as they will get hidden
         return tb;
          
