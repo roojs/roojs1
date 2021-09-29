@@ -406,12 +406,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         // ok see if we are editing a block?
         
-        var db = Roo.get(sel).findParent('*[data-block]');
+        var db = Roo.get(sel).findParent('[data-block]');
         if (db) {
-            var cls = Roo.htmleditor['Block' + Roo.get(e).attr('data-block')];
+            var cls = Roo.htmleditor['Block' + Roo.get(db).attr('data-block')];
             if (typeof(cls) == 'undefined') {
                 tn = '*';
-                Roo.log("OOps missing block : " + 'Block' + Roo.get(e).attr('data-block'));
+                Roo.log("OOps missing block : " + 'Block' + Roo.get(db).attr('data-block'));
                 
             } else {
                
@@ -434,7 +434,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
           
         this.tb.el.hide();
         ///console.log("show: " + tn);
-        this.tb =  typeof(ty[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
+        this.tb =  typeof(this.toolbars[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
         
         this.tb.el.show();
         // update name
@@ -568,7 +568,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var tb = new Roo.Toolbar(wdiv);
         tb.name = nm;
         
-        tb.add((tyeeof(friendly_name) == 'undefined' ? nm : friendly_name) + ":&nbsp;");
+        tb.add((typeof(friendly_name) == 'undefined' ? nm : friendly_name) + ":&nbsp;");
         
         var styles = Array.from(this.styles);
         
