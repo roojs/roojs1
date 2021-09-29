@@ -24629,7 +24629,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var tn = sel.tagName.toUpperCase();
         var lastSel = this.tb.selectedNode;
         this.tb.selectedNode = sel;
-        
+        var left_label = tn;
         
         // ok see if we are editing a block?
         
@@ -24648,6 +24648,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 if (typeof(this.toolbars[tn]) == 'undefined') {
                    this.toolbars[tn] = this.buildToolbar( cls.prototype.context,tn ,cls.prototype.friendly_name);
                 }
+                left_label = cls.prototype.friendly_name;
             }
             
         }
@@ -24665,17 +24666,24 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         this.tb.el.show();
         // update name
-        this.tb.items.first().el.innerHTML = tn + ':&nbsp;';
+        this.tb.items.first().el.innerHTML = left_label + ':&nbsp;';
         
         
         // update attributes
-        if (this.tb.fields) {
+        if (db) {
+            var dbo = new cls({node : sel});
+            this.tb.fields.each(function(e) {
+                e.setValue(dob[e.attrname]);
+            });
+            
+            
+        } else  if (this.tb.fields) {
             this.tb.fields.each(function(e) {
                 if (e.stylename) {
                     e.setValue(sel.style[e.stylename]);
                     return;
                 } 
-               e.setValue(sel.getAttribute(e.attrname));
+                e.setValue(sel.getAttribute(e.attrname));
             });
         }
         this.updateToolbarStyles(sel);  
