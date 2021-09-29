@@ -390,7 +390,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var ans = this.editorcore.getAllAncestors();
         
         // pick
-        var ty= Roo.form.HtmlEditor.ToolbarContext.types;
+        var ty = Roo.form.HtmlEditor.ToolbarContext.types;
         
         if (!sel) { 
             sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editorcore.doc.body;
@@ -399,20 +399,22 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
         }
         
+        var tn = sel.tagName.toUpperCase();
+        var lastSel = this.tb.selectedNode;
+        this.tb.selectedNode = sel;
+        
         
         // ok see if we are editing a block?
         
         var db = Roo.get(sel).findParent('*[data-block]');
         if (db) {
+            tn = 'BLOCK.' + db.getAttribute('data-block');
+            this.tb.selectedNode = db;
+            if (typeof(this.toolbars[tn]) == 'undefined') {
+               this.toolbars[tn] = this.buildToolbar(ty[i],tn);
+            }
             
         }
-        
-      
-        var tn = sel.tagName.toUpperCase();
-        
-        var lastSel = this.tb.selectedNode;
-        
-        this.tb.selectedNode = sel;
         
         
         if (this.tb.name == tn && lastSel == this.tb.selectedNode && ev !== false) {
@@ -420,10 +422,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         
-            
+          
         this.tb.el.hide();
         ///console.log("show: " + tn);
         this.tb =  typeof(ty[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
+        
         this.tb.el.show();
         // update name
         this.tb.items.first().el.innerHTML = tn + ':&nbsp;';
