@@ -407,22 +407,19 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // ok see if we are editing a block?
         
         var db = Roo.get(sel).findParent('[data-block]');
+        var block = false;
         if (db) {
-            var cls = Roo.htmleditor['Block' + Roo.get(db).attr('data-block')];
-            if (typeof(cls) == 'undefined') {
-                tn = '*';
-                Roo.log("OOps missing block : " + 'Block' + Roo.get(db).attr('data-block'));
-                
-            } else {
-               
-            
+            block = Roo.htmleditor.Block.factory(db);
+            if (block) {
                 tn = 'BLOCK.' + db.getAttribute('data-block');
                 this.tb.selectedNode = db;
                 if (typeof(this.toolbars[tn]) == 'undefined') {
-                   this.toolbars[tn] = this.buildToolbar( cls.prototype.context,tn ,cls.prototype.friendly_name);
+                   this.toolbars[tn] = this.buildToolbar( block.context,tn ,block.friendly_name);
                 }
-                left_label = cls.prototype.friendly_name;
+                left_label = block.friendly_name;
             }
+            
+                
             
         }
         
@@ -656,18 +653,22 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                                 var b = Roo.htmleditor.Block.factory(tb.selectedNode);
                                 b[c.attrname] = r.get('val');
                                 b.updateElement(tb.selectedNode);
+                                editorcore.syncValue();
                                 return;
                             }
                             
                             if (c.stylename) {
                                 tb.selectedNode.style[c.stylename] =  r.get('val');
+                                editorcore.syncValue();
                                 return;
                             }
                             if (r === false) {
                                 tb.selectedNode.removeAttribute(c.attrname);
+                                editorcore.syncValue();
                                 return;
                             }
                             tb.selectedNode.setAttribute(c.attrname, r.get('val'));
+                            editorcore.syncValue();
                         }
                     }
 
@@ -694,6 +695,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 value: '',
                 listeners: {
                     'change' : function(f, nv, ov) {
+                        
+                        if (tb.selectedNode.hasClass('data-block')) {
+                            var b = Roo.htmleditor.Block.factory(tb.selectedNode);
+                            b[c.attrname] = nv;
+                            b.updateElement(tb.selectedNode);
+                            editorcore.syncValue();
+                            return;
+                        }
+                        
                         tb.selectedNode.setAttribute(f.attrname, nv);
                         editorcore.syncValue();
                     }
