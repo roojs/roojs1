@@ -139,6 +139,7 @@ Roo.htmleditor.FilterWord
 
 Roo.htmleditor.KeyEnter
 
+Roo.htmleditor.Block
 Roo.htmleditor.BlockFigure
 
 Roo.HtmlEditorCore
