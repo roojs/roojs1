@@ -246,211 +246,288 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">;
     };
 
+    </span><span class="jsdoc-comment">// this is a bit like the react update code...
+    // 
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">updateNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">to</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// should we handle non-standard elements?
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.nodeType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">to.nodeType</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">from.parentNode.replaceChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">to</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">from</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.nodeType </span><span class="jsdoc-syntax">== 3) {
+            </span><span class="jsdoc-comment">// assume it's text?!
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.data </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">to.data</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">from.data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">to.data</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-comment">// assume 'to' doesnt have '1/3 nodetypes!
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.nodeType </span><span class="jsdoc-syntax">!=1 || </span><span class="jsdoc-var">from.tagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">to.tagName</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">from.parentNode.replaceChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">to</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">from</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// compare attributes
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.attributes</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">ar.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">to.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">from.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">to.attributes</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">ar.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-var">to.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">from.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">to.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">));
+        }
+        </span><span class="jsdoc-comment">// children
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">far </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.childNodes</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">to.childNodes</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far.length</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tar.length</span><span class="jsdoc-syntax">); </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">far.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">tar.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">updateNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">tar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">far.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">// have from // but no 'to'
+                </span><span class="jsdoc-var">from.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">from.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-comment">// have 'to' but no from
+        </span><span class="jsdoc-syntax">}
+
+
+    };
+
+
+
     </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
-    </span><span class="jsdoc-comment">/** True to force the use of DOM instead of html fragments @type Boolean */
-    </span><span class="jsdoc-var">useDom </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/** True to force the use of DOM instead of html fragments @type Boolean */
+        </span><span class="jsdoc-var">useDom </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
-    </span><span class="jsdoc-comment">/**
-     * Returns the markup for the passed Element(s) config
-     * @param {Object} o The Dom object spec (and children)
-     * @return {String}
-     */
-    </span><span class="jsdoc-var">markup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">createHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
-    },
+        </span><span class="jsdoc-comment">/**
+         * Returns the markup for the passed Element(s) config
+         * @param {Object} o The Dom object spec (and children)
+         * @return {String}
+         */
+        </span><span class="jsdoc-var">markup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">createHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        },
 
-    </span><span class="jsdoc-comment">/**
-     * Applies a style specification to an element
-     * @param {String/HTMLElement} el The element to apply styles to
-     * @param {String/Object/Function} styles A style specification string eg &quot;width:100px&quot;, or object in the form {width:&quot;100px&quot;}, or
-     * a function which returns such a specification.
-     */
-    </span><span class="jsdoc-var">applyStyles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">){
-           </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
-               </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">= /\s?([a-z\-]*)\:\s?([^;]*);?/gi;
-               </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">matches</span><span class="jsdoc-syntax">;
-               </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">matches </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">re.exec</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">)) != </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
-                   </span><span class="jsdoc-var">el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">matches</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-var">matches</span><span class="jsdoc-syntax">[2]);
+        </span><span class="jsdoc-comment">/**
+         * Applies a style specification to an element
+         * @param {String/HTMLElement} el The element to apply styles to
+         * @param {String/Object/Function} styles A style specification string eg &quot;width:100px&quot;, or object in the form {width:&quot;100px&quot;}, or
+         * a function which returns such a specification.
+         */
+        </span><span class="jsdoc-var">applyStyles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+               </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">= /\s?([a-z\-]*)\:\s?([^;]*);?/gi;
+                   </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">matches</span><span class="jsdoc-syntax">;
+                   </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">matches </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">re.exec</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">)) != </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+                       </span><span class="jsdoc-var">el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">matches</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-var">matches</span><span class="jsdoc-syntax">[2]);
+                   }
+               }</span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;object&quot;</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">style </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">){
+                      </span><span class="jsdoc-var">el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">]);
+                   }
+               }</span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">Roo.DomHelper.applyStyles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">styles.call</span><span class="jsdoc-syntax">());
                }
-           }</span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;object&quot;</span><span class="jsdoc-syntax">){
-               </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">style </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">){
-                  </span><span class="jsdoc-var">el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">]);
-               }
-           }</span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">Roo.DomHelper.applyStyles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">styles.call</span><span class="jsdoc-syntax">());
-           }
-        }
-    },
-
-    </span><span class="jsdoc-comment">/**
-     * Inserts an HTML fragment into the Dom
-     * @param {String} where Where to insert the html in relation to el - beforeBegin, afterBegin, beforeEnd, afterEnd.
-     * @param {HTMLElement} el The context element
-     * @param {String} html The HTML fragmenet
-     * @return {HTMLElement} The new node
-     */
-    </span><span class="jsdoc-var">insertHtml </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">where</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">where </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">where.toLowerCase</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.insertAdjacentHTML</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tableRe.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.tagName</span><span class="jsdoc-syntax">)){
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">insertIntoTable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.tagName.toLowerCase</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">where</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">)){
-                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">;
-                }
             }
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Inserts an HTML fragment into the Dom
+         * @param {String} where Where to insert the html in relation to el - beforeBegin, afterBegin, beforeEnd, afterEnd.
+         * @param {HTMLElement} el The context element
+         * @param {String} html The HTML fragmenet
+         * @return {HTMLElement} The new node
+         */
+        </span><span class="jsdoc-var">insertHtml </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">where</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">where </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">where.toLowerCase</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.insertAdjacentHTML</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tableRe.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.tagName</span><span class="jsdoc-syntax">)){
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">insertIntoTable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.tagName.toLowerCase</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">where</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">)){
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">rs</span><span class="jsdoc-syntax">;
+                    }
+                }
+                </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">where</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;beforebegin&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">el.insertAdjacentHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'BeforeBegin'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.previousSibling</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;afterbegin&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">el.insertAdjacentHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'AfterBegin'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;beforeend&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">el.insertAdjacentHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'BeforeEnd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.lastChild</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;afterend&quot;</span><span class="jsdoc-syntax">:
+                        </span><span class="jsdoc-var">el.insertAdjacentHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'AfterEnd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.nextSibling</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">'Illegal insertion point -&gt; &quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">where </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;'</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.ownerDocument.createRange</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">frag</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">where</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;beforebegin&quot;</span><span class="jsdoc-syntax">:
-                    </span><span class="jsdoc-var">el.insertAdjacentHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'BeforeBegin'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;beforebegin&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-var">range.setStartBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">frag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.createContextualFragment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">el.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">frag</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.previousSibling</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;afterbegin&quot;</span><span class="jsdoc-syntax">:
-                    </span><span class="jsdoc-var">el.insertAdjacentHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'AfterBegin'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">;
+                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;afterbegin&quot;</span><span class="jsdoc-syntax">:
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">range.setStartBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">frag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.createContextualFragment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">el.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">frag</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">;
+                    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                        </span><span class="jsdoc-var">el.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">;
+                    }
                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;beforeend&quot;</span><span class="jsdoc-syntax">:
-                    </span><span class="jsdoc-var">el.insertAdjacentHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'BeforeEnd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.lastChild</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.lastChild</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">range.setStartAfter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.lastChild</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">frag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.createContextualFragment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">frag</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.lastChild</span><span class="jsdoc-syntax">;
+                    }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                        </span><span class="jsdoc-var">el.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.lastChild</span><span class="jsdoc-syntax">;
+                    }
                 </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;afterend&quot;</span><span class="jsdoc-syntax">:
-                    </span><span class="jsdoc-var">el.insertAdjacentHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'AfterEnd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">range.setStartAfter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">frag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.createContextualFragment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">el.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">frag</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el.nextSibling</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.nextSibling</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">'Illegal insertion point -&gt; &quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">where </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;'</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.ownerDocument.createRange</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">frag</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">where</span><span class="jsdoc-syntax">){
-             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;beforebegin&quot;</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">range.setStartBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">frag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.createContextualFragment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">el.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">frag</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.previousSibling</span><span class="jsdoc-syntax">;
-             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;afterbegin&quot;</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">range.setStartBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">frag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.createContextualFragment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">el.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">frag</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">;
-                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                    </span><span class="jsdoc-var">el.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">;
                 }
-            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;beforeend&quot;</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.lastChild</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">range.setStartAfter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.lastChild</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">frag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.createContextualFragment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">frag</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.lastChild</span><span class="jsdoc-syntax">;
-                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                    </span><span class="jsdoc-var">el.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.lastChild</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">'Illegal insertion point -&gt; &quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">where </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;'</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Creates new Dom element(s) and inserts them before el
+         * @param {String/HTMLElement/Element} el The context element
+         * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
+         * @param {Boolean} returnElement (optional) true to return a Roo.Element
+         * @return {HTMLElement/Roo.Element} The new node
+         */
+        </span><span class="jsdoc-var">insertBefore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.doInsert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;beforeBegin&quot;</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Creates new Dom element(s) and inserts them after el
+         * @param {String/HTMLElement/Element} el The context element
+         * @param {Object} o The Dom object spec (and children)
+         * @param {Boolean} returnElement (optional) true to return a Roo.Element
+         * @return {HTMLElement/Roo.Element} The new node
+         */
+        </span><span class="jsdoc-var">insertAfter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.doInsert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;afterEnd&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;nextSibling&quot;</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Creates new Dom element(s) and inserts them as the first child of el
+         * @param {String/HTMLElement/Element} el The context element
+         * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
+         * @param {Boolean} returnElement (optional) true to return a Roo.Element
+         * @return {HTMLElement/Roo.Element} The new node
+         */
+        </span><span class="jsdoc-var">insertFirst </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.doInsert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;afterBegin&quot;</span><span class="jsdoc-syntax">);
+        },
+
+        </span><span class="jsdoc-comment">// private
+        </span><span class="jsdoc-var">doInsert </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sibling</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useDom </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">o.ns</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">newNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">el.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sibling </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sibling</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">newNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.insertHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">returnElement </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Creates new Dom element(s) and appends them to el
+         * @param {String/HTMLElement/Element} el The context element
+         * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
+         * @param {Boolean} returnElement (optional) true to return a Roo.Element
+         * @return {HTMLElement/Roo.Element} The new node
+         */
+        </span><span class="jsdoc-var">append </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useDom </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">o.ns</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">newNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">newNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.insertHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeEnd&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">returnElement </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">;
+        },
+
+        </span><span class="jsdoc-comment">/**
+         * Creates new Dom element(s) and overwrites the contents of el with them
+         * @param {String/HTMLElement/Element} el The context element
+         * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
+         * @param {Boolean} returnElement (optional) true to return a Roo.Element
+         * @return {HTMLElement/Roo.Element} The new node
+         */
+        </span><span class="jsdoc-var">overwrite </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.ns</span><span class="jsdoc-syntax">) {
+
+                </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.childNodes.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">el.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">);
                 }
-            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;afterend&quot;</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">range.setStartAfter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">frag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.createContextualFragment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">el.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">frag</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el.nextSibling</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">el.nextSibling</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">createDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">el.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
             }
-            </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">'Illegal insertion point -&gt; &quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">where </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;'</span><span class="jsdoc-syntax">;
-    },
 
-    </span><span class="jsdoc-comment">/**
-     * Creates new Dom element(s) and inserts them before el
-     * @param {String/HTMLElement/Element} el The context element
-     * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
-     * @param {Boolean} returnElement (optional) true to return a Roo.Element
-     * @return {HTMLElement/Roo.Element} The new node
-     */
-    </span><span class="jsdoc-var">insertBefore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.doInsert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;beforeBegin&quot;</span><span class="jsdoc-syntax">);
-    },
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">returnElement </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">;
+        },
 
-    </span><span class="jsdoc-comment">/**
-     * Creates new Dom element(s) and inserts them after el
-     * @param {String/HTMLElement/Element} el The context element
-     * @param {Object} o The Dom object spec (and children)
-     * @param {Boolean} returnElement (optional) true to return a Roo.Element
-     * @return {HTMLElement/Roo.Element} The new node
-     */
-    </span><span class="jsdoc-var">insertAfter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.doInsert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;afterEnd&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;nextSibling&quot;</span><span class="jsdoc-syntax">);
-    },
-
-    </span><span class="jsdoc-comment">/**
-     * Creates new Dom element(s) and inserts them as the first child of el
-     * @param {String/HTMLElement/Element} el The context element
-     * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
-     * @param {Boolean} returnElement (optional) true to return a Roo.Element
-     * @return {HTMLElement/Roo.Element} The new node
-     */
-    </span><span class="jsdoc-var">insertFirst </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.doInsert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;afterBegin&quot;</span><span class="jsdoc-syntax">);
-    },
-
-    </span><span class="jsdoc-comment">// private
-    </span><span class="jsdoc-var">doInsert </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sibling</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useDom </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">o.ns</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">newNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">el.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sibling </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sibling</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-comment">/**
+         * Creates a new Roo.DomHelper.Template from the Dom object spec
+         * @param {Object} o The Dom object spec (and children)
+         * @return {Roo.DomHelper.Template} The new template
+         */
+        </span><span class="jsdoc-var">createTemplate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">newNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.insertHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">returnElement </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">;
-    },
+            </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
+        },
+         </span><span class="jsdoc-comment">/**
+         * Updates the first element with the spec from the o (replacing if necessary)
+         * This iterates through the children, and updates attributes / children etc..
+         * @param {String/HTMLElement/Element} el The context element
+         * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
+         */
 
-    </span><span class="jsdoc-comment">/**
-     * Creates new Dom element(s) and appends them to el
-     * @param {String/HTMLElement/Element} el The context element
-     * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
-     * @param {Boolean} returnElement (optional) true to return a Roo.Element
-     * @return {HTMLElement/Roo.Element} The new node
-     */
-    </span><span class="jsdoc-var">append </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.useDom </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">o.ns</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">newNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">el.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">);
-        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">newNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.insertHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeEnd&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">returnElement </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">newNode</span><span class="jsdoc-syntax">;
-    },
+        </span><span class="jsdoc-var">update </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+        {
+            </span><span class="jsdoc-var">updateNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">createDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">));
 
-    </span><span class="jsdoc-comment">/**
-     * Creates new Dom element(s) and overwrites the contents of el with them
-     * @param {String/HTMLElement/Element} el The context element
-     * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
-     * @param {Boolean} returnElement (optional) true to return a Roo.Element
-     * @return {HTMLElement/Roo.Element} The new node
-     */
-    </span><span class="jsdoc-var">overwrite </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">returnElement</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.ns</span><span class="jsdoc-syntax">) {
-
-            </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.childNodes.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">el.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">);
-            }
-            </span><span class="jsdoc-var">createDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">el.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
         }
 
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">returnElement </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">el.firstChild</span><span class="jsdoc-syntax">;
-    },
 
-    </span><span class="jsdoc-comment">/**
-     * Creates a new Roo.DomHelper.Template from the Dom object spec
-     * @param {Object} o The Dom object spec (and children)
-     * @return {Roo.DomHelper.Template} The new template
-     */
-    </span><span class="jsdoc-var">createTemplate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createHtml</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Roo.Template</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
-    }
     };
 }();
 </span></code></body></html>

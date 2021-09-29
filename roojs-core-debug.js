@@ -5189,18 +5189,18 @@ Roo.DomHelper = function(){
         // children
         var far = Array.from(from.childNodes);
         var tar = Array.from(to.childNodes);
-        for(var i = 0; i < Math.max(far.length, tar.length); i++) {
-            if (i < far.length && i < tar.length) {
-                updateNode(far[i], tar[i]);
-                continue;
-            }
-            if (i < far.length) {
-                // have from // but no 'to'
-                from.removeChild(far[i]);
-                continue;
-            }
-            from.appendChild(tar[i]);
-            // have 'to' but no from
+        // if the lengths are different.. then it's probably a editable content change, rather than
+        // a change of the block definition..
+        if (from.innerHTML == to.innerHTML) {
+            return;
+        }
+        if (far.length != tar.length) {
+            from.innerHTML = to.innerHTML;
+            return;
+        }
+        
+        for(var i = 0; i < far.length; i++) {
+            updateNode(far[i], tar[i]);
         }
         
         

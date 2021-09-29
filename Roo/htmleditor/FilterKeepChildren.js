@@ -9,6 +9,9 @@
 Roo.htmleditor.FilterKeepChildren = function(cfg)
 {
     Roo.apply(this, cfg);
+    if (this.tag === false) {
+        return; // dont walk.. (you can use this to use this just to do a child removal on a single tag )
+    }
     this.walk(cfg.node);
 }
 
@@ -24,7 +27,9 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
             node.removeChild(ar[i]);
             // what if we need to walk these???
             node.parentNode.insertBefore(ar[i], node);
-            this.walk(ar[i]);
+            if (this.tag !== false) {
+                this.walk(ar[i]);
+            }
         }
         node.parentNode.removeChild(node);
         return false; // don't walk children

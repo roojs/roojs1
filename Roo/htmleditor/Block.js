@@ -18,12 +18,12 @@ Roo.htmleditor.Block  = function(cfg)
 
 Roo.htmleditor.Block.factory = function(node)
 {
-    var cls = Roo.htmleditor['Block' + Roo.get(e).attr('data-block')];
+    var cls = Roo.htmleditor['Block' + Roo.get(node).attr('data-block')];
     if (typeof(cls) == 'undefined') {
-        Roo.log("OOps missing block : " + 'Block' + Roo.get(e).attr('data-block'));
+        Roo.log("OOps missing block : " + 'Block' + Roo.get(node).attr('data-block'));
         return false;
     }
-    return new cls({ node: e });  /// should trigger update element
+    return new cls({ node: node });  /// should trigger update element
 }
 
 

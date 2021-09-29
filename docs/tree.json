@@ -1306,6 +1306,11 @@
         "name" : "Roo.htmleditor",
         "cn" : [
           {
+            "name" : "Roo.htmleditor.BlockFigure",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.htmleditor.Filter",
             "cn" : [],
             "is_class" : false

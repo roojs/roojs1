@@ -347,7 +347,7 @@
      *
      * Note you can force an update by calling on('editorevent', scope, false)
      */
-    </span><span class="jsdoc-var">updateToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">updateToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">){
 
         </span><span class="jsdoc-comment">//Roo.log(ev);
         // capture mouse up - this is handy for selecting images..
@@ -361,6 +361,9 @@
 
         </span><span class="jsdoc-comment">// http://developer.yahoo.com/yui/docs/simple-editor.js.html
         // selectNode - might want to handle IE?
+
+
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">&amp;&amp;
             (</span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'mouseup' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'click' </span><span class="jsdoc-syntax">) &amp;&amp;
             </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ev.target.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'IMG'</span><span class="jsdoc-syntax">) {
@@ -387,7 +390,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.getAllAncestors</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-comment">// pick
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ty</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.HtmlEditor.ToolbarContext.types</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ty </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.HtmlEditor.ToolbarContext.types</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ans.length </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[0] ?  </span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[0]  : </span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[1]) : </span><span class="jsdoc-var">this.editorcore.doc.body</span><span class="jsdoc-syntax">;
@@ -395,86 +398,123 @@
             </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.tagName.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.editorcore.doc.body</span><span class="jsdoc-syntax">;
 
         }
-        </span><span class="jsdoc-comment">// pick a menu that exists..
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.tagName.toUpperCase</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-comment">//sel = typeof(ty[tn]) != 'undefined' ? sel : this.editor.doc.body;
-
-        </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.tagName.toUpperCase</span><span class="jsdoc-syntax">();
-
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lastSel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tb.selectedNode</span><span class="jsdoc-syntax">;
-
         </span><span class="jsdoc-var">this.tb.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">left_label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-comment">// if current menu does not match..
+        </span><span class="jsdoc-comment">// ok see if we are editing a block?
 
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.tb.name </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">lastSel </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.tb.selectedNode</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
-
-            </span><span class="jsdoc-var">this.tb.el.hide</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-comment">///console.log(&quot;show: &quot; + tn);
-            </span><span class="jsdoc-var">this.tb </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ty</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">];
-            </span><span class="jsdoc-var">this.tb.el.show</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-comment">// update name
-            </span><span class="jsdoc-var">this.tb.items.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">':&amp;nbsp;'</span><span class="jsdoc-syntax">;
-
-
-            </span><span class="jsdoc-comment">// update attributes
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tb.fields</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">this.tb.fields.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.stylename</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">e.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e.stylename</span><span class="jsdoc-syntax">]);
-                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                    }
-                   </span><span class="jsdoc-var">e.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.attrname</span><span class="jsdoc-syntax">));
-                });
-            }
-
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hasStyles </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">hasStyles </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
-            }
-
-            </span><span class="jsdoc-comment">// update styles
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hasStyles</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tb.fields.item</span><span class="jsdoc-syntax">(0);
-
-                </span><span class="jsdoc-var">st.store.removeAll</span><span class="jsdoc-syntax">();
-
-
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.className.split</span><span class="jsdoc-syntax">(/\s+/);
-
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">avs </span><span class="jsdoc-syntax">= [];
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">]) {
-
-                    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">avs.push</span><span class="jsdoc-syntax">( [ </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) &gt; -1 ? 1 : 0 ] );
-                    });
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[data-block]'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">block </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">block </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'BLOCK.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">db.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.tb.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                   </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.buildToolbar</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">block.context</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">block.friendly_name</span><span class="jsdoc-syntax">);
                 }
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">]) {
-                    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">avs.push</span><span class="jsdoc-syntax">( [ </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) &gt; -1 ? 1 : 0 ] );
-                    });
-                }
-
-                </span><span class="jsdoc-var">st.store.loadData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">avs</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">st.collapse</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-var">st.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">left_label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">block.friendly_name</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-comment">// flag our selected Node.
-            </span><span class="jsdoc-var">this.tb.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">;
 
 
-            </span><span class="jsdoc-var">Roo.menu.MenuMgr.hideAll</span><span class="jsdoc-syntax">();
 
         }
 
-        </span><span class="jsdoc-comment">///if (!updateFooter) {
-            //this.footDisp.dom.innerHTML = ''; 
-         //   return;
-        //}
-        // update the footer
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tb.name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">lastSel </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.tb.selectedNode </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// no change?
+        </span><span class="jsdoc-syntax">}
+
+
+
+        </span><span class="jsdoc-var">this.tb.el.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">///console.log(&quot;show: &quot; + tn);
+        </span><span class="jsdoc-var">this.tb </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">];
+
+        </span><span class="jsdoc-var">this.tb.el.show</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">// update name
+        </span><span class="jsdoc-var">this.tb.items.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">left_label </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">':&amp;nbsp;'</span><span class="jsdoc-syntax">;
+
+
+        </span><span class="jsdoc-comment">// update attributes
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dbo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">this.tb.fields.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">e.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dob</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e.attrname</span><span class="jsdoc-syntax">]);
+            });
+
+
+        } </span><span class="jsdoc-keyword">else  if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tb.fields</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.tb.fields.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.stylename</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">e.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e.stylename</span><span class="jsdoc-syntax">]);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-var">e.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.attrname</span><span class="jsdoc-syntax">));
+            });
+        }
+        </span><span class="jsdoc-var">this.updateToolbarStyles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// flag our selected Node.
+        </span><span class="jsdoc-var">this.tb.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">;
+
+
+        </span><span class="jsdoc-var">Roo.menu.MenuMgr.hideAll</span><span class="jsdoc-syntax">();
+
+
+
+
+        </span><span class="jsdoc-comment">// update the footer
         //
+        </span><span class="jsdoc-var">this.updateFooter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">);
+
+    },
+
+    </span><span class="jsdoc-var">updateToolbarStyles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">)
+    {
+         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hasStyles </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">hasStyles </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-comment">// update styles
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hasStyles</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tb.fields.item</span><span class="jsdoc-syntax">(0);
+
+            </span><span class="jsdoc-var">st.store.removeAll</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.className.split</span><span class="jsdoc-syntax">(/\s+/);
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">avs </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">]) {
+
+                </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">avs.push</span><span class="jsdoc-syntax">( [ </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) &gt; -1 ? 1 : 0 ] );
+                });
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">]) {
+                </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">avs.push</span><span class="jsdoc-syntax">( [ </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) &gt; -1 ? 1 : 0 ] );
+                });
+            }
+
+            </span><span class="jsdoc-var">st.store.loadData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">avs</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">st.collapse</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">st.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
+        }
+    },
+
+
+    </span><span class="jsdoc-var">updateFooter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ans </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.footDisp.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
 
         </span><span class="jsdoc-var">this.footerEls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ans.reverse</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footerEls</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
@@ -494,10 +534,8 @@
 
         </span><span class="jsdoc-var">this.footDisp.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-comment">//this.editorsyncValue();
-    </span><span class="jsdoc-syntax">},
 
-
+    },
 
 
     </span><span class="jsdoc-comment">// private
@@ -522,7 +560,7 @@
            </span><span class="jsdoc-var">item.enable</span><span class="jsdoc-syntax">();
         });
     },
-    </span><span class="jsdoc-var">buildToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nm</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">buildToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">friendly_name</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore</span><span class="jsdoc-syntax">;
@@ -533,14 +571,12 @@
 
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wdiv</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">// add the name..
+        </span><span class="jsdoc-var">tb.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nm</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nm</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;:&amp;nbsp;&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">((</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">friendly_name</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">nm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">friendly_name</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">&quot;:&amp;nbsp;&quot;</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">= [];
-        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">styles.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
-        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.styles</span><span class="jsdoc-syntax">);
+
 
         </span><span class="jsdoc-comment">// styles...
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">styles.length</span><span class="jsdoc-syntax">) {
@@ -574,7 +610,7 @@
         }
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.HtmlEditor.ToolbarContext</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbops </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tbc.options</span><span class="jsdoc-syntax">;
+
 
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">) {
 
@@ -584,8 +620,8 @@
 
             </span><span class="jsdoc-comment">//optname == used so you can configure the options available..
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">item.opts </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">item.opts </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.optname</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tbops</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">item.optname</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item.optname</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// use the b
+                </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.HtmlEditor.ToolbarContext.options</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">item.optname</span><span class="jsdoc-syntax">];
 
             }
 
@@ -598,8 +634,10 @@
                         </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">opts
                     </span><span class="jsdoc-syntax">}),
                     </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-roo-edit-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
+
                     </span><span class="jsdoc-var">attrname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">stylename </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.style </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">item.style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
                     </span><span class="jsdoc-var">displayField</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.displayField </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">item.displayField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">valueField </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">typeAhead</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -611,15 +649,26 @@
                     </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.width </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">item.width  </span><span class="jsdoc-syntax">: 130,
                     </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
                         </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tb.selectedNode.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">)) {
+                                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tb.selectedNode</span><span class="jsdoc-syntax">);
+                                </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.attrname</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">r.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">);
+                                </span><span class="jsdoc-var">b.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tb.selectedNode</span><span class="jsdoc-syntax">);
+                                </span><span class="jsdoc-var">editorcore.syncValue</span><span class="jsdoc-syntax">();
+                                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                            }
+
                             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.stylename</span><span class="jsdoc-syntax">) {
                                 </span><span class="jsdoc-var">tb.selectedNode.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.stylename</span><span class="jsdoc-syntax">] =  </span><span class="jsdoc-var">r.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">);
+                                </span><span class="jsdoc-var">editorcore.syncValue</span><span class="jsdoc-syntax">();
                                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                             }
                             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
                                 </span><span class="jsdoc-var">tb.selectedNode.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.attrname</span><span class="jsdoc-syntax">);
+                                </span><span class="jsdoc-var">editorcore.syncValue</span><span class="jsdoc-syntax">();
                                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                             }
                             </span><span class="jsdoc-var">tb.selectedNode.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.attrname</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">));
+                            </span><span class="jsdoc-var">editorcore.syncValue</span><span class="jsdoc-syntax">();
                         }
                     }
 
@@ -627,15 +676,16 @@
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
 
 
-
-                </span><span class="jsdoc-var">tb.addField</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.TextField</span><span class="jsdoc-syntax">({
-                    </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 100,
-                    </span><span class="jsdoc-comment">//allowBlank:false,
-                    </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
-                </span><span class="jsdoc-syntax">}));
-                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
-            }
+                </span><span class="jsdoc-comment">/*
+                tb.addField( new Roo.form.TextField({
+                    name: i,
+                    width: 100,
+                    //allowBlank:false,
+                    value: ''
+                }));
+                continue;
+                */
+            </span><span class="jsdoc-syntax">}
             </span><span class="jsdoc-var">tb.addField</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.TextField</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-roo-edit-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">attrname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
@@ -645,6 +695,15 @@
                 </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">listeners</span><span class="jsdoc-syntax">: {
                     </span><span class="jsdoc-string">'change' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nv</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ov</span><span class="jsdoc-syntax">) {
+
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tb.selectedNode.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">)) {
+                            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tb.selectedNode</span><span class="jsdoc-syntax">);
+                            </span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.attrname</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">nv</span><span class="jsdoc-syntax">;
+                            </span><span class="jsdoc-var">b.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tb.selectedNode</span><span class="jsdoc-syntax">);
+                            </span><span class="jsdoc-var">editorcore.syncValue</span><span class="jsdoc-syntax">();
+                            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                        }
+
                         </span><span class="jsdoc-var">tb.selectedNode.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.attrname</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nv</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-var">editorcore.syncValue</span><span class="jsdoc-syntax">();
                     }
@@ -671,50 +730,38 @@
         }
 
         </span><span class="jsdoc-var">tb.addFill</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">tb.addButton</span><span class="jsdoc-syntax">( {
-            </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Remove Tag'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// remove the tag, and puts the children outside...
+        </span><span class="jsdoc-var">tb.addButton</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Remove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// remove the tag, and puts the children outside...
 
             </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
                 </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
                 {
                     </span><span class="jsdoc-comment">// remove
                     // undo does not work.
-
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tb.selectedNode</span><span class="jsdoc-syntax">;
-
-                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.parentNode</span><span class="jsdoc-syntax">;
-
-                    </span><span class="jsdoc-comment">// what i'm going to select after deleting..
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stn </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">sn.childNodes</span><span class="jsdoc-syntax">[0] || </span><span class="jsdoc-var">sn.nextSibling </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">sn.previousSibling </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">pn</span><span class="jsdoc-syntax">;
-
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">stn</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">stn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.nextSibling</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">)) {
+                        </span><span class="jsdoc-var">sn.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+                    } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                        </span><span class="jsdoc-comment">// remove and keep parents.
+                        </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">});
+                        </span><span class="jsdoc-var">a.removeTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
                     }
-                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">en </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.childNodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">sn.childNodes.length </span><span class="jsdoc-syntax">- 1 ];
-                    </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.childNodes.length</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.childNodes</span><span class="jsdoc-syntax">[0];
-                        </span><span class="jsdoc-var">sn.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-                        </span><span class="jsdoc-comment">//Roo.log(node);
-                        </span><span class="jsdoc-var">pn.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
 
-                    }
-                    </span><span class="jsdoc-var">pn.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore.createRange</span><span class="jsdoc-syntax">();
 
                     </span><span class="jsdoc-var">range.setStart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stn</span><span class="jsdoc-syntax">,0);
                     </span><span class="jsdoc-var">range.setEnd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">en</span><span class="jsdoc-syntax">,0); </span><span class="jsdoc-comment">//????
-                    //range.selectNode(sel);
-
-
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">selection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore.getSelection</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-var">selection.removeAllRanges</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-var">selection.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
 
 
-
                     </span><span class="jsdoc-comment">//_this.updateToolbar(null, null, pn);
                     </span><span class="jsdoc-var">_this.updateToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">_this.footDisp.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">_this.updateFooter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+
                 }
             }
 
@@ -729,7 +776,7 @@
         </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-var">tb.el.setVisibilityMode</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">tb.el.hide</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">tb.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nm</span><span class="jsdoc-syntax">;
+
         </span><span class="jsdoc-comment">// dont need to disable them... as they will get hidden
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">tb</span><span class="jsdoc-syntax">;
 

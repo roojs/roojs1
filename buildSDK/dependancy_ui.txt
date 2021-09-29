@@ -108,6 +108,7 @@ Roo.htmleditor.FilterWord
 Roo.htmleditor.Tidy
 Roo.htmleditor.KeyEnter
 
+Roo.htmleditor.Block
 Roo.htmleditor.BlockFigure
 
 

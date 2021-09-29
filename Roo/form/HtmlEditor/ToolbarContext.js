@@ -440,10 +440,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         
         // update attributes
-        if (db) {
-            var dbo = new cls({node : sel});
+        if (block) {
+             
             this.tb.fields.each(function(e) {
-                e.setValue(dob[e.attrname]);
+                e.setValue(block[e.attrname]);
             });
             
             
@@ -458,9 +458,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         this.updateToolbarStyles(sel);  
        
-        // flag our selected Node.
-        this.tb.selectedNode = sel;
-       
+         
        
         Roo.menu.MenuMgr.hideAll();
 
@@ -649,7 +647,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     width: item.width ? item.width  : 130,
                     listeners : {
                         'select': function(c, r, i) {
-                            if (tb.selectedNode.hasClass('data-block')) {
+                            if (tb.selectedNode.hasAttribute('data-block')) {
                                 var b = Roo.htmleditor.Block.factory(tb.selectedNode);
                                 b[c.attrname] = r.get('val');
                                 b.updateElement(tb.selectedNode);
@@ -696,9 +694,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 listeners: {
                     'change' : function(f, nv, ov) {
                         
-                        if (tb.selectedNode.hasClass('data-block')) {
+                        if (tb.selectedNode.hasAttribute('data-block')) {
                             var b = Roo.htmleditor.Block.factory(tb.selectedNode);
-                            b[c.attrname] = nv;
+                            b[f.attrname] = nv;
                             b.updateElement(tb.selectedNode);
                             editorcore.syncValue();
                             return;
@@ -739,9 +737,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     // remove
                     // undo does not work.
                     var sn = tb.selectedNode;
-                    var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || pn;
+                    var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || sn.parentNode;
                     if (sn.hasAttribute('data-block')) {
+                        stn =  sn.nextSibling || sn.previousSibling || sn.parentNode;
                         sn.parentNode.removeChild(sn);
+                        
                     } else {
                         // remove and keep parents.
                         a = new Roo.htmleditor.FilterKeepChildren({tag : false});

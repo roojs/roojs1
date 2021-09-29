@@ -71,13 +71,13 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         },
         align: {
             title: "Align",
-            opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
+            opts : [[ "left"],[ "right"]],
             width : 80
             
         },
         text_align: {
             title: "Caption Align",
-            opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
+            opts : [ [ "left"],[ "right"],[ "center"]],
             width : 80
         },
         
@@ -93,29 +93,31 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
      */
     toObject : function()
     {
+        var d = document.createElement('div');
+        d.innerHTML = this.caption;
         
         var img = {
             tag : 'img',
             src : this.image_src,
-            alt : this.caption 
+            alt : d.innerText.replace(/\n/g, " ") // removeHTML..
         };
-        if ((''+this.image_width).length) {
+        if ((''+this.image_width).length > 0) {
             img.width = this.image_width;
         }
-        if ((''+ this.height).length) {
+        if ((''+ this.image_height).length > 0) {
             img.height = this.image_height;
         }
         return {
             tag: 'figure',
             'data-block' : 'Figure',
             contenteditable : 'false',
-            style : 'text-align:' + this.align,
+            style : 'display:table; float:' + this.align,
             cn : [
                 img,
                 {
                     tag: 'figcaption',
                     contenteditable : true,
-                    style : 'text-align:left',
+                    style : 'text-align:' + this.text_align,
                     html : this.caption 
                 }
             ]
@@ -125,7 +127,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     readElement : function(node)
     {
         this.image_src = this.getVal(node, 'img', 'src');
-        this.align = this.getVal(node, 'figure', 'style', 'text-align');
+        this.align = this.getVal(node, 'figure', 'style', 'float');
         this.caption = this.getVal(node, 'figcaption', 'html');
         this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
     } 
