@@ -347,7 +347,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      *
      * Note you can force an update by calling on('editorevent', scope, false)
      */
-    updateToolbar: function(editor,ev,sel){
+    updateToolbar: function(editor ,ev, sel){
 
         //Roo.log(ev);
         // capture mouse up - this is handy for selecting images..
@@ -361,6 +361,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         // http://developer.yahoo.com/yui/docs/simple-editor.js.html
         // selectNode - might want to handle IE?
+        
+        
+        
         if (ev &&
             (ev.type == 'mouseup' || ev.type == 'click' ) &&
             ev.target && ev.target.tagName == 'IMG') {
@@ -395,85 +398,101 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             sel = sel.tagName.length ? sel : this.editorcore.doc.body;
             
         }
-        // pick a menu that exists..
-        var tn = sel.tagName.toUpperCase();
-        //sel = typeof(ty[tn]) != 'undefined' ? sel : this.editor.doc.body;
         
-        tn = sel.tagName.toUpperCase();
+        
+        // ok see if we are editing a block?
+        
+        var db = Roo.get(sel).findParent('*[data-block]');
+        if (db) {
+            
+        }
+        
+      
+        var tn = sel.tagName.toUpperCase();
         
         var lastSel = this.tb.selectedNode;
         
         this.tb.selectedNode = sel;
         
-        // if current menu does not match..
         
-        if ((this.tb.name != tn) || (lastSel != this.tb.selectedNode) || ev === false) {
+        if (this.tb.name == tn && lastSel == this.tb.selectedNode && ev !== false) {
+            return; // no change?
+        }
+        
+        
+            
+        this.tb.el.hide();
+        ///console.log("show: " + tn);
+        this.tb =  typeof(ty[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
+        this.tb.el.show();
+        // update name
+        this.tb.items.first().el.innerHTML = tn + ':&nbsp;';
+        
+        
+        // update attributes
+        if (this.tb.fields) {
+            this.tb.fields.each(function(e) {
+                if (e.stylename) {
+                    e.setValue(sel.style[e.stylename]);
+                    return;
+                } 
+               e.setValue(sel.getAttribute(e.attrname));
+            });
+        }
+        this.updateToolbarStyles(sel);  
+       
+        // flag our selected Node.
+        this.tb.selectedNode = sel;
+       
+       
+        Roo.menu.MenuMgr.hideAll();
+
+        
+        
+    
+        // update the footer
+        //
+        this.updateFooter(ans);
+             
+    },
+    
+    updateToolbarStyles : function(sel)
+    {
+         var hasStyles = false;
+        for(var i in this.styles) {
+            hasStyles = true;
+            break;
+        }
+        
+        // update styles
+        if (hasStyles) { 
+            var st = this.tb.fields.item(0);
+            
+            st.store.removeAll();
+            var cn = sel.className.split(/\s+/);
+            
+            var avs = [];
+            if (this.styles['*']) {
                 
-            this.tb.el.hide();
-            ///console.log("show: " + tn);
-            this.tb =  typeof(ty[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
-            this.tb.el.show();
-            // update name
-            this.tb.items.first().el.innerHTML = tn + ':&nbsp;';
-            
-            
-            // update attributes
-            if (this.tb.fields) {
-                this.tb.fields.each(function(e) {
-                    if (e.stylename) {
-                        e.setValue(sel.style[e.stylename]);
-                        return;
-                    } 
-                   e.setValue(sel.getAttribute(e.attrname));
+                Roo.each(this.styles['*'], function(v) {
+                    avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
+                });
+            }
+            if (this.styles[tn]) { 
+                Roo.each(this.styles[tn], function(v) {
+                    avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
                 });
             }
             
-            var hasStyles = false;
-            for(var i in this.styles) {
-                hasStyles = true;
-                break;
-            }
-            
-            // update styles
-            if (hasStyles) { 
-                var st = this.tb.fields.item(0);
-                
-                st.store.removeAll();
-               
-                
-                var cn = sel.className.split(/\s+/);
-                
-                var avs = [];
-                if (this.styles['*']) {
-                    
-                    Roo.each(this.styles['*'], function(v) {
-                        avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
-                    });
-                }
-                if (this.styles[tn]) { 
-                    Roo.each(this.styles[tn], function(v) {
-                        avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
-                    });
-                }
-                
-                st.store.loadData(avs);
-                st.collapse();
-                st.setValue(cn);
-            }
-            // flag our selected Node.
-            this.tb.selectedNode = sel;
-           
-           
-            Roo.menu.MenuMgr.hideAll();
-
+            st.store.loadData(avs);
+            st.collapse();
+            st.setValue(cn);
         }
-        
-        ///if (!updateFooter) {
-            //this.footDisp.dom.innerHTML = ''; 
-         //   return;
-        //}
-        // update the footer
-        //
+    },
+    
+     
+    updateFooter : function(ans)
+    {
         var html = '';
         
         this.footerEls = ans.reverse();
@@ -494,10 +513,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         this.footDisp.dom.innerHTML = html;
             
-        //this.editorsyncValue();
-    },
-     
-    
+        
+    }
    
        
     // private
