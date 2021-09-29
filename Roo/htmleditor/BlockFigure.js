@@ -21,6 +21,15 @@
     
  */
 
+/**
+ * @class Roo.htmleditor.BlockFigure
+ * Block that has an image and a figcaption
+ 
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
 Roo.htmleditor.BlockFigure = function(cfg)
 {
     if (cfg.node) {
