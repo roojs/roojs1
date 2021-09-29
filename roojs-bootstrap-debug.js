@@ -26234,6 +26234,9 @@ Roo.extend(Roo.htmleditor.FilterComment, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterKeepChildren = function(cfg)
 {
     Roo.apply(this, cfg);
+    if (this.tag === false) {
+        return; // dont walk.. (you can use this to use this just to do a child removal on a single tag )
+    }
     this.walk(cfg.node);
 }
 
@@ -26249,7 +26252,9 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
             node.removeChild(ar[i]);
             // what if we need to walk these???
             node.parentNode.insertBefore(ar[i], node);
-            this.walk(ar[i]);
+            if (this.tag !== false) {
+                this.walk(ar[i]);
+            }
         }
         node.parentNode.removeChild(node);
         return false; // don't walk children
@@ -26604,8 +26609,8 @@ Roo.htmleditor.BlockFigure = function(cfg)
     }
     Roo.apply(this, cfg);
 }
-
-Roo.htmleditor.BlockFigure.prototype = {
+Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
+ 
     
     // setable values.
     image_src: '',
@@ -26618,6 +26623,7 @@ Roo.htmleditor.BlockFigure.prototype = {
     image_height : '',
     
     // used by context menu
+    friendly_name : 'Image with caption',
     
     context : { // ?? static really
         image_width : {
@@ -26687,45 +26693,16 @@ Roo.htmleditor.BlockFigure.prototype = {
         this.align = this.getVal(node, 'figure', 'style', 'text-align');
         this.caption = this.getVal(node, 'figcaption', 'html');
         this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
-    },
+    } 
     
-    updateElement : function(node)
-    {
-        Roo.DomHelper.overwrite(node, this.toObject());
-    },
-    /**
-     * convert to plain HTML for calling insertAtCursor..
-     */
-    toHTML : function()
-    {
-        return Roo.DomHelper.markup(this.toObject());
-    },
-    
-    getVal : function(node, tag, attr, style)
-    {
-        var n = node;
-        if (n.tagName != tag.toUpperCase()) {
-            // in theory we could do figure[3] << 3rd figure? or some more complex search..?
-            // but kiss for now.
-            n = node.getElementsByTagName(tag).item(0);
-        }
-        if (attr == 'html') {
-            return n.innerHTML;
-        }
-        if (attr == 'style') {
-            return Roo.get(n).getStyle(style);
-        }
-        
-        return Roo.get(n).attr(attr);
-            
-    }
+  
+   
+     
     
     
     
     
-    
-    
-}
+})
 
 //<script type="text/javascript">
 
@@ -27064,9 +27041,26 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var bd = (this.doc.body || this.doc.documentElement);
             //this.cleanUpPaste(); -- this is done else where and causes havoc..
             
+            // not sure if this is really the place for this
+            // the blocks are synced occasionaly - since we currently dont add listeners on the blocks
+            // this has to update attributes that get duped.. like alt and caption..
+            
+            Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
+                var cls = Roo.htmleditor['Block' + Roo.get(e).attr('data-block')];
+                if (typeof(cls) == 'undefined') {
+                    Roo.log("OOps missing block : " + 'Block' + Roo.get(e).attr('data-block'));
+                    return;
+                }
+                new cls({ node: e });  /// should trigger update element
+            },this);
+            
+            
             var div = document.createElement('div');
             div.innerHTML = bd.innerHTML;
             // remove content editable. (blocks)
+            
+           
+            
             new Roo.htmleditor.FilterAttributes({node : div, attrib_black: [ 'contenteditable' ] });
             //?? tidy?
             var html = div.innerHTML;
@@ -27139,8 +27133,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     Roo.log("OOps missing block : " + 'Block' + Roo.get(e).attr('data-block'));
                     return;
                 }
-                new cls(e);  /// should trigger update element
-            },this)
+                new cls({ node: e });  /// should trigger update element
+            },this);
+            var lc = this.doc.body.lastChild;
+            if (lc && lc.nodeType == 1 && lc.getAttribute("contenteditable") == "false") {
+                // add an extra line at the end.
+                this.doc.body.appendChild(this.doc.createChild('br'));
+            }
             
             
         }

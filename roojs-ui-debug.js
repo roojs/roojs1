@@ -21317,8 +21317,8 @@ Roo.htmleditor.BlockFigure = function(cfg)
     }
     Roo.apply(this, cfg);
 }
-
-Roo.htmleditor.BlockFigure.prototype = {
+Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
+ 
     
     // setable values.
     image_src: '',
@@ -21401,45 +21401,16 @@ Roo.htmleditor.BlockFigure.prototype = {
         this.align = this.getVal(node, 'figure', 'style', 'text-align');
         this.caption = this.getVal(node, 'figcaption', 'html');
         this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
-    },
+    } 
     
-    updateElement : function(node)
-    {
-        Roo.DomHelper.update(node, this.toObject());
-    },
-    /**
-     * convert to plain HTML for calling insertAtCursor..
-     */
-    toHTML : function()
-    {
-        return Roo.DomHelper.markup(this.toObject());
-    },
-    
-    getVal : function(node, tag, attr, style)
-    {
-        var n = node;
-        if (n.tagName != tag.toUpperCase()) {
-            // in theory we could do figure[3] << 3rd figure? or some more complex search..?
-            // but kiss for now.
-            n = node.getElementsByTagName(tag).item(0);
-        }
-        if (attr == 'html') {
-            return n.innerHTML;
-        }
-        if (attr == 'style') {
-            return Roo.get(n).getStyle(style);
-        }
-        
-        return Roo.get(n).attr(attr);
-            
-    }
-    
+  
+   
      
     
     
     
     
-}
+})
 
 //<script type="text/javascript">
 
