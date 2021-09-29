@@ -26604,7 +26604,13 @@ Roo.htmleditor.KeyEnter.prototype = {
 /**
  * @class Roo.htmleditor.BlockFigure
  * Block that has an image and a figcaption
- 
+ * @cfg {String} image_src the url for the image
+ * @cfg {String} align (left|right) alignment for the block default left
+ * @cfg {String} text_align (left|right) alignment for the text caption default left.
+ * @cfg {String} caption the text to appear below  (and in the alt tag)
+ * @cfg {String|number} image_width the width of the image number or %?
+ * @cfg {String|number} image_height the height of the image number or %?
+ * 
  * @constructor
  * Create a new Filter.
  * @param {Object} config Configuration options
