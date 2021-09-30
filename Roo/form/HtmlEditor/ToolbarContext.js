@@ -400,8 +400,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // ok see if we are editing a block?
         
         var db = Roo.get(sel).findParent('[data-block]');
+        var cepar = Roo.get(sel).findParent('[contenteditable=true]');
+        if (db && cepar && cepar.tagName != 'BODY') {
+            db = false; // we are inside an editable block.. = not sure how we are going to handle nested blocks!?
+        }
         var block = false;
-        if (db) {
+        if (db && !sel.hasAttribute('contenteditable') && sel.getAttribute('contenteditable') != 'true' ) {
             block = Roo.htmleditor.Block.factory(db);
             if (block) {
                 tn = 'BLOCK.' + db.getAttribute('data-block');
@@ -411,6 +415,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                    this.toolbars[tn] = this.buildToolbar( block.context,tn ,block.friendly_name);
                 }
                 left_label = block.friendly_name;
+                ans = this.editorcore.getAllAncestors();
             }
             
                 
@@ -441,18 +446,18 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             });
             
             
-        } else  if (this.tb.fields) {
-            this.tb.fields.each(function(e) {
+        } else  if (this.tb.fields && this.tb.selectedNode) {
+            this.tb.fields.each( function(e) {
                 if (e.stylename) {
-                    e.setValue(sel.style[e.stylename]);
+                    e.setValue(this.tb.selectedNode.style[e.stylename]);
                     return;
                 } 
-                e.setValue(sel.getAttribute(e.attrname));
-            });
+                e.setValue(this.tb.selectedNode.getAttribute(e.attrname));
+            }, this);
+            this.updateToolbarStyles(this.tb.selectedNode);  
         }
-        this.updateToolbarStyles(sel);  
-       
-         
+        
+        
        
         Roo.menu.MenuMgr.hideAll();
 
