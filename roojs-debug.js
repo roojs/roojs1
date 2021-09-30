@@ -48679,6 +48679,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // ok see if we are editing a block?
         
         var db = Roo.get(sel).findParent('[data-block]');
+        var cepar = Roo.get(sel).findParent('[contenteditable=true]');
+        if (db && cepar && cepar.tagName != 'BODY') {
+            db = false; // we are inside an editable block.. = not sure how we are going to handle nested blocks!?
+        }
         var block = false;
         if (db && !sel.hasAttribute('contenteditable') && sel.getAttribute('contenteditable') != 'true' ) {
             block = Roo.htmleditor.Block.factory(db);
