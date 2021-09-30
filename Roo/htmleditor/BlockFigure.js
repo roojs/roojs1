@@ -130,6 +130,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         this.align = this.getVal(node, 'figure', 'style', 'float');
         this.caption = this.getVal(node, 'figcaption', 'html');
         this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
+        this.image_width = this.getVal(node, 'img', 'width');
+        this.image_height = this.getVal(node, 'img', 'height');
+        
     } 
     
   
