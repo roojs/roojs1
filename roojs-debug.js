@@ -45352,28 +45352,7 @@ Roo.htmleditor.Block.prototype = {
     
 }
 
-/**
- *  
- * <figure data-block="BlockFigure" contenteditable="false" role="group" style="text-align:left">' + 
-        <img data-name="image" src="{SRC}">' + 
-        <figcaption data-name="caption" contenteditable="true" style="text-align:left">XXXX</figcaption>
-    </figure>
-    <br/>
-    
-    usage:
-     -- add to document..
-    new Roo.htmleditor.BlockFigure{
-        image_src : 'http://www.google.com',
-        caption : 'test',
-    }
-     -- load document, and search for elements of this...
-    Roo.DomQuery.select('*[data-block])
-    // loop each and call ctor ({node : xxx})
-    -- html editor click
-    ** see if parent has Element.findParent(*[data-block]);
-    use ?? to 
-    
- */
+ 
 
 /**
  * @class Roo.htmleditor.BlockFigure
@@ -45408,18 +45387,23 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     caption : '',
     text_align: 'left',
     
-    width : '100',
+    width : '45%',
+    margin: '2%',
     
     // used by context menu
     friendly_name : 'Image with caption',
     
     context : { // ?? static really
         width : {
-            title: "Width %",
+            title: "Width",
             width: 40
             // ?? number
         },
-        
+        margin : {
+            title: "Margin",
+            width: 40
+            // ?? number
+        },
         align: {
             title: "Align",
             opts : [[ "left"],[ "right"]],
@@ -45454,7 +45438,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             style : {
                 display: 'table',
                 float :  this.align ,
-                width :  this.width + '%'
+                width :  this.width,
+                margin: this.margin
             },
             cn : [
                 {
@@ -45484,8 +45469,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         this.align = this.getVal(node, 'figure', 'style', 'float');
         this.caption = this.getVal(node, 'figcaption', 'html');
         this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
-        this.image_width = this.getVal(node, 'img', 'width');
-        this.image_height = this.getVal(node, 'img', 'height');
+        this.width = this.getVal(node, 'figure', 'style', 'width');
+        this.margin = this.getVal(node, 'figure', 'style', 'margin');
         
     } 
     
@@ -45924,7 +45909,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var lc = this.doc.body.lastChild;
             if (lc && lc.nodeType == 1 && lc.getAttribute("contenteditable") == "false") {
                 // add an extra line at the end.
-                this.doc.body.appendChild(this.doc.createChild('br'));
+                this.doc.body.appendChild(this.doc.createElement('br'));
             }
             
             
@@ -49028,7 +49013,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     var range = editorcore.createRange();
         
                     range.setStart(stn,0);
-                    range.setEnd(en,0); //????
+                    range.setEnd(stn,0); 
                     var selection = editorcore.getSelection();
                     selection.removeAllRanges();
                     selection.addRange(range);

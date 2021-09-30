@@ -370,17 +370,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // they have click on an image...
             // let's see if we can change the selection...
             sel = ev.target;
-         
-            var nodeRange = sel.ownerDocument.createRange();
-            try {
-                nodeRange.selectNode(sel);
-            } catch (e) {
-                nodeRange.selectNodeContents(sel);
-            }
-            //nodeRange.collapse(true);
-            var s = this.editorcore.win.getSelection();
-            s.removeAllRanges();
-            s.addRange(nodeRange);
+            
+            
+            this.editorcore.selectNode(sel);
+             
         }  
         
       
@@ -413,6 +406,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             if (block) {
                 tn = 'BLOCK.' + db.getAttribute('data-block');
                 this.tb.selectedNode = db;
+                this.editorcore.selectNode(db);
                 if (typeof(this.toolbars[tn]) == 'undefined') {
                    this.toolbars[tn] = this.buildToolbar( block.context,tn ,block.friendly_name);
                 }
@@ -752,7 +746,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     var range = editorcore.createRange();
         
                     range.setStart(stn,0);
-                    range.setEnd(en,0); //????
+                    range.setEnd(stn,0); 
                     var selection = editorcore.getSelection();
                     selection.removeAllRanges();
                     selection.addRange(range);

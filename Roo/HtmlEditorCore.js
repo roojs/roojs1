@@ -424,7 +424,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var lc = this.doc.body.lastChild;
             if (lc && lc.nodeType == 1 && lc.getAttribute("contenteditable") == "false") {
                 // add an extra line at the end.
-                this.doc.body.appendChild(this.doc.createChild('br'));
+                this.doc.body.appendChild(this.doc.createElement('br'));
             }
             
             
@@ -839,6 +839,24 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         this.assignDocWin();
         return Roo.isIE ? this.doc.selection : this.win.getSelection();
+    },
+    /**
+     * Select a dom node
+     * @param {DomElement} node the node to select
+     */
+    selectNode : function(node)
+    {
+        
+            var nodeRange = node.ownerDocument.createRange();
+            try {
+                nodeRange.selectNode(node);
+            } catch (e) {
+                nodeRange.selectNodeContents(node);
+            }
+            //nodeRange.collapse(true);
+            var s = this.win.getSelection();
+            s.removeAllRanges();
+            s.addRange(nodeRange);
     },
     
     getSelectedNode: function() 
