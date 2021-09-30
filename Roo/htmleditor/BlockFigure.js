@@ -93,25 +93,23 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var d = document.createElement('div');
         d.innerHTML = this.caption;
         
-        var img = {
-            tag : 'img',
-            src : this.image_src,
-            alt : d.innerText.replace(/\n/g, " "), // removeHTML..
-            style: 'width:' + this.width + '%',
-        };
-         
         return {
             tag: 'figure',
             'data-block' : 'Figure',
             contenteditable : 'false',
             style : 'display:table; float:' + this.align,
             cn : [
-                img,
+                {
+                    tag : 'img',
+                    src : this.image_src,
+                    alt : d.innerText.replace(/\n/g, " "), // removeHTML..
+                    style: 'width:' + this.width + '%',
+                },
                 {
                     tag: 'figcaption',
                     contenteditable : true,
                     style : 'width:100%;text-align:' + this.text_align,
-                    html : this.caption.
+                    html : this.caption
                     
                 }
             ]
