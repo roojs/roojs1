@@ -289,19 +289,19 @@
         </span><span class="jsdoc-comment">// children
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">far </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.childNodes</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">to.childNodes</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far.length</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tar.length</span><span class="jsdoc-syntax">); </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">far.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">tar.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">updateNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">tar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
-                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">far.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-comment">// have from // but no 'to'
-                </span><span class="jsdoc-var">from.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
-                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-var">from.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
-            </span><span class="jsdoc-comment">// have 'to' but no from
-        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-comment">// if the lengths are different.. then it's probably a editable content change, rather than
+        // a change of the block definition..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.innerHTML </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">to.innerHTML</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far.length </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">tar.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">from.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">to.innerHTML</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">far.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">updateNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">tar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+        }
 
 
     };

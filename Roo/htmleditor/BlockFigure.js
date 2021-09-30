@@ -97,18 +97,26 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             tag: 'figure',
             'data-block' : 'Figure',
             contenteditable : 'false',
-            style : 'display:table; float:' + this.align,
+            style : {
+                display: 'table',
+                float :  this.align ,
+                width :  this.width + '%'
+            },
             cn : [
                 {
                     tag : 'img',
                     src : this.image_src,
                     alt : d.innerText.replace(/\n/g, " "), // removeHTML..
-                    style: 'width:' + this.width + '%',
+                    style: {
+                        width: '100%'
+                    }
                 },
                 {
                     tag: 'figcaption',
                     contenteditable : true,
-                    style : 'width:100%;text-align:' + this.text_align,
+                    style : {
+                        'text-align': this.text_align
+                    },
                     html : this.caption
                     
                 }
