@@ -45439,7 +45439,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 display: 'table',
                 float :  this.align ,
                 width :  this.width,
-                margin: this.margin
+                margin:  this.margin
             },
             cn : [
                 {
@@ -46324,6 +46324,24 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         this.assignDocWin();
         return Roo.isIE ? this.doc.selection : this.win.getSelection();
+    },
+    /**
+     * Select a dom node
+     * @param {DomElement} node the node to select
+     */
+    selectNode : function(node)
+    {
+        
+            var nodeRange = node.ownerDocument.createRange();
+            try {
+                nodeRange.selectNode(node);
+            } catch (e) {
+                nodeRange.selectNodeContents(node);
+            }
+            //nodeRange.collapse(true);
+            var s = this.win.getSelection();
+            s.removeAllRanges();
+            s.addRange(nodeRange);
     },
     
     getSelectedNode: function() 
@@ -48631,17 +48649,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // they have click on an image...
             // let's see if we can change the selection...
             sel = ev.target;
-         
-            var nodeRange = sel.ownerDocument.createRange();
-            try {
-                nodeRange.selectNode(sel);
-            } catch (e) {
-                nodeRange.selectNodeContents(sel);
-            }
-            //nodeRange.collapse(true);
-            var s = this.editorcore.win.getSelection();
-            s.removeAllRanges();
-            s.addRange(nodeRange);
+            
+            
+            this.editorcore.selectNode(sel);
+             
         }  
         
       
@@ -48669,15 +48680,17 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         var db = Roo.get(sel).findParent('[data-block]');
         var block = false;
-        if (db) {
+        if (db && !sel.hasAttribute('contenteditable') && sel.getAttribute('contenteditable') != 'true' ) {
             block = Roo.htmleditor.Block.factory(db);
             if (block) {
                 tn = 'BLOCK.' + db.getAttribute('data-block');
                 this.tb.selectedNode = db;
+                this.editorcore.selectNode(db);
                 if (typeof(this.toolbars[tn]) == 'undefined') {
                    this.toolbars[tn] = this.buildToolbar( block.context,tn ,block.friendly_name);
                 }
                 left_label = block.friendly_name;
+                ans = this.editorcore.getAllAncestors();
             }
             
                 
@@ -48708,18 +48721,18 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             });
             
             
-        } else  if (this.tb.fields) {
-            this.tb.fields.each(function(e) {
+        } else  if (this.tb.fields && this.tb.selectedNode) {
+            this.tb.fields.each( function(e) {
                 if (e.stylename) {
-                    e.setValue(sel.style[e.stylename]);
+                    e.setValue(this.tb.selectedNode.style[e.stylename]);
                     return;
                 } 
-                e.setValue(sel.getAttribute(e.attrname));
-            });
+                e.setValue(this.tb.selectedNode.getAttribute(e.attrname));
+            }, this);
+            this.updateToolbarStyles(this.tb.selectedNode);  
         }
-        this.updateToolbarStyles(sel);  
-       
-         
+        
+        
        
         Roo.menu.MenuMgr.hideAll();
 
