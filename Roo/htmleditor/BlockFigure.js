@@ -54,21 +54,18 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     caption : '',
     text_align: 'left',
     
-    image_width : '',
-    image_height : '',
+    width : '100',
     
     // used by context menu
     friendly_name : 'Image with caption',
     
     context : { // ?? static really
-        image_width : {
-            title: "Width",
+        width : {
+            title: "Width %",
             width: 40
+            // ?? number
         },
-        image_height:  {
-            title: "Height",
-            width: 40
-        },
+        
         align: {
             title: "Align",
             opts : [[ "left"],[ "right"]],
@@ -99,14 +96,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var img = {
             tag : 'img',
             src : this.image_src,
-            alt : d.innerText.replace(/\n/g, " ") // removeHTML..
+            alt : d.innerText.replace(/\n/g, " "), // removeHTML..
+            style: 'width:' + this.width + '%',
         };
-        if ((''+this.image_width).length > 0) {
-            img.width = this.image_width;
-        }
-        if ((''+ this.image_height).length > 0) {
-            img.height = this.image_height;
-        }
+         
         return {
             tag: 'figure',
             'data-block' : 'Figure',
@@ -117,8 +110,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 {
                     tag: 'figcaption',
                     contenteditable : true,
-                    style : 'text-align:' + this.text_align,
-                    html : this.caption 
+                    style : 'width:100%;text-align:' + this.text_align,
+                    html : this.caption.
+                    
                 }
             ]
         };
