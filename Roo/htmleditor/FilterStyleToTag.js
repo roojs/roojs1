@@ -44,7 +44,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
     replaceTag : function(node)
     {
         if (node.getAttribute("style") === null) {
-            return false;
+            return true;
         }
         var inject = [];
         for (var k in this.tags) {
@@ -54,7 +54,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
             }
         }
         if (!inject.length) {
-            return false;
+            return true; 
         }
         var cn = Array.from(node.childNodes);
         var nn = node;
@@ -67,7 +67,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
             node.removeChild(cn[i]);
             nn.appendChild(cn[i]);
         }
-        return false /// iterate thru
+        return true /// iterate thru
     }
     
 })
