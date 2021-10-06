@@ -45896,7 +45896,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if(this.owner.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
                 d.innerHTML = v;
-                //this.cleanUpPaste();
+                 
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
             }
@@ -46003,10 +46003,23 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.pushValue();
     },
     
-    onPasteEvent : function(e,v)  {
-         // default behaveiour should be our local cleanup paste? (optional?)
-         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
-         this.owner.fireEvent('paste', e, v);
+    onPasteEvent : function(e,v)
+    {
+        // I think we better assume paste is going to be a dirty load of rubish from word..
+        
+        // even pasting into a 'email version' of this widget will have to clean up that mess.
+        
+        var txt = e.browserEvent.clipboardData.getData('Text'); // clipboard event
+        var d = document.createElement('div');
+        d.innerHTML = txt;
+        new Roo.htmleditor.FilterWord(d);
+        this.insertAtCursor(d.innerHTML);
+        
+        e.preventDefault();
+        return false;
+        // default behaveiour should be our local cleanup paste? (optional?)
+        // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
+        //this.owner.fireEvent('paste', e, v);
     },
     // private
     onDestroy : function(){
@@ -46532,21 +46545,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // fully contined.
         return 3;
     },
-/*
-    // private? - in a new class?
-    cleanUpPaste :  function()
-    {
-        // cleans up the whole document..
-        Roo.log('cleanuppaste');
-        
-        this.cleanUpChild(this.doc.body);
-        var clean = this.cleanWordChars(this.doc.body.innerHTML);
-        if (clean != this.doc.body.innerHTML) {
-            this.doc.body.innerHTML = clean;
-        }
-        
-    },
-    */
+ 
     cleanWordChars : function(input) {// change the chars to hex code
         var he = Roo.HtmlEditorCore;
         
