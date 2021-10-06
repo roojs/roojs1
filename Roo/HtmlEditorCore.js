@@ -528,7 +528,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var d = document.createElement('div');
         d.innerHTML = txt;
         new Roo.htmleditor.FilterStyleToTag({ node : d });
-        new Roo.htmleditor.FilterAttributes({ node : d });
+        new Roo.htmleditor.FilterAttributes({
+            node : d,
+            attrib_white : ['href'],
+        });
          
         this.insertAtCursor(d.innerHTML);
         
