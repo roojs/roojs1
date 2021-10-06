@@ -11,6 +11,8 @@ Roo.htmleditor.FilterAttributes = function(cfg)
 {
     Roo.apply(this, cfg);
     this.attrib_black = this.attrib_black || [];
+    this.attrib_white = this.attrib_white || [];
+
     this.attrib_clean = this.attrib_clean || [];
     this.style_white = this.style_white || [];
     this.style_black = this.style_black || [];
@@ -23,6 +25,8 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
     
     attrib_black : false, // array
     attrib_clean : false,
+    attrib_white : false,
+
     style_white : false,
     style_black : false,
      
@@ -36,6 +40,12 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
         for (var i = node.attributes.length-1; i > -1 ; i--) {
             var a = node.attributes[i];
             //console.log(a);
+            if (this.attrib_white.length && this.attrib_white.indexOf(a.name.toLowerCase()) < 0) {
+                node.removeAttribute(a.name);
+                continue;
+            }
+            
+            
             
             if (a.name.toLowerCase().substr(0,2)=='on')  {
                 node.removeAttribute(a.name);
