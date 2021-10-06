@@ -45155,12 +45155,28 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
     replaceTag : function(node)
     {
         
-        if (!node.previousSibling || node.previousSibling.tagName != 'BR') {
+        if (!node.previousSibling) {
             return false;
         }
-        if (!node.nextSibling || node.nextSibling.tagName != 'BR') {
+        var ps = node.previousSibling;
+        
+        if (ps && ps.nodeType == 3 && ps.nodeValue.trim()) {
+            ps = ps.previousSibling;
+        }
+        if (!ps || ps.tagName != 'BR') {
             return false;
         }
+        
+        var ps = node.nextSibling;
+        
+        if (ps && ps.nodeType == 3 && ps.nodeValue.trim()) {
+            ps = ps.nextSibling;
+        }
+        if (!ps || ps.tagName != 'BR') {
+            return false;
+        }
+        
+        
         node.parentNode.removeChild(node); // remove me...
         
         return false; // no need to do children
