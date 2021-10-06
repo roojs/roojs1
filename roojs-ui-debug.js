@@ -20617,6 +20617,8 @@ Roo.htmleditor.FilterAttributes = function(cfg)
 {
     Roo.apply(this, cfg);
     this.attrib_black = this.attrib_black || [];
+    this.attrib_white = this.attrib_white || [];
+
     this.attrib_clean = this.attrib_clean || [];
     this.style_white = this.style_white || [];
     this.style_black = this.style_black || [];
@@ -20629,6 +20631,8 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
     
     attrib_black : false, // array
     attrib_clean : false,
+    attrib_white : false,
+
     style_white : false,
     style_black : false,
      
@@ -20642,6 +20646,12 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
         for (var i = node.attributes.length-1; i > -1 ; i--) {
             var a = node.attributes[i];
             //console.log(a);
+            if (this.attrib_white.length && this.attrib_white.indexOf(a.name.toLowerCase()) < 0) {
+                node.removeAttribute(a.name);
+                continue;
+            }
+            
+            
             
             if (a.name.toLowerCase().substr(0,2)=='on')  {
                 node.removeAttribute(a.name);
@@ -21153,7 +21163,43 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
         return true /// iterate thru
     }
     
-})
+})/**
+ * @class Roo.htmleditor.FilterLongBr
+ * BR/BR/BR - keep a maximum of 2...
+ * @constructor
+ * Run a new Long BR Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterLongBr = function(cfg)
+{
+    // no need to apply config.
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
+{
+    
+     
+    tag : 'BR',
+    
+     
+    replaceTag : function(node)
+    {
+        
+        if (!node.previousSibling || node.previousSibling.tagName != 'BR') {
+            return false;
+        }
+        if (!node.nextSibling || node.nextSibling.tagName != 'BR') {
+            return false;
+        }
+        node.parentNode.removeChild(node); // remove me...
+        
+        return false; // no need to do children
+
+    }
+    
+});
 /**
  * @class Roo.htmleditor.Tidy
  * Tidy HTML 
@@ -22085,9 +22131,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
-            'paste': this.onPasteEvent,
+            
             buffer:100,
             scope: this
+        });
+        Roo.EventManager.on(this.doc, {
+            'paste': this.onPasteEvent,
+            scope : this
         });
         if(Roo.isGecko){
             Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
@@ -22113,12 +22163,21 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         
-        var txt = e.browserEvent.clipboardData.getData('Text'); // clipboard event
-        var d = document.createElement('div');
-        d.innerHTML = txt;
+        var html = (e.browserEvent.clipboardData || window.clipboardData).getData('text/html'); // clipboard event
+        
+        var d = (new DOMParser().parseFromString(html, 'text/html')).body;
+        
+        
         new Roo.htmleditor.FilterStyleToTag({ node : d });
-        new Roo.htmleditor.FilterAttributes({ node : d });
-         
+        new Roo.htmleditor.FilterAttributes({
+            node : d,
+            attrib_white : ['href'],
+            attrib_clean : ['href'] 
+        });
+        new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
+        new Roo.htmleditor.FilterKeepChildren({node : d, tag : this.tag_remove} );
+        new Roo.htmleditor.FilterParagraph({ node : d });
+        new Roo.htmleditor.FilterLongBr({ node : d });
         this.insertAtCursor(d.innerHTML);
         
         e.preventDefault();
