@@ -21419,7 +21419,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     caption : '',
     text_align: 'left',
     
-    width : '45%',
+    width : '46%',
     margin: '2%',
     
     // used by context menu
