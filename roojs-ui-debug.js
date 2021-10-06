@@ -22044,7 +22044,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var txt = e.browserEvent.clipboardData.getData('Text'); // clipboard event
         var d = document.createElement('div');
         d.innerHTML = txt;
-        new Roo.htmleditor.FilterWord(d);
+        new Roo.htmleditor.FilterWord({ node : d });
         this.insertAtCursor(d.innerHTML);
         
         e.preventDefault();
