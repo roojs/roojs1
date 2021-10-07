@@ -529,20 +529,25 @@
         // even pasting into a 'email version' of this widget will have to clean up that mess.
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">e.browserEvent.clipboardData </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">window.clipboardData</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// clipboard event
+        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cleanWordChars</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">DOMParser</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.parseFromString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.body</span><span class="jsdoc-syntax">;
-
 
         </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterStyleToTag</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterAttributes</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">attrib_white </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">],
-            </span><span class="jsdoc-var">attrib_clean </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">]
+            </span><span class="jsdoc-var">attrib_white </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">],
+            </span><span class="jsdoc-var">attrib_clean </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">]
         });
         </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterBlack</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.black</span><span class="jsdoc-syntax">});
-        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tag_remove</span><span class="jsdoc-syntax">} );
+        </span><span class="jsdoc-comment">// should be fonts..
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'FONT' </span><span class="jsdoc-syntax">]} );
         </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterParagraph</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterSpan</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterLongBr</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
+
+
+
         </span><span class="jsdoc-var">this.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.innerHTML</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
@@ -697,20 +702,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.activated</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-comment">/*
-        if(Roo.isIE){
-            this.win.focus();
-            var r = this.doc.selection.createRange();
-            if(r){
-                r.collapse(true);
-                r.pasteHTML(text);
-                this.syncValue();
-                this.deferFocus();
-            
-            }
-            return;
-        }
-        */
+
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isOpera </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.win.focus</span><span class="jsdoc-syntax">();
 
@@ -720,6 +712,10 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">win </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.win</span><span class="jsdoc-syntax">;
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">win.getSelection </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">win.getSelection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getRangeAt</span><span class="jsdoc-syntax">) {
+
+                </span><span class="jsdoc-comment">// delete the existing?
+
+                </span><span class="jsdoc-var">this.createRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getSelection</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.deleteContents</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">win.getSelection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getRangeAt</span><span class="jsdoc-syntax">(0);
                 </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">range.createContextualFragment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">range.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
@@ -1077,10 +1073,19 @@
     },
 
     </span><span class="jsdoc-var">cleanWordChars </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">) {</span><span class="jsdoc-comment">// change the chars to hex code
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">he </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.HtmlEditorCore</span><span class="jsdoc-syntax">;
 
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">swapCodes  </span><span class="jsdoc-syntax">= [
+            [    8211, </span><span class="jsdoc-string">&quot;&amp;#8211;&quot; </span><span class="jsdoc-syntax">],
+            [    8212, </span><span class="jsdoc-string">&quot;&amp;#8212;&quot; </span><span class="jsdoc-syntax">],
+            [    8216,  </span><span class="jsdoc-string">&quot;'&quot; </span><span class="jsdoc-syntax">],
+            [    8217, </span><span class="jsdoc-string">&quot;'&quot; </span><span class="jsdoc-syntax">],
+            [    8220, </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">],
+            [    8221, </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">],
+            [    8226, </span><span class="jsdoc-string">&quot;*&quot; </span><span class="jsdoc-syntax">],
+            [    8230, </span><span class="jsdoc-string">&quot;...&quot; </span><span class="jsdoc-syntax">]
+        ];
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">output </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">he.swapCodes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sw</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">swapCodes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sw</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">swapper </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\\u&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">sw</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.toString</span><span class="jsdoc-syntax">(16), </span><span class="jsdoc-string">&quot;g&quot;</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// hex codes
 
             </span><span class="jsdoc-var">output </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">output.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">swapper</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sw</span><span class="jsdoc-syntax">[1]);
@@ -1324,36 +1329,39 @@
 </span><span class="jsdoc-syntax">});
 
 </span><span class="jsdoc-var">Roo.HtmlEditorCore.white </span><span class="jsdoc-syntax">= [
-        </span><span class="jsdoc-string">'area'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'br'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'hr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'wbr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'AREA'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'BR'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'IMG'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'INPUT'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'HR'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'WBR'</span><span class="jsdoc-syntax">,
 
-       </span><span class="jsdoc-string">'address'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'blockquote'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'dd'</span><span class="jsdoc-syntax">,      </span><span class="jsdoc-string">'dir'</span><span class="jsdoc-syntax">,       </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">'dl'</span><span class="jsdoc-syntax">,      </span><span class="jsdoc-string">'dt'</span><span class="jsdoc-syntax">,         </span><span class="jsdoc-string">'h1'</span><span class="jsdoc-syntax">,     </span><span class="jsdoc-string">'h2'</span><span class="jsdoc-syntax">,      </span><span class="jsdoc-string">'h3'</span><span class="jsdoc-syntax">,        </span><span class="jsdoc-string">'h4'</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">'h5'</span><span class="jsdoc-syntax">,      </span><span class="jsdoc-string">'h6'</span><span class="jsdoc-syntax">,         </span><span class="jsdoc-string">'hr'</span><span class="jsdoc-syntax">,     </span><span class="jsdoc-string">'isindex'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'listing'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'marquee'</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">'menu'</span><span class="jsdoc-syntax">,    </span><span class="jsdoc-string">'multicol'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">,     </span><span class="jsdoc-string">'p'</span><span class="jsdoc-syntax">,       </span><span class="jsdoc-string">'plaintext'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'pre'</span><span class="jsdoc-syntax">,
-       </span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,         </span><span class="jsdoc-string">'xmp'</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">'ADDRESS'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'BLOCKQUOTE'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'CENTER'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'DD'</span><span class="jsdoc-syntax">,      </span><span class="jsdoc-string">'DIR'</span><span class="jsdoc-syntax">,       </span><span class="jsdoc-string">'DIV'</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">'DL'</span><span class="jsdoc-syntax">,      </span><span class="jsdoc-string">'DT'</span><span class="jsdoc-syntax">,         </span><span class="jsdoc-string">'H1'</span><span class="jsdoc-syntax">,     </span><span class="jsdoc-string">'H2'</span><span class="jsdoc-syntax">,      </span><span class="jsdoc-string">'H3'</span><span class="jsdoc-syntax">,        </span><span class="jsdoc-string">'H4'</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">'H5'</span><span class="jsdoc-syntax">,      </span><span class="jsdoc-string">'H6'</span><span class="jsdoc-syntax">,         </span><span class="jsdoc-string">'HR'</span><span class="jsdoc-syntax">,     </span><span class="jsdoc-string">'ISINDEX'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'LISTING'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'MARQUEE'</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">'MENU'</span><span class="jsdoc-syntax">,    </span><span class="jsdoc-string">'MULTICOL'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'OL'</span><span class="jsdoc-syntax">,     </span><span class="jsdoc-string">'P'</span><span class="jsdoc-syntax">,       </span><span class="jsdoc-string">'PLAINTEXT'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'PRE'</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">'TABLE'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'UL'</span><span class="jsdoc-syntax">,         </span><span class="jsdoc-string">'XMP'</span><span class="jsdoc-syntax">,
 
-       </span><span class="jsdoc-string">'caption'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'col'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'colgroup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'tbody'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'tfoot'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">,
-      </span><span class="jsdoc-string">'thead'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
+       </span><span class="jsdoc-string">'CAPTION'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'COL'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'COLGROUP'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'TBODY'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'TD'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'TFOOT'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'TH'</span><span class="jsdoc-syntax">,
+      </span><span class="jsdoc-string">'THEAD'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'TR'</span><span class="jsdoc-syntax">,
 
-      </span><span class="jsdoc-string">'dir'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'menu'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'dl'</span><span class="jsdoc-syntax">,
+      </span><span class="jsdoc-string">'DIR'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'MENU'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'OL'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'UL'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'DL'</span><span class="jsdoc-syntax">,
 
-      </span><span class="jsdoc-string">'embed'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'object'
+      </span><span class="jsdoc-string">'EMBED'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'OBJECT'
 </span><span class="jsdoc-syntax">];
 
 
 </span><span class="jsdoc-var">Roo.HtmlEditorCore.black </span><span class="jsdoc-syntax">= [
     </span><span class="jsdoc-comment">//    'embed',  'object', // enable - backend responsiblity to clean thiese
-        </span><span class="jsdoc-string">'applet'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// 
-        </span><span class="jsdoc-string">'base'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'basefont'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'bgsound'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'blink'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'body'</span><span class="jsdoc-syntax">,
-        </span><span class="jsdoc-string">'frame'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'frameset'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'head'</span><span class="jsdoc-syntax">,    </span><span class="jsdoc-string">'html'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'ilayer'</span><span class="jsdoc-syntax">,
-        </span><span class="jsdoc-string">'iframe'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'layer'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">,     </span><span class="jsdoc-string">'meta'</span><span class="jsdoc-syntax">,    </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">,
-        </span><span class="jsdoc-string">'script'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'style' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'title'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'xml' </span><span class="jsdoc-comment">// clean later..
+        </span><span class="jsdoc-string">'APPLET'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// 
+        </span><span class="jsdoc-string">'BASE'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'BASEFONT'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'BGSOUND'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'BLINK'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'BODY'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'FRAME'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'FRAMESET'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'HEAD'</span><span class="jsdoc-syntax">,    </span><span class="jsdoc-string">'HTML'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'ILAYER'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'IFRAME'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'LAYER'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'LINK'</span><span class="jsdoc-syntax">,     </span><span class="jsdoc-string">'META'</span><span class="jsdoc-syntax">,    </span><span class="jsdoc-string">'OBJECT'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'SCRIPT'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'STYLE' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'TITLE'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'XML'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">//'FONT' // CLEAN LATER..
+        </span><span class="jsdoc-string">'COLGROUP'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'COL'  </span><span class="jsdoc-comment">// messy tables.
+
 </span><span class="jsdoc-syntax">];
-</span><span class="jsdoc-var">Roo.HtmlEditorCore.clean </span><span class="jsdoc-syntax">= [
-    </span><span class="jsdoc-string">'script'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'title'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'xml'
+</span><span class="jsdoc-var">Roo.HtmlEditorCore.clean </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-comment">// ?? needed???
+     </span><span class="jsdoc-string">'SCRIPT'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'STYLE'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'TITLE'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'XML'
 </span><span class="jsdoc-syntax">];
 </span><span class="jsdoc-var">Roo.HtmlEditorCore.tag_remove </span><span class="jsdoc-syntax">= [
-    </span><span class="jsdoc-string">'font'
+    </span><span class="jsdoc-string">'FONT'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'TBODY'
 </span><span class="jsdoc-syntax">];
 </span><span class="jsdoc-comment">// attributes..
 
@@ -1384,15 +1392,6 @@
 </span><span class="jsdoc-syntax">];
 
 
-</span><span class="jsdoc-var">Roo.HtmlEditorCore.swapCodes   </span><span class="jsdoc-syntax">=[
-    [    8211, </span><span class="jsdoc-string">&quot;&amp;#8211;&quot; </span><span class="jsdoc-syntax">],
-    [    8212, </span><span class="jsdoc-string">&quot;&amp;#8212;&quot; </span><span class="jsdoc-syntax">],
-    [    8216,  </span><span class="jsdoc-string">&quot;'&quot; </span><span class="jsdoc-syntax">],
-    [    8217, </span><span class="jsdoc-string">&quot;'&quot; </span><span class="jsdoc-syntax">],
-    [    8220, </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">],
-    [    8221, </span><span class="jsdoc-string">'&quot;' </span><span class="jsdoc-syntax">],
-    [    8226, </span><span class="jsdoc-string">&quot;*&quot; </span><span class="jsdoc-syntax">],
-    [    8230, </span><span class="jsdoc-string">&quot;...&quot; </span><span class="jsdoc-syntax">]
-];
+
 
     </span></code></body></html>
