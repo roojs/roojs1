@@ -496,9 +496,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
-            'paste': this.onPasteEvent,
+            
             buffer:100,
             scope: this
+        });
+        Roo.EventManager.on(this.doc, {
+            'paste': this.onPasteEvent,
+            scope : this
         });
         if(Roo.isGecko){
             Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
@@ -524,15 +528,26 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         
-        var txt = e.browserEvent.clipboardData.getData('Text'); // clipboard event
-        var d = document.createElement('div');
-        d.innerHTML = txt;
+        var html = (e.browserEvent.clipboardData || window.clipboardData).getData('text/html'); // clipboard event
+        html = this.cleanWordChars(html);
+        
+        var d = (new DOMParser().parseFromString(html, 'text/html')).body;
+        
         new Roo.htmleditor.FilterStyleToTag({ node : d });
         new Roo.htmleditor.FilterAttributes({
             node : d,
-            attrib_white : ['href'],
+            attrib_white : ['href', 'src', 'name'],
+            attrib_clean : ['href', 'src', 'name'] 
         });
-         
+        new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
+        // should be fonts..
+        new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT' ]} );
+        new Roo.htmleditor.FilterParagraph({ node : d });
+        new Roo.htmleditor.FilterSpan({ node : d });
+        new Roo.htmleditor.FilterLongBr({ node : d });
+        
+        
+        
         this.insertAtCursor(d.innerHTML);
         
         e.preventDefault();
@@ -687,20 +702,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if(!this.activated){
             return;
         }
-        /*
-        if(Roo.isIE){
-            this.win.focus();
-            var r = this.doc.selection.createRange();
-            if(r){
-                r.collapse(true);
-                r.pasteHTML(text);
-                this.syncValue();
-                this.deferFocus();
-            
-            }
-            return;
-        }
-        */
+         
         if(Roo.isGecko || Roo.isOpera || Roo.isSafari){
             this.win.focus();
             
@@ -710,6 +712,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var win = this.win;
             
             if (win.getSelection && win.getSelection().getRangeAt) {
+                
+                // delete the existing?
+                
+                this.createRange(this.getSelection()).deleteContents();
                 range = win.getSelection().getRangeAt(0);
                 node = typeof(text) == 'string' ? range.createContextualFragment(text) : text;
                 range.insertNode(node);
@@ -1067,10 +1073,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
  
     cleanWordChars : function(input) {// change the chars to hex code
-        var he = Roo.HtmlEditorCore;
         
+       var swapCodes  = [ 
+            [    8211, "&#8211;" ], 
+            [    8212, "&#8212;" ], 
+            [    8216,  "'" ],  
+            [    8217, "'" ],  
+            [    8220, '"' ],  
+            [    8221, '"' ],  
+            [    8226, "*" ],  
+            [    8230, "..." ]
+        ]; 
         var output = input;
-        Roo.each(he.swapCodes, function(sw) { 
+        Roo.each(swapCodes, function(sw) { 
             var swapper = new RegExp("\\u" + sw[0].toString(16), "g"); // hex codes
             
             output = output.replace(swapper, sw[1]);
@@ -1314,36 +1329,39 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 });
 
 Roo.HtmlEditorCore.white = [
-        'area', 'br', 'img', 'input', 'hr', 'wbr',
+        'AREA', 'BR', 'IMG', 'INPUT', 'HR', 'WBR',
         
-       'address', 'blockquote', 'center', 'dd',      'dir',       'div', 
-       'dl',      'dt',         'h1',     'h2',      'h3',        'h4', 
-       'h5',      'h6',         'hr',     'isindex', 'listing',   'marquee', 
-       'menu',    'multicol',   'ol',     'p',       'plaintext', 'pre', 
-       'table',   'ul',         'xmp', 
+       'ADDRESS', 'BLOCKQUOTE', 'CENTER', 'DD',      'DIR',       'DIV', 
+       'DL',      'DT',         'H1',     'H2',      'H3',        'H4', 
+       'H5',      'H6',         'HR',     'ISINDEX', 'LISTING',   'MARQUEE', 
+       'MENU',    'MULTICOL',   'OL',     'P',       'PLAINTEXT', 'PRE', 
+       'TABLE',   'UL',         'XMP', 
        
-       'caption', 'col', 'colgroup', 'tbody', 'td', 'tfoot', 'th', 
-      'thead',   'tr', 
+       'CAPTION', 'COL', 'COLGROUP', 'TBODY', 'TD', 'TFOOT', 'TH', 
+      'THEAD',   'TR', 
      
-      'dir', 'menu', 'ol', 'ul', 'dl',
+      'DIR', 'MENU', 'OL', 'UL', 'DL',
        
-      'embed',  'object'
+      'EMBED',  'OBJECT'
 ];
 
 
 Roo.HtmlEditorCore.black = [
     //    'embed',  'object', // enable - backend responsiblity to clean thiese
-        'applet', // 
-        'base',   'basefont', 'bgsound', 'blink',  'body', 
-        'frame',  'frameset', 'head',    'html',   'ilayer', 
-        'iframe', 'layer',  'link',     'meta',    'object',   
-        'script', 'style' ,'title',  'xml' // clean later..
+        'APPLET', // 
+        'BASE',   'BASEFONT', 'BGSOUND', 'BLINK',  'BODY', 
+        'FRAME',  'FRAMESET', 'HEAD',    'HTML',   'ILAYER', 
+        'IFRAME', 'LAYER',  'LINK',     'META',    'OBJECT',   
+        'SCRIPT', 'STYLE' ,'TITLE',  'XML',
+        //'FONT' // CLEAN LATER..
+        'COLGROUP', 'COL'  // messy tables.
+        
 ];
-Roo.HtmlEditorCore.clean = [
-    'script', 'style', 'title', 'xml'
+Roo.HtmlEditorCore.clean = [ // ?? needed???
+     'SCRIPT', 'STYLE', 'TITLE', 'XML'
 ];
 Roo.HtmlEditorCore.tag_remove = [
-    'font'
+    'FONT', 'TBODY'  
 ];
 // attributes..
 
@@ -1374,15 +1392,6 @@ Roo.HtmlEditorCore.cblack= [
 ];
 
 
-Roo.HtmlEditorCore.swapCodes   =[ 
-    [    8211, "&#8211;" ], 
-    [    8212, "&#8212;" ], 
-    [    8216,  "'" ],  
-    [    8217, "'" ],  
-    [    8220, '"' ],  
-    [    8221, '"' ],  
-    [    8226, "*" ],  
-    [    8230, "..." ]
-]; 
+
 
     

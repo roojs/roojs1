@@ -20821,13 +20821,30 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
     replaceTag : function(node)
     {
         // walk children...
+        Roo.log(node);
         var ar = Array.from(node.childNodes);
+        //remove first..
         for (var i = 0; i < ar.length; i++) {
+            if (ar[i].nodeType == 1) {
+                if (
+                    (typeof(this.tag) == 'object' && this.tag.indexOf(ar[i].tagName) > -1)
+                    || // array and it matches
+                    (typeof(this.tag) == 'string' && this.tag == ar[i].tagName)
+                ) {
+                    this.replaceTag(ar[i]); // child is blacklisted as well...
+                    continue;
+                }
+            }
+        }  
+        ar = Array.from(node.childNodes);
+        for (var i = 0; i < ar.length; i++) {
+         
             node.removeChild(ar[i]);
             // what if we need to walk these???
             node.parentNode.insertBefore(ar[i], node);
             if (this.tag !== false) {
                 this.walk(ar[i]);
+                
             }
         }
         node.parentNode.removeChild(node);
@@ -21136,6 +21153,8 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
     
     replaceTag : function(node)
     {
+        
+        
         if (node.getAttribute("style") === null) {
             return true;
         }
@@ -21187,27 +21206,44 @@ Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
     replaceTag : function(node)
     {
         
+        var ps = node.nextSibling;
+        while (ps && ps.nodeType == 3 && ps.nodeValue.trim().length < 1) {
+            ps = ps.nextSibling;
+        }
+        
+        if (!ps &&  [ 'TD', 'TH', 'LI', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6' ].indexOf(node.parentNode.tagName) > -1) { 
+            node.parentNode.removeChild(node); // remove last BR inside one fo these tags
+            return false;
+        }
+        
+        if (!ps || ps.nodeType != 1) {
+            return false;
+        }
+        
+        if (!ps || ps.tagName != 'BR') {
+           
+            return false;
+        }
+        
+        
+        
+        
+        
         if (!node.previousSibling) {
             return false;
         }
         var ps = node.previousSibling;
         
-        if (ps && ps.nodeType == 3 && ps.nodeValue.trim()) {
+        while (ps && ps.nodeType == 3 && ps.nodeValue.trim().length < 1) {
             ps = ps.previousSibling;
         }
-        if (!ps || ps.tagName != 'BR') {
+        if (!ps || ps.nodeType != 1) {
             return false;
         }
-        
-        var ps = node.nextSibling;
-        
-        if (ps && ps.nodeType == 3 && ps.nodeValue.trim()) {
-            ps = ps.nextSibling;
-        }
-        if (!ps || ps.tagName != 'BR') {
+        // if header or BR before.. then it's a candidate for removal.. - as we only want '2' of these..
+        if (!ps || [ 'BR', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6' ].indexOf(ps.tagName) < 0) {
             return false;
         }
-        
         
         node.parentNode.removeChild(node); // remove me...
         
@@ -21397,13 +21433,48 @@ Roo.htmleditor.KeyEnter.prototype = {
         var newEle = doc.createTextNode('\n');
         docFragment.appendChild(newEle);
     
+    
+        var range = this.core.win.getSelection().getRangeAt(0);
+        var n = range.commonAncestorContainer ;
+        while (n && n.nodeType != 1) {
+            n  = n.parentNode;
+        }
+        var li = false;
+        if (n && n.tagName == 'UL') {
+            li = doc.createElement('LI');
+            n.appendChild(li);
+            
+        }
+        if (n && n.tagName == 'LI') {
+            li = doc.createElement('LI');
+            if (n.nextSibling) {
+                n.parentNode.insertBefore(li, n.firstSibling);
+                
+            } else {
+                n.parentNode.appendChild(li);
+            }
+        }
+        if (li) {   
+            range = doc.createRange();
+            range.setStartAfter(li);
+            range.collapse(true);
+        
+            //make the cursor there
+            var sel = this.core.win.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+            return false;
+            
+            
+        }
         //add the br, or p, or something else
         newEle = doc.createElement('br');
         docFragment.appendChild(newEle);
     
         //make the br replace selection
-        var range = this.core.win.getSelection().getRangeAt(0);
+        
         range.deleteContents();
+        
         range.insertNode(docFragment);
     
         //create a new range
@@ -22180,20 +22251,25 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         
         var html = (e.browserEvent.clipboardData || window.clipboardData).getData('text/html'); // clipboard event
+        html = this.cleanWordChars(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
-        
         
         new Roo.htmleditor.FilterStyleToTag({ node : d });
         new Roo.htmleditor.FilterAttributes({
             node : d,
-            attrib_white : ['href'],
-            attrib_clean : ['href'] 
+            attrib_white : ['href', 'src', 'name'],
+            attrib_clean : ['href', 'src', 'name'] 
         });
         new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
-        new Roo.htmleditor.FilterKeepChildren({node : d, tag : this.tag_remove} );
+        // should be fonts..
+        new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT' ]} );
         new Roo.htmleditor.FilterParagraph({ node : d });
+        new Roo.htmleditor.FilterSpan({ node : d });
         new Roo.htmleditor.FilterLongBr({ node : d });
+        
+        
+        
         this.insertAtCursor(d.innerHTML);
         
         e.preventDefault();
@@ -22348,20 +22424,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if(!this.activated){
             return;
         }
-        /*
-        if(Roo.isIE){
-            this.win.focus();
-            var r = this.doc.selection.createRange();
-            if(r){
-                r.collapse(true);
-                r.pasteHTML(text);
-                this.syncValue();
-                this.deferFocus();
-            
-            }
-            return;
-        }
-        */
+         
         if(Roo.isGecko || Roo.isOpera || Roo.isSafari){
             this.win.focus();
             
@@ -22371,6 +22434,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var win = this.win;
             
             if (win.getSelection && win.getSelection().getRangeAt) {
+                
+                // delete the existing?
+                
+                this.createRange(this.getSelection()).deleteContents();
                 range = win.getSelection().getRangeAt(0);
                 node = typeof(text) == 'string' ? range.createContextualFragment(text) : text;
                 range.insertNode(node);
@@ -22728,10 +22795,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
  
     cleanWordChars : function(input) {// change the chars to hex code
-        var he = Roo.HtmlEditorCore;
         
+       var swapCodes  = [ 
+            [    8211, "&#8211;" ], 
+            [    8212, "&#8212;" ], 
+            [    8216,  "'" ],  
+            [    8217, "'" ],  
+            [    8220, '"' ],  
+            [    8221, '"' ],  
+            [    8226, "*" ],  
+            [    8230, "..." ]
+        ]; 
         var output = input;
-        Roo.each(he.swapCodes, function(sw) { 
+        Roo.each(swapCodes, function(sw) { 
             var swapper = new RegExp("\\u" + sw[0].toString(16), "g"); // hex codes
             
             output = output.replace(swapper, sw[1]);
@@ -22975,36 +23051,39 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 });
 
 Roo.HtmlEditorCore.white = [
-        'area', 'br', 'img', 'input', 'hr', 'wbr',
+        'AREA', 'BR', 'IMG', 'INPUT', 'HR', 'WBR',
         
-       'address', 'blockquote', 'center', 'dd',      'dir',       'div', 
-       'dl',      'dt',         'h1',     'h2',      'h3',        'h4', 
-       'h5',      'h6',         'hr',     'isindex', 'listing',   'marquee', 
-       'menu',    'multicol',   'ol',     'p',       'plaintext', 'pre', 
-       'table',   'ul',         'xmp', 
+       'ADDRESS', 'BLOCKQUOTE', 'CENTER', 'DD',      'DIR',       'DIV', 
+       'DL',      'DT',         'H1',     'H2',      'H3',        'H4', 
+       'H5',      'H6',         'HR',     'ISINDEX', 'LISTING',   'MARQUEE', 
+       'MENU',    'MULTICOL',   'OL',     'P',       'PLAINTEXT', 'PRE', 
+       'TABLE',   'UL',         'XMP', 
        
-       'caption', 'col', 'colgroup', 'tbody', 'td', 'tfoot', 'th', 
-      'thead',   'tr', 
+       'CAPTION', 'COL', 'COLGROUP', 'TBODY', 'TD', 'TFOOT', 'TH', 
+      'THEAD',   'TR', 
      
-      'dir', 'menu', 'ol', 'ul', 'dl',
+      'DIR', 'MENU', 'OL', 'UL', 'DL',
        
-      'embed',  'object'
+      'EMBED',  'OBJECT'
 ];
 
 
 Roo.HtmlEditorCore.black = [
     //    'embed',  'object', // enable - backend responsiblity to clean thiese
-        'applet', // 
-        'base',   'basefont', 'bgsound', 'blink',  'body', 
-        'frame',  'frameset', 'head',    'html',   'ilayer', 
-        'iframe', 'layer',  'link',     'meta',    'object',   
-        'script', 'style' ,'title',  'xml' // clean later..
+        'APPLET', // 
+        'BASE',   'BASEFONT', 'BGSOUND', 'BLINK',  'BODY', 
+        'FRAME',  'FRAMESET', 'HEAD',    'HTML',   'ILAYER', 
+        'IFRAME', 'LAYER',  'LINK',     'META',    'OBJECT',   
+        'SCRIPT', 'STYLE' ,'TITLE',  'XML',
+        //'FONT' // CLEAN LATER..
+        'COLGROUP', 'COL'  // messy tables.
+        
 ];
-Roo.HtmlEditorCore.clean = [
-    'script', 'style', 'title', 'xml'
+Roo.HtmlEditorCore.clean = [ // ?? needed???
+     'SCRIPT', 'STYLE', 'TITLE', 'XML'
 ];
 Roo.HtmlEditorCore.tag_remove = [
-    'font'
+    'FONT', 'TBODY'  
 ];
 // attributes..
 
@@ -23035,16 +23114,7 @@ Roo.HtmlEditorCore.cblack= [
 ];
 
 
-Roo.HtmlEditorCore.swapCodes   =[ 
-    [    8211, "&#8211;" ], 
-    [    8212, "&#8212;" ], 
-    [    8216,  "'" ],  
-    [    8217, "'" ],  
-    [    8220, '"' ],  
-    [    8221, '"' ],  
-    [    8226, "*" ],  
-    [    8230, "..." ]
-]; 
+
 
     //<script type="text/javascript">
 

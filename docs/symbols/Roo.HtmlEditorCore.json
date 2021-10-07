@@ -124,6 +124,32 @@
       "returns" : []
     },
     {
+      "name" : "selectNode",
+      "type" : "function",
+      "desc" : "Select a dom node",
+      "sig" : "(node)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "DomElement",
+          "desc" : "the node to select",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "execCmd",
       "type" : "function",
       "desc" : "Executes a Midas editor command directly on the editor document.\nFor visual commands, you should use {@link #relayCmd} instead.\n<b>This should only be called after the editor is initialized.</b>",

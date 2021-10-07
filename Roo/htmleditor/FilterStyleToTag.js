@@ -43,6 +43,8 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
     
     replaceTag : function(node)
     {
+        
+        
         if (node.getAttribute("style") === null) {
             return true;
         }

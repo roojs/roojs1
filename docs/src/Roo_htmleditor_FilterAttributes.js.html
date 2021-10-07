@@ -11,6 +11,8 @@
 {
     </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.attrib_black </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.attrib_black </span><span class="jsdoc-syntax">|| [];
+    </span><span class="jsdoc-var">this.attrib_white </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.attrib_white </span><span class="jsdoc-syntax">|| [];
+
     </span><span class="jsdoc-var">this.attrib_clean </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.attrib_clean </span><span class="jsdoc-syntax">|| [];
     </span><span class="jsdoc-var">this.style_white </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.style_white </span><span class="jsdoc-syntax">|| [];
     </span><span class="jsdoc-var">this.style_black </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.style_black </span><span class="jsdoc-syntax">|| [];
@@ -23,6 +25,8 @@
 
     </span><span class="jsdoc-var">attrib_black </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// array
     </span><span class="jsdoc-var">attrib_clean </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">attrib_white </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
     </span><span class="jsdoc-var">style_white </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">style_black </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
@@ -36,6 +40,12 @@
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.attributes.length</span><span class="jsdoc-syntax">-1; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt; -1 ; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.attributes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
             </span><span class="jsdoc-comment">//console.log(a);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.attrib_white.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.attrib_white.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name.toLowerCase</span><span class="jsdoc-syntax">()) &lt; 0) {
+                </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+
+
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name.toLowerCase</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.substr</span><span class="jsdoc-syntax">(0,2)==</span><span class="jsdoc-string">'on'</span><span class="jsdoc-syntax">)  {
                 </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.name</span><span class="jsdoc-syntax">);

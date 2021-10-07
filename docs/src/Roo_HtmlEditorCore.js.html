@@ -411,7 +411,7 @@
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforepush'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.doc.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.doc.documentElement</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">d.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-comment">//this.cleanUpPaste();
+
                 </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.innerHTML</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'push'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
             }
@@ -424,7 +424,7 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.doc.body.lastChild</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lc </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">lc.nodeType </span><span class="jsdoc-syntax">== 1 &amp;&amp; </span><span class="jsdoc-var">lc.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;contenteditable&quot;</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;false&quot;</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-comment">// add an extra line at the end.
-                </span><span class="jsdoc-var">this.doc.body.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'br'</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">this.doc.body.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'br'</span><span class="jsdoc-syntax">));
             }
 
 
@@ -496,9 +496,13 @@
             </span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-string">'paste'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onPasteEvent</span><span class="jsdoc-syntax">,
+
             </span><span class="jsdoc-var">buffer</span><span class="jsdoc-syntax">:100,
             </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this
+        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">Roo.EventManager.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc</span><span class="jsdoc-syntax">, {
+            </span><span class="jsdoc-string">'paste'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onPasteEvent</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this
         </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isGecko</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">Roo.EventManager.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'keypress'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.mozKeyPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -518,11 +522,35 @@
         </span><span class="jsdoc-var">this.pushValue</span><span class="jsdoc-syntax">();
     },
 
-    </span><span class="jsdoc-var">onPasteEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)  {
-         </span><span class="jsdoc-comment">// default behaveiour should be our local cleanup paste? (optional?)
-         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
-         </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'paste'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
-    },
+    </span><span class="jsdoc-var">onPasteEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// I think we better assume paste is going to be a dirty load of rubish from word..
+
+        // even pasting into a 'email version' of this widget will have to clean up that mess.
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">e.browserEvent.clipboardData </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">window.clipboardData</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// clipboard event
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">DOMParser</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.parseFromString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.body</span><span class="jsdoc-syntax">;
+
+
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterStyleToTag</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterAttributes</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">attrib_white </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">],
+            </span><span class="jsdoc-var">attrib_clean </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">]
+        });
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterBlack</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.black</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tag_remove</span><span class="jsdoc-syntax">} );
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterParagraph</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterLongBr</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.innerHTML</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// default behaveiour should be our local cleanup paste? (optional?)
+        // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
+        //this.owner.fireEvent('paste', e, v);
+    </span><span class="jsdoc-syntax">},
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onDestroy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 
@@ -840,6 +868,24 @@
         </span><span class="jsdoc-var">this.assignDocWin</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.isIE </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.doc.selection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.win.getSelection</span><span class="jsdoc-syntax">();
     },
+    </span><span class="jsdoc-comment">/**
+     * Select a dom node
+     * @param {DomElement} node the node to select
+     */
+    </span><span class="jsdoc-var">selectNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+    {
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.ownerDocument.createRange</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">nodeRange.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">nodeRange.selectNodeContents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-comment">//nodeRange.collapse(true);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.win.getSelection</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">s.removeAllRanges</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">s.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeRange</span><span class="jsdoc-syntax">);
+    },
 
     </span><span class="jsdoc-var">getSelectedNode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -1029,21 +1075,7 @@
         </span><span class="jsdoc-comment">// fully contined.
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">3;
     },
-</span><span class="jsdoc-comment">/*
-    // private? - in a new class?
-    cleanUpPaste :  function()
-    {
-        // cleans up the whole document..
-        Roo.log('cleanuppaste');
-        
-        this.cleanUpChild(this.doc.body);
-        var clean = this.cleanWordChars(this.doc.body.innerHTML);
-        if (clean != this.doc.body.innerHTML) {
-            this.doc.body.innerHTML = clean;
-        }
-        
-    },
-    */
+
     </span><span class="jsdoc-var">cleanWordChars </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">) {</span><span class="jsdoc-comment">// change the chars to hex code
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">he </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.HtmlEditorCore</span><span class="jsdoc-syntax">;
 
