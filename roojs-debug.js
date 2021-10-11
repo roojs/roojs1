@@ -46217,12 +46217,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // I think we better assume paste is going to be a dirty load of rubish from word..
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
+        var cd = (e.browserEvent.clipboardData || window.clipboardData);
         
-        var html = (e.browserEvent.clipboardData || window.clipboardData).getData('text/html'); // clipboard event
+        var html = cd.getData('text/html'); // clipboard event
         html = this.cleanWordChars(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
-        
+        Roo.each(d.items, function(item) {
+            Roo.log(item.kind);
+        });
         new Roo.htmleditor.FilterStyleToTag({ node : d });
         new Roo.htmleditor.FilterAttributes({
             node : d,
