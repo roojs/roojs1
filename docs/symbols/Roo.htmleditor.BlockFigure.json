@@ -1,0 +1,89 @@
+{
+  "name" : "Roo.htmleditor.BlockFigure",
+  "augments" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "Block that has an image and a figcaption",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "BlockFigure",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [
+    {
+      "name" : "image_height",
+      "type" : "String|number",
+      "desc" : "the height of the image number or %?",
+      "memberOf" : ""
+    },
+    {
+      "name" : "align",
+      "type" : "String",
+      "desc" : "t) alignment for the block default left",
+      "memberOf" : ""
+    },
+    {
+      "name" : "image_src",
+      "type" : "String",
+      "desc" : "the url for the image",
+      "memberOf" : ""
+    },
+    {
+      "name" : "caption",
+      "type" : "String",
+      "desc" : "the text to appear below  (and in the alt tag)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "text_align",
+      "type" : "String",
+      "desc" : "t) alignment for the text caption default left.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "image_width",
+      "type" : "String|number",
+      "desc" : "the width of the image number or %?",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "toObject",
+      "type" : "function",
+      "desc" : "create a DomHelper friendly object - for use with\nRoo.DomHelper.markup / overwrite / etc..",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    }
+  ],
+  "events" : []
+}

@@ -46223,8 +46223,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         html = this.cleanWordChars(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
-        Roo.each(d.items, function(item) {
-            Roo.log(item.kind);
+         Roo.log(cd.getData('text/rtf'));
+         Roo.log(cd.getData('text/richtext'));
+        
+        Roo.each(cd.items, function(item) {
+            Roo.log(item);
         });
         new Roo.htmleditor.FilterStyleToTag({ node : d });
         new Roo.htmleditor.FilterAttributes({

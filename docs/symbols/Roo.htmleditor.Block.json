@@ -1,0 +1,186 @@
+{
+  "name" : "Roo.htmleditor.Block",
+  "augments" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "Base class for html editor blocks - do not use it directly .. extend it..",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "Block",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [
+    {
+      "name" : "Context",
+      "type" : "Object",
+      "desc" : "menu - see Roo.form.HtmlEditor.ToolbarContext",
+      "memberOf" : ""
+    },
+    {
+      "name" : "friendly_name",
+      "type" : "String",
+      "desc" : "the name that appears in the context bar about this block",
+      "memberOf" : ""
+    },
+    {
+      "name" : "node",
+      "type" : "DomElement",
+      "desc" : "The node to apply stuff to.",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [
+    {
+      "name" : "getVal",
+      "type" : "function",
+      "desc" : "used by readEleemnt to extract data from a node\nmay need improving as it's pretty basic",
+      "sig" : "(node, tag, attribute, style)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "DomElement",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "tag",
+          "type" : "String",
+          "desc" : "- tag to find, eg. IMG ?? might be better to use DomQuery ?",
+          "isOptional" : false
+        },
+        {
+          "name" : "attribute",
+          "type" : "String",
+          "desc" : "(use html - for contents, or style for using next param as style)",
+          "isOptional" : false
+        },
+        {
+          "name" : "style",
+          "type" : "String",
+          "desc" : "the style property - eg. text-align",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "toObject",
+      "type" : "function",
+      "desc" : "create a DomHelper friendly object - for use with \nRoo.DomHelper.markup / overwrite / etc..\n(override this)",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "toHTML",
+      "type" : "function",
+      "desc" : "convert to plain HTML for calling insertAtCursor..",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "readElement",
+      "type" : "function",
+      "desc" : "Read a node that has a 'data-block' property - and extract the values from it.",
+      "sig" : "(node)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "DomElement",
+          "desc" : "- the node",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "updateElement",
+      "type" : "function",
+      "desc" : "Update a node with values from this object",
+      "sig" : "(node)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "DomElement",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    }
+  ],
+  "events" : []
+}

@@ -1,0 +1,75 @@
+<html><head><title>Roo/htmleditor/FilterStyleToTag.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
+ * @class Roo.htmleditor.FilterStyleToTag
+ * part of the word stuff... - certain 'styles' should be converted to tags.
+ * eg.
+ *   font-weight: bold -&gt; bold
+ *   ?? super / subscrit etc..
+ * 
+ * @constructor
+* Run a new style to tag filter.
+* @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.htmleditor.FilterStyleToTag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+{
+
+    </span><span class="jsdoc-var">this.tags </span><span class="jsdoc-syntax">= {
+        </span><span class="jsdoc-var">B  </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'fontWeight' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'bold'</span><span class="jsdoc-syntax">],
+        </span><span class="jsdoc-var">I </span><span class="jsdoc-syntax">:  [ </span><span class="jsdoc-string">'fontStyle' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'italic'</span><span class="jsdoc-syntax">],
+        </span><span class="jsdoc-comment">//pre :  [ 'font-style' , 'italic'],
+        // h1.. h6 ?? font-size?
+        </span><span class="jsdoc-var">SUP </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'verticalAlign' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'super' </span><span class="jsdoc-syntax">],
+        </span><span class="jsdoc-var">SUB </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'verticalAlign' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'sub' </span><span class="jsdoc-syntax">]
+
+
+    };
+
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+
+
+    </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
+
+
+
+}
+
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.FilterStyleToTag</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.htmleditor.Filter</span><span class="jsdoc-syntax">,
+{
+    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// all tags
+
+    </span><span class="jsdoc-var">tags </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+
+    </span><span class="jsdoc-var">replaceTag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+    {
+
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;style&quot;</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inject </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">this.tags</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.tags</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">][0]] == </span><span class="jsdoc-var">this.tags</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">][1]) {
+                </span><span class="jsdoc-var">inject.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">node.style.removeProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tags</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">][0]);
+            }
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">inject.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">inject</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.ownerDocument.createelement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">nn.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nc</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">nn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nc</span><span class="jsdoc-syntax">;
+        });
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cn.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">node.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">nn.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+        }
+        </span><span class="jsdoc-keyword">return true </span><span class="jsdoc-comment">/// iterate thru
+    </span><span class="jsdoc-syntax">}
+
+})</span></code></body></html>

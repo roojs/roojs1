@@ -1,0 +1,97 @@
+<html><head><title>Roo/htmleditor/KeyEnter.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
+ * @class Roo.htmleditor.KeyEnter
+ * Handle Enter press..
+ * @cfg {Roo.HtmlEditorCore} core the editor.
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+
+
+</span><span class="jsdoc-var">Roo.htmleditor.KeyEnter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">// this does not actually call walk as it's really just a abstract class
+
+    </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.core.doc.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keypress'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.keypress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+}
+
+
+</span><span class="jsdoc-var">Roo.htmleditor.KeyEnter.prototype </span><span class="jsdoc-syntax">= {
+
+    </span><span class="jsdoc-var">core </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">keypress </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.charCode </span><span class="jsdoc-syntax">!= 13) {
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">// https://stackoverflow.com/questions/18552336/prevent-contenteditable-adding-div-on-enter-chrome
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.core.doc</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">docFragment </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createDocumentFragment</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-comment">//add a new line
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newEle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">docFragment.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newEle</span><span class="jsdoc-syntax">);
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.core.win.getSelection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getRangeAt</span><span class="jsdoc-syntax">(0);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.commonAncestorContainer </span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">n.nodeType </span><span class="jsdoc-syntax">!= 1) {
+            </span><span class="jsdoc-var">n  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.parentNode</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">n.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'UL'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'LI'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">n.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">);
+
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">n.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'LI'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'LI'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.nextSibling</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">n.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n.firstSibling</span><span class="jsdoc-syntax">);
+
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">n.parentNode.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createRange</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">range.setStartAfter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">range.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-comment">//make the cursor there
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.core.win.getSelection</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">sel.removeAllRanges</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">sel.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+
+
+        }
+        </span><span class="jsdoc-comment">//add the br, or p, or something else
+        </span><span class="jsdoc-var">newEle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'br'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">docFragment.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newEle</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">//make the br replace selection
+
+        </span><span class="jsdoc-var">range.deleteContents</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">range.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">docFragment</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">//create a new range
+        </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createRange</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">range.setStartAfter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newEle</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">range.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">//make the cursor there
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.core.win.getSelection</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">sel.removeAllRanges</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">sel.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+
+    }
+};
+    </span></code></body></html>

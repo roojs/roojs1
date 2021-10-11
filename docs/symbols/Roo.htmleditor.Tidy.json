@@ -1,0 +1,39 @@
+{
+  "name" : "Roo.htmleditor.Tidy",
+  "augments" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "Tidy HTML",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "Tidy",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [
+    {
+      "name" : "core",
+      "type" : "Roo.HtmlEditorCore",
+      "desc" : "the editor.",
+      "memberOf" : ""
+    }
+  ],
+  "methods" : [],
+  "events" : []
+}

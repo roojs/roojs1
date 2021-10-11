@@ -1,0 +1,1 @@
+Roo.rtf = {}; // namespace

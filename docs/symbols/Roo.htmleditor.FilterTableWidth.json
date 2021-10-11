@@ -1,0 +1,32 @@
+{
+  "name" : "Roo.htmleditor.FilterTableWidth",
+  "augments" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "try and remove table width data - as that frequently messes up other stuff.\n\n     was cleanTableWidths.\n\nQuite often pasting from word etc.. results in tables with column and widths.\nThis does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "FilterTableWidth",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "config",
+      "type" : "Object",
+      "desc" : "Configuration options",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [],
+  "methods" : [],
+  "events" : []
+}
