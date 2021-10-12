@@ -94,7 +94,11 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^\./) || </span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^\//)) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^(http|https):\/\//) || </span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^mailto:/) || </span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^ftp:/)) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^(http|https):\/\//)
+            || </span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^mailto:/)
+            || </span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^ftp:/)
+            || </span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^data:/)
+            ) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.match</span><span class="jsdoc-syntax">(/^#/)) {

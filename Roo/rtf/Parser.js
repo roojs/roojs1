@@ -15,20 +15,33 @@
 
 
 
-Roo.rtf.Parser = function() {
+Roo.rtf.Parser = function(text) {
     //super({objectMode: true})
     this.text = '';
     this.parserState = this.parseText;
     
     // these are for interpeter...
-    this.doc = document;
+    this.doc = {};
     ///this.parserState = this.parseTop
     this.groupStack = [];
     this.hexStore = [];
-    this.doc = false; //new Roo.rtf.Document();
+    this.doc = false;
     
     this.groups = []; // where we put the return.
-    // default is to parse TEXT...
+    
+    for (var ii = 0; ii < text.length; ++ii) {
+        ++this.cpos;
+        
+        if (text[ii] === '\n') {
+            ++this.row;
+            this.col = 1;
+        } else {
+            ++this.col;
+        }
+        this.parserState(text[ii]);
+    }
+    
+    
     
 };
 Roo.rtf.Parser.prototype = {
@@ -46,22 +59,7 @@ Roo.rtf.Parser.prototype = {
     row : 1, // reportin?
     col : 1, //
 
-    parse : function (text) {
-         
-        for (var ii = 0; ii < text.length; ++ii) {
-            ++this.cpos;
-            
-            if (text[ii] === '\n') {
-                ++this.row;
-                this.col = 1;
-            } else {
-                ++this.col;
-            }
-            this.parserState(text[ii]);
-        }
-        return this.groups;
-    },
-    
+     
     push : function (el)
     {
         var m = 'cmd'+ el.type;
@@ -83,11 +81,7 @@ Roo.rtf.Parser.prototype = {
         }).join('');
         
         this.group.addContent( new Roo.rtf.Hex( hexstr ));
-                /*iconv.decode(
-                        Buffer.from(hexstr, 'hex'), this.group.get('charset'))
-                    }
-                )
-                */
+              
             
         this.hexStore.splice(0)
         
@@ -99,7 +93,13 @@ Roo.rtf.Parser.prototype = {
         if (this.group) {
             this.groupStack.push(this.group);
         }
-        this.group = new Roo.rtf.Group(this.group || this.doc); // parent..
+         // parent..
+        if (this.doc === false) {
+            this.group = this.doc = new Roo.rtf.Document();
+            return;
+            
+        }
+        this.group = new Roo.rtf.Group(this.group);
     },
     cmdignorable : function()
     {
@@ -111,10 +111,18 @@ Roo.rtf.Parser.prototype = {
         this.flushHexStore();
         this.group.addContent(new Roo.rtf.Paragraph());
     },
-    cmdgroupend : function () {
+    cmdgroupend : function ()
+    {
         this.flushHexStore();
         var endingGroup = this.group;
+        
+        
         this.group = this.groupStack.pop();
+        if (this.group) {
+            this.group.addChild(endingGroup);
+        }
+        
+        
         
         var doc = this.group || this.doc;
         //if (endingGroup instanceof FontTable) {

@@ -1486,6 +1486,11 @@
         "is_class" : false
       },
       {
+        "name" : "Roo.rtf",
+        "cn" : [],
+        "is_class" : false
+      },
+      {
         "name" : "Roo.state",
         "cn" : [
           {

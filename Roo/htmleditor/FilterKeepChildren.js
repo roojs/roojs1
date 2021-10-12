@@ -22,7 +22,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
     replaceTag : function(node)
     {
         // walk children...
-        Roo.log(node);
+        //Roo.log(node);
         var ar = Array.from(node.childNodes);
         //remove first..
         for (var i = 0; i < ar.length; i++) {

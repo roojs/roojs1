@@ -94,7 +94,11 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
         if (v.match(/^\./) || v.match(/^\//)) {
             return;
         }
-        if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/) || v.match(/^ftp:/)) {
+        if (v.match(/^(http|https):\/\//)
+            || v.match(/^mailto:/) 
+            || v.match(/^ftp:/)
+            || v.match(/^data:/)
+            ) {
             return;
         }
         if (v.match(/^#/)) {
