@@ -541,6 +541,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
         
         
+        Roo.each(d.getElementsByTagName('img'), function(img, i) {
+            img.setAttribute('src', images[i]);
+        });
+        
         Roo.log(cd.getData('text/rtf'));
          Roo.log(cd.getData('text/richtext'));
         
