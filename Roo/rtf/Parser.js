@@ -310,7 +310,7 @@ Roo.rtf.Parser.prototype = {
     },
     emitStartGroup : function ()
     {
-        this.emitText()
+        this.emitText();
         this.push({
             type: 'groupstart',
             pos: this.cpos,
