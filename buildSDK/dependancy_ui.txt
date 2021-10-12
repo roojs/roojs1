@@ -95,6 +95,14 @@ Roo.form.ComboNested
 Roo.form.Checkbox
 Roo.form.Radio
 
+Roo.rtf.namespace
+Roo.rtf.Hex
+Roo.rtf.Paragraph
+Roo.rtf.Span
+Roo.rtf.Group
+Roo.rtf.Ctrl
+Roo.rtf.Parser
+
 Roo.htmleditor.namespace
 Roo.htmleditor.Filter
 Roo.htmleditor.FilterAttributes
