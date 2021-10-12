@@ -46733,7 +46733,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.log(images);
         //Roo.log(imgs);
         // fixme..
-        images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl)/); }) // ignore headers
+        images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable)/); }) // ignore headers
                        .map(function(g) { return g.toDataURL(); });
         
         
