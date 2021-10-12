@@ -530,10 +530,18 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
         
         var html = cd.getData('text/html'); // clipboard event
+        var images = (new Roo.rtf.Parser())
+                    .parse(cd.getData('text/rtf'))
+                    .filter(function(g) { return g.type == 'pict'; })
+                    .map(function(g) { return g.toDataURL(); });
+        
+        
         html = this.cleanWordChars(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
-         Roo.log(cd.getData('text/rtf'));
+        
+        
+        Roo.log(cd.getData('text/rtf'));
          Roo.log(cd.getData('text/richtext'));
         
         Roo.each(cd.items, function(item) {
