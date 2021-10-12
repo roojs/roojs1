@@ -103,13 +103,13 @@ Roo.rtf.Parser.prototype = {
     },
     cmdignorable : function()
     {
-        this.flushHexStore()
-        this.group.ignorable = true
+        this.flushHexStore();
+        this.group.ignorable = true;
     },
     cmdendparagraph : function()
     {
-        this.flushHexStore()
-        this.group.addContent(new Roo.rtf.Paragraph())
+        this.flushHexStore();
+        this.group.addContent(new Roo.rtf.Paragraph());
     },
     cmdgroupend : function () {
         this.flushHexStore();
@@ -135,7 +135,7 @@ Roo.rtf.Parser.prototype = {
     },
     cmdtext : function (cmd)
     {
-        this.flushHexStore()
+        this.flushHexStore();
         if (!this.group) { // an RTF fragment, missing the {\rtf1 header
             //this.group = this.doc
         }
@@ -143,7 +143,7 @@ Roo.rtf.Parser.prototype = {
     },
     cmdcontrolword : function (cmd)
     {
-        this.flushHexStore()
+        this.flushHexStore();
         if (!this.group.type) {
             this.group.type = cmd.value;
             return;
