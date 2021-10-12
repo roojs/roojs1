@@ -21,10 +21,10 @@ Roo.rtf.Parser = function() {
     this.parserState = this.parseText;
     
     // these are for interpeter...
-    this.doc = document
+    this.doc = document;
     ///this.parserState = this.parseTop
-    this.groupStack = []
-    this.hexStore = []
+    this.groupStack = [];
+    this.hexStore = [];
     this.doc = false; //new Roo.rtf.Document();
     
     this.groups = []; // where we put the return.
