@@ -44526,17 +44526,24 @@ Roo.rtf.Group = function(parent)
 {
     // we dont want to acutally store parent - it will make debug a nightmare..
     this.content = [];
+    this.cn  = [];
+     
+       
     
 };
 
 Roo.rtf.Group.prototype = {
     ignorable : false,
     content: false,
+    cn: false,
     addContent : function(node) {
         // could set styles...
         this.content.push(node);
     },
-    
+    addChild : function(cn)
+    {
+        this.cn.push(cn);
+    },
     // only for images really...
     toDataURL : function()
     {
@@ -44555,12 +44562,58 @@ Roo.rtf.Group.prototype = {
         
         var hexstring = this.content[this.content.length-1].value;
         
-        return mimetype + ';base64,' + btoa(hexstring.match(/\w{2}/g).map(function(a) {
+        return 'data:' + mimetype + ';base64,' + btoa(hexstring.match(/\w{2}/g).map(function(a) {
             return String.fromCharCode(parseInt(a, 16));
         }).join(""));
     }
     
-}; 
+};
+// this looks like it's normally the {rtf{ .... }}
+Roo.rtf.Document = function()
+{
+    // we dont want to acutally store parent - it will make debug a nightmare..
+    this.rtlch  = [];
+    this.content = [];
+    this.cn = [];
+    
+};
+Roo.extend(Roo.rtf.Document, Roo.rtf.Group, { 
+    addChild : function(cn)
+    {
+        this.cn.push(cn);
+        switch(cn.type) {
+            case 'rtlch': // most content seems to be inside this??
+            case 'listtext':
+            case 'shpinst':
+                this.rtlch.push(cn);
+                return;
+            default:
+                this[cn.type] = cn;
+        }
+        
+    },
+    
+    getElementsByType : function(type)
+    {
+        var ret =  [];
+        this._getElementsByType(type, ret, this.cn, 'rtf');
+        return ret;
+    },
+    _getElementsByType : function (type, ret, search_array, path)
+    {
+        search_array.forEach(function(n,i) {
+            if (n.type == type) {
+                n.path = path + '/' + n.type + ':' + i;
+                ret.push(n);
+            }
+            if (n.cn.length > 0) {
+                this._getElementsByType(type, ret, n.cn, path + '/' + n.type+':'+i);
+            }
+        },this);
+    }
+    
+});
+ 
 Roo.rtf.Ctrl = function(opts)
 {
     this.value = opts.value;
@@ -44583,20 +44636,33 @@ Roo.rtf.Ctrl = function(opts)
 
 
 
-Roo.rtf.Parser = function() {
+Roo.rtf.Parser = function(text) {
     //super({objectMode: true})
     this.text = '';
     this.parserState = this.parseText;
     
     // these are for interpeter...
-    this.doc = document;
+    this.doc = {};
     ///this.parserState = this.parseTop
     this.groupStack = [];
     this.hexStore = [];
-    this.doc = false; //new Roo.rtf.Document();
+    this.doc = false;
     
     this.groups = []; // where we put the return.
-    // default is to parse TEXT...
+    
+    for (var ii = 0; ii < text.length; ++ii) {
+        ++this.cpos;
+        
+        if (text[ii] === '\n') {
+            ++this.row;
+            this.col = 1;
+        } else {
+            ++this.col;
+        }
+        this.parserState(text[ii]);
+    }
+    
+    
     
 };
 Roo.rtf.Parser.prototype = {
@@ -44614,22 +44680,7 @@ Roo.rtf.Parser.prototype = {
     row : 1, // reportin?
     col : 1, //
 
-    parse : function (text) {
-         
-        for (var ii = 0; ii < text.length; ++ii) {
-            ++this.cpos;
-            
-            if (text[ii] === '\n') {
-                ++this.row;
-                this.col = 1;
-            } else {
-                ++this.col;
-            }
-            this.parserState(text[ii]);
-        }
-        return this.groups;
-    },
-    
+     
     push : function (el)
     {
         var m = 'cmd'+ el.type;
@@ -44651,11 +44702,7 @@ Roo.rtf.Parser.prototype = {
         }).join('');
         
         this.group.addContent( new Roo.rtf.Hex( hexstr ));
-                /*iconv.decode(
-                        Buffer.from(hexstr, 'hex'), this.group.get('charset'))
-                    }
-                )
-                */
+              
             
         this.hexStore.splice(0)
         
@@ -44667,7 +44714,13 @@ Roo.rtf.Parser.prototype = {
         if (this.group) {
             this.groupStack.push(this.group);
         }
-        this.group = new Roo.rtf.Group(this.group || this.doc); // parent..
+         // parent..
+        if (this.doc === false) {
+            this.group = this.doc = new Roo.rtf.Document();
+            return;
+            
+        }
+        this.group = new Roo.rtf.Group(this.group);
     },
     cmdignorable : function()
     {
@@ -44679,10 +44732,18 @@ Roo.rtf.Parser.prototype = {
         this.flushHexStore();
         this.group.addContent(new Roo.rtf.Paragraph());
     },
-    cmdgroupend : function () {
+    cmdgroupend : function ()
+    {
         this.flushHexStore();
         var endingGroup = this.group;
+        
+        
         this.group = this.groupStack.pop();
+        if (this.group) {
+            this.group.addChild(endingGroup);
+        }
+        
+        
         
         var doc = this.group || this.doc;
         //if (endingGroup instanceof FontTable) {
@@ -45099,7 +45160,11 @@ Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
         if (v.match(/^\./) || v.match(/^\//)) {
             return;
         }
-        if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/) || v.match(/^ftp:/)) {
+        if (v.match(/^(http|https):\/\//)
+            || v.match(/^mailto:/) 
+            || v.match(/^ftp:/)
+            || v.match(/^data:/)
+            ) {
             return;
         }
         if (v.match(/^#/)) {
@@ -45220,7 +45285,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
     replaceTag : function(node)
     {
         // walk children...
-        Roo.log(node);
+        //Roo.log(node);
         var ar = Array.from(node.childNodes);
         //remove first..
         for (var i = 0; i < ar.length; i++) {
@@ -46650,11 +46715,26 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
         
+        // check what type of paste - if it's an image, then handle it differently.
+        if (cd.files.length > 0) {
+            // pasting images?
+            var urlAPI = (window.createObjectURL && window) || 
+                (window.URL && URL.revokeObjectURL && URL) || 
+                (window.webkitURL && webkitURL);
+    
+            var url = urlAPI.createObjectURL( cd.files[0]);
+            this.insertAtCursor('<img src=" + url + ">');
+            return false;
+        }
+        
         var html = cd.getData('text/html'); // clipboard event
-        var images = (new Roo.rtf.Parser())
-                    .parse(cd.getData('text/rtf'))
-                    .filter(function(g) { return g.type == 'pict'; })
-                    .map(function(g) { return g.toDataURL(); });
+        var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
+        var images = parser.doc.getElementsByType('pict');
+        Roo.log(images);
+        //Roo.log(imgs);
+        // fixme..
+        images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl)/); }) // ignore headers
+                       .map(function(g) { return g.toDataURL(); });
         
         
         html = this.cleanWordChars(html);
@@ -46663,22 +46743,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         if (images.length > 0) {
             Roo.each(d.getElementsByTagName('img'), function(img, i) {
-            img.setAttribute('src', images[i]);
-        });
+                img.setAttribute('src', images[i]);
+            });
         }
         
-        
-        Roo.log(cd.getData('text/rtf'));
-         Roo.log(cd.getData('text/richtext'));
-        
-        Roo.each(cd.items, function(item) {
-            Roo.log(item);
-        });
+      
         new Roo.htmleditor.FilterStyleToTag({ node : d });
         new Roo.htmleditor.FilterAttributes({
             node : d,
-            attrib_white : ['href', 'src', 'name'],
-            attrib_clean : ['href', 'src', 'name'] 
+            attrib_white : ['href', 'src', 'name', 'align'],
+            attrib_clean : ['href', 'src' ] 
         });
         new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
         // should be fonts..

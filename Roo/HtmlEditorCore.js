@@ -544,7 +544,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var html = cd.getData('text/html'); // clipboard event
         var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
         var images = parser.doc.getElementsByType('pict');
-        Roo.log(parser.doc);
+        Roo.log(images);
         //Roo.log(imgs);
         // fixme..
         images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl)/); }) // ignore headers
