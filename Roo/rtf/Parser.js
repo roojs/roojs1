@@ -30,7 +30,7 @@ Roo.rtf.Parser = function() {
     this.groups = []; // where we put the return.
     // default is to parse TEXT...
     
-}
+};
 Roo.rtf.Parser.prototype = {
     text : '', // string being parsed..
     controlWord : '',
@@ -372,4 +372,4 @@ Roo.rtf.Parser.prototype = {
         });
     }
      
-} 
+} ;

@@ -20545,21 +20545,22 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
 Roo.rtf.Hex = function(hex)
 {
     this.hexstr = hex;
-}
+};
 Roo.rtf.Paragraph = function(opts)
 {
     this.content = []; ///??? is that used?
-}Roo.rtf.Span = function(opts)
+};Roo.rtf.Span = function(opts)
 {
     this.value = opts.value;
-}
+};
 
 Roo.rtf.Group = function(parent)
 {
     // we dont want to acutally store parent - it will make debug a nightmare..
     this.content = [];
     
-}
+};
+
 Roo.rtf.Group.prototype = {
     ignorable : false,
     content: false,
@@ -20591,7 +20592,7 @@ Roo.rtf.Group.prototype = {
         }).join(""));
     }
     
-} 
+}; 
 Roo.rtf.Ctrl = function(opts)
 {
     this.value = opts.value;
@@ -20629,7 +20630,7 @@ Roo.rtf.Parser = function() {
     this.groups = []; // where we put the return.
     // default is to parse TEXT...
     
-}
+};
 Roo.rtf.Parser.prototype = {
     text : '', // string being parsed..
     controlWord : '',
@@ -20971,7 +20972,7 @@ Roo.rtf.Parser.prototype = {
         });
     }
      
-} Roo.htmleditor = {}; 
+} ;Roo.htmleditor = {}; 
 /**
  * @class Roo.htmleditor.Filter
  * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.

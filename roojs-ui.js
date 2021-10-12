@@ -909,13 +909,13 @@ Roo.rtf={};
 // Roo/rtf/Hex.js
 Roo.rtf.Hex=function(A){this.hexstr=A;};
 // Roo/rtf/Paragraph.js
-Roo.rtf.Paragraph=function(A){this.content=[];}
+Roo.rtf.Paragraph=function(A){this.content=[];};
 // Roo/rtf/Span.js
 Roo.rtf.Span=function(A){this.value=A.value;};
 // Roo/rtf/Group.js
 Roo.rtf.Group=function(A){this.content=[];};Roo.rtf.Group.prototype={ignorable:false,content:false,addContent:function(A){this.content.push(A);},toDataURL:function(){var A=false;switch(true){case this.content.filter(function(a){return a.value=='pngblip'}).length>0:A="image/png";
 break;case this.content.filter(function(a){return a.value=='jpegblip'}).length>0:A="image/jpeg";break;default:return 'about:blank';}var B=this.content[this.content.length-1].value;return A+';base64,'+btoa(B.match(/\w{2}/g).map(function(a){return String.fromCharCode(parseInt(a,16));
-}).join(""));}}
+}).join(""));}};
 // Roo/rtf/Ctrl.js
 Roo.rtf.Ctrl=function(A){this.value=A.value;this.param=A.param;};
 // Roo/rtf/Parser.js
@@ -935,7 +935,7 @@ this.parserState=this.parseText;}else{this.emitControlWord();this.parserState=th
 ,emitControlWord:function(){this.emitText();if(this.controlWord===''){this.emitError('empty control word');}else{this.push({type:'controlword',value:this.controlWord,param:this.controlWordParam!==''&&Number(this.controlWordParam),pos:this.cpos,row:this.row,col:this.col}
 );}this.controlWord='';this.controlWordParam='';},emitStartGroup:function(){this.emitText();this.push({type:'groupstart',pos:this.cpos,row:this.row,col:this.col});},emitEndGroup:function(){this.emitText();this.push({type:'groupend',pos:this.cpos,row:this.row,col:this.col}
 );},emitIgnorable:function(){this.emitText();this.push({type:'ignorable',pos:this.cpos,row:this.row,col:this.col});},emitHexChar:function(){this.emitText();this.push({type:'hexchar',value:this.hexChar,pos:this.cpos,row:this.row,col:this.col});this.hexChar=''}
-,emitError:function(A){this.emitText();this.push({type:'error',value:A,row:this.row,col:this.col,char:this.cpos});},emitEndParagraph:function(){this.emitText();this.push({type:'endparagraph',pos:this.cpos,row:this.row,col:this.col});}}
+,emitError:function(A){this.emitText();this.push({type:'error',value:A,row:this.row,col:this.col,char:this.cpos});},emitEndParagraph:function(){this.emitText();this.push({type:'endparagraph',pos:this.cpos,row:this.row,col:this.col});}};
 // Roo/htmleditor/namespace.js
 Roo.htmleditor={};
 // Roo/htmleditor/Filter.js
