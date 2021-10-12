@@ -529,11 +529,26 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
         
+        // check what type of paste - if it's an image, then handle it differently.
+        if (cd.files.length > 0) {
+            // pasting images?
+            var urlAPI = (window.createObjectURL && window) || 
+                (window.URL && URL.revokeObjectURL && URL) || 
+                (window.webkitURL && webkitURL);
+    
+            var url = urlAPI.createObjectURL( cd.files[0]);
+            this.insertAtCursor('<img src=" + url + ">');
+            return false;
+        }
+        
         var html = cd.getData('text/html'); // clipboard event
-        var images = (new Roo.rtf.Parser())
-                    .parse(cd.getData('text/rtf'))
-                    .filter(function(g) { return g.type == 'pict'; })
-                    .map(function(g) { return g.toDataURL(); });
+        var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
+        var images = parser.doc.getElementsByType('pict');
+        Roo.log(parser.doc);
+        //Roo.log(imgs);
+        // fixme..
+        images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl)/); }) // ignore headers
+                       .map(function(g) { return g.toDataURL(); });
         
         
         html = this.cleanWordChars(html);
@@ -542,22 +557,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         if (images.length > 0) {
             Roo.each(d.getElementsByTagName('img'), function(img, i) {
-            img.setAttribute('src', images[i]);
-        });
+                img.setAttribute('src', images[i]);
+            });
         }
         
-        
-        Roo.log(cd.getData('text/rtf'));
-         Roo.log(cd.getData('text/richtext'));
-        
-        Roo.each(cd.items, function(item) {
-            Roo.log(item);
-        });
+      
         new Roo.htmleditor.FilterStyleToTag({ node : d });
         new Roo.htmleditor.FilterAttributes({
             node : d,
-            attrib_white : ['href', 'src', 'name'],
-            attrib_clean : ['href', 'src', 'name'] 
+            attrib_white : ['href', 'src', 'name', 'align'],
+            attrib_clean : ['href', 'src' ] 
         });
         new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
         // should be fonts..
