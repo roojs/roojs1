@@ -4,7 +4,8 @@ Roo.rtf.Group = function(parent)
     // we dont want to acutally store parent - it will make debug a nightmare..
     this.content = [];
     
-}
+};
+
 Roo.rtf.Group.prototype = {
     ignorable : false,
     content: false,
@@ -36,4 +37,4 @@ Roo.rtf.Group.prototype = {
         }).join(""));
     }
     
-}
+};
