@@ -33,6 +33,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             // ?? number
         },
         _edit_ : {
+            type : 'button',
             title : 'Edit Table',
             cb : 'editTable'
         }
