@@ -51725,6 +51725,7 @@ Roo.extend(Roo.form.Layout, Roo.Component, {
 /**
  * @class Roo.form.Column
  * @extends Roo.form.Layout
+ * @children Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
  * Creates a column container for layout and rendering of fields in an {@link Roo.form.Form}.
  * @constructor
  * @param {Object} config Configuration options
