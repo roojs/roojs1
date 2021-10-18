@@ -26336,6 +26336,7 @@ Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
         
         // double BR.
         node.parentNode.insertBefore(node.ownerDocument.createElement('BR'), node);
+        node.parentNode.insertBefore(node.ownerDocument.createElement('BR'), node);
         node.parentNode.removeChild(node);
         
         return false;
@@ -26849,7 +26850,7 @@ Roo.htmleditor.Block.prototype = {
     getVal : function(node, tag, attr, style)
     {
         var n = node;
-        if (n.tagName != tag.toUpperCase()) {
+        if (tag !== true && n.tagName != tag.toUpperCase()) {
             // in theory we could do figure[3] << 3rd figure? or some more complex search..?
             // but kiss for now.
             n = node.getElementsByTagName(tag).item(0);
