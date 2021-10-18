@@ -32,6 +32,10 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             opts : [ [ "100%"],[ "auto"]], // default 
             // ?? number
         },
+        _edit_ : {
+            title : 'Edit Table',
+            cb : 'editTable'
+        }
         
     },
     /**
@@ -119,7 +123,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         });
         
         
-    } 
+    },
+    
     
   
    
