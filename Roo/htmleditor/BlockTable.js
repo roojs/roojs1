@@ -43,7 +43,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
         var ret = {
             tag : 'table',
-            
+            contenteditable : 'false',
             style : {
                 width:  this.width,
                 border : 'solid 1px #000', // ??? hard coded?
@@ -68,6 +68,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             Roo.each(row.cells, function( cell ) {
                 var td = {
                     tag : 'td',
+                    contenteditable : 'true',
                     html : cell.html
                 };
                 if (cell.colspan > 0) {
@@ -89,37 +90,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             
         });
         
-        
-        return {
-            tag: 'figure',
-            'data-block' : 'Figure',
-            contenteditable : 'false',
-            style : {
-                display: 'table',
-                float :  this.align ,
-                width :  this.width,
-                margin:  this.margin
-            },
-            cn : [
-                {
-                    tag : 'img',
-                    src : this.image_src,
-                    alt : d.innerText.replace(/\n/g, " "), // removeHTML..
-                    style: {
-                        width: '100%'
-                    }
-                },
-                {
-                    tag: 'figcaption',
-                    contenteditable : true,
-                    style : {
-                        'text-align': this.text_align
-                    },
-                    html : this.caption
-                    
-                }
-            ]
-        };
+         
     },
     
     readElement : function(node)
