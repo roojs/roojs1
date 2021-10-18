@@ -19,7 +19,7 @@ Roo.htmleditor.BlockTable = function(cfg)
 }
 Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
  
-    cell_data : false,
+    rows : false,
     
     width: '100%',
     
@@ -53,7 +53,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         };
         // do we have a head = not really 
         
-        Roo.each(this.cell_data, function( row ) {
+        Roo.each(this.rows, function( row ) {
             var tr = {
                 tag: 'tr',
                 style : {
@@ -71,13 +71,13 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     contenteditable : 'true',
                     html : cell.html
                 };
-                if (cell.colspan > 0) {
+                if (cell.colspan > 1) {
                     td.colspan = cell.colspan ;
                 }
-                if (cell.rowspan > 0) {
+                if (cell.rowspan > 1) {
                     td.rowspan = cell.rowspan ;
                 }
-                if (cell.textAlign > 0) {
+                if (cell.textAlign != '') {
                     td.style.textAlign = cell.textAlign;
                 }
                 // widths ?
@@ -89,18 +89,35 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             
             
         });
-        
+        return ret;
          
     },
     
     readElement : function(node)
     {
-        this.image_src = this.getVal(node, 'img', 'src');
-        this.align = this.getVal(node, 'figure', 'style', 'float');
-        this.caption = this.getVal(node, 'figcaption', 'html');
-        this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
-        this.width = this.getVal(node, 'figure', 'style', 'width');
-        this.margin = this.getVal(node, 'figure', 'style', 'margin');
+        
+        this.width = this.getVal(node, true, 'style', 'width');
+        
+        this.rows = [];
+        var trs = Array.from(node.getElementsByTabName('tr'));
+        trs.forEach(function(dom_row) {
+            var row = { cells : [] };
+            this.rows.push(row);
+            Array.from(dom_row.getElementsByTabName('td')).forEach(function(td) {
+                tow.push({
+                    colspan : td.hasAttribute('colspan') ? td.getAttribute('colspan') : 1,
+                    rowspan : td.hasAttribute('rowspan') ? td.getAttribute('rowspan') : 1,
+                    textAlign : this.getVal(node, true, 'style', 'text-align'),
+                    html : td.innerHTML
+                });
+                
+                
+                
+            });;
+            
+            
+        });
+        
         
     } 
     
