@@ -52,7 +52,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         block.width = record.value;
                     }
                 },
-                xns : Roo.form,
+                xns : Roo.ui.form,
                 store : {
                     xtype : 'SimpleStore',
                     data : [
