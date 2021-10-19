@@ -32,10 +32,9 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             opts : [ [ "100%"],[ "auto"]], // default 
             // ?? number
         },
-        _edit_ : {
+        edit : {
             type : 'button',
-            title : 'Edit Table',
-            cb : 'editTable'
+            title : 'Edit Table'
         }
         
     },
@@ -56,8 +55,19 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             },
             cn : []
         };
+        var head = {
+            tag: 'tr',
+            style : {
+                margin: '6px',
+                border : 'solid 1px #000',
+                textAlign : 'left',
+            },
+            cls : 'roo-html-editor-el', // flag is at to be deleted...
+            cn : []
+        };
+        cn.push(head)
         // do we have a head = not really 
-        
+        var ncols = 0;
         Roo.each(this.rows, function( row ) {
             var tr = {
                 tag: 'tr',
@@ -66,10 +76,17 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     border : 'solid 1px #000',
                     textAlign : 'left',
                 },
-                cn : []
+                cn : [
+                    {
+                        tag : 'td',
+                        cls : 'roo-html-editor-el',
+                        html : 'Row:',
+                    }
+                ]
             };
             ret.cn.push(tr);
             // does the row have any properties? ?? height?
+            var nc = 0;
             Roo.each(row.cells, function( cell ) {
                 var td = {
                     tag : 'td',
@@ -78,6 +95,9 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 };
                 if (cell.colspan > 1) {
                     td.colspan = cell.colspan ;
+                    nc += cell.colspan;
+                } else {
+                    nc++;
                 }
                 if (cell.rowspan > 1) {
                     td.rowspan = cell.rowspan ;
@@ -90,10 +110,20 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     
                 
             });
-            
+            ncols = Math.max(nc, ncols);
             
             
         });
+        ncols++;
+        for (var i = 0; i< ncols; i++ ) {
+            head.push({
+                tag : 'td',
+                cls : 'roo-html-editor-el',
+                html : i > 0 ?  'Col:' : ''
+            });
+        }
+        
+        
         return ret;
          
     },
