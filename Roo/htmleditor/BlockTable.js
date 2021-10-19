@@ -29,43 +29,52 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     // used by context menu
     friendly_name : 'Table',
     
-    context : { // ?? static really
-        width : {
-            title: "Width",
-            opts : [ [ "100%"],[ "auto"]], // default 
-            // ?? number
-        },
-        _columns : {
-            type : 'text',
-            title : 'Columns:'
-        },
-        _columns_minus : {
-            type : 'button',
-            title : '-:',
-            click : function(block) {
-                block.removeRow();
-                block.updateContext();//??
-            }
-        },
-        no_column : {
-            title : '-:',
-            click : function(block) {
-                block.removeRow();
-                block.updateContext();//??
-            }
-        },
-        
-        editing : {
-            type : 'toggle',
-            title : 'Edit Table',
-            title_off : 'Stop Editing Table'
-        },
-        reset_button : {
-            type : 'button',
-            title : 'Reset'
-        }
+    // context menu is drawn once..
+    
+    contextMenu : function()
+    {
+        return {
+            
+            width : {
+                title: "Width",
+                opts : [ [ "100%"],[ "auto"]], // default 
+                // ?? number
+            },
+            _columns : {
+                type : 'text',
+                title : 'Columns:'
+            },
+            _columns_minus : {
+                type : 'button',
+                title : '-:',
+                click : function(block) {
+                    block.removeRow();
+                    block.updateContext();//??
+                }
+            },
+            no_column : {
+                title : '-:',
+                click : function(block) {
+                    block.removeRow();
+                    block.updateContext();//??
+                }
+            },
+            
+            editing : {
+                type : 'toggle',
+                title : 'Edit Table',
+                title_off : 'Stop Editing Table'
+            },
+            reset_button : {
+                type : 'button',
+                title : 'Reset Widths'
+            },
+        };
         
     },
+    
+    
+    
     /**
      * create a DomHelper friendly object - for use with
      * Roo.DomHelper.markup / overwrite / etc..
