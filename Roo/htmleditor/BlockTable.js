@@ -50,6 +50,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     {
                         //Update Form Value
                         block.width = record.value;
+                        block.refresh();
                     }
                 },
                 xns : Roo.ui.form,
@@ -65,12 +66,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             },
             
          
-            
-            width : {
-                title: "Width",
-                opts : [ [ "100%"],[ "auto"]], // default 
-                // ?? number
-            },
+             
             _columns : {
                 type : 'text',
                 title : 'Columns:'
