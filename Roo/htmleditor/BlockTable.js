@@ -20,6 +20,8 @@ Roo.htmleditor.BlockTable = function(cfg)
 Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
  
     rows : false,
+    no_column : 0;
+    no_width : 0,
     
     width: '100%',
     
@@ -32,9 +34,34 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             opts : [ [ "100%"],[ "auto"]], // default 
             // ?? number
         },
-        edit : {
+        _columns : {
+            type : 'text',
+            title : 'Columns:'
+        },
+        _columns_minus : {
             type : 'button',
-            title : 'Edit Table'
+            title : '-:',
+            click : function(block) {
+                block.removeRow();
+                block.updateContext();//??
+            }
+        },
+        no_column : {
+            title : '-:',
+            click : function(block) {
+                block.removeRow();
+                block.updateContext();//??
+            }
+        },
+        
+        edit : {
+            type : 'toggle',
+            title : 'Edit Table',
+            
+        },
+        reset_button : {
+            type : 'button',
+            title : 'Reset'
         }
         
     },
@@ -134,6 +161,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         this.width = this.getVal(node, true, 'style', 'width');
         
         this.rows = [];
+        this.no_row = 0;
         var trs = Array.from(node.getElementsByTabName('tr'));
         trs.forEach(function(tr) {
             var row = { cells : [] };
@@ -141,19 +169,26 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             if (Roo.get(tr).hadClass('roo-html-editor-el')) {
                 return;
             }
+            this.no_row++;
+            var no_column = 0;
             Array.from(tr.getElementsByTabName('td')).forEach(function(td) {
                 if (Roo.get(td).hadClass('roo-html-editor-el')) {
                     return;
                 }
-                tow.push({
+                var add ={
                     colspan : td.hasAttribute('colspan') ? td.getAttribute('colspan') : 1,
                     rowspan : td.hasAttribute('rowspan') ? td.getAttribute('rowspan') : 1,
                     textAlign : this.getVal(node, true, 'style', 'text-align'),
                     html : td.innerHTML
-                });
+                }
+                no_column += colspan;
+                    //code
+                }
+                tow.push(add);
                 
                 
             });
+            this.no_column = Math.max(this.no_column, no_column);
             
             
         });
