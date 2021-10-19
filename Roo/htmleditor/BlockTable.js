@@ -135,10 +135,16 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
         this.rows = [];
         var trs = Array.from(node.getElementsByTabName('tr'));
-        trs.forEach(function(dom_row) {
+        trs.forEach(function(tr) {
             var row = { cells : [] };
             this.rows.push(row);
-            Array.from(dom_row.getElementsByTabName('td')).forEach(function(td) {
+            if (Roo.get(tr).hadClass('roo-html-editor-el')) {
+                return;
+            }
+            Array.from(tr.getElementsByTabName('td')).forEach(function(td) {
+                if (Roo.get(td).hadClass('roo-html-editor-el')) {
+                    return;
+                }
                 tow.push({
                     colspan : td.hasAttribute('colspan') ? td.getAttribute('colspan') : 1,
                     rowspan : td.hasAttribute('rowspan') ? td.getAttribute('rowspan') : 1,
@@ -147,8 +153,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 });
                 
                 
-                
-            });;
+            });
             
             
         });
