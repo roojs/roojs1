@@ -187,7 +187,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 no_column += colspan;
                      
                 
-                tow.push(add);
+                row.push(add);
                 
                 
             });
@@ -198,7 +198,11 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
         
     },
+    normalizeRow: function(row)
+    {
+        row.cols
     
+    }
     
     removeColumn : function()
     {
