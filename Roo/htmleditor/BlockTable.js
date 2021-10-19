@@ -102,188 +102,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         block().addColumn();
                         syncValue();
                     }
-                },
-                xns : Roo.ui.Toolbar
-            },
-            // -------- ROWS
-            {
-                xtype : 'TextItem',
-                text : "Rows: ",
-                xns : Roo.ui.Toolbar  //Boostrap?
-            },
-         
-            {
-                xtype : 'Button',
-                text: '-',
-                listeners : {
-                    click : function (_self, e)
-                    {
-                        block().removeRow();
-                        syncValue();
-                    }
-                },
-                xns : Roo.ui.Toolbar
-            },
-            {
-                xtype : 'Button',
-                text: '+',
-                listeners : {
-                    click : function (_self, e)
-                    {
-                        block().addRow();
-                        syncValue();
-                    }
-                },
-                xns : Roo.ui.Toolbar
-            },
-            // -------- ROWS
-            {
-                xtype : 'Button',
-                text: 'Reset Column Widths',
-                listeners : {
-                    
-                    toggle : function (_self, e)
-                    {
-                        block().toggleEdit(this.toggle);
-                        this.setText("Stop Editing Cells");
-                    }
-                },
-                xns : Roo.ui.Toolbar
-            },
-            
-            {
-                xtype : 'Button',
-                text: 'Edit / Join Cells',
-                listeners : {
-                    
-                    toggle : function (_self, e)
-                    {
-                        block().toggleEdit(this.toggle);
-                        this.setText("Stop Editing Cells");
-                    }
-                },
-                xns : Roo.ui.Toolbar
-            },
-            {
-                xtype : 'Button',
-                text: 'Delete Row or Column',
-                listeners : {
-                    
-                    toggle : function (_self, e)
-                    {
-                        block().deleteColumnOrRow();
-                        syncValue();
-                    }
-                },
-                xns : Roo.ui.Toolbar
-            }, 
-            {
-                xtype : 'Button',
-                text: 'Join Selected Cells',
-                listeners : {
-                    
-                    toggle : function (_self, e)
-                    {
-                        block().joinSelectedCells();
-                        syncValue();
-                    }
-                },
-                xns : Roo.ui.Toolbar
-            },
-            {
-                xtype : 'Button',
-                text: 'Unjoin Selected Cells',
-                listeners : {
-                    
-                    toggle : function (_self, e)
-                    {
-                        block().unjoinSelectedCells();
-                        syncValue();
-                    }
-                },
-                xns : Roo.ui.Toolbar
-            },
-            
-            {
-                xtype : 'TextItem',
-                text : "Column Width: ",
-                xns : Roo.ui.Toolbar  //Boostrap?
-            },
-            {
-                xtype : 'Button',
-                text: '-',
-                listeners : {
-                    click : function (_self, e)
-                    {
-                        block().widthLess();
-                        syncValue();
-                    }
-                },
-                xns : Roo.ui.Toolbar
-            },
-            {
-                xtype : 'Button',
-                text: '+',
-                listeners : {
-                    click : function (_self, e)
-                    {
-                        block().widthMore();
-                        syncValue();
-                    }
-                },
-                xns : Roo.ui.Toolbar
-            },
-        ];
-        
-    },
-    
-    
-    
-    /**
-     * create a DomHelper friendly object - for use with
-     * Roo.DomHelper.markup / overwrite / etc..
-     * ?? should it be called with option to hide all editing features?
-     */
-    toObject : function()
-    {
-        
-        var ret = {
-            tag : 'table',
-            contenteditable : 'false',
-            style : {
-                width:  this.width,
-                border : 'solid 1px #000', // ??? hard coded?
-                borderCollapse : 'collapse',
-            },
-            cn : []
-        };
-        if (this.editing) {
-            var head = {
-                tag: 'tr',
-                style : {
-                    margin: '6px',
-                    border : 'solid 1px #000',
-                    textAlign : 'left',
-                },
-                cls : 'roo-html-editor-el', // flag is at to be deleted...
-                cn : []
-            };
-            cn.push(head)
-        }
-        
-        // do we have a head = not really 
-        var ncols = 0;
-        Roo.each(this.rows, function( row ) {
-            var tr = {
-                tag: 'tr',
-                style : {
-                    margin: '6px',
-                    border : 'solid 1px #000',
-                    textAlign : 'left',
-                },
-                cn : [
-                    
-                ]
+                },~
             };
             if (this.edting) {
                 tr.cn.push({
@@ -366,8 +185,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     html : td.innerHTML
                 }
                 no_column += colspan;
-                    //code
-                }
+                     
+                
                 tow.push(add);
                 
                 
@@ -380,11 +199,9 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
     },
     
-    editTable : function()
+    
+    removeColumn : function()
     {
-        
-        
-        
         
     }
   
