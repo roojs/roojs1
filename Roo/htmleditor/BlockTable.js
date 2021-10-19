@@ -35,7 +35,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     {
         
         var block = function() {
-            return Roo.htmleditor.Block.factory(toolbar.selectedNode);
+            return Roo.htmleditor.Block.factory({node: toolbar.selectedNode});
         };
         var syncValue = toolbar.editorcore.syncValue;
         
