@@ -33,7 +33,37 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     
     contextMenu : function()
     {
-        return {
+        var block  = this;
+        return [
+           {
+                xtype : 'ComboBox',
+                allowBlank : false,
+                displayField : 'value',
+                editable : true,
+                listWidth : 100,
+                triggerAction : 'all',
+                typeAhead : true,
+                valueField : 'key',
+                width : 100,
+                listeners : {
+                    select : function (combo, record, index)
+                    {
+                        //Update Form Value
+                        block.width = record.value;
+                    }
+                },
+                xns : Roo.form,
+                store : {
+                    xtype : 'SimpleStore',
+                    data : [
+                        ['100%'],
+                        ['auto']
+                    ]
+                    fields : [ 'val'],
+           xns : Roo.data,
+           '|xns' : 'Roo.data'
+          }
+         },
             
             width : {
                 title: "Width",
