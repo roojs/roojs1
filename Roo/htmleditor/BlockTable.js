@@ -381,6 +381,38 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
         
     },
+    normalizeRows: function()
+    {
+        var ret= [];
+        var rid = -1;
+        this.rows.forEach(function(row) {
+            rid++;
+            ret[rid] = [];
+            row = this.normalizeRow(row);
+            var cid = 0;
+            row.forEach(function(c) {
+                while (typeof(ret[rid][cid]) != 'undefined') {
+                    cid++;
+                }
+                if (typeof(ret[rid]) == 'undefined') {
+                    ret[rid] = [];
+                }
+                ret[rid][cid] = c;
+                if (c.rowspan < 2) {
+                    return;
+                }
+                
+                for(var i = 1 ;i < c.rowspan; i++) {
+                    if (typeof(ret[rid+i]) == 'undefined') {
+                        ret[rid+i] = [];
+                    }
+                    ret[rid+i][cid] = c;
+                }
+        }, this);
+        return ret;
+    
+    },
+    
     normalizeRow: function(row)
     {
         var ret= [];
@@ -431,15 +463,62 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             row.push({
                 colspan :  1,
                 rowspan :  1,
-                textAlign : 'left',
-                html : td.innerHTML
-            })
+                style : {
+                    textAlign : 'left',
+                },
+                html : "&nbsp;" // is this going to be editable now?
+            });
            
-           
+        }, this)
+    },
+    
+    deleteRow : function(sel)
+    {
+        if (!sel || sel.type != 'row') {
+            return;
+        }
+        var rows = this.normalizeRows();
+        
+        this.rows.forEach(function(row) {
+            var cols = this.normalizeRow(row);
+            var col = cols[sel.col];
+            if (col.colspan > 1) {
+                col.colspan --;
+            } else {
+                row.remove(col);
+            }
+            
+        }, this);
+        this.no_column--;
+        
+    },
+    removeColumn : function()
+    {
+        this.deleteColumn({
+            type: 'col',
+            col : this.no_column-1
+        });
+    },
+    
+     
+    addColumn : function()
+    {
+        
+        this.rows.forEach(function(row) {
+            row.push({
+                colspan :  1,
+                rowspan :  1,
+                style : {
+                    textAlign : 'left',
+                },
+                html : "&nbsp;" // is this going to be editable now?
+            });
            
         }, this)
         
-    }
+    },
+    
+    
   
    
      
