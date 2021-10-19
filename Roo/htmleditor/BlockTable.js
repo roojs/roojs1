@@ -35,15 +35,15 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     {
         var block  = this;
         return [
-           {
+            {
                 xtype : 'ComboBox',
                 allowBlank : false,
-                displayField : 'value',
+                displayField : 'val',
                 editable : true,
                 listWidth : 100,
                 triggerAction : 'all',
                 typeAhead : true,
-                valueField : 'key',
+                valueField : 'val',
                 width : 100,
                 listeners : {
                     select : function (combo, record, index)
@@ -58,12 +58,13 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     data : [
                         ['100%'],
                         ['auto']
-                    ]
+                    ],
                     fields : [ 'val'],
-           xns : Roo.data,
-           '|xns' : 'Roo.data'
-          }
-         },
+                    xns : Roo.data
+                }
+            },
+            
+         
             
             width : {
                 title: "Width",
