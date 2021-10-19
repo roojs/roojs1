@@ -33,6 +33,14 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     
     contextMenu : function(toolbar)
     {
+        
+        var block = function() {
+            return Roo.htmleditor.Block.factory(toolbar.selectedNode);
+        };
+        var syncValue = toolbar.editorcore.syncValue;
+        
+        var fields = {};
+        
         return [
             {
                 xtype : 'ComboBox',
@@ -47,10 +55,10 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 listeners : {
                     select : function (combo, record, index)
                     {
-                        var b = Roo.htmleditor.Block.factory(toolbar.selectedNode);
+                        var b = block();
                         b.width = r.get('val');
                         b.updateElement(toolbar.selectedNode);
-                        toolbar.editorcore.syncValue();
+                        syncValue();
                         
                     }
                 },
@@ -65,39 +73,167 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     xns : Roo.data
                 }
             },
+            // -------- Cols
             
+            {
+                xtype : 'TextItem',
+                text : "Columns: ",
+                xns : Roo.ui.Toolbar  //Boostrap?
+            },
          
-             
-            _columns : {
-                type : 'text',
-                title : 'Columns:'
+            {
+                xtype : 'Button',
+                text: '-',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        block().removeColumn();
+                        syncValue();
+                    }
+                },
+                xns : Roo.ui.Toolbar
             },
-            _columns_minus : {
-                type : 'button',
-                title : '-:',
-                click : function(block) {
-                    block.removeRow();
-                    block.updateContext();//??
-                }
+            {
+                xtype : 'Button',
+                text: '+',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        block().addColumn();
+                        syncValue();
+                    }
+                },
+                xns : Roo.ui.Toolbar
             },
-            no_column : {
-                title : '-:',
-                click : function(block) {
-                    block.removeRow();
-                    block.updateContext();//??
-                }
+            // -------- ROWS
+            {
+                xtype : 'TextItem',
+                text : "Rows: ",
+                xns : Roo.ui.Toolbar  //Boostrap?
+            },
+         
+            {
+                xtype : 'Button',
+                text: '-',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        block().removeRow();
+                        syncValue();
+                    }
+                },
+                xns : Roo.ui.Toolbar
+            },
+            {
+                xtype : 'Button',
+                text: '+',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        block().addRow();
+                        syncValue();
+                    }
+                },
+                xns : Roo.ui.Toolbar
+            },
+            // -------- ROWS
+            {
+                xtype : 'Button',
+                text: 'Reset Column Widths',
+                listeners : {
+                    
+                    toggle : function (_self, e)
+                    {
+                        block().toggleEdit(this.toggle);
+                        this.setText("Stop Editing Cells");
+                    }
+                },
+                xns : Roo.ui.Toolbar
             },
             
-            editing : {
-                type : 'toggle',
-                title : 'Edit Table',
-                title_off : 'Stop Editing Table'
+            {
+                xtype : 'Button',
+                text: 'Edit / Join Cells',
+                listeners : {
+                    
+                    toggle : function (_self, e)
+                    {
+                        block().toggleEdit(this.toggle);
+                        this.setText("Stop Editing Cells");
+                    }
+                },
+                xns : Roo.ui.Toolbar
             },
-            reset_button : {
-                type : 'button',
-                title : 'Reset Widths'
+            {
+                xtype : 'Button',
+                text: 'Delete Row or Column',
+                listeners : {
+                    
+                    toggle : function (_self, e)
+                    {
+                        block().deleteColumnOrRow();
+                        syncValue();
+                    }
+                },
+                xns : Roo.ui.Toolbar
+            }, 
+            {
+                xtype : 'Button',
+                text: 'Join Selected Cells',
+                listeners : {
+                    
+                    toggle : function (_self, e)
+                    {
+                        block().joinSelectedCells();
+                        syncValue();
+                    }
+                },
+                xns : Roo.ui.Toolbar
             },
-        };
+            {
+                xtype : 'Button',
+                text: 'Unjoin Selected Cells',
+                listeners : {
+                    
+                    toggle : function (_self, e)
+                    {
+                        block().unjoinSelectedCells();
+                        syncValue();
+                    }
+                },
+                xns : Roo.ui.Toolbar
+            },
+            
+            {
+                xtype : 'TextItem',
+                text : "Column Width: ",
+                xns : Roo.ui.Toolbar  //Boostrap?
+            },
+            {
+                xtype : 'Button',
+                text: '-',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        block().widthLess();
+                        syncValue();
+                    }
+                },
+                xns : Roo.ui.Toolbar
+            },
+            {
+                xtype : 'Button',
+                text: '+',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        block().widthMore();
+                        syncValue();
+                    }
+                },
+                xns : Roo.ui.Toolbar
+            },
+        ];
         
     },
     
