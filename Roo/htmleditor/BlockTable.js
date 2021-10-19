@@ -126,7 +126,13 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
     },
     
-    
+    editTable : function()
+    {
+        
+        
+        
+        
+    }
   
    
      
