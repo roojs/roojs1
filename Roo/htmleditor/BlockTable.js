@@ -69,6 +69,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     /**
      * create a DomHelper friendly object - for use with
      * Roo.DomHelper.markup / overwrite / etc..
+     * ?? should it be called with option to hide all editing features?
      */
     toObject : function()
     {
@@ -83,17 +84,20 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             },
             cn : []
         };
-        var head = {
-            tag: 'tr',
-            style : {
-                margin: '6px',
-                border : 'solid 1px #000',
-                textAlign : 'left',
-            },
-            cls : 'roo-html-editor-el', // flag is at to be deleted...
-            cn : []
-        };
-        cn.push(head)
+        if (this.editing) {
+            var head = {
+                tag: 'tr',
+                style : {
+                    margin: '6px',
+                    border : 'solid 1px #000',
+                    textAlign : 'left',
+                },
+                cls : 'roo-html-editor-el', // flag is at to be deleted...
+                cn : []
+            };
+            cn.push(head)
+        }
+        
         // do we have a head = not really 
         var ncols = 0;
         Roo.each(this.rows, function( row ) {
@@ -143,15 +147,17 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             
         }, this);
         // add the header row..
-        ncols++;
-        for (var i = 0; i< ncols; i++ ) {
-            head.push({
-                tag : 'td',
-                cls : 'roo-html-editor-el',
-                html : i > 0 ?  'Col:' : ''
-            });
-        }
         
+        ncols++;
+        if (this.editing) {
+            for (var i = 0; i< ncols; i++ ) {
+                head.push({
+                    tag : 'td',
+                    cls : 'roo-html-editor-el',
+                    html : i > 0 ?  'Col:' : ''
+                });
+            }
+        }
         
         return ret;
          
