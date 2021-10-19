@@ -202,6 +202,20 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     
     removeColumn : function()
     {
+        var sel = this.getSelection();
+        if (!sel || sel.type != 'col') {
+            return;
+        }
+        this.rows.forEach(function(row) {
+            var cols = this.normalizeRow(row);
+            var col = cols[sel.col];
+            if (col.colspan > 1) {
+                col.colspan --;
+            } else {
+                row.remove(col);
+            }
+            
+        }, this)
         
     }
   
