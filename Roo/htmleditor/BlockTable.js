@@ -31,9 +31,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     
     // context menu is drawn once..
     
-    contextMenu : function()
+    contextMenu : function(editor)
     {
-        var block  = this;
         return [
             {
                 xtype : 'ComboBox',
