@@ -142,6 +142,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             
             
         }, this);
+        // add the header row..
         ncols++;
         for (var i = 0; i< ncols; i++ ) {
             head.push({
