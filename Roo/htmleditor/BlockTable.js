@@ -31,7 +31,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     
     // context menu is drawn once..
     
-    contextMenu : function(editor)
+    contextMenu : function(toolbar)
     {
         return [
             {
@@ -47,9 +47,11 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 listeners : {
                     select : function (combo, record, index)
                     {
-                        //Update Form Value
-                        block.width = record.value;
-                        block.refresh();
+                        var b = Roo.htmleditor.Block.factory(toolbar.selectedNode);
+                        b.width = r.get('val');
+                        b.updateElement(toolbar.selectedNode);
+                        toolbar.editorcore.syncValue();
+                        
                     }
                 },
                 xns : Roo.ui.form,
