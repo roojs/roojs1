@@ -58,7 +58,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         editing : {
             type : 'toggle',
             title : 'Edit Table',
-            
+            title_off : 'Stop Editing Table'
         },
         reset_button : {
             type : 'button',
