@@ -408,6 +408,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     }
                     ret[rid+i][cid] = c;
                 }
+            });
         }, this);
         return ret;
     
@@ -479,32 +480,51 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         }
         var rows = this.normalizeRows();
         
-        this.rows.forEach(function(row) {
-            var cols = this.normalizeRow(row);
-            var col = cols[sel.col];
-            if (col.colspan > 1) {
-                col.colspan --;
+        
+        rows[sel.row].forEach(function(row) {
+            var col = cols[sel.row];
+            if (col.rowspan > 1) {
+                col.rowspan--;
             } else {
-                row.remove(col);
+                col.remove = 1; // flage it as removed.
             }
             
         }, this);
-        this.no_column--;
+        var newrows = [];
+        this.rows.forEach(function(row) {
+            newrow = [];
+            row.forEach(function(c) {
+                if (typeof(c.remove) == 'undefined') {
+                    newrow.push(c);
+                }
+                
+            });
+            if (newrow.length > 0) {
+                newrows.push(row);
+            }
+        });
+        this.rows =  newrows;
+        
+        
+        
+        this.no_row--;
         
     },
-    removeColumn : function()
+    removeRow : function()
     {
         this.deleteColumn({
             type: 'col',
-            col : this.no_column-1
+            col : this.no_row-1
         });
     },
     
      
-    addColumn : function()
+    addRow : function()
     {
         
-        this.rows.forEach(function(row) {
+        row = [];
+        for (var i = 0; i < this.no_cols; i++ ) {
+            
             row.push({
                 colspan :  1,
                 rowspan :  1,
@@ -514,7 +534,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 html : "&nbsp;" // is this going to be editable now?
             });
            
-        }, this)
+        }
+        this.rows.push(row);
         
     },
     
