@@ -109,13 +109,16 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     textAlign : 'left',
                 },
                 cn : [
-                    {
-                        tag : 'td',
-                        cls : 'roo-html-editor-el',
-                        html : 'Row:',
-                    }
+                    
                 ]
             };
+            if (this.edting) {
+                tr.cn.push({
+                    tag : 'td',
+                    cls : 'roo-html-editor-el',
+                    html : 'Row:',
+                });
+            }
             ret.cn.push(tr);
             // does the row have any properties? ?? height?
             var nc = 0;
