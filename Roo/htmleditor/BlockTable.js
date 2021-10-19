@@ -20,8 +20,9 @@ Roo.htmleditor.BlockTable = function(cfg)
 Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
  
     rows : false,
-    no_column : 0;
+    no_column : 0,
     no_width : 0,
+    editing : false,
     
     width: '100%',
     
@@ -54,7 +55,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             }
         },
         
-        edit : {
+        editing : {
             type : 'toggle',
             title : 'Edit Table',
             
@@ -117,7 +118,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             Roo.each(row.cells, function( cell ) {
                 var td = {
                     tag : 'td',
-                    contenteditable : 'true',
+                    contenteditable : this.editing ? 'false' : 'true',
                     html : cell.html
                 };
                 if (cell.colspan > 1) {
@@ -136,11 +137,11 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 tr.cn.push(td);
                     
                 
-            });
+            }, this);
             ncols = Math.max(nc, ncols);
             
             
-        });
+        }, this);
         ncols++;
         for (var i = 0; i< ncols; i++ ) {
             head.push({
