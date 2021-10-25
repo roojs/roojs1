@@ -574,14 +574,32 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 Roo.MessageBox.alert("you can only join un-joined cells (unjoin them first)");
                 return;
             }
-            if (r == sels[i].row ) {
+            if (typeof(r) != 'object' && r == sels[i].row ) {
                 if (typeof(c) === 'object') {
-                    c.push(sels[c].row);
-                    
+                    c.push(sels[i].col);
+                    continue;
                 }
+                c = [ c ];
+                c.push(sels[i].col);
+                continue;
             }
+            if (typeof(c) != 'object' && c == sels[i].col) {
+                if (typeof(r) === 'object') {
+                    r.push(sels[i].row);
+                    continue;
+                }
+                r = [ r ];
+                r.push(sels[i].row);
+                continue;
+            }
+            Roo.MessageBox.alert("you can only join a row or column, not both");
+            return;
             
         }
+        // at this point either r or c is an array
+        
+        
+        
         
         
     },
