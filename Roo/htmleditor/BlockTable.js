@@ -539,7 +539,57 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
     },
     
+    joinCells: function(sels)
+    {
+        
+        
+        if (sels.length < 0 ) {
+            Roo.MessageBox.alert("Select something to join");
+            return;
+        }
+        if (sels.length < 1 ) {
+            if (sels[i].type == 'cell') {
+                Roo.MessageBox.alert("You must select more than 1 cell to join");
+                return;
+            }
+            if (sels[i].type == 'row' ) {
+                this.joinRow(sels[i].row);
+                return;
+            }
+            
+            this.joinCol(sels[i].col);
+            return;
+            
+        }
+        // how to tell if we are joining a row of cells or colums.
+        var r = sels[0].row , c = sels[0].col ;
+        for (var i = 1 ; i < sels.length; i++) {
+            
+            if (sels[i].type != 'cell') {
+                Roo.MessageBox.alert("you can only join cells to join");
+                return;
+            }
+            
+            if (sels[i].colspan > 1 || sels[i].rowspan > 1  ) {
+                Roo.MessageBox.alert("you can only join un-joined cells (unjoin them first)");
+                return;
+            }
+            if (r == sels[i].row ) {
+                if (typeof(c) === 'object') {
+                    c.push(sels[c].row);
+                    
+                }
+            }
+            
+        }
+        
+        
+    },
     
+    splitCells : function(sel)
+    {
+        
+    }
   
    
      
