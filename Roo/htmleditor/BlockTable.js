@@ -641,9 +641,10 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             s = 0;
             e = grid.length;
         }
-        var html = grid[s][col].html;
-        for (var i = s; i < e+1; i++) {
+        var tg = grid[s][col].html;
+        for (var i = s+1; i < e+1; i++) {
             html += '<br/>' + grid[i][col].html;
+            
             this.rows[i].remove(grid[i][col]);
         }
         grid[s][col].html = html;
@@ -655,15 +656,15 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         var grid = this.normalizeRows();
         if (s === -1) {
             s = 0;
-            e = grid.length;
+            e = grid[row].length;
         }
-        var html = grid[s][c].html;
-        for (var i = s; i < e+1; i++) {
-            html += '<br/>' + grid[i][c].html;
-            this.rows[i].remove(grid[i][c]);
+        var html = grid[row][s].html;
+        for (var i = s+1; i < e+1; i++) {
+            html += ' ' + grid[row][i].html;
+            this.rows[row].remove(grid[row][i]);
         }
         grid[r[0]][c].html = html;
-        grid[r[0]][c].colspan = (e-s)+1; //???
+        grid[r[0]][c].rowspan = (e-s)+1; //???
         
     },
     
