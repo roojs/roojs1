@@ -1163,8 +1163,8 @@ E.removeAllRanges();E.addRange(D);return false;}C=A.createElement('br');B.append
 }};
 // Roo/htmleditor/Block.js
 Roo.htmleditor.Block=function(A){};Roo.htmleditor.Block.factory=function(A){var B=Roo.htmleditor['Block'+Roo.get(A).attr('data-block')];if(typeof(B)=='undefined'){Roo.log("OOps missing block : "+'Block'+Roo.get(A).attr('data-block'));return false;}return new B({node:A}
-);};Roo.htmleditor.Block.prototype={friendly_name:'Image with caption',context:false,updateElement:function(A){Roo.DomHelper.update(A,this.toObject());},toHTML:function(){return Roo.DomHelper.markup(this.toObject());},getVal:function(A,B,C,D){var n=A;if(B!==true&&n.tagName!=B.toUpperCase()){n=A.getElementsByTagName(B).item(0);
-}if(C=='html'){return n.innerHTML;}if(C=='style'){return Roo.get(n).getStyle(D);}return Roo.get(n).attr(C);},toObject:function(){return {};},readElement:function(A){}};
+);};Roo.htmleditor.Block.cache={};Roo.htmleditor.Block.prototype={friendly_name:'Image with caption',context:false,updateElement:function(A){Roo.DomHelper.update(A,this.toObject());},toHTML:function(){return Roo.DomHelper.markup(this.toObject());},getVal:function(A,B,C,D){var n=A;
+if(B!==true&&n.tagName!=B.toUpperCase()){n=A.getElementsByTagName(B).item(0);}if(C=='html'){return n.innerHTML;}if(C=='style'){return Roo.get(n).getStyle(D);}return Roo.get(n).attr(C);},toObject:function(){return {};},readElement:function(A){}};
 // Roo/htmleditor/BlockFigure.js
 Roo.htmleditor.BlockFigure=function(A){if(A.node){this.readElement(A.node);this.updateElement(A.node);}Roo.apply(this,A);};Roo.extend(Roo.htmleditor.BlockFigure,Roo.htmleditor.Block,{image_src:'',align:'left',caption:'',text_align:'left',width:'46%',margin:'2%',friendly_name:'Image with caption',context:{width:{title:"Width",width:40}
 ,margin:{title:"Margin",width:40},align:{title:"Align",opts:[["left"],["right"]],width:80},text_align:{title:"Caption Align",opts:[["left"],["right"],["center"]],width:80},image_src:{title:"Src",width:220}},toObject:function(){var d=document.createElement('div');
