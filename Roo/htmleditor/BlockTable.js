@@ -266,7 +266,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             style : {
                 width:  this.width,
                 border : 'solid 1px #000', // ??? hard coded?
-                borderCollapse : 'collapse',
+                'border-collapse' : 'collapse',
             },
             cn : []
         };
