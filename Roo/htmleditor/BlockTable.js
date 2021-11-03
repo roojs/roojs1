@@ -671,10 +671,91 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     
     splitCells : function(sel)
     {
+        if (sels.type != 'cell') {
+            Roo.MessageBox.alert("you can only join cells to join");
+            return;
+        }
+        if (cell.colspan > 1 && cell.rowspan > 1) {
+            Roo.MessageBox.alert("splitting a merged row+cel is not supported yet.");
+            return;
+        }   
+        var grid = this.normalizeRows();
+        var cell = grid[sel.row][sel.col];
+        if (cell.colspan ==1 && cell.rowspan == 1) {
+            Roo.MessageBox.alert("select a merged cell to join");
+            return;
+        }
+        var ix = this.rows[sel.row].indexOf(cell);
+        if (cell.rowspan > 1) {
+            this.splitCellsRow(sel.row, sel.col, cell.rowspan);
+        } else {
+            this.splitCellsCol(sel.row, sel.col, cell.colspan);
+        }
+        
+    },
+    splitCellsRow : function(row, col, num)
+    {
+        /// this means we have to look at each row below, and insert a cell  after the first cell 
+        var grid = this.normalizeRows();
+        grid[row][col].rowspan = 1;
+        for(var r = row+1; r < num+1;r++) {
+            var nrow = [];
+            var added = false;
+            for(c = 0; c < this.rows[r].length;c++) {
+                if (!added && this.rows[r][c].col > col) {
+                    nrow.push({
+                        colspan :  1,
+                        rowspan :  1,
+                        style : {
+                            textAlign : 'left',
+                        },
+                        html : "&nbsp;" // is this going to be editable now?
+                    });
+                    added = true;
+                }
+                nrow.push(this.rows[r][c])
+            }
+            if (!added) {
+                nrow.push({
+                    colspan :  1,
+                    rowspan :  1,
+                    style : {
+                        textAlign : 'left',
+                    },
+                    html : "&nbsp;" // is this going to be editable now?
+                });
+            }
+            this.row[r] = nrow;
+              
+        }
+        
+    },
+  
+    splitCellsCol: function(row, col, num)
+    {
+        /// this means we have to look at each row below, and insert a cell  after the first cell 
+        var grid = this.normalizeRows();
+        grid[row][col].colspan = 1;
+        
+        var pos = this.rows[row].indexOf(grid[row][col]);
+        var nrow =  this.rows[row].slice(0, pos);
+        var right =  this.rows[row].slice(pos);
+    
+        for (var i = 1; i < num; i++) {
+            nrow.push({
+                colspan :  1,
+                rowspan :  1,
+                style : {
+                    textAlign : 'left',
+                },
+                html : "&nbsp;" // is this going to be editable now?
+            });
+        }
+        
+        this.row[row] = nrow.concat(right);
+    
         
     }
-  
-   
      
     
     
