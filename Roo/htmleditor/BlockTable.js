@@ -613,7 +613,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 }
                 
             }
-            this.joinCol(c, r[0], r[r.lenght-1]);
+            this.joinCol(c, r[0], r[r.length-1]);
             
         }
         if (typeof(rc) === 'object') {
@@ -627,7 +627,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 }
                 
             }
-            this.joinRow(r, c[0], c[r.lenght-1]);
+            this.joinRow(r, c[0], c[r.length-1]);
             
         }
         
