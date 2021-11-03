@@ -611,6 +611,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         for (var i in tlist) {
             
+            
+            if (typeof(tlist[i].xtype) != 'undefined') {
+                tb.addField(Roo.factory(tlist[i].xtype));
+                continue;
+            }
+            
             var item = tlist[i];
             tb.add(item.title + ":&nbsp;");
             
