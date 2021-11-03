@@ -93,6 +93,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
         } // border?
         
     },
+    /*
     'TABLE' : {
         rows : {
             title: "Rows",
@@ -147,6 +148,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             width: 140
         }
     },
+    */
     'INPUT' : {
         name : {
             title: "name",
@@ -412,7 +414,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 this.tb.selectedNode = db;
                 this.editorcore.selectNode(db);
                 if (typeof(this.toolbars[tn]) == 'undefined') {
-                   this.toolbars[tn] = this.buildToolbar( block.context,tn ,block.friendly_name);
+                   this.toolbars[tn] = this.buildToolbar( block.context || block.contectMenu() ,tn ,block.friendly_name);
                 }
                 left_label = block.friendly_name;
                 ans = this.editorcore.getAllAncestors();
@@ -743,12 +745,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     // remove
                     // undo does not work.
                     var sn = tb.selectedNode;
+                    if (!sn) {
+                        return;
+                    }
                     var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || sn.parentNode;
                     if (sn.hasAttribute('data-block')) {
                         stn =  sn.nextSibling || sn.previousSibling || sn.parentNode;
                         sn.parentNode.removeChild(sn);
                         
-                    } else {
+                    } else if (sn && sn.tagName != 'BODY') {
                         // remove and keep parents.
                         a = new Roo.htmleditor.FilterKeepChildren({tag : false});
                         a.removeTag(sn);
