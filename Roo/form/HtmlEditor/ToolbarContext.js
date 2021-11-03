@@ -472,7 +472,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     
     updateToolbarStyles : function(sel)
     {
-         var hasStyles = false;
+        var hasStyles = false;
         for(var i in this.styles) {
             hasStyles = true;
             break;
@@ -568,6 +568,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
        
         var tb = new Roo.Toolbar(wdiv);
+        tb.hasStyles = false;
         tb.name = nm;
         
         tb.add((typeof(friendly_name) == 'undefined' ? nm : friendly_name) + ":&nbsp;");
@@ -577,7 +578,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         // styles...
         if (styles && styles.length) {
-            
+            tb.hasStyles = true;
             // this needs a multi-select checkbox...
             tb.addField( new Roo.form.ComboBox({
                 store: new Roo.data.SimpleStore({
@@ -611,7 +612,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         for (var i in tlist) {
             
-            
+            // newer versions will use xtype cfg to create menus.
             if (typeof(tlist[i].xtype) != 'undefined') {
                 tb.addField(Roo.factory(tlist[i].xtype));
                 continue;
