@@ -479,7 +479,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         // update styles
-        if (hasStyles) { 
+        if (hasStyles && this.tb.hasStyles) { 
             var st = this.tb.fields.item(0);
             
             st.store.removeAll();
