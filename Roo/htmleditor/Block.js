@@ -19,14 +19,18 @@ Roo.htmleditor.Block  = function(cfg)
 Roo.htmleditor.Block.factory = function(node)
 {
     
-    
+    var id = Roo.get(node).id;
+    if (typeof(Roo.html.Block.cache[id]) != 'undefined') {
+        return Roo.html.Block.cache[id];
+    }
     
     var cls = Roo.htmleditor['Block' + Roo.get(node).attr('data-block')];
     if (typeof(cls) == 'undefined') {
         Roo.log("OOps missing block : " + 'Block' + Roo.get(node).attr('data-block'));
         return false;
     }
-    return new cls({ node: node });  /// should trigger update element
+    Roo.html.Block.cache[id] = new cls({ node: node })
+    return Roo.html.Block.cache[id];  /// should trigger update element
 }
 // question goes here... do we need to clear out this cache sometimes?
 // or show we make it relivant to the htmleditor.
