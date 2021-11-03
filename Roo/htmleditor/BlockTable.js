@@ -398,6 +398,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     ret[rid] = [];
                 }
                 ret[rid][cid] = c;
+                c.row = rid;
+                c.col = cid;
                 if (c.rowspan < 2) {
                     return;
                 }
@@ -596,13 +598,41 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             return;
             
         }
+        
+        var grid = this.normalizeRows();
         // at this point either r or c is an array
-        
-        
+        if (typeof(r) === 'object') {
+            // c contins column
+            // r is a list of arrays.
+            r.sort();
+            var html = grid[r[0]][c].html;
+            for (var i = 1; i < r.length; i++) {
+                if (r[i] != r[0]+1) {
+                    Roo.MessageBox.alert("Cells have to be next to each other");
+                    return;
+                }
+                
+            }
+            this.joinCol(c, r[0], r[r.lenght-1]);
+            
+        }
         
         
         
     },
+    
+    joinCol : function(col, s, e)
+    {
+        var html = grid[s][c].html;
+        for (var i = s; i < e+1; i++) {
+            html += '<br/>' + grid[i][c].html;
+            this.rows[i].remove(grid[i][c]);
+        }
+        grid[r[0]][c].html = html;
+        grid[r[0]][c].colspan = (e-s)+1; //???
+        
+    }
+    
     
     splitCells : function(sel)
     {
