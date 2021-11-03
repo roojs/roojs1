@@ -16,12 +16,23 @@ Roo.htmleditor.BlockTable = function(cfg)
         this.updateElement(cfg.node);
     }
     Roo.apply(this, cfg);
+    if (!cfg.node) {
+        this.rows = [];
+        for(var r = 0; r < this.no_row; r++) {
+            this.rows[r] = []
+            for(var c = 0; c < this.no_col; c++) {
+                this.rows[r][c] = this.emptyCell();
+            }
+        }
+    }
+    
+    
 }
 Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
  
     rows : false,
-    no_column : 0,
-    no_width : 0,
+    no_col : 1,
+    no_row : 1,
     editing : false,
     
     width: '100%',
@@ -297,7 +308,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             ret.cn.push(tr);
             // does the row have any properties? ?? height?
             var nc = 0;
-            Roo.each(row.cells, function( cell ) {
+            Roo.each(row, function( cell ) {
                 var td = {
                     tag : 'td',
                     contenteditable : this.editing ? 'false' : 'true',
@@ -312,8 +323,12 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 if (cell.rowspan > 1) {
                     td.rowspan = cell.rowspan ;
                 }
+                
                 if (cell.textAlign != '') {
-                    td.style.textAlign = cell.textAlign;
+                    td.style = {
+                        'text-align' :  cell.textAlign,
+                        border : '1px solid #000'
+                    };
                 }
                 // widths ?
                 tr.cn.push(td);
@@ -374,7 +389,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 
                 
             });
-            this.no_column = Math.max(this.no_column, no_column);
+            this.no_col = Math.max(this.no_col, no_column);
             
             
         });
@@ -447,14 +462,14 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             }
             
         }, this);
-        this.no_column--;
+        this.no_col--;
         
     },
     removeColumn : function()
     {
         this.deleteColumn({
             type: 'col',
-            col : this.no_column-1
+            col : this.no_col-1
         });
     },
     
@@ -463,14 +478,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     {
         
         this.rows.forEach(function(row) {
-            row.push({
-                colspan :  1,
-                rowspan :  1,
-                style : {
-                    textAlign : 'left',
-                },
-                html : "&nbsp;" // is this going to be editable now?
-            });
+            row.push(this.emptyCell());
            
         }, this)
     },
@@ -525,16 +533,9 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     {
         
         row = [];
-        for (var i = 0; i < this.no_cols; i++ ) {
+        for (var i = 0; i < this.no_col; i++ ) {
             
-            row.push({
-                colspan :  1,
-                rowspan :  1,
-                style : {
-                    textAlign : 'left',
-                },
-                html : "&nbsp;" // is this going to be editable now?
-            });
+            row.push(this.emptyCell());
            
         }
         this.rows.push(row);
@@ -703,27 +704,13 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             var added = false;
             for(c = 0; c < this.rows[r].length;c++) {
                 if (!added && this.rows[r][c].col > col) {
-                    nrow.push({
-                        colspan :  1,
-                        rowspan :  1,
-                        style : {
-                            textAlign : 'left',
-                        },
-                        html : "&nbsp;" // is this going to be editable now?
-                    });
+                    nrow.push(this.emptyCell());
                     added = true;
                 }
                 nrow.push(this.rows[r][c])
             }
             if (!added) {
-                nrow.push({
-                    colspan :  1,
-                    rowspan :  1,
-                    style : {
-                        textAlign : 'left',
-                    },
-                    html : "&nbsp;" // is this going to be editable now?
-                });
+                nrow.push(this.emptyCell());
             }
             this.row[r] = nrow;
               
@@ -742,21 +729,23 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         var right =  this.rows[row].slice(pos);
     
         for (var i = 1; i < num; i++) {
-            nrow.push({
-                colspan :  1,
-                rowspan :  1,
-                style : {
-                    textAlign : 'left',
-                },
-                html : "&nbsp;" // is this going to be editable now?
-            });
+            nrow.push(this.emptyCell());
         }
         
         this.row[row] = nrow.concat(right);
     
         
-    }
+    },
+    // the default cell object... at present...
+    emptyCell : function() {
+        return {
+            colspan :  1,
+            rowspan :  1,
+            textAlign : 'left',
+            html : "&nbsp;" // is this going to be editable now?
+        };
      
+    }
     
     
     
