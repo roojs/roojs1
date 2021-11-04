@@ -48,6 +48,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         var block = function() {
             return Roo.htmleditor.Block.factory(toolbar.selectedNode);
         };
+        
+        var ns = typeof(Roo.bootstrap) == 'undefined' ? Roo : Roo.bootstrap;
         var syncValue = toolbar.editorcore.syncValue;
         
         var fields = {};
