@@ -49650,7 +49650,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
             // newer versions will use xtype cfg to create menus.
             if (typeof(tlist[i].xtype) != 'undefined') {
-                tb.addField(Roo.factory(tlist[i].xtype));
+                tb.addField(Roo.factory(tlist[i]));
                 continue;
             }
             
