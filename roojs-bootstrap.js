@@ -1105,7 +1105,7 @@ pt.innerHTML=this.meterLabel+'&nbsp;'+this.pwdStrengths[B];this.errorMsg='';retu
 }break;case this.kDigit:if(A>='0'&&A<='9'){return true;}break;case this.kPunctuation:if('!@#$%^&*()_+-=\'";:[{]}|.>,</?`~'.indexOf(A)>=0){return true;}break;default:return false;}},IsLongEnough:function(A,B){return !(A==null||isNaN(B)||A.length<B);},SpansEnoughCharacterSets:function(A,nb){if(!this.IsLongEnough(A,nb)){return false;
 }var B=new Array(new this.CharacterSetChecks(this.kCapitalLetter),new this.CharacterSetChecks(this.kSmallLetter),new this.CharacterSetChecks(this.kDigit),new this.CharacterSetChecks(this.kPunctuation));for(var C=0;C<A.length;++C){for(var D=0;D<B.length;++D){if(!B[D].fResult&&this.isctype(A.charAt(C),B[D].type)){B[D].fResult=true;
 break;}}}var E=0;for(var D=0;D<B.length;++D){if(B[D].fResult){++E;}}if(E<nb){return false;}return true;},ClientSideStrongPassword:function(A){return this.IsLongEnough(A,8)&&this.SpansEnoughCharacterSets(A,3);},ClientSideMediumPassword:function(A){return this.IsLongEnough(A,7)&&this.SpansEnoughCharacterSets(A,2);
-},ClientSideWeakPassword:function(A){return this.IsLongEnough(A,6)||!this.IsLongEnough(A,0);}})
+},ClientSideWeakPassword:function(A){return this.IsLongEnough(A,6)||!this.IsLongEnough(A,0);}});
 // Roo/htmleditor/namespace.js
 Roo.htmleditor={};
 // Roo/htmleditor/Filter.js
@@ -1162,9 +1162,10 @@ n.appendChild(li);}if(n&&n.tagName=='LI'){li=A.createElement('LI');if(n.nextSibl
 E.removeAllRanges();E.addRange(D);return false;}C=A.createElement('br');B.appendChild(C);D.deleteContents();D.insertNode(B);D=A.createRange();D.setStartAfter(C);D.collapse(true);var E=this.core.win.getSelection();E.removeAllRanges();E.addRange(D);return false;
 }};
 // Roo/htmleditor/Block.js
-Roo.htmleditor.Block=function(A){};Roo.htmleditor.Block.factory=function(A){var B=Roo.htmleditor['Block'+Roo.get(A).attr('data-block')];if(typeof(B)=='undefined'){Roo.log("OOps missing block : "+'Block'+Roo.get(A).attr('data-block'));return false;}return new B({node:A}
-);};Roo.htmleditor.Block.cache={};Roo.htmleditor.Block.prototype={friendly_name:'Image with caption',context:false,updateElement:function(A){Roo.DomHelper.update(A,this.toObject());},toHTML:function(){return Roo.DomHelper.markup(this.toObject());},getVal:function(A,B,C,D){var n=A;
-if(B!==true&&n.tagName!=B.toUpperCase()){n=A.getElementsByTagName(B).item(0);}if(C=='html'){return n.innerHTML;}if(C=='style'){return Roo.get(n).getStyle(D);}return Roo.get(n).attr(C);},toObject:function(){return {};},readElement:function(A){}};
+Roo.htmleditor.Block=function(A){};Roo.htmleditor.Block.factory=function(A){var id=Roo.get(A).id;if(typeof(Roo.htmleditor.Block.cache[id])!='undefined'){return Roo.htmleditor.Block.cache[id];}var B=Roo.htmleditor['Block'+Roo.get(A).attr('data-block')];if(typeof(B)=='undefined'){Roo.log("OOps missing block : "+'Block'+Roo.get(A).attr('data-block'));
+return false;}Roo.htmleditor.Block.cache[id]=new B({node:A});return Roo.htmleditor.Block.cache[id];};Roo.htmleditor.Block.cache={};Roo.htmleditor.Block.prototype={friendly_name:'Image with caption',context:false,updateElement:function(A){Roo.DomHelper.update(A,this.toObject());
+},toHTML:function(){return Roo.DomHelper.markup(this.toObject());},getVal:function(A,B,C,D){var n=A;if(B!==true&&n.tagName!=B.toUpperCase()){n=A.getElementsByTagName(B).item(0);}if(C=='html'){return n.innerHTML;}if(C=='style'){return Roo.get(n).getStyle(D);
+}return Roo.get(n).attr(C);},toObject:function(){return {};},readElement:function(A){}};
 // Roo/htmleditor/BlockFigure.js
 Roo.htmleditor.BlockFigure=function(A){if(A.node){this.readElement(A.node);this.updateElement(A.node);}Roo.apply(this,A);};Roo.extend(Roo.htmleditor.BlockFigure,Roo.htmleditor.Block,{image_src:'',align:'left',caption:'',text_align:'left',width:'46%',margin:'2%',friendly_name:'Image with caption',context:{width:{title:"Width",width:40}
 ,margin:{title:"Margin",width:40},align:{title:"Align",opts:[["left"],["right"]],width:80},text_align:{title:"Caption Align",opts:[["left"],["right"],["center"]],width:80},image_src:{title:"Src",width:220}},toObject:function(){var d=document.createElement('div');

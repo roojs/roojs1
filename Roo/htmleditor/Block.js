@@ -29,9 +29,9 @@ Roo.htmleditor.Block.factory = function(node)
         Roo.log("OOps missing block : " + 'Block' + Roo.get(node).attr('data-block'));
         return false;
     }
-    Roo.htmleditor.Block.cache[id] = new cls({ node: node })
+    Roo.htmleditor.Block.cache[id] = new cls({ node: node });
     return Roo.htmleditor.Block.cache[id];  /// should trigger update element
-}
+};
 // question goes here... do we need to clear out this cache sometimes?
 // or show we make it relivant to the htmleditor.
 Roo.htmleditor.Block.cache = {};

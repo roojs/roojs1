@@ -25977,7 +25977,9 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         return this.IsLongEnough(pwd, 6) || !this.IsLongEnough(pwd, 0);
     }
           
-})Roo.htmleditor = {}; 
+});
+Roo.htmleditor = {};
+ 
 /**
  * @class Roo.htmleditor.Filter
  * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.
@@ -26809,15 +26811,19 @@ Roo.htmleditor.Block  = function(cfg)
 Roo.htmleditor.Block.factory = function(node)
 {
     
-    
+    var id = Roo.get(node).id;
+    if (typeof(Roo.htmleditor.Block.cache[id]) != 'undefined') {
+        return Roo.htmleditor.Block.cache[id];
+    }
     
     var cls = Roo.htmleditor['Block' + Roo.get(node).attr('data-block')];
     if (typeof(cls) == 'undefined') {
         Roo.log("OOps missing block : " + 'Block' + Roo.get(node).attr('data-block'));
         return false;
     }
-    return new cls({ node: node });  /// should trigger update element
-}
+    Roo.htmleditor.Block.cache[id] = new cls({ node: node });
+    return Roo.htmleditor.Block.cache[id];  /// should trigger update element
+};
 // question goes here... do we need to clear out this cache sometimes?
 // or show we make it relivant to the htmleditor.
 Roo.htmleditor.Block.cache = {};
@@ -26889,7 +26895,7 @@ Roo.htmleditor.Block.prototype = {
     } 
     
     
-}
+};
 
  
 

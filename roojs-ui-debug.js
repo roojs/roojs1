@@ -21033,7 +21033,9 @@ Roo.rtf.Parser.prototype = {
         });
     }
      
-} ;Roo.htmleditor = {}; 
+} ;
+Roo.htmleditor = {};
+ 
 /**
  * @class Roo.htmleditor.Filter
  * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.
@@ -22009,15 +22011,19 @@ Roo.htmleditor.Block  = function(cfg)
 Roo.htmleditor.Block.factory = function(node)
 {
     
-    
+    var id = Roo.get(node).id;
+    if (typeof(Roo.htmleditor.Block.cache[id]) != 'undefined') {
+        return Roo.htmleditor.Block.cache[id];
+    }
     
     var cls = Roo.htmleditor['Block' + Roo.get(node).attr('data-block')];
     if (typeof(cls) == 'undefined') {
         Roo.log("OOps missing block : " + 'Block' + Roo.get(node).attr('data-block'));
         return false;
     }
-    return new cls({ node: node });  /// should trigger update element
-}
+    Roo.htmleditor.Block.cache[id] = new cls({ node: node });
+    return Roo.htmleditor.Block.cache[id];  /// should trigger update element
+};
 // question goes here... do we need to clear out this cache sometimes?
 // or show we make it relivant to the htmleditor.
 Roo.htmleditor.Block.cache = {};
@@ -22089,7 +22095,7 @@ Roo.htmleditor.Block.prototype = {
     } 
     
     
-}
+};
 
  
 
@@ -24769,7 +24775,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         
         if (this.btns) {
             for(var i =0; i< this.btns.length;i++) {
-                var b = Roo.factory(this.btns[i],Roo.form);
+                var b = Roo.factory(this.btns[i],this.btns[i].xns || Roo.form);
                 b.cls =  'x-edit-none';
                 
                 if(typeof(this.btns[i].cls) != 'undefined' && this.btns[i].cls.indexOf('x-init-enable') !== -1){
@@ -25153,6 +25159,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
         } // border?
         
     },
+    /*
     'TABLE' : {
         rows : {
             title: "Rows",
@@ -25207,6 +25214,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
             width: 140
         }
     },
+    */
     'INPUT' : {
         name : {
             title: "name",
@@ -25472,7 +25480,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 this.tb.selectedNode = db;
                 this.editorcore.selectNode(db);
                 if (typeof(this.toolbars[tn]) == 'undefined') {
-                   this.toolbars[tn] = this.buildToolbar( block.context,tn ,block.friendly_name);
+                   this.toolbars[tn] = this.buildToolbar( block.context || block.contextMenu(this) ,tn ,block.friendly_name);
                 }
                 left_label = block.friendly_name;
                 ans = this.editorcore.getAllAncestors();
@@ -25532,14 +25540,14 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     
     updateToolbarStyles : function(sel)
     {
-         var hasStyles = false;
+        var hasStyles = false;
         for(var i in this.styles) {
             hasStyles = true;
             break;
         }
         
         // update styles
-        if (hasStyles) { 
+        if (hasStyles && this.tb.hasStyles) { 
             var st = this.tb.fields.item(0);
             
             st.store.removeAll();
@@ -25628,6 +25636,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
        
         var tb = new Roo.Toolbar(wdiv);
+        tb.hasStyles = false;
         tb.name = nm;
         
         tb.add((typeof(friendly_name) == 'undefined' ? nm : friendly_name) + ":&nbsp;");
@@ -25637,7 +25646,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         // styles...
         if (styles && styles.length) {
-            
+            tb.hasStyles = true;
             // this needs a multi-select checkbox...
             tb.addField( new Roo.form.ComboBox({
                 store: new Roo.data.SimpleStore({
@@ -25670,6 +25679,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         
         for (var i in tlist) {
+            
+            // newer versions will use xtype cfg to create menus.
+            if (typeof(tlist[i].xtype) != 'undefined') {
+                tb.addField(Roo.factory(tlist[i].xtype));
+                continue;
+            }
             
             var item = tlist[i];
             tb.add(item.title + ":&nbsp;");
@@ -25796,12 +25811,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     // remove
                     // undo does not work.
                     var sn = tb.selectedNode;
+                    if (!sn) {
+                        return;
+                    }
                     var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || sn.parentNode;
                     if (sn.hasAttribute('data-block')) {
                         stn =  sn.nextSibling || sn.previousSibling || sn.parentNode;
                         sn.parentNode.removeChild(sn);
                         
-                    } else {
+                    } else if (sn && sn.tagName != 'BODY') {
                         // remove and keep parents.
                         a = new Roo.htmleditor.FilterKeepChildren({tag : false});
                         a.removeTag(sn);
