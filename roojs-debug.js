@@ -49865,6 +49865,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         
     },
+    // when the footer contect changes
     onContextClick : function (ev,dom)
     {
         ev.preventDefault();
