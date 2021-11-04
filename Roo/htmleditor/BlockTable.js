@@ -49,7 +49,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             return Roo.htmleditor.Block.factory(toolbar.selectedNode);
         };
         
-        var ns = typeof(Roo.bootstrap) == 'undefined' ? Roo : Roo.bootstrap;
+        var rooui =  typeof(Roo.bootstrap) == 'undefined' ? Roo : Roo.bootstrap;
+        
         var syncValue = toolbar.editorcore.syncValue;
         
         var fields = {};
@@ -75,7 +76,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         
                     }
                 },
-                xns : Roo.ui.form,
+                xns : rooui.form,
                 store : {
                     xtype : 'SimpleStore',
                     data : [
@@ -104,7 +105,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         syncValue();
                     }
                 },
-                xns : Roo.ui.Toolbar
+                xns : rooui.Toolbar
             },
             {
                 xtype : 'Button',
@@ -116,7 +117,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         syncValue();
                     }
                 },
-                xns : Roo.ui.Toolbar
+                xns : rooui.Toolbar
             },
             // -------- ROWS
             {
@@ -135,7 +136,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         syncValue();
                     }
                 },
-                xns : Roo.ui.Toolbar
+                xns : rooui.Toolbar
             },
             {
                 xtype : 'Button',
@@ -147,7 +148,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         syncValue();
                     }
                 },
-                xns : Roo.ui.Toolbar
+                xns : rooui.Toolbar
             },
             // -------- ROWS
             {
@@ -161,7 +162,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         this.setText("Stop Editing Cells");
                     }
                 },
-                xns : Roo.ui.Toolbar
+                xns : rooui.Toolbar
             },
             
             {
@@ -175,7 +176,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         this.setText("Stop Editing Cells");
                     }
                 },
-                xns : Roo.ui.Toolbar
+                xns : rooui.Toolbar
             },
             {
                 xtype : 'Button',
@@ -188,7 +189,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         syncValue();
                     }
                 },
-                xns : Roo.ui.Toolbar
+                xns : rooui.Toolbar
             }, 
             {
                 xtype : 'Button',
@@ -201,7 +202,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         syncValue();
                     }
                 },
-                xns : Roo.ui.Toolbar
+                xns : rooui.Toolbar
             },
             {
                 xtype : 'Button',
@@ -214,13 +215,13 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         syncValue();
                     }
                 },
-                xns : Roo.ui.Toolbar
+                xns : rooui.Toolbar
             },
             
             {
                 xtype : 'TextItem',
                 text : "Column Width: ",
-                xns : Roo.ui.Toolbar  //Boostrap?
+                xns : rooui.Toolbar  //Boostrap?
             },
             {
                 xtype : 'Button',
@@ -232,7 +233,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         syncValue();
                     }
                 },
-                xns : Roo.ui.Toolbar
+                xns : rooui.Toolbar
             },
             {
                 xtype : 'Button',
@@ -244,7 +245,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                         syncValue();
                     }
                 },
-                xns : Roo.ui.Toolbar
+                xns : rooui.Toolbar
             },
             
             // align... << fixme
