@@ -92,7 +92,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             {
                 xtype : 'TextItem',
                 text : "Columns: ",
-                xns : Roo.ui.Toolbar  //Boostrap?
+                xns : rooui.Toolbar  //Boostrap?
             },
          
             {
@@ -123,7 +123,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             {
                 xtype : 'TextItem',
                 text : "Rows: ",
-                xns : Roo.ui.Toolbar  //Boostrap?
+                xns : rooui.Toolbar  //Boostrap?
             },
          
             {
@@ -265,7 +265,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
         var ret = {
             tag : 'table',
-            contenteditable : 'false',
+          //  contenteditable : 'false', // ?? not sure if this is needed?
             'data-block' : 'Table',
             style : {
                 width:  this.width,
