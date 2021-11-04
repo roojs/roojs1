@@ -29,7 +29,30 @@ Roo.onReady(function(){
                 toolbars : [    
                     {
                         xtype : 'ToolbarStandard',
-                        xns : Roo.form.HtmlEditor
+                        xns : Roo.form.HtmlEditor,
+                        btns : [
+                            {
+                                xtype : 'Button',
+                                text : "+Table",
+                                cls : 'x-init-enable',
+                                listeners : {
+                                    click : function (_self, e)
+                                    {
+                                        
+                                        var rr = new Roo.htmleditor.BlockTable({
+                                            no_row : 4,
+                                            no_col : 4
+                                        });
+                                        editor.editorcore.insertAtCursor(rr.toHTML());
+                                    
+                                 
+                                    }
+                                },
+                                xns : Roo,
+                               
+                            }
+                   
+                        ]
                     },
                       {
                         xtype : 'ToolbarContext',
@@ -38,8 +61,8 @@ Roo.onReady(function(){
                             '*' : [ 'headline' ] ,
                             'TD' : [ 'underline', 'double-underline' ]
                         }
-                    },
-                    
+                    }
+                     
                     
                 ],
                 id:'bio',

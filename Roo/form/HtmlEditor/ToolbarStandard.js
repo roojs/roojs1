@@ -484,7 +484,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         
         if (this.btns) {
             for(var i =0; i< this.btns.length;i++) {
-                var b = Roo.factory(this.btns[i],Roo.form);
+                var b = Roo.factory(this.btns[i],this.btns[i].xns || Roo.form);
                 b.cls =  'x-edit-none';
                 
                 if(typeof(this.btns[i].cls) != 'undefined' && this.btns[i].cls.indexOf('x-init-enable') !== -1){

@@ -18,14 +18,23 @@
 
 </span><span class="jsdoc-var">Roo.htmleditor.Block.factory </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
 {
+
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.Block.cache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.htmleditor.Block.cache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+    }
+
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'Block' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">)];
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;OOps missing block : &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'Block' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
     }
-    </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">});  </span><span class="jsdoc-comment">/// should trigger update element
-</span><span class="jsdoc-syntax">}
-
+    </span><span class="jsdoc-var">Roo.htmleditor.Block.cache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.htmleditor.Block.cache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];  </span><span class="jsdoc-comment">/// should trigger update element
+</span><span class="jsdoc-syntax">};
+</span><span class="jsdoc-comment">// question goes here... do we need to clear out this cache sometimes?
+// or show we make it relivant to the htmleditor.
+</span><span class="jsdoc-var">Roo.htmleditor.Block.cache </span><span class="jsdoc-syntax">= {};
 
 </span><span class="jsdoc-var">Roo.htmleditor.Block.prototype </span><span class="jsdoc-syntax">= {
 
@@ -60,7 +69,7 @@
     </span><span class="jsdoc-var">getVal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.tagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">tag.toUpperCase</span><span class="jsdoc-syntax">()) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">n.tagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">tag.toUpperCase</span><span class="jsdoc-syntax">()) {
             </span><span class="jsdoc-comment">// in theory we could do figure[3] &lt;&lt; 3rd figure? or some more complex search..?
             // but kiss for now.
             </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.item</span><span class="jsdoc-syntax">(0);
@@ -94,6 +103,6 @@
     }
 
 
-}
+};
 
 </span></code></body></html>

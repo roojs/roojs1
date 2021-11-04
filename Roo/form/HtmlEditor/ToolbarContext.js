@@ -414,7 +414,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 this.tb.selectedNode = db;
                 this.editorcore.selectNode(db);
                 if (typeof(this.toolbars[tn]) == 'undefined') {
-                   this.toolbars[tn] = this.buildToolbar( block.context || block.contectMenu() ,tn ,block.friendly_name);
+                   this.toolbars[tn] = this.buildToolbar( block.context || block.contextMenu(this) ,tn ,block.friendly_name);
                 }
                 left_label = block.friendly_name;
                 ans = this.editorcore.getAllAncestors();

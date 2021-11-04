@@ -263,6 +263,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         var ret = {
             tag : 'table',
             contenteditable : 'false',
+            'data-block' : 'Table',
             style : {
                 width:  this.width,
                 border : 'solid 1px #000', // ??? hard coded?
@@ -363,17 +364,17 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
         this.rows = [];
         this.no_row = 0;
-        var trs = Array.from(node.getElementsByTabName('tr'));
+        var trs = Array.from(node.getElementsByTagName('tr'));
         trs.forEach(function(tr) {
-            var row = { cells : [] };
+            var row =  []  
             this.rows.push(row);
-            if (Roo.get(tr).hadClass('roo-html-editor-el')) {
+            if (Roo.get(tr).hasClass('roo-html-editor-el')) { // ??? this is for our 'row' selection'
                 return;
             }
             this.no_row++;
             var no_column = 0;
-            Array.from(tr.getElementsByTabName('td')).forEach(function(td) {
-                if (Roo.get(td).hadClass('roo-html-editor-el')) {
+            Array.from(tr.getElementsByTagName('td')).forEach(function(td) {
+                if (Roo.get(td).hasClass('roo-html-editor-el')) { // ??? this is for our 'row' selection'
                     return;
                 }
                 var add ={
@@ -382,17 +383,17 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     textAlign : this.getVal(node, true, 'style', 'text-align'),
                     html : td.innerHTML
                 }
-                no_column += colspan;
+                no_column += add.colspan;
                      
                 
                 row.push(add);
                 
                 
-            });
+            },this);
             this.no_col = Math.max(this.no_col, no_column);
             
             
-        });
+        },this);
         
         
     },
