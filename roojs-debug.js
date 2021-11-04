@@ -49383,7 +49383,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      *
      * Note you can force an update by calling on('editorevent', scope, false)
      */
-    updateToolbar: function(editor ,ev, sel){
+    updateToolbar: function(editor ,ev, sel)
+    {
 
         //Roo.log(ev);
         // capture mouse up - this is handy for selecting images..
@@ -49434,8 +49435,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var left_label = tn;
         
         // ok see if we are editing a block?
+        var sel_el = Roo.get(sel);
         
-        var db = Roo.get(sel).findParent('[data-block]');
+        var db = sel_el.attr('data-block')  == undefined ?  sel_el.findParent('[data-block]') : sel;
         var cepar = Roo.get(sel).findParent('[contenteditable=true]');
         if (db && cepar && cepar.tagName != 'BODY') {
             db = false; // we are inside an editable block.. = not sure how we are going to handle nested blocks!?
