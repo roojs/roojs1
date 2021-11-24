@@ -7681,7 +7681,7 @@ Roo.Toolbar.MenuButton = Roo.Toolbar.SplitButton;/*
 /**
  * @class Roo.PagingToolbar
  * @extends Roo.Toolbar
- * @children   Roo.Toolbar.Item Roo.form.Field
+ * @children   Roo.Toolbar.Item Roo.Toolbar.Button Roo.Toolbar.SplitButton Roo.form.Field
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
