@@ -14424,7 +14424,7 @@ Roo.extend(Roo.tree.ColumnTree, Roo.tree.TreePanel, {
 /**
  * @class Roo.menu.Menu
  * @extends Roo.util.Observable
- * @children Roo.menu.BaseItem
+ * @children Roo.menu.Item Roo.menu.Separator Roo.menu.TextItem
  * A menu object.  This is the container to which you add all other menu items.  Menu can also serve a as a base class
  * when you want a specialzed menu based off of another component (like {@link Roo.menu.DateMenu} for example).
  * @constructor
