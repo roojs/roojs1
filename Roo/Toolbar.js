@@ -11,7 +11,7 @@
 
 /**
  * @class Roo.Toolbar
- * @children   Roo.Toolbar.Item Roo.form.Field
+ * @children   Roo.Toolbar.Item Roo.form.Field  
  * Basic Toolbar class.
  * @constructor
  * Creates a new Toolbar
@@ -547,7 +547,23 @@ Roo.extend(Roo.Toolbar.TextItem, Roo.Toolbar.Item, {
      
     enable:Roo.emptyFn,
     disable:Roo.emptyFn,
-    focus:Roo.emptyFn
+    focus:Roo.emptyFn,
+     /**
+     * Shows this button
+     */
+    show: function(){
+        this.hidden = false;
+        this.el.style.display = "";
+    },
+    
+    /**
+     * Hides this button
+     */
+    hide: function(){
+        this.hidden = true;
+        this.el.style.display = "none";
+    }
+    
 });
 
 /**
