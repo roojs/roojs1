@@ -21,6 +21,7 @@ Roo.htmleditor.Block.factory = function(node)
     
     var id = Roo.get(node).id;
     if (typeof(Roo.htmleditor.Block.cache[id]) != 'undefined') {
+        Roo.htmleditor.Block.cache[id].readElement();
         return Roo.htmleditor.Block.cache[id];
     }
     
@@ -38,6 +39,8 @@ Roo.htmleditor.Block.cache = {};
 
 Roo.htmleditor.Block.prototype = {
     
+    node : false,
+    
      // used by context menu
     friendly_name : 'Image with caption',
     
@@ -48,7 +51,7 @@ Roo.htmleditor.Block.prototype = {
      */
     updateElement : function(node)
     {
-        Roo.DomHelper.update(node, this.toObject());
+        Roo.DomHelper.update(node === undefined ? this.node : node, this.toObject());
     },
      /**
      * convert to plain HTML for calling insertAtCursor..

@@ -700,9 +700,8 @@ Roo.factory(conf, Roo.data);
 
 Roo.namespace("Roo", "Roo.util", "Roo.grid", "Roo.dd", "Roo.tree", "Roo.data",
                 "Roo.form", "Roo.menu", "Roo.state", "Roo.lib", "Roo.layout",
-                "Roo.app", "Roo.ux",
-                "Roo.bootstrap",
-                "Roo.bootstrap.dash");
+                "Roo.app", "Roo.ux" 
+               );
 /*
  * Based on:
  * Ext JS Library 1.1.1

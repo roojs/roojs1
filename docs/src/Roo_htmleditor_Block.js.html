@@ -21,6 +21,7 @@
 
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.Block.cache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">Roo.htmleditor.Block.cache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.readElement</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.htmleditor.Block.cache</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
     }
 
@@ -38,6 +39,8 @@
 
 </span><span class="jsdoc-var">Roo.htmleditor.Block.prototype </span><span class="jsdoc-syntax">= {
 
+    </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
      </span><span class="jsdoc-comment">// used by context menu
     </span><span class="jsdoc-var">friendly_name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Image with caption'</span><span class="jsdoc-syntax">,
 
@@ -48,7 +51,7 @@
      */
     </span><span class="jsdoc-var">updateElement </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">Roo.DomHelper.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.toObject</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">Roo.DomHelper.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.toObject</span><span class="jsdoc-syntax">());
     },
      </span><span class="jsdoc-comment">/**
      * convert to plain HTML for calling insertAtCursor..

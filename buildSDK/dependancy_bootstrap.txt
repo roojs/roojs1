@@ -1,5 +1,6 @@
 
 
+Roo.bootstrap.namespace
 
 Roo.bootstrap.version
 Roo.bootstrap.menu.namespace
@@ -157,6 +158,8 @@ Roo.bootstrap.PagingToolbar
 Roo.bootstrap.MessageBar
 
 Roo.bootstrap.Graph
+Roo.bootstrap.dash.namespace
+
 Roo.bootstrap.dash.NumberBox
 Roo.bootstrap.dash.TabBox
 Roo.bootstrap.dash.TabPane

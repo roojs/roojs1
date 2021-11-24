@@ -349,7 +349,12 @@
      *
      * Note you can force an update by calling on('editorevent', scope, false)
      */
-    </span><span class="jsdoc-var">updateToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">updateToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">)
+    {
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ev.stopEvent</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// se if we can stop this looping with mutiple events.
+        </span><span class="jsdoc-syntax">}
 
         </span><span class="jsdoc-comment">//Roo.log(ev);
         // capture mouse up - this is handy for selecting images..
@@ -358,7 +363,7 @@
              </span><span class="jsdoc-var">this.editor.onFirstFocus</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'NOTARGET'</span><span class="jsdoc-syntax">);
 
 
         </span><span class="jsdoc-comment">// http://developer.yahoo.com/yui/docs/simple-editor.js.html
@@ -368,15 +373,15 @@
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">&amp;&amp;
             (</span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'mouseup' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'click' </span><span class="jsdoc-syntax">) &amp;&amp;
-            </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ev.target.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'IMG'</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-comment">// they have click on an image...
+            </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'BODY' </span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// &amp;&amp; ev.target.tagName == 'IMG') {
+            // they have click on an image...
             // let's see if we can change the selection...
             </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.target</span><span class="jsdoc-syntax">;
 
+            </span><span class="jsdoc-comment">// this triggers looping?
+            //this.editorcore.selectNode(sel);
 
-            </span><span class="jsdoc-var">this.editorcore.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);
-
-        }
+        </span><span class="jsdoc-syntax">}
 
 
         </span><span class="jsdoc-comment">//var updateFooter = sel ? false : true; 
@@ -400,22 +405,32 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">left_label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-comment">// ok see if we are editing a block?
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel_el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// you are not actually selecting the block.
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sel.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">sel.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'contenteditable'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel_el.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[data-block]'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cepar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel_el.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[contenteditable=true]'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cepar </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cepar.tagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'BODY'</span><span class="jsdoc-syntax">) {
+               </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// we are inside an editable block.. = not sure how we are going to handle nested blocks!?
+            </span><span class="jsdoc-syntax">}
+        }
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[data-block]'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cepar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[contenteditable=true]'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cepar </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cepar.tagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'BODY'</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// we are inside an editable block.. = not sure how we are going to handle nested blocks!?
-        </span><span class="jsdoc-syntax">}
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">block </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">sel.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'contenteditable'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">sel.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'contenteditable'</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'true' </span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-comment">//if (db &amp;&amp; !sel.hasAttribute('contenteditable') &amp;&amp; sel.getAttribute('contenteditable') != 'true' ) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">block </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'BLOCK.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">db.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">this.tb.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">this.editorcore.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-comment">//this.editorcore.selectNode(db);
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
-                   </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.buildToolbar</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">block.context </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">block.contextMenu</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">) ,</span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">block.friendly_name</span><span class="jsdoc-syntax">);
+                   </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.buildToolbar</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">false  </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">block.friendly_name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">);
                 }
+                </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">left_label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">block.friendly_name</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">ans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.getAllAncestors</span><span class="jsdoc-syntax">();
             }
@@ -444,7 +459,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">) {
 
             </span><span class="jsdoc-var">this.tb.fields.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">e.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e.attrname</span><span class="jsdoc-syntax">]);
+                </span><span class="jsdoc-var">e.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e.name</span><span class="jsdoc-syntax">]);
             });
 
 
@@ -559,7 +574,7 @@
            </span><span class="jsdoc-var">item.enable</span><span class="jsdoc-syntax">();
         });
     },
-    </span><span class="jsdoc-var">buildToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">friendly_name</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">buildToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">friendly_name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore</span><span class="jsdoc-syntax">;
@@ -570,6 +585,11 @@
 
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wdiv</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.tb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tb</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tlist </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">tlist </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">block.contextMenu</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
         </span><span class="jsdoc-var">tb.hasStyles </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">tb.name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nm</span><span class="jsdoc-syntax">;
 
@@ -616,7 +636,10 @@
 
             </span><span class="jsdoc-comment">// newer versions will use xtype cfg to create menus.
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.xtype</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">tb.addField</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.xtype</span><span class="jsdoc-syntax">));
+
+                </span><span class="jsdoc-var">tb</span><span class="jsdoc-syntax">[</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">)== </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'add' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'addField'</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]));
+
+
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
 
@@ -831,6 +854,7 @@
 
 
     },
+    </span><span class="jsdoc-comment">// when the footer contect changes
     </span><span class="jsdoc-var">onContextClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">ev.preventDefault</span><span class="jsdoc-syntax">();

@@ -33,7 +33,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     rows : false,
     no_col : 1,
     no_row : 1,
-    editing : false,
+    
     
     width: '100%',
     
@@ -46,8 +46,9 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     {
         
         var block = function() {
-            return Roo.htmleditor.Block.factory(toolbar.selectedNode);
+            return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
         };
+        
         
         var rooui =  typeof(Roo.bootstrap) == 'undefined' ? Roo : Roo.bootstrap;
         
@@ -66,12 +67,13 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 typeAhead : true,
                 valueField : 'val',
                 width : 100,
+                name : 'width',
                 listeners : {
-                    select : function (combo, record, index)
+                    select : function (combo, r, index)
                     {
                         var b = block();
                         b.width = r.get('val');
-                        b.updateElement(toolbar.selectedNode);
+                        b.updateElement();
                         syncValue();
                         
                     }
@@ -156,99 +158,15 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 text: 'Reset Column Widths',
                 listeners : {
                     
-                    toggle : function (_self, e)
-                    {
-                        block().toggleEdit(this.toggle);
-                        this.setText("Stop Editing Cells");
-                    }
-                },
-                xns : rooui.Toolbar
-            },
-            
-            {
-                xtype : 'Button',
-                text: 'Edit / Join Cells',
-                listeners : {
-                    
-                    toggle : function (_self, e)
-                    {
-                        block().toggleEdit(this.toggle);
-                        this.setText("Stop Editing Cells");
-                    }
-                },
-                xns : rooui.Toolbar
-            },
-            {
-                xtype : 'Button',
-                text: 'Delete Row or Column',
-                listeners : {
-                    
-                    toggle : function (_self, e)
-                    {
-                        block().deleteColumnOrRow();
-                        syncValue();
-                    }
-                },
-                xns : rooui.Toolbar
-            }, 
-            {
-                xtype : 'Button',
-                text: 'Join Selected Cells',
-                listeners : {
-                    
-                    toggle : function (_self, e)
-                    {
-                        block().joinSelectedCells();
-                        syncValue();
-                    }
-                },
-                xns : rooui.Toolbar
-            },
-            {
-                xtype : 'Button',
-                text: 'Unjoin Selected Cells',
-                listeners : {
-                    
-                    toggle : function (_self, e)
-                    {
-                        block().unjoinSelectedCells();
-                        syncValue();
-                    }
-                },
-                xns : rooui.Toolbar
-            },
-            
-            {
-                xtype : 'TextItem',
-                text : "Column Width: ",
-                xns : rooui.Toolbar  //Boostrap?
-            },
-            {
-                xtype : 'Button',
-                text: '-',
-                listeners : {
                     click : function (_self, e)
                     {
-                        block().widthLess();
-                        syncValue();
+                        block().resetWidths();
                     }
                 },
                 xns : rooui.Toolbar
-            },
-            {
-                xtype : 'Button',
-                text: '+',
-                listeners : {
-                    click : function (_self, e)
-                    {
-                        block().widthMore();
-                        syncValue();
-                    }
-                },
-                xns : rooui.Toolbar
-            },
+            } 
             
-            // align... << fixme
+            
             
         ];
         
@@ -265,28 +183,17 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
         var ret = {
             tag : 'table',
-          //  contenteditable : 'false', // ?? not sure if this is needed?
+            contenteditable : 'false', // this stops cell selection from picking the table.
             'data-block' : 'Table',
             style : {
                 width:  this.width,
                 border : 'solid 1px #000', // ??? hard coded?
                 'border-collapse' : 'collapse',
             },
-            cn : []
+            cn : [
+                { tag : 'tbody' , cn : [] }
+            ]
         };
-        if (this.editing) {
-            var head = {
-                tag: 'tr',
-                style : {
-                    margin: '6px',
-                    border : 'solid 1px #000',
-                    textAlign : 'left',
-                },
-                cls : 'roo-html-editor-el', // flag is at to be deleted...
-                cn : []
-            };
-            cn.push(head)
-        }
         
         // do we have a head = not really 
         var ncols = 0;
@@ -298,24 +205,18 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     border : 'solid 1px #000',
                     textAlign : 'left',
                 },
-                cn : [
-                    
-                ]
+                cn : [ ]
             };
-            if (this.edting) {
-                tr.cn.push({
-                    tag : 'td',
-                    cls : 'roo-html-editor-el',
-                    html : 'Row:',
-                });
-            }
-            ret.cn.push(tr);
+            
+            ret.cn[0].cn.push(tr);
             // does the row have any properties? ?? height?
             var nc = 0;
             Roo.each(row, function( cell ) {
+                
                 var td = {
                     tag : 'td',
-                    contenteditable : this.editing ? 'false' : 'true',
+                    contenteditable :  'true',
+                    'data-block' : 'Td',
                     html : cell.html
                 };
                 if (cell.colspan > 1) {
@@ -346,15 +247,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         // add the header row..
         
         ncols++;
-        if (this.editing) {
-            for (var i = 0; i< ncols; i++ ) {
-                head.push({
-                    tag : 'td',
-                    cls : 'roo-html-editor-el',
-                    html : i > 0 ?  'Col:' : ''
-                });
-            }
-        }
+         
         
         return ret;
          
@@ -362,7 +255,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     
     readElement : function(node)
     {
-        
+        node  = node ? node : this.node ;
         this.width = this.getVal(node, true, 'style', 'width');
         
         this.rows = [];
@@ -475,6 +368,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             type: 'col',
             col : this.no_col-1
         });
+        this.updateElement();
     },
     
      
@@ -484,7 +378,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         this.rows.forEach(function(row) {
             row.push(this.emptyCell());
            
-        }, this)
+        }, this);
+        this.updateElement();
     },
     
     deleteRow : function(sel)
@@ -495,8 +390,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         var rows = this.normalizeRows();
         
         
-        rows[sel.row].forEach(function(row) {
-            var col = cols[sel.row];
+        rows[sel.row].forEach(function(col) {
             if (col.rowspan > 1) {
                 col.rowspan--;
             } else {
@@ -522,14 +416,16 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
         
         this.no_row--;
+        this.updateElement();
         
     },
     removeRow : function()
     {
-        this.deleteColumn({
-            type: 'col',
-            col : this.no_row-1
+        this.deleteRow({
+            type: 'row',
+            row : this.no_row-1
         });
+        
     },
     
      
@@ -543,6 +439,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
            
         }
         this.rows.push(row);
+        this.updateElement();
         
     },
     
@@ -655,6 +552,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         grid[s][col].html = html;
         grid[s][col].colspan = (e-s)+1; //???
         
+        this.updateElement();
+        
     },
     joinRow: function(row, s, e)
     {
@@ -670,7 +569,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         }
         grid[r[0]][c].html = html;
         grid[r[0]][c].rowspan = (e-s)+1; //???
-        
+        this.updateElement();
     },
     
     
@@ -719,6 +618,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             this.row[r] = nrow;
               
         }
+        this.updateElement();
         
     },
   
@@ -737,7 +637,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         }
         
         this.row[row] = nrow.concat(right);
-    
+        this.updateElement();
         
     },
     // the default cell object... at present...

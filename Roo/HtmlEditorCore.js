@@ -339,9 +339,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // the blocks are synced occasionaly - since we currently dont add listeners on the blocks
             // this has to update attributes that get duped.. like alt and caption..
             
-            Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
-                 Roo.htmleditor.Block.factory(e);
-            },this);
+            
+            //Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
+            //     Roo.htmleditor.Block.factory(e);
+            //},this);
             
             
             var div = document.createElement('div');
@@ -349,7 +350,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // remove content editable. (blocks)
             
            
-            
             new Roo.htmleditor.FilterAttributes({node : div, attrib_black: [ 'contenteditable' ] });
             //?? tidy?
             var html = div.innerHTML;

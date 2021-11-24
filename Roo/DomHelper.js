@@ -252,8 +252,9 @@ Roo.DomHelper = function(){
     var updateNode = function(from, to)
     {
         // should we handle non-standard elements?
-        
+        Roo.log(["UpdateNode" , from, to]);
         if (from.nodeType != to.nodeType) {
+            Roo.log(["ReplaceChild - mismatch notType" , to, from ]);
             from.parentNode.replaceChild(to, from);
         }
         
@@ -268,6 +269,7 @@ Roo.DomHelper = function(){
         
         // assume 'to' doesnt have '1/3 nodetypes!
         if (from.nodeType !=1 || from.tagName != to.tagName) {
+            Roo.log(["ReplaceChild" , from, to ]);
             from.parentNode.replaceChild(to, from);
             return;
         }
@@ -275,6 +277,9 @@ Roo.DomHelper = function(){
         var ar = Array.from(from.attributes);
         for(var i = 0; i< ar.length;i++) {
             if (to.hasAttribute(ar[i].name)) {
+                continue;
+            }
+            if (ar[i].name == 'id') { // always keep ids?
                 continue;
             }
             from.removeAttribute(ar[i].name);
@@ -291,17 +296,32 @@ Roo.DomHelper = function(){
         var tar = Array.from(to.childNodes);
         // if the lengths are different.. then it's probably a editable content change, rather than
         // a change of the block definition..
-        if (from.innerHTML == to.innerHTML) {
+        
+        // this did notwork , as our rebuilt nodes did not include ID's so did not match at all.
+         /*if (from.innerHTML == to.innerHTML) {
             return;
         }
         if (far.length != tar.length) {
             from.innerHTML = to.innerHTML;
             return;
         }
+        */
         
-        for(var i = 0; i < far.length; i++) {
-            updateNode(far[i], tar[i]);
+        for(var i = 0; i < Math.max(tar.length, far.length); i++) {
+            if (i >= far.length) {
+                from.appendChild(tar[i]);
+                Roo.log(["add", tar[i]]);
+                
+            } else if ( i  >= tar.length) {
+                from.removeChild(far[i]);
+                Roo.log(["remove", far[i]]);
+            } else {
+                
+                updateNode(far[i], tar[i]);
+            }    
         }
+        
+        
         
         
     };

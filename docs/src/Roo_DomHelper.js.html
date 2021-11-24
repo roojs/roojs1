@@ -252,8 +252,9 @@
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">updateNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">to</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// should we handle non-standard elements?
-
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">&quot;UpdateNode&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">from</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">to</span><span class="jsdoc-syntax">]);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.nodeType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">to.nodeType</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">&quot;ReplaceChild - mismatch notType&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">to</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">from </span><span class="jsdoc-syntax">]);
             </span><span class="jsdoc-var">from.parentNode.replaceChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">to</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">from</span><span class="jsdoc-syntax">);
         }
 
@@ -268,6 +269,7 @@
 
         </span><span class="jsdoc-comment">// assume 'to' doesnt have '1/3 nodetypes!
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.nodeType </span><span class="jsdoc-syntax">!=1 || </span><span class="jsdoc-var">from.tagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">to.tagName</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">&quot;ReplaceChild&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">from</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">to </span><span class="jsdoc-syntax">]);
             </span><span class="jsdoc-var">from.parentNode.replaceChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">to</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">from</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
@@ -275,6 +277,9 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.attributes</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">ar.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">to.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'id'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// always keep ids?
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-var">from.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">);
@@ -291,17 +296,32 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">to.childNodes</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// if the lengths are different.. then it's probably a editable content change, rather than
         // a change of the block definition..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.innerHTML </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">to.innerHTML</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+
+        // this did notwork , as our rebuilt nodes did not include ID's so did not match at all.
+         /*if (from.innerHTML == to.innerHTML) {
+            return;
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far.length </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">tar.length</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">from.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">to.innerHTML</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        if (far.length != tar.length) {
+            from.innerHTML = to.innerHTML;
+            return;
+        }
+        */
+
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tar.length</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">far.length</span><span class="jsdoc-syntax">); </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">far.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">from.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">&quot;add&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]]);
+
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">i  </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">tar.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">from.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">&quot;remove&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]]);
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+
+                </span><span class="jsdoc-var">updateNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">tar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            }
         }
 
-        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">far.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-var">updateNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">tar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
-        }
+
 
 
     };

@@ -10,10 +10,8 @@
     ]
   },
   "tree_children" : [
-    "Roo.menu.CheckItem",
-    "Roo.menu.ColorItem",
-    "Roo.menu.DateItem",
     "Roo.menu.Item",
+    "Roo.menu.CheckItem",
     "Roo.menu.Separator",
     "Roo.menu.TextItem"
   ],
