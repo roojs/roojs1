@@ -7006,7 +7006,7 @@ Roo.MenuButton = Roo.SplitButton;/*
 
 /**
  * @class Roo.Toolbar
- * @children   Roo.Toolbar.Item Roo.form.Field  
+ * @children   Roo.Toolbar.Item Roo.Toolbar.Button Roo.Toolbar.SplitButton Roo.form.Field 
  * Basic Toolbar class.
  * @constructor
  * Creates a new Toolbar
