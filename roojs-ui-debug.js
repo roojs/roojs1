@@ -7006,7 +7006,7 @@ Roo.MenuButton = Roo.SplitButton;/*
 
 /**
  * @class Roo.Toolbar
- * @children   Roo.Toolbar.Item Roo.form.Field
+ * @children   Roo.Toolbar.Item Roo.form.Field  
  * Basic Toolbar class.
  * @constructor
  * Creates a new Toolbar
@@ -7542,7 +7542,23 @@ Roo.extend(Roo.Toolbar.TextItem, Roo.Toolbar.Item, {
      
     enable:Roo.emptyFn,
     disable:Roo.emptyFn,
-    focus:Roo.emptyFn
+    focus:Roo.emptyFn,
+     /**
+     * Shows this button
+     */
+    show: function(){
+        this.hidden = false;
+        this.el.style.display = "";
+    },
+    
+    /**
+     * Hides this button
+     */
+    hide: function(){
+        this.hidden = true;
+        this.el.style.display = "none";
+    }
+    
 });
 
 /**
@@ -22013,6 +22029,7 @@ Roo.htmleditor.Block.factory = function(node)
     
     var id = Roo.get(node).id;
     if (typeof(Roo.htmleditor.Block.cache[id]) != 'undefined') {
+        Roo.htmleditor.Block.cache[id].readElement();
         return Roo.htmleditor.Block.cache[id];
     }
     
@@ -22030,6 +22047,8 @@ Roo.htmleditor.Block.cache = {};
 
 Roo.htmleditor.Block.prototype = {
     
+    node : false,
+    
      // used by context menu
     friendly_name : 'Image with caption',
     
@@ -22040,7 +22059,7 @@ Roo.htmleditor.Block.prototype = {
      */
     updateElement : function(node)
     {
-        Roo.DomHelper.update(node, this.toObject());
+        Roo.DomHelper.update(node === undefined ? this.node : node, this.toObject());
     },
      /**
      * convert to plain HTML for calling insertAtCursor..
@@ -22569,9 +22588,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // the blocks are synced occasionaly - since we currently dont add listeners on the blocks
             // this has to update attributes that get duped.. like alt and caption..
             
-            Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
-                 Roo.htmleditor.Block.factory(e);
-            },this);
+            
+            //Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
+            //     Roo.htmleditor.Block.factory(e);
+            //},this);
             
             
             var div = document.createElement('div');
@@ -22579,7 +22599,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // remove content editable. (blocks)
             
            
-            
             new Roo.htmleditor.FilterAttributes({node : div, attrib_black: [ 'contenteditable' ] });
             //?? tidy?
             var html = div.innerHTML;
@@ -25417,7 +25436,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      */
     updateToolbar: function(editor ,ev, sel)
     {
-
+        
+        if (ev) {
+            ev.stopEvent(); // se if we can stop this looping with mutiple events.
+        }
+        
         //Roo.log(ev);
         // capture mouse up - this is handy for selecting images..
         // perhaps should go somewhere else...
@@ -25425,7 +25448,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
              this.editor.onFirstFocus();
             return;
         }
-        
+        Roo.log(ev ? ev.target : 'NOTARGET');
         
         
         // http://developer.yahoo.com/yui/docs/simple-editor.js.html
@@ -25435,13 +25458,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         if (ev &&
             (ev.type == 'mouseup' || ev.type == 'click' ) &&
-            ev.target && ev.target.tagName == 'IMG') {
+            ev.target && ev.target != 'BODY' ) { // && ev.target.tagName == 'IMG') {
             // they have click on an image...
             // let's see if we can change the selection...
             sel = ev.target;
             
-            
-            this.editorcore.selectNode(sel);
+            // this triggers looping?
+            //this.editorcore.selectNode(sel);
              
         }  
         
@@ -25468,22 +25491,31 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         // ok see if we are editing a block?
         var sel_el = Roo.get(sel);
-        
-        var db = sel_el.attr('data-block')  == undefined ?  sel_el.findParent('[data-block]') : sel;
-        var cepar = Roo.get(sel).findParent('[contenteditable=true]');
-        if (db && cepar && cepar.tagName != 'BODY') {
-            db = false; // we are inside an editable block.. = not sure how we are going to handle nested blocks!?
+        var db = false;
+        // you are not actually selecting the block.
+        if (sel && sel.hasAttribute('data-block')) {
+            db = sel;
+        } else if (sel && !sel.hasAttribute('contenteditable')) {
+            db = sel_el.findParent('[data-block]');
+            var cepar = sel_el.findParent('[contenteditable=true]');
+            if (db && cepar && cepar.tagName != 'BODY') {
+               db = false; // we are inside an editable block.. = not sure how we are going to handle nested blocks!?
+            }   
         }
+        
+        
         var block = false;
-        if (db && !sel.hasAttribute('contenteditable') && sel.getAttribute('contenteditable') != 'true' ) {
+        //if (db && !sel.hasAttribute('contenteditable') && sel.getAttribute('contenteditable') != 'true' ) {
+        if (db) {
             block = Roo.htmleditor.Block.factory(db);
             if (block) {
                 tn = 'BLOCK.' + db.getAttribute('data-block');
-                this.tb.selectedNode = db;
-                this.editorcore.selectNode(db);
+                
+                //this.editorcore.selectNode(db);
                 if (typeof(this.toolbars[tn]) == 'undefined') {
-                   this.toolbars[tn] = this.buildToolbar( block.context || block.contextMenu(this) ,tn ,block.friendly_name);
+                   this.toolbars[tn] = this.buildToolbar( false  ,tn ,block.friendly_name, block);
                 }
+                this.toolbars[tn].selectedNode = db;
                 left_label = block.friendly_name;
                 ans = this.editorcore.getAllAncestors();
             }
@@ -25512,7 +25544,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         if (block) {
              
             this.tb.fields.each(function(e) {
-                e.setValue(block[e.attrname]);
+                e.setValue(block[e.name]);
             });
             
             
@@ -25627,7 +25659,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
            item.enable();
         });
     },
-    buildToolbar: function(tlist, nm, friendly_name)
+    buildToolbar: function(tlist, nm, friendly_name, block)
     {
         var editor = this.editor;
         var editorcore = this.editorcore;
@@ -25638,6 +25670,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
        
         var tb = new Roo.Toolbar(wdiv);
+        this.tb = tb;
+        if (tlist === false && block) {
+            tlist = block.contextMenu(this);
+        }
+        
         tb.hasStyles = false;
         tb.name = nm;
         
@@ -25684,7 +25721,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
             // newer versions will use xtype cfg to create menus.
             if (typeof(tlist[i].xtype) != 'undefined') {
-                tb.add(Roo.factory(tlist[i]));
+                
+                tb[typeof(tlist[i].name)== 'undefined' ? 'add' : 'addField'](Roo.factory(tlist[i]));
+                
+                
                 continue;
             }
             
