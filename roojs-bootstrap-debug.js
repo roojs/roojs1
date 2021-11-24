@@ -1,4 +1,4 @@
-/**
+Roo.bootstrap = {};/**
  * set the version of bootstrap based on the stylesheet...
  *
  */
@@ -26813,6 +26813,7 @@ Roo.htmleditor.Block.factory = function(node)
     
     var id = Roo.get(node).id;
     if (typeof(Roo.htmleditor.Block.cache[id]) != 'undefined') {
+        Roo.htmleditor.Block.cache[id].readElement();
         return Roo.htmleditor.Block.cache[id];
     }
     
@@ -26830,6 +26831,8 @@ Roo.htmleditor.Block.cache = {};
 
 Roo.htmleditor.Block.prototype = {
     
+    node : false,
+    
      // used by context menu
     friendly_name : 'Image with caption',
     
@@ -26840,7 +26843,7 @@ Roo.htmleditor.Block.prototype = {
      */
     updateElement : function(node)
     {
-        Roo.DomHelper.update(node, this.toObject());
+        Roo.DomHelper.update(node === undefined ? this.node : node, this.toObject());
     },
      /**
      * convert to plain HTML for calling insertAtCursor..
@@ -27369,9 +27372,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // the blocks are synced occasionaly - since we currently dont add listeners on the blocks
             // this has to update attributes that get duped.. like alt and caption..
             
-            Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
-                 Roo.htmleditor.Block.factory(e);
-            },this);
+            
+            //Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
+            //     Roo.htmleditor.Block.factory(e);
+            //},this);
             
             
             var div = document.createElement('div');
@@ -27379,7 +27383,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // remove content editable. (blocks)
             
            
-            
             new Roo.htmleditor.FilterAttributes({node : div, attrib_black: [ 'contenteditable' ] });
             //?? tidy?
             var html = div.innerHTML;
@@ -29983,7 +29986,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 });
 
  
-/*
+Roo.bootstrap.dash = {};/*
  * - LGPL
  *
  * numberBox
