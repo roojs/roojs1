@@ -57236,8 +57236,8 @@ layout.addxtype({
  * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * @constructor
  * Create a new GridPanel.
- * @param {Roo.grid.Grid} grid The grid for this panel
- * @param {String/Object} config A string to set only the panel's title, or a config object
+ * @cfg {Roo.grid.Grid} grid The grid for this panel
+ * @cfg  {String/Object} config A string to set only the panel's title, or a config object
  */
 Roo.GridPanel = function(grid, config){
     
