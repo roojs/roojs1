@@ -463,6 +463,7 @@ layout.addxtype({
 /**
  * @class Roo.GridPanel
  * @extends Roo.ContentPanel
+ * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * @constructor
  * Create a new GridPanel.
  * @param {Roo.grid.Grid} grid The grid for this panel
@@ -538,6 +539,7 @@ Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
 /**
  * @class Roo.NestedLayoutPanel
  * @extends Roo.ContentPanel
+ * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * @cfg Roo.BorderLayout} layout   [required] The layout for this panel
  *
  * 
@@ -729,6 +731,7 @@ Roo.extend(Roo.ScrollPanel, Roo.ContentPanel, {
 /**
  * @class Roo.TreePanel
  * @extends Roo.ContentPanel
+ * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * Treepanel component
  * 
  * @constructor
