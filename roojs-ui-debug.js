@@ -33250,11 +33250,14 @@ layout.addxtype({
  * @constructor
  * Create a new GridPanel.
  * @cfg {Roo.grid.Grid} grid The grid for this panel
- * @cfg  {String/Object} config A string to set only the panel's title, or a config object
  */
 Roo.GridPanel = function(grid, config){
     
-  
+    // universal ctor...
+    if (typeof(grid.grid) != 'undefined') {
+        config = grid;
+        grid = config.grid;
+    }
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
         

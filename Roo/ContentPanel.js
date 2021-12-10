@@ -467,7 +467,6 @@ layout.addxtype({
  * @constructor
  * Create a new GridPanel.
  * @cfg {Roo.grid.Grid} grid The grid for this panel
- * @cfg  {String/Object} config A string to set only the panel's title, or a config object
  */
 Roo.GridPanel = function(grid, config){
     
