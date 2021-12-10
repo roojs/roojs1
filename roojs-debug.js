@@ -24653,6 +24653,16 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * <p>
      * @param {Object} options An object containing properties which control loading options:<ul>
      * <li>params {Object} An object containing properties to pass as HTTP parameters to a remote data source.</li>
+     * <li>params.data {Object} if you are using a MemoryProxy / JsonReader, use this as the data to load stuff..
+     * <pre>
+                {
+                    data : data,  // array of key=>value data like JsonReader
+                    total : data.length,
+                    success : true
+                    
+                }
+        </pre>
+            }.</li>
      * <li>callback {Function} A function to be called after the Records have been loaded. The callback is
      * passed the following arguments:<ul>
      * <li>r : Roo.data.Record[]</li>
@@ -33001,6 +33011,7 @@ Roo.extend(Roo.Editor, Roo.Component, {
 /**
  * @class Roo.BasicDialog
  * @extends Roo.util.Observable
+ * @parent none builder
  * Lightweight Dialog Class.  The code below shows the creation of a typical dialog using existing HTML markup:
  * <pre><code>
 var dlg = new Roo.BasicDialog("my-dlg", {
@@ -56784,7 +56795,7 @@ Roo.LayoutStateManager.prototype = {
  * @cfg {String} title          The title for this panel
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
  * @cfg {String} url            Calls {@link #setUrl} with this value
- * @cfg {String} region [required]   (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String} region (center|north|south|east|west) [required] which region to put this panel on (when used with xtype constructors)
  * @cfg {String|Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
@@ -57297,6 +57308,9 @@ Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
 /**
  * @class Roo.NestedLayoutPanel
  * @extends Roo.ContentPanel
+ * @cfg Roo.BorderLayout} layout   [required] The layout for this panel
+ *
+ * 
  * @constructor
  * Create a new NestedLayoutPanel.
  * 
