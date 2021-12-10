@@ -471,7 +471,11 @@ layout.addxtype({
  */
 Roo.GridPanel = function(grid, config){
     
-  
+    // universal ctor...
+    if (typeof(grid.grid) != 'undefined') {
+        config = grid;
+        grid = config.grid;
+    }
     this.wrapper = Roo.DomHelper.append(document.body, // wrapper for IE7 strict & safari scroll issue
         {tag: "div", cls: "x-layout-grid-wrapper x-layout-inactive-content"}, true);
         
