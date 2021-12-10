@@ -463,7 +463,6 @@ layout.addxtype({
 /**
  * @class Roo.GridPanel
  * @extends Roo.ContentPanel
- * @parent builder
  * @constructor
  * Create a new GridPanel.
  * @param {Roo.grid.Grid} grid The grid for this panel
