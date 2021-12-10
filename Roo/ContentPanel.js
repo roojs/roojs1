@@ -12,7 +12,7 @@
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
  * @children Roo.form.Form Roo.JsonView Roo.View
- * @parent Roo.BorderLayout Roo.LayoutDialog builder-top
+ * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * A basic ContentPanel element.
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
@@ -25,7 +25,7 @@
  * @cfg {String} title          The title for this panel
  * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
  * @cfg {String} url            Calls {@link #setUrl} with this value
- * @cfg {String} region [required]   (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String} region (center|north|south|east|west) [required] which region to put this panel on (when used with xtype constructors)
  * @cfg {String|Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
@@ -538,6 +538,9 @@ Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
 /**
  * @class Roo.NestedLayoutPanel
  * @extends Roo.ContentPanel
+ * @cfg Roo.BorderLayout} layout   [required] The layout for this panel
+ *
+ * 
  * @constructor
  * Create a new NestedLayoutPanel.
  * 
