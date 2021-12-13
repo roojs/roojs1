@@ -49653,7 +49653,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var tbc = Roo.form.HtmlEditor.ToolbarContext;
         
         
-        for (var i in tlist) {
+        for (var i = 0; i < tlist.length; i++) {
             
             // newer versions will use xtype cfg to create menus.
             if (typeof(tlist[i].xtype) != 'undefined') {
@@ -49683,15 +49683,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                         fields: ['val', 'display'],
                         data : opts  
                     }),
-                    name : '-roo-edit-' + i,
+                    name : '-roo-edit-' + tlist[i].name,
                     
-                    attrname : i,
+                    attrname : tlist[i].name,
                     stylename : item.style ? item.style : false,
                     
                     displayField: item.displayField ? item.displayField : 'val',
                     valueField :  'val',
                     typeAhead: false,
-                    mode: typeof(tbc.stores[i]) != 'undefined'  ? 'remote' : 'local',
+                    mode: typeof(tbc.stores[tlist[i].name]) != 'undefined'  ? 'remote' : 'local',
                     editable : false,
                     triggerAction: 'all',
                     emptyText:'Select',
@@ -49737,8 +49737,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 */
             }
             tb.addField( new Roo.form.TextField({
-                name: '-roo-edit-' + i,
-                attrname : i,
+                name: '-roo-edit-' + tlist[i].name,
+                attrname : tlist[i].name,
                 
                 width: item.width,
                 //allowBlank:true,
