@@ -49124,200 +49124,138 @@ Roo.form.HtmlEditor.ToolbarContext = function(config)
  
 
 Roo.form.HtmlEditor.ToolbarContext.types = {
-    'IMG' : {
-        width : {
+    'IMG' : [
+        {
+            name : 'width',
             title: "Width",
             width: 40
         },
-        height:  {
+        {
+            name : 'height',
             title: "Height",
             width: 40
         },
-        align: {
+        {
+            name : 'align',
             title: "Align",
             opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
             width : 80
             
         },
-        border: {
+        {
+            name : 'border',
             title: "Border",
             width: 40
         },
-        alt: {
+        {
+            name : 'alt',
             title: "Alt",
             width: 120
         },
-        src : {
+        {
+            name : 'src',
             title: "Src",
             width: 220
         }
         
-    },
+    ],
     
-    'FIGURE' : {
-         align: {
+    'FIGURE' : [
+        {
+            name : 'align',
             title: "Align",
             opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
             width : 80  
         }
-    },
-    'A' : {
-        name : {
+    ],
+    'A' : [
+        {
+            name : 'name',
             title: "Name",
             width: 50
         },
-        target:  {
+        {
+            name : 'target',
             title: "Target",
             width: 120
         },
-        href:  {
+        {
+            name : 'href',
             title: "Href",
             width: 220
         } // border?
         
-    },
-    /*
-    'TABLE' : {
-        rows : {
-            title: "Rows",
-            width: 20
-        },
-        cols : {
-            title: "Cols",
-            width: 20
-        },
-        width : {
-            title: "Width",
-            width: 40
-        },
-        height : {
-            title: "Height",
-            width: 40
-        },
-        border : {
-            title: "Border",
-            width: 20
-        }
-    },
-    'TD' : {
-        width : {
-            title: "Width",
-            width: 40
-        },
-        height : {
-            title: "Height",
-            width: 40
-        },   
-        align: {
-            title: "Align",
-            opts : [[""],[ "left"],[ "center"],[ "right"],[ "justify"],[ "char"]],
-            width: 80
-        },
-        valign: {
-            title: "Valign",
-            opts : [[""],[ "top"],[ "middle"],[ "bottom"],[ "baseline"]],
-            width: 80
-        },
-        colspan: {
-            title: "Colspan",
-            width: 20
-            
-        },
-         'font-family'  : {
-            title : "Font",
-            style : 'fontFamily',
-            displayField: 'display',
-            optname : 'font-family',
-            width: 140
-        }
-    },
-    */
-    'INPUT' : {
-        name : {
+    ],
+    
+    'INPUT' : [
+        {
+            name : 'name',
             title: "name",
             width: 120
         },
-        value : {
+        {
+            name : 'value',
             title: "Value",
             width: 120
         },
-        width : {
+        {
+            name : 'width',
             title: "Width",
             width: 40
         }
-    },
-    'LABEL' : {
-        'for' : {
+    ],
+    'LABEL' : [
+         {
+            name : 'for',
             title: "For",
             width: 120
         }
-    },
-    'TEXTAREA' : {
-        name : {
+    ],
+    'TEXTAREA' : [
+        {
+            name : 'name',
             title: "name",
             width: 120
         },
-        rows : {
+        {
+            name : 'rows',
             title: "Rows",
             width: 20
         },
-        cols : {
+        {
+            name : 'cols',
             title: "Cols",
             width: 20
         }
-    },
-    'SELECT' : {
-        name : {
+    ],
+    'SELECT' : [
+        {
+            name : 'name',
             title: "name",
             width: 120
         },
-        selectoptions : {
+        {
+            name : 'selectoptions',
             title: "Options",
             width: 200
         }
-    },
+    ],
     
     // should we really allow this??
     // should this just be 
-    'BODY' : {
-        title : {
+    'BODY' : [
+        
+        {
+            name : 'title',
             title: "Title",
             width: 200,
             disabled : true
         }
-    },
-    /*
-    'SPAN' : {
-        'font-family'  : {
-            title : "Font",
-            style : 'fontFamily',
-            displayField: 'display',
-            optname : 'font-family',
-            width: 140
-        }
-    },
-    'DIV' : {
-        'font-family'  : {
-            title : "Font",
-            style : 'fontFamily',
-            displayField: 'display',
-            optname : 'font-family',
-            width: 140
-        }
-    },
-     'P' : {
-        'font-family'  : {
-            title : "Font",
-            style : 'fontFamily',
-            displayField: 'display',
-            optname : 'font-family',
-            width: 140
-        }
-    },
-    */
-    '*' : {
-        // empty..
-    }
+    ],
+ 
+    '*' : [
+        // empty.
+    ]
 
 };
 
