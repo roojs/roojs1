@@ -703,14 +703,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             listeners : {
                 click : function ()
                 {
+                    var sn = tb.selectedNode;
                     if (block) {
                         sn = Roo.htmleditor.Block.factory(tb.selectedNode).removalNode();
                         
-                    } else {
-                    
-                        // remove
-                        // undo does not work.
-                        var sn = tb.selectedNode;
                     }
                     if (!sn) {
                         return;
