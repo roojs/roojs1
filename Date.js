@@ -301,17 +301,17 @@ Date.createParser = function(format) {
     }
 
     code += "if (y >= 0 && m >= 0 && d > 0 && h >= 0 && i >= 0 && s >= 0)\n"
-        + "{v = new Date(y, m, d, h, i, s);}\n"
+        + "{v = new Date(y, m, d, h, i, s); v.setFullYear(y);}\n"
         + "else if (y >= 0 && m >= 0 && d > 0 && h >= 0 && i >= 0)\n"
-        + "{v = new Date(y, m, d, h, i);}\n"
+        + "{v = new Date(y, m, d, h, i); v.setFullYear(y);}\n"
         + "else if (y >= 0 && m >= 0 && d > 0 && h >= 0)\n"
-        + "{v = new Date(y, m, d, h);}\n"
+        + "{v = new Date(y, m, d, h); v.setFullYear(y);}\n"
         + "else if (y >= 0 && m >= 0 && d > 0)\n"
-        + "{v = new Date(y, m, d);}\n"
+        + "{v = new Date(y, m, d); v.setFullYear(y);}\n"
         + "else if (y >= 0 && m >= 0)\n"
-        + "{v = new Date(y, m);}\n"
+        + "{v = new Date(y, m); v.setFullYear(y);}\n"
         + "else if (y >= 0)\n"
-        + "{v = new Date(y);}\n"
+        + "{v = new Date(y); v.setFullYear(y);}\n"
         + "}return (v && (z || o))?\n" // favour UTC offset over GMT offset
         + "    ((z)? v.add(Date.SECOND, (v.getTimezoneOffset() * 60) + (z*1)) :\n" // reset to UTC, then add offset
         + "        v.add(Date.HOUR, (v.getGMTOffset() / 100) + (o / -100))) : v\n" // reset to GMT, then add offset
