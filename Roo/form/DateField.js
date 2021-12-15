@@ -97,6 +97,16 @@ Roo.extend(Roo.form.DateField, Roo.form.TriggerField,  {
      * The tooltip text to display when the date falls on a disabled date (defaults to 'Disabled')
      */
     disabledDatesText : "Disabled",
+	
+	
+	/**
+     * @cfg {Date/String} zeroValue
+     * if the date is less that this number, then the field is rendered as empty
+     * default is 1800
+     */
+	zeroValue : '1800-01-01',
+	
+	
     /**
      * @cfg {Date/String} minValue
      * The minimum allowed date. Can be either a Javascript date object or a string date in a
@@ -273,6 +283,15 @@ dateField.setValue('2006-5-4');
 
     // private
     parseDate : function(value){
+		
+		if (value instanceof Date) {
+			if (value < Date.parseDate(this.zeroValue, 'Y-m-d') ) {
+				return  '';
+			}
+			return value;
+		}
+		
+		
         if(!value || value instanceof Date){
             return value;
         }
