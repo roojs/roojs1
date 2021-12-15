@@ -1462,7 +1462,7 @@ Date.formatCodeToRegex = function(character, currentGroup) {
             s:"(\\d{1,2})"}; // Numeric representation of a month, without leading zeros
     case "m":
         return {g:1,
-            c:"m = parseInt(results[" + currentGroup + "], 10) - 1;\n",
+            c:"m = Math.max(0,parseInt(results[" + currentGroup + "], 10) - 1);\n",
             s:"(\\d{2})"}; // Numeric representation of a month, with leading zeros
     case "t":
         return {g:0,
