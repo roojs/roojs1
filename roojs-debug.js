@@ -41771,6 +41771,9 @@ dateField.setValue('2006-5-4');
                 v = Date.parseDate(value, this.altFormatsArray[i]);
             }
         }
+		if (v < Date.parseDate(this.zeroValue, 'Y-m-d') ) {
+			v = '';
+		}
         return v;
     },
 
