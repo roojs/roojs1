@@ -26482,11 +26482,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @param {Boolean} asString
      * @return {Object}
      */
-    getValues : function(asString){
+    getValues : function(asString)
+    {
         if (this.childForms) {
             // copy values from the child forms
             Roo.each(this.childForms, function (f) {
-                this.setValues(f.getValues());
+                this.setValues(f.getFieldValues()); // get the full set of data, as we might be copying comboboxes from external into this one.
             }, this);
         }
         
