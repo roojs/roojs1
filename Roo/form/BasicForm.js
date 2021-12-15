@@ -596,7 +596,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             // should this call getFieldValues - probably not as we do not currently copy
             // hidden fields when we generate..
             Roo.each(this.childForms, function (f) {
-                this.setValues(f.getValues());
+                this.setValues(f.getFieldValues());
             }, this);
         }
         
