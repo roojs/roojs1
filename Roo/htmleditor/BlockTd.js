@@ -110,7 +110,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 listeners : {
                     select : function (combo, r, index)
                     {
-                        var b = block();
+                        var b = cell();
                         b.table_width = r.get('val');
                         var t = table();
                         
