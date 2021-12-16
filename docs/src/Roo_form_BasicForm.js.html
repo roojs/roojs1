@@ -602,6 +602,14 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= {};
         </span><span class="jsdoc-var">this.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.readOnly</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// skip read only values. - this is in theory to stop 'old' values being copied over new ones
+                        // if a subform contains a copy of them.
+                        // if you have subforms with the same editable data, you will need to copy the data back
+                        // and forth.
+            </span><span class="jsdoc-syntax">}
+
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">f.getName</span><span class="jsdoc-syntax">()) {
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }

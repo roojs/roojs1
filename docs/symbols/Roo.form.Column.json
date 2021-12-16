@@ -33,7 +33,8 @@
     "Roo.SplitButton",
     "Roo.Toolbar.Button",
     "Roo.Toolbar.SplitButton",
-    "Roo.form.TextItem"
+    "Roo.form.TextItem",
+    "Roo.form.FieldSet"
   ],
   "tree_parent" : [],
   "desc" : "Creates a column container for layout and rendering of fields in an {@link Roo.form.Form}.",
