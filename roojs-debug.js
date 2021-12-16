@@ -4909,27 +4909,27 @@ Roo.lib.Easing = {
  * Hackily modifyed by alan@roojs.com
  *
  *
- * usage:
- * document.undoManager = new UndoManager(limit, document)
  *  
  *
  *  TOTALLY UNTESTED...
  *
  *  Documentation to be done....
  */
-
-
+ 
 
 /**
 * @class Roo.lib.UndoManager
 * An undo manager implementation in JavaScript. It follows the W3C UndoManager and DOM Transaction
 * Draft and the undocumented and disabled Mozilla Firefox's UndoManager implementation.
 
-* Usage:
-<pre><code>
-document.undoManager = new UndoManager(limit, document)
+ * Usage:
+ * <pre><code>
+
+
+editor.undoManager = new Roo.lib.UndoManager(1000, editor);
  
 </code></pre>
+
 * For more information see this blog post with examples:
 *  <a href="http://www.cnitblog.com/seeyeah/archive/2011/12/30/38728.html/">DomHelper
      - Create Elements using DOM, HTML fragments and Templates</a>. 
@@ -4941,15 +4941,20 @@ document.undoManager = new UndoManager(limit, document)
 Roo.lib.UndoManager = function (limit, undoScopeHost)
 {
     this.stack = [];
+    this.limit = limit;
+    this.scope = undoScopeHost;
     this.fireEvent = typeof CustomEvent != 'undefined' && undoScopeHost && undoScopeHost.dispatchEvent;
-
+    if (this.fireEvent) {
+        this.bindEvents();
+    }
+    
 };
         
 Roo.lib.UndoManager.prototype = {
     
-    
+    limit : false,
     stack : false,
-    
+    scope :  false,
     fireEvent : false,
     position : 0,
     length : 0,
@@ -5003,14 +5008,14 @@ undoManager.transact({
     
         this.position = 0;
 
-        if (limit && this.stack.length > limit) {
-            this.length = this.stack.length = limit;
+        if (this.limit && this.stack.length > this.limit) {
+            this.length = this.stack.length = this.limit;
         } else {
             this.length = this.stack.length;
         }
 
         if (this.fireEvent) {
-            undoScopeHost.dispatchEvent(
+            this.scope.dispatchEvent(
                 new CustomEvent('DOMTransaction', {
                     detail: {
                         transactions: this.stack[0].slice()
@@ -5031,7 +5036,7 @@ undoManager.transact({
             this.position++;
 
             if (this.fireEvent) {
-                undoScopeHost.dispatchEvent(
+                this.scope.dispatchEvent(
                     new CustomEvent('undo', {
                         detail: {
                             transactions: this.stack[this.position - 1].slice()
@@ -5053,7 +5058,7 @@ undoManager.transact({
             this.position--;
 
             if (this.fireEvent) {
-                undoScopeHost.dispatchEvent(
+                this.scope.dispatchEvent(
                     new CustomEvent('redo', {
                         detail: {
                             transactions: this.stack[this.position].slice()
@@ -5081,8 +5086,100 @@ undoManager.transact({
     clearRedo : function () {
         this.stack.splice(0, this.position);
         this.position = 0;
-        this.length = stack.length;
+        this.length = this.stack.length;
+    },
+    /**
+     * Reset the undo - probaly done on load to clear all history.
+     */
+    reset : function()
+    {
+        this.stack = [];
+        this.position = 0;
+        this.length = 0;
+        this.current_html = this.scope.innerHTML;
+        if (this.timer !== false) {
+            clearTimeout(this.timer);
+        }
+        this.timer = false;
+        this.merge = false;
+        
+    },
+    current_html : '',
+    timer : false,
+    merge : false,
+    
+    
+    // this will handle the undo/redo on the element.?
+    bindEvents : function()
+    {
+        var el  = this.scope;
+        el.undoManager = this;
+        
+        
+        this.scope.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.keyCode === 90) {
+                if (e.shiftKey) {
+                    el.undoManager.redo(); // Ctrl/Command + Shift + Z
+                } else {
+                    el.undoManager.undo(); // Ctrl/Command + Z
+                }
+        
+                e.preventDefault();
+            }
+        });
+        
+        
+        var t = this;
+        
+        el.addEventListener('input', function(e) {
+            if(el.innerHTML == t.current_html) {
+                return;
+            }
+            // only record events every second.
+            if (t.timer !== false) {
+               clearTimeout(t.timer);
+               t.timer = false;
+            }
+            t.timer = setTimeout(function() { t.merge = false; }, 1000);
+            
+            t.addEvent(t.merge);
+            t.merge = true; // ignore changes happening every second..
+        });
+	},
+    /**
+     * Manually add an event.
+     * Normall called without arguements - and it will just get added to the stack.
+     * 
+     */
+    
+    addEvent : function(merge)
+    {
+        // not sure if this should clear the timer 
+        merge = typeof(merge) == 'undefined' ? false : merge; 
+        
+        el.undoManager.transact({
+            oldHTML: this.current_html,
+            newHTML: this.scope.innerHTML,
+            // nothing to execute (content already changed when input is fired)
+            execute: function() { },
+            undo: function() {
+                this.scope.innerHTML = this.current_html = this.oldHTML;
+            },
+            redo: function() {
+                this.scope.innerHTML = this.current_html = this.newHTML;
+            }
+        }, merge);
+        
+        this.merge = merge;
+        
+        this.current_html = el.innerHTML;
     }
+    
+    
+     
+    
+    
+    
 };
 /*
  * Based on:
@@ -46595,6 +46692,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      
     bodyCls : '',
 
+    
+    undoManager : false,
     /**
      * Protected method that will not generally be called directly. It
      * is called when the editor initializes the iframe with HTML contents. Override this method if you
@@ -46699,6 +46798,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 if(this.doc.body || this.doc.readyState == 'complete'){
                     try {
                         this.doc.designMode="on";
+                        
                     } catch (e) {
                         return;
                     }
@@ -46788,6 +46888,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
         if(this.initialized){
+            
+            this.undoManager.addEvent();
+
+            
             var bd = (this.doc.body || this.doc.documentElement);
             //this.cleanUpPaste(); -- this is done else where and causes havoc..
             
@@ -46999,7 +47103,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         var html = cd.getData('text/html'); // clipboard event
         var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
-        var images = parser.doc.getElementsByType('pict');
+        var images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         Roo.log(images);
         //Roo.log(imgs);
         // fixme..
@@ -47062,7 +47166,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onFirstFocus : function(){
         
         this.assignDocWin();
-        
+        this.undoManager = new Roo.lib.UndoManager(100,(this.doc.body || this.doc.documentElement));
         
         this.activated = true;
          
@@ -47132,7 +47236,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
         }
         this.execCmd("formatblock",   tg);
-        
+        this.undoManager.addEvent(); 
     },
     
     insertText : function(txt)
@@ -47144,6 +47248,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                //alert(Sender.getAttribute('label'));
                
         range.insertNode(this.doc.createTextNode(txt));
+        this.undoManager.addEvent();
     } ,
     
      
@@ -47204,16 +47309,24 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 range = win.getSelection().getRangeAt(0);
                 node = typeof(text) == 'string' ? range.createContextualFragment(text) : text;
                 range.insertNode(node);
+                range = range.cloneRange();
+                range.collapse(false);
+                 
+                win.getSelection().removeAllRanges();
+                win.getSelection().addRange(range);
+                
+                
+                
             } else if (win.document.selection && win.document.selection.createRange) {
                 // no firefox support
                 var txt = typeof(text) == 'string' ? text : text.outerHTML;
                 win.document.selection.createRange().pasteHTML(txt);
+            
             } else {
                 // no firefox support
                 var txt = typeof(text) == 'string' ? text : text.outerHTML;
                 this.execCmd('InsertHTML', txt);
             } 
-            
             this.syncValue();
             
             this.deferFocus();
@@ -49593,7 +49706,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
              this.editor.onFirstFocus();
             return;
         }
-        Roo.log(ev ? ev.target : 'NOTARGET');
+        //Roo.log(ev ? ev.target : 'NOTARGET');
         
         
         // http://developer.yahoo.com/yui/docs/simple-editor.js.html
