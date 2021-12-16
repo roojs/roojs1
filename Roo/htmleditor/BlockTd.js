@@ -319,6 +319,12 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             html : "&nbsp;" // is this going to be editable now?
         };
      
+    },
+    
+    remove : function()
+    {
+        var tb = this.node.findParent('table');
+        
     }
     
     
