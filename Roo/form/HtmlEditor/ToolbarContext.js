@@ -705,7 +705,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 {
                     var sn = tb.selectedNode;
                     if (block) {
-                        sn = Roo.htmleditor.Block.factory(tb.selectedNode).removalNode();
+                        sn = Roo.htmleditor.Block.factory(tb.selectedNode).removeNode();
                         
                     }
                     if (!sn) {
