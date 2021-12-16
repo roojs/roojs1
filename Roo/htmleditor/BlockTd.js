@@ -77,7 +77,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     toolbar.editorcore.focus();
                     var cr = toolbar.editorcore.getSelection();
                     cr.removeAllRanges();
-                    cr.addRange(lr);    
+                    cr.addRange(lr);
+                    toolbar.editorcore.onEditorEvent();
                 }).defer(10, this);
                 
                 
