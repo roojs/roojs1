@@ -49416,7 +49416,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         if (ev &&
             (ev.type == 'mouseup' || ev.type == 'click' ) &&
-            ev.target && ev.target != 'BODY' ) { // && ev.target.tagName == 'IMG') {
+            ev.target && ev.target.tagName != 'BODY' ) { // && ev.target.tagName == 'IMG') {
             // they have click on an image...
             // let's see if we can change the selection...
             sel = ev.target;
@@ -49628,7 +49628,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
        
         var tb = new Roo.Toolbar(wdiv);
-        this.tb = tb;
+        ///this.tb = tb; // << this sets the active toolbar..
         if (tlist === false && block) {
             tlist = block.contextMenu(this);
         }
