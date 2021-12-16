@@ -602,6 +602,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         
         var ret = {};
         this.items.each(function(f){
+            
+            if (f.readOnly) {
+                return; // skip read only values.
+            }
+            
             if (!f.getName()) {
                 return;
             }
