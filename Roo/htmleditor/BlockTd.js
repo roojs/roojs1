@@ -111,8 +111,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     select : function (combo, r, index)
                     {
                         var b = cell();
-                        t.width  = b.table_width = r.get('val');
                         var t = table();
+                        t.width  = b.table_width = r.get('val');
+                        
                         t.updateElement();
                         syncValue();
                         
