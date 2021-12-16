@@ -36157,13 +36157,28 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
     beforeColMenuShow : function(){
         var cm = this.cm,  colCount = cm.getColumnCount();
         this.colMenu.removeAll();
+        
+        var items = [];
         for(var i = 0; i < colCount; i++){
-            this.colMenu.add(new Roo.menu.CheckItem({
+            items.push({
                 id: "col-"+cm.getColumnId(i),
                 text: cm.getColumnHeader(i),
                 checked: !cm.isHidden(i),
                 hideOnClick:false
-            }));
+            });
+        }
+        
+        if (this.grid.sortColMenu) {
+            items.sort(function(a,b) {
+                if (a.text == b.text) {
+                    return 0;
+                }
+                return a.text.toUpperCase() > b.text.toUpperCase() ? 1 : -1;
+            });
+        }
+        
+        for(var i = 0; i < colCount; i++){
+            this.colMenu.add(new Roo.menu.CheckItem(items[i]));
         }
     },
 
