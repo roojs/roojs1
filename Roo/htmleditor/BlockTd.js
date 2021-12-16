@@ -323,7 +323,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     removeNode : function()
     {
-        var tb = this.node.findParent('table');
+        return Roo.get(this.node).findParent('table');
+        
         
     }
     
