@@ -15358,6 +15358,16 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * <p>
      * @param {Object} options An object containing properties which control loading options:<ul>
      * <li>params {Object} An object containing properties to pass as HTTP parameters to a remote data source.</li>
+     * <li>params.data {Object} if you are using a MemoryProxy / JsonReader, use this as the data to load stuff..
+     * <pre>
+                {
+                    data : data,  // array of key=>value data like JsonReader
+                    total : data.length,
+                    success : true
+                    
+                }
+        </pre>
+            }.</li>
      * <li>callback {Function} A function to be called after the Records have been loaded. The callback is
      * passed the following arguments:<ul>
      * <li>r : Roo.data.Record[]</li>
