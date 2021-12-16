@@ -391,6 +391,11 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         if (!sel || sel.type != 'row') {
             return;
         }
+        
+        if (this.no_row < 2) {
+            return;
+        }
+        
         var rows = this.normalizeRows();
         
         
