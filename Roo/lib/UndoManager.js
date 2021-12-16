@@ -226,7 +226,7 @@ undoManager.transact({
         this.position = 0;
         this.length = this.stack.length;
     },
-    
+    // this will handle the undo/redo on the element.?
     bindEvents : function()
     {
         var el  = this.scope;
