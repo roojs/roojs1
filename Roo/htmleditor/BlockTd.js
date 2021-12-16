@@ -145,6 +145,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     click : function (_self, e)
                     {
                         saveSel();
+                        
                         table().removeColumn();
                         syncValue();
                         restoreSel();
