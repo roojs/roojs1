@@ -349,6 +349,10 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         if (!sel || sel.type != 'col') {
             return;
         }
+        if (this.no_col < 2) {
+            return;
+        }
+        
         this.rows.forEach(function(row) {
             var cols = this.normalizeRow(row);
             var col = cols[sel.col];
