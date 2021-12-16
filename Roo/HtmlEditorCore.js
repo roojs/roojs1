@@ -139,6 +139,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      
     bodyCls : '',
 
+    
+    undoManager : false,
     /**
      * Protected method that will not generally be called directly. It
      * is called when the editor initializes the iframe with HTML contents. Override this method if you
@@ -243,6 +245,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 if(this.doc.body || this.doc.readyState == 'complete'){
                     try {
                         this.doc.designMode="on";
+                        
                     } catch (e) {
                         return;
                     }
@@ -332,6 +335,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
         if(this.initialized){
+            
+            this.undoManager.addEvent();
+
+            
             var bd = (this.doc.body || this.doc.documentElement);
             //this.cleanUpPaste(); -- this is done else where and causes havoc..
             
@@ -543,7 +550,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         var html = cd.getData('text/html'); // clipboard event
         var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
-        var images = parser.doc.getElementsByType('pict');
+        var images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         Roo.log(images);
         //Roo.log(imgs);
         // fixme..
@@ -606,7 +613,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onFirstFocus : function(){
         
         this.assignDocWin();
-        
+        this.undoManager = new Roo.lib.UndoManager(100,(this.doc.body || this.doc.documentElement));
         
         this.activated = true;
          
@@ -676,7 +683,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
         }
         this.execCmd("formatblock",   tg);
-        
+        this.undoManager.addEvent(); 
     },
     
     insertText : function(txt)
@@ -688,6 +695,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                //alert(Sender.getAttribute('label'));
                
         range.insertNode(this.doc.createTextNode(txt));
+        this.undoManager.addEvent();
     } ,
     
      
@@ -748,16 +756,24 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 range = win.getSelection().getRangeAt(0);
                 node = typeof(text) == 'string' ? range.createContextualFragment(text) : text;
                 range.insertNode(node);
+                range = range.cloneRange();
+                range.collapse(false);
+                 
+                win.getSelection().removeAllRanges();
+                win.getSelection().addRange(range);
+                
+                
+                
             } else if (win.document.selection && win.document.selection.createRange) {
                 // no firefox support
                 var txt = typeof(text) == 'string' ? text : text.outerHTML;
                 win.document.selection.createRange().pasteHTML(txt);
+            
             } else {
                 // no firefox support
                 var txt = typeof(text) == 'string' ? text : text.outerHTML;
                 this.execCmd('InsertHTML', txt);
             } 
-            
             this.syncValue();
             
             this.deferFocus();
