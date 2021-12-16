@@ -26559,7 +26559,10 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         this.items.each(function(f){
             
             if (f.readOnly) {
-                return; // skip read only values.
+                return; // skip read only values. - this is in theory to stop 'old' values being copied over new ones
+                        // if a subform contains a copy of them.
+                        // if you have subforms with the same editable data, you will need to copy the data back
+                        // and forth.
             }
             
             if (!f.getName()) {
