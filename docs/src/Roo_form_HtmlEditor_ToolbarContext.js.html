@@ -41,200 +41,138 @@
 
 
 </span><span class="jsdoc-var">Roo.form.HtmlEditor.ToolbarContext.types </span><span class="jsdoc-syntax">= {
-    </span><span class="jsdoc-string">'IMG' </span><span class="jsdoc-syntax">: {
-        </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: {
+    </span><span class="jsdoc-string">'IMG' </span><span class="jsdoc-syntax">: [
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Width&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 40
         },
-        </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">:  {
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'height'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Height&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 40
         },
-        </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">: {
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'align'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Align&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">: [ [</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;left&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;right&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;center&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;top&quot;</span><span class="jsdoc-syntax">]],
             </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: 80
 
         },
-        </span><span class="jsdoc-var">border</span><span class="jsdoc-syntax">: {
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'border'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Border&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 40
         },
-        </span><span class="jsdoc-var">alt</span><span class="jsdoc-syntax">: {
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'alt'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Alt&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 120
         },
-        </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: {
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Src&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 220
         }
 
-    },
+    ],
 
-    </span><span class="jsdoc-string">'FIGURE' </span><span class="jsdoc-syntax">: {
-         </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">: {
+    </span><span class="jsdoc-string">'FIGURE' </span><span class="jsdoc-syntax">: [
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'align'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Align&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">: [ [</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;left&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;right&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;center&quot;</span><span class="jsdoc-syntax">],[ </span><span class="jsdoc-string">&quot;top&quot;</span><span class="jsdoc-syntax">]],
             </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: 80
         }
-    },
-    </span><span class="jsdoc-string">'A' </span><span class="jsdoc-syntax">: {
-        </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: {
+    ],
+    </span><span class="jsdoc-string">'A' </span><span class="jsdoc-syntax">: [
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Name&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 50
         },
-        </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">:  {
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'target'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Target&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 120
         },
-        </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">:  {
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Href&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 220
         } </span><span class="jsdoc-comment">// border?
 
-    </span><span class="jsdoc-syntax">},
-    </span><span class="jsdoc-comment">/*
-    'TABLE' : {
-        rows : {
-            title: &quot;Rows&quot;,
-            width: 20
-        },
-        cols : {
-            title: &quot;Cols&quot;,
-            width: 20
-        },
-        width : {
-            title: &quot;Width&quot;,
-            width: 40
-        },
-        height : {
-            title: &quot;Height&quot;,
-            width: 40
-        },
-        border : {
-            title: &quot;Border&quot;,
-            width: 20
-        }
-    },
-    'TD' : {
-        width : {
-            title: &quot;Width&quot;,
-            width: 40
-        },
-        height : {
-            title: &quot;Height&quot;,
-            width: 40
-        },   
-        align: {
-            title: &quot;Align&quot;,
-            opts : [[&quot;&quot;],[ &quot;left&quot;],[ &quot;center&quot;],[ &quot;right&quot;],[ &quot;justify&quot;],[ &quot;char&quot;]],
-            width: 80
-        },
-        valign: {
-            title: &quot;Valign&quot;,
-            opts : [[&quot;&quot;],[ &quot;top&quot;],[ &quot;middle&quot;],[ &quot;bottom&quot;],[ &quot;baseline&quot;]],
-            width: 80
-        },
-        colspan: {
-            title: &quot;Colspan&quot;,
-            width: 20
-            
-        },
-         'font-family'  : {
-            title : &quot;Font&quot;,
-            style : 'fontFamily',
-            displayField: 'display',
-            optname : 'font-family',
-            width: 140
-        }
-    },
-    */
-    </span><span class="jsdoc-string">'INPUT' </span><span class="jsdoc-syntax">: {
-        </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: {
+    </span><span class="jsdoc-syntax">],
+
+    </span><span class="jsdoc-string">'INPUT' </span><span class="jsdoc-syntax">: [
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;name&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 120
         },
-        </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: {
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'value'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Value&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 120
         },
-        </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: {
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Width&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 40
         }
-    },
-    </span><span class="jsdoc-string">'LABEL' </span><span class="jsdoc-syntax">: {
-        </span><span class="jsdoc-string">'for' </span><span class="jsdoc-syntax">: {
+    ],
+    </span><span class="jsdoc-string">'LABEL' </span><span class="jsdoc-syntax">: [
+         {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'for'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;For&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 120
         }
-    },
-    </span><span class="jsdoc-string">'TEXTAREA' </span><span class="jsdoc-syntax">: {
-        </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: {
+    ],
+    </span><span class="jsdoc-string">'TEXTAREA' </span><span class="jsdoc-syntax">: [
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;name&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 120
         },
-        </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">: {
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rows'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Rows&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 20
         },
-        </span><span class="jsdoc-var">cols </span><span class="jsdoc-syntax">: {
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'cols'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Cols&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 20
         }
-    },
-    </span><span class="jsdoc-string">'SELECT' </span><span class="jsdoc-syntax">: {
-        </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: {
+    ],
+    </span><span class="jsdoc-string">'SELECT' </span><span class="jsdoc-syntax">: [
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;name&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 120
         },
-        </span><span class="jsdoc-var">selectoptions </span><span class="jsdoc-syntax">: {
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'selectoptions'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Options&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 200
         }
-    },
+    ],
 
     </span><span class="jsdoc-comment">// should we really allow this??
     // should this just be 
-    </span><span class="jsdoc-string">'BODY' </span><span class="jsdoc-syntax">: {
-        </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: {
+    </span><span class="jsdoc-string">'BODY' </span><span class="jsdoc-syntax">: [
+
+        {
+            </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'title'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Title&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 200,
             </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         </span><span class="jsdoc-syntax">}
-    },
-    </span><span class="jsdoc-comment">/*
-    'SPAN' : {
-        'font-family'  : {
-            title : &quot;Font&quot;,
-            style : 'fontFamily',
-            displayField: 'display',
-            optname : 'font-family',
-            width: 140
-        }
-    },
-    'DIV' : {
-        'font-family'  : {
-            title : &quot;Font&quot;,
-            style : 'fontFamily',
-            displayField: 'display',
-            optname : 'font-family',
-            width: 140
-        }
-    },
-     'P' : {
-        'font-family'  : {
-            title : &quot;Font&quot;,
-            style : 'fontFamily',
-            displayField: 'display',
-            optname : 'font-family',
-            width: 140
-        }
-    },
-    */
-    </span><span class="jsdoc-string">'*' </span><span class="jsdoc-syntax">: {
-        </span><span class="jsdoc-comment">// empty..
-    </span><span class="jsdoc-syntax">}
+    ],
+
+    </span><span class="jsdoc-string">'*' </span><span class="jsdoc-syntax">: [
+        </span><span class="jsdoc-comment">// empty.
+    </span><span class="jsdoc-syntax">]
 
 };
 
@@ -632,7 +570,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.HtmlEditor.ToolbarContext</span><span class="jsdoc-syntax">;
 
 
-        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">tlist.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
 
             </span><span class="jsdoc-comment">// newer versions will use xtype cfg to create menus.
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.xtype</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
@@ -662,15 +600,15 @@
                         </span><span class="jsdoc-var">fields</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">],
                         </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">opts
                     </span><span class="jsdoc-syntax">}),
-                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-roo-edit-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-roo-edit-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">,
 
-                    </span><span class="jsdoc-var">attrname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">attrname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">stylename </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.style </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">item.style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
                     </span><span class="jsdoc-var">displayField</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.displayField </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">item.displayField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">valueField </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">typeAhead</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tbc.stores</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'  </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'remote' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'local'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">mode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tbc.stores</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'  </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'remote' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'local'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">editable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">triggerAction</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'all'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">emptyText</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'Select'</span><span class="jsdoc-syntax">,
@@ -716,8 +654,8 @@
                 */
             </span><span class="jsdoc-syntax">}
             </span><span class="jsdoc-var">tb.addField</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.form.TextField</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-roo-edit-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">attrname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-roo-edit-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">attrname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">tlist</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.name</span><span class="jsdoc-syntax">,
 
                 </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">item.width</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-comment">//allowBlank:true,
@@ -765,9 +703,11 @@
             </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
                 </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
                 {
-                    </span><span class="jsdoc-comment">// remove
-                    // undo does not work.
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tb.selectedNode</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tb.selectedNode</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removalNode</span><span class="jsdoc-syntax">();
+
+                    }
                     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                     }

@@ -194,6 +194,12 @@
       "memberOf" : ""
     },
     {
+      "name" : "sortColMenu",
+      "type" : "boolean",
+      "desc" : "Sort the column order menu when it shows (usefull for long lists..) default false",
+      "memberOf" : ""
+    },
+    {
       "name" : "enableDragDrop",
       "type" : "Boolean",
       "desc" : "True to enable drag and drop of rows. Default is false.",

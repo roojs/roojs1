@@ -549,12 +549,13 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @param {Boolean} asString
      * @return {Object}
      */
-    </span><span class="jsdoc-var">getValues </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">asString</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">getValues </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">asString</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.childForms</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// copy values from the child forms
             </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.childForms</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">this.setValues</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.getValues</span><span class="jsdoc-syntax">());
-            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.setValues</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.getFieldValues</span><span class="jsdoc-syntax">()); </span><span class="jsdoc-comment">// get the full set of data, as we might be copying comboboxes from external into this one.
+            </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
 
         </span><span class="jsdoc-comment">// use formdata
@@ -595,7 +596,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             // should this call getFieldValues - probably not as we do not currently copy
             // hidden fields when we generate..
             </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.childForms</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">this.setValues</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.getValues</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-var">this.setValues</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.getFieldValues</span><span class="jsdoc-syntax">());
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
 

@@ -12,7 +12,7 @@
  * @class Roo.ContentPanel
  * @extends Roo.util.Observable
  * @children Roo.form.Form Roo.JsonView Roo.View
- * @parent Roo.BorderLayout Roo.LayoutDialog builder-top
+ * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * A basic ContentPanel element.
  * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
  * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
@@ -25,7 +25,7 @@
  * @cfg {String} title          The title for this panel
  * @cfg {Array} adjustments     Values to &lt;b&gt;add&lt;/b&gt; to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
  * @cfg {String} url            Calls {@link #setUrl} with this value
- * @cfg {String} region [required]   (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)
+ * @cfg {String} region (center|north|south|east|west) [required] which region to put this panel on (when used with xtype constructors)
  * @cfg {String|Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
  * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
@@ -463,14 +463,18 @@ layout.addxtype({
 </span><span class="jsdoc-comment">/**
  * @class Roo.GridPanel
  * @extends Roo.ContentPanel
+ * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * @constructor
  * Create a new GridPanel.
- * @param {Roo.grid.Grid} grid The grid for this panel
- * @param {String/Object} config A string to set only the panel's title, or a config object
+ * @cfg {Roo.grid.Grid} grid The grid for this panel
  */
 </span><span class="jsdoc-var">Roo.GridPanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
 
-
+    </span><span class="jsdoc-comment">// universal ctor...
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid.grid</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">grid </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.grid</span><span class="jsdoc-syntax">;
+    }
     </span><span class="jsdoc-var">this.wrapper </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// wrapper for IE7 strict &amp; safari scroll issue
         </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-layout-grid-wrapper x-layout-inactive-content&quot;</span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
 
@@ -538,6 +542,10 @@ layout.addxtype({
 </span><span class="jsdoc-comment">/**
  * @class Roo.NestedLayoutPanel
  * @extends Roo.ContentPanel
+ * @parent Roo.BorderLayout Roo.LayoutDialog builder
+ * @cfg Roo.BorderLayout} layout   [required] The layout for this panel
+ *
+ * 
  * @constructor
  * Create a new NestedLayoutPanel.
  * 
@@ -726,6 +734,7 @@ panel.addxtype({
 </span><span class="jsdoc-comment">/**
  * @class Roo.TreePanel
  * @extends Roo.ContentPanel
+ * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * Treepanel component
  * 
  * @constructor

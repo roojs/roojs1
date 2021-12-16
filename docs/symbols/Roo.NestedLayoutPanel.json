@@ -6,8 +6,12 @@
   ],
   "childClasses" : {  },
   "tree_children" : [],
-  "tree_parent" : [],
-  "desc" : "Create a new NestedLayoutPanel.",
+  "tree_parent" : [
+    "Roo.BorderLayout",
+    "Roo.LayoutDialog",
+    "builder"
+  ],
+  "desc" : "",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
@@ -75,7 +79,7 @@
     {
       "name" : "region",
       "type" : "String",
-      "desc" : "[required]   (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
+      "desc" : "t) [required] which region to put this panel on (when used with xtype constructors)",
       "memberOf" : "Roo.ContentPanel"
     },
     {
@@ -89,6 +93,12 @@
       "type" : "Roo.menu.Menu",
       "desc" : "popup menu",
       "memberOf" : "Roo.ContentPanel"
+    },
+    {
+      "name" : "Roo.BorderLayout}",
+      "type" : "",
+      "desc" : "layout   [required] The layout for this panel",
+      "memberOf" : "Roo"
     },
     {
       "name" : "title",
