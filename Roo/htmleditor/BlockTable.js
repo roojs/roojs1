@@ -649,6 +649,11 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             html : "&nbsp;" // is this going to be editable now?
         };
      
+    },
+    
+    remove : function()
+    {
+        Roo.log(this.cfg.node);
     }
     
     
