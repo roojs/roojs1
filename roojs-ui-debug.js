@@ -27646,7 +27646,7 @@ Roo.form.Action.ACTION_TYPES = {
 /**
  * @class Roo.form.Layout
  * @extends Roo.Component
- * @children Roo.form.Column Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
+ * @children Roo.form.Column Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem Roo.form.FieldSet
  * Creates a container for layout and rendering of fields in an {@link Roo.form.Form}.
  * @constructor
  * @param {Object} config Configuration options
@@ -27797,7 +27797,7 @@ Roo.extend(Roo.form.Layout, Roo.Component, {
 /**
  * @class Roo.form.Column
  * @extends Roo.form.Layout
- * @children Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
+ * @children Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem Roo.form.FieldSet
  * Creates a column container for layout and rendering of fields in an {@link Roo.form.Form}.
  * @constructor
  * @param {Object} config Configuration options
@@ -27832,7 +27832,7 @@ Roo.extend(Roo.form.Column, Roo.form.Layout, {
 /**
  * @class Roo.form.Row
  * @extends Roo.form.Layout
- * @children Roo.form.Column Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
+ * @children Roo.form.Column Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem Roo.form.FieldSet
  * Creates a row container for layout and rendering of fields in an {@link Roo.form.Form}.
  * @constructor
  * @param {Object} config Configuration options
