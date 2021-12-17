@@ -25477,12 +25477,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var left_label = tn;
         
         // ok see if we are editing a block?
-        var sel_el = Roo.get(sel);
+        
         var db = false;
         // you are not actually selecting the block.
         if (sel && sel.hasAttribute('data-block')) {
             db = sel;
         } else if (sel && !sel.hasAttribute('contenteditable')) {
+            var sel_el = Roo.get(sel);
             db = sel_el.findParent('[data-block]');
             var cepar = sel_el.findParent('[contenteditable=true]');
             if (db && cepar && cepar.tagName != 'BODY') {
