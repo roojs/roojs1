@@ -915,8 +915,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     selectNode : function(node)
     {
-        Roo.select('.roo-ed-selection', false, this.doc).removeClass('roo-ed-selection');
-        Roo.get(node).addClass('roo-ed-selection');
         var nodeRange = node.ownerDocument.createRange();
         try {
             nodeRange.selectNode(node);
