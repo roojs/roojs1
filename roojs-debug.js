@@ -49769,7 +49769,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
             
             if (block) {
-                Roo.get(db).addClass('roo-ed-selection');
+                Roo.fly(db).addClass('roo-ed-selection');
                 tn = 'BLOCK.' + db.getAttribute('data-block');
                 
                 //this.editorcore.selectNode(db);
