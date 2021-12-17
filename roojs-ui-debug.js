@@ -23197,17 +23197,18 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     selectNode : function(node)
     {
-        
-            var nodeRange = node.ownerDocument.createRange();
-            try {
-                nodeRange.selectNode(node);
-            } catch (e) {
-                nodeRange.selectNodeContents(node);
-            }
-            //nodeRange.collapse(true);
-            var s = this.win.getSelection();
-            s.removeAllRanges();
-            s.addRange(nodeRange);
+        Roo.select('.roo-ed-selection', false, this.doc).removeClass('roo-ed-selection');
+        Roo.get(node).addClass('roo-ed-selection');
+        var nodeRange = node.ownerDocument.createRange();
+        try {
+            nodeRange.selectNode(node);
+        } catch (e) {
+            nodeRange.selectNodeContents(node);
+        }
+        //nodeRange.collapse(true);
+        var s = this.win.getSelection();
+        s.removeAllRanges();
+        s.addRange(nodeRange);
     },
     
     getSelectedNode: function() 
