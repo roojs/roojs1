@@ -49724,7 +49724,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             //this.editorcore.selectNode(sel);
              
         }  
-        
+        Roo.select('.roo-ed-selection', false, this.editorcore.doc).removeClass('roo-ed-selection');
+        //Roo.get(node).addClass('roo-ed-selection');
       
         //var updateFooter = sel ? false : true; 
         
@@ -49765,7 +49766,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         //if (db && !sel.hasAttribute('contenteditable') && sel.getAttribute('contenteditable') != 'true' ) {
         if (db) {
             block = Roo.htmleditor.Block.factory(db);
+            
+            
             if (block) {
+                Roo.get(db).addClass('roo-ed-selection');
                 tn = 'BLOCK.' + db.getAttribute('data-block');
                 
                 //this.editorcore.selectNode(db);
