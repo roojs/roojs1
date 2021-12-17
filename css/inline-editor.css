@@ -112,4 +112,11 @@
 .roo-htmleditor-body dl {
 	/*bringing lists on to the page with breathing room */
 	margin-left:2em;
-}     
+}
+
+
+
+.roo-htmleditor-body table.roo-ed-selection {
+	background-color: : #E7E9EB;
+	
+}
