@@ -25498,7 +25498,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
             
             if (block) {
-                Roo.fly(db).addClass('roo-ed-selection');
+                db.className +=  ' roo-ed-selection'; // since we removed it earlier... its not there..
                 tn = 'BLOCK.' + db.getAttribute('data-block');
                 
                 //this.editorcore.selectNode(db);
