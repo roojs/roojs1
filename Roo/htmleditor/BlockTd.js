@@ -94,7 +94,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         return [
             {
                 xtype : 'Button',
-                html : 'Edit Table',
+                text : 'Edit Table',
                 listeners : {
                     click : function() {
                         var t = Roo.get(toolbar.tb.selectedNode).findParent('table');
