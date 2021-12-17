@@ -92,7 +92,18 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         var fields = {};
         
         return [
-             {
+            {
+                xtype : 'Button',
+                html : 'Edit Table',
+                listeners : {
+                    click : function() {
+                        Roo.get(toolbar.tb.selectedNode).findParent('table');
+                        
+                    }
+                }
+                
+            },
+            {
                 xtype : 'TextItem',
                 text : "Table Width: ",
                 xns : rooui.Toolbar  //Boostrap?
