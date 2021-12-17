@@ -25941,13 +25941,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var ans = this.footerEls;
         var sel = ans[n];
         
-         // pick
-        var range = this.editorcore.createRange();
-        range.selectNodeContents(sel);
-        var selection = this.editorcore.getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
-        
+        this.editorcore.selectNode(sel);
         
         
         this.updateToolbar(null, null, sel);
