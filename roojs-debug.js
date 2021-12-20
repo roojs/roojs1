@@ -4947,6 +4947,7 @@ Roo.lib.UndoManager = function (limit, undoScopeHost)
     if (this.fireEvent) {
         this.bindEvents();
     }
+    this.reset();
     
 };
         
@@ -5025,10 +5026,16 @@ undoManager.transact({
                 })
             );
         }
+        
+        Roo.log("transaction: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
+      
+        
     },
 
     undo : function ()
     {
+        Roo.log("undo: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
+        
         if (this.position < this.length) {
             for (var i = this.stack[this.position].length - 1; i >= 0; i--) {
                 this.stack[this.position][i].undo();
@@ -5102,6 +5109,7 @@ undoManager.transact({
         }
         this.timer = false;
         this.merge = false;
+        this.addEvent();
         
     },
     current_html : '',
@@ -5127,6 +5135,13 @@ undoManager.transact({
                 e.preventDefault();
             }
         });
+        /// ignore keyup..
+        this.scope.addEventListener('keyup', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.keyCode === 90) {
+                e.preventDefault();
+            }
+        });
+        
         
         
         var t = this;
@@ -5154,10 +5169,12 @@ undoManager.transact({
     
     addEvent : function(merge)
     {
+        Roo.log("undomanager +" + (merge ? 'Y':'n'));
         // not sure if this should clear the timer 
         merge = typeof(merge) == 'undefined' ? false : merge; 
         
-        el.undoManager.transact({
+        this.scope.undoManager.transact({
+            scope : this.scope,
             oldHTML: this.current_html,
             newHTML: this.scope.innerHTML,
             // nothing to execute (content already changed when input is fired)
@@ -5168,11 +5185,11 @@ undoManager.transact({
             redo: function() {
                 this.scope.innerHTML = this.current_html = this.newHTML;
             }
-        }, merge);
+        }, false); //merge);
         
         this.merge = merge;
         
-        this.current_html = el.innerHTML;
+        this.current_html = this.scope.innerHTML;
     }
     
     
