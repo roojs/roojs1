@@ -28,45 +28,7 @@
 
 
 editor.undoManager = new Roo.lib.UndoManager(1000, editor);
-
-var html = editor.innerHTML;
-var merge = false;
-var timer = null;
-
-// warning: some browsers do not support input event
-editor.addEventListener('input', function(e) {
-	if(editor.innerHTML != html) {
-		clearTimeout(timer);
-		timer = setTimeout(function() { merge = false; }, 1000);
-
-		editor.undoManager.transact({
-			oldHTML: html,
-			newHTML: editor.innerHTML,
-			// nothing to execute (content already changed when input is fired)
-			execute: function() { },
-			undo: function() {
-				editor.innerHTML = html = this.oldHTML;
-			},
-			redo: function() {
-				editor.innerHTML = html = this.newHTML;
-			}
-		}, merge);
-
-		html = editor.innerHTML;
-		merge = true;
-	}
-
-});
-editor.addEventListener('keydown', function(e) {
-	if ((e.ctrlKey || e.metaKey) && e.keyCode === 90) {
-		if (e.shiftKey)
-			editor.undoManager.redo(); // Ctrl/Command + Shift + Z
-		else
-			editor.undoManager.undo(); // Ctrl/Command + Z
-
-		e.preventDefault();
-	}
-});
+ 
 </code></pre>
 
 * For more information see this blog post with examples:
@@ -83,9 +45,11 @@ Roo.lib.UndoManager = function (limit, undoScopeHost)
     this.limit = limit;
     this.scope = undoScopeHost;
     this.fireEvent = typeof CustomEvent != 'undefined' && undoScopeHost && undoScopeHost.dispatchEvent;
-    if (this.fireEvent ) {
+    if (this.fireEvent) {
         this.bindEvents();
     }
+    this.reset();
+    
 };
         
 Roo.lib.UndoManager.prototype = {
@@ -163,10 +127,16 @@ undoManager.transact({
                 })
             );
         }
+        
+        Roo.log("transaction: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
+      
+        
     },
 
     undo : function ()
     {
+        Roo.log("undo: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
+        
         if (this.position < this.length) {
             for (var i = this.stack[this.position].length - 1; i >= 0; i--) {
                 this.stack[this.position][i].undo();
@@ -226,22 +196,105 @@ undoManager.transact({
         this.position = 0;
         this.length = this.stack.length;
     },
+    /**
+     * Reset the undo - probaly done on load to clear all history.
+     */
+    reset : function()
+    {
+        this.stack = [];
+        this.position = 0;
+        this.length = 0;
+        this.current_html = this.scope.innerHTML;
+        if (this.timer !== false) {
+            clearTimeout(this.timer);
+        }
+        this.timer = false;
+        this.merge = false;
+        this.addEvent();
+        
+    },
+    current_html : '',
+    timer : false,
+    merge : false,
+    
+    
     // this will handle the undo/redo on the element.?
     bindEvents : function()
     {
         var el  = this.scope;
+        el.undoManager = this;
+        
+        
         this.scope.addEventListener('keydown', function(e) {
             if ((e.ctrlKey || e.metaKey) && e.keyCode === 90) {
-                if (e.shiftKey)
+                if (e.shiftKey) {
                     el.undoManager.redo(); // Ctrl/Command + Shift + Z
-                else
+                } else {
                     el.undoManager.undo(); // Ctrl/Command + Z
+                }
         
                 e.preventDefault();
             }
         });
+        /// ignore keyup..
+        this.scope.addEventListener('keyup', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.keyCode === 90) {
+                e.preventDefault();
+            }
+        });
+        
+        
+        
+        var t = this;
+        
+        el.addEventListener('input', function(e) {
+            if(el.innerHTML == t.current_html) {
+                return;
+            }
+            // only record events every second.
+            if (t.timer !== false) {
+               clearTimeout(t.timer);
+               t.timer = false;
+            }
+            t.timer = setTimeout(function() { t.merge = false; }, 1000);
+            
+            t.addEvent(t.merge);
+            t.merge = true; // ignore changes happening every second..
+        });
+	},
+    /**
+     * Manually add an event.
+     * Normall called without arguements - and it will just get added to the stack.
+     * 
+     */
+    
+    addEvent : function(merge)
+    {
+        Roo.log("undomanager +" + (merge ? 'Y':'n'));
+        // not sure if this should clear the timer 
+        merge = typeof(merge) == 'undefined' ? false : merge; 
+        
+        this.scope.undoManager.transact({
+            scope : this.scope,
+            oldHTML: this.current_html,
+            newHTML: this.scope.innerHTML,
+            // nothing to execute (content already changed when input is fired)
+            execute: function() { },
+            undo: function() {
+                this.scope.innerHTML = this.current_html = this.oldHTML;
+            },
+            redo: function() {
+                this.scope.innerHTML = this.current_html = this.newHTML;
+            }
+        }, false); //merge);
+        
+        this.merge = merge;
+        
+        this.current_html = this.scope.innerHTML;
     }
     
+    
+     
     
     
     
