@@ -115,6 +115,9 @@
 }
 
 
+.roo-htmleditor-body td::selection {
+	background: none;
+}
 
 .roo-htmleditor-body table.roo-ed-selection {
 	background-color: #E7E9EB;
