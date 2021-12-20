@@ -40,8 +40,8 @@ Roo.htmleditor.BlockTd = function(cfg)
 Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
  
     node : false,
-    width: '',
     
+    width: '',
     textAlign : 'left',
     
     colspan : 1,
