@@ -294,9 +294,22 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.colspan++;
 
 
+    },
+    
+    mergeLeft: function()
+    {
+        // get the contents of the next cell along..
+        var tr = this.node.nearest('tr');
+        var i = Array.prototype.indexOf.call(tr.childNodes, this.node);
+        if (i < 1) {
+            return; // cant do that.
+        }
+        this.node.innerHTML =  tr.childNodes[i-1].innerHTML + ' ' +  this.node.innerHTML ;
+        tr.removeChild(tr.childNodes[i-1]);
+        this.colspan++;
+
+
     }
-    
-    
     
     
 })
