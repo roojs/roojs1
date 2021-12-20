@@ -155,7 +155,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     click : function (_self, e)
                     {
                         saveSel();
-                        td().mergeLeft();
+                        cell().mergeLeft();
                         //block().growColumn();
                         syncValue();
                         restoreSel();
@@ -170,7 +170,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     click : function (_self, e)
                     {
                         saveSel();
-                        td().mergeRight();
+                        cell().mergeRight();
                         //block().growColumn();
                         syncValue();
                         restoreSel();
@@ -185,7 +185,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     click : function (_self, e)
                     {
                         saveSel();
-                        td().mergeAbove();
+                        cell().mergeAbove();
                         //block().growColumn();
                         syncValue();
                         restoreSel();
@@ -200,7 +200,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     click : function (_self, e)
                     {
                         saveSel();
-                        td().mergeBelow();
+                        cell().mergeBelow();
                         //block().growColumn();
                         syncValue();
                         restoreSel();
