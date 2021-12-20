@@ -141,8 +141,73 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 },
                 xns : rooui.Toolbar
             },
-           
+            {
+                xtype : 'TextItem',
+                text : "Merge Cells: ",
+                 xns : rooui.Toolbar 
+               
+            },
             
+            {
+                xtype : 'Button',
+                text: '<',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        saveSel();
+                        td().mergeLeft();
+                        //block().growColumn();
+                        syncValue();
+                        restoreSel();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            {
+                xtype : 'Button',
+                text: '>',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        saveSel();
+                        td().mergeRight();
+                        //block().growColumn();
+                        syncValue();
+                        restoreSel();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            {
+                xtype : 'Button',
+                text: '^',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        saveSel();
+                        td().mergeAbove();
+                        //block().growColumn();
+                        syncValue();
+                        restoreSel();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            {
+                xtype : 'Button',
+                text: 'v',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        saveSel();
+                        td().mergeBelow();
+                        //block().growColumn();
+                        syncValue();
+                        restoreSel();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
             // align... << fixme
             
         ];
