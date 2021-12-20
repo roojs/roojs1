@@ -284,7 +284,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     mergeRight: function()
     {
         // get the contents of the next cell along..
-        var tr = this.node.nearest('tr');
+        var tr = this.node.closest('tr');
         var i = Array.prototype.indexOf.call(tr.childNodes, this.node);
         if (i > tr.childNodes.length - 1) {
             return; // cant do that.
@@ -299,7 +299,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     mergeLeft: function()
     {
         // get the contents of the next cell along..
-        var tr = this.node.nearest('tr');
+        var tr = this.node.closest('tr');
         var i = Array.prototype.indexOf.call(tr.childNodes, this.node);
         if (i < 1) {
             return; // cant do that.
