@@ -42,7 +42,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     node : false,
     width: '',
     
-    table_width : '',
     textAlign : 'left',
     
     colspan : 1,
@@ -258,7 +257,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     {
         node  = node ? node : this.node ;
         this.width = this.getVal(node, true, 'style', 'width');
-        this.table_width = this.getVal(Roo.get(node).findParent('table'), true, 'style', 'width');
         this.html = node.innerHTML;
         
         
