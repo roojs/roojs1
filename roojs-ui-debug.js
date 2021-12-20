@@ -25532,7 +25532,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         
         // update attributes
-        if (block) {
+        if (block && this.tb.fields) {
              
             this.tb.fields.each(function(e) {
                 e.setValue(block[e.name]);
