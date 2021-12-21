@@ -50840,9 +50840,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     /**
      * Returns the fields in this form as an object with key/value pairs. 
      * This differs from getValues as it calls getValue on each child item, rather than using dom data.
+     * Normally this will not return readOnly data 
+     * @param {Boolean} with_readonly return readonly field data.
      * @return {Object}
      */
-    getFieldValues : function(with_hidden)
+    getFieldValues : function(with_readonly)
     {
         if (this.childForms) {
             // copy values from the child forms
@@ -50856,7 +50858,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         var ret = {};
         this.items.each(function(f){
             
-            if (f.readOnly) {
+            if (f.readOnly && with_readonly !== true) {
                 return; // skip read only values. - this is in theory to stop 'old' values being copied over new ones
                         // if a subform contains a copy of them.
                         // if you have subforms with the same editable data, you will need to copy the data back
