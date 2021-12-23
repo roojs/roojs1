@@ -341,6 +341,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     return;
                 }
                 for(var j = 0; j < c.rowspan; j++) {
+                    if (typeof(ret[rn+j]) == 'undefined') {
+                        continue; // we have a problem..
+                    }
                     ret[rn+j][cn] = c;
                     for(var i = 0; i < c.colspan; i++) {
                         ret[rn+j][cn+i] = c;
