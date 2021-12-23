@@ -342,10 +342,11 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             return; // no cells on right to merge with.
         }
         var table = this.toTableArray();
-        var rc = table[this.cellData.row][this.cellData.col+this.cellData.colspan];
-        if (typeof(rc) == 'undefined') {
+        
+        if (typeof(table[this.cellData.row][this.cellData.col+this.cellData.colspan]) == 'undefined') {
             return; // nothing right?
         }
+        var rc = table[this.cellData.row][this.cellData.col+this.cellData.colspan];
         // right cell - must be same rowspan and on the same row.
         if (rc.rowspan != this.cellData.rowspan || rc.row != this.cellData.row) {
             return; // right hand side is not same rowspan.
@@ -369,10 +370,11 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             return; // cant do that.
         }
         var table = this.toTableArray();
-        var rc = table[this.cellData.row][this.cellData.col01];
-        if (typeof(rc) == 'undefined') {
+        
+        if (typeof(table[this.cellData.row][this.cellData.col01]) == 'undefined') {
             return; // nothing right?
         }
+        var rc = table[this.cellData.row][this.cellData.col01];
         // right cell - must be same rowspan and on the same row.
         if (rc.rowspan != this.cellData.rowspan || rc.row != this.cellData.row) {
             return; // right hand side is not same rowspan.
@@ -383,7 +385,19 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.colspan++;
         this.node.setAttribute('colspan', this.colspan);
 
+    },
+    
+    mergeDown : function()
+    {
+        var table = this.toTableArray();
+        if (typeof(table[this.cellData.row+1]) == 'undefined') {
+            return; // no row below
+        }
+        var rc = table[this.cellData.row+1]
+        
+        
     }
+    
     
     
 })
