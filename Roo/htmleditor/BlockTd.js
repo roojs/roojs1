@@ -279,8 +279,51 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         
         
     },
+    
+    toTableArray : function()
+    {
+        var ret = [];
+        var tab = this.node.closest('tr').closest('table');
+        Array.from(tab.rows).forEach(function(r, ri){
+            ret[ri] = [];
+        });
+        var rn = 0;
+        Array.from(tab.rows).forEach(function(r, ri){
+            
+            var cn = 0;
+            Array.from(r.cells).forEach(function(ce, ci){
+                var c =  {
+                    cell : ce,
+                    row : rn,
+                    col: cn,
+                    colspan : ce.hasAttribute('colspan') ? ce.getAttribute('colspan') * 1 : 1,
+                    rowspan : ce.hasAttribute('rowspan') ? ce.getAttribute('rowspan') * 1 : 1,
+                };
+                ret[rn][cn] = c;
+                
+                if (c.colspan < 2 && c.rowspan < 2 ) {
+                    cn++;
+                    return;
+                }
+                for(var i = 0; i < c.colspan; i++) {
+                    ret[rn][cn+i] = c;
+                    for(var i = 0; i < c.rowspan; i++) {
+                        ret[rn+i][cn] = c;
+                    }
+                }
+                cn+= c.colspan;
+                
+                
+            });
+            rn++;
+        });
+        
+    },
+    
     mergeRight: function()
     {
+        // fixme - if right is a merged vertical cel.. cant do that.
+        
         // get the contents of the next cell along..
         var tr = this.node.closest('tr');
         var i = Array.prototype.indexOf.call(tr.childNodes, this.node);
