@@ -394,10 +394,10 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         if (typeof(table[this.cellData.row+1]) == 'undefined') {
             return; // no row below
         }
-        if (typeof(table[this.cellData.row+1][this.cellData.col1]) == 'undefined') {
+        if (typeof(table[this.cellData.row+1][this.cellData.col]) == 'undefined') {
             return; // nothing right?
         }
-        var rc = table[this.cellData.row][this.cellData.col];
+        var rc = table[this.cellData.row+1][this.cellData.col];
         
         if (rc.colspan != this.cellData.colspan || rc.col != this.cellData.col) {
             return; // right hand side is not same rowspan.
@@ -411,18 +411,18 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     mergeUp : function()
     {
         var table = this.toTableArray();
-        if (typeof(table[this.cellData.row+1]) == 'undefined') {
+        if (typeof(table[this.cellData.row-1]) == 'undefined') {
             return; // no row below
         }
-        if (typeof(table[this.cellData.row+1][this.cellData.col1]) == 'undefined') {
+        if (typeof(table[this.cellData.row-1][this.cellData.col]) == 'undefined') {
             return; // nothing right?
         }
-        var rc = table[this.cellData.row][this.cellData.col];
+        var rc = table[this.cellData.row-1][this.cellData.col];
         
         if (rc.colspan != this.cellData.colspan || rc.col != this.cellData.col) {
             return; // right hand side is not same rowspan.
         }
-        this.node.innerHTML =  this.node.innerHTML + rc.cell.innerHTML ;
+        this.node.innerHTML =  rc.cell.innerHTML + this.node.innerHTML ;
         tr.removeChild(rc.cell);
         this.rowspan++;
         this.node.setAttribute('colspan', this.colspan);
