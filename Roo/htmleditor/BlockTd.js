@@ -280,7 +280,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         
     },
     
-    toTableArray : function()
+    cellData : false,
+    
+    toTableArrayData : function()
     {
         var ret = [];
         var tab = this.node.closest('tr').closest('table');
@@ -288,7 +290,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             ret[ri] = [];
         });
         var rn = 0;
-        Array.from(tab.rows).forEach(function(r, ri){
+         Array.from(tab.rows).forEach(function(r, ri){
             
             var cn = 0;
             Array.from(r.cells).forEach(function(ce, ci){
@@ -299,6 +301,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     colspan : ce.colSpan,
                     rowspan : ce.rowSpan
                 };
+                if (ce == this.node) {
+                    this.cellData = c;
+                }
                 // if we have been filled up by a row?
                 if (typeof(ret[rn][cn]) != 'undefined') {
                     while(ret[rn][cn] != 'undefined') {
@@ -322,7 +327,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             });
             rn++;
         });
-        return ret;
+        return {table : ret, cell : curcell};
         
     },
     
