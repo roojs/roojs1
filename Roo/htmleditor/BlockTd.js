@@ -290,7 +290,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             ret[ri] = [];
         });
         var rn = 0;
-         Array.from(tab.rows).forEach(function(r, ri){
+        
+        Array.from(tab.rows).forEach(function(r, ri){
             
             var cn = 0;
             Array.from(r.cells).forEach(function(ce, ci){
@@ -324,9 +325,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     }
                 }
                 cn+= c.colspan;
-            });
+            }, this);
             rn++;
-        });
+        }, this);
         return ret;
         
     },
