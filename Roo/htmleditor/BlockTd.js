@@ -388,7 +388,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
 
     },
     
-    mergeDown : function()
+    mergeBelow : function()
     {
         var table = this.toTableArray();
         if (typeof(table[this.cellData.row+1]) == 'undefined') {
@@ -408,7 +408,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.node.setAttribute('rowspan', this.colspan);
     },
     
-    mergeUp : function()
+    mergeAbove : function()
     {
         var table = this.toTableArray();
         if (typeof(table[this.cellData.row-1]) == 'undefined') {
