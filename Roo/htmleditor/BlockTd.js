@@ -380,7 +380,10 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.node.setAttribute('rowspan', this.rowspan);
     },
     
-    
+    split: function() {
+        
+        
+    }
     
     
     
