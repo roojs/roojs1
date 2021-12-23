@@ -324,7 +324,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                         ret[rn+j][cn+i] = c;
                     }
                 }
-                cn+= c.colspan;
+                cn += c.colspan;
             }, this);
             rn++;
         }, this);
