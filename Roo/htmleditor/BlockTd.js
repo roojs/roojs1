@@ -301,7 +301,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     colspan : ce.colSpan,
                     rowspan : ce.rowSpan
                 };
-                if (ce == this.node) {
+                if (ce.isEqualNode(this.node)) {
                     this.cellData = c;
                 }
                 // if we have been filled up by a row?
