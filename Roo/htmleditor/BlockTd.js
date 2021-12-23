@@ -147,24 +147,10 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                
             },
             
+            
             {
                 xtype : 'Button',
-                text: '<',
-                listeners : {
-                    click : function (_self, e)
-                    {
-                        saveSel();
-                        cell().mergeLeft();
-                        //block().growColumn();
-                        syncValue();
-                        restoreSel();
-                    }
-                },
-                xns : rooui.Toolbar
-            },
-            {
-                xtype : 'Button',
-                text: '>',
+                text: 'Right',
                 listeners : {
                     click : function (_self, e)
                     {
@@ -177,24 +163,10 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 },
                 xns : rooui.Toolbar
             },
+             
             {
                 xtype : 'Button',
-                text: '^',
-                listeners : {
-                    click : function (_self, e)
-                    {
-                        saveSel();
-                        cell().mergeAbove();
-                        //block().growColumn();
-                        syncValue();
-                        restoreSel();
-                    }
-                },
-                xns : rooui.Toolbar
-            },
-            {
-                xtype : 'Button',
-                text: 'v',
+                text: 'Below',
                 listeners : {
                     click : function (_self, e)
                     {
@@ -387,33 +359,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
 
     },
     
-    mergeLeft: function()
-    {
-        // technically this is 
-        
-        // get the contents of the next cell along..
-        var tr = this.node.closest('tr');
-        var i = Array.prototype.indexOf.call(tr.childNodes, this.node);
-        if (i < 1) {
-            return; // cant do that.
-        }
-        var table = this.toTableArray();
-        
-        if (typeof(table[this.cellData.row][this.cellData.col-1]) == 'undefined') {
-            return; // nothing right?
-        }
-        var rc = table[this.cellData.row][this.cellData.col-1];
-        // right cell - must be same rowspan and on the same row.
-        if (rc.rowspan != this.cellData.rowspan || rc.row != this.cellData.row) {
-            return; // right hand side is not same rowspan.
-        }
-        
-        this.node.innerHTML =  rc.cell.innerHTML + ' ' +  this.node.innerHTML ;
-        tr.removeChild(rc.cell);
-        this.colspan += rc.colspan;
-        this.node.setAttribute('colspan', this.colspan);
-
-    },
     
     mergeBelow : function()
     {
@@ -435,28 +380,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.node.setAttribute('rowspan', this.rowspan);
     },
     
-    mergeAbove : function()
-    {
-        
-        var table = this.toTableArray();
-        if (typeof(table[this.cellData.row-1]) == 'undefined') {
-            return; // no row below
-        }
-        if (typeof(table[this.cellData.row-1][this.cellData.col]) == 'undefined') {
-            return; // nothing right?
-        }
-        var rc = table[this.cellData.row-1][this.cellData.col];
-        
-        if (rc.colspan != this.cellData.colspan || rc.col != this.cellData.col) {
-            return; // right hand side is not same rowspan.
-        }
-        this.node.innerHTML =  rc.cell.innerHTML + this.node.innerHTML ;
-        this.node.parentNode.removeChild(this.node);
-        rc.cell.parentNode.replaceChild(this.node, rc.cell);
-        
-        this.rowspan++;
-        this.node.setAttribute('rowspan', this.rowspan);
-    }
+    
     
     
     
