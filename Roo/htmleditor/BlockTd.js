@@ -282,7 +282,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     cellData : false,
     
-    toTableArrayData : function()
+    toTableArray  : function()
     {
         var ret = [];
         var tab = this.node.closest('tr').closest('table');
@@ -327,7 +327,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             });
             rn++;
         });
-        return {table : ret, cell : curcell};
+        return ret;
         
     },
     
@@ -339,10 +339,22 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         var tr = this.node.closest('tr');
         var i = Array.prototype.indexOf.call(tr.childNodes, this.node);
         if (i >= tr.childNodes.length - 1) {
-            return; // cant do that.
+            return; // no cells on right to merge with.
         }
-        this.node.innerHTML += ' ' + tr.childNodes[i+1].innerHTML;
-        tr.removeChild(tr.childNodes[i+1]);
+        var table = this.toTableArray();
+        var rc = table[this.cellData.row][this.cellData.col+this.cellData.colspan];
+        if (typeof(rc) == 'undefined') {
+            return; // nothing right?
+        }
+        // right cell - must be same rowspan and on the same row.
+        if (rc.rowspan != this.cellData.rowspan || rc.row != this.cellData.row) {
+            return; // right hand side is not same rowspan.
+        }
+        
+        
+        
+        this.node.innerHTML += ' ' + rc.cell.innerHTML;
+        tr.removeChild(rc.cell);
         this.colspan++;
         this.node.setAttribute('colspan', this.colspan);
 
@@ -356,8 +368,18 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         if (i < 1) {
             return; // cant do that.
         }
-        this.node.innerHTML =  tr.childNodes[i-1].innerHTML + ' ' +  this.node.innerHTML ;
-        tr.removeChild(tr.childNodes[i-1]);
+        var table = this.toTableArray();
+        var rc = table[this.cellData.row][this.cellData.col01];
+        if (typeof(rc) == 'undefined') {
+            return; // nothing right?
+        }
+        // right cell - must be same rowspan and on the same row.
+        if (rc.rowspan != this.cellData.rowspan || rc.row != this.cellData.row) {
+            return; // right hand side is not same rowspan.
+        }
+        
+        this.node.innerHTML =  rc.cell.innerHTML + ' ' +  this.node.innerHTML ;
+        tr.removeChild(rc.cell);
         this.colspan++;
         this.node.setAttribute('colspan', this.colspan);
 
