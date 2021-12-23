@@ -310,6 +310,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     while(typeof(ret[rn][cn]) != 'undefined') {
                         cn++;
                     }
+                    c.col = cn;
                 }
                  
                 
