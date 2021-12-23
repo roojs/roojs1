@@ -437,6 +437,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     mergeAbove : function()
     {
+        
         var table = this.toTableArray();
         if (typeof(table[this.cellData.row-1]) == 'undefined') {
             return; // no row below
@@ -450,7 +451,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             return; // right hand side is not same rowspan.
         }
         this.node.innerHTML =  rc.cell.innerHTML + this.node.innerHTML ;
-        rc.cell.parentNode.removeChild(rc.cell);
+        this.node.parentNode.removeChild(this.node);
+        rc.cell.parentNode.replaceChild(this.node, rc.cell);
+        
         this.rowspan++;
         this.node.setAttribute('rowspan', this.rowspan);
     }
