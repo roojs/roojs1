@@ -307,7 +307,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 }
                 // if we have been filled up by a row?
                 if (typeof(ret[rn][cn]) != 'undefined') {
-                    while(ret[rn][cn] != 'undefined') {
+                    while(typeof(ret[rn][cn]) != 'undefined') {
                         cn++;
                     }
                 }
