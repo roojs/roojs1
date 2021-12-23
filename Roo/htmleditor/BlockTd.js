@@ -389,7 +389,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         var cd = this.cellData;
         for(var r = cd.row; r < cd.row + cd.rowspan; r++) {
             for(var c = cd.col; r < cd.col+ cd.colspan; c++) {
-                if (r == cd.row && c == cd.cell) {
+                if (r == cd.row && c == cd.col) {
                     this.node.setAttribute('rowspan',this.rowspan);
                     this.node.setAttribute('colspan',this.colspan);
                     continue;
