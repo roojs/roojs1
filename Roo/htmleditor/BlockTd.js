@@ -405,7 +405,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     throw "cant find left cell?";
                 }
                 var ntd = this.node.ownerDocument.createElement('td');
-                table[l.r][l.c].cell.row.insertBefore(ntd, table[l.r][l.c].cell.nextSibling);
+                table[l.r][l.c].cell.parentNode.insertBefore(ntd, table[l.r][l.c].cell.nextSibling);
                 table[r][c] = { cell : ntd, col : c, row: r , colspan : 1 , rowspan : 1 };
             }
             
