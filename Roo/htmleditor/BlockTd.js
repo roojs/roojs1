@@ -377,7 +377,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         if (typeof(table[this.cellData.row][this.cellData.col-1]) == 'undefined') {
             return; // nothing right?
         }
-        var rc = table[this.cellData.row][this.cellData.col01];
+        var rc = table[this.cellData.row][this.cellData.col-1];
         // right cell - must be same rowspan and on the same row.
         if (rc.rowspan != this.cellData.rowspan || rc.row != this.cellData.row) {
             return; // right hand side is not same rowspan.
