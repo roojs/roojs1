@@ -296,8 +296,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     cell : ce,
                     row : rn,
                     col: cn,
-                    colspan : ce.hasAttribute('colspan') ? ce.getAttribute('colspan') * 1 : 1,
-                    rowspan : ce.hasAttribute('rowspan') ? ce.getAttribute('rowspan') * 1 : 1,
+                    colspan : ce.colSpan,
+                    rowspan : ce.rowSpan
                 };
                 // if we have been filled up by a row?
                 if (typeof(ret[rn][cn]) != 'undefined') {
@@ -322,6 +322,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             });
             rn++;
         });
+        return ret;
         
     },
     
