@@ -207,6 +207,27 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 },
                 xns : rooui.Toolbar
             },
+            {
+                xtype : 'TextItem',
+                text : "| ",
+                 xns : rooui.Toolbar 
+               
+            },
+            
+            {
+                xtype : 'Button',
+                text: 'Split',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        saveSel();
+                        cell().split();
+                        syncValue();
+                        restoreSel();
+                    }
+                },
+                xns : rooui.Toolbar
+            }
             // align... << fixme
             
         ];
