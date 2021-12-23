@@ -380,7 +380,39 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.node.setAttribute('rowspan', this.rowspan);
     },
     
-    split: function() {
+    split: function()
+    {
+        if (this.node.rowSpan < 2 && this.node.colSpan < 2) {
+            return;
+        }
+        var table = this.toTableArray();
+        var cd = this.cellData;
+        for(var r = cd.row; r < cd.row + cd.rowspan; r++) {
+            for(var c = cd.col; r < cd.col+ cd.colspan; c++) {
+                if (r == cd.row && c == cd.cell) {
+                    this.node.setAttribute('rowspan',this.rowspan);
+                    this.node.setAttribute('colspan',this.colspan);
+                    continue;
+                }
+                
+                // create a cell. = need the left most cell.
+                
+                var l = { r: r , c: c - 1 };
+                while(table[l.r][l.c].row != r && l.c > -1) {
+                    l.c--;
+                }
+                if (l.c < 0) { //?? will this happen?
+                    throw "cant find left cell?";
+                }
+                var ntd = this.node.documentElement.createElement('td');
+                table[l.r][l.c].cell.row.insertBefore(ntd, table[l.r][l.c].cell.nextSibling);
+                table[r][c] = { cell : ntd, col : c, row: r , colspan : 1 , rowspan : 1 };
+            }
+            
+            
+        }
+        
+        
         
         
     }
