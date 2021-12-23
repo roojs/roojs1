@@ -319,12 +319,13 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     cn++;
                     return;
                 }
-                for(var i = 0; i < c.colspan; i++) {
-                    ret[rn][cn+i] = c;
-                    for(var j = 0; j < c.rowspan; j++) {
+                for(var j = 0; j < c.rowspan; j++) {
+                    ret[rn+j][cn] = c;
+                    for(var i = 0; i < c.colspan; i++) {
                         ret[rn+j][cn+i] = c;
                     }
                 }
+                
                 cn += c.colspan;
             }, this);
             rn++;
