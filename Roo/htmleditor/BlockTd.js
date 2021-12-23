@@ -356,7 +356,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         
         this.node.innerHTML += ' ' + rc.cell.innerHTML;
         tr.removeChild(rc.cell);
-        this.colspan++;
+        this.colspan += rc.colspan;
         this.node.setAttribute('colspan', this.colspan);
 
     },
@@ -384,7 +384,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         
         this.node.innerHTML =  rc.cell.innerHTML + ' ' +  this.node.innerHTML ;
         tr.removeChild(rc.cell);
-        this.colspan++;
+        this.colspan += rc.colspan;
         this.node.setAttribute('colspan', this.colspan);
 
     },
