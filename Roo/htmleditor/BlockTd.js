@@ -406,7 +406,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.node.innerHTML =  this.node.innerHTML + rc.cell.innerHTML ;
         rc.cell.parentNode.removeChild(rc.cell);
         this.rowspan++;
-        this.node.setAttribute('rowspan', this.colspan);
+        this.node.setAttribute('rowspan', this.rowspan);
     },
     
     mergeAbove : function()
@@ -426,7 +426,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.node.innerHTML =  rc.cell.innerHTML + this.node.innerHTML ;
         rc.cell.parentNode.removeChild(rc.cell);
         this.rowspan++;
-        this.node.setAttribute('colspan', this.rowspan);
+        this.node.setAttribute('rowspan', this.rowspan);
     }
     
     
