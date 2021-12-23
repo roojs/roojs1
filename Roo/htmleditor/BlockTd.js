@@ -333,8 +333,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     mergeRight: function()
     {
-        // fixme - if right is a merged vertical cel.. cant do that.
-        
+         
         // get the contents of the next cell along..
         var tr = this.node.closest('tr');
         var i = Array.prototype.indexOf.call(tr.childNodes, this.node);
@@ -363,6 +362,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     mergeLeft: function()
     {
+        // technically this is 
+        
         // get the contents of the next cell along..
         var tr = this.node.closest('tr');
         var i = Array.prototype.indexOf.call(tr.childNodes, this.node);
@@ -371,7 +372,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         }
         var table = this.toTableArray();
         
-        if (typeof(table[this.cellData.row][this.cellData.col01]) == 'undefined') {
+        if (typeof(table[this.cellData.row][this.cellData.col-1]) == 'undefined') {
             return; // nothing right?
         }
         var rc = table[this.cellData.row][this.cellData.col01];
@@ -393,9 +394,38 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         if (typeof(table[this.cellData.row+1]) == 'undefined') {
             return; // no row below
         }
-        var rc = table[this.cellData.row+1]
+        if (typeof(table[this.cellData.row+1][this.cellData.col1]) == 'undefined') {
+            return; // nothing right?
+        }
+        var rc = table[this.cellData.row][this.cellData.col];
         
+        if (rc.colspan != this.cellData.colspan || rc.col != this.cellData.col) {
+            return; // right hand side is not same rowspan.
+        }
+        this.node.innerHTML =  this.node.innerHTML + rc.cell.innerHTML ;
+        tr.removeChild(rc.cell);
+        this.rowspan++;
+        this.node.setAttribute('colspan', this.colspan);
+    },
+    
+    mergeUp : function()
+    {
+        var table = this.toTableArray();
+        if (typeof(table[this.cellData.row+1]) == 'undefined') {
+            return; // no row below
+        }
+        if (typeof(table[this.cellData.row+1][this.cellData.col1]) == 'undefined') {
+            return; // nothing right?
+        }
+        var rc = table[this.cellData.row][this.cellData.col];
         
+        if (rc.colspan != this.cellData.colspan || rc.col != this.cellData.col) {
+            return; // right hand side is not same rowspan.
+        }
+        this.node.innerHTML =  this.node.innerHTML + rc.cell.innerHTML ;
+        tr.removeChild(rc.cell);
+        this.rowspan++;
+        this.node.setAttribute('colspan', this.colspan);
     }
     
     
