@@ -405,7 +405,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         }
         this.node.innerHTML =  this.node.innerHTML + rc.cell.innerHTML ;
         rc.cell.parentNode.removeChild(rc.cell);
-        this.rowspan+ rc.rowspan;
+        this.rowspan += rc.rowspan;
         this.node.setAttribute('rowspan', this.rowspan);
     },
     
