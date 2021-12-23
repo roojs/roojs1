@@ -404,7 +404,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             return; // right hand side is not same rowspan.
         }
         this.node.innerHTML =  this.node.innerHTML + rc.cell.innerHTML ;
-        tr.removeChild(rc.cell);
+        rc.cell.parentNode.removeChild(rc.cell);
         this.rowspan++;
         this.node.setAttribute('rowspan', this.colspan);
     },
@@ -424,7 +424,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             return; // right hand side is not same rowspan.
         }
         this.node.innerHTML =  rc.cell.innerHTML + this.node.innerHTML ;
-        tr.removeChild(rc.cell);
+        rc.cell.parentNode.removeChild(rc.cell);
         this.rowspan++;
         this.node.setAttribute('colspan', this.rowspan);
     }
