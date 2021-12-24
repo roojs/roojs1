@@ -61,7 +61,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         };
         
         var table = function() {
-            return Roo.htmleditor.Block.factory(Roo.get(toolbar.tb.selectedNode).findParent('table'));
+            return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode.closest('table'));
         };
         
         var lr = false;
@@ -96,7 +96,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 text : 'Edit Table',
                 listeners : {
                     click : function() {
-                        var t = Roo.get(toolbar.tb.selectedNode).findParent('table');
+                        var t = toolbar.tb.selectedNode.closest('table');
                         toolbar.editorcore.selectNode(t);
                         toolbar.editorcore.onEditorEvent();                        
                     }
@@ -119,7 +119,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     click : function (_self, e)
                     {
                         saveSel();
-                        block().shrinkColumn();
+                        cell().shrinkColumn();
                         syncValue();
                         restoreSel();
                     }
@@ -133,7 +133,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     click : function (_self, e)
                     {
                         saveSel();
-                        block().growColumn();
+                        cell().growColumn();
                         syncValue();
                         restoreSel();
                     }
@@ -224,10 +224,11 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             tag : 'td',
             contenteditable : 'true', // this stops cell selection from picking the table.
             'data-block' : 'Td',
-            style : {
+            width:  this.width,
+            style : {  
                 width:  this.width,
                 'text-align' :  this.textAlign,
-                border : 'solid 1px #000', // ??? hard coded?
+                border : 'solid 1px rgb(0, 0, 0)', // ??? hard coded?
                 'border-collapse' : 'collapse',
             },
             html : this.html
@@ -249,7 +250,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     readElement : function(node)
     {
         node  = node ? node : this.node ;
-        this.width = this.getVal(node, true, 'style', 'width');
+        this.width = node.style.width;
+        
         this.html = node.innerHTML;
         
         
@@ -268,12 +270,14 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     removeNode : function()
     {
-        return Roo.get(this.node).findParent('table');
+        return this.node.closest('table');
         
         
     },
     
     cellData : false,
+    
+    colWidths : false,
     
     toTableArray  : function()
     {
@@ -283,7 +287,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             ret[ri] = [];
         });
         var rn = 0;
-        
+        this.colWidths = [];
+        var all_auto = true;
         Array.from(tab.rows).forEach(function(r, ri){
             
             var cn = 0;
@@ -305,7 +310,14 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     }
                     c.col = cn;
                 }
-                 
+                
+                if (typeof(this.colWidths[cn]) == 'undefined') {
+                    this.colWidths[cn] =   ce.style.width;
+                    if (this.colWidths[cn] != '') {
+                        all_auto = false;
+                    }
+                }
+                
                 
                 if (c.colspan < 2 && c.rowspan < 2 ) {
                     ret[rn][cn] = c;
@@ -326,9 +338,20 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             }, this);
             rn++;
         }, this);
+        
+        // initalize widths.?
+        // either all widths or no widths..
+        if (all_auto) {
+            this.colWidths[0] = false; // no widths flag.
+        }
+        
+        
         return ret;
         
     },
+    
+    
+    
     
     mergeRight: function()
     {
@@ -389,36 +412,162 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         var cd = this.cellData;
         this.rowspan = 1;
         this.colspan = 1;
+        
         for(var r = cd.row; r < cd.row + cd.rowspan; r++) {
-            for(var c = cd.col; r < cd.col+ cd.colspan; c++) {
+            
+            
+            
+            for(var c = cd.col; c < cd.col + cd.colspan; c++) {
                 if (r == cd.row && c == cd.col) {
-                    this.node.setAttribute('rowspan',this.rowspan);
-                    this.node.setAttribute('colspan',this.colspan);
+                    this.node.removeAttribute('rowspan');
+                    this.node.removeAttribute('colspan');
+                    continue;
+                }
+                 
+                var ntd = this.node.cloneNode(); // which col/row should be 0..
+                ntd.removeAttribute('id'); //
+                //ntd.style.width  = '';
+                ntd.innerHTML = '';
+                table[r][c] = { cell : ntd, col : c, row: r , colspan : 1 , rowspan : 1   };
+            }
+            
+        }
+        this.redrawAllCells(table);
+        
+         
+        
+    },
+    
+    
+    
+    redrawAllCells: function(table)
+    {
+        
+         
+        var tab = this.node.closest('tr').closest('table');
+        Array.from(tab.rows).forEach(function(r, ri){
+            Array.from(r.cells).forEach(function(ce, ci){
+                ce.parentNode.removeChild(ce);
+            });
+        });
+        for(var r = 0 ; r < table.length; r++) {
+            var re = tab.rows[r];
+            for(var c = 0 ; c < table[r].length; c++) {
+                if (table[r][c].cell === false) {
                     continue;
                 }
                 
-                // create a cell. = need the left most cell.
-                
-                var l = { r: r , c: c - 1 };
-                while(table[l.r][l.c].row != r && l.c > -1) {
-                    l.c--;
-                }
-                if (l.c < 0) { //?? will this happen?
-                    throw "cant find left cell?";
-                }
-                var ntd = this.node.ownerDocument.createElement('td');
-                table[l.r][l.c].cell.parentNode.insertBefore(ntd, table[l.r][l.c].cell.nextSibling);
-                table[r][c] = { cell : ntd, col : c, row: r , colspan : 1 , rowspan : 1 };
+                re.appendChild(table[r][c].cell);
+                 
+                table[r][c].cell = false;
             }
-            
-            
         }
         
-        
-        
-        
-    }
+    },
+    updateWidths : function(table)
+    {
+        for(var r = 0 ; r < table.length; r++) {
+           
+            for(var c = 0 ; c < table[r].length; c++) {
+                if (table[r][c].cell === false) {
+                    continue;
+                }
+                
+                if (this.colWidths[0] != false && table[r][c].colspan < 2) {
+                    var el = Roo.htmleditor.Block.factory(table[r][c].cell);
+                    el.width = Math.floor(this.colWidths[c])  +'%';
+                    el.updateElement(el.node);
+                }
+                table[r][c].cell = false; // done
+            }
+        }
+    },
+    normalizeWidths : function(table)
+    {
     
+        if (this.colWidths[0] === false) {
+            var nw = 100.0 / this.colWidths.length;
+            this.colWidths.forEach(function(w,i) {
+                this.colWidths[i] = nw;
+            },this);
+            return;
+        }
+    
+        var t = 0, missing = [];
+        
+        this.colWidths.forEach(function(w,i) {
+            //if you mix % and
+            this.colWidths[i] = this.colWidths[i] == '' ? 0 : (this.colWidths[i]+'').replace(/[^0-9]+/g,'')*1;
+            var add =  this.colWidths[i];
+            if (add > 0) {
+                t+=add;
+                return;
+            }
+            missing.push(i);
+            
+            
+        },this);
+        var nc = this.colWidths.length;
+        if (missing.length) {
+            var mult = (nc - missing.length) / (1.0 * nc);
+            var t = mult * t;
+            var ew = (100 -t) / (1.0 * missing.length);
+            this.colWidths.forEach(function(w,i) {
+                if (w > 0) {
+                    this.colWidths[i] = w * mult;
+                    return;
+                }
+                
+                this.colWidths[i] = ew;
+            }, this);
+            // have to make up numbers..
+             
+        }
+        // now we should have all the widths..
+        
+    
+    },
+    
+    shrinkColumn : function()
+    {
+        var table = this.toTableArray();
+        this.normalizeWidths(table);
+        var col = this.cellData.col;
+        var nw = this.colWidths[col] * 0.8;
+        if (nw < 5) {
+            return;
+        }
+        var otherAdd = (this.colWidths[col]  * 0.2) / (this.colWidths.length -1);
+        this.colWidths.forEach(function(w,i) {
+            if (i == col) {
+                 this.colWidths[i] = nw;
+                return;
+            }
+            this.colWidths[i] += otherAdd
+        }, this);
+        this.updateWidths(table);
+         
+    },
+    growColumn : function()
+    {
+        var table = this.toTableArray();
+        this.normalizeWidths(table);
+        var col = this.cellData.col;
+        var nw = this.colWidths[col] * 1.2;
+        if (nw > 90) {
+            return;
+        }
+        var otherSub = (this.colWidths[col]  * 0.2) / (this.colWidths.length -1);
+        this.colWidths.forEach(function(w,i) {
+            if (i == col) {
+                this.colWidths[i] = nw;
+                return;
+            }
+            this.colWidths[i] -= otherSub
+        }, this);
+        this.updateWidths(table);
+         
+    }
     
     
 })

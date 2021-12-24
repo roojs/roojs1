@@ -217,7 +217,8 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     tag : 'td',
                     contenteditable :  'true',
                     'data-block' : 'Td',
-                    html : cell.html
+                    html : cell.html,
+                    style : cell.style
                 };
                 if (cell.colspan > 1) {
                     td.colspan = cell.colspan ;
@@ -229,12 +230,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     td.rowspan = cell.rowspan ;
                 }
                 
-                if (cell.textAlign != '') {
-                    td.style = {
-                        'text-align' :  cell.textAlign,
-                        border : '1px solid #000'
-                    };
-                }
+                
                 // widths ?
                 tr.cn.push(td);
                     
@@ -273,10 +269,10 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 if (Roo.get(td).hasClass('roo-html-editor-el')) { // ??? this is for our 'row' selection'
                     return;
                 }
-                var add ={
+                var add = {
                     colspan : td.hasAttribute('colspan') ? td.getAttribute('colspan') : 1,
                     rowspan : td.hasAttribute('rowspan') ? td.getAttribute('rowspan') : 1,
-                    textAlign : this.getVal(node, true, 'style', 'text-align'),
+                    style : td.hasAttribute('style') ? td.getAttribute('style') : '',
                     html : td.innerHTML
                 }
                 no_column += add.colspan;
@@ -451,212 +447,11 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         this.updateElement();
         
     },
-    
-    joinCells: function(sels)
-    {
-        
-        
-        if (sels.length < 0 ) {
-            Roo.MessageBox.alert("Select something to join");
-            return;
-        }
-        if (sels.length < 1 ) {
-            if (sels[i].type == 'cell') {
-                Roo.MessageBox.alert("You must select more than 1 cell to join");
-                return;
-            }
-            if (sels[i].type == 'row' ) {
-                this.joinRow(sels[i].row);
-                return;
-            }
-            
-            this.joinCol(sels[i].col, 0, -1);
-            return;
-            
-        }
-        // how to tell if we are joining a row of cells or colums.
-        var r = sels[0].row , c = sels[0].col ;
-        for (var i = 1 ; i < sels.length; i++) {
-            
-            if (sels[i].type != 'cell') {
-                Roo.MessageBox.alert("you can only join cells to join");
-                return;
-            }
-            
-            if (sels[i].colspan > 1 || sels[i].rowspan > 1  ) {
-                Roo.MessageBox.alert("you can only join un-joined cells (unjoin them first)");
-                return;
-            }
-            if (typeof(r) != 'object' && r == sels[i].row ) {
-                if (typeof(c) === 'object') {
-                    c.push(sels[i].col);
-                    continue;
-                }
-                c = [ c ];
-                c.push(sels[i].col);
-                continue;
-            }
-            if (typeof(c) != 'object' && c == sels[i].col) {
-                if (typeof(r) === 'object') {
-                    r.push(sels[i].row);
-                    continue;
-                }
-                r = [ r ];
-                r.push(sels[i].row);
-                continue;
-            }
-            Roo.MessageBox.alert("you can only join a row or column, not both");
-            return;
-            
-        }
-        
-        
-        // at this point either r or c is an array
-        if (typeof(r) === 'object') {
-            // c contins column
-            // r is a list of arrays.
-            r.sort();
-            var html = grid[r[0]][c].html;
-            for (var i = 1; i < r.length; i++) {
-                if (r[i] != r[0]+1) {
-                    Roo.MessageBox.alert("Cells have to be next to each other");
-                    return;
-                }
-                
-            }
-            this.joinCol(c, r[0], r[r.length-1]);
-            
-        }
-        if (typeof(rc) === 'object') {
-            // c contins column
-            // r is a list of arrays.
-            c.sort();
-             for (var i = 1; i < r.length; i++) {
-                if (c[i] != c[0]+1) {
-                    Roo.MessageBox.alert("Cells have to be next to each other");
-                    return;
-                }
-                
-            }
-            this.joinRow(r, c[0], c[r.length-1]);
-            
-        }
-        
-        
-    },
-    
-    joinCol : function(col, s, e)
-    {
-        var grid = this.normalizeRows();
-        if (s === -1) {
-            s = 0;
-            e = grid.length;
-        }
-        var tg = grid[s][col].html;
-        for (var i = s+1; i < e+1; i++) {
-            html += '<br/>' + grid[i][col].html;
-            
-            this.rows[i].remove(grid[i][col]);
-        }
-        grid[s][col].html = html;
-        grid[s][col].colspan = (e-s)+1; //???
-        
-        this.updateElement();
-        
-    },
-    joinRow: function(row, s, e)
-    {
-        var grid = this.normalizeRows();
-        if (s === -1) {
-            s = 0;
-            e = grid[row].length;
-        }
-        var html = grid[row][s].html;
-        for (var i = s+1; i < e+1; i++) {
-            html += ' ' + grid[row][i].html;
-            this.rows[row].remove(grid[row][i]);
-        }
-        grid[r[0]][c].html = html;
-        grid[r[0]][c].rowspan = (e-s)+1; //???
-        this.updateElement();
-    },
-    
-    
-    splitCells : function(sel)
-    {
-        if (sels.type != 'cell') {
-            Roo.MessageBox.alert("you can only join cells to join");
-            return;
-        }
-        if (cell.colspan > 1 && cell.rowspan > 1) {
-            Roo.MessageBox.alert("splitting a merged row+cel is not supported yet.");
-            return;
-        }   
-        var grid = this.normalizeRows();
-        var cell = grid[sel.row][sel.col];
-        if (cell.colspan ==1 && cell.rowspan == 1) {
-            Roo.MessageBox.alert("select a merged cell to join");
-            return;
-        }
-        var ix = this.rows[sel.row].indexOf(cell);
-        if (cell.rowspan > 1) {
-            this.splitCellsRow(sel.row, sel.col, cell.rowspan);
-        } else {
-            this.splitCellsCol(sel.row, sel.col, cell.colspan);
-        }
-        
-    },
-    splitCellsRow : function(row, col, num)
-    {
-        /// this means we have to look at each row below, and insert a cell  after the first cell 
-        var grid = this.normalizeRows();
-        grid[row][col].rowspan = 1;
-        for(var r = row+1; r < num+1;r++) {
-            var nrow = [];
-            var added = false;
-            for(c = 0; c < this.rows[r].length;c++) {
-                if (!added && this.rows[r][c].col > col) {
-                    nrow.push(this.emptyCell());
-                    added = true;
-                }
-                nrow.push(this.rows[r][c])
-            }
-            if (!added) {
-                nrow.push(this.emptyCell());
-            }
-            this.row[r] = nrow;
-              
-        }
-        this.updateElement();
-        
-    },
-  
-    splitCellsCol: function(row, col, num)
-    {
-        /// this means we have to look at each row below, and insert a cell  after the first cell 
-        var grid = this.normalizeRows();
-        grid[row][col].colspan = 1;
-        
-        var pos = this.rows[row].indexOf(grid[row][col]);
-        var nrow =  this.rows[row].slice(0, pos);
-        var right =  this.rows[row].slice(pos);
-    
-        for (var i = 1; i < num; i++) {
-            nrow.push(this.emptyCell());
-        }
-        
-        this.row[row] = nrow.concat(right);
-        this.updateElement();
-        
-    },
+     
     // the default cell object... at present...
     emptyCell : function() {
-        return {
-            colspan :  1,
-            rowspan :  1,
-            textAlign : 'left',
-            html : "&nbsp;" // is this going to be editable now?
-        };
+        return (new Roo.htmleditor.BlockTd({})).toObject();
+        
      
     },
     

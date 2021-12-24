@@ -22,7 +22,8 @@
 
     </span><span class="jsdoc-var">core </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
-    </span><span class="jsdoc-var">keypress </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">keypress </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.charCode </span><span class="jsdoc-syntax">!= 13) {
             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }
@@ -79,16 +80,12 @@
         </span><span class="jsdoc-var">range.deleteContents</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-var">range.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">docFragment</span><span class="jsdoc-syntax">);
-
-        </span><span class="jsdoc-comment">//create a new range
-        </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createRange</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">range.setStartAfter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newEle</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.cloneRange</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">range.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-
-        </span><span class="jsdoc-comment">//make the cursor there
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.core.win.getSelection</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">sel.removeAllRanges</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">sel.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">sel.collapseToEnd</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
 

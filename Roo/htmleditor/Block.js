@@ -25,9 +25,9 @@ Roo.htmleditor.Block.factory = function(node)
         return Roo.htmleditor.Block.cache[id];
     }
     
-    var cls = Roo.htmleditor['Block' + Roo.get(node).attr('data-block')];
+    var cls = Roo.htmleditor['Block' + node.getAttribute('data-block')];
     if (typeof(cls) == 'undefined') {
-        Roo.log("OOps missing block : " + 'Block' + Roo.get(node).attr('data-block'));
+        Roo.log("OOps missing block : " + 'Block' + node.getAttribute('data-block'));
         return false;
     }
     Roo.htmleditor.Block.cache[id] = new cls({ node: node });
@@ -81,7 +81,7 @@ Roo.htmleditor.Block.prototype = {
             return n.innerHTML;
         }
         if (attr == 'style') {
-            return Roo.get(n).getStyle(style);
+            return n.style[style]
         }
         
         return Roo.get(n).attr(attr);

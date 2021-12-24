@@ -301,17 +301,17 @@
              </span><span class="jsdoc-var">this.editor.onFirstFocus</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'NOTARGET'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.log(ev ? ev.target : 'NOTARGET');
 
 
-        </span><span class="jsdoc-comment">// http://developer.yahoo.com/yui/docs/simple-editor.js.html
+        // http://developer.yahoo.com/yui/docs/simple-editor.js.html
         // selectNode - might want to handle IE?
 
 
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">&amp;&amp;
             (</span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'mouseup' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">ev.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'click' </span><span class="jsdoc-syntax">) &amp;&amp;
-            </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'BODY' </span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// &amp;&amp; ev.target.tagName == 'IMG') {
+            </span><span class="jsdoc-var">ev.target </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ev.target.tagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'BODY' </span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// &amp;&amp; ev.target.tagName == 'IMG') {
             // they have click on an image...
             // let's see if we can change the selection...
             </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.target</span><span class="jsdoc-syntax">;
@@ -320,9 +320,10 @@
             //this.editorcore.selectNode(sel);
 
         </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-ed-selection'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editorcore.doc</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'roo-ed-selection'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.get(node).addClass('roo-ed-selection');
 
-
-        </span><span class="jsdoc-comment">//var updateFooter = sel ? false : true; 
+        //var updateFooter = sel ? false : true; 
 
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.getAllAncestors</span><span class="jsdoc-syntax">();
@@ -343,12 +344,13 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">left_label </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-comment">// ok see if we are editing a block?
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel_el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">// you are not actually selecting the block.
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sel.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">;
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">sel.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'contenteditable'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel_el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel_el.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[data-block]'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cepar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel_el.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[contenteditable=true]'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cepar </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cepar.tagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'BODY'</span><span class="jsdoc-syntax">) {
@@ -361,7 +363,10 @@
         </span><span class="jsdoc-comment">//if (db &amp;&amp; !sel.hasAttribute('contenteditable') &amp;&amp; sel.getAttribute('contenteditable') != 'true' ) {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">block </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">db</span><span class="jsdoc-syntax">);
+
+
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">db.className </span><span class="jsdoc-syntax">+=  </span><span class="jsdoc-string">' roo-ed-selection'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// since we removed it earlier... its not there..
                 </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'BLOCK.' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">db.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">);
 
                 </span><span class="jsdoc-comment">//this.editorcore.selectNode(db);
@@ -394,7 +399,7 @@
 
 
         </span><span class="jsdoc-comment">// update attributes
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tb.fields</span><span class="jsdoc-syntax">) {
 
             </span><span class="jsdoc-var">this.tb.fields.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">e.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e.name</span><span class="jsdoc-syntax">]);
@@ -523,7 +528,7 @@
 
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.Toolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">wdiv</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.tb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tb</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">///this.tb = tb; // &lt;&lt; this sets the active toolbar..
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tlist </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">tlist </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">block.contextMenu</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
@@ -705,7 +710,7 @@
                 {
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tb.selectedNode</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tb.selectedNode</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removalNode</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tb.selectedNode</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeNode</span><span class="jsdoc-syntax">();
 
                     }
                     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">) {
@@ -807,17 +812,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.footerEls</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">];
 
-         </span><span class="jsdoc-comment">// pick
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.createRange</span><span class="jsdoc-syntax">();
-
-        </span><span class="jsdoc-var">range.selectNodeContents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">//range.selectNode(sel);
-
-
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">selection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore.getSelection</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">selection.removeAllRanges</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">selection.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
-
+        </span><span class="jsdoc-var">this.editorcore.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);
 
 
         </span><span class="jsdoc-var">this.updateToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">);

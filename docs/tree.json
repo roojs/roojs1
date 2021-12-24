@@ -1415,6 +1415,11 @@
             "name" : "Roo.lib.RGBColor",
             "cn" : [],
             "is_class" : true
+          },
+          {
+            "name" : "Roo.lib.UndoManager",
+            "cn" : [],
+            "is_class" : true
           }
         ],
         "is_class" : false

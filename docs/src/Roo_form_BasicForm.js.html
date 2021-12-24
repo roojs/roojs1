@@ -587,9 +587,11 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     </span><span class="jsdoc-comment">/**
      * Returns the fields in this form as an object with key/value pairs. 
      * This differs from getValues as it calls getValue on each child item, rather than using dom data.
+     * Normally this will not return readOnly data 
+     * @param {Boolean} with_readonly return readonly field data.
      * @return {Object}
      */
-    </span><span class="jsdoc-var">getFieldValues </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">with_hidden</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">getFieldValues </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">with_readonly</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.childForms</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// copy values from the child forms
@@ -603,7 +605,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= {};
         </span><span class="jsdoc-var">this.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
 
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.readOnly</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.readOnly </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">with_readonly </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// skip read only values. - this is in theory to stop 'old' values being copied over new ones
                         // if a subform contains a copy of them.
                         // if you have subforms with the same editable data, you will need to copy the data back

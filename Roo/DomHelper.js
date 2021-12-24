@@ -280,8 +280,12 @@ Roo.DomHelper = function(){
                 continue;
             }
             if (ar[i].name == 'id') { // always keep ids?
-                continue;
+               continue;
             }
+            if (ar[i].name == 'style') {
+               throw "style removed?";
+            }
+            Roo.log("removeAttribute" + ar[i].name);
             from.removeAttribute(ar[i].name);
         }
         ar = to.attributes;
@@ -289,6 +293,7 @@ Roo.DomHelper = function(){
             if (from.getAttribute(ar[i].name) == to.getAttribute(ar[i].name)) {
                 continue;
             }
+            Roo.log("updateAttribute " + from.getAttribute(ar[i].name) + '=>' + to.getAttribute(ar[i].name));
             from.setAttribute(ar[i].name, to.getAttribute(ar[i].name));
         }
         // children

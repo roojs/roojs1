@@ -139,6 +139,8 @@
 
     </span><span class="jsdoc-var">bodyCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
 
+
+    </span><span class="jsdoc-var">undoManager </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">/**
      * Protected method that will not generally be called directly. It
      * is called when the editor initializes the iframe with HTML contents. Override this method if you
@@ -243,6 +245,7 @@
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.doc.readyState </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'complete'</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
                         </span><span class="jsdoc-var">this.doc.designMode</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">&quot;on&quot;</span><span class="jsdoc-syntax">;
+
                     } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                     }
@@ -332,6 +335,10 @@
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;HtmlEditorCore:syncValue (EDITOR-&gt;TEXT)&quot;</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.initialized</span><span class="jsdoc-syntax">){
+
+            </span><span class="jsdoc-var">this.undoManager.addEvent</span><span class="jsdoc-syntax">();
+
+
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bd </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.doc.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.doc.documentElement</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-comment">//this.cleanUpPaste(); -- this is done else where and causes havoc..
 
@@ -543,7 +550,7 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cd.getData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// clipboard event
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Parser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.getData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/rtf'</span><span class="jsdoc-syntax">));
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">images </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parser.doc.getElementsByType</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pict'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">images </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parser.doc </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">parser.doc.getElementsByType</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pict'</span><span class="jsdoc-syntax">) : [];
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">images</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//Roo.log(imgs);
         // fixme..
@@ -606,7 +613,7 @@
     </span><span class="jsdoc-var">onFirstFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
 
         </span><span class="jsdoc-var">this.assignDocWin</span><span class="jsdoc-syntax">();
-
+        </span><span class="jsdoc-var">this.undoManager </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.lib.UndoManager</span><span class="jsdoc-syntax">(100,(</span><span class="jsdoc-var">this.doc.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.doc.documentElement</span><span class="jsdoc-syntax">));
 
         </span><span class="jsdoc-var">this.activated </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
 
@@ -676,7 +683,7 @@
 
         }
         </span><span class="jsdoc-var">this.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;formatblock&quot;</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-var">tg</span><span class="jsdoc-syntax">);
-
+        </span><span class="jsdoc-var">this.undoManager.addEvent</span><span class="jsdoc-syntax">();
     },
 
     </span><span class="jsdoc-var">insertText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">txt</span><span class="jsdoc-syntax">)
@@ -688,6 +695,7 @@
                </span><span class="jsdoc-comment">//alert(Sender.getAttribute('label'));
 
         </span><span class="jsdoc-var">range.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.createTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">txt</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.undoManager.addEvent</span><span class="jsdoc-syntax">();
     } ,
 
 
@@ -748,16 +756,24 @@
                 </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">win.getSelection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getRangeAt</span><span class="jsdoc-syntax">(0);
                 </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">range.createContextualFragment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">range.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.cloneRange</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">range.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-var">win.getSelection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeAllRanges</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">win.getSelection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
+
+
+
             } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">win.document.selection </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">win.document.selection.createRange</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-comment">// no firefox support
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">txt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">text.outerHTML</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">win.document.selection.createRange</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.pasteHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">txt</span><span class="jsdoc-syntax">);
+
             } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-comment">// no firefox support
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">txt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">text.outerHTML</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">this.execCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'InsertHTML'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">txt</span><span class="jsdoc-syntax">);
             }
-
             </span><span class="jsdoc-var">this.syncValue</span><span class="jsdoc-syntax">();
 
             </span><span class="jsdoc-var">this.deferFocus</span><span class="jsdoc-syntax">();
@@ -899,17 +915,16 @@
      */
     </span><span class="jsdoc-var">selectNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
-
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.ownerDocument.createRange</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-var">nodeRange.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-            } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">nodeRange.selectNodeContents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
-            }
-            </span><span class="jsdoc-comment">//nodeRange.collapse(true);
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.win.getSelection</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">s.removeAllRanges</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">s.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeRange</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeRange </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.ownerDocument.createRange</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">nodeRange.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">nodeRange.selectNodeContents</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-comment">//nodeRange.collapse(true);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.win.getSelection</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">s.removeAllRanges</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">s.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeRange</span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-var">getSelectedNode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()

@@ -67,6 +67,7 @@ Roo.htmleditor.KeyEnter.prototype = {
             var sel = this.core.win.getSelection();
             sel.removeAllRanges();
             sel.addRange(range);
+            this.core.undoManager.addEvent();
             return false;
             
             
@@ -74,19 +75,29 @@ Roo.htmleditor.KeyEnter.prototype = {
         //add the br, or p, or something else
         newEle = doc.createElement('br');
         docFragment.appendChild(newEle);
-    
-        //make the br replace selection
-        
         range.deleteContents();
-        
         range.insertNode(docFragment);
-        range = range.cloneRange();
-        range.collapse(true);
+        
+        var ns = newEle.nextSibling
+        while (ns && ns.nodeType == 3) { 
+            ns = ns.nextSibling;
+        }
+        
+        if (!ns) {
+            ns = doc.createElement('br');
+            newEle.parentNode.appendChild(ns);
+        }
+        
+        
+        range = doc.createRange();
+        range.setStart(ns, 0);
+        range.setEnd(ns, 0);
+        range.collapse(false);
+        
         var sel = this.core.win.getSelection();
         sel.removeAllRanges();
         sel.addRange(range);
-        sel.collapseToEnd();
-    
+        this.core.undoManager.addEvent();
         return false;
          
     }
