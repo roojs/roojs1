@@ -46314,7 +46314,7 @@ Roo.htmleditor.KeyEnter.prototype = {
         
         range.insertNode(docFragment);
         range = range.cloneRange();
-        range.collapse(true);
+        range.collapse(false);
         var sel = this.core.win.getSelection();
         sel.removeAllRanges();
         sel.addRange(range);
