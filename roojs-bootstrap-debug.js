@@ -26728,7 +26728,8 @@ Roo.htmleditor.KeyEnter.prototype = {
     
     core : false,
     
-    keypress : function(e) {
+    keypress : function(e)
+    {
         if (e.charCode != 13) {
             return true;
         }
@@ -26785,16 +26786,14 @@ Roo.htmleditor.KeyEnter.prototype = {
         range.deleteContents();
         
         range.insertNode(docFragment);
+        range = range.cloneRange();
+        range.collapse(false);
+         
+        win.getSelection().removeAllRanges();
+        win.getSelection().addRange(range);
+        
     
-        //create a new range
-        range = doc.createRange();
-        range.setStartAfter(newEle);
-        range.collapse(true);
-    
-        //make the cursor there
-        var sel = this.core.win.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
+        
     
         return false;
          
@@ -26827,9 +26826,9 @@ Roo.htmleditor.Block.factory = function(node)
         return Roo.htmleditor.Block.cache[id];
     }
     
-    var cls = Roo.htmleditor['Block' + Roo.get(node).attr('data-block')];
+    var cls = Roo.htmleditor['Block' + node.getAttribute('data-block')];
     if (typeof(cls) == 'undefined') {
-        Roo.log("OOps missing block : " + 'Block' + Roo.get(node).attr('data-block'));
+        Roo.log("OOps missing block : " + 'Block' + node.getAttribute('data-block'));
         return false;
     }
     Roo.htmleditor.Block.cache[id] = new cls({ node: node });
@@ -26883,7 +26882,7 @@ Roo.htmleditor.Block.prototype = {
             return n.innerHTML;
         }
         if (attr == 'style') {
-            return Roo.get(n).getStyle(style);
+            return n.style[style]
         }
         
         return Roo.get(n).attr(attr);
