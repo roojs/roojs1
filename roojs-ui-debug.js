@@ -22026,11 +22026,11 @@ Roo.htmleditor.KeyEnter.prototype = {
         
         range.insertNode(docFragment);
         range = range.cloneRange();
-        range.collapse(false);
+        range.collapse(true);
         var sel = this.core.win.getSelection();
         sel.removeAllRanges();
         sel.addRange(range);
-        
+        sel.collapseToEnd();
     
         return false;
          
