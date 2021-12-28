@@ -39,7 +39,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     
     // used by context menu
     friendly_name : 'Table',
-    
+    deleteTitle : 'Delete Table',
     // context menu is drawn once..
     
     contextMenu : function(toolbar)
