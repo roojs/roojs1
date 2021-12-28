@@ -92,7 +92,7 @@ Roo.htmleditor.KeyEnter.prototype = {
         range = doc.createRange();
         range.setStart(ns, 0);
         range.setEnd(ns, 0);
-        range.collapse(false);
+        range.collapse(true);
         
         var sel = this.core.win.getSelection();
         sel.removeAllRanges();
