@@ -54,6 +54,31 @@
       ]
     },
     {
+      "name" : "toUpperCaseFirst",
+      "type" : "function",
+      "desc" : "Make the first letter of a string uppercase",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The new string."
+        }
+      ]
+    },
+    {
       "name" : "leftPad",
       "type" : "function",
       "desc" : "Pads the left side of a string with a specified character.  This is especially useful\nfor normalizing number and date strings.  Example usage:\n<pre><code>\nvar s = String.leftPad('123', 5, '0');\n// s now contains the string: '00123'\n</code></pre>",

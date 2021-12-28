@@ -1,0 +1,109 @@
+{
+  "name" : "Roo.lib.UndoManager",
+  "augments" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "An undo manager implementation in JavaScript. It follows the W3C UndoManager and DOM Transaction\nDraft and the undocumented and disabled Mozilla Firefox's UndoManager implementation.\nUsage:\n<pre><code>\n\n\neditor.undoManager = new Roo.lib.UndoManager(1000, editor);\n \n</code></pre>\nFor more information see this blog post with examples:\n <a href=\"http://www.cnitblog.com/seeyeah/archive/2011/12/30/38728.html/\">DomHelper\n     - Create Elements using DOM, HTML fragments and Templates</a>.",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "UndoManager",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "limit",
+      "type" : "Number",
+      "desc" : "how far back to go ... use 1000?",
+      "isOptional" : false
+    },
+    {
+      "name" : "scope",
+      "type" : "Object",
+      "desc" : "usually use document..",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [],
+  "methods" : [
+    {
+      "name" : "transact",
+      "type" : "function",
+      "desc" : "To push and execute a transaction, the method undoManager.transact\nmust be called by passing a transaction object as the first argument, and a merge\nflag as the second argument. A transaction object has the following properties:\n\nUsage:\n<pre><code>\nundoManager.transact({\n    label: 'Typing',\n    execute: function() { ... },\n    undo: function() { ... },\n    // redo same as execute\n    redo: function() { this.execute(); }\n}, false);\n\n// merge transaction\nundoManager.transact({\n    label: 'Typing',\n    execute: function() { ... },  // this will be run...\n    undo: function() { ... }, // what to do when undo is run.\n    // redo same as execute\n    redo: function() { this.execute(); }\n}, true); \n</code></pre>",
+      "sig" : "(transaction)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "transaction",
+          "type" : "Object",
+          "desc" : "The transaction to add to the stack.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "The HTML fragment"
+        }
+      ]
+    },
+    {
+      "name" : "reset",
+      "type" : "function",
+      "desc" : "Reset the undo - probaly done on load to clear all history.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "addEvent",
+      "type" : "function",
+      "desc" : "Manually add an event.\nNormall called without arguements - and it will just get added to the stack.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    }
+  ],
+  "events" : []
+}

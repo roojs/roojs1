@@ -114,3 +114,13 @@ String.prototype.unicodeClean = function () {
     );
 };
   
+
+/**
+  * Make the first letter of a string uppercase
+  *
+  * @return {String} The new string.
+  */
+String.prototype.toUpperCaseFirst = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};  
+  

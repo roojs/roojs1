@@ -1,0 +1,576 @@
+<html><head><title>Roo/htmleditor/BlockTd.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+ *
+ * editing a TD?
+ *
+ * since selections really work on the table cell, then editing really should work from there
+ *
+ * The original plan was to support merging etc... - but that may not be needed yet..
+ *
+ * So this simple version will support:
+ *   add/remove cols
+ *   adjust the width +/-
+ *   reset the width...
+ *   
+ *
+ */
+
+
+
+
+/**
+ * @class Roo.htmleditor.BlockTable
+ * Block that manages a table
+ * 
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+</span><span class="jsdoc-var">Roo.htmleditor.BlockTd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.readElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+
+
+
+}
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.BlockTd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.htmleditor.Block</span><span class="jsdoc-syntax">, {
+
+    </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">textAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">colspan </span><span class="jsdoc-syntax">: 1,
+    </span><span class="jsdoc-var">rowspan </span><span class="jsdoc-syntax">: 1,
+
+
+    </span><span class="jsdoc-comment">// used by context menu
+    </span><span class="jsdoc-var">friendly_name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Table Cell'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">deleteTitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Delete Table'</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// context menu is drawn once..
+
+    </span><span class="jsdoc-var">contextMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">toolbar</span><span class="jsdoc-syntax">)
+    {
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">toolbar.tb.selectedNode</span><span class="jsdoc-syntax">);
+        };
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">toolbar.tb.selectedNode.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">));
+        };
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">saveSel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-var">lr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">toolbar.editorcore.getSelection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getRangeAt</span><span class="jsdoc-syntax">(0);
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">restoreSel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">) {
+                (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                    </span><span class="jsdoc-var">toolbar.editorcore.focus</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">toolbar.editorcore.getSelection</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">cr.removeAllRanges</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">cr.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">toolbar.editorcore.onEditorEvent</span><span class="jsdoc-syntax">();
+                })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(10, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+
+            }
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rooui </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">syncValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">toolbar.editorcore.syncValue</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fields </span><span class="jsdoc-syntax">= {};
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Edit Table'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">toolbar.tb.selectedNode.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">toolbar.editorcore.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">toolbar.editorcore.onEditorEvent</span><span class="jsdoc-syntax">();
+                    }
+                }
+
+            },
+
+
+
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'TextItem'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Column Width: &quot;</span><span class="jsdoc-syntax">,
+                 </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+
+            </span><span class="jsdoc-syntax">},
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-var">saveSel</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.shrinkColumn</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">syncValue</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">restoreSel</span><span class="jsdoc-syntax">();
+                    }
+                },
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+            </span><span class="jsdoc-syntax">},
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'+'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-var">saveSel</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.growColumn</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">syncValue</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">restoreSel</span><span class="jsdoc-syntax">();
+                    }
+                },
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+            </span><span class="jsdoc-syntax">},
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'TextItem'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Merge Cells: &quot;</span><span class="jsdoc-syntax">,
+                 </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+
+            </span><span class="jsdoc-syntax">},
+
+
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Right'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-var">saveSel</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.mergeRight</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-comment">//block().growColumn();
+                        </span><span class="jsdoc-var">syncValue</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">restoreSel</span><span class="jsdoc-syntax">();
+                    }
+                },
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+            </span><span class="jsdoc-syntax">},
+
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Below'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-var">saveSel</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.mergeBelow</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-comment">//block().growColumn();
+                        </span><span class="jsdoc-var">syncValue</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">restoreSel</span><span class="jsdoc-syntax">();
+                    }
+                },
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+            </span><span class="jsdoc-syntax">},
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'TextItem'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;| &quot;</span><span class="jsdoc-syntax">,
+                 </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+
+            </span><span class="jsdoc-syntax">},
+
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Split'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-var">saveSel</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">syncValue</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-var">restoreSel</span><span class="jsdoc-syntax">();
+                    }
+                },
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+            </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-comment">// align... &lt;&lt; fixme
+
+        </span><span class="jsdoc-syntax">];
+
+    },
+
+
+  </span><span class="jsdoc-comment">/**
+     * create a DomHelper friendly object - for use with
+     * Roo.DomHelper.markup / overwrite / etc..
+     * ?? should it be called with option to hide all editing features?
+     */
+ /**
+     * create a DomHelper friendly object - for use with
+     * Roo.DomHelper.markup / overwrite / etc..
+     * ?? should it be called with option to hide all editing features?
+     */
+    </span><span class="jsdoc-var">toObject </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">contenteditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'true'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// this stops cell selection from picking the table.
+            </span><span class="jsdoc-string">'data-block' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Td'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-string">'text-align' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.textAlign</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'solid 1px rgb(0, 0, 0)'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// ??? hard coded?
+                </span><span class="jsdoc-string">'border-collapse' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'collapse'</span><span class="jsdoc-syntax">,
+            },
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
+        </span><span class="jsdoc-syntax">};
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colspan </span><span class="jsdoc-syntax">&gt; 1) {
+            </span><span class="jsdoc-var">ret.colspan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.colspan </span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret.rowspan </span><span class="jsdoc-syntax">&gt; 1) {
+            </span><span class="jsdoc-var">this.rowspan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.rowspan </span><span class="jsdoc-syntax">;
+        }
+
+
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+
+    },
+
+    </span><span class="jsdoc-var">readElement </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">node  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.node </span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.style.width</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.innerHTML</span><span class="jsdoc-syntax">;
+
+
+    },
+
+    </span><span class="jsdoc-comment">// the default cell object... at present...
+    </span><span class="jsdoc-var">emptyCell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">colspan </span><span class="jsdoc-syntax">:  1,
+            </span><span class="jsdoc-var">rowspan </span><span class="jsdoc-syntax">:  1,
+            </span><span class="jsdoc-var">textAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;&amp;nbsp;&quot; </span><span class="jsdoc-comment">// is this going to be editable now?
+        </span><span class="jsdoc-syntax">};
+
+    },
+
+    </span><span class="jsdoc-var">removeNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.node.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">);
+
+
+    },
+
+    </span><span class="jsdoc-var">cellData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">colWidths </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">toTableArray  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tab </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.node.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tab.rows</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">] = [];
+        });
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rn </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.colWidths </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">all_auto </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tab.rows</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">){
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.cells</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=  {
+                    </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ce</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rn</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">colspan </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ce.colSpan</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">rowspan </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ce.rowSpan
+                </span><span class="jsdoc-syntax">};
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce.isEqualNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.node</span><span class="jsdoc-syntax">)) {
+                    </span><span class="jsdoc-var">this.cellData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-comment">// if we have been filled up by a row?
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rn</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rn</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">++;
+                    }
+                    </span><span class="jsdoc-var">c.col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">] =   </span><span class="jsdoc-var">ce.style.width</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">all_auto </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                    }
+                }
+
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.colspan </span><span class="jsdoc-syntax">&lt; 2 &amp;&amp; </span><span class="jsdoc-var">c.rowspan </span><span class="jsdoc-syntax">&lt; 2 ) {
+                    </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rn</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">++;
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">j </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">c.rowspan</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">++) {
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rn</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// we have a problem..
+                    </span><span class="jsdoc-syntax">}
+                    </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rn</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">c.colspan</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                        </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rn</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">j</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+                    }
+                }
+
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">c.colspan</span><span class="jsdoc-syntax">;
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">rn</span><span class="jsdoc-syntax">++;
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// initalize widths.?
+        // either all widths or no widths..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">all_auto</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[0] = </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// no widths flag.
+        </span><span class="jsdoc-syntax">}
+
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+
+    },
+
+
+
+
+    </span><span class="jsdoc-var">mergeRight</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+
+        </span><span class="jsdoc-comment">// get the contents of the next cell along..
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.node.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.prototype.indexOf.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tr.childNodes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.node</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">tr.childNodes.length </span><span class="jsdoc-syntax">- 1) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// no cells on right to merge with.
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toTableArray</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.cellData.row</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">this.cellData.col</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.cellData.colspan</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// nothing right?
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.cellData.row</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">this.cellData.col</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.cellData.colspan</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-comment">// right cell - must be same rowspan and on the same row.
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rc.rowspan </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.cellData.rowspan </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">rc.row </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.cellData.row</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// right hand side is not same rowspan.
+        </span><span class="jsdoc-syntax">}
+
+
+
+        </span><span class="jsdoc-var">this.node.innerHTML </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">rc.cell.innerHTML</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">tr.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rc.cell</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.colspan </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">rc.colspan</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.node.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.colspan</span><span class="jsdoc-syntax">);
+
+    },
+
+
+    </span><span class="jsdoc-var">mergeBelow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toTableArray</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.cellData.row</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.cellData.rowspan</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// no row below
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.cellData.row</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.cellData.rowspan</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">this.cellData.col</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// nothing right?
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.cellData.row</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.cellData.rowspan</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">this.cellData.col</span><span class="jsdoc-syntax">];
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rc.colspan </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.cellData.colspan </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">rc.col </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.cellData.col</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// right hand side is not same rowspan.
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-var">this.node.innerHTML </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.node.innerHTML </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">rc.cell.innerHTML </span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">rc.cell.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rc.cell</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.rowspan </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">rc.rowspan</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.node.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowspan'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.rowspan</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">split</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.node.rowSpan </span><span class="jsdoc-syntax">&lt; 2 &amp;&amp; </span><span class="jsdoc-var">this.node.colSpan </span><span class="jsdoc-syntax">&lt; 2) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toTableArray</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cellData</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.rowspan </span><span class="jsdoc-syntax">= 1;
+        </span><span class="jsdoc-var">this.colspan </span><span class="jsdoc-syntax">= 1;
+
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cd.row</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cd.row </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cd.rowspan</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">++) {
+
+
+
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cd.col</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cd.col </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cd.colspan</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cd.row </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cd.col</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowspan'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ntd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.node.cloneNode</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// which col/row should be 0..
+                </span><span class="jsdoc-var">ntd.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'id'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">//
+                //ntd.style.width  = '';
+                </span><span class="jsdoc-var">ntd.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">] = { </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ntd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colspan </span><span class="jsdoc-syntax">: 1 , </span><span class="jsdoc-var">rowspan </span><span class="jsdoc-syntax">: 1   };
+            }
+
+        }
+        </span><span class="jsdoc-var">this.redrawAllCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">);
+
+
+
+    },
+
+
+
+    </span><span class="jsdoc-var">redrawAllCells</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">)
+    {
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tab </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.node.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tab.rows</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ri</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.cells</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ci</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">ce.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ce</span><span class="jsdoc-syntax">);
+            });
+        });
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= 0 ; </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">table.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">re </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tab.rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= 0 ; </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.cell </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-var">re.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.cell</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+        }
+
+    },
+    </span><span class="jsdoc-var">updateWidths </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= 0 ; </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">table.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">++) {
+
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= 0 ; </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.cell </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[0] != </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.colspan </span><span class="jsdoc-syntax">&lt; 2) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.cell</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">el.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">])  +</span><span class="jsdoc-string">'%'</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">el.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.node</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// done
+            </span><span class="jsdoc-syntax">}
+        }
+    },
+    </span><span class="jsdoc-var">normalizeWidths </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">)
+    {
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[0] === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nw </span><span class="jsdoc-syntax">= 100.0 / </span><span class="jsdoc-var">this.colWidths.length</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.colWidths.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">nw</span><span class="jsdoc-syntax">;
+            },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">missing </span><span class="jsdoc-syntax">= [];
+
+        </span><span class="jsdoc-var">this.colWidths.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">//if you mix % and
+            </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">? 0 : (</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]+</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/[^0-9]+/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)*1;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">add </span><span class="jsdoc-syntax">&gt; 0) {
+                </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">+=</span><span class="jsdoc-var">add</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">missing.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+
+
+        },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.colWidths.length</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">missing.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mult </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">nc </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">missing.length</span><span class="jsdoc-syntax">) / (1.0 * </span><span class="jsdoc-var">nc</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">mult </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ew </span><span class="jsdoc-syntax">= (100 -</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) / (1.0 * </span><span class="jsdoc-var">missing.length</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.colWidths.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">&gt; 0) {
+                    </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">mult</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">ew</span><span class="jsdoc-syntax">;
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-comment">// have to make up numbers..
+
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-comment">// now we should have all the widths..
+
+
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">shrinkColumn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toTableArray</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.normalizeWidths</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cellData.col</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">] * 0.8;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nw </span><span class="jsdoc-syntax">&lt; 5) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">otherAdd </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]  * 0.2) / (</span><span class="jsdoc-var">this.colWidths.length </span><span class="jsdoc-syntax">-1);
+        </span><span class="jsdoc-var">this.colWidths.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">) {
+                 </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">nw</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] += </span><span class="jsdoc-var">otherAdd
+        </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.updateWidths</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">);
+
+    },
+    </span><span class="jsdoc-var">growColumn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toTableArray</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.normalizeWidths</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cellData.col</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">] * 1.2;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nw </span><span class="jsdoc-syntax">&gt; 90) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">otherSub </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]  * 0.2) / (</span><span class="jsdoc-var">this.colWidths.length </span><span class="jsdoc-syntax">-1);
+        </span><span class="jsdoc-var">this.colWidths.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">nw</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] -= </span><span class="jsdoc-var">otherSub
+        </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.updateWidths</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">);
+
+    }
+
+
+})
+
+</span></code></body></html>

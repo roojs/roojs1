@@ -116,8 +116,7 @@
 
 
 .roo-htmleditor-body::selection,
-.roo-htmleditor-body td::selection,
-.roo-htmleditor-body br::selection
+.roo-htmleditor-body *::selection 
 {
 	background: #d9e8fb; 
 }

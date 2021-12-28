@@ -642,6 +642,11 @@
                 </span><span class="jsdoc-var">this.tb.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">item.enable</span><span class="jsdoc-syntax">();
                 });
+                </span><span class="jsdoc-comment">// initialize 'blocks'
+                </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editorcore.doc.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.query</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'*[data-block]'</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
             }
 
         }

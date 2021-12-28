@@ -1,0 +1,37 @@
+<html><head><title>Roo/htmleditor/FilterBlock.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+
+<span class="jsdoc-comment">/**
+ * @class Roo.htmleditor.FilterBlock
+ * removes id / data-block and contenteditable that are associated with blocks
+ * usage should be done on a cloned copy of the dom
+ * @constructor
+* Run a new Attribute Filter { node : xxxx }}
+* @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.htmleditor.FilterBlock </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">qa </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.node.querySelectorAll</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.removeAttributes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-block'</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.removeAttributes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'contenteditable'</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.removeAttributes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'id'</span><span class="jsdoc-syntax">);
+
+}
+
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.FilterBlock.prototype</span><span class="jsdoc-syntax">,
+{
+    </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// all tags
+
+
+    </span><span class="jsdoc-var">removeAttributes </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.node.querySelectorAll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'*[' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">ar.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">);
+        }
+    }
+
+
+
+
+});</span></code></body></html>

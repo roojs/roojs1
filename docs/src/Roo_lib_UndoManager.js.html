@@ -1,0 +1,302 @@
+<html><head><title>Roo/lib/UndoManager.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+ * Originally based of this code... - refactored for Roo...
+ * https://github.com/aaalsaleh/undo-manager
+ 
+ * undo-manager.js
+ * @author  Abdulrahman Alsaleh 
+ * @copyright 2015 Abdulrahman Alsaleh 
+ * @license  MIT License (c) 
+ *
+ * Hackily modifyed by alan@roojs.com
+ *
+ *
+ *  
+ *
+ *  TOTALLY UNTESTED...
+ *
+ *  Documentation to be done....
+ */
+
+
+/**
+* @class Roo.lib.UndoManager
+* An undo manager implementation in JavaScript. It follows the W3C UndoManager and DOM Transaction
+* Draft and the undocumented and disabled Mozilla Firefox's UndoManager implementation.
+
+ * Usage:
+ * &lt;pre&gt;&lt;code&gt;
+
+
+editor.undoManager = new Roo.lib.UndoManager(1000, editor);
+ 
+&lt;/code&gt;&lt;/pre&gt;
+
+* For more information see this blog post with examples:
+*  &lt;a href=&quot;http://www.cnitblog.com/seeyeah/archive/2011/12/30/38728.html/&quot;&gt;DomHelper
+     - Create Elements using DOM, HTML fragments and Templates&lt;/a&gt;. 
+* @constructor
+* @param {Number} limit how far back to go ... use 1000?
+* @param {Object} scope usually use document..
+*/
+
+</span><span class="jsdoc-var">Roo.lib.UndoManager </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">undoScopeHost</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-var">this.stack </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">this.limit </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">undoScopeHost</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.fireEvent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">CustomEvent </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">undoScopeHost </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">undoScopeHost.dispatchEvent</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.bindEvents</span><span class="jsdoc-syntax">();
+    }
+    </span><span class="jsdoc-var">this.reset</span><span class="jsdoc-syntax">();
+
+};
+
+</span><span class="jsdoc-var">Roo.lib.UndoManager.prototype </span><span class="jsdoc-syntax">= {
+
+    </span><span class="jsdoc-var">limit </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">stack </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">fireEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">position </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">length </span><span class="jsdoc-syntax">: 0,
+
+
+     </span><span class="jsdoc-comment">/**
+     * To push and execute a transaction, the method undoManager.transact
+     * must be called by passing a transaction object as the first argument, and a merge
+     * flag as the second argument. A transaction object has the following properties:
+     *
+     * Usage:
+&lt;pre&gt;&lt;code&gt;
+undoManager.transact({
+    label: 'Typing',
+    execute: function() { ... },
+    undo: function() { ... },
+    // redo same as execute
+    redo: function() { this.execute(); }
+}, false);
+
+// merge transaction
+undoManager.transact({
+    label: 'Typing',
+    execute: function() { ... },  // this will be run...
+    undo: function() { ... }, // what to do when undo is run.
+    // redo same as execute
+    redo: function() { this.execute(); }
+}, true); 
+&lt;/code&gt;&lt;/pre&gt; 
+     *
+     * 
+     * @param {Object} transaction The transaction to add to the stack.
+     * @return {String} The HTML fragment
+     */
+
+
+    </span><span class="jsdoc-var">transact </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">transaction</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">merge</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">arguments.length </span><span class="jsdoc-syntax">&lt; 2) {
+            </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">TypeError</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Not enough arguments to UndoManager.transact.'</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">transaction.execute</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">this.stack.splice</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">merge </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.stack</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">transaction</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.stack.unshift</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">transaction</span><span class="jsdoc-syntax">]);
+        }
+
+        </span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">= 0;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.limit </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.stack.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.limit</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.length </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.stack.length </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.limit</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.length </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.stack.length</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.scope.dispatchEvent</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">CustomEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'DOMTransaction'</span><span class="jsdoc-syntax">, {
+                    </span><span class="jsdoc-var">detail</span><span class="jsdoc-syntax">: {
+                        </span><span class="jsdoc-var">transactions</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.stack</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.slice</span><span class="jsdoc-syntax">()
+                    },
+                    </span><span class="jsdoc-var">bubbles</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cancelable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+                </span><span class="jsdoc-syntax">})
+            );
+        }
+
+        </span><span class="jsdoc-comment">//Roo.log(&quot;transaction: pos:&quot; + this.position + &quot; len: &quot; + this.length + &quot; slen:&quot; + this.stack.length);
+
+
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">undo </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-comment">//Roo.log(&quot;undo: pos:&quot; + this.position + &quot; len: &quot; + this.length + &quot; slen:&quot; + this.stack.length);
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">- 1; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= 0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--) {
+                </span><span class="jsdoc-var">this.stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.undo</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">++;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.scope.dispatchEvent</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">CustomEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'undo'</span><span class="jsdoc-syntax">, {
+                        </span><span class="jsdoc-var">detail</span><span class="jsdoc-syntax">: {
+                            </span><span class="jsdoc-var">transactions</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">- 1]</span><span class="jsdoc-var">.slice</span><span class="jsdoc-syntax">()
+                        },
+                        </span><span class="jsdoc-var">bubbles</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cancelable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+                    </span><span class="jsdoc-syntax">})
+                );
+            }
+        }
+    },
+
+    </span><span class="jsdoc-var">redo </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">&gt; 0) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">- 1]</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">this.stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">- 1][</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.redo</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">--;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.scope.dispatchEvent</span><span class="jsdoc-syntax">(
+                    </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">CustomEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'redo'</span><span class="jsdoc-syntax">, {
+                        </span><span class="jsdoc-var">detail</span><span class="jsdoc-syntax">: {
+                            </span><span class="jsdoc-var">transactions</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.slice</span><span class="jsdoc-syntax">()
+                        },
+                        </span><span class="jsdoc-var">bubbles</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cancelable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+                    </span><span class="jsdoc-syntax">})
+                );
+            }
+        }
+    },
+
+    </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&gt;= 0 &amp;&amp; </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.slice</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">clearUndo </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">this.stack.length </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.length </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">clearRedo </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">this.stack.splice</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.length </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.stack.length</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * Reset the undo - probaly done on load to clear all history.
+     */
+    </span><span class="jsdoc-var">reset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.stack </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.position </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.length </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.current_html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.scope.innerHTML</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timer </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timer</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.timer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.merge </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.addEvent</span><span class="jsdoc-syntax">();
+
+    },
+    </span><span class="jsdoc-var">current_html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">timer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">merge </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+
+    </span><span class="jsdoc-comment">// this will handle the undo/redo on the element.?
+    </span><span class="jsdoc-var">bindEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.scope</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">el.undoManager </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+
+        </span><span class="jsdoc-var">this.scope.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keydown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">e.ctrlKey </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e.metaKey</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">e.keyCode </span><span class="jsdoc-syntax">=== 90) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">el.undoManager.redo</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// Ctrl/Command + Shift + Z
+                </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">el.undoManager.undo</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// Ctrl/Command + Z
+                </span><span class="jsdoc-syntax">}
+
+                </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+            }
+        });
+        </span><span class="jsdoc-comment">/// ignore keyup..
+        </span><span class="jsdoc-var">this.scope.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keyup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">e.ctrlKey </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e.metaKey</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">e.keyCode </span><span class="jsdoc-syntax">=== 90) {
+                </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+            }
+        });
+
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">el.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.innerHTML </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">t.current_html</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// only record events every second.
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.timer </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+               </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.timer</span><span class="jsdoc-syntax">);
+               </span><span class="jsdoc-var">t.timer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">t.timer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">t.merge </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; }, 1000);
+
+            </span><span class="jsdoc-var">t.addEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.merge</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">t.merge </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// ignore changes happening every second..
+        </span><span class="jsdoc-syntax">});
+	},
+    </span><span class="jsdoc-comment">/**
+     * Manually add an event.
+     * Normall called without arguements - and it will just get added to the stack.
+     * 
+     */
+
+    </span><span class="jsdoc-var">addEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">merge</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log(&quot;undomanager +&quot; + (merge ? 'Y':'n'));
+        // not sure if this should clear the timer 
+        </span><span class="jsdoc-var">merge </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">merge</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">merge</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.scope.undoManager.transact</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.scope</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">oldHTML</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.current_html</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">newHTML</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.scope.innerHTML</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">// nothing to execute (content already changed when input is fired)
+            </span><span class="jsdoc-var">execute</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { },
+            </span><span class="jsdoc-var">undo</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">this.scope.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.current_html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.oldHTML</span><span class="jsdoc-syntax">;
+            },
+            </span><span class="jsdoc-var">redo</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">this.scope.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.current_html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.newHTML</span><span class="jsdoc-syntax">;
+            }
+        }, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">//merge);
+
+        </span><span class="jsdoc-var">this.merge </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">merge</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.current_html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.scope.innerHTML</span><span class="jsdoc-syntax">;
+    }
+
+
+
+
+
+
+};
+</span></code></body></html>

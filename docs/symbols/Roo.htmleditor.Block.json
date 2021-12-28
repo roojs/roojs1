@@ -111,6 +111,32 @@
       "returns" : []
     },
     {
+      "name" : "initAll",
+      "type" : "function",
+      "desc" : "initalize all Elements from content that are 'blockable'",
+      "sig" : "(the)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "the",
+          "type" : "",
+          "desc" : "body element",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "toHTML",
       "type" : "function",
       "desc" : "convert to plain HTML for calling insertAtCursor..",
@@ -150,6 +176,32 @@
           "name" : "node",
           "type" : "DomElement",
           "desc" : "- the node",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "factory",
+      "type" : "function",
+      "desc" : "factory method to get the block from an element (using cache if necessary)",
+      "sig" : "(the)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "the",
+          "type" : "HtmlElement",
+          "desc" : "dom element",
           "isOptional" : false
         }
       ],

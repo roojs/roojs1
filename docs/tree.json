@@ -1316,6 +1316,16 @@
             "is_class" : true
           },
           {
+            "name" : "Roo.htmleditor.BlockTable",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.htmleditor.BlockTd",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
             "name" : "Roo.htmleditor.Filter",
             "cn" : [],
             "is_class" : false
@@ -1327,6 +1337,11 @@
           },
           {
             "name" : "Roo.htmleditor.FilterBlack",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterBlock",
             "cn" : [],
             "is_class" : false
           },

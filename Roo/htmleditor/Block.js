@@ -28,10 +28,14 @@ Roo.htmleditor.Block.factory = function(node)
         Roo.htmleditor.Block.cache[id].readElement();
         return Roo.htmleditor.Block.cache[id];
     }
-    
-    var cls = Roo.htmleditor['Block' + node.getAttribute('data-block')];
+    var db  = node.getAttribute('data-block');
+    if (!db) {
+        db = node.nodeName.toLowerCase().toUpperCaseFirst();
+    }
+    var cls = Roo.htmleditor['Block' + db];
     if (typeof(cls) == 'undefined') {
-        Roo.log("OOps missing block : " + 'Block' + node.getAttribute('data-block'));
+        //Roo.log(node.getAttribute('data-block'));
+        Roo.log("OOps missing block : " + 'Block' + db);
         return false;
     }
     Roo.htmleditor.Block.cache[id] = new cls({ node: node });
@@ -47,9 +51,9 @@ Roo.htmleditor.Block.initAll = function(body, type)
 {
     if (typeof(type) == 'undefined') {
         var ia = Roo.htmleditor.Block.initAll;
-        ia('table');
-        ia('td');
-        ia('figure');
+        ia(body,'table');
+        ia(body,'td');
+        ia(body,'figure');
         return;
     }
     Roo.each(Roo.get(body).query(type), function(e) {

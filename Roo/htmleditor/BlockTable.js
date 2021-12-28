@@ -253,7 +253,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     readElement : function(node)
     {
         node  = node ? node : this.node ;
-        this.width = this.getVal(node, true, 'style', 'width');
+        this.width = this.getVal(node, true, 'style', 'width') || '100%';
         
         this.rows = [];
         this.no_row = 0;
@@ -456,9 +456,9 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
      
     },
     
-    remove : function()
+    removeNode : function()
     {
-        Roo.log(this.cfg.node);
+        return this.node;
     },
     
     
