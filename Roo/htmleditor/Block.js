@@ -42,7 +42,7 @@ Roo.htmleditor.Block.prototype = {
     node : false,
     
      // used by context menu
-    friendly_name : 'Image with caption',
+    friendly_name : 'Based Block',
     
     // text for button to delete this element
     deleteTitle : false,
