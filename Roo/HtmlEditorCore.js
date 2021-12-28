@@ -359,6 +359,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
            
             new Roo.htmleditor.FilterAttributes({node : div, attrib_black: [ 'contenteditable' ] });
             //?? tidy?
+            new Roo.htmleditor.FilterBlock({ node : div });
+            
             var html = div.innerHTML;
             if(Roo.isSafari){
                 var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
@@ -594,7 +596,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
         this.insertAtCursor(d.innerHTML);
-        
+        Roo.htmleditor.Block.initAll(this.doc.body);
         
         
         e.preventDefault();
