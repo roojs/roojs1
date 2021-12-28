@@ -954,6 +954,16 @@ String.prototype.unicodeClean = function () {
     );
 };
   
+
+/**
+  * Make the first letter of a string uppercase
+  *
+  * @return {String} The new string.
+  */
+String.prototype.toUpperCaseFirst = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};  
+  
 /*
  * Based on:
  * Ext JS Library 1.1.1

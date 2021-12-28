@@ -357,7 +357,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // remove content editable. (blocks)
             
            
-            new Roo.htmleditor.FilterAttributes({node : div, attrib_black: [ 'contenteditable' ] });
+            
             //?? tidy?
             new Roo.htmleditor.FilterBlock({ node : div });
             
