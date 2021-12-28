@@ -15,7 +15,11 @@ Roo.htmleditor.Block  = function(cfg)
 {
     // do nothing .. should not be called really.
 }
-
+/**
+ * factory method to get the block from an element (using cache if necessary)
+ * @static
+ * @param {HtmlElement} the dom element
+ */
 Roo.htmleditor.Block.factory = function(node)
 {
     var cc = Roo.htmleditor.Block.cache;
@@ -32,6 +36,25 @@ Roo.htmleditor.Block.factory = function(node)
     }
     Roo.htmleditor.Block.cache[id] = new cls({ node: node });
     return Roo.htmleditor.Block.cache[id];  /// should trigger update element
+};
+
+/**
+ * initalize all Elements from content that are 'blockable'
+ * @static
+ * @param the body element
+ */
+Roo.htmleditor.Block.initAll = function(body, type)
+{
+    if (typeof(type) == 'undefined') {
+        var ia = Roo.htmleditor.Block.initAll;
+        ia('table');
+        ia('td');
+        ia('figure');
+        return;
+    }
+    Roo.each(Roo.get(body).query(type), function(e) {
+        Roo.htmleditor.Block.factory(e);    
+    },this);
 };
 // question goes here... do we need to clear out this cache sometimes?
 // or show we make it relivant to the htmleditor.
