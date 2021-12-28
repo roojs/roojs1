@@ -17,6 +17,8 @@ Roo.htmleditor.KeyEnter = function(cfg) {
     Roo.get(this.core.doc.body).on('keypress', this.keypress, this);
 }
 
+//Roo.htmleditor.KeyEnter.i = 0;
+
 
 Roo.htmleditor.KeyEnter.prototype = {
     
@@ -34,8 +36,7 @@ Roo.htmleditor.KeyEnter.prototype = {
         var docFragment = doc.createDocumentFragment();
     
         //add a new line
-        var newEle = doc.createTextNode('\n');
-        docFragment.appendChild(newEle);
+       
     
     
         var range = this.core.win.getSelection().getRangeAt(0);
@@ -72,32 +73,41 @@ Roo.htmleditor.KeyEnter.prototype = {
             
             
         }
+        var newEle = doc.createTextNode('\n');
+        docFragment.appendChild(newEle);
+        
         //add the br, or p, or something else
         newEle = doc.createElement('br');
+        //newEle.setAttribute('data-id', Roo.htmleditor.KeyEnter.i++);
         docFragment.appendChild(newEle);
-        range.deleteContents();
-        range.insertNode(docFragment);
+        doc.createTextNode('\n');
+        docFragment.appendChild(newEle);
         
+        range.deleteContents();
+        range.insertNode(docFragment);  //<< inseting here...
+         
         var ns = newEle.nextSibling
         while (ns && ns.nodeType == 3) { 
             ns = ns.nextSibling;
         }
         
         if (!ns) {
+            //Roo.log('add extra');
             ns = doc.createElement('br');
+            //ns.setAttribute('data-id', 'x' +  Roo.htmleditor.KeyEnter.i++);
             newEle.parentNode.appendChild(ns);
         }
         
         
+        
         range = doc.createRange();
-        range.setStart(ns, 0);
-        range.setEnd(ns, 0);
+        range.setStartAfter(newEle);
         range.collapse(true);
         
         var sel = this.core.win.getSelection();
         sel.removeAllRanges();
         sel.addRange(range);
-        this.core.undoManager.addEvent();
+        //this.core.undoManager.addEvent();
         return false;
          
     }

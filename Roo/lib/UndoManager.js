@@ -128,14 +128,14 @@ undoManager.transact({
             );
         }
         
-        Roo.log("transaction: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
+        //Roo.log("transaction: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
       
         
     },
 
     undo : function ()
     {
-        Roo.log("undo: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
+        //Roo.log("undo: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
         
         if (this.position < this.length) {
             for (var i = this.stack[this.position].length - 1; i >= 0; i--) {
@@ -270,7 +270,7 @@ undoManager.transact({
     
     addEvent : function(merge)
     {
-        Roo.log("undomanager +" + (merge ? 'Y':'n'));
+        //Roo.log("undomanager +" + (merge ? 'Y':'n'));
         // not sure if this should clear the timer 
         merge = typeof(merge) == 'undefined' ? false : merge; 
         

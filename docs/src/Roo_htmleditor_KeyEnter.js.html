@@ -17,7 +17,7 @@
     </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.core.doc.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keypress'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.keypress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 }
 
-
+</span><span class="jsdoc-var">Roo.htmleditor.KeyEnter.i </span><span class="jsdoc-syntax">= 0;
 </span><span class="jsdoc-var">Roo.htmleditor.KeyEnter.prototype </span><span class="jsdoc-syntax">= {
 
     </span><span class="jsdoc-var">core </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -34,8 +34,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">docFragment </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createDocumentFragment</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-comment">//add a new line
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newEle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">docFragment.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newEle</span><span class="jsdoc-syntax">);
+
 
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.core.win.getSelection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getRangeAt</span><span class="jsdoc-syntax">(0);
@@ -72,11 +71,18 @@
 
 
         }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newEle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">docFragment.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newEle</span><span class="jsdoc-syntax">);
+
         </span><span class="jsdoc-comment">//add the br, or p, or something else
         </span><span class="jsdoc-var">newEle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'br'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">newEle.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-id'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.htmleditor.KeyEnter.i</span><span class="jsdoc-syntax">++);
         </span><span class="jsdoc-var">docFragment.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newEle</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">doc.createTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">docFragment.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newEle</span><span class="jsdoc-syntax">);
+
         </span><span class="jsdoc-var">range.deleteContents</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">range.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">docFragment</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">range.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">docFragment</span><span class="jsdoc-syntax">);  </span><span class="jsdoc-comment">//&lt;&lt; inseting here...
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">newEle.nextSibling
         </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ns.nodeType </span><span class="jsdoc-syntax">== 3) {
@@ -84,20 +90,22 @@
         }
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'add extra'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'br'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">ns.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'data-id'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'x' </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">Roo.htmleditor.KeyEnter.i</span><span class="jsdoc-syntax">++);
             </span><span class="jsdoc-var">newEle.parentNode.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">);
         }
 
 
+
         </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createRange</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">range.setStart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, 0);
-        </span><span class="jsdoc-var">range.setEnd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">, 0);
-        </span><span class="jsdoc-var">range.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">range.setStartAfter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newEle</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">range.collapse</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.core.win.getSelection</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">sel.removeAllRanges</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">sel.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.core.undoManager.addEvent</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//this.core.undoManager.addEvent();
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
 
     }

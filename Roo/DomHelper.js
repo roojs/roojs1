@@ -282,18 +282,19 @@ Roo.DomHelper = function(){
             if (ar[i].name == 'id') { // always keep ids?
                continue;
             }
-            if (ar[i].name == 'style') {
-               throw "style removed?";
-            }
+            //if (ar[i].name == 'style') {
+            //   throw "style removed?";
+            //}
             Roo.log("removeAttribute" + ar[i].name);
             from.removeAttribute(ar[i].name);
         }
         ar = to.attributes;
         for(var i = 0; i< ar.length;i++) {
             if (from.getAttribute(ar[i].name) == to.getAttribute(ar[i].name)) {
+                Roo.log("skipAttribute " + ar[i].name  + '=' + to.getAttribute(ar[i].name));
                 continue;
             }
-            Roo.log("updateAttribute " + from.getAttribute(ar[i].name) + '=>' + to.getAttribute(ar[i].name));
+            Roo.log("updateAttribute " + ar[i].name + '=>' + to.getAttribute(ar[i].name));
             from.setAttribute(ar[i].name, to.getAttribute(ar[i].name));
         }
         // children

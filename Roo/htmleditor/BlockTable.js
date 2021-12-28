@@ -161,6 +161,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     click : function (_self, e)
                     {
                         block().resetWidths();
+                        syncValue();
                     }
                 },
                 xns : rooui.Toolbar
@@ -458,6 +459,17 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     remove : function()
     {
         Roo.log(this.cfg.node);
+    },
+    
+    
+    
+    resetWidths : function()
+    {
+        Array.from(this.node.getElementsByTagName('td')).forEach(function(n) {
+            var nn = Roo.htmleditor.Block.factory(n);
+            nn.width = '';
+            nn.updateElement(n);
+        });
     }
     
     

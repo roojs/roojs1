@@ -333,7 +333,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     syncValue : function()
     {
-        Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
+        //Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
         if(this.initialized){
             
             this.undoManager.addEvent();
@@ -410,7 +410,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     pushValue : function()
     {
-        Roo.log("HtmlEditorCore:pushValue (TEXT->EDITOR)");
+        //Roo.log("HtmlEditorCore:pushValue (TEXT->EDITOR)");
         if(this.initialized){
             var v = this.el.dom.value.trim();
             
@@ -662,6 +662,33 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (e && (e.ctrlKey || e.metaKey) && e.keyCode === 90) {
             return; // we do not handle this.. (undo manager does..)
         }
+        // in theory this detects if the last element is not a br, then we try and do that.
+        // its so clicking in space at bottom triggers adding a br and moving the cursor.
+        if (e &&
+            e.target.nodeName == 'BODY' &&
+            e.type == "mouseup" &&
+            this.doc.body.lastChild
+           ) {
+            var lc = this.doc.body.lastChild;
+            while (lc.nodeType == 3 && lc.nodeValue == '') {
+                lc = lc.previousSibling;
+            }
+            if (lc.nodeType == 1 && lc.nodeName != 'BR') {
+            // if last element is <BR> - then dont do anything.
+            
+                var ns = this.doc.createElement('br');
+                this.doc.body.appendChild(ns);
+                range = this.doc.createRange();
+                range.setStartAfter(ns);
+                range.collapse(true);
+                var sel = this.win.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+        }
+        
+        
+        
         this.owner.fireEvent('editorevent', this, e);
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff

@@ -642,6 +642,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 this.tb.items.each(function(item){
                     item.enable();
                 });
+                // initialize 'blocks'
+                Roo.each(Roo.get(this.editorcore.doc.body).query('*[data-block]'), function(e) {
+                    Roo.htmleditor.Block.factory(e).updateElement(e);
+                },this);
+            
             }
             
         }

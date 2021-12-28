@@ -18,9 +18,9 @@ Roo.htmleditor.Block  = function(cfg)
 
 Roo.htmleditor.Block.factory = function(node)
 {
-    
+    var cc = Roo.htmleditor.Block.cache;
     var id = Roo.get(node).id;
-    if (typeof(Roo.htmleditor.Block.cache[id]) != 'undefined') {
+    if (typeof(cc[id]) != 'undefined' && (!cc[id].node || cc[id].node.closest('body'))) {
         Roo.htmleditor.Block.cache[id].readElement();
         return Roo.htmleditor.Block.cache[id];
     }
