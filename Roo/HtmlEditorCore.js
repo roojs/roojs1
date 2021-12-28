@@ -422,12 +422,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
             }
+            Roo.htmleditor.Block.initAll(this.doc.body);
             
-            Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
-                
-                Roo.htmleditor.Block.factory(e);
-                
-            },this);
             var lc = this.doc.body.lastChild;
             if (lc && lc.nodeType == 1 && lc.getAttribute("contenteditable") == "false") {
                 // add an extra line at the end.
@@ -562,6 +558,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
         
+        
+        var sn = this.getParentElement();
+        // check if d contains a table, and prevent nesting??
+        //Roo.log(d.getElementsByTagName('table'));
+        //Roo.log(sn);
+        //Roo.log(sn.closest('table'));
+        if (d.getElementsByTagName('table').length && sn && sn.closest('table')) {
+            e.preventDefault();
+            this.insertAtCursor("You can not nest tables");
+            //Roo.log("prevent?"); // fixme - 
+            return false;
+        }
+        
         if (images.length > 0) {
             Roo.each(d.getElementsByTagName('img'), function(img, i) {
                 img.setAttribute('src', images[i]);
@@ -585,6 +594,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
         this.insertAtCursor(d.innerHTML);
+        
+        
         
         e.preventDefault();
         return false;
@@ -860,7 +871,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     }
                     return;
                 }
-                
+                /// this is handled by Roo.htmleditor.KeyEnter
+                 /*
                 if(k == e.ENTER){
                     r = this.doc.selection.createRange();
                     if(r){
@@ -873,6 +885,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                         }
                     }
                 }
+                */
                 //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
                 //    this.cleanUpPaste.defer(100, this);
                 //    return;
