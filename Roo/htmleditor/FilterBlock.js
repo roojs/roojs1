@@ -18,11 +18,12 @@ Roo.htmleditor.FilterBlock = function(cfg)
     
 }
 
-Roo.apply(Roo.htmleditor.FilterBlock,
+Roo.apply(Roo.htmleditor.FilterBlock.prototype,
+{
     node: true, // all tags
      
      
-    replaceAttributes : function(attr)
+    removeAttributes : function(attr)
     {
         var ar = this.node.querySelectorAll('*[' + attr + ']');
         for (var i =0;i<ar.length;i++) {
