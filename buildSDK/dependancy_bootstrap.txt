@@ -144,6 +144,8 @@ Roo.htmleditor.KeyEnter
 
 Roo.htmleditor.Block
 Roo.htmleditor.BlockFigure
+Roo.htmleditor.BlockTable
+Roo.htmleditor.BlockTd
 
 Roo.HtmlEditorCore
 Roo.bootstrap.form.HtmlEditor
