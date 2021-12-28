@@ -44,6 +44,9 @@ Roo.htmleditor.Block.prototype = {
      // used by context menu
     friendly_name : 'Image with caption',
     
+    // text for button to delete this element
+    deleteTitle : false,
+    
     context : false,
     /**
      * Update a node with values from this object
