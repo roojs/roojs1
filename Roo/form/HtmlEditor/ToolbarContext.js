@@ -703,7 +703,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         tb.addFill();
         tb.addButton({
-            text: 'Remove Block or Formating', // remove the tag, and puts the children outside...
+            text: block && block.deleteTitle ? block.deleteTitle  : 'Remove Block or Formating', // remove the tag, and puts the children outside...
     
             listeners : {
                 click : function ()
