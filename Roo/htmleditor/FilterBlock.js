@@ -18,8 +18,7 @@ Roo.htmleditor.FilterBlock = function(cfg)
     
 }
 
-Roo.app(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
-{
+Roo.apply(Roo.htmleditor.FilterBlock,
     node: true, // all tags
      
      
