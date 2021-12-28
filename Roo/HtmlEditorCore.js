@@ -658,6 +658,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
     onEditorEvent : function(e)
     {
+        
+        if (e && (e.ctrlKey || e.metaKey) && e.keyCode === 90) {
+            return; // we do not handle this.. (undo manager does..)
+        }
         this.owner.fireEvent('editorevent', this, e);
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
