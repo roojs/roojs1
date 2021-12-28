@@ -5027,14 +5027,14 @@ undoManager.transact({
             );
         }
         
-        Roo.log("transaction: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
+        //Roo.log("transaction: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
       
         
     },
 
     undo : function ()
     {
-        Roo.log("undo: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
+        //Roo.log("undo: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
         
         if (this.position < this.length) {
             for (var i = this.stack[this.position].length - 1; i >= 0; i--) {
@@ -5169,7 +5169,7 @@ undoManager.transact({
     
     addEvent : function(merge)
     {
-        Roo.log("undomanager +" + (merge ? 'Y':'n'));
+        //Roo.log("undomanager +" + (merge ? 'Y':'n'));
         // not sure if this should clear the timer 
         merge = typeof(merge) == 'undefined' ? false : merge; 
         
@@ -5482,18 +5482,19 @@ Roo.DomHelper = function(){
             if (ar[i].name == 'id') { // always keep ids?
                continue;
             }
-            if (ar[i].name == 'style') {
-               throw "style removed?";
-            }
+            //if (ar[i].name == 'style') {
+            //   throw "style removed?";
+            //}
             Roo.log("removeAttribute" + ar[i].name);
             from.removeAttribute(ar[i].name);
         }
         ar = to.attributes;
         for(var i = 0; i< ar.length;i++) {
             if (from.getAttribute(ar[i].name) == to.getAttribute(ar[i].name)) {
+                Roo.log("skipAttribute " + ar[i].name  + '=' + to.getAttribute(ar[i].name));
                 continue;
             }
-            Roo.log("updateAttribute " + from.getAttribute(ar[i].name) + '=>' + to.getAttribute(ar[i].name));
+            Roo.log("updateAttribute " + ar[i].name + '=>' + to.getAttribute(ar[i].name));
             from.setAttribute(ar[i].name, to.getAttribute(ar[i].name));
         }
         // children
