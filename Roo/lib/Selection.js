@@ -64,6 +64,7 @@ Roo.apply(Roo.lib.Selection.prototype,
         }
         this.cursorStart(sn);
     },
+    
     cursorStart : function(n)
     {
         var range = this.getRangeAt(0);
