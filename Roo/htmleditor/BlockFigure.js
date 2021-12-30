@@ -29,45 +29,138 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     // setable values.
     image_src: '',
     
-    align: 'left',
+    align: 'center',
     caption : '',
     text_align: 'left',
     
-    width : '46%',
+    width : '100%',
     margin: '2%',
     
     // used by context menu
     friendly_name : 'Image with caption',
     deleteTitle : "Delete Image and Caption",
     
-    context : { // ?? static really
-        width : {
-            title: "Width",
-            width: 40
-            // ?? number
-        },
-        margin : {
-            title: "Margin",
-            width: 40
-            // ?? number
-        },
-        align: {
-            title: "Align",
-            opts : [[ "left"],[ "right"]],
-            width : 80
-            
-        },
-        text_align: {
-            title: "Caption Align",
-            opts : [ [ "left"],[ "right"],[ "center"]],
-            width : 80
-        },
+    
+    contextMenu : function(toolbar)
+    {
         
-       
-        image_src : {
-            title: "Src",
-            width: 220
-        }
+        var block = function() {
+            return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
+        };
+        
+        
+        var rooui =  typeof(Roo.bootstrap) == 'undefined' ? Roo : Roo.bootstrap;
+        
+        var syncValue = toolbar.editorcore.syncValue;
+        
+        var fields = {};
+        
+        return [
+             {
+                xtype : 'TextItem',
+                text : "Width: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+            {
+                xtype : 'ComboBox',
+                allowBlank : false,
+                displayField : 'val',
+                editable : true,
+                listWidth : 100,
+                triggerAction : 'all',
+                typeAhead : true,
+                valueField : 'val',
+                width : 100,
+                name : 'width',
+                listeners : {
+                    select : function (combo, r, index)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = block();
+                        b.width = r.get('val');
+                        b.updateElement();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.form,
+                store : {
+                    xtype : 'SimpleStore',
+                    data : [
+                        ['auto'],
+                        ['50%'],
+                        ['100%']
+                    ],
+                    fields : [ 'val'],
+                    xns : Roo.data
+                }
+            },
+            {
+                xtype : 'TextItem',
+                text : "Align: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+            {
+                xtype : 'ComboBox',
+                allowBlank : false,
+                displayField : 'val',
+                editable : true,
+                listWidth : 100,
+                triggerAction : 'all',
+                typeAhead : true,
+                valueField : 'val',
+                width : 100,
+                name : 'width',
+                listeners : {
+                    select : function (combo, r, index)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = block();
+                        b.align = r.get('val');
+                        b.updateElement();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.form,
+                store : {
+                    xtype : 'SimpleStore',
+                    data : [
+                        ['left'],
+                        ['right'],
+                        ['center']
+                    ],
+                    fields : [ 'val'],
+                    xns : Roo.data
+                }
+            },
+            {
+                xtype : 'TextItem',
+                text : "Image Source: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+            {
+                xtype : 'TextField',
+                allowBlank : false,
+                width : 100,
+                name : 'width',
+                listeners : {
+                    change : function (combo, r, index)
+                    {
+                        return;
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = block();
+                        b.align = r.get('val');
+                        b.updateElement();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.form
+                
+            }
+        ];
+        
     },
     /**
      * create a DomHelper friendly object - for use with
