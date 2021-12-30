@@ -26852,7 +26852,7 @@ Roo.htmleditor.Block.factory = function(node)
     var cc = Roo.htmleditor.Block.cache;
     var id = Roo.get(node).id;
     if (typeof(cc[id]) != 'undefined' && (!cc[id].node || cc[id].node.closest('body'))) {
-        Roo.htmleditor.Block.cache[id].readElement();
+        Roo.htmleditor.Block.cache[id].readElement(node);
         return Roo.htmleditor.Block.cache[id];
     }
     var db  = node.getAttribute('data-block');

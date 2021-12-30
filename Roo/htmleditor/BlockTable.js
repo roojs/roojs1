@@ -19,7 +19,7 @@ Roo.htmleditor.BlockTable = function(cfg)
     if (!cfg.node) {
         this.rows = [];
         for(var r = 0; r < this.no_row; r++) {
-            this.rows[r] = []
+            this.rows[r] = [];
             for(var c = 0; c < this.no_col; c++) {
                 this.rows[r][c] = this.emptyCell();
             }
@@ -71,11 +71,12 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 listeners : {
                     select : function (combo, r, index)
                     {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         var b = block();
                         b.width = r.get('val');
                         b.updateElement();
                         syncValue();
-                        
+                        toolbar.editorcore.onEditorEvent();
                     }
                 },
                 xns : rooui.form,
@@ -103,8 +104,10 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 listeners : {
                     click : function (_self, e)
                     {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         block().removeColumn();
                         syncValue();
+                        toolbar.editorcore.onEditorEvent();
                     }
                 },
                 xns : rooui.Toolbar
@@ -115,8 +118,10 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 listeners : {
                     click : function (_self, e)
                     {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         block().addColumn();
                         syncValue();
+                        toolbar.editorcore.onEditorEvent();
                     }
                 },
                 xns : rooui.Toolbar
@@ -134,8 +139,10 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 listeners : {
                     click : function (_self, e)
                     {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         block().removeRow();
                         syncValue();
+                        toolbar.editorcore.onEditorEvent();
                     }
                 },
                 xns : rooui.Toolbar
@@ -148,6 +155,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     {
                         block().addRow();
                         syncValue();
+                        toolbar.editorcore.onEditorEvent();
                     }
                 },
                 xns : rooui.Toolbar
@@ -162,6 +170,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     {
                         block().resetWidths();
                         syncValue();
+                        toolbar.editorcore.onEditorEvent();
                     }
                 },
                 xns : rooui.Toolbar
@@ -189,7 +198,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
             style : {
                 width:  this.width,
                 border : 'solid 1px #000', // ??? hard coded?
-                'border-collapse' : 'collapse',
+                'border-collapse' : 'collapse' 
             },
             cn : [
                 { tag : 'tbody' , cn : [] }
@@ -204,7 +213,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                 style : {
                     margin: '6px',
                     border : 'solid 1px #000',
-                    textAlign : 'left',
+                    textAlign : 'left' 
                 },
                 cn : [ ]
             };
@@ -259,7 +268,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         this.no_row = 0;
         var trs = Array.from(node.getElementsByTagName('tr'));
         trs.forEach(function(tr) {
-            var row =  []  
+            var row =  [];
             this.rows.push(row);
             if (Roo.get(tr).hasClass('roo-html-editor-el')) { // ??? this is for our 'row' selection'
                 return;
@@ -275,7 +284,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
                     rowspan : td.hasAttribute('rowspan') ? td.getAttribute('rowspan') : 1,
                     style : td.hasAttribute('style') ? td.getAttribute('style') : '',
                     html : td.innerHTML
-                }
+                };
                 no_column += add.colspan;
                      
                 
