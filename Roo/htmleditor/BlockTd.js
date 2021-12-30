@@ -623,7 +623,11 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         for (var i =0;i< table[this.cellData.row].length ; i++) {
             var c = table[this.cellData.row][i];
             if (c.row != this.cellData.row) {
-                table[this.cellData.row][i].rowspan--;
+                c.rowspan--;
+                continue;
+            }
+            if (c.rowspan > 1) {
+                c.rowspan--;
             }
         }
         table.splice(this.cellData.row,1);
@@ -641,7 +645,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             }
             table[i].splice(this.cellData.col,1);
         }
-        table.splice(this.cellData.row,1);
+        
         this.redrawAllCells(table);
     }
     
