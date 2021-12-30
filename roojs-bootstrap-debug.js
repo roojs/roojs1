@@ -27077,7 +27077,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 typeAhead : true,
                 valueField : 'val',
                 width : 100,
-                name : 'width',
+                name : 'align',
                 listeners : {
                     select : function (combo, r, index)
                     {
@@ -27109,8 +27109,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             {
                 xtype : 'TextField',
                 allowBlank : false,
-                width : 100,
-                name : 'width',
+                width : 150,
+                name : 'src',
                 listeners : {
                     change : function (combo, r, index)
                     {
