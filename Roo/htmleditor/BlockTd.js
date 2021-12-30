@@ -50,7 +50,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     // used by context menu
     friendly_name : 'Table Cell',
-    deleteTitle : 'Delete Table',
+    deleteTitle : false, // use our customer delete
     
     // context menu is drawn once..
     
@@ -209,38 +209,76 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                  xns : rooui.Toolbar 
                
             },
+        
+          
             {
                 xtype : 'Button',
-                text: 'Delete Row',
-                listeners : {
-                    click : function (_self, e)
-                    {
-                        //toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
-                        cell().deleteRow();
-                        syncValue();
-                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
-                        toolbar.editorcore.onEditorEvent();
-                                             
-                    }
-                },
-                xns : rooui.Toolbar
+                text: 'Delete',
+                 
+                xns : rooui.Toolbar,
+                menu : {
+                    xtype : 'Menu',
+                    xns : rooui.menu,
+                    items : [
+                        {
+                            xtype : 'Item',
+                            html: 'Column',
+                            listeners : {
+                                click : function (_self, e)
+                                {
+                                    var t = table();
+                                    
+                                    cell().deleteColumn();
+                                    syncValue();
+                                    toolbar.editorcore.selectNode(t.node);
+                                    toolbar.editorcore.onEditorEvent();   
+                                }
+                            },
+                            xns : rooui.Item
+                        },
+                        {
+                            xtype : 'Item',
+                            html: 'Row',
+                            listeners : {
+                                click : function (_self, e)
+                                {
+                                    var t = table();
+                                    cell().deleteRow();
+                                    syncValue();
+                                    
+                                    toolbar.editorcore.selectNode(t.node);
+                                    toolbar.editorcore.onEditorEvent();   
+                                                         
+                                }
+                            },
+                            xns : rooui.Toolbar
+                        },
+                       {
+                            xtype : 'Separator',
+                            xns : rooui.Toolbar
+                        },
+                        {
+                            xtype : 'Item',
+                            html: 'Row',
+                            listeners : {
+                                click : function (_self, e)
+                                {
+                                    var t = table();
+                                    var nn = t.node.nextSibling;
+                                    t.node.parentNode.removeChild(t.node);
+                                    if (nn) { 
+                                        toolbar.editorcore.selectNode(nn, true);
+                                    }
+                                    toolbar.editorcore.onEditorEvent();   
+                                                         
+                                }
+                            },
+                            xns : rooui.Toolbar
+                        },
+                    ]
+                }
             },
-            {
-                xtype : 'Button',
-                text: 'Delete Column',
-                listeners : {
-                    click : function (_self, e)
-                    {
-                        //toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
-                        cell().deleteColumn();
-                        syncValue();
-                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
-                        toolbar.editorcore.onEditorEvent();
-                                             
-                    }
-                },
-                xns : rooui.Toolbar
-            },
+            
             // align... << fixme
             
         ];
@@ -490,13 +528,19 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         
          
         var tab = this.node.closest('tr').closest('table');
+        var ctr = tab.rows[0].parentNode;
         Array.from(tab.rows).forEach(function(r, ri){
+            
             Array.from(r.cells).forEach(function(ce, ci){
                 ce.parentNode.removeChild(ce);
             });
+            r.parentNode.removeChild(r);
         });
         for(var r = 0 ; r < table.length; r++) {
             var re = tab.rows[r];
+            
+            var re = tab.ownerDocument.createElement('tr');
+            ctr.appendChild(re);
             for(var c = 0 ; c < table[r].length; c++) {
                 if (table[r][c].cell === false) {
                     continue;
@@ -623,11 +667,14 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         for (var i =0;i< table[this.cellData.row].length ; i++) {
             var c = table[this.cellData.row][i];
             if (c.row != this.cellData.row) {
+                
                 c.rowspan--;
+                c.cell.setAttribute('rowspan', c.rowspan);
                 continue;
             }
             if (c.rowspan > 1) {
                 c.rowspan--;
+                c.cell.setAttribute('rowspan', c.rowspan);
             }
         }
         table.splice(this.cellData.row,1);
@@ -637,11 +684,14 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     deleteColumn : function()
     {
         var table = this.toTableArray();
-        // this.cellData.row;
+        
         for (var i =0;i< table.length ; i++) {
             var c = table[i][this.cellData.col];
             if (c.col != this.cellData.col) {
                 table[i][this.cellData.col].colspan--;
+            } else if (c.colspan > 1) {
+                c.colspan--;
+                c.cell.setAttribute('colspan', c.colspan);
             }
             table[i].splice(this.cellData.col,1);
         }
