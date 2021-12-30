@@ -27110,7 +27110,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 xtype : 'TextField',
                 allowBlank : false,
                 width : 150,
-                name : 'src',
+                name : 'image_src',
                 listeners : {
                     change : function (combo, r, index)
                     {
