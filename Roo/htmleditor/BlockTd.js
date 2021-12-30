@@ -119,10 +119,10 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 listeners : {
                     click : function (_self, e)
                     {
-                        saveSel();
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         cell().shrinkColumn();
                         syncValue();
-                        restoreSel();
+                         toolbar.editorcore.onEditorEvent();
                     }
                 },
                 xns : rooui.Toolbar
@@ -133,10 +133,10 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 listeners : {
                     click : function (_self, e)
                     {
-                        saveSel();
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         cell().growColumn();
                         syncValue();
-                        restoreSel();
+                        toolbar.editorcore.onEditorEvent();
                     }
                 },
                 xns : rooui.Toolbar
@@ -155,11 +155,11 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 listeners : {
                     click : function (_self, e)
                     {
-                        saveSel();
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         cell().mergeRight();
                         //block().growColumn();
                         syncValue();
-                        restoreSel();
+                        toolbar.editorcore.onEditorEvent();
                     }
                 },
                 xns : rooui.Toolbar
@@ -171,11 +171,11 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 listeners : {
                     click : function (_self, e)
                     {
-                        saveSel();
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         cell().mergeBelow();
                         //block().growColumn();
                         syncValue();
-                        restoreSel();
+                        toolbar.editorcore.onEditorEvent();
                     }
                 },
                 xns : rooui.Toolbar
@@ -193,14 +193,54 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 listeners : {
                     click : function (_self, e)
                     {
-                        saveSel();
+                        //toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         cell().split();
                         syncValue();
-                        restoreSel();
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        toolbar.editorcore.onEditorEvent();
+                                             
                     }
                 },
                 xns : rooui.Toolbar
-            }
+            },
+            {
+                xtype : 'TextItem',
+                text : "| ",
+                 xns : rooui.Toolbar 
+               
+            },
+            {
+                xtype : 'Button',
+                text: 'Delete Row',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        //toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        cell().deleteRow();
+                        syncValue();
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        toolbar.editorcore.onEditorEvent();
+                                             
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            {
+                xtype : 'Button',
+                text: 'Delete Column',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        //toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        cell().deleteColumn();
+                        syncValue();
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        toolbar.editorcore.onEditorEvent();
+                                             
+                    }
+                },
+                xns : rooui.Toolbar
+            },
             // align... << fixme
             
         ];
@@ -225,21 +265,25 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             tag : 'td',
             contenteditable : 'true', // this stops cell selection from picking the table.
             'data-block' : 'Td',
-            width:  this.width,
             style : {  
-                width:  this.width,
                 'text-align' :  this.textAlign,
                 border : 'solid 1px rgb(0, 0, 0)', // ??? hard coded?
                 'border-collapse' : 'collapse',
+                padding : '6px' // 8 for desktop / 4 for mobile
             },
             html : this.html
         };
+        if (this.width != '') {
+            ret.width = this.width;
+            ret.style.width = this.width;
+        }
+        
         
         if (this.colspan > 1) {
-            ret.colspan = cell.colspan ;
+            ret.colspan = this.colspan ;
         } 
-        if (ret.rowspan > 1) {
-            this.rowspan = cell.rowspan ;
+        if (this.rowspan > 1) {
+            ret.rowspan = this.rowspan ;
         }
         
            
@@ -252,7 +296,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     {
         node  = node ? node : this.node ;
         this.width = node.style.width;
-        
+        this.colspan = Math.max(1,1*node.getAttribute('colspan'));
+        this.rowspan = Math.max(1,1*node.getAttribute('rowspan'));
         this.html = node.innerHTML;
         
         
@@ -272,8 +317,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     removeNode : function()
     {
         return this.node.closest('table');
-        
-        
+         
     },
     
     cellData : false,
@@ -568,7 +612,40 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         }, this);
         this.updateWidths(table);
          
+    },
+    deleteRow : function()
+    {
+        // delete this rows 'tr'
+        // if any of the cells in this row have a rowspan > 1 && row!= this row..
+        // then reduce the rowspan.
+        var table = this.toTableArray();
+        // this.cellData.row;
+        for (var i =0;i< table[this.cellData.row].length ; i++) {
+            var c = table[this.cellData.row][i];
+            if (c.row != this.cellData.row) {
+                table[this.cellData.row][i].rowspan--;
+            }
+        }
+        table.splice(this.cellData.row,1);
+        this.redrawAllCells(table);
+        
+    },
+    deleteColumn : function()
+    {
+        var table = this.toTableArray();
+        // this.cellData.row;
+        for (var i =0;i< table.length ; i++) {
+            var c = table[i][this.cellData.col];
+            if (c.col != this.cellData.col) {
+                table[i][this.cellData.col].colspan--;
+            }
+            table[i].splice(this.cellData.col,1);
+        }
+        table.splice(this.cellData.row,1);
+        this.redrawAllCells(table);
     }
+    
+    
     
     
 })
