@@ -319,8 +319,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             // this triggers looping?
             //this.editorcore.selectNode(sel);
              
-        }  
-        Roo.select('.roo-ed-selection', false, this.editorcore.doc).removeClass('roo-ed-selection');
+        }
+        
+        // this forces an id..
+        Array.from(this.editorcore.doc.body.querySelectorAll('.roo-ed-selection')).forEach(function(e) {
+             e.classList.remove('roo-ed-selection');
+        })
+        //Roo.select('.roo-ed-selection', false, this.editorcore.doc).removeClass('roo-ed-selection');
         //Roo.get(node).addClass('roo-ed-selection');
       
         //var updateFooter = sel ? false : true; 
@@ -350,9 +355,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         if (sel && sel.hasAttribute('data-block')) {
             db = sel;
         } else if (sel && !sel.hasAttribute('contenteditable')) {
-            var sel_el = Roo.get(sel);
-            db = sel_el.findParent('[data-block]');
-            var cepar = sel_el.findParent('[contenteditable=true]');
+            
+            db = sel.closest('[data-block]');
+            var cepar = sel.closest('[contenteditable=true]');
             if (db && cepar && cepar.tagName != 'BODY') {
                db = false; // we are inside an editable block.. = not sure how we are going to handle nested blocks!?
             }   
@@ -366,7 +371,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
             
             if (block) {
-                db.className +=  ' roo-ed-selection'; // since we removed it earlier... its not there..
+                 db.className = (
+                        db.classList.length > 0  ? db.className + ' ' : ''
+                    )  + 'roo-ed-selection';
+                 
+                 // since we removed it earlier... its not there..
                 tn = 'BLOCK.' + db.getAttribute('data-block');
                 
                 //this.editorcore.selectNode(db);
@@ -702,53 +711,54 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         tb.addFill();
-        tb.addButton({
-            text: block && block.deleteTitle ? block.deleteTitle  : 'Remove Block or Formating', // remove the tag, and puts the children outside...
-    
-            listeners : {
-                click : function ()
-                {
-                    var sn = tb.selectedNode;
-                    if (block) {
-                        sn = Roo.htmleditor.Block.factory(tb.selectedNode).removeNode();
-                        
-                    }
-                    if (!sn) {
-                        return;
-                    }
-                    var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || sn.parentNode;
-                    if (sn.hasAttribute('data-block')) {
-                        stn =  sn.nextSibling || sn.previousSibling || sn.parentNode;
-                        sn.parentNode.removeChild(sn);
-                        
-                    } else if (sn && sn.tagName != 'BODY') {
-                        // remove and keep parents.
-                        a = new Roo.htmleditor.FilterKeepChildren({tag : false});
-                        a.removeTag(sn);
-                    }
-                    
-                    
-                    var range = editorcore.createRange();
+        if (!block || block.deleteTitle !== false) {
+            tb.addButton({
+                text: block && block.deleteTitle ? block.deleteTitle  : 'Remove Block or Formating', // remove the tag, and puts the children outside...
         
-                    range.setStart(stn,0);
-                    range.setEnd(stn,0); 
-                    var selection = editorcore.getSelection();
-                    selection.removeAllRanges();
-                    selection.addRange(range);
-                    
-                    
-                    //_this.updateToolbar(null, null, pn);
-                    _this.updateToolbar(null, null, null);
-                    _this.updateFooter(false);
-                    
-                }
-            }
+                listeners : {
+                    click : function ()
+                    {
+                        var sn = tb.selectedNode;
+                        if (block) {
+                            sn = Roo.htmleditor.Block.factory(tb.selectedNode).removeNode();
+                            
+                        }
+                        if (!sn) {
+                            return;
+                        }
+                        var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || sn.parentNode;
+                        if (sn.hasAttribute('data-block')) {
+                            stn =  sn.nextSibling || sn.previousSibling || sn.parentNode;
+                            sn.parentNode.removeChild(sn);
+                            
+                        } else if (sn && sn.tagName != 'BODY') {
+                            // remove and keep parents.
+                            a = new Roo.htmleditor.FilterKeepChildren({tag : false});
+                            a.replaceTag(sn);
+                        }
+                        
+                        
+                        var range = editorcore.createRange();
             
+                        range.setStart(stn,0);
+                        range.setEnd(stn,0); 
+                        var selection = editorcore.getSelection();
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                        
+                        
+                        //_this.updateToolbar(null, null, pn);
+                        _this.updateToolbar(null, null, null);
+                        _this.updateFooter(false);
+                        
+                    }
+                }
+                
+                        
                     
                 
-            
-        });
-        
+            });
+        }    
         
         tb.el.on('click', function(e){
             e.preventDefault(); // what does this do?
