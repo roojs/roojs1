@@ -33,7 +33,7 @@ Roo.onReady(function(){
                         btns : [
                             {
                                 xtype : 'Button',
-                                text : "+Table",
+                                text : "Add Table",
                                 cls : 'x-init-enable',
                                 listeners : {
                                     click : function (_self, e)
@@ -42,6 +42,32 @@ Roo.onReady(function(){
                                         var rr = new Roo.htmleditor.BlockTable({
                                             no_row : 4,
                                             no_col : 4
+                                        });
+                                        editor.editorcore.insertAtCursor(rr.toHTML());
+                                    
+                                 
+                                    }
+                                },
+                                xns : Roo,
+                               
+                            },
+                             {
+                                xtype : 'Button',
+                                text : "Add Image",
+                                cls : 'x-init-enable',
+                                listeners : {
+                                    click : function (_self, e)
+                                    {
+                                        
+                                        var rr = new Roo.htmleditor.BlockFigure({
+                                            image_src: 'https://www.roojs.org/Roojscom/templates/images/roojsorg_logo-100.png',
+    
+                                            align: 'left',
+                                            caption : 'test',
+                                            text_align: 'left',
+                                            
+                                            width : '46%',
+                                            margin: '2%',
                                         });
                                         editor.editorcore.insertAtCursor(rr.toHTML());
                                     
