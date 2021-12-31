@@ -315,10 +315,10 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                                 }
                             },
                             xns : rooui.menu
-                        },
+                        }
                     ]
                 }
-            },
+            }
             
             // align... << fixme
             

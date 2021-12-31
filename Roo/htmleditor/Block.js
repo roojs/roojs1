@@ -107,14 +107,17 @@ Roo.htmleditor.Block.prototype = {
             // but kiss for now.
             n = node.getElementsByTagName(tag).item(0);
         }
+        if (!n) {
+            return '';
+        }
         if (attr == 'html') {
             return n.innerHTML;
         }
         if (attr == 'style') {
-            return n.style[style]
+            return n.style[style]; 
         }
         
-        return Roo.get(n).attr(attr);
+        return n.hasAttribute(attr) ? n.getAttribute(attr) : '';
             
     },
     /**

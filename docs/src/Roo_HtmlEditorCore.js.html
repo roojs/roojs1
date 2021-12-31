@@ -73,6 +73,7 @@
          */
         </span><span class="jsdoc-var">editorevent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
 
+
     </span><span class="jsdoc-syntax">});
 
     </span><span class="jsdoc-comment">// at this point this.owner is set, so we can start working out the whitelisted / blacklisted elements
@@ -602,11 +603,11 @@
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableBlocks</span><span class="jsdoc-syntax">) {
 
-            </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getElementByTagType</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-comment">// assume!! that it's aready
                     </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                 }
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fig  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.BlockFigure</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fig  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.BlockFigure</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">image_src  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">img.src
                 </span><span class="jsdoc-syntax">});
                 </span><span class="jsdoc-var">fig.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// replace it..
@@ -615,7 +616,7 @@
         }
 
 
-        </span><span class="jsdoc-var">this.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.innerHTML</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.innerHTML.replace</span><span class="jsdoc-syntax">(/&amp;nbsp;/g,</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableBlocks</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">Roo.htmleditor.Block.initAll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
         }

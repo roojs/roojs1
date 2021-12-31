@@ -5208,7 +5208,167 @@ undoManager.transact({
     
     
 };
-/*
+/**
+ * @class Roo.lib.Range
+ * @constructor
+ * This is a toolkit, normally used to copy features into a Dom Range element
+ * Roo.lib.Range.wrap(x);
+ *
+ *
+ *
+ */
+Roo.lib.Range = function() { };
+
+/**
+ * Wrap a Dom Range object, to give it new features...
+ * @static
+ * @param {Range} the range to wrap
+ */
+Roo.lib.Range.wrap = function(r) {
+    return Roo.apply(r, Roo.lib.Range.prototype);
+};
+/**
+ * find a parent node eg. LI / OL
+ * @param {string|Array} node name or array of nodenames
+ * @return {DomElement|false}
+ */
+Roo.apply(Roo.lib.Range.prototype,
+{
+    
+    closest : function(str)
+    {
+        if (typeof(str) != 'string') {
+            // assume it's a array.
+            for(var i = 0;i < str.length;i++) {
+                var r = this.closest(str[i]);
+                if (r !== false) {
+                    return r;
+                }
+                
+            }
+            return false;
+        }
+        str = str.toLowerCase();
+        var n = this.commonAncestorContainer; // might not be a node
+        while (n.nodeType != 1) {
+            n = n.parentNode;
+        }
+        
+        if (n.nodeName.toLowerCase() == str ) {
+            return n;
+        }
+        if (n.nodeName.toLowerCase() == 'body') {
+            return false;
+        }
+            
+        return n.closest(str) || false;
+        
+    },
+    cloneRange : function()
+    {
+        return Roo.lib.Range.wrap(Range.prototype.cloneRange.call(this));
+    }
+});/**
+ * @class Roo.lib.Selection
+ * @constructor
+ * This is a toolkit, normally used to copy features into a Dom Selection element
+ * Roo.lib.Selection.wrap(x);
+ *
+ *
+ *
+ */
+Roo.lib.Selection = function() { };
+
+/**
+ * Wrap a Dom Range object, to give it new features...
+ * @static
+ * @param {Range} the range to wrap
+ */
+Roo.lib.Selection.wrap = function(r, doc) {
+    Roo.apply(r, Roo.lib.Selection.prototype);
+    r.ownerDocument = doc; // usefull so we dont have to keep referening to it.
+    return r;
+};
+/**
+ * find a parent node eg. LI / OL
+ * @param {string|Array} node name or array of nodenames
+ * @return {DomElement|false}
+ */
+Roo.apply(Roo.lib.Selection.prototype,
+{
+    /**
+     * the owner document
+     */
+    ownerDocument : false,
+    
+    getRangeAt : function(n)
+    {
+        return Roo.lib.Range.wrap(Selection.prototype.getRangeAt.call(this,n));
+    },
+    
+    /**
+     * insert node at selection 
+     * @param {DomElement|string} node
+     * @param {string} cursor (after|in|none) where to place the cursor after inserting.
+     */
+    insertNode: function(node, cursor)
+    {
+        if (typeof(node) == 'string') {
+            node = this.ownerDocument.createElement(node);
+            if (cursor == 'in') {
+                node.innerHTML = '&nbsp;';
+            }
+        }
+        
+        var range = this.getRangeAt(0);
+        
+        if (this.type != 'Caret') {
+            range.deleteContents();
+        }
+        var sn = node.childNodes[0]; // select the contents.
+
+        
+        
+        range.insertNode(node);
+        if (cursor == 'after') {
+            node.insertAdjacentHTML('afterend', '&nbsp;');
+            sn = node.nextSibling;
+        }
+        
+        if (cursor == 'none') {
+            return;
+        }
+        
+        this.cursorText(sn);
+    },
+    
+    cursorText : function(n)
+    {
+       
+        //var range = this.getRangeAt(0);
+        range = Roo.lib.Range.wrap(new Range());
+        //range.selectNode(n);
+        
+        var ix = Array.from(n.parentNode.childNodes).indexOf(n);
+        range.setStart(n.parentNode,ix);
+        range.setEnd(n.parentNode,ix+1);
+        //range.collapse(false);
+         
+        this.removeAllRanges();
+        this.addRange(range);
+        
+        Roo.log([n, range, this,this.baseOffset,this.extentOffset, this.type]);
+    },
+    cursorAfter : function(n)
+    {
+        if (!n.nextSibling || n.nextSibling.nodeValue != '&nbsp;') {
+            n.insertAdjacentHTML('afterend', '&nbsp;');
+        }
+        this.cursorText (n.nextSibling);
+    }
+        
+    
+});/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -5476,10 +5636,15 @@ Roo.DomHelper = function(){
             from.data = to.data;
             return;
         }
-        
+        if (!from.parentNode) {
+            // not sure why this is happening?
+            return;
+        }
         // assume 'to' doesnt have '1/3 nodetypes!
+        // not sure why, by from, parent node might not exist?
         if (from.nodeType !=1 || from.tagName != to.tagName) {
             Roo.log(["ReplaceChild" , from, to ]);
+            
             from.parentNode.replaceChild(to, from);
             return;
         }

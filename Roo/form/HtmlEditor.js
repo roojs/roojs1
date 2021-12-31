@@ -246,8 +246,19 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
          
         
     },
-
-     
+    /**
+     * get the Context selected node
+     * @returns {DomElement|boolean} selected node if active or false if none
+     * 
+     */
+    getSelectedNode : function()
+    {
+        if (this.toolbars.length < 2 || !this.toolbars[1].tb) {
+            return false;
+        }
+        return this.toolbars[1].tb.selectedNode;
+    
+    },
     // private
     onRender : function(ct, position)
     {

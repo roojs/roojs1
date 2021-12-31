@@ -29,8 +29,9 @@ Roo.onReady(function(){
                 autoClean : true,
                 bodyCls : 'undoreset pressrelease mo-grey',
                 stylesheets : [ 
-                    '/web.MediaOutreach/Pman/PressRelease/templates/images/css/editor.css',
-                    '../../css/undoreset.css'
+                    '../../css/undoreset.css',
+                    '/web.MediaOutreach/Pman/PressRelease/templates/images/css/editor.css'
+                    
                     
                 ],
                 toolbars : [    
@@ -127,7 +128,7 @@ Roo.onReady(function(){
                 id:'bio',
                 name : 'bio',
                 fieldLabel:'Biography',
-                width:1000,
+                width:1100,
                 height:600,
                 resizable: 's' /// where the handles should got..
 

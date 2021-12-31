@@ -29,8 +29,8 @@ Roo.apply(Roo.lib.Range.prototype,
     {
         if (typeof(str) != 'string') {
             // assume it's a array.
-            for(var k of str) {
-                var r = this.closest(k);
+            for(var i = 0;i < str.length;i++) {
+                var r = this.closest(str[i]);
                 if (r !== false) {
                     return r;
                 }

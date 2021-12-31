@@ -1048,8 +1048,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // should we cache this!!!!
         
-        
-        
+         
          
         var range = this.createRange(this.getSelection()).cloneRange();
         
@@ -1113,6 +1112,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         return nodes[0];
     },
+    
+    
     createRange: function(sel)
     {
         // this has strange effects when using with 

@@ -175,7 +175,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     {
                         var b  = block();
                         b.caption_display = b.caption_display == 'block' ? 'none' : 'block';
-                        this.setText(b.caption_display == 'block' ? "Hide Caption" : "Show Caption")
+                        this.setText(b.caption_display == 'block' ? "Hide Caption" : "Show Caption");
                         b.updateElement();
                         syncValue();
                         toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
@@ -183,7 +183,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     }
                 },
                 xns : rooui.Toolbar
-            },
+            }
         ];
         
     },
@@ -206,7 +206,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 'max-width':  this.width,
                 width : 'auto',
                 margin:  0,
-                padding: '10px',
+                padding: '10px'
                 
             },
             align : this.align,

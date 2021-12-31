@@ -107,14 +107,17 @@
             // but kiss for now.
             </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.item</span><span class="jsdoc-syntax">(0);
         }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'html'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.innerHTML</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">]
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">];
         }
 
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">n.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
 
     },
     </span><span class="jsdoc-comment">/**

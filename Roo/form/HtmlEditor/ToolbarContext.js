@@ -324,7 +324,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // this forces an id..
         Array.from(this.editorcore.doc.body.querySelectorAll('.roo-ed-selection')).forEach(function(e) {
              e.classList.remove('roo-ed-selection');
-        })
+        });
         //Roo.select('.roo-ed-selection', false, this.editorcore.doc).removeClass('roo-ed-selection');
         //Roo.get(node).addClass('roo-ed-selection');
       
