@@ -426,6 +426,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
             }
+            if (this.autoClean) {
+                new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
+                new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
+            }
+            
             Roo.htmleditor.Block.initAll(this.doc.body);
             
             var lc = this.doc.body.lastChild;
@@ -581,21 +586,32 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 img.setAttribute('src', images[i]);
             });
         }
-        
-      
-        new Roo.htmleditor.FilterStyleToTag({ node : d });
-        new Roo.htmleditor.FilterAttributes({
-            node : d,
-            attrib_white : ['href', 'src', 'name', 'align'],
-            attrib_clean : ['href', 'src' ] 
-        });
-        new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
-        // should be fonts..
-        new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT' ]} );
-        new Roo.htmleditor.FilterParagraph({ node : d });
-        new Roo.htmleditor.FilterSpan({ node : d });
-        new Roo.htmleditor.FilterLongBr({ node : d });
-        
+        if (this.autoClean) {
+            new Roo.htmleditor.FilterStyleToTag({ node : d });
+            new Roo.htmleditor.FilterAttributes({
+                node : d,
+                attrib_white : ['href', 'src', 'name', 'align'],
+                attrib_clean : ['href', 'src' ] 
+            });
+            new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
+            // should be fonts..
+            new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT' ]} );
+            new Roo.htmleditor.FilterParagraph({ node : d });
+            new Roo.htmleditor.FilterSpan({ node : d });
+            new Roo.htmleditor.FilterLongBr({ node : d });
+        }
+        if (this.enableBlocks) {
+                
+            Array.from(d.getElementByTagType('img')).forEach(function(img) {
+                if (img.closest('figure')) { // assume!! that it's aready
+                    return;
+                }
+                var fig  = Roo.htmleditor.BlockFigure({
+                    
+                });
+                
+            })
+        }
         
         
         this.insertAtCursor(d.innerHTML);
