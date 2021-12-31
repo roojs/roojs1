@@ -607,10 +607,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     return;
                 }
                 var fig  = Roo.htmleditor.BlockFigure({
-                    
+                    image_src  : img.src
                 });
+                fig.updateElement(img); // replace it..
                 
-            })
+            });
         }
         
         
