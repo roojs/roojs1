@@ -71,7 +71,8 @@ Roo.HtmlEditorCore = function(config){
          * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
          * @param {Roo.HtmlEditorCore} this
          */
-        editorevent: true
+        editorevent: true 
+         
         
     });
     
@@ -602,11 +603,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         if (this.enableBlocks) {
                 
-            Array.from(d.getElementByTagType('img')).forEach(function(img) {
+            Array.from(d.getElementsByTagName('img')).forEach(function(img) {
                 if (img.closest('figure')) { // assume!! that it's aready
                     return;
                 }
-                var fig  = Roo.htmleditor.BlockFigure({
+                var fig  = new Roo.htmleditor.BlockFigure({
                     image_src  : img.src
                 });
                 fig.updateElement(img); // replace it..
@@ -615,7 +616,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         
         
-        this.insertAtCursor(d.innerHTML);
+        this.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
         if (this.enableBlocks) {
             Roo.htmleditor.Block.initAll(this.doc.body);
         }
