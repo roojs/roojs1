@@ -61,7 +61,7 @@ Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
         var cn = Array.from(node.childNodes);
         var nn = node;
         Roo.each(inject, function(t) {
-            var nc = node.ownerDocument.createelement(t);
+            var nc = node.ownerDocument.createElement(t);
             nn.appendChild(nc);
             nn = nc;
         });
