@@ -107,7 +107,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      * @cfg {Number} width (in pixels)
      */   
     width: 500,
+     /**
+     * @cfg {boolean} autoClean - default true - loading and saving will remove quite a bit of formating,
+     *         if you are doing an email editor, this probably needs disabling, it's designed
+     */
+    autoClean: true,
     
+    /**
+     * @cfg {boolean} enableBlocks - default true - if the block editor (table and figure should be enabled)
+     */
+    enableBlocks : true,
     /**
      * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
      * 
@@ -115,7 +124,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     stylesheets: false,
     
     /**
-     * @cfg {boolean} allowComments - default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.
+     * @cfg {boolean} allowComments - default false - allow comments in HTML source
+     *          - by default they are stripped - if you are editing email you may need this.
      */
     allowComments: false,
     // id of frame..
@@ -340,26 +350,18 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
             
             var bd = (this.doc.body || this.doc.documentElement);
-            //this.cleanUpPaste(); -- this is done else where and causes havoc..
-            
-            // not sure if this is really the place for this
-            // the blocks are synced occasionaly - since we currently dont add listeners on the blocks
-            // this has to update attributes that get duped.. like alt and caption..
-            
-            
-            //Roo.each(Roo.get(this.doc.body).query('*[data-block]'), function(e) {
-            //     Roo.htmleditor.Block.factory(e);
-            //},this);
+           
             
             
             var div = document.createElement('div');
             div.innerHTML = bd.innerHTML;
-            // remove content editable. (blocks)
-            
+             
            
-            
+            if (this.enableBlocks) {
+                new Roo.htmleditor.FilterBlock({ node : div });
+            }
             //?? tidy?
-            new Roo.htmleditor.FilterBlock({ node : div });
+            
             
             var html = div.innerHTML;
             if(Roo.isSafari){
@@ -512,6 +514,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if(Roo.isGecko){
             Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
         }
+        //??? needed???
         if(Roo.isIE || Roo.isSafari || Roo.isOpera){
             Roo.EventManager.on(this.doc, 'keydown', this.fixKeys, this);
         }
@@ -683,7 +686,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.doc.body.lastChild
            ) {
             var lc = this.doc.body.lastChild;
-            while (lc.nodeType == 3 && lc.nodeValue == '') {
+            // gtx-trans is google translate plugin adding crap.
+            while ((lc.nodeType == 3 && lc.nodeValue == '') || lc.id == 'gtx-trans') {
                 lc = lc.previousSibling;
             }
             if (lc.nodeType == 1 && lc.nodeName != 'BR') {
@@ -702,9 +706,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
         
-        this.owner.fireEvent('editorevent', this, e);
+        this.fireEditorEvent(e);
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
+    },
+    
+    fireEditorEvent: function(e)
+    {
+        this.owner.fireEvent('editorevent', this, e);
     },
 
     insertTag : function(tg)
@@ -750,7 +759,37 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      * @param {String} cmd The Midas command
      * @param {String/Boolean} value (optional) The value to pass to the command (defaults to null)
      */
-    relayCmd : function(cmd, value){
+    relayCmd : function(cmd, value)
+    {
+        
+        switch (cmd) {
+            case 'justifyleft':
+            case 'justifyright':
+            case 'justifycenter':
+                // if we are in a cell, then we will adjust the
+                var n = this.getParentElement();
+                var td = n.closest('td');
+                if (td) {
+                    var bl = Roo.htmleditor.Block.factory(td);
+                    bl.textAlign = cmd.replace('justify','');
+                    bl.updateElement();
+                    this.owner.fireEvent('editorevent', this);
+                    return;
+                }
+                this.execCmd('styleWithCSS', true); // 
+                break;
+            case 'bold':
+            case 'italic':
+                // if there is no selection, then we insert, and set the curson inside it..
+                this.execCmd('styleWithCSS', false); 
+                break;
+                
+        
+            default:
+                break;
+        }
+        
+        
         this.win.focus();
         this.execCmd(cmd, value);
         this.owner.fireEvent('editorevent', this);
@@ -848,9 +887,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                         
                 }
                 if(cmd){
-                    this.win.focus();
-                    this.execCmd(cmd);
-                    this.deferFocus();
+                    
+                    this.relayCmd(cmd);
+                    //this.win.focus();
+                    //this.execCmd(cmd);
+                    //this.deferFocus();
                     e.preventDefault();
                 }
                 
@@ -860,6 +901,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
     // private
     fixKeys : function(){ // load time branching for fastest keydown performance
+        
+        
         if(Roo.isIE){
             return function(e){
                 var k = e.getKey(), r;
@@ -904,6 +947,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.execCmd('InsertHTML','&#160;&#160;&#160;&#160;');
                     this.deferFocus();
                 }
+               
                 //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
                 //    this.cleanUpPaste.defer(100, this);
                  //   return;
@@ -920,6 +964,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.deferFocus();
                     return;
                 }
+                 this.mozKeyPress(e);
+                
                //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
                  //   this.cleanUpPaste.defer(100, this);
                  //   return;
@@ -953,13 +999,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     getSelection : function() 
     {
         this.assignDocWin();
-        return Roo.isIE ? this.doc.selection : this.win.getSelection();
+        return Roo.lib.Selection.wrap(Roo.isIE ? this.doc.selection : this.win.getSelection(), this.doc);
     },
     /**
      * Select a dom node
      * @param {DomElement} node the node to select
      */
-    selectNode : function(node)
+    selectNode : function(node, collapse)
     {
         var nodeRange = node.ownerDocument.createRange();
         try {
@@ -967,7 +1013,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         } catch (e) {
             nodeRange.selectNodeContents(node);
         }
-        //nodeRange.collapse(true);
+        if (collapse === true) {
+            nodeRange.collapse(true);
+        }
+        //
         var s = this.win.getSelection();
         s.removeAllRanges();
         s.addRange(nodeRange);
