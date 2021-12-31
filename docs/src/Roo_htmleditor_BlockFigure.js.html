@@ -5,8 +5,8 @@
  * Block that has an image and a figcaption
  * @cfg {String} image_src the url for the image
  * @cfg {String} align (left|right) alignment for the block default left
- * @cfg {String} text_align (left|right) alignment for the text caption default left.
  * @cfg {String} caption the text to appear below  (and in the alt tag)
+ * @cfg {String} caption_display (block|none) display or not the caption
  * @cfg {String|number} image_width the width of the image number or %?
  * @cfg {String|number} image_height the height of the image number or %?
  * 
@@ -28,19 +28,19 @@
 
     </span><span class="jsdoc-comment">// setable values.
     </span><span class="jsdoc-var">image_src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-
     </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">caption </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">text_align</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">caption_display </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">,
-
     </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'2%'</span><span class="jsdoc-syntax">,
 
-    </span><span class="jsdoc-comment">// used by context menu
+    </span><span class="jsdoc-comment">// margin: '2%', not used
+
+    </span><span class="jsdoc-var">text_align</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//   (left|right) alignment for the text caption default left. - not used at present
+
+
+    // used by context menu
     </span><span class="jsdoc-var">friendly_name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Image with caption'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">deleteTitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Delete Image and Caption&quot;</span><span class="jsdoc-syntax">,
-
 
     </span><span class="jsdoc-var">contextMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">toolbar</span><span class="jsdoc-syntax">)
     {

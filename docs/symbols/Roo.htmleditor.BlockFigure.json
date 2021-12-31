@@ -46,15 +46,15 @@
       "memberOf" : ""
     },
     {
-      "name" : "caption",
+      "name" : "caption_display",
       "type" : "String",
-      "desc" : "the text to appear below  (and in the alt tag)",
+      "desc" : "e) display or not the caption",
       "memberOf" : ""
     },
     {
-      "name" : "text_align",
+      "name" : "caption",
       "type" : "String",
-      "desc" : "t) alignment for the text caption default left.",
+      "desc" : "the text to appear below  (and in the alt tag)",
       "memberOf" : ""
     },
     {
