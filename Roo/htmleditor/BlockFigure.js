@@ -5,8 +5,8 @@
  * Block that has an image and a figcaption
  * @cfg {String} image_src the url for the image
  * @cfg {String} align (left|right) alignment for the block default left
- * @cfg {String} text_align (left|right) alignment for the text caption default left.
  * @cfg {String} caption the text to appear below  (and in the alt tag)
+ * @cfg {String} caption_display (block|none) display or not the caption
  * @cfg {String|number} image_width the width of the image number or %?
  * @cfg {String|number} image_height the height of the image number or %?
  * 
@@ -28,19 +28,19 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     
     // setable values.
     image_src: '',
-    
     align: 'center',
     caption : '',
-    text_align: 'left',
     caption_display : 'block',
-    
     width : '100%',
-    margin: '2%',
+    
+    // margin: '2%', not used
+    
+    text_align: 'left', //   (left|right) alignment for the text caption default left. - not used at present
+
     
     // used by context menu
     friendly_name : 'Image with caption',
     deleteTitle : "Delete Image and Caption",
-    
     
     contextMenu : function(toolbar)
     {
