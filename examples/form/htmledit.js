@@ -28,8 +28,9 @@ Roo.onReady(function(){
                 white : [ 'iframe' ],
                 autoClean : true,
                 stylesheets : [ 
-                    '../../css/undoreset.css',   
-                    '/web.MediaOutreach/Pman/PressRelease/templates/images/css/editor.css'
+                    '/web.MediaOutreach/Pman/PressRelease/templates/images/css/editor.css',
+                    '../../css/undoreset.css'
+                    
                 ],
                 toolbars : [    
                     {
