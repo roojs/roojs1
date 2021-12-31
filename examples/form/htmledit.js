@@ -26,6 +26,11 @@ Roo.onReady(function(){
                 xtype : 'HtmlEditor',
                 xns: Roo.form,
                 white : [ 'iframe' ],
+                autoClean : true,
+                stylesheets : [ 
+                    '../..//roojs1/css/undoreset.css',   
+                    'http://localhost/web.MediaOutreach/Pman/PressRelease/templates/images/css/editor.css'
+                ],
                 toolbars : [    
                     {
                         xtype : 'ToolbarStandard',
