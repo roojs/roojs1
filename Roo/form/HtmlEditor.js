@@ -91,11 +91,19 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      */
     allowComments: false,
     /**
+     * @cfg {boolean} enableBlocks - default true - if the block editor (table and figure should be enabled)
+     */
+    enableBlocks : true,
+    
+    /**
+     * @cfg {boolean} autoClean - default true - loading and saving will remove quite a bit of formating,
+     *         if you are doing an email editor, this probably needs disabling, it's designed
+     */
+    autoClean: true,
+    /**
      * @cfg {string} bodyCls- default '' default classes to add to body of editable area - usually undoreset is a good start..
      */
-    
-    
-     bodyCls : '',
+    bodyCls : '',
     
     // id of frame..
     frameId: false,
