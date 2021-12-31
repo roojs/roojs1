@@ -29,7 +29,7 @@ Roo.onReady(function(){
                 autoClean : true,
                 stylesheets : [ 
                     '../../css/undoreset.css',   
-                    'http://localhost/web.MediaOutreach/Pman/PressRelease/templates/images/css/editor.css'
+                    '/web.MediaOutreach/Pman/PressRelease/templates/images/css/editor.css'
                 ],
                 toolbars : [    
                     {
