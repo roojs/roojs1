@@ -28,7 +28,7 @@ Roo.onReady(function(){
                 white : [ 'iframe' ],
                 autoClean : true,
                 stylesheets : [ 
-                    '../..//roojs1/css/undoreset.css',   
+                    '../../css/undoreset.css',   
                     'http://localhost/web.MediaOutreach/Pman/PressRelease/templates/images/css/editor.css'
                 ],
                 toolbars : [    
