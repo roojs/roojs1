@@ -121,7 +121,9 @@
 	background: #d9e8fb; 
 }
 
-.roo-htmleditor-body table.roo-ed-selection {
+.roo-htmleditor-body table.roo-ed-selection,
+.roo-htmleditor-body td.roo-ed-selection
+{
 	background-color: #d9e8fb;
 }
 

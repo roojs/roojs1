@@ -32,7 +32,13 @@
     {
       "name" : "allowComments",
       "type" : "boolean",
-      "desc" : "- default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.",
+      "desc" : "- default false - allow comments in HTML source\n         - by default they are stripped - if you are editing email you may need this.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "autoClean",
+      "type" : "boolean",
+      "desc" : "- default true - loading and saving will remove quite a bit of formating,\n        if you are doing an email editor, this probably needs disabling, it's designed",
       "memberOf" : ""
     },
     {
@@ -52,6 +58,12 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "enableBlocks",
+      "type" : "boolean",
+      "desc" : "- default true - if the block editor (table and figure should be enabled)",
+      "memberOf" : ""
     },
     {
       "name" : "actionMode",

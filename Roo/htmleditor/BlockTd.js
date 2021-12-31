@@ -43,6 +43,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     width: '',
     textAlign : 'left',
+    valign : 'top',
     
     colspan : 1,
     rowspan : 1,
@@ -141,6 +142,47 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 },
                 xns : rooui.Toolbar
             },
+            
+            {
+                xtype : 'TextItem',
+                text : "Vertical Align: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+            {
+                xtype : 'ComboBox',
+                allowBlank : false,
+                displayField : 'val',
+                editable : true,
+                listWidth : 100,
+                triggerAction : 'all',
+                typeAhead : true,
+                valueField : 'val',
+                width : 100,
+                name : 'valign',
+                listeners : {
+                    select : function (combo, r, index)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = cell();
+                        b.valign = r.get('val');
+                        b.updateElement();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.form,
+                store : {
+                    xtype : 'SimpleStore',
+                    data : [
+                        ['top'],
+                        ['middle'],
+                        ['bottom'] // there are afew more... 
+                    ],
+                    fields : [ 'val'],
+                    xns : Roo.data
+                }
+            },
+            
             {
                 xtype : 'TextItem',
                 text : "Merge Cells: ",
@@ -204,9 +246,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 xns : rooui.Toolbar
             },
             {
-                xtype : 'TextItem',
-                text : "| ",
-                 xns : rooui.Toolbar 
+                xtype : 'Fill',
+                xns : rooui.Toolbar 
                
             },
         
@@ -234,7 +275,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                                     toolbar.editorcore.onEditorEvent();   
                                 }
                             },
-                            xns : rooui.Item
+                            xns : rooui.menu
                         },
                         {
                             xtype : 'Item',
@@ -251,20 +292,20 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                                                          
                                 }
                             },
-                            xns : rooui.Toolbar
+                            xns : rooui.menu
                         },
                        {
                             xtype : 'Separator',
-                            xns : rooui.Toolbar
+                            xns : rooui.menu
                         },
                         {
                             xtype : 'Item',
-                            html: 'Row',
+                            html: 'Table',
                             listeners : {
                                 click : function (_self, e)
                                 {
                                     var t = table();
-                                    var nn = t.node.nextSibling;
+                                    var nn = t.node.nextSibling || t.node.previousSibling;
                                     t.node.parentNode.removeChild(t.node);
                                     if (nn) { 
                                         toolbar.editorcore.selectNode(nn, true);
@@ -273,7 +314,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                                                          
                                 }
                             },
-                            xns : rooui.Toolbar
+                            xns : rooui.menu
                         },
                     ]
                 }
@@ -303,11 +344,13 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
             tag : 'td',
             contenteditable : 'true', // this stops cell selection from picking the table.
             'data-block' : 'Td',
+            valign : this.valign,
             style : {  
                 'text-align' :  this.textAlign,
                 border : 'solid 1px rgb(0, 0, 0)', // ??? hard coded?
                 'border-collapse' : 'collapse',
-                padding : '6px' // 8 for desktop / 4 for mobile
+                padding : '6px', // 8 for desktop / 4 for mobile
+                'vertical-align': this.valign
             },
             html : this.html
         };

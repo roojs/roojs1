@@ -32,6 +32,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     align: 'center',
     caption : '',
     text_align: 'left',
+    caption_display : 'block',
     
     width : '100%',
     margin: '2%',
@@ -58,6 +59,30 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         return [
              {
                 xtype : 'TextItem',
+                text : "Source: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+            {
+                xtype : 'TextField',
+                allowBlank : false,
+                width : 150,
+                name : 'image_src',
+                listeners : {
+                    keyup : function (combo, e)
+                    { 
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = block();
+                        b.image_src = this.getValue();
+                        b.updateElement();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.form
+                
+            },
+            {
+                xtype : 'TextItem',
                 text : "Width: ",
                 xns : rooui.Toolbar  //Boostrap?
             },
@@ -70,7 +95,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 triggerAction : 'all',
                 typeAhead : true,
                 valueField : 'val',
-                width : 100,
+                width : 70,
                 name : 'width',
                 listeners : {
                     select : function (combo, r, index)
@@ -109,7 +134,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 triggerAction : 'all',
                 typeAhead : true,
                 valueField : 'val',
-                width : 100,
+                width : 70,
                 name : 'align',
                 listeners : {
                     select : function (combo, r, index)
@@ -134,31 +159,31 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     xns : Roo.data
                 }
             },
+            
+            
             {
-                xtype : 'TextItem',
-                text : "Image Source: ",
-                xns : rooui.Toolbar  //Boostrap?
-            },
-            {
-                xtype : 'TextField',
-                allowBlank : false,
-                width : 150,
-                name : 'image_src',
+                xtype : 'Button',
+                text: 'Hide Caption',
+                name : 'caption_display',
+                pressed : false,
+                enableToggle : true,
+                setValue : function(v) {
+                    this.toggle(v == 'block' ? false : true);
+                },
                 listeners : {
-                    change : function (combo, r, index)
+                    toggle: function (btn, state)
                     {
-                        return;
-                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
-                        var b = block();
-                        b.align = r.get('val');
+                        var b  = block();
+                        b.caption_display = b.caption_display == 'block' ? 'none' : 'block';
+                        this.setText(b.caption_display == 'block' ? "Hide Caption" : "Show Caption")
                         b.updateElement();
                         syncValue();
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
                         toolbar.editorcore.onEditorEvent();
                     }
                 },
-                xns : rooui.form
-                
-            }
+                xns : rooui.Toolbar
+            },
         ];
         
     },
@@ -171,48 +196,66 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var d = document.createElement('div');
         d.innerHTML = this.caption;
         
-        return {
+        return  {
             tag: 'figure',
             'data-block' : 'Figure',
             contenteditable : 'false',
             style : {
-                display: 'table',
+                display: 'block',
                 float :  this.align ,
-                width :  this.width,
-                margin:  this.margin
+                'max-width':  this.width,
+                width : 'auto',
+                margin:  0,
+                padding: '10px',
+                
             },
+            align : this.align,
             cn : [
                 {
                     tag : 'img',
                     src : this.image_src,
                     alt : d.innerText.replace(/\n/g, " "), // removeHTML..
                     style: {
-                        width: '100%'
+                        width : 'auto',
+                        'max-width': '100%',
+                        margin : '0px' 
+                        
+                        
                     }
                 },
                 {
                     tag: 'figcaption',
                     contenteditable : true,
                     style : {
-                        'text-align': this.text_align
+                        'text-align': 'left',
+                        'margin-top' : '16px',
+                        'font-size' : '16px',
+                        'line-height' : '24px',
+                        'font-style': 'italic',
+                        display : this.caption_display
                     },
                     html : this.caption
                     
                 }
             ]
         };
+         
     },
     
     readElement : function(node)
     {
         this.image_src = this.getVal(node, 'img', 'src');
-        this.align = this.getVal(node, 'figure', 'style', 'float');
+        this.align = this.getVal(node, 'figure', 'align');
         this.caption = this.getVal(node, 'figcaption', 'html');
-        this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
-        this.width = this.getVal(node, 'figure', 'style', 'width');
-        this.margin = this.getVal(node, 'figure', 'style', 'margin');
+        //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
+        this.width = this.getVal(node, 'figure', 'style', 'max-width');
+        //this.margin = this.getVal(node, 'figure', 'style', 'margin');
         
-    } 
+    },
+    removeNode : function()
+    {
+        return this.node;
+    }
     
   
    

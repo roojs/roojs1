@@ -266,10 +266,15 @@
             </span><span class="jsdoc-var">from.data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">to.data</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">from.parentNode</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// not sure why this is happening?
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-comment">// assume 'to' doesnt have '1/3 nodetypes!
+        // not sure why, by from, parent node might not exist?
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">from.nodeType </span><span class="jsdoc-syntax">!=1 || </span><span class="jsdoc-var">from.tagName </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">to.tagName</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">&quot;ReplaceChild&quot; </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">from</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">to </span><span class="jsdoc-syntax">]);
+
             </span><span class="jsdoc-var">from.parentNode.replaceChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">to</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">from</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }

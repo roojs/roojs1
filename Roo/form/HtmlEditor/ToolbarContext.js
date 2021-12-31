@@ -258,9 +258,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // disable everything...
         var ty= Roo.form.HtmlEditor.ToolbarContext.types;
         this.toolbars = {};
-           
+        // block toolbars are built in updateToolbar when needed.
         for (var i in  ty) {
-          
+            
             this.toolbars[i] = this.buildToolbar(ty[i],i);
         }
         this.tb = this.toolbars.BODY;
@@ -354,19 +354,19 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // you are not actually selecting the block.
         if (sel && sel.hasAttribute('data-block')) {
             db = sel;
-        } else if (sel && !sel.hasAttribute('contenteditable')) {
+        } else if (sel && sel.closest('[data-block]')) {
             
             db = sel.closest('[data-block]');
-            var cepar = sel.closest('[contenteditable=true]');
-            if (db && cepar && cepar.tagName != 'BODY') {
-               db = false; // we are inside an editable block.. = not sure how we are going to handle nested blocks!?
-            }   
+            //var cepar = sel.closest('[contenteditable=true]');
+            //if (db && cepar && cepar.tagName != 'BODY') {
+            //   db = false; // we are inside an editable block.. = not sure how we are going to handle nested blocks!?
+            //}   
         }
         
         
         var block = false;
         //if (db && !sel.hasAttribute('contenteditable') && sel.getAttribute('contenteditable') != 'true' ) {
-        if (db) {
+        if (db && this.editorcore.enableBlocks) {
             block = Roo.htmleditor.Block.factory(db);
             
             
@@ -630,13 +630,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     width: item.width ? item.width  : 130,
                     listeners : {
                         'select': function(c, r, i) {
-                            if (tb.selectedNode.hasAttribute('data-block')) {
-                                var b = Roo.htmleditor.Block.factory(tb.selectedNode);
-                                b[c.attrname] = r.get('val');
-                                b.updateElement(tb.selectedNode);
-                                editorcore.syncValue();
-                                return;
-                            }
+                             
                             
                             if (c.stylename) {
                                 tb.selectedNode.style[c.stylename] =  r.get('val');
@@ -677,14 +671,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 listeners: {
                     'change' : function(f, nv, ov) {
                         
-                        if (tb.selectedNode.hasAttribute('data-block')) {
-                            var b = Roo.htmleditor.Block.factory(tb.selectedNode);
-                            b[f.attrname] = nv;
-                            b.updateElement(tb.selectedNode);
-                            editorcore.syncValue();
-                            return;
-                        }
-                        
+                         
                         tb.selectedNode.setAttribute(f.attrname, nv);
                         editorcore.syncValue();
                     }
@@ -694,8 +681,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         var _this = this;
-        
+        var show_delete = !block || block.deleteTitle !== false;
         if(nm == 'BODY'){
+            show_delete = false;
             tb.addSeparator();
         
             tb.addButton( {
@@ -711,7 +699,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         tb.addFill();
-        if (!block || block.deleteTitle !== false) {
+        if (show_delete) {
             tb.addButton({
                 text: block && block.deleteTitle ? block.deleteTitle  : 'Remove Block or Formating', // remove the tag, and puts the children outside...
         

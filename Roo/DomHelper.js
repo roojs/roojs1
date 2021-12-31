@@ -266,10 +266,15 @@ Roo.DomHelper = function(){
             from.data = to.data;
             return;
         }
-        
+        if (!from.parentNode) {
+            // not sure why this is happening?
+            return;
+        }
         // assume 'to' doesnt have '1/3 nodetypes!
+        // not sure why, by from, parent node might not exist?
         if (from.nodeType !=1 || from.tagName != to.tagName) {
             Roo.log(["ReplaceChild" , from, to ]);
+            
             from.parentNode.replaceChild(to, from);
             return;
         }

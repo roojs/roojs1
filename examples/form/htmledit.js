@@ -51,22 +51,48 @@ Roo.onReady(function(){
                                 xns : Roo,
                                
                             },
-                             {
+                            {
                                 xtype : 'Button',
-                                text : "Add Image",
+                                text : "Add Image (BIG)",
                                 cls : 'x-init-enable',
                                 listeners : {
                                     click : function (_self, e)
                                     {
                                         
                                         var rr = new Roo.htmleditor.BlockFigure({
-                                            image_src: 'https://www.roojs.org/Roojscom/templates/images/roojsorg_logo-100.png',
+                                            image_src: 'https://picsum.photos/1000/500',
     
                                             align: 'left',
                                             caption : 'test',
                                             text_align: 'left',
                                             
-                                            width : '46%',
+                                            width : '100%',
+                                            margin: '2%',
+                                        });
+                                        editor.editorcore.insertAtCursor(rr.toHTML());
+                                    
+                                 
+                                    }
+                                },
+                                xns : Roo,
+                               
+                            },
+                            {
+                                xtype : 'Button',
+                                text : "Add Image (SMALL)",
+                                cls : 'x-init-enable',
+                                listeners : {
+                                    click : function (_self, e)
+                                    {
+                                        
+                                        var rr = new Roo.htmleditor.BlockFigure({
+                                            image_src: 'https://picsum.photos/400/300',
+    
+                                            align: 'left',
+                                            caption : 'test',
+                                            text_align: 'left',
+                                            
+                                            width : '100%',
                                             margin: '2%',
                                         });
                                         editor.editorcore.insertAtCursor(rr.toHTML());

@@ -16,7 +16,8 @@ Roo.lib.Selection = function() { };
  */
 Roo.lib.Selection.wrap = function(r, doc) {
     Roo.apply(r, Roo.lib.Selection.prototype);
-    r.ownerDocument = r; // usefull so we dont have to keep referening to it.
+    r.ownerDocument = doc; // usefull so we dont have to keep referening to it.
+    return r;
 };
 /**
  * find a parent node eg. LI / OL
@@ -54,30 +55,47 @@ Roo.apply(Roo.lib.Selection.prototype,
         if (this.type != 'Caret') {
             range.deleteContents();
         }
+        var sn = node.childNodes[0]; // select the contents.
+
+        
+        
         range.insertNode(node);
+        if (cursor == 'after') {
+            node.insertAdjacentHTML('afterend', '&nbsp;');
+            sn = node.nextSibling;
+        }
+        
         if (cursor == 'none') {
             return;
         }
-        var sn = node.childNodes[0]; // select the contents.
-        if (cursor == 'after') {
-            sn = node.insertAdjacentHTML('afterend', '&nbsp;');
-        }
-        this.cursorStart(sn);
+        
+        this.cursorText(sn);
     },
     
-    cursorStart : function(n)
+    cursorText : function(n)
     {
-        var range = this.getRangeAt(0);
-        range = range.cloneRange();
-        range.selectNode(sn);
+       
+        //var range = this.getRangeAt(0);
+        range = Roo.lib.Range.wrap(new Range());
+        //range.selectNode(n);
         
-        range.collapse(false);
+        var ix = Array.from(n.parentNode.childNodes).indexOf(n);
+        range.setStart(n.parentNode,ix);
+        range.setEnd(n.parentNode,ix+1);
+        //range.collapse(false);
          
         this.removeAllRanges();
         this.addRange(range);
+        
+        Roo.log([n, range, this,this.baseOffset,this.extentOffset, this.type]);
+    },
+    cursorAfter : function(n)
+    {
+        if (!n.nextSibling || n.nextSibling.nodeValue != '&nbsp;') {
+            n.insertAdjacentHTML('afterend', '&nbsp;');
+        }
+        this.cursorText (n.nextSibling);
     }
-    
-    
-    
+        
     
 });

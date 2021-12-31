@@ -35,7 +35,7 @@ Roo.extend(Roo.menu.Item, Roo.menu.BaseItem, {
      */
     text: '',
      /**
-     * @cfg {String} HTML to render in menu
+     * @cfg {String} html to render in menu
      * The text to show on the menu item (HTML version).
      */
     html: '',

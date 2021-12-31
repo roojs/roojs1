@@ -29,7 +29,7 @@ Roo.lib.Easing
 Roo.lib.Motion
 Roo.lib.Scroll
 Roo.lib.UndoManager
-
+Roo.lib.Range
 // --- end if base ---
 
 

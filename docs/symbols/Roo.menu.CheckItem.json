@@ -111,7 +111,7 @@
       "memberOf" : ""
     },
     {
-      "name" : "HTML",
+      "name" : "html",
       "type" : "String",
       "desc" : "to render in menu\nThe text to show on the menu item (HTML version).",
       "memberOf" : "Roo.menu.Item"

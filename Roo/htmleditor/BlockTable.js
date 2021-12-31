@@ -58,6 +58,11 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
         return [
             {
+                xtype : 'TextItem',
+                text : "Width: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+            {
                 xtype : 'ComboBox',
                 allowBlank : false,
                 displayField : 'val',
@@ -266,22 +271,18 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
         
         this.rows = [];
         this.no_row = 0;
-        var trs = Array.from(node.getElementsByTagName('tr'));
+        var trs = Array.from(node.rows);
         trs.forEach(function(tr) {
             var row =  [];
             this.rows.push(row);
-            if (Roo.get(tr).hasClass('roo-html-editor-el')) { // ??? this is for our 'row' selection'
-                return;
-            }
+            
             this.no_row++;
             var no_column = 0;
-            Array.from(tr.getElementsByTagName('td')).forEach(function(td) {
-                if (Roo.get(td).hasClass('roo-html-editor-el')) { // ??? this is for our 'row' selection'
-                    return;
-                }
+            Array.from(tr.cells).forEach(function(td) {
+                
                 var add = {
-                    colspan : td.hasAttribute('colspan') ? td.getAttribute('colspan') : 1,
-                    rowspan : td.hasAttribute('rowspan') ? td.getAttribute('rowspan') : 1,
+                    colspan : td.hasAttribute('colspan') ? td.getAttribute('colspan')*1 : 1,
+                    rowspan : td.hasAttribute('rowspan') ? td.getAttribute('rowspan')*1 : 1,
                     style : td.hasAttribute('style') ? td.getAttribute('style') : '',
                     html : td.innerHTML
                 };
@@ -447,7 +448,7 @@ Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
     addRow : function()
     {
         
-        row = [];
+        var row = [];
         for (var i = 0; i < this.no_col; i++ ) {
             
             row.push(this.emptyCell());

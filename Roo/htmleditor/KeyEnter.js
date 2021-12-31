@@ -10,6 +10,8 @@
 
 
 
+
+
 Roo.htmleditor.KeyEnter = function(cfg) {
     Roo.apply(this, cfg);
     // this does not actually call walk as it's really just a abstract class
@@ -26,89 +28,58 @@ Roo.htmleditor.KeyEnter.prototype = {
     
     keypress : function(e)
     {
-        if (e.charCode != 13) {
+        if (e.charCode != 13 && e.charCode != 10) {
+            Roo.log([e.charCode,e]);
             return true;
         }
         e.preventDefault();
         // https://stackoverflow.com/questions/18552336/prevent-contenteditable-adding-div-on-enter-chrome
         var doc = this.core.doc;
-        
-        var docFragment = doc.createDocumentFragment();
-    
-        //add a new line
+          //add a new line
        
     
-    
-        var range = this.core.win.getSelection().getRangeAt(0);
-        var n = range.commonAncestorContainer ;
-        while (n && n.nodeType != 1) {
-            n  = n.parentNode;
-        }
-        var li = false;
-        if (n && n.tagName == 'UL') {
-            li = doc.createElement('LI');
-            n.appendChild(li);
-            
-        }
-        if (n && n.tagName == 'LI') {
-            li = doc.createElement('LI');
-            if (n.nextSibling) {
-                n.parentNode.insertBefore(li, n.firstSibling);
-                
-            } else {
-                n.parentNode.appendChild(li);
-            }
-        }
-        if (li) {   
-            range = doc.createRange();
-            range.setStartAfter(li);
-            range.collapse(true);
-        
-            //make the cursor there
-            var sel = this.core.win.getSelection();
-            sel.removeAllRanges();
-            sel.addRange(range);
-            this.core.undoManager.addEvent();
-            return false;
-            
-            
-        }
-        var newEle = doc.createTextNode('\n');
-        docFragment.appendChild(newEle);
-        
-        //add the br, or p, or something else
-        newEle = doc.createElement('br');
-        //newEle.setAttribute('data-id', Roo.htmleditor.KeyEnter.i++);
-        docFragment.appendChild(newEle);
-        doc.createTextNode('\n');
-        docFragment.appendChild(newEle);
-        
-        range.deleteContents();
-        range.insertNode(docFragment);  //<< inseting here...
+        var sel = this.core.getSelection();
+        var range = sel.getRangeAt(0);
+        var n = range.commonAncestorContainer;
+        var pc = range.closest([ 'ol', 'ul']);
+        var pli = range.closest('li');
+        if (!pc || e.ctrlKey) {
+            sel.insertNode('br', 'after'); 
          
-        var ns = newEle.nextSibling
-        while (ns && ns.nodeType == 3) { 
-            ns = ns.nextSibling;
+            this.core.undoManager.addEvent();
+            this.core.fireEditorEvent(e);
+            return false;
         }
         
-        if (!ns) {
-            //Roo.log('add extra');
-            ns = doc.createElement('br');
-            //ns.setAttribute('data-id', 'x' +  Roo.htmleditor.KeyEnter.i++);
-            newEle.parentNode.appendChild(ns);
+        // deal with <li> insetion
+        if (pli.innerText.trim() == '' &&
+            pli.previousSibling &&
+            pli.previousSibling.nodeName == 'LI' &&
+            pli.previousSibling.innerText.trim() ==  '') {
+            pli.parentNode.removeChild(pli.previousSibling);
+            sel.cursorAfter(pc);
+            this.core.undoManager.addEvent();
+            this.core.fireEditorEvent(e);
+            return false;
         }
-        
-        
-        
-        range = doc.createRange();
-        range.setStartAfter(newEle);
-        range.collapse(true);
-        
-        var sel = this.core.win.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(range);
-        //this.core.undoManager.addEvent();
+    
+        var li = doc.createElement('LI');
+        li.innerHTML = '&nbsp;';
+        if (!pli || !pli.firstSibling) {
+            pc.appendChild(li);
+        } else {
+            pli.parentNode.insertBefore(li, pli.firstSibling);
+        }
+        sel.cursorText (li.firstChild);
+      
+        this.core.undoManager.addEvent();
+        this.core.fireEditorEvent(e);
+
         return false;
+        
+    
+        
+        
          
     }
 };

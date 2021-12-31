@@ -102,15 +102,15 @@
       "memberOf" : "Roo.Component"
     },
     {
-      "name" : "itemCls",
+      "name" : "html",
       "type" : "String",
-      "desc" : "The default CSS class to use for menu items (defaults to \"x-menu-item\")",
+      "desc" : "to render in menu\nThe text to show on the menu item (HTML version).",
       "memberOf" : ""
     },
     {
-      "name" : "HTML",
+      "name" : "itemCls",
       "type" : "String",
-      "desc" : "to render in menu\nThe text to show on the menu item (HTML version).",
+      "desc" : "The default CSS class to use for menu items (defaults to \"x-menu-item\")",
       "memberOf" : ""
     },
     {

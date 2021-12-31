@@ -44,12 +44,6 @@
       "memberOf" : "Roo.form.Field"
     },
     {
-      "name" : "name",
-      "type" : "String",
-      "desc" : "The field's HTML name attribute.",
-      "memberOf" : "Roo.form.Field"
-    },
-    {
       "name" : "resizable",
       "type" : "String",
       "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
@@ -60,6 +54,12 @@
       "type" : "Array",
       "desc" : "Array of toolbars. - defaults to just the Standard one",
       "memberOf" : ""
+    },
+    {
+      "name" : "name",
+      "type" : "String",
+      "desc" : "The field's HTML name attribute.",
+      "memberOf" : "Roo.form.Field"
     },
     {
       "name" : "bodyCls-",
@@ -128,6 +128,12 @@
       "memberOf" : "Roo.form.Field"
     },
     {
+      "name" : "enableBlocks",
+      "type" : "boolean",
+      "desc" : "- default true - if the block editor (table and figure should be enabled)",
+      "memberOf" : ""
+    },
+    {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the field's underlying element.",
@@ -180,6 +186,12 @@
       "type" : "String",
       "desc" : "Mouse over tip",
       "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "autoClean",
+      "type" : "boolean",
+      "desc" : "- default true - loading and saving will remove quite a bit of formating,\n        if you are doing an email editor, this probably needs disabling, it's designed",
+      "memberOf" : ""
     }
   ],
   "methods" : [
