@@ -125,8 +125,8 @@ Roo.onReady(function(){
                 id:'bio',
                 name : 'bio',
                 fieldLabel:'Biography',
-                width:800,
-                height:400,
+                width:1000,
+                height:600,
                 resizable: 's' /// where the handles should got..
 
             },
