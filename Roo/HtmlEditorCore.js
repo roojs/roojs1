@@ -616,7 +616,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
         this.insertAtCursor(d.innerHTML);
-        Roo.htmleditor.Block.initAll(this.doc.body);
+        if (this.enableBlocks) {
+            Roo.htmleditor.Block.initAll(this.doc.body);
+        }
         
         
         e.preventDefault();
