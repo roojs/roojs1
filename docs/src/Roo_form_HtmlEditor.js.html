@@ -104,6 +104,13 @@
      * @cfg {string} bodyCls- default '' default classes to add to body of editable area - usually undoreset is a good start..
      */
     </span><span class="jsdoc-var">bodyCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} language default en - language of text (usefull for rtl languages)
+     * 
+     */
+    </span><span class="jsdoc-var">language</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'en'</span><span class="jsdoc-syntax">,
+
+
 
     </span><span class="jsdoc-comment">// id of frame..
     </span><span class="jsdoc-var">frameId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -246,8 +253,19 @@
 
 
     },
+    </span><span class="jsdoc-comment">/**
+     * get the Context selected node
+     * @returns {DomElement|boolean} selected node if active or false if none
+     * 
+     */
+    </span><span class="jsdoc-var">getSelectedNode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars.length </span><span class="jsdoc-syntax">&lt; 2 || !</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.tb</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.tb.selectedNode</span><span class="jsdoc-syntax">;
 
-
+    },
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
     {

@@ -134,6 +134,12 @@
       "memberOf" : ""
     },
     {
+      "name" : "language",
+      "type" : "String",
+      "desc" : "default en - language of text (usefull for rtl languages)",
+      "memberOf" : ""
+    },
+    {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the field's underlying element.",
@@ -270,6 +276,25 @@
       "name" : "clearInvalid",
       "type" : "function",
       "desc" : "Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "getSelectedNode",
+      "type" : "function",
+      "desc" : "get the Context selected node",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "",

@@ -123,6 +123,11 @@
      * 
      */
     </span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+     </span><span class="jsdoc-comment">/**
+     * @cfg {String} language default en - language of text (usefull for rtl languages)
+     * 
+     */
+    </span><span class="jsdoc-var">language</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'en'</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">/**
      * @cfg {boolean} allowComments - default false - allow comments in HTML source
@@ -1050,7 +1055,6 @@
 
 
 
-
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getSelection</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.cloneRange</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isIE</span><span class="jsdoc-syntax">) {
@@ -1113,6 +1117,8 @@
 
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">nodes</span><span class="jsdoc-syntax">[0];
     },
+
+
     </span><span class="jsdoc-var">createRange</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// this has strange effects when using with 
@@ -1423,6 +1429,13 @@
 
 
     },
+
+
+    </span><span class="jsdoc-var">updateLanguage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.ifream.content.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lang&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">);
+    },
+
 
     </span><span class="jsdoc-var">removeStylesheets </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {

@@ -60,6 +60,12 @@
       "memberOf" : "Roo.Component"
     },
     {
+      "name" : "language",
+      "type" : "String",
+      "desc" : "default en - language of text (usefull for rtl languages)",
+      "memberOf" : ""
+    },
+    {
       "name" : "enableBlocks",
       "type" : "boolean",
       "desc" : "- default true - if the block editor (table and figure should be enabled)",
