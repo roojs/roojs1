@@ -28599,6 +28599,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      * 
      */
     stylesheets: false,
+     /**
+     * @cfg {String} language default en - language of text (usefull for rtl languages)
+     * 
+     */
+    language: false,
     
     /**
      * @cfg {boolean} allowComments - default false - allow comments in HTML source
@@ -29900,6 +29905,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
         
     },
+    
+    
+    updateLanguage : function()
+    {
+        Roo.get(_this.ifream.content.body).attr("lang", this.language);
+    },
+    
     
     removeStylesheets : function()
     {
