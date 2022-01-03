@@ -27,7 +27,7 @@ Roo.onReady(function(){
                 xns: Roo.form,
                 white : [ 'iframe' ],
                 autoClean : true,
-                bodyCls : 'undoreset pressrelease mo-grey',
+                bodyCls : 'undoreset undoreset mo-pr-body-content',
                 stylesheets : [ 
                     '../../css/undoreset.css',
                     '/web.MediaOutreach/Pman/PressRelease/templates/images/css/editor.css'
