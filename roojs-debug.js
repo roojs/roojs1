@@ -49862,8 +49862,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      */
     language: 'en',
     
-    
-    
+     
     // id of frame..
     frameId: false,
     
