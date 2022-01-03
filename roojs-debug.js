@@ -34771,6 +34771,7 @@ Roo.extend(Roo.LayoutDialog, Roo.BasicDialog, {
  
 /**
  * @class Roo.MessageBox
+ * @static
  * Utility class for generating different styles of message boxes.  The alias Roo.Msg can also be used.
  * Example usage:
  *<pre><code>
@@ -49618,10 +49619,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     updateLanguage : function()
     {
-        if (!this.iframe || !this.iframe.content) {
+        if (!this.iframe || !this.iframe.contentDocument) {
             return;
         }
-        Roo.get(this.iframe.content.body).attr("lang", this.language);
+        Roo.get(this.iframe.contentDocument.body).attr("lang", this.language);
     },
     
     
@@ -50310,7 +50311,17 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.editorcore.pushValue();
     },
 
+    /**
+     * update the language in the body - really done by core
+     * @param {String} language - eg. en / ar / zh-CN etc..
+     */
+    updateLanguage : function(lang)
+    {
+        this.language = lang;
+        this.editorcore.language = lang;
+        this.editorcore.updateLanguage();
      
+    },
     // private
     deferFocus : function(){
         this.focus.defer(10, this);
@@ -50943,10 +50954,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     // private used internally
     createLink : function(){
         Roo.log("create link?");
-        var url = prompt(this.createLinkText, this.defaultLinkValue);
-        if(url && url != 'http:/'+'/'){
-            this.editorcore.relayCmd('createlink', url);
-        }
+        var ec = this.editorcore;
+        Roo.MessageBox.prompt("Add Link URL",this.createLinkText, function(url) {
+            if(url && url != 'http:/'+'/'){
+                ec.relayCmd('createlink', url);
+            }
+        });
+        
     },
 
     
