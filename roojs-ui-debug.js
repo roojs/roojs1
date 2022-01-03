@@ -24153,6 +24153,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             
             Roo.htmleditor.Block.initAll(this.doc.body);
+            this.updateLanguage();
             
             var lc = this.doc.body.lastChild;
             if (lc && lc.nodeType == 1 && lc.getAttribute("contenteditable") == "false") {
