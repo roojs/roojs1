@@ -25149,7 +25149,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     updateLanguage : function()
     {
-        if (!this.iframe) {
+        if (!this.iframe || !this.iframe.content) {
             return;
         }
         Roo.get(this.iframe.content.body).attr("lang", this.language);
