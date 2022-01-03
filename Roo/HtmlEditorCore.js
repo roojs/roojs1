@@ -1434,7 +1434,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     updateLanguage : function()
     {
-        Roo.get(_this.ifream.content.body).attr("lang", this.language);
+        Roo.get(this.iframe.content.body).attr("lang", this.language);
     },
     
     
