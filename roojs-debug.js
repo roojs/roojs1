@@ -48311,7 +48311,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      * @cfg {String} language default en - language of text (usefull for rtl languages)
      * 
      */
-    language: false,
+    language: 'en',
     
     /**
      * @cfg {boolean} allowComments - default false - allow comments in HTML source
@@ -49856,6 +49856,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      * @cfg {string} bodyCls- default '' default classes to add to body of editable area - usually undoreset is a good start..
      */
     bodyCls : '',
+    /**
+     * @cfg {String} language default en - language of text (usefull for rtl languages)
+     * 
+     */
+    language: 'en',
+    
+    
     
     // id of frame..
     frameId: false,

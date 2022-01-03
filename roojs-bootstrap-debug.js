@@ -28603,7 +28603,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      * @cfg {String} language default en - language of text (usefull for rtl languages)
      * 
      */
-    language: false,
+    language: 'en',
     
     /**
      * @cfg {boolean} allowComments - default false - allow comments in HTML source
