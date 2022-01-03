@@ -1434,6 +1434,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     updateLanguage : function()
     {
+        if (!this.iframe) {
+            return;
+        }
         Roo.get(this.iframe.content.body).attr("lang", this.language);
     },
     
