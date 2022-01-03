@@ -526,10 +526,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     // private used internally
     createLink : function(){
         Roo.log("create link?");
-        var url = prompt(this.createLinkText, this.defaultLinkValue);
-        if(url && url != 'http:/'+'/'){
-            this.editorcore.relayCmd('createlink', url);
-        }
+        var ec = this.editorcore;
+        Roo.MessageBox.prompt("Add Link URL",this.createLinkText, function(url) {
+            if(url && url != 'http:/'+'/'){
+                ec.relayCmd('createlink', url);
+            }
+        });
+        
     },
 
     
