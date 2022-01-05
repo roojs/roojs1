@@ -27166,6 +27166,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var d = document.createElement('div');
         d.innerHTML = this.caption;
         
+        var m = this.width == '50%' && this.align == 'center' ? '0 auto' : 0; 
+        
         return  {
             tag: 'figure',
             'data-block' : 'Figure',
@@ -27175,7 +27177,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 float :  this.align ,
                 'max-width':  this.width,
                 width : 'auto',
-                margin:  0,
+                margin:  m,
                 padding: '10px'
                 
             },
@@ -29910,10 +29912,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     updateLanguage : function()
     {
-        if (!this.iframe || !this.iframe.content) {
+        if (!this.iframe || !this.iframe.contentDocument) {
             return;
         }
-        Roo.get(this.iframe.content.body).attr("lang", this.language);
+        Roo.get(this.iframe.contentDocument.body).attr("lang", this.language);
     },
     
     

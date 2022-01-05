@@ -46875,6 +46875,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var d = document.createElement('div');
         d.innerHTML = this.caption;
         
+        var m = this.width == '50%' && this.align == 'center' ? '0 auto' : 0; 
+        
         return  {
             tag: 'figure',
             'data-block' : 'Figure',
@@ -46884,7 +46886,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 float :  this.align ,
                 'max-width':  this.width,
                 width : 'auto',
-                margin:  0,
+                margin:  m,
                 padding: '10px'
                 
             },
