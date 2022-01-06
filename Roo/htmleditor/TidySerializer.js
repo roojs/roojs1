@@ -27,6 +27,8 @@ Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
      */
     inner : false,
     
+    writer : false;
+    
     /**
     * Serializes the specified node into a string.
     *
@@ -79,55 +81,70 @@ Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
         return writer.getContent();
     },
 
-    walk: function(node) {
-        var name, isEmpty, attrs, attrName, attrValue, sortedAttrs, i, l, elementRule, handler = handlers[node.type];
+    walk: function(node)
+    {
+        var attrName, attrValue, sortedAttrs, i, l, elementRule,
+            handler = this.handlers[node.type];
+            
         if (handler) {
             handler(node);
-        } else {
-            name = node.name;
-            isEmpty = node.shortEnded;
-            attrs = node.attributes;
-            // Sort attributes
-            if (validate && attrs && attrs.length > 1) {
-                sortedAttrs = [];
-                sortedAttrs.map = {};
-                elementRule = schema.getElementRule(node.name);
-                if (elementRule) {
-                    for (i = 0, l = elementRule.attributesOrder.length; i < l; i++) {
-                        attrName = elementRule.attributesOrder[i];
-                        if (attrName in attrs.map) {
-                            attrValue = attrs.map[attrName];
-                            sortedAttrs.map[attrName] = attrValue;
-                            sortedAttrs.push({
-                                name: attrName,
-                                value: attrValue
-                            });
-                        }
+            return;
+        }
+    
+        var name = node.nodeName;
+        var isEmpty = node.childNodes.length < 1;
+        var writer = this.writer;
+        var attrs = node.attributes;
+        // Sort attributes
+        /*
+        if (validate && attrs && attrs.length > 1) {
+            sortedAttrs = [];
+            sortedAttrs.map = {};
+            elementRule = schema.getElementRule(node.name);
+            if (elementRule) {
+                for (i = 0, l = elementRule.attributesOrder.length; i < l; i++) {
+                    attrName = elementRule.attributesOrder[i];
+                    if (attrName in attrs.map) {
+                        attrValue = attrs.map[attrName];
+                        sortedAttrs.map[attrName] = attrValue;
+                        sortedAttrs.push({
+                            name: attrName,
+                            value: attrValue
+                        });
                     }
-                    for (i = 0, l = attrs.length; i < l; i++) {
-                        attrName = attrs[i].name;
-                        if (!(attrName in sortedAttrs.map)) {
-                            attrValue = attrs.map[attrName];
-                            sortedAttrs.map[attrName] = attrValue;
-                            sortedAttrs.push({
-                                name: attrName,
-                                value: attrValue
-                            });
-                        }
+                }
+                for (i = 0, l = attrs.length; i < l; i++) {
+                    attrName = attrs[i].name;
+                    if (!(attrName in sortedAttrs.map)) {
+                        attrValue = attrs.map[attrName];
+                        sortedAttrs.map[attrName] = attrValue;
+                        sortedAttrs.push({
+                            name: attrName,
+                            value: attrValue
+                        });
                     }
-                    attrs = sortedAttrs;
                 }
-            }
-            writer.start(node.name, attrs, isEmpty);
-            if (!isEmpty) {
-                if (node = node.firstChild) {
-                    do {
-                        walk(node);
-                    } while (node = node.next);
-                }
-                writer.end(name);
+                attrs = sortedAttrs;
             }
         }
+        */
+        writer.start(node.name, attrs, isEmpty);
+        if (isEmpty) {
+            return;
+        }
+        node = node.firstChild;
+        if (!node) {
+            writer.end(name);
+            return;
+        }
+        
+                do {
+                    walk(node);
+                } while (node = node.next);
+            }
+            writer.end(name);
+        }
+    }
     }
     // Serialize element and treat all non elements as fragments
    
