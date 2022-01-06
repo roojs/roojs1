@@ -68,6 +68,8 @@ Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
             }
         };
         writer.reset();
+        1 != node.type || this.inner ? handlers[11](node) : walk(node);
+    return writer.getContent();
 
     function walk(node) {
         var name, isEmpty, attrs, attrName, attrValue, sortedAttrs, i, l, elementRule, handler = handlers[node.type];
@@ -120,8 +122,7 @@ Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
         }
     }
     // Serialize element and treat all non elements as fragments
-    1 != node.type || settings.inner ? handlers[11](node) : walk(node);
-    return writer.getContent();
+   
 };
 };
 
