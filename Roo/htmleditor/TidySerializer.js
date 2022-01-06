@@ -21,6 +21,12 @@ Roo.htmleditor.TidySerializer = function(settings)
 
 };
 Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
+    
+    /**
+     * @param {boolean} inner do the inner of the node.
+     */
+    inner : false,
+    
     /**
     * Serializes the specified node into a string.
     *
