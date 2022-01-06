@@ -27,7 +27,7 @@ Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
      */
     inner : false,
     
-    writer : false;
+    writer : false,
     
     /**
     * Serializes the specified node into a string.
@@ -137,17 +137,15 @@ Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
             writer.end(name);
             return;
         }
-        
-                do {
-                    walk(node);
-                } while (node = node.next);
-            }
-            writer.end(name);
+        while (node) {
+            walk(node);
+            node = node.nextNode;
         }
-    }
+        writer.end(name);
+        
+    
     }
     // Serialize element and treat all non elements as fragments
    
-};
-};
+}); 
 
