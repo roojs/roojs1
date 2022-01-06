@@ -29070,10 +29070,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // this is to prevent a href clicks resulting in a redirect?
     onMouseDown : function(e)
     {
+        if (e.target.closest('a')) {
+            e.preventDefault();
+            return true;
+        }
         
         
-        
-    }
+    },
     onPasteEvent : function(e,v)
     {
         // I think we better assume paste is going to be a dirty load of rubish from word..

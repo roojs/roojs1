@@ -550,7 +550,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         
         
-    }
+    },
     onPasteEvent : function(e,v)
     {
         // I think we better assume paste is going to be a dirty load of rubish from word..
