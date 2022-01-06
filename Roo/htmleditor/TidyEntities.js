@@ -10,7 +10,7 @@ Roo.htmleditor.TidyEntities = {
     /**
      * initialize data..
      */
-    init : funciton (){
+    init : function (){
     
         
        // Decodes text by using the browser
@@ -22,10 +22,10 @@ Roo.htmleditor.TidyEntities = {
        if (te.namedEntities === false) {
            te.namedEntities = buildEntitiesLookup(te.namedEntitiesData, 32);
        }
-    }
+    },
 
 
-    function buildEntitiesLookup(items, radix) {
+     buildEntitiesLookup: function(items, radix) {
         var i, chr, entity, lookup = {};
         if (items) {
             items = items.split(',');
@@ -42,7 +42,7 @@ Roo.htmleditor.TidyEntities = {
             }
             return lookup;
         }
-    }
+    },
     
     asciiMap : {
             128: '€',
@@ -90,7 +90,7 @@ Roo.htmleditor.TidyEntities = {
         '&amp;': '&',
         '&quot;': '"',
         '&apos;': '\''
-    };
+    },
     
     attrsCharsRegExp : /[&<>\"\u0060\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
     textCharsRegExp : /[<>&\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
