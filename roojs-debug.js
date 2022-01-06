@@ -46938,6 +46938,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     
     readElement : function(node)
     {
+        // this should not really come from the link...
+        this.href = this.getVal(node, 'a', 'href');
+        
         this.image_src = this.getVal(node, 'img', 'src');
         this.align = this.getVal(node, 'figure', 'align');
         this.caption = this.getVal(node, 'figcaption', 'html');
