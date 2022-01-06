@@ -12,15 +12,9 @@ Roo.htmleditor.TidyEntities = {
      */
     init : function (){
     
-        
-       // Decodes text by using the browser
-       
-       // Build a two way lookup table for the entities
-       
-       // Unpack entities lookup where the numbers are in radix 32 to reduce the size
        
       
-       this.namedEntities = buildEntitiesLookup(this.namedEntitiesData, 32);
+       this.namedEntities = buildEntitiesLookup(this.namedEntitiesData.join(','), 32);
        
     },
 
