@@ -46889,13 +46889,13 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 
             }
         };
-        
+        /*
         '<div class="{0}" width="420" height="315" src="{1}" frameborder="0" allowfullscreen>' +
                     '<a href="{2}">' + 
                         '<img class="{0}-thumbnail" src="{3}/Images/{4}/{5}#image-{4}" />' + 
                     '</a>' + 
                 '</div>',
-        
+        */
                 
         if (this.href) {
             img = {
@@ -46939,6 +46939,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         'font-style': 'italic',
                         display : this.caption_display
                     },
+                    cls : this.cls + '-thumbnail',
                     html : this.caption
                     
                 }
