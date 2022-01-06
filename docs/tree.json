@@ -203,6 +203,11 @@
         "is_class" : true
       },
       {
+        "name" : "Roo.MessageBox",
+        "cn" : [],
+        "is_class" : true
+      },
+      {
         "name" : "Roo.NestedLayoutPanel",
         "cn" : [],
         "is_class" : true
@@ -1021,11 +1026,6 @@
             "is_class" : true
           },
           {
-            "name" : "Roo.dd.DragDropMgr",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
             "name" : "Roo.dd.DragSource",
             "cn" : [],
             "is_class" : true
@@ -1428,6 +1428,16 @@
           },
           {
             "name" : "Roo.lib.RGBColor",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.lib.Range",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.lib.Selection",
             "cn" : [],
             "is_class" : true
           },

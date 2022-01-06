@@ -438,6 +438,7 @@
             </span><span class="jsdoc-syntax">}
 
             </span><span class="jsdoc-var">Roo.htmleditor.Block.initAll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.updateLanguage</span><span class="jsdoc-syntax">();
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.doc.body.lastChild</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lc </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">lc.nodeType </span><span class="jsdoc-syntax">== 1 &amp;&amp; </span><span class="jsdoc-var">lc.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;contenteditable&quot;</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;false&quot;</span><span class="jsdoc-syntax">) {
@@ -509,7 +510,7 @@
         </span><span class="jsdoc-var">dbody.bgProperties </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'fixed'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// ie
         //Roo.DomHelper.applyStyles(dbody, ss);
         </span><span class="jsdoc-var">Roo.EventManager.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc</span><span class="jsdoc-syntax">, {
-            </span><span class="jsdoc-comment">//'mousedown': this.onEditorEvent,
+
             </span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'dblclick'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,
@@ -540,6 +541,7 @@
         </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'initialize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.pushValue</span><span class="jsdoc-syntax">();
     },
+    </span><span class="jsdoc-comment">// this is to prevent a href clicks resulting in a redirect?
 
     </span><span class="jsdoc-var">onPasteEvent </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
     {
@@ -1433,7 +1435,10 @@
 
     </span><span class="jsdoc-var">updateLanguage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.ifream.content.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lang&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.iframe </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.iframe.contentDocument</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe.contentDocument.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lang&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">);
     },
 
 

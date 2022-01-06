@@ -11,6 +11,7 @@
  
 /**
  * @class Roo.MessageBox
+ * @static
  * Utility class for generating different styles of message boxes.  The alias Roo.Msg can also be used.
  * Example usage:
  *<pre><code>

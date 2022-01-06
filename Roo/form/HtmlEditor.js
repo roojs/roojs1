@@ -554,7 +554,17 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.editorcore.pushValue();
     },
 
+    /**
+     * update the language in the body - really done by core
+     * @param {String} language - eg. en / ar / zh-CN etc..
+     */
+    updateLanguage : function(lang)
+    {
+        this.language = lang;
+        this.editorcore.language = lang;
+        this.editorcore.updateLanguage();
      
+    },
     // private
     deferFocus : function(){
         this.focus.defer(10, this);

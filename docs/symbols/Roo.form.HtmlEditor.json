@@ -228,6 +228,32 @@
       "returns" : []
     },
     {
+      "name" : "updateLanguage",
+      "type" : "function",
+      "desc" : "update the language in the body - really done by core",
+      "sig" : "(language)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "language",
+          "type" : "String",
+          "desc" : "- eg. en / ar / zh-CN etc..",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "markInvalid",
       "type" : "function",
       "desc" : "Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide",

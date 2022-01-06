@@ -120,7 +120,7 @@ Roo.onReady(function(){
                                     {
                                         
                                         var rr = new Roo.htmleditor.BlockFigure({
-                                            image_src: 'https://picsum.photos/400/300',
+                                            image_src: 'https://picsum.photos/500/400',
     
                                             align: 'center',
                                             caption : 'test',

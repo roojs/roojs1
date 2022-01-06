@@ -111,7 +111,6 @@
     </span><span class="jsdoc-var">language</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'en'</span><span class="jsdoc-syntax">,
 
 
-
     </span><span class="jsdoc-comment">// id of frame..
     </span><span class="jsdoc-var">frameId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
@@ -555,7 +554,17 @@
         </span><span class="jsdoc-var">this.editorcore.pushValue</span><span class="jsdoc-syntax">();
     },
 
+    </span><span class="jsdoc-comment">/**
+     * update the language in the body - really done by core
+     * @param {String} language - eg. en / ar / zh-CN etc..
+     */
+    </span><span class="jsdoc-var">updateLanguage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.language </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.editorcore.language </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.editorcore.updateLanguage</span><span class="jsdoc-syntax">();
 
+    },
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">deferFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-var">this.focus.defer</span><span class="jsdoc-syntax">(10, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
