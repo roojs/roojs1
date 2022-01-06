@@ -40,6 +40,7 @@ Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
         
         // = settings.validate;
         var writer = this.writer;
+        var walk  = this.walk;
         this.handlers = {
             // #text
             3: function(node) {
@@ -75,7 +76,8 @@ Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
         };
         writer.reset();
         1 != node.nodeType || this.inner ? handlers[11](node) : walk(node);
-    return writer.getContent();
+        return writer.getContent();
+    }
 
     function walk(node) {
         var name, isEmpty, attrs, attrName, attrValue, sortedAttrs, i, l, elementRule, handler = handlers[node.type];
