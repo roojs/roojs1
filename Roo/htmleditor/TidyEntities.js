@@ -42,6 +42,7 @@ Roo.htmleditor.TidyEntities = {
             }
             return lookup;
         }
+        return {};
     },
     
     asciiMap : {
