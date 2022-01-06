@@ -639,12 +639,12 @@ Roo.htmleditor.TidyEntities = {
      */
     encodeNumeric: function(text, attr) {
         var t = this;
-        return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
+        return text.replace(attr ? this.attrsCharsRegExp : this.textCharsRegExp, function(chr) {
             // Multi byte sequence convert it to a single entity
             if (chr.length > 1) {
                 return '&#' + (1024 * (chr.charCodeAt(0) - 55296) + (chr.charCodeAt(1) - 56320) + 65536) + ';';
             }
-            return baseEntities[chr] || '&#' + chr.charCodeAt(0) + ';';
+            return t.baseEntities[chr] || '&#' + chr.charCodeAt(0) + ';';
         });
     },
     /**
