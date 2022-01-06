@@ -674,21 +674,21 @@ Roo.htmleditor.TidyEntities = {
      */
     getEncodeFunc: function(name, entities) {
         entities = this.buildEntitiesLookup(entities) || this.namedEntities;
-
+        var t = this;
         function encodeNamedAndNumeric(text, attr) {
-            return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
-                return baseEntities[chr] || entities[chr] || '&#' + chr.charCodeAt(0) + ';' || chr;
+            return text.replace(attr ? t.attrsCharsRegExp : t.textCharsRegExp, function(chr) {
+                return t.baseEntities[chr] || entities[chr] || '&#' + chr.charCodeAt(0) + ';' || chr;
             });
         }
 
         function encodeCustomNamed(text, attr) {
-            return Entities.encodeNamed(text, attr, entities);
+            return t.encodeNamed(text, attr, entities);
         }
         // Replace + with , to be compatible with previous TinyMCE versions
-        name = makeMap(name.replace(/\+/g, ','));
+        name = this.makeMap(name.replace(/\+/g, ','));
         // Named and numeric encoder
         if (name.named && name.numeric) {
-            return encodeNamedAndNumeric;
+            return this.encodeNamedAndNumeric;
         }
         // Named encoder
         if (name.named) {
@@ -729,7 +729,7 @@ Roo.htmleditor.TidyEntities = {
     function nativeDecode(text) {
         return text;
     }
-
+makeMap
     
     
     
