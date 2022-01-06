@@ -20,7 +20,7 @@ Roo.htmleditor.TidySerializer = function(settings)
     //      self.schema = schema = schema || new Schema();
 
 };
-Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
+Roo.htmleditor.TidySerializer.prototype = {
     
     /**
      * @param {boolean} inner do the inner of the node.
@@ -147,5 +147,5 @@ Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
     }
     // Serialize element and treat all non elements as fragments
    
-}); 
+}; 
 
