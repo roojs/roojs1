@@ -29,13 +29,13 @@ Roo.htmleditor.Tidy.prototype = {
      */
     core : false,
     
-
+ 
     
     tidy : function(node, indent) {
-        new Roo.htmleditor.TidySerializer({
+        var ser = new Roo.htmleditor.TidySerializer({
             indent : 2,
         });
-        
+        return ser.serialize(node);
          
     
     }
