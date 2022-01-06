@@ -228,6 +228,22 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             };
         }
         
+        
+        if (this.video_url) {
+            img = {
+                tag : 'div',
+                cls : this.cls,
+                frameborder : 0,
+                allowfullscreen : true,
+                width : 420,  // these are for video tricks - that we replace the outer
+                height : 315,
+                src : this.video_src,
+                cn : [
+                    img
+                ]
+            };
+        }
+        
         return  {
             tag: 'figure',
             'data-block' : 'Figure',
@@ -241,10 +257,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 padding: '10px'
                 
             },
-            frameborder : 0,
-            allowfullscreen : true,
-            src : this.video_src,
-            cls : this.cls,
+           
+            
             align : this.align,
             cn : [
                 img,
@@ -272,8 +286,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     readElement : function(node)
     {
         // this should not really come from the link...
-        this.video_src = this.getVal(node, false, 'src');
-        this.cls = this.getVal(node, false, 'class');
+        this.video_src = this.getVal(node, 'div', 'src');
+        this.cls = this.getVal(node, 'div', 'class');
         this.href = this.getVal(node, 'a', 'href');
         
         this.image_src = this.getVal(node, 'img', 'src');
