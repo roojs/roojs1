@@ -738,7 +738,8 @@ Roo.htmleditor.TidyEntities = {
 			map[items[i]] = {};
 		}
 		return map;
-	},
+	}
+};
     
     
     
