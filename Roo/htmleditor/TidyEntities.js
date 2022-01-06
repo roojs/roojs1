@@ -696,14 +696,14 @@ Roo.htmleditor.TidyEntities = {
             if (entities) {
                 return encodeCustomNamed;
             }
-            return Entities.encodeNamed;
+            return this.encodeNamed;
         }
         // Numeric
         if (name.numeric) {
-            return Entities.encodeNumeric;
+            return this.encodeNumeric;
         }
         // Raw encoder
-        return Entities.encodeRaw;
+        return this.encodeRaw;
     },
     /**
      * Decodes the specified string, this will replace entities with raw UTF characters.
