@@ -46955,7 +46955,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         'font-style': 'italic',
                         display : this.caption_display
                     },
-                    cls : this.cls + '-thumbnail',
+                    cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
                     html : this.caption
                     
                 }
