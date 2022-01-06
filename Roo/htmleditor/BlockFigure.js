@@ -199,17 +199,24 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var m = this.width == '50%' && this.align == 'center' ? '0 auto' : 0; 
         
         var img =   {
-                    tag : 'img',
-                    src : this.image_src,
-                    alt : d.innerText.replace(/\n/g, " "), // removeHTML..
-                    style: {
-                        width : 'auto',
-                        'max-width': '100%',
-                        margin : '0px' 
-                        
-                        
-                    }
-                };
+            tag : 'img',
+            src : this.image_src,
+            alt : d.innerText.replace(/\n/g, " "), // removeHTML..
+            style: {
+                width : 'auto',
+                'max-width': '100%',
+                margin : '0px' 
+                
+                
+            }
+        };
+        
+        '<div class="{0}" width="420" height="315" src="{1}" frameborder="0" allowfullscreen>' +
+                    '<a href="{2}">' + 
+                        '<img class="{0}-thumbnail" src="{3}/Images/{4}/{5}#image-{4}" />' + 
+                    '</a>' + 
+                '</div>',
+        
                 
         if (this.href) {
             img = {
@@ -234,6 +241,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 padding: '10px'
                 
             },
+            frameborder : 0,
+            allowfullscreen : true,
+            src : this.video_src,
+            cls : this.cls,
             align : this.align,
             cn : [
                 img,
@@ -260,9 +271,12 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     readElement : function(node)
     {
         // this should not really come from the link...
+        this.video_src = this.getVal(node, false, 'src');
+        this.cls = this.getVal(node, false, 'class');
         this.href = this.getVal(node, 'a', 'href');
         
         this.image_src = this.getVal(node, 'img', 'src');
+         
         this.align = this.getVal(node, 'figure', 'align');
         this.caption = this.getVal(node, 'figcaption', 'html');
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
