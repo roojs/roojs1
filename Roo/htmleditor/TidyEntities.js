@@ -606,10 +606,12 @@ Roo.htmleditor.TidyEntities = {
      * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
      * @return {String} Entity encoded text.
      */
-    encodeRaw: function(text, attr) {
+    encodeRaw: function(text, attr)
+    {
+        var t = this;
         return text.replace(attr ? this.attrsCharsRegExp : this.textCharsRegExp, function(chr) {
-            return this.baseEntities[chr] || chr;
-        }, this);
+            return t.baseEntities[chr] || chr;
+        });
     },
     /**
      * Encoded the specified text with both the attributes and text entities. This function will produce larger text contents
