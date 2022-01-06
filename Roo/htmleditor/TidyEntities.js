@@ -18,10 +18,10 @@ Roo.htmleditor.TidyEntities = {
        // Build a two way lookup table for the entities
        
        // Unpack entities lookup where the numbers are in radix 32 to reduce the size
-       te = Roo.htmleditor.TidyEntities;
-       if (te.namedEntities === false) {
-           te.namedEntities = buildEntitiesLookup(te.namedEntitiesData, 32);
-       }
+       
+      
+       this.namedEntities = buildEntitiesLookup(this.namedEntitiesData, 32);
+       
     },
 
 
@@ -96,7 +96,7 @@ Roo.htmleditor.TidyEntities = {
     textCharsRegExp : /[<>&\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
     rawCharsRegExp : /[<>&\"\']/g,
     entityRegExp : /&#([a-z0-9]+);?|&([a-z0-9]+);/gi,
-    namedEntities  = {},
+    namedEntities  : false,
     namedEntitiesData : [ 
         '50',
         'nbsp',
