@@ -68,7 +68,7 @@ Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
             }
         };
         writer.reset();
-        1 != node.type || this.inner ? handlers[11](node) : walk(node);
+        1 != node.nodeType || this.inner ? handlers[11](node) : walk(node);
     return writer.getContent();
 
     function walk(node) {
