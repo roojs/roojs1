@@ -48745,7 +48745,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         dbody.bgProperties = 'fixed'; // ie
         //Roo.DomHelper.applyStyles(dbody, ss);
         Roo.EventManager.on(this.doc, {
-            //'mousedown': this.onEditorEvent,
+            'mousedown': this.onMouseDown,
             'mouseup': this.onEditorEvent,
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
