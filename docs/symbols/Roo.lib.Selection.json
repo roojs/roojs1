@@ -1,0 +1,84 @@
+{
+  "name" : "Roo.lib.Selection",
+  "augments" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "This is a toolkit, normally used to copy features into a Dom Selection element\nRoo.lib.Selection.wrap(x);",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "Selection",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [],
+  "methods" : [
+    {
+      "name" : "wrap",
+      "type" : "function",
+      "desc" : "Wrap a Dom Range object, to give it new features...",
+      "sig" : "(the)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "the",
+          "type" : "Range",
+          "desc" : "range to wrap",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "insertNode",
+      "type" : "function",
+      "desc" : "insert node at selection",
+      "sig" : "(node, cursor)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "DomElement|string",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "cursor",
+          "type" : "string",
+          "desc" : "(after|in|none) where to place the cursor after inserting.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    }
+  ],
+  "events" : []
+}
