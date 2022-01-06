@@ -1,7 +1,7 @@
 /***
  * This is based loosely on tinymce 
  * @class Roo.htmleditor.TidyWriter
- * 
+ * https://github.com/thorn0/tinymce.html/blob/master/tinymce.html.js
  */
 
 Roo.htmleditor.TidyWriter = function(settings)
