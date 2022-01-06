@@ -658,9 +658,10 @@ Roo.htmleditor.TidyEntities = {
      * @return {String} Entity encoded text.
      */
     encodeNamed: function(text, attr, entities) {
-        entities = entities || namedEntities;
-        return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
-            return baseEntities[chr] || entities[chr] || chr;
+        var t = this;
+        entities = entities || this.namedEntities;
+        return text.replace(attr ? this.attrsCharsRegExp : this.textCharsRegExp, function(chr) {
+            return t.baseEntities[chr] || entities[chr] || chr;
         });
     },
     /**
