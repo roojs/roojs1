@@ -17,26 +17,21 @@ Roo.htmleditor.TidyWriter = function(settings)
     this.htmlOutput = 'html' == settings.element_format;
 }
 Roo.apply(Roo.htmleditor.TidyWriter,
-          {
-     
+{
+
 
     makeMap : function (items, delim, map) {
 		var i;
-
 		items = items || [];
 		delim = delim || ',';
-
 		if (typeof items == "string") {
 			items = items.split(delim);
 		}
-
 		map = map || {};
-
 		i = items.length;
 		while (i--) {
 			map[items[i]] = {};
 		}
-
 		return map;
 	},
 

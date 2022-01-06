@@ -712,8 +712,10 @@ Roo.htmleditor.TidyEntities = {
      * @param {String} text Text to entity decode.
      * @return {String} Entity decoded string.
      */
-    decode: function(text) {
-        return text.replace(entityRegExp, function(all, numeric) {
+    decode: function(text)
+    {
+        var  t = this;
+        return text.replace(this.entityRegExp, function(all, numeric) {
             if (numeric) {
                 numeric = 'x' === numeric.charAt(0).toLowerCase() ? parseInt(numeric.substr(1), 16) : parseInt(numeric, 10);
                 // Support upper UTF
@@ -721,15 +723,28 @@ Roo.htmleditor.TidyEntities = {
                     numeric -= 65536;
                     return String.fromCharCode(55296 + (numeric >> 10), 56320 + (1023 & numeric));
                 }
-                return asciiMap[numeric] || String.fromCharCode(numeric);
+                return t.asciiMap[numeric] || String.fromCharCode(numeric);
             }
-            return reverseEntities[all] || namedEntities[all] || nativeDecode(all);
+            return t.reverseEntities[all] || t.namedEntities[all] || t.nativeDecode(all);
         });
-    }
-    function nativeDecode(text) {
+    },
+    nativeDecode : function (text) {
         return text;
-    }
-makeMap
+    },
+    makeMap : function (items, delim, map) {
+		var i;
+		items = items || [];
+		delim = delim || ',';
+		if (typeof items == "string") {
+			items = items.split(delim);
+		}
+		map = map || {};
+		i = items.length;
+		while (i--) {
+			map[items[i]] = {};
+		}
+		return map;
+	},
     
     
     
