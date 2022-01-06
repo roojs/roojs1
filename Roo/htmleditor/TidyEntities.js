@@ -1,175 +1,49 @@
 /***
  * This is based loosely on tinymce 
  * @class Roo.htmleditor.TidyEntities
+ * @static
  * https://github.com/thorn0/tinymce.html/blob/master/tinymce.html.js
  */
 
-Roo.htmleditor.TidyEntities = function()
-{
+Roo.htmleditor.TidyEntities = {
     
-        var makeMap = Roo.htmleditor.Tidy.makeMap;
-        var namedEntities, baseEntities, reverseEntities,
-           
-        // Decodes text by using the browser
-        function nativeDecode(text) {
-            return text;
-        }
-        // Build a two way lookup table for the entities
-        function buildEntitiesLookup(items, radix) {
-            var i, chr, entity, lookup = {};
-            if (items) {
-                items = items.split(',');
-                radix = radix || 10;
-                // Build entities lookup table
-                for (i = 0; i < items.length; i += 2) {
-                    chr = String.fromCharCode(parseInt(items[i], radix));
-                    // Only add non base entities
-                    if (!baseEntities[chr]) {
-                        entity = '&' + items[i + 1] + ';';
-                        lookup[chr] = entity;
-                        lookup[entity] = chr;
-                    }
+    /**
+     * initialize data..
+     */
+    init : funciton (){
+    
+        
+       // Decodes text by using the browser
+       
+       // Build a two way lookup table for the entities
+       
+       // Unpack entities lookup where the numbers are in radix 32 to reduce the size
+       te = Roo.htmleditor.TidyEntities;
+       if (te.namedEntities === false) {
+           te.namedEntities = buildEntitiesLookup(te.namedEntitiesData, 32);
+       }
+    }
+
+
+    function buildEntitiesLookup(items, radix) {
+        var i, chr, entity, lookup = {};
+        if (items) {
+            items = items.split(',');
+            radix = radix || 10;
+            // Build entities lookup table
+            for (i = 0; i < items.length; i += 2) {
+                chr = String.fromCharCode(parseInt(items[i], radix));
+                // Only add non base entities
+                if (!baseEntities[chr]) {
+                    entity = '&' + items[i + 1] + ';';
+                    lookup[chr] = entity;
+                    lookup[entity] = chr;
                 }
-                return lookup;
             }
+            return lookup;
         }
-        // Unpack entities lookup where the numbers are in radix 32 to reduce the size
-        te.namedEntities = buildEntitiesLookup(te.namedEntitiesData, 32);
-
-
-
-
-        var Entities = {
-            /**
-             * Encodes the specified string using raw entities. This means only the required XML base entities will be encoded.
-             *
-             * @method encodeRaw
-             * @param {String} text Text to encode.
-             * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
-             * @return {String} Entity encoded text.
-             */
-            encodeRaw: function(text, attr) {
-                return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
-                    return baseEntities[chr] || chr;
-                });
-            },
-            /**
-             * Encoded the specified text with both the attributes and text entities. This function will produce larger text contents
-             * since it doesn't know if the context is within a attribute or text node. This was added for compatibility
-             * and is exposed as the DOMUtils.encode function.
-             *
-             * @method encodeAllRaw
-             * @param {String} text Text to encode.
-             * @return {String} Entity encoded text.
-             */
-            encodeAllRaw: function(text) {
-                return ('' + text).replace(rawCharsRegExp, function(chr) {
-                    return baseEntities[chr] || chr;
-                });
-            },
-            /**
-             * Encodes the specified string using numeric entities. The core entities will be
-             * encoded as named ones but all non lower ascii characters will be encoded into numeric entities.
-             *
-             * @method encodeNumeric
-             * @param {String} text Text to encode.
-             * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
-             * @return {String} Entity encoded text.
-             */
-            encodeNumeric: function(text, attr) {
-                return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
-                    // Multi byte sequence convert it to a single entity
-                    if (chr.length > 1) {
-                        return '&#' + (1024 * (chr.charCodeAt(0) - 55296) + (chr.charCodeAt(1) - 56320) + 65536) + ';';
-                    }
-                    return baseEntities[chr] || '&#' + chr.charCodeAt(0) + ';';
-                });
-            },
-            /**
-             * Encodes the specified string using named entities. The core entities will be encoded
-             * as named ones but all non lower ascii characters will be encoded into named entities.
-             *
-             * @method encodeNamed
-             * @param {String} text Text to encode.
-             * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
-             * @param {Object} entities Optional parameter with entities to use.
-             * @return {String} Entity encoded text.
-             */
-            encodeNamed: function(text, attr, entities) {
-                entities = entities || namedEntities;
-                return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
-                    return baseEntities[chr] || entities[chr] || chr;
-                });
-            },
-            /**
-             * Returns an encode function based on the name(s) and it's optional entities.
-             *
-             * @method getEncodeFunc
-             * @param {String} name Comma separated list of encoders for example named,numeric.
-             * @param {String} entities Optional parameter with entities to use instead of the built in set.
-             * @return {function} Encode function to be used.
-             */
-            getEncodeFunc: function(name, entities) {
-                entities = buildEntitiesLookup(entities) || namedEntities;
-
-                function encodeNamedAndNumeric(text, attr) {
-                    return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
-                        return baseEntities[chr] || entities[chr] || '&#' + chr.charCodeAt(0) + ';' || chr;
-                    });
-                }
-
-                function encodeCustomNamed(text, attr) {
-                    return Entities.encodeNamed(text, attr, entities);
-                }
-                // Replace + with , to be compatible with previous TinyMCE versions
-                name = makeMap(name.replace(/\+/g, ','));
-                // Named and numeric encoder
-                if (name.named && name.numeric) {
-                    return encodeNamedAndNumeric;
-                }
-                // Named encoder
-                if (name.named) {
-                    // Custom names
-                    if (entities) {
-                        return encodeCustomNamed;
-                    }
-                    return Entities.encodeNamed;
-                }
-                // Numeric
-                if (name.numeric) {
-                    return Entities.encodeNumeric;
-                }
-                // Raw encoder
-                return Entities.encodeRaw;
-            },
-            /**
-             * Decodes the specified string, this will replace entities with raw UTF characters.
-             *
-             * @method decode
-             * @param {String} text Text to entity decode.
-             * @return {String} Entity decoded string.
-             */
-            decode: function(text) {
-                return text.replace(entityRegExp, function(all, numeric) {
-                    if (numeric) {
-                        numeric = 'x' === numeric.charAt(0).toLowerCase() ? parseInt(numeric.substr(1), 16) : parseInt(numeric, 10);
-                        // Support upper UTF
-                        if (numeric > 65535) {
-                            numeric -= 65536;
-                            return String.fromCharCode(55296 + (numeric >> 10), 56320 + (1023 & numeric));
-                        }
-                        return asciiMap[numeric] || String.fromCharCode(numeric);
-                    }
-                    return reverseEntities[all] || namedEntities[all] || nativeDecode(all);
-                });
-            }
-        };
-        return Entities;
-    });
+    }
     
-    
-    
-Roo.apply(Roo.htmleditor.TidyEntities, {
     asciiMap : {
             128: '€',
             130: '‚',
@@ -720,5 +594,137 @@ Roo.apply(Roo.htmleditor.TidyEntities, {
         'rsaquo',
         '85c',
         'euro'
-    ]
-});
+    ] 
+
+         
+    /**
+     * Encodes the specified string using raw entities. This means only the required XML base entities will be encoded.
+     *
+     * @method encodeRaw
+     * @param {String} text Text to encode.
+     * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
+     * @return {String} Entity encoded text.
+     */
+    encodeRaw: function(text, attr) {
+        return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
+            return baseEntities[chr] || chr;
+        });
+    },
+    /**
+     * Encoded the specified text with both the attributes and text entities. This function will produce larger text contents
+     * since it doesn't know if the context is within a attribute or text node. This was added for compatibility
+     * and is exposed as the DOMUtils.encode function.
+     *
+     * @method encodeAllRaw
+     * @param {String} text Text to encode.
+     * @return {String} Entity encoded text.
+     */
+    encodeAllRaw: function(text) {
+        return ('' + text).replace(rawCharsRegExp, function(chr) {
+            return baseEntities[chr] || chr;
+        });
+    },
+    /**
+     * Encodes the specified string using numeric entities. The core entities will be
+     * encoded as named ones but all non lower ascii characters will be encoded into numeric entities.
+     *
+     * @method encodeNumeric
+     * @param {String} text Text to encode.
+     * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
+     * @return {String} Entity encoded text.
+     */
+    encodeNumeric: function(text, attr) {
+        return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
+            // Multi byte sequence convert it to a single entity
+            if (chr.length > 1) {
+                return '&#' + (1024 * (chr.charCodeAt(0) - 55296) + (chr.charCodeAt(1) - 56320) + 65536) + ';';
+            }
+            return baseEntities[chr] || '&#' + chr.charCodeAt(0) + ';';
+        });
+    },
+    /**
+     * Encodes the specified string using named entities. The core entities will be encoded
+     * as named ones but all non lower ascii characters will be encoded into named entities.
+     *
+     * @method encodeNamed
+     * @param {String} text Text to encode.
+     * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
+     * @param {Object} entities Optional parameter with entities to use.
+     * @return {String} Entity encoded text.
+     */
+    encodeNamed: function(text, attr, entities) {
+        entities = entities || namedEntities;
+        return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
+            return baseEntities[chr] || entities[chr] || chr;
+        });
+    },
+    /**
+     * Returns an encode function based on the name(s) and it's optional entities.
+     *
+     * @method getEncodeFunc
+     * @param {String} name Comma separated list of encoders for example named,numeric.
+     * @param {String} entities Optional parameter with entities to use instead of the built in set.
+     * @return {function} Encode function to be used.
+     */
+    getEncodeFunc: function(name, entities) {
+        entities = buildEntitiesLookup(entities) || namedEntities;
+
+        function encodeNamedAndNumeric(text, attr) {
+            return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
+                return baseEntities[chr] || entities[chr] || '&#' + chr.charCodeAt(0) + ';' || chr;
+            });
+        }
+
+        function encodeCustomNamed(text, attr) {
+            return Entities.encodeNamed(text, attr, entities);
+        }
+        // Replace + with , to be compatible with previous TinyMCE versions
+        name = makeMap(name.replace(/\+/g, ','));
+        // Named and numeric encoder
+        if (name.named && name.numeric) {
+            return encodeNamedAndNumeric;
+        }
+        // Named encoder
+        if (name.named) {
+            // Custom names
+            if (entities) {
+                return encodeCustomNamed;
+            }
+            return Entities.encodeNamed;
+        }
+        // Numeric
+        if (name.numeric) {
+            return Entities.encodeNumeric;
+        }
+        // Raw encoder
+        return Entities.encodeRaw;
+    },
+    /**
+     * Decodes the specified string, this will replace entities with raw UTF characters.
+     *
+     * @method decode
+     * @param {String} text Text to entity decode.
+     * @return {String} Entity decoded string.
+     */
+    decode: function(text) {
+        return text.replace(entityRegExp, function(all, numeric) {
+            if (numeric) {
+                numeric = 'x' === numeric.charAt(0).toLowerCase() ? parseInt(numeric.substr(1), 16) : parseInt(numeric, 10);
+                // Support upper UTF
+                if (numeric > 65535) {
+                    numeric -= 65536;
+                    return String.fromCharCode(55296 + (numeric >> 10), 56320 + (1023 & numeric));
+                }
+                return asciiMap[numeric] || String.fromCharCode(numeric);
+            }
+            return reverseEntities[all] || namedEntities[all] || nativeDecode(all);
+        });
+    }
+    function nativeDecode(text) {
+        return text;
+    }
+
+    
+    
+    
+Roo.htmleditor.TidyEntities.init();
