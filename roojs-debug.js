@@ -46877,6 +46877,29 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         
         var m = this.width == '50%' && this.align == 'center' ? '0 auto' : 0; 
         
+        var img =   {
+                    tag : 'img',
+                    src : this.image_src,
+                    alt : d.innerText.replace(/\n/g, " "), // removeHTML..
+                    style: {
+                        width : 'auto',
+                        'max-width': '100%',
+                        margin : '0px' 
+                        
+                        
+                    }
+                };
+                
+        if (this.href) {
+            img = {
+                tag : 'a',
+                href: this.href,
+                cn : [
+                    img
+                ]
+            };
+        }
+        
         return  {
             tag: 'figure',
             'data-block' : 'Figure',
@@ -46892,18 +46915,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             },
             align : this.align,
             cn : [
-                {
-                    tag : 'img',
-                    src : this.image_src,
-                    alt : d.innerText.replace(/\n/g, " "), // removeHTML..
-                    style: {
-                        width : 'auto',
-                        'max-width': '100%',
-                        margin : '0px' 
-                        
-                        
-                    }
-                },
+                img,
+              
                 {
                     tag: 'figcaption',
                     contenteditable : true,
