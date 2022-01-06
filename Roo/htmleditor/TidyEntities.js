@@ -607,9 +607,9 @@ Roo.htmleditor.TidyEntities = {
      * @return {String} Entity encoded text.
      */
     encodeRaw: function(text, attr) {
-        return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
-            return baseEntities[chr] || chr;
-        });
+        return text.replace(attr ? this.attrsCharsRegExp : this.textCharsRegExp, function(chr) {
+            return this.baseEntities[chr] || chr;
+        }, this);
     },
     /**
      * Encoded the specified text with both the attributes and text entities. This function will produce larger text contents
