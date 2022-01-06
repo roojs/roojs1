@@ -32,6 +32,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     caption : '',
     caption_display : 'block',
     width : '100%',
+    href: '',
+    video_url : '',
     
     // margin: '2%', not used
     
@@ -218,7 +220,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 '</div>',
         */
                 
-        if (this.href) {
+        if (this.href.length > 0) {
             img = {
                 tag : 'a',
                 href: this.href,
@@ -229,7 +231,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         }
         
         
-        if (this.video_url) {
+        if (this.video_url.length > 0) {
             img = {
                 tag : 'div',
                 cls : this.cls,
