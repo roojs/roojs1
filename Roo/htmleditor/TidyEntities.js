@@ -623,8 +623,9 @@ Roo.htmleditor.TidyEntities = {
      * @return {String} Entity encoded text.
      */
     encodeAllRaw: function(text) {
-        return ('' + text).replace(rawCharsRegExp, function(chr) {
-            return baseEntities[chr] || chr;
+        var t = this;
+        return ('' + text).replace(this.rawCharsRegExp, function(chr) {
+            return t.baseEntities[chr] || chr;
         });
     },
     /**
@@ -637,6 +638,7 @@ Roo.htmleditor.TidyEntities = {
      * @return {String} Entity encoded text.
      */
     encodeNumeric: function(text, attr) {
+        var t = this;
         return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
             // Multi byte sequence convert it to a single entity
             if (chr.length > 1) {
