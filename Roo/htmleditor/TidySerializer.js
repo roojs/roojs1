@@ -77,9 +77,9 @@ Roo.apply(Roo.htmleditor.TidySerializer.prototype, {
         writer.reset();
         1 != node.nodeType || this.inner ? handlers[11](node) : walk(node);
         return writer.getContent();
-    }
+    },
 
-    function walk(node) {
+    walk: function(node) {
         var name, isEmpty, attrs, attrName, attrValue, sortedAttrs, i, l, elementRule, handler = handlers[node.type];
         if (handler) {
             handler(node);
