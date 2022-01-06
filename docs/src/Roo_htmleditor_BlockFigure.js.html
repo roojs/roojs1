@@ -203,6 +203,7 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">img </span><span class="jsdoc-syntax">=   {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">contenteditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'false'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.image_src</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">alt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d.innerText.replace</span><span class="jsdoc-syntax">(/\n/g, </span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">), </span><span class="jsdoc-comment">// removeHTML..
             </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: {
@@ -225,6 +226,7 @@
             </span><span class="jsdoc-var">img </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">contenteditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'true'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                     </span><span class="jsdoc-var">img
                 </span><span class="jsdoc-syntax">]
@@ -289,7 +291,7 @@
     </span><span class="jsdoc-var">readElement </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// this should not really come from the link...
-        </span><span class="jsdoc-var">this.video_src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.video_url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'class'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">);
 

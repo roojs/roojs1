@@ -46882,6 +46882,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         
         var img =   {
             tag : 'img',
+            contenteditable : 'false',
             src : this.image_src,
             alt : d.innerText.replace(/\n/g, " "), // removeHTML..
             style: {
@@ -46904,6 +46905,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             img = {
                 tag : 'a',
                 href: this.href,
+                contenteditable : 'true',
                 cn : [
                     img
                 ]
@@ -46968,7 +46970,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     readElement : function(node)
     {
         // this should not really come from the link...
-        this.video_src = this.getVal(node, 'div', 'src');
+        this.video_url = this.getVal(node, 'div', 'src');
         this.cls = this.getVal(node, 'div', 'class');
         this.href = this.getVal(node, 'a', 'href');
         
@@ -48936,6 +48938,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
     onEditorEvent : function(e)
     {
+         
         
         if (e && (e.ctrlKey || e.metaKey) && e.keyCode === 90) {
             return; // we do not handle this.. (undo manager does..)
