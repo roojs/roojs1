@@ -126,7 +126,7 @@ Roo.onReady(function(){
                                             caption : 'test',
                                             text_align: 'left',
                                             video_url : 'https://www.youtube.com/embed/Gbr-UrxxeoA',
-                                            href : 'https://www.youtube.com/watch?v=Gbr-UrxxeoA',
+                                            href : 'https://youtu.be/Gbr-UrxxeoA',
                                             cls : 'youtube',
                                             width : '100%',
                                             margin: '2%',
