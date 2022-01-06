@@ -110,6 +110,33 @@ Roo.onReady(function(){
                                 },
                                 xns : Roo,
                                
+                            },
+                            {
+                                xtype : 'Button',
+                                text : "Add Youtube",
+                                cls : 'x-init-enable',
+                                listeners : {
+                                    click : function (_self, e)
+                                    {
+                                        
+                                        var rr = new Roo.htmleditor.BlockFigure({
+                                            image_src: 'https://picsum.photos/400/300',
+    
+                                            align: 'center',
+                                            caption : 'test',
+                                            text_align: 'left',
+                                            video_url : 'https://www.youtube.com/embed/Gbr-UrxxeoA',
+                                            cls : 'youtube',
+                                            width : '100%',
+                                            margin: '2%',
+                                        });
+                                        editor.editorcore.insertAtCursor(rr.toHTML());
+                                    
+                                 
+                                    }
+                                },
+                                xns : Roo,
+                               
                             }
                    
                         ]
