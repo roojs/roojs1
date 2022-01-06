@@ -16,8 +16,8 @@ Roo.htmleditor.TidyWriter = function(settings)
     this.encode = Roo.htmleditor.TidyEntities.getEncodeFunc(settings.entity_encoding || 'raw', settings.entities);
     this.htmlOutput = 'html' == settings.element_format;
 }
-Roo.apply(Roo.htmleditor.TidyWriter,
-{
+Roo.htmleditor.TidyWriter.prototype = {
+
 
 
     makeMap : function (items, delim, map) {
@@ -150,4 +150,4 @@ Roo.apply(Roo.htmleditor.TidyWriter,
         return this.html.join('').replace(/\n$/, '');
     }
 
-});
+};
