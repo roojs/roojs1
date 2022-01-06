@@ -673,7 +673,7 @@ Roo.htmleditor.TidyEntities = {
      * @return {function} Encode function to be used.
      */
     getEncodeFunc: function(name, entities) {
-        entities = buildEntitiesLookup(entities) || namedEntities;
+        entities = this.buildEntitiesLookup(entities) || this.namedEntities;
 
         function encodeNamedAndNumeric(text, attr) {
             return text.replace(attr ? attrsCharsRegExp : textCharsRegExp, function(chr) {
