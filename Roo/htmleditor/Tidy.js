@@ -2,7 +2,7 @@
 /**
  * @class Roo.htmleditor.Tidy
  * Tidy HTML 
- * @cfg {Roo.HtmlEditorCore} core the editor.
+ * 
  * @constructor
  * Create a new Filter.
  * @param {Object} config Configuration options
@@ -23,12 +23,19 @@ Roo.htmleditor.Tidy.toString = function(node)
 
 Roo.htmleditor.Tidy.prototype = {
     
+    /**
+     *
+     * @cfg {Roo.HtmlEditorCore} core the editor.
+     */
+    core : false,
     
-     
 
     
     tidy : function(node, indent) {
-     
+        new Roo.htmleditor.TidySerializer({
+            indent : 2,
+        });
+        
          
     
     }
