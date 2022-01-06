@@ -260,6 +260,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         'font-style': 'italic',
                         display : this.caption_display
                     },
+                    cls : this.cls + '-thumbnail',
                     html : this.caption
                     
                 }
