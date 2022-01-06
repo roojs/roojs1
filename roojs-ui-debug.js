@@ -22242,6 +22242,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     caption : '',
     caption_display : 'block',
     width : '100%',
+    cls : '',
     href: '',
     video_url : '',
     
