@@ -544,7 +544,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // this is to prevent a href clicks resulting in a redirect?
     onMouseDown : function(e)
     {
-        
+        if (e.target.closest('a')) {
+            e.preventDefault();
+            return true;
+        }
         
         
     }
