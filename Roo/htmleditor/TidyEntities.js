@@ -595,7 +595,7 @@ Roo.htmleditor.TidyEntities = {
         'rsaquo',
         '85c',
         'euro'
-    ] 
+    ],
 
          
     /**
