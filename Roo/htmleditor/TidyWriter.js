@@ -82,13 +82,12 @@ Roo.htmleditor.TidyWriter.prototype = {
         
         // e_inline = elements that can be inline, but still allow \n before and after?
         // only 'BR' ??? any others?
-        var e_inline = name == 'BR' ? false : this.in_inline;
         
         // ADD LINE BEFORE tage
         if (!this.in_pre) {
             if (in_inline) {
                 //code
-                if (is_br) {
+                if (name == 'BR') {
                     this.addLine();
                 } else if (this.lastElementEndsWS()) {
                     this.addLine();
