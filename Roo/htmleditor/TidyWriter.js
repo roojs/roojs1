@@ -139,8 +139,10 @@ Roo.htmleditor.TidyWriter.prototype = {
     end: function(name) {
         var value;
         this.popState();
-        var indentstr = ''; 
-        if (!this.in_pre && !this.in_inline) {
+        var indentstr = '';
+        var in_inline = this.in_inline || Roo.htmleditor.TidyWriter.inline_elements.indexOf(name) > -1;
+        
+        if (!this.in_pre && !in_inline) {
             this.addLine();
             indentstr  = this.indentstr;
         }
