@@ -69,7 +69,7 @@ Roo.htmleditor.TidyWriter.prototype = {
 
         var indentstr = this.in_inline || this.in_pre ? '' : this.indentstr;
         
-        if (!this.in_inline && !this.in_pre) {
+        if (!in_inline && !this.in_pre) {
             this.addLine();
         }
         
