@@ -75,8 +75,12 @@ Roo.htmleditor.TidyWriter.prototype = {
 
         var indentstr = in_inline || this.in_pre ? '' : this.indentstr;
         
+        // e_inline = elements that can be inline, but still allow \n before and after?
+        // only 'BR' ??? any others?
+        var e_inline = name == 'BR' ? false : this.in_inline;
+        
         // if this element is inline - then don't add stuff beforehand..
-        if (!in_inline && !this.in_pre) {
+        if (!e_inline && !this.in_pre) {
             this.addLine();
         }
         
