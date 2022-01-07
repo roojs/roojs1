@@ -42,7 +42,7 @@ Roo.htmleditor.TidyWriter.prototype = {
     indentstr : '',
     in_pre: false,
     in_inline : false,
-    
+    last_inline : false,
     encode : false,
      
     
