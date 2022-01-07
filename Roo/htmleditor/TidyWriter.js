@@ -169,12 +169,15 @@ Roo.htmleditor.TidyWriter.prototype = {
         }
         if (this.in_pre || this.in_inline) {
             this.html[this.html.length] =  text;
-            return;
-            
+            return;   
         }
         // see if last line is a line break
-        
-        this.addLine();
+        var indentstr = this.indentstr;
+        if (node.previousSibling && node.previousSibling.nodeType == 1 && Roo.htmleditor.TidyWriter.inline_elements.indexOf(node.previousSibling.nodeName) > -1) {
+            indentstr = '';
+        } else {
+            this.addLine();
+        }
             
         
         
@@ -186,7 +189,7 @@ Roo.htmleditor.TidyWriter.prototype = {
             return;
         }
         if (!text.match(/\n/)) {
-            this.html.push(this.indentstr + text);
+            this.html.push(indentstr + text);
             return;
         }
         
