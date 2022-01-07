@@ -146,7 +146,7 @@ Roo.htmleditor.TidyWriter.prototype = {
         
         
         this.pushState({
-            indentstr : in_pre || in_inline ? '' : (this.indentstr + this.indent),
+            indentstr : in_pre   ? '' : (this.indentstr + this.indent),
             in_pre : in_pre,
             in_inline :  in_inline
         });
