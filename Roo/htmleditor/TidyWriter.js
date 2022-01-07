@@ -147,7 +147,7 @@ Roo.htmleditor.TidyWriter.prototype = {
             indentstr  = this.indentstr;
         }
         this.html.push(indentstr + '</', name.toLowerCase(), '>');
-       
+        this.last_inline = in_inline;
         
         // pop the indent state..
     },
