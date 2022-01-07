@@ -73,6 +73,9 @@ Roo.htmleditor.TidyWriter.prototype = {
         var is_short   = empty ? Roo.htmleditor.TidyWriter.shortend_elements.indexOf(name) > -1 : false;
         
         var i_inline = name == 'BR' ? false : in_inline;
+        if (i_inline && this.lastElementEndsWS()) {
+            i_inline = false;
+        }
 
         var indentstr = i_inline || this.in_pre ? '' : this.indentstr;
         
@@ -142,6 +145,17 @@ Roo.htmleditor.TidyWriter.prototype = {
          
         
     },
+    
+    lastElementEndsWS : function()
+    {
+        var value = this.html.length > 0 ? this.html[this.html.length-1] : false;
+        if (value === false) {
+            return true;
+        }
+        return value.match(/\s+$/);
+        
+    },
+    
     /**
      * Writes the a end element such as </p>.
      *
