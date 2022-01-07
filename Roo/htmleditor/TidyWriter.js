@@ -209,6 +209,26 @@ Roo.htmleditor.TidyWriter.prototype = {
             return;
         }
         if (this.in_pre || this.in_inline) {
+            
+            if (this.in_inline) {
+                text = text.replace(/\s/g,' ') // all line breaks to ' '
+                    .replace(/\s+/,' ')  // all white space to single white space
+                // if next tag is '<BR>', then we can trim right..
+                if (node.nextSibling &&
+                    node.nextSibling.nodeType == 1 &&
+                    node.nextSibling.nodeName == 'BR' )
+                {
+                    text = text.replace(/\s+$/g,'');
+                }
+                // if previous tag was a BR, we can also trim..
+                if (node.previousSibling &&
+                    node.previousSibling.nodeType == 1 &&
+                    node.previousSibling.nodeName == 'BR' )
+                {
+                    text = text.replace(/^\s+/g,'');
+                }
+                
+            }
             this.html[this.html.length] =  text;
             return;   
         }
