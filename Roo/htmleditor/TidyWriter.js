@@ -10,11 +10,10 @@ Roo.htmleditor.TidyWriter = function(settings)
     // indent, indentBefore, indentAfter, encode, htmlOutput, html = [];
     Roo.apply(this, settings);
     this.html = [];
-    
-    this.indentBefore =this.makeMap(settings.indent_before || '');
-    this.indentAfter = this.makeMap(settings.indent_after || '');
+    this.state = [];
+     
     this.encode = Roo.htmleditor.TidyEntities.getEncodeFunc(settings.entity_encoding || 'raw', settings.entities);
-    this.htmlOutput = 'html' == settings.element_format;
+  
 }
 Roo.htmleditor.TidyWriter.prototype = {
 
@@ -35,12 +34,17 @@ Roo.htmleditor.TidyWriter.prototype = {
 		return map;
 	},
 
-
-    indent : 0,
-    indentBefore : false,
-    indentAfter : false,
+    state : false,
+    
+    indent :  '  ',
+    
+    // part of state...
+    indentstr : '',
+    in_pre: false,
+    in_inline : false,
+    
     encode : false,
-    htmlOutput : false,
+     
     
             /**
     * Writes the a start element such as <p id="a">.
@@ -50,24 +54,80 @@ Roo.htmleditor.TidyWriter.prototype = {
     * @param {Array} attrs Optional attribute array or undefined if it hasn't any.
     * @param {Boolean} empty Optional empty state if the tag should end like <br />.
     */
-    start: function(name, attrs, empty) {
-       var i, l, attr, value;
-       if (this.indent && this.indentBefore[name] && this.html.length > 0) {
-           this.value = this.html[this.html.length - 1];
-           value.length > 0 && '\n' !== value && this.html.push('\n');
-       }
-       this.html.push('<', name);
-       if (attrs) {
-           for (i = 0, l = attrs.length; i < l; i++) {
-               attr = attrs[i];
-               this.html.push(' ', attr.name, '="', this.encode(attr.value, true), '"');
-           }
-       }
-       this.html[this.html.length] = !empty || this.htmlOutput ? '>' : ' />';
-       if (empty && this.indent && this.indentAfter[name] && this.html.length > 0) {
-           value = this.html[this.html.length - 1];
-           value.length > 0 && '\n' !== value && this.html.push('\n');
-       }
+    start: function(name, attrs, empty, node)
+    {
+        var i, l, attr, value;
+        
+        // there are some situations where adding line break && indentation will not work. will not work.
+        // <span / b / i ... formating?
+        
+        var in_inline = this.in_inline || Roo.htmleditor.TidyWriter.inline_elements.indexOf(name) > -1;
+        var in_pre    = this.in_pre    || Roo.htmleditor.TidyWriter.whitespace_elements.indexOf(name) > -1;
+        
+        var is_short   = empty ? Roo.htmleditor.TidyWriter.shortend_elements.indexOf(name) > -1 : false;
+        
+
+        var indentstr = this.in_inline || this.in_pre ? '' : this.indentstr;
+        
+        if (!this.in_inline && !this.in_pre) {
+            this.addLine();
+        }
+        
+        this.html.push(indentstr + '<', name.toLowerCase());
+        
+        if (attrs) {
+            for (i = 0, l = attrs.length; i < l; i++) {
+                attr = attrs[i];
+                this.html.push(' ', attr.name, '="', this.encode(attr.value, true), '"');
+            }
+        }
+     
+        if (empty) {
+            if (is_short) {
+                this.html[this.html.length] = '/>';
+            } else {
+                this.html[this.html.length] = '></' + name.toLowerCase() + '>';
+            }
+            
+            if (!this.in_inline && !this.in_pre) {
+                this.addLine();
+            }
+            return;
+        
+        }
+        // not empty..
+        this.html[this.html.length] = '>';
+        
+        // there is a special situation, where we need to turn on in_inline - if any of the imediate chidlren are one of these.
+        /*
+        if (!in_inline && !in_pre) {
+            var cn = node.firstChild;
+            while(cn) {
+                if (Roo.htmleditor.TidyWriter.inline_elements.indexOf(cn.nodeName) > -1) {
+                    in_inline = true
+                    break;
+                }
+                cn = cn.nextSibling;
+            }
+             
+        }
+        */
+        
+        
+        this.pushState({
+            indentstr : in_pre || in_inline ? '' : (this.indentstr + this.indent),
+            in_pre : in_pre,
+            in_inline :  in_inline
+        });
+        // add a line after if we are not in a
+        
+        if (!in_inline && !in_pre) {
+            this.addLine();
+        }
+        
+            
+         
+        
     },
     /**
      * Writes the a end element such as </p>.
@@ -77,22 +137,67 @@ Roo.htmleditor.TidyWriter.prototype = {
      */
     end: function(name) {
         var value;
-         
-        this.html.push('</', name, '>');
-        if (this.indent && this.indentAfter[name] && this.html.length > 0) {
-            value = this.html[this.html.length - 1];
-            value.length > 0 && '\n' !== value && this.html.push('\n');
+        this.popState();
+        var indentstr = ''; 
+        if (!this.in_pre && !this.in_inline) {
+            this.addLine();
+            indentstr  = this.indentstr;
         }
+        this.html.push(indentstr + '</', name.toLowerCase(), '>');
+       
+        
+        // pop the indent state..
     },
     /**
      * Writes a text node.
+     *
+     * In pre - we should not mess with the contents.
+     * 
      *
      * @method text
      * @param {String} text String to write out.
      * @param {Boolean} raw Optional raw state if true the contents wont get encoded.
      */
-    text: function(text, raw) {
-        text.length > 0 && (this.html[this.html.length] = raw ? text : encode(text));
+    text: function(text )
+    {
+        // if not in whitespace critical
+        if (text.length < 1) {
+            return;
+        }
+        if (this.in_pre || this.is_inline) {
+            this.html[this.html.length] =  text;
+            return;
+            
+        }
+        // see if last line is a line break
+        
+        this.addLine();
+            
+        
+        
+        text = text.replace(/\s/g," ") // all line breaks to ' '
+                .replace(/^\s+/,'')  // leding white space
+                .replace(/\s+$/,''); // clean trailing white space
+        
+        if (text.length < 1) {
+            return;
+        }
+        if (!text.match(/\n/)) {
+            this.html.push(this.indentstr + text);
+            return;
+        }
+        
+        text = this.indentstr + text.replace(
+            /(?![^\n]{1,64}$)([^\n]{1,64})\s/g, '$1\n' + this.indentstr
+        );
+        // remoeve the last whitespace / line break.
+        text = text.replace(/\s+$/,''); 
+        
+        this.html.push(text);
+        
+        // split and indent..
+        
+        
     },
     /**
      * Writes a cdata node such as <![CDATA[data]]>.
@@ -121,7 +226,7 @@ Roo.htmleditor.TidyWriter.prototype = {
      */
     pi: function(name, text) {
         text ? this.html.push('<?', name, ' ', this.encode(text), '?>') : this.html.push('<?', name, '?>');
-        this.indent && this.html.push('\n');
+        this.indent != '' && this.html.push('\n');
     },
     /**
      * Writes a doctype node such as <!DOCTYPE data>.
@@ -130,7 +235,7 @@ Roo.htmleditor.TidyWriter.prototype = {
      * @param {String} text String to write out inside the doctype.
      */
     doctype: function(text) {
-        this.html.push('<!DOCTYPE', text, '>', this.indent ? '\n' : '');
+        this.html.push('<!DOCTYPE', text, '>', this.indent != '' ? '\n' : '');
     },
     /**
      * Resets the internal buffer if one wants to reuse the writer.
@@ -139,6 +244,12 @@ Roo.htmleditor.TidyWriter.prototype = {
      */
     reset: function() {
         this.html.length = 0;
+        this.state = [];
+        this.pushState({
+            indentstr : '',
+            in_pre : false, 
+            in_inline : false
+        })
     },
     /**
      * Returns the contents that got serialized.
@@ -148,6 +259,58 @@ Roo.htmleditor.TidyWriter.prototype = {
      */
     getContent: function() {
         return this.html.join('').replace(/\n$/, '');
+    },
+    
+    pushState : function(cfg)
+    {
+        this.state.push(cfg);
+        Roo.apply(this, cfg);
+    },
+    
+    popState : function()
+    {
+        if (this.state.length < 1) {
+            return; // nothing to push
+        }
+        var cfg = {
+            in_pre: false,
+            indentstr : ''
+        };
+        this.state.pop();
+        if (this.state.length > 0) {
+            cfg = this.state[this.state.length-1]; 
+        }
+        Roo.apply(this, cfg);
+    },
+    
+    addLine: function()
+    {
+        if (this.html.length < 1) {
+            return;
+        }
+        
+        
+        var value = this.html[this.html.length - 1];
+        if (value.length > 0 && '\n' !== value) {
+            this.html.push('\n');
+        }
     }
-
+    
+    
+//'pre script noscript style textarea video audio iframe object code'
+// shortended... 'area base basefont br col frame hr img input isindex link  meta param embed source wbr track');
+// inline 
 };
+
+Roo.htmleditor.TidyWriter.inline_elements = [
+        'SPAN','STRONG','B','EM','I','FONT','STRIKE','U','VAR',
+        'CITE','DFN','CODE','MARK','Q','SUP','SUB','SAMP'
+];
+Roo.htmleditor.TidyWriter.shortend_elements = [
+    'AREA','BASE','BASEFONT','BR','COL','FRAME','HR','IMG','INPUT',
+    'ISINDEX','LINK','','META','PARAM','EMBED','SOURCE','WBR','TRACK'
+];
+
+Roo.htmleditor.TidyWriter.whitespace_elements = [
+    'PRE','SCRIPT','NOSCRIPT','STYLE','TEXTAREA','VIDEO','AUDIO','IFRAME','OBJECT','CODE'
+];
