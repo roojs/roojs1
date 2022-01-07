@@ -361,10 +361,15 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bd </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.doc.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.doc.documentElement</span><span class="jsdoc-syntax">);
 
 
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.win.getSelection</span><span class="jsdoc-syntax">();
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">div </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">div.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bd.innerHTML</span><span class="jsdoc-syntax">;
-
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">gtx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">div.getElementsByClassName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'gtx-trans-icon'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// google translate - really annoying and difficult to get rid of.
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">gtx.length </span><span class="jsdoc-syntax">&gt; 0) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">gtx.item</span><span class="jsdoc-syntax">(0)</span><span class="jsdoc-var">.parentNode</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">rm.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rm</span><span class="jsdoc-syntax">);
+            }
 
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableBlocks</span><span class="jsdoc-syntax">) {
