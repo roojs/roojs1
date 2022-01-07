@@ -2,7 +2,7 @@
 <span class="jsdoc-comment">/**
  * @class Roo.htmleditor.Tidy
  * Tidy HTML 
- * @cfg {Roo.HtmlEditorCore} core the editor.
+ * 
  * @constructor
  * Create a new Filter.
  * @param {Object} config Configuration options
@@ -23,123 +23,21 @@
 
 </span><span class="jsdoc-var">Roo.htmleditor.Tidy.prototype </span><span class="jsdoc-syntax">= {
 
+    </span><span class="jsdoc-comment">/**
+     *
+     * @cfg {Roo.HtmlEditorCore} core the editor.
+     */
+    </span><span class="jsdoc-var">core </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
-    </span><span class="jsdoc-var">wrap </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">s.replace</span><span class="jsdoc-syntax">(/\n/g, </span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/(?![^\n]{1,80}$)([^\n]{1,80})\s/g, </span><span class="jsdoc-string">'$1\n'</span><span class="jsdoc-syntax">);
-    },
 
 
     </span><span class="jsdoc-var">tidy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">indent</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.TidySerializer</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">indent </span><span class="jsdoc-syntax">: 2,
+        });
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ser.serialize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-keyword">if  </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeType </span><span class="jsdoc-syntax">== 3) {
-            </span><span class="jsdoc-comment">// text.
-
-
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">indent </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">node.nodeValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.wrap</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeValue.trim</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\n&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">indent</span><span class="jsdoc-syntax">);
-
-
-        }
-
-        </span><span class="jsdoc-keyword">if  </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeType </span><span class="jsdoc-syntax">!= 1) {
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-        }
-
-
-
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BODY'</span><span class="jsdoc-syntax">) {
-
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.cn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
-        }
-
-             </span><span class="jsdoc-comment">// Prints the node tagName, such as &lt;A&gt;, &lt;IMG&gt;, etc
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&lt;&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">node.tagName </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">this.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) ;
-
-        </span><span class="jsdoc-comment">// elements with no children..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'IMG'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'BR'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'HR'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'INPUT'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName</span><span class="jsdoc-syntax">) &gt; -1) {
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/&gt;'</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'&gt;'</span><span class="jsdoc-syntax">;
-
-
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cindent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">indent </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">indent </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'  '</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">// tags where we will not pad the children.. (inline text tags etc..)
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'PRE'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'TEXTAREA'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'TD'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'A'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'SPAN'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'I'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'S'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName</span><span class="jsdoc-syntax">) &gt; -1) { </span><span class="jsdoc-comment">// or code?
-            </span><span class="jsdoc-var">cindent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-
-
-        }
-
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cindent </span><span class="jsdoc-syntax">);
-
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cn  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">node.tagName </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&gt;'</span><span class="jsdoc-syntax">;
-
-    },
-    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">indent</span><span class="jsdoc-syntax">)
-    {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= [];
-
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0 ; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">ar.length </span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-
-
-
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">indent </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false   </span><span class="jsdoc-comment">// indent==false preservies everything
-                </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt; 0
-                &amp;&amp; </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.nodeType </span><span class="jsdoc-syntax">== 3
-                &amp;&amp; </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.nodeValue.length </span><span class="jsdoc-syntax">&gt; 0
-                &amp;&amp; </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.nodeValue.match</span><span class="jsdoc-syntax">(/^\s+/)
-            ) {
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ret.length</span><span class="jsdoc-syntax">-1] == </span><span class="jsdoc-string">&quot;\n&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">indent</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">ret.pop</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// remove line break from last?
-                </span><span class="jsdoc-syntax">}
-
-                </span><span class="jsdoc-var">ret.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// add a space if i'm a text item with a space at the front, as tidy will strip spaces.
-            </span><span class="jsdoc-syntax">}
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">indent </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false
-                </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.nodeType </span><span class="jsdoc-syntax">== 1 </span><span class="jsdoc-comment">// element - and indent is not set... 
-            </span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">ret.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\n&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">indent</span><span class="jsdoc-syntax">);
-            }
-
-            </span><span class="jsdoc-var">ret.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tidy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">indent</span><span class="jsdoc-syntax">));
-            </span><span class="jsdoc-comment">// text + trailing indent 
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">indent </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false
-                </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.nodeType </span><span class="jsdoc-syntax">== 3
-                &amp;&amp; </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.nodeValue.length </span><span class="jsdoc-syntax">&gt; 0
-                &amp;&amp; </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.nodeValue.match</span><span class="jsdoc-syntax">(/\s+$/)
-            ){
-                </span><span class="jsdoc-var">ret.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\n&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">indent</span><span class="jsdoc-syntax">);
-            }
-
-
-
-
-        }
-        </span><span class="jsdoc-comment">// what if all text?
-
-
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
-    },
-
-
-
-    </span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
-    {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">= [];
-        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">node.attributes.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-
-            </span><span class="jsdoc-comment">// skip empty values?
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node.attributes.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.value.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-var">attr.push</span><span class="jsdoc-syntax">(  </span><span class="jsdoc-var">node.attributes.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'=&quot;' </span><span class="jsdoc-syntax">+
-                    </span><span class="jsdoc-var">Roo.util.Format.htmlEncode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.attributes.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.value</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'&quot;'
-            </span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">attr.length </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">attr.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) ) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
 
     }
-
-
 
 }</span></code></body></html>

@@ -5,7 +5,7 @@
  *
  * Known issues?
  * - not tested much with 'PRE' formated elements.
- * - long text inside of inline can be wrapped and clened?
+ * 
  *
  *
  */
@@ -23,23 +23,7 @@ Roo.htmleditor.TidyWriter = function(settings)
 }
 Roo.htmleditor.TidyWriter.prototype = {
 
-
-
-    makeMap : function (items, delim, map) {
-		var i;
-		items = items || [];
-		delim = delim || ',';
-		if (typeof items == "string") {
-			items = items.split(delim);
-		}
-		map = map || {};
-		i = items.length;
-		while (i--) {
-			map[items[i]] = {};
-		}
-		return map;
-	},
-
+ 
     state : false,
     
     indent :  '  ',
@@ -208,11 +192,17 @@ Roo.htmleditor.TidyWriter.prototype = {
         if (text.length < 1) {
             return;
         }
-        if (this.in_pre || this.in_inline) {
-            
-            if (this.in_inline) {
-                text = text.replace(/\s/g,' ') // all line breaks to ' '
-                    .replace(/\s+/,' ')  // all white space to single white space
+        if (this.in_pre) {
+            this.html[this.html.length] =  text;
+            return;   
+        }
+        
+        if (this.in_inline) {
+            text = text.replace(/\s+/g,' ') // all white space inc line breaks to a slingle' '
+            if (text != ' ') {
+                text = text.replace(/\s+/,' ')  // all white space to single white space
+                
+                    
                 // if next tag is '<BR>', then we can trim right..
                 if (node.nextSibling &&
                     node.nextSibling.nodeType == 1 &&
@@ -227,35 +217,51 @@ Roo.htmleditor.TidyWriter.prototype = {
                 {
                     text = this.indentstr +  text.replace(/^\s+/g,'');
                 }
+                if (text.match(/\n/)) {
+                    text = text.replace(
+                        /(?![^\n]{1,64}$)([^\n]{1,64})\s/g, '$1\n' + this.indentstr
+                    );
+                    // remoeve the last whitespace / line break.
+                    text = text.replace(/\n\s+$/,'');
+                }
                 // repace long lines
-                text = this.indentstr + text.replace(
-                    /(?![^\n]{1,64}$)([^\n]{1,64})\s/g, '$1\n' + this.indentstr
-                );
-                // remoeve the last whitespace / line break.
-                text = text.replace(/\s+$/,''); 
-                
-                
                 
             }
+             
             this.html[this.html.length] =  text;
             return;   
         }
-        // see if last element was a inline element.
+        // see if previous element was a inline element.
         var indentstr = this.indentstr;
+   
+        text = text.replace(/\s+/g," "); // all whitespace into single white space.
+        
+        // should trim left?
         if (node.previousSibling &&
             node.previousSibling.nodeType == 1 &&
             Roo.htmleditor.TidyWriter.inline_elements.indexOf(node.previousSibling.nodeName) > -1)
         {
             indentstr = '';
+            
         } else {
             this.addLine();
+            text = text.replace(/^\s+/,''); // trim left
+          
         }
+        // should trim right?
+        if (node.nextSibling &&
+            node.nextSibling.nodeType == 1 &&
+            Roo.htmleditor.TidyWriter.inline_elements.indexOf(node.nextSibling.nodeName) > -1)
+        {
+          // noop
             
+        }  else {
+            text = text.replace(/\s+$/,''); // trim right
+        }
+         
+              
         
         
-        text = text.replace(/\s/g," ") // all line breaks to ' '
-                .replace(/^\s+/,'')  // leding white space
-                .replace(/\s+$/,''); // clean trailing white space
         
         if (text.length < 1) {
             return;

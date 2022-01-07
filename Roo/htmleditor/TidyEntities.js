@@ -3,6 +3,8 @@
  * @class Roo.htmleditor.TidyEntities
  * @static
  * https://github.com/thorn0/tinymce.html/blob/master/tinymce.html.js
+ *
+ * Not 100% sure this is actually used or needed.
  */
 
 Roo.htmleditor.TidyEntities = {
@@ -11,32 +13,31 @@ Roo.htmleditor.TidyEntities = {
      * initialize data..
      */
     init : function (){
-    
-       
-      
-       this.namedEntities = buildEntitiesLookup(this.namedEntitiesData.join(','), 32);
+     
+        this.namedEntities = this.buildEntitiesLookup(this.namedEntitiesData, 32);
        
     },
 
 
-     buildEntitiesLookup: function(items, radix) {
+    buildEntitiesLookup: function(items, radix) {
         var i, chr, entity, lookup = {};
-        if (items) {
-            items = items.split(',');
-            radix = radix || 10;
-            // Build entities lookup table
-            for (i = 0; i < items.length; i += 2) {
-                chr = String.fromCharCode(parseInt(items[i], radix));
-                // Only add non base entities
-                if (!baseEntities[chr]) {
-                    entity = '&' + items[i + 1] + ';';
-                    lookup[chr] = entity;
-                    lookup[entity] = chr;
-                }
-            }
-            return lookup;
+        if (!items) {
+            return {};
         }
-        return {};
+        items = typeof(items) == 'string' ? items.split(',') : items;
+        radix = radix || 10;
+        // Build entities lookup table
+        for (i = 0; i < items.length; i += 2) {
+            chr = String.fromCharCode(parseInt(items[i], radix));
+            // Only add non base entities
+            if (!this.baseEntities[chr]) {
+                entity = '&' + items[i + 1] + ';';
+                lookup[chr] = entity;
+                lookup[entity] = chr;
+            }
+        }
+        return lookup;
+        
     },
     
     asciiMap : {
