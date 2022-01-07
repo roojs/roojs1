@@ -1,0 +1,267 @@
+{
+  "name" : "Roo.htmleditor.TidyEntities",
+  "augments" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "This is based loosely on tinymce",
+  "isSingleton" : false,
+  "isStatic" : true,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "TidyEntities",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [],
+  "methods" : [
+    {
+      "name" : "getEncodeFunc",
+      "type" : "function",
+      "desc" : "Returns an encode function based on the name(s) and it's optional entities.",
+      "sig" : "(name, entities)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String",
+          "desc" : "Comma separated list of encoders for example named,numeric.",
+          "isOptional" : false
+        },
+        {
+          "name" : "entities",
+          "type" : "String",
+          "desc" : "Optional parameter with entities to use instead of the built in set.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "function",
+          "desc" : "Encode function to be used."
+        }
+      ]
+    },
+    {
+      "name" : "encodeAllRaw",
+      "type" : "function",
+      "desc" : "Encoded the specified text with both the attributes and text entities. This function will produce larger text contents\nsince it doesn't know if the context is within a attribute or text node. This was added for compatibility\nand is exposed as the DOMUtils.encode function.",
+      "sig" : "(text)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "Text to encode.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "Entity encoded text."
+        }
+      ]
+    },
+    {
+      "name" : "encodeRaw",
+      "type" : "function",
+      "desc" : "Encodes the specified string using raw entities. This means only the required XML base entities will be encoded.",
+      "sig" : "(text, attr)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "Text to encode.",
+          "isOptional" : false
+        },
+        {
+          "name" : "attr",
+          "type" : "Boolean",
+          "desc" : "Optional flag to specify if the text is attribute contents.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "Entity encoded text."
+        }
+      ]
+    },
+    {
+      "name" : "encodeNumeric",
+      "type" : "function",
+      "desc" : "Encodes the specified string using numeric entities. The core entities will be\nencoded as named ones but all non lower ascii characters will be encoded into numeric entities.",
+      "sig" : "(text, attr)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "Text to encode.",
+          "isOptional" : false
+        },
+        {
+          "name" : "attr",
+          "type" : "Boolean",
+          "desc" : "Optional flag to specify if the text is attribute contents.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "Entity encoded text."
+        }
+      ]
+    },
+    {
+      "name" : "encodeNamed",
+      "type" : "function",
+      "desc" : "Encodes the specified string using named entities. The core entities will be encoded\nas named ones but all non lower ascii characters will be encoded into named entities.",
+      "sig" : "(text, attr, entities)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "Text to encode.",
+          "isOptional" : false
+        },
+        {
+          "name" : "attr",
+          "type" : "Boolean",
+          "desc" : "Optional flag to specify if the text is attribute contents.",
+          "isOptional" : false
+        },
+        {
+          "name" : "entities",
+          "type" : "Object",
+          "desc" : "Optional parameter with entities to use.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "Entity encoded text."
+        }
+      ]
+    },
+    {
+      "name" : "init",
+      "type" : "function",
+      "desc" : "initialize data..",
+      "sig" : "()\n{\n\n}",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "decode",
+      "type" : "function",
+      "desc" : "Decodes the specified string, this will replace entities with raw UTF characters.",
+      "sig" : "(text)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "Text to entity decode.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "Entity decoded string."
+        }
+      ]
+    }
+  ],
+  "events" : []
+}

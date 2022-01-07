@@ -1,0 +1,121 @@
+<html><head><title>Roo/htmleditor/TidySerializer.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/***
+ * This is based loosely on tinymce 
+ * @class Roo.htmleditor.TidySerializer
+ * https://github.com/thorn0/tinymce.html/blob/master/tinymce.html.js
+ * @constructor
+ * @method Serializer
+ * @param {Object} settings Name/value settings object.
+ */
+
+
+</span><span class="jsdoc-var">Roo.htmleditor.TidySerializer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.writer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.TidyWriter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">);
+
+
+
+};
+</span><span class="jsdoc-var">Roo.htmleditor.TidySerializer.prototype </span><span class="jsdoc-syntax">= {
+
+    </span><span class="jsdoc-comment">/**
+     * @param {boolean} inner do the inner of the node.
+     */
+    </span><span class="jsdoc-var">inner </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">writer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">/**
+    * Serializes the specified node into a string.
+    *
+    * @example
+    * new tinymce.html.Serializer().serialize(new tinymce.html.DomParser().parse('&lt;p&gt;text&lt;/p&gt;'));
+    * @method serialize
+    * @param {DomElement} node Node instance to serialize.
+    * @return {String} String with HTML based on DOM tree.
+    */
+    </span><span class="jsdoc-var">serialize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+
+        </span><span class="jsdoc-comment">// = settings.validate;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">writer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.writer</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">self  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.handlers </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-comment">// #text
+            </span><span class="jsdoc-syntax">3: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+
+                </span><span class="jsdoc-var">writer.text</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeValue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-comment">// #comment
+            </span><span class="jsdoc-syntax">8: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">writer.comment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeValue</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-comment">// Processing instruction
+            </span><span class="jsdoc-syntax">7: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">writer.pi</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node.nodeValue</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-comment">// Doctype
+            </span><span class="jsdoc-syntax">10: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">writer.doctype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeValue</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-comment">// CDATA
+            </span><span class="jsdoc-syntax">4: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">writer.cdata</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeValue</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-comment">// Document fragment
+            </span><span class="jsdoc-syntax">11: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.firstChild</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">while</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">self.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.nextSibling
+                </span><span class="jsdoc-syntax">}
+            }
+        };
+        </span><span class="jsdoc-var">writer.reset</span><span class="jsdoc-syntax">();
+        1 != </span><span class="jsdoc-var">node.nodeType </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.inner </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.handlers</span><span class="jsdoc-syntax">[11](</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">writer.getContent</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">walk</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">attrName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attrValue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sortedAttrs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">elementRule</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">handler </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.handlers</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">node.nodeType</span><span class="jsdoc-syntax">];
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.nodeName</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isEmpty </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.childNodes.length </span><span class="jsdoc-syntax">&lt; 1;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">writer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.writer</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">attrs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.attributes</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// Sort attributes
+
+        </span><span class="jsdoc-var">writer.start</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nodeName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attrs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isEmpty</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isEmpty</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.firstChild</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">writer.end</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.nextSibling</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">writer.end</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">);
+
+
+    }
+    </span><span class="jsdoc-comment">// Serialize element and treat all non elements as fragments
+
+</span><span class="jsdoc-syntax">};
+
+</span></code></body></html>

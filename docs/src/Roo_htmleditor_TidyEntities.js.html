@@ -1,0 +1,747 @@
+<html><head><title>Roo/htmleditor/TidyEntities.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/***
+ * This is based loosely on tinymce 
+ * @class Roo.htmleditor.TidyEntities
+ * @static
+ * https://github.com/thorn0/tinymce.html/blob/master/tinymce.html.js
+ *
+ * Not 100% sure this is actually used or needed.
+ */
+
+</span><span class="jsdoc-var">Roo.htmleditor.TidyEntities </span><span class="jsdoc-syntax">= {
+
+    </span><span class="jsdoc-comment">/**
+     * initialize data..
+     */
+    </span><span class="jsdoc-var">init </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(){
+
+        </span><span class="jsdoc-var">this.namedEntities </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.buildEntitiesLookup</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.namedEntitiesData</span><span class="jsdoc-syntax">, 32);
+
+    },
+
+
+    </span><span class="jsdoc-var">buildEntitiesLookup</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">radix</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">entity</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">lookup </span><span class="jsdoc-syntax">= {};
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{};
+        }
+        </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">items.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">radix </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">radix </span><span class="jsdoc-syntax">|| 10;
+        </span><span class="jsdoc-comment">// Build entities lookup table
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 2) {
+            </span><span class="jsdoc-var">chr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">radix</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-comment">// Only add non base entities
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.baseEntities</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">]) {
+                </span><span class="jsdoc-var">entity </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&amp;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+ 1] + </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">lookup</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">entity</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">lookup</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">entity</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">lookup</span><span class="jsdoc-syntax">;
+
+    },
+
+    </span><span class="jsdoc-var">asciiMap </span><span class="jsdoc-syntax">: {
+            128: </span><span class="jsdoc-string">'€'</span><span class="jsdoc-syntax">,
+            130: </span><span class="jsdoc-string">'‚'</span><span class="jsdoc-syntax">,
+            131: </span><span class="jsdoc-string">'ƒ'</span><span class="jsdoc-syntax">,
+            132: </span><span class="jsdoc-string">'„'</span><span class="jsdoc-syntax">,
+            133: </span><span class="jsdoc-string">'…'</span><span class="jsdoc-syntax">,
+            134: </span><span class="jsdoc-string">'†'</span><span class="jsdoc-syntax">,
+            135: </span><span class="jsdoc-string">'‡'</span><span class="jsdoc-syntax">,
+            136: </span><span class="jsdoc-string">'ˆ'</span><span class="jsdoc-syntax">,
+            137: </span><span class="jsdoc-string">'‰'</span><span class="jsdoc-syntax">,
+            138: </span><span class="jsdoc-string">'Š'</span><span class="jsdoc-syntax">,
+            139: </span><span class="jsdoc-string">'‹'</span><span class="jsdoc-syntax">,
+            140: </span><span class="jsdoc-string">'Œ'</span><span class="jsdoc-syntax">,
+            142: </span><span class="jsdoc-string">'Ž'</span><span class="jsdoc-syntax">,
+            145: </span><span class="jsdoc-string">'‘'</span><span class="jsdoc-syntax">,
+            146: </span><span class="jsdoc-string">'’'</span><span class="jsdoc-syntax">,
+            147: </span><span class="jsdoc-string">'“'</span><span class="jsdoc-syntax">,
+            148: </span><span class="jsdoc-string">'”'</span><span class="jsdoc-syntax">,
+            149: </span><span class="jsdoc-string">'•'</span><span class="jsdoc-syntax">,
+            150: </span><span class="jsdoc-string">'–'</span><span class="jsdoc-syntax">,
+            151: </span><span class="jsdoc-string">'—'</span><span class="jsdoc-syntax">,
+            152: </span><span class="jsdoc-string">'˜'</span><span class="jsdoc-syntax">,
+            153: </span><span class="jsdoc-string">'™'</span><span class="jsdoc-syntax">,
+            154: </span><span class="jsdoc-string">'š'</span><span class="jsdoc-syntax">,
+            155: </span><span class="jsdoc-string">'›'</span><span class="jsdoc-syntax">,
+            156: </span><span class="jsdoc-string">'œ'</span><span class="jsdoc-syntax">,
+            158: </span><span class="jsdoc-string">'ž'</span><span class="jsdoc-syntax">,
+            159: </span><span class="jsdoc-string">'Ÿ'
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-comment">// Raw entities
+    </span><span class="jsdoc-var">baseEntities </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-string">'&quot;'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;quot;'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">// Needs to be escaped since the YUI compressor would otherwise break the code
+        </span><span class="jsdoc-string">'\''</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;#39;'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'&lt;'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;lt;'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'&gt;'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;gt;'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'&amp;'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;amp;'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'`'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;#96;'
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-comment">// Reverse lookup table for raw entities
+    </span><span class="jsdoc-var">reverseEntities </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-string">'&amp;lt;'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'&amp;gt;'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&gt;'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'&amp;amp;'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'&amp;quot;'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&quot;'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'&amp;apos;'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'\''
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">attrsCharsRegExp </span><span class="jsdoc-syntax">: /[&amp;&lt;&gt;\&quot;\u0060\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
+    </span><span class="jsdoc-var">textCharsRegExp </span><span class="jsdoc-syntax">: /[&lt;&gt;&amp;\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
+    </span><span class="jsdoc-var">rawCharsRegExp </span><span class="jsdoc-syntax">: /[&lt;&gt;&amp;\&quot;\']/g,
+    </span><span class="jsdoc-var">entityRegExp </span><span class="jsdoc-syntax">: /&amp;#([a-z0-9]+);?|&amp;([a-z0-9]+);/gi,
+    </span><span class="jsdoc-var">namedEntities  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">namedEntitiesData </span><span class="jsdoc-syntax">: [
+        </span><span class="jsdoc-string">'50'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'nbsp'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'51'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'iexcl'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'52'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'cent'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'53'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'pound'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'54'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'curren'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'55'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'yen'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'56'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'brvbar'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'57'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sect'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'58'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'uml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'59'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'copy'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5a'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ordf'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5b'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'laquo'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5c'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'not'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5d'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'shy'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5e'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'reg'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5f'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'macr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5g'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'deg'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5h'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'plusmn'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5i'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sup2'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5j'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sup3'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5k'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'acute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5l'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'micro'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5m'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'para'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5n'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'middot'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5o'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'cedil'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5p'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sup1'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5q'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ordm'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5r'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'raquo'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5s'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'frac14'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5t'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'frac12'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5u'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'frac34'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'5v'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'iquest'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'60'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Agrave'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'61'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Aacute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'62'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Acirc'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'63'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Atilde'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'64'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Auml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'65'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Aring'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'66'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'AElig'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'67'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Ccedil'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'68'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Egrave'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'69'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Eacute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6a'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Ecirc'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6b'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Euml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6c'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Igrave'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6d'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Iacute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6e'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Icirc'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6f'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Iuml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6g'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ETH'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6h'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Ntilde'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6i'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Ograve'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6j'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Oacute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6k'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Ocirc'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6l'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Otilde'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6m'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Ouml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6n'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'times'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6o'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Oslash'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6p'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Ugrave'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6q'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Uacute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6r'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Ucirc'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6s'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Uuml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6t'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Yacute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6u'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'THORN'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'6v'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'szlig'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'70'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'agrave'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'71'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'aacute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'72'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'acirc'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'73'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'atilde'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'74'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'auml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'75'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'aring'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'76'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'aelig'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'77'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ccedil'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'78'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'egrave'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'79'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'eacute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7a'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ecirc'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7b'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'euml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7c'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'igrave'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7d'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'iacute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7e'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'icirc'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7f'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'iuml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7g'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'eth'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7h'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ntilde'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7i'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ograve'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7j'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'oacute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7k'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ocirc'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7l'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'otilde'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7m'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ouml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7n'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'divide'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7o'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'oslash'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7p'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ugrave'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7q'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'uacute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7r'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ucirc'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7s'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'uuml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7t'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'yacute'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7u'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'thorn'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'7v'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'yuml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ci'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'fnof'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sh'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Alpha'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'si'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Beta'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sj'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Gamma'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sk'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Delta'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sl'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Epsilon'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Zeta'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sn'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Eta'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'so'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Theta'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sp'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Iota'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sq'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Kappa'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Lambda'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ss'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Mu'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'st'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Nu'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'su'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Xi'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sv'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Omicron'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'t0'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Pi'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'t1'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Rho'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'t3'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Sigma'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'t4'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Tau'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'t5'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Upsilon'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'t6'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Phi'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'t7'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Chi'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'t8'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Psi'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'t9'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Omega'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'alpha'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ti'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'beta'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tj'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'gamma'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tk'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'delta'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tl'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'epsilon'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tm'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'zeta'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tn'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'eta'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'to'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'theta'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tp'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'iota'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tq'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'kappa'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'lambda'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ts'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'mu'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tt'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'nu'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tu'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'xi'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tv'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'omicron'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'u0'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'pi'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'u1'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'rho'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'u2'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sigmaf'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'u3'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sigma'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'u4'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tau'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'u5'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'upsilon'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'u6'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'phi'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'u7'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'chi'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'u8'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'psi'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'u9'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'omega'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'uh'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'thetasym'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ui'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'upsih'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'um'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'piv'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'812'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'bull'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'816'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'hellip'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'81i'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'prime'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'81j'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Prime'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'81u'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'oline'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'824'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'frasl'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'88o'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'weierp'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'88h'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'image'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'88s'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'real'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'892'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'trade'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'89l'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'alefsym'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8cg'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'larr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8ch'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'uarr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8ci'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'rarr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8cj'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'darr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8ck'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'harr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8dl'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'crarr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8eg'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'lArr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8eh'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'uArr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8ei'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'rArr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8ej'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'dArr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8ek'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'hArr'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8g0'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'forall'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8g2'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'part'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8g3'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'exist'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8g5'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'empty'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8g7'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'nabla'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8g8'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'isin'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8g9'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'notin'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8gb'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ni'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8gf'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'prod'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8gh'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sum'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8gi'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'minus'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8gn'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'lowast'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8gq'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'radic'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8gt'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'prop'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8gu'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'infin'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8h0'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ang'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8h7'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'and'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8h8'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'or'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8h9'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'cap'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8ha'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'cup'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8hb'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'int'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8hk'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'there4'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8hs'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sim'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8i5'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'cong'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8i8'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'asymp'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8j0'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ne'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8j1'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'equiv'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8j4'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'le'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8j5'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ge'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8k2'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sub'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8k3'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sup'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8k4'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'nsub'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8k6'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sube'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8k7'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'supe'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8kl'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'oplus'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8kn'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'otimes'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8l5'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'perp'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8m5'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sdot'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8o8'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'lceil'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8o9'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'rceil'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8oa'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'lfloor'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8ob'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'rfloor'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8p9'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'lang'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'8pa'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'rang'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'9ea'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'loz'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'9j0'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'spades'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'9j3'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'clubs'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'9j5'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'hearts'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'9j6'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'diams'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ai'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'OElig'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'aj'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'oelig'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'b0'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Scaron'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'b1'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'scaron'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'bo'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Yuml'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'m6'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'circ'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ms'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'tilde'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'802'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ensp'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'803'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'emsp'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'809'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'thinsp'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'80c'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'zwnj'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'80d'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'zwj'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'80e'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'lrm'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'80f'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'rlm'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'80j'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ndash'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'80k'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'mdash'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'80o'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'lsquo'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'80p'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'rsquo'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'80q'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'sbquo'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'80s'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'ldquo'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'80t'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'rdquo'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'80u'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'bdquo'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'810'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'dagger'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'811'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'Dagger'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'81g'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'permil'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'81p'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'lsaquo'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'81q'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'rsaquo'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'85c'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'euro'
+    </span><span class="jsdoc-syntax">],
+
+
+    </span><span class="jsdoc-comment">/**
+     * Encodes the specified string using raw entities. This means only the required XML base entities will be encoded.
+     *
+     * @method encodeRaw
+     * @param {String} text Text to encode.
+     * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
+     * @return {String} Entity encoded text.
+     */
+    </span><span class="jsdoc-var">encodeRaw</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.attrsCharsRegExp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.textCharsRegExp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.baseEntities</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">;
+        });
+    },
+    </span><span class="jsdoc-comment">/**
+     * Encoded the specified text with both the attributes and text entities. This function will produce larger text contents
+     * since it doesn't know if the context is within a attribute or text node. This was added for compatibility
+     * and is exposed as the DOMUtils.encode function.
+     *
+     * @method encodeAllRaw
+     * @param {String} text Text to encode.
+     * @return {String} Entity encoded text.
+     */
+    </span><span class="jsdoc-var">encodeAllRaw</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rawCharsRegExp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.baseEntities</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">;
+        });
+    },
+    </span><span class="jsdoc-comment">/**
+     * Encodes the specified string using numeric entities. The core entities will be
+     * encoded as named ones but all non lower ascii characters will be encoded into numeric entities.
+     *
+     * @method encodeNumeric
+     * @param {String} text Text to encode.
+     * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
+     * @return {String} Entity encoded text.
+     */
+    </span><span class="jsdoc-var">encodeNumeric</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.attrsCharsRegExp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.textCharsRegExp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// Multi byte sequence convert it to a single entity
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chr.length </span><span class="jsdoc-syntax">&gt; 1) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">'&amp;#' </span><span class="jsdoc-syntax">+ (1024 * (</span><span class="jsdoc-var">chr.charCodeAt</span><span class="jsdoc-syntax">(0) - 55296) + (</span><span class="jsdoc-var">chr.charCodeAt</span><span class="jsdoc-syntax">(1) - 56320) + 65536) + </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.baseEntities</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-string">'&amp;#' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">chr.charCodeAt</span><span class="jsdoc-syntax">(0) + </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">;
+        });
+    },
+    </span><span class="jsdoc-comment">/**
+     * Encodes the specified string using named entities. The core entities will be encoded
+     * as named ones but all non lower ascii characters will be encoded into named entities.
+     *
+     * @method encodeNamed
+     * @param {String} text Text to encode.
+     * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
+     * @param {Object} entities Optional parameter with entities to use.
+     * @return {String} Entity encoded text.
+     */
+    </span><span class="jsdoc-var">encodeNamed</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">entities</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">entities </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">entities </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.namedEntities</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.attrsCharsRegExp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.textCharsRegExp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.baseEntities</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">entities</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">;
+        });
+    },
+    </span><span class="jsdoc-comment">/**
+     * Returns an encode function based on the name(s) and it's optional entities.
+     *
+     * @method getEncodeFunc
+     * @param {String} name Comma separated list of encoders for example named,numeric.
+     * @param {String} entities Optional parameter with entities to use instead of the built in set.
+     * @return {function} Encode function to be used.
+     */
+    </span><span class="jsdoc-var">getEncodeFunc</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">entities</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">entities </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.buildEntitiesLookup</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">entities</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">this.namedEntities</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">encodeNamedAndNumeric</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">t.attrsCharsRegExp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">t.textCharsRegExp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.baseEntities</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">entities</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-string">'&amp;#' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">chr.charCodeAt</span><span class="jsdoc-syntax">(0) + </span><span class="jsdoc-string">';' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">chr</span><span class="jsdoc-syntax">;
+            });
+        }
+
+        </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">encodeCustomNamed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.encodeNamed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">entities</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-comment">// Replace + with , to be compatible with previous TinyMCE versions
+        </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.makeMap</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name.replace</span><span class="jsdoc-syntax">(/\+/g, </span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-comment">// Named and numeric encoder
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name.named </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">name.numeric</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.encodeNamedAndNumeric</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// Named encoder
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name.named</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// Custom names
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">entities</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">encodeCustomNamed</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.encodeNamed</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// Numeric
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name.numeric</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.encodeNumeric</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// Raw encoder
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.encodeRaw</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * Decodes the specified string, this will replace entities with raw UTF characters.
+     *
+     * @method decode
+     * @param {String} text Text to entity decode.
+     * @return {String} Entity decoded string.
+     */
+    </span><span class="jsdoc-var">decode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.entityRegExp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">all</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">numeric</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">numeric</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">numeric </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'x' </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">numeric.charAt</span><span class="jsdoc-syntax">(0)</span><span class="jsdoc-var">.toLowerCase</span><span class="jsdoc-syntax">() ? </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">numeric.substr</span><span class="jsdoc-syntax">(1), 16) : </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">numeric</span><span class="jsdoc-syntax">, 10);
+                </span><span class="jsdoc-comment">// Support upper UTF
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">numeric </span><span class="jsdoc-syntax">&gt; 65535) {
+                    </span><span class="jsdoc-var">numeric </span><span class="jsdoc-syntax">-= 65536;
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(55296 + (</span><span class="jsdoc-var">numeric </span><span class="jsdoc-syntax">&gt;&gt; 10), 56320 + (1023 &amp; </span><span class="jsdoc-var">numeric</span><span class="jsdoc-syntax">));
+                }
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.asciiMap</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">numeric</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">numeric</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">t.reverseEntities</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">all</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">t.namedEntities</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">all</span><span class="jsdoc-syntax">] || </span><span class="jsdoc-var">t.nativeDecode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">all</span><span class="jsdoc-syntax">);
+        });
+    },
+    </span><span class="jsdoc-var">nativeDecode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">makeMap </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">delim</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">map</span><span class="jsdoc-syntax">) {
+		</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+		</span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">|| [];
+		</span><span class="jsdoc-var">delim </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">delim </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">;
+		</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">delim</span><span class="jsdoc-syntax">);
+		}
+		</span><span class="jsdoc-var">map </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">map </span><span class="jsdoc-syntax">|| {};
+		</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">;
+		</span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--) {
+			</span><span class="jsdoc-var">map</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]] = {};
+		}
+		</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">map</span><span class="jsdoc-syntax">;
+	}
+};
+
+
+
+</span><span class="jsdoc-var">Roo.htmleditor.TidyEntities.init</span><span class="jsdoc-syntax">();</span></code></body></html>
