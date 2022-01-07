@@ -161,7 +161,7 @@ Roo.htmleditor.TidyWriter.prototype = {
      * @param {String} text String to write out.
      * @param {Boolean} raw Optional raw state if true the contents wont get encoded.
      */
-    text: function(text )
+    text: function(text, node)
     {
         // if not in whitespace critical
         if (text.length < 1) {
