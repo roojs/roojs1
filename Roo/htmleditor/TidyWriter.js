@@ -72,8 +72,9 @@ Roo.htmleditor.TidyWriter.prototype = {
         
         var is_short   = empty ? Roo.htmleditor.TidyWriter.shortend_elements.indexOf(name) > -1 : false;
         
-        var i_inline = name == 'BR' ? false : in_inline;
-        if (i_inline && this.lastElementEndsWS()) {
+        var add_lb = name == 'BR' ? false : in_inline;
+        
+        if (!add_lb && !this.in_pre && this.lastElementEndsWS()) {
             i_inline = false;
         }
 
@@ -83,9 +84,19 @@ Roo.htmleditor.TidyWriter.prototype = {
         // only 'BR' ??? any others?
         var e_inline = name == 'BR' ? false : this.in_inline;
         
-        // if this element is inline - then don't add stuff beforehand..
-        if (!e_inline && !this.in_pre) {
-            this.addLine();
+        // ADD LINE BEFORE tage
+        if (!this.in_pre) {
+            if (in_inline) {
+                //code
+                if (is_br) {
+                    this.addLine();
+                } else if (this.lastElementEndsWS()) {
+                    this.addLine();
+                }
+                // otherwise - no new line.
+            } else {
+                this.addLine();
+            }
         }
         
         this.html.push(indentstr + '<', name.toLowerCase());
