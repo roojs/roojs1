@@ -225,7 +225,7 @@ Roo.htmleditor.TidyWriter.prototype = {
                     node.previousSibling.nodeType == 1 &&
                     node.previousSibling.nodeName == 'BR' )
                 {
-                    text = text.replace(/^\s+/g,'');
+                    text = this.indentstr +  text.replace(/^\s+/g,'');
                 }
                 
             }
