@@ -227,6 +227,14 @@ Roo.htmleditor.TidyWriter.prototype = {
                 {
                     text = this.indentstr +  text.replace(/^\s+/g,'');
                 }
+                // repace long lines
+                text = this.indentstr + text.replace(
+                    /(?![^\n]{1,64}$)([^\n]{1,64})\s/g, '$1\n' + this.indentstr
+                );
+                // remoeve the last whitespace / line break.
+                text = text.replace(/\s+$/,''); 
+                
+                
                 
             }
             this.html[this.html.length] =  text;
