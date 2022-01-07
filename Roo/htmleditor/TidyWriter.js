@@ -78,7 +78,7 @@ Roo.htmleditor.TidyWriter.prototype = {
             i_inline = false;
         }
 
-        var indentstr = i_inline || this.in_pre ? '' : this.indentstr;
+        var indentstr =  this.indentstr;
         
         // e_inline = elements that can be inline, but still allow \n before and after?
         // only 'BR' ??? any others?
@@ -92,11 +92,17 @@ Roo.htmleditor.TidyWriter.prototype = {
                     this.addLine();
                 } else if (this.lastElementEndsWS()) {
                     this.addLine();
+                } else{
+                    // otherwise - no new line. (and dont indent.)
+                    
+                    indentstr = '';
                 }
-                // otherwise - no new line.
+                
             } else {
                 this.addLine();
             }
+        } else {
+            indentstr = '';
         }
         
         this.html.push(indentstr + '<', name.toLowerCase());
