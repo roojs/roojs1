@@ -93,7 +93,6 @@ Roo.htmleditor.TidyWriter.prototype = {
                     this.addLine();
                 } else{
                     // otherwise - no new line. (and dont indent.)
-                    
                     indentstr = '';
                 }
                 
