@@ -72,12 +72,13 @@ Roo.htmleditor.TidyWriter.prototype = {
         
         var is_short   = empty ? Roo.htmleditor.TidyWriter.shortend_elements.indexOf(name) > -1 : false;
         
-        var e_inline = name == 'BR' ? false : this.in_inline;
-        var indentstr = e_inline || this.in_pre ? '' : this.indentstr;
+        var i_inline = name == 'BR' ? false : in_inline;
+
+        var indentstr = in_inli_inlineine || this.in_pre ? '' : this.indentstr;
         
         // e_inline = elements that can be inline, but still allow \n before and after?
         // only 'BR' ??? any others?
-        
+        var e_inline = name == 'BR' ? false : this.in_inline;
         
         // if this element is inline - then don't add stuff beforehand..
         if (!e_inline && !this.in_pre) {
