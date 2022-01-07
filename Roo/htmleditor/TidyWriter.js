@@ -5,7 +5,7 @@
  *
  * Known issues?
  * - not tested much with 'PRE' formated elements.
- * - BR insined inline?
+ * - long text inside of inline can be wrapped and clened?
  *
  *
  */
@@ -95,8 +95,9 @@ Roo.htmleditor.TidyWriter.prototype = {
             } else {
                 this.html[this.html.length] = '></' + name.toLowerCase() + '>';
             }
+            var e_inline = name == 'BR' ? false : this.in_inline;
             
-            if (!this.in_inline && !this.in_pre) {
+            if (!e_inline && !this.in_pre) {
                 this.addLine();
             }
             return;
