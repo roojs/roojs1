@@ -1391,9 +1391,19 @@
             "is_class" : false
           },
           {
-            "name" : "Roo.htmleditor.Tidy",
+            "name" : "Roo.htmleditor.TidyEntities",
             "cn" : [],
-            "is_class" : false
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.htmleditor.TidySerializer",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.htmleditor.TidyWriter",
+            "cn" : [],
+            "is_class" : true
           }
         ],
         "is_class" : false

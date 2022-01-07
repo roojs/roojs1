@@ -361,10 +361,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var bd = (this.doc.body || this.doc.documentElement);
            
             
+            var sel = this.win.getSelection();
             
             var div = document.createElement('div');
             div.innerHTML = bd.innerHTML;
-            
+            var gtx = div.getElementsByClassName('gtx-trans-icon'); // google translate - really annoying and difficult to get rid of.
+            if (gtx.length > 0) {
+                var rm = gtx.item(0).parentNode;
+                rm.parentNode.removeChild(rm);
+            }
             
            
             if (this.enableBlocks) {
