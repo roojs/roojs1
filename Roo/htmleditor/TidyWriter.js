@@ -165,7 +165,7 @@ Roo.htmleditor.TidyWriter.prototype = {
         if (text.length < 1) {
             return;
         }
-        if (this.in_pre || this.is_inline) {
+        if (this.in_pre || this.in_inline) {
             this.html[this.html.length] =  text;
             return;
             
