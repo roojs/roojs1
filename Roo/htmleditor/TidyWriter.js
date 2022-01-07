@@ -69,6 +69,7 @@ Roo.htmleditor.TidyWriter.prototype = {
 
         var indentstr = this.in_inline || this.in_pre ? '' : this.indentstr;
         
+        // if this element is inline - then don't add stuff beforehand..
         if (!in_inline && !this.in_pre) {
             this.addLine();
         }
