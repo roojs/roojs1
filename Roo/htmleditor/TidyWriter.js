@@ -171,9 +171,12 @@ Roo.htmleditor.TidyWriter.prototype = {
             this.html[this.html.length] =  text;
             return;   
         }
-        // see if last line is a line break
+        // see if last element was a inline element.
         var indentstr = this.indentstr;
-        if (node.previousSibling && node.previousSibling.nodeType == 1 && Roo.htmleditor.TidyWriter.inline_elements.indexOf(node.previousSibling.nodeName) > -1) {
+        if (node.previousSibling &&
+            node.previousSibling.nodeType == 1 &&
+            Roo.htmleditor.TidyWriter.inline_elements.indexOf(node.previousSibling.nodeName) > -1)
+        {
             indentstr = '';
         } else {
             this.addLine();
