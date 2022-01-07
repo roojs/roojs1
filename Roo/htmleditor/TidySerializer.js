@@ -12,7 +12,7 @@
 
 Roo.htmleditor.TidySerializer = function(settings)
 {
-    Roo.apply(this.settings);
+    Roo.apply(this, settings);
     
     this.writer = new Roo.htmleditor.TidyWriter(settings);
     
@@ -42,27 +42,28 @@ Roo.htmleditor.TidySerializer.prototype = {
         
         // = settings.validate;
         var writer = this.writer;
-        var walk  = this.walk;
+        var self  = this;
         this.handlers = {
             // #text
             3: function(node) {
-                writer.text(node.value, node.raw);
+                
+                writer.text(node.nodeValue, node);
             },
             // #comment
             8: function(node) {
-                writer.comment(node.value);
+                writer.comment(node.nodeValue);
             },
             // Processing instruction
             7: function(node) {
-                writer.pi(node.name, node.value);
+                writer.pi(node.name, node.nodeValue);
             },
             // Doctype
             10: function(node) {
-                writer.doctype(node.value);
+                writer.doctype(node.nodeValue);
             },
             // CDATA
             4: function(node) {
-                writer.cdata(node.value);
+                writer.cdata(node.nodeValue);
             },
             // Document fragment
             11: function(node) {
@@ -71,20 +72,20 @@ Roo.htmleditor.TidySerializer.prototype = {
                     return;
                 }
                 while(node) {
-                    walk(node);
+                    self.walk(node);
                     node = node.nextSibling
                 }
             }
         };
         writer.reset();
-        1 != node.nodeType || this.inner ? handlers[11](node) : walk(node);
+        1 != node.nodeType || this.inner ? this.handlers[11](node) : this.walk(node);
         return writer.getContent();
     },
 
     walk: function(node)
     {
         var attrName, attrValue, sortedAttrs, i, l, elementRule,
-            handler = this.handlers[node.type];
+            handler = this.handlers[node.nodeType];
             
         if (handler) {
             handler(node);
@@ -93,6 +94,7 @@ Roo.htmleditor.TidySerializer.prototype = {
     
         var name = node.nodeName;
         var isEmpty = node.childNodes.length < 1;
+      
         var writer = this.writer;
         var attrs = node.attributes;
         // Sort attributes
@@ -128,7 +130,7 @@ Roo.htmleditor.TidySerializer.prototype = {
             }
         }
         */
-        writer.start(node.name, attrs, isEmpty);
+        writer.start(node.nodeName, attrs, isEmpty, node);
         if (isEmpty) {
             return;
         }
@@ -138,8 +140,8 @@ Roo.htmleditor.TidySerializer.prototype = {
             return;
         }
         while (node) {
-            walk(node);
-            node = node.nextNode;
+            this.walk(node);
+            node = node.nextSibling;
         }
         writer.end(name);
         
