@@ -67,7 +67,7 @@ Roo.htmleditor.TidyWriter.prototype = {
         var is_short   = empty ? Roo.htmleditor.TidyWriter.shortend_elements.indexOf(name) > -1 : false;
         
 
-        var indentstr = this.in_inline || this.in_pre ? '' : this.indentstr;
+        var indentstr = in_inline || this.in_pre ? '' : this.indentstr;
         
         // if this element is inline - then don't add stuff beforehand..
         if (!in_inline && !this.in_pre) {
