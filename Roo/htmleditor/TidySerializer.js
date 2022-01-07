@@ -6,7 +6,6 @@
  * @constructor
  * @method Serializer
  * @param {Object} settings Name/value settings object.
- * @param {tinymce.html.Schema} schema Schema instance to use.
  */
 
 
@@ -16,8 +15,7 @@ Roo.htmleditor.TidySerializer = function(settings)
     
     this.writer = new Roo.htmleditor.TidyWriter(settings);
     
-    //settings.validate = !('validate' in settings) || settings.validate;
-    //      self.schema = schema = schema || new Schema();
+    
 
 };
 Roo.htmleditor.TidySerializer.prototype = {
@@ -98,38 +96,7 @@ Roo.htmleditor.TidySerializer.prototype = {
         var writer = this.writer;
         var attrs = node.attributes;
         // Sort attributes
-        /*
-        if (validate && attrs && attrs.length > 1) {
-            sortedAttrs = [];
-            sortedAttrs.map = {};
-            elementRule = schema.getElementRule(node.name);
-            if (elementRule) {
-                for (i = 0, l = elementRule.attributesOrder.length; i < l; i++) {
-                    attrName = elementRule.attributesOrder[i];
-                    if (attrName in attrs.map) {
-                        attrValue = attrs.map[attrName];
-                        sortedAttrs.map[attrName] = attrValue;
-                        sortedAttrs.push({
-                            name: attrName,
-                            value: attrValue
-                        });
-                    }
-                }
-                for (i = 0, l = attrs.length; i < l; i++) {
-                    attrName = attrs[i].name;
-                    if (!(attrName in sortedAttrs.map)) {
-                        attrValue = attrs.map[attrName];
-                        sortedAttrs.map[attrName] = attrValue;
-                        sortedAttrs.push({
-                            name: attrName,
-                            value: attrValue
-                        });
-                    }
-                }
-                attrs = sortedAttrs;
-            }
-        }
-        */
+        
         writer.start(node.nodeName, attrs, isEmpty, node);
         if (isEmpty) {
             return;

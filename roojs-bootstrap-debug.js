@@ -27175,7 +27175,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             tag : 'img',
             contenteditable : 'false',
             src : this.image_src,
-            alt : d.innerText.replace(/\n/g, " "), // removeHTML..
+            alt : d.innerText.replace(/\n/g, " ").replace(/\s+/g, ' ').trim(), // removeHTML and reduce spaces..
             style: {
                 width : 'auto',
                 'max-width': '100%',
@@ -28723,14 +28723,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         st +=  '<style type="text/css">' +
             'IMG { cursor: pointer } ' +
         '</style>';
-
-        var cls = 'roo-htmleditor-body';
+        
+        st += '<meta name="google" content="notranslate">';
+        
+        var cls = 'notranslate roo-htmleditor-body';
         
         if(this.bodyCls.length){
             cls += ' ' + this.bodyCls;
         }
         
-        return '<html><head>' + st  +
+        return '<html  class="notranslate" translate="no"><head>' + st  +
             //<style type="text/css">' +
             //'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
             //'</style>' +
@@ -28857,7 +28859,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      * @param {String} html The HTML to be cleaned
      * return {String} The cleaned HTML
      */
-    cleanHtml : function(html){
+    cleanHtml : function(html)
+    {
         html = String(html);
         if(html.length > 5){
             if(Roo.isSafari){ // strip safari nonsense
@@ -28886,18 +28889,27 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var bd = (this.doc.body || this.doc.documentElement);
            
             
+            var sel = this.win.getSelection();
             
             var div = document.createElement('div');
             div.innerHTML = bd.innerHTML;
-             
+            var gtx = div.getElementsByClassName('gtx-trans-icon'); // google translate - really annoying and difficult to get rid of.
+            if (gtx.length > 0) {
+                var rm = gtx.item(0).parentNode;
+                rm.parentNode.removeChild(rm);
+            }
+            
            
             if (this.enableBlocks) {
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
             //?? tidy?
+            var tidy = new Roo.htmleditor.TidySerializer({
+                inner:  true
+            });
+            var html  = tidy.serialize(div);
             
             
-            var html = div.innerHTML;
             if(Roo.isSafari){
                 var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
                 var m = bs ? bs.match(/text-align:(.*?);/i) : false;
@@ -29036,6 +29048,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         //var ss = this.el.getStyles( 'background-image', 'background-repeat');
         //ss['background-attachment'] = 'fixed'; // w3c
         dbody.bgProperties = 'fixed'; // ie
+        dbody.setAttribute("translate", "no");
+        
         //Roo.DomHelper.applyStyles(dbody, ss);
         Roo.EventManager.on(this.doc, {
              
