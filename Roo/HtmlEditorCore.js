@@ -196,7 +196,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             'IMG { cursor: pointer } ' +
         '</style>';
         
-        st += '<meta name="google" content="notranslate">'
+        st += '<meta name="google" content="notranslate">';
         
         var cls = 'notranslate roo-htmleditor-body';
         
@@ -379,7 +379,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var tidy = new Roo.htmleditor.TidySerializer({
                 inner:  true
             });
-            var html  = tidy.serialize(div)
+            var html  = tidy.serialize(div);
             
             
             if(Roo.isSafari){
