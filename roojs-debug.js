@@ -47866,6 +47866,37 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 xns : rooui.Toolbar  //Boostrap?
             },
             {
+                xtype : 'Button',
+                text: 'Edit Src',
+                name : 'image_src',
+                
+                listeners : {
+                    click: function (btn, state)
+                    {
+                        
+                        
+                        Roo.MessageBox.show({
+                            title : "Image Source URL",
+                            msg : "Enter the url for the image",
+                            buttons: this.OKCANCEL,
+                            fn: function(val){
+                                block().image_src = val;
+                                block().updateElement();
+                                syncValue();
+                                toolbar.editorcore.onEditorEvent();
+                            },
+                            minWidth:250,
+                            prompt:true,
+                            //multiline: multiline,
+                            modal : true,
+                            value : block().image_src
+                        });
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+         
+            {
                 xtype : 'TextField',
                 allowBlank : false,
                 width : 150,

@@ -82,6 +82,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             fn: function(val){
                                 block().image_src = val;
                                 block().updateElement();
+                                syncValue();
+                                toolbar.editorcore.onEditorEvent();
                             },
                             minWidth:250,
                             prompt:true,
