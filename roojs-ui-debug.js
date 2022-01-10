@@ -23409,7 +23409,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             title : "Image Source URL",
                             msg : "Enter the url for the image",
                             buttons: Roo.MessageBox.OKCANCEL,
-                            fn: function(val){
+                            fn: function(btn, val){
+                                if (btn != 'ok') {
+                                    return;
+                                }
                                 b.image_src = val;
                                 b.updateElement();
                                 syncValue();
@@ -23439,7 +23442,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             title : "Link URL",
                             msg : "Enter the url for the link - leave blank to have no link",
                             buttons: Roo.MessageBox.OKCANCEL,
-                            fn: function(val){
+                            fn: function(btn, val){
+                                if (btn != 'ok') {
+                                    return;
+                                }
                                 b.href = val;
                                 b.updateElement();
                                 syncValue();
