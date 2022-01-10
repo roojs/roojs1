@@ -27737,7 +27737,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     createLink : function(){
         Roo.log("create link?");
         var ec = this.editorcore;
-        Roo.MessageBox.prompt("Add Link URL",this.createLinkText, function(url) {
+        Roo.MessageBox.prompt("Add Link URL",this.createLinkText, function(btn, url) {
+            if (btn != 'ok') {
+                return;
+            }
             if(url && url != 'http:/'+'/'){
                 ec.relayCmd('createlink', url);
             }
