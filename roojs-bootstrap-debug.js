@@ -27047,7 +27047,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         Roo.MessageBox.show({
                             title : "Image Source URL",
                             msg : "Enter the url for the image",
-                            buttons: this.OKCANCEL,
+                            buttons: Roo.MessageBox.OKCANCEL,
                             fn: function(val){
                                 block().image_src = val;
                                 block().updateElement();
