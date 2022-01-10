@@ -27042,15 +27042,15 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 listeners : {
                     click: function (btn, state)
                     {
-                        
+                        var b = block();
                         
                         Roo.MessageBox.show({
                             title : "Image Source URL",
                             msg : "Enter the url for the image",
                             buttons: Roo.MessageBox.OKCANCEL,
                             fn: function(val){
-                                block().image_src = val;
-                                block().updateElement();
+                                b.image_src = val;
+                                b.updateElement();
                                 syncValue();
                                 toolbar.editorcore.onEditorEvent();
                             },
@@ -27058,7 +27058,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             prompt:true,
                             //multiline: multiline,
                             modal : true,
-                            value : block().image_src
+                            value : b.image_src
                         });
                     }
                 },
@@ -27072,15 +27072,15 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 listeners : {
                     click: function (btn, state)
                     {
-                        
+                        var b = block();
                         
                         Roo.MessageBox.show({
                             title : "Link URL",
                             msg : "Enter the url for the link - leave blank to have no link",
                             buttons: Roo.MessageBox.OKCANCEL,
                             fn: function(val){
-                                block().href = val;
-                                block().updateElement();
+                                b.href = val;
+                                b.updateElement();
                                 syncValue();
                                 toolbar.editorcore.onEditorEvent();
                             },
@@ -27088,7 +27088,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             prompt:true,
                             //multiline: multiline,
                             modal : true,
-                            value : block().href
+                            value : b.href
                         });
                     }
                 },
