@@ -66,24 +66,86 @@
                 </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar  </span><span class="jsdoc-comment">//Boostrap?
             </span><span class="jsdoc-syntax">},
             {
-                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'TextField'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">allowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: 150,
-                </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'image_src'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Change Image URL'</span><span class="jsdoc-syntax">,
+
                 </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
-                    </span><span class="jsdoc-var">keyup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">combo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+                    </span><span class="jsdoc-var">click</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
                     {
-                        </span><span class="jsdoc-var">toolbar.editorcore.selectNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">toolbar.tb.selectedNode</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">();
-                        </span><span class="jsdoc-var">b.image_src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
-                        </span><span class="jsdoc-var">b.updateElement</span><span class="jsdoc-syntax">();
-                        </span><span class="jsdoc-var">syncValue</span><span class="jsdoc-syntax">();
-                        </span><span class="jsdoc-var">toolbar.editorcore.onEditorEvent</span><span class="jsdoc-syntax">();
+
+                        </span><span class="jsdoc-var">Roo.MessageBox.show</span><span class="jsdoc-syntax">({
+                            </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Image Source URL&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Enter the url for the image&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.MessageBox.OKCANCEL</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">){
+                                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'ok'</span><span class="jsdoc-syntax">) {
+                                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                                }
+                                </span><span class="jsdoc-var">b.image_src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">;
+                                </span><span class="jsdoc-var">b.updateElement</span><span class="jsdoc-syntax">();
+                                </span><span class="jsdoc-var">syncValue</span><span class="jsdoc-syntax">();
+                                </span><span class="jsdoc-var">toolbar.editorcore.onEditorEvent</span><span class="jsdoc-syntax">();
+                            },
+                            </span><span class="jsdoc-var">minWidth</span><span class="jsdoc-syntax">:250,
+                            </span><span class="jsdoc-var">prompt</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-comment">//multiline: multiline,
+                            </span><span class="jsdoc-var">modal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">b.image_src
+                        </span><span class="jsdoc-syntax">});
                     }
                 },
-                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.form
-
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
             </span><span class="jsdoc-syntax">},
+
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Change Link URL'</span><span class="jsdoc-syntax">,
+
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">click</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">();
+
+                        </span><span class="jsdoc-var">Roo.MessageBox.show</span><span class="jsdoc-syntax">({
+                            </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Link URL&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Enter the url for the link - leave blank to have no link&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.MessageBox.OKCANCEL</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">){
+                                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'ok'</span><span class="jsdoc-syntax">) {
+                                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                                }
+                                </span><span class="jsdoc-var">b.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">;
+                                </span><span class="jsdoc-var">b.updateElement</span><span class="jsdoc-syntax">();
+                                </span><span class="jsdoc-var">syncValue</span><span class="jsdoc-syntax">();
+                                </span><span class="jsdoc-var">toolbar.editorcore.onEditorEvent</span><span class="jsdoc-syntax">();
+                            },
+                            </span><span class="jsdoc-var">minWidth</span><span class="jsdoc-syntax">:250,
+                            </span><span class="jsdoc-var">prompt</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-comment">//multiline: multiline,
+                            </span><span class="jsdoc-var">modal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">b.href
+                        </span><span class="jsdoc-syntax">});
+                    }
+                },
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+            </span><span class="jsdoc-syntax">},
+            {
+                </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Show Video URL'</span><span class="jsdoc-syntax">,
+
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">click</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+                    {
+                        </span><span class="jsdoc-var">Roo.MessageBox.alert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Video URL&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.video_url </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'This image is not linked ot a video' </span><span class="jsdoc-syntax">:
+                                </span><span class="jsdoc-string">'The image is linked to: &lt;a target=&quot;_new&quot; href=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.video_url </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">block</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.video_url </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/a&gt;'</span><span class="jsdoc-syntax">);
+                    }
+                },
+                </span><span class="jsdoc-var">xns </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rooui.Toolbar
+            </span><span class="jsdoc-syntax">},
+
+
             {
                 </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'TextItem'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Width: &quot;</span><span class="jsdoc-syntax">,
