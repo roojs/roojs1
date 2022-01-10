@@ -68,8 +68,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             {
                 xtype : 'Button',
                 text: 'Edit Src',
-                name : 'image_src',
-                
+                 
                 listeners : {
                     click: function (btn, state)
                     {
