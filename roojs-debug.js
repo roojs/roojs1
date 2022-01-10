@@ -47867,7 +47867,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             },
             {
                 xtype : 'Button',
-                text: 'Edit Src',
+                text: 'Change Image URL',
                  
                 listeners : {
                     click: function (btn, state)
@@ -47896,24 +47896,50 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             },
          
             {
-                xtype : 'TextField',
-                allowBlank : false,
-                width : 150,
-                name : 'image_src',
+                xtype : 'Button',
+                text: 'Change Link URL',
+                 
                 listeners : {
-                    keyup : function (combo, e)
-                    { 
-                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
-                        var b = block();
-                        b.image_src = this.getValue();
-                        b.updateElement();
-                        syncValue();
-                        toolbar.editorcore.onEditorEvent();
+                    click: function (btn, state)
+                    {
+                        
+                        
+                        Roo.MessageBox.show({
+                            title : "Link URL",
+                            msg : "Enter the url for the link - leave blank to have no link",
+                            buttons: Roo.MessageBox.OKCANCEL,
+                            fn: function(val){
+                                block().href = val;
+                                block().updateElement();
+                                syncValue();
+                                toolbar.editorcore.onEditorEvent();
+                            },
+                            minWidth:250,
+                            prompt:true,
+                            //multiline: multiline,
+                            modal : true,
+                            value : block().href
+                        });
                     }
                 },
-                xns : rooui.form
-                
+                xns : rooui.Toolbar
             },
+            {
+                xtype : 'Button',
+                text: 'Show Video URL',
+                 
+                listeners : {
+                    click: function (btn, state)
+                    {
+                        Roo.MessageBox.alert("Video URL",
+                            block().video_url == '' ? 'This image is not linked ot a video' :
+                                'The image is linked to: <a target="_new" href="' + block().video_url + '">' + block().video_url + '</a>');
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            
+            
             {
                 xtype : 'TextItem',
                 text : "Width: ",
