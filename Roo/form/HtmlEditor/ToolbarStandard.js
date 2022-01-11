@@ -525,7 +525,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     },
     // private used internally
     createLink : function(){
-        Roo.log("create link?");
+        //Roo.log("create link?");
         var ec = this.editorcore;
         Roo.MessageBox.prompt("Add Link URL",this.createLinkText, function(btn, url) {
             if (btn != 'ok') {
