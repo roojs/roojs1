@@ -51688,7 +51688,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 /**
  * @class Roo.form.HtmlEditor.ToolbarStandard
  * Basic Toolbar
- * @children   Roo.Toolbar.Item Roo.Toolbar.Button Roo.Toolbar.SplitButton Roo.form.Field 
 
  * Usage:
  *
