@@ -4,7 +4,7 @@
   "childClasses" : {  },
   "tree_children" : [],
   "tree_parent" : [],
-  "desc" : "Basic Toolbar\n\nUsage:\n\n new Roo.form.HtmlEditor({\n    ....\n    toolbars : [\n        new Roo.form.HtmlEditorToolbar1({\n            disable : { fonts: 1 , format: 1, ..., ... , ...],\n            btns : [ .... ]\n        })\n    }",
+  "desc" : "Basic Toolbar\nUsage:\n\n new Roo.form.HtmlEditor({\n    ....\n    toolbars : [\n        new Roo.form.HtmlEditorToolbar1({\n            disable : { fonts: 1 , format: 1, ..., ... , ...],\n            btns : [ .... ]\n        })\n    }",
   "isSingleton" : false,
   "isStatic" : false,
   "isBuiltin" : false,
@@ -27,8 +27,8 @@
       "memberOf" : ""
     },
     {
-      "name" : "btns",
-      "type" : "Array",
+      "name" : "btns[]",
+      "type" : "Roo.Toolbar.Item|Roo.Toolbar.Button|Roo.Toolbar.SplitButton|Roo.form.Field",
       "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
       "memberOf" : ""
     },
