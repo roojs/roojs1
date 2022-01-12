@@ -49,7 +49,7 @@ Roo.form.HtmlEditor.ToolbarStandard = function(config)
     // dont call parent... till later.
 }
 
-Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
+Roo.form.HtmlEditor.ToolbarStandard.prototype = {
     
     tb: false,
     
@@ -779,7 +779,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
            item.enable();
         });
     }
-});
+};
 
 
 
