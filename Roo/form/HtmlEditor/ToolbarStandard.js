@@ -1,4 +1,3 @@
-// <script type="text/javascript">
 /*
  * Based on
  * Ext JS Library 1.1.1
@@ -8,9 +7,10 @@
  */
 
 /**
- * @class Roo.form.HtmlEditorToolbar1
+ * @class Roo.form.HtmlEditor.ToolbarStandard
  * Basic Toolbar
- * 
+ * @children   Roo.Toolbar.Item Roo.Toolbar.Button Roo.Toolbar.SplitButton Roo.form.Field 
+
  * Usage:
  *
  new Roo.form.HtmlEditor({
@@ -24,7 +24,7 @@
      
  * 
  * @cfg {Object} disable List of elements to disable..
- * @cfg {Array} btns List of additional buttons.
+ * @cfg {Roo.Toolbar.Item|Roo.Toolbar.Button|Roo.Toolbar.SplitButton|Roo.form.Field} btns[] List of additional buttons.
  * 
  * 
  * NEEDS Extra CSS? 
