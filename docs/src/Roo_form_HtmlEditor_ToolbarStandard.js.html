@@ -1,5 +1,4 @@
-<html><head><title>Roo/form/HtmlEditor/ToolbarStandard.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">// &lt;script type=&quot;text/javascript&quot;&gt;
-/*
+<html><head><title>Roo/form/HtmlEditor/ToolbarStandard.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * Based on
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -8,9 +7,9 @@
  */
 
 /**
- * @class Roo.form.HtmlEditorToolbar1
+ * @class Roo.form.HtmlEditor.ToolbarStandard
  * Basic Toolbar
- * 
+
  * Usage:
  *
  new Roo.form.HtmlEditor({
@@ -24,7 +23,7 @@
      
  * 
  * @cfg {Object} disable List of elements to disable..
- * @cfg {Array} btns List of additional buttons.
+ * @cfg {Roo.Toolbar.Item|Roo.Toolbar.Button|Roo.Toolbar.SplitButton|Roo.form.Field} btns[] List of additional buttons.
  * 
  * 
  * NEEDS Extra CSS? 
@@ -49,7 +48,7 @@
     // dont call parent... till later.
 </span><span class="jsdoc-syntax">}
 
-</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.HtmlEditor.ToolbarStandard.prototype</span><span class="jsdoc-syntax">,  {
+</span><span class="jsdoc-var">Roo.form.HtmlEditor.ToolbarStandard.prototype </span><span class="jsdoc-syntax">= {
 
     </span><span class="jsdoc-var">tb</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
@@ -779,7 +778,7 @@
            </span><span class="jsdoc-var">item.enable</span><span class="jsdoc-syntax">();
         });
     }
-});
+};
 
 
 
