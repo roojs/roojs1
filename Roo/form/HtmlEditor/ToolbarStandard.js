@@ -9,7 +9,6 @@
 /**
  * @class Roo.form.HtmlEditor.ToolbarStandard
  * Basic Toolbar
- * @children   Roo.Toolbar.Item Roo.Toolbar.Button Roo.Toolbar.SplitButton Roo.form.Field 
 
  * Usage:
  *
