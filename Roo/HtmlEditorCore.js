@@ -617,7 +617,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             });
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
-            new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT' ]} );
+            new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', 'O:P' ]} );
             new Roo.htmleditor.FilterParagraph({ node : d });
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
@@ -1546,7 +1546,8 @@ Roo.HtmlEditorCore.black = [
         'IFRAME', 'LAYER',  'LINK',     'META',    'OBJECT',   
         'SCRIPT', 'STYLE' ,'TITLE',  'XML',
         //'FONT' // CLEAN LATER..
-        'COLGROUP', 'COL'  // messy tables.
+        'COLGROUP', 'COL'   // messy tables.
+        
         
 ];
 Roo.HtmlEditorCore.clean = [ // ?? needed???

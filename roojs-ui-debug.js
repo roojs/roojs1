@@ -21121,7 +21121,7 @@ Roo.htmleditor.Filter.prototype = {
         Roo.each( Array.from(dom.childNodes), function( e ) {
             switch(true) {
                 
-                case e.nodeType == 8 && typeof(this.replaceComment) != 'undefined': // comment
+                case e.nodeType == 8 &&  this.replaceComment  !== false: // comment
                     this.replaceComment(e);
                     return;
                 
@@ -21321,7 +21321,7 @@ Roo.extend(Roo.htmleditor.FilterBlack, Roo.htmleditor.Filter,
 {
     tag : true, // all elements.
    
-    replace : function(n)
+    replaceTag : function(n)
     {
         n.parentNode.removeChild(n);
     }
@@ -25568,7 +25568,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             });
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
-            new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT' ]} );
+            new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', 'O:P' ]} );
             new Roo.htmleditor.FilterParagraph({ node : d });
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
@@ -26497,7 +26497,8 @@ Roo.HtmlEditorCore.black = [
         'IFRAME', 'LAYER',  'LINK',     'META',    'OBJECT',   
         'SCRIPT', 'STYLE' ,'TITLE',  'XML',
         //'FONT' // CLEAN LATER..
-        'COLGROUP', 'COL'  // messy tables.
+        'COLGROUP', 'COL'   // messy tables.
+        
         
 ];
 Roo.HtmlEditorCore.clean = [ // ?? needed???

@@ -34,7 +34,7 @@ Roo.htmleditor.Filter.prototype = {
         Roo.each( Array.from(dom.childNodes), function( e ) {
             switch(true) {
                 
-                case e.nodeType == 8 && typeof(this.replaceComment) != 'undefined': // comment
+                case e.nodeType == 8 &&  this.replaceComment  !== false: // comment
                     this.replaceComment(e);
                     return;
                 

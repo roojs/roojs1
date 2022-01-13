@@ -16,7 +16,7 @@ Roo.extend(Roo.htmleditor.FilterBlack, Roo.htmleditor.Filter,
 {
     tag : true, // all elements.
    
-    replace : function(n)
+    replaceTag : function(n)
     {
         n.parentNode.removeChild(n);
     }
