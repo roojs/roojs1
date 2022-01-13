@@ -617,7 +617,7 @@
             });
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterBlack</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.black</span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-comment">// should be fonts..
-            </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'FONT' </span><span class="jsdoc-syntax">]} );
+            </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'FONT'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'O:P' </span><span class="jsdoc-syntax">]} );
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterParagraph</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterSpan</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterLongBr</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
@@ -1546,7 +1546,8 @@
         </span><span class="jsdoc-string">'IFRAME'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'LAYER'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'LINK'</span><span class="jsdoc-syntax">,     </span><span class="jsdoc-string">'META'</span><span class="jsdoc-syntax">,    </span><span class="jsdoc-string">'OBJECT'</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-string">'SCRIPT'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'STYLE' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'TITLE'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-string">'XML'</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">//'FONT' // CLEAN LATER..
-        </span><span class="jsdoc-string">'COLGROUP'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'COL'  </span><span class="jsdoc-comment">// messy tables.
+        </span><span class="jsdoc-string">'COLGROUP'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'COL'   </span><span class="jsdoc-comment">// messy tables.
+
 
 </span><span class="jsdoc-syntax">];
 </span><span class="jsdoc-var">Roo.HtmlEditorCore.clean </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-comment">// ?? needed???
