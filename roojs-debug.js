@@ -48132,17 +48132,23 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
               
                 {
                     tag: 'figcaption',
-                    contenteditable : true,
+                    
                     style : {
                         'text-align': 'left',
                         'margin-top' : '16px',
                         'font-size' : '16px',
                         'line-height' : '24px',
-                        'font-style': 'italic',
-                        display : this.caption_display
+                         display : this.caption_display
                     },
                     cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
-                    html : this.caption
+                    cn : [
+                        {
+                            // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
+                            tag : 'i',
+                            contenteditable : true,
+                            html : this.caption
+                        }
+                    ]
                     
                 }
             ]
@@ -48161,6 +48167,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
          
         this.align = this.getVal(node, 'figure', 'align');
         this.caption = this.getVal(node, 'figcaption', 'html');
+        // remove '<i>
+        if (this.caption.trim().match(/^<i[^>]*>/i)) {
+            this.caption = this.caption.trim().replace(/^<i[^>]*>/i, '').replace(/^<\/i>$/i, '');
+        }
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, 'figure', 'style', 'max-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
