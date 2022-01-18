@@ -526,14 +526,16 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
     createLink : function(){
         //Roo.log("create link?");
         var ec = this.editorcore;
-        Roo.MessageBox.prompt("Add Link URL",this.createLinkText, function(btn, url) {
-            if (btn != 'ok') {
-                return;
-            }
-            if(url && url != 'http:/'+'/'){
-                ec.relayCmd('createlink', url);
-            }
-        });
+        (function() { 
+            Roo.MessageBox.prompt("Add Link URL",this.createLinkText, function(btn, url) {
+                if (btn != 'ok') {
+                    return;
+                }
+                if(url && url != 'http:/'+'/'){
+                    ec.relayCmd('createlink', url);
+                }
+            });
+    }).defer(100, this); // we have to defer this , otherwise the mouse click gives focus to the main window.
         
     },
 
