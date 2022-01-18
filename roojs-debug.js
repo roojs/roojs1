@@ -691,7 +691,7 @@ Roo.factory(conf, Roo.data);
 					return 'xs'
 			}
 			
-		}
+		} 
         
     });
 
@@ -34881,6 +34881,7 @@ Roo.MessageBox = function(){
                         }
                     }
                 });
+              
                 dlg.on("hide", handleHide);
                 mask = dlg.mask;
                 dlg.addKeyListener(27, handleEsc);
@@ -35124,6 +35125,7 @@ Roo.Msg.show({
                 d.animateTarget = null;
                 d.show(options.animEl);
             }
+            dlg.toFront();
             return this;
         },
 
@@ -52216,14 +52218,16 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
     createLink : function(){
         //Roo.log("create link?");
         var ec = this.editorcore;
-        Roo.MessageBox.prompt("Add Link URL",this.createLinkText, function(btn, url) {
-            if (btn != 'ok') {
-                return;
-            }
-            if(url && url != 'http:/'+'/'){
-                ec.relayCmd('createlink', url);
-            }
-        });
+        (function() { 
+            Roo.MessageBox.prompt("Add Link URL",this.createLinkText, function(btn, url) {
+                if (btn != 'ok') {
+                    return;
+                }
+                if(url && url != 'http:/'+'/'){
+                    ec.relayCmd('createlink', url);
+                }
+            });
+    }).defer(100, this); // we have to defer this , otherwise the mouse click gives focus to the main window.
         
     },
 

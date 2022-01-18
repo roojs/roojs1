@@ -691,7 +691,7 @@ Roo.factory(conf, Roo.data);
 					return 'xs'
 			}
 			
-		}
+		} 
         
     });
 
