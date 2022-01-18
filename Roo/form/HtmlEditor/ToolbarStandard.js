@@ -526,15 +526,41 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
     createLink : function(){
         //Roo.log("create link?");
         var ec = this.editorcore;
-        (function() { 
-            Roo.MessageBox.prompt("Add Link URL",this.createLinkText, function(btn, url) {
-                if (btn != 'ok') {
-                    return;
-                }
-                if(url && url != 'http:/'+'/'){
-                    ec.relayCmd('createlink', url);
-                }
+        var ar = ec.getAllAncestors();
+        var n = false;
+        for(var i = 0;i< ar.length;i++) {
+            if (ar[i] && ar[i].nodeName == 'A') {
+                n = ar[i];
+                break;
+            }
+        }
+        
+        (function() {
+            
+            Roo.MessageBox.show({
+                title : "Add / Edit Link URL",
+                msg : "Enter the url for the link",
+                buttons: Roo.MessageBox.OKCANCEL,
+                fn: function(btn, url){
+                    if (btn != 'ok') {
+                        return;
+                    }
+                    if(url && url != 'http:/'+'/'){
+                        if (n) {
+                            n.setAttribute('href', url);
+                        } else {
+                            ec.relayCmd('createlink', url);
+                        }
+                    }
+                },
+                minWidth:250,
+                prompt:true,
+                //multiline: multiline,
+                modal : true,
+                value :  n  ? n.getAttribute('href') : '' 
             });
+            
+             
         }).defer(100, this); // we have to defer this , otherwise the mouse click gives focus to the main window.
         
     },
