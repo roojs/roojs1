@@ -535,7 +535,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                     ec.relayCmd('createlink', url);
                 }
             });
-    }).defer(100, this); // we have to defer this , otherwise the mouse click gives focus to the main window.
+        }).defer(100, this); // we have to defer this , otherwise the mouse click gives focus to the main window.
         
     },
 
