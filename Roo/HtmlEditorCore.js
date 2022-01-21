@@ -448,8 +448,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
                 new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
             }
+            if (this.enableBlocks) {
+                Roo.htmleditor.Block.initAll(this.doc.body);
+            }
             
-            Roo.htmleditor.Block.initAll(this.doc.body);
             this.updateLanguage();
             
             var lc = this.doc.body.lastChild;
