@@ -448,8 +448,10 @@
                 </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterParagraph</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">}); </span><span class="jsdoc-comment">// paragraphs
                 </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterSpan</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">}); </span><span class="jsdoc-comment">// empty spans
             </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableBlocks</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">Roo.htmleditor.Block.initAll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
+            }
 
-            </span><span class="jsdoc-var">Roo.htmleditor.Block.initAll</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.updateLanguage</span><span class="jsdoc-syntax">();
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.doc.body.lastChild</span><span class="jsdoc-syntax">;
