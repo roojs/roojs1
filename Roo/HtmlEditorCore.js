@@ -585,7 +585,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         //Roo.log(imgs);
         // fixme..
         images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable)/); }) // ignore headers
-                       .map(function(g) { return g.toDataURL(); });
+                       .map(function(g) { return g.toDataURL(); })
+                       .filter(function(g) { return g != 'about:blank'; });
         
         
         html = this.cleanWordChars(html);

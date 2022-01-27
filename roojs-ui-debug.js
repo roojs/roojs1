@@ -23644,6 +23644,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             };
         }
         
+        var captionhtml = this.caption_display == 'hidden' ? this.caption : (this.caption.length ? this.caption : "Caption");
+        
         return  {
             tag: 'figure',
             'data-block' : 'Figure',
@@ -23679,7 +23681,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                             // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
                             tag : 'i',
                             contenteditable : true,
-                            html : this.caption
+                            html : captionhtml
                         }
                     ]
                     
@@ -25548,7 +25550,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         //Roo.log(imgs);
         // fixme..
         images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable)/); }) // ignore headers
-                       .map(function(g) { return g.toDataURL(); });
+                       .map(function(g) { return g.toDataURL(); })
+                       .filter(function(g) { return g != 'about:blank'; });
         
         
         html = this.cleanWordChars(html);
