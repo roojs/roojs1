@@ -22348,7 +22348,7 @@ Roo.htmleditor.TidyWriter.prototype = {
 
 Roo.htmleditor.TidyWriter.inline_elements = [
         'SPAN','STRONG','B','EM','I','FONT','STRIKE','U','VAR',
-        'CITE','DFN','CODE','MARK','Q','SUP','SUB','SAMP'
+        'CITE','DFN','CODE','MARK','Q','SUP','SUB','SAMP', 'A'
 ];
 Roo.htmleditor.TidyWriter.shortend_elements = [
     'AREA','BASE','BASEFONT','BR','COL','FRAME','HR','IMG','INPUT',
