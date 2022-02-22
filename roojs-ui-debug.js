@@ -26662,7 +26662,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      */
     autoClean: true,
     /**
-     * @cfg {string} bodyCls- default '' default classes to add to body of editable area - usually undoreset is a good start..
+     * @cfg {string} bodyCls default '' default classes to add to body of editable area - usually undoreset is a good start..
      */
     bodyCls : '',
     /**

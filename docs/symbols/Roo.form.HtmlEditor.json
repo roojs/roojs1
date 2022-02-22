@@ -62,12 +62,6 @@
       "memberOf" : "Roo.form.Field"
     },
     {
-      "name" : "bodyCls-",
-      "type" : "string",
-      "desc" : "default '' default classes to add to body of editable area - usually undoreset is a good start..",
-      "memberOf" : ""
-    },
-    {
       "name" : "width",
       "type" : "Number",
       "desc" : "(in pixels)",
@@ -120,6 +114,12 @@
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable"
+    },
+    {
+      "name" : "bodyCls",
+      "type" : "string",
+      "desc" : "default '' default classes to add to body of editable area - usually undoreset is a good start..",
+      "memberOf" : ""
     },
     {
       "name" : "readOnly",
