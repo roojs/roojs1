@@ -255,7 +255,11 @@ Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
             this.loading.disable();
         }
     },
-
+    /**
+     * event that occurs when you click on the navigation buttons - can be used to trigger load of a grid.
+     * @param {String} which (first|prev|next|last|refresh)  which button to press.
+     *
+     */
     // private
     onClick : function(which){
         var ds = this.ds;
