@@ -549,11 +549,12 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
      * @param {Boolean} asString
      * @return {Object}
      */
-    getValues : function(asString){
+    getValues : function(asString)
+    {
         if (this.childForms) {
             // copy values from the child forms
             Roo.each(this.childForms, function (f) {
-                this.setValues(f.getValues());
+                this.setValues(f.getFieldValues()); // get the full set of data, as we might be copying comboboxes from external into this one.
             }, this);
         }
         
@@ -586,21 +587,31 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     /**
      * Returns the fields in this form as an object with key/value pairs. 
      * This differs from getValues as it calls getValue on each child item, rather than using dom data.
+     * Normally this will not return readOnly data 
+     * @param {Boolean} with_readonly return readonly field data.
      * @return {Object}
      */
-    getFieldValues : function(with_hidden)
+    getFieldValues : function(with_readonly)
     {
         if (this.childForms) {
             // copy values from the child forms
             // should this call getFieldValues - probably not as we do not currently copy
             // hidden fields when we generate..
             Roo.each(this.childForms, function (f) {
-                this.setValues(f.getValues());
+                this.setValues(f.getFieldValues());
             }, this);
         }
         
         var ret = {};
         this.items.each(function(f){
+            
+            if (f.readOnly && with_readonly !== true) {
+                return; // skip read only values. - this is in theory to stop 'old' values being copied over new ones
+                        // if a subform contains a copy of them.
+                        // if you have subforms with the same editable data, you will need to copy the data back
+                        // and forth.
+            }
+            
             if (!f.getName()) {
                 return;
             }

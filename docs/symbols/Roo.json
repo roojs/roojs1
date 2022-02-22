@@ -19,7 +19,20 @@
   "returns" : [],
   "throws" : "",
   "requires" : "",
-  "config" : [],
+  "config" : [
+    {
+      "name" : "grid",
+      "type" : "Roo.grid.Grid",
+      "desc" : "The grid for this panel",
+      "memberOf" : ""
+    },
+    {
+      "name" : "layout",
+      "type" : "Roo.BorderLayout",
+      "desc" : "[required] The layout for this panel",
+      "memberOf" : ""
+    }
+  ],
   "methods" : [
     {
       "name" : "each",
@@ -173,6 +186,32 @@
           "desc" : ""
         }
       ]
+    },
+    {
+      "name" : "log",
+      "type" : "function",
+      "desc" : "Logs to console if it can.",
+      "sig" : "(string)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "string",
+          "type" : "String|Object",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
     },
     {
       "name" : "addBehaviors",
@@ -753,6 +792,44 @@
           "name" : "overrides",
           "type" : "Object",
           "desc" : "(optional) A literal with members",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "namespace",
+      "type" : "function",
+      "desc" : "Creates namespaces to be used for scoping variables and classes so that they are not global.  Usage:\n<pre><code>\nRoo.namespace('Company', 'Company.data');\nCompany.Widget = function() { ... }\nCompany.data.CustomStore = function(config) { ... }\n</code></pre>",
+      "sig" : "(namespace1, namespace2, etc)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "namespace1",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "namespace2",
+          "type" : "String",
+          "desc" : "",
+          "isOptional" : false
+        },
+        {
+          "name" : "etc",
+          "type" : "String",
+          "desc" : "",
           "isOptional" : false
         }
       ],

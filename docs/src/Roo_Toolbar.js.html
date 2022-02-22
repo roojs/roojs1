@@ -11,7 +11,7 @@
 
 /**
  * @class Roo.Toolbar
- * @children   Roo.Toolbar.Item Roo.form.Field
+ * @children   Roo.Toolbar.Item Roo.Toolbar.Button Roo.Toolbar.SplitButton Roo.form.Field 
  * Basic Toolbar class.
  * @constructor
  * Creates a new Toolbar
@@ -547,8 +547,24 @@
 
     </span><span class="jsdoc-var">enable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">disable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">focus</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn
-</span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">focus</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+     </span><span class="jsdoc-comment">/**
+     * Shows this button
+     */
+    </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Hides this button
+     */
+    </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;none&quot;</span><span class="jsdoc-syntax">;
+    }
+
+});
 
 </span><span class="jsdoc-comment">/**
  * @class Roo.Toolbar.Button

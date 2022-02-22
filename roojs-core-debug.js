@@ -691,7 +691,7 @@ Roo.factory(conf, Roo.data);
 					return 'xs'
 			}
 			
-		}
+		} 
         
     });
 
@@ -700,9 +700,8 @@ Roo.factory(conf, Roo.data);
 
 Roo.namespace("Roo", "Roo.util", "Roo.grid", "Roo.dd", "Roo.tree", "Roo.data",
                 "Roo.form", "Roo.menu", "Roo.state", "Roo.lib", "Roo.layout",
-                "Roo.app", "Roo.ux",
-                "Roo.bootstrap",
-                "Roo.bootstrap.dash");
+                "Roo.app", "Roo.ux" 
+               );
 /*
  * Based on:
  * Ext JS Library 1.1.1
@@ -955,6 +954,16 @@ String.prototype.unicodeClean = function () {
     );
 };
   
+
+/**
+  * Make the first letter of a string uppercase
+  *
+  * @return {String} The new string.
+  */
+String.prototype.toUpperCaseFirst = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};  
+  
 /*
  * Based on:
  * Ext JS Library 1.1.1
@@ -1046,30 +1055,50 @@ Roo.applyIf(Array.prototype, {
      */
     equals : function(b)
     {
-        // https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
-	if (this === b) {
-	    return true;
-	 }
-	if (b == null) {
-	    return false;
-	}
-	if (this.length !== b.length) {
-	    return false;
-	}
-      
-	// sort?? a.sort().equals(b.sort());
-      
-	for (var i = 0; i < this.length; ++i) {
-	    if (this[i] !== b[i]) {
-		return false;
-	    }
-	}
-	return true;
-    }
+            // https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
+        if (this === b) {
+            return true;
+        }
+        if (b == null) {
+            return false;
+        }
+        if (this.length !== b.length) {
+            return false;
+        }
+          
+        // sort?? a.sort().equals(b.sort());
+          
+        for (var i = 0; i < this.length; ++i) {
+            if (this[i] !== b[i]) {
+            return false;
+            }
+        }
+        return true;
+    } 
+    
+    
+    
+    
 });
 
-
- 
+Roo.applyIf(Array, {
+ /**
+     * from
+     * @static
+     * @param {Array} o Or Array like object (eg. nodelist)
+     * @returns {Array} 
+     */
+    from : function(o)
+    {
+        var ret= [];
+    
+        for (var i =0; i < o.length; i++) { 
+            ret[i] = o[i];
+        }
+        return ret;
+      
+    }
+});
 /*
  * Based on:
  * Ext JS Library 1.1.1
@@ -1373,17 +1402,17 @@ Date.createParser = function(format) {
     }
 
     code += "if (y >= 0 && m >= 0 && d > 0 && h >= 0 && i >= 0 && s >= 0)\n"
-        + "{v = new Date(y, m, d, h, i, s);}\n"
+        + "{v = new Date(y, m, d, h, i, s); v.setFullYear(y);}\n"
         + "else if (y >= 0 && m >= 0 && d > 0 && h >= 0 && i >= 0)\n"
-        + "{v = new Date(y, m, d, h, i);}\n"
+        + "{v = new Date(y, m, d, h, i); v.setFullYear(y);}\n"
         + "else if (y >= 0 && m >= 0 && d > 0 && h >= 0)\n"
-        + "{v = new Date(y, m, d, h);}\n"
+        + "{v = new Date(y, m, d, h); v.setFullYear(y);}\n"
         + "else if (y >= 0 && m >= 0 && d > 0)\n"
-        + "{v = new Date(y, m, d);}\n"
+        + "{v = new Date(y, m, d); v.setFullYear(y);}\n"
         + "else if (y >= 0 && m >= 0)\n"
-        + "{v = new Date(y, m);}\n"
+        + "{v = new Date(y, m); v.setFullYear(y);}\n"
         + "else if (y >= 0)\n"
-        + "{v = new Date(y);}\n"
+        + "{v = new Date(y); v.setFullYear(y);}\n"
         + "}return (v && (z || o))?\n" // favour UTC offset over GMT offset
         + "    ((z)? v.add(Date.SECOND, (v.getTimezoneOffset() * 60) + (z*1)) :\n" // reset to UTC, then add offset
         + "        v.add(Date.HOUR, (v.getGMTOffset() / 100) + (o / -100))) : v\n" // reset to GMT, then add offset
@@ -1443,7 +1472,7 @@ Date.formatCodeToRegex = function(character, currentGroup) {
             s:"(\\d{1,2})"}; // Numeric representation of a month, without leading zeros
     case "m":
         return {g:1,
-            c:"m = parseInt(results[" + currentGroup + "], 10) - 1;\n",
+            c:"m = Math.max(0,parseInt(results[" + currentGroup + "], 10) - 1);\n",
             s:"(\\d{2})"}; // Numeric representation of a month, with leading zeros
     case "t":
         return {g:0,
@@ -4878,7 +4907,468 @@ Roo.lib.Easing = {
             }
         };
     })();
-/*
+/**
+ * Originally based of this code... - refactored for Roo...
+ * https://github.com/aaalsaleh/undo-manager
+ 
+ * undo-manager.js
+ * @author  Abdulrahman Alsaleh 
+ * @copyright 2015 Abdulrahman Alsaleh 
+ * @license  MIT License (c) 
+ *
+ * Hackily modifyed by alan@roojs.com
+ *
+ *
+ *  
+ *
+ *  TOTALLY UNTESTED...
+ *
+ *  Documentation to be done....
+ */
+ 
+
+/**
+* @class Roo.lib.UndoManager
+* An undo manager implementation in JavaScript. It follows the W3C UndoManager and DOM Transaction
+* Draft and the undocumented and disabled Mozilla Firefox's UndoManager implementation.
+
+ * Usage:
+ * <pre><code>
+
+
+editor.undoManager = new Roo.lib.UndoManager(1000, editor);
+ 
+</code></pre>
+
+* For more information see this blog post with examples:
+*  <a href="http://www.cnitblog.com/seeyeah/archive/2011/12/30/38728.html/">DomHelper
+     - Create Elements using DOM, HTML fragments and Templates</a>. 
+* @constructor
+* @param {Number} limit how far back to go ... use 1000?
+* @param {Object} scope usually use document..
+*/
+
+Roo.lib.UndoManager = function (limit, undoScopeHost)
+{
+    this.stack = [];
+    this.limit = limit;
+    this.scope = undoScopeHost;
+    this.fireEvent = typeof CustomEvent != 'undefined' && undoScopeHost && undoScopeHost.dispatchEvent;
+    if (this.fireEvent) {
+        this.bindEvents();
+    }
+    this.reset();
+    
+};
+        
+Roo.lib.UndoManager.prototype = {
+    
+    limit : false,
+    stack : false,
+    scope :  false,
+    fireEvent : false,
+    position : 0,
+    length : 0,
+    
+    
+     /**
+     * To push and execute a transaction, the method undoManager.transact
+     * must be called by passing a transaction object as the first argument, and a merge
+     * flag as the second argument. A transaction object has the following properties:
+     *
+     * Usage:
+<pre><code>
+undoManager.transact({
+    label: 'Typing',
+    execute: function() { ... },
+    undo: function() { ... },
+    // redo same as execute
+    redo: function() { this.execute(); }
+}, false);
+
+// merge transaction
+undoManager.transact({
+    label: 'Typing',
+    execute: function() { ... },  // this will be run...
+    undo: function() { ... }, // what to do when undo is run.
+    // redo same as execute
+    redo: function() { this.execute(); }
+}, true); 
+</code></pre> 
+     *
+     * 
+     * @param {Object} transaction The transaction to add to the stack.
+     * @return {String} The HTML fragment
+     */
+    
+    
+    transact : function (transaction, merge)
+    {
+        if (arguments.length < 2) {
+            throw new TypeError('Not enough arguments to UndoManager.transact.');
+        }
+
+        transaction.execute();
+
+        this.stack.splice(0, this.position);
+        if (merge && this.length) {
+            this.stack[0].push(transaction);
+        } else {
+            this.stack.unshift([transaction]);
+        }
+    
+        this.position = 0;
+
+        if (this.limit && this.stack.length > this.limit) {
+            this.length = this.stack.length = this.limit;
+        } else {
+            this.length = this.stack.length;
+        }
+
+        if (this.fireEvent) {
+            this.scope.dispatchEvent(
+                new CustomEvent('DOMTransaction', {
+                    detail: {
+                        transactions: this.stack[0].slice()
+                    },
+                    bubbles: true,
+                    cancelable: false
+                })
+            );
+        }
+        
+        //Roo.log("transaction: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
+      
+        
+    },
+
+    undo : function ()
+    {
+        //Roo.log("undo: pos:" + this.position + " len: " + this.length + " slen:" + this.stack.length);
+        
+        if (this.position < this.length) {
+            for (var i = this.stack[this.position].length - 1; i >= 0; i--) {
+                this.stack[this.position][i].undo();
+            }
+            this.position++;
+
+            if (this.fireEvent) {
+                this.scope.dispatchEvent(
+                    new CustomEvent('undo', {
+                        detail: {
+                            transactions: this.stack[this.position - 1].slice()
+                        },
+                        bubbles: true,
+                        cancelable: false
+                    })
+                );
+            }
+        }
+    },
+
+    redo : function ()
+    {
+        if (this.position > 0) {
+            for (var i = 0, n = this.stack[this.position - 1].length; i < n; i++) {
+                this.stack[this.position - 1][i].redo();
+            }
+            this.position--;
+
+            if (this.fireEvent) {
+                this.scope.dispatchEvent(
+                    new CustomEvent('redo', {
+                        detail: {
+                            transactions: this.stack[this.position].slice()
+                        },
+                        bubbles: true,
+                        cancelable: false
+                    })
+                );
+            }
+        }
+    },
+
+    item : function (index)
+    {
+        if (index >= 0 && index < this.length) {
+            return this.stack[index].slice();
+        }
+        return null;
+    },
+
+    clearUndo : function () {
+        this.stack.length = this.length = this.position;
+    },
+
+    clearRedo : function () {
+        this.stack.splice(0, this.position);
+        this.position = 0;
+        this.length = this.stack.length;
+    },
+    /**
+     * Reset the undo - probaly done on load to clear all history.
+     */
+    reset : function()
+    {
+        this.stack = [];
+        this.position = 0;
+        this.length = 0;
+        this.current_html = this.scope.innerHTML;
+        if (this.timer !== false) {
+            clearTimeout(this.timer);
+        }
+        this.timer = false;
+        this.merge = false;
+        this.addEvent();
+        
+    },
+    current_html : '',
+    timer : false,
+    merge : false,
+    
+    
+    // this will handle the undo/redo on the element.?
+    bindEvents : function()
+    {
+        var el  = this.scope;
+        el.undoManager = this;
+        
+        
+        this.scope.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.keyCode === 90) {
+                if (e.shiftKey) {
+                    el.undoManager.redo(); // Ctrl/Command + Shift + Z
+                } else {
+                    el.undoManager.undo(); // Ctrl/Command + Z
+                }
+        
+                e.preventDefault();
+            }
+        });
+        /// ignore keyup..
+        this.scope.addEventListener('keyup', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.keyCode === 90) {
+                e.preventDefault();
+            }
+        });
+        
+        
+        
+        var t = this;
+        
+        el.addEventListener('input', function(e) {
+            if(el.innerHTML == t.current_html) {
+                return;
+            }
+            // only record events every second.
+            if (t.timer !== false) {
+               clearTimeout(t.timer);
+               t.timer = false;
+            }
+            t.timer = setTimeout(function() { t.merge = false; }, 1000);
+            
+            t.addEvent(t.merge);
+            t.merge = true; // ignore changes happening every second..
+        });
+	},
+    /**
+     * Manually add an event.
+     * Normall called without arguements - and it will just get added to the stack.
+     * 
+     */
+    
+    addEvent : function(merge)
+    {
+        //Roo.log("undomanager +" + (merge ? 'Y':'n'));
+        // not sure if this should clear the timer 
+        merge = typeof(merge) == 'undefined' ? false : merge; 
+        
+        this.scope.undoManager.transact({
+            scope : this.scope,
+            oldHTML: this.current_html,
+            newHTML: this.scope.innerHTML,
+            // nothing to execute (content already changed when input is fired)
+            execute: function() { },
+            undo: function() {
+                this.scope.innerHTML = this.current_html = this.oldHTML;
+            },
+            redo: function() {
+                this.scope.innerHTML = this.current_html = this.newHTML;
+            }
+        }, false); //merge);
+        
+        this.merge = merge;
+        
+        this.current_html = this.scope.innerHTML;
+    }
+    
+    
+     
+    
+    
+    
+};
+/**
+ * @class Roo.lib.Range
+ * @constructor
+ * This is a toolkit, normally used to copy features into a Dom Range element
+ * Roo.lib.Range.wrap(x);
+ *
+ *
+ *
+ */
+Roo.lib.Range = function() { };
+
+/**
+ * Wrap a Dom Range object, to give it new features...
+ * @static
+ * @param {Range} the range to wrap
+ */
+Roo.lib.Range.wrap = function(r) {
+    return Roo.apply(r, Roo.lib.Range.prototype);
+};
+/**
+ * find a parent node eg. LI / OL
+ * @param {string|Array} node name or array of nodenames
+ * @return {DomElement|false}
+ */
+Roo.apply(Roo.lib.Range.prototype,
+{
+    
+    closest : function(str)
+    {
+        if (typeof(str) != 'string') {
+            // assume it's a array.
+            for(var i = 0;i < str.length;i++) {
+                var r = this.closest(str[i]);
+                if (r !== false) {
+                    return r;
+                }
+                
+            }
+            return false;
+        }
+        str = str.toLowerCase();
+        var n = this.commonAncestorContainer; // might not be a node
+        while (n.nodeType != 1) {
+            n = n.parentNode;
+        }
+        
+        if (n.nodeName.toLowerCase() == str ) {
+            return n;
+        }
+        if (n.nodeName.toLowerCase() == 'body') {
+            return false;
+        }
+            
+        return n.closest(str) || false;
+        
+    },
+    cloneRange : function()
+    {
+        return Roo.lib.Range.wrap(Range.prototype.cloneRange.call(this));
+    }
+});/**
+ * @class Roo.lib.Selection
+ * @constructor
+ * This is a toolkit, normally used to copy features into a Dom Selection element
+ * Roo.lib.Selection.wrap(x);
+ *
+ *
+ *
+ */
+Roo.lib.Selection = function() { };
+
+/**
+ * Wrap a Dom Range object, to give it new features...
+ * @static
+ * @param {Range} the range to wrap
+ */
+Roo.lib.Selection.wrap = function(r, doc) {
+    Roo.apply(r, Roo.lib.Selection.prototype);
+    r.ownerDocument = doc; // usefull so we dont have to keep referening to it.
+    return r;
+};
+/**
+ * find a parent node eg. LI / OL
+ * @param {string|Array} node name or array of nodenames
+ * @return {DomElement|false}
+ */
+Roo.apply(Roo.lib.Selection.prototype,
+{
+    /**
+     * the owner document
+     */
+    ownerDocument : false,
+    
+    getRangeAt : function(n)
+    {
+        return Roo.lib.Range.wrap(Selection.prototype.getRangeAt.call(this,n));
+    },
+    
+    /**
+     * insert node at selection 
+     * @param {DomElement|string} node
+     * @param {string} cursor (after|in|none) where to place the cursor after inserting.
+     */
+    insertNode: function(node, cursor)
+    {
+        if (typeof(node) == 'string') {
+            node = this.ownerDocument.createElement(node);
+            if (cursor == 'in') {
+                node.innerHTML = '&nbsp;';
+            }
+        }
+        
+        var range = this.getRangeAt(0);
+        
+        if (this.type != 'Caret') {
+            range.deleteContents();
+        }
+        var sn = node.childNodes[0]; // select the contents.
+
+        
+        
+        range.insertNode(node);
+        if (cursor == 'after') {
+            node.insertAdjacentHTML('afterend', '&nbsp;');
+            sn = node.nextSibling;
+        }
+        
+        if (cursor == 'none') {
+            return;
+        }
+        
+        this.cursorText(sn);
+    },
+    
+    cursorText : function(n)
+    {
+       
+        //var range = this.getRangeAt(0);
+        range = Roo.lib.Range.wrap(new Range());
+        //range.selectNode(n);
+        
+        var ix = Array.from(n.parentNode.childNodes).indexOf(n);
+        range.setStart(n.parentNode,ix);
+        range.setEnd(n.parentNode,ix+1);
+        //range.collapse(false);
+         
+        this.removeAllRanges();
+        this.addRange(range);
+        
+        Roo.log([n, range, this,this.baseOffset,this.extentOffset, this.type]);
+    },
+    cursorAfter : function(n)
+    {
+        if (!n.nextSibling || n.nextSibling.nodeValue != '&nbsp;') {
+            n.insertAdjacentHTML('afterend', '&nbsp;');
+        }
+        this.cursorText (n.nextSibling);
+    }
+        
+    
+});/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -5125,212 +5615,320 @@ Roo.DomHelper = function(){
         el.insertBefore(node, before);
         return node;
     };
-
-    return {
-    /** True to force the use of DOM instead of html fragments @type Boolean */
-    useDom : false,
-
-    /**
-     * Returns the markup for the passed Element(s) config
-     * @param {Object} o The Dom object spec (and children)
-     * @return {String}
-     */
-    markup : function(o){
-        return createHtml(o);
-    },
-
-    /**
-     * Applies a style specification to an element
-     * @param {String/HTMLElement} el The element to apply styles to
-     * @param {String/Object/Function} styles A style specification string eg "width:100px", or object in the form {width:"100px"}, or
-     * a function which returns such a specification.
-     */
-    applyStyles : function(el, styles){
-        if(styles){
-           el = Roo.fly(el);
-           if(typeof styles == "string"){
-               var re = /\s?([a-z\-]*)\:\s?([^;]*);?/gi;
-               var matches;
-               while ((matches = re.exec(styles)) != null){
-                   el.setStyle(matches[1], matches[2]);
-               }
-           }else if (typeof styles == "object"){
-               for (var style in styles){
-                  el.setStyle(style, styles[style]);
-               }
-           }else if (typeof styles == "function"){
-                Roo.DomHelper.applyStyles(el, styles.call());
-           }
-        }
-    },
-
-    /**
-     * Inserts an HTML fragment into the Dom
-     * @param {String} where Where to insert the html in relation to el - beforeBegin, afterBegin, beforeEnd, afterEnd.
-     * @param {HTMLElement} el The context element
-     * @param {String} html The HTML fragmenet
-     * @return {HTMLElement} The new node
-     */
-    insertHtml : function(where, el, html){
-        where = where.toLowerCase();
-        if(el.insertAdjacentHTML){
-            if(tableRe.test(el.tagName)){
-                var rs;
-                if(rs = insertIntoTable(el.tagName.toLowerCase(), where, el, html)){
-                    return rs;
-                }
-            }
-            switch(where){
-                case "beforebegin":
-                    el.insertAdjacentHTML('BeforeBegin', html);
-                    return el.previousSibling;
-                case "afterbegin":
-                    el.insertAdjacentHTML('AfterBegin', html);
-                    return el.firstChild;
-                case "beforeend":
-                    el.insertAdjacentHTML('BeforeEnd', html);
-                    return el.lastChild;
-                case "afterend":
-                    el.insertAdjacentHTML('AfterEnd', html);
-                    return el.nextSibling;
-            }
-            throw 'Illegal insertion point -> "' + where + '"';
-        }
-        var range = el.ownerDocument.createRange();
-        var frag;
-        switch(where){
-             case "beforebegin":
-                range.setStartBefore(el);
-                frag = range.createContextualFragment(html);
-                el.parentNode.insertBefore(frag, el);
-                return el.previousSibling;
-             case "afterbegin":
-                if(el.firstChild){
-                    range.setStartBefore(el.firstChild);
-                    frag = range.createContextualFragment(html);
-                    el.insertBefore(frag, el.firstChild);
-                    return el.firstChild;
-                }else{
-                    el.innerHTML = html;
-                    return el.firstChild;
-                }
-            case "beforeend":
-                if(el.lastChild){
-                    range.setStartAfter(el.lastChild);
-                    frag = range.createContextualFragment(html);
-                    el.appendChild(frag);
-                    return el.lastChild;
-                }else{
-                    el.innerHTML = html;
-                    return el.lastChild;
-                }
-            case "afterend":
-                range.setStartAfter(el);
-                frag = range.createContextualFragment(html);
-                el.parentNode.insertBefore(frag, el.nextSibling);
-                return el.nextSibling;
-            }
-            throw 'Illegal insertion point -> "' + where + '"';
-    },
-
-    /**
-     * Creates new Dom element(s) and inserts them before el
-     * @param {String/HTMLElement/Element} el The context element
-     * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
-     * @param {Boolean} returnElement (optional) true to return a Roo.Element
-     * @return {HTMLElement/Roo.Element} The new node
-     */
-    insertBefore : function(el, o, returnElement){
-        return this.doInsert(el, o, returnElement, "beforeBegin");
-    },
-
-    /**
-     * Creates new Dom element(s) and inserts them after el
-     * @param {String/HTMLElement/Element} el The context element
-     * @param {Object} o The Dom object spec (and children)
-     * @param {Boolean} returnElement (optional) true to return a Roo.Element
-     * @return {HTMLElement/Roo.Element} The new node
-     */
-    insertAfter : function(el, o, returnElement){
-        return this.doInsert(el, o, returnElement, "afterEnd", "nextSibling");
-    },
-
-    /**
-     * Creates new Dom element(s) and inserts them as the first child of el
-     * @param {String/HTMLElement/Element} el The context element
-     * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
-     * @param {Boolean} returnElement (optional) true to return a Roo.Element
-     * @return {HTMLElement/Roo.Element} The new node
-     */
-    insertFirst : function(el, o, returnElement){
-        return this.doInsert(el, o, returnElement, "afterBegin");
-    },
-
-    // private
-    doInsert : function(el, o, returnElement, pos, sibling){
-        el = Roo.getDom(el);
-        var newNode;
-        if(this.useDom || o.ns){
-            newNode = createDom(o, null);
-            el.parentNode.insertBefore(newNode, sibling ? el[sibling] : el);
-        }else{
-            var html = createHtml(o);
-            newNode = this.insertHtml(pos, el, html);
-        }
-        return returnElement ? Roo.get(newNode, true) : newNode;
-    },
-
-    /**
-     * Creates new Dom element(s) and appends them to el
-     * @param {String/HTMLElement/Element} el The context element
-     * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
-     * @param {Boolean} returnElement (optional) true to return a Roo.Element
-     * @return {HTMLElement/Roo.Element} The new node
-     */
-    append : function(el, o, returnElement){
-        el = Roo.getDom(el);
-        var newNode;
-        if(this.useDom || o.ns){
-            newNode = createDom(o, null);
-            el.appendChild(newNode);
-        }else{
-            var html = createHtml(o);
-            newNode = this.insertHtml("beforeEnd", el, html);
-        }
-        return returnElement ? Roo.get(newNode, true) : newNode;
-    },
-
-    /**
-     * Creates new Dom element(s) and overwrites the contents of el with them
-     * @param {String/HTMLElement/Element} el The context element
-     * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
-     * @param {Boolean} returnElement (optional) true to return a Roo.Element
-     * @return {HTMLElement/Roo.Element} The new node
-     */
-    overwrite : function(el, o, returnElement){
-        el = Roo.getDom(el);
-        if (o.ns) {
-          
-            while (el.childNodes.length) {
-                el.removeChild(el.firstChild);
-            }
-            createDom(o, el);
-        } else {
-            el.innerHTML = createHtml(o);   
+    
+    // this is a bit like the react update code...
+    // 
+    
+    var updateNode = function(from, to)
+    {
+        // should we handle non-standard elements?
+        Roo.log(["UpdateNode" , from, to]);
+        if (from.nodeType != to.nodeType) {
+            Roo.log(["ReplaceChild - mismatch notType" , to, from ]);
+            from.parentNode.replaceChild(to, from);
         }
         
-        return returnElement ? Roo.get(el.firstChild, true) : el.firstChild;
-    },
+        if (from.nodeType == 3) {
+            // assume it's text?!
+            if (from.data == to.data) {
+                return;
+            }
+            from.data = to.data;
+            return;
+        }
+        if (!from.parentNode) {
+            // not sure why this is happening?
+            return;
+        }
+        // assume 'to' doesnt have '1/3 nodetypes!
+        // not sure why, by from, parent node might not exist?
+        if (from.nodeType !=1 || from.tagName != to.tagName) {
+            Roo.log(["ReplaceChild" , from, to ]);
+            
+            from.parentNode.replaceChild(to, from);
+            return;
+        }
+        // compare attributes
+        var ar = Array.from(from.attributes);
+        for(var i = 0; i< ar.length;i++) {
+            if (to.hasAttribute(ar[i].name)) {
+                continue;
+            }
+            if (ar[i].name == 'id') { // always keep ids?
+               continue;
+            }
+            //if (ar[i].name == 'style') {
+            //   throw "style removed?";
+            //}
+            Roo.log("removeAttribute" + ar[i].name);
+            from.removeAttribute(ar[i].name);
+        }
+        ar = to.attributes;
+        for(var i = 0; i< ar.length;i++) {
+            if (from.getAttribute(ar[i].name) == to.getAttribute(ar[i].name)) {
+                Roo.log("skipAttribute " + ar[i].name  + '=' + to.getAttribute(ar[i].name));
+                continue;
+            }
+            Roo.log("updateAttribute " + ar[i].name + '=>' + to.getAttribute(ar[i].name));
+            from.setAttribute(ar[i].name, to.getAttribute(ar[i].name));
+        }
+        // children
+        var far = Array.from(from.childNodes);
+        var tar = Array.from(to.childNodes);
+        // if the lengths are different.. then it's probably a editable content change, rather than
+        // a change of the block definition..
+        
+        // this did notwork , as our rebuilt nodes did not include ID's so did not match at all.
+         /*if (from.innerHTML == to.innerHTML) {
+            return;
+        }
+        if (far.length != tar.length) {
+            from.innerHTML = to.innerHTML;
+            return;
+        }
+        */
+        
+        for(var i = 0; i < Math.max(tar.length, far.length); i++) {
+            if (i >= far.length) {
+                from.appendChild(tar[i]);
+                Roo.log(["add", tar[i]]);
+                
+            } else if ( i  >= tar.length) {
+                from.removeChild(far[i]);
+                Roo.log(["remove", far[i]]);
+            } else {
+                
+                updateNode(far[i], tar[i]);
+            }    
+        }
+        
+        
+        
+        
+    };
+    
+    
 
-    /**
-     * Creates a new Roo.DomHelper.Template from the Dom object spec
-     * @param {Object} o The Dom object spec (and children)
-     * @return {Roo.DomHelper.Template} The new template
-     */
-    createTemplate : function(o){
-        var html = createHtml(o);
-        return new Roo.Template(html);
-    }
+    return {
+        /** True to force the use of DOM instead of html fragments @type Boolean */
+        useDom : false,
+    
+        /**
+         * Returns the markup for the passed Element(s) config
+         * @param {Object} o The Dom object spec (and children)
+         * @return {String}
+         */
+        markup : function(o){
+            return createHtml(o);
+        },
+    
+        /**
+         * Applies a style specification to an element
+         * @param {String/HTMLElement} el The element to apply styles to
+         * @param {String/Object/Function} styles A style specification string eg "width:100px", or object in the form {width:"100px"}, or
+         * a function which returns such a specification.
+         */
+        applyStyles : function(el, styles){
+            if(styles){
+               el = Roo.fly(el);
+               if(typeof styles == "string"){
+                   var re = /\s?([a-z\-]*)\:\s?([^;]*);?/gi;
+                   var matches;
+                   while ((matches = re.exec(styles)) != null){
+                       el.setStyle(matches[1], matches[2]);
+                   }
+               }else if (typeof styles == "object"){
+                   for (var style in styles){
+                      el.setStyle(style, styles[style]);
+                   }
+               }else if (typeof styles == "function"){
+                    Roo.DomHelper.applyStyles(el, styles.call());
+               }
+            }
+        },
+    
+        /**
+         * Inserts an HTML fragment into the Dom
+         * @param {String} where Where to insert the html in relation to el - beforeBegin, afterBegin, beforeEnd, afterEnd.
+         * @param {HTMLElement} el The context element
+         * @param {String} html The HTML fragmenet
+         * @return {HTMLElement} The new node
+         */
+        insertHtml : function(where, el, html){
+            where = where.toLowerCase();
+            if(el.insertAdjacentHTML){
+                if(tableRe.test(el.tagName)){
+                    var rs;
+                    if(rs = insertIntoTable(el.tagName.toLowerCase(), where, el, html)){
+                        return rs;
+                    }
+                }
+                switch(where){
+                    case "beforebegin":
+                        el.insertAdjacentHTML('BeforeBegin', html);
+                        return el.previousSibling;
+                    case "afterbegin":
+                        el.insertAdjacentHTML('AfterBegin', html);
+                        return el.firstChild;
+                    case "beforeend":
+                        el.insertAdjacentHTML('BeforeEnd', html);
+                        return el.lastChild;
+                    case "afterend":
+                        el.insertAdjacentHTML('AfterEnd', html);
+                        return el.nextSibling;
+                }
+                throw 'Illegal insertion point -> "' + where + '"';
+            }
+            var range = el.ownerDocument.createRange();
+            var frag;
+            switch(where){
+                 case "beforebegin":
+                    range.setStartBefore(el);
+                    frag = range.createContextualFragment(html);
+                    el.parentNode.insertBefore(frag, el);
+                    return el.previousSibling;
+                 case "afterbegin":
+                    if(el.firstChild){
+                        range.setStartBefore(el.firstChild);
+                        frag = range.createContextualFragment(html);
+                        el.insertBefore(frag, el.firstChild);
+                        return el.firstChild;
+                    }else{
+                        el.innerHTML = html;
+                        return el.firstChild;
+                    }
+                case "beforeend":
+                    if(el.lastChild){
+                        range.setStartAfter(el.lastChild);
+                        frag = range.createContextualFragment(html);
+                        el.appendChild(frag);
+                        return el.lastChild;
+                    }else{
+                        el.innerHTML = html;
+                        return el.lastChild;
+                    }
+                case "afterend":
+                    range.setStartAfter(el);
+                    frag = range.createContextualFragment(html);
+                    el.parentNode.insertBefore(frag, el.nextSibling);
+                    return el.nextSibling;
+                }
+                throw 'Illegal insertion point -> "' + where + '"';
+        },
+    
+        /**
+         * Creates new Dom element(s) and inserts them before el
+         * @param {String/HTMLElement/Element} el The context element
+         * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
+         * @param {Boolean} returnElement (optional) true to return a Roo.Element
+         * @return {HTMLElement/Roo.Element} The new node
+         */
+        insertBefore : function(el, o, returnElement){
+            return this.doInsert(el, o, returnElement, "beforeBegin");
+        },
+    
+        /**
+         * Creates new Dom element(s) and inserts them after el
+         * @param {String/HTMLElement/Element} el The context element
+         * @param {Object} o The Dom object spec (and children)
+         * @param {Boolean} returnElement (optional) true to return a Roo.Element
+         * @return {HTMLElement/Roo.Element} The new node
+         */
+        insertAfter : function(el, o, returnElement){
+            return this.doInsert(el, o, returnElement, "afterEnd", "nextSibling");
+        },
+    
+        /**
+         * Creates new Dom element(s) and inserts them as the first child of el
+         * @param {String/HTMLElement/Element} el The context element
+         * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
+         * @param {Boolean} returnElement (optional) true to return a Roo.Element
+         * @return {HTMLElement/Roo.Element} The new node
+         */
+        insertFirst : function(el, o, returnElement){
+            return this.doInsert(el, o, returnElement, "afterBegin");
+        },
+    
+        // private
+        doInsert : function(el, o, returnElement, pos, sibling){
+            el = Roo.getDom(el);
+            var newNode;
+            if(this.useDom || o.ns){
+                newNode = createDom(o, null);
+                el.parentNode.insertBefore(newNode, sibling ? el[sibling] : el);
+            }else{
+                var html = createHtml(o);
+                newNode = this.insertHtml(pos, el, html);
+            }
+            return returnElement ? Roo.get(newNode, true) : newNode;
+        },
+    
+        /**
+         * Creates new Dom element(s) and appends them to el
+         * @param {String/HTMLElement/Element} el The context element
+         * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
+         * @param {Boolean} returnElement (optional) true to return a Roo.Element
+         * @return {HTMLElement/Roo.Element} The new node
+         */
+        append : function(el, o, returnElement){
+            el = Roo.getDom(el);
+            var newNode;
+            if(this.useDom || o.ns){
+                newNode = createDom(o, null);
+                el.appendChild(newNode);
+            }else{
+                var html = createHtml(o);
+                newNode = this.insertHtml("beforeEnd", el, html);
+            }
+            return returnElement ? Roo.get(newNode, true) : newNode;
+        },
+    
+        /**
+         * Creates new Dom element(s) and overwrites the contents of el with them
+         * @param {String/HTMLElement/Element} el The context element
+         * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
+         * @param {Boolean} returnElement (optional) true to return a Roo.Element
+         * @return {HTMLElement/Roo.Element} The new node
+         */
+        overwrite : function(el, o, returnElement)
+        {
+            el = Roo.getDom(el);
+            if (o.ns) {
+              
+                while (el.childNodes.length) {
+                    el.removeChild(el.firstChild);
+                }
+                createDom(o, el);
+            } else {
+                el.innerHTML = createHtml(o);   
+            }
+            
+            return returnElement ? Roo.get(el.firstChild, true) : el.firstChild;
+        },
+    
+        /**
+         * Creates a new Roo.DomHelper.Template from the Dom object spec
+         * @param {Object} o The Dom object spec (and children)
+         * @return {Roo.DomHelper.Template} The new template
+         */
+        createTemplate : function(o){
+            var html = createHtml(o);
+            return new Roo.Template(html);
+        },
+         /**
+         * Updates the first element with the spec from the o (replacing if necessary)
+         * This iterates through the children, and updates attributes / children etc..
+         * @param {String/HTMLElement/Element} el The context element
+         * @param {Object/String} o The Dom object spec (and children) or raw HTML blob
+         */
+        
+        update : function(el, o)
+        {
+            updateNode(Roo.getDom(el), createDom(o));
+            
+        }
+        
+        
     };
 }();
 /*

@@ -12,6 +12,7 @@
 /**
  * @class Roo.BasicDialog
  * @extends Roo.util.Observable
+ * @parent none builder
  * Lightweight Dialog Class.  The code below shows the creation of a typical dialog using existing HTML markup:
  * <pre><code>
 var dlg = new Roo.BasicDialog("my-dlg", {

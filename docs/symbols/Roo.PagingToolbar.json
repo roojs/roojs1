@@ -10,6 +10,8 @@
     "Roo.Toolbar.Separator",
     "Roo.Toolbar.Spacer",
     "Roo.Toolbar.TextItem",
+    "Roo.Toolbar.Button",
+    "Roo.Toolbar.SplitButton",
     "Roo.form.Field",
     "Roo.form.Checkbox",
     "Roo.form.ComboBox",
@@ -121,6 +123,32 @@
           "name" : "store",
           "type" : "Roo.data.Store",
           "desc" : "The data store to bind",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "onClick",
+      "type" : "function",
+      "desc" : "event that occurs when you click on the navigation buttons - can be used to trigger load of a grid.",
+      "sig" : "(which)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "which",
+          "type" : "String",
+          "desc" : "(first|prev|next|last|refresh)  which button to press.",
           "isOptional" : false
         }
       ],

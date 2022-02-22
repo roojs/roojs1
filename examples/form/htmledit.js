@@ -26,10 +26,121 @@ Roo.onReady(function(){
                 xtype : 'HtmlEditor',
                 xns: Roo.form,
                 white : [ 'iframe' ],
+                autoClean : true,
+                bodyCls : 'undoreset undoreset mo-pr-body-content',
+                stylesheets : [ 
+                    '../../css/undoreset.css',
+                    '/web.MediaOutreach/Pman/PressRelease/templates/images/css/editor.css'
+                    
+                    
+                ],
                 toolbars : [    
                     {
                         xtype : 'ToolbarStandard',
-                        xns : Roo.form.HtmlEditor
+                        xns : Roo.form.HtmlEditor,
+                        btns : [
+                            {
+                                xtype : 'Button',
+                                text : "Add Table",
+                                cls : 'x-init-enable',
+                                listeners : {
+                                    click : function (_self, e)
+                                    {
+                                        
+                                        var rr = new Roo.htmleditor.BlockTable({
+                                            no_row : 4,
+                                            no_col : 4
+                                        });
+                                        editor.editorcore.insertAtCursor(rr.toHTML());
+                                    
+                                 
+                                    }
+                                },
+                                xns : Roo,
+                               
+                            },
+                            {
+                                xtype : 'Button',
+                                text : "Add Image (BIG)",
+                                cls : 'x-init-enable',
+                                listeners : {
+                                    click : function (_self, e)
+                                    {
+                                        
+                                        var rr = new Roo.htmleditor.BlockFigure({
+                                            image_src: 'https://picsum.photos/1000/500',
+    
+                                            align: 'left',
+                                            caption : 'test',
+                                            text_align: 'left',
+                                            
+                                            width : '100%',
+                                            margin: '2%',
+                                        });
+                                        editor.editorcore.insertAtCursor(rr.toHTML());
+                                    
+                                 
+                                    }
+                                },
+                                xns : Roo,
+                               
+                            },
+                            {
+                                xtype : 'Button',
+                                text : "Add Image (SMALL)",
+                                cls : 'x-init-enable',
+                                listeners : {
+                                    click : function (_self, e)
+                                    {
+                                        
+                                        var rr = new Roo.htmleditor.BlockFigure({
+                                            image_src: 'https://picsum.photos/400/300',
+    
+                                            align: 'left',
+                                            caption : 'test',
+                                            text_align: 'left',
+                                            
+                                            width : '100%',
+                                            margin: '2%',
+                                        });
+                                        editor.editorcore.insertAtCursor(rr.toHTML());
+                                    
+                                 
+                                    }
+                                },
+                                xns : Roo,
+                               
+                            },
+                            {
+                                xtype : 'Button',
+                                text : "Add Youtube",
+                                cls : 'x-init-enable',
+                                listeners : {
+                                    click : function (_self, e)
+                                    {
+                                        
+                                        var rr = new Roo.htmleditor.BlockFigure({
+                                            image_src: 'https://picsum.photos/500/400',
+    
+                                            align: 'center',
+                                            caption : 'test',
+                                            text_align: 'left',
+                                            video_url : 'https://www.youtube.com/embed/Gbr-UrxxeoA',
+                                            href : 'https://youtu.be/Gbr-UrxxeoA',
+                                            cls : 'youtube',
+                                            width : '100%',
+                                            margin: '2%',
+                                        });
+                                        editor.editorcore.insertAtCursor(rr.toHTML());
+                                    
+                                 
+                                    }
+                                },
+                                xns : Roo,
+                               
+                            }
+                   
+                        ]
                     },
                       {
                         xtype : 'ToolbarContext',
@@ -38,15 +149,15 @@ Roo.onReady(function(){
                             '*' : [ 'headline' ] ,
                             'TD' : [ 'underline', 'double-underline' ]
                         }
-                    },
-                    
+                    }
+                     
                     
                 ],
                 id:'bio',
                 name : 'bio',
                 fieldLabel:'Biography',
-                width:800,
-                height:400,
+                width:1100,
+                height:600,
                 resizable: 's' /// where the handles should got..
 
             },

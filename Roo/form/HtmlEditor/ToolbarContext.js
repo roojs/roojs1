@@ -41,189 +41,138 @@ Roo.form.HtmlEditor.ToolbarContext = function(config)
  
 
 Roo.form.HtmlEditor.ToolbarContext.types = {
-    'IMG' : {
-        width : {
+    'IMG' : [
+        {
+            name : 'width',
             title: "Width",
             width: 40
         },
-        height:  {
+        {
+            name : 'height',
             title: "Height",
             width: 40
         },
-        align: {
+        {
+            name : 'align',
             title: "Align",
             opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
             width : 80
             
         },
-        border: {
+        {
+            name : 'border',
             title: "Border",
             width: 40
         },
-        alt: {
+        {
+            name : 'alt',
             title: "Alt",
             width: 120
         },
-        src : {
+        {
+            name : 'src',
             title: "Src",
             width: 220
         }
         
-    },
-    'A' : {
-        name : {
+    ],
+    
+    'FIGURE' : [
+        {
+            name : 'align',
+            title: "Align",
+            opts : [ [""],[ "left"],[ "right"],[ "center"],[ "top"]],
+            width : 80  
+        }
+    ],
+    'A' : [
+        {
+            name : 'name',
             title: "Name",
             width: 50
         },
-        target:  {
+        {
+            name : 'target',
             title: "Target",
             width: 120
         },
-        href:  {
+        {
+            name : 'href',
             title: "Href",
             width: 220
         } // border?
         
-    },
-    'TABLE' : {
-        rows : {
-            title: "Rows",
-            width: 20
-        },
-        cols : {
-            title: "Cols",
-            width: 20
-        },
-        width : {
-            title: "Width",
-            width: 40
-        },
-        height : {
-            title: "Height",
-            width: 40
-        },
-        border : {
-            title: "Border",
-            width: 20
-        }
-    },
-    'TD' : {
-        width : {
-            title: "Width",
-            width: 40
-        },
-        height : {
-            title: "Height",
-            width: 40
-        },   
-        align: {
-            title: "Align",
-            opts : [[""],[ "left"],[ "center"],[ "right"],[ "justify"],[ "char"]],
-            width: 80
-        },
-        valign: {
-            title: "Valign",
-            opts : [[""],[ "top"],[ "middle"],[ "bottom"],[ "baseline"]],
-            width: 80
-        },
-        colspan: {
-            title: "Colspan",
-            width: 20
-            
-        },
-         'font-family'  : {
-            title : "Font",
-            style : 'fontFamily',
-            displayField: 'display',
-            optname : 'font-family',
-            width: 140
-        }
-    },
-    'INPUT' : {
-        name : {
+    ],
+    
+    'INPUT' : [
+        {
+            name : 'name',
             title: "name",
             width: 120
         },
-        value : {
+        {
+            name : 'value',
             title: "Value",
             width: 120
         },
-        width : {
+        {
+            name : 'width',
             title: "Width",
             width: 40
         }
-    },
-    'LABEL' : {
-        'for' : {
+    ],
+    'LABEL' : [
+         {
+            name : 'for',
             title: "For",
             width: 120
         }
-    },
-    'TEXTAREA' : {
-          name : {
+    ],
+    'TEXTAREA' : [
+        {
+            name : 'name',
             title: "name",
             width: 120
         },
-        rows : {
+        {
+            name : 'rows',
             title: "Rows",
             width: 20
         },
-        cols : {
+        {
+            name : 'cols',
             title: "Cols",
             width: 20
         }
-    },
-    'SELECT' : {
-        name : {
+    ],
+    'SELECT' : [
+        {
+            name : 'name',
             title: "name",
             width: 120
         },
-        selectoptions : {
+        {
+            name : 'selectoptions',
             title: "Options",
             width: 200
         }
-    },
+    ],
     
     // should we really allow this??
     // should this just be 
-    'BODY' : {
-        title : {
+    'BODY' : [
+        
+        {
+            name : 'title',
             title: "Title",
             width: 200,
             disabled : true
         }
-    },
-    'SPAN' : {
-        'font-family'  : {
-            title : "Font",
-            style : 'fontFamily',
-            displayField: 'display',
-            optname : 'font-family',
-            width: 140
-        }
-    },
-    'DIV' : {
-        'font-family'  : {
-            title : "Font",
-            style : 'fontFamily',
-            displayField: 'display',
-            optname : 'font-family',
-            width: 140
-        }
-    },
-     'P' : {
-        'font-family'  : {
-            title : "Font",
-            style : 'fontFamily',
-            displayField: 'display',
-            optname : 'font-family',
-            width: 140
-        }
-    },
-    
-    '*' : {
-        // empty..
-    }
+    ],
+ 
+    '*' : [
+        // empty.
+    ]
 
 };
 
@@ -309,9 +258,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // disable everything...
         var ty= Roo.form.HtmlEditor.ToolbarContext.types;
         this.toolbars = {};
-           
+        // block toolbars are built in updateToolbar when needed.
         for (var i in  ty) {
-          
+            
             this.toolbars[i] = this.buildToolbar(ty[i],i);
         }
         this.tb = this.toolbars.BODY;
@@ -338,8 +287,13 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
      *
      * Note you can force an update by calling on('editorevent', scope, false)
      */
-    updateToolbar: function(editor,ev,sel){
-
+    updateToolbar: function(editor ,ev, sel)
+    {
+        
+        if (ev) {
+            ev.stopEvent(); // se if we can stop this looping with mutiple events.
+        }
+        
         //Roo.log(ev);
         // capture mouse up - this is handy for selecting images..
         // perhaps should go somewhere else...
@@ -347,38 +301,40 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
              this.editor.onFirstFocus();
             return;
         }
-        
+        //Roo.log(ev ? ev.target : 'NOTARGET');
         
         
         // http://developer.yahoo.com/yui/docs/simple-editor.js.html
         // selectNode - might want to handle IE?
+        
+        
+        
         if (ev &&
             (ev.type == 'mouseup' || ev.type == 'click' ) &&
-            ev.target && ev.target.tagName == 'IMG') {
+            ev.target && ev.target.tagName != 'BODY' ) { // && ev.target.tagName == 'IMG') {
             // they have click on an image...
             // let's see if we can change the selection...
             sel = ev.target;
-         
-              var nodeRange = sel.ownerDocument.createRange();
-            try {
-                nodeRange.selectNode(sel);
-            } catch (e) {
-                nodeRange.selectNodeContents(sel);
-            }
-            //nodeRange.collapse(true);
-            var s = this.editorcore.win.getSelection();
-            s.removeAllRanges();
-            s.addRange(nodeRange);
-        }  
+            
+            // this triggers looping?
+            //this.editorcore.selectNode(sel);
+             
+        }
         
+        // this forces an id..
+        Array.from(this.editorcore.doc.body.querySelectorAll('.roo-ed-selection')).forEach(function(e) {
+             e.classList.remove('roo-ed-selection');
+        });
+        //Roo.select('.roo-ed-selection', false, this.editorcore.doc).removeClass('roo-ed-selection');
+        //Roo.get(node).addClass('roo-ed-selection');
       
-        var updateFooter = sel ? false : true;
+        //var updateFooter = sel ? false : true; 
         
         
         var ans = this.editorcore.getAllAncestors();
         
         // pick
-        var ty= Roo.form.HtmlEditor.ToolbarContext.types;
+        var ty = Roo.form.HtmlEditor.ToolbarContext.types;
         
         if (!sel) { 
             sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editorcore.doc.body;
@@ -386,86 +342,145 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             sel = sel.tagName.length ? sel : this.editorcore.doc.body;
             
         }
-        // pick a menu that exists..
+        
         var tn = sel.tagName.toUpperCase();
-        //sel = typeof(ty[tn]) != 'undefined' ? sel : this.editor.doc.body;
-        
-        tn = sel.tagName.toUpperCase();
-        
         var lastSel = this.tb.selectedNode;
-        
         this.tb.selectedNode = sel;
+        var left_label = tn;
         
-        // if current menu does not match..
+        // ok see if we are editing a block?
         
-        if ((this.tb.name != tn) || (lastSel != this.tb.selectedNode) || ev === false) {
+        var db = false;
+        // you are not actually selecting the block.
+        if (sel && sel.hasAttribute('data-block')) {
+            db = sel;
+        } else if (sel && sel.closest('[data-block]')) {
+            
+            db = sel.closest('[data-block]');
+            //var cepar = sel.closest('[contenteditable=true]');
+            //if (db && cepar && cepar.tagName != 'BODY') {
+            //   db = false; // we are inside an editable block.. = not sure how we are going to handle nested blocks!?
+            //}   
+        }
+        
+        
+        var block = false;
+        //if (db && !sel.hasAttribute('contenteditable') && sel.getAttribute('contenteditable') != 'true' ) {
+        if (db && this.editorcore.enableBlocks) {
+            block = Roo.htmleditor.Block.factory(db);
+            
+            
+            if (block) {
+                 db.className = (
+                        db.classList.length > 0  ? db.className + ' ' : ''
+                    )  + 'roo-ed-selection';
+                 
+                 // since we removed it earlier... its not there..
+                tn = 'BLOCK.' + db.getAttribute('data-block');
                 
-            this.tb.el.hide();
-            ///console.log("show: " + tn);
-            this.tb =  typeof(ty[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
-            this.tb.el.show();
-            // update name
-            this.tb.items.first().el.innerHTML = tn + ':&nbsp;';
+                //this.editorcore.selectNode(db);
+                if (typeof(this.toolbars[tn]) == 'undefined') {
+                   this.toolbars[tn] = this.buildToolbar( false  ,tn ,block.friendly_name, block);
+                }
+                this.toolbars[tn].selectedNode = db;
+                left_label = block.friendly_name;
+                ans = this.editorcore.getAllAncestors();
+            }
+            
+                
+            
+        }
+        
+        
+        if (this.tb.name == tn && lastSel == this.tb.selectedNode && ev !== false) {
+            return; // no change?
+        }
+        
+        
+          
+        this.tb.el.hide();
+        ///console.log("show: " + tn);
+        this.tb =  typeof(this.toolbars[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
+        
+        this.tb.el.show();
+        // update name
+        this.tb.items.first().el.innerHTML = left_label + ':&nbsp;';
+        
+        
+        // update attributes
+        if (block && this.tb.fields) {
+             
+            this.tb.fields.each(function(e) {
+                e.setValue(block[e.name]);
+            });
             
             
-            // update attributes
-            if (this.tb.fields) {
-                this.tb.fields.each(function(e) {
-                    if (e.stylename) {
-                        e.setValue(sel.style[e.stylename]);
-                        return;
-                    } 
-                   e.setValue(sel.getAttribute(e.attrname));
+        } else  if (this.tb.fields && this.tb.selectedNode) {
+            this.tb.fields.each( function(e) {
+                if (e.stylename) {
+                    e.setValue(this.tb.selectedNode.style[e.stylename]);
+                    return;
+                } 
+                e.setValue(this.tb.selectedNode.getAttribute(e.attrname));
+            }, this);
+            this.updateToolbarStyles(this.tb.selectedNode);  
+        }
+        
+        
+       
+        Roo.menu.MenuMgr.hideAll();
+
+        
+        
+    
+        // update the footer
+        //
+        this.updateFooter(ans);
+             
+    },
+    
+    updateToolbarStyles : function(sel)
+    {
+        var hasStyles = false;
+        for(var i in this.styles) {
+            hasStyles = true;
+            break;
+        }
+        
+        // update styles
+        if (hasStyles && this.tb.hasStyles) { 
+            var st = this.tb.fields.item(0);
+            
+            st.store.removeAll();
+            var cn = sel.className.split(/\s+/);
+            
+            var avs = [];
+            if (this.styles['*']) {
+                
+                Roo.each(this.styles['*'], function(v) {
+                    avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
+                });
+            }
+            if (this.styles[tn]) { 
+                Roo.each(this.styles[tn], function(v) {
+                    avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
                 });
             }
             
-            var hasStyles = false;
-            for(var i in this.styles) {
-                hasStyles = true;
-                break;
-            }
-            
-            // update styles
-            if (hasStyles) { 
-                var st = this.tb.fields.item(0);
-                
-                st.store.removeAll();
-               
-                
-                var cn = sel.className.split(/\s+/);
-                
-                var avs = [];
-                if (this.styles['*']) {
-                    
-                    Roo.each(this.styles['*'], function(v) {
-                        avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
-                    });
-                }
-                if (this.styles[tn]) { 
-                    Roo.each(this.styles[tn], function(v) {
-                        avs.push( [ v , cn.indexOf(v) > -1 ? 1 : 0 ] );         
-                    });
-                }
-                
-                st.store.loadData(avs);
-                st.collapse();
-                st.setValue(cn);
-            }
-            // flag our selected Node.
-            this.tb.selectedNode = sel;
-           
-           
-            Roo.menu.MenuMgr.hideAll();
-
+            st.store.loadData(avs);
+            st.collapse();
+            st.setValue(cn);
         }
-        
-        if (!updateFooter) {
-            //this.footDisp.dom.innerHTML = ''; 
+    },
+    
+     
+    updateFooter : function(ans)
+    {
+        var html = '';
+        if (ans === false) {
+            this.footDisp.dom.innerHTML = '';
             return;
         }
-        // update the footer
-        //
-        var html = '';
         
         this.footerEls = ans.reverse();
         Roo.each(this.footerEls, function(a,i) {
@@ -485,10 +500,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         this.footDisp.dom.innerHTML = html;
             
-        //this.editorsyncValue();
+        
     },
-     
-    
    
        
     // private
@@ -513,7 +526,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
            item.enable();
         });
     },
-    buildToolbar: function(tlist, nm)
+    buildToolbar: function(tlist, nm, friendly_name, block)
     {
         var editor = this.editor;
         var editorcore = this.editorcore;
@@ -524,18 +537,22 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
        
         var tb = new Roo.Toolbar(wdiv);
-        // add the name..
-        
-        tb.add(nm+ ":&nbsp;");
-        
-        var styles = [];
-        for(var i in this.styles) {
-            styles.push(i);
+        ///this.tb = tb; // << this sets the active toolbar..
+        if (tlist === false && block) {
+            tlist = block.contextMenu(this);
         }
+        
+        tb.hasStyles = false;
+        tb.name = nm;
+        
+        tb.add((typeof(friendly_name) == 'undefined' ? nm : friendly_name) + ":&nbsp;");
+        
+        var styles = Array.from(this.styles);
+        
         
         // styles...
         if (styles && styles.length) {
-            
+            tb.hasStyles = true;
             // this needs a multi-select checkbox...
             tb.addField( new Roo.form.ComboBox({
                 store: new Roo.data.SimpleStore({
@@ -565,9 +582,18 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         var tbc = Roo.form.HtmlEditor.ToolbarContext;
-        var tbops = tbc.options;
         
-        for (var i in tlist) {
+        
+        for (var i = 0; i < tlist.length; i++) {
+            
+            // newer versions will use xtype cfg to create menus.
+            if (typeof(tlist[i].xtype) != 'undefined') {
+                
+                tb[typeof(tlist[i].name)== 'undefined' ? 'add' : 'addField'](Roo.factory(tlist[i]));
+                
+                
+                continue;
+            }
             
             var item = tlist[i];
             tb.add(item.title + ":&nbsp;");
@@ -575,8 +601,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             
             //optname == used so you can configure the options available..
             var opts = item.opts ? item.opts : false;
-            if (item.optname) {
-                opts = tbops[item.optname];
+            if (item.optname) { // use the b
+                opts = Roo.form.HtmlEditor.ToolbarContext.options[item.optname];
            
             }
             
@@ -588,13 +614,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                         fields: ['val', 'display'],
                         data : opts  
                     }),
-                    name : '-roo-edit-' + i,
-                    attrname : i,
+                    name : '-roo-edit-' + tlist[i].name,
+                    
+                    attrname : tlist[i].name,
                     stylename : item.style ? item.style : false,
+                    
                     displayField: item.displayField ? item.displayField : 'val',
                     valueField :  'val',
                     typeAhead: false,
-                    mode: typeof(tbc.stores[i]) != 'undefined'  ? 'remote' : 'local',
+                    mode: typeof(tbc.stores[tlist[i].name]) != 'undefined'  ? 'remote' : 'local',
                     editable : false,
                     triggerAction: 'all',
                     emptyText:'Select',
@@ -602,11 +630,20 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     width: item.width ? item.width  : 130,
                     listeners : {
                         'select': function(c, r, i) {
+                             
+                            
                             if (c.stylename) {
                                 tb.selectedNode.style[c.stylename] =  r.get('val');
+                                editorcore.syncValue();
+                                return;
+                            }
+                            if (r === false) {
+                                tb.selectedNode.removeAttribute(c.attrname);
+                                editorcore.syncValue();
                                 return;
                             }
                             tb.selectedNode.setAttribute(c.attrname, r.get('val'));
+                            editorcore.syncValue();
                         }
                     }
 
@@ -614,7 +651,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 continue;
                     
                  
-                
+                /*
                 tb.addField( new Roo.form.TextField({
                     name: i,
                     width: 100,
@@ -622,16 +659,19 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     value: ''
                 }));
                 continue;
+                */
             }
             tb.addField( new Roo.form.TextField({
-                name: '-roo-edit-' + i,
-                attrname : i,
+                name: '-roo-edit-' + tlist[i].name,
+                attrname : tlist[i].name,
                 
                 width: item.width,
                 //allowBlank:true,
                 value: '',
                 listeners: {
                     'change' : function(f, nv, ov) {
+                        
+                         
                         tb.selectedNode.setAttribute(f.attrname, nv);
                         editorcore.syncValue();
                     }
@@ -641,8 +681,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         var _this = this;
-        
+        var show_delete = !block || block.deleteTitle !== false;
         if(nm == 'BODY'){
+            show_delete = false;
             tb.addSeparator();
         
             tb.addButton( {
@@ -658,60 +699,61 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         }
         
         tb.addFill();
-        tb.addButton( {
-            text: 'Remove Tag',
-    
-            listeners : {
-                click : function ()
-                {
-                    // remove
-                    // undo does not work.
-                     
-                    var sn = tb.selectedNode;
-                    
-                    var pn = sn.parentNode;
-                    
-                    var stn =  sn.childNodes[0];
-                    var en = sn.childNodes[sn.childNodes.length - 1 ];
-                    while (sn.childNodes.length) {
-                        var node = sn.childNodes[0];
-                        sn.removeChild(node);
-                        //Roo.log(node);
-                        pn.insertBefore(node, sn);
+        if (show_delete) {
+            tb.addButton({
+                text: block && block.deleteTitle ? block.deleteTitle  : 'Remove Block or Formating', // remove the tag, and puts the children outside...
+        
+                listeners : {
+                    click : function ()
+                    {
+                        var sn = tb.selectedNode;
+                        if (block) {
+                            sn = Roo.htmleditor.Block.factory(tb.selectedNode).removeNode();
+                            
+                        }
+                        if (!sn) {
+                            return;
+                        }
+                        var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || sn.parentNode;
+                        if (sn.hasAttribute('data-block')) {
+                            stn =  sn.nextSibling || sn.previousSibling || sn.parentNode;
+                            sn.parentNode.removeChild(sn);
+                            
+                        } else if (sn && sn.tagName != 'BODY') {
+                            // remove and keep parents.
+                            a = new Roo.htmleditor.FilterKeepChildren({tag : false});
+                            a.replaceTag(sn);
+                        }
+                        
+                        
+                        var range = editorcore.createRange();
+            
+                        range.setStart(stn,0);
+                        range.setEnd(stn,0); 
+                        var selection = editorcore.getSelection();
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                        
+                        
+                        //_this.updateToolbar(null, null, pn);
+                        _this.updateToolbar(null, null, null);
+                        _this.updateFooter(false);
                         
                     }
-                    pn.removeChild(sn);
-                    var range = editorcore.createRange();
-        
-                    range.setStart(stn,0);
-                    range.setEnd(en,0); //????
-                    //range.selectNode(sel);
-                    
-                    
-                    var selection = editorcore.getSelection();
-                    selection.removeAllRanges();
-                    selection.addRange(range);
-                    
-                    
-                    
-                    //_this.updateToolbar(null, null, pn);
-                    _this.updateToolbar(null, null, null);
-                    _this.footDisp.dom.innerHTML = ''; 
                 }
-            }
-            
+                
+                        
                     
                 
-            
-        });
-        
+            });
+        }    
         
         tb.el.on('click', function(e){
             e.preventDefault(); // what does this do?
         });
         tb.el.setVisibilityMode( Roo.Element.DISPLAY);
         tb.el.hide();
-        tb.name = nm;
+        
         // dont need to disable them... as they will get hidden
         return tb;
          
@@ -755,6 +797,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         
     },
+    // when the footer contect changes
     onContextClick : function (ev,dom)
     {
         ev.preventDefault();
@@ -767,17 +810,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var ans = this.footerEls;
         var sel = ans[n];
         
-         // pick
-        var range = this.editorcore.createRange();
-        
-        range.selectNodeContents(sel);
-        //range.selectNode(sel);
-        
-        
-        var selection = this.editorcore.getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
-        
+        this.editorcore.selectNode(sel);
         
         
         this.updateToolbar(null, null, sel);

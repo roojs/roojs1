@@ -332,6 +332,16 @@
      * &lt;p&gt;
      * @param {Object} options An object containing properties which control loading options:&lt;ul&gt;
      * &lt;li&gt;params {Object} An object containing properties to pass as HTTP parameters to a remote data source.&lt;/li&gt;
+     * &lt;li&gt;params.data {Object} if you are using a MemoryProxy / JsonReader, use this as the data to load stuff..
+     * &lt;pre&gt;
+                {
+                    data : data,  // array of key=&gt;value data like JsonReader
+                    total : data.length,
+                    success : true
+                    
+                }
+        &lt;/pre&gt;
+            }.&lt;/li&gt;
      * &lt;li&gt;callback {Function} A function to be called after the Records have been loaded. The callback is
      * passed the following arguments:&lt;ul&gt;
      * &lt;li&gt;r : Roo.data.Record[]&lt;/li&gt;

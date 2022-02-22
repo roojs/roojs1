@@ -59,7 +59,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     width: 500,
     
     /**
-     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
+     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets - this is usally a good idea  rootURL + '/roojs1/css/undoreset.css',   .
      * 
      */
     stylesheets: false,
@@ -90,7 +90,27 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      * @cfg {boolean} allowComments - default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.
      */
     allowComments: false,
+    /**
+     * @cfg {boolean} enableBlocks - default true - if the block editor (table and figure should be enabled)
+     */
+    enableBlocks : true,
     
+    /**
+     * @cfg {boolean} autoClean - default true - loading and saving will remove quite a bit of formating,
+     *         if you are doing an email editor, this probably needs disabling, it's designed
+     */
+    autoClean: true,
+    /**
+     * @cfg {string} bodyCls default '' default classes to add to body of editable area - usually undoreset is a good start..
+     */
+    bodyCls : '',
+    /**
+     * @cfg {String} language default en - language of text (usefull for rtl languages)
+     * 
+     */
+    language: 'en',
+    
+     
     // id of frame..
     frameId: false,
     
@@ -195,7 +215,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             * Fires when press the Sytlesheets button
             * @param {Roo.HtmlEditorCore} this
             */
-            stylesheetsclick: true
+            stylesheetsclick: true,
+            /**
+            * @event paste
+            * Fires when press user pastes into the editor
+            * @param {Roo.HtmlEditorCore} this
+            */
+            paste: true 
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
@@ -226,8 +252,19 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
          
         
     },
-
-     
+    /**
+     * get the Context selected node
+     * @returns {DomElement|boolean} selected node if active or false if none
+     * 
+     */
+    getSelectedNode : function()
+    {
+        if (this.toolbars.length < 2 || !this.toolbars[1].tb) {
+            return false;
+        }
+        return this.toolbars[1].tb.selectedNode;
+    
+    },
     // private
     onRender : function(ct, position)
     {
@@ -448,6 +485,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.removeClass('x-hidden');
             this.el.dom.removeAttribute('tabIndex');
             this.el.focus();
+            this.el.dom.scrollTop = 0;
+            
             
             for (var i = 0; i < this.toolbars.length; i++) {
                 if(this.toolbars[i] instanceof Roo.form.HtmlEditor.ToolbarContext){
@@ -515,7 +554,17 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.editorcore.pushValue();
     },
 
+    /**
+     * update the language in the body - really done by core
+     * @param {String} language - eg. en / ar / zh-CN etc..
+     */
+    updateLanguage : function(lang)
+    {
+        this.language = lang;
+        this.editorcore.language = lang;
+        this.editorcore.updateLanguage();
      
+    },
     // private
     deferFocus : function(){
         this.focus.defer(10, this);

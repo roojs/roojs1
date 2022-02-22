@@ -54,6 +54,32 @@
       ]
     },
     {
+      "name" : "from",
+      "type" : "function",
+      "desc" : "from",
+      "sig" : "(o)",
+      "static" : true,
+      "memberOf" : "",
+      "isStatic" : true,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "o",
+          "type" : "Array",
+          "desc" : "Or Array like object (eg. nodelist)",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "map",
       "type" : "function",
       "desc" : "Map (JS 1.6 compatibility)",

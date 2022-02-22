@@ -44,12 +44,6 @@
       "memberOf" : "Roo.form.Field"
     },
     {
-      "name" : "name",
-      "type" : "String",
-      "desc" : "The field's HTML name attribute.",
-      "memberOf" : "Roo.form.Field"
-    },
-    {
       "name" : "resizable",
       "type" : "String",
       "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
@@ -60,6 +54,12 @@
       "type" : "Array",
       "desc" : "Array of toolbars. - defaults to just the Standard one",
       "memberOf" : ""
+    },
+    {
+      "name" : "name",
+      "type" : "String",
+      "desc" : "The field's HTML name attribute.",
+      "memberOf" : "Roo.form.Field"
     },
     {
       "name" : "width",
@@ -116,10 +116,28 @@
       "memberOf" : "Roo.util.Observable"
     },
     {
+      "name" : "bodyCls",
+      "type" : "string",
+      "desc" : "default '' default classes to add to body of editable area - usually undoreset is a good start..",
+      "memberOf" : ""
+    },
+    {
       "name" : "readOnly",
       "type" : "Boolean",
       "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
       "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "enableBlocks",
+      "type" : "boolean",
+      "desc" : "- default true - if the block editor (table and figure should be enabled)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "language",
+      "type" : "String",
+      "desc" : "default en - language of text (usefull for rtl languages)",
+      "memberOf" : ""
     },
     {
       "name" : "cls",
@@ -140,21 +158,21 @@
       "memberOf" : "Roo.form.Field"
     },
     {
-      "name" : "disableClass",
-      "type" : "String",
-      "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
-    },
-    {
       "name" : "validationDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
       "memberOf" : "Roo.form.Field"
     },
     {
+      "name" : "disableClass",
+      "type" : "String",
+      "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+      "memberOf" : "Roo.Component"
+    },
+    {
       "name" : "stylesheets",
       "type" : "Array",
-      "desc" : "url of stylesheets. set to [] to disable stylesheets.",
+      "desc" : "url of stylesheets. set to [] to disable stylesheets - this is usally a good idea  rootURL + '/roojs1/css/undoreset.css',   .",
       "memberOf" : ""
     },
     {
@@ -174,6 +192,12 @@
       "type" : "String",
       "desc" : "Mouse over tip",
       "memberOf" : "Roo.form.Field"
+    },
+    {
+      "name" : "autoClean",
+      "type" : "boolean",
+      "desc" : "- default true - loading and saving will remove quite a bit of formating,\n        if you are doing an email editor, this probably needs disabling, it's designed",
+      "memberOf" : ""
     }
   ],
   "methods" : [
@@ -198,6 +222,32 @@
           "name" : "editor",
           "type" : "HtmlEditor",
           "desc" : "",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "updateLanguage",
+      "type" : "function",
+      "desc" : "update the language in the body - really done by core",
+      "sig" : "(language)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "language",
+          "type" : "String",
+          "desc" : "- eg. en / ar / zh-CN etc..",
           "isOptional" : false
         }
       ],
@@ -252,6 +302,25 @@
       "name" : "clearInvalid",
       "type" : "function",
       "desc" : "Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "getSelectedNode",
+      "type" : "function",
+      "desc" : "get the Context selected node",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "",
@@ -1525,6 +1594,26 @@
       "since" : "",
       "see" : "",
       "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "paste",
+      "type" : "function",
+      "desc" : "Fires when press user pastes into the editor",
+      "sig" : "function (_self)\n{\n\n}",
+      "memberOf" : "",
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "params" : [
+        {
+          "name" : "this",
+          "type" : "Roo.HtmlEditorCore",
+          "desc" : "",
+          "isOptional" : false
+        }
+      ],
       "returns" : []
     },
     {

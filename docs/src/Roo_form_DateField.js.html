@@ -97,6 +97,16 @@
      * The tooltip text to display when the date falls on a disabled date (defaults to 'Disabled')
      */
     </span><span class="jsdoc-var">disabledDatesText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Disabled&quot;</span><span class="jsdoc-syntax">,
+
+
+	</span><span class="jsdoc-comment">/**
+     * @cfg {Date/String} zeroValue
+     * if the date is less that this number, then the field is rendered as empty
+     * default is 1800
+     */
+	</span><span class="jsdoc-var">zeroValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'1800-01-01'</span><span class="jsdoc-syntax">,
+
+
     </span><span class="jsdoc-comment">/**
      * @cfg {Date/String} minValue
      * The minimum allowed date. Can be either a Javascript date object or a string date in a
@@ -273,6 +283,15 @@ dateField.setValue('2006-5-4');
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">parseDate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+
+		</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">) {
+			</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.zeroValue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'Y-m-d'</span><span class="jsdoc-syntax">) ) {
+				</span><span class="jsdoc-keyword">return  </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+			}
+			</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+		}
+
+
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">value </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
         }
@@ -288,6 +307,9 @@ dateField.setValue('2006-5-4');
                 </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.altFormatsArray</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
             }
         }
+		</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.zeroValue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'Y-m-d'</span><span class="jsdoc-syntax">) ) {
+			</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+		}
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
     },
 

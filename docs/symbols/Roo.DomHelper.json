@@ -262,6 +262,38 @@
       "returns" : []
     },
     {
+      "name" : "update",
+      "type" : "function",
+      "desc" : "Updates the first element with the spec from the o (replacing if necessary)\nThis iterates through the children, and updates attributes / children etc..",
+      "sig" : "(el, o)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "el",
+          "type" : "String/HTMLElement/Element",
+          "desc" : "The context element",
+          "isOptional" : false
+        },
+        {
+          "name" : "o",
+          "type" : "Object/String",
+          "desc" : "The Dom object spec (and children) or raw HTML blob",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "markup",
       "type" : "function",
       "desc" : "Returns the markup for the passed Element(s) config",

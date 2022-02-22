@@ -32,5 +32,9 @@ roojspacker -i buildSDK/dependancy_core.txt  -i buildSDK/dependancy_ui.txt  \
     -i buildSDK/dependancy_svg.txt \
    --doc-target=docs -D
 
+#build old ROOJS css 
+seed buildSDK/cssmini.js 
+
+
 # SCSS (really uses the C scss)
 php buildSDK/scss-bootstrap.php

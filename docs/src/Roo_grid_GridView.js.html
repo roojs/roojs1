@@ -1390,13 +1390,28 @@
     </span><span class="jsdoc-var">beforeColMenuShow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">colCount </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.colMenu.removeAll</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">colCount</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-            </span><span class="jsdoc-var">this.colMenu.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.menu.CheckItem</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">items.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;col-&quot;</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">cm.getColumnId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cm.getColumnHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">checked</span><span class="jsdoc-syntax">: !</span><span class="jsdoc-var">cm.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">hideOnClick</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false
-            </span><span class="jsdoc-syntax">}));
+            </span><span class="jsdoc-syntax">});
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.grid.sortColMenu</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">items.sort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.text </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">b.text</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">0;
+                }
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">a.text.toUpperCase</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">b.text.toUpperCase</span><span class="jsdoc-syntax">() ? 1 : -1;
+            });
+        }
+
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">colCount</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">this.colMenu.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.menu.CheckItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]));
         }
     },
 

@@ -32,7 +32,13 @@
     {
       "name" : "allowComments",
       "type" : "boolean",
-      "desc" : "- default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.",
+      "desc" : "- default false - allow comments in HTML source\n         - by default they are stripped - if you are editing email you may need this.",
+      "memberOf" : ""
+    },
+    {
+      "name" : "autoClean",
+      "type" : "boolean",
+      "desc" : "- default true - loading and saving will remove quite a bit of formating,\n        if you are doing an email editor, this probably needs disabling, it's designed",
       "memberOf" : ""
     },
     {
@@ -52,6 +58,18 @@
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component"
+    },
+    {
+      "name" : "language",
+      "type" : "String",
+      "desc" : "default en - language of text (usefull for rtl languages)",
+      "memberOf" : ""
+    },
+    {
+      "name" : "enableBlocks",
+      "type" : "boolean",
+      "desc" : "- default true - if the block editor (table and figure should be enabled)",
+      "memberOf" : ""
     },
     {
       "name" : "actionMode",
@@ -124,6 +142,32 @@
       "returns" : []
     },
     {
+      "name" : "selectNode",
+      "type" : "function",
+      "desc" : "Select a dom node",
+      "sig" : "(node)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "DomElement",
+          "desc" : "the node to select",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "execCmd",
       "type" : "function",
       "desc" : "Executes a Midas editor command directly on the editor document.\nFor visual commands, you should use {@link #relayCmd} instead.\n<b>This should only be called after the editor is initialized.</b>",
@@ -166,7 +210,7 @@
       "isConstructor" : false,
       "isPrivate" : false,
       "example" : "",
-      "deprecated" : "",
+      "deprecated" : "This has been deprecated: - use filter directly",
       "since" : "",
       "see" : "",
       "exceptions" : "",
@@ -196,7 +240,7 @@
     {
       "name" : "cleanTableWidths",
       "type" : "function",
-      "desc" : "cleanTableWidths.\n\nQuite often pasting from word etc.. results in tables with column and widths.\nThis does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..",
+      "desc" : "",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "",
@@ -204,7 +248,7 @@
       "isConstructor" : false,
       "isPrivate" : false,
       "example" : "",
-      "deprecated" : "",
+      "deprecated" : "This has been deprecated: - use filters",
       "since" : "",
       "see" : "",
       "exceptions" : "",
@@ -284,41 +328,9 @@
       "returns" : []
     },
     {
-      "name" : "iterateChildren",
-      "type" : "function",
-      "desc" : "iterateChildren of a Node, calling fn each time, using this as the scole..",
-      "sig" : "(node, fn)",
-      "static" : false,
-      "memberOf" : "",
-      "isStatic" : false,
-      "isConstructor" : false,
-      "isPrivate" : false,
-      "example" : "",
-      "deprecated" : "",
-      "since" : "",
-      "see" : "",
-      "exceptions" : "",
-      "requires" : "",
-      "params" : [
-        {
-          "name" : "node",
-          "type" : "DomNode",
-          "desc" : "node to iterate children of.",
-          "isOptional" : false
-        },
-        {
-          "name" : "fn",
-          "type" : "Function",
-          "desc" : "method of this class to call on each item.",
-          "isOptional" : false
-        }
-      ],
-      "returns" : []
-    },
-    {
       "name" : "pushValue",
       "type" : "function",
-      "desc" : "Protected method that will not generally be called directly. Pushes the value of the textarea\ninto the iframe editor.",
+      "desc" : "TEXTAREA -> EDITABLE\nProtected method that will not generally be called directly. Pushes the value of the textarea\ninto the iframe editor.",
       "sig" : "()\n{\n\n}",
       "static" : false,
       "memberOf" : "",

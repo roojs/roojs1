@@ -65,6 +65,12 @@
       "memberOf" : "Roo.form.Field"
     },
     {
+      "name" : "zeroValue",
+      "type" : "Date/String",
+      "desc" : "if the date is less that this number, then the field is rendered as empty\ndefault is 1800",
+      "memberOf" : ""
+    },
+    {
       "name" : "name",
       "type" : "String",
       "desc" : "The field's HTML name attribute.",

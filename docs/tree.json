@@ -203,6 +203,11 @@
         "is_class" : true
       },
       {
+        "name" : "Roo.MessageBox",
+        "cn" : [],
+        "is_class" : true
+      },
+      {
         "name" : "Roo.NestedLayoutPanel",
         "cn" : [],
         "is_class" : true
@@ -1021,11 +1026,6 @@
             "is_class" : true
           },
           {
-            "name" : "Roo.dd.DragDropMgr",
-            "cn" : [],
-            "is_class" : true
-          },
-          {
             "name" : "Roo.dd.DragSource",
             "cn" : [],
             "is_class" : true
@@ -1303,6 +1303,112 @@
         "is_class" : false
       },
       {
+        "name" : "Roo.htmleditor",
+        "cn" : [
+          {
+            "name" : "Roo.htmleditor.Block",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.htmleditor.BlockFigure",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.htmleditor.BlockTable",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.htmleditor.BlockTd",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.htmleditor.Filter",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterAttributes",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterBlack",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterBlock",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterComment",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterKeepChildren",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterLongBr",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterParagraph",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterSpan",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterStyleToTag",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterTableWidth",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.FilterWord",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.htmleditor.KeyEnter",
+            "cn" : [],
+            "is_class" : false
+          },
+          {
+            "name" : "Roo.htmleditor.TidyEntities",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.htmleditor.TidySerializer",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.htmleditor.TidyWriter",
+            "cn" : [],
+            "is_class" : true
+          }
+        ],
+        "is_class" : false
+      },
+      {
         "name" : "Roo.lib",
         "cn" : [
           {
@@ -1332,6 +1438,21 @@
           },
           {
             "name" : "Roo.lib.RGBColor",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.lib.Range",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.lib.Selection",
+            "cn" : [],
+            "is_class" : true
+          },
+          {
+            "name" : "Roo.lib.UndoManager",
             "cn" : [],
             "is_class" : true
           }
@@ -1402,6 +1523,11 @@
             "is_class" : true
           }
         ],
+        "is_class" : false
+      },
+      {
+        "name" : "Roo.rtf",
+        "cn" : [],
         "is_class" : false
       },
       {

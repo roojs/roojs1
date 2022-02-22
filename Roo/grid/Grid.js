@@ -438,8 +438,10 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     * @cfg {Roo.dd.DropTarget} dropTarget An {@link Roo.dd.DropTarget} config
     */
     dropTarget: false,
-    
-   
+     /**
+    * @cfg {boolean} sortColMenu Sort the column order menu when it shows (usefull for long lists..) default false
+    */ 
+    sortColMenu : false,
     
     // private
     rendered : false,

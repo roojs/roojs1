@@ -12,7 +12,7 @@
 /**
  * @class Roo.PagingToolbar
  * @extends Roo.Toolbar
- * @children   Roo.Toolbar.Item Roo.form.Field
+ * @children   Roo.Toolbar.Item Roo.Toolbar.Button Roo.Toolbar.SplitButton Roo.form.Field
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
@@ -255,7 +255,11 @@ Roo.extend(Roo.PagingToolbar, Roo.Toolbar, {
             this.loading.disable();
         }
     },
-
+    /**
+     * event that occurs when you click on the navigation buttons - can be used to trigger load of a grid.
+     * @param {String} which (first|prev|next|last|refresh)  which button to press.
+     *
+     */
     // private
     onClick : function(which){
         var ds = this.ds;

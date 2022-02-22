@@ -114,4 +114,14 @@ sort = (sort == 'ASC' ? 'DESC' : 'ASC');
     );
 };
 
+
+</span><span class="jsdoc-comment">/**
+  * Make the first letter of a string uppercase
+  *
+  * @return {String} The new string.
+  */
+</span><span class="jsdoc-var">String.prototype.toUpperCaseFirst </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.charAt</span><span class="jsdoc-syntax">(0)</span><span class="jsdoc-var">.toUpperCase</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.slice</span><span class="jsdoc-syntax">(1);
+};
+
 </span></code></body></html>

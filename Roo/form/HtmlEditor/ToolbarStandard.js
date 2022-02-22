@@ -1,4 +1,3 @@
-// <script type="text/javascript">
 /*
  * Based on
  * Ext JS Library 1.1.1
@@ -8,9 +7,9 @@
  */
 
 /**
- * @class Roo.form.HtmlEditorToolbar1
+ * @class Roo.form.HtmlEditor.ToolbarStandard
  * Basic Toolbar
- * 
+
  * Usage:
  *
  new Roo.form.HtmlEditor({
@@ -24,7 +23,7 @@
      
  * 
  * @cfg {Object} disable List of elements to disable..
- * @cfg {Array} btns List of additional buttons.
+ * @cfg {Roo.Toolbar.Item|Roo.Toolbar.Button|Roo.Toolbar.SplitButton|Roo.form.Field} btns[] List of additional buttons.
  * 
  * 
  * NEEDS Extra CSS? 
@@ -49,7 +48,7 @@ Roo.form.HtmlEditor.ToolbarStandard = function(config)
     // dont call parent... till later.
 }
 
-Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
+Roo.form.HtmlEditor.ToolbarStandard.prototype = {
     
     tb: false,
     
@@ -395,7 +394,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     tabIndex:-1
                 });
             }
-             cmenu.menu.items.push({
+            cmenu.menu.items.push({
                 actiontype : 'tablewidths',
                 html: 'Remove Table Widths',
                 handler: function(a,b) {
@@ -447,7 +446,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 actiontype : 'tidy',
                 html: 'Tidy HTML Source',
                 handler: function(a,b) {
-                    editorcore.doc.body.innerHTML = editorcore.domToHTML();
+                    new Roo.htmleditor.Tidy(editorcore.doc.body);
                     editorcore.syncValue();
                 },
                 tabIndex:-1
@@ -484,7 +483,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         
         if (this.btns) {
             for(var i =0; i< this.btns.length;i++) {
-                var b = Roo.factory(this.btns[i],Roo.form);
+                var b = Roo.factory(this.btns[i],this.btns[i].xns || Roo.form);
                 b.cls =  'x-edit-none';
                 
                 if(typeof(this.btns[i].cls) != 'undefined' && this.btns[i].cls.indexOf('x-init-enable') !== -1){
@@ -525,11 +524,45 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
     },
     // private used internally
     createLink : function(){
-        Roo.log("create link?");
-        var url = prompt(this.createLinkText, this.defaultLinkValue);
-        if(url && url != 'http:/'+'/'){
-            this.editorcore.relayCmd('createlink', url);
+        //Roo.log("create link?");
+        var ec = this.editorcore;
+        var ar = ec.getAllAncestors();
+        var n = false;
+        for(var i = 0;i< ar.length;i++) {
+            if (ar[i] && ar[i].nodeName == 'A') {
+                n = ar[i];
+                break;
+            }
         }
+        
+        (function() {
+            
+            Roo.MessageBox.show({
+                title : "Add / Edit Link URL",
+                msg : "Enter the url for the link",
+                buttons: Roo.MessageBox.OKCANCEL,
+                fn: function(btn, url){
+                    if (btn != 'ok') {
+                        return;
+                    }
+                    if(url && url != 'http:/'+'/'){
+                        if (n) {
+                            n.setAttribute('href', url);
+                        } else {
+                            ec.relayCmd('createlink', url);
+                        }
+                    }
+                },
+                minWidth:250,
+                prompt:true,
+                //multiline: multiline,
+                modal : true,
+                value :  n  ? n.getAttribute('href') : '' 
+            });
+            
+             
+        }).defer(100, this); // we have to defer this , otherwise the mouse click gives focus to the main window.
+        
     },
 
     
@@ -642,6 +675,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 this.tb.items.each(function(item){
                     item.enable();
                 });
+                // initialize 'blocks'
+                Roo.each(Roo.get(this.editorcore.doc.body).query('*[data-block]'), function(e) {
+                    Roo.htmleditor.Block.factory(e).updateElement(e);
+                },this);
+            
             }
             
         }
@@ -768,7 +806,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
            item.enable();
         });
     }
-});
+};
 
 
 

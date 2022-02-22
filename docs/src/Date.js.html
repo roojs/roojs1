@@ -301,17 +301,17 @@ dt = Date.parseDate(&quot;2006-1-15 3:20:01 PM&quot;, &quot;Y-m-d h:i:s A&quot; 
     }
 
     </span><span class="jsdoc-var">code </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;if (y &gt;= 0 &amp;&amp; m &gt;= 0 &amp;&amp; d &gt; 0 &amp;&amp; h &gt;= 0 &amp;&amp; i &gt;= 0 &amp;&amp; s &gt;= 0)\n&quot;
-        </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;{v = new Date(y, m, d, h, i, s);}\n&quot;
+        </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;{v = new Date(y, m, d, h, i, s); v.setFullYear(y);}\n&quot;
         </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;else if (y &gt;= 0 &amp;&amp; m &gt;= 0 &amp;&amp; d &gt; 0 &amp;&amp; h &gt;= 0 &amp;&amp; i &gt;= 0)\n&quot;
-        </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;{v = new Date(y, m, d, h, i);}\n&quot;
+        </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;{v = new Date(y, m, d, h, i); v.setFullYear(y);}\n&quot;
         </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;else if (y &gt;= 0 &amp;&amp; m &gt;= 0 &amp;&amp; d &gt; 0 &amp;&amp; h &gt;= 0)\n&quot;
-        </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;{v = new Date(y, m, d, h);}\n&quot;
+        </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;{v = new Date(y, m, d, h); v.setFullYear(y);}\n&quot;
         </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;else if (y &gt;= 0 &amp;&amp; m &gt;= 0 &amp;&amp; d &gt; 0)\n&quot;
-        </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;{v = new Date(y, m, d);}\n&quot;
+        </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;{v = new Date(y, m, d); v.setFullYear(y);}\n&quot;
         </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;else if (y &gt;= 0 &amp;&amp; m &gt;= 0)\n&quot;
-        </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;{v = new Date(y, m);}\n&quot;
+        </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;{v = new Date(y, m); v.setFullYear(y);}\n&quot;
         </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;else if (y &gt;= 0)\n&quot;
-        </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;{v = new Date(y);}\n&quot;
+        </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;{v = new Date(y); v.setFullYear(y);}\n&quot;
         </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;}return (v &amp;&amp; (z || o))?\n&quot; </span><span class="jsdoc-comment">// favour UTC offset over GMT offset
         </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;    ((z)? v.add(Date.SECOND, (v.getTimezoneOffset() * 60) + (z*1)) :\n&quot; </span><span class="jsdoc-comment">// reset to UTC, then add offset
         </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;        v.add(Date.HOUR, (v.getGMTOffset() / 100) + (o / -100))) : v\n&quot; </span><span class="jsdoc-comment">// reset to GMT, then add offset
@@ -371,7 +371,7 @@ dt = Date.parseDate(&quot;2006-1-15 3:20:01 PM&quot;, &quot;Y-m-d h:i:s A&quot; 
             </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;(\\d{1,2})&quot;</span><span class="jsdoc-syntax">}; </span><span class="jsdoc-comment">// Numeric representation of a month, without leading zeros
     </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;m&quot;</span><span class="jsdoc-syntax">:
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">:1,
-            </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;m = parseInt(results[&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">currentGroup </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;], 10) - 1;\n&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;m = Math.max(0,parseInt(results[&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">currentGroup </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;], 10) - 1);\n&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;(\\d{2})&quot;</span><span class="jsdoc-syntax">}; </span><span class="jsdoc-comment">// Numeric representation of a month, with leading zeros
     </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;t&quot;</span><span class="jsdoc-syntax">:
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">:0,

@@ -394,7 +394,7 @@
                     </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
                 });
             }
-             </span><span class="jsdoc-var">cmenu.menu.items.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">cmenu.menu.items.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">actiontype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tablewidths'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Remove Table Widths'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
@@ -446,7 +446,7 @@
                 </span><span class="jsdoc-var">actiontype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tidy'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Tidy HTML Source'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">editorcore.doc.body.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore.domToHTML</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.Tidy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editorcore.doc.body</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">editorcore.syncValue</span><span class="jsdoc-syntax">();
                 },
                 </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
@@ -483,7 +483,7 @@
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.btns</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.btns.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],</span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],</span><span class="jsdoc-var">this.btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.xns </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.form</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">b.cls </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">'x-edit-none'</span><span class="jsdoc-syntax">;
 
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.cls</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.cls.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-init-enable'</span><span class="jsdoc-syntax">) !== -1){
@@ -524,12 +524,46 @@
     },
     </span><span class="jsdoc-comment">// private used internally
     </span><span class="jsdoc-var">createLink </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;create link?&quot;</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">prompt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.createLinkText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.defaultLinkValue</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'http:/'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.editorcore.relayCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'createlink'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.log(&quot;create link?&quot;);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ec </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.editorcore</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ec.getAllAncestors</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">ar.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] &amp;&amp; </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'A'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            }
         }
-    },
+
+        (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+
+            </span><span class="jsdoc-var">Roo.MessageBox.show</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Add / Edit Link URL&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Enter the url for the link&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">buttons</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.MessageBox.OKCANCEL</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'ok'</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'http:/'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'/'</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">) {
+                            </span><span class="jsdoc-var">n.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">);
+                        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                            </span><span class="jsdoc-var">ec.relayCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'createlink'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">);
+                        }
+                    }
+                },
+                </span><span class="jsdoc-var">minWidth</span><span class="jsdoc-syntax">:250,
+                </span><span class="jsdoc-var">prompt</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-comment">//multiline: multiline,
+                </span><span class="jsdoc-var">modal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">n  </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">n.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''
+            </span><span class="jsdoc-syntax">});
+
+
+        })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(100, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// we have to defer this , otherwise the mouse click gives focus to the main window.
+
+    </span><span class="jsdoc-syntax">},
 
 
     </span><span class="jsdoc-comment">/**
@@ -641,6 +675,11 @@
                 </span><span class="jsdoc-var">this.tb.items.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">item.enable</span><span class="jsdoc-syntax">();
                 });
+                </span><span class="jsdoc-comment">// initialize 'blocks'
+                </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editorcore.doc.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.query</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'*[data-block]'</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
             }
 
         }

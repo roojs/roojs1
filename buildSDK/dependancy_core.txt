@@ -28,7 +28,9 @@ Roo.lib.ColorAnim
 Roo.lib.Easing
 Roo.lib.Motion
 Roo.lib.Scroll
-
+Roo.lib.UndoManager
+Roo.lib.Range
+Roo.lib.Selection
 // --- end if base ---
 
 

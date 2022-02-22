@@ -12,6 +12,8 @@
     "Roo.Toolbar.Separator",
     "Roo.Toolbar.Spacer",
     "Roo.Toolbar.TextItem",
+    "Roo.Toolbar.Button",
+    "Roo.Toolbar.SplitButton",
     "Roo.form.Field",
     "Roo.form.Checkbox",
     "Roo.form.ComboBox",

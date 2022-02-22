@@ -43,3 +43,12 @@ menu, .undoreset nav, .undoreset output, .undoreset ruby, .undoreset section, .u
 /* Pre */
 .undoreset pre, .undoreset code { display: block; font-family: Courier New; white-space: pre; margin: 1em 0; }
 
+
+/** sneaked in here - as this file is used by editor */
+.roo-htmleditor-body [contenteditable=true]:focus-visible {
+    background-color: #fafafa;
+    padding: 0 5px;;
+}
+.roo-htmleditor-body [contenteditable=true]:hover {
+    border: 1px solid #ccc;
+}

@@ -938,8 +938,8 @@
     {
       "name" : "getFieldValues",
       "type" : "function",
-      "desc" : "Returns the fields in this form as an object with key/value pairs. \nThis differs from getValues as it calls getValue on each child item, rather than using dom data.",
-      "sig" : "()\n{\n\n}",
+      "desc" : "Returns the fields in this form as an object with key/value pairs. \nThis differs from getValues as it calls getValue on each child item, rather than using dom data.\nNormally this will not return readOnly data",
+      "sig" : "(with_readonly)",
       "static" : false,
       "memberOf" : "Roo.form.BasicForm",
       "isStatic" : false,
@@ -951,7 +951,14 @@
       "see" : "",
       "exceptions" : "",
       "requires" : "",
-      "params" : [],
+      "params" : [
+        {
+          "name" : "with_readonly",
+          "type" : "Boolean",
+          "desc" : "return readonly field data.",
+          "isOptional" : false
+        }
+      ],
       "returns" : [
         {
           "name" : "",

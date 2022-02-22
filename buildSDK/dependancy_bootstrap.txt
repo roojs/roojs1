@@ -1,5 +1,6 @@
 
 
+Roo.bootstrap.namespace
 
 Roo.bootstrap.version
 Roo.bootstrap.menu.namespace
@@ -126,6 +127,26 @@ Roo.bootstrap.form.CheckBox
 Roo.bootstrap.form.Radio
 Roo.bootstrap.form.SecurePass
 
+Roo.htmleditor.namespace
+Roo.htmleditor.Filter
+Roo.htmleditor.FilterAttributes
+Roo.htmleditor.FilterBlack
+Roo.htmleditor.FilterComment
+Roo.htmleditor.FilterKeepChildren
+Roo.htmleditor.FilterParagraph
+Roo.htmleditor.FilterSpan
+Roo.htmleditor.FilterTableWidth
+Roo.htmleditor.FilterWord
+Roo.htmleditor.FilterStyleToTag
+Roo.htmleditor.FilterLongBr
+Roo.htmleditor.FilterBlock
+Roo.htmleditor.KeyEnter
+
+Roo.htmleditor.Block
+Roo.htmleditor.BlockFigure
+Roo.htmleditor.BlockTable
+Roo.htmleditor.BlockTd
+
 Roo.HtmlEditorCore
 Roo.bootstrap.form.HtmlEditor
 Roo.bootstrap.form.HtmlEditorToolbarStandard
@@ -139,6 +160,8 @@ Roo.bootstrap.PagingToolbar
 Roo.bootstrap.MessageBar
 
 Roo.bootstrap.Graph
+Roo.bootstrap.dash.namespace
+
 Roo.bootstrap.dash.NumberBox
 Roo.bootstrap.dash.TabBox
 Roo.bootstrap.dash.TabPane

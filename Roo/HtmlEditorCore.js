@@ -71,7 +71,8 @@ Roo.HtmlEditorCore = function(config){
          * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
          * @param {Roo.HtmlEditorCore} this
          */
-        editorevent: true
+        editorevent: true 
+         
         
     });
     
@@ -107,15 +108,30 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      * @cfg {Number} width (in pixels)
      */   
     width: 500,
+     /**
+     * @cfg {boolean} autoClean - default true - loading and saving will remove quite a bit of formating,
+     *         if you are doing an email editor, this probably needs disabling, it's designed
+     */
+    autoClean: true,
     
+    /**
+     * @cfg {boolean} enableBlocks - default true - if the block editor (table and figure should be enabled)
+     */
+    enableBlocks : true,
     /**
      * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
      * 
      */
     stylesheets: false,
+     /**
+     * @cfg {String} language default en - language of text (usefull for rtl languages)
+     * 
+     */
+    language: 'en',
     
     /**
-     * @cfg {boolean} allowComments - default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.
+     * @cfg {boolean} allowComments - default false - allow comments in HTML source
+     *          - by default they are stripped - if you are editing email you may need this.
      */
     allowComments: false,
     // id of frame..
@@ -139,6 +155,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      
     bodyCls : '',
 
+    
+    undoManager : false,
     /**
      * Protected method that will not generally be called directly. It
      * is called when the editor initializes the iframe with HTML contents. Override this method if you
@@ -165,7 +183,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
                    '</style>';
         } else {
-            for (var i in this.stylesheets) { 
+            for (var i in this.stylesheets) {
+                if (typeof(this.stylesheets[i]) != 'string') {
+                    continue;
+                }
                 st += '<link rel="stylesheet" href="' + this.stylesheets[i] +'" type="text/css">';
             }
             
@@ -174,14 +195,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         st +=  '<style type="text/css">' +
             'IMG { cursor: pointer } ' +
         '</style>';
-
-        var cls = 'roo-htmleditor-body';
+        
+        st += '<meta name="google" content="notranslate">';
+        
+        var cls = 'notranslate roo-htmleditor-body';
         
         if(this.bodyCls.length){
             cls += ' ' + this.bodyCls;
         }
         
-        return '<html><head>' + st  +
+        return '<html  class="notranslate" translate="no"><head>' + st  +
             //<style type="text/css">' +
             //'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
             //'</style>' +
@@ -224,7 +247,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         this.iframe = iframe.dom;
 
-         this.assignDocWin();
+        this.assignDocWin();
         
         this.doc.designMode = 'on';
        
@@ -240,6 +263,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 if(this.doc.body || this.doc.readyState == 'complete'){
                     try {
                         this.doc.designMode="on";
+                        
                     } catch (e) {
                         return;
                     }
@@ -287,10 +311,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         if(this.sourceEditMode){
  
-            Roo.get(this.iframe).addClass(['x-hidden','hide']);     //FIXME - what's the BS styles for these
+            Roo.get(this.iframe).addClass(['x-hidden','hide', 'd-none']);     //FIXME - what's the BS styles for these
             
         }else{
-            Roo.get(this.iframe).removeClass(['x-hidden','hide']);
+            Roo.get(this.iframe).removeClass(['x-hidden','hide', 'd-none']);
             //this.iframe.className = '';
             this.deferFocus();
         }
@@ -307,7 +331,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      * @param {String} html The HTML to be cleaned
      * return {String} The cleaned HTML
      */
-    cleanHtml : function(html){
+    cleanHtml : function(html)
+    {
         html = String(html);
         if(html.length > 5){
             if(Roo.isSafari){ // strip safari nonsense
@@ -325,11 +350,38 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      * Protected method that will not generally be called directly. Syncs the contents
      * of the editor iframe with the textarea.
      */
-    syncValue : function(){
+    syncValue : function()
+    {
+        //Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
         if(this.initialized){
+            
+            this.undoManager.addEvent();
+
+            
             var bd = (this.doc.body || this.doc.documentElement);
-            //this.cleanUpPaste(); -- this is done else where and causes havoc..
-            var html = bd.innerHTML;
+           
+            
+            var sel = this.win.getSelection();
+            
+            var div = document.createElement('div');
+            div.innerHTML = bd.innerHTML;
+            var gtx = div.getElementsByClassName('gtx-trans-icon'); // google translate - really annoying and difficult to get rid of.
+            if (gtx.length > 0) {
+                var rm = gtx.item(0).parentNode;
+                rm.parentNode.removeChild(rm);
+            }
+            
+           
+            if (this.enableBlocks) {
+                new Roo.htmleditor.FilterBlock({ node : div });
+            }
+            //?? tidy?
+            var tidy = new Roo.htmleditor.TidySerializer({
+                inner:  true
+            });
+            var html  = tidy.serialize(div);
+            
+            
             if(Roo.isSafari){
                 var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
                 var m = bs ? bs.match(/text-align:(.*?);/i) : false;
@@ -374,24 +426,41 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
 
     /**
+     * TEXTAREA -> EDITABLE
      * Protected method that will not generally be called directly. Pushes the value of the textarea
      * into the iframe editor.
      */
-    pushValue : function(){
+    pushValue : function()
+    {
+        //Roo.log("HtmlEditorCore:pushValue (TEXT->EDITOR)");
         if(this.initialized){
             var v = this.el.dom.value.trim();
             
-//            if(v.length < 1){
-//                v = '&#160;';
-//            }
             
             if(this.owner.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
                 d.innerHTML = v;
-                this.cleanUpPaste();
+                 
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
             }
+            if (this.autoClean) {
+                new Roo.htmleditor.FilterParagraph({node : this.doc.body}); // paragraphs
+                new Roo.htmleditor.FilterSpan({node : this.doc.body}); // empty spans
+            }
+            if (this.enableBlocks) {
+                Roo.htmleditor.Block.initAll(this.doc.body);
+            }
+            
+            this.updateLanguage();
+            
+            var lc = this.doc.body.lastChild;
+            if (lc && lc.nodeType == 1 && lc.getAttribute("contenteditable") == "false") {
+                // add an extra line at the end.
+                this.doc.body.appendChild(this.doc.createElement('br'));
+            }
+            
+            
         }
     },
 
@@ -453,28 +522,136 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         //var ss = this.el.getStyles( 'background-image', 'background-repeat');
         //ss['background-attachment'] = 'fixed'; // w3c
         dbody.bgProperties = 'fixed'; // ie
+        dbody.setAttribute("translate", "no");
+        
         //Roo.DomHelper.applyStyles(dbody, ss);
         Roo.EventManager.on(this.doc, {
-            //'mousedown': this.onEditorEvent,
+             
             'mouseup': this.onEditorEvent,
             'dblclick': this.onEditorEvent,
             'click': this.onEditorEvent,
             'keyup': this.onEditorEvent,
+            
             buffer:100,
             scope: this
+        });
+        Roo.EventManager.on(this.doc, {
+            'paste': this.onPasteEvent,
+            scope : this
         });
         if(Roo.isGecko){
             Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
         }
+        //??? needed???
         if(Roo.isIE || Roo.isSafari || Roo.isOpera){
             Roo.EventManager.on(this.doc, 'keydown', this.fixKeys, this);
         }
         this.initialized = true;
 
+        
+        // initialize special key events - enter
+        new Roo.htmleditor.KeyEnter({core : this});
+        
+         
+        
         this.owner.fireEvent('initialize', this);
         this.pushValue();
     },
-
+    // this is to prevent a href clicks resulting in a redirect?
+   
+    onPasteEvent : function(e,v)
+    {
+        // I think we better assume paste is going to be a dirty load of rubish from word..
+        
+        // even pasting into a 'email version' of this widget will have to clean up that mess.
+        var cd = (e.browserEvent.clipboardData || window.clipboardData);
+        
+        // check what type of paste - if it's an image, then handle it differently.
+        if (cd.files.length > 0) {
+            // pasting images?
+            var urlAPI = (window.createObjectURL && window) || 
+                (window.URL && URL.revokeObjectURL && URL) || 
+                (window.webkitURL && webkitURL);
+    
+            var url = urlAPI.createObjectURL( cd.files[0]);
+            this.insertAtCursor('<img src=" + url + ">');
+            return false;
+        }
+        
+        var html = cd.getData('text/html'); // clipboard event
+        var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
+        var images = parser.doc ? parser.doc.getElementsByType('pict') : [];
+        Roo.log(images);
+        //Roo.log(imgs);
+        // fixme..
+        images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable)/); }) // ignore headers
+                       .map(function(g) { return g.toDataURL(); })
+                       .filter(function(g) { return g != 'about:blank'; });
+        
+        
+        html = this.cleanWordChars(html);
+        
+        var d = (new DOMParser().parseFromString(html, 'text/html')).body;
+        
+        
+        var sn = this.getParentElement();
+        // check if d contains a table, and prevent nesting??
+        //Roo.log(d.getElementsByTagName('table'));
+        //Roo.log(sn);
+        //Roo.log(sn.closest('table'));
+        if (d.getElementsByTagName('table').length && sn && sn.closest('table')) {
+            e.preventDefault();
+            this.insertAtCursor("You can not nest tables");
+            //Roo.log("prevent?"); // fixme - 
+            return false;
+        }
+        
+        if (images.length > 0) {
+            Roo.each(d.getElementsByTagName('img'), function(img, i) {
+                img.setAttribute('src', images[i]);
+            });
+        }
+        if (this.autoClean) {
+            new Roo.htmleditor.FilterStyleToTag({ node : d });
+            new Roo.htmleditor.FilterAttributes({
+                node : d,
+                attrib_white : ['href', 'src', 'name', 'align'],
+                attrib_clean : ['href', 'src' ] 
+            });
+            new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
+            // should be fonts..
+            new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', 'O:P' ]} );
+            new Roo.htmleditor.FilterParagraph({ node : d });
+            new Roo.htmleditor.FilterSpan({ node : d });
+            new Roo.htmleditor.FilterLongBr({ node : d });
+        }
+        if (this.enableBlocks) {
+                
+            Array.from(d.getElementsByTagName('img')).forEach(function(img) {
+                if (img.closest('figure')) { // assume!! that it's aready
+                    return;
+                }
+                var fig  = new Roo.htmleditor.BlockFigure({
+                    image_src  : img.src
+                });
+                fig.updateElement(img); // replace it..
+                
+            });
+        }
+        
+        
+        this.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
+        if (this.enableBlocks) {
+            Roo.htmleditor.Block.initAll(this.doc.body);
+        }
+        
+        
+        e.preventDefault();
+        return false;
+        // default behaveiour should be our local cleanup paste? (optional?)
+        // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
+        //this.owner.fireEvent('paste', e, v);
+    },
     // private
     onDestroy : function(){
         
@@ -496,7 +673,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     onFirstFocus : function(){
         
         this.assignDocWin();
-        
+        this.undoManager = new Roo.lib.UndoManager(100,(this.doc.body || this.doc.documentElement));
         
         this.activated = true;
          
@@ -541,9 +718,47 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
     onEditorEvent : function(e)
     {
-        this.owner.fireEvent('editorevent', this, e);
+         
+        
+        if (e && (e.ctrlKey || e.metaKey) && e.keyCode === 90) {
+            return; // we do not handle this.. (undo manager does..)
+        }
+        // in theory this detects if the last element is not a br, then we try and do that.
+        // its so clicking in space at bottom triggers adding a br and moving the cursor.
+        if (e &&
+            e.target.nodeName == 'BODY' &&
+            e.type == "mouseup" &&
+            this.doc.body.lastChild
+           ) {
+            var lc = this.doc.body.lastChild;
+            // gtx-trans is google translate plugin adding crap.
+            while ((lc.nodeType == 3 && lc.nodeValue == '') || lc.id == 'gtx-trans') {
+                lc = lc.previousSibling;
+            }
+            if (lc.nodeType == 1 && lc.nodeName != 'BR') {
+            // if last element is <BR> - then dont do anything.
+            
+                var ns = this.doc.createElement('br');
+                this.doc.body.appendChild(ns);
+                range = this.doc.createRange();
+                range.setStartAfter(ns);
+                range.collapse(true);
+                var sel = this.win.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+        }
+        
+        
+        
+        this.fireEditorEvent(e);
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
+    },
+    
+    fireEditorEvent: function(e)
+    {
+        this.owner.fireEvent('editorevent', this, e);
     },
 
     insertTag : function(tg)
@@ -566,7 +781,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
         }
         this.execCmd("formatblock",   tg);
-        
+        this.undoManager.addEvent(); 
     },
     
     insertText : function(txt)
@@ -578,6 +793,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                //alert(Sender.getAttribute('label'));
                
         range.insertNode(this.doc.createTextNode(txt));
+        this.undoManager.addEvent();
     } ,
     
      
@@ -588,7 +804,37 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      * @param {String} cmd The Midas command
      * @param {String/Boolean} value (optional) The value to pass to the command (defaults to null)
      */
-    relayCmd : function(cmd, value){
+    relayCmd : function(cmd, value)
+    {
+        
+        switch (cmd) {
+            case 'justifyleft':
+            case 'justifyright':
+            case 'justifycenter':
+                // if we are in a cell, then we will adjust the
+                var n = this.getParentElement();
+                var td = n.closest('td');
+                if (td) {
+                    var bl = Roo.htmleditor.Block.factory(td);
+                    bl.textAlign = cmd.replace('justify','');
+                    bl.updateElement();
+                    this.owner.fireEvent('editorevent', this);
+                    return;
+                }
+                this.execCmd('styleWithCSS', true); // 
+                break;
+            case 'bold':
+            case 'italic':
+                // if there is no selection, then we insert, and set the curson inside it..
+                this.execCmd('styleWithCSS', false); 
+                break;
+                
+        
+            default:
+                break;
+        }
+        
+        
         this.win.focus();
         this.execCmd(cmd, value);
         this.owner.fireEvent('editorevent', this);
@@ -621,20 +867,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if(!this.activated){
             return;
         }
-        /*
-        if(Roo.isIE){
-            this.win.focus();
-            var r = this.doc.selection.createRange();
-            if(r){
-                r.collapse(true);
-                r.pasteHTML(text);
-                this.syncValue();
-                this.deferFocus();
-            
-            }
-            return;
-        }
-        */
+         
         if(Roo.isGecko || Roo.isOpera || Roo.isSafari){
             this.win.focus();
             
@@ -644,19 +877,31 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var win = this.win;
             
             if (win.getSelection && win.getSelection().getRangeAt) {
+                
+                // delete the existing?
+                
+                this.createRange(this.getSelection()).deleteContents();
                 range = win.getSelection().getRangeAt(0);
                 node = typeof(text) == 'string' ? range.createContextualFragment(text) : text;
                 range.insertNode(node);
+                range = range.cloneRange();
+                range.collapse(false);
+                 
+                win.getSelection().removeAllRanges();
+                win.getSelection().addRange(range);
+                
+                
+                
             } else if (win.document.selection && win.document.selection.createRange) {
                 // no firefox support
                 var txt = typeof(text) == 'string' ? text : text.outerHTML;
                 win.document.selection.createRange().pasteHTML(txt);
+            
             } else {
                 // no firefox support
                 var txt = typeof(text) == 'string' ? text : text.outerHTML;
                 this.execCmd('InsertHTML', txt);
             } 
-            
             this.syncValue();
             
             this.deferFocus();
@@ -681,15 +926,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                         cmd = 'underline';
                         break;
                     
-                    case 'v':
-                        this.cleanUpPaste.defer(100, this);
-                        return;
+                    //case 'v':
+                      //  this.cleanUpPaste.defer(100, this);
+                      //  return;
                         
                 }
                 if(cmd){
-                    this.win.focus();
-                    this.execCmd(cmd);
-                    this.deferFocus();
+                    
+                    this.relayCmd(cmd);
+                    //this.win.focus();
+                    //this.execCmd(cmd);
+                    //this.deferFocus();
                     e.preventDefault();
                 }
                 
@@ -699,6 +946,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 
     // private
     fixKeys : function(){ // load time branching for fastest keydown performance
+        
+        
         if(Roo.isIE){
             return function(e){
                 var k = e.getKey(), r;
@@ -712,23 +961,25 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     }
                     return;
                 }
-                
+                /// this is handled by Roo.htmleditor.KeyEnter
+                 /*
                 if(k == e.ENTER){
                     r = this.doc.selection.createRange();
                     if(r){
                         var target = r.parentElement();
                         if(!target || target.tagName.toLowerCase() != 'li'){
                             e.stopEvent();
-                            r.pasteHTML('<br />');
+                            r.pasteHTML('<br/>');
                             r.collapse(false);
                             r.select();
                         }
                     }
                 }
-                if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
-                    this.cleanUpPaste.defer(100, this);
-                    return;
-                }
+                */
+                //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                //    this.cleanUpPaste.defer(100, this);
+                //    return;
+                //}
                 
                 
             };
@@ -741,10 +992,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.execCmd('InsertHTML','&#160;&#160;&#160;&#160;');
                     this.deferFocus();
                 }
-                if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
-                    this.cleanUpPaste.defer(100, this);
-                    return;
-                }
+               
+                //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                //    this.cleanUpPaste.defer(100, this);
+                 //   return;
+                //}
                 
             };
         }else if(Roo.isSafari){
@@ -757,10 +1009,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     this.deferFocus();
                     return;
                 }
-               if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
-                    this.cleanUpPaste.defer(100, this);
-                    return;
-                }
+                 this.mozKeyPress(e);
+                
+               //if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                 //   this.cleanUpPaste.defer(100, this);
+                 //   return;
+               // }
                 
              };
         }
@@ -790,7 +1044,27 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     getSelection : function() 
     {
         this.assignDocWin();
-        return Roo.isIE ? this.doc.selection : this.win.getSelection();
+        return Roo.lib.Selection.wrap(Roo.isIE ? this.doc.selection : this.win.getSelection(), this.doc);
+    },
+    /**
+     * Select a dom node
+     * @param {DomElement} node the node to select
+     */
+    selectNode : function(node, collapse)
+    {
+        var nodeRange = node.ownerDocument.createRange();
+        try {
+            nodeRange.selectNode(node);
+        } catch (e) {
+            nodeRange.selectNodeContents(node);
+        }
+        if (collapse === true) {
+            nodeRange.collapse(true);
+        }
+        //
+        var s = this.win.getSelection();
+        s.removeAllRanges();
+        s.addRange(nodeRange);
     },
     
     getSelectedNode: function() 
@@ -799,8 +1073,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // should we cache this!!!!
         
-        
-        
+         
          
         var range = this.createRange(this.getSelection()).cloneRange();
         
@@ -864,6 +1137,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         return nodes[0];
     },
+    
+    
     createRange: function(sel)
     {
         // this has strange effects when using with 
@@ -981,26 +1256,21 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         // fully contined.
         return 3;
     },
-
-    // private? - in a new class?
-    cleanUpPaste :  function()
-    {
-        // cleans up the whole document..
-        Roo.log('cleanuppaste');
-        
-        this.cleanUpChildren(this.doc.body);
-        var clean = this.cleanWordChars(this.doc.body.innerHTML);
-        if (clean != this.doc.body.innerHTML) {
-            this.doc.body.innerHTML = clean;
-        }
-        
-    },
-    
+ 
     cleanWordChars : function(input) {// change the chars to hex code
-        var he = Roo.HtmlEditorCore;
         
+       var swapCodes  = [ 
+            [    8211, "&#8211;" ], 
+            [    8212, "&#8212;" ], 
+            [    8216,  "'" ],  
+            [    8217, "'" ],  
+            [    8220, '"' ],  
+            [    8221, '"' ],  
+            [    8226, "*" ],  
+            [    8230, "..." ]
+        ]; 
         var output = input;
-        Roo.each(he.swapCodes, function(sw) { 
+        Roo.each(swapCodes, function(sw) { 
             var swapper = new RegExp("\\u" + sw[0].toString(16), "g"); // hex codes
             
             output = output.replace(swapper, sw[1]);
@@ -1009,486 +1279,59 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         return output;
     },
     
-    
-    cleanUpChildren : function (n)
-    {
-        if (!n.childNodes.length) {
-            return;
-        }
-        for (var i = n.childNodes.length-1; i > -1 ; i--) {
-           this.cleanUpChild(n.childNodes[i]);
-        }
-    },
-    
+     
     
         
     
     cleanUpChild : function (node)
     {
-        var ed = this;
-        //console.log(node);
-        if (node.nodeName == "#text") {
-            // clean up silly Windows -- stuff?
-            return; 
-        }
-        if (node.nodeName == "#comment") {
-            if (!this.allowComments) {
-                node.parentNode.removeChild(node);
-            }
-            // clean up silly Windows -- stuff?
-            return; 
-        }
-        var lcname = node.tagName.toLowerCase();
-        // we ignore whitelists... ?? = not really the way to go, but we probably have not got a full
-        // whitelist of tags..
         
-        if (this.black.indexOf(lcname) > -1 && this.clearUp ) {
-            // remove node.
-            node.parentNode.removeChild(node);
-            return;
-            
-        }
-        
-        var remove_keep_children= Roo.HtmlEditorCore.remove.indexOf(node.tagName.toLowerCase()) > -1;
-        
-        // spans with no attributes - just remove them..
-        if ((!node.attributes || !node.attributes.length) && lcname == 'span') { 
-            remove_keep_children = true;
-        }
-        
-        // remove <a name=....> as rendering on yahoo mailer is borked with this.
-        // this will have to be flaged elsewhere - perhaps ablack=name... on the mailer..
-        
-        //if (node.tagName.toLowerCase() == 'a' && !node.hasAttribute('href')) {
-        //    remove_keep_children = true;
-        //}
-        
-        if (remove_keep_children) {
-            this.cleanUpChildren(node);
-            // inserts everything just before this node...
-            while (node.childNodes.length) {
-                var cn = node.childNodes[0];
-                node.removeChild(cn);
-                node.parentNode.insertBefore(cn, node);
-            }
-            node.parentNode.removeChild(node);
-            return;
-        }
-        
-        if (!node.attributes || !node.attributes.length) {
-            
-          
-            
-            
-            this.cleanUpChildren(node);
-            return;
-        }
-        
-        function cleanAttr(n,v)
-        {
-            
-            if (v.match(/^\./) || v.match(/^\//)) {
-                return;
-            }
-            if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/) || v.match(/^ftp:/)) {
-                return;
-            }
-            if (v.match(/^#/)) {
-                return;
-            }
-            if (v.match(/^\{/)) { // allow template editing.
-                return;
-            }
-//            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);
-            node.removeAttribute(n);
-            
-        }
-        
-        var cwhite = this.cwhite;
-        var cblack = this.cblack;
-            
-        function cleanStyle(n,v)
-        {
-            if (v.match(/expression/)) { //XSS?? should we even bother..
-                node.removeAttribute(n);
-                return;
-            }
-            
-            var parts = v.split(/;/);
-            var clean = [];
-            
-            Roo.each(parts, function(p) {
-                p = p.replace(/^\s+/g,'').replace(/\s+$/g,'');
-                if (!p.length) {
-                    return true;
-                }
-                var l = p.split(':').shift().replace(/\s+/g,'');
-                l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
-                
-                if ( cwhite.length && cblack.indexOf(l) > -1) {
-//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
-                    //node.removeAttribute(n);
-                    return true;
-                }
-                //Roo.log()
-                // only allow 'c whitelisted system attributes'
-                if ( cwhite.length &&  cwhite.indexOf(l) < 0 && cwhite.indexOf(l.toLowerCase()) < 0 ) {
-//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
-                    //node.removeAttribute(n);
-                    return true;
-                }
-                
-                
-                 
-                
-                clean.push(p);
-                return true;
-            });
-            if (clean.length) { 
-                node.setAttribute(n, clean.join(';'));
-            } else {
-                node.removeAttribute(n);
-            }
-            
-        }
-        
-        
-        for (var i = node.attributes.length-1; i > -1 ; i--) {
-            var a = node.attributes[i];
-            //console.log(a);
-            
-            if (a.name.toLowerCase().substr(0,2)=='on')  {
-                node.removeAttribute(a.name);
-                continue;
-            }
-            if (Roo.HtmlEditorCore.ablack.indexOf(a.name.toLowerCase()) > -1) {
-                node.removeAttribute(a.name);
-                continue;
-            }
-            if (Roo.HtmlEditorCore.aclean.indexOf(a.name.toLowerCase()) > -1) {
-                cleanAttr(a.name,a.value); // fixme..
-                continue;
-            }
-            if (a.name == 'style') {
-                cleanStyle(a.name,a.value);
-                continue;
-            }
-            /// clean up MS crap..
-            // tecnically this should be a list of valid class'es..
-            
-            
-            if (a.name == 'class') {
-                if (a.value.match(/^Mso/)) {
-                    node.removeAttribute('class');
-                }
-                
-                if (a.value.match(/^body$/)) {
-                    node.removeAttribute('class');
-                }
-                continue;
-            }
-            
-            // style cleanup!?
-            // class cleanup?
-            
-        }
-        
-        
-        this.cleanUpChildren(node);
-        
+        new Roo.htmleditor.FilterComment({node : node});
+        new Roo.htmleditor.FilterAttributes({
+                node : node,
+                attrib_black : this.ablack,
+                attrib_clean : this.aclean,
+                style_white : this.cwhite,
+                style_black : this.cblack
+        });
+        new Roo.htmleditor.FilterBlack({ node : node, tag : this.black});
+        new Roo.htmleditor.FilterKeepChildren({node : node, tag : this.tag_remove} );
+         
         
     },
     
     /**
      * Clean up MS wordisms...
+     * @deprecated - use filter directly
      */
     cleanWord : function(node)
     {
-        if (!node) {
-            this.cleanWord(this.doc.body);
-            return;
-        }
-        
-        if(
-                node.nodeName == 'SPAN' &&
-                !node.hasAttributes() &&
-                node.childNodes.length == 1 &&
-                node.firstChild.nodeName == "#text"  
-        ) {
-            var textNode = node.firstChild;
-            node.removeChild(textNode);
-            if (node.getAttribute('lang') != 'zh-CN') {   // do not space pad on chinese characters..
-                node.parentNode.insertBefore(node.ownerDocument.createTextNode(" "), node);
-            }
-            node.parentNode.insertBefore(textNode, node);
-            if (node.getAttribute('lang') != 'zh-CN') {   // do not space pad on chinese characters..
-                node.parentNode.insertBefore(node.ownerDocument.createTextNode(" ") , node);
-            }
-            node.parentNode.removeChild(node);
-        }
-        
-        if (node.nodeName == "#text") {
-            // clean up silly Windows -- stuff?
-            return; 
-        }
-        if (node.nodeName == "#comment") {
-            node.parentNode.removeChild(node);
-            // clean up silly Windows -- stuff?
-            return; 
-        }
-        
-        if (node.tagName.toLowerCase().match(/^(style|script|applet|embed|noframes|noscript)$/)) {
-            node.parentNode.removeChild(node);
-            return;
-        }
-        //Roo.log(node.tagName);
-        // remove - but keep children..
-        if (node.tagName.toLowerCase().match(/^(meta|link|\\?xml:|st1:|o:|v:|font)/)) {
-            //Roo.log('-- removed');
-            while (node.childNodes.length) {
-                var cn = node.childNodes[0];
-                node.removeChild(cn);
-                node.parentNode.insertBefore(cn, node);
-                // move node to parent - and clean it..
-                this.cleanWord(cn);
-            }
-            node.parentNode.removeChild(node);
-            /// no need to iterate chidlren = it's got none..
-            //this.iterateChildren(node, this.cleanWord);
-            return;
-        }
-        // clean styles
-        if (node.className.length) {
-            
-            var cn = node.className.split(/\W+/);
-            var cna = [];
-            Roo.each(cn, function(cls) {
-                if (cls.match(/Mso[a-zA-Z]+/)) {
-                    return;
-                }
-                cna.push(cls);
-            });
-            node.className = cna.length ? cna.join(' ') : '';
-            if (!cna.length) {
-                node.removeAttribute("class");
-            }
-        }
-        
-        if (node.hasAttribute("lang")) {
-            node.removeAttribute("lang");
-        }
-        
-        if (node.hasAttribute("style")) {
-            
-            var styles = node.getAttribute("style").split(";");
-            var nstyle = [];
-            Roo.each(styles, function(s) {
-                if (!s.match(/:/)) {
-                    return;
-                }
-                var kv = s.split(":");
-                if (kv[0].match(/^(mso-|line|font|background|margin|padding|color)/)) {
-                    return;
-                }
-                // what ever is left... we allow.
-                nstyle.push(s);
-            });
-            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
-            if (!nstyle.length) {
-                node.removeAttribute('style');
-            }
-        }
-        this.iterateChildren(node, this.cleanWord);
-        
-        
+        new Roo.htmleditor.FilterWord({ node : node ? node : this.doc.body });
         
     },
-    /**
-     * iterateChildren of a Node, calling fn each time, using this as the scole..
-     * @param {DomNode} node node to iterate children of.
-     * @param {Function} fn method of this class to call on each item.
-     */
-    iterateChildren : function(node, fn)
-    {
-        if (!node.childNodes.length) {
-                return;
-        }
-        for (var i = node.childNodes.length-1; i > -1 ; i--) {
-           fn.call(this, node.childNodes[i])
-        }
-    },
-    
+   
     
     /**
-     * cleanTableWidths.
-     *
-     * Quite often pasting from word etc.. results in tables with column and widths.
-     * This does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..
-     *
+
+     * @deprecated - use filters
      */
     cleanTableWidths : function(node)
     {
-         
-         
-        if (!node) {
-            this.cleanTableWidths(this.doc.body);
-            return;
-        }
+        new Roo.htmleditor.FilterTableWidth({ node : node ? node : this.doc.body});
         
-        // ignore list...
-        if (node.nodeName == "#text" || node.nodeName == "#comment") {
-            return; 
-        }
-        Roo.log(node.tagName);
-        if (!node.tagName.toLowerCase().match(/^(table|td|tr)$/)) {
-            this.iterateChildren(node, this.cleanTableWidths);
-            return;
-        }
-        if (node.hasAttribute('width')) {
-            node.removeAttribute('width');
-        }
-        
-         
-        if (node.hasAttribute("style")) {
-            // pretty basic...
-            
-            var styles = node.getAttribute("style").split(";");
-            var nstyle = [];
-            Roo.each(styles, function(s) {
-                if (!s.match(/:/)) {
-                    return;
-                }
-                var kv = s.split(":");
-                if (kv[0].match(/^\s*(width|min-width)\s*$/)) {
-                    return;
-                }
-                // what ever is left... we allow.
-                nstyle.push(s);
-            });
-            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
-            if (!nstyle.length) {
-                node.removeAttribute('style');
-            }
-        }
-        
-        this.iterateChildren(node, this.cleanTableWidths);
-        
-        
+ 
     },
     
-    
-    
-    
-    domToHTML : function(currentElement, depth, nopadtext) {
-        
-        depth = depth || 0;
-        nopadtext = nopadtext || false;
-    
-        if (!currentElement) {
-            return this.domToHTML(this.doc.body);
-        }
-        
-        //Roo.log(currentElement);
-        var j;
-        var allText = false;
-        var nodeName = currentElement.nodeName;
-        var tagName = Roo.util.Format.htmlEncode(currentElement.tagName);
-        
-        if  (nodeName == '#text') {
-            
-            return nopadtext ? currentElement.nodeValue : currentElement.nodeValue.trim();
-        }
-        
-        
-        var ret = '';
-        if (nodeName != 'BODY') {
-             
-            var i = 0;
-            // Prints the node tagName, such as <A>, <IMG>, etc
-            if (tagName) {
-                var attr = [];
-                for(i = 0; i < currentElement.attributes.length;i++) {
-                    // quoting?
-                    var aname = currentElement.attributes.item(i).name;
-                    if (!currentElement.attributes.item(i).value.length) {
-                        continue;
-                    }
-                    attr.push(aname + '="' + Roo.util.Format.htmlEncode(currentElement.attributes.item(i).value) + '"' );
-                }
-                
-                ret = "<"+currentElement.tagName+ ( attr.length ? (' ' + attr.join(' ') ) : '') + ">";
-            } 
-            else {
-                
-                // eack
-            }
-        } else {
-            tagName = false;
-        }
-        if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(tagName) > -1) {
-            return ret;
-        }
-        if (['PRE', 'TEXTAREA', 'TD', 'A', 'SPAN'].indexOf(tagName) > -1) { // or code?
-            nopadtext = true;
-        }
-        
-        
-        // Traverse the tree
-        i = 0;
-        var currentElementChild = currentElement.childNodes.item(i);
-        var allText = true;
-        var innerHTML  = '';
-        lastnode = '';
-        while (currentElementChild) {
-            // Formatting code (indent the tree so it looks nice on the screen)
-            var nopad = nopadtext;
-            if (lastnode == 'SPAN') {
-                nopad  = true;
-            }
-            // text
-            if  (currentElementChild.nodeName == '#text') {
-                var toadd = Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
-                toadd = nopadtext ? toadd : toadd.trim();
-                if (!nopad && toadd.length > 80) {
-                    innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  );
-                }
-                innerHTML  += toadd;
-                
-                i++;
-                currentElementChild = currentElement.childNodes.item(i);
-                lastNode = '';
-                continue;
-            }
-            allText = false;
-            
-            innerHTML  += nopad ? '' : "\n" + (new Array( depth + 1 )).join( "  "  );
-                
-            // Recursively traverse the tree structure of the child node
-            innerHTML   += this.domToHTML(currentElementChild, depth+1, nopadtext);
-            lastnode = currentElementChild.nodeName;
-            i++;
-            currentElementChild=currentElement.childNodes.item(i);
-        }
-        
-        ret += innerHTML;
-        
-        if (!allText) {
-                // The remaining code is mostly for formatting the tree
-            ret+= nopadtext ? '' : "\n" + (new Array( depth  )).join( "  "  );
-        }
-        
-        
-        if (tagName) {
-            ret+= "</"+tagName+">";
-        }
-        return ret;
-        
-    },
+     
         
     applyBlacklists : function()
     {
         var w = typeof(this.owner.white) != 'undefined' && this.owner.white ? this.owner.white  : [];
         var b = typeof(this.owner.black) != 'undefined' && this.owner.black ? this.owner.black :  [];
+        
+        this.aclean = typeof(this.owner.aclean) != 'undefined' && this.owner.aclean ? this.owner.aclean :  Roo.HtmlEditorCore.aclean;
+        this.ablack = typeof(this.owner.ablack) != 'undefined' && this.owner.ablack ? this.owner.ablack :  Roo.HtmlEditorCore.ablack;
+        this.tag_remove = typeof(this.owner.tag_remove) != 'undefined' && this.owner.tag_remove ? this.owner.tag_remove :  Roo.HtmlEditorCore.tag_remove;
         
         this.white = [];
         this.black = [];
@@ -1607,6 +1450,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
     },
     
+    
+    updateLanguage : function()
+    {
+        if (!this.iframe || !this.iframe.contentDocument) {
+            return;
+        }
+        Roo.get(this.iframe.contentDocument.body).attr("lang", this.language);
+    },
+    
+    
     removeStylesheets : function()
     {
         var _this = this;
@@ -1671,36 +1524,40 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 });
 
 Roo.HtmlEditorCore.white = [
-        'area', 'br', 'img', 'input', 'hr', 'wbr',
+        'AREA', 'BR', 'IMG', 'INPUT', 'HR', 'WBR',
         
-       'address', 'blockquote', 'center', 'dd',      'dir',       'div', 
-       'dl',      'dt',         'h1',     'h2',      'h3',        'h4', 
-       'h5',      'h6',         'hr',     'isindex', 'listing',   'marquee', 
-       'menu',    'multicol',   'ol',     'p',       'plaintext', 'pre', 
-       'table',   'ul',         'xmp', 
+       'ADDRESS', 'BLOCKQUOTE', 'CENTER', 'DD',      'DIR',       'DIV', 
+       'DL',      'DT',         'H1',     'H2',      'H3',        'H4', 
+       'H5',      'H6',         'HR',     'ISINDEX', 'LISTING',   'MARQUEE', 
+       'MENU',    'MULTICOL',   'OL',     'P',       'PLAINTEXT', 'PRE', 
+       'TABLE',   'UL',         'XMP', 
        
-       'caption', 'col', 'colgroup', 'tbody', 'td', 'tfoot', 'th', 
-      'thead',   'tr', 
+       'CAPTION', 'COL', 'COLGROUP', 'TBODY', 'TD', 'TFOOT', 'TH', 
+      'THEAD',   'TR', 
      
-      'dir', 'menu', 'ol', 'ul', 'dl',
+      'DIR', 'MENU', 'OL', 'UL', 'DL',
        
-      'embed',  'object'
+      'EMBED',  'OBJECT'
 ];
 
 
 Roo.HtmlEditorCore.black = [
     //    'embed',  'object', // enable - backend responsiblity to clean thiese
-        'applet', // 
-        'base',   'basefont', 'bgsound', 'blink',  'body', 
-        'frame',  'frameset', 'head',    'html',   'ilayer', 
-        'iframe', 'layer',  'link',     'meta',    'object',   
-        'script', 'style' ,'title',  'xml' // clean later..
+        'APPLET', // 
+        'BASE',   'BASEFONT', 'BGSOUND', 'BLINK',  'BODY', 
+        'FRAME',  'FRAMESET', 'HEAD',    'HTML',   'ILAYER', 
+        'IFRAME', 'LAYER',  'LINK',     'META',    'OBJECT',   
+        'SCRIPT', 'STYLE' ,'TITLE',  'XML',
+        //'FONT' // CLEAN LATER..
+        'COLGROUP', 'COL'   // messy tables.
+        
+        
 ];
-Roo.HtmlEditorCore.clean = [
-    'script', 'style', 'title', 'xml'
+Roo.HtmlEditorCore.clean = [ // ?? needed???
+     'SCRIPT', 'STYLE', 'TITLE', 'XML'
 ];
-Roo.HtmlEditorCore.remove = [
-    'font'
+Roo.HtmlEditorCore.tag_remove = [
+    'FONT', 'TBODY'  
 ];
 // attributes..
 
@@ -1731,15 +1588,6 @@ Roo.HtmlEditorCore.cblack= [
 ];
 
 
-Roo.HtmlEditorCore.swapCodes   =[ 
-    [    8211, "&#8211;" ], 
-    [    8212, "&#8212;" ], 
-    [    8216,  "'" ],  
-    [    8217, "'" ],  
-    [    8220, '"' ],  
-    [    8221, '"' ],  
-    [    8226, "*" ],  
-    [    8230, "..." ]
-]; 
+
 
     

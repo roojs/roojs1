@@ -6,7 +6,11 @@
   ],
   "childClasses" : {  },
   "tree_children" : [],
-  "tree_parent" : [],
+  "tree_parent" : [
+    "Roo.BorderLayout",
+    "Roo.LayoutDialog",
+    "builder"
+  ],
   "desc" : "Treepanel component",
   "isSingleton" : false,
   "isStatic" : false,
@@ -69,7 +73,7 @@
     {
       "name" : "region",
       "type" : "String",
-      "desc" : "[required]   (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
+      "desc" : "t) [required] which region to put this panel on (when used with xtype constructors)",
       "memberOf" : "Roo.ContentPanel"
     },
     {

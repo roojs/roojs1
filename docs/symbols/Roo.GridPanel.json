@@ -6,7 +6,11 @@
   ],
   "childClasses" : {  },
   "tree_children" : [],
-  "tree_parent" : [],
+  "tree_parent" : [
+    "Roo.BorderLayout",
+    "Roo.LayoutDialog",
+    "builder"
+  ],
   "desc" : "Create a new GridPanel.",
   "isSingleton" : false,
   "isStatic" : false,
@@ -18,20 +22,7 @@
   "deprecated" : "",
   "since" : "",
   "see" : "",
-  "params" : [
-    {
-      "name" : "grid",
-      "type" : "Roo.grid.Grid",
-      "desc" : "The grid for this panel",
-      "isOptional" : false
-    },
-    {
-      "name" : "config",
-      "type" : "String/Object",
-      "desc" : "A string to set only the panel's title, or a config object",
-      "isOptional" : false
-    }
-  ],
+  "params" : [],
   "returns" : [],
   "throws" : "",
   "requires" : "",
@@ -75,7 +66,7 @@
     {
       "name" : "region",
       "type" : "String",
-      "desc" : "[required]   (center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
+      "desc" : "t) [required] which region to put this panel on (when used with xtype constructors)",
       "memberOf" : "Roo.ContentPanel"
     },
     {
@@ -113,6 +104,12 @@
       "type" : "Boolean",
       "desc" : "When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)",
       "memberOf" : "Roo.ContentPanel"
+    },
+    {
+      "name" : "grid",
+      "type" : "Roo.grid.Grid",
+      "desc" : "The grid for this panel",
+      "memberOf" : "Roo"
     },
     {
       "name" : "closable",
