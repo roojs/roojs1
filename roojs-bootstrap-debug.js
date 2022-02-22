@@ -1,4 +1,4 @@
-/**
+Roo.bootstrap = {};/**
  * set the version of bootstrap based on the stylesheet...
  *
  */
@@ -25987,7 +25987,2620 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         return this.IsLongEnough(pwd, 6) || !this.IsLongEnough(pwd, 0);
     }
           
-});//<script type="text/javascript">
+});
+Roo.htmleditor = {};
+ 
+/**
+ * @class Roo.htmleditor.Filter
+ * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.
+ * @cfg {DomElement} node The node to iterate and filter
+ * @cfg {boolean|String|Array} tag Tags to replace 
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+
+
+Roo.htmleditor.Filter = function(cfg) {
+    Roo.apply(this.cfg);
+    // this does not actually call walk as it's really just a abstract class
+}
+
+
+Roo.htmleditor.Filter.prototype = {
+    
+    node: false,
+    
+    tag: false,
+
+    // overrride to do replace comments.
+    replaceComment : false,
+    
+    // overrride to do replace or do stuff with tags..
+    replaceTag : false,
+    
+    walk : function(dom)
+    {
+        Roo.each( Array.from(dom.childNodes), function( e ) {
+            switch(true) {
+                
+                case e.nodeType == 8 &&  this.replaceComment  !== false: // comment
+                    this.replaceComment(e);
+                    return;
+                
+                case e.nodeType != 1: //not a node.
+                    return;
+                
+                case this.tag === true: // everything
+                case typeof(this.tag) == 'object' && this.tag.indexOf(e.tagName) > -1: // array and it matches.
+                case typeof(this.tag) == 'string' && this.tag == e.tagName: // array and it matches.
+                    if (this.replaceTag && false === this.replaceTag(e)) {
+                        return;
+                    }
+                    if (e.hasChildNodes()) {
+                        this.walk(e);
+                    }
+                    return;
+                
+                default:    // tags .. that do not match.
+                    if (e.hasChildNodes()) {
+                        this.walk(e);
+                    }
+            }
+            
+        }, this);
+        
+    }
+}; 
+
+/**
+ * @class Roo.htmleditor.FilterAttributes
+ * clean attributes and  styles including http:// etc.. in attribute
+ * @constructor
+* Run a new Attribute Filter
+* @param {Object} config Configuration options
+ */
+Roo.htmleditor.FilterAttributes = function(cfg)
+{
+    Roo.apply(this, cfg);
+    this.attrib_black = this.attrib_black || [];
+    this.attrib_white = this.attrib_white || [];
+
+    this.attrib_clean = this.attrib_clean || [];
+    this.style_white = this.style_white || [];
+    this.style_black = this.style_black || [];
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterAttributes, Roo.htmleditor.Filter,
+{
+    tag: true, // all tags
+    
+    attrib_black : false, // array
+    attrib_clean : false,
+    attrib_white : false,
+
+    style_white : false,
+    style_black : false,
+     
+     
+    replaceTag : function(node)
+    {
+        if (!node.attributes || !node.attributes.length) {
+            return true;
+        }
+        
+        for (var i = node.attributes.length-1; i > -1 ; i--) {
+            var a = node.attributes[i];
+            //console.log(a);
+            if (this.attrib_white.length && this.attrib_white.indexOf(a.name.toLowerCase()) < 0) {
+                node.removeAttribute(a.name);
+                continue;
+            }
+            
+            
+            
+            if (a.name.toLowerCase().substr(0,2)=='on')  {
+                node.removeAttribute(a.name);
+                continue;
+            }
+            
+            
+            if (this.attrib_black.indexOf(a.name.toLowerCase()) > -1) {
+                node.removeAttribute(a.name);
+                continue;
+            }
+            if (this.attrib_clean.indexOf(a.name.toLowerCase()) > -1) {
+                this.cleanAttr(node,a.name,a.value); // fixme..
+                continue;
+            }
+            if (a.name == 'style') {
+                this.cleanStyle(node,a.name,a.value);
+                continue;
+            }
+            /// clean up MS crap..
+            // tecnically this should be a list of valid class'es..
+            
+            
+            if (a.name == 'class') {
+                if (a.value.match(/^Mso/)) {
+                    node.removeAttribute('class');
+                }
+                
+                if (a.value.match(/^body$/)) {
+                    node.removeAttribute('class');
+                }
+                continue;
+            }
+            
+            
+            // style cleanup!?
+            // class cleanup?
+            
+        }
+        return true; // clean children
+    },
+        
+    cleanAttr: function(node, n,v)
+    {
+        
+        if (v.match(/^\./) || v.match(/^\//)) {
+            return;
+        }
+        if (v.match(/^(http|https):\/\//)
+            || v.match(/^mailto:/) 
+            || v.match(/^ftp:/)
+            || v.match(/^data:/)
+            ) {
+            return;
+        }
+        if (v.match(/^#/)) {
+            return;
+        }
+        if (v.match(/^\{/)) { // allow template editing.
+            return;
+        }
+//            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);
+        node.removeAttribute(n);
+        
+    },
+    cleanStyle : function(node,  n,v)
+    {
+        if (v.match(/expression/)) { //XSS?? should we even bother..
+            node.removeAttribute(n);
+            return;
+        }
+        
+        var parts = v.split(/;/);
+        var clean = [];
+        
+        Roo.each(parts, function(p) {
+            p = p.replace(/^\s+/g,'').replace(/\s+$/g,'');
+            if (!p.length) {
+                return true;
+            }
+            var l = p.split(':').shift().replace(/\s+/g,'');
+            l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
+            
+            if ( this.style_black.length && (this.style_black.indexOf(l) > -1 || this.style_black.indexOf(l.toLowerCase()) > -1)) {
+                return true;
+            }
+            //Roo.log()
+            // only allow 'c whitelisted system attributes'
+            if ( this.style_white.length &&  style_white.indexOf(l) < 0 && style_white.indexOf(l.toLowerCase()) < 0 ) {
+                return true;
+            }
+            
+            
+            clean.push(p);
+            return true;
+        },this);
+        if (clean.length) { 
+            node.setAttribute(n, clean.join(';'));
+        } else {
+            node.removeAttribute(n);
+        }
+        
+    }
+        
+        
+        
+    
+});/**
+ * @class Roo.htmleditor.FilterBlack
+ * remove blacklisted elements.
+ * @constructor
+ * Run a new Blacklisted Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterBlack = function(cfg)
+{
+    Roo.apply(this, cfg);
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterBlack, Roo.htmleditor.Filter,
+{
+    tag : true, // all elements.
+   
+    replaceTag : function(n)
+    {
+        n.parentNode.removeChild(n);
+    }
+});
+/**
+ * @class Roo.htmleditor.FilterComment
+ * remove comments.
+ * @constructor
+* Run a new Comments Filter
+* @param {Object} config Configuration options
+ */
+Roo.htmleditor.FilterComment = function(cfg)
+{
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterComment, Roo.htmleditor.Filter,
+{
+  
+    replaceComment : function(n)
+    {
+        n.parentNode.removeChild(n);
+    }
+});/**
+ * @class Roo.htmleditor.FilterKeepChildren
+ * remove tags but keep children
+ * @constructor
+ * Run a new Keep Children Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterKeepChildren = function(cfg)
+{
+    Roo.apply(this, cfg);
+    if (this.tag === false) {
+        return; // dont walk.. (you can use this to use this just to do a child removal on a single tag )
+    }
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
+{
+    
+  
+    replaceTag : function(node)
+    {
+        // walk children...
+        //Roo.log(node);
+        var ar = Array.from(node.childNodes);
+        //remove first..
+        for (var i = 0; i < ar.length; i++) {
+            if (ar[i].nodeType == 1) {
+                if (
+                    (typeof(this.tag) == 'object' && this.tag.indexOf(ar[i].tagName) > -1)
+                    || // array and it matches
+                    (typeof(this.tag) == 'string' && this.tag == ar[i].tagName)
+                ) {
+                    this.replaceTag(ar[i]); // child is blacklisted as well...
+                    continue;
+                }
+            }
+        }  
+        ar = Array.from(node.childNodes);
+        for (var i = 0; i < ar.length; i++) {
+         
+            node.removeChild(ar[i]);
+            // what if we need to walk these???
+            node.parentNode.insertBefore(ar[i], node);
+            if (this.tag !== false) {
+                this.walk(ar[i]);
+                
+            }
+        }
+        node.parentNode.removeChild(node);
+        return false; // don't walk children
+        
+        
+    }
+});/**
+ * @class Roo.htmleditor.FilterParagraph
+ * paragraphs cause a nightmare for shared content - this filter is designed to be called ? at various points when editing
+ * like on 'push' to remove the <p> tags and replace them with line breaks.
+ * @constructor
+ * Run a new Paragraph Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterParagraph = function(cfg)
+{
+    // no need to apply config.
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterParagraph, Roo.htmleditor.Filter,
+{
+    
+     
+    tag : 'P',
+    
+     
+    replaceTag : function(node)
+    {
+        
+        if (node.childNodes.length == 1 &&
+            node.childNodes[0].nodeType == 3 &&
+            node.childNodes[0].textContent.trim().length < 1
+            ) {
+            // remove and replace with '<BR>';
+            node.parentNode.replaceChild(node.ownerDocument.createElement('BR'),node);
+            return false; // no need to walk..
+        }
+        var ar = Array.from(node.childNodes);
+        for (var i = 0; i < ar.length; i++) {
+            node.removeChild(ar[i]);
+            // what if we need to walk these???
+            node.parentNode.insertBefore(ar[i], node);
+        }
+        // now what about this?
+        // <p> &nbsp; </p>
+        
+        // double BR.
+        node.parentNode.insertBefore(node.ownerDocument.createElement('BR'), node);
+        node.parentNode.insertBefore(node.ownerDocument.createElement('BR'), node);
+        node.parentNode.removeChild(node);
+        
+        return false;
+
+    }
+    
+});/**
+ * @class Roo.htmleditor.FilterSpan
+ * filter span's with no attributes out..
+ * @constructor
+ * Run a new Span Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterSpan = function(cfg)
+{
+    // no need to apply config.
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterSpan, Roo.htmleditor.FilterKeepChildren,
+{
+     
+    tag : 'SPAN',
+     
+ 
+    replaceTag : function(node)
+    {
+        if (node.attributes && node.attributes.length > 0) {
+            return true; // walk if there are any.
+        }
+        Roo.htmleditor.FilterKeepChildren.prototype.replaceTag.call(this, node);
+        return false;
+     
+    }
+    
+});/**
+ * @class Roo.htmleditor.FilterTableWidth
+  try and remove table width data - as that frequently messes up other stuff.
+ * 
+ *      was cleanTableWidths.
+ *
+ * Quite often pasting from word etc.. results in tables with column and widths.
+ * This does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..
+ *
+ * @constructor
+ * Run a new Table Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterTableWidth = function(cfg)
+{
+    // no need to apply config.
+    this.tag = ['TABLE', 'TD', 'TR', 'TH', 'THEAD', 'TBODY' ];
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterTableWidth, Roo.htmleditor.Filter,
+{
+     
+     
+    
+    replaceTag: function(node) {
+        
+        
+      
+        if (node.hasAttribute('width')) {
+            node.removeAttribute('width');
+        }
+        
+         
+        if (node.hasAttribute("style")) {
+            // pretty basic...
+            
+            var styles = node.getAttribute("style").split(";");
+            var nstyle = [];
+            Roo.each(styles, function(s) {
+                if (!s.match(/:/)) {
+                    return;
+                }
+                var kv = s.split(":");
+                if (kv[0].match(/^\s*(width|min-width)\s*$/)) {
+                    return;
+                }
+                // what ever is left... we allow.
+                nstyle.push(s);
+            });
+            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
+            if (!nstyle.length) {
+                node.removeAttribute('style');
+            }
+        }
+        
+        return true; // continue doing children..
+    }
+});/**
+ * @class Roo.htmleditor.FilterWord
+ * try and clean up all the mess that Word generates.
+ * 
+ * This is the 'nice version' - see 'Heavy' that white lists a very short list of elements, and multi-filters 
+ 
+ * @constructor
+ * Run a new Span Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterWord = function(cfg)
+{
+    // no need to apply config.
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
+{
+    tag: true,
+     
+    
+    /**
+     * Clean up MS wordisms...
+     */
+    replaceTag : function(node)
+    {
+         
+        // no idea what this does - span with text, replaceds with just text.
+        if(
+                node.nodeName == 'SPAN' &&
+                !node.hasAttributes() &&
+                node.childNodes.length == 1 &&
+                node.firstChild.nodeName == "#text"  
+        ) {
+            var textNode = node.firstChild;
+            node.removeChild(textNode);
+            if (node.getAttribute('lang') != 'zh-CN') {   // do not space pad on chinese characters..
+                node.parentNode.insertBefore(node.ownerDocument.createTextNode(" "), node);
+            }
+            node.parentNode.insertBefore(textNode, node);
+            if (node.getAttribute('lang') != 'zh-CN') {   // do not space pad on chinese characters..
+                node.parentNode.insertBefore(node.ownerDocument.createTextNode(" ") , node);
+            }
+            
+            node.parentNode.removeChild(node);
+            return false; // dont do chidren - we have remove our node - so no need to do chdhilren?
+        }
+        
+   
+        
+        if (node.tagName.toLowerCase().match(/^(style|script|applet|embed|noframes|noscript)$/)) {
+            node.parentNode.removeChild(node);
+            return false; // dont do chidlren
+        }
+        //Roo.log(node.tagName);
+        // remove - but keep children..
+        if (node.tagName.toLowerCase().match(/^(meta|link|\\?xml:|st1:|o:|v:|font)/)) {
+            //Roo.log('-- removed');
+            while (node.childNodes.length) {
+                var cn = node.childNodes[0];
+                node.removeChild(cn);
+                node.parentNode.insertBefore(cn, node);
+                // move node to parent - and clean it..
+                this.replaceTag(cn);
+            }
+            node.parentNode.removeChild(node);
+            /// no need to iterate chidlren = it's got none..
+            //this.iterateChildren(node, this.cleanWord);
+            return false; // no need to iterate children.
+        }
+        // clean styles
+        if (node.className.length) {
+            
+            var cn = node.className.split(/\W+/);
+            var cna = [];
+            Roo.each(cn, function(cls) {
+                if (cls.match(/Mso[a-zA-Z]+/)) {
+                    return;
+                }
+                cna.push(cls);
+            });
+            node.className = cna.length ? cna.join(' ') : '';
+            if (!cna.length) {
+                node.removeAttribute("class");
+            }
+        }
+        
+        if (node.hasAttribute("lang")) {
+            node.removeAttribute("lang");
+        }
+        
+        if (node.hasAttribute("style")) {
+            
+            var styles = node.getAttribute("style").split(";");
+            var nstyle = [];
+            Roo.each(styles, function(s) {
+                if (!s.match(/:/)) {
+                    return;
+                }
+                var kv = s.split(":");
+                if (kv[0].match(/^(mso-|line|font|background|margin|padding|color)/)) {
+                    return;
+                }
+                // what ever is left... we allow.
+                nstyle.push(s);
+            });
+            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
+            if (!nstyle.length) {
+                node.removeAttribute('style');
+            }
+        }
+        return true; // do children
+        
+        
+        
+    }
+});
+/**
+ * @class Roo.htmleditor.FilterStyleToTag
+ * part of the word stuff... - certain 'styles' should be converted to tags.
+ * eg.
+ *   font-weight: bold -> bold
+ *   ?? super / subscrit etc..
+ * 
+ * @constructor
+* Run a new style to tag filter.
+* @param {Object} config Configuration options
+ */
+Roo.htmleditor.FilterStyleToTag = function(cfg)
+{
+    
+    this.tags = {
+        B  : [ 'fontWeight' , 'bold'],
+        I :  [ 'fontStyle' , 'italic'],
+        //pre :  [ 'font-style' , 'italic'],
+        // h1.. h6 ?? font-size?
+        SUP : [ 'verticalAlign' , 'super' ],
+        SUB : [ 'verticalAlign' , 'sub' ]
+        
+        
+    };
+    
+    Roo.apply(this, cfg);
+     
+    
+    this.walk(cfg.node);
+    
+    
+    
+}
+
+
+Roo.extend(Roo.htmleditor.FilterStyleToTag, Roo.htmleditor.Filter,
+{
+    tag: true, // all tags
+    
+    tags : false,
+    
+    
+    replaceTag : function(node)
+    {
+        
+        
+        if (node.getAttribute("style") === null) {
+            return true;
+        }
+        var inject = [];
+        for (var k in this.tags) {
+            if (node.style[this.tags[k][0]] == this.tags[k][1]) {
+                inject.push(k);
+                node.style.removeProperty(this.tags[k][0]);
+            }
+        }
+        if (!inject.length) {
+            return true; 
+        }
+        var cn = Array.from(node.childNodes);
+        var nn = node;
+        Roo.each(inject, function(t) {
+            var nc = node.ownerDocument.createElement(t);
+            nn.appendChild(nc);
+            nn = nc;
+        });
+        for(var i = 0;i < cn.length;cn++) {
+            node.removeChild(cn[i]);
+            nn.appendChild(cn[i]);
+        }
+        return true /// iterate thru
+    }
+    
+})/**
+ * @class Roo.htmleditor.FilterLongBr
+ * BR/BR/BR - keep a maximum of 2...
+ * @constructor
+ * Run a new Long BR Filter
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.FilterLongBr = function(cfg)
+{
+    // no need to apply config.
+    this.walk(cfg.node);
+}
+
+Roo.extend(Roo.htmleditor.FilterLongBr, Roo.htmleditor.Filter,
+{
+    
+     
+    tag : 'BR',
+    
+     
+    replaceTag : function(node)
+    {
+        
+        var ps = node.nextSibling;
+        while (ps && ps.nodeType == 3 && ps.nodeValue.trim().length < 1) {
+            ps = ps.nextSibling;
+        }
+        
+        if (!ps &&  [ 'TD', 'TH', 'LI', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6' ].indexOf(node.parentNode.tagName) > -1) { 
+            node.parentNode.removeChild(node); // remove last BR inside one fo these tags
+            return false;
+        }
+        
+        if (!ps || ps.nodeType != 1) {
+            return false;
+        }
+        
+        if (!ps || ps.tagName != 'BR') {
+           
+            return false;
+        }
+        
+        
+        
+        
+        
+        if (!node.previousSibling) {
+            return false;
+        }
+        var ps = node.previousSibling;
+        
+        while (ps && ps.nodeType == 3 && ps.nodeValue.trim().length < 1) {
+            ps = ps.previousSibling;
+        }
+        if (!ps || ps.nodeType != 1) {
+            return false;
+        }
+        // if header or BR before.. then it's a candidate for removal.. - as we only want '2' of these..
+        if (!ps || [ 'BR', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6' ].indexOf(ps.tagName) < 0) {
+            return false;
+        }
+        
+        node.parentNode.removeChild(node); // remove me...
+        
+        return false; // no need to do children
+
+    }
+    
+}); 
+
+/**
+ * @class Roo.htmleditor.FilterBlock
+ * removes id / data-block and contenteditable that are associated with blocks
+ * usage should be done on a cloned copy of the dom
+ * @constructor
+* Run a new Attribute Filter { node : xxxx }}
+* @param {Object} config Configuration options
+ */
+Roo.htmleditor.FilterBlock = function(cfg)
+{
+    Roo.apply(this, cfg);
+    var qa = cfg.node.querySelectorAll;
+    this.removeAttributes('data-block');
+    this.removeAttributes('contenteditable');
+    this.removeAttributes('id');
+    
+}
+
+Roo.apply(Roo.htmleditor.FilterBlock.prototype,
+{
+    node: true, // all tags
+     
+     
+    removeAttributes : function(attr)
+    {
+        var ar = this.node.querySelectorAll('*[' + attr + ']');
+        for (var i =0;i<ar.length;i++) {
+            ar[i].removeAttribute(attr);
+        }
+    }
+        
+        
+        
+    
+});
+/**
+ * @class Roo.htmleditor.KeyEnter
+ * Handle Enter press..
+ * @cfg {Roo.HtmlEditorCore} core the editor.
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+
+
+
+
+Roo.htmleditor.KeyEnter = function(cfg) {
+    Roo.apply(this, cfg);
+    // this does not actually call walk as it's really just a abstract class
+ 
+    Roo.get(this.core.doc.body).on('keypress', this.keypress, this);
+}
+
+//Roo.htmleditor.KeyEnter.i = 0;
+
+
+Roo.htmleditor.KeyEnter.prototype = {
+    
+    core : false,
+    
+    keypress : function(e)
+    {
+        if (e.charCode != 13 && e.charCode != 10) {
+            Roo.log([e.charCode,e]);
+            return true;
+        }
+        e.preventDefault();
+        // https://stackoverflow.com/questions/18552336/prevent-contenteditable-adding-div-on-enter-chrome
+        var doc = this.core.doc;
+          //add a new line
+       
+    
+        var sel = this.core.getSelection();
+        var range = sel.getRangeAt(0);
+        var n = range.commonAncestorContainer;
+        var pc = range.closest([ 'ol', 'ul']);
+        var pli = range.closest('li');
+        if (!pc || e.ctrlKey) {
+            sel.insertNode('br', 'after'); 
+         
+            this.core.undoManager.addEvent();
+            this.core.fireEditorEvent(e);
+            return false;
+        }
+        
+        // deal with <li> insetion
+        if (pli.innerText.trim() == '' &&
+            pli.previousSibling &&
+            pli.previousSibling.nodeName == 'LI' &&
+            pli.previousSibling.innerText.trim() ==  '') {
+            pli.parentNode.removeChild(pli.previousSibling);
+            sel.cursorAfter(pc);
+            this.core.undoManager.addEvent();
+            this.core.fireEditorEvent(e);
+            return false;
+        }
+    
+        var li = doc.createElement('LI');
+        li.innerHTML = '&nbsp;';
+        if (!pli || !pli.firstSibling) {
+            pc.appendChild(li);
+        } else {
+            pli.parentNode.insertBefore(li, pli.firstSibling);
+        }
+        sel.cursorText (li.firstChild);
+      
+        this.core.undoManager.addEvent();
+        this.core.fireEditorEvent(e);
+
+        return false;
+        
+    
+        
+        
+         
+    }
+};
+     
+/**
+ * @class Roo.htmleditor.Block
+ * Base class for html editor blocks - do not use it directly .. extend it..
+ * @cfg {DomElement} node The node to apply stuff to.
+ * @cfg {String} friendly_name the name that appears in the context bar about this block
+ * @cfg {Object} Context menu - see Roo.form.HtmlEditor.ToolbarContext
+ 
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.Block  = function(cfg)
+{
+    // do nothing .. should not be called really.
+}
+/**
+ * factory method to get the block from an element (using cache if necessary)
+ * @static
+ * @param {HtmlElement} the dom element
+ */
+Roo.htmleditor.Block.factory = function(node)
+{
+    var cc = Roo.htmleditor.Block.cache;
+    var id = Roo.get(node).id;
+    if (typeof(cc[id]) != 'undefined' && (!cc[id].node || cc[id].node.closest('body'))) {
+        Roo.htmleditor.Block.cache[id].readElement(node);
+        return Roo.htmleditor.Block.cache[id];
+    }
+    var db  = node.getAttribute('data-block');
+    if (!db) {
+        db = node.nodeName.toLowerCase().toUpperCaseFirst();
+    }
+    var cls = Roo.htmleditor['Block' + db];
+    if (typeof(cls) == 'undefined') {
+        //Roo.log(node.getAttribute('data-block'));
+        Roo.log("OOps missing block : " + 'Block' + db);
+        return false;
+    }
+    Roo.htmleditor.Block.cache[id] = new cls({ node: node });
+    return Roo.htmleditor.Block.cache[id];  /// should trigger update element
+};
+
+/**
+ * initalize all Elements from content that are 'blockable'
+ * @static
+ * @param the body element
+ */
+Roo.htmleditor.Block.initAll = function(body, type)
+{
+    if (typeof(type) == 'undefined') {
+        var ia = Roo.htmleditor.Block.initAll;
+        ia(body,'table');
+        ia(body,'td');
+        ia(body,'figure');
+        return;
+    }
+    Roo.each(Roo.get(body).query(type), function(e) {
+        Roo.htmleditor.Block.factory(e);    
+    },this);
+};
+// question goes here... do we need to clear out this cache sometimes?
+// or show we make it relivant to the htmleditor.
+Roo.htmleditor.Block.cache = {};
+
+Roo.htmleditor.Block.prototype = {
+    
+    node : false,
+    
+     // used by context menu
+    friendly_name : 'Based Block',
+    
+    // text for button to delete this element
+    deleteTitle : false,
+    
+    context : false,
+    /**
+     * Update a node with values from this object
+     * @param {DomElement} node
+     */
+    updateElement : function(node)
+    {
+        Roo.DomHelper.update(node === undefined ? this.node : node, this.toObject());
+    },
+     /**
+     * convert to plain HTML for calling insertAtCursor..
+     */
+    toHTML : function()
+    {
+        return Roo.DomHelper.markup(this.toObject());
+    },
+    /**
+     * used by readEleemnt to extract data from a node
+     * may need improving as it's pretty basic
+     
+     * @param {DomElement} node
+     * @param {String} tag - tag to find, eg. IMG ?? might be better to use DomQuery ?
+     * @param {String} attribute (use html - for contents, or style for using next param as style)
+     * @param {String} style the style property - eg. text-align
+     */
+    getVal : function(node, tag, attr, style)
+    {
+        var n = node;
+        if (tag !== true && n.tagName != tag.toUpperCase()) {
+            // in theory we could do figure[3] << 3rd figure? or some more complex search..?
+            // but kiss for now.
+            n = node.getElementsByTagName(tag).item(0);
+        }
+        if (!n) {
+            return '';
+        }
+        if (attr == 'html') {
+            return n.innerHTML;
+        }
+        if (attr == 'style') {
+            return n.style[style]; 
+        }
+        
+        return n.hasAttribute(attr) ? n.getAttribute(attr) : '';
+            
+    },
+    /**
+     * create a DomHelper friendly object - for use with 
+     * Roo.DomHelper.markup / overwrite / etc..
+     * (override this)
+     */
+    toObject : function()
+    {
+        return {};
+    },
+      /**
+     * Read a node that has a 'data-block' property - and extract the values from it.
+     * @param {DomElement} node - the node
+     */
+    readElement : function(node)
+    {
+        
+    } 
+    
+    
+};
+
+ 
+
+/**
+ * @class Roo.htmleditor.BlockFigure
+ * Block that has an image and a figcaption
+ * @cfg {String} image_src the url for the image
+ * @cfg {String} align (left|right) alignment for the block default left
+ * @cfg {String} caption the text to appear below  (and in the alt tag)
+ * @cfg {String} caption_display (block|none) display or not the caption
+ * @cfg {String|number} image_width the width of the image number or %?
+ * @cfg {String|number} image_height the height of the image number or %?
+ * 
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.BlockFigure = function(cfg)
+{
+    if (cfg.node) {
+        this.readElement(cfg.node);
+        this.updateElement(cfg.node);
+    }
+    Roo.apply(this, cfg);
+}
+Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
+ 
+    
+    // setable values.
+    image_src: '',
+    align: 'center',
+    caption : '',
+    caption_display : 'block',
+    width : '100%',
+    cls : '',
+    href: '',
+    video_url : '',
+    
+    // margin: '2%', not used
+    
+    text_align: 'left', //   (left|right) alignment for the text caption default left. - not used at present
+
+    
+    // used by context menu
+    friendly_name : 'Image with caption',
+    deleteTitle : "Delete Image and Caption",
+    
+    contextMenu : function(toolbar)
+    {
+        
+        var block = function() {
+            return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
+        };
+        
+        
+        var rooui =  typeof(Roo.bootstrap) == 'undefined' ? Roo : Roo.bootstrap;
+        
+        var syncValue = toolbar.editorcore.syncValue;
+        
+        var fields = {};
+        
+        return [
+             {
+                xtype : 'TextItem',
+                text : "Source: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+            {
+                xtype : 'Button',
+                text: 'Change Image URL',
+                 
+                listeners : {
+                    click: function (btn, state)
+                    {
+                        var b = block();
+                        
+                        Roo.MessageBox.show({
+                            title : "Image Source URL",
+                            msg : "Enter the url for the image",
+                            buttons: Roo.MessageBox.OKCANCEL,
+                            fn: function(btn, val){
+                                if (btn != 'ok') {
+                                    return;
+                                }
+                                b.image_src = val;
+                                b.updateElement();
+                                syncValue();
+                                toolbar.editorcore.onEditorEvent();
+                            },
+                            minWidth:250,
+                            prompt:true,
+                            //multiline: multiline,
+                            modal : true,
+                            value : b.image_src
+                        });
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+         
+            {
+                xtype : 'Button',
+                text: 'Change Link URL',
+                 
+                listeners : {
+                    click: function (btn, state)
+                    {
+                        var b = block();
+                        
+                        Roo.MessageBox.show({
+                            title : "Link URL",
+                            msg : "Enter the url for the link - leave blank to have no link",
+                            buttons: Roo.MessageBox.OKCANCEL,
+                            fn: function(btn, val){
+                                if (btn != 'ok') {
+                                    return;
+                                }
+                                b.href = val;
+                                b.updateElement();
+                                syncValue();
+                                toolbar.editorcore.onEditorEvent();
+                            },
+                            minWidth:250,
+                            prompt:true,
+                            //multiline: multiline,
+                            modal : true,
+                            value : b.href
+                        });
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            {
+                xtype : 'Button',
+                text: 'Show Video URL',
+                 
+                listeners : {
+                    click: function (btn, state)
+                    {
+                        Roo.MessageBox.alert("Video URL",
+                            block().video_url == '' ? 'This image is not linked ot a video' :
+                                'The image is linked to: <a target="_new" href="' + block().video_url + '">' + block().video_url + '</a>');
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            
+            
+            {
+                xtype : 'TextItem',
+                text : "Width: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+            {
+                xtype : 'ComboBox',
+                allowBlank : false,
+                displayField : 'val',
+                editable : true,
+                listWidth : 100,
+                triggerAction : 'all',
+                typeAhead : true,
+                valueField : 'val',
+                width : 70,
+                name : 'width',
+                listeners : {
+                    select : function (combo, r, index)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = block();
+                        b.width = r.get('val');
+                        b.updateElement();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.form,
+                store : {
+                    xtype : 'SimpleStore',
+                    data : [
+                        ['auto'],
+                        ['50%'],
+                        ['100%']
+                    ],
+                    fields : [ 'val'],
+                    xns : Roo.data
+                }
+            },
+            {
+                xtype : 'TextItem',
+                text : "Align: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+            {
+                xtype : 'ComboBox',
+                allowBlank : false,
+                displayField : 'val',
+                editable : true,
+                listWidth : 100,
+                triggerAction : 'all',
+                typeAhead : true,
+                valueField : 'val',
+                width : 70,
+                name : 'align',
+                listeners : {
+                    select : function (combo, r, index)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = block();
+                        b.align = r.get('val');
+                        b.updateElement();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.form,
+                store : {
+                    xtype : 'SimpleStore',
+                    data : [
+                        ['left'],
+                        ['right'],
+                        ['center']
+                    ],
+                    fields : [ 'val'],
+                    xns : Roo.data
+                }
+            },
+            
+            
+            {
+                xtype : 'Button',
+                text: 'Hide Caption',
+                name : 'caption_display',
+                pressed : false,
+                enableToggle : true,
+                setValue : function(v) {
+                    this.toggle(v == 'block' ? false : true);
+                },
+                listeners : {
+                    toggle: function (btn, state)
+                    {
+                        var b  = block();
+                        b.caption_display = b.caption_display == 'block' ? 'none' : 'block';
+                        this.setText(b.caption_display == 'block' ? "Hide Caption" : "Show Caption");
+                        b.updateElement();
+                        syncValue();
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.Toolbar
+            }
+        ];
+        
+    },
+    /**
+     * create a DomHelper friendly object - for use with
+     * Roo.DomHelper.markup / overwrite / etc..
+     */
+    toObject : function()
+    {
+        var d = document.createElement('div');
+        d.innerHTML = this.caption;
+        
+        var m = this.width == '50%' && this.align == 'center' ? '0 auto' : 0; 
+        
+        var img =   {
+            tag : 'img',
+            contenteditable : 'false',
+            src : this.image_src,
+            alt : d.innerText.replace(/\n/g, " ").replace(/\s+/g, ' ').trim(), // removeHTML and reduce spaces..
+            style: {
+                width : 'auto',
+                'max-width': '100%',
+                margin : '0px' 
+                
+                
+            }
+        };
+        /*
+        '<div class="{0}" width="420" height="315" src="{1}" frameborder="0" allowfullscreen>' +
+                    '<a href="{2}">' + 
+                        '<img class="{0}-thumbnail" src="{3}/Images/{4}/{5}#image-{4}" />' + 
+                    '</a>' + 
+                '</div>',
+        */
+                
+        if (this.href.length > 0) {
+            img = {
+                tag : 'a',
+                href: this.href,
+                contenteditable : 'true',
+                cn : [
+                    img
+                ]
+            };
+        }
+        
+        
+        if (this.video_url.length > 0) {
+            img = {
+                tag : 'div',
+                cls : this.cls,
+                frameborder : 0,
+                allowfullscreen : true,
+                width : 420,  // these are for video tricks - that we replace the outer
+                height : 315,
+                src : this.video_url,
+                cn : [
+                    img
+                ]
+            };
+        }
+        
+        var captionhtml = this.caption_display == 'hidden' ? this.caption : (this.caption.length ? this.caption : "Caption");
+        
+        return  {
+            tag: 'figure',
+            'data-block' : 'Figure',
+            contenteditable : 'false',
+            style : {
+                display: 'block',
+                float :  this.align ,
+                'max-width':  this.width,
+                width : 'auto',
+                margin:  m,
+                padding: '10px'
+                
+            },
+           
+            
+            align : this.align,
+            cn : [
+                img,
+              
+                {
+                    tag: 'figcaption',
+                    
+                    style : {
+                        'text-align': 'left',
+                        'margin-top' : '16px',
+                        'font-size' : '16px',
+                        'line-height' : '24px',
+                         display : this.caption_display
+                    },
+                    cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
+                    cn : [
+                        {
+                            // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
+                            tag : 'i',
+                            contenteditable : true,
+                            html : captionhtml
+                        }
+                    ]
+                    
+                }
+            ]
+        };
+         
+    },
+    
+    readElement : function(node)
+    {
+        // this should not really come from the link...
+        this.video_url = this.getVal(node, 'div', 'src');
+        this.cls = this.getVal(node, 'div', 'class');
+        this.href = this.getVal(node, 'a', 'href');
+        
+        this.image_src = this.getVal(node, 'img', 'src');
+         
+        this.align = this.getVal(node, 'figure', 'align');
+        this.caption = this.getVal(node, 'figcaption', 'html');
+        // remove '<i>
+        if (this.caption.trim().match(/^<i[^>]*>/i)) {
+            this.caption = this.caption.trim().replace(/^<i[^>]*>/i, '').replace(/^<\/i>$/i, '');
+        }
+        //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
+        this.width = this.getVal(node, 'figure', 'style', 'max-width');
+        //this.margin = this.getVal(node, 'figure', 'style', 'margin');
+        
+    },
+    removeNode : function()
+    {
+        return this.node;
+    }
+    
+  
+   
+     
+    
+    
+    
+    
+})
+
+ 
+
+/**
+ * @class Roo.htmleditor.BlockTable
+ * Block that manages a table
+ * 
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.BlockTable = function(cfg)
+{
+    if (cfg.node) {
+        this.readElement(cfg.node);
+        this.updateElement(cfg.node);
+    }
+    Roo.apply(this, cfg);
+    if (!cfg.node) {
+        this.rows = [];
+        for(var r = 0; r < this.no_row; r++) {
+            this.rows[r] = [];
+            for(var c = 0; c < this.no_col; c++) {
+                this.rows[r][c] = this.emptyCell();
+            }
+        }
+    }
+    
+    
+}
+Roo.extend(Roo.htmleditor.BlockTable, Roo.htmleditor.Block, {
+ 
+    rows : false,
+    no_col : 1,
+    no_row : 1,
+    
+    
+    width: '100%',
+    
+    // used by context menu
+    friendly_name : 'Table',
+    deleteTitle : 'Delete Table',
+    // context menu is drawn once..
+    
+    contextMenu : function(toolbar)
+    {
+        
+        var block = function() {
+            return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
+        };
+        
+        
+        var rooui =  typeof(Roo.bootstrap) == 'undefined' ? Roo : Roo.bootstrap;
+        
+        var syncValue = toolbar.editorcore.syncValue;
+        
+        var fields = {};
+        
+        return [
+            {
+                xtype : 'TextItem',
+                text : "Width: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+            {
+                xtype : 'ComboBox',
+                allowBlank : false,
+                displayField : 'val',
+                editable : true,
+                listWidth : 100,
+                triggerAction : 'all',
+                typeAhead : true,
+                valueField : 'val',
+                width : 100,
+                name : 'width',
+                listeners : {
+                    select : function (combo, r, index)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = block();
+                        b.width = r.get('val');
+                        b.updateElement();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.form,
+                store : {
+                    xtype : 'SimpleStore',
+                    data : [
+                        ['100%'],
+                        ['auto']
+                    ],
+                    fields : [ 'val'],
+                    xns : Roo.data
+                }
+            },
+            // -------- Cols
+            
+            {
+                xtype : 'TextItem',
+                text : "Columns: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+         
+            {
+                xtype : 'Button',
+                text: '-',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        block().removeColumn();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            {
+                xtype : 'Button',
+                text: '+',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        block().addColumn();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            // -------- ROWS
+            {
+                xtype : 'TextItem',
+                text : "Rows: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+         
+            {
+                xtype : 'Button',
+                text: '-',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        block().removeRow();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            {
+                xtype : 'Button',
+                text: '+',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        block().addRow();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            // -------- ROWS
+            {
+                xtype : 'Button',
+                text: 'Reset Column Widths',
+                listeners : {
+                    
+                    click : function (_self, e)
+                    {
+                        block().resetWidths();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.Toolbar
+            } 
+            
+            
+            
+        ];
+        
+    },
+    
+    
+  /**
+     * create a DomHelper friendly object - for use with
+     * Roo.DomHelper.markup / overwrite / etc..
+     * ?? should it be called with option to hide all editing features?
+     */
+    toObject : function()
+    {
+        
+        var ret = {
+            tag : 'table',
+            contenteditable : 'false', // this stops cell selection from picking the table.
+            'data-block' : 'Table',
+            style : {
+                width:  this.width,
+                border : 'solid 1px #000', // ??? hard coded?
+                'border-collapse' : 'collapse' 
+            },
+            cn : [
+                { tag : 'tbody' , cn : [] }
+            ]
+        };
+        
+        // do we have a head = not really 
+        var ncols = 0;
+        Roo.each(this.rows, function( row ) {
+            var tr = {
+                tag: 'tr',
+                style : {
+                    margin: '6px',
+                    border : 'solid 1px #000',
+                    textAlign : 'left' 
+                },
+                cn : [ ]
+            };
+            
+            ret.cn[0].cn.push(tr);
+            // does the row have any properties? ?? height?
+            var nc = 0;
+            Roo.each(row, function( cell ) {
+                
+                var td = {
+                    tag : 'td',
+                    contenteditable :  'true',
+                    'data-block' : 'Td',
+                    html : cell.html,
+                    style : cell.style
+                };
+                if (cell.colspan > 1) {
+                    td.colspan = cell.colspan ;
+                    nc += cell.colspan;
+                } else {
+                    nc++;
+                }
+                if (cell.rowspan > 1) {
+                    td.rowspan = cell.rowspan ;
+                }
+                
+                
+                // widths ?
+                tr.cn.push(td);
+                    
+                
+            }, this);
+            ncols = Math.max(nc, ncols);
+            
+            
+        }, this);
+        // add the header row..
+        
+        ncols++;
+         
+        
+        return ret;
+         
+    },
+    
+    readElement : function(node)
+    {
+        node  = node ? node : this.node ;
+        this.width = this.getVal(node, true, 'style', 'width') || '100%';
+        
+        this.rows = [];
+        this.no_row = 0;
+        var trs = Array.from(node.rows);
+        trs.forEach(function(tr) {
+            var row =  [];
+            this.rows.push(row);
+            
+            this.no_row++;
+            var no_column = 0;
+            Array.from(tr.cells).forEach(function(td) {
+                
+                var add = {
+                    colspan : td.hasAttribute('colspan') ? td.getAttribute('colspan')*1 : 1,
+                    rowspan : td.hasAttribute('rowspan') ? td.getAttribute('rowspan')*1 : 1,
+                    style : td.hasAttribute('style') ? td.getAttribute('style') : '',
+                    html : td.innerHTML
+                };
+                no_column += add.colspan;
+                     
+                
+                row.push(add);
+                
+                
+            },this);
+            this.no_col = Math.max(this.no_col, no_column);
+            
+            
+        },this);
+        
+        
+    },
+    normalizeRows: function()
+    {
+        var ret= [];
+        var rid = -1;
+        this.rows.forEach(function(row) {
+            rid++;
+            ret[rid] = [];
+            row = this.normalizeRow(row);
+            var cid = 0;
+            row.forEach(function(c) {
+                while (typeof(ret[rid][cid]) != 'undefined') {
+                    cid++;
+                }
+                if (typeof(ret[rid]) == 'undefined') {
+                    ret[rid] = [];
+                }
+                ret[rid][cid] = c;
+                c.row = rid;
+                c.col = cid;
+                if (c.rowspan < 2) {
+                    return;
+                }
+                
+                for(var i = 1 ;i < c.rowspan; i++) {
+                    if (typeof(ret[rid+i]) == 'undefined') {
+                        ret[rid+i] = [];
+                    }
+                    ret[rid+i][cid] = c;
+                }
+            });
+        }, this);
+        return ret;
+    
+    },
+    
+    normalizeRow: function(row)
+    {
+        var ret= [];
+        row.forEach(function(c) {
+            if (c.colspan < 2) {
+                ret.push(c);
+                return;
+            }
+            for(var i =0 ;i < c.colspan; i++) {
+                ret.push(c);
+            }
+        });
+        return ret;
+    
+    },
+    
+    deleteColumn : function(sel)
+    {
+        if (!sel || sel.type != 'col') {
+            return;
+        }
+        if (this.no_col < 2) {
+            return;
+        }
+        
+        this.rows.forEach(function(row) {
+            var cols = this.normalizeRow(row);
+            var col = cols[sel.col];
+            if (col.colspan > 1) {
+                col.colspan --;
+            } else {
+                row.remove(col);
+            }
+            
+        }, this);
+        this.no_col--;
+        
+    },
+    removeColumn : function()
+    {
+        this.deleteColumn({
+            type: 'col',
+            col : this.no_col-1
+        });
+        this.updateElement();
+    },
+    
+     
+    addColumn : function()
+    {
+        
+        this.rows.forEach(function(row) {
+            row.push(this.emptyCell());
+           
+        }, this);
+        this.updateElement();
+    },
+    
+    deleteRow : function(sel)
+    {
+        if (!sel || sel.type != 'row') {
+            return;
+        }
+        
+        if (this.no_row < 2) {
+            return;
+        }
+        
+        var rows = this.normalizeRows();
+        
+        
+        rows[sel.row].forEach(function(col) {
+            if (col.rowspan > 1) {
+                col.rowspan--;
+            } else {
+                col.remove = 1; // flage it as removed.
+            }
+            
+        }, this);
+        var newrows = [];
+        this.rows.forEach(function(row) {
+            newrow = [];
+            row.forEach(function(c) {
+                if (typeof(c.remove) == 'undefined') {
+                    newrow.push(c);
+                }
+                
+            });
+            if (newrow.length > 0) {
+                newrows.push(row);
+            }
+        });
+        this.rows =  newrows;
+        
+        
+        
+        this.no_row--;
+        this.updateElement();
+        
+    },
+    removeRow : function()
+    {
+        this.deleteRow({
+            type: 'row',
+            row : this.no_row-1
+        });
+        
+    },
+    
+     
+    addRow : function()
+    {
+        
+        var row = [];
+        for (var i = 0; i < this.no_col; i++ ) {
+            
+            row.push(this.emptyCell());
+           
+        }
+        this.rows.push(row);
+        this.updateElement();
+        
+    },
+     
+    // the default cell object... at present...
+    emptyCell : function() {
+        return (new Roo.htmleditor.BlockTd({})).toObject();
+        
+     
+    },
+    
+    removeNode : function()
+    {
+        return this.node;
+    },
+    
+    
+    
+    resetWidths : function()
+    {
+        Array.from(this.node.getElementsByTagName('td')).forEach(function(n) {
+            var nn = Roo.htmleditor.Block.factory(n);
+            nn.width = '';
+            nn.updateElement(n);
+        });
+    }
+    
+    
+    
+    
+})
+
+/**
+ *
+ * editing a TD?
+ *
+ * since selections really work on the table cell, then editing really should work from there
+ *
+ * The original plan was to support merging etc... - but that may not be needed yet..
+ *
+ * So this simple version will support:
+ *   add/remove cols
+ *   adjust the width +/-
+ *   reset the width...
+ *   
+ *
+ */
+
+
+ 
+
+/**
+ * @class Roo.htmleditor.BlockTable
+ * Block that manages a table
+ * 
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+Roo.htmleditor.BlockTd = function(cfg)
+{
+    if (cfg.node) {
+        this.readElement(cfg.node);
+        this.updateElement(cfg.node);
+    }
+    Roo.apply(this, cfg);
+     
+    
+    
+}
+Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
+ 
+    node : false,
+    
+    width: '',
+    textAlign : 'left',
+    valign : 'top',
+    
+    colspan : 1,
+    rowspan : 1,
+    
+    
+    // used by context menu
+    friendly_name : 'Table Cell',
+    deleteTitle : false, // use our customer delete
+    
+    // context menu is drawn once..
+    
+    contextMenu : function(toolbar)
+    {
+        
+        var cell = function() {
+            return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
+        };
+        
+        var table = function() {
+            return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode.closest('table'));
+        };
+        
+        var lr = false;
+        var saveSel = function()
+        {
+            lr = toolbar.editorcore.getSelection().getRangeAt(0);
+        }
+        var restoreSel = function()
+        {
+            if (lr) {
+                (function() {
+                    toolbar.editorcore.focus();
+                    var cr = toolbar.editorcore.getSelection();
+                    cr.removeAllRanges();
+                    cr.addRange(lr);
+                    toolbar.editorcore.onEditorEvent();
+                }).defer(10, this);
+                
+                
+            }
+        }
+        
+        var rooui =  typeof(Roo.bootstrap) == 'undefined' ? Roo : Roo.bootstrap;
+        
+        var syncValue = toolbar.editorcore.syncValue;
+        
+        var fields = {};
+        
+        return [
+            {
+                xtype : 'Button',
+                text : 'Edit Table',
+                listeners : {
+                    click : function() {
+                        var t = toolbar.tb.selectedNode.closest('table');
+                        toolbar.editorcore.selectNode(t);
+                        toolbar.editorcore.onEditorEvent();                        
+                    }
+                }
+                
+            },
+              
+           
+             
+            {
+                xtype : 'TextItem',
+                text : "Column Width: ",
+                 xns : rooui.Toolbar 
+               
+            },
+            {
+                xtype : 'Button',
+                text: '-',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        cell().shrinkColumn();
+                        syncValue();
+                         toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            {
+                xtype : 'Button',
+                text: '+',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        cell().growColumn();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            
+            {
+                xtype : 'TextItem',
+                text : "Vertical Align: ",
+                xns : rooui.Toolbar  //Boostrap?
+            },
+            {
+                xtype : 'ComboBox',
+                allowBlank : false,
+                displayField : 'val',
+                editable : true,
+                listWidth : 100,
+                triggerAction : 'all',
+                typeAhead : true,
+                valueField : 'val',
+                width : 100,
+                name : 'valign',
+                listeners : {
+                    select : function (combo, r, index)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        var b = cell();
+                        b.valign = r.get('val');
+                        b.updateElement();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.form,
+                store : {
+                    xtype : 'SimpleStore',
+                    data : [
+                        ['top'],
+                        ['middle'],
+                        ['bottom'] // there are afew more... 
+                    ],
+                    fields : [ 'val'],
+                    xns : Roo.data
+                }
+            },
+            
+            {
+                xtype : 'TextItem',
+                text : "Merge Cells: ",
+                 xns : rooui.Toolbar 
+               
+            },
+            
+            
+            {
+                xtype : 'Button',
+                text: 'Right',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        cell().mergeRight();
+                        //block().growColumn();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+             
+            {
+                xtype : 'Button',
+                text: 'Below',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        cell().mergeBelow();
+                        //block().growColumn();
+                        syncValue();
+                        toolbar.editorcore.onEditorEvent();
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            {
+                xtype : 'TextItem',
+                text : "| ",
+                 xns : rooui.Toolbar 
+               
+            },
+            
+            {
+                xtype : 'Button',
+                text: 'Split',
+                listeners : {
+                    click : function (_self, e)
+                    {
+                        //toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        cell().split();
+                        syncValue();
+                        toolbar.editorcore.selectNode(toolbar.tb.selectedNode);
+                        toolbar.editorcore.onEditorEvent();
+                                             
+                    }
+                },
+                xns : rooui.Toolbar
+            },
+            {
+                xtype : 'Fill',
+                xns : rooui.Toolbar 
+               
+            },
+        
+          
+            {
+                xtype : 'Button',
+                text: 'Delete',
+                 
+                xns : rooui.Toolbar,
+                menu : {
+                    xtype : 'Menu',
+                    xns : rooui.menu,
+                    items : [
+                        {
+                            xtype : 'Item',
+                            html: 'Column',
+                            listeners : {
+                                click : function (_self, e)
+                                {
+                                    var t = table();
+                                    
+                                    cell().deleteColumn();
+                                    syncValue();
+                                    toolbar.editorcore.selectNode(t.node);
+                                    toolbar.editorcore.onEditorEvent();   
+                                }
+                            },
+                            xns : rooui.menu
+                        },
+                        {
+                            xtype : 'Item',
+                            html: 'Row',
+                            listeners : {
+                                click : function (_self, e)
+                                {
+                                    var t = table();
+                                    cell().deleteRow();
+                                    syncValue();
+                                    
+                                    toolbar.editorcore.selectNode(t.node);
+                                    toolbar.editorcore.onEditorEvent();   
+                                                         
+                                }
+                            },
+                            xns : rooui.menu
+                        },
+                       {
+                            xtype : 'Separator',
+                            xns : rooui.menu
+                        },
+                        {
+                            xtype : 'Item',
+                            html: 'Table',
+                            listeners : {
+                                click : function (_self, e)
+                                {
+                                    var t = table();
+                                    var nn = t.node.nextSibling || t.node.previousSibling;
+                                    t.node.parentNode.removeChild(t.node);
+                                    if (nn) { 
+                                        toolbar.editorcore.selectNode(nn, true);
+                                    }
+                                    toolbar.editorcore.onEditorEvent();   
+                                                         
+                                }
+                            },
+                            xns : rooui.menu
+                        }
+                    ]
+                }
+            }
+            
+            // align... << fixme
+            
+        ];
+        
+    },
+    
+    
+  /**
+     * create a DomHelper friendly object - for use with
+     * Roo.DomHelper.markup / overwrite / etc..
+     * ?? should it be called with option to hide all editing features?
+     */
+ /**
+     * create a DomHelper friendly object - for use with
+     * Roo.DomHelper.markup / overwrite / etc..
+     * ?? should it be called with option to hide all editing features?
+     */
+    toObject : function()
+    {
+        
+        var ret = {
+            tag : 'td',
+            contenteditable : 'true', // this stops cell selection from picking the table.
+            'data-block' : 'Td',
+            valign : this.valign,
+            style : {  
+                'text-align' :  this.textAlign,
+                border : 'solid 1px rgb(0, 0, 0)', // ??? hard coded?
+                'border-collapse' : 'collapse',
+                padding : '6px', // 8 for desktop / 4 for mobile
+                'vertical-align': this.valign
+            },
+            html : this.html
+        };
+        if (this.width != '') {
+            ret.width = this.width;
+            ret.style.width = this.width;
+        }
+        
+        
+        if (this.colspan > 1) {
+            ret.colspan = this.colspan ;
+        } 
+        if (this.rowspan > 1) {
+            ret.rowspan = this.rowspan ;
+        }
+        
+           
+        
+        return ret;
+         
+    },
+    
+    readElement : function(node)
+    {
+        node  = node ? node : this.node ;
+        this.width = node.style.width;
+        this.colspan = Math.max(1,1*node.getAttribute('colspan'));
+        this.rowspan = Math.max(1,1*node.getAttribute('rowspan'));
+        this.html = node.innerHTML;
+        
+        
+    },
+     
+    // the default cell object... at present...
+    emptyCell : function() {
+        return {
+            colspan :  1,
+            rowspan :  1,
+            textAlign : 'left',
+            html : "&nbsp;" // is this going to be editable now?
+        };
+     
+    },
+    
+    removeNode : function()
+    {
+        return this.node.closest('table');
+         
+    },
+    
+    cellData : false,
+    
+    colWidths : false,
+    
+    toTableArray  : function()
+    {
+        var ret = [];
+        var tab = this.node.closest('tr').closest('table');
+        Array.from(tab.rows).forEach(function(r, ri){
+            ret[ri] = [];
+        });
+        var rn = 0;
+        this.colWidths = [];
+        var all_auto = true;
+        Array.from(tab.rows).forEach(function(r, ri){
+            
+            var cn = 0;
+            Array.from(r.cells).forEach(function(ce, ci){
+                var c =  {
+                    cell : ce,
+                    row : rn,
+                    col: cn,
+                    colspan : ce.colSpan,
+                    rowspan : ce.rowSpan
+                };
+                if (ce.isEqualNode(this.node)) {
+                    this.cellData = c;
+                }
+                // if we have been filled up by a row?
+                if (typeof(ret[rn][cn]) != 'undefined') {
+                    while(typeof(ret[rn][cn]) != 'undefined') {
+                        cn++;
+                    }
+                    c.col = cn;
+                }
+                
+                if (typeof(this.colWidths[cn]) == 'undefined') {
+                    this.colWidths[cn] =   ce.style.width;
+                    if (this.colWidths[cn] != '') {
+                        all_auto = false;
+                    }
+                }
+                
+                
+                if (c.colspan < 2 && c.rowspan < 2 ) {
+                    ret[rn][cn] = c;
+                    cn++;
+                    return;
+                }
+                for(var j = 0; j < c.rowspan; j++) {
+                    if (typeof(ret[rn+j]) == 'undefined') {
+                        continue; // we have a problem..
+                    }
+                    ret[rn+j][cn] = c;
+                    for(var i = 0; i < c.colspan; i++) {
+                        ret[rn+j][cn+i] = c;
+                    }
+                }
+                
+                cn += c.colspan;
+            }, this);
+            rn++;
+        }, this);
+        
+        // initalize widths.?
+        // either all widths or no widths..
+        if (all_auto) {
+            this.colWidths[0] = false; // no widths flag.
+        }
+        
+        
+        return ret;
+        
+    },
+    
+    
+    
+    
+    mergeRight: function()
+    {
+         
+        // get the contents of the next cell along..
+        var tr = this.node.closest('tr');
+        var i = Array.prototype.indexOf.call(tr.childNodes, this.node);
+        if (i >= tr.childNodes.length - 1) {
+            return; // no cells on right to merge with.
+        }
+        var table = this.toTableArray();
+        
+        if (typeof(table[this.cellData.row][this.cellData.col+this.cellData.colspan]) == 'undefined') {
+            return; // nothing right?
+        }
+        var rc = table[this.cellData.row][this.cellData.col+this.cellData.colspan];
+        // right cell - must be same rowspan and on the same row.
+        if (rc.rowspan != this.cellData.rowspan || rc.row != this.cellData.row) {
+            return; // right hand side is not same rowspan.
+        }
+        
+        
+        
+        this.node.innerHTML += ' ' + rc.cell.innerHTML;
+        tr.removeChild(rc.cell);
+        this.colspan += rc.colspan;
+        this.node.setAttribute('colspan', this.colspan);
+
+    },
+    
+    
+    mergeBelow : function()
+    {
+        var table = this.toTableArray();
+        if (typeof(table[this.cellData.row+this.cellData.rowspan]) == 'undefined') {
+            return; // no row below
+        }
+        if (typeof(table[this.cellData.row+this.cellData.rowspan][this.cellData.col]) == 'undefined') {
+            return; // nothing right?
+        }
+        var rc = table[this.cellData.row+this.cellData.rowspan][this.cellData.col];
+        
+        if (rc.colspan != this.cellData.colspan || rc.col != this.cellData.col) {
+            return; // right hand side is not same rowspan.
+        }
+        this.node.innerHTML =  this.node.innerHTML + rc.cell.innerHTML ;
+        rc.cell.parentNode.removeChild(rc.cell);
+        this.rowspan += rc.rowspan;
+        this.node.setAttribute('rowspan', this.rowspan);
+    },
+    
+    split: function()
+    {
+        if (this.node.rowSpan < 2 && this.node.colSpan < 2) {
+            return;
+        }
+        var table = this.toTableArray();
+        var cd = this.cellData;
+        this.rowspan = 1;
+        this.colspan = 1;
+        
+        for(var r = cd.row; r < cd.row + cd.rowspan; r++) {
+            
+            
+            
+            for(var c = cd.col; c < cd.col + cd.colspan; c++) {
+                if (r == cd.row && c == cd.col) {
+                    this.node.removeAttribute('rowspan');
+                    this.node.removeAttribute('colspan');
+                    continue;
+                }
+                 
+                var ntd = this.node.cloneNode(); // which col/row should be 0..
+                ntd.removeAttribute('id'); //
+                //ntd.style.width  = '';
+                ntd.innerHTML = '';
+                table[r][c] = { cell : ntd, col : c, row: r , colspan : 1 , rowspan : 1   };
+            }
+            
+        }
+        this.redrawAllCells(table);
+        
+         
+        
+    },
+    
+    
+    
+    redrawAllCells: function(table)
+    {
+        
+         
+        var tab = this.node.closest('tr').closest('table');
+        var ctr = tab.rows[0].parentNode;
+        Array.from(tab.rows).forEach(function(r, ri){
+            
+            Array.from(r.cells).forEach(function(ce, ci){
+                ce.parentNode.removeChild(ce);
+            });
+            r.parentNode.removeChild(r);
+        });
+        for(var r = 0 ; r < table.length; r++) {
+            var re = tab.rows[r];
+            
+            var re = tab.ownerDocument.createElement('tr');
+            ctr.appendChild(re);
+            for(var c = 0 ; c < table[r].length; c++) {
+                if (table[r][c].cell === false) {
+                    continue;
+                }
+                
+                re.appendChild(table[r][c].cell);
+                 
+                table[r][c].cell = false;
+            }
+        }
+        
+    },
+    updateWidths : function(table)
+    {
+        for(var r = 0 ; r < table.length; r++) {
+           
+            for(var c = 0 ; c < table[r].length; c++) {
+                if (table[r][c].cell === false) {
+                    continue;
+                }
+                
+                if (this.colWidths[0] != false && table[r][c].colspan < 2) {
+                    var el = Roo.htmleditor.Block.factory(table[r][c].cell);
+                    el.width = Math.floor(this.colWidths[c])  +'%';
+                    el.updateElement(el.node);
+                }
+                table[r][c].cell = false; // done
+            }
+        }
+    },
+    normalizeWidths : function(table)
+    {
+    
+        if (this.colWidths[0] === false) {
+            var nw = 100.0 / this.colWidths.length;
+            this.colWidths.forEach(function(w,i) {
+                this.colWidths[i] = nw;
+            },this);
+            return;
+        }
+    
+        var t = 0, missing = [];
+        
+        this.colWidths.forEach(function(w,i) {
+            //if you mix % and
+            this.colWidths[i] = this.colWidths[i] == '' ? 0 : (this.colWidths[i]+'').replace(/[^0-9]+/g,'')*1;
+            var add =  this.colWidths[i];
+            if (add > 0) {
+                t+=add;
+                return;
+            }
+            missing.push(i);
+            
+            
+        },this);
+        var nc = this.colWidths.length;
+        if (missing.length) {
+            var mult = (nc - missing.length) / (1.0 * nc);
+            var t = mult * t;
+            var ew = (100 -t) / (1.0 * missing.length);
+            this.colWidths.forEach(function(w,i) {
+                if (w > 0) {
+                    this.colWidths[i] = w * mult;
+                    return;
+                }
+                
+                this.colWidths[i] = ew;
+            }, this);
+            // have to make up numbers..
+             
+        }
+        // now we should have all the widths..
+        
+    
+    },
+    
+    shrinkColumn : function()
+    {
+        var table = this.toTableArray();
+        this.normalizeWidths(table);
+        var col = this.cellData.col;
+        var nw = this.colWidths[col] * 0.8;
+        if (nw < 5) {
+            return;
+        }
+        var otherAdd = (this.colWidths[col]  * 0.2) / (this.colWidths.length -1);
+        this.colWidths.forEach(function(w,i) {
+            if (i == col) {
+                 this.colWidths[i] = nw;
+                return;
+            }
+            this.colWidths[i] += otherAdd
+        }, this);
+        this.updateWidths(table);
+         
+    },
+    growColumn : function()
+    {
+        var table = this.toTableArray();
+        this.normalizeWidths(table);
+        var col = this.cellData.col;
+        var nw = this.colWidths[col] * 1.2;
+        if (nw > 90) {
+            return;
+        }
+        var otherSub = (this.colWidths[col]  * 0.2) / (this.colWidths.length -1);
+        this.colWidths.forEach(function(w,i) {
+            if (i == col) {
+                this.colWidths[i] = nw;
+                return;
+            }
+            this.colWidths[i] -= otherSub
+        }, this);
+        this.updateWidths(table);
+         
+    },
+    deleteRow : function()
+    {
+        // delete this rows 'tr'
+        // if any of the cells in this row have a rowspan > 1 && row!= this row..
+        // then reduce the rowspan.
+        var table = this.toTableArray();
+        // this.cellData.row;
+        for (var i =0;i< table[this.cellData.row].length ; i++) {
+            var c = table[this.cellData.row][i];
+            if (c.row != this.cellData.row) {
+                
+                c.rowspan--;
+                c.cell.setAttribute('rowspan', c.rowspan);
+                continue;
+            }
+            if (c.rowspan > 1) {
+                c.rowspan--;
+                c.cell.setAttribute('rowspan', c.rowspan);
+            }
+        }
+        table.splice(this.cellData.row,1);
+        this.redrawAllCells(table);
+        
+    },
+    deleteColumn : function()
+    {
+        var table = this.toTableArray();
+        
+        for (var i =0;i< table.length ; i++) {
+            var c = table[i][this.cellData.col];
+            if (c.col != this.cellData.col) {
+                table[i][this.cellData.col].colspan--;
+            } else if (c.colspan > 1) {
+                c.colspan--;
+                c.cell.setAttribute('colspan', c.colspan);
+            }
+            table[i].splice(this.cellData.col,1);
+        }
+        
+        this.redrawAllCells(table);
+    }
+    
+    
+    
+    
+})
+
+//<script type="text/javascript">
 
 /*
  * Based  Ext JS Library 1.1.1
@@ -29109,7 +31722,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 });
 
  
-/*
+Roo.bootstrap.dash = {};/*
  * - LGPL
  *
  * numberBox
