@@ -21,15 +21,15 @@
   "requires" : "",
   "config" : [
     {
-      "name" : "Roo.BorderLayout}",
-      "type" : "",
-      "desc" : "layout   [required] The layout for this panel",
-      "memberOf" : ""
-    },
-    {
       "name" : "grid",
       "type" : "Roo.grid.Grid",
       "desc" : "The grid for this panel",
+      "memberOf" : ""
+    },
+    {
+      "name" : "layout",
+      "type" : "Roo.BorderLayout",
+      "desc" : "[required] The layout for this panel",
       "memberOf" : ""
     }
   ],

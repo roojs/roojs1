@@ -156,6 +156,11 @@ Roo.SplitLayoutRegion
 Roo.CenterLayoutRegion
 Roo.LayoutStateManager
 Roo.ContentPanel
+Roo.GridPanel
+Roo.NestedLayoutPanel
+Roo.ScrollPanel
+Roo.TreePanel
+
 //		*** Can be Optional *** - only if you use it..
 Roo.ReaderLayout
 

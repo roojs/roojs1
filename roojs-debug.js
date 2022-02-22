@@ -60601,6 +60601,17 @@ layout.addxtype({
     }
 });
 
+
+
+
+
+
+
+
+
+
+
+
 /**
  * @class Roo.GridPanel
  * @extends Roo.ContentPanel
@@ -60684,7 +60695,7 @@ Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
  * @class Roo.NestedLayoutPanel
  * @extends Roo.ContentPanel
  * @parent Roo.BorderLayout Roo.LayoutDialog builder
- * @cfg Roo.BorderLayout} layout   [required] The layout for this panel
+ * @cfg {Roo.BorderLayout} layout   [required] The layout for this panel
  *
  * 
  * @constructor
@@ -60722,6 +60733,8 @@ Roo.NestedLayoutPanel = function(layout, config)
 };
 
 Roo.extend(Roo.NestedLayoutPanel, Roo.ContentPanel, {
+
+    layout : false,
 
     setSize : function(width, height){
         if(!this.ignoreResize(width, height)){
@@ -60773,7 +60786,7 @@ Roo.extend(Roo.NestedLayoutPanel, Roo.ContentPanel, {
     
     /**
      * Returns the nested BorderLayout for this panel
-     * @return {Roo.BorderLayout} 
+     * @return {Roo.BorderLayout}
      */
     getLayout : function(){
         return this.layout;
@@ -60930,17 +60943,6 @@ Roo.extend(Roo.TreePanel, Roo.ContentPanel, {
     tree : false
 
 });
-
-
-
-
-
-
-
-
-
-
-
 /*
  * Based on:
  * Ext JS Library 1.1.1
