@@ -146,6 +146,7 @@
         </span><span class="jsdoc-var">this.flushHexStore</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.group</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// an RTF fragment, missing the {\rtf1 header
             //this.group = this.doc
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;  </span><span class="jsdoc-comment">// we really don't care about stray text...
         </span><span class="jsdoc-syntax">}
         </span><span class="jsdoc-var">this.group.addContent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Span</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">));
     },

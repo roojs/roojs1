@@ -45324,6 +45324,7 @@ Roo.rtf.Parser.prototype = {
         this.flushHexStore();
         if (!this.group) { // an RTF fragment, missing the {\rtf1 header
             //this.group = this.doc
+            return;  // we really don't care about stray text...
         }
         this.group.addContent(new Roo.rtf.Span(cmd));
     },
