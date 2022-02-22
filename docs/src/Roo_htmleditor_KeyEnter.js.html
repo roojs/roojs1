@@ -1,0 +1,86 @@
+<html><head><title>Roo/htmleditor/KeyEnter.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
+ * @class Roo.htmleditor.KeyEnter
+ * Handle Enter press..
+ * @cfg {Roo.HtmlEditorCore} core the editor.
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+
+
+
+
+</span><span class="jsdoc-var">Roo.htmleditor.KeyEnter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">// this does not actually call walk as it's really just a abstract class
+
+    </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.core.doc.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keypress'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.keypress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+}
+
+</span><span class="jsdoc-comment">//Roo.htmleditor.KeyEnter.i = 0;
+
+
+</span><span class="jsdoc-var">Roo.htmleditor.KeyEnter.prototype </span><span class="jsdoc-syntax">= {
+
+    </span><span class="jsdoc-var">core </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">keypress </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.charCode </span><span class="jsdoc-syntax">!= 13 &amp;&amp; </span><span class="jsdoc-var">e.charCode </span><span class="jsdoc-syntax">!= 10) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">e.charCode</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">// https://stackoverflow.com/questions/18552336/prevent-contenteditable-adding-div-on-enter-chrome
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.core.doc</span><span class="jsdoc-syntax">;
+          </span><span class="jsdoc-comment">//add a new line
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.core.getSelection</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel.getRangeAt</span><span class="jsdoc-syntax">(0);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.commonAncestorContainer</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.closest</span><span class="jsdoc-syntax">([ </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pli </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">pc </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">sel.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'br'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'after'</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">this.core.undoManager.addEvent</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.core.fireEditorEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-comment">// deal with &lt;li&gt; insetion
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pli.innerText.trim</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">&amp;&amp;
+            </span><span class="jsdoc-var">pli.previousSibling </span><span class="jsdoc-syntax">&amp;&amp;
+            </span><span class="jsdoc-var">pli.previousSibling.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'LI' </span><span class="jsdoc-syntax">&amp;&amp;
+            </span><span class="jsdoc-var">pli.previousSibling.innerText.trim</span><span class="jsdoc-syntax">() ==  </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">pli.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pli.previousSibling</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">sel.cursorAfter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pc</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.core.undoManager.addEvent</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.core.fireEditorEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'LI'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">li.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&amp;nbsp;'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">pli </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">pli.firstSibling</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">pc.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">pli.parentNode.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">li</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pli.firstSibling</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">sel.cursorText </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">li.firstChild</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.core.undoManager.addEvent</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.core.fireEditorEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+
+
+
+
+
+    }
+};
+    </span></code></body></html>

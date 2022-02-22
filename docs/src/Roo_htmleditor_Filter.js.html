@@ -1,0 +1,64 @@
+<html><head><title>Roo/htmleditor/Filter.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
+ * @class Roo.htmleditor.Filter
+ * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.
+ * @cfg {DomElement} node The node to iterate and filter
+ * @cfg {boolean|String|Array} tag Tags to replace 
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+
+
+</span><span class="jsdoc-var">Roo.htmleditor.Filter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cfg</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">// this does not actually call walk as it's really just a abstract class
+</span><span class="jsdoc-syntax">}
+
+
+</span><span class="jsdoc-var">Roo.htmleditor.Filter.prototype </span><span class="jsdoc-syntax">= {
+
+    </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// overrride to do replace comments.
+    </span><span class="jsdoc-var">replaceComment </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// overrride to do replace or do stuff with tags..
+    </span><span class="jsdoc-var">replaceTag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">walk </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom.childNodes</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
+
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.nodeType </span><span class="jsdoc-syntax">== 8 &amp;&amp;  </span><span class="jsdoc-var">this.replaceComment  </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// comment
+                    </span><span class="jsdoc-var">this.replaceComment</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">e.nodeType </span><span class="jsdoc-syntax">!= 1: </span><span class="jsdoc-comment">//not a node.
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+
+                </span><span class="jsdoc-keyword">case </span><span class="jsdoc-var">this.tag </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// everything
+                </span><span class="jsdoc-keyword">case typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tag.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.tagName</span><span class="jsdoc-syntax">) &gt; -1: </span><span class="jsdoc-comment">// array and it matches.
+                </span><span class="jsdoc-keyword">case typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tag </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.tagName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// array and it matches.
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.replaceTag </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">this.replaceTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)) {
+                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.hasChildNodes</span><span class="jsdoc-syntax">()) {
+                        </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                    }
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+
+                </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:    </span><span class="jsdoc-comment">// tags .. that do not match.
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.hasChildNodes</span><span class="jsdoc-syntax">()) {
+                        </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                    }
+            }
+
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+    }
+};</span></code></body></html>

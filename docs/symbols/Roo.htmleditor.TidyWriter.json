@@ -1,0 +1,276 @@
+{
+  "name" : "Roo.htmleditor.TidyWriter",
+  "augments" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "This is based loosely on tinymce",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "TidyWriter",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [],
+  "methods" : [
+    {
+      "name" : "doctype",
+      "type" : "function",
+      "desc" : "Writes a doctype node such as <!DOCTYPE data>.",
+      "sig" : "(text)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "String to write out inside the doctype.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "reset",
+      "type" : "function",
+      "desc" : "Resets the internal buffer if one wants to reuse the writer.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
+      "name" : "text",
+      "type" : "function",
+      "desc" : "Writes a text node.\n\nIn pre - we should not mess with the contents.",
+      "sig" : "(text, raw)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "String to write out.",
+          "isOptional" : false
+        },
+        {
+          "name" : "raw",
+          "type" : "Boolean",
+          "desc" : "Optional raw state if true the contents wont get encoded.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "getContent",
+      "type" : "function",
+      "desc" : "Returns the contents that got serialized.",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "HTML contents that got written down."
+        }
+      ]
+    },
+    {
+      "name" : "comment",
+      "type" : "function",
+      "desc" : "Writes a comment node such as <!-- Comment -->.",
+      "sig" : "(text)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "String to write out inside the comment.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "end",
+      "type" : "function",
+      "desc" : "Writes the a end element such as </p>.",
+      "sig" : "(name)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String",
+          "desc" : "Name of the element.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "pi",
+      "type" : "function",
+      "desc" : "Writes a PI node such as <?xml attr=\"value\" ?>.",
+      "sig" : "(name, text)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String",
+          "desc" : "Name of the pi.",
+          "isOptional" : false
+        },
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "String to write out inside the pi.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "start",
+      "type" : "function",
+      "desc" : "Writes the a start element such as <p id=\"a\">.",
+      "sig" : "(name, attrs, empty)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "name",
+          "type" : "String",
+          "desc" : "Name of the element.",
+          "isOptional" : false
+        },
+        {
+          "name" : "attrs",
+          "type" : "Array",
+          "desc" : "Optional attribute array or undefined if it hasn't any.",
+          "isOptional" : false
+        },
+        {
+          "name" : "empty",
+          "type" : "Boolean",
+          "desc" : "Optional empty state if the tag should end like <br />.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "cdata",
+      "type" : "function",
+      "desc" : "Writes a cdata node such as <![CDATA[data]]>.",
+      "sig" : "(text)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "text",
+          "type" : "String",
+          "desc" : "String to write out inside the cdata.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    }
+  ],
+  "events" : []
+}

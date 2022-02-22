@@ -1,0 +1,91 @@
+{
+  "name" : "Roo.htmleditor.TidySerializer",
+  "augments" : [],
+  "childClasses" : {  },
+  "tree_children" : [],
+  "tree_parent" : [],
+  "desc" : "This is based loosely on tinymce",
+  "isSingleton" : false,
+  "isStatic" : false,
+  "isBuiltin" : false,
+  "isAbstract" : false,
+  "isBuilderTop" : false,
+  "memberOf" : "TidySerializer",
+  "example" : "",
+  "deprecated" : "",
+  "since" : "",
+  "see" : "",
+  "params" : [
+    {
+      "name" : "settings",
+      "type" : "Object",
+      "desc" : "Name/value settings object.",
+      "isOptional" : false
+    }
+  ],
+  "returns" : [],
+  "throws" : "",
+  "requires" : "",
+  "config" : [],
+  "methods" : [
+    {
+      "name" : "inner",
+      "type" : "function",
+      "desc" : "",
+      "sig" : "(inner)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "inner",
+          "type" : "boolean",
+          "desc" : "do the inner of the node.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
+      "name" : "serialize",
+      "type" : "function",
+      "desc" : "Serializes the specified node into a string.",
+      "sig" : "(node)",
+      "static" : false,
+      "memberOf" : "",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "new tinymce.html.Serializer().serialize(new tinymce.html.DomParser().parse('<p>text</p>'));",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "node",
+          "type" : "DomElement",
+          "desc" : "Node instance to serialize.",
+          "isOptional" : false
+        }
+      ],
+      "returns" : [
+        {
+          "name" : "",
+          "type" : "String",
+          "desc" : "String with HTML based on DOM tree."
+        }
+      ]
+    }
+  ],
+  "events" : []
+}

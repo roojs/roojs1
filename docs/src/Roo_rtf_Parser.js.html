@@ -1,0 +1,383 @@
+<html><head><title>Roo/rtf/Parser.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+ *
+ *
+ * based on this https://github.com/iarna/rtf-parser
+ * it's really only designed to extract pict from pasted RTF 
+ *
+ * usage:
+ *
+ *  var images = new Roo.rtf.Parser().parse(a_string).filter(function(g) { return g.type == 'pict'; });
+ *  
+ *
+ */
+
+
+
+
+
+</span><span class="jsdoc-var">Roo.rtf.Parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-comment">//super({objectMode: true})
+    </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-comment">// these are for interpeter...
+    </span><span class="jsdoc-var">this.doc </span><span class="jsdoc-syntax">= {};
+    </span><span class="jsdoc-comment">///this.parserState = this.parseTop
+    </span><span class="jsdoc-var">this.groupStack </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">this.hexStore </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">this.doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-var">this.groups </span><span class="jsdoc-syntax">= []; </span><span class="jsdoc-comment">// where we put the return.
+
+    </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ii </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">ii </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">text.length</span><span class="jsdoc-syntax">; ++</span><span class="jsdoc-var">ii</span><span class="jsdoc-syntax">) {
+        ++</span><span class="jsdoc-var">this.cpos</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ii</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">) {
+            ++</span><span class="jsdoc-var">this.row</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.col </span><span class="jsdoc-syntax">= 1;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            ++</span><span class="jsdoc-var">this.col</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.parserState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">ii</span><span class="jsdoc-syntax">]);
+    }
+
+
+
+};
+</span><span class="jsdoc-var">Roo.rtf.Parser.prototype </span><span class="jsdoc-syntax">= {
+    </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// string being parsed..
+    </span><span class="jsdoc-var">controlWord </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">controlWordParam </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">hexChar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">group</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">groupStack </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">hexStore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+
+    </span><span class="jsdoc-var">cpos </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">: 1, </span><span class="jsdoc-comment">// reportin?
+    </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">: 1, </span><span class="jsdoc-comment">//
+
+
+    </span><span class="jsdoc-var">push </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'cmd'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">el.type</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invalid cmd:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">el.type</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.log(el);
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-var">flushHexStore </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hexStore.length </span><span class="jsdoc-syntax">&lt; 1) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hexstr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hexStore.map</span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cmd.value</span><span class="jsdoc-syntax">;
+        })</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.group.addContent</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Hex</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">hexstr </span><span class="jsdoc-syntax">));
+
+
+        </span><span class="jsdoc-var">this.hexStore.splice</span><span class="jsdoc-syntax">(0)
+
+    },
+
+    </span><span class="jsdoc-var">cmdgroupstart </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.flushHexStore</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.group</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.groupStack.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.group</span><span class="jsdoc-syntax">);
+        }
+         </span><span class="jsdoc-comment">// parent..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.group </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Document</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+
+        }
+        </span><span class="jsdoc-var">this.group </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Group</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.group</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">cmdignorable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.flushHexStore</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.group.ignorable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">cmdendparagraph </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.flushHexStore</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.group.addContent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Paragraph</span><span class="jsdoc-syntax">());
+    },
+    </span><span class="jsdoc-var">cmdgroupend </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.flushHexStore</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">endingGroup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.group</span><span class="jsdoc-syntax">;
+
+
+        </span><span class="jsdoc-var">this.group </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.groupStack.pop</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.group</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.group.addChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">endingGroup</span><span class="jsdoc-syntax">);
+        }
+
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.group </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.doc</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">//if (endingGroup instanceof FontTable) {
+        //  doc.fonts = endingGroup.table
+        //} else if (endingGroup instanceof ColorTable) {
+        //  doc.colors = endingGroup.table
+        //} else if (endingGroup !== this.doc &amp;&amp; !endingGroup.get('ignorable')) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">endingGroup.ignorable </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">//code
+            </span><span class="jsdoc-var">this.groups.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">endingGroup</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-comment">// Roo.log( endingGroup );
+        </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-comment">//Roo.each(endingGroup.content, function(item)) {
+            //    doc.addContent(item);
+            //}
+            //process.emit('debug', 'GROUP END', endingGroup.type, endingGroup.get('ignorable'))
+        //}
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-var">cmdtext </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.flushHexStore</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.group</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// an RTF fragment, missing the {\rtf1 header
+            //this.group = this.doc
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-var">this.group.addContent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Span</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">));
+    },
+    </span><span class="jsdoc-var">cmdcontrolword </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.flushHexStore</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.group.type</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.group.type </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cmd.value</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.group.addContent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Ctrl</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-comment">// we actually don't care about ctrl words...
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">/*
+        var method = 'ctrl$' + cmd.value.replace(/-(.)/g, (_, char) =&gt; char.toUpperCase())
+        if (this[method]) {
+            this[method](cmd.param)
+        } else {
+            if (!this.group.get('ignorable')) process.emit('debug', method, cmd.param)
+        }
+        */
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-var">cmdhexchar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.hexStore.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">cmderror </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Exception </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd.value</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/*
+      _flush (done) {
+        if (this.text !== '\u0000') this.emitText()
+        done()
+      }
+      */
+
+
+    </span><span class="jsdoc-var">parseText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'\\'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseEscapes</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'{'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.emitStartGroup</span><span class="jsdoc-syntax">();
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'}'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.emitEndGroup</span><span class="jsdoc-syntax">();
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'\x0A' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'\x0D'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// cr/lf are noise chars
+        </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-var">parseEscapes</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'\\' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'{' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'}'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseControlSymbol</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.parseControlSymbol</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        }
+    },
+    </span><span class="jsdoc-var">parseControlSymbol</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'~'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'\u00a0'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// nbsp
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText
+        </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">) {
+             </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'\u00ad'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// soft hyphen
+        </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'_'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'\u2011'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// non-breaking hyphen
+        </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'*'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.emitIgnorable</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">&quot;'&quot;</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseHexChar</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'|'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// formula cacter
+            </span><span class="jsdoc-var">this.emitFormula</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// subentry in an index entry
+            </span><span class="jsdoc-var">this.emitIndexSubEntry</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'\x0a'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.emitEndParagraph</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'\x0d'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.emitEndParagraph</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseControlWord</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.parseControlWord</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        }
+    },
+    </span><span class="jsdoc-var">parseHexChar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(/^[A-Fa-f0-9]$/</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">this.hexChar </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hexChar.length </span><span class="jsdoc-syntax">&gt;= 2) {
+              </span><span class="jsdoc-var">this.emitHexChar</span><span class="jsdoc-syntax">();
+              </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.emitError</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Invalid character \&quot;&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;\&quot; in hex literal.&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+
+    },
+    </span><span class="jsdoc-var">parseControlWord </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.emitControlWord</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(/^[-\d]$/</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseControlWordParam</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.controlWordParam </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(/^[A-Za-z]$/</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)) {
+          </span><span class="jsdoc-var">this.controlWord </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+          </span><span class="jsdoc-var">this.emitControlWord</span><span class="jsdoc-syntax">();
+          </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+          </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        }
+    },
+    </span><span class="jsdoc-var">parseControlWordParam </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(/^\d$/</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)) {
+          </span><span class="jsdoc-var">this.controlWordParam </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) {
+          </span><span class="jsdoc-var">this.emitControlWord</span><span class="jsdoc-syntax">();
+          </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+          </span><span class="jsdoc-var">this.emitControlWord</span><span class="jsdoc-syntax">();
+          </span><span class="jsdoc-var">this.parserState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">;
+          </span><span class="jsdoc-var">this.parseText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        }
+    },
+
+
+
+
+    </span><span class="jsdoc-var">emitText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.text</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cpos</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.row</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.col
+        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-var">emitControlWord </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.emitText</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.controlWord </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.emitError</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'empty control word'</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.push</span><span class="jsdoc-syntax">({
+                  </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'controlword'</span><span class="jsdoc-syntax">,
+                  </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.controlWord</span><span class="jsdoc-syntax">,
+                  </span><span class="jsdoc-var">param</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.controlWordParam </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Number</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.controlWordParam</span><span class="jsdoc-syntax">),
+                  </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cpos</span><span class="jsdoc-syntax">,
+                  </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.row</span><span class="jsdoc-syntax">,
+                  </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.col
+            </span><span class="jsdoc-syntax">});
+        }
+        </span><span class="jsdoc-var">this.controlWord </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.controlWordParam </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">emitStartGroup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.emitText</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'groupstart'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cpos</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.row</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.col
+        </span><span class="jsdoc-syntax">});
+    },
+    </span><span class="jsdoc-var">emitEndGroup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.emitText</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'groupend'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cpos</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.row</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.col
+        </span><span class="jsdoc-syntax">});
+    },
+    </span><span class="jsdoc-var">emitIgnorable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.emitText</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ignorable'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cpos</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.row</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.col
+        </span><span class="jsdoc-syntax">});
+    },
+    </span><span class="jsdoc-var">emitHexChar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.emitText</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hexchar'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.hexChar</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cpos</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.row</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.col
+        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-var">this.hexChar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-var">emitError </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">message</span><span class="jsdoc-syntax">)
+    {
+      </span><span class="jsdoc-var">this.emitText</span><span class="jsdoc-syntax">();
+      </span><span class="jsdoc-var">this.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'error'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">message</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.row</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.col</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">char</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cpos </span><span class="jsdoc-comment">//,
+            //stack: new Error().stack
+        </span><span class="jsdoc-syntax">});
+    },
+    </span><span class="jsdoc-var">emitEndParagraph </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">this.emitText</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'endparagraph'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cpos</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.row</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.col
+        </span><span class="jsdoc-syntax">});
+    }
+
+} ;</span></code></body></html>

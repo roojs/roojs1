@@ -1,0 +1,47 @@
+<html><head><title>Roo/rtf/Document.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">// this looks like it's normally the {rtf{ .... }}
+</span><span class="jsdoc-var">Roo.rtf.Document </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+{
+    </span><span class="jsdoc-comment">// we dont want to acutally store parent - it will make debug a nightmare..
+    </span><span class="jsdoc-var">this.rtlch  </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">this.content </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">this.cn </span><span class="jsdoc-syntax">= [];
+
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.rtf.Document</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.rtf.Group</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">addChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn.type</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'rtlch'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// most content seems to be inside this??
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'listtext'</span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'shpinst'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.rtlch.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cn.type</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
+        }
+
+    },
+
+    </span><span class="jsdoc-var">getElementsByType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">=  [];
+        </span><span class="jsdoc-var">this._getElementsByType</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'rtf'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">_getElementsByType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">search_array</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">path</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">search_array.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.type </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">n.path </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">path </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">n.type </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">':' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">ret.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.cn.length </span><span class="jsdoc-syntax">&gt; 0) {
+                </span><span class="jsdoc-var">this._getElementsByType</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">n.cn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">path </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">n.type</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+            }
+        },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    }
+
+});
+</span></code></body></html>

@@ -1,0 +1,61 @@
+<html><head><title>Roo/lib/Range.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+ * @class Roo.lib.Range
+ * @constructor
+ * This is a toolkit, normally used to copy features into a Dom Range element
+ * Roo.lib.Range.wrap(x);
+ *
+ *
+ *
+ */
+</span><span class="jsdoc-var">Roo.lib.Range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { };
+
+</span><span class="jsdoc-comment">/**
+ * Wrap a Dom Range object, to give it new features...
+ * @static
+ * @param {Range} the range to wrap
+ */
+</span><span class="jsdoc-var">Roo.lib.Range.wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.lib.Range.prototype</span><span class="jsdoc-syntax">);
+};
+</span><span class="jsdoc-comment">/**
+ * find a parent node eg. LI / OL
+ * @param {string|Array} node name or array of nodenames
+ * @return {DomElement|false}
+ */
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Range.prototype</span><span class="jsdoc-syntax">,
+{
+
+    </span><span class="jsdoc-var">closest </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// assume it's a array.
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">str.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+                }
+
+            }
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">str </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str.toLowerCase</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.commonAncestorContainer</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// might not be a node
+        </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.nodeType </span><span class="jsdoc-syntax">!= 1) {
+            </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">n.parentNode</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.nodeName.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-var">str </span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.nodeName.toLowerCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'body'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+    },
+    </span><span class="jsdoc-var">cloneRange </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.lib.Range.wrap</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Range.prototype.cloneRange.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
+    }
+});</span></code></body></html>

@@ -1,0 +1,43 @@
+<html><head><title>Roo/htmleditor/Tidy.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
+ * @class Roo.htmleditor.Tidy
+ * Tidy HTML 
+ * 
+ * @constructor
+ * Create a new Filter.
+ * @param {Object} config Configuration options
+ */
+
+
+</span><span class="jsdoc-var">Roo.htmleditor.Tidy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+
+    </span><span class="jsdoc-var">this.core.doc.body.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tidy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.core.doc.body</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+
+}
+
+</span><span class="jsdoc-var">Roo.htmleditor.Tidy.toString </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.htmleditor.Tidy.prototype.tidy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+}
+
+</span><span class="jsdoc-var">Roo.htmleditor.Tidy.prototype </span><span class="jsdoc-syntax">= {
+
+    </span><span class="jsdoc-comment">/**
+     *
+     * @cfg {Roo.HtmlEditorCore} core the editor.
+     */
+    </span><span class="jsdoc-var">core </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+
+
+    </span><span class="jsdoc-var">tidy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">indent</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.TidySerializer</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">indent </span><span class="jsdoc-syntax">: 2,
+        });
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ser.serialize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+
+
+    }
+
+}</span></code></body></html>

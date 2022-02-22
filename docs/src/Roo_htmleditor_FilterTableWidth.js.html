@@ -1,0 +1,60 @@
+<html><head><title>Roo/htmleditor/FilterTableWidth.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+ * @class Roo.htmleditor.FilterTableWidth
+  try and remove table width data - as that frequently messes up other stuff.
+ * 
+ *      was cleanTableWidths.
+ *
+ * Quite often pasting from word etc.. results in tables with column and widths.
+ * This does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..
+ *
+ * @constructor
+ * Run a new Table Filter
+ * @param {Object} config Configuration options
+ */
+
+</span><span class="jsdoc-var">Roo.htmleditor.FilterTableWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-comment">// no need to apply config.
+    </span><span class="jsdoc-var">this.tag </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'TABLE'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'TD'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'TR'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'TH'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'THEAD'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'TBODY' </span><span class="jsdoc-syntax">];
+    </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
+}
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.FilterTableWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.htmleditor.Filter</span><span class="jsdoc-syntax">,
+{
+
+
+
+    </span><span class="jsdoc-var">replaceTag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) {
+
+
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">);
+        }
+
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;style&quot;</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-comment">// pretty basic...
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;style&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;;&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nstyle </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">styles</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">s.match</span><span class="jsdoc-syntax">(/:/)) {
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">kv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;:&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">kv</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/^\s*(width|min-width)\s*$/)) {
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-comment">// what ever is left... we allow.
+                </span><span class="jsdoc-var">nstyle.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+            });
+            </span><span class="jsdoc-var">node.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;style&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">nstyle.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">nstyle.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">nstyle.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">);
+            }
+        }
+
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// continue doing children..
+    </span><span class="jsdoc-syntax">}
+});</span></code></body></html>

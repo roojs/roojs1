@@ -1,0 +1,400 @@
+<html><head><title>Roo/htmleditor/TidyWriter.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/***
+ * This is based loosely on tinymce 
+ * @class Roo.htmleditor.TidyWriter
+ * https://github.com/thorn0/tinymce.html/blob/master/tinymce.html.js
+ *
+ * Known issues?
+ * - not tested much with 'PRE' formated elements.
+ * 
+ *
+ *
+ */
+
+</span><span class="jsdoc-var">Roo.htmleditor.TidyWriter </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">)
+{
+
+    </span><span class="jsdoc-comment">// indent, indentBefore, indentAfter, encode, htmlOutput, html = [];
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-var">this.state </span><span class="jsdoc-syntax">= [];
+
+    </span><span class="jsdoc-var">this.encode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.TidyEntities.getEncodeFunc</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">settings.entity_encoding </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'raw'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">settings.entities</span><span class="jsdoc-syntax">);
+
+}
+</span><span class="jsdoc-var">Roo.htmleditor.TidyWriter.prototype </span><span class="jsdoc-syntax">= {
+
+
+    </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">indent </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-string">'  '</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// part of state...
+    </span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">in_pre</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">in_inline </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">last_inline </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">encode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+
+            </span><span class="jsdoc-comment">/**
+    * Writes the a start element such as &lt;p id=&quot;a&quot;&gt;.
+    *
+    * @method start
+    * @param {String} name Name of the element.
+    * @param {Array} attrs Optional attribute array or undefined if it hasn't any.
+    * @param {Boolean} empty Optional empty state if the tag should end like &lt;br /&gt;.
+    */
+    </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attrs</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">empty</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// there are some situations where adding line break &amp;&amp; indentation will not work. will not work.
+        // &lt;span / b / i ... formating?
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">in_inline </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.in_inline </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.htmleditor.TidyWriter.inline_elements.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) &gt; -1;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">in_pre    </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.in_pre    </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.htmleditor.TidyWriter.whitespace_elements.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) &gt; -1;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">is_short   </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">empty </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.htmleditor.TidyWriter.shortend_elements.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) &gt; -1 : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">add_lb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BR' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">in_inline</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">add_lb </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.in_pre </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.lastElementEndsWS</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-var">i_inline </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.indentstr</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// e_inline = elements that can be inline, but still allow \n before and after?
+        // only 'BR' ??? any others?
+
+        // ADD LINE BEFORE tage
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.in_pre</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">in_inline</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-comment">//code
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BR'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.addLine</span><span class="jsdoc-syntax">();
+                } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastElementEndsWS</span><span class="jsdoc-syntax">()) {
+                    </span><span class="jsdoc-var">this.addLine</span><span class="jsdoc-syntax">();
+                } </span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-comment">// otherwise - no new line. (and dont indent.)
+                    </span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                }
+
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.addLine</span><span class="jsdoc-syntax">();
+            }
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name.toLowerCase</span><span class="jsdoc-syntax">());
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attrs</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">attrs.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">attrs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-var">this.html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr.name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'=&quot;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.encode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-string">'&quot;'</span><span class="jsdoc-syntax">);
+            }
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">empty</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">is_short</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'/&gt;'</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'&gt;&lt;/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">name.toLowerCase</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-string">'&gt;'</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e_inline </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BR' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.in_inline</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e_inline </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.in_pre</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.addLine</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+
+        }
+        </span><span class="jsdoc-comment">// not empty..
+        </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'&gt;'</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// there is a special situation, where we need to turn on in_inline - if any of the imediate chidlren are one of these.
+        /*
+        if (!in_inline &amp;&amp; !in_pre) {
+            var cn = node.firstChild;
+            while(cn) {
+                if (Roo.htmleditor.TidyWriter.inline_elements.indexOf(cn.nodeName) &gt; -1) {
+                    in_inline = true
+                    break;
+                }
+                cn = cn.nextSibling;
+            }
+             
+        }
+        */
+
+
+        </span><span class="jsdoc-var">this.pushState</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">in_pre   </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.indentstr </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.indent</span><span class="jsdoc-syntax">),
+            </span><span class="jsdoc-var">in_pre </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">in_pre</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">in_inline </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">in_inline
+        </span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-comment">// add a line after if we are not in a
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">in_inline </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">in_pre</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.addLine</span><span class="jsdoc-syntax">();
+        }
+
+
+
+
+    },
+
+    </span><span class="jsdoc-var">lastElementEndsWS </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html.length </span><span class="jsdoc-syntax">&gt; 0 ? </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">-1] : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value.match</span><span class="jsdoc-syntax">(/\s+$/);
+
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Writes the a end element such as &lt;/p&gt;.
+     *
+     * @method end
+     * @param {String} name Name of the element.
+     */
+    </span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.popState</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">in_inline </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.in_inline </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.htmleditor.TidyWriter.inline_elements.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) &gt; -1;
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.in_pre </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">in_inline</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.addLine</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">indentstr  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indentstr</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name.toLowerCase</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-string">'&gt;'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.last_inline </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">in_inline</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-comment">// pop the indent state..
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-comment">/**
+     * Writes a text node.
+     *
+     * In pre - we should not mess with the contents.
+     * 
+     *
+     * @method text
+     * @param {String} text String to write out.
+     * @param {Boolean} raw Optional raw state if true the contents wont get encoded.
+     */
+    </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// if not in whitespace critical
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text.length </span><span class="jsdoc-syntax">&lt; 1) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.in_pre</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">] =  </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.in_inline</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+/g,</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// all white space inc line breaks to a slingle' '
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+/,</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">);  </span><span class="jsdoc-comment">// all white space to single white space
+
+
+                // if next tag is '&lt;BR&gt;', then we can trim right..
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nextSibling </span><span class="jsdoc-syntax">&amp;&amp;
+                    </span><span class="jsdoc-var">node.nextSibling.nodeType </span><span class="jsdoc-syntax">== 1 &amp;&amp;
+                    </span><span class="jsdoc-var">node.nextSibling.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BR' </span><span class="jsdoc-syntax">)
+                {
+                    </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+$/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-comment">// if previous tag was a BR, we can also trim..
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.previousSibling </span><span class="jsdoc-syntax">&amp;&amp;
+                    </span><span class="jsdoc-var">node.previousSibling.nodeType </span><span class="jsdoc-syntax">== 1 &amp;&amp;
+                    </span><span class="jsdoc-var">node.previousSibling.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BR' </span><span class="jsdoc-syntax">)
+                {
+                    </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indentstr </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/^\s+/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text.match</span><span class="jsdoc-syntax">(/\n/)) {
+                    </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(
+                        /(?![^\n]{1,64}$)([^\n]{1,64})\s/g, </span><span class="jsdoc-string">'$1\n' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.indentstr
+                    </span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-comment">// remoeve the last whitespace / line break.
+                    </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\n\s+$/,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-comment">// repace long lines
+
+            </span><span class="jsdoc-syntax">}
+
+            </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">] =  </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// see if previous element was a inline element.
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indentstr</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+/g,</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// all whitespace into single white space.
+
+        // should trim left?
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.previousSibling </span><span class="jsdoc-syntax">&amp;&amp;
+            </span><span class="jsdoc-var">node.previousSibling.nodeType </span><span class="jsdoc-syntax">== 1 &amp;&amp;
+            </span><span class="jsdoc-var">Roo.htmleditor.TidyWriter.inline_elements.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.previousSibling.nodeName</span><span class="jsdoc-syntax">) &gt; -1)
+        {
+            </span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.addLine</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/^\s+/,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// trim left
+
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-comment">// should trim right?
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nextSibling </span><span class="jsdoc-syntax">&amp;&amp;
+            </span><span class="jsdoc-var">node.nextSibling.nodeType </span><span class="jsdoc-syntax">== 1 &amp;&amp;
+            </span><span class="jsdoc-var">Roo.htmleditor.TidyWriter.inline_elements.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.nextSibling.nodeName</span><span class="jsdoc-syntax">) &gt; -1)
+        {
+          </span><span class="jsdoc-comment">// noop
+
+        </span><span class="jsdoc-syntax">}  </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+$/,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// trim right
+        </span><span class="jsdoc-syntax">}
+
+
+
+
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text.length </span><span class="jsdoc-syntax">&lt; 1) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">text.match</span><span class="jsdoc-syntax">(/\n/)) {
+            </span><span class="jsdoc-var">this.html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indentstr </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(
+            /(?![^\n]{1,64}$)([^\n]{1,64})\s/g, </span><span class="jsdoc-string">'$1\n' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.indentstr
+        </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// remoeve the last whitespace / line break.
+        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.replace</span><span class="jsdoc-syntax">(/\s+$/,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">// split and indent..
+
+
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-comment">/**
+     * Writes a cdata node such as &lt;![CDATA[data]]&gt;.
+     *
+     * @method cdata
+     * @param {String} text String to write out inside the cdata.
+     */
+    </span><span class="jsdoc-var">cdata</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;![CDATA['</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">']]&gt;'</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">/**
+    * Writes a comment node such as &lt;!-- Comment --&gt;.
+    *
+    * @method cdata
+    * @param {String} text String to write out inside the comment.
+    */
+   </span><span class="jsdoc-var">comment</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) {
+       </span><span class="jsdoc-var">this.html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;!--'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'--&gt;'</span><span class="jsdoc-syntax">);
+   },
+    </span><span class="jsdoc-comment">/**
+     * Writes a PI node such as &lt;?xml attr=&quot;value&quot; ?&gt;.
+     *
+     * @method pi
+     * @param {String} name Name of the pi.
+     * @param {String} text String to write out inside the pi.
+     */
+    </span><span class="jsdoc-var">pi</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;?'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.encode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">), </span><span class="jsdoc-string">'?&gt;'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;?'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'?&gt;'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.indent </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">/**
+     * Writes a doctype node such as &lt;!DOCTYPE data&gt;.
+     *
+     * @method doctype
+     * @param {String} text String to write out inside the doctype.
+     */
+    </span><span class="jsdoc-var">doctype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;!DOCTYPE'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&gt;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.indent </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'\n' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">/**
+     * Resets the internal buffer if one wants to reuse the writer.
+     *
+     * @method reset
+     */
+    </span><span class="jsdoc-var">reset</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-var">this.html.length </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.state </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.pushState</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">in_pre </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">in_inline </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false
+        </span><span class="jsdoc-syntax">})
+    },
+    </span><span class="jsdoc-comment">/**
+     * Returns the contents that got serialized.
+     *
+     * @method getContent
+     * @return {String} HTML contents that got written down.
+     */
+    </span><span class="jsdoc-var">getContent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.html.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/\n$/, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">pushState </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.state.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">popState </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.state.length </span><span class="jsdoc-syntax">&lt; 1) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// nothing to push
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">in_pre</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">indentstr </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
+        </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-var">this.state.pop</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.state.length </span><span class="jsdoc-syntax">&gt; 0) {
+            </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.state</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.state.length</span><span class="jsdoc-syntax">-1];
+        }
+        </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">addLine</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html.length </span><span class="jsdoc-syntax">&lt; 1) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.html.length </span><span class="jsdoc-syntax">- 1];
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-string">'\n' </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.html.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'\n'</span><span class="jsdoc-syntax">);
+        }
+    }
+
+
+</span><span class="jsdoc-comment">//'pre script noscript style textarea video audio iframe object code'
+// shortended... 'area base basefont br col frame hr img input isindex link  meta param embed source wbr track');
+// inline 
+</span><span class="jsdoc-syntax">};
+
+</span><span class="jsdoc-var">Roo.htmleditor.TidyWriter.inline_elements </span><span class="jsdoc-syntax">= [
+        </span><span class="jsdoc-string">'SPAN'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'STRONG'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'B'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'EM'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'I'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'FONT'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'STRIKE'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'U'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'VAR'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">'CITE'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'DFN'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'CODE'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'MARK'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'Q'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'SUP'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'SUB'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'SAMP'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'A'
+</span><span class="jsdoc-syntax">];
+</span><span class="jsdoc-var">Roo.htmleditor.TidyWriter.shortend_elements </span><span class="jsdoc-syntax">= [
+    </span><span class="jsdoc-string">'AREA'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'BASE'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'BASEFONT'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'BR'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'COL'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'FRAME'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'HR'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'IMG'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'INPUT'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-string">'ISINDEX'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'LINK'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'META'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'PARAM'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'EMBED'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'SOURCE'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'WBR'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'TRACK'
+</span><span class="jsdoc-syntax">];
+
+</span><span class="jsdoc-var">Roo.htmleditor.TidyWriter.whitespace_elements </span><span class="jsdoc-syntax">= [
+    </span><span class="jsdoc-string">'PRE'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'SCRIPT'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'NOSCRIPT'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'STYLE'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'TEXTAREA'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'VIDEO'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'AUDIO'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'IFRAME'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'OBJECT'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'CODE'
+</span><span class="jsdoc-syntax">];</span></code></body></html>

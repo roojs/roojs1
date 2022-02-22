@@ -1,0 +1,101 @@
+<html><head><title>Roo/lib/Selection.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/**
+ * @class Roo.lib.Selection
+ * @constructor
+ * This is a toolkit, normally used to copy features into a Dom Selection element
+ * Roo.lib.Selection.wrap(x);
+ *
+ *
+ *
+ */
+</span><span class="jsdoc-var">Roo.lib.Selection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { };
+
+</span><span class="jsdoc-comment">/**
+ * Wrap a Dom Range object, to give it new features...
+ * @static
+ * @param {Range} the range to wrap
+ */
+</span><span class="jsdoc-var">Roo.lib.Selection.wrap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">doc</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.lib.Selection.prototype</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">r.ownerDocument </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// usefull so we dont have to keep referening to it.
+    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+};
+</span><span class="jsdoc-comment">/**
+ * find a parent node eg. LI / OL
+ * @param {string|Array} node name or array of nodenames
+ * @return {DomElement|false}
+ */
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Selection.prototype</span><span class="jsdoc-syntax">,
+{
+    </span><span class="jsdoc-comment">/**
+     * the owner document
+     */
+    </span><span class="jsdoc-var">ownerDocument </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">getRangeAt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.lib.Range.wrap</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Selection.prototype.getRangeAt.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">));
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * insert node at selection 
+     * @param {DomElement|string} node
+     * @param {string} cursor (after|in|none) where to place the cursor after inserting.
+     */
+    </span><span class="jsdoc-var">insertNode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cursor</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ownerDocument.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cursor </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">node.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&amp;nbsp;'</span><span class="jsdoc-syntax">;
+            }
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRangeAt</span><span class="jsdoc-syntax">(0);
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'Caret'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">range.deleteContents</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">[0]; </span><span class="jsdoc-comment">// select the contents.
+
+
+
+        </span><span class="jsdoc-var">range.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cursor </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'after'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">node.insertAdjacentHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'afterend'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&amp;nbsp;'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.nextSibling</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cursor </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.cursorText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">cursorText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">)
+    {
+
+        </span><span class="jsdoc-comment">//var range = this.getRangeAt(0);
+        </span><span class="jsdoc-var">range </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Range.wrap</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Range</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-comment">//range.selectNode(n);
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ix </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.parentNode.childNodes</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">range.setStart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.parentNode</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ix</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">range.setEnd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.parentNode</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ix</span><span class="jsdoc-syntax">+1);
+        </span><span class="jsdoc-comment">//range.collapse(false);
+
+        </span><span class="jsdoc-var">this.removeAllRanges</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.baseOffset</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.extentOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.type</span><span class="jsdoc-syntax">]);
+    },
+    </span><span class="jsdoc-var">cursorAfter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">n.nextSibling </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">n.nextSibling.nodeValue </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'&amp;nbsp;'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">n.insertAdjacentHTML</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'afterend'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'&amp;nbsp;'</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.cursorText </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n.nextSibling</span><span class="jsdoc-syntax">);
+    }
+
+
+});</span></code></body></html>
