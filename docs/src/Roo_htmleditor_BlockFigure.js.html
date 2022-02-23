@@ -310,8 +310,8 @@
                 </span><span class="jsdoc-syntax">]
             };
         }
-
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">captionhtml </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.caption_display </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'hidden' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.caption </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.caption.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.caption </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Caption&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// we remove caption totally if its hidden... - will delete data.. but otherwise we end up with fake caption
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">captionhtml </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.caption_display </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'hidden' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.caption.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.caption </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Caption&quot;</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">,

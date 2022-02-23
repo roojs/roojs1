@@ -27280,8 +27280,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 ]
             };
         }
-        
-        var captionhtml = this.caption_display == 'hidden' ? this.caption : (this.caption.length ? this.caption : "Caption");
+        // we remove caption totally if its hidden... - will delete data.. but otherwise we end up with fake caption
+        var captionhtml = this.caption_display == 'hidden' ? '' : (this.caption.length ? this.caption : "Caption");
         
         return  {
             tag: 'figure',
