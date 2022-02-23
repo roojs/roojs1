@@ -27305,7 +27305,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
               
                 {
                     tag: 'figcaption',
-                    
+                    'data-display' : this.caption_display,
                     style : {
                         'text-align': 'left',
                         'margin-top' : '16px',
@@ -27345,7 +27345,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         if (this.caption.trim().match(/^<i[^>]*>/i)) {
             this.caption = this.caption.trim().replace(/^<i[^>]*>/i, '').replace(/^<\/i>$/i, '');
         }
-        this.caption_display = this.getVal(node, 'figcaption', 'style', 'display');
+        this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, 'figure', 'style', 'max-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
@@ -29189,7 +29189,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         Roo.log(images);
         //Roo.log(imgs);
         // fixme..
-        images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable)/); }) // ignore headers
+        images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }) // ignore headers/footers etc.
                        .map(function(g) { return g.toDataURL(); })
                        .filter(function(g) { return g != 'about:blank'; });
         
