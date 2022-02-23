@@ -317,6 +317,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             tag: 'figure',
             'data-block' : 'Figure',
             contenteditable : 'false',
+            
             style : {
                 display: 'block',
                 float :  this.align ,
@@ -365,6 +366,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         this.cls = this.getVal(node, 'div', 'class');
         this.href = this.getVal(node, 'a', 'href');
         
+        
         this.image_src = this.getVal(node, 'img', 'src');
          
         this.align = this.getVal(node, 'figure', 'align');
@@ -373,6 +375,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         if (this.caption.trim().match(/^<i[^>]*>/i)) {
             this.caption = this.caption.trim().replace(/^<i[^>]*>/i, '').replace(/^<\/i>$/i, '');
         }
+        this.caption_display = this.getVal(node, 'figcaption', 'style', 'display');
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, 'figure', 'style', 'max-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
