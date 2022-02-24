@@ -567,7 +567,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cd </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">e.browserEvent.clipboardData </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">window.clipboardData</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-comment">// check what type of paste - if it's an image, then handle it differently.
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.files.length </span><span class="jsdoc-syntax">&gt; 0) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.files </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">cd.files.length </span><span class="jsdoc-syntax">&gt; 0) {
             </span><span class="jsdoc-comment">// pasting images?
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">urlAPI </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">window.createObjectURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">) ||
                 (</span><span class="jsdoc-var">window.URL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">URL.revokeObjectURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">URL</span><span class="jsdoc-syntax">) ||
@@ -577,10 +577,15 @@
             </span><span class="jsdoc-var">this.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;img src=&quot; + url + &quot;&gt;'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
-
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">) &lt; 0 ) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">images </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cd.getData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// clipboard event
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Parser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.getData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/rtf'</span><span class="jsdoc-syntax">));
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">images </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parser.doc </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">parser.doc.getElementsByType</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pict'</span><span class="jsdoc-syntax">) : [];
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/rtf'</span><span class="jsdoc-syntax">) &gt; -1) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Parser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.getData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/rtf'</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-var">images </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parser.doc </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">parser.doc.getElementsByType</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pict'</span><span class="jsdoc-syntax">) : [];
+        }
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">images</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//Roo.log(imgs);
         // fixme..
