@@ -567,7 +567,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
         
         // check what type of paste - if it's an image, then handle it differently.
-        if (cd.files.length > 0) {
+        if (cd.files && cd.files.length > 0) {
             // pasting images?
             var urlAPI = (window.createObjectURL && window) || 
                 (window.URL && URL.revokeObjectURL && URL) || 
@@ -577,10 +577,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.insertAtCursor('<img src=" + url + ">');
             return false;
         }
-        
+        if (cd.types.indexOf('text/html') < 0 ) {
+            return false;
+        }
+        var images = [];
         var html = cd.getData('text/html'); // clipboard event
-        var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
-        var images = parser.doc ? parser.doc.getElementsByType('pict') : [];
+        if (cd.types.indexOf('text/rtf') > -1) {
+            var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
+            images = parser.doc ? parser.doc.getElementsByType('pict') : [];
+        }
         Roo.log(images);
         //Roo.log(imgs);
         // fixme..

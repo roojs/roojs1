@@ -338,7 +338,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     'data-display' : this.caption_display,
                     style : {
                         'text-align': 'left',
-                        'margin-top' : '16px',
+                      
                         'font-size' : '16px',
                         'line-height' : '24px',
                          display : this.caption_display
@@ -346,11 +346,22 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
                     cn : [
                         {
-                            // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
-                            tag : 'i',
-                            contenteditable : true,
-                            html : captionhtml
+                            tag: 'div',
+                            style  : {
+                                'margin-top' : '16px'
+                            },
+                            align: 'left',
+                            cn : [
+                                {
+                                    // we can not rely on yahoo syndication to use CSS elements - so have to use  '<i>' to encase stuff.
+                                    tag : 'i',
+                                    contenteditable : true,
+                                    html : captionhtml
+                                }
+                                
+                            ]
                         }
+                        
                     ]
                     
                 }
