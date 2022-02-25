@@ -96,7 +96,7 @@
      
      * @param {DomElement} node
      * @param {String} tag - tag to find, eg. IMG ?? might be better to use DomQuery ?
-     * @param {String} attribute (use html - for contents, or style for using next param as style)
+     * @param {String} attribute (use html - for contents, style for using next param as style, or false to return the node)
      * @param {String} style the style property - eg. text-align
      */
     </span><span class="jsdoc-var">getVal </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">attr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">)
@@ -109,6 +109,9 @@
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'html'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">n.innerHTML</span><span class="jsdoc-syntax">;

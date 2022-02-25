@@ -79,7 +79,7 @@
         {
           "name" : "attribute",
           "type" : "String",
-          "desc" : "(use html - for contents, or style for using next param as style)",
+          "desc" : "(use html - for contents, style for using next param as style, or false to return the node)",
           "isOptional" : false
         },
         {
