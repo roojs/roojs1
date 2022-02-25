@@ -23291,7 +23291,7 @@ Roo.htmleditor.Block.prototype = {
      
      * @param {DomElement} node
      * @param {String} tag - tag to find, eg. IMG ?? might be better to use DomQuery ?
-     * @param {String} attribute (use html - for contents, or style for using next param as style)
+     * @param {String} attribute (use html - for contents, style for using next param as style, or false to return the node)
      * @param {String} style the style property - eg. text-align
      */
     getVal : function(node, tag, attr, style)
@@ -23304,6 +23304,9 @@ Roo.htmleditor.Block.prototype = {
         }
         if (!n) {
             return '';
+        }
+        if (attr === false) {
+            return n;
         }
         if (attr == 'html') {
             return n.innerHTML;
@@ -23601,15 +23604,16 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         
         var m = this.width == '50%' && this.align == 'center' ? '0 auto' : 0; 
         
+        var iw = this.align == 'center' ? this.width : '100%';
         var img =   {
             tag : 'img',
             contenteditable : 'false',
             src : this.image_src,
             alt : d.innerText.replace(/\n/g, " ").replace(/\s+/g, ' ').trim(), // removeHTML and reduce spaces..
             style: {
-                width : 'auto',
-                'max-width': '100%',
-                margin : '0px' 
+                width : iw,
+                maxWidth : iw + ' !important', // this is not getting rendered?
+                margin : m 
                 
                 
             }
@@ -23654,14 +23658,15 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         return  {
             tag: 'figure',
             'data-block' : 'Figure',
+            
             contenteditable : 'false',
             
             style : {
                 display: 'block',
                 float :  this.align ,
-                'max-width':  this.width,
-                width : 'auto',
-                margin:  m,
+                maxWidth :  this.align == 'center' ? '100% !important' : (this.width + ' !important'),
+                width : this.align == 'center' ? '100%' : this.width,
+                margin:  '0px',
                 padding: '10px'
                 
             },
@@ -23675,11 +23680,15 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     tag: 'figcaption',
                     'data-display' : this.caption_display,
                     style : {
-                        'text-align': 'left',
-                      
-                        'font-size' : '16px',
-                        'line-height' : '24px',
-                         display : this.caption_display
+                        textAlign : 'left',
+                        fontSize : '16px',
+                        lineHeight : '24px',
+                        display : this.caption_display,
+                        maxWidth : this.width + ' !important',
+                        margin: m,
+                        width: this.width
+                    
+                         
                     },
                     cls : this.cls.length > 0 ? (this.cls  + '-thumbnail' ) : '',
                     cn : [
@@ -23719,14 +23728,12 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         this.image_src = this.getVal(node, 'img', 'src');
          
         this.align = this.getVal(node, 'figure', 'align');
-        this.caption = this.getVal(node, 'figcaption', 'html');
-        // remove '<i>
-        if (this.caption.trim().match(/^<i[^>]*>/i)) {
-            this.caption = this.caption.trim().replace(/^<i[^>]*>/i, '').replace(/^<\/i>$/i, '');
-        }
+        var figcaption = this.getVal(node, 'figcaption', false);
+        this.caption = this.getVal(figcaption, 'i', 'html');
+
         this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
-        this.width = this.getVal(node, 'figure', 'style', 'max-width');
+        this.width = this.getVal(node, 'figcaption', 'style', 'width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
         
     },

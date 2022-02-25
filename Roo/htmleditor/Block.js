@@ -96,7 +96,7 @@ Roo.htmleditor.Block.prototype = {
      
      * @param {DomElement} node
      * @param {String} tag - tag to find, eg. IMG ?? might be better to use DomQuery ?
-     * @param {String} attribute (use html - for contents, or style for using next param as style)
+     * @param {String} attribute (use html - for contents, style for using next param as style, or false to return the node)
      * @param {String} style the style property - eg. text-align
      */
     getVal : function(node, tag, attr, style)
@@ -109,6 +109,9 @@ Roo.htmleditor.Block.prototype = {
         }
         if (!n) {
             return '';
+        }
+        if (attr === false) {
+            return n;
         }
         if (attr == 'html') {
             return n.innerHTML;
