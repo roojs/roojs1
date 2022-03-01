@@ -23667,7 +23667,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 maxWidth :  this.align == 'center' ? '100% !important' : (this.width + ' !important'),
                 width : this.align == 'center' ? '100%' : this.width,
                 margin:  '0px',
-                padding: '10px'
+                padding: '10px',
+                textAlign : this.align   // seems to work for email..
                 
             },
            
@@ -23695,7 +23696,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         {
                             tag: 'div',
                             style  : {
-                                'margin-top' : '16px'
+                                marginTop : '16px',
+                                textAlign : 'left'
                             },
                             align: 'left',
                             cn : [
