@@ -179,6 +179,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     data : [
                         ['auto'],
                         ['50%'],
+                        ['80%'],
                         ['100%']
                     ],
                     fields : [ 'val'],
@@ -261,7 +262,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var d = document.createElement('div');
         d.innerHTML = this.caption;
         
-        var m = this.width == '50%' && this.align == 'center' ? '0 auto' : 0; 
+        var m = this.width != '100%' && this.align == 'center' ? '0 auto' : 0; 
         
         var iw = this.align == 'center' ? this.width : '100%';
         var img =   {
