@@ -179,6 +179,7 @@
                     </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: [
                         [</span><span class="jsdoc-string">'auto'</span><span class="jsdoc-syntax">],
                         [</span><span class="jsdoc-string">'50%'</span><span class="jsdoc-syntax">],
+                        [</span><span class="jsdoc-string">'80%'</span><span class="jsdoc-syntax">],
                         [</span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">]
                     ],
                     </span><span class="jsdoc-var">fields </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'val'</span><span class="jsdoc-syntax">],
@@ -261,7 +262,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">d.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.caption</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'50%' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'0 auto' </span><span class="jsdoc-syntax">: 0;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">m </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'100%' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'0 auto' </span><span class="jsdoc-syntax">: 0;
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">iw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">img </span><span class="jsdoc-syntax">=   {
