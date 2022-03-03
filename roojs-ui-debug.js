@@ -29874,7 +29874,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
      * @cfg {String} itemCls A css class to apply to the x-form-item of fields. This property cascades to child containers.
      */
     /**
-     * @cfg {String} buttonAlign Valid values are "left," "center" and "right" (defaults to "center")
+     * @cfg {String} (left|center|right) buttonAlign Valid values are "left," "center" and "right" (defaults to "center")
      */
     buttonAlign:'center',
 
@@ -29884,7 +29884,7 @@ Roo.extend(Roo.form.Form, Roo.form.BasicForm, {
     minButtonWidth:75,
 
     /**
-     * @cfg {String} labelAlign Valid values are "left," "top" and "right" (defaults to "left").
+     * @cfg {String} labelAlign (left|top|right) Valid values are "left," "top" and "right" (defaults to "left").
      * This property cascades to child containers if not set.
      */
     labelAlign:'left',
