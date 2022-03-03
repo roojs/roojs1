@@ -63,7 +63,19 @@
     {
       "name" : "labelAlign",
       "type" : "String",
-      "desc" : "Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\").\nThis property cascades to child containers if not set.",
+      "desc" : "t) Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\").\nThis property cascades to child containers if not se",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : [
+        "left",
+        "top",
+        "right"
+      ]
+    },
+    {
+      "name" : "(left|center|right)",
+      "type" : "String",
+      "desc" : "buttonAlign Valid values are \"left,\" \"center\" and \"right\" (defaults to \"center\")",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
@@ -120,14 +132,6 @@
       "name" : "minButtonWidth",
       "type" : "Number",
       "desc" : "Minimum width of all buttons in pixels (defaults to 75)",
-      "memberOf" : "",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "buttonAlign",
-      "type" : "String",
-      "desc" : "Valid values are \"left,\" \"center\" and \"right\" (defaults to \"center\")",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
