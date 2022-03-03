@@ -132,7 +132,7 @@
     },
     {
       "name" : "ds",
-      "type" : "Roo.grid.Store",
+      "type" : "Roo.data.Store",
       "desc" : "The data store for the grid",
       "memberOf" : "Roo.grid.Grid"
     },
