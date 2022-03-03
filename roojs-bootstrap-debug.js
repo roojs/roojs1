@@ -29246,7 +29246,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
-                attrib_white : ['href', 'src', 'name', 'align'],
+                attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan'],
                 attrib_clean : ['href', 'src' ] 
             });
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
