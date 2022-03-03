@@ -26,7 +26,7 @@
       "desc" : "The default text for the create link prompt",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "btns[]",
@@ -34,7 +34,7 @@
       "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "defaultFont",
@@ -42,7 +42,7 @@
       "desc" : "default font to use.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "defaultLinkValue",
@@ -50,7 +50,7 @@
       "desc" : "The default value for the create link prompt (defaults to http:/ /)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fontFamilies",
@@ -58,7 +58,7 @@
       "desc" : "An array of available font families",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disable",
@@ -66,7 +66,7 @@
       "desc" : "List of elements to disable..",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

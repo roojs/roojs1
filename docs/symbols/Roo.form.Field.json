@@ -70,7 +70,7 @@
       "desc" : "The type attribute for input fields -- e.g. radio, text, password (defaults to \"text\").",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -78,7 +78,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "msgFx",
@@ -86,7 +86,7 @@
       "desc" : "<b>Experimental</b> The effect used when displaying a validation message under the field (defaults to 'normal').",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fieldLabel",
@@ -94,7 +94,7 @@
       "desc" : "Label to use when rendering a form.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validationDelay",
@@ -102,7 +102,7 @@
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "msgTarget",
@@ -110,7 +110,7 @@
       "desc" : "The location where error text should display.  Should be one of the following values (defaults to 'qtip'):\n<pre>\nValue         Description\n-----------   ----------------------------------------------------------------------\nqtip          Display a quick tip when the user hovers over the field\ntitle         Display a default browser title attribute popup\nunder         Add a block div beneath the field containing the error text\nside          Add an error icon to the right of the field with a popup on hover\n[element id]  Add the error text directly to the innerHTML of the specified element\n</pre>",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -118,7 +118,7 @@
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "display",
         "visibility"
       ]
@@ -129,7 +129,7 @@
       "desc" : "True to disable the field (defaults to false).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "value",
@@ -137,7 +137,7 @@
       "desc" : "A value to initialize this field with.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
@@ -145,7 +145,7 @@
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tabIndex",
@@ -153,7 +153,7 @@
       "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "readOnly",
@@ -161,7 +161,7 @@
       "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "invalidClass",
@@ -169,7 +169,7 @@
       "desc" : "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
@@ -177,7 +177,7 @@
       "desc" : "A CSS class to apply to the field's underlying element.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoCreate",
@@ -185,7 +185,7 @@
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"20\", autocomplete: \"off\"})",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "invalidText",
@@ -193,7 +193,7 @@
       "desc" : "The error text to use when marking a field invalid and no message is provided (defaults to \"The value in this field is invalid\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
@@ -201,7 +201,7 @@
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "width",
@@ -209,7 +209,7 @@
       "desc" : "width (optional) size of component",
       "memberOf" : "Roo.BoxComponent",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validateOnBlur",
@@ -217,7 +217,7 @@
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validationEvent",
@@ -225,7 +225,7 @@
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "name",
@@ -233,7 +233,7 @@
       "desc" : "The field's HTML name attribute.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "qtip",
@@ -241,7 +241,7 @@
       "desc" : "Mouse over tip",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "focusClass",
@@ -249,7 +249,7 @@
       "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fieldClass",
@@ -257,7 +257,7 @@
       "desc" : "The default CSS class for the field (defaults to \"x-form-field\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "height",
@@ -265,7 +265,7 @@
       "desc" : "height (optional) size of component",
       "memberOf" : "Roo.BoxComponent",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
@@ -273,7 +273,7 @@
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

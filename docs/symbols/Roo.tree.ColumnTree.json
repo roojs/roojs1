@@ -43,7 +43,7 @@
       "desc" : "The TreeEditor to display when clicked.",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -51,7 +51,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "singleExpand",
@@ -59,7 +59,7 @@
       "desc" : "true if only 1 node per branch may be expanded",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "columns",
@@ -67,7 +67,7 @@
       "desc" : "Including width, header, renderer, cls, dataIndex",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "root",
@@ -75,7 +75,7 @@
       "desc" : "The root node",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "ddAppendOnly",
@@ -83,7 +83,7 @@
       "desc" : "True if the tree should only allow append drops (use for trees which are sorted)",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dragConfig",
@@ -91,7 +91,7 @@
       "desc" : "Custom config to pass to the {@link Roo.tree.TreeDragZone} instance",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "enableDrop",
@@ -99,7 +99,7 @@
       "desc" : "true to enable just drop",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hlColor",
@@ -107,7 +107,7 @@
       "desc" : "The color of the node highlight (defaults to C3DAF9)",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "rendererTip",
@@ -115,7 +115,7 @@
       "desc" : "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "enableDD",
@@ -123,7 +123,7 @@
       "desc" : "true to enable drag and drop",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hlDrop",
@@ -131,7 +131,7 @@
       "desc" : "false to disable node highlight on drop (defaults to the value of Roo.enableFx)",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "renderer",
@@ -139,7 +139,7 @@
       "desc" : "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "rootVisible",
@@ -147,7 +147,7 @@
       "desc" : "false to hide the root node (defaults to true)",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "enableDrag",
@@ -155,7 +155,7 @@
       "desc" : "true to enable just drag",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "ddGroup",
@@ -163,7 +163,7 @@
       "desc" : "The DD group this TreePanel belongs to",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "borderWidth",
@@ -171,7 +171,7 @@
       "desc" : "compined right/left border allowance",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "lines",
@@ -179,7 +179,7 @@
       "desc" : "false to disable tree lines (defaults to true)",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dropConfig",
@@ -187,7 +187,7 @@
       "desc" : "Custom config to pass to the {@link Roo.tree.TreeDropZone} instance",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "selModel",
@@ -195,7 +195,7 @@
       "desc" : "A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "loader",
@@ -203,7 +203,7 @@
       "desc" : "A TreeLoader for use with this TreePanel",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "containerScroll",
@@ -211,7 +211,7 @@
       "desc" : "true to register this container with ScrollManager",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "ddScroll",
@@ -219,7 +219,7 @@
       "desc" : "true to enable YUI body scrolling",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "animate",
@@ -227,7 +227,7 @@
       "desc" : "true to enable animated expand/collapse (defaults to the value of Roo.enableFx)",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "pathSeparator",
@@ -235,7 +235,7 @@
       "desc" : "The token used to separate sub-paths in path strings (defaults to '/')",
       "memberOf" : "Roo.tree.TreePanel",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

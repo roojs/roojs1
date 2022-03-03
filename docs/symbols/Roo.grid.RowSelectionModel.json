@@ -36,7 +36,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "singleSelect",
@@ -44,7 +44,7 @@
       "desc" : "True to allow selection of only one row at a time (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

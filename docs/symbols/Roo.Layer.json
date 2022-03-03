@@ -41,7 +41,7 @@
       "desc" : "True to create a shadow element with default class \"x-layer-shadow\", or\nyou can pass a string with a CSS class name. False turns off the shadow.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "constrain",
@@ -49,7 +49,7 @@
       "desc" : "False to disable constrain to viewport (defaults to true)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "zindex",
@@ -57,7 +57,7 @@
       "desc" : "Starting z-index (defaults to 11000)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "shadowOffset",
@@ -65,7 +65,7 @@
       "desc" : "Number of pixels to offset the shadow (defaults to 3)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dh",
@@ -73,7 +73,7 @@
       "desc" : "DomHelper object config to create element with (defaults to {tag: \"div\", cls: \"x-layer\"}).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
@@ -81,7 +81,7 @@
       "desc" : "CSS class to add to the element",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "shim",
@@ -89,7 +89,7 @@
       "desc" : "False to disable the iframe shim in browsers which need one (defaults to true)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -105,7 +105,7 @@
       "desc" : "Specifies an abbreviated version of the content in a cell",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "charoff",
@@ -113,7 +113,7 @@
       "desc" : "Sets the number of characters the content will be aligned from the character specified by the char attribute",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -121,7 +121,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "axis",
@@ -129,7 +129,7 @@
       "desc" : "Categorizes cells",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "bgcolor",
@@ -137,7 +137,7 @@
       "desc" : "Specifies the background color of a cell",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tooltip",
@@ -145,7 +145,7 @@
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "container_method",
@@ -153,7 +153,7 @@
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "visibilityEl",
@@ -161,7 +161,7 @@
       "desc" : "t) What element to use for visibility (@see getVisibilityEl(",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "el",
         "parent"
       ]
@@ -172,7 +172,7 @@
       "desc" : "Aligns the content in a cell",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "valign",
@@ -180,7 +180,7 @@
       "desc" : "Vertical aligns the content in a cell",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "can_build_overlaid",
@@ -188,7 +188,7 @@
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -196,7 +196,7 @@
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "display",
         "visibility"
       ]
@@ -207,7 +207,7 @@
       "desc" : "cell tag (td|th) default td",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "scope",
@@ -215,7 +215,7 @@
       "desc" : "Defines a way to associate header cells and data cells in a table",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "style",
@@ -223,7 +223,7 @@
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
@@ -231,7 +231,7 @@
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "html",
@@ -239,7 +239,7 @@
       "desc" : "cell contain text",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
@@ -247,7 +247,7 @@
       "desc" : "cell class",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "headers",
@@ -255,7 +255,7 @@
       "desc" : "Specifies one or more header cells a cell is related to",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "nowrap",
@@ -263,7 +263,7 @@
       "desc" : "Specifies that the content inside a cell should not wrap",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "xattr",
@@ -271,7 +271,7 @@
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
@@ -279,7 +279,7 @@
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "width",
@@ -287,7 +287,7 @@
       "desc" : "Specifies the width of a cell",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "colspan",
@@ -295,7 +295,7 @@
       "desc" : "Specifies the number of columns a cell should span",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dataId",
@@ -303,7 +303,7 @@
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "height",
@@ -311,7 +311,7 @@
       "desc" : "Sets the height of a cell",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "name",
@@ -319,7 +319,7 @@
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
@@ -327,7 +327,7 @@
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "rowspan",
@@ -335,7 +335,7 @@
       "desc" : "Sets the number of rows a cell should span",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

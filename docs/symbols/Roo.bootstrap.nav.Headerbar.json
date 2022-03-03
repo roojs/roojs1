@@ -46,7 +46,7 @@
       "desc" : "href of the brand",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "desktopCenter",
@@ -54,7 +54,7 @@
       "desc" : "should the header be centered on desktop using a container class",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -62,7 +62,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "container_method",
@@ -70,7 +70,7 @@
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tooltip",
@@ -78,7 +78,7 @@
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "visibilityEl",
@@ -86,7 +86,7 @@
       "desc" : "t) What element to use for visibility (@see getVisibilityEl(",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "el",
         "parent"
       ]
@@ -97,7 +97,7 @@
       "desc" : "is inverted color",
       "memberOf" : "Roo.bootstrap.nav.Simplebar",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "align",
@@ -105,7 +105,7 @@
       "desc" : "t) alignme",
       "memberOf" : "Roo.bootstrap.nav.Simplebar",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "left",
         "right"
       ]
@@ -116,7 +116,7 @@
       "desc" : "what is brand",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "position",
@@ -124,7 +124,7 @@
       "desc" : "p) positi",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "fixed-top",
         "fixed-bottom",
         "static-top"
@@ -136,7 +136,7 @@
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -144,7 +144,7 @@
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "display",
         "visibility"
       ]
@@ -155,7 +155,7 @@
       "desc" : "generate the (screen reader / mobile) sr-only button   default true",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tag",
@@ -163,7 +163,7 @@
       "desc" : "v) default is n",
       "memberOf" : "Roo.bootstrap.nav.Simplebar",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "header",
         "footer",
         "nav",
@@ -176,7 +176,7 @@
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
@@ -184,7 +184,7 @@
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "mobilerow",
@@ -192,7 +192,7 @@
       "desc" : "- a row to display on mobile only..",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
@@ -200,7 +200,7 @@
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "arrangement",
@@ -208,7 +208,7 @@
       "desc" : "stacked | justified",
       "memberOf" : "Roo.bootstrap.nav.Simplebar",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "loadMask",
@@ -216,7 +216,7 @@
       "desc" : "e) loadMask on the b",
       "memberOf" : "Roo.bootstrap.nav.Simplebar",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -227,7 +227,7 @@
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
@@ -235,7 +235,7 @@
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "main",
@@ -243,7 +243,7 @@
       "desc" : "e) main nav bar? default fal",
       "memberOf" : "Roo.bootstrap.nav.Simplebar",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -254,7 +254,7 @@
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "type",
@@ -262,7 +262,7 @@
       "desc" : "",
       "memberOf" : "Roo.bootstrap.nav.Simplebar",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "nav",
         "pills",
         "tabs"
@@ -274,7 +274,7 @@
       "desc" : "e) default is ligh",
       "memberOf" : "Roo.bootstrap.nav.Simplebar",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "light",
         "primary",
         "secondary",
@@ -292,7 +292,7 @@
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
@@ -300,7 +300,7 @@
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autohide",
@@ -308,7 +308,7 @@
       "desc" : "a top nav bar header that hides on scroll.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

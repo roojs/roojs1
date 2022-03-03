@@ -35,7 +35,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "region",
@@ -43,7 +43,7 @@
       "desc" : "Region to render component to (defaults to center)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disabled",
@@ -51,7 +51,7 @@
       "desc" : "If this module is disabled by some rule, return true from the funtion",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "order",
@@ -59,7 +59,7 @@
       "desc" : "Used to set the order in which elements are created (usefull for multiple tabs)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "items",
@@ -67,7 +67,7 @@
       "desc" : "A single item array - the first element is the root of the tree..\nIt's done this way to stay compatible with the Xtype system...",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "parent",
@@ -75,7 +75,7 @@
       "desc" : "Name of parent element which it get xtype added to..",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "name",
@@ -83,7 +83,7 @@
       "desc" : "String to display while loading.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

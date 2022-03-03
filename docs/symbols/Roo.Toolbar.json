@@ -66,7 +66,7 @@
       "desc" : "",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "container",
@@ -74,7 +74,7 @@
       "desc" : "The id or element that will contain the toolbar",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "items",
@@ -82,7 +82,7 @@
       "desc" : "array of button configs or elements to add (will be converted to a MixedCollection)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

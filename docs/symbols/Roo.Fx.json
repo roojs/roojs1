@@ -26,7 +26,7 @@
       "desc" : "A valid Easing value for the effect",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "afterCls",
@@ -34,7 +34,7 @@
       "desc" : "A css class to apply after the effect",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "useDisplay",
@@ -42,7 +42,7 @@
       "desc" : "Whether to use the <i>display</i> CSS property instead of <i>visibility</i> when hiding Elements (only applies to \neffects that end with the element being visually hidden, ignored otherwise)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "stopFx",
@@ -50,7 +50,7 @@
       "desc" : "Whether subsequent effects should be stopped and removed after the current effect finishes",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "callback",
@@ -58,7 +58,7 @@
       "desc" : "A function called when the effect is finished",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "scope",
@@ -66,7 +66,7 @@
       "desc" : "The scope of the effect function",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "remove",
@@ -74,7 +74,7 @@
       "desc" : "Whether the Element should be removed from the DOM and destroyed after the effect finishes",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "concurrent",
@@ -82,7 +82,7 @@
       "desc" : "Whether to allow subsequently-queued effects to run at the same time as the current effect, or to ensure that they run in sequence",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "duration",
@@ -90,7 +90,7 @@
       "desc" : "The length of time (in seconds) that the effect should last",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "afterStyle",
@@ -98,7 +98,7 @@
       "desc" : "A style specification string, e.g. \"width:100px\", or an object in the form {width:\"100px\"}, or\na function which returns such a specification that will be applied to the Element after the effect finishes",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "block",
@@ -106,7 +106,7 @@
       "desc" : "Whether the effect should block other effects from queueing while it runs",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

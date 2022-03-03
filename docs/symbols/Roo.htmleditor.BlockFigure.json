@@ -33,7 +33,7 @@
       "desc" : "the height of the image number or %?",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "align",
@@ -41,7 +41,7 @@
       "desc" : "t) alignment for the block default le",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "left",
         "right"
       ]
@@ -52,7 +52,7 @@
       "desc" : "the url for the image",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "caption_display",
@@ -60,7 +60,7 @@
       "desc" : "e) display or not the capti",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "block",
         "none"
       ]
@@ -71,7 +71,7 @@
       "desc" : "the text to appear below  (and in the alt tag)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "image_width",
@@ -79,7 +79,7 @@
       "desc" : "the width of the image number or %?",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

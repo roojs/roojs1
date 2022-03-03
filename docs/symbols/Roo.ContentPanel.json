@@ -68,7 +68,7 @@
       "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -76,7 +76,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoScroll",
@@ -84,7 +84,7 @@
       "desc" : "True to scroll overflow in this panel (use with {@link #fitToFrame})",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fitToFrame",
@@ -92,7 +92,7 @@
       "desc" : "True for this panel to adjust its size to fit when the region resizes  (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "background",
@@ -100,7 +100,7 @@
       "desc" : "True if the panel should not be activated when it is added (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "toolbar",
@@ -108,7 +108,7 @@
       "desc" : "A toolbar for this panel",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "region",
@@ -116,7 +116,7 @@
       "desc" : "t)  which region to put this panel on (when used with xtype constructor",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "center",
         "north",
         "south",
@@ -130,7 +130,7 @@
       "desc" : "Raw content to fill content panel with (uses setContent on construction.)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "menu",
@@ -138,7 +138,7 @@
       "desc" : "popup menu",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "title",
@@ -146,7 +146,7 @@
       "desc" : "The title for this panel",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "style",
@@ -154,7 +154,7 @@
       "desc" : "Extra style to add to the content panel",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoCreate",
@@ -162,7 +162,7 @@
       "desc" : "True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fitContainer",
@@ -170,7 +170,7 @@
       "desc" : "When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "closable",
@@ -178,7 +178,7 @@
       "desc" : "True if the panel can be closed/removed",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "params",
@@ -186,7 +186,7 @@
       "desc" : "When used with {@link #url}, calls {@link #setUrl} with this value",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "adjustments",
@@ -194,7 +194,7 @@
       "desc" : "Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "url",
@@ -202,7 +202,7 @@
       "desc" : "Calls {@link #setUrl} with this value",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "resizeEl",
@@ -210,7 +210,7 @@
       "desc" : "An element to resize if {@link #fitToFrame} is true (instead of this panel's element)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

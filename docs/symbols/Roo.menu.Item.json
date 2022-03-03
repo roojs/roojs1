@@ -41,7 +41,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "showDelay",
@@ -49,7 +49,7 @@
       "desc" : "Length of time in milliseconds to wait before showing this item (defaults to 200)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "text",
@@ -57,7 +57,7 @@
       "desc" : "The text to show on the menu item.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "menu",
@@ -65,7 +65,7 @@
       "desc" : "A Sub menu",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "activeClass",
@@ -73,7 +73,7 @@
       "desc" : "The CSS class to use when the item becomes activated (defaults to \"x-menu-item-active\")",
       "memberOf" : "Roo.menu.BaseItem",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hidden",
@@ -81,7 +81,7 @@
       "desc" : "True to prevent creation of this menu item (defaults to false)",
       "memberOf" : "Roo.menu.BaseItem",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -89,7 +89,7 @@
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "display",
         "visibility"
       ]
@@ -100,7 +100,7 @@
       "desc" : "A function that will handle the click event of this menu item (defaults to undefined)",
       "memberOf" : "Roo.menu.BaseItem",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideDelay",
@@ -108,7 +108,7 @@
       "desc" : "Length of time in milliseconds to wait before hiding after a click (defaults to 100)",
       "memberOf" : "Roo.menu.BaseItem",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideOnClick",
@@ -116,7 +116,7 @@
       "desc" : "True to hide the containing menu after this item is clicked (defaults to true)",
       "memberOf" : "Roo.menu.BaseItem",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
@@ -124,7 +124,7 @@
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "html",
@@ -132,7 +132,7 @@
       "desc" : "to render in menu\nThe text to show on the menu item (HTML version).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "itemCls",
@@ -140,7 +140,7 @@
       "desc" : "The default CSS class to use for menu items (defaults to \"x-menu-item\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
@@ -148,7 +148,7 @@
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "canActivate",
@@ -156,7 +156,7 @@
       "desc" : "True if this item can be visually activated (defaults to true)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "icon",
@@ -164,7 +164,7 @@
       "desc" : "The path to an icon to display in this menu item (defaults to Roo.BLANK_IMAGE_URL)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
@@ -172,7 +172,7 @@
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -39,7 +39,7 @@
       "desc" : "Called after the template has been loaded and complied (usually from a remove source)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "html",
@@ -47,7 +47,7 @@
       "desc" : "The HTML fragment or an array of fragments to join(\"\") or multiple arguments to join(\"\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "url",
@@ -55,7 +55,7 @@
       "desc" : "The Url to load the template from. beware if you are loading from a url, the data may not be ready if you use it instantly..\n                   it should be fixed so that template is observable...",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -40,7 +40,7 @@
       "desc" : "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x-form-date-trigger'\nwhich displays a calendar icon).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "useIso",
@@ -48,7 +48,7 @@
       "desc" : "if enabled, then the date field will use a hidden field to store the \nreal value as iso formated date. default (false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -56,7 +56,7 @@
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "display",
         "visibility"
       ]
@@ -67,7 +67,7 @@
       "desc" : "True to disable input keystroke filtering (defaults to false)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disabled",
@@ -75,7 +75,7 @@
       "desc" : "True to disable the field (defaults to false).",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "zeroValue",
@@ -83,7 +83,7 @@
       "desc" : "if the date is less that this number, then the field is rendered as empty\ndefault is 1800",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "name",
@@ -91,7 +91,7 @@
       "desc" : "The field's HTML name attribute.",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validator",
@@ -99,7 +99,7 @@
       "desc" : "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disabledDates",
@@ -107,7 +107,7 @@
       "desc" : "An array of \"dates\" to disable, as strings. These strings will be used to build a dynamic regular\nexpression so they are very powerful. Some examples:\n<ul>\n<li>[\"03/08/2003\", \"09/16/2003\"] would disable those exact dates</li>\n<li>[\"03/08\", \"09/16\"] would disable those days for every year</li>\n<li>[\"^03/08\"] would only match the beginning (useful if you are using short years)</li>\n<li>[\"03/../2006\"] would disable every day in March 2006</li>\n<li>[\"^03\"] would disable every day in every March</li>\n</ul>\nIn order to support regular expressions, if you are using a date format that has \".\" in it, you will have to\nescape the dot when restricting dates. For example: [\"03\\\\.08\\\\.03\"].",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "width",
@@ -115,7 +115,7 @@
       "desc" : "width (optional) size of component",
       "memberOf" : "Roo.BoxComponent",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "regexText",
@@ -123,7 +123,7 @@
       "desc" : "The error text to display if {@link #regex} is used and the test fails during validation (defaults to \"\")",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "altFormats",
@@ -131,7 +131,7 @@
       "desc" : "Multiple date formats separated by \"|\" to try when parsing a user input value and it doesn't match the defined\nformat (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxValue",
@@ -139,7 +139,7 @@
       "desc" : "The maximum allowed date. Can be either a Javascript date object or a string date in a\nvalid format (defaults to null).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
@@ -147,7 +147,7 @@
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minValue",
@@ -155,7 +155,7 @@
       "desc" : "The minimum allowed date. Can be either a Javascript date object or a string date in a\nvalid format (defaults to null).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "height",
@@ -163,7 +163,7 @@
       "desc" : "height (optional) size of component",
       "memberOf" : "Roo.BoxComponent",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disabledDaysText",
@@ -171,7 +171,7 @@
       "desc" : "The tooltip to display when the date falls on a disabled day (defaults to 'Disabled')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minText",
@@ -179,7 +179,7 @@
       "desc" : "The error text to display when the date in the cell is before minValue (defaults to\n'The date in this field must be after {minValue}').",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "emptyText",
@@ -187,7 +187,7 @@
       "desc" : "The default text to display in an empty field - placeholder... (defaults to null).",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "value",
@@ -195,7 +195,7 @@
       "desc" : "A value to initialize this field with.",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "msgFx",
@@ -203,7 +203,7 @@
       "desc" : "<b>Experimental</b> The effect used when displaying a validation message under the field (defaults to 'normal').",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
@@ -211,7 +211,7 @@
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "msgTarget",
@@ -219,7 +219,7 @@
       "desc" : "The location where error text should display.  Should be one of the following values (defaults to 'qtip'):\n<pre>\nValue         Description\n-----------   ----------------------------------------------------------------------\nqtip          Display a quick tip when the user hovers over the field\ntitle         Display a default browser title attribute popup\nunder         Add a block div beneath the field containing the error text\nside          Add an error icon to the right of the field with a popup on hover\n[element id]  Add the error text directly to the innerHTML of the specified element\n</pre>",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disabledDatesText",
@@ -227,7 +227,7 @@
       "desc" : "The tooltip text to display when the date falls on a disabled date (defaults to 'Disabled')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minLengthText",
@@ -235,7 +235,7 @@
       "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxLengthText",
@@ -243,7 +243,7 @@
       "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -251,7 +251,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "readOnly",
@@ -259,7 +259,7 @@
       "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "focusClass",
@@ -267,7 +267,7 @@
       "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disabledDays",
@@ -275,7 +275,7 @@
       "desc" : "An array of days to disable, 0 based. For example, [0, 6] disables Sunday and Saturday (defaults to null).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideTrigger",
@@ -283,7 +283,7 @@
       "desc" : "True to hide the trigger element and display only the base text field (defaults to false)",
       "memberOf" : "Roo.form.TriggerField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
@@ -291,7 +291,7 @@
       "desc" : "A CSS class to apply to the field's underlying element.",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validateOnBlur",
@@ -299,7 +299,7 @@
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "inputType",
@@ -307,7 +307,7 @@
       "desc" : "The type attribute for input fields -- e.g. radio, text, password (defaults to \"text\").",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fieldClass",
@@ -315,7 +315,7 @@
       "desc" : "The default CSS class for the field (defaults to \"x-form-field\")",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoCreate",
@@ -323,7 +323,7 @@
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"10\", autocomplete: \"off\"})",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowLeadingSpace",
@@ -331,7 +331,7 @@
       "desc" : "True to prevent the stripping of leading white space",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "invalidClass",
@@ -339,7 +339,7 @@
       "desc" : "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maskRe",
@@ -347,7 +347,7 @@
       "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "vtype",
@@ -355,7 +355,7 @@
       "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validationEvent",
@@ -363,7 +363,7 @@
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fieldLabel",
@@ -371,7 +371,7 @@
       "desc" : "Label to use when rendering a form.",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "blankText",
@@ -379,7 +379,7 @@
       "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validationDelay",
@@ -387,7 +387,7 @@
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "selectOnFocus",
@@ -395,7 +395,7 @@
       "desc" : "True to automatically select any existing field text when the field receives input focus (defaults to false)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
@@ -403,7 +403,7 @@
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tabIndex",
@@ -411,7 +411,7 @@
       "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "format",
@@ -419,7 +419,7 @@
       "desc" : "The default date format string which can be overriden for localization support.  The format must be\nvalid according to {@link Date#parseDate} (defaults to 'm/d/y').",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "regex",
@@ -427,7 +427,7 @@
       "desc" : "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minLength",
@@ -435,7 +435,7 @@
       "desc" : "Minimum input field length required (defaults to 0)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxText",
@@ -443,7 +443,7 @@
       "desc" : "The error text to display when the date in the cell is after maxValue (defaults to\n'The date in this field must be before {maxValue}').",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowBlank",
@@ -451,7 +451,7 @@
       "desc" : "False to validate that the value length > 0 (defaults to true)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "qtip",
@@ -459,7 +459,7 @@
       "desc" : "Mouse over tip",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxLength",
@@ -467,7 +467,7 @@
       "desc" : "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "invalidText",
@@ -475,7 +475,7 @@
       "desc" : "The error text to display when the date in the field is invalid (defaults to\n'{value} is not a valid date - it must be in the format {format}').",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

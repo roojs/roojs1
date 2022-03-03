@@ -33,7 +33,7 @@
       "desc" : "menu - see Roo.form.HtmlEditor.ToolbarContext",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "friendly_name",
@@ -41,7 +41,7 @@
       "desc" : "the name that appears in the context bar about this block",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "node",
@@ -49,7 +49,7 @@
       "desc" : "The node to apply stuff to.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -39,7 +39,7 @@
       "desc" : "The text to display in a centered loading message box (defaults to 'Loading...')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "removeMask",
@@ -47,7 +47,7 @@
       "desc" : "True to create a single-use mask that is automatically destroyed after loading (useful for page loads),\nFalse to persist the mask element reference for multiple uses (e.g., for paged data widgets).  Defaults to false.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "msgCls",
@@ -55,7 +55,7 @@
       "desc" : "The CSS class to apply to the loading message element (defaults to \"x-mask-loading\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

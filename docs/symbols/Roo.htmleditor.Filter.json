@@ -33,7 +33,7 @@
       "desc" : "Tags to replace",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "node",
@@ -41,7 +41,7 @@
       "desc" : "The node to iterate and filter",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [],

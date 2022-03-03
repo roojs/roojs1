@@ -40,7 +40,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "proxy",
@@ -48,7 +48,7 @@
       "desc" : "The Proxy object which provides access to a data object.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "multiSort",
@@ -56,7 +56,7 @@
       "desc" : "enable multi column sorting (sort is based on the order of columns, remote only at present)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "pruneModifiedRecords",
@@ -64,7 +64,7 @@
       "desc" : "True to clear all modified record information each time the store is\nloaded or when a record is removed. (defaults to false).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "remoteSort",
@@ -72,7 +72,7 @@
       "desc" : "True if sorting is to be handled by requesting the Proxy to provide a refreshed\nversion of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "data",
@@ -80,7 +80,7 @@
       "desc" : "Inline data to be loaded when the store is initialized.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "sortInfo",
@@ -88,7 +88,7 @@
       "desc" : "A config object in the format: {field: \"fieldName\", direction: \"ASC|DESC\"}",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "baseParams",
@@ -96,7 +96,7 @@
       "desc" : "An object containing properties which are to be sent as parameters\non any HTTP request",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "reader",
@@ -104,7 +104,7 @@
       "desc" : "The Reader object which processes the data object and returns\nan Array of Roo.data.record objects which are cached keyed by their <em>id</em> property.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "isLocal",
@@ -112,7 +112,7 @@
       "desc" : "flag if data is locally available (and can be always looked up\nwithout a remote query - used by combo/forms at present.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

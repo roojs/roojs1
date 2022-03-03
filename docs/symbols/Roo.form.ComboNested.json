@@ -41,7 +41,7 @@
       "desc" : "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x-form-arrow-trigger'\nwhich displays a downward arrow icon).",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "pageSize",
@@ -49,7 +49,7 @@
       "desc" : "If greater than 0, a paging toolbar is displayed in the footer of the dropdown list and the\nfilter queries will execute with page start and limit parameters.  Only applies when mode = 'remote' (defaults to 0)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -57,7 +57,7 @@
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "display",
         "visibility"
       ]
@@ -68,7 +68,7 @@
       "desc" : "True to disable input keystroke filtering (defaults to false)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "queryParam",
@@ -76,7 +76,7 @@
       "desc" : "Name of the query as it will be passed on the querystring (defaults to 'query')",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disabled",
@@ -84,7 +84,7 @@
       "desc" : "True to disable the field (defaults to false).",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "title",
@@ -92,7 +92,7 @@
       "desc" : "If supplied, a header element is created containing this text and added into the top of\nthe dropdown list (defaults to undefined, with no header element)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "name",
@@ -100,7 +100,7 @@
       "desc" : "The field's HTML name attribute.",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validator",
@@ -108,7 +108,7 @@
       "desc" : "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "resizable",
@@ -116,7 +116,7 @@
       "desc" : "True to add a resize handle to the bottom of the dropdown list (defaults to false)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "width",
@@ -124,7 +124,7 @@
       "desc" : "width (optional) size of component",
       "memberOf" : "Roo.BoxComponent",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "editable",
@@ -132,7 +132,7 @@
       "desc" : "False to prevent the user from typing text directly into the field, just like a\ntraditional select (defaults to true)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "regexText",
@@ -140,7 +140,7 @@
       "desc" : "The error text to display if {@link #regex} is used and the test fails during validation (defaults to \"\")",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
@@ -148,7 +148,7 @@
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listWidth",
@@ -156,7 +156,7 @@
       "desc" : "The width in pixels of the dropdown list (defaults to the width of the ComboBox field)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "height",
@@ -164,7 +164,7 @@
       "desc" : "height (optional) size of component",
       "memberOf" : "Roo.BoxComponent",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tpl",
@@ -172,7 +172,7 @@
       "desc" : "The template to use to render the output",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "typeAheadDelay",
@@ -180,7 +180,7 @@
       "desc" : "The length of time in milliseconds to wait until the typeahead text is displayed\nif typeAhead = true (defaults to 250)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClear",
@@ -188,7 +188,7 @@
       "desc" : "Disable showing of clear button.",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "value",
@@ -196,7 +196,7 @@
       "desc" : "A value to initialize this field with.",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "emptyText",
@@ -204,7 +204,7 @@
       "desc" : "The default text to display in an empty field - placeholder... (defaults to null).",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "store",
@@ -212,7 +212,7 @@
       "desc" : "The data store to which this combo is bound (defaults to undefined)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "msgFx",
@@ -220,7 +220,7 @@
       "desc" : "<b>Experimental</b> The effect used when displaying a validation message under the field (defaults to 'normal').",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
@@ -228,7 +228,7 @@
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allQuery",
@@ -236,7 +236,7 @@
       "desc" : "The text query to send to the server to return all records for the list with no filtering (defaults to '')",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "msgTarget",
@@ -244,7 +244,7 @@
       "desc" : "The location where error text should display.  Should be one of the following values (defaults to 'qtip'):\n<pre>\nValue         Description\n-----------   ----------------------------------------------------------------------\nqtip          Display a quick tip when the user hovers over the field\ntitle         Display a default browser title attribute popup\nunder         Add a block div beneath the field containing the error text\nside          Add an error icon to the right of the field with a popup on hover\n[element id]  Add the error text directly to the innerHTML of the specified element\n</pre>",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minListWidth",
@@ -252,7 +252,7 @@
       "desc" : "The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if\nlistWidth has a higher value)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxLengthText",
@@ -260,7 +260,7 @@
       "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minLengthText",
@@ -268,7 +268,7 @@
       "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -276,7 +276,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "alwaysQuery",
@@ -284,7 +284,7 @@
       "desc" : "Disable caching of results, and always send query",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "readOnly",
@@ -292,7 +292,7 @@
       "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "shadow",
@@ -300,7 +300,7 @@
       "desc" : "True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\" for bottom-right",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "focusClass",
@@ -308,7 +308,7 @@
       "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "valueNotFoundText",
@@ -316,7 +316,7 @@
       "desc" : "When using a name/value combo, if the value passed to setValue is not found in\nthe store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hiddenName",
@@ -324,7 +324,7 @@
       "desc" : "If specified, a hidden form field with this name is dynamically generated to store the\nfield's data value (defaults to the underlying DOM element's name)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "selectedClass",
@@ -332,7 +332,7 @@
       "desc" : "CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "displayField",
@@ -340,7 +340,7 @@
       "desc" : "The underlying data field name to bind to this CombBox (defaults to undefined if\nmode = 'remote' or 'text' if mode = 'local')",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideTrigger",
@@ -348,7 +348,7 @@
       "desc" : "True to hide the trigger element and display only the base text field (defaults to false)",
       "memberOf" : "Roo.form.TriggerField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
@@ -356,7 +356,7 @@
       "desc" : "A CSS class to apply to the field's underlying element.",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validateOnBlur",
@@ -364,7 +364,7 @@
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listAlign",
@@ -372,7 +372,7 @@
       "desc" : "A valid anchor position value. See {@link Roo.Element#alignTo} for details on supported\nanchor positions (defaults to 'tl-bl')",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "typeAhead",
@@ -380,7 +380,7 @@
       "desc" : "True to populate and autoselect the remainder of the text being typed after a configurable\ndelay (typeAheadDelay) if it matches a known value (defaults to false)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "forceSelection",
@@ -388,7 +388,7 @@
       "desc" : "True to restrict the selected value to one of the values in the list, false to\nallow the user to set arbitrary text into the field (defaults to false)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "triggerAction",
@@ -396,7 +396,7 @@
       "desc" : "The action to execute when the trigger field is activated.  Use 'all' to run the\nquery specified by the allQuery config option (defaults to 'query')",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "inputType",
@@ -404,7 +404,7 @@
       "desc" : "The type attribute for input fields -- e.g. radio, text, password (defaults to \"text\").",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fieldClass",
@@ -412,7 +412,7 @@
       "desc" : "The default CSS class for the field (defaults to \"x-form-field\")",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoCreate",
@@ -420,7 +420,7 @@
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to:\n{tag: \"input\", type: \"text\", size: \"24\", autocomplete: \"off\"})",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minChars",
@@ -428,7 +428,7 @@
       "desc" : "The minimum number of characters the user must type before autocomplete and typeahead activate\n(defaults to 4, does not apply if editable = false)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "growMin",
@@ -436,7 +436,7 @@
       "desc" : "",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "vtype",
@@ -444,7 +444,7 @@
       "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maskRe",
@@ -452,7 +452,7 @@
       "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowLeadingSpace",
@@ -460,7 +460,7 @@
       "desc" : "True to prevent the stripping of leading white space",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "invalidClass",
@@ -468,7 +468,7 @@
       "desc" : "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validationEvent",
@@ -476,7 +476,7 @@
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "blockFocus",
@@ -484,7 +484,7 @@
       "desc" : "Prevents all focus calls, so it can work with things like HTML edtor bar",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fieldLabel",
@@ -492,7 +492,7 @@
       "desc" : "Label to use when rendering a form.",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "selectOnFocus",
@@ -500,7 +500,7 @@
       "desc" : "True to select any existing text in the field immediately on focus.  Only applies\nwhen editable = true (defaults to false)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "blankText",
@@ -508,7 +508,7 @@
       "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validationDelay",
@@ -516,7 +516,7 @@
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
@@ -524,7 +524,7 @@
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tabIndex",
@@ -532,7 +532,7 @@
       "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "growMax",
@@ -540,7 +540,7 @@
       "desc" : "",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "transform",
@@ -548,7 +548,7 @@
       "desc" : "The id, DOM node or element of an existing select to convert to a ComboBox",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listClass",
@@ -556,7 +556,7 @@
       "desc" : "CSS class to apply to the dropdown list element (defaults to '')",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "handleHeight",
@@ -564,7 +564,7 @@
       "desc" : "The height in pixels of the dropdown list resize handle if resizable = true (defaults to 8)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "regex",
@@ -572,7 +572,7 @@
       "desc" : "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "grow",
@@ -580,7 +580,7 @@
       "desc" : "",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minLength",
@@ -588,7 +588,7 @@
       "desc" : "Minimum input field length required (defaults to 0)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "queryDelay",
@@ -596,7 +596,7 @@
       "desc" : "The length of time in milliseconds to delay between the start of typing and sending the\nquery to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "mode",
@@ -604,7 +604,7 @@
       "desc" : "Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowBlank",
@@ -612,7 +612,7 @@
       "desc" : "False to validate that the value length > 0 (defaults to true)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "qtip",
@@ -620,7 +620,7 @@
       "desc" : "Mouse over tip",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxHeight",
@@ -628,7 +628,7 @@
       "desc" : "The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "valueField",
@@ -636,7 +636,7 @@
       "desc" : "The underlying data value name to bind to this CombBox (defaults to undefined if\nmode = 'remote' or 'value' if mode = 'local'). \nNote: use of a valueField requires the user make a selection\nin order for a value to be mapped.",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "loadingText",
@@ -644,7 +644,7 @@
       "desc" : "The text to display in the dropdown list while data is loading.  Only applies\nwhen mode = 'remote' (defaults to 'Loading...')",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxLength",
@@ -652,7 +652,7 @@
       "desc" : "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
       "memberOf" : "Roo.form.TextField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "lazyRender",
@@ -660,7 +660,7 @@
       "desc" : "True to prevent the ComboBox from rendering until requested (should always be used when\nrendering into an Roo.Editor, defaults to false)",
       "memberOf" : "Roo.form.ComboBox",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "invalidText",
@@ -668,7 +668,7 @@
       "desc" : "The error text to use when marking a field invalid and no message is provided (defaults to \"The value in this field is invalid\")",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

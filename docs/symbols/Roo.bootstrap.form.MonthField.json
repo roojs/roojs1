@@ -38,7 +38,7 @@
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "lg",
@@ -46,7 +46,7 @@
       "desc" : "colspan out of 12 for large computer-sized screens",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "accept",
@@ -54,7 +54,7 @@
       "desc" : "o) use for file input only. (default empt",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "image",
         "video",
         "audio"
@@ -66,7 +66,7 @@
       "desc" : "to show before",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "xs",
@@ -74,7 +74,7 @@
       "desc" : "colspan out of 12 for mobile-sized screens",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -82,7 +82,7 @@
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "display",
         "visibility"
       ]
@@ -93,7 +93,7 @@
       "desc" : "True to disable input keystroke filtering (defaults to false)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "xattr",
@@ -101,7 +101,7 @@
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disabled",
@@ -109,7 +109,7 @@
       "desc" : "is it disabled",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validator",
@@ -117,7 +117,7 @@
       "desc" : "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "name",
@@ -125,7 +125,7 @@
       "desc" : "name of the input",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autocomplete",
@@ -133,7 +133,7 @@
       "desc" : "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tooltip",
@@ -141,7 +141,7 @@
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labelAlign",
@@ -149,7 +149,7 @@
       "desc" : "",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "top",
         "left"
       ]
@@ -160,7 +160,7 @@
       "desc" : "-- Depricated - use Invalid Text",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
@@ -168,7 +168,7 @@
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "style",
@@ -176,7 +176,7 @@
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labelmd",
@@ -184,7 +184,7 @@
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "value",
@@ -192,7 +192,7 @@
       "desc" : "default value of the input",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hasFeedback",
@@ -200,7 +200,7 @@
       "desc" : "e) default tr",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -211,7 +211,7 @@
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "sm",
@@ -219,7 +219,7 @@
       "desc" : "colspan out of 12 for tablet-sized screens",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minLengthText",
@@ -227,7 +227,7 @@
       "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxLengthText",
@@ -235,7 +235,7 @@
       "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -243,7 +243,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "container_method",
@@ -251,7 +251,7 @@
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "readOnly",
@@ -259,7 +259,7 @@
       "desc" : "Specifies that the field should be read-only",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "indicatorpos",
@@ -267,7 +267,7 @@
       "desc" : "t) default le",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "left",
         "right"
       ]
@@ -278,7 +278,7 @@
       "desc" : "t) Default le",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "left",
         "center",
         "right"
@@ -290,7 +290,7 @@
       "desc" : "default en",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "focusClass",
@@ -298,7 +298,7 @@
       "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "size",
@@ -306,7 +306,7 @@
       "desc" : "- (lg|sm) or leave empty..",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labellg",
@@ -314,7 +314,7 @@
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labelxs",
@@ -322,7 +322,7 @@
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validateOnBlur",
@@ -330,7 +330,7 @@
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
@@ -338,7 +338,7 @@
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "inputType",
@@ -346,7 +346,7 @@
       "desc" : "",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "button",
         "checkbox",
         "email",
@@ -369,7 +369,7 @@
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "invalidClass",
@@ -377,7 +377,7 @@
       "desc" : "DEPRICATED - code uses BS4 - is-valid / is-invalid",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maskRe",
@@ -385,7 +385,7 @@
       "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "vtype",
@@ -393,7 +393,7 @@
       "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fieldLabel",
@@ -401,7 +401,7 @@
       "desc" : "- the label associated",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "can_build_overlaid",
@@ -409,7 +409,7 @@
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "before",
@@ -417,7 +417,7 @@
       "desc" : "- input group add on before",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "selectOnFocus",
@@ -425,7 +425,7 @@
       "desc" : "True to automatically select any existing field text when the field receives input focus (defaults to false)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validationDelay",
@@ -433,7 +433,7 @@
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "blankText",
@@ -441,7 +441,7 @@
       "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
@@ -449,7 +449,7 @@
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "invalidFeedbackIcon",
@@ -457,7 +457,7 @@
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "visibilityEl",
@@ -465,7 +465,7 @@
       "desc" : "t) What element to use for visibility (@see getVisibilityEl(",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "el",
         "parent"
       ]
@@ -476,7 +476,7 @@
       "desc" : "- placeholder to put in text.",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dataId",
@@ -484,7 +484,7 @@
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "md",
@@ -492,7 +492,7 @@
       "desc" : "colspan out of 12 for computer-sized screens",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "regex",
@@ -500,7 +500,7 @@
       "desc" : "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labelWidth",
@@ -508,7 +508,7 @@
       "desc" : "set the width of label",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minLength",
@@ -516,7 +516,7 @@
       "desc" : "Minimum input field length required (defaults to 0)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "capture",
@@ -524,7 +524,7 @@
       "desc" : "a) use for file input only. (default empt",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "user",
         "camera"
       ]
@@ -535,7 +535,7 @@
       "desc" : "DEPRICATED - code uses BS4 - is-valid / is-invalid",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowBlank",
@@ -543,7 +543,7 @@
       "desc" : "False to validate that the value length > 0 (defaults to true)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "preventMark",
@@ -551,7 +551,7 @@
       "desc" : "Do not show tick or cross if error/success",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "forceFeedback",
@@ -559,7 +559,7 @@
       "desc" : "e) Default fal",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -570,7 +570,7 @@
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "after",
@@ -578,7 +578,7 @@
       "desc" : "- input group add on after",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxLength",
@@ -586,7 +586,7 @@
       "desc" : "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "invalidText",
@@ -594,7 +594,7 @@
       "desc" : "The error text to display if {@link #validator} test fails during validation (defaults to \"\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

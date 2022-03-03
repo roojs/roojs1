@@ -45,7 +45,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "shadow",
@@ -53,7 +53,7 @@
       "desc" : "True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\"\nfor bottom-right shadow (defaults to \"sides\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "defaultAlign",
@@ -61,7 +61,7 @@
       "desc" : "The default {@link Roo.Element#alignTo) anchor position value for this menu\nrelative to its element of origin (defaults to \"tl-bl?\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "subMenuAlign",
@@ -69,7 +69,7 @@
       "desc" : "The {@link Roo.Element#alignTo} anchor position value to use for submenus of\nthis menu (defaults to \"tl-tr?\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minWidth",
@@ -77,7 +77,7 @@
       "desc" : "The minimum width of the menu in pixels (defaults to 120)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "registerMenu",
@@ -85,7 +85,7 @@
       "desc" : "True (default) - means that clicking on screen etc. hides it.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowOtherMenus",
@@ -93,7 +93,7 @@
       "desc" : "True to allow multiple menus to be displayed at the same time (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

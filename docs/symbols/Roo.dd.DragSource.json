@@ -48,7 +48,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dropNotAllowed",
@@ -56,7 +56,7 @@
       "desc" : "The CSS class returned to the drag source when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dropAllowed",
@@ -64,7 +64,7 @@
       "desc" : "The CSS class returned to the drag source when drop is allowed (defaults to \"x-dd-drop-ok\").",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -43,7 +43,7 @@
       "desc" : "",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "selectOnFocus",
@@ -51,7 +51,7 @@
       "desc" : "True to select any existing text in the field immediately on focus.  Only applies\nwhen editable = true (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "md",
@@ -59,7 +59,7 @@
       "desc" : "colspan out of 12 for computer-sized screens",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dataId",
@@ -67,7 +67,7 @@
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "grow",
@@ -75,7 +75,7 @@
       "desc" : "",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "capture",
@@ -83,7 +83,7 @@
       "desc" : "a) use for file input only. (default empt",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "user",
         "camera"
       ]
@@ -94,7 +94,7 @@
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "queryDelay",
@@ -102,7 +102,7 @@
       "desc" : "The length of time in milliseconds to delay between the start of typing and sending the\nquery to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minLength",
@@ -110,7 +110,7 @@
       "desc" : "Minimum input field length required (defaults to 0)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "triggerAction",
@@ -118,7 +118,7 @@
       "desc" : "The action to execute when the trigger field is activated.  Use 'all' to run the\nquery specified by the allQuery config option (defaults to 'query')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "resizable",
@@ -126,7 +126,7 @@
       "desc" : "True to add a resize handle to the bottom of the dropdown list (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "mobileTouchView",
@@ -134,7 +134,7 @@
       "desc" : "e) show mobile touch view when using a mobile default tr",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -145,7 +145,7 @@
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "editable",
@@ -153,7 +153,7 @@
       "desc" : "False to prevent the user from typing text directly into the field, just like a\ntraditional select (defaults to true)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -161,7 +161,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labelAlign",
@@ -169,7 +169,7 @@
       "desc" : "",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "top",
         "left"
       ]
@@ -180,7 +180,7 @@
       "desc" : "The width in pixels of the dropdown list (defaults to the width of the ComboBox field)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "alwaysQuery",
@@ -188,7 +188,7 @@
       "desc" : "Disable caching of results, and always send query",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "handleHeight",
@@ -196,7 +196,7 @@
       "desc" : "The height in pixels of the dropdown list resize handle if resizable = true (defaults to 8)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "visibilityEl",
@@ -204,7 +204,7 @@
       "desc" : "t) What element to use for visibility (@see getVisibilityEl(",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "el",
         "parent"
       ]
@@ -215,7 +215,7 @@
       "desc" : "only for touch device",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "title",
@@ -223,7 +223,7 @@
       "desc" : "If supplied, a header element is created containing this text and added into the top of\nthe dropdown list (defaults to undefined, with no header element)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "style",
@@ -231,7 +231,7 @@
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxLength",
@@ -239,7 +239,7 @@
       "desc" : "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "after",
@@ -247,7 +247,7 @@
       "desc" : "- input group add on after",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "name",
@@ -255,7 +255,7 @@
       "desc" : "name of the input",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "queryParam",
@@ -263,7 +263,7 @@
       "desc" : "Name of the query as it will be passed on the querystring (defaults to 'query')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tpl",
@@ -271,7 +271,7 @@
       "desc" : "The template to use to render the output default is  '<a class=\"dropdown-item\" href=\"#\">{' + this.displayField + '}</a>'",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "selectedClass",
@@ -279,7 +279,7 @@
       "desc" : "CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
@@ -287,7 +287,7 @@
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autocomplete",
@@ -295,7 +295,7 @@
       "desc" : "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hasFeedback",
@@ -303,7 +303,7 @@
       "desc" : "e) default tr",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -314,7 +314,7 @@
       "desc" : "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
@@ -322,7 +322,7 @@
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hiddenName",
@@ -330,7 +330,7 @@
       "desc" : "If specified, a hidden form field with this name is dynamically generated to store the\nfield's data value (defaults to the underlying DOM element's name)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "sm",
@@ -338,7 +338,7 @@
       "desc" : "colspan out of 12 for tablet-sized screens",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoCreate",
@@ -346,7 +346,7 @@
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to:\n{tag: \"input\", type: \"text\", size: \"24\", autocomplete: \"off\"})",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "removable",
@@ -354,7 +354,7 @@
       "desc" : "e) special filter default fal",
       "memberOf" : "Roo.bootstrap.form.TriggerField",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -365,7 +365,7 @@
       "desc" : "The minimum number of characters the user must type before autocomplete and typeahead activate\n(defaults to 4, does not apply if editable = false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "animate",
@@ -373,7 +373,7 @@
       "desc" : "default true",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "btnPosition",
@@ -381,7 +381,7 @@
       "desc" : "set the position of the trigger button (left | right) default right",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validationEvent",
@@ -389,7 +389,7 @@
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClear",
@@ -397,7 +397,7 @@
       "desc" : "Disable showing of clear button.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "container_method",
@@ -405,7 +405,7 @@
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "xs",
@@ -413,7 +413,7 @@
       "desc" : "colspan out of 12 for mobile-sized screens",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "lazyRender",
@@ -421,7 +421,7 @@
       "desc" : "True to prevent the ComboBox from rendering until requested (should always be used when\nrendering into an Roo.Editor, defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labelsm",
@@ -429,7 +429,7 @@
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "indicatorpos",
@@ -437,7 +437,7 @@
       "desc" : "t) default le",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "left",
         "right"
       ]
@@ -448,7 +448,7 @@
       "desc" : "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labelxs",
@@ -456,7 +456,7 @@
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "afterButton",
@@ -464,7 +464,7 @@
       "desc" : "to show before",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listAlign",
@@ -472,7 +472,7 @@
       "desc" : "A valid anchor position value. See {@link Roo.Element#alignTo} for details on supported\nanchor positions (defaults to 'tl-bl')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "showToggleBtn",
@@ -480,7 +480,7 @@
       "desc" : "show toggle button or not (true|false) default true",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "invalidFeedbackIcon",
@@ -488,7 +488,7 @@
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "triggerList",
@@ -496,7 +496,7 @@
       "desc" : "trigger show the list or not (true|false) default true",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "xattr",
@@ -504,7 +504,7 @@
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "forceFeedback",
@@ -512,7 +512,7 @@
       "desc" : "e) Default fal",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -523,7 +523,7 @@
       "desc" : "Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maskRe",
@@ -531,7 +531,7 @@
       "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "typeAhead",
@@ -539,7 +539,7 @@
       "desc" : "True to populate and autoselect the remainder of the text being typed after a configurable\ndelay (typeAheadDelay) if it matches a known value (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableKeyFilter",
@@ -547,7 +547,7 @@
       "desc" : "True to disable input keystroke filtering (defaults to false)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "triggerText",
@@ -555,7 +555,7 @@
       "desc" : "multiple combobox trigger button text default 'Select'",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "regexText",
@@ -563,7 +563,7 @@
       "desc" : "-- Depricated - use Invalid Text",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
@@ -571,7 +571,7 @@
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fieldLabel",
@@ -579,7 +579,7 @@
       "desc" : "- the label associated",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "growMin",
@@ -587,7 +587,7 @@
       "desc" : "",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disabled",
@@ -595,7 +595,7 @@
       "desc" : "is it disabled",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "triggerClass",
@@ -603,7 +603,7 @@
       "desc" : "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",
       "memberOf" : "Roo.bootstrap.form.TriggerField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validClass",
@@ -611,7 +611,7 @@
       "desc" : "DEPRICATED - uses BS4 is-valid now",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "modalTitle",
@@ -619,7 +619,7 @@
       "desc" : "The title of the dialog that pops up on mobile views.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "preventMark",
@@ -627,7 +627,7 @@
       "desc" : "Do not show tick or cross if error/success",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "accept",
@@ -635,7 +635,7 @@
       "desc" : "o) use for file input only. (default empt",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "image",
         "video",
         "audio"
@@ -647,7 +647,7 @@
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "valueField",
@@ -655,7 +655,7 @@
       "desc" : "The underlying data value name to bind to this CombBox (defaults to undefined if\nmode = 'remote' or 'value' if mode = 'local'). \nNote: use of a valueField requires the user make a selection\nin order for a value to be mapped.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowBlank",
@@ -663,7 +663,7 @@
       "desc" : "False to validate that the value length > 0 (defaults to true)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "focusClass",
@@ -671,7 +671,7 @@
       "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "store",
@@ -679,7 +679,7 @@
       "desc" : "The data store to which this combo is bound (defaults to undefined)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "invalidClass",
@@ -687,7 +687,7 @@
       "desc" : "DEPRICATED - uses BS4 is-valid now",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listClass",
@@ -695,7 +695,7 @@
       "desc" : "CSS class to apply to the dropdown list element (defaults to '')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "displayField",
@@ -703,7 +703,7 @@
       "desc" : "The underlying data field name to bind to this CombBox (defaults to undefined if\nmode = 'remote' or 'text' if mode = 'local')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "inputType",
@@ -711,7 +711,7 @@
       "desc" : "",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "button",
         "checkbox",
         "email",
@@ -734,7 +734,7 @@
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tickable",
@@ -742,7 +742,7 @@
       "desc" : "ComboBox with tickable selections (true|false), default false",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "specialFilter",
@@ -750,7 +750,7 @@
       "desc" : "e) special filter default fal",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -761,7 +761,7 @@
       "desc" : "default ''",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "typeAheadDelay",
@@ -769,7 +769,7 @@
       "desc" : "The length of time in milliseconds to wait until the typeahead text is displayed\nif typeAhead = true (defaults to 250)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "loadingText",
@@ -777,7 +777,7 @@
       "desc" : "The text to display in the dropdown list while data is loading.  Only applies\nwhen mode = 'remote' (defaults to 'Loading...')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "size",
@@ -785,7 +785,7 @@
       "desc" : "- (lg|sm) or leave empty..",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "width",
@@ -793,7 +793,7 @@
       "desc" : "fixed with? experimental",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "caret",
@@ -801,7 +801,7 @@
       "desc" : "r) BS3 only - carat fa na",
       "memberOf" : "Roo.bootstrap.form.TriggerField",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "search",
         "calendar"
       ]
@@ -812,7 +812,7 @@
       "desc" : "True to hide the trigger element and display only the base text field (defaults to false)",
       "memberOf" : "Roo.bootstrap.form.TriggerField",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minListWidth",
@@ -820,7 +820,7 @@
       "desc" : "The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if\nlistWidth has a higher value)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "invalidText",
@@ -828,7 +828,7 @@
       "desc" : "The error text to display if {@link #validator} test fails during validation (defaults to \"\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "multiple",
@@ -836,7 +836,7 @@
       "desc" : "e) ComboBobArray, default fal",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -847,7 +847,7 @@
       "desc" : "- placeholder to put in text.",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "before",
@@ -855,7 +855,7 @@
       "desc" : "- input group add on before",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "blankText",
@@ -863,7 +863,7 @@
       "desc" : "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "readOnly",
@@ -871,7 +871,7 @@
       "desc" : "Specifies that the field should be read-only",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -879,7 +879,7 @@
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "display",
         "visibility"
       ]
@@ -890,7 +890,7 @@
       "desc" : "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxHeight",
@@ -898,7 +898,7 @@
       "desc" : "The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "mobile_restrict_height",
@@ -906,7 +906,7 @@
       "desc" : "e) restrict height for touch vi",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -917,7 +917,7 @@
       "desc" : "When using a name/value combo, if the value passed to setValue is not found in\nthe store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "validFeedbackIcon",
@@ -925,7 +925,7 @@
       "desc" : "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoFocus",
@@ -933,7 +933,7 @@
       "desc" : "e) auto focus the first item, default tr",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -944,7 +944,7 @@
       "desc" : "colspan out of 12 for large computer-sized screens",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "pageSize",
@@ -952,7 +952,7 @@
       "desc" : "If greater than 0, a paging toolbar is displayed in the footer of the dropdown list and the\nfilter queries will execute with page start and limit parameters.  Only applies when mode = 'remote' (defaults to 0)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "useNativeIOS",
@@ -960,7 +960,7 @@
       "desc" : "e) render it as classic select for ios, not support dynamic load data (default fals",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -971,7 +971,7 @@
       "desc" : "True to restrict the selected value to one of the values in the list, false to\nallow the user to set arbitrary text into the field (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labelWidth",
@@ -979,7 +979,7 @@
       "desc" : "set the width of label",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "append",
@@ -987,7 +987,7 @@
       "desc" : "e) default fal",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -998,7 +998,7 @@
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labellg",
@@ -1006,7 +1006,7 @@
       "desc" : "set the width of label (1-12)",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allQuery",
@@ -1014,7 +1014,7 @@
       "desc" : "The text query to send to the server to return all records for the list with no filtering (defaults to '')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
@@ -1022,7 +1022,7 @@
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "blockFocus",
@@ -1030,7 +1030,7 @@
       "desc" : "Prevents all focus calls, so it can work with things like HTML edtor bar",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "shadow",
@@ -1038,7 +1038,7 @@
       "desc" : "True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\" for bottom-right",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxLengthText",
@@ -1046,7 +1046,7 @@
       "desc" : "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "value",
@@ -1054,7 +1054,7 @@
       "desc" : "default value of the input",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "regex",
@@ -1062,7 +1062,7 @@
       "desc" : "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "align",
@@ -1070,7 +1070,7 @@
       "desc" : "t) Default le",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "left",
         "center",
         "right"

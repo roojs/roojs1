@@ -49,7 +49,7 @@
       "desc" : "True to automatically resize the columns to fit their content\n<b>on initial render.</b> It is more efficient to explicitly size the columns\nthrough the ColumnModel's {@link Roo.grid.ColumnModel#width} config option.  Default is false.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -57,7 +57,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cm[]",
@@ -65,7 +65,7 @@
       "desc" : "The columns of the grid",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxRowsToMeasure",
@@ -73,7 +73,7 @@
       "desc" : "If autoSizeColumns is on, maxRowsToMeasure can be used to limit the number of\nrows measured to get a columns size. Default is 0 (all rows).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minColumnWidth",
@@ -81,7 +81,7 @@
       "desc" : "The minimum width a column can be resized to. Default is 25.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "ddText",
@@ -89,7 +89,7 @@
       "desc" : "Configures the text is the drag proxy (defaults to \"%0 selected row(s)\").\n%0 is replaced with the number of selected rows.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "toolbar",
@@ -97,7 +97,7 @@
       "desc" : "a toolbar for buttons etc.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoExpandColumn",
@@ -105,7 +105,7 @@
       "desc" : "The id (or dataIndex) of a column in this grid that should expand to fill unused space. This id can not be 0. Default is false.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoExpandMax",
@@ -113,7 +113,7 @@
       "desc" : "The maximum width the autoExpandColumn can have (if enabled). Default is 1000.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "enableRowHeightSync",
@@ -121,7 +121,7 @@
       "desc" : "True to manually sync row heights across locked and not locked rows. Default is false.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "enableDrop",
@@ -129,7 +129,7 @@
       "desc" : "True to enable drop of elements. Default is false. (double check if this is needed?)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "monitorWindowResize",
@@ -137,7 +137,7 @@
       "desc" : "True to autoSize the grid when the window resizes. Default is true.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoExpandMin",
@@ -145,7 +145,7 @@
       "desc" : "The minimum width the autoExpandColumn can have (if enabled).\nDefault is 50.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "view",
@@ -153,7 +153,7 @@
       "desc" : "The view that renders the grid (default = Roo.grid.GridView)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "ds",
@@ -161,7 +161,7 @@
       "desc" : "The data store for the grid",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "ddGroup",
@@ -169,7 +169,7 @@
       "desc" : "- drag drop group.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "enableDrag",
@@ -177,7 +177,7 @@
       "desc" : "True to enable drag of rows. Default is false. (double check if this is needed?)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoWidth",
@@ -185,7 +185,7 @@
       "desc" : "True to set the grid's width to the default total width of the grid's columns instead\nof a fixed width. Default is false.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxHeight",
@@ -193,7 +193,7 @@
       "desc" : "Sets the maximum height of the grid - ignored if autoHeight is not on.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "trackMouseOver",
@@ -201,7 +201,7 @@
       "desc" : "True to highlight rows when the mouse is over. Default is true.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "loadMask",
@@ -209,7 +209,7 @@
       "desc" : "An {@link Roo.LoadMask} config or true to mask the grid while loading. Default is false.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "stripeRows",
@@ -217,7 +217,7 @@
       "desc" : "True to stripe the rows.  Default is true.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "enableColumnMove",
@@ -225,7 +225,7 @@
       "desc" : "True to enable drag and drop reorder of columns. Default is true.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "enableColumnHide",
@@ -233,7 +233,7 @@
       "desc" : "True to enable hiding of columns with the header context menu. Default is true.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoSizeHeaders",
@@ -241,7 +241,7 @@
       "desc" : "True to measure headers with column data when auto sizing columns. Default is true.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "sortColMenu",
@@ -249,7 +249,7 @@
       "desc" : "Sort the column order menu when it shows (usefull for long lists..) default false",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "enableDragDrop",
@@ -257,7 +257,7 @@
       "desc" : "True to enable drag and drop of rows. Default is false.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dropTarget",
@@ -265,7 +265,7 @@
       "desc" : "An {@link Roo.dd.DropTarget} config",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "sm",
@@ -273,7 +273,7 @@
       "desc" : "The selection Model (default = Roo.grid.RowSelectionModel)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dragGroup",
@@ -281,7 +281,7 @@
       "desc" : "- drag group (?? not sure if needed.)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoHeight",
@@ -289,7 +289,7 @@
       "desc" : "True to fit the height of the grid container to the height of the data. Default is false.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

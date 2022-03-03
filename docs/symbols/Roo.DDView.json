@@ -45,7 +45,7 @@
       "desc" : "The ddgroup name(s) for the View's DropZone.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowCopy",
@@ -53,7 +53,7 @@
       "desc" : "Causes ctrl/drag operations to copy nodes rather than move.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "copy",
@@ -61,7 +61,7 @@
       "desc" : "Causes drag operations to copy nodes rather than move.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dragGroup",
@@ -69,7 +69,7 @@
       "desc" : "The ddgroup name(s) for the View's DragZone.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

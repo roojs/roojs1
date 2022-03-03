@@ -37,7 +37,7 @@
       "desc" : "image source",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "border",
@@ -45,7 +45,7 @@
       "desc" : "rounded | circle | thumbnail",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "xsUrl",
@@ -53,7 +53,7 @@
       "desc" : "xs image source",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "smUrl",
@@ -61,7 +61,7 @@
       "desc" : "sm image source",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "mdUrl",
@@ -69,7 +69,7 @@
       "desc" : "md image source",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "lgUrl",
@@ -77,7 +77,7 @@
       "desc" : "lg image source",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "backgroundContain",
@@ -85,7 +85,7 @@
       "desc" : "(use style background and contain image in content)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -93,7 +93,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tooltip",
@@ -101,7 +101,7 @@
       "desc" : "Text for the tooltip",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "container_method",
@@ -109,7 +109,7 @@
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "visibilityEl",
@@ -117,7 +117,7 @@
       "desc" : "t) What element to use for visibility (@see getVisibilityEl(",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "el",
         "parent"
       ]
@@ -128,7 +128,7 @@
       "desc" : "True if element can be rebuild from a HTML page",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -136,7 +136,7 @@
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "display",
         "visibility"
       ]
@@ -147,7 +147,7 @@
       "desc" : "any extra css",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
@@ -155,7 +155,7 @@
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
@@ -163,7 +163,7 @@
       "desc" : "css class",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "imgResponsive",
@@ -171,7 +171,7 @@
       "desc" : "false | true",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "alt",
@@ -179,7 +179,7 @@
       "desc" : "image alternative text",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "xattr",
@@ -187,7 +187,7 @@
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
@@ -195,7 +195,7 @@
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dataId",
@@ -203,7 +203,7 @@
       "desc" : "cutomer id",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "target",
@@ -211,7 +211,7 @@
       "desc" : "p)target for a hre",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "_self",
         "_blank",
         "_parent",
@@ -224,7 +224,7 @@
       "desc" : "Specifies name attribute",
       "memberOf" : "Roo.bootstrap.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
@@ -232,7 +232,7 @@
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "href",
@@ -240,7 +240,7 @@
       "desc" : "a tag href",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -43,7 +43,7 @@
       "desc" : "",
       "memberOf" : "Roo.BorderLayout",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -51,7 +51,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "east",
@@ -59,7 +59,7 @@
       "desc" : "",
       "memberOf" : "Roo.BorderLayout",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "west",
@@ -67,7 +67,7 @@
       "desc" : "",
       "memberOf" : "Roo.BorderLayout",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "north",
@@ -75,7 +75,7 @@
       "desc" : "",
       "memberOf" : "Roo.BorderLayout",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "south",
@@ -83,7 +83,7 @@
       "desc" : "",
       "memberOf" : "Roo.BorderLayout",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

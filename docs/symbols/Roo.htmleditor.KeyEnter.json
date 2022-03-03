@@ -33,7 +33,7 @@
       "desc" : "the editor.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [],

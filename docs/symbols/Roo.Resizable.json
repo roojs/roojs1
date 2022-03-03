@@ -41,7 +41,7 @@
       "desc" : "Animation easing if animate = true (defaults to 'easingOutStrong')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -49,7 +49,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxWidth",
@@ -57,7 +57,7 @@
       "desc" : "The maximum width for the element (defaults to 10000)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minWidth",
@@ -65,7 +65,7 @@
       "desc" : "The minimum width for the element (defaults to 5)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dynamic",
@@ -73,7 +73,7 @@
       "desc" : "True to resize the element while dragging instead of using a proxy (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "pinned",
@@ -81,7 +81,7 @@
       "desc" : "True to ensure that the resize handles are always visible, false to display them only when the\nuser mouses over the resizable borders. This is only applied at config time. (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "enabled",
@@ -89,7 +89,7 @@
       "desc" : "False to disable resizing (defaults to true)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "handles",
@@ -97,7 +97,7 @@
       "desc" : "String consisting of the resize handles to display (defaults to undefined)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "preserveRatio",
@@ -105,7 +105,7 @@
       "desc" : "True to preserve the original ratio between height and width during resize (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minHeight",
@@ -113,7 +113,7 @@
       "desc" : "The minimum height for the element (defaults to 5)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxHeight",
@@ -121,7 +121,7 @@
       "desc" : "The maximum height for the element (defaults to 10000)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "widthIncrement",
@@ -129,7 +129,7 @@
       "desc" : "The increment to snap the width resize in pixels (dynamic must be true, defaults to 0)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "resizeChild",
@@ -137,7 +137,7 @@
       "desc" : "True to resize the first child, or id/element to resize (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "width",
@@ -145,7 +145,7 @@
       "desc" : "The width of the element in pixels (defaults to null)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "transparent",
@@ -153,7 +153,7 @@
       "desc" : "True for transparent handles. This is only applied at config time. (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minX",
@@ -161,7 +161,7 @@
       "desc" : "The minimum allowed page X for the element (only used for west resizing, defaults to 0)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "constrainTo",
@@ -169,7 +169,7 @@
       "desc" : "Constrain the resize to a particular element",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableTrackOver",
@@ -177,7 +177,7 @@
       "desc" : "True to disable mouse tracking. This is only applied at config time. (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minY",
@@ -185,7 +185,7 @@
       "desc" : "The minimum allowed page Y for the element (only used for north resizing, defaults to 0)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "adjustments",
@@ -193,7 +193,7 @@
       "desc" : "String \"auto\" or an array [width, height] with values to be <b>added</b> to the\nresize operation's new size (defaults to [0, 0])",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "wrap",
@@ -201,7 +201,7 @@
       "desc" : "True to wrap an element with a div if needed (required for textareas and images, defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "height",
@@ -209,7 +209,7 @@
       "desc" : "The height of the element in pixels (defaults to null)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "duration",
@@ -217,7 +217,7 @@
       "desc" : "Animation duration if animate = true (defaults to .35)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "animate",
@@ -225,7 +225,7 @@
       "desc" : "True to animate the resize (not compatible with dynamic sizing, defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "multiDirectional",
@@ -233,7 +233,7 @@
       "desc" : "<b>Deprecated</b>.  The old style of adding multi-direction resize handles, deprecated\nin favor of the handles config option (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "heightIncrement",
@@ -241,7 +241,7 @@
       "desc" : "The increment to snap the height resize in pixels (dynamic must be true, defaults to 0)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "draggable",
@@ -249,7 +249,7 @@
       "desc" : "Convenience to initialize drag drop (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "resizeRegion",
@@ -257,7 +257,7 @@
       "desc" : "Constrain the resize to a particular region",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

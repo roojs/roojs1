@@ -28,7 +28,7 @@
       "desc" : "",
       "memberOf" : "Roo.Toolbar",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -41,7 +41,7 @@
       "desc" : "True to stop the default click event",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -49,7 +49,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "delay",
@@ -57,7 +57,7 @@
       "desc" : "The initial delay before the repeating event begins firing.\nSimilar to an autorepeat key delay.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "accelerate",
@@ -65,7 +65,7 @@
       "desc" : "True if autorepeating should start slowly and accelerate.\n          \"interval\" and \"delay\" are ignored. \"immediate\" is honored.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "preventDefault",
@@ -73,7 +73,7 @@
       "desc" : "True to prevent the default click event",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "interval",
@@ -81,7 +81,7 @@
       "desc" : "The interval between firings of the \"click\" event. Default 10 ms.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "el",
@@ -89,7 +89,7 @@
       "desc" : "The element to act as a button.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "pressClass",
@@ -97,7 +97,7 @@
       "desc" : "A CSS class name to be applied to the element while pressed.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

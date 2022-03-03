@@ -41,7 +41,7 @@
       "desc" : "Name of the property within a row object that contains a record identifier value.\nas specified to {@link Roo.data.Record#create},\nor an {@link Roo.data.Record} object\n\n\ncreated using {@link Roo.data.Record#create}.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fields",
@@ -49,7 +49,7 @@
       "desc" : "Array of field definition objects",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -43,7 +43,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tooltip",
@@ -51,7 +51,7 @@
       "desc" : "The tooltip for the button - can be a string or QuickTips config object",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "text",
@@ -59,7 +59,7 @@
       "desc" : "The button text",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "renderTo",
@@ -67,7 +67,7 @@
       "desc" : "The element to append the button to",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hidden",
@@ -75,7 +75,7 @@
       "desc" : "True to start hidden (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "toggleGroup",
@@ -83,7 +83,7 @@
       "desc" : "The group this toggle button is a member of (only 1 per group can be pressed, only\n   applies if enableToggle = true)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "handleMouseEvents",
@@ -91,7 +91,7 @@
       "desc" : "False to disable visual cues on mouseover, mouseout and mousedown (defaults to true)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "menu",
@@ -99,7 +99,7 @@
       "desc" : "Standard menu attribute consisting of a reference to a menu object, a menu id or a menu config blob (defaults to undefined).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "enableToggle",
@@ -107,7 +107,7 @@
       "desc" : "True to enable pressed/not pressed toggling (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "handler",
@@ -115,7 +115,7 @@
       "desc" : "A function called when the button is clicked (can be used instead of click event)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "scope",
@@ -123,7 +123,7 @@
       "desc" : "The scope of the handler",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minWidth",
@@ -131,7 +131,7 @@
       "desc" : "The minimum width for this button (used to give a set of buttons a common width)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disabled",
@@ -139,7 +139,7 @@
       "desc" : "True to start disabled (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "pressed",
@@ -147,7 +147,7 @@
       "desc" : "True to start pressed (only if enableToggle = true)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "template",
@@ -155,7 +155,7 @@
       "desc" : "An {@link Roo.Template} with which to create the Button's main element. This Template must\ncontain numeric substitution parameter 0 if it is to display the tRoo property. Changing the template could\nrequire code modifications if required elements (e.g. a button) aren't present.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
@@ -163,7 +163,7 @@
       "desc" : "A CSS class to apply to the button's main element.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tabIndex",
@@ -171,7 +171,7 @@
       "desc" : "The DOM tabIndex for this button (defaults to undefined)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "iconCls",
@@ -179,7 +179,7 @@
       "desc" : "A css class which sets a background image to be used as the icon for this button (defaults to undefined).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "menuAlign",
@@ -187,7 +187,7 @@
       "desc" : "The position to align the menu to (see {@link Roo.Element#alignTo} for more details, defaults to 'tl-bl?').",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "icon",
@@ -195,7 +195,7 @@
       "desc" : "The path to an image to display in the button (the image will be set as the background-image\nCSS property of the button by default, so if you want a mixed icon/text button, set cls:\"x-btn-text-icon\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tooltipType",
@@ -203,7 +203,7 @@
       "desc" : "The type of tooltip to use. Either \"qtip\" (default) for QuickTips or \"title\" for title attribute.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "clickEvent",
@@ -211,7 +211,7 @@
       "desc" : "The type of event to map to the button's event handler (defaults to 'click')",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "repeat",
@@ -219,7 +219,7 @@
       "desc" : "True to repeat fire the click event while the mouse is down. This can also be\n  an {@link Roo.util.ClickRepeater} config object (defaults to false).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "type",
@@ -227,7 +227,7 @@
       "desc" : "The button's type, corresponding to the DOM input element type attribute.  Either \"submit,\" \"reset\" or \"button\" (default).",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

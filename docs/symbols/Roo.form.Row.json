@@ -67,7 +67,7 @@
       "desc" : "Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\")",
       "memberOf" : "Roo.form.Layout",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -75,7 +75,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideLabels",
@@ -83,7 +83,7 @@
       "desc" : "True to suppress the display of field labels in this layout (defaults to false)",
       "memberOf" : "Roo.form.Layout",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -91,7 +91,7 @@
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "display",
         "visibility"
       ]
@@ -102,7 +102,7 @@
       "desc" : "A style specification string, e.g. \"width:100px\", or object in the form {width:\"100px\"}, or\na function which returns such a specification.",
       "memberOf" : "Roo.form.Layout",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
@@ -110,7 +110,7 @@
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labelWidth",
@@ -118,7 +118,7 @@
       "desc" : "Fixed width in pixels of all field labels (defaults to undefined)",
       "memberOf" : "Roo.form.Layout",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labelSeparator",
@@ -126,7 +126,7 @@
       "desc" : "The separator to use after field labels (defaults to ':')",
       "memberOf" : "Roo.form.Layout",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoCreate",
@@ -134,7 +134,7 @@
       "desc" : "A DomHelper element spec used to autocreate the layout (defaults to {tag: 'div', cls: 'x-form-ct'})",
       "memberOf" : "Roo.form.Layout",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "clear",
@@ -142,7 +142,7 @@
       "desc" : "True to add a clearing element at the end of this layout, equivalent to CSS clear: both (defaults to true)",
       "memberOf" : "Roo.form.Layout",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
@@ -150,7 +150,7 @@
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "width",
@@ -158,7 +158,7 @@
       "desc" : "The fixed width of the column in pixels or CSS value (defaults to \"auto\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "height",
@@ -166,7 +166,7 @@
       "desc" : "The fixed height of the column in pixels or CSS value (defaults to \"auto\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
@@ -174,7 +174,7 @@
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

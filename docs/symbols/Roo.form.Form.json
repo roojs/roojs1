@@ -66,7 +66,7 @@
       "desc" : "Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\").\nThis property cascades to child containers if not set.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -74,7 +74,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "formData",
@@ -82,7 +82,7 @@
       "desc" : "- true to use new 'FormData' post, or set to a new FormData({dom form}) Object, if\nsending a formdata with extra parameters - eg uploaded elements.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "monitorValid",
@@ -90,7 +90,7 @@
       "desc" : "If true the form monitors its valid state <b>client-side</b> and\nfires a looping event with that state. This is required to bind buttons to the valid\nstate using the config value formBind:true on the button.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fileUpload",
@@ -98,7 +98,7 @@
       "desc" : "Set to true if this form is a file upload.",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "progressUrl",
@@ -106,7 +106,7 @@
       "desc" : "- Url to return progress data",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "buttons[]",
@@ -114,7 +114,7 @@
       "desc" : "buttons at bottom of form",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minButtonWidth",
@@ -122,7 +122,7 @@
       "desc" : "Minimum width of all buttons in pixels (defaults to 75)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "buttonAlign",
@@ -130,7 +130,7 @@
       "desc" : "Valid values are \"left,\" \"center\" and \"right\" (defaults to \"center\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "method",
@@ -138,7 +138,7 @@
       "desc" : "The request method to use (GET or POST) for form actions if one isn't supplied in the action options.",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "errorMask",
@@ -146,7 +146,7 @@
       "desc" : "e) default fal",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "true",
         "false"
       ]
@@ -157,7 +157,7 @@
       "desc" : "A css class to apply to the x-form-item of fields. This property cascades to child containers.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "labelWidth",
@@ -165,7 +165,7 @@
       "desc" : "The width of labels. This property cascades to child containers.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "timeout",
@@ -173,7 +173,7 @@
       "desc" : "Timeout for form actions in seconds (default is 30 seconds).",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "monitorPoll",
@@ -181,7 +181,7 @@
       "desc" : "The milliseconds to poll valid state, ignored if monitorValid is not true (defaults to 200)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "baseParams",
@@ -189,7 +189,7 @@
       "desc" : "Parameters to pass with all requests. e.g. baseParams: {id: '123', foo: 'bar'}.",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "trackResetOnLoad",
@@ -197,7 +197,7 @@
       "desc" : "If set to true, form.reset() resets to the last loaded\nor setValues() data instead of when the form was first created.",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "reader",
@@ -205,7 +205,7 @@
       "desc" : "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when executing \"load\" actions.\nThis is optional as there is built-in support for processing JSON.",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "errorReader",
@@ -213,7 +213,7 @@
       "desc" : "An Roo.data.DataReader (e.g. {@link Roo.data.XmlReader}) to be used to read data when reading validation errors on \"submit\" actions.\nThis is completely optional as there is built-in support for processing JSON.",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "url",
@@ -221,7 +221,7 @@
       "desc" : "The URL to use for form actions if one isn't supplied in the action options.",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maskOffset",
@@ -229,7 +229,7 @@
       "desc" : "Default 100",
       "memberOf" : "Roo.form.BasicForm",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

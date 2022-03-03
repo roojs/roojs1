@@ -44,7 +44,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dropNotAllowed",
@@ -52,7 +52,7 @@
       "desc" : "The CSS class returned to the drag source when drop is not allowed (defaults to \"x-dd-drop-nodrop\").",
       "memberOf" : "Roo.dd.DropTarget",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "valid",
@@ -60,7 +60,7 @@
       "desc" : "true/false or string (ok-add/ok-sub/ok/nodrop)\nif the drop point is valid for over/enter..",
       "memberOf" : "Roo.dd.DropTarget",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "success",
@@ -68,7 +68,7 @@
       "desc" : "set this after drop listener..",
       "memberOf" : "Roo.dd.DropTarget",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dropAllowed",
@@ -76,7 +76,7 @@
       "desc" : "The CSS class returned to the drag source when drop is allowed (defaults to \"x-dd-drop-ok\").",
       "memberOf" : "Roo.dd.DropTarget",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "overClass",
@@ -84,7 +84,7 @@
       "desc" : "The CSS class applied to the drop target element while the drag source is over it (defaults to \"\").",
       "memberOf" : "Roo.dd.DropTarget",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "ddGroup",
@@ -92,7 +92,7 @@
       "desc" : "The drag drop group to handle drop events for",
       "memberOf" : "Roo.dd.DropTarget",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

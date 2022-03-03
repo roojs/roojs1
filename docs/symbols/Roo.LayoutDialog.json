@@ -50,7 +50,7 @@
       "desc" : "Bottom buttons..",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minButtonWidth",
@@ -58,7 +58,7 @@
       "desc" : "Minimum width of all dialog buttons (defaults to 75)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "west",
@@ -66,7 +66,7 @@
       "desc" : "",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "fixedcenter",
@@ -74,7 +74,7 @@
       "desc" : "True to ensure that anytime the dialog is shown or resized it gets centered (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minWidth",
@@ -82,7 +82,7 @@
       "desc" : "The minimum allowable width for a resizable dialog (defaults to 200)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "title",
@@ -90,7 +90,7 @@
       "desc" : "Default text to display in the title bar (defaults to null)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "center",
@@ -98,7 +98,7 @@
       "desc" : "",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "resizable",
@@ -106,7 +106,7 @@
       "desc" : "False to disable manual dialog resizing (defaults to true)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "resizeHandles",
@@ -114,7 +114,7 @@
       "desc" : "Which resize handles to display - see the {@link Roo.Resizable} handles config\nproperty for valid values (defaults to 'all')",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "width",
@@ -122,7 +122,7 @@
       "desc" : "Width of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "shim",
@@ -130,7 +130,7 @@
       "desc" : "True to create an iframe shim that prevents selects from showing through (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "proxyDrag",
@@ -138,7 +138,7 @@
       "desc" : "True to drag a lightweight proxy element rather than the dialog itself, used when\ndraggable = true (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoTabs",
@@ -146,7 +146,7 @@
       "desc" : "If true, all elements with class 'x-dlg-tab' will get automatically converted to tabs (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "height",
@@ -154,7 +154,7 @@
       "desc" : "Height of the dialog in pixels (can also be set via CSS).  Determined by browser if unspecified.",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "constraintoviewport",
@@ -162,7 +162,7 @@
       "desc" : "True to keep the dialog constrained within the visible viewport boundaries (defaults to true)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "shadowOffset",
@@ -170,7 +170,7 @@
       "desc" : "The number of pixels to offset the shadow if displayed (defaults to 5)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "draggable",
@@ -178,7 +178,7 @@
       "desc" : "False to disable dragging of the dialog within the viewport (defaults to true)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -186,7 +186,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "south",
@@ -194,7 +194,7 @@
       "desc" : "",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "east",
@@ -202,7 +202,7 @@
       "desc" : "",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "shadow",
@@ -210,7 +210,7 @@
       "desc" : "True or \"sides\" for the default effect, \"frame\" for 4-way shadow, and \"drop\" for bottom-right\nshadow (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "x",
@@ -218,7 +218,7 @@
       "desc" : "The default left page coordinate of the dialog (defaults to center screen)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "collapsible",
@@ -226,7 +226,7 @@
       "desc" : "False to remove the built-in top-right corner collapse button (defaults to true)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "y",
@@ -234,7 +234,7 @@
       "desc" : "The default top page coordinate of the dialog (defaults to center screen)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "north",
@@ -242,7 +242,7 @@
       "desc" : "",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "buttons",
@@ -250,7 +250,7 @@
       "desc" : "Array of buttons",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "animateTarget",
@@ -258,7 +258,7 @@
       "desc" : "Id or element from which the dialog should animate while opening\n(defaults to null with no animation)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "closable",
@@ -266,7 +266,7 @@
       "desc" : "False to remove the built-in top-right corner close button (defaults to true)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoCreate",
@@ -274,7 +274,7 @@
       "desc" : "True to auto create from scratch, or using a DomHelper Object (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autoScroll",
@@ -282,7 +282,7 @@
       "desc" : "True to allow the dialog body contents to overflow and display scrollbars (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "modal",
@@ -290,7 +290,7 @@
       "desc" : "True to show the dialog modally, preventing user interaction with the rest of the page (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tabTag",
@@ -298,7 +298,7 @@
       "desc" : "The tag name of tab elements, used when autoTabs = true (defaults to 'div')",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "minHeight",
@@ -306,7 +306,7 @@
       "desc" : "The minimum allowable height for a resizable dialog (defaults to 80)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "syncHeightBeforeShow",
@@ -314,7 +314,7 @@
       "desc" : "True to cause the dimensions to be recalculated before the dialog is shown (defaults to false)",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "buttonAlign",
@@ -322,7 +322,7 @@
       "desc" : "Valid values are \"left,\" \"center\" and \"right\" (defaults to \"right\")",
       "memberOf" : "Roo.BasicDialog",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

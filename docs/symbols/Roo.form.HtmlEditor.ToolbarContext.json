@@ -26,7 +26,7 @@
       "desc" : "List of toolbar elements to disable",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "styles",
@@ -34,7 +34,7 @@
       "desc" : "List of styles \n   eg. { '*' : [ 'headline' ] , 'TD' : [ 'underline', 'double-underline' ] } \n\nThese must be defined in the page, so they get rendered correctly..\n.headline { }\nTD.underline { }",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

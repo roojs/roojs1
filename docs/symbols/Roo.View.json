@@ -39,7 +39,7 @@
       "desc" : "The css class to add to selected nodes",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "listeners",
@@ -47,7 +47,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dataName",
@@ -55,7 +55,7 @@
       "desc" : "the named area of the template to use as the data area\n                         Works with domtemplates roo-name=\"name\"",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "text",
@@ -63,7 +63,7 @@
       "desc" : "to display on mask (default Loading)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "multiSelect",
@@ -71,7 +71,7 @@
       "desc" : "Allow multiple selection",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "emptyText",
@@ -79,7 +79,7 @@
       "desc" : "The empty text to show when nothing is loaded.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "store",
@@ -87,7 +87,7 @@
       "desc" : "Data store to load data from.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "toggleSelect",
@@ -95,7 +95,7 @@
       "desc" : "- selecting",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "singleSelect",
@@ -103,7 +103,7 @@
       "desc" : "Allow single selection",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tickable",
@@ -111,7 +111,7 @@
       "desc" : "- selecting",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "el",
@@ -119,7 +119,7 @@
       "desc" : "The container element.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tpl",
@@ -127,7 +127,7 @@
       "desc" : "The template used by this View",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

@@ -33,7 +33,7 @@
       "desc" : "The number of milliseconds to wait for a response. Defaults to 30 seconds.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "nocache",
@@ -41,7 +41,7 @@
       "desc" : "Defaults to true. Disable cacheing by adding a unique parameter\nname to the request.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "callbackParam",
@@ -49,7 +49,7 @@
       "desc" : "The name of the parameter to pass to the server which tells\nthe server the name of the callback function set up by the load call to process the returned data object.\nDefaults to \"callback\".<p>The server-side processing must read this parameter value, and generate\njavascript output which calls this named function passing the data object as its only parameter.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "url",
@@ -57,7 +57,7 @@
       "desc" : "The URL from which to request the data object.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

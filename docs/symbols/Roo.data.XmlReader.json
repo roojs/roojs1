@@ -41,7 +41,7 @@
       "desc" : "The DomQuery path relative from the record element to the element that contains\na record identifier value.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "success",
@@ -49,7 +49,7 @@
       "desc" : "The DomQuery path to the success attribute used by forms.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "record",
@@ -57,7 +57,7 @@
       "desc" : "The DomQuery path to the repeated element which contains record information.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "totalRecords",
@@ -65,7 +65,7 @@
       "desc" : "The DomQuery path from which to retrieve the total number of records\nin the dataset. This is only needed if the whole dataset is not passed in one go, but is being\npaged from the remote server.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [

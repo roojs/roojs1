@@ -39,7 +39,7 @@
       "desc" : "True to sort leaf nodes under non leaf nodes",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "leafAttr",
@@ -47,7 +47,7 @@
       "desc" : "The attribute used to determine leaf nodes in folder sort (defaults to \"leaf\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "caseSensitive",
@@ -55,7 +55,7 @@
       "desc" : "true for case sensitive sort (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "dir",
@@ -63,7 +63,7 @@
       "desc" : "The direction to sort (asc or desc) (defaults to asc)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "sortType",
@@ -71,7 +71,7 @@
       "desc" : "A custom \"casting\" function used to convert node values before sorting",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "property",
@@ -79,7 +79,7 @@
       "desc" : "The named attribute on the node to sort by (defaults to text)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [],

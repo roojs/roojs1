@@ -43,7 +43,7 @@
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
       "memberOf" : "Roo.util.Observable",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "alignment",
@@ -51,7 +51,7 @@
       "desc" : "The position to align to (see {@link Roo.Element#alignTo} for more details, defaults to \"l-l\").",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideEl",
@@ -59,7 +59,7 @@
       "desc" : "True to hide the bound element while the editor is displayed (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "maxWidth",
@@ -67,7 +67,7 @@
       "desc" : "The maximum width in pixels of the editor field (defaults to 250).  Note that if the maxWidth would exceed\nthe containing tree element's size, it will be automatically limited for you to the container width, taking\nscroll and client offsets into account prior to each edit.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "constrain",
@@ -75,7 +75,7 @@
       "desc" : "True to constrain the editor to the viewport",
       "memberOf" : "Roo.Editor",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "shadow",
@@ -83,7 +83,7 @@
       "desc" : "\"sides\" for sides/bottom only, \"frame\" for 4-way shadow, and \"drop\"\nfor bottom-right shadow (defaults to \"frame\")",
       "memberOf" : "Roo.Editor",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "field",
@@ -91,7 +91,7 @@
       "desc" : "The field configuration",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "hideMode",
@@ -99,7 +99,7 @@
       "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : [
+      "optvals" : [
         "display",
         "visibility"
       ]
@@ -110,7 +110,7 @@
       "desc" : "The data value of the underlying field (defaults to \"\")",
       "memberOf" : "Roo.Editor",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "allowDomMove",
@@ -118,7 +118,7 @@
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cls",
@@ -126,7 +126,7 @@
       "desc" : "CSS class to apply to the editor (defaults to \"x-small-editor x-tree-editor\")",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "shim",
@@ -134,7 +134,7 @@
       "desc" : "True to shim the editor if selects/iframes could be displayed beneath it (defaults to false)",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "cancelOnEsc",
@@ -142,7 +142,7 @@
       "desc" : "True to cancel the edit when the escape key is pressed (defaults to false)",
       "memberOf" : "Roo.Editor",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "actionMode",
@@ -150,7 +150,7 @@
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "completeOnEnter",
@@ -158,7 +158,7 @@
       "desc" : "True to complete the edit when the enter key is pressed (defaults to false)",
       "memberOf" : "Roo.Editor",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "revertInvalid",
@@ -166,7 +166,7 @@
       "desc" : "True to automatically revert the field value and cancel the edit when the user completes an edit and the field\nvalidation fails (defaults to true)",
       "memberOf" : "Roo.Editor",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "tree",
@@ -174,7 +174,7 @@
       "desc" : "The tree to bind to.",
       "memberOf" : "",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "disableClass",
@@ -182,7 +182,7 @@
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
       "memberOf" : "Roo.Component",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "ignoreNoChange",
@@ -190,7 +190,7 @@
       "desc" : "True to skip the the edit completion process (no save, no events fired) if the user completes an edit and\nthe value has not changed (defaults to false).  Applies only to string values - edits for other data types\nwill never be ignored.",
       "memberOf" : "Roo.Editor",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "autosize",
@@ -198,7 +198,7 @@
       "desc" : "True for the editor to automatically adopt the size of the underlying field, \"width\" to adopt the width only,\nor \"height\" to adopt the height only (defaults to false)",
       "memberOf" : "Roo.Editor",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     },
     {
       "name" : "updateEl",
@@ -206,7 +206,7 @@
       "desc" : "True to update the innerHTML of the bound element when the update completes (defaults to false)",
       "memberOf" : "Roo.Editor",
       "isOptional" : false,
-      "optvalues" : []
+      "optvals" : []
     }
   ],
   "methods" : [
