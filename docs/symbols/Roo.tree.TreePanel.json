@@ -44,139 +44,185 @@
       "name" : "editor",
       "type" : "Roo.tree.TreeEditor",
       "desc" : "The TreeEditor to display when clicked.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "singleExpand",
       "type" : "Boolean",
       "desc" : "true if only 1 node per branch may be expanded",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "root",
       "type" : "Roo.tree.TreeNode",
       "desc" : "The root node",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "ddAppendOnly",
       "type" : "String",
       "desc" : "True if the tree should only allow append drops (use for trees which are sorted)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "dragConfig",
       "type" : "Object",
       "desc" : "Custom config to pass to the {@link Roo.tree.TreeDragZone} instance",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "enableDrop",
       "type" : "Boolean",
       "desc" : "true to enable just drop",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "hlColor",
       "type" : "String",
       "desc" : "The color of the node highlight (defaults to C3DAF9)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "rendererTip",
       "type" : "Function",
       "desc" : "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes hovertip to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "enableDD",
       "type" : "Boolean",
       "desc" : "true to enable drag and drop",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "hlDrop",
       "type" : "Boolean",
       "desc" : "false to disable node highlight on drop (defaults to the value of Roo.enableFx)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "renderer",
       "type" : "Function",
       "desc" : "DEPRECATED - use TreeLoader:create event / Sets the rendering (formatting) function for the nodes. to return HTML markup for the tree view. The render function is called with  the following parameters:<ul><li>The {Object} The data for the node.</li></ul>",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "rootVisible",
       "type" : "Boolean",
       "desc" : "false to hide the root node (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "enableDrag",
       "type" : "Boolean",
       "desc" : "true to enable just drag",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "ddGroup",
       "type" : "String",
       "desc" : "The DD group this TreePanel belongs to",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "lines",
       "type" : "Boolean",
       "desc" : "false to disable tree lines (defaults to true)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "dropConfig",
       "type" : "Object",
       "desc" : "Custom config to pass to the {@link Roo.tree.TreeDropZone} instance",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "selModel",
       "type" : "Boolean",
       "desc" : "A tree selection model to use with this TreePanel (defaults to a {@link Roo.tree.DefaultSelectionModel})",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "loader",
       "type" : "Roo.tree.TreeLoader",
       "desc" : "A TreeLoader for use with this TreePanel",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "containerScroll",
       "type" : "Boolean",
       "desc" : "true to register this container with ScrollManager",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "ddScroll",
       "type" : "Boolean",
       "desc" : "true to enable YUI body scrolling",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "animate",
       "type" : "Boolean",
       "desc" : "true to enable animated expand/collapse (defaults to the value of Roo.enableFx)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "pathSeparator",
       "type" : "String",
       "desc" : "The token used to separate sub-paths in path strings (defaults to '/')",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [

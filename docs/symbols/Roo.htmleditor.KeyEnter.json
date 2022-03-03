@@ -31,7 +31,9 @@
       "name" : "core",
       "type" : "Roo.HtmlEditorCore",
       "desc" : "the editor.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [],

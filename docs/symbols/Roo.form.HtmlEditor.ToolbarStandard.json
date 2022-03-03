@@ -24,37 +24,49 @@
       "name" : "createLinkText",
       "type" : "String",
       "desc" : "The default text for the create link prompt",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "btns[]",
       "type" : "Roo.Toolbar.Item|Roo.Toolbar.Button|Roo.Toolbar.SplitButton|Roo.form.Field",
       "desc" : "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "defaultFont",
       "type" : "String",
       "desc" : "default font to use.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "defaultLinkValue",
       "type" : "String",
       "desc" : "The default value for the create link prompt (defaults to http:/ /)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "fontFamilies",
       "type" : "Array",
       "desc" : "An array of available font families",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "disable",
       "type" : "Object",
       "desc" : "List of elements to disable..",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [

@@ -37,73 +37,97 @@
       "name" : "selectedClass",
       "type" : "String",
       "desc" : "The css class to add to selected nodes",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "dataName",
       "type" : "String",
       "desc" : "the named area of the template to use as the data area\n                         Works with domtemplates roo-name=\"name\"",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "text",
       "type" : "String",
       "desc" : "to display on mask (default Loading)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "multiSelect",
       "type" : "Boolean",
       "desc" : "Allow multiple selection",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "emptyText",
       "type" : "String",
       "desc" : "The empty text to show when nothing is loaded.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "store",
       "type" : "Roo.data.Store",
       "desc" : "Data store to load data from.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "toggleSelect",
       "type" : "Boolean",
       "desc" : "- selecting",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "singleSelect",
       "type" : "Boolean",
       "desc" : "Allow single selection",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "tickable",
       "type" : "Boolean",
       "desc" : "- selecting",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "el",
       "type" : "String|Roo.Element",
       "desc" : "The container element.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "tpl",
       "type" : "String|Roo.Template",
       "desc" : "The template used by this View",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [

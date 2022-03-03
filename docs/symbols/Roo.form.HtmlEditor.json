@@ -29,175 +29,236 @@
       "name" : "whitelist",
       "type" : "Array",
       "desc" : "of html tags - in addition to statndard whitelist",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-      "memberOf" : "Roo.Component"
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvalues" : [
+        "display",
+        "visibility"
+      ]
     },
     {
       "name" : "disabled",
       "type" : "Boolean",
       "desc" : "True to disable the field (defaults to false).",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "resizable",
       "type" : "String",
       "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "toolbars",
       "type" : "Array",
       "desc" : "Array of toolbars. - defaults to just the Standard one",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "name",
       "type" : "String",
       "desc" : "The field's HTML name attribute.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "width",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "allowComments",
       "type" : "boolean",
       "desc" : "- default false - allow comments in HTML source - by default they are stripped - if you are editing email you may need this.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "height",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "clearUp",
       "type" : "Boolean",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "value",
       "type" : "Mixed",
       "desc" : "A value to initialize this field with.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "msgTarget",
       "type" : "String",
       "desc" : "The location where error text should display.  Should be one of the following values (defaults to 'qtip'):\n<pre>\nValue         Description\n-----------   ----------------------------------------------------------------------\nqtip          Display a quick tip when the user hovers over the field\ntitle         Display a default browser title attribute popup\nunder         Add a block div beneath the field containing the error text\nside          Add an error icon to the right of the field with a popup on hover\n[element id]  Add the error text directly to the innerHTML of the specified element\n</pre>",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "bodyCls",
       "type" : "string",
       "desc" : "default '' default classes to add to body of editable area - usually undoreset is a good start..",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "readOnly",
       "type" : "Boolean",
       "desc" : "True to mark the field as readOnly in HTML (defaults to false) -- Note: this only sets the element's readOnly DOM attribute.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "enableBlocks",
       "type" : "boolean",
       "desc" : "- default true - if the block editor (table and figure should be enabled)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "language",
       "type" : "String",
       "desc" : "default en - language of text (usefull for rtl languages)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the field's underlying element.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "validationEvent",
       "type" : "String/Boolean",
       "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "fieldLabel",
       "type" : "String",
       "desc" : "Label to use when rendering a form.",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "validationDelay",
       "type" : "Number",
       "desc" : "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "stylesheets",
       "type" : "Array",
       "desc" : "url of stylesheets. set to [] to disable stylesheets - this is usally a good idea  rootURL + '/roojs1/css/undoreset.css',   .",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "tabIndex",
       "type" : "Number",
       "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "blacklist",
       "type" : "Array",
       "desc" : "of html tags - in addition to standard blacklist.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "qtip",
       "type" : "String",
       "desc" : "Mouse over tip",
-      "memberOf" : "Roo.form.Field"
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "autoClean",
       "type" : "boolean",
       "desc" : "- default true - loading and saving will remove quite a bit of formating,\n        if you are doing an email editor, this probably needs disabling, it's designed",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [

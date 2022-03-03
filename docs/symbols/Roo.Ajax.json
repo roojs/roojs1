@@ -27,49 +27,65 @@
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "method",
       "type" : "String",
-      "desc" : "(Optional)  The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)",
-      "memberOf" : ""
+      "desc" : "The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "timeout",
       "type" : "Number",
-      "desc" : "(Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)",
-      "memberOf" : ""
+      "desc" : "The timeout in milliseconds to be used for requests. (defaults to 30000)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "autoAbort",
       "type" : "Boolean",
-      "desc" : "(Optional) Whether a new request should abort any pending requests. (defaults to false)",
-      "memberOf" : ""
+      "desc" : "Whether a new request should abort any pending requests. (defaults to false)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "url",
       "type" : "String",
       "desc" : "The default URL to be used for requests to the server. (defaults to undefined)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "extraParams",
       "type" : "Object",
       "desc" : "An object containing properties which are used as extra parameters to each request made by this object. (defaults to undefined)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "disableCaching",
       "type" : "Boolean",
-      "desc" : "(Optional)   True to add a unique cache-buster param to GET requests. (defaults to true)",
-      "memberOf" : ""
+      "desc" : "True to add a unique cache-buster param to GET requests. (defaults to true)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "defaultHeaders",
       "type" : "Object",
       "desc" : "An object containing request headers which are added to each request made by this object. (defaults to undefined)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [
@@ -93,7 +109,7 @@
         {
           "name" : "transactionId",
           "type" : "Number",
-          "desc" : "(Optional) defaults to the last transaction",
+          "desc" : "defaults to the last transaction",
           "isOptional" : false
         }
       ],
@@ -125,7 +141,7 @@
         {
           "name" : "options",
           "type" : "Object",
-          "desc" : "An object which may contain the following properties:<ul>\n<li><b>url</b> {String} (Optional) The URL to which to send the request. Defaults to configured URL</li>\n<li><b>params</b> {Object/String/Function} (Optional) An object containing properties which are used as parameters to the\nrequest, a url encoded string or a function to call to get either.</li>\n<li><b>method</b> {String} (Optional) The HTTP method to use for the request. Defaults to the configured method, or\nif no method was configured, \"GET\" if no parameters are being sent, and \"POST\" if parameters are being sent.</li>\n<li><b>callback</b> {Function} (Optional) The function to be called upon receipt of the HTTP response.\nThe callback is called regardless of success or failure and is passed the following parameters:<ul>\n<li>options {Object} The parameter to the request call.</li>\n<li>success {Boolean} True if the request succeeded.</li>\n<li>response {Object} The XMLHttpRequest object containing the response data.</li>\n</ul></li>\n<li><b>success</b> {Function} (Optional) The function to be called upon success of the request.\nThe callback is passed the following parameters:<ul>\n<li>response {Object} The XMLHttpRequest object containing the response data.</li>\n<li>options {Object} The parameter to the request call.</li>\n</ul></li>\n<li><b>failure</b> {Function} (Optional) The function to be called upon failure of the request.\nThe callback is passed the following parameters:<ul>\n<li>response {Object} The XMLHttpRequest object containing the response data.</li>\n<li>options {Object} The parameter to the request call.</li>\n</ul></li>\n<li><b>scope</b> {Object} (Optional) The scope in which to execute the callbacks: The \"this\" object\nfor the callback function. Defaults to the browser window.</li>\n<li><b>form</b> {Object/String} (Optional) A form object or id to pull parameters from.</li>\n<li><b>isUpload</b> {Boolean} (Optional) True if the form object is a file upload (will usually be automatically detected).</li>\n<li><b>headers</b> {Object} (Optional) Request headers to set for the request.</li>\n<li><b>xmlData</b> {Object} (Optional) XML document to use for the post. Note: This will be used instead of\nparams for the post data. Any params will be appended to the URL.</li>\n<li><b>disableCaching</b> {Boolean} (Optional) True to add a unique cache-buster param to GET requests.</li>\n</ul>",
+          "desc" : "An object which may contain the following properties:<ul>\n<li><b>url</b> {String}  The URL to which to send the request. Defaults to configured URL</li>\n<li><b>params</b> {Object/String/Function}  An object containing properties which are used as parameters to the\nrequest, a url encoded string or a function to call to get either.</li>\n<li><b>method</b> {String}  The HTTP method to use for the request. Defaults to the configured method, or\nif no method was configured, \"GET\" if no parameters are being sent, and \"POST\" if parameters are being sent.</li>\n<li><b>callback</b> {Function}  The function to be called upon receipt of the HTTP response.\nThe callback is called regardless of success or failure and is passed the following parameters:<ul>\n<li>options {Object} The parameter to the request call.</li>\n<li>success {Boolean} True if the request succeeded.</li>\n<li>response {Object} The XMLHttpRequest object containing the response data.</li>\n</ul></li>\n<li><b>success</b> {Function}  The function to be called upon success of the request.\nThe callback is passed the following parameters:<ul>\n<li>response {Object} The XMLHttpRequest object containing the response data.</li>\n<li>options {Object} The parameter to the request call.</li>\n</ul></li>\n<li><b>failure</b> {Function}  The function to be called upon failure of the request.\nThe callback is passed the following parameters:<ul>\n<li>response {Object} The XMLHttpRequest object containing the response data.</li>\n<li>options {Object} The parameter to the request call.</li>\n</ul></li>\n<li><b>scope</b> {Object}  The scope in which to execute the callbacks: The \"this\" object\nfor the callback function. Defaults to the browser window.</li>\n<li><b>form</b> {Object/String}  A form object or id to pull parameters from.</li>\n<li><b>isUpload</b> {Boolean}  True if the form object is a file upload (will usually be automatically detected).</li>\n<li><b>headers</b> {Object}  Request headers to set for the request.</li>\n<li><b>xmlData</b> {Object}  XML document to use for the post. Note: This will be used instead of\nparams for the post data. Any params will be appended to the URL.</li>\n<li><b>disableCaching</b> {Boolean}  True to add a unique cache-buster param to GET requests.</li>\n</ul>",
           "isOptional" : false
         }
       ],
@@ -157,7 +173,7 @@
         {
           "name" : "transactionId",
           "type" : "Number",
-          "desc" : "(Optional) defaults to the last transaction",
+          "desc" : "defaults to the last transaction",
           "isOptional" : false
         }
       ],

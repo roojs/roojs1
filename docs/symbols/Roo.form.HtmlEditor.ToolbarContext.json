@@ -24,13 +24,17 @@
       "name" : "disable",
       "type" : "Object",
       "desc" : "List of toolbar elements to disable",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "styles",
       "type" : "Object",
       "desc" : "List of styles \n   eg. { '*' : [ 'headline' ] , 'TD' : [ 'underline', 'double-underline' ] } \n\nThese must be defined in the page, so they get rendered correctly..\n.headline { }\nTD.underline { }",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [

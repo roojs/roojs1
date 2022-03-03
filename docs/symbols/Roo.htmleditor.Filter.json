@@ -31,13 +31,17 @@
       "name" : "tag",
       "type" : "boolean|String|Array",
       "desc" : "Tags to replace",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "node",
       "type" : "DomElement",
       "desc" : "The node to iterate and filter",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [],

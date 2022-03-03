@@ -36,206 +36,298 @@
     {
       "name" : "footerShow",
       "type" : "Boolean",
-      "desc" : "e) generate tfoot, default true",
-      "memberOf" : ""
+      "desc" : "e) generate tfoot, default tr",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "true",
+        "false"
+      ]
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-      "memberOf" : "Roo.Component"
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvalues" : [
+        "display",
+        "visibility"
+      ]
     },
     {
       "name" : "auto_hide_footer",
       "type" : "Boolean",
       "desc" : "auto hide footer if only one page (default false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "scrollBody",
       "type" : "Boolean",
-      "desc" : "e) default false - body scrolled / fixed header (with resizable columns)",
-      "memberOf" : ""
+      "desc" : "e) default false - body scrolled / fixed header (with resizable column",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "true",
+        "false"
+      ]
     },
     {
       "name" : "empty_results",
       "type" : "string",
       "desc" : "Text to display for no results",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "cm[]",
       "type" : "Roo.grid.ColumnModel",
       "desc" : "A column for the grid.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "minColumnWidth",
       "type" : "Number",
       "desc" : "default 50 pixels minimum column width",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "bordered",
       "type" : "boolean",
       "desc" : "Add borders to the table",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "condensed",
       "type" : "boolean",
       "desc" : "Format condensed",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "store",
       "type" : "Roo.data.Store",
       "desc" : "The data store to use",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "cellSelection",
       "type" : "Boolean",
-      "desc" : "e) default false",
-      "memberOf" : ""
+      "desc" : "e) default fal",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "true",
+        "false"
+      ]
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "sm",
       "type" : "Roo.grid.AbstractSelectionModel",
       "desc" : "The selection model to use (cell selection is not supported yet)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "striped",
       "type" : "boolean",
       "desc" : "Should the rows be alternative striped",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "lazyLoad",
       "type" : "Boolean",
       "desc" : "auto load data while scrolling to the end (default false)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "footer",
       "type" : "Roo.bootstrap.PagingToolbar",
       "desc" : "a paging toolbar",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "table class",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "headerShow",
       "type" : "Boolean",
-      "desc" : "e) generate thead, default true",
-      "memberOf" : ""
+      "desc" : "e) generate thead, default tr",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "true",
+        "false"
+      ]
     },
     {
       "name" : "loadMask",
       "type" : "Boolean",
-      "desc" : "e) default false",
-      "memberOf" : ""
+      "desc" : "e) default fal",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "true",
+        "false"
+      ]
     },
     {
       "name" : "hover",
       "type" : "boolean",
       "desc" : "Add hover highlighting",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
-      "memberOf" : "Roo.bootstrap.Component"
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl(",
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : [
+        "el",
+        "parent"
+      ]
     },
     {
       "name" : "enableColumnResize",
       "type" : "Boolean",
       "desc" : "default true if columns can be resized = needs scrollBody to be set to work (drag/drop)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "rowSelection",
       "type" : "Boolean",
-      "desc" : "e) default false",
-      "memberOf" : ""
+      "desc" : "e) default fal",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "true",
+        "false"
+      ]
     },
     {
       "name" : "responsive",
       "type" : "boolean",
       "desc" : "default false - if this is on, columns are rendered with col-xs-4 etc. classes, otherwise columns will be sized by CSS,\n               also adds table-responsive (see bootstrap docs for details)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [

@@ -33,151 +33,201 @@
       "name" : "mdHeader",
       "type" : "String",
       "desc" : "Header at Bootsrap Medium width",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "editor",
       "type" : "Roo.grid.GridEditor",
-      "desc" : "(Optional) For grid editors - returns the grid editor",
-      "memberOf" : ""
+      "desc" : "For grid editors - returns the grid editor",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "cursor",
       "type" : "String",
-      "desc" : "(Optional)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "smHeader",
       "type" : "String",
       "desc" : "Header at Bootsrap Small width",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "tooltip",
       "type" : "String",
-      "desc" : "(Optional)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "md",
       "type" : "Number",
-      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
-      "memberOf" : ""
+      "desc" : "can be '0' for hidden at this size (number less than 12)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "align",
       "type" : "String",
-      "desc" : "(Optional) Set the CSS text-align property of the column.  Defaults to undefined.",
-      "memberOf" : ""
+      "desc" : "Set the CSS text-align property of the column.  Defaults to undefined.",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "lgHeader",
       "type" : "String",
       "desc" : "Header at Bootsrap Large width",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "xlHeader",
       "type" : "String",
       "desc" : "Header at Bootsrap extra Large width",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "fixed",
       "type" : "Boolean",
-      "desc" : "(Optional) True if the column width cannot be changed.  Defaults to false.",
-      "memberOf" : ""
+      "desc" : "True if the column width cannot be changed.  Defaults to false.",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "hidden",
       "type" : "Boolean",
-      "desc" : "(Optional) True to hide the column. Defaults to false.",
-      "memberOf" : ""
+      "desc" : "True to hide the column. Defaults to false.",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "valign",
       "type" : "String",
-      "desc" : "(Optional) Set the CSS vertical-align property of the column (eg. middle, top, bottom etc).  Defaults to undefined.",
-      "memberOf" : ""
+      "desc" : "Set the CSS vertical-align property of the column (eg. middle, top, bottom etc).  Defaults to undefined.",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "locked",
       "type" : "Boolean",
-      "desc" : "(Optional) True to lock the column in place while scrolling the Grid.  Defaults to false.",
-      "memberOf" : ""
+      "desc" : "True to lock the column in place while scrolling the Grid.  Defaults to false.",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "lg",
       "type" : "Number",
-      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
-      "memberOf" : ""
+      "desc" : "can be '0' for hidden at this size (number less than 12)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "renderer",
       "type" : "Function",
-      "desc" : "(Optional) A function used to generate HTML markup for a cell\ngiven the cell's data value. See {@link #setRenderer}. If not specified, the\ndefault renderer returns the escaped data value. If an object is returned (bootstrap only)\nthen it is treated as a Roo Component object instance, and it is rendered after the initial row is rendered",
-      "memberOf" : ""
+      "desc" : "A function used to generate HTML markup for a cell\ngiven the cell's data value. See {@link #setRenderer}. If not specified, the\ndefault renderer returns the escaped data value. If an object is returned (bootstrap only)\nthen it is treated as a Roo Component object instance, and it is rendered after the initial row is rendered",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "xs",
       "type" : "Number",
-      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
-      "memberOf" : ""
+      "desc" : "can be '0' for hidden at this size (number less than 12)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "xsHeader",
       "type" : "String",
       "desc" : "Header at Bootsrap Extra Small width (default for all)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "sortable",
       "type" : "Boolean",
-      "desc" : "(Optional) True if sorting is to be allowed on this column.\nDefaults to the value of the {@link #defaultSortable} property.\nWhether local/remote sorting is used is specified in {@link Roo.data.Store#remoteSort}.",
-      "memberOf" : ""
+      "desc" : "True if sorting is to be allowed on this column.\nDefaults to the value of the {@link #defaultSortable} property.\nWhether local/remote sorting is used is specified in {@link Roo.data.Store#remoteSort}.",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "header",
       "type" : "String",
       "desc" : "The header text to display in the Grid view.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "width",
       "type" : "Number",
-      "desc" : "(Optional) The initial width in pixels of the column. Using this\ninstead of {@link Roo.grid.Grid#autoSizeColumns} is more efficient.",
-      "memberOf" : ""
+      "desc" : "The initial width in pixels of the column. Using this\ninstead of {@link Roo.grid.Grid#autoSizeColumns} is more efficient.",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "resizable",
       "type" : "Boolean",
-      "desc" : "(Optional) False to disable column resizing. Defaults to true.",
-      "memberOf" : ""
+      "desc" : "False to disable column resizing. Defaults to true.",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "xl",
       "type" : "Number",
-      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
-      "memberOf" : ""
+      "desc" : "can be '0' for hidden at this size (number less than 12)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "dataIndex",
       "type" : "String",
-      "desc" : "(Optional) The name of the field in the grid's {@link Roo.data.Store}'s\n{@link Roo.data.Record} definition from which to draw the column's value. If not\nspecified, the column's index is used as an index into the Record's data Array.",
-      "memberOf" : ""
+      "desc" : "The name of the field in the grid's {@link Roo.data.Store}'s\n{@link Roo.data.Record} definition from which to draw the column's value. If not\nspecified, the column's index is used as an index into the Record's data Array.",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "sm",
       "type" : "Number",
-      "desc" : "(Optional) can be '0' for hidden at this size (number less than 12)",
-      "memberOf" : ""
+      "desc" : "can be '0' for hidden at this size (number less than 12)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [

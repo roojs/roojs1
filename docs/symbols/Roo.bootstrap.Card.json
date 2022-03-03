@@ -103,254 +103,524 @@
     {
       "name" : "header_size",
       "type" : "Number",
-      "desc" : "5) H1 or H2 etc.. 0 indicates default",
-      "memberOf" : ""
+      "desc" : "5) H1 or H2 etc.. 0 indicates defau",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     },
     {
       "name" : "hideMode",
       "type" : "String",
-      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-      "memberOf" : "Roo.Component"
+      "desc" : "y)\nHow this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display",
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvalues" : [
+        "display",
+        "visibility"
+      ]
     },
     {
       "name" : "header_image",
       "type" : "String",
       "desc" : "src url of image.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "margin_right",
       "type" : "String",
-      "desc" : "o)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "auto"
+      ]
     },
     {
       "name" : "header",
       "type" : "String|Object",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "title",
       "type" : "String",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "name",
       "type" : "string",
       "desc" : "Specifies name attribute",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "weight",
       "type" : "String",
-      "desc" : "k)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "primary",
+        "warning",
+        "info",
+        "danger",
+        "secondary",
+        "success",
+        "light",
+        "dark"
+      ]
     },
     {
       "name" : "display",
       "type" : "String",
-      "desc" : "x)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex"
+      ]
     },
     {
       "name" : "margin_left",
       "type" : "String",
-      "desc" : "o)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "auto"
+      ]
     },
     {
       "name" : "padding_top",
       "type" : "String",
-      "desc" : "5)next_to_card",
-      "memberOf" : ""
+      "desc" : "5)next_to_ca",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     },
     {
       "name" : "subtitle",
       "type" : "String",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "padding_right",
       "type" : "String",
-      "desc" : "5)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     },
     {
       "name" : "padding",
       "type" : "String",
-      "desc" : "5)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     },
     {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "header_weight",
       "type" : "Number",
-      "desc" : "k)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "primary",
+        "secondary",
+        "success",
+        "info",
+        "warning",
+        "danger",
+        "light",
+        "dark"
+      ]
     },
     {
       "name" : "style",
       "type" : "String",
       "desc" : "any extra css",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "display_xl",
       "type" : "String",
-      "desc" : "x)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex"
+      ]
     },
     {
       "name" : "margin",
       "type" : "String",
-      "desc" : "o)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "auto"
+      ]
     },
     {
       "name" : "actionMode",
       "type" : "String",
       "desc" : "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el' for forms you probably want to set this to fieldEl",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "padding_bottom",
       "type" : "String",
-      "desc" : "5)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     },
     {
       "name" : "listeners",
       "type" : "Object",
       "desc" : "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-      "memberOf" : "Roo.util.Observable"
+      "memberOf" : "Roo.util.Observable",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "container_method",
       "type" : "string",
       "desc" : "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "display_lg",
       "type" : "String",
-      "desc" : "x)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex"
+      ]
     },
     {
       "name" : "footer",
       "type" : "String",
       "desc" : "",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "display_xs",
       "type" : "String",
-      "desc" : "x)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex"
+      ]
     },
     {
       "name" : "cls",
       "type" : "String",
       "desc" : "css class",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "can_build_overlaid",
       "type" : "Boolean",
       "desc" : "True if element can be rebuild from a HTML page",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "margin_bottom",
       "type" : "String",
-      "desc" : "o)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "auto"
+      ]
     },
     {
       "name" : "disableClass",
       "type" : "String",
       "desc" : "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-      "memberOf" : "Roo.Component"
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "visibilityEl",
       "type" : "string|object",
-      "desc" : "t) What element to use for visibility (@see getVisibilityEl())",
-      "memberOf" : "Roo.bootstrap.Component"
+      "desc" : "t) What element to use for visibility (@see getVisibilityEl(",
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : [
+        "el",
+        "parent"
+      ]
     },
     {
       "name" : "margin_top",
       "type" : "String",
-      "desc" : "o)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "auto"
+      ]
     },
     {
       "name" : "dataId",
       "type" : "string",
       "desc" : "cutomer id",
-      "memberOf" : "Roo.bootstrap.Component"
+      "memberOf" : "Roo.bootstrap.Component",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "padding_left",
       "type" : "String",
-      "desc" : "5)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     },
     {
       "name" : "margin_x",
       "type" : "String",
-      "desc" : "o)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "auto"
+      ]
     },
     {
       "name" : "margin_y",
       "type" : "String",
-      "desc" : "o)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "auto"
+      ]
     },
     {
       "name" : "html",
       "type" : "String|Boolean",
       "desc" : "-- html contents - or just use children.. use false to hide it..",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "padding_x",
       "type" : "String",
-      "desc" : "5)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     },
     {
       "name" : "display_sm",
       "type" : "String",
-      "desc" : "x)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "none",
+        "inline",
+        "inline-block",
+        "block",
+        "table",
+        "table-cell",
+        "table-row",
+        "flex",
+        "inline-flex"
+      ]
     },
     {
       "name" : "padding_y",
       "type" : "String",
-      "desc" : "5)",
-      "memberOf" : ""
+      "desc" : "",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     }
   ],
   "methods" : [

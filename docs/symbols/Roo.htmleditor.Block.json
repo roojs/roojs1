@@ -31,19 +31,25 @@
       "name" : "Context",
       "type" : "Object",
       "desc" : "menu - see Roo.form.HtmlEditor.ToolbarContext",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "friendly_name",
       "type" : "String",
       "desc" : "the name that appears in the context bar about this block",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "node",
       "type" : "DomElement",
       "desc" : "The node to apply stuff to.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [

@@ -24,13 +24,17 @@
       "name" : "grid",
       "type" : "Roo.grid.Grid",
       "desc" : "The grid for this panel",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "layout",
       "type" : "Roo.BorderLayout",
-      "desc" : "[required] The layout for this panel",
-      "memberOf" : ""
+      "desc" : "The layout for this panel",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [

@@ -39,13 +39,17 @@
       "name" : "id",
       "type" : "String",
       "desc" : "Name of the property within a row object that contains a record identifier value.\nas specified to {@link Roo.data.Record#create},\nor an {@link Roo.data.Record} object\n\n\ncreated using {@link Roo.data.Record#create}.",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "fields",
       "type" : "Array",
       "desc" : "Array of field definition objects",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [

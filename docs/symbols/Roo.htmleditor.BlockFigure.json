@@ -31,37 +31,55 @@
       "name" : "image_height",
       "type" : "String|number",
       "desc" : "the height of the image number or %?",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "align",
       "type" : "String",
-      "desc" : "t) alignment for the block default left",
-      "memberOf" : ""
+      "desc" : "t) alignment for the block default le",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "left",
+        "right"
+      ]
     },
     {
       "name" : "image_src",
       "type" : "String",
       "desc" : "the url for the image",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "caption_display",
       "type" : "String",
-      "desc" : "e) display or not the caption",
-      "memberOf" : ""
+      "desc" : "e) display or not the capti",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : [
+        "block",
+        "none"
+      ]
     },
     {
       "name" : "caption",
       "type" : "String",
       "desc" : "the text to appear below  (and in the alt tag)",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     },
     {
       "name" : "image_width",
       "type" : "String|number",
       "desc" : "the width of the image number or %?",
-      "memberOf" : ""
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvalues" : []
     }
   ],
   "methods" : [

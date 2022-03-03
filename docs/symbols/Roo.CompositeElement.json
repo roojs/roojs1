@@ -152,7 +152,7 @@
         {
           "name" : "domReplace",
           "type" : "Boolean",
-          "desc" : "(Optional) True to remove and replace the element in the document too.",
+          "desc" : "True to remove and replace the element in the document too.",
           "isOptional" : false
         }
       ],
