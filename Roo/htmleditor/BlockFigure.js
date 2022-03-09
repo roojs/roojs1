@@ -327,7 +327,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 maxWidth :  this.align == 'center' ? '100% !important' : (this.width + ' !important'),
                 width : this.align == 'center' ? '100%' : this.width,
                 margin:  '0px',
-                padding: '10px',
+                padding: '10px 0',
                 textAlign : this.align   // seems to work for email..
                 
             },
