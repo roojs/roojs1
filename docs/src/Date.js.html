@@ -104,12 +104,35 @@ document.write(dt.format(Date.patterns.ShortDate));
 /**
  Returns the number of milliseconds between this date and date
  @param {Date} date (optional) Defaults to now
- @return {Number} The diff in milliseconds
+ @param {String} interval (optional) Default Date.MILLI, A valid date interval enum value (eg. Date.DAY) 
+ @return {Number} The diff in milliseconds or units of interval
  @member Date getElapsed
  */
-</span><span class="jsdoc-var">Date.prototype.getElapsed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">) {
-	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.getTime</span><span class="jsdoc-syntax">()-</span><span class="jsdoc-var">this.getTime</span><span class="jsdoc-syntax">());
+</span><span class="jsdoc-var">Date.prototype.getElapsed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">interval</span><span class="jsdoc-syntax">)
+{
+    </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">||  </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">();
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date.getTime</span><span class="jsdoc-syntax">()-</span><span class="jsdoc-var">this.getTime</span><span class="jsdoc-syntax">());
+    </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">interval</span><span class="jsdoc-syntax">) {
+
+        </span><span class="jsdoc-keyword">case  </span><span class="jsdoc-var">Date.SECOND</span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">/ (1000));
+        </span><span class="jsdoc-keyword">case  </span><span class="jsdoc-var">Date.MINUTE</span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">/ (100*60));
+        </span><span class="jsdoc-keyword">case  </span><span class="jsdoc-var">Date.HOUR</span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">/ (100*60*60));
+        </span><span class="jsdoc-keyword">case  </span><span class="jsdoc-var">Date.DAY</span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">/ (100*60*60*24));
+        </span><span class="jsdoc-keyword">case  </span><span class="jsdoc-var">Date.MONTH</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// this does not give exact number...??
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">date.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Y&quot;</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Y&quot;</span><span class="jsdoc-syntax">)) * 12) + (</span><span class="jsdoc-var">date.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;m&quot;</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;m&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">case  </span><span class="jsdoc-var">Date.YEAR</span><span class="jsdoc-syntax">: </span><span class="jsdoc-comment">// this does not give exact number...??
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Y&quot;</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;Y&quot;</span><span class="jsdoc-syntax">));
+
+        </span><span class="jsdoc-keyword">case  </span><span class="jsdoc-var">Date.MILLI</span><span class="jsdoc-syntax">:
+        </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+    }
 };
+
 </span><span class="jsdoc-comment">// was in date file..
 
 

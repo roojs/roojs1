@@ -214,7 +214,7 @@
       "name" : "getElapsed",
       "type" : "function",
       "desc" : "Returns the number of milliseconds between this date and date",
-      "sig" : "(date)",
+      "sig" : "(date, interval)",
       "static" : false,
       "memberOf" : "",
       "isStatic" : false,
@@ -232,13 +232,19 @@
           "type" : "Date",
           "desc" : "(optional) Defaults to now",
           "isOptional" : false
+        },
+        {
+          "name" : "interval",
+          "type" : "String",
+          "desc" : "(optional) Default Date.MILLI, A valid date interval enum value (eg. Date.DAY)",
+          "isOptional" : false
         }
       ],
       "returns" : [
         {
           "name" : "",
           "type" : "Number",
-          "desc" : "The diff in milliseconds"
+          "desc" : "The diff in milliseconds or units of interval"
         }
       ]
     },

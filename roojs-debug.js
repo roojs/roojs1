@@ -1205,12 +1205,36 @@ document.write(dt.format(Date.patterns.ShortDate));
 /**
  Returns the number of milliseconds between this date and date
  @param {Date} date (optional) Defaults to now
+ @param {Date} date (optional) Defaults to now
+ @param {String} interval   A valid date interval enum value (eg. Date.DAY)
  @return {Number} The diff in milliseconds
  @member Date getElapsed
  */
-Date.prototype.getElapsed = function(date) {
-	return Math.abs((date || new Date()).getTime()-this.getTime());
+Date.prototype.getElapsed = function(date, interval)
+{
+    date = date ||  new Date();
+    var ret = Math.abs(date.getTime()-this.getTime());
+    switch (interval) {
+       
+        case  Date.SECOND:
+            return Math.floor(ret / (1000));
+        case  Date.MINUTE:
+            return Math.floor(ret / (100*60));
+        case  Date.HOUR:
+            return Math.floor(ret / (100*60*60));
+        case  Date.DAY:
+            return Math.floor(ret / (100*60*60*24));
+        case  Date.MONTH: // this does not give exact number...??
+            return ((date.format("Y") - this.format("Y")) * 12) + (date.format("m") - this.format("m"));
+        case  Date.YEAR: // this does not give exact number...??
+            return (date.format("Y") - this.format("Y"));
+       
+        case  Date.MILLI:
+        default:
+            return ret;
+    }
 };
+ 
 // was in date file..
 
 
