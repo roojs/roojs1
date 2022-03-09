@@ -117,11 +117,11 @@ Date.prototype.getElapsed = function(date, interval)
         case  Date.SECOND:
             return Math.floor(ret / (1000));
         case  Date.MINUTE:
-            return Math.floor(ret / (100*60));
+            return Math.floor(ret / (1000*60));
         case  Date.HOUR:
-            return Math.floor(ret / (100*60*60));
+            return Math.floor(ret / (1000*60*60));
         case  Date.DAY:
-            return Math.floor(ret / (100*60*60*24));
+            return Math.floor(ret / (1000*60*60*24));
         case  Date.MONTH: // this does not give exact number...??
             return ((date.format("Y") - this.format("Y")) * 12) + (date.format("m") - this.format("m"));
         case  Date.YEAR: // this does not give exact number...??
