@@ -51,7 +51,44 @@
       "desc" : "",
       "memberOf" : "",
       "isOptional" : false,
-      "optvals" : []
+      "optvals" : [
+        "auto",
+        "default",
+        "none",
+        "context-menu",
+        "help",
+        "pointer",
+        "progress",
+        "wait",
+        "cell",
+        "crosshair",
+        "text",
+        "vertical-text",
+        "alias",
+        "copy",
+        "move",
+        "no-drop",
+        "not-allowed",
+        "e-resize",
+        "n-resize",
+        "ne-resize",
+        "nw-resize",
+        "s-resize",
+        "se-resize",
+        "sw-resize",
+        "w-resize",
+        "ew-resize",
+        "ns-resize",
+        "nesw-resize",
+        "nwse-resize",
+        "col-resize",
+        "row-resize",
+        "all-scroll",
+        "zoom-in",
+        "zoom-out",
+        "grab",
+        "grabbing"
+      ]
     },
     {
       "name" : "listeners",
@@ -72,7 +109,7 @@
     {
       "name" : "tooltip",
       "type" : "String",
-      "desc" : "",
+      "desc" : "mouse over tooltip text",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
@@ -88,10 +125,13 @@
     {
       "name" : "align",
       "type" : "String",
-      "desc" : "Set the CSS text-align property of the column.  Defaults to undefined.",
+      "desc" : "t) Set the CSS text-align property of the column.  Defaults to undefined (left",
       "memberOf" : "",
       "isOptional" : false,
-      "optvals" : []
+      "optvals" : [
+        "left",
+        "right"
+      ]
     },
     {
       "name" : "lgHeader",
@@ -128,10 +168,14 @@
     {
       "name" : "valign",
       "type" : "String",
-      "desc" : "Set the CSS vertical-align property of the column (eg. middle, top, bottom etc).  Defaults to undefined.",
+      "desc" : "e) Set the CSS vertical-align property of the column (eg. middle, top, bottom etc).  Defaults to undefined (middl",
       "memberOf" : "",
       "isOptional" : false,
-      "optvals" : []
+      "optvals" : [
+        "top",
+        "bottom",
+        "middle"
+      ]
     },
     {
       "name" : "locked",
