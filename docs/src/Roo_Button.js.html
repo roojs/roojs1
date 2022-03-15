@@ -369,6 +369,22 @@
             </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
         }
     },
+    </span><span class="jsdoc-comment">/**
+	 * Similar to toggle, but does not trigger event.
+	 * @param {Boolean} state [required] Force a particular state
+	 */
+	</span><span class="jsdoc-var">setPressed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+	{
+	    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.pressed</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-pressed&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.pressed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-btn-pressed&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.pressed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+        }
+	},
 
     </span><span class="jsdoc-comment">/**
      * If a state it passed, it becomes the pressed state otherwise the current state is toggled.
@@ -391,6 +407,8 @@
             }
         }
     },
+
+
 
     </span><span class="jsdoc-comment">/**
      * Focus the button

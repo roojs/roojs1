@@ -8463,7 +8463,7 @@ Roo.grid.ColumnModel = function(config){
 };
 Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
-     * @cfg {String} header The header text to display in the Grid view.
+     * @cfg {String} header [required] The header text to display in the Grid view.
      */
 	/**
      * @cfg {String} xsHeader Header at Bootsrap Extra Small width (default for all)
@@ -8481,66 +8481,66 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {String} xlHeader Header at Bootsrap extra Large width
      */
     /**
-     * @cfg {String} dataIndex (Optional) The name of the field in the grid's {@link Roo.data.Store}'s
+     * @cfg {String} dataIndex  The name of the field in the grid's {@link Roo.data.Store}'s
      * {@link Roo.data.Record} definition from which to draw the column's value. If not
      * specified, the column's index is used as an index into the Record's data Array.
      */
     /**
-     * @cfg {Number} width (Optional) The initial width in pixels of the column. Using this
+     * @cfg {Number} width  The initial width in pixels of the column. Using this
      * instead of {@link Roo.grid.Grid#autoSizeColumns} is more efficient.
      */
     /**
-     * @cfg {Boolean} sortable (Optional) True if sorting is to be allowed on this column.
+     * @cfg {Boolean} sortable True if sorting is to be allowed on this column.
      * Defaults to the value of the {@link #defaultSortable} property.
      * Whether local/remote sorting is used is specified in {@link Roo.data.Store#remoteSort}.
      */
     /**
-     * @cfg {Boolean} locked (Optional) True to lock the column in place while scrolling the Grid.  Defaults to false.
+     * @cfg {Boolean} locked  True to lock the column in place while scrolling the Grid.  Defaults to false.
      */
     /**
-     * @cfg {Boolean} fixed (Optional) True if the column width cannot be changed.  Defaults to false.
+     * @cfg {Boolean} fixed  True if the column width cannot be changed.  Defaults to false.
      */
     /**
-     * @cfg {Boolean} resizable (Optional) False to disable column resizing. Defaults to true.
+     * @cfg {Boolean} resizable  False to disable column resizing. Defaults to true.
      */
     /**
-     * @cfg {Boolean} hidden (Optional) True to hide the column. Defaults to false.
+     * @cfg {Boolean} hidden  True to hide the column. Defaults to false.
      */
     /**
-     * @cfg {Function} renderer (Optional) A function used to generate HTML markup for a cell
+     * @cfg {Function} renderer A function used to generate HTML markup for a cell
      * given the cell's data value. See {@link #setRenderer}. If not specified, the
      * default renderer returns the escaped data value. If an object is returned (bootstrap only)
      * then it is treated as a Roo Component object instance, and it is rendered after the initial row is rendered
      */
        /**
-     * @cfg {Roo.grid.GridEditor} editor (Optional) For grid editors - returns the grid editor 
+     * @cfg {Roo.grid.GridEditor} editor  For grid editors - returns the grid editor 
      */
     /**
-     * @cfg {String} align (Optional) Set the CSS text-align property of the column.  Defaults to undefined.
+     * @cfg {String} align (left|right) Set the CSS text-align property of the column.  Defaults to undefined (left).
      */
     /**
-     * @cfg {String} valign (Optional) Set the CSS vertical-align property of the column (eg. middle, top, bottom etc).  Defaults to undefined.
+     * @cfg {String} valign (top|bottom|middle) Set the CSS vertical-align property of the column (eg. middle, top, bottom etc).  Defaults to undefined (middle)
      */
     /**
-     * @cfg {String} cursor (Optional)
+     * @cfg {String} cursor ( auto|default|none|context-menu|help|pointer|progress|wait|cell|crosshair|text|vertical-text|alias|copy|move|no-drop|not-allowed|e-resize|n-resize|ne-resize|nw-resize|s-resize|se-resize|sw-resize|w-resize|ew-resize|ns-resize|nesw-resize|nwse-resize|col-resize|row-resize|all-scroll|zoom-in|zoom-out|grab|grabbing)
      */
     /**
-     * @cfg {String} tooltip (Optional)
+     * @cfg {String} tooltip mouse over tooltip text
      */
     /**
-     * @cfg {Number} xs (Optional) can be '0' for hidden at this size (number less than 12)
+     * @cfg {Number} xs  can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} sm (Optional) can be '0' for hidden at this size (number less than 12)
+     * @cfg {Number} sm can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} md (Optional) can be '0' for hidden at this size (number less than 12)
+     * @cfg {Number} md can be '0' for hidden at this size (number less than 12)
      */
     /**
-     * @cfg {Number} lg (Optional) can be '0' for hidden at this size (number less than 12)
+     * @cfg {Number} lg   can be '0' for hidden at this size (number less than 12)
      */
 	/**
-     * @cfg {Number} xl (Optional) can be '0' for hidden at this size (number less than 12)
+     * @cfg {Number} xl   can be '0' for hidden at this size (number less than 12)
      */
     /**
      * Returns the id of the column at the specified index.
@@ -27207,7 +27207,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 pressed : false,
                 enableToggle : true,
                 setValue : function(v) {
-                    this.toggle(v == 'block' ? false : true);
+                    // this trigger toggle.
+                     
+                    this.setText(v ? "Hide Caption" : "Show Caption");
+                    this.setPressed(v != 'block');
                 },
                 listeners : {
                     toggle: function (btn, state)
@@ -27246,8 +27249,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             style: {
                 width : iw,
                 maxWidth : iw + ' !important', // this is not getting rendered?
-                margin : m 
-                
+                margin : m  
                 
             }
         };
@@ -27288,7 +27290,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         // we remove caption totally if its hidden... - will delete data.. but otherwise we end up with fake caption
         var captionhtml = this.caption_display == 'none' ? '' : (this.caption.length ? this.caption : "Caption");
         
-        return  {
+  
+        var ret =   {
             tag: 'figure',
             'data-block' : 'Figure',
             
@@ -27300,7 +27303,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 maxWidth :  this.align == 'center' ? '100% !important' : (this.width + ' !important'),
                 width : this.align == 'center' ? '100%' : this.width,
                 margin:  '0px',
-                padding: '10px',
+                padding: this.align == 'center' ? '0' : '0 10px' ,
                 textAlign : this.align   // seems to work for email..
                 
             },
@@ -27349,6 +27352,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 }
             ]
         };
+        return ret;
          
     },
     
@@ -29246,7 +29250,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
-                attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan'],
+                attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan', 'data-display'],
                 attrib_clean : ['href', 'src' ] 
             });
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});

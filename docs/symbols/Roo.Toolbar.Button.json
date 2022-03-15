@@ -422,6 +422,32 @@
       "returns" : []
     },
     {
+      "name" : "setPressed",
+      "type" : "function",
+      "desc" : "Similar to toggle, but does not trigger event.",
+      "sig" : "(state)",
+      "static" : false,
+      "memberOf" : "Roo.Button",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [
+        {
+          "name" : "state",
+          "type" : "Boolean",
+          "desc" : "[required] Force a particular state",
+          "isOptional" : false
+        }
+      ],
+      "returns" : []
+    },
+    {
       "name" : "setVisible",
       "type" : "function",
       "desc" : "Convenience function for boolean show/hide",

@@ -234,7 +234,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 pressed : false,
                 enableToggle : true,
                 setValue : function(v) {
-                    this.toggle(v == 'block' ? false : true);
+                    // this trigger toggle.
+                     
+                    this.setText(v ? "Hide Caption" : "Show Caption");
+                    this.setPressed(v != 'block');
                 },
                 listeners : {
                     toggle: function (btn, state)
@@ -273,8 +276,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
             style: {
                 width : iw,
                 maxWidth : iw + ' !important', // this is not getting rendered?
-                margin : m 
-                
+                margin : m  
                 
             }
         };
@@ -315,7 +317,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         // we remove caption totally if its hidden... - will delete data.. but otherwise we end up with fake caption
         var captionhtml = this.caption_display == 'none' ? '' : (this.caption.length ? this.caption : "Caption");
         
-        return  {
+  
+        var ret =   {
             tag: 'figure',
             'data-block' : 'Figure',
             
@@ -327,7 +330,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 maxWidth :  this.align == 'center' ? '100% !important' : (this.width + ' !important'),
                 width : this.align == 'center' ? '100%' : this.width,
                 margin:  '0px',
-                padding: this.align == 'center' ? '10px 0' : '0',
+                padding: this.align == 'center' ? '0' : '0 10px' ,
                 textAlign : this.align   // seems to work for email..
                 
             },
@@ -376,6 +379,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 }
             ]
         };
+        return ret;
          
     },
     
