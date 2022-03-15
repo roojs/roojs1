@@ -234,7 +234,10 @@
                 </span><span class="jsdoc-var">pressed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">enableToggle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">this.toggle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'block' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-comment">// this trigger toggle.
+
+                    </span><span class="jsdoc-var">this.setText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;Hide Caption&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Show Caption&quot;</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.setPressed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">);
                 },
                 </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
                     </span><span class="jsdoc-var">toggle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
@@ -275,7 +278,6 @@
                 </span><span class="jsdoc-var">maxWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">iw </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' !important'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// this is not getting rendered?
                 </span><span class="jsdoc-var">margin </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">m
 
-
             </span><span class="jsdoc-syntax">}
         };
         </span><span class="jsdoc-comment">/*
@@ -315,7 +317,8 @@
         </span><span class="jsdoc-comment">// we remove caption totally if its hidden... - will delete data.. but otherwise we end up with fake caption
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">captionhtml </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.caption_display </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'none' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.caption.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.caption </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Caption&quot;</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-syntax">{
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">=   {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'data-block' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Figure'</span><span class="jsdoc-syntax">,
 
@@ -327,7 +330,7 @@
                 </span><span class="jsdoc-var">maxWidth </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'100% !important' </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' !important'</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'100%' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-string">'0px'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">padding</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'10px 0' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'0'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">padding</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'0' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'0 10px' </span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">textAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.align   </span><span class="jsdoc-comment">// seems to work for email..
 
             </span><span class="jsdoc-syntax">},
@@ -376,6 +379,7 @@
                 }
             ]
         };
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
 
     },
 
