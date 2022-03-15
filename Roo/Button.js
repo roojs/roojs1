@@ -375,8 +375,7 @@ Roo.extend(Roo.Button, Roo.util.Observable, {
 	 */
 	setPressed : function(state)
 	{
-	 
-        if(state != this.pressed){
+	    if(state != this.pressed){
             if(state){
                 this.el.addClass("x-btn-pressed");
                 this.pressed = true;
@@ -385,7 +384,7 @@ Roo.extend(Roo.Button, Roo.util.Observable, {
                 this.pressed = false;
             }
         }
-	}
+	},
 	
     /**
      * If a state it passed, it becomes the pressed state otherwise the current state is toggled.
