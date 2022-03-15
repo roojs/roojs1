@@ -6657,7 +6657,7 @@ Roo.extend(Roo.Button, Roo.util.Observable, {
                 this.pressed = false;
             }
         }
-	}
+	},
 	
     /**
      * If a state it passed, it becomes the pressed state otherwise the current state is toggled.
