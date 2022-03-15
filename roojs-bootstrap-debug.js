@@ -27210,7 +27210,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                     // this trigger toggle.
                      
                     this.setText(v ? "Hide Caption" : "Show Caption");
-                    this.setPressed(v);
+                    this.setPressed(v != 'block');
                 },
                 listeners : {
                     toggle: function (btn, state)
