@@ -369,7 +369,24 @@ Roo.extend(Roo.Button, Roo.util.Observable, {
             this.hide();
         }
     },
-    
+    /**
+	 * Similar to toggle, but does not trigger event.
+	 * @param {Boolean} state [required] Force a particular state
+	 */
+	setPressed : function(state)
+	{
+	 
+        if(state != this.pressed){
+            if(state){
+                this.el.addClass("x-btn-pressed");
+                this.pressed = true;
+            }else{
+                this.el.removeClass("x-btn-pressed");
+                this.pressed = false;
+            }
+        }
+	}
+	
     /**
      * If a state it passed, it becomes the pressed state otherwise the current state is toggled.
      * @param {Boolean} state (optional) Force a particular state
@@ -392,6 +409,8 @@ Roo.extend(Roo.Button, Roo.util.Observable, {
         }
     },
     
+	
+	
     /**
      * Focus the button
      */
