@@ -315,7 +315,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var captionhtml = this.caption_display == 'none' ? '' : (this.caption.length ? this.caption : "Caption");
         
   
-        return  {
+        var ret =   {
             tag: 'figure',
             'data-block' : 'Figure',
             
@@ -376,6 +376,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 }
             ]
         };
+        return ret;
          
     },
     
