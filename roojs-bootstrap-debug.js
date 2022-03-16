@@ -27368,7 +27368,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
          
         this.align = this.getVal(node, 'figure', 'align');
         var figcaption = this.getVal(node, 'figcaption', false);
-        this.caption = this.getVal(figcaption, 'i', 'html');
+        if (figcaption !== '') {
+            this.caption = this.getVal(figcaption, 'i', 'html');
+        }
+        
 
         this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
@@ -28985,7 +28988,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         //Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
         if(this.initialized){
             
-            this.undoManager.addEvent();
+            if (this.undoManager) {
+                this.undoManager.addEvent();
+            }
 
             
             var bd = (this.doc.body || this.doc.documentElement);
@@ -29259,6 +29264,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterParagraph({ node : d });
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
+            new Roo.htmleditor.FilterComment({ node : d });
         }
         if (this.enableBlocks) {
                 

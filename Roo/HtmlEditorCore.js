@@ -355,7 +355,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         //Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
         if(this.initialized){
             
-            this.undoManager.addEvent();
+            if (this.undoManager) {
+                this.undoManager.addEvent();
+            }
 
             
             var bd = (this.doc.body || this.doc.documentElement);
@@ -629,6 +631,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterParagraph({ node : d });
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
+            new Roo.htmleditor.FilterComment({ node : d });
         }
         if (this.enableBlocks) {
                 
