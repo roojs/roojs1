@@ -25374,7 +25374,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         //Roo.log("HtmlEditorCore:syncValue (EDITOR->TEXT)");
         if(this.initialized){
             
-            this.undoManager.addEvent();
+            if (this.undoManager) {
+                this.undoManager.addEvent();
+            }
 
             
             var bd = (this.doc.body || this.doc.documentElement);
