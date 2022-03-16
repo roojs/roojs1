@@ -355,7 +355,9 @@
         </span><span class="jsdoc-comment">//Roo.log(&quot;HtmlEditorCore:syncValue (EDITOR-&gt;TEXT)&quot;);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.initialized</span><span class="jsdoc-syntax">){
 
-            </span><span class="jsdoc-var">this.undoManager.addEvent</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.undoManager</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.undoManager.addEvent</span><span class="jsdoc-syntax">();
+            }
 
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bd </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.doc.body </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.doc.documentElement</span><span class="jsdoc-syntax">);
@@ -629,6 +631,7 @@
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterParagraph</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterSpan</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
             </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterLongBr</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterComment</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">});
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableBlocks</span><span class="jsdoc-syntax">) {
 
