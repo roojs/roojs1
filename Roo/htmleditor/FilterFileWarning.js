@@ -6,7 +6,7 @@
 * Run a new Attribute Filter
 * @param {Object} config Configuration options
  */
-Roo.htmleditor.FilterAttributes = function(cfg)
+Roo.htmleditor.FilterFileWarning = function(cfg)
 {
     
     var atag = cfg.node.getElementsByTagName('a');
