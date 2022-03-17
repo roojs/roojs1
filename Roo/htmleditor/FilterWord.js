@@ -12,7 +12,11 @@
 Roo.htmleditor.FilterWord = function(cfg)
 {
     // no need to apply config.
+    this.replaceBullets(cfg.node)
+    
     this.walk(cfg.node);
+    
+    
 }
 
 Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
