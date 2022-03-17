@@ -619,6 +619,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             });
         }
         if (this.autoClean) {
+            new Roo.htmleditor.FilterWord({ node : d });
+            
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,

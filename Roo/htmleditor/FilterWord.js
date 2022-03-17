@@ -66,7 +66,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 node.removeChild(cn);
                 node.parentNode.insertBefore(cn, node);
                 // move node to parent - and clean it..
-                this.replaceTag(cn);
+                if (cn.nodeType == 1) {
+                    this.replaceTag(cn);
+                }
+                
             }
             node.parentNode.removeChild(node);
             /// no need to iterate chidlren = it's got none..
@@ -154,7 +157,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             doc = parent.ownerDocument,
             items = []; 
         while (ns) {
-            if (!ns.className.match(/MsoListParagraph/)) {
+            if (ns.nodeType != 1) {
+                ns = ns.nextSibling;
+                continue;
+            }
+            if (!ns.className.match(/MsoListParagraph/i)) {
                 break;
             }
             items.push(ns);
@@ -169,22 +176,30 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         items.forEach(function(n) {
             parent.removeChild(n);
             var spans = n.getElementsByTagName('span');
-            n.removeChild(spans.item(0)); // remove the fake bullet.
+            if (!spans.length || !n.isEqualNode(spans.item(0).parentNode)) {
+                return; // skip it...
+            }
+            
             var style = this.styleToObject(n);
+            if (typeof(style['mso-list']) == 'undefined') {
+                return; // skip it.
+            }
+            n.removeChild(spans.item(0)); // remove the fake bullet.
             var nlvl = (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1;
             if (nlvl > lvl) {
-                new indent
+                //new indent
                 var nul = doc.createElement('ul'); // what about number lists...
                 last_li.appendChild(nul);
                 stack[nlvl] = nul;
             }
+            lvl = nlvl;
             
-            var nli = stack[nlvl].appendChild('li');
+            var nli = stack[nlvl].appendChild(doc.createElement('li'));
             last_li = nli;
             // copy children of p into nli
-            while(p.firstChild) {
-                var fc = p.firstChild;
-                p.removeChild(fc);
+            while(n.firstChild) {
+                var fc = n.firstChild;
+                n.removeChild(fc);
                 nli.appendChild(fc);
             }
              
