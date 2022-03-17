@@ -348,12 +348,12 @@
                         </span><span class="jsdoc-var">fontSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'16px'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">lineHeight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'24px'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">display </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.caption_display</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">maxWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' !important'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">maxWidth </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%' </span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">' !important'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width
+                        </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">,
 
 
-                    </span><span class="jsdoc-syntax">},
+                    },
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cls.length </span><span class="jsdoc-syntax">&gt; 0 ? (</span><span class="jsdoc-var">this.cls  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-thumbnail' </span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                         {

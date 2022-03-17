@@ -29221,7 +29221,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
-        Roo.log(images);
+        //Roo.log(images);
         //Roo.log(imgs);
         // fixme..
         images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }) // ignore headers/footers etc.
@@ -29265,6 +29265,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
             new Roo.htmleditor.FilterComment({ node : d });
+            
+            
         }
         if (this.enableBlocks) {
                 
@@ -29286,6 +29288,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             Roo.htmleditor.Block.initAll(this.doc.body);
         }
         
+        try {
+            new Roo.htmleditor.FilterFileWarning({ node : d });
+        } catch(e) {
+            Roo.MessageBox.alert("Invalid URLS in content", "The pasted Content contains file:// URLS - you probably want to check all the links in this file");
+        }
         
         e.preventDefault();
         return false;

@@ -177,7 +177,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 store : {
                     xtype : 'SimpleStore',
                     data : [
-                        ['auto'],
                         ['50%'],
                         ['80%'],
                         ['100%']
@@ -321,7 +320,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var ret =   {
             tag: 'figure',
             'data-block' : 'Figure',
-            
+            'data-width' : this.width, 
             contenteditable : 'false',
             
             style : {
@@ -350,7 +349,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         display : this.caption_display,
                         maxWidth : (this.align == 'center' ?  this.width : '100%' ) + ' !important',
                         margin: m,
-                        width: this.align == 'center' ?  this.width : '100%',
+                        width: this.align == 'center' ?  this.width : '100%' 
                     
                          
                     },
@@ -402,7 +401,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
-        this.width = this.getVal(node, 'figcaption', 'style', 'width');
+        this.width = this.getVal(node, true, 'data-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
         
     },
