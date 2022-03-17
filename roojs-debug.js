@@ -46071,7 +46071,11 @@ Roo.extend(Roo.htmleditor.FilterTableWidth, Roo.htmleditor.Filter,
 Roo.htmleditor.FilterWord = function(cfg)
 {
     // no need to apply config.
+    this.replaceDocBullets(cfg.node);
+    
     this.walk(cfg.node);
+    
+    
 }
 
 Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
@@ -46173,7 +46177,64 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         
         
         
+    },
+    
+    styleToObject: function(node)
+    {
+        var styles = node.getAttribute("style").split(";");
+        var ret = {};
+        Roo.each(styles, function(s) {
+            if (!s.match(/:/)) {
+                return;
+            }
+            var kv = s.split(":");
+             
+            // what ever is left... we allow.
+            ret[kv[0]] = kv[1];
+        });
+        return ret;
     }
+    
+    
+    replaceDocBullets : function(doc)
+    {
+        var listpara = doc.getElementsByClassName('MsoListParagraph');
+        while(listpara.length) {
+            this.replaceDocBullet(listpara.item(0));
+            //code
+        }
+    },
+    
+    replaceDocBullet : function(p)
+    {
+        // gather all the siblings.
+        var ns = p,
+            parent = p.parentNode,
+            items = []; 
+        while (ns) {
+            if (!ns.className.match(/MsoListParagraph/)) {
+                break;
+            }
+            items.push(ns);
+            ns = ns.nextSibling;
+            
+        }
+        var ul = parent.ownerDocument.createElement('ul'); // what about number lists...
+        
+        items.forEach(function(n) {
+            parent.removeChild(n);
+            var spans = n.getElementsByTagName('span');
+            n.removeChild(spans.item(0)); // remove the fake bullet.
+            
+        });
+        
+        
+        
+        
+    }
+    
+    
+    
 });
 /**
  * @class Roo.htmleditor.FilterStyleToTag
