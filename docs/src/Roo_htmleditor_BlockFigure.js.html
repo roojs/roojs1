@@ -177,7 +177,6 @@
                 </span><span class="jsdoc-var">store </span><span class="jsdoc-syntax">: {
                     </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'SimpleStore'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: [
-                        [</span><span class="jsdoc-string">'auto'</span><span class="jsdoc-syntax">],
                         [</span><span class="jsdoc-string">'50%'</span><span class="jsdoc-syntax">],
                         [</span><span class="jsdoc-string">'80%'</span><span class="jsdoc-syntax">],
                         [</span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">]
@@ -321,7 +320,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">=   {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'data-block' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Figure'</span><span class="jsdoc-syntax">,
-
+            </span><span class="jsdoc-string">'data-width' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">contenteditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'false'</span><span class="jsdoc-syntax">,
 
             </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: {
@@ -350,10 +349,10 @@
                         </span><span class="jsdoc-var">display </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.caption_display</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">maxWidth </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%' </span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">' !important'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">margin</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'center' </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%'
 
 
-                    },
+                    </span><span class="jsdoc-syntax">},
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cls.length </span><span class="jsdoc-syntax">&gt; 0 ? (</span><span class="jsdoc-var">this.cls  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-thumbnail' </span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                         {
@@ -402,7 +401,7 @@
 
         </span><span class="jsdoc-var">this.caption_display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'figcaption'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-display'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
-        </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'figcaption'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-width'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//this.margin = this.getVal(node, 'figure', 'style', 'margin');
 
     </span><span class="jsdoc-syntax">},

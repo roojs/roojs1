@@ -26742,6 +26742,33 @@ Roo.apply(Roo.htmleditor.FilterBlock.prototype,
     
 });
 /**
+ * @class Roo.htmleditor.FilterAttributes
+ * clean attributes and  styles including http:// etc.. in attribute
+ * @constructor
+* Run a new Attribute Filter
+* @param {Object} config Configuration options
+ */
+Roo.htmleditor.FilterFileWarning = function(cfg)
+{
+    
+    var atag = cfg.node.getElementsByTagName('a');
+    for(var i =0; i < atags.length;i++) {
+        var str = '' + atags.item(i).getAttribute('href');
+        if (str.match(/^file:/)) {
+            throw new Exception ("got file url");
+        }
+    }
+    // less likely
+    atag = cfg.node.getElementsByTagName('img');
+    for(var i =0; i < atags.length;i++) {
+        var str = '' + atags.item(i).getAttribute('src');
+        if (str.match(/^file:/)) {
+            throw new Exception ("got file url");
+        }
+    }
+}
+
+/**
  * @class Roo.htmleditor.KeyEnter
  * Handle Enter press..
  * @cfg {Roo.HtmlEditorCore} core the editor.
@@ -27150,7 +27177,6 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 store : {
                     xtype : 'SimpleStore',
                     data : [
-                        ['auto'],
                         ['50%'],
                         ['80%'],
                         ['100%']
@@ -27294,7 +27320,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var ret =   {
             tag: 'figure',
             'data-block' : 'Figure',
-            
+            'data-width' : this.width, 
             contenteditable : 'false',
             
             style : {
@@ -27321,9 +27347,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         fontSize : '16px',
                         lineHeight : '24px',
                         display : this.caption_display,
-                        maxWidth : this.width + ' !important',
+                        maxWidth : (this.align == 'center' ?  this.width : '100%' ) + ' !important',
                         margin: m,
-                        width: this.width
+                        width: this.align == 'center' ?  this.width : '100%' 
                     
                          
                     },
@@ -27375,7 +27401,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
 
         this.caption_display = this.getVal(node, 'figcaption', 'data-display');
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
-        this.width = this.getVal(node, 'figcaption', 'style', 'width');
+        this.width = this.getVal(node, true, 'data-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
         
     },
@@ -29255,7 +29281,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             new Roo.htmleditor.FilterStyleToTag({ node : d });
             new Roo.htmleditor.FilterAttributes({
                 node : d,
-                attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan', 'data-display'],
+                attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan', 'data-display', 'data-width'],
                 attrib_clean : ['href', 'src' ] 
             });
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
