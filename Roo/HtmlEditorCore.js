@@ -654,12 +654,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (this.enableBlocks) {
             Roo.htmleditor.Block.initAll(this.doc.body);
         }
-        
-        try {
-            new Roo.htmleditor.FilterFileWarning({ node : d });
-        } catch(e) {
-            Roo.MessageBox.alert("Invalid URLS in content", "The pasted Content contains file:// URLS - you probably want to check all the links in this file");
-        }
+         
         
         e.preventDefault();
         return false;
