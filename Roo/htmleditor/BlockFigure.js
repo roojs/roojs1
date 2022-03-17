@@ -348,9 +348,9 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                         fontSize : '16px',
                         lineHeight : '24px',
                         display : this.caption_display,
-                        maxWidth : (this.align == 'center' ?  this.width : 100% ) + ' !important',
+                        maxWidth : (this.align == 'center' ?  this.width : '100%' ) + ' !important',
                         margin: m,
-                        width: this.align == 'center' ?  this.width : 100%,
+                        width: this.align == 'center' ?  this.width : '100%',
                     
                          
                     },
