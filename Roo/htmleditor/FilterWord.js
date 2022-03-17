@@ -134,7 +134,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             ret[kv[0]] = kv[1];
         });
         return ret;
-    }
+    },
     
     
     replaceDocBullets : function(doc)
@@ -151,6 +151,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         // gather all the siblings.
         var ns = p,
             parent = p.parentNode,
+            doc = parent.ownerDocument,
             items = []; 
         while (ns) {
             if (!ns.className.match(/MsoListParagraph/)) {
@@ -161,13 +162,34 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             
         }
         var ul = parent.ownerDocument.createElement('ul'); // what about number lists...
-        
+        parent.insertBefore(ul, p);
+        var lvl = 0;
+        var stack = [ ul ];
+        var last_li = false;
         items.forEach(function(n) {
             parent.removeChild(n);
             var spans = n.getElementsByTagName('span');
             n.removeChild(spans.item(0)); // remove the fake bullet.
+            var style = this.styleToObject(n);
+            var nlvl = (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1;
+            if (nlvl > lvl) {
+                new indent
+                var nul = doc.createElement('ul'); // what about number lists...
+                last_li.appendChild(nul);
+                stack[nlvl] = nul;
+            }
             
-        });
+            var nli = stack[nlvl].appendChild('li');
+            last_li = nli;
+            // copy children of p into nli
+            while(p.firstChild) {
+                var fc = p.firstChild;
+                p.removeChild(fc);
+                nli.appendChild(fc);
+            }
+             
+            
+        },this);
         
         
         
