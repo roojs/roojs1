@@ -173,7 +173,7 @@
         </span><span class="jsdoc-var">this.hexStore.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">);
     },
     </span><span class="jsdoc-var">cmderror </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-keyword">throw new </span><span class="jsdoc-var">Exception </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmd.value</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-var">cmd.value</span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-comment">/*
@@ -303,8 +303,9 @@
     {
         </span><span class="jsdoc-var">this.emitText</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.controlWord </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.emitError</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'empty control word'</span><span class="jsdoc-syntax">);
-        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-comment">// do we want to track this - it seems just to cause problems.
+            //this.emitError('empty control word');
+        </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">this.push</span><span class="jsdoc-syntax">({
                   </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'controlword'</span><span class="jsdoc-syntax">,
                   </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.controlWord</span><span class="jsdoc-syntax">,
