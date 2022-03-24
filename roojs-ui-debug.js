@@ -20900,7 +20900,7 @@ Roo.rtf.Parser.prototype = {
         this.hexStore.push(cmd);
     },
     cmderror : function(cmd) {
-        throw new Exception (cmd.value);
+        throw cmd.value;
     },
     
     /*
@@ -21030,7 +21030,8 @@ Roo.rtf.Parser.prototype = {
     {
         this.emitText();
         if (this.controlWord === '') {
-            this.emitError('empty control word');
+            // do we want to track this - it seems just to cause problems.
+            //this.emitError('empty control word');
         } else {
             this.push({
                   type: 'controlword',
