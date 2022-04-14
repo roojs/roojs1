@@ -5,5 +5,10 @@
  "path" : "/home/alan/gitlive/roojs1/examples/grid/ArrayGrid.bjs",
  "permname" : "",
  "modOrder" : "001",
- "items" : []
+ "items" : [
+  {
+   "xtype" : "GridPanel",
+   "$ xns" : "Roo"
+  }
+ ]
 }
