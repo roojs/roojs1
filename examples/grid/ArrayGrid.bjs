@@ -13,7 +13,14 @@
     {
      "xtype" : "Grid",
      "$ xns" : "Roo.grid",
-     "* prop" : "grid"
+     "* prop" : "grid",
+     "items" : [
+      {
+       "xtype" : "JsonStore",
+       "$ xns" : "Roo.data",
+       "* prop" : "ds"
+      }
+     ]
     }
    ]
   }

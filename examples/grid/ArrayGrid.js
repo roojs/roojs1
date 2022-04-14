@@ -24,7 +24,12 @@ ArrayGrid = new Roo.XComponent({
    grid : {
     xtype : 'Grid',
     xns : Roo.grid,
-    '|xns' : 'Roo.grid'
+    '|xns' : 'Roo.grid',
+    ds : {
+     xtype : 'JsonStore',
+     xns : Roo.data,
+     '|xns' : 'Roo.data'
+    }
    }
   };  }
 });
