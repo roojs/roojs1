@@ -26460,7 +26460,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
-    this.walk(cfg.node);
+   // this.walk(cfg.node);
     
     
 }
@@ -26571,7 +26571,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     
     styleToObject: function(node)
     {
-        var styles = node.getAttribute("style").split(";");
+        var styles = (node.getAttribute("style") || '').split(";");
         var ret = {};
         Roo.each(styles, function(s) {
             if (!s.match(/:/)) {
@@ -26588,10 +26588,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     
     replaceDocBullets : function(doc)
     {
+        // this is a bit odd - but it appears some indents use ql-indent-1
+        
+        var listpara = doc.getElementsByClassName('ql-indent-1');
+        while(listpara.length) {
+            this.replaceDocBullet(listpara.item(0));
+        }
+        
         var listpara = doc.getElementsByClassName('MsoListParagraph');
         while(listpara.length) {
             this.replaceDocBullet(listpara.item(0));
-            //code
         }
     },
     
@@ -26607,7 +26613,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 ns = ns.nextSibling;
                 continue;
             }
-            if (!ns.className.match(/MsoListParagraph/i)) {
+            if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
                 break;
             }
             items.push(ns);
@@ -26620,17 +26626,37 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var stack = [ ul ];
         var last_li = false;
         items.forEach(function(n) {
-            parent.removeChild(n);
+            //Roo.log("got innertHMLT=" + n.innerHTML);
+            
             var spans = n.getElementsByTagName('span');
-            if (!spans.length || !n.isEqualNode(spans.item(0).parentNode)) {
+            if (!spans.length) {
+                //Roo.log("No spans found");
+
+                parent.removeChild(n);
                 return; // skip it...
             }
+           
+                
             
-            var style = this.styleToObject(n);
-            if (typeof(style['mso-list']) == 'undefined') {
-                return; // skip it.
+            var style = {};
+            for(var i = 0; i < spans.length; i++) {
+            
+                style = this.styleToObject(spans[i]);
+                if (typeof(style['mso-list']) == 'undefined') {
+                    continue;
+                }
+                
+                spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
+                break;
             }
-            n.removeChild(spans.item(0)); // remove the fake bullet.
+            //Roo.log("NOW GOT innertHMLT=" + n.innerHTML);
+            style = this.styleToObject(n); // mo-list is from the parent node.
+            if (typeof(style['mso-list']) == 'undefined') {
+                //Roo.log("parent is missing level");
+                parent.removeChild(n);
+                return;
+            }
+            
             var nlvl = (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1;
             if (nlvl > lvl) {
                 //new indent
@@ -26642,12 +26668,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             
             var nli = stack[nlvl].appendChild(doc.createElement('li'));
             last_li = nli;
+            nli.innerHTML = n.innerHTML;
+            //Roo.log("innerHTML = " + n.innerHTML);
+            parent.removeChild(n);
+            
             // copy children of p into nli
-            while(n.firstChild) {
+            /*while(n.firstChild) {
                 var fc = n.firstChild;
                 n.removeChild(fc);
                 nli.appendChild(fc);
-            }
+            }*/
              
             
         },this);

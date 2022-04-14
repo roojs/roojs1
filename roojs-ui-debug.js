@@ -22298,12 +22298,14 @@ Roo.htmleditor.TidyWriter.prototype = {
      * @param {String} text String to write out.
      * @param {Boolean} raw Optional raw state if true the contents wont get encoded.
      */
-    text: function(text, node)
+    text: function(in_text, node)
     {
         // if not in whitespace critical
-        if (text.length < 1) {
+        if (in_text.length < 1) {
             return;
         }
+        var text = new XMLSerializer().serializeToString(document.createTextNode(in_text)); // escape it properly?
+        
         if (this.in_pre) {
             this.html[this.html.length] =  text;
             return;   
