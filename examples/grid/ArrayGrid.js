@@ -29,7 +29,14 @@ ArrayGrid = new Roo.XComponent({
      xtype : 'SimpleStore',
      xns : Roo.data,
      '|xns' : 'Roo.data'
-    }
+    },
+    cm : [
+     {
+      xtype : 'ColumnModel',
+      xns : Roo.grid,
+      '|xns' : 'Roo.grid'
+     }
+    ]
    }
   };  }
 });

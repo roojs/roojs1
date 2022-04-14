@@ -19,6 +19,11 @@
        "xtype" : "SimpleStore",
        "$ xns" : "Roo.data",
        "* prop" : "ds"
+      },
+      {
+       "xtype" : "ColumnModel",
+       "$ xns" : "Roo.grid",
+       "* prop" : "cm[]"
       }
      ]
     }
