@@ -8,7 +8,14 @@
  "items" : [
   {
    "xtype" : "GridPanel",
-   "$ xns" : "Roo"
+   "$ xns" : "Roo",
+   "items" : [
+    {
+     "xtype" : "Grid",
+     "$ xns" : "Roo.grid",
+     "* prop" : "grid"
+    }
+   ]
   }
  ]
 }

@@ -20,6 +20,11 @@ ArrayGrid = new Roo.XComponent({
    return {
    xtype : 'GridPanel',
    xns : Roo,
-   '|xns' : 'Roo'
+   '|xns' : 'Roo',
+   grid : {
+    xtype : 'Grid',
+    xns : Roo.grid,
+    '|xns' : 'Roo.grid'
+   }
   };  }
 });
