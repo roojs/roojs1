@@ -4,7 +4,9 @@
 
 ArrayGrid = new Roo.XComponent({
 
-
+ _strings : {
+  '1c76cbfe21c6f44c1d1e59d54f3e4420' :"Company"
+ },
 
   part     :  ["grid", "ArrayGrid" ],
   order    : '001-ArrayGrid',
@@ -33,6 +35,8 @@ ArrayGrid = new Roo.XComponent({
     cm : [
      {
       xtype : 'ColumnModel',
+      dataIndex : 'company',
+      header : _this._strings['1c76cbfe21c6f44c1d1e59d54f3e4420'] /* Company */,
       xns : Roo.grid,
       '|xns' : 'Roo.grid'
      }
