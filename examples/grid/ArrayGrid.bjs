@@ -16,7 +16,7 @@
      "* prop" : "grid",
      "items" : [
       {
-       "xtype" : "JsonStore",
+       "xtype" : "Store",
        "$ xns" : "Roo.data",
        "* prop" : "ds"
       }

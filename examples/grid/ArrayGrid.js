@@ -26,7 +26,7 @@ ArrayGrid = new Roo.XComponent({
     xns : Roo.grid,
     '|xns' : 'Roo.grid',
     ds : {
-     xtype : 'JsonStore',
+     xtype : 'Store',
      xns : Roo.data,
      '|xns' : 'Roo.data'
     }
