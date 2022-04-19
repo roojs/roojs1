@@ -14,10 +14,10 @@
  * An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor
  * to the Reader when its load method is called.
  * @constructor
- * @cfg {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
+ * @param {Object} config  A config object containing the objects needed for the Store to access data,
  */
 Roo.data.MemoryProxy = function(data){
-    if (data.data) {
+    if (typeof(data) != 'undefined' && typeof(data.data) != 'undefined') {
         data = data.data;
     }
     Roo.data.MemoryProxy.superclass.constructor.call(this);
@@ -26,6 +26,9 @@ Roo.data.MemoryProxy = function(data){
 
 Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
     
+    /**
+     *  @cfg {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
+     */
     /**
      * Load data from the requested source (in this case an in-memory
      * data object passed to the constructor), read the data object into
