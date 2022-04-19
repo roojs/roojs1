@@ -1394,6 +1394,7 @@ Roo.extend(Roo.data.DataProxy, Roo.util.Observable);
  */
 /**
  * @class Roo.data.MemoryProxy
+ * @extends Roo.data.DataProxy
  * An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor
  * to the Reader when its load method is called.
  * @constructor
