@@ -5,7 +5,8 @@
   ],
   "childClasses" : {
     "Roo.data.DataProxy" : [
-      "Roo.data.HttpProxy"
+      "Roo.data.HttpProxy",
+      "Roo.data.MemoryProxy"
     ]
   },
   "tree_children" : [],

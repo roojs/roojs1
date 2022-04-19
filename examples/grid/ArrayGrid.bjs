@@ -1,0 +1,107 @@
+{
+ "name" : "ArrayGrid",
+ "parent" : "#grid-panel",
+ "title" : "",
+ "path" : "/home/alan/gitlive/roojs1/examples/grid/ArrayGrid.bjs",
+ "permname" : "",
+ "modOrder" : "001",
+ "strings" : {
+  "1c76cbfe21c6f44c1d1e59d54f3e4420" : "Company",
+  "30870648ed968ed5a3e00631e4ad0699" : "% Change",
+  "3601146c4e948c32b6424d2c0a7f0118" : "Price",
+  "f4ec5f57bd4d31b803312d873be40da9" : "Change",
+  "4221d3e17c6eca2ca6337251a3cf9c4e" : "Last Updated"
+ },
+ "items" : [
+  {
+   "xtype" : "GridPanel",
+   "$ xns" : "Roo",
+   "items" : [
+    {
+     "listeners" : {
+      "render" : "function (grid)\n{\n    _this.grid = this;\n}"
+     },
+     "xtype" : "Grid",
+     "$ xns" : "Roo.grid",
+     "String autoExpandColumn" : "company",
+     "* prop" : "grid",
+     "items" : [
+      {
+       "xtype" : "Store",
+       "$ xns" : "Roo.data",
+       "* prop" : "ds",
+       "items" : [
+        {
+         "xtype" : "MemoryProxy",
+         "$ data" : "[]",
+         "$ xns" : "Roo.data",
+         "* prop" : "proxy"
+        },
+        {
+         "$ Array fields" : "[\n       {name: 'company'},\n       {name: 'price', type: 'float'}, \n       {name: 'change', type: 'float'},\n       {name: 'pctChange', type: 'float'},\n       {name: 'lastChange', type: 'date', dateFormat: 'n/j h:ia'}\n]",
+         "xtype" : "ArrayReader",
+         "$ xns" : "Roo.data",
+         "* prop" : "reader"
+        }
+       ]
+      },
+      {
+       "String header" : "Company",
+       "String dataIndex" : "company",
+       "Number width" : 160,
+       "xtype" : "ColumnModel",
+       "$ xns" : "Roo.grid",
+       "Boolean sortable" : true,
+       "* prop" : "cm[]",
+       "Boolean locked" : false
+      },
+      {
+       "String header" : "Price",
+       "String dataIndex" : "price",
+       "Number width" : 75,
+       "$ Function renderer" : " Roo.util.Format.usMoney",
+       "xtype" : "ColumnModel",
+       "$ xns" : "Roo.grid",
+       "Boolean sortable" : true,
+       "* prop" : "cm[]",
+       "Boolean locked" : false
+      },
+      {
+       "String header" : "Change",
+       "String dataIndex" : "change",
+       "Number width" : 75,
+       "$ Function renderer" : "function  (val){\n    if(val > 0){\n        return '<span style=\"color:green;\">' + val + '</span>';\n    }else if(val < 0){\n        return '<span style=\"color:red;\">' + val + '</span>';\n    }\n    return val;\n}",
+       "xtype" : "ColumnModel",
+       "$ xns" : "Roo.grid",
+       "Boolean sortable" : true,
+       "* prop" : "cm[]",
+       "Boolean locked" : false
+      },
+      {
+       "String header" : "% Change",
+       "String dataIndex" : "pctChange",
+       "Number width" : 75,
+       "$ Function renderer" : "function  (val){\n    if(val > 0){\n        return '<span style=\"color:green;\">' + val + '%</span>';\n    }else if(val < 0){\n        return '<span style=\"color:red;\">' + val + '%</span>';\n    }\n    return val;\n}",
+       "xtype" : "ColumnModel",
+       "$ xns" : "Roo.grid",
+       "Boolean sortable" : true,
+       "* prop" : "cm[]",
+       "Boolean locked" : false
+      },
+      {
+       "String header" : "Last Updated",
+       "String dataIndex" : "lastChange",
+       "Number width" : 85,
+       "$ Function renderer" : "Roo.util.Format.dateRenderer('m/d/Y')",
+       "xtype" : "ColumnModel",
+       "$ xns" : "Roo.grid",
+       "Boolean sortable" : true,
+       "* prop" : "cm[]",
+       "Boolean locked" : false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
