@@ -1398,7 +1398,7 @@ Roo.extend(Roo.data.DataProxy, Roo.util.Observable);
  * An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor
  * to the Reader when its load method is called.
  * @constructor
- * @param {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
+ * @cfg {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
  */
 Roo.data.MemoryProxy = function(data){
     if (data.data) {
