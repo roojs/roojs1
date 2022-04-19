@@ -21,7 +21,14 @@
       {
        "xtype" : "Store",
        "$ xns" : "Roo.data",
-       "* prop" : "ds"
+       "* prop" : "ds",
+       "items" : [
+        {
+         "xtype" : "MemoryProxy",
+         "$ xns" : "Roo.data",
+         "* prop" : "proxy"
+        }
+       ]
       },
       {
        "String header" : "Company",

@@ -30,7 +30,12 @@ ArrayGrid = new Roo.XComponent({
     ds : {
      xtype : 'Store',
      xns : Roo.data,
-     '|xns' : 'Roo.data'
+     '|xns' : 'Roo.data',
+     proxy : {
+      xtype : 'MemoryProxy',
+      xns : Roo.data,
+      '|xns' : 'Roo.data'
+     }
     },
     cm : [
      {
