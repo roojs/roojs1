@@ -30,7 +30,7 @@
          "* prop" : "proxy"
         },
         {
-         "$ Array fields" : "[\n                       {name: 'company'},\n                       {name: 'price', type: 'float'},MemoryProxy\n                       {name: 'change', type: 'float'},\n                       {name: 'pctChange', type: 'float'},\n                       {name: 'lastChange', type: 'date', dateFormat: 'n/j h:ia'}\n                  ]",
+         "$ Array fields" : "[\n       {name: 'company'},\n       {name: 'price', type: 'float'}, \n       {name: 'change', type: 'float'},\n       {name: 'pctChange', type: 'float'},\n       {name: 'lastChange', type: 'date', dateFormat: 'n/j h:ia'}\n]",
          "xtype" : "ArrayReader",
          "$ xns" : "Roo.data",
          "* prop" : "reader"

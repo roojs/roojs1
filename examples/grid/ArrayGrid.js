@@ -40,12 +40,12 @@ ArrayGrid = new Roo.XComponent({
      reader : {
       xtype : 'ArrayReader',
       fields : [
-                             {name: 'company'},
-                             {name: 'price', type: 'float'},MemoryProxy
-                             {name: 'change', type: 'float'},
-                             {name: 'pctChange', type: 'float'},
-                             {name: 'lastChange', type: 'date', dateFormat: 'n/j h:ia'}
-                        ],
+             {name: 'company'},
+             {name: 'price', type: 'float'}, 
+             {name: 'change', type: 'float'},
+             {name: 'pctChange', type: 'float'},
+             {name: 'lastChange', type: 'date', dateFormat: 'n/j h:ia'}
+      ],
       xns : Roo.data,
       '|xns' : 'Roo.data'
      }
