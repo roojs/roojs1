@@ -25,6 +25,7 @@
        "items" : [
         {
          "xtype" : "MemoryProxy",
+         "$ data" : "[]",
          "$ xns" : "Roo.data",
          "* prop" : "proxy"
         },

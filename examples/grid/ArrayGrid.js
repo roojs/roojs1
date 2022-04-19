@@ -33,6 +33,7 @@ ArrayGrid = new Roo.XComponent({
      '|xns' : 'Roo.data',
      proxy : {
       xtype : 'MemoryProxy',
+      data : [],
       xns : Roo.data,
       '|xns' : 'Roo.data'
      },
