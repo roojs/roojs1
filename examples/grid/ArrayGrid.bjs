@@ -19,6 +19,11 @@
      "* prop" : "grid",
      "items" : [
       {
+       "xtype" : "Store",
+       "$ xns" : "Roo.data",
+       "* prop" : "ds"
+      },
+      {
        "String header" : "Company",
        "String dataIndex" : "company",
        "xtype" : "ColumnModel",
