@@ -46199,7 +46199,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             var kv = s.split(":");
              
             // what ever is left... we allow.
-            ret[kv[0]] = kv[1];
+            ret[kv[0].trim()] = kv[1];
         });
         return ret;
     },
@@ -46226,7 +46226,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var ns = p,
             parent = p.parentNode,
             doc = parent.ownerDocument,
-            items = []; 
+            items = [];
+            
+            
         while (ns) {
             if (ns.nodeType != 1) {
                 ns = ns.nextSibling;
@@ -46237,15 +46239,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
             items.push(ns);
             ns = ns.nextSibling;
-            
         }
+        
+        
         var ul = parent.ownerDocument.createElement('ul'); // what about number lists...
         parent.insertBefore(ul, p);
         var lvl = 0;
         var stack = [ ul ];
         var last_li = false;
         
-        items.forEach(function(n) {
+        items.forEach(function(n, ipos) {
             //Roo.log("got innertHMLT=" + n.innerHTML);
             
             var spans = n.getElementsByTagName('span');
@@ -46277,18 +46280,15 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 return;
             }
             
-            var nlvl = Math.min(
-                            stack.length-1, 
-                            (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1
-                        );
+            var nlvl =   (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1  ;
             
             
             
             if (nlvl > lvl) {
                 //new indent
-                    var nul = doc.createElement('ul'); // what about number lists...
-                    last_li.appendChild(nul);
-                    stack[nlvl] = nul;
+                var nul = doc.createElement('ul'); // what about number lists...
+                last_li.appendChild(nul);
+                stack[nlvl] = nul;
                 
             }
             lvl = nlvl;
