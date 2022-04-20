@@ -21752,6 +21752,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var lvl = 0;
         var stack = [ ul ];
         var last_li = false;
+        var base_lvl = 0;
+        
         items.forEach(function(n) {
             //Roo.log("got innertHMLT=" + n.innerHTML);
             
@@ -21785,11 +21787,20 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
             
             var nlvl = (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1;
-            if (nlvl > lvl && last_li) {
+            
+            
+            
+            if (nlvl > lvl) {
                 //new indent
-                var nul = doc.createElement('ul'); // what about number lists...
-                last_li.appendChild(nul);
-                stack[nlvl] = nul;
+                if (last_li) {
+                    var nul = doc.createElement('ul'); // what about number lists...
+                    last_li.appendChild(nul);
+                    stack[nlvl] = nul;
+                } else {
+                    // occurs when we get a level (1) but no parent - just put all the children on the top most..
+                    stack[nlvl] = stack[stack.length-1]; 
+                }
+                
             }
             lvl = nlvl;
             

@@ -26663,7 +26663,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
             
             var nlvl = (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1;
-            if (nlvl > lvl) {
+            if (nlvl > lvl && last_li) {
                 //new indent
                 var nul = doc.createElement('ul'); // what about number lists...
                 last_li.appendChild(nul);
