@@ -179,6 +179,8 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lvl </span><span class="jsdoc-syntax">= 0;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">stack </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-var">ul </span><span class="jsdoc-syntax">];
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">last_li </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">base_lvl </span><span class="jsdoc-syntax">= 0;
+
         </span><span class="jsdoc-var">items.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">n</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">//Roo.log(&quot;got innertHMLT=&quot; + n.innerHTML);
 
@@ -212,11 +214,20 @@
             }
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nlvl </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'mso-list'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">)[1]</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/level/,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) *1) - 1;
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nlvl </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">lvl </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">last_li</span><span class="jsdoc-syntax">) {
+
+
+
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nlvl </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">lvl</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-comment">//new indent
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nul </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// what about number lists...
-                </span><span class="jsdoc-var">last_li.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nul</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">nul</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">last_li</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nul </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// what about number lists...
+                    </span><span class="jsdoc-var">last_li.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nul</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">nul</span><span class="jsdoc-syntax">;
+                } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-comment">// occurs when we get a level (1) but no parent - just put all the children on the top most..
+                    </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">stack</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">stack.length</span><span class="jsdoc-syntax">-1];
+                }
+
             }
             </span><span class="jsdoc-var">lvl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nlvl</span><span class="jsdoc-syntax">;
 
