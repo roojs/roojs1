@@ -1400,9 +1400,10 @@ Roo.extend(Roo.data.DataProxy, Roo.util.Observable);
  * @constructor
  * @param {Object} config  A config object containing the objects needed for the Store to access data,
  */
-Roo.data.MemoryProxy = function(data){
-    if (typeof(data) != 'undefined' && typeof(data.data) != 'undefined') {
-        data = data.data;
+Roo.data.MemoryProxy = function(config){
+    var data = config;
+    if (typeof(config) != 'undefined' && typeof(config.data) != 'undefined') {
+        data = config.data;
     }
     Roo.data.MemoryProxy.superclass.constructor.call(this);
     this.data = data;
@@ -21784,7 +21785,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
             
             var nlvl = (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1;
-            if (nlvl > lvl) {
+            if (nlvl > lvl && last_li) {
                 //new indent
                 var nul = doc.createElement('ul'); // what about number lists...
                 last_li.appendChild(nul);

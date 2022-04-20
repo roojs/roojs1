@@ -53,8 +53,8 @@ break;case 'date':da[c.name]=new Date();break;case 'float':da[c.name]=0.0;break;
 // Roo/data/DataProxy.js
 Roo.data.DataProxy=function(){this.addEvents({beforeload:true,load:true,loadexception:true});Roo.data.DataProxy.superclass.constructor.call(this);};Roo.extend(Roo.data.DataProxy,Roo.util.Observable);
 // Roo/data/MemoryProxy.js
-Roo.data.MemoryProxy=function(A){if(typeof(A)!='undefined'&&typeof(A.data)!='undefined'){A=A.data;}Roo.data.MemoryProxy.superclass.constructor.call(this);this.data=A;};Roo.extend(Roo.data.MemoryProxy,Roo.data.DataProxy,{load:function(A,B,C,D,E){A=A||{};var F;
-try{F=B.readRecords(A.data?A.data:this.data);}catch(e){this.fireEvent("loadexception",this,E,null,e);C.call(D,null,E,false);return;}C.call(D,F,E,true);},update:function(A,B){}});
+Roo.data.MemoryProxy=function(A){var B=A;if(typeof(A)!='undefined'&&typeof(A.data)!='undefined'){B=A.data;}Roo.data.MemoryProxy.superclass.constructor.call(this);this.data=B;};Roo.extend(Roo.data.MemoryProxy,Roo.data.DataProxy,{load:function(A,B,C,D,E){A=A||{}
+;var F;try{F=B.readRecords(A.data?A.data:this.data);}catch(e){this.fireEvent("loadexception",this,E,null,e);C.call(D,null,E,false);return;}C.call(D,F,E,true);},update:function(A,B){}});
 // Roo/data/HttpProxy.js
 Roo.data.HttpProxy=function(A){Roo.data.HttpProxy.superclass.constructor.call(this);this.conn=A;this.useAjax=!A||!A.events;};Roo.extend(Roo.data.HttpProxy,Roo.data.DataProxy,{getConnection:function(){return this.useAjax?Roo.Ajax:this.conn;},load:function(A,B,C,D,E){if(this.fireEvent("beforeload",this,A)!==false){var o={params:A||{}
 ,request:{callback:C,scope:D,arg:E},reader:B,callback:this.loadResponse,scope:this};if(this.useAjax){Roo.applyIf(o,this.conn);if(this.activeRequest){Roo.Ajax.abort(this.activeRequest);}this.activeRequest=Roo.Ajax.request(o);}else{this.conn.request(o);}}else{C.call(D||this,null,E,false);
@@ -987,7 +987,7 @@ A.removeChild(cn);A.parentNode.insertBefore(cn,A);if(cn.nodeType==1){this.replac
 var C={};Roo.each(B,function(s){if(!s.match(/:/)){return;}var kv=s.split(":");C[kv[0]]=kv[1];});return C;},replaceDocBullets:function(A){var B=A.getElementsByClassName('ql-indent-1');while(B.length){this.replaceDocBullet(B.item(0));}var B=A.getElementsByClassName('MsoListParagraph');
 while(B.length){this.replaceDocBullet(B.item(0));}},replaceDocBullet:function(p){var ns=p,A=p.parentNode,B=A.ownerDocument,C=[];while(ns){if(ns.nodeType!=1){ns=ns.nextSibling;continue;}if(!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)){break;}C.push(ns);
 ns=ns.nextSibling;}var ul=A.ownerDocument.createElement('ul');A.insertBefore(ul,p);var D=0;var E=[ul];var F=false;C.forEach(function(n){var G=n.getElementsByTagName('span');if(!G.length){A.removeChild(n);return;}var H={};for(var i=0;i<G.length;i++){H=this.styleToObject(G[i]);
-if(typeof(H['mso-list'])=='undefined'){continue;}G[i].parentNode.removeChild(G[i]);break;}H=this.styleToObject(n);if(typeof(H['mso-list'])=='undefined'){A.removeChild(n);return;}var I=(H['mso-list'].split(' ')[1].replace(/level/,'')*1)-1;if(I>D){var J=B.createElement('ul');
+if(typeof(H['mso-list'])=='undefined'){continue;}G[i].parentNode.removeChild(G[i]);break;}H=this.styleToObject(n);if(typeof(H['mso-list'])=='undefined'){A.removeChild(n);return;}var I=(H['mso-list'].split(' ')[1].replace(/level/,'')*1)-1;if(I>D&&F){var J=B.createElement('ul');
 F.appendChild(J);E[I]=J;}D=I;var K=E[I].appendChild(B.createElement('li'));F=K;K.innerHTML=n.innerHTML;A.removeChild(n);},this);}});
 // Roo/htmleditor/FilterStyleToTag.js
 Roo.htmleditor.FilterStyleToTag=function(A){this.tags={B:['fontWeight','bold'],I:['fontStyle','italic'],SUP:['verticalAlign','super'],SUB:['verticalAlign','sub']};Roo.apply(this,A);this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterStyleToTag,Roo.htmleditor.Filter,{tag:true,tags:false,replaceTag:function(A){if(A.getAttribute("style")===null){return true;
