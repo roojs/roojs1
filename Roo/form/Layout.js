@@ -40,7 +40,7 @@ Roo.extend(Roo.form.Layout, Roo.Component, {
      * a function which returns such a specification.
      */
     /**
-     * @cfg {String} labelAlign
+     * @cfg {String} labelAlign (left|top|right)
      * Valid values are "left," "top" and "right" (defaults to "left")
      */
     /**

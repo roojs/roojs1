@@ -55301,7 +55301,7 @@ Roo.extend(Roo.form.Layout, Roo.Component, {
      * a function which returns such a specification.
      */
     /**
-     * @cfg {String} labelAlign
+     * @cfg {String} labelAlign (left|top|right)
      * Valid values are "left," "top" and "right" (defaults to "left")
      */
     /**
@@ -55421,6 +55421,7 @@ Roo.extend(Roo.form.Layout, Roo.Component, {
     }
 });
 
+
 /**
  * @class Roo.form.Column
  * @extends Roo.form.Layout
@@ -55454,7 +55455,6 @@ Roo.extend(Roo.form.Column, Roo.form.Layout, {
         }
     }
 });
-
 
 /**
  * @class Roo.form.Row
