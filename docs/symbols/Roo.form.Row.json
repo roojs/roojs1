@@ -64,10 +64,14 @@
     {
       "name" : "labelAlign",
       "type" : "String",
-      "desc" : "Valid values are \"left,\" \"top\" and \"right\" (defaults to \"left\")",
+      "desc" : "t)\nValid values are \"left,\" \"top\" and \"right\" (defaults to \"left",
       "memberOf" : "Roo.form.Layout",
       "isOptional" : false,
-      "optvals" : []
+      "optvals" : [
+        "left",
+        "top",
+        "right"
+      ]
     },
     {
       "name" : "listeners",

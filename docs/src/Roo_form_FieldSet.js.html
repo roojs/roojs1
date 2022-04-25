@@ -1,0 +1,41 @@
+<html><head><title>Roo/form/FieldSet.js</title><link rel="stylesheet" type="text/css" href="../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
+ * @class Roo.form.FieldSet
+ * @extends Roo.form.Layout
+ * @children Roo.form.Column Roo.form.Row Roo.form.Field Roo.Button Roo.form.TextItem
+ * Creates a fieldset container for layout and rendering of fields in an {@link Roo.form.Form}.
+ * @constructor
+ * @param {Object} config Configuration options
+ */
+</span><span class="jsdoc-var">Roo.form.FieldSet </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.form.FieldSet.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.form.FieldSet</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.form.Layout</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} legend
+     * The text to display as the legend for the FieldSet (defaults to '')
+     */
+    /**
+     * @cfg {String/Object} autoCreate
+     * A DomHelper element spec used to autocreate the fieldset (defaults to {tag: 'fieldset', cn: {tag:'legend'}})
+     */
+
+    // private
+    </span><span class="jsdoc-var">defaultAutoCreate </span><span class="jsdoc-syntax">: {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fieldset'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: {</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'legend'</span><span class="jsdoc-syntax">}},
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.form.FieldSet.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.legend</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setLegend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.legend</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">setLegend </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'legend'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+        }
+    }
+});</span></code></body></html>
