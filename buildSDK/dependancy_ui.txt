@@ -135,6 +135,9 @@ Roo.form.BasicForm
 Roo.form.Form
 Roo.form.Action
 Roo.form.Layout
+Roo.form.Column
+Roo.form.Row
+Roo.form.FieldSet
 Roo.form.VTypes
 Roo.form.FCKeditor
 Roo.form.GridField
