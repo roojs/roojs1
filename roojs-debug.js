@@ -47992,7 +47992,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     
     // used by context menu
     friendly_name : 'Image with caption',
-    deleteTitle : "Delete Image and Caption",
+    deleteTitle : "Delete Image and Captionn",
     
     contextMenu : function(toolbar)
     {
@@ -53435,7 +53435,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                         _this.updateToolbar(null, null, null);
                         _this.updateFooter(false);
 
-                        console.log("DADADA");
                         editorcore.syncValue();
                     }
                 }
