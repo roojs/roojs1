@@ -23500,7 +23500,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
     
     // used by context menu
     friendly_name : 'Image with caption',
-    deleteTitle : "Delete Image and Captionn",
+    deleteTitle : "Delete Image and Caption",
     
     contextMenu : function(toolbar)
     {
