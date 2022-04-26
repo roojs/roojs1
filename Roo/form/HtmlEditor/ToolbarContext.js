@@ -739,7 +739,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                         _this.updateToolbar(null, null, null);
                         _this.updateFooter(false);
 
-                        console.log("DADADA");
                         editorcore.syncValue();
                     }
                 }
