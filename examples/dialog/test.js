@@ -107,6 +107,6 @@ var test = {
 Roo.onReady(function() {
     
     Roo.get('show-dialog-btn').on('click',function () {
-        HelloWorld.show({ _el : this});
+        test.show({ _el : this});
     });
 });
