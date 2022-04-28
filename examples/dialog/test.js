@@ -49,10 +49,12 @@ var test = {
                 arrange : function (_self, formData)
                 {
                     console.log("ARRANGE");
+                    console.log(formData);
                 },
                 crop : function (_self, data)
                 {
                     console.log("CROP");
+                    console.log(data);
                 },
                 resize : function (_self)
                 {
