@@ -27,6 +27,14 @@ var test = {
             xtype : 'LayoutDialog',
             width:500,
             height:300,
+            items: [
+                {
+                    xtype : 'UploadCropbox',
+                    xns : Roo.bootstrap,
+                    minHeight : 100,
+                    minWidth : 100
+                }
+            ],
             buttons : [
                 {
                     xtype : 'Button',
