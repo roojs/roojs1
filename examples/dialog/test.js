@@ -48,5 +48,6 @@ var test = {
 Roo.onReady(function() {
     
     Roo.get('show-dialog-btn').on('click',function () {
+        test.show({_el : this});
     });
 });
