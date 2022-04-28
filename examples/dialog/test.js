@@ -26,6 +26,9 @@ var test = {
             xtype : 'Modal',
             xns : Roo.bootstrap,
             title : 'Upload an Image',
+            allow_close : false,
+            buttons : Roo.bootstrap.Modal.OKCANCEL,
+            cls : 'roo-upload-cropbox-dialog',
             items: [
                 {
                     xtype : 'Row',
