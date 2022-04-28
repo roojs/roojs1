@@ -33,7 +33,13 @@ var test = {
                     items: [
                         {
                             xtype : 'Column',
-                            xns : Roo.bootstrap
+                            xns : Roo.bootstrap,
+                            items: [
+                                {
+                                    xtype : 'UploadCropbox',
+                                    xns : Roo.bootstrap
+                                }
+                            ]
                         }
                     ]
                 }
