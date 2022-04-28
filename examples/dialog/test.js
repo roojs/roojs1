@@ -25,6 +25,8 @@ var test = {
         this.dialog = Roo.factory({
             xns : Roo,
             xtype : 'LayoutDialog',
+            width:500,
+            height:300,
             buttons : [
                 {
                     xtype : 'Button',
