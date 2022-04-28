@@ -29,10 +29,8 @@ var test = {
             height:300,
             items: [
                 {
-                    xtype : 'UploadCropbox',
-                    xns : Roo.bootstrap,
-                    minHeight : 100,
-                    minWidth : 100
+                    xtype : 'Row',
+                    xns : Roo.bootstrap
                 }
             ],
             buttons : [
