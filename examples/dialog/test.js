@@ -25,25 +25,6 @@ var test = {
         this.dialog = Roo.factory({
             xns : Roo,
             xtype : 'LayoutDialog',
-            autoTabs:true,
-            width:500,
-            height:300,
-            shadow:true,
-            minWidth:300,
-            minHeight:250,
-            proxyDrag: true,
-            center : {
-                xtype: 'LayoutRegion',
-                xns: Roo
-            },
-            items : [
-                {
-                    xtype: 'ContentPanel',
-                    xns: Roo,
-                    region : "center"
-                    
-                }
-            ],
             buttons : [
                 {
                     xtype : 'Button',
