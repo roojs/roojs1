@@ -4,7 +4,7 @@ Roo.onReady(function() {
         console.log("TEST");
         var uc = new Roo.UploadCropbox({});
         console.log(uc);
-        console.log(uc.superclass);
+        Roo.UploadCropbox.show();
         console.log(uc);
         console.log("TEST2");
     });
