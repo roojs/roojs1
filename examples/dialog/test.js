@@ -23,10 +23,9 @@ var test = {
     {
         var _this = this;
         this.dialog = Roo.factory({
-            xns : Roo,
-            xtype : 'LayoutDialog',
-            width:500,
-            height:300,
+            xtype : 'Modal',
+            xns : Roo.bootstrap,
+            title : 'Upload an Image',
             items: [
                 {
                     xtype : 'Row',
