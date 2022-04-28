@@ -36,7 +36,7 @@ var test = {
                 {
                     xtype : 'Button',
                     xns : Roo,
-                    text : 'Submit',
+                    text : 'ok',
                     listeners : {
                         click : function () {
                             _this.dialog.hide()
