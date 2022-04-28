@@ -62,6 +62,7 @@ var test = {
                                         {
                                             console.log("RENDER");
                                             console.log(_self);
+                                            _this.cropbox = _self;
                                         }
                         
                                     }
@@ -75,6 +76,11 @@ var test = {
                 btnclick : function (e)
                 {
                     console.log(e);
+                    if(e == 'cancel') {
+                        _this.dialog.hide();
+                    }
+
+                    _this.cropbox.crop();
                 }
             }
         });
