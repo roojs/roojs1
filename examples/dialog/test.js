@@ -35,7 +35,9 @@ var test = {
             items : [   
                 {
                     xtype : 'UploadCropbox',
-                    xns : Roo
+                    xns : Roo,
+                    minHeight : 200,
+                    minWidth : 200,
                 }
             ],
             buttons : [
