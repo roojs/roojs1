@@ -32,7 +32,7 @@ var test = {
             minWidth:300,
             minHeight:250,
             proxyDrag: true,
-            buttons : Roo.MessageBox.OKCANCEL,
+            buttons : {ok:true, cancel:true},
             listeners : {
 
             },
