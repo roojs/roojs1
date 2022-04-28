@@ -17,6 +17,24 @@ var test = {
             this.form.setValues(data);
             this.form.fireEvent('actioncomplete', this.form, {type: 'setdata', data: data});
         }
+    },
+
+    create : function()
+    {
+        var _this = this;
+        this.dialog = Roo.factory({
+            xns : Roo,
+            xtype : 'LayoutDialog',
+            autoTabs:true,
+            width:500,
+            height:300,
+            shadow:true,
+            minWidth:300,
+            minHeight:250,
+            proxyDrag: true,
+            listeners : {
+                
+            }
     }
 }
 
