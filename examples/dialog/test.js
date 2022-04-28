@@ -78,6 +78,7 @@ var test = {
                     console.log(e);
                     if(e == 'cancel') {
                         _this.dialog.hide();
+                        return;
                     }
 
                     _this.cropbox.crop();
