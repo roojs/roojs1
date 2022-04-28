@@ -35,7 +35,7 @@ var test = {
             items : [   
                 {
                     xtype : 'UploadCropbox',
-                    xns : Roo,
+                    xns : Roo.bootstrap,
                     minHeight : 200,
                     minWidth : 200,
                     listeners : {
