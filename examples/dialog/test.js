@@ -34,17 +34,8 @@ var test = {
             proxyDrag: true,
             items : [   
                 {
-                    xtype : 'UploadCropbox',
+                    xtype : 'MessageBox',
                     xns : Roo,
-                    minHeight : 200,
-                    minWidth : 200,
-                    listeners : {
-                        render : function (_self)
-                        {
-                            console.log("UploadCropbox Render");
-                            _this.cropbox = this;
-                        }
-                    }
                 }
             ],
             buttons : [
