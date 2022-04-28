@@ -38,7 +38,7 @@ var test = {
                                 {
                                     xtype : 'UploadCropbox',
                                     xns : Roo.bootstrap,
-                                    minHeight : 600
+                                    minHeight : 666
                                 }
                             ]
                         }
