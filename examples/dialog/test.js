@@ -57,9 +57,10 @@ var test = {
                                         {
                                             console.log("ROTATE");
                                         },
-                                        rebder : function (_self)
+                                        render : function (_self)
                                         {
                                             console.log("RENDER");
+                                            console.log(_self);
                                         }
                         
                                     }
