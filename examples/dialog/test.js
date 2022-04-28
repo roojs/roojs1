@@ -3,7 +3,7 @@ Roo.onReady(function() {
     Roo.get('show-dialog-btn').on('click',function () {
         console.log("TEST");
         var uc = new Roo.UploadCropbox({});
-        console.log(uc);
+        console.log(uc.visible);
         console.log("TEST2");
     });
 });
