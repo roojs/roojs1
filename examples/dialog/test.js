@@ -32,7 +32,28 @@ var test = {
             minWidth:300,
             minHeight:250,
             proxyDrag: true,
-            buttons : {ok:true, cancel:true},
+            buttons : [
+                {
+                    xtype : 'Button',
+                    xns : Roo,
+                    text : 'Submit',
+                    listeners : {
+                        click : function () {
+                            _this.dialog.hide()
+                        }   
+                    }
+                },
+                {
+                    xtype : 'Button',
+                    xns : Roo,
+                    text : 'Close',
+                    listeners : {
+                        click : function () {
+                            _this.dialog.hide()
+                        }   
+                    }
+                }
+            ],
         });
     }
 }
