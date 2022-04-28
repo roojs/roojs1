@@ -32,7 +32,7 @@ var test = {
                     xns : Roo.bootstrap,
                     items: [
                         {
-                            xtype : 'Col',
+                            xtype : 'Column',
                             xns : Roo.bootstrap
                         }
                     ]
