@@ -44,7 +44,26 @@ var test = {
                         }
                     ]
                 }
-            ]
+            ],
+            listeners : {
+                arrange : function (_self, formData)
+                {
+                    console.log("ARRANGE");
+                },
+                crop : function (_self, data)
+                {
+                    console.log("CROP");
+                },
+                resize : function (_self)
+                {
+                    console.log("RESIZE");
+                },
+                rotate : function (_self)
+                {
+                    console.log("ROTATE");
+                }
+
+            }
         });
     }
 }
