@@ -38,34 +38,34 @@ var test = {
                                 {
                                     xtype : 'UploadCropbox',
                                     xns : Roo.bootstrap,
-                                    minHeight : 666
+                                    minHeight : 666,
+                                    listeners : {
+                                        arrange : function (_self, formData)
+                                        {
+                                            console.log("ARRANGE");
+                                            console.log(formData);
+                                        },
+                                        crop : function (_self, data)
+                                        {
+                                            console.log("CROP");
+                                            console.log(data);
+                                        },
+                                        resize : function (_self)
+                                        {
+                                            console.log("RESIZE");
+                                        },
+                                        rotate : function (_self)
+                                        {
+                                            console.log("ROTATE");
+                                        }
+                        
+                                    }
                                 }
                             ]
                         }
                     ]
                 }
-            ],
-            listeners : {
-                arrange : function (_self, formData)
-                {
-                    console.log("ARRANGE");
-                    console.log(formData);
-                },
-                crop : function (_self, data)
-                {
-                    console.log("CROP");
-                    console.log(data);
-                },
-                resize : function (_self)
-                {
-                    console.log("RESIZE");
-                },
-                rotate : function (_self)
-                {
-                    console.log("ROTATE");
-                }
-
-            }
+            ]
         });
     }
 }
