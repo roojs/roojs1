@@ -26,6 +26,7 @@ var test = {
             xtype : 'Modal',
             xns : Roo.bootstrap,
             title : 'Upload an Image',
+            buttons : Roo.bootstrap.Modal.OKCANCEL,
             items: [
                 {
                     xtype : 'Row',
@@ -69,7 +70,13 @@ var test = {
                         }
                     ]
                 }
-            ]
+            ],
+            listeners : {
+                btnclick : function (e)
+                {
+                    console.log(e);
+                }
+            }
         });
     }
 }
