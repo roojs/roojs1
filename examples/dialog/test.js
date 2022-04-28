@@ -32,6 +32,12 @@ var test = {
             minWidth:300,
             minHeight:250,
             proxyDrag: true,
+            items : [   
+                {
+                    xtype : 'UploadCropbox',
+                    xns : Roo
+                }
+            ],
             buttons : [
                 {
                     xtype : 'Button',
