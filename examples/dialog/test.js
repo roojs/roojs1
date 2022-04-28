@@ -40,7 +40,7 @@ var test = {
                     xtype: 'UploadCropbox',
                     xns: Roo                    
                 }
-            ],
+            ]
     }
 }
 
