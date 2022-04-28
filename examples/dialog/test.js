@@ -32,10 +32,16 @@ var test = {
             minWidth:300,
             minHeight:250,
             proxyDrag: true,
-            items : [   
+            center : {
+                xtype: 'LayoutRegion',
+                xns: Roo
+            },
+            items : [
                 {
-                    xtype : 'MessageBox',
-                    xns : Roo,
+                    xtype: 'ContentPanel',
+                    xns: Roo,
+                    region : "center"
+                    
                 }
             ],
             buttons : [
