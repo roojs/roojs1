@@ -31,29 +31,7 @@ var test = {
                     xtype : 'Row',
                     xns : Roo.bootstrap
                 }
-            ],
-            buttons : [
-                {
-                    xtype : 'Button',
-                    xns : Roo,
-                    text : 'Ok',
-                    listeners : {
-                        click : function () {
-                            _this.dialog.hide()
-                        }   
-                    }
-                },
-                {
-                    xtype : 'Button',
-                    xns : Roo,
-                    text : 'Close',
-                    listeners : {
-                        click : function () {
-                            _this.dialog.hide()
-                        }   
-                    }
-                }
-            ],
+            ]
         });
     }
 }
