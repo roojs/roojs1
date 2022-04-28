@@ -11,7 +11,7 @@ var test = {
 
         this.callback = cb;
         this.data = data;
-        this.dialog.show(this.data_el);
+        this.dialog.show(data._el ? data._el : false);
         if(this.form) {
             this.form.reset();
             this.form.setValues(data);
@@ -48,6 +48,6 @@ var test = {
 Roo.onReady(function() {
     
     Roo.get('show-dialog-btn').on('click',function () {
-        test.show({_el : this});
+        test.show({});
     });
 });
