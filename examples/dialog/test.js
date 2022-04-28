@@ -33,8 +33,14 @@ var test = {
             minHeight:250,
             proxyDrag: true,
             listeners : {
-                
-            }
+
+            },
+            items : [
+                {
+                    xtype: 'UploadCropbox',
+                    xns: Roo                    
+                }
+            ],
     }
 }
 
