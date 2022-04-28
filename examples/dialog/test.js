@@ -41,6 +41,7 @@ var test = {
                     listeners : {
                         render : function (_self)
                         {
+                            console.log("UploadCropbox Render");
                             _this.cropbox = this;
                         }
                     }
