@@ -29,7 +29,13 @@ var test = {
             items: [
                 {
                     xtype : 'Row',
-                    xns : Roo.bootstrap
+                    xns : Roo.bootstrap,
+                    items: [
+                        {
+                            xtype : 'Col',
+                            xns : Roo.bootstrap
+                        }
+                    ]
                 }
             ]
         });
