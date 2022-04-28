@@ -38,6 +38,12 @@ var test = {
                     xns : Roo,
                     minHeight : 200,
                     minWidth : 200,
+                    listeners : {
+                        render : function (_self)
+                        {
+                            _this.cropbox = this;
+                        }
+                    }
                 }
             ],
             buttons : [
