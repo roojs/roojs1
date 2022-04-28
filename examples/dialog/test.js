@@ -41,6 +41,7 @@ var test = {
                     xns: Roo                    
                 }
             ]
+        });
     }
 }
 
