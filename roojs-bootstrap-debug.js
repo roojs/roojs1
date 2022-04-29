@@ -16086,14 +16086,16 @@ Roo.extend(Roo.data.DataProxy, Roo.util.Observable);
  */
 /**
  * @class Roo.data.MemoryProxy
+ * @extends Roo.data.DataProxy
  * An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor
  * to the Reader when its load method is called.
  * @constructor
- * @param {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
+ * @param {Object} config  A config object containing the objects needed for the Store to access data,
  */
-Roo.data.MemoryProxy = function(data){
-    if (data.data) {
-        data = data.data;
+Roo.data.MemoryProxy = function(config){
+    var data = config;
+    if (typeof(config) != 'undefined' && typeof(config.data) != 'undefined') {
+        data = config.data;
     }
     Roo.data.MemoryProxy.superclass.constructor.call(this);
     this.data = data;
@@ -16101,6 +16103,9 @@ Roo.data.MemoryProxy = function(data){
 
 Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
     
+    /**
+     *  @cfg {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
+     */
     /**
      * Load data from the requested source (in this case an in-memory
      * data object passed to the constructor), read the data object into
@@ -26460,7 +26465,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
-    this.walk(cfg.node);
+   // this.walk(cfg.node);
     
     
 }
@@ -26571,7 +26576,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     
     styleToObject: function(node)
     {
-        var styles = node.getAttribute("style").split(";");
+        var styles = (node.getAttribute("style") || '').split(";");
         var ret = {};
         Roo.each(styles, function(s) {
             if (!s.match(/:/)) {
@@ -26580,7 +26585,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             var kv = s.split(":");
              
             // what ever is left... we allow.
-            ret[kv[0]] = kv[1];
+            ret[kv[0].trim()] = kv[1];
         });
         return ret;
     },
@@ -26588,10 +26593,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     
     replaceDocBullets : function(doc)
     {
+        // this is a bit odd - but it appears some indents use ql-indent-1
+        
+        var listpara = doc.getElementsByClassName('ql-indent-1');
+        while(listpara.length) {
+            this.replaceDocBullet(listpara.item(0));
+        }
+        
         var listpara = doc.getElementsByClassName('MsoListParagraph');
         while(listpara.length) {
             this.replaceDocBullet(listpara.item(0));
-            //code
         }
     },
     
@@ -26601,53 +26612,85 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var ns = p,
             parent = p.parentNode,
             doc = parent.ownerDocument,
-            items = []; 
+            items = [];
+            
+            
         while (ns) {
             if (ns.nodeType != 1) {
                 ns = ns.nextSibling;
                 continue;
             }
-            if (!ns.className.match(/MsoListParagraph/i)) {
+            if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
                 break;
             }
             items.push(ns);
             ns = ns.nextSibling;
-            
         }
+        
+        
         var ul = parent.ownerDocument.createElement('ul'); // what about number lists...
         parent.insertBefore(ul, p);
         var lvl = 0;
         var stack = [ ul ];
         var last_li = false;
-        items.forEach(function(n) {
-            parent.removeChild(n);
+        
+        items.forEach(function(n, ipos) {
+            //Roo.log("got innertHMLT=" + n.innerHTML);
+            
             var spans = n.getElementsByTagName('span');
-            if (!spans.length || !n.isEqualNode(spans.item(0).parentNode)) {
+            if (!spans.length) {
+                //Roo.log("No spans found");
+
+                parent.removeChild(n);
                 return; // skip it...
             }
+           
+                
             
-            var style = this.styleToObject(n);
-            if (typeof(style['mso-list']) == 'undefined') {
-                return; // skip it.
+            var style = {};
+            for(var i = 0; i < spans.length; i++) {
+            
+                style = this.styleToObject(spans[i]);
+                if (typeof(style['mso-list']) == 'undefined') {
+                    continue;
+                }
+                
+                spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
+                break;
             }
-            n.removeChild(spans.item(0)); // remove the fake bullet.
-            var nlvl = (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1;
+            //Roo.log("NOW GOT innertHMLT=" + n.innerHTML);
+            style = this.styleToObject(n); // mo-list is from the parent node.
+            if (typeof(style['mso-list']) == 'undefined') {
+                //Roo.log("parent is missing level");
+                parent.removeChild(n);
+                return;
+            }
+            
+            var nlvl =   (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1  ;
+            
+            
+            
             if (nlvl > lvl) {
                 //new indent
                 var nul = doc.createElement('ul'); // what about number lists...
                 last_li.appendChild(nul);
                 stack[nlvl] = nul;
+                
             }
             lvl = nlvl;
             
             var nli = stack[nlvl].appendChild(doc.createElement('li'));
             last_li = nli;
+            nli.innerHTML = n.innerHTML;
+            //Roo.log("innerHTML = " + n.innerHTML);
+            parent.removeChild(n);
+            
             // copy children of p into nli
-            while(n.firstChild) {
+            /*while(n.firstChild) {
                 var fc = n.firstChild;
                 n.removeChild(fc);
                 nli.appendChild(fc);
-            }
+            }*/
              
             
         },this);

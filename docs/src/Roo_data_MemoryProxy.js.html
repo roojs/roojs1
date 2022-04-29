@@ -10,14 +10,16 @@
  */
 /**
  * @class Roo.data.MemoryProxy
+ * @extends Roo.data.DataProxy
  * An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor
  * to the Reader when its load method is called.
  * @constructor
- * @param {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
+ * @param {Object} config  A config object containing the objects needed for the Store to access data,
  */
-</span><span class="jsdoc-var">Roo.data.MemoryProxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">){
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data.data</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.data</span><span class="jsdoc-syntax">;
+</span><span class="jsdoc-var">Roo.data.MemoryProxy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.data</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.data</span><span class="jsdoc-syntax">;
     }
     </span><span class="jsdoc-var">Roo.data.MemoryProxy.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">;
@@ -26,6 +28,9 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.data.MemoryProxy</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data.DataProxy</span><span class="jsdoc-syntax">, {
 
     </span><span class="jsdoc-comment">/**
+     *  @cfg {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
+     */
+    /**
      * Load data from the requested source (in this case an in-memory
      * data object passed to the constructor), read the data object into
      * a block of Roo.data.Records using the passed Roo.data.DataReader implementation, and

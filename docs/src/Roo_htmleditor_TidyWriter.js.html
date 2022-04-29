@@ -186,12 +186,14 @@
      * @param {String} text String to write out.
      * @param {Boolean} raw Optional raw state if true the contents wont get encoded.
      */
-    </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">in_text</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// if not in whitespace critical
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text.length </span><span class="jsdoc-syntax">&lt; 1) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">in_text.length </span><span class="jsdoc-syntax">&lt; 1) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">XMLSerializer</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.serializeToString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.createTextNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">in_text</span><span class="jsdoc-syntax">)); </span><span class="jsdoc-comment">// escape it properly?
+
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.in_pre</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.html.length</span><span class="jsdoc-syntax">] =  </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
