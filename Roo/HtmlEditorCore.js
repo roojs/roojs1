@@ -1318,7 +1318,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanWord : function(node)
     {
-        console.log("HtmlEditorCore cleanWord");
         new Roo.htmleditor.FilterWord({ node : node ? node : this.doc.body });
         new Roo.htmleditor.FilterKeepChildren({node : node ? node : this.doc.body, tag : [ 'FONT', ':' ]} );
         
