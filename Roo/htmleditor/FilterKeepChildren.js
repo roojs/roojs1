@@ -8,7 +8,6 @@
 
 Roo.htmleditor.FilterKeepChildren = function(cfg)
 {
-    console.log("FilterKeepChildren definition");
     Roo.apply(this, cfg);
     if (this.tag === false) {
         return; // dont walk.. (you can use this to use this just to do a child removal on a single tag )
@@ -22,7 +21,6 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
   
     replaceTag : function(node)
     {
-        console.log("FilterKeepChildren replaceTag");
         // walk children...
         //Roo.log(node);
         var ar = Array.from(node.childNodes);
