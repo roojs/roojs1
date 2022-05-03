@@ -46076,6 +46076,7 @@ Roo.extend(Roo.htmleditor.FilterTableWidth, Roo.htmleditor.Filter,
 
 Roo.htmleditor.FilterWord = function(cfg)
 {
+    console.log("FilterWord definition");
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
@@ -46095,6 +46096,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceTag : function(node)
     {
          
+        console.log("FilterWord replaceTag");
         // no idea what this does - span with text, replaceds with just text.
         if(
                 node.nodeName == 'SPAN' &&
@@ -50972,6 +50974,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanWord : function(node)
     {
+        console.log("HtmlEditorCore cleanWord");
         new Roo.htmleditor.FilterWord({ node : node ? node : this.doc.body });
         
     },
