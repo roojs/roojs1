@@ -11,6 +11,7 @@
 
 Roo.htmleditor.FilterWord = function(cfg)
 {
+    console.log("FilterWord definition");
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
