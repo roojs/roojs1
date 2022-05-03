@@ -8,6 +8,7 @@
 
 Roo.htmleditor.FilterKeepChildren = function(cfg)
 {
+    console.log("FilterKeepChildren definition");
     Roo.apply(this, cfg);
     if (this.tag === false) {
         return; // dont walk.. (you can use this to use this just to do a child removal on a single tag )
