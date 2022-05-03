@@ -45893,6 +45893,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
   
     replaceTag : function(node)
     {
+        console.log("FilterKeepChildren replaceTag");
         // walk children...
         //Roo.log(node);
         var ar = Array.from(node.childNodes);
