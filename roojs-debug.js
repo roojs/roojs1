@@ -45880,6 +45880,7 @@ Roo.extend(Roo.htmleditor.FilterComment, Roo.htmleditor.Filter,
 
 Roo.htmleditor.FilterKeepChildren = function(cfg)
 {
+    console.log("FilterKeepChildren definition");
     Roo.apply(this, cfg);
     if (this.tag === false) {
         return; // dont walk.. (you can use this to use this just to do a child removal on a single tag )
@@ -50979,7 +50980,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         console.log("HtmlEditorCore cleanWord");
         new Roo.htmleditor.FilterWord({ node : node ? node : this.doc.body });
-        new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
+        new Roo.htmleditor.FilterKeepChildren({node : node ? node : this.doc.body, tag : [ 'FONT', ':' ]} );
         
     },
    
