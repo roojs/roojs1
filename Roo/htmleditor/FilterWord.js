@@ -31,6 +31,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceTag : function(node)
     {
          
+        console.log("FilterWord replaceTag");
         // no idea what this does - span with text, replaceds with just text.
         if(
                 node.nodeName == 'SPAN' &&
