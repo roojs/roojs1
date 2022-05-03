@@ -27844,6 +27844,7 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 actiontype : 'word',
                 html: 'Remove MS Word Formating',
                 handler: function(a,b) {
+                    console.log("ToolbarStandard Handler");
                     editorcore.cleanWord();
                     editorcore.syncValue();
                 },
