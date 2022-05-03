@@ -46080,7 +46080,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
-   // this.walk(cfg.node);
+   this.walk(cfg.node);
     
     
 }
