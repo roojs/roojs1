@@ -21388,7 +21388,6 @@ Roo.extend(Roo.htmleditor.FilterComment, Roo.htmleditor.Filter,
 
 Roo.htmleditor.FilterKeepChildren = function(cfg)
 {
-    console.log("FilterKeepChildren definition");
     Roo.apply(this, cfg);
     if (this.tag === false) {
         return; // dont walk.. (you can use this to use this just to do a child removal on a single tag )
@@ -21402,7 +21401,6 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
   
     replaceTag : function(node)
     {
-        console.log("FilterKeepChildren replaceTag");
         // walk children...
         //Roo.log(node);
         var ar = Array.from(node.childNodes);
@@ -21588,7 +21586,6 @@ Roo.extend(Roo.htmleditor.FilterTableWidth, Roo.htmleditor.Filter,
 
 Roo.htmleditor.FilterWord = function(cfg)
 {
-    console.log("FilterWord definition");
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
@@ -26486,7 +26483,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanWord : function(node)
     {
-        console.log("HtmlEditorCore cleanWord");
         new Roo.htmleditor.FilterWord({ node : node ? node : this.doc.body });
         new Roo.htmleditor.FilterKeepChildren({node : node ? node : this.doc.body, tag : [ 'FONT', ':' ]} );
         
@@ -27852,7 +27848,6 @@ Roo.form.HtmlEditor.ToolbarStandard.prototype = {
                 actiontype : 'word',
                 html: 'Remove MS Word Formating',
                 handler: function(a,b) {
-                    console.log("ToolbarStandard Handler");
                     editorcore.cleanWord();
                     editorcore.syncValue();
                 },
