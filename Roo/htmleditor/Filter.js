@@ -42,6 +42,8 @@ Roo.htmleditor.Filter.prototype = {
                     return;
                 
                 case this.tag === true: // everything
+                case e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'object' && this.tag.indexOf(":") > -1:
+                case e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'string' && this.tag == ":":
                 case typeof(this.tag) == 'object' && this.tag.indexOf(e.tagName) > -1: // array and it matches.
                 case typeof(this.tag) == 'string' && this.tag == e.tagName: // array and it matches.
                     if (this.replaceTag && false === this.replaceTag(e)) {

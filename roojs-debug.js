@@ -45652,6 +45652,8 @@ Roo.htmleditor.Filter.prototype = {
                     return;
                 
                 case this.tag === true: // everything
+                case e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'object' && this.tag.indexOf(":") > -1:
+                case e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'string' && this.tag == ":":
                 case typeof(this.tag) == 'object' && this.tag.indexOf(e.tagName) > -1: // array and it matches.
                 case typeof(this.tag) == 'string' && this.tag == e.tagName: // array and it matches.
                     if (this.replaceTag && false === this.replaceTag(e)) {
@@ -46079,6 +46081,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
+    // this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
     
     
@@ -50283,7 +50286,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             });
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
-            new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', 'O:P' ]} );
+            new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
             new Roo.htmleditor.FilterParagraph({ node : d });
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
@@ -50973,6 +50976,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     cleanWord : function(node)
     {
         new Roo.htmleditor.FilterWord({ node : node ? node : this.doc.body });
+        new Roo.htmleditor.FilterKeepChildren({node : node ? node : this.doc.body, tag : [ 'FONT', ':' ]} );
         
     },
    

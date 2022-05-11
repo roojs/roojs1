@@ -14,6 +14,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
+    // this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
     
     
