@@ -45,9 +45,10 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pli </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">range.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">pc </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// on it list, or ctrl pressed.
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pc</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">sel.insertNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'br'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'after'</span><span class="jsdoc-syntax">);
             } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-comment">// only do this if we have ctrl key..
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">br </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">doc.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'br'</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">br.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'clear'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">br.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'clear:all'</span><span class="jsdoc-syntax">);
