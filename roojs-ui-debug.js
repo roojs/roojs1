@@ -23319,7 +23319,16 @@ Roo.htmleditor.KeyEnter.prototype = {
         var pc = range.closest([ 'ol', 'ul']);
         var pli = range.closest('li');
         if (!pc || e.ctrlKey) {
-            sel.insertNode('br', 'after'); 
+            // on it list, or ctrl pressed.
+            if (pc) {
+                sel.insertNode('br', 'after'); 
+            } else {
+                var br = doc.createElement('br');
+                br.className = 'clear';
+                br.setAttribute('style', 'clear:all');
+                sel.insertNode(br, 'after'); 
+            }
+            
          
             this.core.undoManager.addEvent();
             this.core.fireEditorEvent(e);
