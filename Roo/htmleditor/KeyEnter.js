@@ -51,7 +51,7 @@ Roo.htmleditor.KeyEnter.prototype = {
                 // only do this if we have ctrl key..
                 var br = doc.createElement('br');
                 br.className = 'clear';
-                br.setAttribute('style', 'clear:all');
+                br.setAttribute('style', 'clear: both');
                 sel.insertNode(br, 'after'); 
             }
             
