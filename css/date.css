@@ -91,20 +91,22 @@ td.x-date-left
 
 td.x-date-right a {
 	/* width:16px; */
-	background: url(../images/default/grid/arrow-right-white.gif) no-repeat right center;
+	background: url(../images/default/grid/arrow-right-white.gif) no-repeat 8px center;
 	cursor:pointer;
     text-decoration: none;
     width: 18px;
     height: 18px;
+	display: block;
     
 }
 td.x-date-left a {
 	/* width:16px; */
-	background: url(../images/default/grid/arrow-left-white.gif)  no-repeat 0 center;
+	background: url(../images/default/grid/arrow-left-white.gif)  no-repeat 8px center;
 	cursor:pointer;
     text-decoration: none;
     width: 18px;
     height: 18px;
+	display: block;
 }
 .x-date-inner {
     background-color: white; 
