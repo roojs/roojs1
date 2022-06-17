@@ -158,7 +158,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        console.log("BOOTSTRAP UPLOADCROPBOX AUTOCREATE");
+        console.log("BOOTSTRAP UPLOADCROPBOX GETAUTOCREATE");
         var cfg = {
             tag : 'div',
             cls : 'roo-upload-cropbox',
