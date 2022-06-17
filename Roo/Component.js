@@ -210,8 +210,6 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
     /** @private */
     // default function is not really useful
     onRender : function(ct, position){
-        console.log("THIS EL");
-        console.log(this.el);
         if(this.el){
             this.el = Roo.get(this.el);
             if(this.allowDomMove !== false){
