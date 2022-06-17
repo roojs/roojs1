@@ -11,7 +11,7 @@ var test = {
 
         this.callback = cb;
         this.data = data;
-        this.dialog.show(data._el ? data._el : false);
+        this.dialog.show();
     },
 
     create : function()
