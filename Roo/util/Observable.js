@@ -29,6 +29,7 @@
 
 Roo.util.Observable = function(cfg){
     console.log("UTIL OBSERVABLE CONSTRUCTOR");
+    consolg.log("config");
     
     cfg = cfg|| {};
     this.addEvents(cfg.events || {});
