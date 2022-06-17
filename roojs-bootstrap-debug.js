@@ -33465,7 +33465,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        console.log("BOOTSTRAP UPLOADCROPBOX AUTOCREATE");
+        console.log("BOOTSTRAP UPLOADCROPBOX GETAUTOCREATE");
         var cfg = {
             tag : 'div',
             cls : 'roo-upload-cropbox',
@@ -33517,6 +33517,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position)
     {
+        console.log("BOOTSTRAP UPLOADCROPBOX ONRENDER");
         Roo.bootstrap.UploadCropbox.superclass.onRender.call(this, ct, position);
         
         if (this.buttons.length) {
