@@ -30,6 +30,7 @@ Roo.bootstrap = Roo.bootstrap || {};
 
 
 Roo.bootstrap.Component = function(config){
+    console.log("BOOSTRAP COMPONENT SUPERCLASS CONSTRUCTOR CALL");
     Roo.bootstrap.Component.superclass.constructor.call(this, config);
        
     this.addEvents({
