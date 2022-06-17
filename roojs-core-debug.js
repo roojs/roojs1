@@ -7125,7 +7125,6 @@ Roo.query = Roo.DomQuery.select;
 
 Roo.util.Observable = function(cfg){
     console.log("UTIL OBSERVABLE CONSTRUCTOR");
-    console.log(cfg);
     
     cfg = cfg|| {};
     this.addEvents(cfg.events || {});
@@ -16868,7 +16867,6 @@ Roo.ComponentMgr = function(){
  */
 Roo.Component = function(config){
     console.log("COMPONENT CONSTRUCTOR");
-    console.log(config);
     config = config || {};
     if(config.tagName || config.dom || typeof config == "string"){ // element object
         config = {el: config, id: config.id || config};
