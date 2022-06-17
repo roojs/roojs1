@@ -34,7 +34,7 @@ var test = {
                                 {
                                     xtype : 'UploadCropbox',
                                     xns : Roo.bootstrap,
-                                    minWidth : 50,
+                                    minWidth : 1000,
                                     listeners : {
                                         arrange : function (_self, formData)
                                         {
