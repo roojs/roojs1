@@ -24,7 +24,6 @@
  */
 Roo.Component = function(config){
     console.log("COMPONENT CONSTRUCTOR");
-    console.log(config);
     config = config || {};
     if(config.tagName || config.dom || typeof config == "string"){ // element object
         config = {el: config, id: config.id || config};
