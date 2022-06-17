@@ -26,6 +26,7 @@
  */
 
  Roo.UploadCropbox = function(config){
+    console.log("BOOTSTRAP UPLOAD CROPBOX SUPERCLASS CONSTRUCTOR CALL");
     Roo.UploadCropbox.superclass.constructor.call(this, config);
     
     this.addEvents({
