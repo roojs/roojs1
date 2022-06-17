@@ -7125,7 +7125,7 @@ Roo.query = Roo.DomQuery.select;
 
 Roo.util.Observable = function(cfg){
     console.log("UTIL OBSERVABLE CONSTRUCTOR");
-    consolg.log("config");
+    console.log("config");
     
     cfg = cfg|| {};
     this.addEvents(cfg.events || {});
