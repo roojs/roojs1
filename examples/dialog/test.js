@@ -12,11 +12,6 @@ var test = {
         this.callback = cb;
         this.data = data;
         this.dialog.show(data._el ? data._el : false);
-        if(this.form) {
-            this.form.reset();
-            this.form.setValues(data);
-            this.form.fireEvent('actioncomplete', this.form, {type: 'setdata', data: data});
-        }
     },
 
     create : function()
