@@ -125,7 +125,7 @@ Roo.bootstrap.UploadCropbox = function(config){
         "arrange" : true
     });
     
-    this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.DOCUMENT;
+    this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.STANDARD;
 };
 
 Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
