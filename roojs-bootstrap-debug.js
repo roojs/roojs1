@@ -248,7 +248,6 @@ Roo.bootstrap = Roo.bootstrap || {};
 
 Roo.bootstrap.Component = function(config){
     console.log("BOOSTRAP COMPONENT CONSTRUCTOR");
-    console.log(config);
     Roo.bootstrap.Component.superclass.constructor.call(this, config);
        
     this.addEvents({
@@ -33335,7 +33334,6 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.UploadCropbox = function(config){
     console.log("BOOTSTRAP UPLOAD CROPBOX CONSTRUCTOR");
-    console.log(config);
     Roo.bootstrap.UploadCropbox.superclass.constructor.call(this, config);
     
     this.addEvents({
@@ -33434,7 +33432,7 @@ Roo.bootstrap.UploadCropbox = function(config){
         "arrange" : true
     });
     
-    this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.STANDARD;
+    this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.DOCUMENT;
 };
 
 Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
