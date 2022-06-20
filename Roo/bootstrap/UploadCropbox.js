@@ -210,6 +210,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position)
     {
+        Roo.bootstrap.UploadCropbox.superclass.onRender.call(this, ct, position);
         console.log("BOOTSTRAP UPLOADCROPBOX ONRENDER");
         
         if (this.buttons.length) {
