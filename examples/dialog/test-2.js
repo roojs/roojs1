@@ -32,9 +32,11 @@ var test = {
                     xns : Roo,
                     region : "center",
                     items : [
-                        xns : Roo,
-                        xtype : 'Form',
-                        method : 'POST',
+                        {
+                            xns : Roo,
+                            xtype : 'Form',
+                            method : 'POST',
+                        }
                     ]
                     
                 }
