@@ -35,14 +35,12 @@ var test = {
                     grid : {
                         xns : Roo.grid,
                         xtype : 'Grid',
-                        item : {
-                            colModel : [
-                                {
-                                    xns : Roo.grid,
-                                    xtype : 'ColumnModel'
-                                }
-                            ]
-                        }
+                        colModel : [
+                            {
+                                xns : Roo.grid,
+                                xtype : 'ColumnModel'
+                            }
+                        ]
                     }
                 }
             ],
