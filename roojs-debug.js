@@ -60800,6 +60800,8 @@ layout.addxtype({
     addxtype : function(cfg) {
         if(cfg.xtype.match(/^UploadCropbox$/)) {
 
+            cfg.el = this.el.appendChild(document.createElement("div"));
+
             this.cropbox = new Roo.factory(cfg);
 
             this.cropbox.render();
