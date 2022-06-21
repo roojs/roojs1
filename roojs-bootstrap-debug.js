@@ -26597,7 +26597,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
-        Roo.log(document.body.innerHTML);
+        Roo.log(doc.body.innerHTML);
         var listpara = doc.getElementsByClassName('ql-indent-1');
         while(listpara.length) {
             this.replaceDocBullet(listpara.item(0));
