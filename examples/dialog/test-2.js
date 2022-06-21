@@ -35,7 +35,7 @@ var test = {
                     grid : {
                         xns : Roo.grid,
                         xtype : 'Grid',
-                        colModel : [
+                        cm : [
                             {
                                 xns : Roo.grid,
                                 xtype : 'ColumnModel'
