@@ -24,10 +24,7 @@ var test = {
             height: 450,
             center : {
                 xtype : 'LayoutRegion',
-                alwaysShowTabs : true,
-                tabPosition : 'top',
-                xns : Roo,
-                '|xns' : 'Roo'
+                xns : Roo
             },
             // items: [
             //     {
