@@ -26,6 +26,14 @@ var test = {
                 xns : Roo,
                 xtype : 'LayoutRegion'
             },
+            items : [
+                {
+                    xtype: 'ContentPanel',
+                    xns: Roo,
+                    region : "center"
+                    
+                }
+            ],
             // items: [
             //     {
             //         xtype : 'UploadCropbox',
