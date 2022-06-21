@@ -24,6 +24,17 @@ var test = {
             height: 450,
             minWidth:300,
             minHeight:250,
+            listeners : {
+                show : function() {
+                    var p = this.layout.getRegion('center').getPanel(0);
+                    p.setContent("Hello World");
+                    
+                },
+                keydown : function(dlg, e) {
+                    var k = e.getKey(); 
+                    if(k == 27){ _this.dialog.hide(); }  
+                }
+            },
             center : {
                 xns : Roo,
                 xtype : 'LayoutRegion'
