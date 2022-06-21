@@ -28,17 +28,9 @@ var test = {
             },
             items : [
                 {
-                    xtype: 'ContentPanel',
+                    xtype: 'GridPanel',
                     xns : Roo,
                     region : "center",
-                    items : [
-                        {
-                            xns : Roo,
-                            xtype : 'Form',
-                            method : 'POST',
-                        }
-                    ]
-                    
                 }
             ],
             // items: [
