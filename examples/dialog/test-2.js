@@ -23,8 +23,8 @@ var test = {
             width: 600,
             height: 450,
             center : {
-                xtype : 'LayoutRegion',
-                xns : Roo
+                xns : Roo,
+                xtype : 'LayoutRegion'
             },
             // items: [
             //     {
