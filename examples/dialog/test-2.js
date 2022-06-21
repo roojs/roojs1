@@ -28,9 +28,8 @@ var test = {
             },
             items : [
                 {
-                    xtype: 'ContentPanel',
-                    xns: Roo,
-                    region : "center"
+                    xns : Roo.form,
+                    xtype : 'Form',
                     
                 }
             ],
