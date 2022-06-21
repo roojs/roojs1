@@ -30,6 +30,7 @@ var test = {
                 {
                     xns : Roo.form,
                     xtype : 'Form',
+                    method : 'POST',
                     
                 }
             ],
