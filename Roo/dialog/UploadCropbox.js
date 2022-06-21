@@ -26,6 +26,7 @@
  */
 
  Roo.dialog.UploadCropbox = function(config){
+    console.log("Dialog UploadCropbox Constructor");
     Roo.dialog.UploadCropbox.superclass.constructor.call(this, config);
     
     this.addEvents({
