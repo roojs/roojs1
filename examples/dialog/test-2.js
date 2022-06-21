@@ -28,7 +28,7 @@ var test = {
             },
             items : [
                 {
-                    xtype: 'ContentPanel',
+                    xtype: 'GridPanel',
                     xns : Roo,
                     region : "center",
                     title : "Grid Panel Title"
