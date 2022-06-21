@@ -145,15 +145,21 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
         Roo.log(doc.innerHTML);
-        var listpara = doc.getElementsByClassName('ql-indent-1');
-        while(listpara.length) {
-            this.replaceDocBullet(listpara.item(0));
+        
+        var listpara = doc.getElementsByClassName('MsoListParagraphCxSpFirst');
+        for( var i = 0; i < listpara.length; i ++) {
+            listpara.item(i).className = "MsoListParagraph";
         }
         
-        var listpara = doc.getElementsByClassName('MsoListParagraph');
+        listpara = doc.getElementsByClassName('ql-indent-1');
         while(listpara.length) {
             this.replaceDocBullet(listpara.item(0));
         }
+        listpara = doc.getElementsByClassName('MsoListParagraph');
+        while(listpara.length) {
+            this.replaceDocBullet(listpara.item(0));
+        }
+      
     },
     
     replaceDocBullet : function(p)
