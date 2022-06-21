@@ -20,17 +20,22 @@ var test = {
         this.dialog = Roo.factory({
             xns : Roo,
             xtype : 'LayoutDialog',
-            width: 600,
-            height: 450,
+            width : 600,
+            height : 450,
             center : {
                 xns : Roo,
                 xtype : 'LayoutRegion'
             },
             items : [
                 {
-                    xns : Roo.form,
-                    xtype : 'Form',
-                    method : 'POST',
+                    xtype: 'ContentPanel',
+                    xns : Roo,
+                    region : "center",
+                    items : [
+                        xns : Roo,
+                        xtype : 'Form',
+                        method : 'POST',
+                    ]
                     
                 }
             ],
