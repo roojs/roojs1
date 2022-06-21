@@ -5,7 +5,7 @@
 
 /**
  * @class Roo.dialog.UploadCropbox
- * @extends Roo.Component
+ * @extends Roo.BoxComponent
  * Dialog UploadCropbox class
  * @cfg {String} emptyText show when image has been loaded
  * @cfg {String} rotateNotify show when image too small to rotate
@@ -209,6 +209,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     onRender : function(ct, position)
     {
+        console.log("On Render");
+        console.log(this);
         Roo.dialog.UploadCropbox.superclass.onRender.call(this, ct, position);
         
         if (this.buttons.length) {
