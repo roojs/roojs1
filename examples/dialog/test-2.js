@@ -28,10 +28,14 @@ var test = {
             },
             items : [
                 {
-                    xtype: 'GridPanel',
                     xns : Roo,
+                    xtype: 'GridPanel',
                     region : "center",
-                    title : "Grid Panel Title"
+                    title : "Grid Panel Title",
+                    grid : {
+                        xns : Roo.grid,
+                        xtype : 'Grid'
+                    }
                 }
             ],
             // items: [
