@@ -20,8 +20,8 @@ var test = {
         this.dialog = Roo.factory({
             xns : Roo,
             xtype : 'LayoutDialog',
-            width:600,
-            height:450,
+            width: 600,
+            height: 450,
             items: [
                 {
                     xtype : 'UploadCropbox',
