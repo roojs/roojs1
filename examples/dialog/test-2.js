@@ -36,6 +36,9 @@ var test = {
                         xns : Roo.grid,
                         xtype : 'Grid'
                     }
+                    cm : [
+                        
+                    ]
                 }
             ],
             // items: [
