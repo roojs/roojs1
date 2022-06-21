@@ -4,9 +4,9 @@
 */
 
 /**
- * @class Roo.UploadCropbox
+ * @class Roo.dialog.UploadCropbox
  * @extends Roo.Component
- * UploadCropbox class
+ * Dialog UploadCropbox class
  * @cfg {String} emptyText show when image has been loaded
  * @cfg {String} rotateNotify show when image too small to rotate
  * @cfg {Number} errorTimeout default 3000
@@ -25,109 +25,109 @@
  * @param {Object} config The config object
  */
 
- Roo.UploadCropbox = function(config){
-    Roo.UploadCropbox.superclass.constructor.call(this, config);
+ Roo.dialog.UploadCropbox = function(config){
+    Roo.dialog.UploadCropbox.superclass.constructor.call(this, config);
     
     this.addEvents({
         /**
          * @event beforeselectfile
          * Fire before select file
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          */
         "beforeselectfile" : true,
         /**
          * @event initial
          * Fire after initEvent
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          */
         "initial" : true,
         /**
          * @event crop
          * Fire after initEvent
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          * @param {String} data
          */
         "crop" : true,
         /**
          * @event prepare
          * Fire when preparing the file data
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          * @param {Object} file
          */
         "prepare" : true,
         /**
          * @event exception
          * Fire when get exception
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          * @param {XMLHttpRequest} xhr
          */
         "exception" : true,
         /**
          * @event beforeloadcanvas
          * Fire before load the canvas
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          * @param {String} src
          */
         "beforeloadcanvas" : true,
         /**
          * @event trash
          * Fire when trash image
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          */
         "trash" : true,
         /**
          * @event download
          * Fire when download the image
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          */
         "download" : true,
         /**
          * @event footerbuttonclick
          * Fire when footerbuttonclick
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          * @param {String} type
          */
         "footerbuttonclick" : true,
         /**
          * @event resize
          * Fire when resize
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          */
         "resize" : true,
         /**
          * @event rotate
          * Fire when rotate the image
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          * @param {String} pos
          */
         "rotate" : true,
         /**
          * @event inspect
          * Fire when inspect the file
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          * @param {Object} file
          */
         "inspect" : true,
         /**
          * @event upload
          * Fire when xhr upload the file
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          * @param {Object} data
          */
         "upload" : true,
         /**
          * @event arrange
          * Fire when arrange the file data
-         * @param {Roo.UploadCropbox} this
+         * @param {Roo.dialog.UploadCropbox} this
          * @param {Object} formData
          */
         "arrange" : true
     });
     
-    this.buttons = this.buttons || Roo.UploadCropbox.footer.STANDARD;
+    this.buttons = this.buttons || Roo.dialog.UploadCropbox.footer.STANDARD;
 };
 
-Roo.extend(Roo.UploadCropbox, Roo.Component,  {
+Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     emptyText : 'Click to upload image',
     rotateNotify : 'Image is too small to rotate',
@@ -208,7 +208,7 @@ Roo.extend(Roo.UploadCropbox, Roo.Component,  {
     
     onRender : function(ct, position)
     {
-        Roo.UploadCropbox.superclass.onRender.call(this, ct, position);
+        Roo.dialog.UploadCropbox.superclass.onRender.call(this, ct, position);
         
         if (this.buttons.length) {
             
@@ -1047,13 +1047,13 @@ Roo.extend(Roo.UploadCropbox, Roo.Component,  {
         
         if(
                 typeof(this.exif) != 'undefined' &&
-                typeof(this.exif[Roo.UploadCropbox['tags']['Orientation']]) != 'undefined' &&
-                [1, 3, 6, 8].indexOf(this.exif[Roo.UploadCropbox['tags']['Orientation']]) != -1
+                typeof(this.exif[Roo.dialog.UploadCropbox['tags']['Orientation']]) != 'undefined' &&
+                [1, 3, 6, 8].indexOf(this.exif[Roo.dialog.UploadCropbox['tags']['Orientation']]) != -1
         ){
-            this.baseRotate = this.exif[Roo.UploadCropbox['tags']['Orientation']];
+            this.baseRotate = this.exif[Roo.dialog.UploadCropbox['tags']['Orientation']];
         }
         
-        this.rotate = Roo.UploadCropbox['Orientation'][this.baseRotate];
+        this.rotate = Roo.dialog.UploadCropbox['Orientation'][this.baseRotate];
         
     },
     
@@ -1502,7 +1502,7 @@ Roo.extend(Roo.UploadCropbox, Roo.Component,  {
     
     getExifValue : function (dataView, tiffOffset, offset, type, length, littleEndian)
     {
-        var tagType = Roo.UploadCropbox.exifTagTypes[type],
+        var tagType = Roo.dialog.UploadCropbox.exifTagTypes[type],
             tagSize,
             dataOffset,
             values,
@@ -1550,7 +1550,7 @@ Roo.extend(Roo.UploadCropbox, Roo.Component,  {
     
 });
 
-Roo.apply(Roo.UploadCropbox, {
+Roo.apply(Roo.dialog.UploadCropbox, {
     tags : {
         'Orientation': 0x0112
     },
