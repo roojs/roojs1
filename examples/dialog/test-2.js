@@ -26,49 +26,49 @@ var test = {
                 xns : Roo,
                 xtype : 'LayoutRegion'
             },
-            items : [
-                {
-                    xtype: 'ContentPanel',
-                    xns: Roo,
-                    region : "center"
-                    
-                }
-            ],
-            // items: [
+            // items : [
             //     {
-            //         xtype : 'UploadCropbox',
-            //         xns : Roo.dialog,
-            //         minWidth : 60,
-            //         minHeight: 40,
-            //         listeners : {
-            //             arrange : function (_self, formData)
-            //             {
-            //                 console.log("ARRANGE");
-            //                 console.log(formData);
-            //             },
-            //             crop : function (_self, data)
-            //             {
-            //                 console.log("CROP");
-            //                 console.log(data);
-            //             },
-            //             resize : function (_self)
-            //             {
-            //                 console.log("RESIZE");
-            //             },
-            //             rotate : function (_self)
-            //             {
-            //                 console.log("ROTATE");
-            //             },
-            //             render : function (_self)
-            //             {
-            //                 console.log("RENDER");
-            //                 console.log(_self);
-            //                 _this.cropbox = _self;
-            //             }
-        
-            //         }
+            //         xtype: 'ContentPanel',
+            //         xns: Roo,
+            //         region : "center"
+                    
             //     }
             // ],
+            items: [
+                {
+                    xtype : 'UploadCropbox',
+                    xns : Roo.dialog,
+                    minWidth : 60,
+                    minHeight: 40,
+                    listeners : {
+                        arrange : function (_self, formData)
+                        {
+                            console.log("ARRANGE");
+                            console.log(formData);
+                        },
+                        crop : function (_self, data)
+                        {
+                            console.log("CROP");
+                            console.log(data);
+                        },
+                        resize : function (_self)
+                        {
+                            console.log("RESIZE");
+                        },
+                        rotate : function (_self)
+                        {
+                            console.log("ROTATE");
+                        },
+                        render : function (_self)
+                        {
+                            console.log("RENDER");
+                            console.log(_self);
+                            _this.cropbox = _self;
+                        }
+        
+                    }
+                }
+            ],
             buttons : [
                 {
                     xtype : 'Button',
