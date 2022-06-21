@@ -43780,6 +43780,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     onRender : function(ct, position)
     {
         console.log("On Render");
+        console.log(this);
         Roo.dialog.UploadCropbox.superclass.onRender.call(this, ct, position);
         
         if (this.buttons.length) {
