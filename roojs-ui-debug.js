@@ -21719,7 +21719,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
-        
+        Roo.log(document.body.innerHTML);
         var listpara = doc.getElementsByClassName('ql-indent-1');
         while(listpara.length) {
             this.replaceDocBullet(listpara.item(0));
@@ -21798,6 +21798,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (nlvl > lvl) {
                 //new indent
                 var nul = doc.createElement('ul'); // what about number lists...
+                if (!last_li) {
+                    last_li = doc.createElement('li');
+                    stack[lvl].appendChild(last_li);
+                }
                 last_li.appendChild(nul);
                 stack[nlvl] = nul;
                 
