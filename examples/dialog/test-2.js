@@ -34,11 +34,16 @@ var test = {
                     title : "Grid Panel Title",
                     grid : {
                         xns : Roo.grid,
-                        xtype : 'Grid'
+                        xtype : 'Grid',
+                        item : {
+                            cm : [
+                                {
+                                    xns : Roo.grid,
+                                    xtype : 'ColumnModel'
+                                }
+                            ]
+                        }
                     }
-                    cm : [
-                        
-                    ]
                 }
             ],
             // items: [
