@@ -22,6 +22,8 @@ var test = {
             xtype : 'LayoutDialog',
             width: 600,
             height: 450,
+            minWidth:300,
+            minHeight:250,
             center : {
                 xns : Roo,
                 xtype : 'LayoutRegion'
