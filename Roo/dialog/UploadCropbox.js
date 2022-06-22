@@ -260,7 +260,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             }
             
             this.initEvents();
-            }
+        }
         
         if (this.buttons.length) {
             
