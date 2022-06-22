@@ -220,48 +220,47 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 
                 this.initEvents();
             }
+        }
+        else {
+            var cfg = Roo.apply({},  this.getAutoCreate());
+        
+            cfg.id = this.id || Roo.id();
             
-            return;
-        }
-        
-        var cfg = Roo.apply({},  this.getAutoCreate());
-        
-        cfg.id = this.id || Roo.id();
-        
-        // fill in the extra attributes 
-        if (this.xattr && typeof(this.xattr) =='object') {
-            for (var i in this.xattr) {
-                cfg[i] = this.xattr[i];
+            // fill in the extra attributes 
+            if (this.xattr && typeof(this.xattr) =='object') {
+                for (var i in this.xattr) {
+                    cfg[i] = this.xattr[i];
+                }
             }
-        }
-        
-        if(this.dataId){
-            cfg.dataId = this.dataId;
-        }
-        
-        if (this.cls) {
-            cfg.cls = (typeof(cfg.cls) == 'undefined' ? this.cls : cfg.cls) + ' ' + this.cls;
-        }
-        
-        if (this.style) { // fixme needs to support more complex style data.
-            cfg.style = (typeof(cfg.style) == 'undefined' ? this.style : cfg.style) + '; ' + this.style;
-        }
-        
-        if(this.name){
-            cfg.name = this.name;
-        }
-        
-        this.el = ct.createChild(cfg, position);
-        
-        if (this.tooltip) {
-            this.tooltipEl().attr('tooltip', this.tooltip);
-        }
-        
-        if(this.tabIndex !== undefined){
-            this.el.dom.setAttribute('tabIndex', this.tabIndex);
-        }
-        
-        this.initEvents();
+            
+            if(this.dataId){
+                cfg.dataId = this.dataId;
+            }
+            
+            if (this.cls) {
+                cfg.cls = (typeof(cfg.cls) == 'undefined' ? this.cls : cfg.cls) + ' ' + this.cls;
+            }
+            
+            if (this.style) { // fixme needs to support more complex style data.
+                cfg.style = (typeof(cfg.style) == 'undefined' ? this.style : cfg.style) + '; ' + this.style;
+            }
+            
+            if(this.name){
+                cfg.name = this.name;
+            }
+            
+            this.el = ct.createChild(cfg, position);
+            
+            if (this.tooltip) {
+                this.tooltipEl().attr('tooltip', this.tooltip);
+            }
+            
+            if(this.tabIndex !== undefined){
+                this.el.dom.setAttribute('tabIndex', this.tabIndex);
+            }
+            
+            this.initEvents();
+            }
         
         if (this.buttons.length) {
             
