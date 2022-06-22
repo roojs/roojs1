@@ -226,17 +226,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
             cfg.id = this.id || Roo.id();
             
-            // fill in the extra attributes 
-            if (this.xattr && typeof(this.xattr) =='object') {
-                for (var i in this.xattr) {
-                    cfg[i] = this.xattr[i];
-                }
-            }
-            
-            if(this.dataId){
-                cfg.dataId = this.dataId;
-            }
-            
             if (this.cls) {
                 cfg.cls = (typeof(cfg.cls) == 'undefined' ? this.cls : cfg.cls) + ' ' + this.cls;
             }
@@ -245,19 +234,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 cfg.style = (typeof(cfg.style) == 'undefined' ? this.style : cfg.style) + '; ' + this.style;
             }
             
-            if(this.name){
-                cfg.name = this.name;
-            }
-            
             this.el = ct.createChild(cfg, position);
-            
-            if (this.tooltip) {
-                this.tooltipEl().attr('tooltip', this.tooltip);
-            }
-            
-            if(this.tabIndex !== undefined){
-                this.el.dom.setAttribute('tabIndex', this.tabIndex);
-            }
             
             this.initEvents();
         }
