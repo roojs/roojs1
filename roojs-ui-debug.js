@@ -36308,8 +36308,6 @@ layout.addxtype({
     addxtype : function(cfg) {
         if(cfg.xtype.match(/^UploadCropbox$/)) {
 
-            cfg.el = this.el.appendChild(document.createElement("div"));
-
             this.cropbox = new Roo.factory(cfg);
 
             this.cropbox.render();
@@ -43782,6 +43780,58 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         console.log("On Render");
         console.log(this);
         Roo.dialog.UploadCropbox.superclass.onRender.call(this, ct, position);
+
+        if(this.el){
+            if (this.el.attr('xtype')) {
+                this.el.attr('xtypex', this.el.attr('xtype'));
+                this.el.dom.removeAttribute('xtype');
+                
+                this.initEvents();
+            }
+            
+            return;
+        }
+        
+         
+        
+        var cfg = Roo.apply({},  this.getAutoCreate());
+        
+        cfg.id = this.id || Roo.id();
+        
+        // fill in the extra attributes 
+        if (this.xattr && typeof(this.xattr) =='object') {
+            for (var i in this.xattr) {
+                cfg[i] = this.xattr[i];
+            }
+        }
+        
+        if(this.dataId){
+            cfg.dataId = this.dataId;
+        }
+        
+        if (this.cls) {
+            cfg.cls = (typeof(cfg.cls) == 'undefined' ? this.cls : cfg.cls) + ' ' + this.cls;
+        }
+        
+        if (this.style) { // fixme needs to support more complex style data.
+            cfg.style = (typeof(cfg.style) == 'undefined' ? this.style : cfg.style) + '; ' + this.style;
+        }
+        
+        if(this.name){
+            cfg.name = this.name;
+        }
+        
+        this.el = ct.createChild(cfg, position);
+        
+        if (this.tooltip) {
+            this.tooltipEl().attr('tooltip', this.tooltip);
+        }
+        
+        if(this.tabIndex !== undefined){
+            this.el.dom.setAttribute('tabIndex', this.tabIndex);
+        }
+        
+        this.initEvents();
         
         if (this.buttons.length) {
             
