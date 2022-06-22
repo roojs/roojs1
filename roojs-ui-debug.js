@@ -36310,7 +36310,7 @@ layout.addxtype({
 
             this.cropbox = new Roo.factory(cfg);
 
-            this.cropbox.render();
+            this.cropbox.render(this.el);
 
             return this.cropbox;
         }
