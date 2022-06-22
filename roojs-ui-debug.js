@@ -43690,7 +43690,14 @@ Roo.XTemplate.from = function(el){
          * @param {Roo.dialog.UploadCropbox} this
          * @param {Object} formData
          */
-        "arrange" : true
+        "arrange" : true,
+        /**
+         * @event loadcanvas
+         * Fire after load the canvas
+         * @param {Roo.dialog.UploadCropbox}
+         * @param {Object} imgEl
+         */
+        "loadcanvas" : true
     });
     
     this.buttons = this.buttons || Roo.dialog.UploadCropbox.footer.STANDARD;
@@ -43788,50 +43795,24 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 
                 this.initEvents();
             }
+        }
+        else {
+            var cfg = Roo.apply({},  this.getAutoCreate());
+        
+            cfg.id = this.id || Roo.id();
             
-            return;
-        }
-        
-         
-        
-        var cfg = Roo.apply({},  this.getAutoCreate());
-        
-        cfg.id = this.id || Roo.id();
-        
-        // fill in the extra attributes 
-        if (this.xattr && typeof(this.xattr) =='object') {
-            for (var i in this.xattr) {
-                cfg[i] = this.xattr[i];
+            if (this.cls) {
+                cfg.cls = (typeof(cfg.cls) == 'undefined' ? this.cls : cfg.cls) + ' ' + this.cls;
             }
+            
+            if (this.style) { // fixme needs to support more complex style data.
+                cfg.style = (typeof(cfg.style) == 'undefined' ? this.style : cfg.style) + '; ' + this.style;
+            }
+            
+            this.el = ct.createChild(cfg, position);
+            
+            this.initEvents();
         }
-        
-        if(this.dataId){
-            cfg.dataId = this.dataId;
-        }
-        
-        if (this.cls) {
-            cfg.cls = (typeof(cfg.cls) == 'undefined' ? this.cls : cfg.cls) + ' ' + this.cls;
-        }
-        
-        if (this.style) { // fixme needs to support more complex style data.
-            cfg.style = (typeof(cfg.style) == 'undefined' ? this.style : cfg.style) + '; ' + this.style;
-        }
-        
-        if(this.name){
-            cfg.name = this.name;
-        }
-        
-        this.el = ct.createChild(cfg, position);
-        
-        if (this.tooltip) {
-            this.tooltipEl().attr('tooltip', this.tooltip);
-        }
-        
-        if(this.tabIndex !== undefined){
-            this.el.dom.setAttribute('tabIndex', this.tabIndex);
-        }
-        
-        this.initEvents();
         
         if (this.buttons.length) {
             
@@ -44021,28 +44002,32 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     {   
         this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
+
+        if(this.fireEvent('loadcanvas', this, this.imageEl) != false){
         
-        this.bodyEl.un('click', this.beforeSelectFile, this);
+            this.bodyEl.un('click', this.beforeSelectFile, this);
+            
+            this.notifyEl.hide();
+            this.thumbEl.show();
+            this.footerEl.show();
+            
+            this.baseRotateLevel();
+            
+            if(this.isDocument){
+                this.setThumbBoxSize();
+            }
+            
+            this.setThumbBoxPosition();
+            
+            this.baseScaleLevel();
+            
+            this.draw();
+            
+            this.resize();
+            
+            this.canvasLoaded = true;
         
-        this.notifyEl.hide();
-        this.thumbEl.show();
-        this.footerEl.show();
-        
-        this.baseRotateLevel();
-        
-        if(this.isDocument){
-            this.setThumbBoxSize();
         }
-        
-        this.setThumbBoxPosition();
-        
-        this.baseScaleLevel();
-        
-        this.draw();
-        
-        this.resize();
-        
-        this.canvasLoaded = true;
         
         if(this.loadMask){
             this.maskEl.unmask();
