@@ -36,36 +36,62 @@ var uploadCropbox = {
                             xns : Roo.dialog,
                             minWidth : 720,
                             minHeight: 480,
+                            buttons: [
+                                {
+                                    tag : 'div',
+                                    cls : 'btn-group roo-upload-cropbox-picture',
+                                    action : 'picture',
+                                    cn : [
+                                        {
+                                            tag : 'button',
+                                            cls : 'btn btn-default',
+                                            html : '<i class="fa fa-picture-o"></i>'
+                                        }
+                                    ]
+                                }
+                            ],
                             listeners : {
-                                arrange : function (_self, formData)
-                                {
-                                    console.log("ARRANGE");
-                                    console.log(formData);
-                                },
-                                crop : function (_self, data)
-                                {
-                                    console.log("CROP");
-                                    console.log(data);
-                                },
-                                resize : function (_self)
-                                {
-                                    console.log("RESIZE");
-                                },
-                                rotate : function (_self)
-                                {
-                                    console.log("ROTATE");
-                                },
                                 render : function (_self)
                                 {
                                     console.log("RENDER");
-                                    console.log(_self);
                                     _this.cropbox = _self;
+                                },
+                                loadcanvas : function (_self, imageEl)
+                                {
+                                    console.log("LOADCANVAS");
+                                    console.log(_self);
+                                    console.log(imageEl);
+                                    if(imageEl.OriginWidth < 720) {
+                                        console.log("Image width should be at least 720");
+                                        return false;
+                                    }
                                 }
                             }
                         }
                     ]
                 }
             ],
+            buttons : [
+                {
+                    xtype : 'Button',
+                    xns : Roo,
+                    text : 'Save',
+                    listeners : {
+                        click : function () {
+                        }   
+                    }
+                },
+                {
+                    xtype : 'Button',
+                    xns : Roo,
+                    text : 'Cancel',
+                    listeners : {
+                        click : function () {
+                            _this.dialog.hide()
+                        }   
+                    }
+                }
+            ]
         });
     }
 }
@@ -127,7 +153,13 @@ var test = {
                                     listeners : {
                                         click : function () {
                                             uploadCropbox.show();
-                                            console.log(uploadCropbox);
+                                            document.body.onfocus = function(e) {
+                                                document.body.onfocus = null;
+                                                if(!uploadCropbox.cropbox.selectorEl.dom.files.length) {
+                                                    uploadCropbox.dialog.hide();
+                                                }
+                                            }
+                                            uploadCropbox.cropbox.selectorEl.dom.click();
                                         }
                                     }
                                 }
