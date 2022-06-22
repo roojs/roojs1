@@ -224,8 +224,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             return;
         }
         
-         
-        
         var cfg = Roo.apply({},  this.getAutoCreate());
         
         cfg.id = this.id || Roo.id();
