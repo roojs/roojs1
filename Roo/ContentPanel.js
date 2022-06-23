@@ -41,7 +41,6 @@
  */
 Roo.ContentPanel = function(el, config, content){
     
-    console.log("ContentPanel Constructor");
     /*
     if(el.autoCreate || el.xtype){ // xtype is available if this is called from factory
         config = el;
