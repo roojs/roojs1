@@ -122,7 +122,14 @@
          * @param {Roo.dialog.UploadCropbox} this
          * @param {Object} formData
          */
-        "arrange" : true
+        "arrange" : true,
+        /**
+         * @event loadcanvas
+         * Fire after load the canvas
+         * @param {Roo.dialog.UploadCropbox}
+         * @param {Object} imgEl
+         */
+        "loadcanvas" : true
     });
     
     this.buttons = this.buttons || Roo.dialog.UploadCropbox.footer.STANDARD;
@@ -332,6 +339,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         this.cropData = false;
         this.notifyEl.dom.innerHTML = this.emptyText;
         
+        console.log("RESET SELECTOR EL")
         this.selectorEl.dom.value = '';
         
     },
@@ -427,28 +435,32 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     {   
         this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
+
+        if(this.fireEvent('loadcanvas', this, this.imageEl) != false){
         
-        this.bodyEl.un('click', this.beforeSelectFile, this);
+            this.bodyEl.un('click', this.beforeSelectFile, this);
+            
+            this.notifyEl.hide();
+            this.thumbEl.show();
+            this.footerEl.show();
+            
+            this.baseRotateLevel();
+            
+            if(this.isDocument){
+                this.setThumbBoxSize();
+            }
+            
+            this.setThumbBoxPosition();
+            
+            this.baseScaleLevel();
+            
+            this.draw();
+            
+            this.resize();
+            
+            this.canvasLoaded = true;
         
-        this.notifyEl.hide();
-        this.thumbEl.show();
-        this.footerEl.show();
-        
-        this.baseRotateLevel();
-        
-        if(this.isDocument){
-            this.setThumbBoxSize();
         }
-        
-        this.setThumbBoxPosition();
-        
-        this.baseScaleLevel();
-        
-        this.draw();
-        
-        this.resize();
-        
-        this.canvasLoaded = true;
         
         if(this.loadMask){
             this.maskEl.unmask();
