@@ -339,7 +339,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
      */
     toObject : function()
     {
-        
+        console.log("htmleditor.BlockTd toObject");
         var ret = {
             tag : 'td',
             contenteditable : 'true', // this stops cell selection from picking the table.
