@@ -621,6 +621,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     },
     normalizeWidths : function(table)
     {
+        console.log("htmleditor.BlockTd normalizeWidths")
     
         if (this.colWidths[0] === false) {
             var nw = 100.0 / this.colWidths.length;
