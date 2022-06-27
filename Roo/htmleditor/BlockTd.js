@@ -444,6 +444,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 
                 if (typeof(this.colWidths[cn]) == 'undefined') {
                     this.colWidths[cn] =   ce.style.width;
+                    console.log("colWidths " + cn);
+                    console.log(ce.style.width);
                     if (this.colWidths[cn] != '') {
                         all_auto = false;
                     }
