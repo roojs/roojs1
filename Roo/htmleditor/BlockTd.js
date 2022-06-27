@@ -616,6 +616,10 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     el.width = Math.floor(this.colWidths[c])  +'%';
                     el.updateElement(el.node);
                 }
+                else {
+                    console.log("CELL COLSPAN");
+                    console.log(table[r][c]);
+                }
                 table[r][c].cell = false; // done
             }
         }
