@@ -24933,6 +24933,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     mergeRight: function()
     {
+        console.log("htmleditor.BlockTd mergeRight");
          
         // get the contents of the next cell along..
         var tr = this.node.closest('tr');
@@ -25141,7 +25142,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     },
     growColumn : function()
     {
+        console.log("htmleditor.BlockTd growColumn");
         var table = this.toTableArray();
+        console.log(table);
         this.normalizeWidths(table);
         var col = this.cellData.col;
         var nw = this.colWidths[col] * 1.2;
