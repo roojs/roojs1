@@ -25048,6 +25048,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         console.log("htmleditor.BlockTd updateWidths");
         console.log("TABLE");
         console.log(table);
+        console.log("COLWIDTH");
+        console.log(this.colWidths);
         for(var r = 0 ; r < table.length; r++) {
            
             for(var c = 0 ; c < table[r].length; c++) {
