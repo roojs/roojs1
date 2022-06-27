@@ -411,6 +411,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     toTableArray  : function()
     {
+        console.log("htmleditor.BlockTd toTableArray");
         var ret = [];
         var tab = this.node.closest('tr').closest('table');
         Array.from(tab.rows).forEach(function(r, ri){
