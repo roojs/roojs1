@@ -35922,7 +35922,6 @@ Roo.LayoutStateManager.prototype = {
  */
 Roo.ContentPanel = function(el, config, content){
     
-    console.log("ContentPanel Constructor");
     /*
     if(el.autoCreate || el.xtype){ // xtype is available if this is called from factory
         config = el;
@@ -43594,7 +43593,6 @@ Roo.XTemplate.from = function(el){
  */
 
  Roo.dialog.UploadCropbox = function(config){
-    console.log("Dialog UploadCropbox Constructor");
     Roo.dialog.UploadCropbox.superclass.constructor.call(this, config);
     
     this.addEvents({
@@ -43907,7 +43905,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         this.cropData = false;
         this.notifyEl.dom.innerHTML = this.emptyText;
         
-        this.selectorEl.dom.value = '';
+        // this.selectorEl.dom.value = '';
         
     },
     
@@ -44115,9 +44113,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         e.stopEvent();
         
         this.startScale = this.scale;
-        
+        console.log("START SCALE: " + this.scale);
         this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
-        
+        console.log("END SCALE: " + this.scale);
         if(!this.zoomable()){
             this.scale = this.startScale;
             return;
@@ -44130,14 +44128,34 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     zoomable : function()
     {
+        console.log("THUMBEL");
+        console.log(this.thumbEl);
         var minScale = this.thumbEl.getWidth() / this.minWidth;
         
         if(this.minWidth < this.minHeight){
             minScale = this.thumbEl.getHeight() / this.minHeight;
         }
+
+        console.log("MINSCALE: " + minScale);
         
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel() / minScale);
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel() / minScale);
+
+        var maxWidth = this.imageEl.OriginWidth;
+        var maxHeight = this.imageEl.OriginHeight;
+
+        if(this.imageEl.OriginWidth / this.imageEl.OriginHeight  > this.minWidth / this.minHeight && this.imageEl.OriginHeight < this.minHeight) {
+            maxHeight = this.minHeight;
+            maxWidth = this.imageEl.OriginWidth / this.imageEl.OriginHeight * this.minHeight;
+        }
+        if(this.imageEl.OriginWidth / this.imageEl.OriginHeight  < this.minWidth / this.minHeight && this.imageEl.OriginWidth < this.minWidth) {
+            maxWidth = this.minWidth;
+            maxHeight = this.imageEl.OriginHeight /this.imageEl.OriginWidth * this.minWidth;
+        }
+
+        console.log("GETSCALELEVEL: " + this.getScaleLevel());
+        console.log("width: " + width);
+        console.log("height: " + height);
         
         if(
                 this.isDocument &&
@@ -44167,10 +44185,10 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    width < this.minWidth || 
-                    width > this.imageEl.OriginWidth || 
-                    height < this.minHeight || 
-                    height > this.imageEl.OriginHeight
+                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight  > this.minWidth / this.minHeight && width < this.minWidth) || 
+                    width > maxWidth || 
+                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight  < this.minWidth / this.minHeight && height < this.minHeight) || 
+                    height > maxHeight
                 )
         ){
             return false;
@@ -44743,7 +44761,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     getScaleLevel : function()
     {
-        return this.baseScale * Math.pow(1.1, this.scale);
+        console.log("BASESCALE: " + this.baseScale);
+        return this.baseScale * Math.pow(1.02, this.scale);
     },
     
     onTouchStart : function(e)

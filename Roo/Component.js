@@ -23,7 +23,6 @@
  * and is used as the component id.  Otherwise, it is assumed to be a standard config object and is applied to the component.
  */
 Roo.Component = function(config){
-    console.log("COMPONENT CONSTRUCTOR");
     config = config || {};
     if(config.tagName || config.dom || typeof config == "string"){ // element object
         config = {el: config, id: config.id || config};

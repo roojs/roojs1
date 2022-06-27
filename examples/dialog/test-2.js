@@ -36,35 +36,25 @@ var uploadCropbox = {
                             xns : Roo.dialog,
                             minWidth : 720,
                             minHeight: 480,
-                            buttons: [
-                                {
-                                    tag : 'div',
-                                    cls : 'btn-group roo-upload-cropbox-picture',
-                                    action : 'picture',
-                                    cn : [
-                                        {
-                                            tag : 'button',
-                                            cls : 'btn btn-default',
-                                            html : '<i class="fa fa-picture-o"></i>'
-                                        }
-                                    ]
-                                }
-                            ],
+                            buttons: [],
                             listeners : {
                                 render : function (_self)
                                 {
-                                    console.log("RENDER");
                                     _this.cropbox = _self;
                                 },
                                 loadcanvas : function (_self, imageEl)
                                 {
-                                    console.log("LOADCANVAS");
-                                    console.log(_self);
-                                    console.log(imageEl);
-                                    if(imageEl.OriginWidth < 720) {
-                                        console.log("Image width should be at least 720");
-                                        return false;
-                                    }
+                                    // if(imageEl.OriginWidth < 720) {
+                                    //     Roo.Msg.show({
+                                    //         title: 'Error',
+                                    //         msg: "Image width should be at least 720",
+                                    //         buttons: {ok : true},
+                                    //         fn: function(res) {
+                                    //             _this.cropbox.selectorEl.dom.click();
+                                    //         }
+                                    //     });
+                                    //     return false;
+                                    // }
                                 }
                             }
                         }
