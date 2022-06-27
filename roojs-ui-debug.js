@@ -25071,6 +25071,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         console.log("htmleditor.BlockTd normalizeWidths");
         console.log("colWidths 0");
         console.log(col.Widths[0]);
+        console.log("colWidths 1");
         console.log(col.Wdiths[1]);
     
         if (this.colWidths[0] === false) {
