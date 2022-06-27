@@ -623,6 +623,13 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 else {
                     console.log("CELL COLSPAN");
                     console.log(table[r][c]);
+                    var el = Roo.htmleditor.Block.factory(table[r][c].cell);
+                    var width = 0;
+                    for(var i = 0; i < table[r][c].colspan; i ++) {
+                        width += Math.floor(this.colWidths[c + i]);
+                    }
+                    el.width = width  +'%';
+                    el.updateElement(el.node);
                 }
                 table[r][c].cell = false; // done
             }
