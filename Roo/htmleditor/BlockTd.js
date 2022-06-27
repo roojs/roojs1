@@ -57,6 +57,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     contextMenu : function(toolbar)
     {
+        console.log("htmleditor.BlockTd contextMenu");
         
         var cell = function() {
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
