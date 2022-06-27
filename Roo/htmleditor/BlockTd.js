@@ -540,8 +540,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.colspan = 1;
         
         for(var r = cd.row; r < cd.row + cd.rowspan; r++) {
-            
-            
+             
             
             for(var c = cd.col; c < cd.col + cd.colspan; c++) {
                 if (r == cd.row && c == cd.col) {
