@@ -375,6 +375,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     readElement : function(node)
     {
+        console.log("htmleditor.BlockTd readElement");
+        console.log(node);
         node  = node ? node : this.node ;
         this.width = node.style.width;
         this.colspan = Math.max(1,1*node.getAttribute('colspan'));
