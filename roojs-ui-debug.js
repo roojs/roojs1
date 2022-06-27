@@ -24951,6 +24951,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.colspan += rc.colspan;
         this.node.setAttribute('colspan', this.colspan);
 
+        this.updateWidths(table);
     },
     
     
@@ -25059,6 +25060,10 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     var el = Roo.htmleditor.Block.factory(table[r][c].cell);
                     el.width = Math.floor(this.colWidths[c])  +'%';
                     el.updateElement(el.node);
+                }
+                else {
+                    console.log("CELL COLSPAN");
+                    console.log(table[r][c]);
                 }
                 table[r][c].cell = false; // done
             }
