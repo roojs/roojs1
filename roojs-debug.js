@@ -48994,8 +48994,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     contextMenu : function(toolbar)
     {
-        console.log("htmleditor.BlockTd contextMenu");
-        console.log(toolbar);
         
         var cell = function() {
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
@@ -49278,7 +49276,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
      */
     toObject : function()
     {
-        console.log("htmleditor.BlockTd toObject");
         var ret = {
             tag : 'td',
             contenteditable : 'true', // this stops cell selection from picking the table.
@@ -49314,8 +49311,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     readElement : function(node)
     {
-        console.log("htmleditor.BlockTd readElement");
-        console.log(node);
         node  = node ? node : this.node ;
         this.width = node.style.width;
         this.colspan = Math.max(1,1*node.getAttribute('colspan'));
@@ -49348,7 +49343,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     toTableArray  : function()
     {
-        console.log("htmleditor.BlockTd toTableArray");
         var ret = [];
         var tab = this.node.closest('tr').closest('table');
         Array.from(tab.rows).forEach(function(r, ri){
@@ -49381,8 +49375,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 
                 if (typeof(this.colWidths[cn]) == 'undefined') {
                     this.colWidths[cn] =   ce.style.width;
-                    console.log("colWidths " + cn);
-                    console.log(ce.style.width);
                     if (this.colWidths[cn] != '') {
                         all_auto = false;
                     }
@@ -49544,6 +49536,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     updateWidths : function(table)
     {
         console.log("htmleditor.BlockTd updateWidths");
+        console.log("TABLE");
         console.log(table);
         for(var r = 0 ; r < table.length; r++) {
            
@@ -49553,6 +49546,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 }
                 
                 if (this.colWidths[0] != false && table[r][c].colspan < 2) {
+                    console.log("CELL");
+                    console.log(table[r][c].cell);
                     var el = Roo.htmleditor.Block.factory(table[r][c].cell);
                     el.width = Math.floor(this.colWidths[c])  +'%';
                     el.updateElement(el.node);
@@ -49563,11 +49558,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     },
     normalizeWidths : function(table)
     {
-        console.log("htmleditor.BlockTd normalizeWidths");
-        console.log("colWidths 0");
-        console.log(this.colWidths[0]);
-        console.log("colWidths 1");
-        console.log(this.colWidths[1]);
     
         if (this.colWidths[0] === false) {
             var nw = 100.0 / this.colWidths.length;
@@ -49614,9 +49604,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     shrinkColumn : function()
     {
-        console.log("htmleditor.BlockTd shrinkColumn");
         var table = this.toTableArray();
-        console.log(table);
         this.normalizeWidths(table);
         var col = this.cellData.col;
         var nw = this.colWidths[col] * 0.8;
@@ -49636,9 +49624,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     },
     growColumn : function()
     {
-        console.log("htmleditor.BlockTd growColumn");
         var table = this.toTableArray();
-        console.log(table);
         this.normalizeWidths(table);
         var col = this.cellData.col;
         var nw = this.colWidths[col] * 1.2;
