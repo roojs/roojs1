@@ -57,8 +57,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     contextMenu : function(toolbar)
     {
-        console.log("htmleditor.BlockTd contextMenu");
-        console.log(toolbar);
         
         var cell = function() {
             return Roo.htmleditor.Block.factory(toolbar.tb.selectedNode);
@@ -341,7 +339,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
      */
     toObject : function()
     {
-        console.log("htmleditor.BlockTd toObject");
         var ret = {
             tag : 'td',
             contenteditable : 'true', // this stops cell selection from picking the table.
@@ -377,8 +374,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     readElement : function(node)
     {
-        console.log("htmleditor.BlockTd readElement");
-        console.log(node);
         node  = node ? node : this.node ;
         this.width = node.style.width;
         this.colspan = Math.max(1,1*node.getAttribute('colspan'));
