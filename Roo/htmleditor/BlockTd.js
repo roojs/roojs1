@@ -599,7 +599,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     updateWidths : function(table)
     {
         console.log("htmleditor.BlockTd updateWidths");
-        console.log(table);
         for(var r = 0 ; r < table.length; r++) {
            
             for(var c = 0 ; c < table[r].length; c++) {
@@ -618,11 +617,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     },
     normalizeWidths : function(table)
     {
-        console.log("htmleditor.BlockTd normalizeWidths");
-        console.log("colWidths 0");
-        console.log(this.colWidths[0]);
-        console.log("colWidths 1");
-        console.log(this.colWidths[1]);
     
         if (this.colWidths[0] === false) {
             var nw = 100.0 / this.colWidths.length;
