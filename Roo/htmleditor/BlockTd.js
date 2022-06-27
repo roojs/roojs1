@@ -606,6 +606,8 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     },
     updateWidths : function(table)
     {
+        console.log("htmleditor.BlockTd updateWidths");
+        console.log(table);
         for(var r = 0 ; r < table.length; r++) {
            
             for(var c = 0 ; c < table[r].length; c++) {
