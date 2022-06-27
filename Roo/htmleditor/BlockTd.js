@@ -506,6 +506,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.colspan += rc.colspan;
         this.node.setAttribute('colspan', this.colspan);
 
+        var table = this.toTableArray();
         this.updateWidths(table);
     },
     
