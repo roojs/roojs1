@@ -49444,6 +49444,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.node.setAttribute('colspan', this.colspan);
 
         var table = this.toTableArray();
+        this.normalizeWidths(table);
         this.updateWidths(table);
     },
     
