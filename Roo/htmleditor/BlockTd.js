@@ -488,6 +488,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     mergeRight: function()
     {
+        console.log("htmleditor.BlockTd mergeRight");
          
         // get the contents of the next cell along..
         var tr = this.node.closest('tr');
