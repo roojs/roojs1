@@ -25072,7 +25072,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         console.log("colWidths 0");
         console.log(this.colWidths[0]);
         console.log("colWidths 1");
-        console.log(this.colWdiths[1]);
+        console.log(this.colWidths[1]);
     
         if (this.colWidths[0] === false) {
             var nw = 100.0 / this.colWidths.length;
