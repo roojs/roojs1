@@ -49348,6 +49348,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     toTableArray  : function()
     {
+        console.log("htmleditor.BlockTd toTableArray");
         var ret = [];
         var tab = this.node.closest('tr').closest('table');
         Array.from(tab.rows).forEach(function(r, ri){
@@ -49603,7 +49604,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
     
     shrinkColumn : function()
     {
+        console.log("htmleditor.BlockTd shrinkColumn");
         var table = this.toTableArray();
+        console.log(table);
         this.normalizeWidths(table);
         var col = this.cellData.col;
         var nw = this.colWidths[col] * 0.8;
