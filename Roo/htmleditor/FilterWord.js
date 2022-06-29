@@ -153,13 +153,13 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         // this is a bit hacky - we had one word document where h2 had a miso-list attribute.
         var htwo = doc.getElementsByTagName('h2');
         for( var i = 0; i < htwo.length; i ++) {
-            if (htwo.item(i).getAttribute('style').match(/mso-list:/)) {
+            if (htwo.item(i).hasAttribute('style') && htwo.item(i).getAttribute('style').match(/mso-list:/)) {
                 htwo.item(i).className = "MsoListParagraph";
             }
         }
         listpara = doc.getElementsByClassName('MsoNormal');
         for( var i = 0; i < listpara.length; i ++) {
-            if (listpara.item(i).getAttribute('style').match(/mso-list:/)) {
+            if (listpara.item(i).hasAttribute('style') && listpara.item(i).getAttribute('style').match(/mso-list:/)) {
                 listpara.item(i).className = "MsoListParagraph";
             }
         }
