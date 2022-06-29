@@ -24806,7 +24806,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
      */
     toObject : function()
     {
-        
         var ret = {
             tag : 'td',
             contenteditable : 'true', // this stops cell selection from picking the table.
@@ -24904,7 +24903,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     c.col = cn;
                 }
                 
-                if (typeof(this.colWidths[cn]) == 'undefined') {
+                if (typeof(this.colWidths[cn]) == 'undefined' && c.colspan < 2) {
                     this.colWidths[cn] =   ce.style.width;
                     if (this.colWidths[cn] != '') {
                         all_auto = false;
@@ -24973,6 +24972,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.colspan += rc.colspan;
         this.node.setAttribute('colspan', this.colspan);
 
+        var table = this.toTableArray();
+        this.normalizeWidths(table);
+        this.updateWidths(table);
     },
     
     
@@ -25013,20 +25015,17 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                 if (r == cd.row && c == cd.col) {
                     this.node.removeAttribute('rowspan');
                     this.node.removeAttribute('colspan');
-                    continue;
                 }
                  
                 var ntd = this.node.cloneNode(); // which col/row should be 0..
-                ntd.removeAttribute('id'); //
-                //ntd.style.width  = '';
+                ntd.removeAttribute('id'); 
+                ntd.style.width  = this.colWidths[c];
                 ntd.innerHTML = '';
                 table[r][c] = { cell : ntd, col : c, row: r , colspan : 1 , rowspan : 1   };
             }
             
         }
         this.redrawAllCells(table);
-        
-         
         
     },
     
@@ -25076,13 +25075,21 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     el.width = Math.floor(this.colWidths[c])  +'%';
                     el.updateElement(el.node);
                 }
+                if (this.colWidths[0] != false && table[r][c].colspan > 1) {
+                    var el = Roo.htmleditor.Block.factory(table[r][c].cell);
+                    var width = 0;
+                    for(var i = 0; i < table[r][c].colspan; i ++) {
+                        width += Math.floor(this.colWidths[c + i]);
+                    }
+                    el.width = width  +'%';
+                    el.updateElement(el.node);
+                }
                 table[r][c].cell = false; // done
             }
         }
     },
     normalizeWidths : function(table)
     {
-    
         if (this.colWidths[0] === false) {
             var nw = 100.0 / this.colWidths.length;
             this.colWidths.forEach(function(w,i) {
