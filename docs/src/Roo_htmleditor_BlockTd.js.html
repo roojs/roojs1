@@ -339,7 +339,6 @@
      */
     </span><span class="jsdoc-var">toObject </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">contenteditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'true'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// this stops cell selection from picking the table.
@@ -437,7 +436,7 @@
                     </span><span class="jsdoc-var">c.col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
                 }
 
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">c.colspan </span><span class="jsdoc-syntax">&lt; 2) {
                     </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">] =   </span><span class="jsdoc-var">ce.style.width</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
                         </span><span class="jsdoc-var">all_auto </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
@@ -506,6 +505,9 @@
         </span><span class="jsdoc-var">this.colspan </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">rc.colspan</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.node.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.colspan</span><span class="jsdoc-syntax">);
 
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">table </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toTableArray</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.normalizeWidths</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.updateWidths</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">);
     },
 
 
@@ -546,20 +548,17 @@
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cd.row </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cd.col</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">this.node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowspan'</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">this.node.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
                 }
 
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ntd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.node.cloneNode</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// which col/row should be 0..
-                </span><span class="jsdoc-var">ntd.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'id'</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">//
-                //ntd.style.width  = '';
+                </span><span class="jsdoc-var">ntd.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'id'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">ntd.style.width  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">];
                 </span><span class="jsdoc-var">ntd.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">] = { </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">ntd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colspan </span><span class="jsdoc-syntax">: 1 , </span><span class="jsdoc-var">rowspan </span><span class="jsdoc-syntax">: 1   };
             }
 
         }
         </span><span class="jsdoc-var">this.redrawAllCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">);
-
-
 
     },
 
@@ -609,13 +608,21 @@
                     </span><span class="jsdoc-var">el.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">])  +</span><span class="jsdoc-string">'%'</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-var">el.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.node</span><span class="jsdoc-syntax">);
                 }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[0] != </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.colspan </span><span class="jsdoc-syntax">&gt; 1) {
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.cell</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= 0;
+                    </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.colspan</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">++) {
+                        </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">Math.floor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                    }
+                    </span><span class="jsdoc-var">el.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">width  </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'%'</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">el.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.node</span><span class="jsdoc-syntax">);
+                }
                 </span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// done
             </span><span class="jsdoc-syntax">}
         }
     },
     </span><span class="jsdoc-var">normalizeWidths </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">table</span><span class="jsdoc-syntax">)
     {
-
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.colWidths</span><span class="jsdoc-syntax">[0] === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nw </span><span class="jsdoc-syntax">= 100.0 / </span><span class="jsdoc-var">this.colWidths.length</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">this.colWidths.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
