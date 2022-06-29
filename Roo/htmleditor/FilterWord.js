@@ -270,8 +270,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 return;
             }
             
-            var nlvl =   (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1  ;
-            
+            var msolist_ar  = style['mso-list'].split(' ');
+            // level1 == 0 level2 = 1 ... l2 level1 << should be '3'
+            var nlvl =      (msolist_ar[1].replace(/level/,'') *1) - 1
+            var mso_l =     (msolist_ar[0].replace(/l/,'') *1);
+            nlvl += (mso_l > 1) ? 1 : 0;
              
             if (nlvl > lvl) {
                 //new indent
