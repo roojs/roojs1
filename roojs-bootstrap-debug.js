@@ -26611,9 +26611,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
         }
         listpara = doc.getElementsByClassName('MsoNormal');
-        for( var i = 0; i < listpara.length; i ++) {
+        while(listpara.length) {
             if (listpara.item(i).hasAttribute('style') && listpara.item(i).getAttribute('style').match(/mso-list:/)) {
                 listpara.item(i).className = "MsoListParagraph";
+            } else {
+                listpara.item(i).className = "MsoNormalx";
             }
         }
         listpara = doc.getElementsByClassName('ql-indent-1');
@@ -26668,7 +26670,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 break;
             }
             items.push(ns);
-              ns = ns.nextSibling;
+            ns = ns.nextSibling;
             
             
         }
