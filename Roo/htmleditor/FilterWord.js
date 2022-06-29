@@ -139,12 +139,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         });
         return ret;
     },
-    
-    
+     
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
-        Roo.log(doc.innerHTML);
+        //Roo.log(doc.innerHTML);
         
         var listpara = doc.getElementsByClassName('MsoListParagraphCxSpFirst');
         for( var i = 0; i < listpara.length; i ++) {
@@ -232,7 +231,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var stack = [ ul ];
         var last_li = false;
         
-         
+        var margin_to_depth = {};
+        max_margins = -1;
+        
         items.forEach(function(n, ipos) {
             //Roo.log("got innertHMLT=" + n.innerHTML);
             
@@ -263,18 +264,18 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             style = this.styleToObject(n); // mo-list is from the parent node.
             if (typeof(style['mso-list']) == 'undefined') {
                 //Roo.log("parent is missing level");
-                
-                 
+                  
                 parent.removeChild(n);
                  
                 return;
             }
             
-            var msolist_ar  = style['mso-list'].split(' ');
-            // level1 == 0 level2 = 1 ... l2 level1 << should be '3'
-            var nlvl =      (msolist_ar[1].replace(/level/,'') *1) - 1
-            var mso_l =     (msolist_ar[0].replace(/l/,'') *1);
-            nlvl += (mso_l > 1) ? 1 : 0;
+            var margin = style['margin-left'];
+            if (typeof(margin_to_depth[margin]) == 'undefined') {
+                max_margins++;
+                margin_to_depth[margin] = max_margins;
+            }
+            nlvl = margin_to_depth[margin] ;
              
             if (nlvl > lvl) {
                 //new indent
