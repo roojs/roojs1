@@ -46226,10 +46226,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
         listpara = doc.getElementsByClassName('MsoNormal');
         while(listpara.length) {
-            if (listpara.item(i).hasAttribute('style') && listpara.item(i).getAttribute('style').match(/mso-list:/)) {
-                listpara.item(i).className = "MsoListParagraph";
+            if (listpara.item(0).hasAttribute('style') && listpara.item(0).getAttribute('style').match(/mso-list:/)) {
+                listpara.item(0).className = "MsoListParagraph";
             } else {
-                listpara.item(i).className = "MsoNormalx";
+                listpara.item(0).className = "MsoNormalx";
             }
         }
         listpara = doc.getElementsByClassName('ql-indent-1');
