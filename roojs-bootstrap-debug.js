@@ -26597,7 +26597,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
-         //Roo.log(doc.innerHTML);
+        Roo.log(doc.innerHTML);
         
         var listpara = doc.getElementsByClassName('MsoListParagraphCxSpFirst');
         for( var i = 0; i < listpara.length; i ++) {
@@ -26606,11 +26606,16 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         // this is a bit hacky - we had one word document where h2 had a miso-list attribute.
         var htwo = doc.getElementsByTagName('h2');
         for( var i = 0; i < htwo.length; i ++) {
-            if (htwo.item(i).getAttribute('style').match(/mso-list:/)) {
+            if (htwo.item(i).hasAttribute('style') && htwo.item(i).getAttribute('style').match(/mso-list:/)) {
                 htwo.item(i).className = "MsoListParagraph";
             }
         }
-        
+        listpara = doc.getElementsByClassName('MsoNormal');
+        for( var i = 0; i < listpara.length; i ++) {
+            if (listpara.item(i).hasAttribute('style') && listpara.item(i).getAttribute('style').match(/mso-list:/)) {
+                listpara.item(i).className = "MsoListParagraph";
+            }
+        }
         listpara = doc.getElementsByClassName('ql-indent-1');
         while(listpara.length) {
             this.replaceDocBullet(listpara.item(0));
@@ -26642,6 +26647,12 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
                 break;
             }
+            if (ns.getAttribute('style').match(/mso-list/)) {
+                items.push(ns);
+                ns = ns.nextSibling;
+                has_list = true;
+                continue;
+            }
             var spans = ns.getElementsByTagName('span');
             if (!spans.length) {
                 break;
@@ -26656,10 +26667,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (!has_list) {
                 break;
             }
-            
-            
             items.push(ns);
-            ns = ns.nextSibling;
+              ns = ns.nextSibling;
+            
+            
         }
         if (!items.length) {
             ns.className = "";
