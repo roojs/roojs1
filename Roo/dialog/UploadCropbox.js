@@ -544,9 +544,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         e.stopEvent();
         
         this.startScale = this.scale;
-        console.log("START SCALE: " + this.scale);
         this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
-        console.log("END SCALE: " + this.scale);
         if(!this.zoomable()){
             this.scale = this.startScale;
             return;
@@ -559,36 +557,17 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     zoomable : function()
     {
-        console.log("THUMBEL");
-        console.log(this.thumbEl);
         var minScale = this.thumbEl.getWidth() / this.minWidth;
         
         if(this.minWidth < this.minHeight){
             minScale = this.thumbEl.getHeight() / this.minHeight;
         }
-
-        console.log("MINSCALE: " + minScale);
         
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel() / minScale);
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel() / minScale);
 
         var maxWidth = this.imageEl.OriginWidth;
         var maxHeight = this.imageEl.OriginHeight;
-
-        if(this.imageEl.OriginWidth / this.imageEl.OriginHeight  > this.minWidth / this.minHeight && this.imageEl.OriginHeight < this.minHeight) {
-            maxHeight = this.minHeight;
-            maxWidth = this.imageEl.OriginWidth / this.imageEl.OriginHeight * this.minHeight;
-        }
-        if(this.imageEl.OriginWidth / this.imageEl.OriginHeight  < this.minWidth / this.minHeight && this.imageEl.OriginWidth < this.minWidth) {
-            maxWidth = this.minWidth;
-            maxHeight = this.imageEl.OriginHeight /this.imageEl.OriginWidth * this.minWidth;
-        }
-
-        console.log("GETSCALELEVEL: " + this.getScaleLevel());
-        console.log("width: " + width);
-        console.log("height: " + height);
-        console.log("maxWidth: " + maxWidth);
-        console.log("maxHeight: " + maxHeight);
         
         if(
                 this.isDocument &&
