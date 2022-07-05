@@ -745,6 +745,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     draw : function()
     {
+        console.log("DRAW");
         this.previewEl.dom.innerHTML = '';
         
         var canvasEl = document.createElement("canvas");
