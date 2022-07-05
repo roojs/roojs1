@@ -68496,7 +68496,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var _this = this;
 
         if(this.imageEl.OriginWidth < this.minWidth) {
-            
+            console.log("BEFORESHOW");
             Roo.Msg.show({
                 title: 'Error',
                 msg: "Image width should be at least 720",
