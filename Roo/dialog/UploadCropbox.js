@@ -432,6 +432,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     onLoadCanvas : function()
     {   
+        console.log("ON LOAD CANVAS");
         this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
 
