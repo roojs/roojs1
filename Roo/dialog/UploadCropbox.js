@@ -434,6 +434,17 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
 
+        if(this.imageEl.OriginWidth < this.minWidth) {
+            Roo.Msg.show({
+                title: 'Error',
+                msg: "Image width should be at least 720",
+                buttons: {ok : true},
+                fn: function(res) {
+                    _this.cropbox.selectorEl.dom.click();
+                }
+            });
+        }
+
         if(this.fireEvent('loadcanvas', this, this.imageEl) != false){
         
             this.bodyEl.un('click', this.beforeSelectFile, this);
