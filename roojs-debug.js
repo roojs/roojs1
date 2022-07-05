@@ -68496,15 +68496,23 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         var _this = this;
 
+        var errorMsg = "";
+
         if(this.imageEl.OriginWidth < this.minWidth) {
-            console.log("BEFORESHOW");
+            errorMsg = "Image width should be at least " + this.minWidth + "\n";
+        }
+
+        if(this.imageEl.OriginHeight < this.minHeight) {
+            errorMsg = "Image height should be at least " + this.minHeight + "\n";
+        }
+
+        if(errorMsg.length != '') {
             Roo.Msg.show({
                 title: 'Error',
-                msg: "Image width should be at least 720",
+                msg: errorMsg,
                 buttons: {ok : true},
                 fn: function(res) {
                     _this.selectorEl.dom.value = '';
-                    console.log(_this.selectorEl.dom.value);
                     _this.selectorEl.dom.click();
                 }
             });
