@@ -26058,6 +26058,21 @@ Roo.htmleditor.Filter.prototype = {
             
         }, this);
         
+    },
+    
+    
+    removeNodeKeepChildren : function( node)
+    {
+    
+        ar = Array.from(node.childNodes);
+        for (var i = 0; i < ar.length; i++) {
+         
+            node.removeChild(ar[i]);
+            // what if we need to walk these???
+            node.parentNode.insertBefore(ar[i], node);
+           
+        }
+        node.parentNode.removeChild(node);
     }
 }; 
 
@@ -26467,6 +26482,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
+    this.replaceAname(cfg.node);
     // this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
     
@@ -26592,7 +26608,31 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         });
         return ret;
     },
-     
+    
+    
+    replaceAname : function (doc)
+    {
+        // replace all the a/name without..
+        var aa = Array.from(doc.getElementsByTagName('a'));
+        for (var i = 0; i  < aa.length; i++) {
+            var a = aa[i];
+            if (a.hasAttribute("name")) {
+                a.removeAttribute("name");
+            }
+            if (a.hasAttribute("href")) {
+                continue;
+            }
+            // reparent children.
+            this.removeNodeKeepChildren(a);
+            
+        }
+        
+        
+        
+    },
+
+    
+    
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
