@@ -68499,8 +68499,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 msg: "Image width should be at least 720",
                 buttons: {ok : true},
                 fn: function(res) {
-                    console.log("A");
-                    console.log(res);
+                    this.selectorEl.dom.click();
                 }
             });
         }
