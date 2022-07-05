@@ -43959,6 +43959,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         e.preventDefault();
         
         if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
+            console.log("EMPTY RETURN");
             return;
         }
         
@@ -44010,7 +44011,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 msg: "Image width should be at least 720",
                 buttons: {ok : true},
                 fn: function(res) {
-                    _this.selectorEl.dom.value = '';
+                    //_this.selectorEl.dom.value = '';
+                    console.log(_this.selectorEl.dom.value);
                     _this.selectorEl.dom.click();
                 }
             });
