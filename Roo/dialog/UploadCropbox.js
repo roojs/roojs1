@@ -446,7 +446,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                     _this.selectorEl.dom.click();
                 }
             });
-            return;
         }
 
         if(this.fireEvent('loadcanvas', this, this.imageEl) != false){
