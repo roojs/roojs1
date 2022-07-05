@@ -1365,6 +1365,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     prepare : function(file)
     {   
+        console.log("PREPARE");
         if(this.loadMask){
             this.maskEl.mask(this.loadingText);
         }
