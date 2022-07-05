@@ -145,6 +145,7 @@ var test = {
                                             uploadCropbox.show();
                                             document.body.onfocus = function(e) {
                                                 console.log("ONFOCUS");
+                                                console.log(uploadCropbox.cropbox.selectorEl.dom.value);
                                                 if(!uploadCropbox.cropbox.selectorEl.dom.files.length) {
                                                     uploadCropbox.dialog.hide();
                                                 }
