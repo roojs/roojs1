@@ -440,11 +440,11 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var errorMsg = "";
 
         if(this.imageEl.OriginWidth < this.minWidth) {
-            errorMsg += "Image width should be at least " + this.minWidth + "\n";
+            errorMsg = "Image width should be at least " + this.minWidth + "\n";
         }
 
         if(this.imageEl.OriginHeight < this.minHeight) {
-            errorMsg += "Image height should be at least " + this.minHeight + "\n";
+            errorMsg = "Image height should be at least " + this.minHeight + "\n";
         }
 
         if(errorMsg.length != '') {
