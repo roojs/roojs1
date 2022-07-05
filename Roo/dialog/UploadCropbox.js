@@ -433,31 +433,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     {   
         this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
-
-        var _this = this;
-
-        var errorMsg = "";
-
-        if(this.imageEl.OriginWidth < this.minWidth) {
-            errorMsg = "Image width should be at least " + this.minWidth;
-        }
-
-        if(this.imageEl.OriginHeight < this.minHeight) {
-            errorMsg = "Image height should be at least " + this.minHeight;
-        }
-
-        if(errorMsg.length != '') {
-            Roo.Msg.show({
-                title: 'Error',
-                msg: errorMsg,
-                buttons: {ok : true},
-                fn: function(res) {
-                    _this.selectorEl.dom.value = '';
-                    _this.selectorEl.dom.click();
-                }
-            });
-        }
-
+        
         if(this.fireEvent('loadcanvas', this, this.imageEl) != false){
         
             this.bodyEl.un('click', this.beforeSelectFile, this);
