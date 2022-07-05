@@ -215,8 +215,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     onRender : function(ct, position)
     {
-        console.log("On Render");
-        console.log(this);
         Roo.dialog.UploadCropbox.superclass.onRender.call(this, ct, position);
 
         if(this.el){
@@ -433,7 +431,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     {   
         this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
-        
+
         if(this.fireEvent('loadcanvas', this, this.imageEl) != false){
         
             this.bodyEl.un('click', this.beforeSelectFile, this);
