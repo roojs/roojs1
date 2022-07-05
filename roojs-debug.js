@@ -68681,7 +68681,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 (
                     width < this.minWidth || // zoom out
                     height < this.minHeight ||
-                    width > maxWidth) ||
+                    width > maxWidth ||
                     height > maxHeight
                 )
         ){
