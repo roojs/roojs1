@@ -414,6 +414,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     loadCanvas : function(src)
     {   
+        console.log("LOAD CANVAS");
+        console.log(src);
         if(this.fireEvent('beforeloadcanvas', this, src) != false){
             
             this.reset();
