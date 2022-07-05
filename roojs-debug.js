@@ -68493,6 +68493,18 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
 
+        if(this.imageEl.OriginWidth < this.minWidth) {
+            Roo.Msg.show({
+                title: 'Error',
+                msg: "Image width should be at least 720",
+                buttons: {ok : true},
+                fn: function(res) {
+                    console.log("A");
+                    console.log(res);
+                }
+            });
+        }
+
         if(this.fireEvent('loadcanvas', this, this.imageEl) != false){
         
             this.bodyEl.un('click', this.beforeSelectFile, this);
@@ -68679,7 +68691,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    width < this.minWidth || // zoom out
+                    width < this.minWidth ||
                     height < this.minHeight ||
                     width > maxWidth ||
                     height > maxHeight
