@@ -68648,8 +68648,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         console.log("GETSCALELEVEL: " + this.getScaleLevel());
         console.log("width: " + width);
         console.log("height: " + height);
-        console.log("maxWidth: " + maxHeight);
-        console.log("maxHeight: " + maxWidth);
+        console.log("maxWidth: " + maxWidth);
+        console.log("maxHeight: " + maxHeight);
         
         if(
                 this.isDocument &&
