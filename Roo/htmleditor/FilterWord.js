@@ -145,7 +145,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceAname : function (doc)
     {
         // replace all the a/name without..
-        var aa = Array.from(doc.getElementsTagName('a'));
+        var aa = Array.from(doc.getElementsByTagName('a'));
         for (var i = 0; i  < aa.length; i++) {
             var a = aa[i];
             if (a.hasAttribute("name")) {
