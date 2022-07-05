@@ -36,6 +36,8 @@ var uploadCropbox = {
                             xns : Roo.dialog,
                             minWidth : 720,
                             minHeight: 480,
+                            uploadWidht: 720,
+                            uploadHeight: 0,
                             buttons: [],
                             listeners : {
                                 render : function (_self)
