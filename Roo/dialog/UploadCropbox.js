@@ -444,6 +444,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 buttons: {ok : true},
                 fn: function(res) {
                     if(res == 'ok'){
+                        console.log("OK");
                         _this.selectorEl.dom.click();
                     }
                 }
