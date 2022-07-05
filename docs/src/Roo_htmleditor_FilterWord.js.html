@@ -14,6 +14,7 @@
     </span><span class="jsdoc-comment">// no need to apply config.
     </span><span class="jsdoc-var">this.replaceDocBullets</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
 
+    </span><span class="jsdoc-var">this.replaceAname</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-comment">// this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
 
@@ -139,6 +140,30 @@
         });
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
     },
+
+
+    </span><span class="jsdoc-var">replaceAname </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// replace all the a/name without..
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">aa </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i  </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">aa.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">aa</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;name&quot;</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-var">a.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;name&quot;</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;href&quot;</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// reparent children.
+            </span><span class="jsdoc-var">this.removeNodeKeepChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">);
+
+        }
+
+
+
+    },
+
+
 
     </span><span class="jsdoc-var">replaceDocBullets </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc</span><span class="jsdoc-syntax">)
     {
