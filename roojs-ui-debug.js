@@ -44331,7 +44331,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         contextEl.scale(this.getScaleLevel(), this.getScaleLevel());
         
-        contextEl.translate(center, center);
+        contextEl.translate(1, 1);
         contextEl.rotate(this.rotate * Math.PI / 180);
 
         contextEl.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight);
