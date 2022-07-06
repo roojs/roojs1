@@ -68529,6 +68529,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     setCanvasPosition : function()
     {   
+        console.log("SET CANVAS POSITION");
         if(!this.canvasEl){
             return;
         }
@@ -68823,10 +68824,10 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         contextEl.scale(this.getScaleLevel(), this.getScaleLevel());
         
-        contextEl.translate(1, 1);
+        contextEl.translate(center, center);
         contextEl.rotate(this.rotate * Math.PI / 180);
 
-        contextEl.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight);
+        contextEl.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, center * -1, center * -1, this.imageEl.OriginWidth, this.imageEl.OriginHeight);
         
         this.canvasEl = document.createElement("canvas");
         
