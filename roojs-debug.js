@@ -68583,12 +68583,16 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         var maxX = Math.ceil(minX + this.thumbEl.getWidth() - this.canvasEl.width);
         var maxY = Math.ceil(minY + this.thumbEl.getHeight() - this.canvasEl.height);
+
+        if(minX < maxX || minY < maxY) {
+            return;
+        }
         
         console.log("maxX");
         console.log(maxX);
         console.log("maxY");
         console.log(maxY);
-        
+
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
         var y = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
         
