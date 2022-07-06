@@ -748,26 +748,26 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         console.log("DRAW");
         this.previewEl.dom.innerHTML = '';
         
-        // var canvasEl = document.createElement("canvas");
+        var canvasEl = document.createElement("canvas");
         
-        // var contextEl = canvasEl.getContext("2d");
+        var contextEl = canvasEl.getContext("2d");
         
-        // canvasEl.width = this.imageEl.OriginWidth * this.getScaleLevel();
-        // canvasEl.height = this.imageEl.OriginWidth * this.getScaleLevel();
-        // var center = this.imageEl.OriginWidth / 2;
+        canvasEl.width = this.imageEl.OriginWidth * this.getScaleLevel();
+        canvasEl.height = this.imageEl.OriginWidth * this.getScaleLevel();
+        var center = this.imageEl.OriginWidth / 2;
         
-        // if(this.imageEl.OriginWidth < this.imageEl.OriginHeight){
-        //     canvasEl.width = this.imageEl.OriginHeight * this.getScaleLevel();
-        //     canvasEl.height = this.imageEl.OriginHeight * this.getScaleLevel();
-        //     center = this.imageEl.OriginHeight / 2;
-        // }
+        if(this.imageEl.OriginWidth < this.imageEl.OriginHeight){
+            canvasEl.width = this.imageEl.OriginHeight * this.getScaleLevel();
+            canvasEl.height = this.imageEl.OriginHeight * this.getScaleLevel();
+            center = this.imageEl.OriginHeight / 2;
+        }
         
-        // contextEl.scale(this.getScaleLevel(), this.getScaleLevel());
+        contextEl.scale(this.getScaleLevel(), this.getScaleLevel());
         
-        // contextEl.translate(center, center);
-        // contextEl.rotate(this.rotate * Math.PI / 180);
+        contextEl.translate(center, center);
+        contextEl.rotate(this.rotate * Math.PI / 180);
 
-        // contextEl.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, center * -1, center * -1, this.imageEl.OriginWidth, this.imageEl.OriginHeight);
+        contextEl.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, center * -1, center * -1, this.imageEl.OriginWidth, this.imageEl.OriginHeight);
         
         this.canvasEl = document.createElement("canvas");
         
