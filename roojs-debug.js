@@ -69235,6 +69235,10 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             }
             
         }
+
+        if(this.imageEl.OriginHeight < this.minHeight) {
+            this.baseScale = width / this.minHeight;
+        }
         
         return;
     },
