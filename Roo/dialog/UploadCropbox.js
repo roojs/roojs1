@@ -536,6 +536,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
         var y = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
+
+        console.log(x);
+        console.log(y);
         
         x = x - this.mouseX;
         y = y - this.mouseY;
