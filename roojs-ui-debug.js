@@ -44751,6 +44751,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         }
 
         if(this.imageEl.OriginHeight < this.minHeight) {
+            console.log("HEIGHT");
             this.baseScale = height / this.minHeight;
         }
         
