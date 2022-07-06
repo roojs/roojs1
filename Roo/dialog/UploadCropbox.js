@@ -530,8 +530,16 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         console.log("maxY");
         console.log(maxY);
 
-        if(minX < maxX && minY < maxY) {
-            return;
+        if(minX > maxX) {
+            var tempX = minX;
+            minX = maxX;
+            maxX = tempX;
+        }
+
+        if(minY > maxY) {
+            var tempY = minY;
+            minY = maxY;
+            maxY = tempY;
         }
 
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
