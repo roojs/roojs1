@@ -543,6 +543,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         x = x - this.mouseX;
         y = y - this.mouseY;
         
+        console.log(x);
+        console.log(y);
+        
         var bgX = Math.ceil(x + this.previewEl.getLeft(true));
         var bgY = Math.ceil(y + this.previewEl.getTop(true));
         
