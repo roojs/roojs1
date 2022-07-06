@@ -68544,6 +68544,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     onMouseDown : function(e)
     {   
+        console.log("ON MOUSE DOWN");
         e.stopEvent();
         
         this.dragable = true;
@@ -68561,6 +68562,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     onMouseMove : function(e)
     {   
+        console.log ("ON MOUSE MOVE");
         e.stopEvent();
         
         if(!this.canvasLoaded){
