@@ -547,6 +547,11 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         var bgX = Math.ceil(x + this.previewEl.getLeft(true));
         var bgY = Math.ceil(y + this.previewEl.getTop(true));
+
+        console.log("bgX");
+        console.log(bgX);
+        console.log("bgY");
+        console.log(bgY);
         
         // bgX = (minX < bgX) ? minX : ((maxX > bgX) ? maxX : bgX);
         bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
