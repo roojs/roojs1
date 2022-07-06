@@ -503,6 +503,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     onMouseMove : function(e)
     {   
+        console.log ("ON MOUSE MOVE");
         e.stopEvent();
         
         if(!this.canvasLoaded){
