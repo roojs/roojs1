@@ -1179,7 +1179,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             
         }
 
-        if(this.imageEl.OriginHeight < this.minHeight) {
+        if(this.imageEl.OriginWidth < this.minWidth) {
             this.baseScale = width / this.minWidth;
         }
         
