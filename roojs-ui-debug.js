@@ -44320,7 +44320,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         var contextEl = canvasEl.getContext("2d");
 
-        console.log("SCALE LEVEL");
         console.log(this.getScaleLevel());
         
         canvasEl.width = this.imageEl.OriginWidth * this.getScaleLevel();
@@ -44748,7 +44747,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         }
 
         if(this.imageEl.OriginHeight < this.minHeight) {
-            this.baseScale = width / this.minHeight;
+            this.baseScale = width / this.minWidth;
         }
         
         return;
