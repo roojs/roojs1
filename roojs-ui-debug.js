@@ -44103,21 +44103,25 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
         var y = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
-
-        console.log(x);
-        console.log(y);
         
         x = x - this.mouseX;
         y = y - this.mouseY;
         
+        console.log("MOVE LEFT / RIGHT");
         console.log(x);
+        console.log("MOVE UP / DOWN");
         console.log(y);
 
         var bgX = Math.ceil(x + this.previewEl.getLeft(true));
         var bgY = Math.ceil(y + this.previewEl.getTop(true));
+
+        console.log("bgX");
+        console.log(bgX);
+        console.log("bgY");
+        console.log(bgY);
         
         // bgX = (minX < bgX) ? minX : ((maxX > bgX) ? maxX : bgX);
-        bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
+        // bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
         
         this.previewEl.setLeft(bgX);
         this.previewEl.setTop(bgY);
