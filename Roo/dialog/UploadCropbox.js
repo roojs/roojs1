@@ -470,6 +470,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     setCanvasPosition : function()
     {   
+        console.log("SET CANVAS POSITION");
         if(!this.canvasEl){
             return;
         }
