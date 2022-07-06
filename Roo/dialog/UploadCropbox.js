@@ -516,19 +516,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         var minX = Math.ceil(this.thumbEl.getLeft(true));
         var minY = Math.ceil(this.thumbEl.getTop(true));
-
-        console.log("minX");
-        console.log(minX);
-        console.log("minY");
-        console.log(minY);
         
         var maxX = Math.ceil(minX + this.thumbEl.getWidth() - this.canvasEl.width);
         var maxY = Math.ceil(minY + this.thumbEl.getHeight() - this.canvasEl.height);
-        
-        console.log("maxX");
-        console.log(maxX);
-        console.log("maxY");
-        console.log(maxY);
 
         if(minX > maxX) {
             var tempX = minX;
@@ -547,19 +537,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         x = x - this.mouseX;
         y = y - this.mouseY;
-        
-        console.log("MOVE LEFT / RIGHT");
-        console.log(x);
-        console.log("MOVE UP / DOWN");
-        console.log(y);
 
         var bgX = Math.ceil(x + this.previewEl.getLeft(true));
         var bgY = Math.ceil(y + this.previewEl.getTop(true));
-
-        console.log("bgX");
-        console.log(bgX);
-        console.log("bgY");
-        console.log(bgY);
         
         bgX = (minX < bgX) ? minX : ((maxX > bgX) ? maxX : bgX);
         bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
