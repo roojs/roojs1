@@ -68589,7 +68589,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         console.log("maxY");
         console.log(maxY);
 
-        if(minX < maxX || minY < maxY) {
+        if(minX < maxX && minY < maxY) {
             return;
         }
 
