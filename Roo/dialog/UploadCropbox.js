@@ -857,6 +857,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     crop : function()
     {
+        console.log("crop");
         if(!this.canvasLoaded){
             return;
         }
