@@ -220,7 +220,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
                 break;
             }
-            if (ns.getAttribute('style').match(/mso-list/)) {
+            if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
                 items.push(ns);
                 ns = ns.nextSibling;
                 has_list = true;
@@ -232,7 +232,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
             var has_list  = false;
             for(var i = 0; i < spans.length; i++) {
-                if (spans[i].getAttribute('style').match(/mso-list/)) {
+                if (spans[i].hasAttribute('style') && spans[i].getAttribute('style').match(/mso-list/)) {
                     has_list = true;
                     break;
                 }
