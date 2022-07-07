@@ -1313,6 +1313,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         file.xhr = this.xhr;
 
+        console.log("METHOD:" + this.method);
+        console.log("URL: " + this.url); 
         this.xhr.open(this.method, this.url, true);
         
         var headers = {
