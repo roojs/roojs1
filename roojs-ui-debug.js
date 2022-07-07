@@ -21433,7 +21433,9 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
                     || // array and it matches
                     (typeof(this.tag) == 'string' && this.tag == ar[i].tagName)
                     ||
-                    this.cleanNameSpace && ar[i].tagName.match(/:/)
+                    (e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'object' && this.tag.indexOf(":") > -1)
+                    ||
+                    (e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'string' && this.tag == ":")
                 ) {
                     this.replaceTag(ar[i]); // child is blacklisted as well...
                     continue;
