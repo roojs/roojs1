@@ -1910,9 +1910,9 @@ Roo.htmleditor.FilterBlack=function(A){Roo.apply(this,A);this.walk(A.node);};Roo
 // Roo/htmleditor/FilterComment.js
 Roo.htmleditor.FilterComment=function(A){this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterComment,Roo.htmleditor.Filter,{replaceComment:function(n){n.parentNode.removeChild(n);}});
 // Roo/htmleditor/FilterKeepChildren.js
-Roo.htmleditor.FilterKeepChildren=function(A){Roo.apply(this,A);if(this.tag===false){return;}this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterKeepChildren,Roo.htmleditor.FilterBlack,{replaceTag:function(A){var ar=Array.from(A.childNodes);for(var i=0;i<ar.length;
-i++){if(ar[i].nodeType==1){if((typeof(this.tag)=='object'&&this.tag.indexOf(ar[i].tagName)>-1)||(typeof(this.tag)=='string'&&this.tag==ar[i].tagName)){this.replaceTag(ar[i]);continue;}}}ar=Array.from(A.childNodes);for(var i=0;i<ar.length;i++){A.removeChild(ar[i]);
-A.parentNode.insertBefore(ar[i],A);if(this.tag!==false){this.walk(ar[i]);}}A.parentNode.removeChild(A);return false;}});
+Roo.htmleditor.FilterKeepChildren=function(A){Roo.apply(this,A);if(this.tag===false){return;}if((typeof(this.tag)=='object'&&this.tag.indexOf(":")>-1)){this.cleanNamespace=true;}this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterKeepChildren,Roo.htmleditor.FilterBlack,{cleanNamespace:false,replaceTag:function(A){Roo.log(A.tagName);
+var ar=Array.from(A.childNodes);for(var i=0;i<ar.length;i++){if(ar[i].nodeType==1){if((typeof(this.tag)=='object'&&this.tag.indexOf(ar[i].tagName)>-1)||(typeof(this.tag)=='string'&&this.tag==ar[i].tagName)||this.cleanNameSpace&&ar[i].tagName.match(/:/)){this.replaceTag(ar[i]);
+continue;}}}ar=Array.from(A.childNodes);for(var i=0;i<ar.length;i++){A.removeChild(ar[i]);A.parentNode.insertBefore(ar[i],A);if(this.tag!==false){this.walk(ar[i]);}}A.parentNode.removeChild(A);return false;}});
 // Roo/htmleditor/FilterParagraph.js
 Roo.htmleditor.FilterParagraph=function(A){this.walk(A.node);};Roo.extend(Roo.htmleditor.FilterParagraph,Roo.htmleditor.Filter,{tag:'P',replaceTag:function(A){if(A.childNodes.length==1&&A.childNodes[0].nodeType==3&&A.childNodes[0].textContent.trim().length<1){A.parentNode.replaceChild(A.ownerDocument.createElement('BR'),A);
 return false;}var ar=Array.from(A.childNodes);for(var i=0;i<ar.length;i++){A.removeChild(ar[i]);A.parentNode.insertBefore(ar[i],A);}A.parentNode.insertBefore(A.ownerDocument.createElement('BR'),A);A.parentNode.insertBefore(A.ownerDocument.createElement('BR'),A);
