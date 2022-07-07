@@ -570,7 +570,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             return;
         }
 
-        console.log("END SCALE: " + this.Scale);
+        console.log("END SCALE: " + this.scale);
         
         this.draw();
         
