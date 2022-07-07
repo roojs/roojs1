@@ -44424,6 +44424,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     crop : function()
     {
+        console.log("crop");
         if(!this.canvasLoaded){
             return;
         }
@@ -44606,7 +44607,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 }
                 
                 context.scale(scale, scale);
-                
                 var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
                 var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
 
@@ -44623,6 +44623,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         }
         
         this.cropData = canvas.toDataURL(this.cropType);
+
+        console.log("cropData");
+        console.log(this.cropData);
         
         if(this.fireEvent('crop', this, this.cropData) !== false){
             this.process(this.file, this.cropData);
@@ -44868,6 +44871,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     process : function(file, crop)
     {
+        console.log(process);
         if(this.loadMask){
             this.maskEl.mask(this.loadingText);
         }
@@ -44876,6 +44880,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         file.xhr = this.xhr;
 
+        console.log("METHOD:" + this.method);
+        console.log("URL: " + this.url); 
         this.xhr.open(this.method, this.url, true);
         
         var headers = {
