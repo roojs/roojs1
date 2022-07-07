@@ -32,11 +32,12 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
         //remove first..
         
         for (var i = 0; i < ar.length; i++) {
-            if (ar[i].nodeType == 1) {
+            var e = ar[i];
+            if (e.nodeType == 1) {
                 if (
-                    (typeof(this.tag) == 'object' && this.tag.indexOf(ar[i].tagName) > -1)
+                    (typeof(this.tag) == 'object' && this.tag.indexOf(e.tagName) > -1)
                     || // array and it matches
-                    (typeof(this.tag) == 'string' && this.tag == ar[i].tagName)
+                    (typeof(this.tag) == 'string' && this.tag == e.tagName)
                     ||
                     (e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'object' && this.tag.indexOf(":") > -1)
                     ||
