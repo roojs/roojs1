@@ -1374,8 +1374,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     xhrOnLoad : function(xhr)
     {
-        console.log("xhrOnLoad");
-        console.log(xhr);
         if(this.loadMask){
             this.maskEl.unmask();
         }
