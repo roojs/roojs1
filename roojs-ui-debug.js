@@ -25886,7 +25886,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                        .map(function(g) { return g.toDataURL(); })
                        .filter(function(g) { return g != 'about:blank'; });
         
-        
+        Roo.log(html);
         html = this.cleanWordChars(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
@@ -25905,6 +25905,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         
         if (images.length > 0) {
+            
+            
+            
             Roo.each(d.getElementsByTagName('img'), function(img, i) {
                 img.setAttribute('src', images[i]);
             });
