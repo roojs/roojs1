@@ -379,6 +379,9 @@
         </span><span class="jsdoc-var">this.colspan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(1,1*</span><span class="jsdoc-var">node.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-var">this.rowspan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(1,1*</span><span class="jsdoc-var">node.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowspan'</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.innerHTML</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.style.textAlign </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.textAlign </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">node.style.textAlign</span><span class="jsdoc-syntax">;
+        }
 
 
     },
