@@ -69363,7 +69363,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     process : function(file, crop)
     {
-        console.log(process);
+        console.log("process");
         if(this.loadMask){
             this.maskEl.mask(this.loadingText);
         }
