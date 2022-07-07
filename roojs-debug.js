@@ -69428,6 +69428,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     xhrOnLoad : function(xhr)
     {
+        console.log("xhrOnLoad");
         if(this.loadMask){
             this.maskEl.unmask();
         }
@@ -69437,6 +69438,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             return;
         }
 
+        console.log(response);
         var response = Roo.decode(xhr.responseText);
         
         if(!response.success){
