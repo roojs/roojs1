@@ -29497,7 +29497,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                        .map(function(g) { return g.toDataURL(); })
                        .filter(function(g) { return g != 'about:blank'; });
         
-        Roo.log(html);
+        //Roo.log(html);
         html = this.cleanWordChars(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
@@ -29515,13 +29515,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
         
+        
+        
         if (images.length > 0) {
-            // if they mix thse, then it's going to be messy...
-            var imgs = Array.from(d.getElementsByTagName('img'));
-            imgs.concat(Array.from(document.getElementsByTagName('v:imagedata'))); // not sure if we need array from here.
+            // replace all v:imagedata - with img.
+            Roo.each(document.getElementsByTagName('v:imagedata'), function(node) {
+                node.parentNode.insertBefore(node, d.createElement('img'));
+                node.parentNode.removeChild(node);
+            });
             
             
-            Roo.each(imgs, function(img, i) {
+            Roo.each(imgs, function(d.getElementsByTagName('img'), i) {
                 img.setAttribute('src', images[i]);
             });
         }

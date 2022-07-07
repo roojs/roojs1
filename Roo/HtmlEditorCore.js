@@ -595,7 +595,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                        .map(function(g) { return g.toDataURL(); })
                        .filter(function(g) { return g != 'about:blank'; });
         
-        Roo.log(html);
+        //Roo.log(html);
         html = this.cleanWordChars(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
