@@ -26300,7 +26300,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
     replaceTag : function(node)
     {
         // walk children...
-        Roo.log(node.tagName);
+        //Roo.log(node.tagName);
         var ar = Array.from(node.childNodes);
         //remove first..
         
@@ -26332,7 +26332,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
                 
             }
         }
-        Roo.log("REMOVE:" + node.tagName);
+        //Roo.log("REMOVE:" + node.tagName);
         node.parentNode.removeChild(node);
         return false; // don't walk children
         
@@ -29525,7 +29525,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             });
             
             
-            Roo.each(imgs, function(d.getElementsByTagName('img'), i) {
+            Roo.each(d.getElementsByTagName('img'), function(img, i) {
                 img.setAttribute('src', images[i]);
             });
         }

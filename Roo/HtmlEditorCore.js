@@ -623,7 +623,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             });
             
             
-            Roo.each(imgs, function(d.getElementsByTagName('img'), i) {
+            Roo.each(d.getElementsByTagName('img'), function(img, i) {
                 img.setAttribute('src', images[i]);
             });
         }
