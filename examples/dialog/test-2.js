@@ -36,6 +36,7 @@ var uploadCropbox = {
                             xns : Roo.dialog,
                             minWidth : 720,
                             minHeight: 480,
+                            url: 'http://localhost/web.MediaOutreach/press.local.php/Roo/Images.php',
                             buttons: [],
                             listeners : {
                                 render : function (_self)
