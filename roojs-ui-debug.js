@@ -44129,10 +44129,15 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         this.startScale = this.scale;
         this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
+        
+        console.log("START SCALE:" . startScale);
+        console.log("TEST SCALE: " . startScale);
         if(!this.zoomable()){
             this.scale = this.startScale;
             return;
         }
+
+        console.log("END SCALE: " . endScale);
         
         this.draw();
         
@@ -44146,9 +44151,14 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         if(this.minWidth < this.minHeight){
             minScale = this.thumbEl.getHeight() / this.minHeight;
         }
+
+        console.log("MINSCALE: " + minScale);
         
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel() / minScale);
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel() / minScale);
+
+        console.log("WIDTH: " + width);
+        console.log("HEIGHT: " + height);
 
         var maxWidth = this.imageEl.OriginWidth;
         var maxHeight = this.imageEl.OriginHeight;
