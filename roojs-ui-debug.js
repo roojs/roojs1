@@ -21407,25 +21407,36 @@ Roo.htmleditor.FilterKeepChildren = function(cfg)
     if (this.tag === false) {
         return; // dont walk.. (you can use this to use this just to do a child removal on a single tag )
     }
+    // hacky?
+    if ((typeof(this.tag) == 'object' && this.tag.indexOf(":") > -1)) {
+        this.cleanNamespace = true;
+    }
+        
     this.walk(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 {
-    
+    cleanNamespace : false, // should really be an option, rather than using ':' inside of this tag.
   
     replaceTag : function(node)
     {
         // walk children...
-        //Roo.log(node);
+        //Roo.log(node.tagName);
         var ar = Array.from(node.childNodes);
         //remove first..
+        
         for (var i = 0; i < ar.length; i++) {
-            if (ar[i].nodeType == 1) {
+            var e = ar[i];
+            if (e.nodeType == 1) {
                 if (
-                    (typeof(this.tag) == 'object' && this.tag.indexOf(ar[i].tagName) > -1)
+                    (typeof(this.tag) == 'object' && this.tag.indexOf(e.tagName) > -1)
                     || // array and it matches
-                    (typeof(this.tag) == 'string' && this.tag == ar[i].tagName)
+                    (typeof(this.tag) == 'string' && this.tag == e.tagName)
+                    ||
+                    (e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'object' && this.tag.indexOf(":") > -1)
+                    ||
+                    (e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'string' && this.tag == ":")
                 ) {
                     this.replaceTag(ar[i]); // child is blacklisted as well...
                     continue;
@@ -21443,6 +21454,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
                 
             }
         }
+        //Roo.log("REMOVE:" + node.tagName);
         node.parentNode.removeChild(node);
         return false; // don't walk children
         
@@ -25874,7 +25886,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                        .map(function(g) { return g.toDataURL(); })
                        .filter(function(g) { return g != 'about:blank'; });
         
-        
+        //Roo.log(html);
         html = this.cleanWordChars(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
@@ -25892,7 +25904,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
         
+        
+        
         if (images.length > 0) {
+            // replace all v:imagedata - with img.
+            Roo.each(d.getElementsByTagName('v:imagedata'), function(node) {
+                node.parentNode.insertBefore(node, document.createElement('img'));
+                node.parentNode.removeChild(node);
+            });
+            
+            
             Roo.each(d.getElementsByTagName('img'), function(img, i) {
                 img.setAttribute('src', images[i]);
             });

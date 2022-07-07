@@ -12,25 +12,36 @@
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// dont walk.. (you can use this to use this just to do a child removal on a single tag )
     </span><span class="jsdoc-syntax">}
+    </span><span class="jsdoc-comment">// hacky?
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tag.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;:&quot;</span><span class="jsdoc-syntax">) &gt; -1)) {
+        </span><span class="jsdoc-var">this.cleanNamespace </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    }
+
     </span><span class="jsdoc-var">this.walk</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.node</span><span class="jsdoc-syntax">);
 }
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.htmleditor.FilterKeepChildren</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.htmleditor.FilterBlack</span><span class="jsdoc-syntax">,
 {
-
+    </span><span class="jsdoc-var">cleanNamespace </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// should really be an option, rather than using ':' inside of this tag.
 
     </span><span class="jsdoc-var">replaceTag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">// walk children...
-        //Roo.log(node);
+        //Roo.log(node.tagName);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.childNodes</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//remove first..
+
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">ar.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.nodeType </span><span class="jsdoc-syntax">== 1) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.nodeType </span><span class="jsdoc-syntax">== 1) {
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(
-                    (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tag.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.tagName</span><span class="jsdoc-syntax">) &gt; -1)
+                    (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tag.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.tagName</span><span class="jsdoc-syntax">) &gt; -1)
                     || </span><span class="jsdoc-comment">// array and it matches
-                    </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tag </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.tagName</span><span class="jsdoc-syntax">)
+                    </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tag </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.tagName</span><span class="jsdoc-syntax">)
+                    ||
+                    (</span><span class="jsdoc-var">e.tagName.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;:&quot;</span><span class="jsdoc-syntax">) &gt; -1 &amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tag.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;:&quot;</span><span class="jsdoc-syntax">) &gt; -1)
+                    ||
+                    (</span><span class="jsdoc-var">e.tagName.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;:&quot;</span><span class="jsdoc-syntax">) &gt; -1 &amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tag </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;:&quot;</span><span class="jsdoc-syntax">)
                 ) {
                     </span><span class="jsdoc-var">this.replaceTag</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ar</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]); </span><span class="jsdoc-comment">// child is blacklisted as well...
                     </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
@@ -48,6 +59,7 @@
 
             }
         }
+        </span><span class="jsdoc-comment">//Roo.log(&quot;REMOVE:&quot; + node.tagName);
         </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// don't walk children
 
