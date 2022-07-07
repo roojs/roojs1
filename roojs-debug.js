@@ -50397,10 +50397,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         
         if (images.length > 0) {
+            // if they mix thse, then it's going to be messy...
+            var imgs = Array.from(d.getElementsByTagName('img'));
+            imgs.concat(Array.from(document.getElementsByTagName('v:imagedata'))); // not sure if we need array from here.
             
             
-            
-            Roo.each(d.getElementsByTagName('img'), function(img, i) {
+            Roo.each(imgs, function(img, i) {
                 img.setAttribute('src', images[i]);
             });
         }
