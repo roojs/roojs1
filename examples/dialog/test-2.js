@@ -69,6 +69,7 @@ var uploadCropbox = {
                     text : 'Save',
                     listeners : {
                         click : function () {
+                            _this.cropbox.crop();
                         }   
                     }
                 },
