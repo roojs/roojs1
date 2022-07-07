@@ -69374,7 +69374,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         console.log("METHOD:" + this.method);
         console.log("URL: " + this.url); 
-        this.xhr.open(this.method, this.url, true);
+        // this.xhr.open(this.method, this.url, true);
         
         var headers = {
             "Accept": "application/json",
@@ -69403,6 +69403,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         var formData = new FormData();
 
+        formData.append("onid", "43024");
+        formData.append("ontable", "pressrelease_boilerplate");
+
         formData.append('returnHTML', 'NO');
         
         if(crop){
@@ -69420,6 +69423,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         if(typeof(file.mimetype) != 'undefined'){
             formData.append('mimetype', file.mimetype);
         }
+
+        console.log(formData);
         
         if(this.fireEvent('arrange', this, formData) != false){
             this.xhr.send(formData);
@@ -69439,7 +69444,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             return;
         }
 
-        console.log(response);
         var response = Roo.decode(xhr.responseText);
         
         if(!response.success){
