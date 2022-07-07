@@ -44932,7 +44932,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             formData.append('mimetype', file.mimetype);
         }
 
-        console.log(formData);
+        console.log(formData.keys());
         
         if(this.fireEvent('arrange', this, formData) != false){
             this.xhr.send(formData);
@@ -44941,8 +44941,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     xhrOnLoad : function(xhr)
     {
-        console.log("xhrOnLoad");
-        console.log(xhr);
         if(this.loadMask){
             this.maskEl.unmask();
         }
