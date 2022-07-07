@@ -45914,7 +45914,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
     replaceTag : function(node)
     {
         // walk children...
-        Roo.log(node.tagName);
+        //Roo.log(node.tagName);
         var ar = Array.from(node.childNodes);
         //remove first..
         
@@ -45946,7 +45946,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
                 
             }
         }
-        Roo.log("REMOVE:" + node.tagName);
+        //Roo.log("REMOVE:" + node.tagName);
         node.parentNode.removeChild(node);
         return false; // don't walk children
         
