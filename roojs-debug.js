@@ -49407,6 +49407,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.colspan = Math.max(1,1*node.getAttribute('colspan'));
         this.rowspan = Math.max(1,1*node.getAttribute('rowspan'));
         this.html = node.innerHTML;
+        if (node.style.textAlign != '') {
+            this.textAlign = node.style.textAlign;
+        }
         
         
     },
