@@ -1364,6 +1364,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         if(typeof(file.mimetype) != 'undefined'){
             formData.append('mimetype', file.mimetype);
         }
+
+        console.log(formData);
         
         if(this.fireEvent('arrange', this, formData) != false){
             this.xhr.send(formData);
