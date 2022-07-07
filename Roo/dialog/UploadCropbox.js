@@ -1365,7 +1365,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             formData.append('mimetype', file.mimetype);
         }
 
-        foreach (var pair of formData.entries()) {
+        for (var pair of formData.entries()) {
             console.log(pair);
         }
 
