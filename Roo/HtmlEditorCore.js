@@ -617,8 +617,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         if (images.length > 0) {
             // replace all v:imagedata - with img.
-            Roo.each(d.getElementsByTagName('v:imagedata'), function(node) {
-                node.parentNode.insertBefore(node, document.createElement('img'));
+            var ar = Array.from(d.getElementsByTagName('v:imagedata'))
+            Roo.each(ar, function(node) {
+                node.parentNode.insertBefore(node, d.documentElement.createElement('img'));
                 node.parentNode.removeChild(node);
             });
             
