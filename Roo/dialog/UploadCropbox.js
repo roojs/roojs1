@@ -1366,7 +1366,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         }
 
         for (var pair of formData.entries()) {
-            console.log(pair[0]+ ', ' + pair[1]); 
+            console.log(pair)
         }
         
         if(this.fireEvent('arrange', this, formData) != false){
