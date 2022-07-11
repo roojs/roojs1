@@ -1097,7 +1097,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     setThumbBoxPosition : function()
     {
-        console.log("SET THUMBBOX POSITION");
         var x = Math.ceil((this.bodyEl.getWidth() - this.thumbEl.getWidth()) / 2 );
         var y = Math.ceil((this.bodyEl.getHeight() - this.thumbEl.getHeight()) / 2);
         
@@ -1108,7 +1107,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     baseRotateLevel : function()
     {
-        console.log("BASE ROTATE LEVEL");
         this.baseRotate = 1;
         
         if(
