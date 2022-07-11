@@ -621,8 +621,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 (
                     (this.scale < this.startScale) && width < this.minWidth ||
                     (this.scale < this.startScale) && height < this.minHeight ||
-                    width > maxWidth ||
-                    height > maxHeight
+                    (this.scale > this.startScale) && width > maxWidth ||
+                    (this.scale > this.startScale) && height > maxHeight
                 )
         ){
             return false;
