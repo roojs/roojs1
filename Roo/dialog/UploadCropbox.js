@@ -852,6 +852,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     crop : function()
     {
+        console.log("CROP");
         if(!this.canvasLoaded){
             return;
         }
@@ -879,6 +880,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var context = canvas.getContext("2d");
                 
         canvas.width = this.minWidth;
+        
         canvas.height = this.minHeight;
 
         switch (this.rotate) {
