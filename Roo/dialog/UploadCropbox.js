@@ -924,6 +924,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                         scale = targetHeight / height;
                     }
                 }
+
+                console.log("scale: " + scale);
                 
                 context.scale(scale, scale);
                 
