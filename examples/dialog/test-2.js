@@ -71,6 +71,7 @@ var uploadCropbox = {
                     listeners : {
                         click : function () {
                             _this.cropbox.crop();
+                            _this.dialog.hide();
                         }   
                     }
                 },
@@ -80,7 +81,7 @@ var uploadCropbox = {
                     text : 'Cancel',
                     listeners : {
                         click : function () {
-                            _this.dialog.hide()
+                            _this.dialog.hide();
                         }   
                     }
                 }
