@@ -1360,8 +1360,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             console.log("CROPPED FILE");
             console.log(croppedFile);
         }
-        
-        console.log(typeof(file));
+
+        console.log(typeof(croppedFile));
         if(typeof(file) != 'undefined' && (typeof(file.id) == 'undefined' || file.id * 1 < 1)){
             console.log(file);
             formData.append(this.paramName, crop, file.name);
