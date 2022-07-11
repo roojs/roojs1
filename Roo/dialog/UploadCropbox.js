@@ -1123,6 +1123,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     baseScaleLevel : function()
     {
+        console.log("BASE SCALE LEVEL");
         var width, height;
         
         if(this.isDocument){
@@ -1294,7 +1295,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     process : function(file, crop)
     {
-        console.log("process");
         if(this.loadMask){
             this.maskEl.mask(this.loadingText);
         }
@@ -1303,8 +1303,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         file.xhr = this.xhr;
 
-        console.log("METHOD:" + this.method);
-        console.log("URL: " + this.url); 
         this.xhr.open(this.method, this.url, true);
         
         var headers = {
