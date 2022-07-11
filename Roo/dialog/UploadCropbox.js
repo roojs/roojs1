@@ -1357,14 +1357,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 array.push(blobBin.charCodeAt(i));
             }
             var croppedFile =new Blob([new Uint8Array(array)], {type: 'image/png'});
-            console.log("CROPPED FILE");
-            console.log(croppedFile);
-        }
-
-        console.log(typeof(croppedFile));
-        if(typeof(file) != 'undefined' && (typeof(file.id) == 'undefined' || file.id * 1 < 1)){
-            console.log(file);
-            formData.append(this.paramName, crop, file.name);
+            formData.append(this.paramName, croppedFile, file.name);
         }
         
         if(typeof(file.filename) != 'undefined'){
