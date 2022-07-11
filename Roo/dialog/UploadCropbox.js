@@ -854,7 +854,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     crop : function()
     {
-        console.log("crop");
         if(!this.canvasLoaded){
             return;
         }
@@ -1053,9 +1052,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         }
         
         this.cropData = canvas.toDataURL(this.cropType);
-
-        console.log("cropData");
-        console.log(this.cropData);
         
         if(this.fireEvent('crop', this, this.cropData) !== false){
             this.process(this.file, this.cropData);
