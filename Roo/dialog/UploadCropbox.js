@@ -862,6 +862,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         imageCanvas.width = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginWidth : this.imageEl.OriginHeight;
         imageCanvas.height = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginWidth : this.imageEl.OriginHeight;
+
+        console.log("IMAGECANVAS WIDTH: " + imageCanvas.width);
+        console.log("IMAGECANVAS HEIGHT: " + imageCanvas.height);
         
         var center = imageCanvas.width / 2;
         
