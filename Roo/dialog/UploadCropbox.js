@@ -1354,7 +1354,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         }
         
         if(typeof(file) != 'undefined' && (typeof(file.id) == 'undefined' || file.id * 1 < 1)){
-            formData.append(this.paramName, file, file.name);
+            formData.append(this.paramName, crop, file.name);
         }
         
         if(typeof(file.filename) != 'undefined'){
