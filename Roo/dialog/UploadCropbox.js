@@ -883,6 +883,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         canvas.height = this.minHeight;
 
+        console.log("CANVAS WIDTH: " + canvas.width);
+        console.log("CANVAS HEIGHT: " + canvas.height);
+
         switch (this.rotate) {
             case 0 :
                 
