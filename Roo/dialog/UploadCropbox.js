@@ -560,7 +560,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         console.log("START SCALE:" + this.startScale);
         console.log("TEST SCALE: " + this.scale);
-        if(!this.zoomable()){
+        if(!this.zoomable(this.startScale)){
             this.scale = this.startScale;
             return;
         }
