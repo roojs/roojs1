@@ -387,7 +387,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     onFileSelected : function(e)
     {
-        console.log("ON FILE SELECTED");
         e.preventDefault();
         
         if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
@@ -414,8 +413,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     loadCanvas : function(src)
     {   
-        console.log("LOAD CANVAS");
-        console.log(src);
         if(this.fireEvent('beforeloadcanvas', this, src) != false){
             
             this.reset();
@@ -1368,11 +1365,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             formData.append('mimetype', file.mimetype);
         }
 
-        for (var pair of formData.entries()) {
-            console.log(pair);
-        }
-
-
         if(this.fireEvent('arrange', this, formData) != false){
             this.xhr.send(formData);
         };
@@ -1418,8 +1410,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     prepare : function(file)
     {   
-        console.log("PREPARE");
-        console.log(file);
         if(this.loadMask){
             this.maskEl.mask(this.loadingText);
         }
