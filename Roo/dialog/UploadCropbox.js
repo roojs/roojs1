@@ -897,9 +897,15 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 
                 var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
                 var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
+
+                console.log("X: " + x);
+                console.log("Y: " + y);
                 
                 var targetWidth = this.minWidth - 2 * x;
                 var targetHeight = this.minHeight - 2 * y;
+
+                console.log("targetWidth: " + targetWidth);
+                console.log("targetHeight: " + targetHeight);
                 
                 var scale = 1;
                 
