@@ -1123,7 +1123,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     baseScaleLevel : function()
     {
-        console.log("BASE SCALE LEVEL");
         var width, height;
         
         if(this.isDocument){
