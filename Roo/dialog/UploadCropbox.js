@@ -938,7 +938,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                     var scale = 1200 / canvas.width;
                     context.scale(scale, scale);
                     canvas.height = 1200 * this.thumbEl.getHeight() / this.thumbEl.getWidth();
-                    canvas.width = 1200;
+                    canvas.width = canvas.width * scale;
                 }
 
                 context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
