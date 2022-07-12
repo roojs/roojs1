@@ -935,6 +935,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
 
                 if(canvas.width > 1200) {
+                    var scale = 1200 / canvas.width;
+                    context.scale(scale, scale);
                     canvas.height = 1200 * this.thumbEl.getHeight() / this.thumbEl.getWidth();
                     canvas.width = 1200;
                 }
