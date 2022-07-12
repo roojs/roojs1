@@ -873,9 +873,16 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         var context = canvas.getContext("2d");
 
+        var scaleLevel = this.getScaleLevel();
+
+        if(this.thumbEl.getWidth() / this.getScaleLevel() > 1200) {
+            scaleLevel = this.thumbEl.getWidth() / 1200;
+        }
+
         canvas.width = this.thumbEl.getWidth() / this.getScaleLevel();
         
         canvas.height = this.thumbEl.getHeight() / this.getScaleLevel();
+
 
         console.log("CANVAS WIDTH: " + canvas.width);
         console.log("CANVAS HEIGHT: " + canvas.height);
