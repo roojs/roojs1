@@ -77,6 +77,7 @@ var uploadCropbox = {
                     listeners : {
                         click : function () {
                             _this.cropbox.crop();
+                            _this.dialog.hide();
                         }   
                     }
                 },
