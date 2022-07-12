@@ -1394,7 +1394,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             console.log(this.cropType);
             console.log("FILETYPE");
             console.log(typeof(file.type));
-            console.log(this.fileType);
+            console.log(this.file.type);
             this.cropType = file.type;
         }
         
