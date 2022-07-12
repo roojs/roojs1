@@ -1308,8 +1308,13 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         formData.append('returnHTML', 'NO');
         
-        console.log(file);
-        console.log(file.type);
+        var outputFileType = 'image/jpeg';
+
+        if(typeof(file.type) != 'undefined') {
+            console.log(file.type);
+            outputFileType = file.type;
+        }
+
         if(crop){
             formData.append('crop', crop);
             var blobBin = atob(crop.split(',')[1]);
@@ -1317,7 +1322,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             for(var i = 0; i < blobBin.length; i++) {
                 array.push(blobBin.charCodeAt(i));
             }
-            var croppedFile =new Blob([new Uint8Array(array)], {type: 'image/png'});
+            var croppedFile =new Blob([new Uint8Array(array)], {type: outputFileType});
             formData.append(this.paramName, croppedFile, file.name);
         }
         
