@@ -877,7 +877,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         canvas.height = this.thumbEl.getHeight() / this.getScaleLevel();
 
-
         console.log("CANVAS WIDTH: " + canvas.width);
         console.log("CANVAS HEIGHT: " + canvas.height);
 
