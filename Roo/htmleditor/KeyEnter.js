@@ -44,7 +44,17 @@ Roo.htmleditor.KeyEnter.prototype = {
         var pc = range.closest([ 'ol', 'ul']);
         var pli = range.closest('li');
         if (!pc || e.ctrlKey) {
-            sel.insertNode('br', 'after'); 
+            // on it list, or ctrl pressed.
+            if (!e.ctrlKey) {
+                sel.insertNode('br', 'after'); 
+            } else {
+                // only do this if we have ctrl key..
+                var br = doc.createElement('br');
+                br.className = 'clear';
+                br.setAttribute('style', 'clear: both');
+                sel.insertNode(br, 'after'); 
+            }
+            
          
             this.core.undoManager.addEvent();
             this.core.fireEditorEvent(e);

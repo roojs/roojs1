@@ -21160,6 +21160,8 @@ Roo.htmleditor.Filter.prototype = {
                     return;
                 
                 case this.tag === true: // everything
+                case e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'object' && this.tag.indexOf(":") > -1:
+                case e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'string' && this.tag == ":":
                 case typeof(this.tag) == 'object' && this.tag.indexOf(e.tagName) > -1: // array and it matches.
                 case typeof(this.tag) == 'string' && this.tag == e.tagName: // array and it matches.
                     if (this.replaceTag && false === this.replaceTag(e)) {
@@ -21587,6 +21589,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
+    // this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
     
     
@@ -21716,16 +21719,29 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
+        //Roo.log(doc.innerHTML);
         
-        var listpara = doc.getElementsByClassName('ql-indent-1');
+        var listpara = doc.getElementsByClassName('MsoListParagraphCxSpFirst');
+        for( var i = 0; i < listpara.length; i ++) {
+            listpara.item(i).className = "MsoListParagraph";
+        }
+        // this is a bit hacky - we had one word document where h2 had a miso-list attribute.
+        var htwo = doc.getElementsByTagName('h2');
+        for( var i = 0; i < htwo.length; i ++) {
+            if (htwo.item(i).getAttribute('style').match(/mso-list:/)) {
+                htwo.item(i).className = "MsoListParagraph";
+            }
+        }
+        
+        listpara = doc.getElementsByClassName('ql-indent-1');
         while(listpara.length) {
             this.replaceDocBullet(listpara.item(0));
         }
-        
-        var listpara = doc.getElementsByClassName('MsoListParagraph');
+        listpara = doc.getElementsByClassName('MsoListParagraph');
         while(listpara.length) {
             this.replaceDocBullet(listpara.item(0));
         }
+      
     },
     
     replaceDocBullet : function(p)
@@ -21795,6 +21811,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (nlvl > lvl) {
                 //new indent
                 var nul = doc.createElement('ul'); // what about number lists...
+                if (!last_li) {
+                    last_li = doc.createElement('li');
+                    stack[lvl].appendChild(last_li);
+                }
                 last_li.appendChild(nul);
                 stack[nlvl] = nul;
                 
@@ -23316,7 +23336,17 @@ Roo.htmleditor.KeyEnter.prototype = {
         var pc = range.closest([ 'ol', 'ul']);
         var pli = range.closest('li');
         if (!pc || e.ctrlKey) {
-            sel.insertNode('br', 'after'); 
+            // on it list, or ctrl pressed.
+            if (!e.ctrlKey) {
+                sel.insertNode('br', 'after'); 
+            } else {
+                // only do this if we have ctrl key..
+                var br = doc.createElement('br');
+                br.className = 'clear';
+                br.setAttribute('style', 'clear: both');
+                sel.insertNode(br, 'after'); 
+            }
+            
          
             this.core.undoManager.addEvent();
             this.core.fireEditorEvent(e);
@@ -23680,9 +23710,11 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 store : {
                     xtype : 'SimpleStore',
                     data : [
-                        ['50%'],
+                        ['100%'],
                         ['80%'],
-                        ['100%']
+                        ['50%'],
+                        ['20%'],
+                        ['10%']
                     ],
                     fields : [ 'val'],
                     xns : Roo.data
@@ -25791,7 +25823,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             });
             new Roo.htmleditor.FilterBlack({ node : d, tag : this.black});
             // should be fonts..
-            new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', 'O:P' ]} );
+            new Roo.htmleditor.FilterKeepChildren({node : d, tag : [ 'FONT', ':' ]} );
             new Roo.htmleditor.FilterParagraph({ node : d });
             new Roo.htmleditor.FilterSpan({ node : d });
             new Roo.htmleditor.FilterLongBr({ node : d });
@@ -26481,6 +26513,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     cleanWord : function(node)
     {
         new Roo.htmleditor.FilterWord({ node : node ? node : this.doc.body });
+        new Roo.htmleditor.FilterKeepChildren({node : node ? node : this.doc.body, tag : [ 'FONT', ':' ]} );
         
     },
    

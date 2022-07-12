@@ -177,9 +177,11 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 store : {
                     xtype : 'SimpleStore',
                     data : [
-                        ['50%'],
+                        ['100%'],
                         ['80%'],
-                        ['100%']
+                        ['50%'],
+                        ['20%'],
+                        ['10%']
                     ],
                     fields : [ 'val'],
                     xns : Roo.data

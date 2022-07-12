@@ -14,6 +14,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
+    // this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
     
     
@@ -143,16 +144,29 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
+        //Roo.log(doc.innerHTML);
         
-        var listpara = doc.getElementsByClassName('ql-indent-1');
+        var listpara = doc.getElementsByClassName('MsoListParagraphCxSpFirst');
+        for( var i = 0; i < listpara.length; i ++) {
+            listpara.item(i).className = "MsoListParagraph";
+        }
+        // this is a bit hacky - we had one word document where h2 had a miso-list attribute.
+        var htwo = doc.getElementsByTagName('h2');
+        for( var i = 0; i < htwo.length; i ++) {
+            if (htwo.item(i).getAttribute('style').match(/mso-list:/)) {
+                htwo.item(i).className = "MsoListParagraph";
+            }
+        }
+        
+        listpara = doc.getElementsByClassName('ql-indent-1');
         while(listpara.length) {
             this.replaceDocBullet(listpara.item(0));
         }
-        
-        var listpara = doc.getElementsByClassName('MsoListParagraph');
+        listpara = doc.getElementsByClassName('MsoListParagraph');
         while(listpara.length) {
             this.replaceDocBullet(listpara.item(0));
         }
+      
     },
     
     replaceDocBullet : function(p)
@@ -222,6 +236,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (nlvl > lvl) {
                 //new indent
                 var nul = doc.createElement('ul'); // what about number lists...
+                if (!last_li) {
+                    last_li = doc.createElement('li');
+                    stack[lvl].appendChild(last_li);
+                }
                 last_li.appendChild(nul);
                 stack[nlvl] = nul;
                 
