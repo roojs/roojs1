@@ -925,7 +925,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
                 // console.log("scale: " + scale);
                 
-                context.scale(scale, scale);
+                // context.scale(scale, scale);
                 
                 var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
                 var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
