@@ -580,10 +580,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel() / minScale);
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel() / minScale);
 
-        console.log("ZOOM");
-        console.log("WIDTH: " + (this.thumbEl.getWidth() / this.getScaleLevel()));
-        console.log("HEIGHT: " + (this.thumbEl.getHeight() / this.getScaleLevel()));
-
 
         var maxWidth = this.imageEl.OriginWidth;
         var maxHeight = this.imageEl.OriginHeight;
@@ -846,7 +842,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     crop : function()
     {
-        console.log("CROP");
         if(!this.canvasLoaded){
             return;
         }
@@ -857,9 +852,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         imageCanvas.width = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginWidth : this.imageEl.OriginHeight;
         imageCanvas.height = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginWidth : this.imageEl.OriginHeight;
-
-        console.log("IMAGECANVAS WIDTH: " + imageCanvas.width);
-        console.log("IMAGECANVAS HEIGHT: " + imageCanvas.height);
         
         var center = imageCanvas.width / 2;
         
@@ -877,59 +869,17 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         canvas.height = this.thumbEl.getHeight() / this.getScaleLevel();
 
-        console.log("CANVAS WIDTH: " + canvas.width);
-        console.log("CANVAS HEIGHT: " + canvas.height);
-
-        console.log("SCALELEVLE: " + this.getScaleLevel());
-
         switch (this.rotate) {
             case 0 :
                 
                 var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getWidth() / this.getScaleLevel());
                 var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getHeight() / this.getScaleLevel());
-
-                console.log("WIDTH: " + width);
-                console.log("HEIGHT: " + height);
                 
                 var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
                 var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
-
-                console.log("X: " + x);
-                console.log("Y: " + y);
-                
-                // var targetWidth = this.minWidth - 2 * x;
-                // var targetHeight = this.minHeight - 2 * y;
-
-                // console.log("targetWidth: " + targetWidth);
-                // console.log("targetHeight: " + targetHeight);
-                
-                // var scale = 1;
-                
-                // if((x == 0 && y == 0) || (x == 0 && y > 0)){
-                //     scale = targetWidth / width;
-                // }
-                
-                // if(x > 0 && y == 0){
-                //     scale = targetHeight / height;
-                // }
-                
-                // if(x > 0 && y > 0){
-                //     scale = targetWidth / width;
-                    
-                //     if(width < height){
-                //         scale = targetHeight / height;
-                //     }
-                // }
-
-                // console.log("scale: " + scale);
-                
-                // context.scale(scale, scale);
                 
                 var sx = this.thumbEl.getLeft(true) - this.previewEl.getLeft(true);
                 var sy = this.thumbEl.getTop(true) - this.previewEl.getTop(true);
-
-                console.log("sx: " + sx);
-                console.log("sy: " + sy);
 
                 sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
                 sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
@@ -1146,7 +1096,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     baseScaleLevel : function()
     {
-        console.log("BASE SCALE LEVEL");
         var width, height;
         
         if(this.isDocument){
@@ -1221,7 +1170,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         if(this.imageEl.OriginWidth < this.minWidth || this.imageEl.OriginHeight < this.minHeight) {
             this.baseScale = width / this.minWidth;
         }
-        console.log(this.baseScale);
+
         return;
     },
     
