@@ -934,9 +934,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
                 sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
 
-                // context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
-
-                context.drawImage(imageCanvas, x, y);
+                context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
                 
                 break;
             case 90 : 
