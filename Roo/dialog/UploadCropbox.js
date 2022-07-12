@@ -899,31 +899,31 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 console.log("X: " + x);
                 console.log("Y: " + y);
                 
-                var targetWidth = this.minWidth - 2 * x;
-                var targetHeight = this.minHeight - 2 * y;
+                // var targetWidth = this.minWidth - 2 * x;
+                // var targetHeight = this.minHeight - 2 * y;
 
-                console.log("targetWidth: " + targetWidth);
-                console.log("targetHeight: " + targetHeight);
+                // console.log("targetWidth: " + targetWidth);
+                // console.log("targetHeight: " + targetHeight);
                 
-                var scale = 1;
+                // var scale = 1;
                 
-                if((x == 0 && y == 0) || (x == 0 && y > 0)){
-                    scale = targetWidth / width;
-                }
+                // if((x == 0 && y == 0) || (x == 0 && y > 0)){
+                //     scale = targetWidth / width;
+                // }
                 
-                if(x > 0 && y == 0){
-                    scale = targetHeight / height;
-                }
+                // if(x > 0 && y == 0){
+                //     scale = targetHeight / height;
+                // }
                 
-                if(x > 0 && y > 0){
-                    scale = targetWidth / width;
+                // if(x > 0 && y > 0){
+                //     scale = targetWidth / width;
                     
-                    if(width < height){
-                        scale = targetHeight / height;
-                    }
-                }
+                //     if(width < height){
+                //         scale = targetHeight / height;
+                //     }
+                // }
 
-                console.log("scale: " + scale);
+                // console.log("scale: " + scale);
                 
                 context.scale(scale, scale);
                 
