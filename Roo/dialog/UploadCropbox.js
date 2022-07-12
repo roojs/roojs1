@@ -110,6 +110,13 @@
          */
         "inspect" : true,
         /**
+         * @event beforeupload
+         * Fire before xhr upload the file
+         * @param {Roo.dialog.UploadCropbox} this
+         * @param {Object} data
+         */
+         "upload" : true,
+        /**
          * @event upload
          * Fire when xhr upload the file
          * @param {Roo.dialog.UploadCropbox} this
