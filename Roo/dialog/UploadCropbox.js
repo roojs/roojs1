@@ -1306,9 +1306,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         var formData = new FormData();
 
-        formData.append("onid", "43024");
-        formData.append("ontable", "pressrelease_boilerplate");
-
         formData.append('returnHTML', 'NO');
         
         if(crop){
