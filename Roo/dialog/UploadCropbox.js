@@ -582,7 +582,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         console.log("ZOOM");
         console.log("WIDTH: " + (this.thumbEl.getWidth() / this.getScaleLevel()));
-        console.log("HEIGHT: " + (this.thumEl.getHeight() / this.getScaleLevel()));
+        console.log("HEIGHT: " + (this.thumbEl.getHeight() / this.getScaleLevel()));
 
 
         var maxWidth = this.imageEl.OriginWidth;
