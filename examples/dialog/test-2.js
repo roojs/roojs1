@@ -59,6 +59,11 @@ var uploadCropbox = {
                                         return false;
                                     }
                                 }
+                                arrange : function (_self, formData)
+                                {
+                                    formData.append("onid", "43024");
+                                    formData.append("ontable", "pressrelease_boilerplate");
+                                }
                             }
                         }
                     ]
