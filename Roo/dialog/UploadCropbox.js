@@ -1308,8 +1308,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         formData.append('returnHTML', 'NO');
 
-        console.log("cropType: " + this.cropType);
-
         if(crop){
             formData.append('crop', crop);
             var blobBin = atob(crop.split(',')[1]);
@@ -1396,7 +1394,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             console.log(this.cropType);
             console.log("FILETYPE");
             console.log(typeof(file.type));
-            console.log(this.cropType);
+            console.log(this.fileType);
             this.cropType = file.type;
         }
         
