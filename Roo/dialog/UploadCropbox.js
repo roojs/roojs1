@@ -1307,13 +1307,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var formData = new FormData();
 
         formData.append('returnHTML', 'NO');
-        
-        var outputFileType = 'image/jpeg';
-
-        if(typeof(file.type) != 'undefined') {
-            console.log(file.type);
-            outputFileType = file.type;
-        }
 
         if(crop){
             formData.append('crop', crop);
