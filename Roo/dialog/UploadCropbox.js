@@ -1389,7 +1389,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         }
         
         this.file = file;
-        if(typeof(file.type) != 'undefined') {
+        if(typeof(file.type) != 'undefined' && file.type.length != 0) {
             console.log("CROPTYPE");
             console.log(this.cropType);
             console.log("FILETYPE");
