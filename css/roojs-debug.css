@@ -29,3 +29,9 @@
 @import url("inline-editor.css");
 
 @import url("undoreset.css");
+
+/* css for Roo.dialog.UploadCropbox */
+@import url("alert.css");
+@import url("buttons.css");
+@import url("button-groups.css");
+@import url("upload-cropbox.css");
