@@ -885,10 +885,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         switch (this.rotate) {
             case 0 :
                 
-                // var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getWidth() / this.getScaleLevel());
-                // var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getHeight() / this.getScaleLevel());
-                var width = this.thumbEl.getWidth() / this.getScaleLevel();
-                var height = this.thumbEl.getHeight() / this.getScaleLevel();
+                var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getWidth() / this.getScaleLevel());
+                var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getHeight() / this.getScaleLevel());
 
                 console.log("WIDTH: " + width);
                 console.log("HEIGHT: " + height);
