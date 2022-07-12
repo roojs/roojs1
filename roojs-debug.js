@@ -68071,6 +68071,7 @@ Roo.XTemplate.from = function(el){
  * @cfg {Number} errorTimeout default 3000
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
+ * @cfg {Number} outputMaxWidth default 1200
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * @cfg {Boolean} isDocument (true|false) default false
  * @cfg {String} url action url
@@ -68208,6 +68209,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     cropData : false,
     minWidth : 300,
     minHeight : 300,
+    outputMaxWidth : 1200,
     file : false,
     exif : {},
     baseRotate : 1,
@@ -68446,7 +68448,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     onFileSelected : function(e)
     {
-        console.log("ON FILE SELECTED");
         e.preventDefault();
         
         if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
@@ -68473,8 +68474,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     loadCanvas : function(src)
     {   
-        console.log("LOAD CANVAS");
-        console.log(src);
         if(this.fireEvent('beforeloadcanvas', this, src) != false){
             
             this.reset();
@@ -68491,7 +68490,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     onLoadCanvas : function()
     {   
-        console.log("ON LOAD CANVAS");
         this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
 
@@ -68529,7 +68527,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     setCanvasPosition : function()
     {   
-        console.log("SET CANVAS POSITION");
         if(!this.canvasEl){
             return;
         }
@@ -68622,14 +68619,11 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         this.startScale = this.scale;
         this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
         
-        console.log("START SCALE:" + this.startScale);
-        console.log("TEST SCALE: " + this.scale);
         if(!this.zoomable()){
             this.scale = this.startScale;
             return;
         }
 
-        console.log("END SCALE: " + this.scale);
         
         this.draw();
         
@@ -68643,14 +68637,10 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         if(this.minWidth < this.minHeight){
             minScale = this.thumbEl.getHeight() / this.minHeight;
         }
-
-        console.log("MINSCALE: " + minScale);
         
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel() / minScale);
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel() / minScale);
 
-        console.log("WIDTH: " + width);
-        console.log("HEIGHT: " + height);
 
         var maxWidth = this.imageEl.OriginWidth;
         var maxHeight = this.imageEl.OriginHeight;
@@ -68683,8 +68673,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    width < this.minWidth ||
-                    height < this.minHeight ||
+                    (this.imageEl.OriginWidth >= this.minWidth) && width < this.minWidth ||
+                    (this.imageEl.OriginHeight >= this.minHeight) && height < this.minHeight ||
                     width > maxWidth ||
                     height > maxHeight
                 )
@@ -68827,14 +68817,11 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     draw : function()
     {
-        console.log("DRAW");
         this.previewEl.dom.innerHTML = '';
         
         var canvasEl = document.createElement("canvas");
         
         var contextEl = canvasEl.getContext("2d");
-
-        console.log(this.getScaleLevel());
         
         canvasEl.width = this.imageEl.OriginWidth * this.getScaleLevel();
         canvasEl.height = this.imageEl.OriginWidth * this.getScaleLevel();
@@ -68916,7 +68903,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     crop : function()
     {
-        console.log("crop");
         if(!this.canvasLoaded){
             return;
         }
@@ -68939,9 +68925,10 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var canvas = document.createElement("canvas");
         
         var context = canvas.getContext("2d");
-                
-        canvas.width = this.minWidth;
-        canvas.height = this.minHeight;
+
+        canvas.width = this.thumbEl.getWidth() / this.getScaleLevel();
+        
+        canvas.height = this.thumbEl.getHeight() / this.getScaleLevel();
 
         switch (this.rotate) {
             case 0 :
@@ -68952,34 +68939,18 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
                 var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
                 
-                var targetWidth = this.minWidth - 2 * x;
-                var targetHeight = this.minHeight - 2 * y;
-                
-                var scale = 1;
-                
-                if((x == 0 && y == 0) || (x == 0 && y > 0)){
-                    scale = targetWidth / width;
-                }
-                
-                if(x > 0 && y == 0){
-                    scale = targetHeight / height;
-                }
-                
-                if(x > 0 && y > 0){
-                    scale = targetWidth / width;
-                    
-                    if(width < height){
-                        scale = targetHeight / height;
-                    }
-                }
-                
-                context.scale(scale, scale);
-                
-                var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
-                var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
+                var sx = this.thumbEl.getLeft(true) - this.previewEl.getLeft(true);
+                var sy = this.thumbEl.getTop(true) - this.previewEl.getTop(true);
 
                 sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
                 sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
+
+                if(canvas.width > this.outputMaxWidth) {
+                    var scale = this.outputMaxWidth / canvas.width;
+                    canvas.width = canvas.width * scale;
+                    canvas.height = canvas.height * scale;
+                    context.scale(scale, scale);
+                }
 
                 context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
                 
@@ -69115,9 +69086,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         }
         
         this.cropData = canvas.toDataURL(this.cropType);
-
-        console.log("cropData");
-        console.log(this.cropData);
         
         if(this.fireEvent('crop', this, this.cropData) !== false){
             this.process(this.file, this.cropData);
@@ -69163,7 +69131,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     setThumbBoxPosition : function()
     {
-        console.log("SET THUMBBOX POSITION");
         var x = Math.ceil((this.bodyEl.getWidth() - this.thumbEl.getWidth()) / 2 );
         var y = Math.ceil((this.bodyEl.getHeight() - this.thumbEl.getHeight()) / 2);
         
@@ -69174,7 +69141,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     baseRotateLevel : function()
     {
-        console.log("BASE ROTATE LEVEL");
         this.baseRotate = 1;
         
         if(
@@ -69191,7 +69157,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     baseScaleLevel : function()
     {
-        console.log("BASE SCALE LEVEL");
         var width, height;
         
         if(this.isDocument){
@@ -69266,7 +69231,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         if(this.imageEl.OriginWidth < this.minWidth || this.imageEl.OriginHeight < this.minHeight) {
             this.baseScale = width / this.minWidth;
         }
-        console.log(this.baseScale);
+
         return;
     },
     
@@ -69363,7 +69328,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     process : function(file, crop)
     {
-        console.log("process");
         if(this.loadMask){
             this.maskEl.mask(this.loadingText);
         }
@@ -69372,8 +69336,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         file.xhr = this.xhr;
 
-        console.log("METHOD:" + this.method);
-        console.log("URL: " + this.url); 
         this.xhr.open(this.method, this.url, true);
         
         var headers = {
@@ -69403,17 +69365,17 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         var formData = new FormData();
 
-        formData.append("onid", "43024");
-        formData.append("ontable", "pressrelease_boilerplate");
-
         formData.append('returnHTML', 'NO');
-        
+
         if(crop){
             formData.append('crop', crop);
-        }
-        
-        if(typeof(file) != 'undefined' && (typeof(file.id) == 'undefined' || file.id * 1 < 1)){
-            formData.append(this.paramName, file, file.name);
+            var blobBin = atob(crop.split(',')[1]);
+            var array = [];
+            for(var i = 0; i < blobBin.length; i++) {
+                array.push(blobBin.charCodeAt(i));
+            }
+            var croppedFile =new Blob([new Uint8Array(array)], {type: this.cropType});
+            formData.append(this.paramName, croppedFile, file.name);
         }
         
         if(typeof(file.filename) != 'undefined'){
@@ -69424,10 +69386,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             formData.append('mimetype', file.mimetype);
         }
 
-        formData.entries().forEach(function(pair) {
-            console.log(pair[0], pair[1]);
-        });
-        
         if(this.fireEvent('arrange', this, formData) != false){
             this.xhr.send(formData);
         };
@@ -69473,8 +69431,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     prepare : function(file)
     {   
-        console.log("PREPARE");
-        console.log(file);
         if(this.loadMask){
             this.maskEl.mask(this.loadingText);
         }
@@ -69492,7 +69448,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         }
         
         this.file = file;
-        this.cropType = file.type;
+        if(typeof(file.type) != 'undefined' && file.type.length != 0) {
+            this.cropType = file.type;
+        }
         
         var _this = this;
         
