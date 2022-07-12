@@ -63,7 +63,10 @@ var uploadCropbox = {
                                 {
                                     formData.append("onid", "43024");
                                     formData.append("ontable", "pressrelease_boilerplate");
-                                    console.log(formData);
+
+                                    for(const pair of formData.entries()) {
+                                        console.log(`${pair[0]}, ${pair[1]}`);
+                                    }
                                 }
                             }
                         }
