@@ -873,15 +873,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         var context = canvas.getContext("2d");
 
-        var scaleLevel = this.getScaleLevel();
-
-        if(this.thumbEl.getWidth() / this.getScaleLevel() > 1200) {
-            scaleLevel = this.thumbEl.getWidth() / 1200;
-        }
-
-        canvas.width = this.thumbEl.getWidth() / scaleLevel;
+        canvas.width = this.thumbEl.getWidth() / this.getScaleLevel();
         
-        canvas.height = this.thumbEl.getHeight() / scaleLevel;
+        canvas.height = this.thumbEl.getHeight() / this.getScaleLevel();
 
 
         console.log("CANVAS WIDTH: " + canvas.width);
@@ -892,8 +886,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         switch (this.rotate) {
             case 0 :
                 
-                var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getWidth() / scaleLevel);
-                var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getHeight() / scaleLevel);
+                var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getWidth() / this.getScaleLevel());
+                var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getHeight() / this.getScaleLevel());
 
                 console.log("WIDTH: " + width);
                 console.log("HEIGHT: " + height);
