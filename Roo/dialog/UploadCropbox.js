@@ -1308,6 +1308,15 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         formData.append('returnHTML', 'NO');
 
+        console.log("cropType: " + this.cropType);
+
+        var outputFileType = 'image/jpeg';
+
+        if(typeof(file.type) != 'undefined') {
+            console.log(file.type);
+            outputFileType = file.type;
+        }
+
         if(crop){
             formData.append('crop', crop);
             var blobBin = atob(crop.split(',')[1]);
