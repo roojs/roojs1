@@ -45,18 +45,18 @@ var uploadCropbox = {
                                 },
                                 loadcanvas : function (_self, imageEl)
                                 {
-                                    if(imageEl.OriginWidth < 720) {
-                                        Roo.Msg.show({
-                                            title: 'Error',
-                                            msg: "Image width should be at least 720",
-                                            buttons: {ok : true},
-                                            fn: function(res) {
-                                                _this.cropbox.selectorEl.dom.value = '';
-                                                _this.cropbox.selectorEl.dom.click();
-                                            }
-                                        });
-                                        return false;
-                                    }
+                                    // if(imageEl.OriginWidth < 720) {
+                                    //     Roo.Msg.show({
+                                    //         title: 'Error',
+                                    //         msg: "Image width should be at least 720",
+                                    //         buttons: {ok : true},
+                                    //         fn: function(res) {
+                                    //             _this.cropbox.selectorEl.dom.value = '';
+                                    //             _this.cropbox.selectorEl.dom.click();
+                                    //         }
+                                    //     });
+                                    //     return false;
+                                    // }
                                 }
                             }
                         }
