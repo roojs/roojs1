@@ -19,7 +19,7 @@ var uploadCropbox = {
         this.dialog = Roo.factory({
             xns : Roo,
             xtype : 'LayoutDialog',
-            width : 800,
+            width : 700,
             height : 600,
             center : {
                 xns : Roo,
