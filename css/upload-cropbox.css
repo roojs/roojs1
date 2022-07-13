@@ -1,6 +1,5 @@
 .roo-upload-cropbox-selector {
-  visibility: hidden;
-  height: 0px;
+  display: none !important;
 }
 .roo-upload-cropbox-dialog .modal-header,
 .roo-upload-cropbox-dialog .modal-footer {
