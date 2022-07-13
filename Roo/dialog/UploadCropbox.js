@@ -1055,11 +1055,11 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             }
         }
         
-        height = 500;
+        height = this.windowWidth;
         width = Math.ceil(this.minWidth * height / this.minHeight);
         
         if(this.minWidth > this.minHeight){
-            width = 500;
+            width = this.windowWidth;
             height = Math.ceil(this.minHeight * width / this.minWidth);
         }
         
