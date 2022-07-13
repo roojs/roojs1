@@ -37,7 +37,7 @@ var uploadCropbox = {
                             minWidth : 720,
                             minHeight : 480,
                             outputMaxWidth : 1200,
-                            windowWidth : 500,
+                            windowSize : 500,
                             url: 'http://localhost/web.MediaOutreach/press.local.php/Roo/Images.php',
                             buttons: [],
                             listeners : {
