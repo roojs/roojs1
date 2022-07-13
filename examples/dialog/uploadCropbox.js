@@ -31,6 +31,8 @@ var uploadCropbox = {
                     xns: Roo,
                     region : "center",
                     fitToFrame : true,
+                    resizeEl : true,
+                    fitContainer : true,
                     items : [
                         {
                             xtype : 'UploadCropbox',
