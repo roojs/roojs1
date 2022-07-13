@@ -14,6 +14,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
+    this.replaceAname(cfg.node);
     // this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
     
@@ -141,6 +142,29 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     },
     
     
+    replaceAname : function (doc)
+    {
+        // replace all the a/name without..
+        var aa = Array.from(doc.getElementsByTagName('a'));
+        for (var i = 0; i  < aa.length; i++) {
+            var a = aa[i];
+            if (a.hasAttribute("name")) {
+                a.removeAttribute("name");
+            }
+            if (a.hasAttribute("href")) {
+                continue;
+            }
+            // reparent children.
+            this.removeNodeKeepChildren(a);
+            
+        }
+        
+        
+        
+    },
+
+    
+    
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
@@ -153,21 +177,31 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         // this is a bit hacky - we had one word document where h2 had a miso-list attribute.
         var htwo = doc.getElementsByTagName('h2');
         for( var i = 0; i < htwo.length; i ++) {
-            if (htwo.item(i).getAttribute('style').match(/mso-list:/)) {
+            if (htwo.item(i).hasAttribute('style') && htwo.item(i).getAttribute('style').match(/mso-list:/)) {
                 htwo.item(i).className = "MsoListParagraph";
             }
         }
-        
+        listpara = doc.getElementsByClassName('MsoNormal');
+        while(listpara.length) {
+            if (listpara.item(0).hasAttribute('style') && listpara.item(0).getAttribute('style').match(/mso-list:/)) {
+                listpara.item(0).className = "MsoListParagraph";
+            } else {
+                listpara.item(0).className = "MsoNormalx";
+            }
+        }
         listpara = doc.getElementsByClassName('ql-indent-1');
         while(listpara.length) {
             this.replaceDocBullet(listpara.item(0));
         }
         listpara = doc.getElementsByClassName('MsoListParagraph');
         while(listpara.length) {
+            
             this.replaceDocBullet(listpara.item(0));
         }
       
     },
+    
+     
     
     replaceDocBullet : function(p)
     {
@@ -186,10 +220,35 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
                 break;
             }
+            if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
+                items.push(ns);
+                ns = ns.nextSibling;
+                has_list = true;
+                continue;
+            }
+            var spans = ns.getElementsByTagName('span');
+            if (!spans.length) {
+                break;
+            }
+            var has_list  = false;
+            for(var i = 0; i < spans.length; i++) {
+                if (spans[i].hasAttribute('style') && spans[i].getAttribute('style').match(/mso-list/)) {
+                    has_list = true;
+                    break;
+                }
+            }
+            if (!has_list) {
+                break;
+            }
             items.push(ns);
             ns = ns.nextSibling;
+            
+            
         }
-        
+        if (!items.length) {
+            ns.className = "";
+            return;
+        }
         
         var ul = parent.ownerDocument.createElement('ul'); // what about number lists...
         parent.insertBefore(ul, p);
@@ -197,14 +256,19 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var stack = [ ul ];
         var last_li = false;
         
+        var margin_to_depth = {};
+        max_margins = -1;
+        
         items.forEach(function(n, ipos) {
             //Roo.log("got innertHMLT=" + n.innerHTML);
             
             var spans = n.getElementsByTagName('span');
             if (!spans.length) {
                 //Roo.log("No spans found");
-
+                 
                 parent.removeChild(n);
+                
+                
                 return; // skip it...
             }
            
@@ -225,14 +289,19 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             style = this.styleToObject(n); // mo-list is from the parent node.
             if (typeof(style['mso-list']) == 'undefined') {
                 //Roo.log("parent is missing level");
+                  
                 parent.removeChild(n);
+                 
                 return;
             }
             
-            var nlvl =   (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1  ;
-            
-            
-            
+            var margin = style['margin-left'];
+            if (typeof(margin_to_depth[margin]) == 'undefined') {
+                max_margins++;
+                margin_to_depth[margin] = max_margins;
+            }
+            nlvl = margin_to_depth[margin] ;
+             
             if (nlvl > lvl) {
                 //new indent
                 var nul = doc.createElement('ul'); // what about number lists...
@@ -252,12 +321,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             //Roo.log("innerHTML = " + n.innerHTML);
             parent.removeChild(n);
             
-            // copy children of p into nli
-            /*while(n.firstChild) {
-                var fc = n.firstChild;
-                n.removeChild(fc);
-                nli.appendChild(fc);
-            }*/
+             
              
             
         },this);

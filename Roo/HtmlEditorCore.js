@@ -595,7 +595,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                        .map(function(g) { return g.toDataURL(); })
                        .filter(function(g) { return g != 'about:blank'; });
         
-        
+        //Roo.log(html);
         html = this.cleanWordChars(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
@@ -613,7 +613,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
         
+        
+        
         if (images.length > 0) {
+            // replace all v:imagedata - with img.
+            var ar = Array.from(d.getElementsByTagName('v:imagedata'));
+            Roo.each(ar, function(node) {
+                node.parentNode.insertBefore(d.ownerDocument.createElement('img'), node );
+                node.parentNode.removeChild(node);
+            });
+            
+            
             Roo.each(d.getElementsByTagName('img'), function(img, i) {
                 img.setAttribute('src', images[i]);
             });

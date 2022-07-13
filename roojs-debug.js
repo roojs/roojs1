@@ -45672,6 +45672,21 @@ Roo.htmleditor.Filter.prototype = {
             
         }, this);
         
+    },
+    
+    
+    removeNodeKeepChildren : function( node)
+    {
+    
+        ar = Array.from(node.childNodes);
+        for (var i = 0; i < ar.length; i++) {
+         
+            node.removeChild(ar[i]);
+            // what if we need to walk these???
+            node.parentNode.insertBefore(ar[i], node);
+           
+        }
+        node.parentNode.removeChild(node);
     }
 }; 
 
@@ -45884,25 +45899,36 @@ Roo.htmleditor.FilterKeepChildren = function(cfg)
     if (this.tag === false) {
         return; // dont walk.. (you can use this to use this just to do a child removal on a single tag )
     }
+    // hacky?
+    if ((typeof(this.tag) == 'object' && this.tag.indexOf(":") > -1)) {
+        this.cleanNamespace = true;
+    }
+        
     this.walk(cfg.node);
 }
 
 Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
 {
-    
+    cleanNamespace : false, // should really be an option, rather than using ':' inside of this tag.
   
     replaceTag : function(node)
     {
         // walk children...
-        //Roo.log(node);
+        //Roo.log(node.tagName);
         var ar = Array.from(node.childNodes);
         //remove first..
+        
         for (var i = 0; i < ar.length; i++) {
-            if (ar[i].nodeType == 1) {
+            var e = ar[i];
+            if (e.nodeType == 1) {
                 if (
-                    (typeof(this.tag) == 'object' && this.tag.indexOf(ar[i].tagName) > -1)
+                    (typeof(this.tag) == 'object' && this.tag.indexOf(e.tagName) > -1)
                     || // array and it matches
-                    (typeof(this.tag) == 'string' && this.tag == ar[i].tagName)
+                    (typeof(this.tag) == 'string' && this.tag == e.tagName)
+                    ||
+                    (e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'object' && this.tag.indexOf(":") > -1)
+                    ||
+                    (e.tagName.indexOf(":") > -1 && typeof(this.tag) == 'string' && this.tag == ":")
                 ) {
                     this.replaceTag(ar[i]); // child is blacklisted as well...
                     continue;
@@ -45920,6 +45946,7 @@ Roo.extend(Roo.htmleditor.FilterKeepChildren, Roo.htmleditor.FilterBlack,
                 
             }
         }
+        //Roo.log("REMOVE:" + node.tagName);
         node.parentNode.removeChild(node);
         return false; // don't walk children
         
@@ -46081,6 +46108,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     // no need to apply config.
     this.replaceDocBullets(cfg.node);
     
+    this.replaceAname(cfg.node);
     // this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
     
@@ -46208,6 +46236,29 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     },
     
     
+    replaceAname : function (doc)
+    {
+        // replace all the a/name without..
+        var aa = Array.from(doc.getElementsByTagName('a'));
+        for (var i = 0; i  < aa.length; i++) {
+            var a = aa[i];
+            if (a.hasAttribute("name")) {
+                a.removeAttribute("name");
+            }
+            if (a.hasAttribute("href")) {
+                continue;
+            }
+            // reparent children.
+            this.removeNodeKeepChildren(a);
+            
+        }
+        
+        
+        
+    },
+
+    
+    
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
@@ -46220,21 +46271,31 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         // this is a bit hacky - we had one word document where h2 had a miso-list attribute.
         var htwo = doc.getElementsByTagName('h2');
         for( var i = 0; i < htwo.length; i ++) {
-            if (htwo.item(i).getAttribute('style').match(/mso-list:/)) {
+            if (htwo.item(i).hasAttribute('style') && htwo.item(i).getAttribute('style').match(/mso-list:/)) {
                 htwo.item(i).className = "MsoListParagraph";
             }
         }
-        
+        listpara = doc.getElementsByClassName('MsoNormal');
+        while(listpara.length) {
+            if (listpara.item(0).hasAttribute('style') && listpara.item(0).getAttribute('style').match(/mso-list:/)) {
+                listpara.item(0).className = "MsoListParagraph";
+            } else {
+                listpara.item(0).className = "MsoNormalx";
+            }
+        }
         listpara = doc.getElementsByClassName('ql-indent-1');
         while(listpara.length) {
             this.replaceDocBullet(listpara.item(0));
         }
         listpara = doc.getElementsByClassName('MsoListParagraph');
         while(listpara.length) {
+            
             this.replaceDocBullet(listpara.item(0));
         }
       
     },
+    
+     
     
     replaceDocBullet : function(p)
     {
@@ -46253,10 +46314,35 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
                 break;
             }
+            if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
+                items.push(ns);
+                ns = ns.nextSibling;
+                has_list = true;
+                continue;
+            }
+            var spans = ns.getElementsByTagName('span');
+            if (!spans.length) {
+                break;
+            }
+            var has_list  = false;
+            for(var i = 0; i < spans.length; i++) {
+                if (spans[i].hasAttribute('style') && spans[i].getAttribute('style').match(/mso-list/)) {
+                    has_list = true;
+                    break;
+                }
+            }
+            if (!has_list) {
+                break;
+            }
             items.push(ns);
             ns = ns.nextSibling;
+            
+            
         }
-        
+        if (!items.length) {
+            ns.className = "";
+            return;
+        }
         
         var ul = parent.ownerDocument.createElement('ul'); // what about number lists...
         parent.insertBefore(ul, p);
@@ -46264,14 +46350,19 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         var stack = [ ul ];
         var last_li = false;
         
+        var margin_to_depth = {};
+        max_margins = -1;
+        
         items.forEach(function(n, ipos) {
             //Roo.log("got innertHMLT=" + n.innerHTML);
             
             var spans = n.getElementsByTagName('span');
             if (!spans.length) {
                 //Roo.log("No spans found");
-
+                 
                 parent.removeChild(n);
+                
+                
                 return; // skip it...
             }
            
@@ -46292,14 +46383,19 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             style = this.styleToObject(n); // mo-list is from the parent node.
             if (typeof(style['mso-list']) == 'undefined') {
                 //Roo.log("parent is missing level");
+                  
                 parent.removeChild(n);
+                 
                 return;
             }
             
-            var nlvl =   (style['mso-list'].split(' ')[1].replace(/level/,'') *1) - 1  ;
-            
-            
-            
+            var margin = style['margin-left'];
+            if (typeof(margin_to_depth[margin]) == 'undefined') {
+                max_margins++;
+                margin_to_depth[margin] = max_margins;
+            }
+            nlvl = margin_to_depth[margin] ;
+             
             if (nlvl > lvl) {
                 //new indent
                 var nul = doc.createElement('ul'); // what about number lists...
@@ -46319,12 +46415,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             //Roo.log("innerHTML = " + n.innerHTML);
             parent.removeChild(n);
             
-            // copy children of p into nli
-            /*while(n.firstChild) {
-                var fc = n.firstChild;
-                n.removeChild(fc);
-                nli.appendChild(fc);
-            }*/
+             
              
             
         },this);
@@ -49276,7 +49367,6 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
      */
     toObject : function()
     {
-        
         var ret = {
             tag : 'td',
             contenteditable : 'true', // this stops cell selection from picking the table.
@@ -49317,6 +49407,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.colspan = Math.max(1,1*node.getAttribute('colspan'));
         this.rowspan = Math.max(1,1*node.getAttribute('rowspan'));
         this.html = node.innerHTML;
+        if (node.style.textAlign != '') {
+            this.textAlign = node.style.textAlign;
+        }
         
         
     },
@@ -49374,7 +49467,7 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     c.col = cn;
                 }
                 
-                if (typeof(this.colWidths[cn]) == 'undefined') {
+                if (typeof(this.colWidths[cn]) == 'undefined' && c.colspan < 2) {
                     this.colWidths[cn] =   ce.style.width;
                     if (this.colWidths[cn] != '') {
                         all_auto = false;
@@ -49443,6 +49536,9 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.colspan += rc.colspan;
         this.node.setAttribute('colspan', this.colspan);
 
+        var table = this.toTableArray();
+        this.normalizeWidths(table);
+        this.updateWidths(table);
     },
     
     
@@ -49477,27 +49573,23 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
         this.colspan = 1;
         
         for(var r = cd.row; r < cd.row + cd.rowspan; r++) {
-            
-            
+             
             
             for(var c = cd.col; c < cd.col + cd.colspan; c++) {
                 if (r == cd.row && c == cd.col) {
                     this.node.removeAttribute('rowspan');
                     this.node.removeAttribute('colspan');
-                    continue;
                 }
                  
                 var ntd = this.node.cloneNode(); // which col/row should be 0..
-                ntd.removeAttribute('id'); //
-                //ntd.style.width  = '';
+                ntd.removeAttribute('id'); 
+                ntd.style.width  = this.colWidths[c];
                 ntd.innerHTML = '';
                 table[r][c] = { cell : ntd, col : c, row: r , colspan : 1 , rowspan : 1   };
             }
             
         }
         this.redrawAllCells(table);
-        
-         
         
     },
     
@@ -49547,13 +49639,21 @@ Roo.extend(Roo.htmleditor.BlockTd, Roo.htmleditor.Block, {
                     el.width = Math.floor(this.colWidths[c])  +'%';
                     el.updateElement(el.node);
                 }
+                if (this.colWidths[0] != false && table[r][c].colspan > 1) {
+                    var el = Roo.htmleditor.Block.factory(table[r][c].cell);
+                    var width = 0;
+                    for(var i = 0; i < table[r][c].colspan; i ++) {
+                        width += Math.floor(this.colWidths[c + i]);
+                    }
+                    el.width = width  +'%';
+                    el.updateElement(el.node);
+                }
                 table[r][c].cell = false; // done
             }
         }
     },
     normalizeWidths : function(table)
     {
-    
         if (this.colWidths[0] === false) {
             var nw = 100.0 / this.colWidths.length;
             this.colWidths.forEach(function(w,i) {
@@ -50281,7 +50381,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                        .map(function(g) { return g.toDataURL(); })
                        .filter(function(g) { return g != 'about:blank'; });
         
-        
+        //Roo.log(html);
         html = this.cleanWordChars(html);
         
         var d = (new DOMParser().parseFromString(html, 'text/html')).body;
@@ -50299,7 +50399,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return false;
         }
         
+        
+        
         if (images.length > 0) {
+            // replace all v:imagedata - with img.
+            var ar = Array.from(d.getElementsByTagName('v:imagedata'));
+            Roo.each(ar, function(node) {
+                node.parentNode.insertBefore(d.ownerDocument.createElement('img'), node );
+                node.parentNode.removeChild(node);
+            });
+            
+            
             Roo.each(d.getElementsByTagName('img'), function(img, i) {
                 img.setAttribute('src', images[i]);
             });
