@@ -558,7 +558,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         e.stopEvent();
         
         this.startScale = this.scale;
-        this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
+        this.scale = (e.getWheelDelta() > 0) ? (this.scale + 1) : (this.scale - 1);
         
         console.log('startScale: ' + this.startScale);
         console.log('scale: ' + this.scale);
