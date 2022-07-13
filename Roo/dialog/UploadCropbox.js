@@ -152,6 +152,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     minWidth : 300,
     minHeight : 300,
     outputMaxWidth : 1200,
+    windowWidth : 300,
     file : false,
     exif : {},
     baseRotate : 1,
