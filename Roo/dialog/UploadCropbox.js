@@ -152,7 +152,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     minWidth : 300,
     minHeight : 300,
     outputMaxWidth : 1200,
-    windowWidth : 300,
+    windowSize : 300,
     file : false,
     exif : {},
     baseRotate : 1,
@@ -1055,11 +1055,11 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             }
         }
         
-        height = this.windowWidth;
+        height = this.windowSize;
         width = Math.ceil(this.minWidth * height / this.minHeight);
         
         if(this.minWidth > this.minHeight){
-            width = this.windowWidth;
+            width = this.windowSize;
             height = Math.ceil(this.minHeight * width / this.minWidth);
         }
         
