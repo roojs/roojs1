@@ -30,7 +30,7 @@ var uploadCropbox = {
                     xtype: 'ContentPanel',
                     xns: Roo,
                     region : "center",
-                    fitContainer : true,
+                    fitToFrame : true,
                     items : [
                         {
                             xtype : 'UploadCropbox',
