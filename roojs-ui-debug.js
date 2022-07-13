@@ -43723,6 +43723,7 @@ Roo.XTemplate.from = function(el){
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
  * @cfg {Number} outputMaxWidth default 1200
+ * @cfg {Number} windowSize default 300
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * @cfg {Boolean} isDocument (true|false) default false
  * @cfg {String} url action url
@@ -43861,6 +43862,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     minWidth : 300,
     minHeight : 300,
     outputMaxWidth : 1200,
+    windowSize : 300,
     file : false,
     exif : {},
     baseRotate : 1,
@@ -44268,7 +44270,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         e.stopEvent();
         
         this.startScale = this.scale;
-        this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
+        this.scale = (e.getWheelDelta() > 0) ? (this.scale + 1) : (this.scale - 1);
         
         if(!this.zoomable()){
             this.scale = this.startScale;
@@ -44763,11 +44765,11 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             }
         }
         
-        height = 300;
+        height = this.windowSize;
         width = Math.ceil(this.minWidth * height / this.minHeight);
         
         if(this.minWidth > this.minHeight){
-            width = 300;
+            width = this.windowSize;
             height = Math.ceil(this.minHeight * width / this.minWidth);
         }
         
