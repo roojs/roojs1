@@ -587,8 +587,10 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel() / minScale);
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel() / minScale);
 
-        console.log("IMAGE WIDTH: " + this.thumbEl.getWidth() * this.getScaleLevel());
-        console.log("IMAGE HEIGHT: " + );
+        console.log("IMAGE WIDTH: " + width);
+        console.log("IMAGE HEIGHT: " + height);
+        console.log("WINDOW WIDTH: ");
+        console.log("WINDOW HEIGHT: ");
  
         var maxWidth = this.imageEl.OriginWidth;
         var maxHeight = this.imageEl.OriginHeight;
