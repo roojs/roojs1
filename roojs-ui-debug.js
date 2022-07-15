@@ -44293,8 +44293,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel() / minScale);
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel() / minScale);
-
-
+ 
         var maxWidth = this.imageEl.OriginWidth;
         var maxHeight = this.imageEl.OriginHeight;
         
@@ -44326,8 +44325,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    (this.imageEl.OriginWidth >= this.minWidth) && width < this.minWidth ||
-                    (this.imageEl.OriginHeight >= this.minHeight) && height < this.minHeight ||
+                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight) && width < this.minWidth ||
+                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight) && height < this.minHeight ||
                     width > maxWidth ||
                     height > maxHeight
                 )
