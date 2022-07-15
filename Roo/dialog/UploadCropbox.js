@@ -623,7 +623,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    (this.imageEl.OriginWidth >= this.minWidth) && width < this.minWidth ||
+                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight > this.minWidth / this.minHeight) && width < this.minWidth ||
                     (this.imageEl.OriginHeight >= this.minHeight) && height < this.minHeight ||
                     width > maxWidth ||
                     height > maxHeight
