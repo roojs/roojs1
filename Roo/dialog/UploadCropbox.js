@@ -561,6 +561,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         this.startScale = this.scale;
         this.scale = (e.getWheelDelta() > 0) ? (this.scale + 1) : (this.scale - 1);
+
+        console.log("START SCALE: " + this.startScale);
+        console.log("TEST SCALE: " + this.scale);
         
         if(!this.zoomable()){
             this.scale = this.startScale;
@@ -584,7 +587,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel() / minScale);
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel() / minScale);
 
-
+        console.log("WIDTH: " + width);
+        console.log("HEIGHT: " + height);
+ 
         var maxWidth = this.imageEl.OriginWidth;
         var maxHeight = this.imageEl.OriginHeight;
         
