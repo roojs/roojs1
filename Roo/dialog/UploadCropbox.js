@@ -888,6 +888,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
 
                 context.filLStyle = '#FF0000';
+                console.log(canvas.width);
+                console.log(canvas.height);
                 context.fillRect(0, 0, canvas.width, canvas.height);
 
                 if(canvas.width > this.outputMaxWidth) {
