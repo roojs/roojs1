@@ -887,7 +887,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
                 sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
 
-                context.fillStyle = 'red';
+                context.fillStyle = 'white';
                 context.fillRect(0, 0, canvas.width, canvas.height);
 
                 if(canvas.width > this.outputMaxWidth) {
