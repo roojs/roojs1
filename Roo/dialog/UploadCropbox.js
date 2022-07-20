@@ -895,9 +895,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 }
 
                 context.filLStyle = '#FF0000';
-                context.fillRect(10, 10, 100, 100);
+                context.fillRect(0, 0, canvas.width, canvas.height);
 
-                // context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
+                context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
                 
                 break;
             case 90 : 
