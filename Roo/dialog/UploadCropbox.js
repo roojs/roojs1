@@ -895,6 +895,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 }
 
                 context.filLStyle = '#FF0000';
+                console.log(canvs.width);
+                console.log(canvs.height);
                 context.fillRect(0, 0, canvas.width, canvas.height);
 
                 context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
