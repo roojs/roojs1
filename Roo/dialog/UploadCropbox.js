@@ -890,12 +890,12 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 context.fillStyle = 'white';
                 context.fillRect(0, 0, canvas.width, canvas.height);
 
-                // if(canvas.width > this.outputMaxWidth) {
-                //     var scale = this.outputMaxWidth / canvas.width;
-                //     canvas.width = canvas.width * scale;
-                //     canvas.height = canvas.height * scale;
-                //     context.scale(scale, scale);
-                // }
+                if(canvas.width > this.outputMaxWidth) {
+                    var scale = this.outputMaxWidth / canvas.width;
+                    // canvas.width = canvas.width * scale;
+                    // canvas.height = canvas.height * scale;
+                    context.scale(scale, scale);
+                }
 
                 context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
                 
