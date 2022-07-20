@@ -894,7 +894,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                     context.scale(scale, scale);
                 }
 
-                context.filLStyle = 'blue';
+                context.filLStyle = '#FF0000';
                 context.fillRect(10, 10, 100, 100);
 
                 // context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
