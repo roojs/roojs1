@@ -327,7 +327,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             
             // not starting at 1..
             if (!stack[nlvl].hasAttribute("start") && num > 1) {
-                stack[nlvl].setAttribuet("start", num);
+                stack[nlvl].setAttribute("start", num);
             }
             
             var nli = stack[nlvl].appendChild(doc.createElement('li'));

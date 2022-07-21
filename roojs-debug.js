@@ -46420,8 +46420,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             lvl = nlvl;
             
             // not starting at 1..
-            if (!stack[nlvl].hasAtribute("start") && num > 1) {
-                stack[nlvl].setAttribuet("start", num);
+            if (!stack[nlvl].hasAttribute("start") && num > 1) {
+                stack[nlvl].setAttribute("start", num);
             }
             
             var nli = stack[nlvl].appendChild(doc.createElement('li'));
