@@ -26761,7 +26761,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
            
                 
-            
+            var num = 1;
             var style = {};
             for(var i = 0; i < spans.length; i++) {
             
@@ -26769,7 +26769,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 if (typeof(style['mso-list']) == 'undefined') {
                     continue;
                 }
-                
+                if (listtype == 'ol') {
+                    var num = spans[i].innerText.replace(/[^0-9]+]/g,'');
+                }
                 spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
                 break;
             }
@@ -26802,6 +26804,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 
             }
             lvl = nlvl;
+            
+            // not starting at 1..
+            if (!stack[nlvl].hasAtribute("start") && num > 1) {
+                stack[nlvl].setAttribuet("start", num);
+            }
             
             var nli = stack[nlvl].appendChild(doc.createElement('li'));
             last_li = nli;
