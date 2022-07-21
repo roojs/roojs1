@@ -897,7 +897,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 }
                 // else {
                     context.fillStyle = 'white';
-                    context.fillRect(0, 0, canvas.width - 100, canvas.height);
+                    context.fillRect(0, 0, this.thumbEl.getWidth() / this.getScaleLevel(), this.thumbEl.getHeight() / this.getScaleLevel());
                 // }
 
                 context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
