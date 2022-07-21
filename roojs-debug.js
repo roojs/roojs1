@@ -46277,7 +46277,10 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         for( var i = 0; i < listpara.length; i ++) {
             listpara.item(i).className = "MsoListParagraph";
         }
-        
+        listpara = doc.getElementsByClassName('ql-indent-1');
+        for( var i = 0; i < listpara.length; i ++) {
+            listpara.item(i).className = "MsoListParagraph";
+        }
         
         // this is a bit hacky - we had one word document where h2 had a miso-list attribute.
         var htwo = doc.getElementsByTagName('h2');
@@ -46294,11 +46297,12 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 listpara.item(0).className = "MsoNormalx";
             }
         }
-        listpara = doc.getElementsByClassName('ql-indent-1');
-        while(listpara.length) {
-            this.replaceDocBullet(listpara.item(0));
-        }
+       
         listpara = doc.getElementsByClassName('MsoListParagraph');
+        Roo.log(doc.innerHTML);
+        
+        
+        
         while(listpara.length) {
             
             this.replaceDocBullet(listpara.item(0));

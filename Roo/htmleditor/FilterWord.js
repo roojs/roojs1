@@ -205,6 +205,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         }
        
         listpara = doc.getElementsByClassName('MsoListParagraph');
+        Roo.log(doc.innerHTML);
         
         
         
