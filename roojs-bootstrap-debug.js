@@ -26648,7 +26648,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
-        //Roo.log(doc.innerHTML);
+         Roo.log(doc.innerHTML);
         
         var listpara = doc.getElementsByClassName('MsoListParagraphCxSpFirst');
         for( var i = 0; i < listpara.length; i ++) {
@@ -26691,7 +26691,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             doc = parent.ownerDocument,
             items = [];
             
-            
+        var listtype = 'ul';   
         while (ns) {
             if (ns.nodeType != 1) {
                 ns = ns.nextSibling;
@@ -26700,10 +26700,18 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
                 break;
             }
+            var spans = ns.getElementsByTagName('span');
             if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
                 items.push(ns);
                 ns = ns.nextSibling;
                 has_list = true;
+                if (spans.length && spans[0].hasAttribute('style')) {
+                    var  style = this.styleToObject(spans[0]);
+                    if (typeof(style['font-family']) != 'undefined' && !style['font-family'].match(/Symbol/)) {
+                        listtype = 'ol';
+                    }
+                }
+                
                 continue;
             }
             var spans = ns.getElementsByTagName('span');
@@ -26730,7 +26738,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             return;
         }
         
-        var ul = parent.ownerDocument.createElement('ul'); // what about number lists...
+        var ul = parent.ownerDocument.createElement(listtype); // what about number lists...
         parent.insertBefore(ul, p);
         var lvl = 0;
         var stack = [ ul ];
@@ -26784,7 +26792,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
              
             if (nlvl > lvl) {
                 //new indent
-                var nul = doc.createElement('ul'); // what about number lists...
+                var nul = doc.createElement(listtype); // what about number lists...
                 if (!last_li) {
                     last_li = doc.createElement('li');
                     stack[lvl].appendChild(last_li);
