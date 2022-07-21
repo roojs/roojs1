@@ -21772,37 +21772,37 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         // this is a bit odd - but it appears some indents use ql-indent-1
          //Roo.log(doc.innerHTML);
         
-        var listpara = doc.getElementsByClassName('MsoListParagraphCxSpFirst');
+        var listpara = Array.from(doc.getElementsByClassName('MsoListParagraphCxSpFirst'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
         
-        listpara = doc.getElementsByClassName('MsoListParagraphCxSpMiddle');
+        listpara =  Array.from(doc.getElementsByClassName('MsoListParagraphCxSpMiddle'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
-        listpara = doc.getElementsByClassName('MsoListParagraphCxSpLast');
+        listpara =  Array.from(doc.getElementsByClassName('MsoListParagraphCxSpLast'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
-        listpara = doc.getElementsByClassName('ql-indent-1');
+        listpara =  Array.from(doc.getElementsByClassName('ql-indent-1'));
         for( var i = 0; i < listpara.length; i ++) {
-            listpara.item(i).className = "MsoListParagraph";
+            listpara[i].className = "MsoListParagraph";
         }
         
         // this is a bit hacky - we had one word document where h2 had a miso-list attribute.
-        var htwo = doc.getElementsByTagName('h2');
+        var htwo =  Array.from(doc.getElementsByTagName('h2'));
         for( var i = 0; i < htwo.length; i ++) {
-            if (htwo.item(i).hasAttribute('style') && htwo.item(i).getAttribute('style').match(/mso-list:/)) {
-                htwo.item(i).className = "MsoListParagraph";
+            if (htwo[i].hasAttribute('style') && htwo[i].getAttribute('style').match(/mso-list:/)) {
+                htwo[i].className = "MsoListParagraph";
             }
         }
-        listpara = doc.getElementsByClassName('MsoNormal');
-        while(listpara.length) {
-            if (listpara.item(0).hasAttribute('style') && listpara.item(0).getAttribute('style').match(/mso-list:/)) {
-                listpara.item(0).className = "MsoListParagraph";
+        listpara =  Array.from(doc.getElementsByClassName('MsoNormal'));
+        for( var i = 0; i < listpara.length; i ++) {
+            if (listpara[i].hasAttribute('style') && listpara[i].getAttribute('style').match(/mso-list:/)) {
+                listpara[i].className = "MsoListParagraph";
             } else {
-                listpara.item(0).className = "MsoNormalx";
+                listpara[i].className = "MsoNormalx";
             }
         }
        
@@ -21943,7 +21943,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             lvl = nlvl;
             
             // not starting at 1..
-            if (!stack[nlvl].hasAttribute("start") && num > 1) {
+            if (!stack[nlvl].hasAttribute("start") && listtype == "ol") {
                 stack[nlvl].setAttribute("start", num);
             }
             
