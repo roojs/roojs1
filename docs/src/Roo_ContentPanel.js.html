@@ -41,7 +41,6 @@
  */
 </span><span class="jsdoc-var">Roo.ContentPanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">content</span><span class="jsdoc-syntax">){
 
-
     </span><span class="jsdoc-comment">/*
     if(el.autoCreate || el.xtype){ // xtype is available if this is called from factory
         config = el;
@@ -425,6 +424,14 @@ layout.addxtype({
      */
 
     </span><span class="jsdoc-var">addxtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype.match</span><span class="jsdoc-syntax">(/^UploadCropbox$/)) {
+
+            </span><span class="jsdoc-var">this.cropbox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">this.cropbox.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.cropbox</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-comment">// add form..
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.xtype.match</span><span class="jsdoc-syntax">(/^Form$/)) {
 

@@ -1064,6 +1064,17 @@
         "is_class" : false
       },
       {
+        "name" : "Roo.dialog",
+        "cn" : [
+          {
+            "name" : "Roo.dialog.UploadCropbox",
+            "cn" : [],
+            "is_class" : true
+          }
+        ],
+        "is_class" : false
+      },
+      {
         "name" : "Roo.form",
         "cn" : [
           {

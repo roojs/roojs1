@@ -165,6 +165,7 @@
       "Roo.menu.TextItem"
     ],
     "Roo.BoxComponent" : [
+      "Roo.dialog.UploadCropbox",
       "Roo.form.ComboBoxArray.Item",
       "Roo.form.Field",
       "Roo.form.TextItem"
