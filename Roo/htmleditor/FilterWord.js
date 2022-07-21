@@ -290,7 +290,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                     continue;
                 }
                 if (listtype == 'ol') {
-                    var num = spans[i].innerText.replace(/[^0-9]+]/g,'');
+                   num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
                 }
                 spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
                 break;
