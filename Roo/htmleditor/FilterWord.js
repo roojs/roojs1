@@ -168,12 +168,26 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
     replaceDocBullets : function(doc)
     {
         // this is a bit odd - but it appears some indents use ql-indent-1
-        //Roo.log(doc.innerHTML);
+         //Roo.log(doc.innerHTML);
         
         var listpara = doc.getElementsByClassName('MsoListParagraphCxSpFirst');
         for( var i = 0; i < listpara.length; i ++) {
             listpara.item(i).className = "MsoListParagraph";
         }
+        
+        listpara = doc.getElementsByClassName('MsoListParagraphCxSpMiddle');
+        for( var i = 0; i < listpara.length; i ++) {
+            listpara.item(i).className = "MsoListParagraph";
+        }
+        listpara = doc.getElementsByClassName('MsoListParagraphCxSpLast');
+        for( var i = 0; i < listpara.length; i ++) {
+            listpara.item(i).className = "MsoListParagraph";
+        }
+        listpara = doc.getElementsByClassName('ql-indent-1');
+        for( var i = 0; i < listpara.length; i ++) {
+            listpara.item(i).className = "MsoListParagraph";
+        }
+        
         // this is a bit hacky - we had one word document where h2 had a miso-list attribute.
         var htwo = doc.getElementsByTagName('h2');
         for( var i = 0; i < htwo.length; i ++) {
@@ -189,11 +203,12 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 listpara.item(0).className = "MsoNormalx";
             }
         }
-        listpara = doc.getElementsByClassName('ql-indent-1');
-        while(listpara.length) {
-            this.replaceDocBullet(listpara.item(0));
-        }
+       
         listpara = doc.getElementsByClassName('MsoListParagraph');
+        
+        
+        //Roo.log(doc.innerHTML);
+        
         while(listpara.length) {
             
             this.replaceDocBullet(listpara.item(0));
@@ -211,7 +226,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             doc = parent.ownerDocument,
             items = [];
             
-            
+        var listtype = 'ul';   
         while (ns) {
             if (ns.nodeType != 1) {
                 ns = ns.nextSibling;
@@ -220,10 +235,18 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
                 break;
             }
+            var spans = ns.getElementsByTagName('span');
             if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
                 items.push(ns);
                 ns = ns.nextSibling;
                 has_list = true;
+                if (spans.length && spans[0].hasAttribute('style')) {
+                    var  style = this.styleToObject(spans[0]);
+                    if (typeof(style['font-family']) != 'undefined' && !style['font-family'].match(/Symbol/)) {
+                        listtype = 'ol';
+                    }
+                }
+                
                 continue;
             }
             var spans = ns.getElementsByTagName('span');
@@ -250,7 +273,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             return;
         }
         
-        var ul = parent.ownerDocument.createElement('ul'); // what about number lists...
+        var ul = parent.ownerDocument.createElement(listtype); // what about number lists...
         parent.insertBefore(ul, p);
         var lvl = 0;
         var stack = [ ul ];
@@ -273,7 +296,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             }
            
                 
-            
+            var num = 1;
             var style = {};
             for(var i = 0; i < spans.length; i++) {
             
@@ -281,7 +304,9 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 if (typeof(style['mso-list']) == 'undefined') {
                     continue;
                 }
-                
+                if (listtype == 'ol') {
+                   num = spans[i].innerText.replace(/[^0-9]+]/g,'')  * 1;
+                }
                 spans[i].parentNode.removeChild(spans[i]); // remove the fake bullet.
                 break;
             }
@@ -304,7 +329,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
              
             if (nlvl > lvl) {
                 //new indent
-                var nul = doc.createElement('ul'); // what about number lists...
+                var nul = doc.createElement(listtype); // what about number lists...
                 if (!last_li) {
                     last_li = doc.createElement('li');
                     stack[lvl].appendChild(last_li);
@@ -314,6 +339,11 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 
             }
             lvl = nlvl;
+            
+            // not starting at 1..
+            if (!stack[nlvl].hasAttribute("start") && num > 1) {
+                stack[nlvl].setAttribute("start", num);
+            }
             
             var nli = stack[nlvl].appendChild(doc.createElement('li'));
             last_li = nli;
