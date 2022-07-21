@@ -226,7 +226,7 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 ns = ns.nextSibling;
                 has_list = true;
                 if (spans.length && spans[0].hasAttribute('style')) {
-                    var  style = this.styleToObject(spans[0].getAttribute('style'));
+                    var  style = this.styleToObject(spans[0]);
                     if (typeof(style['font-family']) != 'undefined' && !style['font-family'].match(/Symbol/)) {
                         listtype = 'ol';
                     }
