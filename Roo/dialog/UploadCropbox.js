@@ -893,7 +893,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                     canvas.height = canvas.height * scale;
                     context.fillStyle = 'white';
                     context.fillRect(0, 0, canvas.width, canvas.height);
-                    context.scale(scale, scale);
+                    // context.scale(scale, scale);
                 }
                 else {
                     context.fillStyle = 'white';
