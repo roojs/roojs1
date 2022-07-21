@@ -21776,7 +21776,12 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         for( var i = 0; i < listpara.length; i ++) {
             listpara.item(i).className = "MsoListParagraph";
         }
+        
         listpara = doc.getElementsByClassName('MsoListParagraphCxSpMiddle');
+        for( var i = 0; i < listpara.length; i ++) {
+            listpara.item(i).className = "MsoListParagraph";
+        }
+        listpara = doc.getElementsByClassName('MsoListParagraphCxSpLast');
         for( var i = 0; i < listpara.length; i ++) {
             listpara.item(i).className = "MsoListParagraph";
         }
