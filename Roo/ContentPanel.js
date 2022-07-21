@@ -41,7 +41,6 @@
  */
 Roo.ContentPanel = function(el, config, content){
     
-     
     /*
     if(el.autoCreate || el.xtype){ // xtype is available if this is called from factory
         config = el;
@@ -425,6 +424,14 @@ layout.addxtype({
      */
     
     addxtype : function(cfg) {
+        if(cfg.xtype.match(/^UploadCropbox$/)) {
+
+            this.cropbox = new Roo.factory(cfg);
+
+            this.cropbox.render(this.el);
+
+            return this.cropbox;
+        }
         // add form..
         if (cfg.xtype.match(/^Form$/)) {
             
