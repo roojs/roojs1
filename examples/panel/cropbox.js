@@ -153,13 +153,13 @@ var test = {
                                     text : 'Add',
                                     listeners : {
                                         click : function () {
-                                            uploadCropbox.show();
+                                            cropboxDialog.show();
                                             document.body.onfocus = function(e) {
-                                                if(!uploadCropbox.cropbox.selectorEl.dom.files.length) {
-                                                    uploadCropbox.dialog.hide();
+                                                if(!cropboxDialog.cropbox.selectorEl.dom.files.length) {
+                                                    cropboxDialog.dialog.hide();
                                                 }
                                             }
-                                            uploadCropbox.cropbox.selectorEl.dom.click();
+                                            cropboxDialog.cropbox.selectorEl.dom.click();
                                         }
                                     }
                                 }
