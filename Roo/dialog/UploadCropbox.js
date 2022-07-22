@@ -4,7 +4,7 @@
 */
 
 /**
- * @class Roo.Panel.UploadCropbox
+ * @class Roo.panel.UploadCropbox
  * @extends Roo.BoxComponent
  * Dialog UploadCropbox class
  * @cfg {String} emptyText show when image has been loaded
@@ -27,116 +27,116 @@
  * @param {Object} config The config object
  */
 
- Roo.Panel.UploadCropbox = function(config){
-    Roo.Panel.UploadCropbox.superclass.constructor.call(this, config);
+ Roo.panel.UploadCropbox = function(config){
+    Roo.panel.UploadCropbox.superclass.constructor.call(this, config);
     
     this.addEvents({
         /**
          * @event beforeselectfile
          * Fire before select file
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          */
         "beforeselectfile" : true,
         /**
          * @event initial
          * Fire after initEvent
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          */
         "initial" : true,
         /**
          * @event crop
          * Fire after initEvent
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          * @param {String} data
          */
         "crop" : true,
         /**
          * @event prepare
          * Fire when preparing the file data
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          * @param {Object} file
          */
         "prepare" : true,
         /**
          * @event exception
          * Fire when get exception
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          * @param {XMLHttpRequest} xhr
          */
         "exception" : true,
         /**
          * @event beforeloadcanvas
          * Fire before load the canvas
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          * @param {String} src
          */
         "beforeloadcanvas" : true,
         /**
          * @event trash
          * Fire when trash image
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          */
         "trash" : true,
         /**
          * @event download
          * Fire when download the image
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          */
         "download" : true,
         /**
          * @event footerbuttonclick
          * Fire when footerbuttonclick
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          * @param {String} type
          */
         "footerbuttonclick" : true,
         /**
          * @event resize
          * Fire when resize
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          */
         "resize" : true,
         /**
          * @event rotate
          * Fire when rotate the image
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          * @param {String} pos
          */
         "rotate" : true,
         /**
          * @event inspect
          * Fire when inspect the file
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          * @param {Object} file
          */
         "inspect" : true,
         /**
          * @event upload
          * Fire when xhr upload the file
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          * @param {Object} data
          */
         "upload" : true,
         /**
          * @event arrange
          * Fire when arrange the file data
-         * @param {Roo.Panel.UploadCropbox} this
+         * @param {Roo.panel.UploadCropbox} this
          * @param {Object} formData
          */
         "arrange" : true,
         /**
          * @event loadcanvas
          * Fire after load the canvas
-         * @param {Roo.Panel.UploadCropbox}
+         * @param {Roo.panel.UploadCropbox}
          * @param {Object} imgEl
          */
         "loadcanvas" : true
     });
     
-    this.buttons = this.buttons || Roo.Panel.UploadCropbox.footer.STANDARD;
+    this.buttons = this.buttons || Roo.panel.UploadCropbox.footer.STANDARD;
 };
 
-Roo.extend(Roo.Panel.UploadCropbox, Roo.Component,  {
+Roo.extend(Roo.panel.UploadCropbox, Roo.Component,  {
     
     emptyText : 'Click to upload image',
     rotateNotify : 'Image is too small to rotate',
@@ -219,7 +219,7 @@ Roo.extend(Roo.Panel.UploadCropbox, Roo.Component,  {
     
     onRender : function(ct, position)
     {
-        Roo.Panel.UploadCropbox.superclass.onRender.call(this, ct, position);
+        Roo.panel.UploadCropbox.superclass.onRender.call(this, ct, position);
 
         if(this.el){
             if (this.el.attr('xtype')) {
@@ -1091,13 +1091,13 @@ Roo.extend(Roo.Panel.UploadCropbox, Roo.Component,  {
         
         if(
                 typeof(this.exif) != 'undefined' &&
-                typeof(this.exif[Roo.Panel.UploadCropbox['tags']['Orientation']]) != 'undefined' &&
-                [1, 3, 6, 8].indexOf(this.exif[Roo.Panel.UploadCropbox['tags']['Orientation']]) != -1
+                typeof(this.exif[Roo.panel.UploadCropbox['tags']['Orientation']]) != 'undefined' &&
+                [1, 3, 6, 8].indexOf(this.exif[Roo.panel.UploadCropbox['tags']['Orientation']]) != -1
         ){
-            this.baseRotate = this.exif[Roo.Panel.UploadCropbox['tags']['Orientation']];
+            this.baseRotate = this.exif[Roo.panel.UploadCropbox['tags']['Orientation']];
         }
         
-        this.rotate = Roo.Panel.UploadCropbox['Orientation'][this.baseRotate];
+        this.rotate = Roo.panel.UploadCropbox['Orientation'][this.baseRotate];
         
     },
     
@@ -1555,7 +1555,7 @@ Roo.extend(Roo.Panel.UploadCropbox, Roo.Component,  {
     
     getExifValue : function (dataView, tiffOffset, offset, type, length, littleEndian)
     {
-        var tagType = Roo.Panel.UploadCropbox.exifTagTypes[type],
+        var tagType = Roo.panel.UploadCropbox.exifTagTypes[type],
             tagSize,
             dataOffset,
             values,
@@ -1603,7 +1603,7 @@ Roo.extend(Roo.Panel.UploadCropbox, Roo.Component,  {
     
 });
 
-Roo.apply(Roo.Panel.UploadCropbox, {
+Roo.apply(Roo.panel.UploadCropbox, {
     tags : {
         'Orientation': 0x0112
     },
