@@ -157,6 +157,8 @@ var test = {
                                         click : function () {
                                             cropboxDialog.show();
                                             document.body.onfocus = function(e) {
+                                                console.log("ONFOCUS");
+                                                console.log(cropboxDialog);
                                                 if(!cropboxDialog.cropbox.selectorEl.dom.files.length) {
                                                     cropboxDialog.dialog.hide();
                                                 }
