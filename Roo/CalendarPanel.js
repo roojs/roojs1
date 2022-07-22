@@ -108,7 +108,7 @@ Roo.CalendarPanel = function(config){
 };
 
 
-Roo.extend(Roo.CalendarPanel, Roo.ContentPanel, {
+Roo.extend(Roo.CalendarPanel, Roo.panel.Content, {
     
       
     render : function()
