@@ -43,6 +43,8 @@ var cropboxDialog = {
                             listeners : {
                                 render : function (_self)
                                 {
+                                    console.log("RENDER");
+                                    console.log(_this);
                                     _this.cropbox = _self;
                                 },
                                 loadcanvas : function (_self, imageEl)
