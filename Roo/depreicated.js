@@ -1,8 +1,8 @@
 // old names for panel elements
-Roo.panel.Grid = Roo.GridPanel;
-Roo.panel.Calendar = Roo.CalendarPanel;
-Roo.panel.Content = Roo.ContentPanel;
-Roo.panel.NestedLayout = Roo.NestedLayoutPanel;
-Roo.panel.Tab = Roo.TabPanel;
-Roo.panel.TabItem = Roo.TabPanelItem;
-Roo.panel.Tree = Roo.TreePanel;
+Roo.GridPanel = Roo.panel.Grid;
+Roo.CalendarPanel = Roo.panel.Calendar;
+Roo.ContentPanel = Roo.panel.Content;
+Roo.NestedLayoutPanel = Roo.panel.NestedLayout;
+Roo.TabPanel = Roo.panel.Tab;
+Roo.TabPanelItem = Roo.panel.TabItem;
+Roo.TreePanel = Roo.panel.Tree;
