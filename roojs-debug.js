@@ -60970,7 +60970,7 @@ layout.addxtype({
      */
     
     addxtype : function(cfg) {
-        if(cfg.xtype.match(/^UploadCropbox$/)) {
+        if(cfg.xtype.match(/^Cropbox$/)) {
 
             this.cropbox = new Roo.factory(cfg);
 
