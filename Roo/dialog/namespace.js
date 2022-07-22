@@ -1,1 +1,1 @@
-Roo.dialog = {};
+Roo.panel = {};
