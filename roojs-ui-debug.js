@@ -33863,7 +33863,7 @@ Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
 /**
  * @class Roo.BorderLayout
  * @extends Roo.LayoutManager
- * @children Roo.ContentPanel
+ * @children Roo.panel.Content
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: <br><br>
  * <a href="http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/">Cross Browser Layouts - Part 1</a><br>
@@ -33909,7 +33909,7 @@ Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
 });
 
 // shorthand
-var CP = Roo.ContentPanel;
+var CP = Roo.panel.Content;
 
 layout.beginUpdate();
 layout.add("north", new CP("north", "North"));
@@ -34080,8 +34080,8 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
     /**
      * Adds a ContentPanel (or subclass) to this layout.
      * @param {String} target The target region key (north, south, east, west or center).
-     * @param {Roo.ContentPanel} panel The panel to add
-     * @return {Roo.ContentPanel} The added panel
+     * @param {Roo.panel.Content} panel The panel to add
+     * @return {Roo.panel.Content} The added panel
      */
     add : function(target, panel){
          
@@ -34093,7 +34093,7 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
      * Remove a ContentPanel (or subclass) to this layout.
      * @param {String} target The target region key (north, south, east, west or center).
      * @param {Number/String/Roo.ContentPanel} panel The index, id or panel to remove
-     * @return {Roo.ContentPanel} The removed panel
+     * @return {Roo.panel.Content} The removed panel
      */
     remove : function(target, panel){
         target = target.toLowerCase();
@@ -34103,7 +34103,7 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
     /**
      * Searches all regions for a panel with the specified id
      * @param {String} panelId
-     * @return {Roo.ContentPanel} The panel or null if it wasn't found
+     * @return {Roo.panel.Content} The panel or null if it wasn't found
      */
     findPanel : function(panelId){
         var rs = this.regions;
@@ -34121,7 +34121,7 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
     /**
      * Searches all regions for a panel with the specified id and activates (shows) it.
      * @param {String/ContentPanel} panelId The panels id or the panel itself
-     * @return {Roo.ContentPanel} The shown panel or null
+     * @return {Roo.panel.Content} The shown panel or null
      */
     showPanel : function(panelId) {
       var rs = this.regions;
@@ -34199,7 +34199,7 @@ layout.batchAdd({
     // private
     addTypedPanels : function(lr, ps){
         if(typeof ps == 'string'){
-            lr.add(new Roo.ContentPanel(ps));
+            lr.add(new Roo.panel.Content(ps));
         }
         else if(ps instanceof Array){
             for(var i =0, len = ps.length; i < len; i++){
@@ -34209,7 +34209,7 @@ layout.batchAdd({
         else if(!ps.events){ // raw config?
             var el = ps.el;
             delete ps.el; // prevent conflict
-            lr.add(new Roo.ContentPanel(el || Roo.id(), ps));
+            lr.add(new Roo.panel.Content(el || Roo.id(), ps));
         }
         else {  // panel object assumed!
             lr.add(ps);
@@ -34268,7 +34268,7 @@ layout.addxtype({
         
         switch(cfg.xtype) 
         {
-            case 'ContentPanel':  // ContentPanel (el, cfg)
+            case 'Content':  // ContentPanel (el, cfg)
             case 'ScrollPanel':  // ContentPanel (el, cfg)
             case 'ViewPanel': 
                 if(cfg.autoCreate) {
@@ -34524,7 +34524,7 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
          * @event beforeremove
          * Fires before a panel is removed (or closed). To cancel the removal set "e.cancel = true" on the event argument.
          * @param {Roo.LayoutRegion} this
-         * @param {Roo.ContentPanel} panel The panel
+         * @param {Roo.panel.Content} panel The panel
          * @param {Object} e The cancel event object
          */
         "beforeremove" : true,
@@ -34545,14 +34545,14 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
          * @event paneladded
          * Fires when a panel is added. 
          * @param {Roo.LayoutRegion} this
-         * @param {Roo.ContentPanel} panel The panel
+         * @param {Roo.panel.Content} panel The panel
          */
         "paneladded" : true,
         /**
          * @event panelremoved
          * Fires when a panel is removed. 
          * @param {Roo.LayoutRegion} this
-         * @param {Roo.ContentPanel} panel The panel
+         * @param {Roo.panel.Content} panel The panel
          */
         "panelremoved" : true,
         /**
@@ -34589,7 +34589,7 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
          * @event panelactivated
          * Fires when a panel is activated. 
          * @param {Roo.LayoutRegion} this
-         * @param {Roo.ContentPanel} panel The activated panel
+         * @param {Roo.panel.Content} panel The activated panel
          */
         "panelactivated" : true,
         /**
@@ -34704,7 +34704,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     /**
      * Show the specified panel.
      * @param {Number/String/ContentPanel} panelId The panels index, id or the panel itself
-     * @return {Roo.ContentPanel} The shown panel or null
+     * @return {Roo.panel.Content} The shown panel or null
      */
     showPanel : function(panel){
         if(panel = this.getPanel(panel)){
@@ -34715,7 +34715,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     
     /**
      * Get the active panel for this region.
-     * @return {Roo.ContentPanel} The active panel or null
+     * @return {Roo.panel.Content} The active panel or null
      */
     getActivePanel : function(){
         return this.activePanel;
@@ -34724,7 +34724,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     /**
      * Add the passed ContentPanel(s)
      * @param {ContentPanel...} panel The ContentPanel(s) to add (you can pass more than one)
-     * @return {Roo.ContentPanel} The panel added (if only one was added)
+     * @return {Roo.panel.Content} The panel added (if only one was added)
      */
     add : function(panel){
         if(arguments.length > 1){
@@ -34772,7 +34772,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
      * Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed.
      * @param {Number/String/ContentPanel} panel The panels index, id or the panel itself
      * @param {Boolean} preservePanel Overrides the config preservePanel option
-     * @return {Roo.ContentPanel} The panel that was removed
+     * @return {Roo.panel.Content} The panel that was removed
      */
     remove : function(panel, preservePanel){
         panel = this.getPanel(panel);
@@ -34792,7 +34792,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     /**
      * Returns the panel specified or null if it's not in this region.
      * @param {Number/String/ContentPanel} panel The panels index, id or the panel itself
-     * @return {Roo.ContentPanel}
+     * @return {Roo.panel.Content}
      */
     getPanel : function(id){
         if(typeof id == "object"){ // must be panel obj
@@ -35261,7 +35261,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
     /**
      * Shows the specified panel.
      * @param {Number/String/ContentPanel} panelId The panel's index, id or the panel itself
-     * @return {Roo.ContentPanel} The shown panel, or null if a panel could not be found from panelId
+     * @return {Roo.panel.Content} The shown panel, or null if a panel could not be found from panelId
      */
     showPanel : function(panel)
     {
@@ -35282,7 +35282,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
 
     /**
      * Get the active panel for this region.
-     * @return {Roo.ContentPanel} The active panel or null
+     * @return {Roo.panel.Content} The active panel or null
      */
     getActivePanel : function(){
         return this.activePanel;
@@ -35303,7 +35303,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
     /**
      * Adds the passed ContentPanel(s) to this region.
      * @param {ContentPanel...} panel The ContentPanel(s) to add (you can pass more than one)
-     * @return {Roo.ContentPanel} The panel added (if only one was added; null otherwise)
+     * @return {Roo.panel.Content} The panel added (if only one was added; null otherwise)
      */
     add : function(panel){
         if(arguments.length > 1){
@@ -35368,7 +35368,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
      * Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed.
      * @param {Number/String/ContentPanel} panel The panel's index, id or the panel itself
      * @param {Boolean} preservePanel Overrides the config preservePanel option
-     * @return {Roo.ContentPanel} The panel that was removed
+     * @return {Roo.panel.Content} The panel that was removed
      */
     remove : function(panel, preservePanel){
         panel = this.getPanel(panel);
@@ -36052,489 +36052,10 @@ Roo.LayoutStateManager.prototype = {
         this.state[region.getPosition()].collapsed = false;
         this.storeState();
     }
-};/*
- * Based on:
- * Ext JS Library 1.1.1
- * Copyright(c) 2006-2007, Ext JS, LLC.
- *
- * Originally Released Under LGPL - original licence link has changed is not relivant.
- *
- * Fork - LGPL
- * <script type="text/javascript">
- */
-/**
- * @class Roo.ContentPanel
- * @extends Roo.util.Observable
- * @children Roo.form.Form Roo.JsonView Roo.View
- * @parent Roo.BorderLayout Roo.LayoutDialog builder
- * A basic ContentPanel element.
- * @cfg {Boolean}   fitToFrame    True for this panel to adjust its size to fit when the region resizes  (defaults to false)
- * @cfg {Boolean}   fitContainer   When using {@link #fitToFrame} and {@link #resizeEl}, you can also fit the parent container  (defaults to false)
- * @cfg {Boolean|Object} autoCreate True to auto generate the DOM element for this panel, or a {@link Roo.DomHelper} config of the element to create
- * @cfg {Boolean}   closable      True if the panel can be closed/removed
- * @cfg {Boolean}   background    True if the panel should not be activated when it is added (defaults to false)
- * @cfg {String|HTMLElement|Element} resizeEl An element to resize if {@link #fitToFrame} is true (instead of this panel's element)
- * @cfg {Roo.Toolbar}   toolbar       A toolbar for this panel
- * @cfg {Boolean} autoScroll    True to scroll overflow in this panel (use with {@link #fitToFrame})
- * @cfg {String} title          The title for this panel
- * @cfg {Array} adjustments     Values to <b>add</b> to the width/height when doing a {@link #fitToFrame} (default is [0, 0])
- * @cfg {String} url            Calls {@link #setUrl} with this value
- * @cfg {String} region (center|north|south|east|west) [required] which region to put this panel on (when used with xtype constructors)
- * @cfg {String|Object} params  When used with {@link #url}, calls {@link #setUrl} with this value
- * @cfg {Boolean} loadOnce      When used with {@link #url}, calls {@link #setUrl} with this value
- * @cfg {String}    content        Raw content to fill content panel with (uses setContent on construction.)
- * @cfg {String}    style  Extra style to add to the content panel
- * @cfg {Roo.menu.Menu} menu  popup menu
-
- * @constructor
- * Create a new ContentPanel.
- * @param {String/HTMLElement/Roo.Element} el The container element for this panel
- * @param {String/Object} config A string to set only the title or a config object
- * @param {String} content (optional) Set the HTML content for this panel
- * @param {String} region (optional) Used by xtype constructors to add to regions. (values center,east,west,south,north)
- */
-Roo.ContentPanel = function(el, config, content){
-    
-    /*
-    if(el.autoCreate || el.xtype){ // xtype is available if this is called from factory
-        config = el;
-        el = Roo.id();
-    }
-    if (config && config.parentLayout) { 
-        el = config.parentLayout.el.createChild(); 
-    }
-    */
-    if(el.autoCreate){ // xtype is available if this is called from factory
-        config = el;
-        el = Roo.id();
-    }
-    this.el = Roo.get(el);
-    if(!this.el && config && config.autoCreate){
-        if(typeof config.autoCreate == "object"){
-            if(!config.autoCreate.id){
-                config.autoCreate.id = config.id||el;
-            }
-            this.el = Roo.DomHelper.append(document.body,
-                        config.autoCreate, true);
-        }else{
-            this.el = Roo.DomHelper.append(document.body,
-                        {tag: "div", cls: "x-layout-inactive-content", id: config.id||el}, true);
-        }
-    }
-    
-    
-    this.closable = false;
-    this.loaded = false;
-    this.active = false;
-    if(typeof config == "string"){
-        this.title = config;
-    }else{
-        Roo.apply(this, config);
-    }
-    
-    if (this.toolbar && !this.toolbar.el && this.toolbar.xtype) {
-        this.wrapEl = this.el.wrap();
-        this.toolbar.container = this.el.insertSibling(false, 'before');
-        this.toolbar = new Roo.Toolbar(this.toolbar);
-    }
-    
-    // xtype created footer. - not sure if will work as we normally have to render first..
-    if (this.footer && !this.footer.el && this.footer.xtype) {
-        if (!this.wrapEl) {
-            this.wrapEl = this.el.wrap();
-        }
-    
-        this.footer.container = this.wrapEl.createChild();
-         
-        this.footer = Roo.factory(this.footer, Roo);
-        
-    }
-    
-    if(this.resizeEl){
-        this.resizeEl = Roo.get(this.resizeEl, true);
-    }else{
-        this.resizeEl = this.el;
-    }
-    // handle view.xtype
-    
- 
-    
-    
-    this.addEvents({
-        /**
-         * @event activate
-         * Fires when this panel is activated. 
-         * @param {Roo.ContentPanel} this
-         */
-        "activate" : true,
-        /**
-         * @event deactivate
-         * Fires when this panel is activated. 
-         * @param {Roo.ContentPanel} this
-         */
-        "deactivate" : true,
-
-        /**
-         * @event resize
-         * Fires when this panel is resized if fitToFrame is true.
-         * @param {Roo.ContentPanel} this
-         * @param {Number} width The width after any component adjustments
-         * @param {Number} height The height after any component adjustments
-         */
-        "resize" : true,
-        
-         /**
-         * @event render
-         * Fires when this tab is created
-         * @param {Roo.ContentPanel} this
-         */
-        "render" : true
-         
-        
-    });
-    
-
-    
-    
-    if(this.autoScroll){
-        this.resizeEl.setStyle("overflow", "auto");
-    } else {
-        // fix randome scrolling
-        this.el.on('scroll', function() {
-            Roo.log('fix random scolling');
-            this.scrollTo('top',0); 
-        });
-    }
-    content = content || this.content;
-    if(content){
-        this.setContent(content);
-    }
-    if(config && config.url){
-        this.setUrl(this.url, this.params, this.loadOnce);
-    }
-    
-    
-    
-    Roo.ContentPanel.superclass.constructor.call(this);
-    
-    if (this.view && typeof(this.view.xtype) != 'undefined') {
-        this.view.el = this.el.appendChild(document.createElement("div"));
-        this.view = Roo.factory(this.view); 
-        this.view.render  &&  this.view.render(false, '');  
-    }
-    
-    
-    this.fireEvent('render', this);
 };
-
-Roo.extend(Roo.ContentPanel, Roo.util.Observable, {
-    tabTip:'',
-    setRegion : function(region){
-        this.region = region;
-        if(region){
-           this.el.replaceClass("x-layout-inactive-content", "x-layout-active-content");
-        }else{
-           this.el.replaceClass("x-layout-active-content", "x-layout-inactive-content");
-        } 
-    },
-    
-    /**
-     * Returns the toolbar for this Panel if one was configured. 
-     * @return {Roo.Toolbar} 
-     */
-    getToolbar : function(){
-        return this.toolbar;
-    },
-    
-    setActiveState : function(active){
-        this.active = active;
-        if(!active){
-            this.fireEvent("deactivate", this);
-        }else{
-            this.fireEvent("activate", this);
-        }
-    },
-    /**
-     * Updates this panel's element
-     * @param {String} content The new content
-     * @param {Boolean} loadScripts (optional) true to look for and process scripts
-    */
-    setContent : function(content, loadScripts){
-        this.el.update(content, loadScripts);
-    },
-
-    ignoreResize : function(w, h){
-        if(this.lastSize && this.lastSize.width == w && this.lastSize.height == h){
-            return true;
-        }else{
-            this.lastSize = {width: w, height: h};
-            return false;
-        }
-    },
-    /**
-     * Get the {@link Roo.UpdateManager} for this panel. Enables you to perform Ajax updates.
-     * @return {Roo.UpdateManager} The UpdateManager
-     */
-    getUpdateManager : function(){
-        return this.el.getUpdateManager();
-    },
-     /**
-     * Loads this content panel immediately with content from XHR. Note: to delay loading until the panel is activated, use {@link #setUrl}.
-     * @param {Object/String/Function} url The url for this request or a function to call to get the url or a config object containing any of the following options:
-<pre><code>
-panel.load({
-    url: "your-url.php",
-    params: {param1: "foo", param2: "bar"}, // or a URL encoded string
-    callback: yourFunction,
-    scope: yourObject, //(optional scope)
-    discardUrl: false,
-    nocache: false,
-    text: "Loading...",
-    timeout: 30,
-    scripts: false
-});
-</code></pre>
-     * The only required property is <i>url</i>. The optional properties <i>nocache</i>, <i>text</i> and <i>scripts</i>
-     * are shorthand for <i>disableCaching</i>, <i>indicatorText</i> and <i>loadScripts</i> and are used to set their associated property on this panel UpdateManager instance.
-     * @param {String/Object} params (optional) The parameters to pass as either a URL encoded string "param1=1&amp;param2=2" or an object {param1: 1, param2: 2}
-     * @param {Function} callback (optional) Callback when transaction is complete -- called with signature (oElement, bSuccess, oResponse)
-     * @param {Boolean} discardUrl (optional) By default when you execute an update the defaultUrl is changed to the last used URL. If true, it will not store the URL.
-     * @return {Roo.ContentPanel} this
-     */
-    load : function(){
-        var um = this.el.getUpdateManager();
-        um.update.apply(um, arguments);
-        return this;
-    },
-
-
-    /**
-     * Set a URL to be used to load the content for this panel. When this panel is activated, the content will be loaded from that URL.
-     * @param {String/Function} url The URL to load the content from or a function to call to get the URL
-     * @param {String/Object} params (optional) The string params for the update call or an object of the params. See {@link Roo.UpdateManager#update} for more details. (Defaults to null)
-     * @param {Boolean} loadOnce (optional) Whether to only load the content once. If this is false it makes the Ajax call every time this panel is activated. (Defaults to false)
-     * @return {Roo.UpdateManager} The UpdateManager
-     */
-    setUrl : function(url, params, loadOnce){
-        if(this.refreshDelegate){
-            this.removeListener("activate", this.refreshDelegate);
-        }
-        this.refreshDelegate = this._handleRefresh.createDelegate(this, [url, params, loadOnce]);
-        this.on("activate", this.refreshDelegate);
-        return this.el.getUpdateManager();
-    },
-    
-    _handleRefresh : function(url, params, loadOnce){
-        if(!loadOnce || !this.loaded){
-            var updater = this.el.getUpdateManager();
-            updater.update(url, params, this._setLoaded.createDelegate(this));
-        }
-    },
-    
-    _setLoaded : function(){
-        this.loaded = true;
-    }, 
-    
-    /**
-     * Returns this panel's id
-     * @return {String} 
-     */
-    getId : function(){
-        return this.el.id;
-    },
-    
-    /** 
-     * Returns this panel's element - used by regiosn to add.
-     * @return {Roo.Element} 
-     */
-    getEl : function(){
-        return this.wrapEl || this.el;
-    },
-    
-    adjustForComponents : function(width, height)
-    {
-        //Roo.log('adjustForComponents ');
-        if(this.resizeEl != this.el){
-            width -= this.el.getFrameWidth('lr');
-            height -= this.el.getFrameWidth('tb');
-        }
-        if(this.toolbar){
-            var te = this.toolbar.getEl();
-            height -= te.getHeight();
-            te.setWidth(width);
-        }
-        if(this.footer){
-            var te = this.footer.getEl();
-            //Roo.log("footer:" + te.getHeight());
-            
-            height -= te.getHeight();
-            te.setWidth(width);
-        }
-        
-        
-        if(this.adjustments){
-            width += this.adjustments[0];
-            height += this.adjustments[1];
-        }
-        return {"width": width, "height": height};
-    },
-    
-    setSize : function(width, height){
-        if(this.fitToFrame && !this.ignoreResize(width, height)){
-            if(this.fitContainer && this.resizeEl != this.el){
-                this.el.setSize(width, height);
-            }
-            var size = this.adjustForComponents(width, height);
-            this.resizeEl.setSize(this.autoWidth ? "auto" : size.width, this.autoHeight ? "auto" : size.height);
-            this.fireEvent('resize', this, size.width, size.height);
-        }
-    },
-    
-    /**
-     * Returns this panel's title
-     * @return {String} 
-     */
-    getTitle : function(){
-        return this.title;
-    },
-    
-    /**
-     * Set this panel's title
-     * @param {String} title
-     */
-    setTitle : function(title){
-        this.title = title;
-        if(this.region){
-            this.region.updatePanelTitle(this, title);
-        }
-    },
-    
-    /**
-     * Returns true is this panel was configured to be closable
-     * @return {Boolean} 
-     */
-    isClosable : function(){
-        return this.closable;
-    },
-    
-    beforeSlide : function(){
-        this.el.clip();
-        this.resizeEl.clip();
-    },
-    
-    afterSlide : function(){
-        this.el.unclip();
-        this.resizeEl.unclip();
-    },
-    
-    /**
-     *   Force a content refresh from the URL specified in the {@link #setUrl} method.
-     *   Will fail silently if the {@link #setUrl} method has not been called.
-     *   This does not activate the panel, just updates its content.
-     */
-    refresh : function(){
-        if(this.refreshDelegate){
-           this.loaded = false;
-           this.refreshDelegate();
-        }
-    },
-    
-    /**
-     * Destroys this panel
-     */
-    destroy : function(){
-        this.el.removeAllListeners();
-        var tempEl = document.createElement("span");
-        tempEl.appendChild(this.el.dom);
-        tempEl.innerHTML = "";
-        this.el.remove();
-        this.el = null;
-    },
-    
-    /**
-     * form - if the content panel contains a form - this is a reference to it.
-     * @type {Roo.form.Form}
-     */
-    form : false,
-    /**
-     * view - if the content panel contains a view (Roo.DatePicker / Roo.View / Roo.JsonView)
-     *    This contains a reference to it.
-     * @type {Roo.View}
-     */
-    view : false,
-    
-      /**
-     * Adds a xtype elements to the panel - currently only supports Forms, View, JsonView.
-     * <pre><code>
-
-layout.addxtype({
-       xtype : 'Form',
-       items: [ .... ]
-   }
-);
-
-</code></pre>
-     * @param {Object} cfg Xtype definition of item to add.
-     */
-    
-    addxtype : function(cfg) {
-        if(cfg.xtype.match(/^Cropbox$/)) {
-
-            this.cropbox = new Roo.factory(cfg);
-
-            this.cropbox.render(this.el);
-
-            return this.cropbox;
-        }
-        // add form..
-        if (cfg.xtype.match(/^Form$/)) {
-            
-            var el;
-            //if (this.footer) {
-            //    el = this.footer.container.insertSibling(false, 'before');
-            //} else {
-                el = this.el.createChild();
-            //}
-
-            this.form = new  Roo.form.Form(cfg);
-            
-            
-            if ( this.form.allItems.length) {
-                this.form.render(el.dom);
-            }
-            return this.form;
-        }
-        // should only have one of theses..
-        if ([ 'View', 'JsonView', 'DatePicker'].indexOf(cfg.xtype) > -1) {
-            // views.. should not be just added - used named prop 'view''
-            
-            cfg.el = this.el.appendChild(document.createElement("div"));
-            // factory?
-            
-            var ret = new Roo.factory(cfg);
-             
-             ret.render && ret.render(false, ''); // render blank..
-            this.view = ret;
-            return ret;
-        }
-        return false;
-    }
-});
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * @class Roo.GridPanel
- * @extends Roo.ContentPanel
+ * @extends Roo.panel.Content
  * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * @constructor
  * Create a new GridPanel.
@@ -36573,7 +36094,7 @@ Roo.GridPanel = function(grid, config){
     this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
 
-Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
+Roo.extend(Roo.GridPanel, Roo.panel.Content, {
     getId : function(){
         return this.grid.id;
     },
@@ -36613,7 +36134,7 @@ Roo.extend(Roo.GridPanel, Roo.ContentPanel, {
 
 /**
  * @class Roo.NestedLayoutPanel
- * @extends Roo.ContentPanel
+ * @extends Roo.panel.Content
  * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * @cfg {Roo.BorderLayout} layout   [required] The layout for this panel
  *
@@ -36652,7 +36173,7 @@ Roo.NestedLayoutPanel = function(layout, config)
     
 };
 
-Roo.extend(Roo.NestedLayoutPanel, Roo.ContentPanel, {
+Roo.extend(Roo.NestedLayoutPanel, Roo.panel.Content, {
 
     layout : false,
 
@@ -36767,7 +36288,7 @@ Roo.ScrollPanel = function(el, config, content){
     this.el = wrap; this.up = up; this.down = down;
 };
 
-Roo.extend(Roo.ScrollPanel, Roo.ContentPanel, {
+Roo.extend(Roo.ScrollPanel, Roo.panel.Content, {
     increment : 100,
     wheelIncrement : 5,
     scrollUp : function(){
@@ -36807,7 +36328,7 @@ Roo.extend(Roo.ScrollPanel, Roo.ContentPanel, {
 
 /**
  * @class Roo.TreePanel
- * @extends Roo.ContentPanel
+ * @extends Roo.panel.Content
  * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * Treepanel component
  * 
@@ -36854,7 +36375,7 @@ Roo.TreePanel = function(config){
     
 };
 
-Roo.extend(Roo.TreePanel, Roo.ContentPanel, {   
+Roo.extend(Roo.TreePanel, Roo.panel.Content, {   
     fitToFrame : true,
     autoScroll : true,
     /*
