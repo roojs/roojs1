@@ -198,5 +198,5 @@ Roo.XTemplate
 // is this ready yet? - is it used?
 // Roo.Login
 
-Roo.dialog.namespace
-Roo.dialog.UploadCropbox
+Roo.panel.namespace
+Roo.panel.Cropbox
