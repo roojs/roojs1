@@ -158,7 +158,6 @@ Roo.LayoutRegion
 Roo.SplitLayoutRegion
 Roo.CenterLayoutRegion
 Roo.LayoutStateManager
-Roo.ContentPanel
 Roo.GridPanel
 Roo.NestedLayoutPanel
 Roo.ScrollPanel
@@ -200,3 +199,4 @@ Roo.XTemplate
 
 Roo.panel.namespace
 Roo.panel.Cropbox
+Roo.panel.Content
