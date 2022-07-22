@@ -1,4 +1,4 @@
-var uploadCropbox = {
+var cropboxDialog = {
     dialog : false,
     callback : false,
 
