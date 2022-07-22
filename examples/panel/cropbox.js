@@ -32,7 +32,7 @@ var cropboxDialog = {
                     region : "center",
                     items : [
                         {
-                            xtype : 'UploadCropbox',
+                            xtype : 'Cropbox',
                             xns : Roo.panel,
                             minWidth : 720,
                             minHeight : 480,
