@@ -43,8 +43,6 @@ var cropboxDialog = {
                             listeners : {
                                 render : function (_self)
                                 {
-                                    console.log("RENDER");
-                                    console.log(_this);
                                     _this.cropbox = _self;
                                 },
                                 loadcanvas : function (_self, imageEl)
@@ -161,8 +159,6 @@ var test = {
                                                     cropboxDialog.dialog.hide();
                                                 }
                                             }
-                                            console.log("CLICK");
-                                            console.log(cropboxDialog);
                                             cropboxDialog.cropbox.selectorEl.dom.click();
                                         }
                                     }
