@@ -33,7 +33,7 @@ var uploadCropbox = {
                     items : [
                         {
                             xtype : 'UploadCropbox',
-                            xns : Roo.dialog,
+                            xns : Roo.panel,
                             minWidth : 720,
                             minHeight : 480,
                             outputMaxWidth : 1200,
