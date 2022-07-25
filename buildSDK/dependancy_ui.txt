@@ -201,4 +201,4 @@ Roo.XTemplate
 // is this ready yet? - is it used?
 // Roo.Login
 
-Roo.deprecated
+Roo.depreicated
