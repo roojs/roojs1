@@ -23,8 +23,8 @@ viewpanel = new Roo.XComponent({
                 xns: Roo,
                 items : [
                     {
-                        xtype: 'Content',
-                        xns: Roo.panel,
+                        xtype: 'ContentPanel',
+                        xns: Roo,
                         listeners : {
                             activate : function (_self)
                             {

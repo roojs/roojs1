@@ -26,9 +26,9 @@
                                 "render": "function (_self)\n{\n    _this.bodypanel = _self;\n    \n    Roo.log('render');\n}"
                             },
                             "region": "center",
-                            "xtype": "Content",
+                            "xtype": "ContentPanel",
                             "|autoCreate": "true",
-                            "|xns": "Roo.panel",
+                            "|xns": "Roo",
                             "items": [
                                 {
                                     "|xns": "Roo",
