@@ -36050,12 +36050,9 @@ layout.addxtype({
         // can accept a layout region..!?!?
         //Roo.log('Roo.BorderLayout add ' + cfg.xtype)
         
-        console.log("BorderLayout addxtype");
-        console.log(cfg);
-        
-        if (!cfg.xtype.match(/Panel$/) && !cfg.xns.match(/Panel$/)) {
-            return false;
-        }
+        // if (!cfg.xtype.match(/Panel$/)) {
+        //     return false;
+        // }
         var ret = false;
 
         if (typeof(cfg.region) == 'undefined') {
