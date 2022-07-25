@@ -11,7 +11,7 @@
 
 /**
  * @class Roo.GridPanel
- * @extends Roo.panel.Content
+ * @extends Roo.ContentPanel
  * @constructor
  * Create a new GridPanel.
  * @param {Roo.grid.Grid} grid The grid for this panel
@@ -46,7 +46,7 @@ Roo.ViewPanel = function(el, config){
     //this.grid.getGridEl().replaceClass("x-layout-inactive-content", "x-layout-component-panel");
 };
 
-Roo.extend(Roo.ViewPanel, Roo.panel.Content, {
+Roo.extend(Roo.ViewPanel, Roo.ContentPanel, {
     
     autoCreate : true,
     getId : function(){
