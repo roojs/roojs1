@@ -66,8 +66,8 @@ var HelloWorld = {
             },
             items : [
                 {
-                    xtype: 'Content',
-                    xns: Roo.panel,
+                    xtype: 'ContentPanel',
+                    xns: Roo,
                     region : "center"
                     
                 }
