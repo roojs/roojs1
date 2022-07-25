@@ -3,7 +3,7 @@
 
 /**
  * @class Roo.TreePanel
- * @extends Roo.ContentPanel
+ * @extends Roo.panel.Content
  * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * Treepanel component
  * 
@@ -50,7 +50,7 @@ Roo.TreePanel = function(config){
     
 };
 
-Roo.extend(Roo.TreePanel, Roo.ContentPanel, {   
+Roo.extend(Roo.TreePanel, Roo.panel.Content, {   
     fitToFrame : true,
     autoScroll : true,
     /*

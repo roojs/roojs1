@@ -27,8 +27,8 @@ var cropboxDialog = {
             },
             items : [
                 {
-                    xtype: 'ContentPanel',
-                    xns: Roo,
+                    xtype: 'Content',
+                    xns: Roo.panel,
                     region : "center",
                     items : [
                         {

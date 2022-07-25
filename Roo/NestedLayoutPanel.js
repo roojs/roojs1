@@ -2,7 +2,7 @@
 
 /**
  * @class Roo.NestedLayoutPanel
- * @extends Roo.ContentPanel
+ * @extends Roo.panel.Content
  * @parent Roo.BorderLayout Roo.LayoutDialog builder
  * @cfg {Roo.BorderLayout} layout   [required] The layout for this panel
  *
@@ -41,7 +41,7 @@ Roo.NestedLayoutPanel = function(layout, config)
     
 };
 
-Roo.extend(Roo.NestedLayoutPanel, Roo.ContentPanel, {
+Roo.extend(Roo.NestedLayoutPanel, Roo.panel.Content, {
 
     layout : false,
 

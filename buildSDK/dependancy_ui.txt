@@ -151,6 +151,9 @@ Roo.form.Select
 // Must be after view and form.field as it uses both.
 Roo.DDView
 
+Roo.panel.namespace
+Roo.panel.Cropbox
+
 Roo.LayoutManager
 Roo.BorderLayout
 Roo.BasicLayoutRegion
@@ -158,7 +161,7 @@ Roo.LayoutRegion
 Roo.SplitLayoutRegion
 Roo.CenterLayoutRegion
 Roo.LayoutStateManager
-Roo.ContentPanel
+Roo.panel.Content
 Roo.GridPanel
 Roo.NestedLayoutPanel
 Roo.ScrollPanel
@@ -197,6 +200,3 @@ Roo.XTemplate
 
 // is this ready yet? - is it used?
 // Roo.Login
-
-Roo.panel.namespace
-Roo.panel.Cropbox

@@ -228,8 +228,8 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
     /**
      * Adds a ContentPanel (or subclass) to this layout.
      * @param {String} target The target region key (north, south, east, west or center).
-     * @param {Roo.ContentPanel} panel The panel to add
-     * @return {Roo.ContentPanel} The added panel
+     * @param {Roo.panel.Content} panel The panel to add
+     * @return {Roo.panel.Content} The added panel
      */
     add : function(target, panel){
          
@@ -240,8 +240,8 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
     /**
      * Remove a ContentPanel (or subclass) to this layout.
      * @param {String} target The target region key (north, south, east, west or center).
-     * @param {Number/String/Roo.ContentPanel} panel The index, id or panel to remove
-     * @return {Roo.ContentPanel} The removed panel
+     * @param {Number/String/Roo.panel.Content} panel The index, id or panel to remove
+     * @return {Roo.panel.Content} The removed panel
      */
     remove : function(target, panel){
         target = target.toLowerCase();
@@ -251,7 +251,7 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
     /**
      * Searches all regions for a panel with the specified id
      * @param {String} panelId
-     * @return {Roo.ContentPanel} The panel or null if it wasn't found
+     * @return {Roo.panel.Content} The panel or null if it wasn't found
      */
     findPanel : function(panelId){
         var rs = this.regions;
@@ -268,8 +268,8 @@ Roo.extend(Roo.BorderLayout, Roo.LayoutManager, {
 
     /**
      * Searches all regions for a panel with the specified id and activates (shows) it.
-     * @param {String/ContentPanel} panelId The panels id or the panel itself
-     * @return {Roo.ContentPanel} The shown panel or null
+     * @param {String/panel.Content} panelId The panels id or the panel itself
+     * @return {Roo.panel.Content} The shown panel or null
      */
     showPanel : function(panelId) {
       var rs = this.regions;
@@ -347,7 +347,7 @@ layout.batchAdd({
     // private
     addTypedPanels : function(lr, ps){
         if(typeof ps == 'string'){
-            lr.add(new Roo.ContentPanel(ps));
+            lr.add(new Roo.panel.Content(ps));
         }
         else if(ps instanceof Array){
             for(var i =0, len = ps.length; i < len; i++){
@@ -357,7 +357,7 @@ layout.batchAdd({
         else if(!ps.events){ // raw config?
             var el = ps.el;
             delete ps.el; // prevent conflict
-            lr.add(new Roo.ContentPanel(el || Roo.id(), ps));
+            lr.add(new Roo.panel.Content(el || Roo.id(), ps));
         }
         else {  // panel object assumed!
             lr.add(ps);
@@ -393,11 +393,14 @@ layout.addxtype({
         // can accept a layout region..!?!?
         //Roo.log('Roo.BorderLayout add ' + cfg.xtype)
         
-        if (!cfg.xtype.match(/Panel$/)) {
+        console.log("BorderLayout addxtype");
+        console.log(cfg);
+        
+        if (!cfg.xtype.match(/Panel$/) && !cfg.xns.match(/Panel$/)) {
             return false;
         }
         var ret = false;
-        
+
         if (typeof(cfg.region) == 'undefined') {
             Roo.log("Failed to add Panel, region was not set");
             Roo.log(cfg);
@@ -416,7 +419,17 @@ layout.addxtype({
         
         switch(cfg.xtype) 
         {
-            case 'ContentPanel':  // ContentPanel (el, cfg)
+            case 'Content':
+                if(cfg.autoCreate) {
+                    ret = new Roo.panel[cfg.xtype](cfg); // new panel!!!!!
+                } else {
+                    var el = this.el.createChild();
+                    ret = new Roo.panel[cfg.xtype](el, cfg); // new panel!!!!!
+                }
+                
+                this.add(region, ret);
+                break;
+            case 'ContentPanel':
             case 'ScrollPanel':  // ContentPanel (el, cfg)
             case 'ViewPanel': 
                 if(cfg.autoCreate) {
