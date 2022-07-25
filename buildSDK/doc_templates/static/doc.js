@@ -50,10 +50,10 @@ MainBody = {
                 html: '<img src="../images/roojs_logo.jpg" height="25" align="right"/>' + 
                     '<div style="margin-left:10px;margin-top:3px;">Roo Version 1.1.2 - Documentation</div>'
         });
-        layout.add('north', new Roo.panel.Content(hd, {fitToFrame:true, closable:false }));
+        layout.add('north', new Roo.ContentPanel(hd, {fitToFrame:true, closable:false }));
          
-        //innerLayout.add('south', new Roo.panel.Content('inner1', "More Information"));
-        //innerLayout.add('center', new Roo.panel.Content('inner2')); // right bottom Tree
+        //innerLayout.add('south', new Roo.ContentPanel('inner1', "More Information"));
+        //innerLayout.add('center', new Roo.ContentPanel('inner2')); // right bottom Tree
         
          
         //alert("initing");
@@ -66,7 +66,7 @@ MainBody = {
                    
      
         
-        this.preview = new Roo.panel.Content(frame, {title: 
+        this.preview = new Roo.ContentPanel(frame, {title: 
             '&nbsp;<a target="viewFrame" href="/roojs1/buildSDK/indexPage.html">Contents / Examples</a>' + 
             ' | Class Details',
             fitToFrame:true,
@@ -169,7 +169,7 @@ ClassTree = {
         var ct = MainBody.layout.getEl().createChild({tag:'div'});
         var viewEl = ct.createChild({tag:'div'});
         var folders = MainBody.layout.add('west', 
-            new Roo.panel.Content(ct, {
+            new Roo.ContentPanel(ct, {
                 title:'Tree', 
                 fitToFrame:true,
                 autoScroll:true,
@@ -553,7 +553,7 @@ CommentDialog = {
             
             
         
-        var vp = layout.add('center', new Roo.panel.Content(ef, {
+        var vp = layout.add('center', new Roo.ContentPanel(ef, {
             autoCreate : true,
             fitToFrame:true
         }));
