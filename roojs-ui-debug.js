@@ -35668,7 +35668,7 @@ Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
 /**
  * @class Roo.BorderLayout
  * @extends Roo.LayoutManager
- * @children Roo.ContentPanel
+ * @children Roo.panel.Content
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: <br><br>
  * <a href="http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/">Cross Browser Layouts - Part 1</a><br>
@@ -35714,7 +35714,7 @@ Roo.extend(Roo.LayoutManager, Roo.util.Observable, {
 });
 
 // shorthand
-var CP = Roo.ContentPanel;
+var CP = Roo.panel.Content;
 
 layout.beginUpdate();
 layout.add("north", new CP("north", "North"));
@@ -36050,11 +36050,14 @@ layout.addxtype({
         // can accept a layout region..!?!?
         //Roo.log('Roo.BorderLayout add ' + cfg.xtype)
         
-        // if (!cfg.xtype.match(/Panel$/)) {
-        //     return false;
-        // }
-        var ret = false;
+        console.log("BorderLayout addxtype");
+        console.log(cfg);
         
+        if (!cfg.xtype.match(/Panel$/) && !cfg.xns.match(/Panel$/)) {
+            return false;
+        }
+        var ret = false;
+
         if (typeof(cfg.region) == 'undefined') {
             Roo.log("Failed to add Panel, region was not set");
             Roo.log(cfg);
@@ -36339,7 +36342,7 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
          * @event beforeremove
          * Fires before a panel is removed (or closed). To cancel the removal set "e.cancel = true" on the event argument.
          * @param {Roo.LayoutRegion} this
-         * @param {Roo.ContentPanel} panel The panel
+         * @param {Roo.panel.Content} panel The panel
          * @param {Object} e The cancel event object
          */
         "beforeremove" : true,
@@ -36360,14 +36363,14 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
          * @event paneladded
          * Fires when a panel is added. 
          * @param {Roo.LayoutRegion} this
-         * @param {Roo.ContentPanel} panel The panel
+         * @param {Roo.panel.Content} panel The panel
          */
         "paneladded" : true,
         /**
          * @event panelremoved
          * Fires when a panel is removed. 
          * @param {Roo.LayoutRegion} this
-         * @param {Roo.ContentPanel} panel The panel
+         * @param {Roo.panel.Content} panel The panel
          */
         "panelremoved" : true,
         /**
@@ -36404,7 +36407,7 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
          * @event panelactivated
          * Fires when a panel is activated. 
          * @param {Roo.LayoutRegion} this
-         * @param {Roo.ContentPanel} panel The activated panel
+         * @param {Roo.panel.Content} panel The activated panel
          */
         "panelactivated" : true,
         /**
@@ -36519,7 +36522,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     /**
      * Show the specified panel.
      * @param {Number/String/ContentPanel} panelId The panels index, id or the panel itself
-     * @return {Roo.ContentPanel} The shown panel or null
+     * @return {Roo.panel.Content} The shown panel or null
      */
     showPanel : function(panel){
         if(panel = this.getPanel(panel)){
@@ -36530,7 +36533,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     
     /**
      * Get the active panel for this region.
-     * @return {Roo.ContentPanel} The active panel or null
+     * @return {Roo.panel.Content} The active panel or null
      */
     getActivePanel : function(){
         return this.activePanel;
@@ -36539,7 +36542,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     /**
      * Add the passed ContentPanel(s)
      * @param {ContentPanel...} panel The ContentPanel(s) to add (you can pass more than one)
-     * @return {Roo.ContentPanel} The panel added (if only one was added)
+     * @return {Roo.panel.Content} The panel added (if only one was added)
      */
     add : function(panel){
         if(arguments.length > 1){
@@ -36587,7 +36590,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
      * Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed.
      * @param {Number/String/ContentPanel} panel The panels index, id or the panel itself
      * @param {Boolean} preservePanel Overrides the config preservePanel option
-     * @return {Roo.ContentPanel} The panel that was removed
+     * @return {Roo.panel.Content} The panel that was removed
      */
     remove : function(panel, preservePanel){
         panel = this.getPanel(panel);
@@ -36607,7 +36610,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     /**
      * Returns the panel specified or null if it's not in this region.
      * @param {Number/String/ContentPanel} panel The panels index, id or the panel itself
-     * @return {Roo.ContentPanel}
+     * @return {Roo.panel.Content}
      */
     getPanel : function(id){
         if(typeof id == "object"){ // must be panel obj
@@ -37076,7 +37079,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
     /**
      * Shows the specified panel.
      * @param {Number/String/ContentPanel} panelId The panel's index, id or the panel itself
-     * @return {Roo.ContentPanel} The shown panel, or null if a panel could not be found from panelId
+     * @return {Roo.panel.Content} The shown panel, or null if a panel could not be found from panelId
      */
     showPanel : function(panel)
     {
@@ -37097,7 +37100,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
 
     /**
      * Get the active panel for this region.
-     * @return {Roo.ContentPanel} The active panel or null
+     * @return {Roo.panel.Content} The active panel or null
      */
     getActivePanel : function(){
         return this.activePanel;
@@ -37118,7 +37121,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
     /**
      * Adds the passed ContentPanel(s) to this region.
      * @param {ContentPanel...} panel The ContentPanel(s) to add (you can pass more than one)
-     * @return {Roo.ContentPanel} The panel added (if only one was added; null otherwise)
+     * @return {Roo.panel.Content} The panel added (if only one was added; null otherwise)
      */
     add : function(panel){
         if(arguments.length > 1){
@@ -37183,7 +37186,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
      * Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed.
      * @param {Number/String/ContentPanel} panel The panel's index, id or the panel itself
      * @param {Boolean} preservePanel Overrides the config preservePanel option
-     * @return {Roo.ContentPanel} The panel that was removed
+     * @return {Roo.panel.Content} The panel that was removed
      */
     remove : function(panel, preservePanel){
         panel = this.getPanel(panel);

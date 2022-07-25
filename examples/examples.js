@@ -175,7 +175,7 @@ RooDocs.viewSource = {
         layout.beginUpdate();
         //this.view = new Roo.ContentPanel(Roo.id(), { autoCreate:true, title: '', background:true});
         var frm = layout.getEl().createChild({ tag:'div' });
-        this.contentPanel = new Roo.ContentPanel(frm, {title: 'View Source', 	fitContainer: true, autoScroll: true});
+        this.contentPanel = new Roo.panel.Content(frm, {title: 'View Source', 	fitContainer: true, autoScroll: true});
         this.contentPanel.getEl().getUpdateManager().setRenderer(new Roo.UpdateManager.RawRenderer());
         layout.add('center', this.contentPanel);
         layout.endUpdate();

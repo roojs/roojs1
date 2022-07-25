@@ -11,7 +11,7 @@
 /**
  * @class Roo.BorderLayout
  * @extends Roo.LayoutManager
- * @children Roo.ContentPanel
+ * @children Roo.panel.Content
  * This class represents a common layout manager used in desktop applications. For screenshots and more details,
  * please see: <br><br>
  * <a href="http://www.jackslocum.com/yui/2006/10/19/cross-browser-web-20-layouts-with-yahoo-ui/">Cross Browser Layouts - Part 1</a><br>
@@ -57,7 +57,7 @@
 });
 
 // shorthand
-var CP = Roo.ContentPanel;
+var CP = Roo.panel.Content;
 
 layout.beginUpdate();
 layout.add("north", new CP("north", "North"));
