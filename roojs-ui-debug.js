@@ -38669,7 +38669,7 @@ Roo.TreePanel = function(config){
     
 };
 
-Roo.extend(Roo.TreePanel, Roo.panel.Content, {   
+Roo.extend(Roo.TreePanel, Roo.ContentPanel, {   
     fitToFrame : true,
     autoScroll : true,
     /*
