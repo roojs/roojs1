@@ -2680,7 +2680,7 @@ this.down=D;};Roo.extend(Roo.ScrollPanel,Roo.panel.Content,{increment:100,wheelI
 this.afterScroll();},onWheel:function(e){var d=e.getWheelDelta();this.resizeEl.dom.scrollTop-=(d*this.wheelIncrement);this.afterScroll();e.stopEvent();},setContent:function(A,B){this.resizeEl.update(A,B);}});
 // Roo/TreePanel.js
 Roo.TreePanel=function(A){var el=A.el;var B=A.tree;delete A.tree;delete A.el;var C=el.createChild();A.resizeEl=C;Roo.TreePanel.superclass.constructor.call(this,el,A);this.tree=new Roo.tree.TreePanel(C,B);this.on('activate',function(){if(this.tree.rendered){return;
-}this.tree.render();});};Roo.extend(Roo.TreePanel,Roo.ContentPanel,{fitToFrame:true,autoScroll:true,tree:false});
+}this.tree.render();});};Roo.extend(Roo.TreePanel,Roo.panel.Content,{fitToFrame:true,autoScroll:true,tree:false});
 // Roo/ReaderLayout.js
 Roo.ReaderLayout=function(A,B){var c=A||{size:{}};Roo.ReaderLayout.superclass.constructor.call(this,B||document.body,{north:c.north!==false?Roo.apply({split:false,initialSize:32,titlebar:false},c.north):false,west:c.west!==false?Roo.apply({split:true,initialSize:200,minSize:175,maxSize:400,titlebar:true,collapsible:true,animate:true,margins:{left:5,right:0,bottom:5,top:5}
 ,cmargins:{left:5,right:5,bottom:5,top:5}},c.west):false,east:c.east!==false?Roo.apply({split:true,initialSize:200,minSize:175,maxSize:400,titlebar:true,collapsible:true,animate:true,margins:{left:0,right:5,bottom:5,top:5},cmargins:{left:5,right:5,bottom:5,top:5}
