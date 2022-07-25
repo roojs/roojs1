@@ -38701,7 +38701,7 @@ Roo.extend(Roo.TreePanel, Roo.panel.Content, {
  * Example:
  <pre><code>
 var reader = new Roo.ReaderLayout();
-var CP = Roo.ContentPanel;  // shortcut for adding
+var CP = Roo.panel.Content;  // shortcut for adding
 
 reader.beginUpdate();
 reader.add("north", new CP("north", "North"));
