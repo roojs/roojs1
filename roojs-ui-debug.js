@@ -10161,7 +10161,7 @@ Roo.DialogManager = function(){
 /**
  * @class Roo.LayoutDialog
  * @extends Roo.BasicDialog
- * @children Roo.ContentPanel
+ * @children Roo.panel.Content
  * @parent builder none
  * Dialog which provides adjustments for working with a layout in a Dialog.
  * Add your necessary layout config options to the dialog's config.<br>
@@ -10199,13 +10199,13 @@ if(!dialog){
         }
     });
     innerLayout.beginUpdate();
-    innerLayout.add("east", new Roo.ContentPanel("dl-details"));
-    innerLayout.add("center", new Roo.ContentPanel("selection-panel"));
+    innerLayout.add("east", new Roo.panel.Content("dl-details"));
+    innerLayout.add("center", new Roo.panel.Content("selection-panel"));
     innerLayout.endUpdate(true);
 
     var layout = dialog.getLayout();
     layout.beginUpdate();
-    layout.add("center", new Roo.ContentPanel("standard-panel",
+    layout.add("center", new Roo.panel.Content("standard-panel",
                         {title: "Download the Source", fitToFrame:true}));
     layout.add("center", new Roo.NestedLayoutPanel(innerLayout,
                {title: "Build your own roo.js"}));
@@ -37075,8 +37075,8 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
 
     /**
      * Shows the specified panel.
-     * @param {Number/String/ContentPanel} panelId The panel's index, id or the panel itself
-     * @return {Roo.ContentPanel} The shown panel, or null if a panel could not be found from panelId
+     * @param {Number/String/panel.Content} panelId The panel's index, id or the panel itself
+     * @return {Roo.panel.Content} The shown panel, or null if a panel could not be found from panelId
      */
     showPanel : function(panel)
     {
@@ -37097,7 +37097,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
 
     /**
      * Get the active panel for this region.
-     * @return {Roo.ContentPanel} The active panel or null
+     * @return {Roo.panel.Content} The active panel or null
      */
     getActivePanel : function(){
         return this.activePanel;
@@ -37117,8 +37117,8 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
 
     /**
      * Adds the passed ContentPanel(s) to this region.
-     * @param {ContentPanel...} panel The ContentPanel(s) to add (you can pass more than one)
-     * @return {Roo.ContentPanel} The panel added (if only one was added; null otherwise)
+     * @param {panel.Content...} panel The ContentPanel(s) to add (you can pass more than one)
+     * @return {Roo.panel.Content} The panel added (if only one was added; null otherwise)
      */
     add : function(panel){
         if(arguments.length > 1){
@@ -37155,7 +37155,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
 
     /**
      * Hides the tab for the specified panel.
-     * @param {Number/String/ContentPanel} panel The panel's index, id or the panel itself
+     * @param {Number/String/panel.Content} panel The panel's index, id or the panel itself
      */
     hidePanel : function(panel){
         if(this.tabs && (panel = this.getPanel(panel))){
@@ -37165,7 +37165,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
 
     /**
      * Unhides the tab for a previously hidden panel.
-     * @param {Number/String/ContentPanel} panel The panel's index, id or the panel itself
+     * @param {Number/String/panel.Content} panel The panel's index, id or the panel itself
      */
     unhidePanel : function(panel){
         if(this.tabs && (panel = this.getPanel(panel))){
@@ -37181,9 +37181,9 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
 
     /**
      * Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed.
-     * @param {Number/String/ContentPanel} panel The panel's index, id or the panel itself
+     * @param {Number/String/panel.Content} panel The panel's index, id or the panel itself
      * @param {Boolean} preservePanel Overrides the config preservePanel option
-     * @return {Roo.ContentPanel} The panel that was removed
+     * @return {Roo.panel.Content} The panel that was removed
      */
     remove : function(panel, preservePanel){
         panel = this.getPanel(panel);
