@@ -28,7 +28,7 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
          * @event beforeremove
          * Fires before a panel is removed (or closed). To cancel the removal set "e.cancel = true" on the event argument.
          * @param {Roo.LayoutRegion} this
-         * @param {Roo.ContentPanel} panel The panel
+         * @param {Roo.panel.Content} panel The panel
          * @param {Object} e The cancel event object
          */
         "beforeremove" : true,
@@ -49,14 +49,14 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
          * @event paneladded
          * Fires when a panel is added. 
          * @param {Roo.LayoutRegion} this
-         * @param {Roo.ContentPanel} panel The panel
+         * @param {Roo.panel.Content} panel The panel
          */
         "paneladded" : true,
         /**
          * @event panelremoved
          * Fires when a panel is removed. 
          * @param {Roo.LayoutRegion} this
-         * @param {Roo.ContentPanel} panel The panel
+         * @param {Roo.panel.Content} panel The panel
          */
         "panelremoved" : true,
         /**
@@ -93,7 +93,7 @@ Roo.BasicLayoutRegion = function(mgr, config, pos, skipConfig){
          * @event panelactivated
          * Fires when a panel is activated. 
          * @param {Roo.LayoutRegion} this
-         * @param {Roo.ContentPanel} panel The activated panel
+         * @param {Roo.panel.Content} panel The activated panel
          */
         "panelactivated" : true,
         /**
@@ -207,8 +207,8 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     
     /**
      * Show the specified panel.
-     * @param {Number/String/ContentPanel} panelId The panels index, id or the panel itself
-     * @return {Roo.ContentPanel} The shown panel or null
+     * @param {Number/String/panel.Content} panelId The panels index, id or the panel itself
+     * @return {Roo.panel.Content} The shown panel or null
      */
     showPanel : function(panel){
         if(panel = this.getPanel(panel)){
@@ -219,7 +219,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     
     /**
      * Get the active panel for this region.
-     * @return {Roo.ContentPanel} The active panel or null
+     * @return {Roo.panel.Content} The active panel or null
      */
     getActivePanel : function(){
         return this.activePanel;
@@ -227,8 +227,8 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     
     /**
      * Add the passed ContentPanel(s)
-     * @param {ContentPanel...} panel The ContentPanel(s) to add (you can pass more than one)
-     * @return {Roo.ContentPanel} The panel added (if only one was added)
+     * @param {panel.Content...} panel The ContentPanel(s) to add (you can pass more than one)
+     * @return {Roo.panel.Content} The panel added (if only one was added)
      */
     add : function(panel){
         if(arguments.length > 1){
@@ -262,7 +262,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     
     /**
      * Returns true if the panel is in this region.
-     * @param {Number/String/ContentPanel} panel The panels index, id or the panel itself
+     * @param {Number/String/panel.Content} panel The panels index, id or the panel itself
      * @return {Boolean}
      */
     hasPanel : function(panel){
@@ -274,9 +274,9 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     
     /**
      * Removes the specified panel. If preservePanel is not true (either here or in the config), the panel is destroyed.
-     * @param {Number/String/ContentPanel} panel The panels index, id or the panel itself
+     * @param {Number/String/panel.Content} panel The panels index, id or the panel itself
      * @param {Boolean} preservePanel Overrides the config preservePanel option
-     * @return {Roo.ContentPanel} The panel that was removed
+     * @return {Roo.panel.Content} The panel that was removed
      */
     remove : function(panel, preservePanel){
         panel = this.getPanel(panel);
@@ -295,8 +295,8 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
     
     /**
      * Returns the panel specified or null if it's not in this region.
-     * @param {Number/String/ContentPanel} panel The panels index, id or the panel itself
-     * @return {Roo.ContentPanel}
+     * @param {Number/String/panel.Content} panel The panels index, id or the panel itself
+     * @return {Roo.panel.Content}
      */
     getPanel : function(id){
         if(typeof id == "object"){ // must be panel obj
