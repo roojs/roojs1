@@ -58,7 +58,7 @@ var TreeTest = function(){
             });
             var viewEl = albums.createChild({tag:'div', id:'folders'});
             
-            var folders = layout.add('west', new Roo.ContentPanel(albums, {
+            var folders = layout.add('west', new Roo.panel.Content(albums, {
                 title:'My Albums', 
                 fitToFrame:true,
                 autoScroll:true,
@@ -67,7 +67,7 @@ var TreeTest = function(){
                 resizeEl:viewEl
             }));
             
-            var images = layout.add('center', new Roo.ContentPanel('images', {
+            var images = layout.add('center', new Roo.panel.Content('images', {
                 title:'My Images', 
                 fitToFrame:true,
                 autoScroll:true,
