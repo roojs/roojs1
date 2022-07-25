@@ -101,7 +101,6 @@ var HelloWorld = {
 };                
 
 
-
 // using onDocumentReady instead of window.onload initializes the application
 // when the DOM is ready, without waiting for images and other resources to load
 Roo.onReady(function() {
