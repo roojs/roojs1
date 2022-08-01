@@ -10,10 +10,10 @@
  */
 
 /**
- * @class Roo.GridPanel
+ * @class Roo.ViewPanel
  * @extends Roo.panel.Content
  * @constructor
- * Create a new GridPanel.
+ * Create a new ViewPanel.
  * @param {Roo.grid.Grid} grid The grid for this panel
  * @param {String/Object} config A string to set only the panel's title, or a config object
  */
