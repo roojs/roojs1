@@ -45615,4 +45615,4 @@ Roo.ContentPanel = Roo.panel.Content;
 Roo.NestedLayoutPanel = Roo.panel.NestedLayout;
 // Roo.TabPanel = Roo.panel.Tab;
 // Roo.TabPanelItem = Roo.panel.TabItem;
-// Roo.TreePanel = Roo.panel.Tree;
+Roo.TreePanel = Roo.panel.Tree;
