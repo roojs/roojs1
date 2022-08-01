@@ -162,7 +162,7 @@ Roo.SplitLayoutRegion
 Roo.CenterLayoutRegion
 Roo.LayoutStateManager
 Roo.panel.Content
-Roo.GridPanel
+Roo.panel.GridPanel
 Roo.NestedLayoutPanel
 Roo.ScrollPanel
 Roo.TreePanel
