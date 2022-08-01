@@ -36108,6 +36108,10 @@ layout.addxtype({
                     grid.render();
                 }
                 break;
+            case 'Calendar':
+                ret = new Roo.panel[cfg.xtype](cfg); // new panel!!!!!
+                this.add(region, ret);
+                break;
             case 'ContentPanel':
             case 'ScrollPanel':  // ContentPanel (el, cfg)
             case 'ViewPanel': 
