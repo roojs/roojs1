@@ -438,7 +438,7 @@ layout.addxtype({
                 if (region == 'center' && this.active ) {
                     cfg.background = false;
                 }
-                ret = new Roo.panel.[cfg.xtype](grid, cfg); // new panel!!!!!
+                ret = new Roo.panel[cfg.xtype](grid, cfg); // new panel!!!!!
                 
                 this.add(region, ret);
                 if (cfg.background) {
