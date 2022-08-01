@@ -70,7 +70,7 @@ Roo.panel.Tab = function(container, config){
         Roo.fly(this.stripWrap.dom.firstChild).setStyle("overflow-x", "hidden");
     }
     if(this.tabPosition != "bottom"){
-        /** The body element that contains {@link Roo.TabPanelItem} bodies. +
+        /** The body element that contains {@link Roo.panel.TabItem} bodies. +
          * @type Roo.Element
          */
         this.bodyEl = Roo.get(this.createBody(this.el.dom));
@@ -88,7 +88,7 @@ Roo.panel.Tab = function(container, config){
          * @event tabchange
          * Fires when the active tab changes
          * @param {Roo.panel.Tab} this
-         * @param {Roo.TabPanelItem} activePanel The new active tab
+         * @param {Roo.panel.TabItem} activePanel The new active tab
          */
         "tabchange": true,
         /**
@@ -96,7 +96,7 @@ Roo.panel.Tab = function(container, config){
          * Fires before the active tab changes, set cancel to true on the "e" parameter to cancel the change
          * @param {Roo.panel.Tab} this
          * @param {Object} e Set cancel to true on this object to cancel the tab change
-         * @param {Roo.TabPanelItem} tab The tab being changed to
+         * @param {Roo.panel.TabItem} tab The tab being changed to
          */
         "beforetabchange" : true
     });
@@ -158,15 +158,15 @@ Roo.extend(Roo.panel.Tab, Roo.util.Observable, {
     toolbar : false,
 
     /**
-     * Creates a new {@link Roo.TabPanelItem} by looking for an existing element with the provided id -- if it's not found it creates one.
+     * Creates a new {@link Roo.panel.TabItem} by looking for an existing element with the provided id -- if it's not found it creates one.
      * @param {String} id The id of the div to use <b>or create</b>
      * @param {String} text The text for the tab
      * @param {String} content (optional) Content to put in the TabPanelItem body
      * @param {Boolean} closable (optional) True to create a close icon on the tab
-     * @return {Roo.TabPanelItem} The created TabPanelItem
+     * @return {Roo.panel.TabItem} The created TabPanelItem
      */
     addTab : function(id, text, content, closable){
-        var item = new Roo.TabPanelItem(this, id, text, closable);
+        var item = new Roo.panel.TabItem(this, id, text, closable);
         this.addTabItem(item);
         if(content){
             item.setContent(content);
@@ -175,16 +175,16 @@ Roo.extend(Roo.panel.Tab, Roo.util.Observable, {
     },
 
     /**
-     * Returns the {@link Roo.TabPanelItem} with the specified id/index
+     * Returns the {@link Roo.panel.TabItem} with the specified id/index
      * @param {String/Number} id The id or index of the TabPanelItem to fetch.
-     * @return {Roo.TabPanelItem}
+     * @return {Roo.panel.TabItem}
      */
     getTab : function(id){
         return this.items[id];
     },
 
     /**
-     * Hides the {@link Roo.TabPanelItem} with the specified id/index
+     * Hides the {@link Roo.panel.TabItem} with the specified id/index
      * @param {String/Number} id The id or index of the TabPanelItem to hide.
      */
     hideTab : function(id){
@@ -197,7 +197,7 @@ Roo.extend(Roo.panel.Tab, Roo.util.Observable, {
     },
 
     /**
-     * "Unhides" the {@link Roo.TabPanelItem} with the specified id/index.
+     * "Unhides" the {@link Roo.panel.TabItem} with the specified id/index.
      * @param {String/Number} id The id or index of the TabPanelItem to unhide.
      */
     unhideTab : function(id){
@@ -210,8 +210,8 @@ Roo.extend(Roo.panel.Tab, Roo.util.Observable, {
     },
 
     /**
-     * Adds an existing {@link Roo.TabPanelItem}.
-     * @param {Roo.TabPanelItem} item The TabPanelItem to add
+     * Adds an existing {@link Roo.panel.TabItem}.
+     * @param {Roo.panel.TabItem} item The TabPanelItem to add
      */
     addTabItem : function(item){
         this.items[item.id] = item;
@@ -225,7 +225,7 @@ Roo.extend(Roo.panel.Tab, Roo.util.Observable, {
     },
 
     /**
-     * Removes a {@link Roo.TabPanelItem}.
+     * Removes a {@link Roo.panel.TabItem}.
      * @param {String/Number} id The id or index of the TabPanelItem to remove.
      */
     removeTab : function(id){
@@ -273,7 +273,7 @@ Roo.extend(Roo.panel.Tab, Roo.util.Observable, {
     },
 
     /**
-     * Disables a {@link Roo.TabPanelItem}. It cannot be the active tab, if it is this call is ignored.
+     * Disables a {@link Roo.panel.TabItem}. It cannot be the active tab, if it is this call is ignored.
      * @param {String/Number} id The id or index of the TabPanelItem to disable.
      */
     disableTab : function(id){
@@ -284,7 +284,7 @@ Roo.extend(Roo.panel.Tab, Roo.util.Observable, {
     },
 
     /**
-     * Enables a {@link Roo.TabPanelItem} that is disabled.
+     * Enables a {@link Roo.panel.TabItem} that is disabled.
      * @param {String/Number} id The id or index of the TabPanelItem to enable.
      */
     enableTab : function(id){
@@ -293,9 +293,9 @@ Roo.extend(Roo.panel.Tab, Roo.util.Observable, {
     },
 
     /**
-     * Activates a {@link Roo.TabPanelItem}. The currently active one will be deactivated.
+     * Activates a {@link Roo.panel.TabItem}. The currently active one will be deactivated.
      * @param {String/Number} id The id or index of the TabPanelItem to activate.
-     * @return {Roo.TabPanelItem} The TabPanelItem.
+     * @return {Roo.panel.TabItem} The TabPanelItem.
      */
     activate : function(id){
         var tab = this.items[id];
@@ -319,8 +319,8 @@ Roo.extend(Roo.panel.Tab, Roo.util.Observable, {
     },
 
     /**
-     * Gets the active {@link Roo.TabPanelItem}.
-     * @return {Roo.TabPanelItem} The active TabPanelItem or null if none are active.
+     * Gets the active {@link Roo.panel.TabItem}.
+     * @return {Roo.panel.TabItem} The active TabPanelItem or null if none are active.
      */
     getActiveTab : function(){
         return this.active;
