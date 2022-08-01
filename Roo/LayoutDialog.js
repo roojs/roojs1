@@ -48,7 +48,7 @@ if(!dialog){
     layout.beginUpdate();
     layout.add("center", new Roo.panel.Content("standard-panel",
                         {title: "Download the Source", fitToFrame:true}));
-    layout.add("center", new Roo.NestedLayoutPanel(innerLayout,
+    layout.add("center", new Roo.panel.NestedLayout(innerLayout,
                {title: "Build your own roo.js"}));
     layout.getRegion("center").showPanel(sp);
     layout.endUpdate();
