@@ -127,8 +127,8 @@ var test = {
             },
             items : [
                 {
-                    xns : Roo,
-                    xtype: 'GridPanel',
+                    xns : Roo.panel,
+                    xtype: 'Grid',
                     region : "center",
                     grid : {
                         xns : Roo.grid,
