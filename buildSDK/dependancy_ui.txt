@@ -163,7 +163,7 @@ Roo.CenterLayoutRegion
 Roo.LayoutStateManager
 Roo.panel.Content
 Roo.panel.Grid
-Roo.NestedLayoutPanel
+Roo.panel.NestedLayout
 Roo.ScrollPanel
 Roo.TreePanel
 
