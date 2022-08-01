@@ -369,7 +369,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
     initTabs : function()
     {
         this.bodyEl.setStyle("overflow", "hidden");
-        var ts = new Roo.TabPanel(
+        var ts = new Roo.panel.Tree(
                 this.bodyEl.dom,
                 {
                     tabPosition: this.bottomTabs ? 'bottom' : 'top',
@@ -606,7 +606,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
 
     /**
      * Returns the TabPanel component used by this region
-     * @return {Roo.TabPanel}
+     * @return {Roo.panel.Tree}
      */
     getTabs : function(){
         return this.tabs;
