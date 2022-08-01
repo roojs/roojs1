@@ -36,6 +36,9 @@ Roo.ColorPalette
 //		*** Can be Optional ***
 Roo.DatePicker
 
+Roo.panel.namespace
+Roo.panel.Cropbox
+
 Roo.panel.Tab
 Roo.Button
 Roo.SplitButton
