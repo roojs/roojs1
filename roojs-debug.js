@@ -60600,6 +60600,27 @@ layout.addxtype({
                     grid.render();
                 }
                 break;
+            case 'NestedLayout': 
+                // create a new Layout (which is  a Border Layout...
+                var el = this.el.createChild();
+                var clayout = cfg.layout;
+                delete cfg.layout;
+                clayout.items   = clayout.items  || [];
+                // replace this exitems with the clayout ones..
+                xitems = clayout.items;
+                 
+                
+                if (region == 'center' && this.active && this.getRegion('center').panels.length < 1) {
+                    cfg.background = false;
+                }
+                var layout = new Roo.BorderLayout(el, clayout);
+                
+                ret = new Roo.panel[cfg.xtype](layout, cfg); // new panel!!!!!
+                //console.log('adding nested layout panel '  + cfg.toSource());
+                this.add(region, ret);
+                nb = {}; /// find first...
+                break;
+                
             case 'Calendar':
                 ret = new Roo.panel[cfg.xtype](cfg); // new panel!!!!!
                 this.add(region, ret);
