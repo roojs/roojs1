@@ -131,7 +131,7 @@ var test = {
                     xtype: 'Grid',
                     region : "center",
                     grid : {
-                        xns : Roo.grid,
+                        xns : Roo.panel,
                         xtype : 'Grid',
                         cm : [
                             {
