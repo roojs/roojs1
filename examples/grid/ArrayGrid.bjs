@@ -14,8 +14,8 @@
  },
  "items" : [
   {
-   "xtype" : "GridPanel",
-   "$ xns" : "Roo",
+   "xtype" : "Grid",
+   "$ xns" : "Roo.Grid",
    "items" : [
     {
      "listeners" : {
