@@ -165,7 +165,7 @@ Roo.panel.Content
 Roo.panel.Grid
 Roo.panel.NestedLayout
 Roo.ScrollPanel
-Roo.panel.Tree
+Roo.panel.Tab
 
 //		*** Can be Optional *** - only if you use it..
 Roo.ReaderLayout
