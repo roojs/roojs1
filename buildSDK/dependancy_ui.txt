@@ -36,7 +36,7 @@ Roo.ColorPalette
 //		*** Can be Optional ***
 Roo.DatePicker
 
-Roo.TabPanel
+Roo.panel.Tree
 Roo.Button
 Roo.SplitButton
 
