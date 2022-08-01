@@ -10207,7 +10207,7 @@ if(!dialog){
     layout.beginUpdate();
     layout.add("center", new Roo.panel.Content("standard-panel",
                         {title: "Download the Source", fitToFrame:true}));
-    layout.add("center", new Roo.NestedLayoutPanel(innerLayout,
+    layout.add("center", new Roo.panel.NestedLayout(innerLayout,
                {title: "Build your own roo.js"}));
     layout.getRegion("center").showPanel(sp);
     layout.endUpdate();
@@ -38827,7 +38827,7 @@ Roo.ReaderLayout = function(config, renderTo){
             minHeight:200
         }, c.listView)
     });
-    this.add('center', new Roo.NestedLayoutPanel(inner,
+    this.add('center', new Roo.panel.NestedLayout(inner,
             Roo.apply({title: c.mainTitle || '',tabTip:''},c.innerPanelCfg)));
 
     this.endUpdate();
@@ -45604,9 +45604,9 @@ Roo.XTemplate.from = function(el){
     el = Roo.getDom(el);
     return new Roo.XTemplate(el.value || el.innerHTML);
 };// old names for panel elements
-// Roo.GridPanel = Roo.panel.Grid;
-// Roo.CalendarPanel = Roo.panel.Calendar;
-// Roo.ContentPanel = Roo.panel.Content;
+Roo.GridPanel = Roo.panel.Grid;
+Roo.CalendarPanel = Roo.panel.Calendar;
+Roo.ContentPanel = Roo.panel.Content;
 // Roo.NestedLayoutPanel = Roo.panel.NestedLayout;
 // Roo.TabPanel = Roo.panel.Tab;
 // Roo.TabPanelItem = Roo.panel.TabItem;
