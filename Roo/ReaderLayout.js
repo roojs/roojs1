@@ -97,7 +97,7 @@ Roo.ReaderLayout = function(config, renderTo){
             minHeight:200
         }, c.listView)
     });
-    this.add('center', new Roo.NestedLayoutPanel(inner,
+    this.add('center', new Roo.panel.NestedLayout(inner,
             Roo.apply({title: c.mainTitle || '',tabTip:''},c.innerPanelCfg)));
 
     this.endUpdate();
