@@ -1,5 +1,5 @@
 /**
- * @class Roo.TabPanelItem
+ * @class Roo.panel.TabItem
  * @extends Roo.util.Observable
  * Represents an individual item (tab plus body) in a TabPanel.
  * @param {Roo.panel.Tab} tabPanel The {@link Roo.panel.Tab} this TabPanelItem belongs to
@@ -7,7 +7,7 @@
  * @param {String} text The text for the tab of this TabPanelItem
  * @param {Boolean} closable True to allow this TabPanelItem to be closable (defaults to false)
  */
- Roo.TabPanelItem = function(tabPanel, id, text, closable){
+ Roo.panel.TabItem = function(tabPanel, id, text, closable){
     /**
      * The {@link Roo.panel.Tab} this TabPanelItem belongs to
      * @type Roo.panel.Tab
@@ -57,36 +57,36 @@
          * @event activate
          * Fires when this tab becomes the active tab.
          * @param {Roo.panel.Tab} tabPanel The parent TabPanel
-         * @param {Roo.TabPanelItem} this
+         * @param {Roo.panel.TabItem} this
          */
         "activate": true,
         /**
          * @event beforeclose
          * Fires before this tab is closed. To cancel the close, set cancel to true on e (e.cancel = true).
-         * @param {Roo.TabPanelItem} this
+         * @param {Roo.panel.TabItem} this
          * @param {Object} e Set cancel to true on this object to cancel the close.
          */
         "beforeclose": true,
         /**
          * @event close
          * Fires when this tab is closed.
-         * @param {Roo.TabPanelItem} this
+         * @param {Roo.panel.TabItem} this
          */
          "close": true,
         /**
          * @event deactivate
          * Fires when this tab is no longer the active tab.
          * @param {Roo.panel.Tab} tabPanel The parent TabPanel
-         * @param {Roo.TabPanelItem} this
+         * @param {Roo.panel.TabItem} this
          */
          "deactivate" : true
     });
     this.hidden = false;
 
-    Roo.TabPanelItem.superclass.constructor.call(this);
+    Roo.panel.TabItem.superclass.constructor.call(this);
 };
 
-Roo.extend(Roo.TabPanelItem, Roo.util.Observable, {
+Roo.extend(Roo.panel.TabItem, Roo.util.Observable, {
     purgeListeners : function(){
        Roo.util.Observable.prototype.purgeListeners.call(this);
        this.el.removeAllListeners();
