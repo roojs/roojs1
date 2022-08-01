@@ -7,8 +7,8 @@
     "items": [
         {
             "region": "center",
-            "xtype": "NestedLayoutPanel",
-            "|xns": "Roo",
+            "xtype": "NestedLayout",
+            "|xns": "Roo.panel",
             "items": [
                 {
                     "|xns": "Roo",
