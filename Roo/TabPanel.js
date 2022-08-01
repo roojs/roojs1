@@ -9,20 +9,20 @@
  * <script type="text/javascript">
  */
 /**
- * @class Roo.TabPanel
+ * @class Roo.panel.Tree
  * @extends Roo.util.Observable
  * A lightweight tab container.
  * <br><br>
  * Usage:
  * <pre><code>
 // basic tabs 1, built from existing content
-var tabs = new Roo.TabPanel("tabs1");
+var tabs = new Roo.panel.Tree("tabs1");
 tabs.addTab("script", "View Script");
 tabs.addTab("markup", "View Markup");
 tabs.activate("script");
 
 // more advanced tabs, built from javascript
-var jtabs = new Roo.TabPanel("jtabs");
+var jtabs = new Roo.panel.Tree("jtabs");
 jtabs.addTab("jtabs-1", "Normal Tab", "My content was added during construction.");
 
 // set up the UpdateManager
@@ -46,7 +46,7 @@ jtabs.activate("jtabs-1");
  * @param {String/HTMLElement/Roo.Element} container The id, DOM element or Roo.Element container where this TabPanel is to be rendered.
  * @param {Object/Boolean} config Config object to set any properties for this TabPanel, or true to render the tabs on the bottom.
  */
-Roo.TabPanel = function(container, config){
+Roo.panel.Tree = function(container, config){
     /**
     * The container element for this TabPanel.
     * @type Roo.Element
@@ -87,14 +87,14 @@ Roo.TabPanel = function(container, config){
         /**
          * @event tabchange
          * Fires when the active tab changes
-         * @param {Roo.TabPanel} this
+         * @param {Roo.panel.Tree} this
          * @param {Roo.TabPanelItem} activePanel The new active tab
          */
         "tabchange": true,
         /**
          * @event beforetabchange
          * Fires before the active tab changes, set cancel to true on the "e" parameter to cancel the change
-         * @param {Roo.TabPanel} this
+         * @param {Roo.panel.Tree} this
          * @param {Object} e Set cancel to true on this object to cancel the tab change
          * @param {Roo.TabPanelItem} tab The tab being changed to
          */
@@ -120,10 +120,10 @@ Roo.TabPanel = function(container, config){
    
 
 
-    Roo.TabPanel.superclass.constructor.call(this);
+    Roo.panel.Tree.superclass.constructor.call(this);
 };
 
-Roo.extend(Roo.TabPanel, Roo.util.Observable, {
+Roo.extend(Roo.panel.Tree, Roo.util.Observable, {
     /*
      *@cfg {String} tabPosition "top" or "bottom" (defaults to "top")
      */
@@ -430,15 +430,15 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
  * @class Roo.TabPanelItem
  * @extends Roo.util.Observable
  * Represents an individual item (tab plus body) in a TabPanel.
- * @param {Roo.TabPanel} tabPanel The {@link Roo.TabPanel} this TabPanelItem belongs to
+ * @param {Roo.panel.Tree} tabPanel The {@link Roo.panel.Tree} this TabPanelItem belongs to
  * @param {String} id The id of this TabPanelItem
  * @param {String} text The text for the tab of this TabPanelItem
  * @param {Boolean} closable True to allow this TabPanelItem to be closable (defaults to false)
  */
 Roo.TabPanelItem = function(tabPanel, id, text, closable){
     /**
-     * The {@link Roo.TabPanel} this TabPanelItem belongs to
-     * @type Roo.TabPanel
+     * The {@link Roo.panel.Tree} this TabPanelItem belongs to
+     * @type Roo.panel.Tree
      */
     this.tabPanel = tabPanel;
     /**
@@ -484,7 +484,7 @@ Roo.TabPanelItem = function(tabPanel, id, text, closable){
          /**
          * @event activate
          * Fires when this tab becomes the active tab.
-         * @param {Roo.TabPanel} tabPanel The parent TabPanel
+         * @param {Roo.panel.Tree} tabPanel The parent TabPanel
          * @param {Roo.TabPanelItem} this
          */
         "activate": true,
@@ -504,7 +504,7 @@ Roo.TabPanelItem = function(tabPanel, id, text, closable){
         /**
          * @event deactivate
          * Fires when this tab is no longer the active tab.
-         * @param {Roo.TabPanel} tabPanel The parent TabPanel
+         * @param {Roo.panel.Tree} tabPanel The parent TabPanel
          * @param {Roo.TabPanelItem} this
          */
          "deactivate" : true
@@ -744,14 +744,14 @@ Roo.extend(Roo.TabPanelItem, Roo.util.Observable, {
 });
 
 /** @private */
-Roo.TabPanel.prototype.createStrip = function(container){
+Roo.panel.Tree.prototype.createStrip = function(container){
     var strip = document.createElement("div");
     strip.className = "x-tabs-wrap";
     container.appendChild(strip);
     return strip;
 };
 /** @private */
-Roo.TabPanel.prototype.createStripList = function(strip){
+Roo.panel.Tree.prototype.createStripList = function(strip){
     // div wrapper for retard IE
     // returns the "tr" element.
     strip.innerHTML = '<div class="x-tabs-strip-wrap">'+
@@ -760,7 +760,7 @@ Roo.TabPanel.prototype.createStripList = function(strip){
     return strip.firstChild.firstChild.firstChild.firstChild;
 };
 /** @private */
-Roo.TabPanel.prototype.createBody = function(container){
+Roo.panel.Tree.prototype.createBody = function(container){
     var body = document.createElement("div");
     Roo.id(body, "tab-body");
     Roo.fly(body).addClass("x-tabs-body");
@@ -768,7 +768,7 @@ Roo.TabPanel.prototype.createBody = function(container){
     return body;
 };
 /** @private */
-Roo.TabPanel.prototype.createItemBody = function(bodyEl, id){
+Roo.panel.Tree.prototype.createItemBody = function(bodyEl, id){
     var body = Roo.getDom(id);
     if(!body){
         body = document.createElement("div");
@@ -779,7 +779,7 @@ Roo.TabPanel.prototype.createItemBody = function(bodyEl, id){
     return body;
 };
 /** @private */
-Roo.TabPanel.prototype.createStripElements = function(stripEl, text, closable){
+Roo.panel.Tree.prototype.createStripElements = function(stripEl, text, closable){
     var td = document.createElement("td");
     stripEl.insertBefore(td, stripEl.childNodes[stripEl.childNodes.length-1]);
     //stripEl.appendChild(td);
