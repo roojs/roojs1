@@ -66,7 +66,7 @@ var LayoutExample = function(){
                 // generate some other tabs
                 layout.add('center', new Roo.panel.Content(Roo.id(), {
                                         autoCreate:true, title: 'Another Tab', background:true}));
-	            layout.add('center', new Roo.ContentPanel(Roo.id(), {
+	            layout.add('center', new Roo.panel.Content(Roo.id(), {
                                         autoCreate:true, title: 'Third Tab', closable:true, background:true}));
 	            layout.endUpdate();
             }
