@@ -1,5 +1,5 @@
 // old names for panel elements
-// Roo.GridPanel = Roo.panel.Grid;
+Roo.GridPanel = Roo.panel.Grid;
 // Roo.CalendarPanel = Roo.panel.Calendar;
 Roo.ContentPanel = Roo.panel.Content;
 // Roo.NestedLayoutPanel = Roo.panel.NestedLayout;
