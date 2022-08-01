@@ -2989,4 +2989,4 @@ F.push("(typeof("+G+") == 'undefined')");});var H='(('+F.join(" || ")+") ? undef
 B.push(tpl.body.replace(/(\r\n|\n)/g,'\\n').replace(/'/g,"\\'").replace(this.re,fn));B.push("'].join('');};};");B=B.join('');}Roo.debug&&Roo.log(B.replace(/\\n/,'\n'));eval(B);return this;},applyTemplate:function(A){return this.master.compiled.call(this,A,{}
 );},apply:function(){return this.applyTemplate.apply(this,arguments);}});Roo.XTemplate.from=function(el){el=Roo.getDom(el);return new Roo.XTemplate(el.value||el.innerHTML);};
 // Roo/depreicated.js
-Roo.ContentPanel=Roo.panel.Content;
+Roo.ContentPanel=Roo.panel.Content;Roo.NestedLayoutPanel=Roo.panel.NestedLayout;
