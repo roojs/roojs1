@@ -476,6 +476,11 @@ layout.addxtype({
                 ret = new Roo.panel[cfg.xtype](cfg); // new panel!!!!!
                 this.add(region, ret);
                 break;
+            case 'Tree': // our new panel!
+                cfg.el = this.el.createChild();
+                ret = new Roo.panel[cfg.xtype](cfg); // new panel!!!!!
+                this.add(region, ret);
+                break;
             case 'ContentPanel':
             case 'ScrollPanel':  // ContentPanel (el, cfg)
             case 'ViewPanel': 
