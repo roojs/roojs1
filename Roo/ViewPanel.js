@@ -81,6 +81,6 @@ Roo.extend(Roo.ViewPanel, Roo.panel.Content, {
     destroy : function(){
         this.grid.destroy();
         delete this.grid;
-        Roo.GridPanel.superclass.destroy.call(this); 
+        Roo.panel.Grid.superclass.destroy.call(this); 
     }
 });
