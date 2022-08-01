@@ -426,6 +426,31 @@ layout.addxtype({
                 
                 this.add(region, ret);
                 break;
+            case 'Grid':
+                // needs grid and region
+                
+                //var el = this.getRegion(region).el.createChild();
+                var el = this.el.createChild();
+                // create the grid first...
+                
+                var grid = new Roo.grid[cfg.grid.xtype](el, cfg.grid);
+                delete cfg.grid;
+                if (region == 'center' && this.active ) {
+                    cfg.background = false;
+                }
+                ret = new Roo.panel.[cfg.xtype](grid, cfg); // new panel!!!!!
+                
+                this.add(region, ret);
+                if (cfg.background) {
+                    ret.on('activate', function(gp) {
+                        if (!gp.grid.rendered) {
+                            gp.grid.render();
+                        }
+                    });
+                } else {
+                    grid.render();
+                }
+                break;
             case 'ContentPanel':
             case 'ScrollPanel':  // ContentPanel (el, cfg)
             case 'ViewPanel': 
