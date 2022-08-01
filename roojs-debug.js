@@ -63193,7 +63193,7 @@ Roo.panel.Tree = function(config){
     Roo.panel.Tree.superclass.constructor.call(this, el, config);
  
  
-    this.tree = new Roo.tree.panel.Tree(treeEl , tree);
+    this.tree = new Roo.tree.TreePanel(treeEl , tree);
     //console.log(tree);
     this.on('activate', function()
     {

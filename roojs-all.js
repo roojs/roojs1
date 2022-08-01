@@ -2681,7 +2681,7 @@ this.down=D;};Roo.extend(Roo.ScrollPanel,Roo.panel.Content,{increment:100,wheelI
 );},afterScroll:function(){var el=this.resizeEl;var t=el.dom.scrollTop,h=el.dom.scrollHeight,ch=el.dom.clientHeight;this.up[t==0?"addClass":"removeClass"]("x-scroller-btn-disabled");this.down[h-t<=ch?"addClass":"removeClass"]("x-scroller-btn-disabled");},setSize:function(){Roo.ScrollPanel.superclass.setSize.apply(this,arguments);
 this.afterScroll();},onWheel:function(e){var d=e.getWheelDelta();this.resizeEl.dom.scrollTop-=(d*this.wheelIncrement);this.afterScroll();e.stopEvent();},setContent:function(A,B){this.resizeEl.update(A,B);}});
 // Roo/panel/Tree.js
-Roo.panel.Tree=function(A){var el=A.el;var B=A.tree;delete A.tree;delete A.el;var C=el.createChild();A.resizeEl=C;Roo.panel.Tree.superclass.constructor.call(this,el,A);this.tree=new Roo.tree.panel.Tree(C,B);this.on('activate',function(){if(this.tree.rendered){return;
+Roo.panel.Tree=function(A){var el=A.el;var B=A.tree;delete A.tree;delete A.el;var C=el.createChild();A.resizeEl=C;Roo.panel.Tree.superclass.constructor.call(this,el,A);this.tree=new Roo.tree.TreePanel(C,B);this.on('activate',function(){if(this.tree.rendered){return;
 }this.tree.render();});};Roo.extend(Roo.panel.Tree,Roo.panel.Content,{fitToFrame:true,autoScroll:true,tree:false});
 // Roo/ReaderLayout.js
 Roo.ReaderLayout=function(A,B){var c=A||{size:{}};Roo.ReaderLayout.superclass.constructor.call(this,B||document.body,{north:c.north!==false?Roo.apply({split:false,initialSize:32,titlebar:false},c.north):false,west:c.west!==false?Roo.apply({split:true,initialSize:200,minSize:175,maxSize:400,titlebar:true,collapsible:true,animate:true,margins:{left:5,right:0,bottom:5,top:5}
