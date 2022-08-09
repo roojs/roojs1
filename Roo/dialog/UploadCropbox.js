@@ -375,6 +375,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 break;
             case 'center' :
                 this.center(e);
+                break;
             default :
                 break;
         }
