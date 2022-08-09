@@ -645,6 +645,15 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var new_preview_left = this.previewEl.getLeft(true) + left_diff;
         var new_preview_top = this.previewEl.getTop(true) + top_diff;
 
+        var padding_left = new_preview_left - this.thumbEl.getLeft(true);
+        var padding_top = new_preview_top - this.thumbEl.getTop(true);
+
+        var max_padding_left = this.thumbEl.getWidth() * 0.05;
+        var max_padding_top = this.thumbEl.getHeight() * 0.05;
+
+        var padding_right = this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - new_canvas_width - new_preview_left;
+        var padding_bottom = this.thumbEl.getTop(true) + this.thumbEl.getHeight() - new_canvas_height - new_preview_top;
+
         console.log("=================================");
         console.log("old canvas width: " + this.canvasEl.width);
         console.log("old canvas height: " + this.canvasEl.height);
@@ -658,28 +667,14 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         console.log("new preview left: " + new_preview_left);
         console.log("new preview top: " + new_preview_top);
 
-
-        var padding_left = new_preview_left - this.thumbEl.getLeft(true);
-        var padding_top = new_preview_top - this.thumbEl.getTop(true);
-
-        var max_padding_left = this.thumbEl.getWidth() * 0.05;
-        var max_padding_top = this.thumbEl.getHeight() * 0.05;
-
         console.log("padding left: " + padding_left);
         console.log("padding top: " + padding_top);
-
-        console.log("max padding left: " + max_padding_left);
-        console.log("max padding top: " + max_padding_top);
-
-
-        var padding_right = this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - new_canvas_width - new_preview_left;
-        var padding_bottom = this.thumbEl.getTop(true) + this.thumbEl.getHeight() - new_canvas_height - new_preview_top;
 
         console.log("padding right: " + padding_right);
         console.log("padding bottom: " + padding_bottom);
 
-
-        
+        console.log("max padding left: " + max_padding_left);
+        console.log("max padding top: " + max_padding_top);
         
         if(
                 this.isDocument &&
