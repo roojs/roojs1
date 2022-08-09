@@ -373,6 +373,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             case 'download' :
                 this.download(e);
                 break;
+            case 'center' :
+                this.center(e);
             default :
                 break;
         }
