@@ -626,15 +626,14 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var maxHeight = this.imageEl.OriginHeight;
 
 
-        var old_scale_level = this.baseScale * Math.pow(1.02, this.startScale);
-        var old_canvas_width = Math.floor(this.imageEl.OriginWidth * old_scale_level);
-        var old_canvas_height = Math.floor(this.imageEl.OriginHeight * old_scale_level);
+        var new_canvas_width = Math.floor(this.imageEl.OriginWidth * this.getScaleLevel());
+        var new_canvas_height = Math.floor(this.imageEl.OriginHeight * this.getScaleLevel());
 
-        var old_center_left = Math.ceil((this.bodyEl.getWidth() - old_canvas_width) / 2);
-        var old_center_top = Math.ceil((this.bodyEl.getHeight() - old_canvas_height) / 2);
+        var old_center_left = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
+        var old_center_top = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
 
-        var new_center_left = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
-        var new_center_top = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
+        var new_center_left = Math.ceil((this.bodyEl.getWidth() - new_canvas_width) / 2);
+        var new_center_top = Math.ceil((this.bodyEl.getHeight() - new_canvas_height) / 2);
 
         var old_left = this.previewEl.getLeft(true);
         var old_top = this.previewEl.getTop(true);
@@ -646,8 +645,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var new_top = old_top + top_diff;
 
         console.log("=================================");
-        console.log("preview left: " + new_left);
-        console.log("preview_top : " + new_top);
+        console.log("canvas width: " + this.canvasEl.width);
+        console.log("canvas height : " + this.canvasEl.height);
 
         
         
