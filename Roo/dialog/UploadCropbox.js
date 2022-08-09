@@ -496,7 +496,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             var new_pw = old_pw - (this.canvasEl.width - old_canvas_width) / 2;
             var new_ph = old_ph - (this.canvasEl.height - old_canvas_height) / 2;
             this.previewEl.setLeft(new_pw);
-            this.previewEl.setTop(old_pw);
+            this.previewEl.setTop(new_ph);
         }
         else {
             this.previewEl.setLeft(pw);
