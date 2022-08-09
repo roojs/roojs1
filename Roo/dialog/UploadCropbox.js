@@ -848,7 +848,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         this.previewEl.appendChild(this.canvasEl);
         
-        this.setCanvasPosition();
+        // this.setCanvasPosition();
     },
     
     crop : function()
