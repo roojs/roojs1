@@ -21,6 +21,10 @@ var uploadCropbox = {
             xtype : 'LayoutDialog',
             width : 800,
             height : 600,
+            north : {
+                xns : Roo,
+                xtype : 'LayoutRegion'
+            },
             center : {
                 xns : Roo,
                 xtype : 'LayoutRegion'
