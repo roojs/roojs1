@@ -492,7 +492,17 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             var old_scale_level = this.baseScale * Math.pow(1.02, this.startScale);
             var old_canvas_width = Math.floor(this.imageEl.OriginWidth * old_scale_level);
             var old_canvas_height = Math.floor(this.imageEl.OriginHeight * old_scale_level);
-            
+
+            console.log("OLD_PW: " + old_pw);
+            console.log("OLD_PH: " + old_ph);
+            console.log("PW: " + pw);
+            console.log("PH: " + ph);
+            console.log("start scale: " + this.startScale);
+            console.log("scale: " + this.scale);
+            console.log("canvas width: " + this.canvasEl.width);
+            console.log("canvas height: " + this.canvasEl.height);
+            console.log("old canvas height: " + old_canvas_width);
+            console.log("old canvas height: " + old_canvas_height);
             this.previewEl.setLeft(old_pw - (this.canvasEl.width - old_canvas_width) / 2);
             this.previewEl.setTop(old_ph - (this.canvasEl.height - old_canvas_height) / 2);
         }
