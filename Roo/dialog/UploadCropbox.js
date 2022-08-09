@@ -506,6 +506,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             console.log("new left: " + new_pw);
             console.log("new top: " + new_ph);
 
+            console.log("mouse x: " + this.mouseX);
+            console.log("mouse y: " + this.mouseY);
+
 
             this.previewEl.setLeft(new_pw);
             this.previewEl.setTop(new_ph);
