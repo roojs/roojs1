@@ -502,7 +502,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var left_diff = new_center_left - old_center_left;
         var top_diff = new_center_top - old_center_top;
 
-        var new_left = this.previewEl.getLeft(true); + left_diff;
+        var new_left = this.previewEl.getLeft(true) + left_diff;
         var new_top = this.previewEl.getTop(true) + top_diff;
 
         console.log("-------------");
