@@ -499,7 +499,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             console.log("PH: " + ph);
             console.log("start scale: " + this.startScale);
             console.log("scale: " + this.scale);
-            this.previewEl.setLeft(pw - old_pw);
+            this.previewEl.setLeft(pw);
             this.previewEl.setTop(ph);
         }
         
