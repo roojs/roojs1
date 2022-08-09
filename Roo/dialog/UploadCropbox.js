@@ -513,7 +513,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         console.log("new canvas width: " + this.canvasEl.width);
         console.log("new canvas height: " + this.canvasEl.height); 
 
-        console.log("old preview left: " + this.previewEl.getLeft(true););
+        console.log("old preview left: " + this.previewEl.getLeft(true));
         console.log("old preview top: " + this.previewEl.getTop(true));
 
         console.log("new preview left: " + new_left);
