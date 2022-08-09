@@ -1800,6 +1800,20 @@ Roo.apply(Roo.dialog.UploadCropbox, {
                     }
                 ]
             }
+        ],
+        CENTER : [
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-center',
+                action : 'center',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : 'CENTER'
+                    }
+                ]
+            }
         ]
     }
 });
