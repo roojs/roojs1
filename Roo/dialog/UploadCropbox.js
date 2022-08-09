@@ -346,7 +346,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     
     resize : function()
     {
-        console.log("RESIZE");
         if(this.fireEvent('resize', this) != false){
             this.setThumbBoxPosition();
             this.setCanvasPosition();
