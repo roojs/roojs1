@@ -476,7 +476,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
     },
     
-    setCanvasPosition : function()
+    setCanvasPosition : function(center = true)
     {   
         if(!this.canvasEl){
             return;
@@ -485,8 +485,14 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var pw = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
         var ph = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
         
-        this.previewEl.setLeft(pw);
-        this.previewEl.setTop(ph);
+        if(center) {
+            this.previewEl.setLeft(pw);
+            this.previewEl.setTop(ph);
+        }
+        else {
+            this.previewEl.setLeft(0);
+            this.previewEl.setTop(0);
+        }
         
     },
     
