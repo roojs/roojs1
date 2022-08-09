@@ -506,8 +506,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             left_diff = (left_diff >= 0) ? Math.ceil(left_diff) : Math.floor(left_diff);
             top_diff = (top_diff >= 0) ? Math.ceil(top_diff) : Math.floor(top_diff);
 
-            var new_left = old_left - left_diff;
-            var new_top = old_top - top_diff;
+            var new_left = old_left + left_diff;
+            var new_top = old_top + top_diff;
 
             console.log("-----------------------------------------");
 
