@@ -500,8 +500,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             var old_left = this.previewEl.getLeft(true);
             var old_top = this.previewEl.getTop(true);
 
-            var left_diff = (this.canvasEl.width - old_canvas_width) / 2;
-            var top_diff = (this.canvasEl.height - old_canvas_height) / 2;
+            var left_diff = new_center_left - old_center_left;
+            var top_diff = new_center_top - old_center_top;
 
             left_diff = (left_diff >= 0) ? Math.ceil(left_diff) : Math.floor(left_diff);
             top_diff = (top_diff >= 0) ? Math.ceil(top_diff) : Math.floor(top_diff);
