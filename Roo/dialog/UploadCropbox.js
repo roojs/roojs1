@@ -501,8 +501,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             console.log("scale: " + this.scale);
             console.log("canvas width: " + this.canvasEl.width);
             console.log("canvas height: " + this.canvasEl.height);
-            console.log("old canvas height: " + this.imageEl.OriginWidth * this.baseScaleLevel() * Math.pow(1.02, this.startScale));
-            console.log("old canvas height: " + this.imageEl.OriginHeight * this.baseScaleLevel() * Math.pow(1.02, this.startScale));
+            console.log("old canvas height: " + this.imageEl.OriginWidth * this.baseScale * Math.pow(1.02, this.startScale));
+            console.log("old canvas height: " + this.imageEl.OriginHeight * this.baseScale * Math.pow(1.02, this.startScale));
             this.previewEl.setLeft(pw);
             this.previewEl.setTop(ph);
         }
