@@ -518,7 +518,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
             console.log("old center left: " + old_center_left);
             console.log("old center top: " + old_center_top);
-            console.log("new center left: " + old_center_left);
+            console.log("new center left: " + new_center_left);
             console.log("new center top: " + new_center_top);
             
             console.log("left diff: " + left_diff);
