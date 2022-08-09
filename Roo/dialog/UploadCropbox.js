@@ -481,7 +481,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         if(!this.canvasEl){
             return;
         }
-        
+
         var pw = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
         var ph = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
         
@@ -490,6 +490,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             this.previewEl.setTop(ph);
         }
         else {
+            var old_pw = Math.ceil(this.preveiwEl.getLeft(true));
+            var old_ph = Math.ceil(this.previewEl.getTop(true));
             this.previewEl.setLeft(0);
             this.previewEl.setTop(0);
         }
