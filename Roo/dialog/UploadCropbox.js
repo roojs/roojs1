@@ -651,8 +651,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var paddingRight = this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - newCanvasWidth - newPreviewLeft;
         var paddingBottom = this.thumbEl.getTop(true) + this.thumbEl.getHeight() - newCanvasHeight - newPreviewTop;
 
-        var maxPaddingLeft = newCanvasWidth * 0.05;
-        var maxPaddingTop = newCanvasHeight * 0.05;
+        var maxPadding = (newCanvasWidth > newCanvasHeight) ? newCanvasWidth * 0.05 : newCanvasHeight * 0.05;
 
         console.log("=================================");
         console.log("old canvas width: " + this.canvasEl.width);
@@ -673,8 +672,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         console.log("padding right: " + paddingRight);
         console.log("padding bottom: " + paddingBottom);
 
-        console.log("max padding left: " + maxPaddingLeft);
-        console.log("max padding top: " + maxPaddingTop);
+        console.log("max padding: " + maxPadding);
         
         if(
                 this.isDocument &&
