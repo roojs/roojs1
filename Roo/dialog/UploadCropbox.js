@@ -487,7 +487,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         if(!center) {
             var old_pw = this.previewEl.getLeft(true);
-            var old_ph = Math.ceil(this.previewEl.getTop(true));
+            var old_ph = this.previewEl.getTop(true);
 
             var old_scale_level = this.baseScale * Math.pow(1.02, this.startScale);
             var old_canvas_width = Math.floor(this.imageEl.OriginWidth * old_scale_level);
