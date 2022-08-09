@@ -659,7 +659,11 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         console.log("new preview top: " + new_preview_top);
 
 
-        var padding_left = new_preview_left - this.thumbEl.getWidth();
+        var padding_left = new_preview_left - this.thumbEl.getLeft(true);
+        var padding_top = new_preview_top - this.thumbEl.getTop(true);
+
+        console.log("padding left: " + new_padding_left);
+        console.log("padding_right: " + new_padding_right);
 
 
         
