@@ -495,7 +495,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
             var left_diff = (this.canvasEl.width - old_canvas_width) / 2;
             var top_diff = (this.canvasEl.height - old_canvas_height) / 2;
-            
+
             var new_left = old_left - (this.canvasEl.width - old_canvas_width) / 2;
             var new_top = old_top - (this.canvasEl.height - old_canvas_height) / 2;
 
@@ -509,14 +509,14 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             console.log("left diff: " + (this.canvasEl.width - old_canvas_width) / 2);
             console.log("top diff: " + (this.canvasEl.height - old_canvas_height) / 2);
 
-            console.log("old left: " + old_pw);
-            console.log("old top: " + old_ph);
-            console.log("new left: " + new_pw);
-            console.log("new top: " + new_ph);
+            console.log("old left: " + old_left);
+            console.log("old top: " + old_top);
+            console.log("new left: " + new_left);
+            console.log("new top: " + new_top);
 
 
-            this.previewEl.setLeft(new_pw);
-            this.previewEl.setTop(new_ph);
+            this.previewEl.setLeft(new_left);
+            this.previewEl.setTop(new_top);
         }
         else {
             this.previewEl.setLeft(pw);
