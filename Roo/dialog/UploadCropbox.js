@@ -496,15 +496,15 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             var new_pw = old_pw - (this.canvasEl.width - old_canvas_width) / 2;
             var new_ph = old_ph - (this.canvasEl.height - old_canvas_height) / 2;
 
-            // console.log("old canvas width: " + old_canvas_width);
-            // console.log("old canvas height: " + old_canvas_height);
-            // console.log("new canvas width: " + this.canvasEl.width);
-            // console.log("new canvas height: " + this.canvasEl.height);
+            console.log("old canvas width: " + old_canvas_width);
+            console.log("old canvas height: " + old_canvas_height);
+            console.log("new canvas width: " + this.canvasEl.width);
+            console.log("new canvas height: " + this.canvasEl.height);
 
-            console.log("old left: " + old_pw);
-            console.log("old top: " + old_ph);
-            console.log("new left: " + new_pw);
-            console.log("new top: " + new_ph);
+            // console.log("old left: " + old_pw);
+            // console.log("old top: " + old_ph);
+            // console.log("new left: " + new_pw);
+            // console.log("new top: " + new_ph);
 
             console.log("mouse x: " + this.mouseX);
             console.log("mouse y: " + this.mouseY);
