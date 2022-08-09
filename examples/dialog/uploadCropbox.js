@@ -49,10 +49,8 @@ var uploadCropbox = {
                                 render : function (_self)
                                 {
                                     _this.cropbox = _self;
-                                    console.log("RENDER");
                                     _this.cropbox.bodyEl.dom.style.height = (parseInt(_this.cropbox.bodyEl.dom.parentNode.parentNode.parentNode.style.height) - 34) + 'px';
                                     _this.cropbox.bodyEl.dom.style.maxHeight = (parseInt(_this.cropbox.bodyEl.dom.parentNode.parentNode.parentNode.style.height) - 34) + 'px';
-                                    console.log(_this.cropbox.bodyEl.dom.style.height);
                                 },
                                 loadcanvas : function (_self, imageEl)
                                 {
