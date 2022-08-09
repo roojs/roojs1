@@ -482,8 +482,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             return;
         }
 
-        var new_center_left = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
-        var new_center_top = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
+        var new_center_left = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.getWidth()) / 2);
+        var new_center_top = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.getHeight()) / 2);
 
         if(center) {
             this.previewEl.setLeft(new_center_left);
@@ -510,8 +510,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         console.log("old canvas width: " + old_canvas_width);
         console.log("old canvas height: " + old_canvas_height);
 
-        console.log("new canvas width: " + this.canvasEl.width);
-        console.log("new canvas height: " + this.canvasEl.height); 
+        console.log("new canvas width: " + this.canvasEl.getWidth());
+        console.log("new canvas height: " + this.canvasEl.getHeight()); 
 
         console.log("old preview left: " + this.previewEl.getLeft(true));
         console.log("old preview top: " + this.previewEl.getTop(true));
@@ -657,6 +657,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         console.log("new preview left: " + new_preview_left);
         console.log("new preview top: " + new_preview_top);
+
+
+        var padding_left = new_preview_left - this.thumbEl.width
 
         
         
