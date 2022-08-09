@@ -625,7 +625,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var maxWidth = this.imageEl.OriginWidth;
         var maxHeight = this.imageEl.OriginHeight;
 
-        var canvas_left = this.canvasEl
+        var canvas_left = this.previewEl.getLeft(true);
+        var canvas_top = this.previewEl.getTop(true);
         
         if(
                 this.isDocument &&
