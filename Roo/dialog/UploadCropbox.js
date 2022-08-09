@@ -347,8 +347,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     resize : function()
     {
         if(this.fireEvent('resize', this) != false){
-            // this.setThumbBoxPosition();
-            // this.setCanvasPosition();
+            this.setThumbBoxPosition();
+            this.setCanvasPosition();
         }
     },
     
