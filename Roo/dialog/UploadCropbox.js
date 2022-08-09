@@ -485,7 +485,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var pw = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
         var ph = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
         
-        if(!center && typeof this.startScale !== 'undefined' && this.scale > this.startScale) {
+        if(!center) {
             var old_pw = this.previewEl.getLeft(true);
             var old_ph = Math.ceil(this.previewEl.getTop(true));
 
