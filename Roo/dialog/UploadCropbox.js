@@ -505,19 +505,19 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var new_preview_left = this.previewEl.getLeft(true) + left_diff;
         var new_preview_top = this.previewEl.getTop(true) + top_diff;
 
-        console.log("-------------");
+        // console.log("-------------");
 
-        console.log("old canvas width: " + old_canvas_width);
-        console.log("old canvas height: " + old_canvas_height);
+        // console.log("old canvas width: " + old_canvas_width);
+        // console.log("old canvas height: " + old_canvas_height);
 
-        console.log("new canvas width: " + this.canvasEl.width);
-        console.log("new canvas height: " + this.canvasEl.height); 
+        // console.log("new canvas width: " + this.canvasEl.width);
+        // console.log("new canvas height: " + this.canvasEl.height); 
 
-        console.log("old preview left: " + this.previewEl.getLeft(true));
-        console.log("old preview top: " + this.previewEl.getTop(true));
+        // console.log("old preview left: " + this.previewEl.getLeft(true));
+        // console.log("old preview top: " + this.previewEl.getTop(true));
 
-        console.log("new preview left: " + new_preview_left);
-        console.log("new preview top: " + new_preview_top); 
+        // console.log("new preview left: " + new_preview_left);
+        // console.log("new preview top: " + new_preview_top); 
 
         this.previewEl.setLeft(new_preview_left);
         this.previewEl.setTop(new_preview_top);
@@ -659,7 +659,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         console.log("new preview top: " + new_preview_top);
 
 
-        var padding_left = new_preview_left - this.thumbEl.width;
+        var padding_left = new_preview_left - this.thumbEl.getWidth();
+
 
         
         
