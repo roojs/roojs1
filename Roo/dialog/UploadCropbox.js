@@ -501,13 +501,10 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             console.log("new canvas width: " + this.canvasEl.width);
             console.log("new canvas height: " + this.canvasEl.height);
 
-            // console.log("old left: " + old_pw);
-            // console.log("old top: " + old_ph);
-            // console.log("new left: " + new_pw);
-            // console.log("new top: " + new_ph);
-
-            console.log("mouse x: " + this.mouseX);
-            console.log("mouse y: " + this.mouseY);
+            console.log("old left: " + old_pw);
+            console.log("old top: " + old_ph);
+            console.log("new left: " + new_pw);
+            console.log("new top: " + new_ph);
 
 
             this.previewEl.setLeft(new_pw);
