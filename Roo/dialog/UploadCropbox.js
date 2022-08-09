@@ -486,12 +486,19 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var ph = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
         
         if(!center) {
-            var old_left = this.previewEl.getLeft(true);
-            var old_top = this.previewEl.getTop(true);
 
             var old_scale_level = this.baseScale * Math.pow(1.02, this.startScale);
             var old_canvas_width = Math.floor(this.imageEl.OriginWidth * old_scale_level);
             var old_canvas_height = Math.floor(this.imageEl.OriginHeight * old_scale_level);
+
+            var old_center_left = Math.ceil((this.bodyEl.getWidth() - old_canvas_width) / 2);
+            var old_center_top = Math.ceil((this.bodyEl.getHeight() - old_canvas_height) / 2);
+
+            var new_center_left = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
+            var new_center_top = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
+
+            var old_left = this.previewEl.getLeft(true);
+            var old_top = this.previewEl.getTop(true);
 
             var left_diff = (this.canvasEl.width - old_canvas_width) / 2;
             var top_diff = (this.canvasEl.height - old_canvas_height) / 2;
