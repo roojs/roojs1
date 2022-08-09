@@ -44,7 +44,7 @@ var uploadCropbox = {
                             outputMaxWidth : 1200,
                             windowSize : 570,
                             url: 'http://localhost/web.MediaOutreach/press.local.php/Roo/Images.php',
-                            buttons: Roo.dialog.UploadCropbox.footer.CENTER,
+                            buttons: Roo.dialog.UploadCropbox.footer.STANDARD,
                             listeners : {
                                 render : function (_self)
                                 {
