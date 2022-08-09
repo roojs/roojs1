@@ -482,8 +482,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             return;
         }
 
-        var pw = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
-        var ph = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
+        var new_center_left = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
+        var new_center_top = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
         
         if(!center) {
 
@@ -493,9 +493,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
             var old_center_left = Math.ceil((this.bodyEl.getWidth() - old_canvas_width) / 2);
             var old_center_top = Math.ceil((this.bodyEl.getHeight() - old_canvas_height) / 2);
-
-            var new_center_left = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
-            var new_center_top = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
 
             var old_left = this.previewEl.getLeft(true);
             var old_top = this.previewEl.getTop(true);
@@ -534,8 +531,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             this.previewEl.setTop(new_top);
         }
         else {
-            this.previewEl.setLeft(pw);
-            this.previewEl.setTop(ph);
+            this.previewEl.setLeft(new_center_left);
+            this.previewEl.setTop(new_center_top);
         }
         
     },
