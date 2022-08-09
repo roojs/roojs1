@@ -23,7 +23,8 @@ var uploadCropbox = {
             height : 600,
             north : {
                 xns : Roo,
-                xtype : 'LayoutRegion'
+                xtype : 'LayoutRegion',
+                height : 50
             },
             center : {
                 xns : Roo,
@@ -48,6 +49,9 @@ var uploadCropbox = {
                                 render : function (_self)
                                 {
                                     _this.cropbox = _self;
+                                    // set height as height of x-layout-panel-body
+                                    _this.cropbox.bodyEl.dom.style.height = _this.cropbox.bodyEl.dom.parentNode.parentNode.parentNode.style.height;
+                                    _this.cropbox.bodyEl.dom.style.maxHeight = _this.cropbox.bodyEl.dom.parentNode.parentNode.parentNode.style.height;
                                 },
                                 loadcanvas : function (_self, imageEl)
                                 {
