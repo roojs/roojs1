@@ -50,8 +50,9 @@ var uploadCropbox = {
                                 {
                                     _this.cropbox = _self;
                                     console.log("RENDER");
-                                    _this.cropbox.bodyEl.dom.style.height = _this.cropbox.bodyEl.dom.parentNode.parentNode.parentNode.style.height - 34;
-                                    _this.cropbox.bodyEl.dom.style.maxHeight = _this.cropbox.bodyEl.dom.parentNode.parentNode.parentNode.style.height - 34;
+                                    _this.cropbox.bodyEl.dom.style.height = _this.cropbox.bodyEl.dom.parentNode.parentNode.parentNode.style.height;
+                                    _this.cropbox.bodyEl.dom.style.maxHeight = _this.cropbox.bodyEl.dom.parentNode.parentNode.parentNode.style.height;
+                                    console.log(_this.cropbox.bodyEl.dom.style.height);
                                 },
                                 loadcanvas : function (_self, imageEl)
                                 {
