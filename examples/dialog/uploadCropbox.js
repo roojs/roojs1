@@ -68,7 +68,21 @@ var uploadCropbox = {
                             }
                         }
                     ]
-                }
+                },
+                {
+                    xtype : 'ContentPanel',
+                    xns: Roo,
+                    region : 'north',
+                    listeners : {
+                        activate : function (_self)
+                        {
+                            var style = 'font:bold 16px sans serif,tahoma,verdana,helvetica; color:rgba(0, 0, 0, 0.5);';
+                            this.setContent("<div style='width:100%; height:50px; display:flex; flex-direction:column; align-items:center; justify-content:center'>" 
+                            + "<h3 style='" + style + "'>Scroll the mouse wheel to resize the image</h3>"
+                            + "<h3 style='" + style + "'>Drag the image to move the image</h3></div>");
+                        }
+                    }
+               }
             ],
             buttons : [
                 {
