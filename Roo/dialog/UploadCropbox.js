@@ -673,7 +673,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
 
         var padding_right = this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - new_canvas_width - new_preview_left;
-        var padding_bottom = this.thumEl.getTop(true) + this.thumbEl.getHeight() - new_canvas_height - new_preview_top;
+        var padding_bottom = this.thumbEl.getTop(true) + this.thumbEl.getHeight() - new_canvas_height - new_preview_top;
 
         console.log("padding right: " + padding_right);
         console.log("padding bottom: " + padding_bottom);
