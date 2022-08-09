@@ -486,8 +486,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var new_center_top = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
 
         if(center) {
-            // this.previewEl.setLeft(new_center_left);
-            this.previewEl.setRight(0);
+            this.previewEl.setLeft(new_center_left);
             this.previewEl.setTop(new_center_top);
 
             return;
