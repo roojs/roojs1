@@ -419,7 +419,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
     center : function(e)
     {
-        this.fireEvent('center', this);
+        this.setThumbBoxPosition();
+        this.setCanvasPosition();
     },
     
     loadCanvas : function(src)
