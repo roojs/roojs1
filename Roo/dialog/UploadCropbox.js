@@ -493,8 +493,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             var old_canvas_width = Math.floor(this.imageEl.OriginWidth * old_scale_level);
             var old_canvas_height = Math.floor(this.imageEl.OriginHeight * old_scale_level);
 
-            var left_diff = (this.canvasEl.width - old_canvas_width) / 2;
-            var top_diff = (this.canvasEl.height - old_canvas_height) / 2;
+            var left_diff = Math.ceil((this.canvasEl.width - old_canvas_width) / 2);
+            var top_diff = Math.ceil((this.canvasEl.height - old_canvas_height) / 2);
 
             var new_left = old_left - left_diff;
             var new_top = old_top - top_diff;
