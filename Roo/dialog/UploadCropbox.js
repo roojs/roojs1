@@ -492,6 +492,11 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         else {
             var old_pw = Math.ceil(this.preveiwEl.getLeft(true));
             var old_ph = Math.ceil(this.previewEl.getTop(true));
+
+            console.log("OLD_PW: " + old_pw);
+            console.log("OLD_PH: " + old_ph);
+            console.log("PW: " + pw);
+            console.log("PH: " + ph);
             this.previewEl.setLeft(0);
             this.previewEl.setTop(0);
         }
