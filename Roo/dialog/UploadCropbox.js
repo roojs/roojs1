@@ -482,45 +482,45 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             return;
         }
 
-        var new_center_left = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
-        var new_center_top = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
+        var newCenterLeft = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
+        var newCenterTop = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
 
         if(center) {
-            this.previewEl.setLeft(new_center_left);
-            this.previewEl.setTop(new_center_top);
+            this.previewEl.setLeft(newCenterLeft);
+            this.previewEl.setTop(newCenterTop);
 
             return;
         }
         
-        var old_scale_level = this.baseScale * Math.pow(1.02, this.startScale);
-        var old_canvas_width = Math.floor(this.imageEl.OriginWidth * old_scale_level);
-        var old_canvas_height = Math.floor(this.imageEl.OriginHeight * old_scale_level);
+        var oldScaleLevel = this.baseScale * Math.pow(1.02, this.startScale);
+        var oldCanvasWidth = Math.floor(this.imageEl.OriginWidth * oldScaleLevel);
+        var oldCanvasHeight = Math.floor(this.imageEl.OriginHeight * oldScaleLevel);
 
-        var old_center_left = Math.ceil((this.bodyEl.getWidth() - old_canvas_width) / 2);
-        var old_center_top = Math.ceil((this.bodyEl.getHeight() - old_canvas_height) / 2);
+        var oldCenterLeft = Math.ceil((this.bodyEl.getWidth() - oldCanvasWidth) / 2);
+        var oldCenterTop = Math.ceil((this.bodyEl.getHeight() - oldCanvasHeight) / 2);
 
-        var left_diff = new_center_left - old_center_left;
-        var top_diff = new_center_top - old_center_top;
+        var leftDiff = newCenterLeft - oldCenterLeft;
+        var topDiff = newCenterTop - oldCenterTop;
 
-        var new_preview_left = this.previewEl.getLeft(true) + left_diff;
-        var new_preview_top = this.previewEl.getTop(true) + top_diff;
+        var newPreviewLeft = this.previewEl.getLeft(true) + leftDiff;
+        var newPreviewTop = this.previewEl.getTop(true) + topDiff;
 
         console.log("-------------");
 
-        // console.log("old canvas width: " + old_canvas_width);
-        // console.log("old canvas height: " + old_canvas_height);
+        console.log("old canvas width: " + oldCanvasWidth);
+        console.log("old canvas height: " + oldCanvasHeight);
 
-        // console.log("new canvas width: " + this.canvasEl.width);
-        // console.log("new canvas height: " + this.canvasEl.height); 
+        console.log("new canvas width: " + this.canvasEl.width);
+        console.log("new canvas height: " + this.canvasEl.height); 
 
-        // console.log("old preview left: " + this.previewEl.getLeft(true));
-        // console.log("old preview top: " + this.previewEl.getTop(true));
+        console.log("old preview left: " + this.previewEl.getLeft(true));
+        console.log("old preview top: " + this.previewEl.getTop(true));
 
-        // console.log("new preview left: " + new_preview_left);
-        // console.log("new preview top: " + new_preview_top); 
+        console.log("new preview left: " + newPreviewLeft);
+        console.log("new preview top: " + newPreviewTop); 
 
-        this.previewEl.setLeft(new_preview_left);
-        this.previewEl.setTop(new_preview_top);
+        this.previewEl.setLeft(newPreviewLeft);
+        this.previewEl.setTop(newPreviewTop);
         
     },
     
@@ -630,51 +630,51 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var maxHeight = this.imageEl.OriginHeight;
 
 
-        var new_canvas_width = Math.floor(this.imageEl.OriginWidth * this.getScaleLevel());
-        var new_canvas_height = Math.floor(this.imageEl.OriginHeight * this.getScaleLevel());
+        var newCanvasWidth = Math.floor(this.imageEl.OriginWidth * this.getScaleLevel());
+        var newCanvasHeight = Math.floor(this.imageEl.OriginHeight * this.getScaleLevel());
 
-        var old_center_left = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
-        var old_center_top = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
+        var oldCenterLeft = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
+        var oldCenterTop = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
 
-        var new_center_left = Math.ceil((this.bodyEl.getWidth() - new_canvas_width) / 2);
-        var new_center_top = Math.ceil((this.bodyEl.getHeight() - new_canvas_height) / 2);
+        var newCenterLeft = Math.ceil((this.bodyEl.getWidth() - newCanvasWidth) / 2);
+        var newCenterTop = Math.ceil((this.bodyEl.getHeight() - newCanvasHeight) / 2);
 
-        var left_diff = new_center_left - old_center_left;
-        var top_diff = new_center_top - old_center_top;
+        var leftDiff = newCenterLeft - oldCenterLeft;
+        var topDiff = newCenterTop - oldCenterTop;
 
-        var new_preview_left = this.previewEl.getLeft(true) + left_diff;
-        var new_preview_top = this.previewEl.getTop(true) + top_diff;
+        var newPreviewLeft = this.previewEl.getLeft(true) + leftDiff;
+        var newPreviewTop = this.previewEl.getTop(true) + topDiff;
 
-        var padding_left = new_preview_left - this.thumbEl.getLeft(true);
-        var padding_top = new_preview_top - this.thumbEl.getTop(true);
+        var paddingLeft = newPreviewLeft - this.thumbEl.getLeft(true);
+        var paddingTop = newPreviewTop - this.thumbEl.getTop(true);
 
-        var max_padding_left = this.thumbEl.getWidth() * 0.05;
-        var max_padding_top = this.thumbEl.getHeight() * 0.05;
+        var maxPaddingLeft = this.thumbEl.getWidth() * 0.05;
+        var maxPaddingTop = this.thumbEl.getHeight() * 0.05;
 
-        var padding_right = this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - new_canvas_width - new_preview_left;
-        var padding_bottom = this.thumbEl.getTop(true) + this.thumbEl.getHeight() - new_canvas_height - new_preview_top;
+        var paddingRight = this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - newCanvasWidth - newPreviewLeft;
+        var paddingBottom = this.thumbEl.getTop(true) + this.thumbEl.getHeight() - newCanvasHeight - newPreviewTop;
 
         console.log("=================================");
         console.log("old canvas width: " + this.canvasEl.width);
         console.log("old canvas height: " + this.canvasEl.height);
 
-        console.log("new canvas width: " + new_canvas_width);
-        console.log("new canvas height: " + new_canvas_height);
+        console.log("new canvas width: " + newCanvasWidth);
+        console.log("new canvas height: " + newCanvasHeight);
 
         console.log("old preview left: " + this.previewEl.getLeft(true));
         console.log("old preview top: " + this.previewEl.getTop(true));
 
-        console.log("new preview left: " + new_preview_left);
-        console.log("new preview top: " + new_preview_top);
+        console.log("new preview left: " + newPreviewLeft);
+        console.log("new preview top: " + newPreviewTop);
 
-        console.log("padding left: " + padding_left);
-        console.log("padding top: " + padding_top);
+        console.log("padding left: " + paddingLeft);
+        console.log("padding top: " + paddingTop);
 
-        console.log("padding right: " + padding_right);
-        console.log("padding bottom: " + padding_bottom);
+        console.log("padding right: " + paddingRight);
+        console.log("padding bottom: " + paddingBottom);
 
-        console.log("max padding left: " + max_padding_left);
-        console.log("max padding top: " + max_padding_top);
+        console.log("max padding left: " + maxPaddingLeft);
+        console.log("max padding top: " + maxPaddingTop);
         
         if(
                 this.isDocument &&
@@ -704,10 +704,10 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight) && padding_left > max_padding_left ||
-                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight) && padding_right > max_padding_left ||
-                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight) && padding_top > max_padding_top ||
-                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight) && padding_bottom > max_padding_top ||
+                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight) && paddingLeft > maxPaddingLeft ||
+                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight) && paddingRight > maxPaddingLeft ||
+                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight) && paddingTop > maxPaddingTop ||
+                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight) && paddingBottom > maxPaddingTop ||
                     width > maxWidth ||
                     height > maxHeight
                 )
