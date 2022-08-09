@@ -497,8 +497,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             console.log("OLD_PH: " + old_ph);
             console.log("PW: " + pw);
             console.log("PH: " + ph);
-            this.previewEl.setLeft(0);
-            this.previewEl.setTop(0);
+            this.previewEl.setLeft(pw);
+            this.previewEl.setTop(pw);
         }
         
     },
