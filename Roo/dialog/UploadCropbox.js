@@ -493,8 +493,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             var old_pw = this.previewEl.getLeft(true);
             var old_ph = Math.ceil(this.previewEl.getTop(true));
 
-            var old_canvas_width = this.imageEl.OriginWidth * this.baseScale * Math.pow(1.02, this.startScale);
-            var old_canvas_height = this.imageEl.OriginHeight * this.baseScale * Math.pow(1.02, this.startScale)
+            var old_scale_level = this.baseScale * Math.pow(1.02, this.startScale);
+            var old_canvas_width = this.imageEl.OriginWidth * old_scale_level;
+            var old_canvas_height = this.imageEl.OriginHeight * old_scale_level;
 
             console.log("OLD_PW: " + old_pw);
             console.log("OLD_PH: " + old_ph);
