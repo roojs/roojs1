@@ -416,6 +416,11 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     {
         this.fireEvent('download', this);
     },
+
+    center : function(e)
+    {
+        this.fireEvent('center', this);
+    },
     
     loadCanvas : function(src)
     {   
