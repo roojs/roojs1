@@ -484,32 +484,31 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         var new_center_left = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
         var new_center_top = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
-        
-        if(!center) {
 
-            var old_scale_level = this.baseScale * Math.pow(1.02, this.startScale);
-            var old_canvas_width = Math.floor(this.imageEl.OriginWidth * old_scale_level);
-            var old_canvas_height = Math.floor(this.imageEl.OriginHeight * old_scale_level);
-
-            var old_center_left = Math.ceil((this.bodyEl.getWidth() - old_canvas_width) / 2);
-            var old_center_top = Math.ceil((this.bodyEl.getHeight() - old_canvas_height) / 2);
-
-            var old_left = this.previewEl.getLeft(true);
-            var old_top = this.previewEl.getTop(true);
-
-            var left_diff = new_center_left - old_center_left;
-            var top_diff = new_center_top - old_center_top;
-
-            var new_left = old_left + left_diff;
-            var new_top = old_top + top_diff;
-
-            this.previewEl.setLeft(new_left);
-            this.previewEl.setTop(new_top);
-        }
-        else {
+        if(center) {
             this.previewEl.setLeft(new_center_left);
             this.previewEl.setTop(new_center_top);
+            return;
         }
+        
+        var old_scale_level = this.baseScale * Math.pow(1.02, this.startScale);
+        var old_canvas_width = Math.floor(this.imageEl.OriginWidth * old_scale_level);
+        var old_canvas_height = Math.floor(this.imageEl.OriginHeight * old_scale_level);
+
+        var old_center_left = Math.ceil((this.bodyEl.getWidth() - old_canvas_width) / 2);
+        var old_center_top = Math.ceil((this.bodyEl.getHeight() - old_canvas_height) / 2);
+
+        var old_left = this.previewEl.getLeft(true);
+        var old_top = this.previewEl.getTop(true);
+
+        var left_diff = new_center_left - old_center_left;
+        var top_diff = new_center_top - old_center_top;
+
+        var new_left = old_left + left_diff;
+        var new_top = old_top + top_diff;
+
+        this.previewEl.setLeft(new_left);
+        this.previewEl.setTop(new_top);
         
     },
     
