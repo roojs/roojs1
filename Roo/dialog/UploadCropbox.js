@@ -507,6 +507,14 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var new_left = old_left + left_diff;
         var new_top = old_top + top_diff;
 
+        console.log("-------------");
+
+        console.log("old canvas left: " + old_left);
+        console.log("old canvas top: " + old_top);
+
+        console.log("new canvas left: " + new_left);
+        console.log("new canvas top: " + new_top); 
+
         this.previewEl.setLeft(new_left);
         this.previewEl.setTop(new_top);
         
@@ -616,6 +624,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
  
         var maxWidth = this.imageEl.OriginWidth;
         var maxHeight = this.imageEl.OriginHeight;
+
+        var canvas_left = this.canvasEl
         
         if(
                 this.isDocument &&
@@ -646,6 +656,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
                     (this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight) && width < this.minWidth * 0.9 ||
+
                     (this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight) && height < this.minHeight * 0.9 ||
                     width > maxWidth ||
                     height > maxHeight
