@@ -505,19 +505,19 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var newPreviewLeft = this.previewEl.getLeft(true) + leftDiff;
         var newPreviewTop = this.previewEl.getTop(true) + topDiff;
 
-        console.log("-------------");
+        Roo.log("-------------");
 
-        // console.log("old canvas width: " + oldCanvasWidth);
-        // console.log("old canvas height: " + oldCanvasHeight);
+        // Roo.log("old canvas width: " + oldCanvasWidth);
+        // Roo.log("old canvas height: " + oldCanvasHeight);
 
-        // console.log("new canvas width: " + this.canvasEl.width);
-        // console.log("new canvas height: " + this.canvasEl.height); 
+        // Roo.log("new canvas width: " + this.canvasEl.width);
+        // Roo.log("new canvas height: " + this.canvasEl.height); 
 
-        // console.log("old preview left: " + this.previewEl.getLeft(true));
-        // console.log("old preview top: " + this.previewEl.getTop(true));
+        // Roo.log("old preview left: " + this.previewEl.getLeft(true));
+        // Roo.log("old preview top: " + this.previewEl.getTop(true));
 
-        // console.log("new preview left: " + newPreviewLeft);
-        // console.log("new preview top: " + newPreviewTop); 
+        // Roo.log("new preview left: " + newPreviewLeft);
+        // Roo.log("new preview top: " + newPreviewTop); 
 
         this.previewEl.setLeft(newPreviewLeft);
         this.previewEl.setTop(newPreviewTop);
@@ -653,26 +653,26 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         var maxPadding = (newCanvasWidth >= newCanvasHeight) ? newCanvasWidth * 0.05 : newCanvasHeight * 0.05;
 
-        console.log("=================================");
-        console.log("old canvas width: " + this.canvasEl.width);
-        console.log("old canvas height: " + this.canvasEl.height);
+        Roo.log("=================================");
+        Roo.log("old canvas width: " + this.canvasEl.width);
+        Roo.log("old canvas height: " + this.canvasEl.height);
 
-        console.log("new canvas width: " + newCanvasWidth);
-        console.log("new canvas height: " + newCanvasHeight);
+        Roo.log("new canvas width: " + newCanvasWidth);
+        Roo.log("new canvas height: " + newCanvasHeight);
 
-        console.log("old preview left: " + this.previewEl.getLeft(true));
-        console.log("old preview top: " + this.previewEl.getTop(true));
+        Roo.log("old preview left: " + this.previewEl.getLeft(true));
+        Roo.log("old preview top: " + this.previewEl.getTop(true));
 
-        console.log("new preview left: " + newPreviewLeft);
-        console.log("new preview top: " + newPreviewTop);
+        Roo.log("new preview left: " + newPreviewLeft);
+        Roo.log("new preview top: " + newPreviewTop);
 
-        console.log("padding left: " + paddingLeft);
-        console.log("padding top: " + paddingTop);
+        Roo.log("padding left: " + paddingLeft);
+        Roo.log("padding top: " + paddingTop);
 
-        console.log("padding right: " + paddingRight);
-        console.log("padding bottom: " + paddingBottom);
+        Roo.log("padding right: " + paddingRight);
+        Roo.log("padding bottom: " + paddingBottom);
 
-        console.log("max padding: " + maxPadding);
+        Roo.log("max padding: " + maxPadding);
         
         if(
                 this.isDocument &&
