@@ -570,6 +570,13 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var maxX = Math.ceil(this.thumbEl.getLeft(true) + maxPaddingLeft);
         var maxY = Math.ceil(this.thumbEl.getTop(true) +  maxPaddingTop);
 
+        Roo.log("++++++++++++++++++");
+        
+        Roo.log("min X: " + minX);
+        Roo.log("min Y: " + minY);
+        Roo.log("max X: " + maxX);
+        Roo.log("max Y: " + maxY);
+
 
         if(minX > maxX) {
             var tempX = minX;
