@@ -554,7 +554,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         }
 
         var maxPaddingLeft = this.canvasEl.width * 0.05;
-        var maxPaddingTop = this.canvasEl.width * this.minHeight / this.minWidth * 0.05;
+        var maxPaddingTop = maxPaddingLeft * 2 / 3;
 
         if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight)) {
             maxPaddingLeft = (this.canvasEl.height * this.minWidth / this.minHeight - this.canvasEl.width) / 2 + maxPaddingLeft;
