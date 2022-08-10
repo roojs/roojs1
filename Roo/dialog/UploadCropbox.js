@@ -572,6 +572,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
 
         Roo.log("++++++++++++++++++");
         
+        Roo.log("maxPaddingLeft: " + maxPaddingLeft);
         Roo.log("min X: " + minX);
         Roo.log("min Y: " + minY);
         Roo.log("max X: " + maxX);
