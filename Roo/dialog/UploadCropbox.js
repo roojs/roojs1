@@ -402,7 +402,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         var file = this.selectorEl.dom.files[0];
 
-        Roo.log(file);
+        Roo.log(this.selectorEl.dom.files);
         
         if(this.fireEvent('inspect', this, file) != false){
             this.prepare(file);
