@@ -505,20 +505,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var newPreviewLeft = this.previewEl.getLeft(true) + leftDiff;
         var newPreviewTop = this.previewEl.getTop(true) + topDiff;
 
-        Roo.log("-------------");
-
-        // Roo.log("old canvas width: " + oldCanvasWidth);
-        // Roo.log("old canvas height: " + oldCanvasHeight);
-
-        // Roo.log("new canvas width: " + this.canvasEl.width);
-        // Roo.log("new canvas height: " + this.canvasEl.height); 
-
-        // Roo.log("old preview left: " + this.previewEl.getLeft(true));
-        // Roo.log("old preview top: " + this.previewEl.getTop(true));
-
-        // Roo.log("new preview left: " + newPreviewLeft);
-        // Roo.log("new preview top: " + newPreviewTop); 
-
         this.previewEl.setLeft(newPreviewLeft);
         this.previewEl.setTop(newPreviewTop);
         
@@ -569,16 +555,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         var maxX = Math.ceil(this.thumbEl.getLeft(true) + maxPaddingLeft);
         var maxY = Math.ceil(this.thumbEl.getTop(true) +  maxPaddingTop);
-
-        Roo.log("++++++++++++++++++");
-        
-        Roo.log("maxPaddingLeft: " + maxPaddingLeft);
-        Roo.log("maxPaddingTop: " + maxPaddingTop);
-        Roo.log("min X: " + minX);
-        Roo.log("min Y: " + minY);
-        Roo.log("max X: " + maxX);
-        Roo.log("max Y: " + maxY);
-
 
         if(minX > maxX) {
             var tempX = minX;
