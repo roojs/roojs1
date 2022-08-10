@@ -666,6 +666,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         Roo.log("old canvas width: " + this.canvasEl.width);
         Roo.log("old canvas height: " + this.canvasEl.height);
 
+        Roo.log("scale level: " + newCanvasHeight * this.minWidth / this.minHeight - newCanvasWidth);
         Roo.log("new canvas width: " + newCanvasWidth);
         Roo.log("new canvas height: " + newCanvasHeight);
 
