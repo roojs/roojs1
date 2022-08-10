@@ -552,6 +552,18 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         if (!this.dragable){
             return;
         }
+
+        var maxPaddingLeft = this.canvasEl.width > this.canvasEl.height ? this.canvasEl.width * 0.05 : this.canvasEl.height * 0.05;
+        var maxPaddingHeight = this.canvasEl.width > this.canvasEl.height ? this.canvasEl.width * 0.05 : this.canvasEl.height * 0.05;
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight)) {
+            maxPaddingLeft = (this.canvasEl.height * this.minWidth / this.minHeight - this.canvasEl.width) / 2 + maxPaddingTop;
+        }
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight)) {
+            maxPaddingTop = (newCanvasWidth * this.minHeight / this.minWidth - newCanvasHeight) / 2 + maxPaddingLeft;
+        }
+
         
         var minX = Math.ceil(this.thumbEl.getLeft(true));
         var minY = Math.ceil(this.thumbEl.getTop(true));
