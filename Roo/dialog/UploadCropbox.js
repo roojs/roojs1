@@ -436,7 +436,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             this.imageEl.addEventListener("load", function(){ _this.onLoadCanvas(); });
             
             // this.imageEl.src = src;
-            this.imageEl.src = 'http://localhost/web.MediaOutreach/Images/Download/162633/1000x500.png';
+            this.imageEl.src = 'http://localhost/web.MediaOutreach/press.local.php/Images/Download/162633/1000x500.png';
         }
     },
     
