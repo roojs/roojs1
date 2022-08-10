@@ -399,8 +399,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
             return;
         }
-
-        Roo.log(this.selectorEl.dom.files);
         
         var file = this.selectorEl.dom.files[0];
         
