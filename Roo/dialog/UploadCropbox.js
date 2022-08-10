@@ -655,6 +655,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         var maxPaddingTop = newCanvasWidth > newCanvasHeight ? newCanvasWidth * 0.05 : newCanvasHeight * 0.05;
 
         if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight)) {
+            Roo.log("scale level: " + (newCanvasHeight * this.minWidth / this.minHeight - newCanvasWidth) / 2 + maxPaddingTop);
             maxPaddingLeft = Math.ceil((newCanvasHeight * this.minWidth / this.minHeight - newCanvasWidth) / 2 + maxPaddingTop);
         }
 
@@ -666,7 +667,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         Roo.log("old canvas width: " + this.canvasEl.width);
         Roo.log("old canvas height: " + this.canvasEl.height);
 
-        Roo.log("scale level: " + (newCanvasHeight * this.minWidth / this.minHeight - newCanvasWidth) / 2 + maxPaddingTop);
         Roo.log("new canvas width: " + newCanvasWidth);
         Roo.log("new canvas height: " + newCanvasHeight);
 
