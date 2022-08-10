@@ -565,9 +565,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         }
 
         var testX = Math.ceil(this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - this.canvasEl.width - maxPaddingLeft);
-        Roo.log("+++++++++++++++++++");
-        Roo.log(this.thumbEl.getLeft(true) + this.thumbEl.getWidth());
-        Roo.log("test x: " + testX);
+        var testY = Math.ceil(this.thumbEl.getTop(true) + this.thumbEl.getHeight() - this.canvas.height - maxPaddingTop);
+
         
         var minX = Math.ceil(this.thumbEl.getLeft(true));
         var minY = Math.ceil(this.thumbEl.getTop(true));
