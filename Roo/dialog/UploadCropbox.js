@@ -564,7 +564,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             maxPaddingTop = (this.canvasEl.width * this.minHeight / this.minWidth - this.canvasEl.height) / 2 + maxPaddingLeft;
         }
 
-        var textX = Math.ceil(this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - this.canvasEl.width - maxPaddingTop);
+        var testX = Math.ceil(this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - this.canvasEl.width - maxPaddingLeft);
+        Roo.log("+++++++++++++++++++");
+        Roo.log("test x: " + testX);
         
         var minX = Math.ceil(this.thumbEl.getLeft(true));
         var minY = Math.ceil(this.thumbEl.getTop(true));
