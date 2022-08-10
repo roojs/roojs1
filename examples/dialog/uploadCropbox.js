@@ -55,6 +55,7 @@ var uploadCropbox = {
                                 beforeloadcanvas : function(self, src)
                                 {
                                     console.log(src);
+                                    src = 'http://localhost/web.MediaOutreach/press.local.php/Images/Download/162632/2000x1000.png';
                                 },
                                 loadcanvas : function (_self, imageEl)
                                 {
