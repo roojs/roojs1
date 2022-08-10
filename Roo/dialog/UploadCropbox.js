@@ -682,28 +682,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight)) {
             maxPaddingTop = (newCanvasWidth * this.minHeight / this.minWidth - newCanvasHeight) / 2 + maxPaddingTop;
         }
-
-        Roo.log("=================================");
-        Roo.log("old canvas width: " + this.canvasEl.width);
-        Roo.log("old canvas height: " + this.canvasEl.height);
-
-        Roo.log("new canvas width: " + newCanvasWidth);
-        Roo.log("new canvas height: " + newCanvasHeight);
-
-        Roo.log("old preview left: " + this.previewEl.getLeft(true));
-        Roo.log("old preview top: " + this.previewEl.getTop(true));
-
-        Roo.log("new preview left: " + newPreviewLeft);
-        Roo.log("new preview top: " + newPreviewTop);
-
-        Roo.log("padding left: " + paddingLeft);
-        Roo.log("padding top: " + paddingTop);
-
-        Roo.log("padding right: " + paddingRight);
-        Roo.log("padding bottom: " + paddingBottom);
-
-        Roo.log("max padding left: " + maxPaddingLeft);
-        Roo.log("max padding top: " + maxPaddingTop);
         
         if(
                 this.isDocument &&
