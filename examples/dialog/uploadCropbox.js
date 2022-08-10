@@ -52,6 +52,10 @@ var uploadCropbox = {
                                     _this.cropbox.bodyEl.dom.style.height = (parseInt(_this.cropbox.bodyEl.dom.parentNode.parentNode.parentNode.style.height) - 34) + 'px';
                                     _this.cropbox.bodyEl.dom.style.maxHeight = (parseInt(_this.cropbox.bodyEl.dom.parentNode.parentNode.parentNode.style.height) - 34) + 'px';
                                 },
+                                beforeloadcanvas : function(self, src)
+                                {
+                                    console.log(src);
+                                },
                                 loadcanvas : function (_self, imageEl)
                                 {
                                     if(imageEl.OriginWidth < 720) {
