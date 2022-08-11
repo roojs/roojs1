@@ -44175,15 +44175,12 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             
             this.imageEl.addEventListener("load", function(){ _this.onLoadCanvas(); });
             
-            Roo.log("loadCanvas");
-            Roo.log(src);
             this.imageEl.src = src;
         }
     },
     
     onLoadCanvas : function()
     {   
-        Roo.log("onLoadCanvas");
         this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
 
@@ -45266,8 +45263,6 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 }
                 
                 var url = _this.urlAPI.createObjectURL(_this.file);
-
-                Roo.log(url);
                 
                 _this.loadCanvas(url);
                 
