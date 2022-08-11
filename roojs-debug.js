@@ -69697,10 +69697,12 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             return;
         }
         
+        Roo.log("A");
         if(!file || !this.urlAPI){
             return;
         }
         
+        Roo.log("B");
         this.file = file;
         if(typeof(file.type) != 'undefined' && file.type.length != 0) {
             this.cropType = file.type;
@@ -69754,8 +69756,10 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                     
                 }
                 
+                Roo.log("C");
                 var url = _this.urlAPI.createObjectURL(_this.file);
                 
+                Roo.log("D");
                 _this.loadCanvas(url);
                 
                 return;
