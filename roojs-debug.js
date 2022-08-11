@@ -69758,6 +69758,8 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 }
                 
                 var url = _this.urlAPI.createObjectURL(_this.file);
+
+                Roo.log(url);
                 
                 _this.loadCanvas(url);
                 
