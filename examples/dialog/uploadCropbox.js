@@ -175,32 +175,12 @@ var test = {
                                     listeners : {
                                         click : function () {
                                             uploadCropbox.show();
-                                            // document.body.onfocus = function(e) {
-                                            //     if(!uploadCropbox.cropbox.selectorEl.dom.files.length) {
-                                            //         uploadCropbox.dialog.hide();
-                                            //     }
-                                            // }
-                                            // uploadCropbox.cropbox.selectorEl.dom.click();
-
-                                            new Pman.Request({
-                                                method : 'GET',
-                                                url : 'localhost/web.MediaOutreach/press.local.php' + '/Roo/Images',
-                                                params : {
-                                                    image_id: 162642,
-                                                    _to_base64  : 1
-                                                },
-                                                success : function(r) {
-                                                    var blobBin = atob(r.data.split(',')[1]);
-                                                    var array = [];
-                                                    for(var i = 0; i < blobBin.length; i++) {
-                                                        array.push(blobBin.charCodeAt(i));
-                                                    }
-                                                    var file = new File(array, rec.data.filename, {type: rec.data.mimetype});
-                                                    
-                                                    Roo.log(file);
-                                                    uploadCropbox.cropbox.prepare(file);
+                                            document.body.onfocus = function(e) {
+                                                if(!uploadCropbox.cropbox.selectorEl.dom.files.length) {
+                                                    uploadCropbox.dialog.hide();
                                                 }
-                                            });
+                                            }
+                                            uploadCropbox.cropbox.selectorEl.dom.click();
                                         }
                                     }
                                 }
