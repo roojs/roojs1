@@ -378,10 +378,13 @@
                 </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.FilterBlock</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">node </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">div </span><span class="jsdoc-syntax">});
             }
             </span><span class="jsdoc-comment">//?? tidy?
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tidy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.TidySerializer</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">inner</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true
-            </span><span class="jsdoc-syntax">});
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tidy.serialize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">div</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoClean</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tidy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.TidySerializer</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">inner</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true
+                </span><span class="jsdoc-syntax">});
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tidy.serialize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">div</span><span class="jsdoc-syntax">);
+
+            }
 
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isSafari</span><span class="jsdoc-syntax">){
