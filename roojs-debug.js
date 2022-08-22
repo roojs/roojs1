@@ -16992,6 +16992,13 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
      */
     actionMode : "el",
 
+	 /**
+     * @cfg {String} style
+     * css styles to add to component
+     * eg. text-align:right;
+     */
+    style : false,
+	
     /** @private */
     getActionEl : function(){
         return this[this.actionMode];
@@ -50194,10 +50201,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
             //?? tidy?
-            var tidy = new Roo.htmleditor.TidySerializer({
-                inner:  true
-            });
-            var html  = tidy.serialize(div);
+            if (this.autoClean) {
+                var tidy = new Roo.htmleditor.TidySerializer({
+                    inner:  true
+                });
+                var html  = tidy.serialize(div);
+                
+            }
             
             
             if(Roo.isSafari){

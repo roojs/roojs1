@@ -25702,10 +25702,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
             //?? tidy?
-            var tidy = new Roo.htmleditor.TidySerializer({
-                inner:  true
-            });
-            var html  = tidy.serialize(div);
+            if (this.autoClean) {
+                var tidy = new Roo.htmleditor.TidySerializer({
+                    inner:  true
+                });
+                var html  = tidy.serialize(div);
+                
+            }
             
             
             if(Roo.isSafari){

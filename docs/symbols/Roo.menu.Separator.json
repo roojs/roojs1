@@ -91,6 +91,14 @@
       "optvals" : []
     },
     {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "css styles to add to component\neg. text-align:right;",
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "allowDomMove",
       "type" : "Boolean",
       "desc" : "Whether the component can move the Dom node when rendering (defaults to true).",
