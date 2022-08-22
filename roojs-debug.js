@@ -50200,12 +50200,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (this.enableBlocks) {
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
+            
+            var html = div.innerHTML;
+            
             //?? tidy?
             if (this.autoClean) {
                 var tidy = new Roo.htmleditor.TidySerializer({
                     inner:  true
                 });
-                var html  = tidy.serialize(div);
+                html  = tidy.serialize(div);
                 
             }
             
