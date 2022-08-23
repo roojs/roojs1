@@ -29317,6 +29317,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             //?? tidy?
             if (this.autoClean) {
+                
+                new Roo.htmleditor.FilterAttributes({
+                    node : div,
+                    attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan', 'data-display', 'data-width', 'start'],
+                    attrib_clean : ['href', 'src' ] 
+                });
+                
                 var tidy = new Roo.htmleditor.TidySerializer({
                     inner:  true
                 });
