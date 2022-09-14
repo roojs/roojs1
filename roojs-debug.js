@@ -50208,7 +50208,25 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
                 new Roo.htmleditor.FilterAttributes({
                     node : div,
-                    attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan', 'data-display', 'data-width', 'start' , 'style'],
+                    attrib_white : [
+                            'href',
+                            'src',
+                            'name',
+                            'align',
+                            'colspan',
+                            'rowspan',
+                            'data-display',
+                            'data-width',
+                            'start' ,
+                            'style',
+                            // youtube embed.
+                            'class',
+                            'allowfullscreen',
+                            'frameborder',
+                            'width',
+                            'height',
+                            'alt'
+                            ],
                     attrib_clean : ['href', 'src' ] 
                 });
                 
