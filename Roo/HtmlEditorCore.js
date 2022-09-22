@@ -377,11 +377,42 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (this.enableBlocks) {
                 new Roo.htmleditor.FilterBlock({ node : div });
             }
+            
+            var html = div.innerHTML;
+            
             //?? tidy?
-            var tidy = new Roo.htmleditor.TidySerializer({
-                inner:  true
-            });
-            var html  = tidy.serialize(div);
+            if (this.autoClean) {
+                
+                new Roo.htmleditor.FilterAttributes({
+                    node : div,
+                    attrib_white : [
+                            'href',
+                            'src',
+                            'name',
+                            'align',
+                            'colspan',
+                            'rowspan',
+                            'data-display',
+                            'data-width',
+                            'start' ,
+                            'style',
+                            // youtube embed.
+                            'class',
+                            'allowfullscreen',
+                            'frameborder',
+                            'width',
+                            'height',
+                            'alt'
+                            ],
+                    attrib_clean : ['href', 'src' ] 
+                });
+                
+                var tidy = new Roo.htmleditor.TidySerializer({
+                    inner:  true
+                });
+                html  = tidy.serialize(div);
+                
+            }
             
             
             if(Roo.isSafari){

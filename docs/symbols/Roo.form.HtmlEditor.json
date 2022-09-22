@@ -109,6 +109,14 @@
       "optvals" : []
     },
     {
+      "name" : "style",
+      "type" : "String",
+      "desc" : "css styles to add to component\neg. text-align:right;",
+      "memberOf" : "Roo.Component",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "clearUp",
       "type" : "Boolean",
       "desc" : "",

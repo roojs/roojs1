@@ -16992,6 +16992,13 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
      */
     actionMode : "el",
 
+	 /**
+     * @cfg {String} style
+     * css styles to add to component
+     * eg. text-align:right;
+     */
+    style : false,
+	
     /** @private */
     getActionEl : function(){
         return this[this.actionMode];
