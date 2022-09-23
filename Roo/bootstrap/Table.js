@@ -1432,6 +1432,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      */
     autoSize : function()
     {
+        if(this.disableAutoSize) {
+            return;
+        }
         //var ctr = Roo.get(this.container.dom.parentElement);
         var ctr = Roo.get(this.el.dom);
         
