@@ -45134,7 +45134,9 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
         //    this.el.dom.defaultChecked = this.checked;
         //}
         this.setChecked(String(v) === String(this.inputValue), suppressEvent);
+        this.inSetChecked = true;
         this.el.dom.form[this.name] = v;
+        this.inSetChecked = false;
         //this.fireEvent("check", this, this.checked);
     },
     // private..
@@ -45153,10 +45155,9 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
         }
-        this.inSetChecked = true;
 		 
 		  
-        this.inSetChecked = false;
+       
         
     }
 
