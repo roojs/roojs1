@@ -97,8 +97,7 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
         }
         this.inSetChecked = true;
 		 
-		this.el.dom.value = state ? this.inputValue : this.valueOff;
-		 
+		  
         this.inSetChecked = false;
         
     },
