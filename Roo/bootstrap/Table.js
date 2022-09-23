@@ -266,6 +266,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     footerShow : true,
     headerShow : true,
     enableColumnResize: true,
+    disableAutoSize: false,
   
     rowSelection : false,
     cellSelection : false,
