@@ -428,7 +428,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     initCSS : function()
     {
-        
+        if(this.disableAutoSize) {
+            Roo.log("DISABLEINITCSS");
+            return;
+        }
         
         var cm = this.cm, styles = [];
         this.CSS.removeStyleSheet(this.id + '-cssrules');
