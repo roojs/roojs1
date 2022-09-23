@@ -45135,7 +45135,7 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
         //}
         this.setChecked(String(v) === String(this.inputValue), suppressEvent);
         
-        this.el.dom.form[this.name] = v;
+        this.el.dom.form[this.name].value = v;
      
         //this.fireEvent("check", this, this.checked);
     },
