@@ -45025,7 +45025,9 @@ Roo.extend(Roo.form.Checkbox, Roo.form.Field,  {
             this.fireEvent('check', this, state);
         }
         this.inSetChecked = true;
-        this.el.dom.value = state ? this.inputValue : this.valueOff;
+		 
+		this.el.dom.value = state ? this.inputValue : this.valueOff;
+		 
         this.inSetChecked = false;
         
     },
@@ -54290,6 +54292,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             for(id in values){
                 if(typeof values[id] != 'function' && (field = this.findField(id))){
                     
+                    
+                    
+                    
                     if (field.setFromData && 
                         field.valueField && 
                         field.displayField &&
@@ -54304,6 +54309,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                         sd[field.displayField] = typeof(values[field.name]) == 'undefined' ? '' : values[field.name];
                         field.setFromData(sd);
                         
+                    } else if (field.inputType && field.inputType == 'radio') {
+                        
+                        field.setValue(values[id]);
                     } else {
                         field.setValue(values[id]);
                     }
@@ -54329,7 +54337,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     /**
      * Returns the fields in this form as an object with key/value pairs. If multiple fields exist with the same name
      * they are returned as an array.
-     * @param {Boolean} asString (default false)
+     * @param {Boolean} asString (def)
      * @return {Object}
      */
     getValues : function(asString)
