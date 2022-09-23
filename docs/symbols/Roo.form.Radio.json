@@ -317,7 +317,7 @@
       "desc" : "Sets the checked state of the checkbox.\nOn is always based on a string comparison between inputValue and the param.",
       "sig" : "(value, suppressEvent)",
       "static" : false,
-      "memberOf" : "Roo.form.Checkbox",
+      "memberOf" : "",
       "isStatic" : false,
       "isConstructor" : false,
       "isPrivate" : false,

@@ -20526,7 +20526,9 @@ Roo.extend(Roo.form.Checkbox, Roo.form.Field,  {
             this.fireEvent('check', this, state);
         }
         this.inSetChecked = true;
-        this.el.dom.value = state ? this.inputValue : this.valueOff;
+		 
+		this.el.dom.value = state ? this.inputValue : this.valueOff;
+		 
         this.inSetChecked = false;
         
     },
@@ -20617,8 +20619,48 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
             this.el.dom.checked =   'checked' ;
         }
          
+    },
+    /**
+     * Sets the checked state of the checkbox.
+     * On is always based on a string comparison between inputValue and the param.
+     * @param {Boolean/String} value - the value to set 
+     * @param {Boolean/String} suppressEvent - whether to suppress the checkchange event.
+     */
+    setValue : function(v,suppressEvent){
+        
+        
+        //this.checked = (v === true || v === 'true' || v == '1' || String(v).toLowerCase() == 'on');
+        //if(this.el && this.el.dom){
+        //    this.el.dom.checked = this.checked;
+        //    this.el.dom.defaultChecked = this.checked;
+        //}
+        this.setChecked(String(v) === String(this.inputValue), suppressEvent);
+        
+        this.el.dom.form[this.name].value = v;
+     
+        //this.fireEvent("check", this, this.checked);
+    },
+    // private..
+    setChecked : function(state,suppressEvent)
+    {
+         
+        if(this.wrap){
+            this.wrap[state ? 'addClass' : 'removeClass']('x-menu-item-checked');
+        }
+        this.checked = state;
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+		 
+		  
+       
+        
+    },
+    reset : function(){
+        // this.setValue(this.resetValue);
+        //this.originalValue = this.getValue();
+        this.clearInvalid();
     } 
-    
     
 });Roo.rtf = {}; // namespace
 Roo.rtf.Hex = function(hex)
@@ -29791,6 +29833,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             for(id in values){
                 if(typeof values[id] != 'function' && (field = this.findField(id))){
                     
+                    
+                    
+                    
                     if (field.setFromData && 
                         field.valueField && 
                         field.displayField &&
@@ -29805,6 +29850,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                         sd[field.displayField] = typeof(values[field.name]) == 'undefined' ? '' : values[field.name];
                         field.setFromData(sd);
                         
+                    } else if (field.inputType && field.inputType == 'radio') {
+                        
+                        field.setValue(values[id]);
                     } else {
                         field.setValue(values[id]);
                     }
@@ -29830,7 +29878,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     /**
      * Returns the fields in this form as an object with key/value pairs. If multiple fields exist with the same name
      * they are returned as an array.
-     * @param {Boolean} asString
+     * @param {Boolean} asString (def)
      * @return {Object}
      */
     getValues : function(asString)
