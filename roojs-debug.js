@@ -45154,8 +45154,12 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
 		  
        
         
-    }
-
+    },
+    reset : function(){
+        // this.setValue(this.resetValue);
+        //this.originalValue = this.getValue();
+        this.clearInvalid();
+    } 
     
 });Roo.rtf = {}; // namespace
 Roo.rtf.Hex = function(hex)

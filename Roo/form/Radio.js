@@ -98,9 +98,9 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
         
     },
     reset : function(){
-       // this.setValue(this.resetValue);
+        // this.setValue(this.resetValue);
         //this.originalValue = this.getValue();
         this.clearInvalid();
-    },
+    } 
     
 });
