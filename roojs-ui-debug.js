@@ -29830,7 +29830,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     /**
      * Returns the fields in this form as an object with key/value pairs. If multiple fields exist with the same name
      * they are returned as an array.
-     * @param {Boolean} asString
+     * @param {Boolean} asString (default false)
      * @return {Object}
      */
     getValues : function(asString)
