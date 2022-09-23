@@ -60,7 +60,48 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
             this.el.dom.checked =   'checked' ;
         }
          
-    } 
+    },
+    /**
+     * Sets the checked state of the checkbox.
+     * On is always based on a string comparison between inputValue and the param.
+     * @param {Boolean/String} value - the value to set 
+     * @param {Boolean/String} suppressEvent - whether to suppress the checkchange event.
+     */
+    setValue : function(v,suppressEvent){
+        
+        
+        //this.checked = (v === true || v === 'true' || v == '1' || String(v).toLowerCase() == 'on');
+        //if(this.el && this.el.dom){
+        //    this.el.dom.checked = this.checked;
+        //    this.el.dom.defaultChecked = this.checked;
+        //}
+        this.setChecked(String(v) === String(this.inputValue), suppressEvent);
+        this.el.dom.form[this.name] = v;
+        //this.fireEvent("check", this, this.checked);
+    },
+    // private..
+    setChecked : function(state,suppressEvent)
+    {
+        if (this.inSetChecked) {
+            this.checked = state;
+            return;
+        }
+        
     
+        if(this.wrap){
+            this.wrap[state ? 'addClass' : 'removeClass']('x-menu-item-checked');
+        }
+        this.checked = state;
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+        this.inSetChecked = true;
+		 
+		this.el.dom.value = state ? this.inputValue : this.valueOff;
+		 
+        this.inSetChecked = false;
+        
+    },
+
     
 });
