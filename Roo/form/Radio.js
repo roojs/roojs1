@@ -100,7 +100,7 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
 		  
         this.inSetChecked = false;
         
-    },
+    }
 
     
 });
