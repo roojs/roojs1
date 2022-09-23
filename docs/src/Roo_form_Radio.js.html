@@ -77,7 +77,7 @@
         //}
         </span><span class="jsdoc-var">this.setChecked</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-var">String</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputValue</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-var">this.el.dom.form</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.el.dom.form</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-comment">//this.fireEvent(&quot;check&quot;, this, this.checked);
     </span><span class="jsdoc-syntax">},
