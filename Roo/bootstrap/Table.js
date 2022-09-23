@@ -88,6 +88,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
  * @cfg {Boolean} enableColumnResize default true if columns can be resized = needs scrollBody to be set to work (drag/drop)
+ * @cfg {Boolean} disableAutoSize disable auto size
  *
  * 
  * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
