@@ -251,6 +251,10 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         var placement = typeof this.placement == 'function' ?
             this.placement.call(this, this.el, on_el) :
             this.placement;
+
+        if(this.bindEl.attr('tooltip-placement')) {
+            placement = this.bindEl.attr('tooltip-placement');
+        }
             
         var autoToken = /\s?auto?\s?/i;
         var autoPlace = autoToken.test(placement);
