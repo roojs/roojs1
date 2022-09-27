@@ -32860,6 +32860,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             return;
         }
         //this.el.setXY([0,0]);
+        this.el.addClass(this.bindEl.attr('tooltip-class'));
         this.el.removeClass(['show', 'in']);
         //this.el.hide();
         
