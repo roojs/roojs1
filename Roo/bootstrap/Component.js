@@ -19,6 +19,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {string} dataId cutomer id
  * @cfg {string} name Specifies name attribute
  * @cfg {string} tooltip  Text for the tooltip
+ * @cfg {string} tooltipClass Class for the tooltip element
  * @cfg {string} container_method method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)
  * @cfg {string|object} visibilityEl (el|parent) What element to use for visibility (@see getVisibilityEl())
  
@@ -59,6 +60,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     autoCreate : false,
     
     tooltip : null,
+
+    tooltipClass : null,
     /**
      * Initialize Events for the element
      */
@@ -134,6 +137,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         if (this.tooltip) {
             this.tooltipEl().attr('tooltip', this.tooltip);
+        }
+
+        if (this.tooltipClass) {
+            this.tooltipEl().attr('tooltipClass', this.tooltipClass);
         }
         
         if(this.tabIndex !== undefined){
