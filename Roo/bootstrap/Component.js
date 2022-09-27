@@ -140,7 +140,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
 
         if (this.tooltipClass) {
-            this.tooltipEl().attr('tooltipClass', this.tooltipClass);
+            this.tooltipEl().attr('tooltip-class', this.tooltipClass);
         }
         
         if(this.tabIndex !== undefined){
