@@ -252,8 +252,6 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             this.placement.call(this, this.el, on_el) :
             this.placement;
 
-        Roo.log("TOOLTIP_PLACEMENT");
-        Roo.log(this.bindEl.attr('tooltip-placement'));
         if(this.bindEl.attr('tooltip-placement')) {
             placement = this.bindEl.attr('tooltip-placement');
         }
