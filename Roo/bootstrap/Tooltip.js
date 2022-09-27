@@ -245,6 +245,8 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         
         this.el.removeClass(['fade','top','bottom', 'left', 'right','in',
                              'bs-tooltip-top','bs-tooltip-bottom', 'bs-tooltip-left', 'bs-tooltip-right']);
+
+        this.el.addClass(this.bindEl.attr('tooltip-class'));
         
         var placement = typeof this.placement == 'function' ?
             this.placement.call(this, this.el, on_el) :
