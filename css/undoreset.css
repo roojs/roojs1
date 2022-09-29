@@ -41,8 +41,9 @@ menu, .undoreset nav, .undoreset output, .undoreset ruby, .undoreset section, .u
 .undoreset ol { display: block;   list-style-type: decimal; margin: 1em 0; padding-left: 40px; }
 .undoreset li { display: list-item; }
 /* Pre */
-.undoreset pre, .undoreset code { display: block; font-family: Courier New; white-space: pre; margin: 1em 0; }
-
+.undoreset pre, .undoreset code {  font-family: Courier New; margin: 1em 0; }
+.undoreset pre { display: block; white-space: pre;}
+.undoreset code { display: inline-block; white-space: normal;}
 
 /** sneaked in here - as this file is used by editor */
 .roo-htmleditor-body [contenteditable=true]:focus-visible {
