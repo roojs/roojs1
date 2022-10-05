@@ -410,8 +410,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         if (this.allowBlank ) {
             indicator.style = this.allowBlank ? ' display:none' : '';
         }
-
-        Roo.log(align);
         if (align ==='left' && this.fieldLabel.length) {
             
             cfg.cls += ' roo-form-group-label-left'  + (Roo.bootstrap.version == 4 ? ' row' : '');
