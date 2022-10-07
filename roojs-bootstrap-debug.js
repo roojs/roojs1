@@ -12161,68 +12161,68 @@ Roo.form.VTypes = function(){
          * The function used to validate email addresses
          * @param {String} value The email address
          */
-        'email' : function(v){
+        email : function(v){
             return email.test(v);
         },
         /**
          * The error text to display when the email validation function returns false
          * @type String
          */
-        'emailText' : 'This field should be an e-mail address in the format "user@domain.com"',
+        emailText : 'This field should be an e-mail address in the format "user@domain.com"',
         /**
          * The keystroke filter mask to be applied on email input
          * @type RegExp
          */
-        'emailMask' : /[a-z0-9_\.\-@]/i,
+        emailMask : /[a-z0-9_\.\-@]/i,
 
         /**
          * The function used to validate URLs
          * @param {String} value The URL
          */
-        'url' : function(v){
+        url : function(v){
             return url.test(v);
         },
         /**
          * The error text to display when the url validation function returns false
          * @type String
          */
-        'urlText' : 'This field should be a URL in the format "http:/'+'/www.domain.com"',
+        urlText : 'This field should be a URL in the format "http:/'+'/www.domain.com"',
         
         /**
          * The function used to validate alpha values
          * @param {String} value The value
          */
-        'alpha' : function(v){
+        alpha : function(v){
             return alpha.test(v);
         },
         /**
          * The error text to display when the alpha validation function returns false
          * @type String
          */
-        'alphaText' : 'This field should only contain letters and _',
+        alphaText : 'This field should only contain letters and _',
         /**
          * The keystroke filter mask to be applied on alpha input
          * @type RegExp
          */
-        'alphaMask' : /[a-z_]/i,
+        alphaMask : /[a-z_]/i,
 
         /**
          * The function used to validate alphanumeric values
          * @param {String} value The value
          */
-        'alphanum' : function(v){
+        alphanum : function(v){
             return alphanum.test(v);
         },
         /**
          * The error text to display when the alphanumeric validation function returns false
          * @type String
          */
-        'alphanumText' : 'This field should only contain letters, numbers and _',
+        alphanumText : 'This field should only contain letters, numbers and _',
         /**
          * The keystroke filter mask to be applied on alphanumeric input
          * @type RegExp
          */
-        'alphanumMask' : /[a-z0-9_]/i
+        alphanumMask : /[a-z0-9_]/i
     };
 }();/*
  * - LGPL
