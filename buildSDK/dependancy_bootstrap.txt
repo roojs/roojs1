@@ -142,6 +142,7 @@ Roo.htmleditor.FilterLongBr
 Roo.htmleditor.FilterBlock
 Roo.htmleditor.TidySerializer
 Roo.htmleditor.TidyWriter
+Roo.htmleditor.TidyEntities
 Roo.htmleditor.KeyEnter
 
 Roo.htmleditor.Block
