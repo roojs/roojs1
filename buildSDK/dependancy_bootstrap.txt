@@ -140,6 +140,7 @@ Roo.htmleditor.FilterWord
 Roo.htmleditor.FilterStyleToTag
 Roo.htmleditor.FilterLongBr
 Roo.htmleditor.FilterBlock
+Roo.htmleditor.TidySerializer
 Roo.htmleditor.KeyEnter
 
 Roo.htmleditor.Block
