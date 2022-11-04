@@ -5513,7 +5513,7 @@ Roo.DomHelper = function(){
         if (typeof(o) == 'string') {
             return parentNode.appendChild(document.createTextNode(o));
         }
-        o.tag = o.tag || div;
+        o.tag = o.tag || 'div';
         if (o.ns && Roo.isIE) {
             ns = false;
             o.tag = o.ns + ':' + o.tag;
@@ -45025,7 +45025,9 @@ Roo.extend(Roo.form.Checkbox, Roo.form.Field,  {
             this.fireEvent('check', this, state);
         }
         this.inSetChecked = true;
-        this.el.dom.value = state ? this.inputValue : this.valueOff;
+		 
+		this.el.dom.value = state ? this.inputValue : this.valueOff;
+		 
         this.inSetChecked = false;
         
     },
@@ -45116,8 +45118,48 @@ Roo.extend(Roo.form.Radio, Roo.form.Checkbox, {
             this.el.dom.checked =   'checked' ;
         }
          
+    },
+    /**
+     * Sets the checked state of the checkbox.
+     * On is always based on a string comparison between inputValue and the param.
+     * @param {Boolean/String} value - the value to set 
+     * @param {Boolean/String} suppressEvent - whether to suppress the checkchange event.
+     */
+    setValue : function(v,suppressEvent){
+        
+        
+        //this.checked = (v === true || v === 'true' || v == '1' || String(v).toLowerCase() == 'on');
+        //if(this.el && this.el.dom){
+        //    this.el.dom.checked = this.checked;
+        //    this.el.dom.defaultChecked = this.checked;
+        //}
+        this.setChecked(String(v) === String(this.inputValue), suppressEvent);
+        
+        this.el.dom.form[this.name].value = v;
+     
+        //this.fireEvent("check", this, this.checked);
+    },
+    // private..
+    setChecked : function(state,suppressEvent)
+    {
+         
+        if(this.wrap){
+            this.wrap[state ? 'addClass' : 'removeClass']('x-menu-item-checked');
+        }
+        this.checked = state;
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+		 
+		  
+       
+        
+    },
+    reset : function(){
+        // this.setValue(this.resetValue);
+        //this.originalValue = this.getValue();
+        this.clearInvalid();
     } 
-    
     
 });Roo.rtf = {}; // namespace
 Roo.rtf.Hex = function(hex)
@@ -50208,7 +50250,25 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
                 new Roo.htmleditor.FilterAttributes({
                     node : div,
-                    attrib_white : ['href', 'src', 'name', 'align', 'colspan', 'rowspan', 'data-display', 'data-width', 'start'],
+                    attrib_white : [
+                            'href',
+                            'src',
+                            'name',
+                            'align',
+                            'colspan',
+                            'rowspan',
+                            'data-display',
+                            'data-width',
+                            'start' ,
+                            'style',
+                            // youtube embed.
+                            'class',
+                            'allowfullscreen',
+                            'frameborder',
+                            'width',
+                            'height',
+                            'alt'
+                            ],
                     attrib_clean : ['href', 'src' ] 
                 });
                 
@@ -54272,6 +54332,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             for(id in values){
                 if(typeof values[id] != 'function' && (field = this.findField(id))){
                     
+                    
+                    
+                    
                     if (field.setFromData && 
                         field.valueField && 
                         field.displayField &&
@@ -54286,6 +54349,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
                         sd[field.displayField] = typeof(values[field.name]) == 'undefined' ? '' : values[field.name];
                         field.setFromData(sd);
                         
+                    } else if (field.inputType && field.inputType == 'radio') {
+                        
+                        field.setValue(values[id]);
                     } else {
                         field.setValue(values[id]);
                     }
@@ -54311,7 +54377,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     /**
      * Returns the fields in this form as an object with key/value pairs. If multiple fields exist with the same name
      * they are returned as an array.
-     * @param {Boolean} asString
+     * @param {Boolean} asString (def)
      * @return {Object}
      */
     getValues : function(asString)
@@ -55793,68 +55859,68 @@ Roo.form.VTypes = function(){
          * The function used to validate email addresses
          * @param {String} value The email address
          */
-        'email' : function(v){
+        email : function(v){
             return email.test(v);
         },
         /**
          * The error text to display when the email validation function returns false
          * @type String
          */
-        'emailText' : 'This field should be an e-mail address in the format "user@domain.com"',
+        emailText : 'This field should be an e-mail address in the format "user@domain.com"',
         /**
          * The keystroke filter mask to be applied on email input
          * @type RegExp
          */
-        'emailMask' : /[a-z0-9_\.\-@]/i,
+        emailMask : /[a-z0-9_\.\-@]/i,
 
         /**
          * The function used to validate URLs
          * @param {String} value The URL
          */
-        'url' : function(v){
+        url : function(v){
             return url.test(v);
         },
         /**
          * The error text to display when the url validation function returns false
          * @type String
          */
-        'urlText' : 'This field should be a URL in the format "http:/'+'/www.domain.com"',
+        urlText : 'This field should be a URL in the format "http:/'+'/www.domain.com"',
         
         /**
          * The function used to validate alpha values
          * @param {String} value The value
          */
-        'alpha' : function(v){
+        alpha : function(v){
             return alpha.test(v);
         },
         /**
          * The error text to display when the alpha validation function returns false
          * @type String
          */
-        'alphaText' : 'This field should only contain letters and _',
+        alphaText : 'This field should only contain letters and _',
         /**
          * The keystroke filter mask to be applied on alpha input
          * @type RegExp
          */
-        'alphaMask' : /[a-z_]/i,
+        alphaMask : /[a-z_]/i,
 
         /**
          * The function used to validate alphanumeric values
          * @param {String} value The value
          */
-        'alphanum' : function(v){
+        alphanum : function(v){
             return alphanum.test(v);
         },
         /**
          * The error text to display when the alphanumeric validation function returns false
          * @type String
          */
-        'alphanumText' : 'This field should only contain letters, numbers and _',
+        alphanumText : 'This field should only contain letters, numbers and _',
         /**
          * The keystroke filter mask to be applied on alphanumeric input
          * @type RegExp
          */
-        'alphanumMask' : /[a-z0-9_]/i
+        alphanumMask : /[a-z0-9_]/i
     };
 }();//<script type="text/javascript">
 
@@ -68625,6 +68691,9 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
             case 'download' :
                 this.download(e);
                 break;
+            case 'center' :
+                this.center(e);
+                break;
             default :
                 break;
         }
@@ -68665,6 +68734,11 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
     download : function(e)
     {
         this.fireEvent('download', this);
+    },
+
+    center : function(e)
+    {
+        this.setCanvasPosition();
     },
     
     loadCanvas : function(src)
@@ -68720,17 +68794,37 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
     },
     
-    setCanvasPosition : function()
+    setCanvasPosition : function(center = true)
     {   
         if(!this.canvasEl){
             return;
         }
+
+        var newCenterLeft = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
+        var newCenterTop = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
+
+        if(center) {
+            this.previewEl.setLeft(newCenterLeft);
+            this.previewEl.setTop(newCenterTop);
+
+            return;
+        }
         
-        var pw = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
-        var ph = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
-        
-        this.previewEl.setLeft(pw);
-        this.previewEl.setTop(ph);
+        var oldScaleLevel = this.baseScale * Math.pow(1.02, this.startScale);
+        var oldCanvasWidth = Math.floor(this.imageEl.OriginWidth * oldScaleLevel);
+        var oldCanvasHeight = Math.floor(this.imageEl.OriginHeight * oldScaleLevel);
+
+        var oldCenterLeft = Math.ceil((this.bodyEl.getWidth() - oldCanvasWidth) / 2);
+        var oldCenterTop = Math.ceil((this.bodyEl.getHeight() - oldCanvasHeight) / 2);
+
+        var leftDiff = newCenterLeft - oldCenterLeft;
+        var topDiff = newCenterTop - oldCenterTop;
+
+        var newPreviewLeft = this.previewEl.getLeft(true) + leftDiff;
+        var newPreviewTop = this.previewEl.getTop(true) + topDiff;
+
+        this.previewEl.setLeft(newPreviewLeft);
+        this.previewEl.setTop(newPreviewTop);
         
     },
     
@@ -68762,12 +68856,23 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         if (!this.dragable){
             return;
         }
+
+        var maxPaddingLeft = this.canvasEl.width / 0.9 * 0.05;
+        var maxPaddingTop = maxPaddingLeft * this.minHeight / this.minWidth;
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight)) {
+            maxPaddingLeft = (this.canvasEl.height * this.minWidth / this.minHeight - this.canvasEl.width) / 2 + maxPaddingLeft;
+        }
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight)) {
+            maxPaddingTop = (this.canvasEl.width * this.minHeight / this.minWidth - this.canvasEl.height) / 2 + maxPaddingTop;
+        }
         
-        var minX = Math.ceil(this.thumbEl.getLeft(true));
-        var minY = Math.ceil(this.thumbEl.getTop(true));
+        var minX = Math.ceil(this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - this.canvasEl.width - maxPaddingLeft);
+        var minY = Math.ceil(this.thumbEl.getTop(true) + this.thumbEl.getHeight() - this.canvasEl.height - maxPaddingTop);
         
-        var maxX = Math.ceil(minX + this.thumbEl.getWidth() - this.canvasEl.width);
-        var maxY = Math.ceil(minY + this.thumbEl.getHeight() - this.canvasEl.height);
+        var maxX = Math.ceil(this.thumbEl.getLeft(true) + maxPaddingLeft);
+        var maxY = Math.ceil(this.thumbEl.getTop(true) +  maxPaddingTop);
 
         if(minX > maxX) {
             var tempX = minX;
@@ -68838,6 +68943,39 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
  
         var maxWidth = this.imageEl.OriginWidth;
         var maxHeight = this.imageEl.OriginHeight;
+
+
+        var newCanvasWidth = Math.floor(this.imageEl.OriginWidth * this.getScaleLevel());
+        var newCanvasHeight = Math.floor(this.imageEl.OriginHeight * this.getScaleLevel());
+
+        var oldCenterLeft = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
+        var oldCenterTop = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
+
+        var newCenterLeft = Math.ceil((this.bodyEl.getWidth() - newCanvasWidth) / 2);
+        var newCenterTop = Math.ceil((this.bodyEl.getHeight() - newCanvasHeight) / 2);
+
+        var leftDiff = newCenterLeft - oldCenterLeft;
+        var topDiff = newCenterTop - oldCenterTop;
+
+        var newPreviewLeft = this.previewEl.getLeft(true) + leftDiff;
+        var newPreviewTop = this.previewEl.getTop(true) + topDiff;
+
+        var paddingLeft = newPreviewLeft - this.thumbEl.getLeft(true);
+        var paddingTop = newPreviewTop - this.thumbEl.getTop(true);
+
+        var paddingRight = this.thumbEl.getLeft(true) + this.thumbEl.getWidth() - newCanvasWidth - newPreviewLeft;
+        var paddingBottom = this.thumbEl.getTop(true) + this.thumbEl.getHeight() - newCanvasHeight - newPreviewTop;
+
+        var maxPaddingLeft = newCanvasWidth / 0.9 * 0.05;
+        var maxPaddingTop = maxPaddingLeft * this.minHeight / this.minWidth;
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight)) {
+            maxPaddingLeft = (newCanvasHeight * this.minWidth / this.minHeight - newCanvasWidth) / 2 + maxPaddingLeft;
+        }
+
+        if ((this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight)) {
+            maxPaddingTop = (newCanvasWidth * this.minHeight / this.minWidth - newCanvasHeight) / 2 + maxPaddingTop;
+        }
         
         if(
                 this.isDocument &&
@@ -68867,8 +69005,12 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
                 !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight >= this.minWidth / this.minHeight) && width < this.minWidth ||
-                    (this.imageEl.OriginWidth / this.imageEl.OriginHeight <= this.minWidth / this.minHeight) && height < this.minHeight ||
+                    // for zoom out
+                    paddingLeft > maxPaddingLeft ||
+                    paddingRight > maxPaddingLeft ||
+                    paddingTop > maxPaddingTop ||
+                    paddingBottom > maxPaddingTop ||
+                    // for zoom in
                     width > maxWidth ||
                     height > maxHeight
                 )
@@ -69092,7 +69234,7 @@ Roo.extend(Roo.dialog.UploadCropbox, Roo.Component,  {
         
         this.previewEl.appendChild(this.canvasEl);
         
-        this.setCanvasPosition();
+        this.setCanvasPosition(false);
     },
     
     crop : function()
@@ -70049,6 +70191,20 @@ Roo.apply(Roo.dialog.UploadCropbox, {
                         tag : 'button',
                         cls : 'btn btn-default',
                         html : '<i class="fa fa-repeat"></i>'
+                    }
+                ]
+            }
+        ],
+        CENTER : [
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-center',
+                action : 'center',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : 'CENTER'
                     }
                 ]
             }

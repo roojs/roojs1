@@ -286,7 +286,7 @@
         {
           "name" : "asString",
           "type" : "Boolean",
-          "desc" : "",
+          "desc" : "(def)",
           "isOptional" : false
         }
       ],
