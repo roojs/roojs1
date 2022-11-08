@@ -9165,6 +9165,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
  * @cfg {Boolean} enableColumnResize default true if columns can be resized = needs scrollBody to be set to work (drag/drop)
+ * @cfg {Boolean} disableAutoSize disable autoSize() and initCSS()
  *
  * 
  * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
@@ -9342,6 +9343,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     footerShow : true,
     headerShow : true,
     enableColumnResize: true,
+    disableAutoSize: false,
   
     rowSelection : false,
     cellSelection : false,
@@ -9503,7 +9505,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     initCSS : function()
     {
-        
+        if(this.disableAutoSize) {
+            return;
+        }
         
         var cm = this.cm, styles = [];
         this.CSS.removeStyleSheet(this.id + '-cssrules');
@@ -10507,6 +10511,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      */
     autoSize : function()
     {
+        if(this.disableAutoSize) {
+            return;
+        }
         //var ctr = Roo.get(this.container.dom.parentElement);
         var ctr = Roo.get(this.el.dom);
         
@@ -27023,6 +27030,1273 @@ Roo.apply(Roo.htmleditor.FilterBlock.prototype,
         
     
 });
+/***
+ * This is based loosely on tinymce 
+ * @class Roo.htmleditor.TidySerializer
+ * https://github.com/thorn0/tinymce.html/blob/master/tinymce.html.js
+ * @constructor
+ * @method Serializer
+ * @param {Object} settings Name/value settings object.
+ */
+
+
+Roo.htmleditor.TidySerializer = function(settings)
+{
+    Roo.apply(this, settings);
+    
+    this.writer = new Roo.htmleditor.TidyWriter(settings);
+    
+    
+
+};
+Roo.htmleditor.TidySerializer.prototype = {
+    
+    /**
+     * @param {boolean} inner do the inner of the node.
+     */
+    inner : false,
+    
+    writer : false,
+    
+    /**
+    * Serializes the specified node into a string.
+    *
+    * @example
+    * new tinymce.html.Serializer().serialize(new tinymce.html.DomParser().parse('<p>text</p>'));
+    * @method serialize
+    * @param {DomElement} node Node instance to serialize.
+    * @return {String} String with HTML based on DOM tree.
+    */
+    serialize : function(node) {
+        
+        // = settings.validate;
+        var writer = this.writer;
+        var self  = this;
+        this.handlers = {
+            // #text
+            3: function(node) {
+                
+                writer.text(node.nodeValue, node);
+            },
+            // #comment
+            8: function(node) {
+                writer.comment(node.nodeValue);
+            },
+            // Processing instruction
+            7: function(node) {
+                writer.pi(node.name, node.nodeValue);
+            },
+            // Doctype
+            10: function(node) {
+                writer.doctype(node.nodeValue);
+            },
+            // CDATA
+            4: function(node) {
+                writer.cdata(node.nodeValue);
+            },
+            // Document fragment
+            11: function(node) {
+                node = node.firstChild;
+                if (!node) {
+                    return;
+                }
+                while(node) {
+                    self.walk(node);
+                    node = node.nextSibling
+                }
+            }
+        };
+        writer.reset();
+        1 != node.nodeType || this.inner ? this.handlers[11](node) : this.walk(node);
+        return writer.getContent();
+    },
+
+    walk: function(node)
+    {
+        var attrName, attrValue, sortedAttrs, i, l, elementRule,
+            handler = this.handlers[node.nodeType];
+            
+        if (handler) {
+            handler(node);
+            return;
+        }
+    
+        var name = node.nodeName;
+        var isEmpty = node.childNodes.length < 1;
+      
+        var writer = this.writer;
+        var attrs = node.attributes;
+        // Sort attributes
+        
+        writer.start(node.nodeName, attrs, isEmpty, node);
+        if (isEmpty) {
+            return;
+        }
+        node = node.firstChild;
+        if (!node) {
+            writer.end(name);
+            return;
+        }
+        while (node) {
+            this.walk(node);
+            node = node.nextSibling;
+        }
+        writer.end(name);
+        
+    
+    }
+    // Serialize element and treat all non elements as fragments
+   
+}; 
+
+/***
+ * This is based loosely on tinymce 
+ * @class Roo.htmleditor.TidyWriter
+ * https://github.com/thorn0/tinymce.html/blob/master/tinymce.html.js
+ *
+ * Known issues?
+ * - not tested much with 'PRE' formated elements.
+ * 
+ *
+ *
+ */
+
+Roo.htmleditor.TidyWriter = function(settings)
+{
+    
+    // indent, indentBefore, indentAfter, encode, htmlOutput, html = [];
+    Roo.apply(this, settings);
+    this.html = [];
+    this.state = [];
+     
+    this.encode = Roo.htmleditor.TidyEntities.getEncodeFunc(settings.entity_encoding || 'raw', settings.entities);
+  
+}
+Roo.htmleditor.TidyWriter.prototype = {
+
+ 
+    state : false,
+    
+    indent :  '  ',
+    
+    // part of state...
+    indentstr : '',
+    in_pre: false,
+    in_inline : false,
+    last_inline : false,
+    encode : false,
+     
+    
+            /**
+    * Writes the a start element such as <p id="a">.
+    *
+    * @method start
+    * @param {String} name Name of the element.
+    * @param {Array} attrs Optional attribute array or undefined if it hasn't any.
+    * @param {Boolean} empty Optional empty state if the tag should end like <br />.
+    */
+    start: function(name, attrs, empty, node)
+    {
+        var i, l, attr, value;
+        
+        // there are some situations where adding line break && indentation will not work. will not work.
+        // <span / b / i ... formating?
+        
+        var in_inline = this.in_inline || Roo.htmleditor.TidyWriter.inline_elements.indexOf(name) > -1;
+        var in_pre    = this.in_pre    || Roo.htmleditor.TidyWriter.whitespace_elements.indexOf(name) > -1;
+        
+        var is_short   = empty ? Roo.htmleditor.TidyWriter.shortend_elements.indexOf(name) > -1 : false;
+        
+        var add_lb = name == 'BR' ? false : in_inline;
+        
+        if (!add_lb && !this.in_pre && this.lastElementEndsWS()) {
+            i_inline = false;
+        }
+
+        var indentstr =  this.indentstr;
+        
+        // e_inline = elements that can be inline, but still allow \n before and after?
+        // only 'BR' ??? any others?
+        
+        // ADD LINE BEFORE tage
+        if (!this.in_pre) {
+            if (in_inline) {
+                //code
+                if (name == 'BR') {
+                    this.addLine();
+                } else if (this.lastElementEndsWS()) {
+                    this.addLine();
+                } else{
+                    // otherwise - no new line. (and dont indent.)
+                    indentstr = '';
+                }
+                
+            } else {
+                this.addLine();
+            }
+        } else {
+            indentstr = '';
+        }
+        
+        this.html.push(indentstr + '<', name.toLowerCase());
+        
+        if (attrs) {
+            for (i = 0, l = attrs.length; i < l; i++) {
+                attr = attrs[i];
+                this.html.push(' ', attr.name, '="', this.encode(attr.value, true), '"');
+            }
+        }
+     
+        if (empty) {
+            if (is_short) {
+                this.html[this.html.length] = '/>';
+            } else {
+                this.html[this.html.length] = '></' + name.toLowerCase() + '>';
+            }
+            var e_inline = name == 'BR' ? false : this.in_inline;
+            
+            if (!e_inline && !this.in_pre) {
+                this.addLine();
+            }
+            return;
+        
+        }
+        // not empty..
+        this.html[this.html.length] = '>';
+        
+        // there is a special situation, where we need to turn on in_inline - if any of the imediate chidlren are one of these.
+        /*
+        if (!in_inline && !in_pre) {
+            var cn = node.firstChild;
+            while(cn) {
+                if (Roo.htmleditor.TidyWriter.inline_elements.indexOf(cn.nodeName) > -1) {
+                    in_inline = true
+                    break;
+                }
+                cn = cn.nextSibling;
+            }
+             
+        }
+        */
+        
+        
+        this.pushState({
+            indentstr : in_pre   ? '' : (this.indentstr + this.indent),
+            in_pre : in_pre,
+            in_inline :  in_inline
+        });
+        // add a line after if we are not in a
+        
+        if (!in_inline && !in_pre) {
+            this.addLine();
+        }
+        
+            
+         
+        
+    },
+    
+    lastElementEndsWS : function()
+    {
+        var value = this.html.length > 0 ? this.html[this.html.length-1] : false;
+        if (value === false) {
+            return true;
+        }
+        return value.match(/\s+$/);
+        
+    },
+    
+    /**
+     * Writes the a end element such as </p>.
+     *
+     * @method end
+     * @param {String} name Name of the element.
+     */
+    end: function(name) {
+        var value;
+        this.popState();
+        var indentstr = '';
+        var in_inline = this.in_inline || Roo.htmleditor.TidyWriter.inline_elements.indexOf(name) > -1;
+        
+        if (!this.in_pre && !in_inline) {
+            this.addLine();
+            indentstr  = this.indentstr;
+        }
+        this.html.push(indentstr + '</', name.toLowerCase(), '>');
+        this.last_inline = in_inline;
+        
+        // pop the indent state..
+    },
+    /**
+     * Writes a text node.
+     *
+     * In pre - we should not mess with the contents.
+     * 
+     *
+     * @method text
+     * @param {String} text String to write out.
+     * @param {Boolean} raw Optional raw state if true the contents wont get encoded.
+     */
+    text: function(in_text, node)
+    {
+        // if not in whitespace critical
+        if (in_text.length < 1) {
+            return;
+        }
+        var text = new XMLSerializer().serializeToString(document.createTextNode(in_text)); // escape it properly?
+        
+        if (this.in_pre) {
+            this.html[this.html.length] =  text;
+            return;   
+        }
+        
+        if (this.in_inline) {
+            text = text.replace(/\s+/g,' '); // all white space inc line breaks to a slingle' '
+            if (text != ' ') {
+                text = text.replace(/\s+/,' ');  // all white space to single white space
+                
+                    
+                // if next tag is '<BR>', then we can trim right..
+                if (node.nextSibling &&
+                    node.nextSibling.nodeType == 1 &&
+                    node.nextSibling.nodeName == 'BR' )
+                {
+                    text = text.replace(/\s+$/g,'');
+                }
+                // if previous tag was a BR, we can also trim..
+                if (node.previousSibling &&
+                    node.previousSibling.nodeType == 1 &&
+                    node.previousSibling.nodeName == 'BR' )
+                {
+                    text = this.indentstr +  text.replace(/^\s+/g,'');
+                }
+                if (text.match(/\n/)) {
+                    text = text.replace(
+                        /(?![^\n]{1,64}$)([^\n]{1,64})\s/g, '$1\n' + this.indentstr
+                    );
+                    // remoeve the last whitespace / line break.
+                    text = text.replace(/\n\s+$/,'');
+                }
+                // repace long lines
+                
+            }
+             
+            this.html[this.html.length] =  text;
+            return;   
+        }
+        // see if previous element was a inline element.
+        var indentstr = this.indentstr;
+   
+        text = text.replace(/\s+/g," "); // all whitespace into single white space.
+        
+        // should trim left?
+        if (node.previousSibling &&
+            node.previousSibling.nodeType == 1 &&
+            Roo.htmleditor.TidyWriter.inline_elements.indexOf(node.previousSibling.nodeName) > -1)
+        {
+            indentstr = '';
+            
+        } else {
+            this.addLine();
+            text = text.replace(/^\s+/,''); // trim left
+          
+        }
+        // should trim right?
+        if (node.nextSibling &&
+            node.nextSibling.nodeType == 1 &&
+            Roo.htmleditor.TidyWriter.inline_elements.indexOf(node.nextSibling.nodeName) > -1)
+        {
+          // noop
+            
+        }  else {
+            text = text.replace(/\s+$/,''); // trim right
+        }
+         
+              
+        
+        
+        
+        if (text.length < 1) {
+            return;
+        }
+        if (!text.match(/\n/)) {
+            this.html.push(indentstr + text);
+            return;
+        }
+        
+        text = this.indentstr + text.replace(
+            /(?![^\n]{1,64}$)([^\n]{1,64})\s/g, '$1\n' + this.indentstr
+        );
+        // remoeve the last whitespace / line break.
+        text = text.replace(/\s+$/,''); 
+        
+        this.html.push(text);
+        
+        // split and indent..
+        
+        
+    },
+    /**
+     * Writes a cdata node such as <![CDATA[data]]>.
+     *
+     * @method cdata
+     * @param {String} text String to write out inside the cdata.
+     */
+    cdata: function(text) {
+        this.html.push('<![CDATA[', text, ']]>');
+    },
+    /**
+    * Writes a comment node such as <!-- Comment -->.
+    *
+    * @method cdata
+    * @param {String} text String to write out inside the comment.
+    */
+   comment: function(text) {
+       this.html.push('<!--', text, '-->');
+   },
+    /**
+     * Writes a PI node such as <?xml attr="value" ?>.
+     *
+     * @method pi
+     * @param {String} name Name of the pi.
+     * @param {String} text String to write out inside the pi.
+     */
+    pi: function(name, text) {
+        text ? this.html.push('<?', name, ' ', this.encode(text), '?>') : this.html.push('<?', name, '?>');
+        this.indent != '' && this.html.push('\n');
+    },
+    /**
+     * Writes a doctype node such as <!DOCTYPE data>.
+     *
+     * @method doctype
+     * @param {String} text String to write out inside the doctype.
+     */
+    doctype: function(text) {
+        this.html.push('<!DOCTYPE', text, '>', this.indent != '' ? '\n' : '');
+    },
+    /**
+     * Resets the internal buffer if one wants to reuse the writer.
+     *
+     * @method reset
+     */
+    reset: function() {
+        this.html.length = 0;
+        this.state = [];
+        this.pushState({
+            indentstr : '',
+            in_pre : false, 
+            in_inline : false
+        })
+    },
+    /**
+     * Returns the contents that got serialized.
+     *
+     * @method getContent
+     * @return {String} HTML contents that got written down.
+     */
+    getContent: function() {
+        return this.html.join('').replace(/\n$/, '');
+    },
+    
+    pushState : function(cfg)
+    {
+        this.state.push(cfg);
+        Roo.apply(this, cfg);
+    },
+    
+    popState : function()
+    {
+        if (this.state.length < 1) {
+            return; // nothing to push
+        }
+        var cfg = {
+            in_pre: false,
+            indentstr : ''
+        };
+        this.state.pop();
+        if (this.state.length > 0) {
+            cfg = this.state[this.state.length-1]; 
+        }
+        Roo.apply(this, cfg);
+    },
+    
+    addLine: function()
+    {
+        if (this.html.length < 1) {
+            return;
+        }
+        
+        
+        var value = this.html[this.html.length - 1];
+        if (value.length > 0 && '\n' !== value) {
+            this.html.push('\n');
+        }
+    }
+    
+    
+//'pre script noscript style textarea video audio iframe object code'
+// shortended... 'area base basefont br col frame hr img input isindex link  meta param embed source wbr track');
+// inline 
+};
+
+Roo.htmleditor.TidyWriter.inline_elements = [
+        'SPAN','STRONG','B','EM','I','FONT','STRIKE','U','VAR',
+        'CITE','DFN','CODE','MARK','Q','SUP','SUB','SAMP', 'A'
+];
+Roo.htmleditor.TidyWriter.shortend_elements = [
+    'AREA','BASE','BASEFONT','BR','COL','FRAME','HR','IMG','INPUT',
+    'ISINDEX','LINK','','META','PARAM','EMBED','SOURCE','WBR','TRACK'
+];
+
+Roo.htmleditor.TidyWriter.whitespace_elements = [
+    'PRE','SCRIPT','NOSCRIPT','STYLE','TEXTAREA','VIDEO','AUDIO','IFRAME','OBJECT','CODE'
+];/***
+ * This is based loosely on tinymce 
+ * @class Roo.htmleditor.TidyEntities
+ * @static
+ * https://github.com/thorn0/tinymce.html/blob/master/tinymce.html.js
+ *
+ * Not 100% sure this is actually used or needed.
+ */
+
+Roo.htmleditor.TidyEntities = {
+    
+    /**
+     * initialize data..
+     */
+    init : function (){
+     
+        this.namedEntities = this.buildEntitiesLookup(this.namedEntitiesData, 32);
+       
+    },
+
+
+    buildEntitiesLookup: function(items, radix) {
+        var i, chr, entity, lookup = {};
+        if (!items) {
+            return {};
+        }
+        items = typeof(items) == 'string' ? items.split(',') : items;
+        radix = radix || 10;
+        // Build entities lookup table
+        for (i = 0; i < items.length; i += 2) {
+            chr = String.fromCharCode(parseInt(items[i], radix));
+            // Only add non base entities
+            if (!this.baseEntities[chr]) {
+                entity = '&' + items[i + 1] + ';';
+                lookup[chr] = entity;
+                lookup[entity] = chr;
+            }
+        }
+        return lookup;
+        
+    },
+    
+    asciiMap : {
+            128: '€',
+            130: '‚',
+            131: 'ƒ',
+            132: '„',
+            133: '…',
+            134: '†',
+            135: '‡',
+            136: 'ˆ',
+            137: '‰',
+            138: 'Š',
+            139: '‹',
+            140: 'Œ',
+            142: 'Ž',
+            145: '‘',
+            146: '’',
+            147: '“',
+            148: '”',
+            149: '•',
+            150: '–',
+            151: '—',
+            152: '˜',
+            153: '™',
+            154: 'š',
+            155: '›',
+            156: 'œ',
+            158: 'ž',
+            159: 'Ÿ'
+    },
+    // Raw entities
+    baseEntities : {
+        '"': '&quot;',
+        // Needs to be escaped since the YUI compressor would otherwise break the code
+        '\'': '&#39;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '&': '&amp;',
+        '`': '&#96;'
+    },
+    // Reverse lookup table for raw entities
+    reverseEntities : {
+        '&lt;': '<',
+        '&gt;': '>',
+        '&amp;': '&',
+        '&quot;': '"',
+        '&apos;': '\''
+    },
+    
+    attrsCharsRegExp : /[&<>\"\u0060\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
+    textCharsRegExp : /[<>&\u007E-\uD7FF\uE000-\uFFEF]|[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
+    rawCharsRegExp : /[<>&\"\']/g,
+    entityRegExp : /&#([a-z0-9]+);?|&([a-z0-9]+);/gi,
+    namedEntities  : false,
+    namedEntitiesData : [ 
+        '50',
+        'nbsp',
+        '51',
+        'iexcl',
+        '52',
+        'cent',
+        '53',
+        'pound',
+        '54',
+        'curren',
+        '55',
+        'yen',
+        '56',
+        'brvbar',
+        '57',
+        'sect',
+        '58',
+        'uml',
+        '59',
+        'copy',
+        '5a',
+        'ordf',
+        '5b',
+        'laquo',
+        '5c',
+        'not',
+        '5d',
+        'shy',
+        '5e',
+        'reg',
+        '5f',
+        'macr',
+        '5g',
+        'deg',
+        '5h',
+        'plusmn',
+        '5i',
+        'sup2',
+        '5j',
+        'sup3',
+        '5k',
+        'acute',
+        '5l',
+        'micro',
+        '5m',
+        'para',
+        '5n',
+        'middot',
+        '5o',
+        'cedil',
+        '5p',
+        'sup1',
+        '5q',
+        'ordm',
+        '5r',
+        'raquo',
+        '5s',
+        'frac14',
+        '5t',
+        'frac12',
+        '5u',
+        'frac34',
+        '5v',
+        'iquest',
+        '60',
+        'Agrave',
+        '61',
+        'Aacute',
+        '62',
+        'Acirc',
+        '63',
+        'Atilde',
+        '64',
+        'Auml',
+        '65',
+        'Aring',
+        '66',
+        'AElig',
+        '67',
+        'Ccedil',
+        '68',
+        'Egrave',
+        '69',
+        'Eacute',
+        '6a',
+        'Ecirc',
+        '6b',
+        'Euml',
+        '6c',
+        'Igrave',
+        '6d',
+        'Iacute',
+        '6e',
+        'Icirc',
+        '6f',
+        'Iuml',
+        '6g',
+        'ETH',
+        '6h',
+        'Ntilde',
+        '6i',
+        'Ograve',
+        '6j',
+        'Oacute',
+        '6k',
+        'Ocirc',
+        '6l',
+        'Otilde',
+        '6m',
+        'Ouml',
+        '6n',
+        'times',
+        '6o',
+        'Oslash',
+        '6p',
+        'Ugrave',
+        '6q',
+        'Uacute',
+        '6r',
+        'Ucirc',
+        '6s',
+        'Uuml',
+        '6t',
+        'Yacute',
+        '6u',
+        'THORN',
+        '6v',
+        'szlig',
+        '70',
+        'agrave',
+        '71',
+        'aacute',
+        '72',
+        'acirc',
+        '73',
+        'atilde',
+        '74',
+        'auml',
+        '75',
+        'aring',
+        '76',
+        'aelig',
+        '77',
+        'ccedil',
+        '78',
+        'egrave',
+        '79',
+        'eacute',
+        '7a',
+        'ecirc',
+        '7b',
+        'euml',
+        '7c',
+        'igrave',
+        '7d',
+        'iacute',
+        '7e',
+        'icirc',
+        '7f',
+        'iuml',
+        '7g',
+        'eth',
+        '7h',
+        'ntilde',
+        '7i',
+        'ograve',
+        '7j',
+        'oacute',
+        '7k',
+        'ocirc',
+        '7l',
+        'otilde',
+        '7m',
+        'ouml',
+        '7n',
+        'divide',
+        '7o',
+        'oslash',
+        '7p',
+        'ugrave',
+        '7q',
+        'uacute',
+        '7r',
+        'ucirc',
+        '7s',
+        'uuml',
+        '7t',
+        'yacute',
+        '7u',
+        'thorn',
+        '7v',
+        'yuml',
+        'ci',
+        'fnof',
+        'sh',
+        'Alpha',
+        'si',
+        'Beta',
+        'sj',
+        'Gamma',
+        'sk',
+        'Delta',
+        'sl',
+        'Epsilon',
+        'sm',
+        'Zeta',
+        'sn',
+        'Eta',
+        'so',
+        'Theta',
+        'sp',
+        'Iota',
+        'sq',
+        'Kappa',
+        'sr',
+        'Lambda',
+        'ss',
+        'Mu',
+        'st',
+        'Nu',
+        'su',
+        'Xi',
+        'sv',
+        'Omicron',
+        't0',
+        'Pi',
+        't1',
+        'Rho',
+        't3',
+        'Sigma',
+        't4',
+        'Tau',
+        't5',
+        'Upsilon',
+        't6',
+        'Phi',
+        't7',
+        'Chi',
+        't8',
+        'Psi',
+        't9',
+        'Omega',
+        'th',
+        'alpha',
+        'ti',
+        'beta',
+        'tj',
+        'gamma',
+        'tk',
+        'delta',
+        'tl',
+        'epsilon',
+        'tm',
+        'zeta',
+        'tn',
+        'eta',
+        'to',
+        'theta',
+        'tp',
+        'iota',
+        'tq',
+        'kappa',
+        'tr',
+        'lambda',
+        'ts',
+        'mu',
+        'tt',
+        'nu',
+        'tu',
+        'xi',
+        'tv',
+        'omicron',
+        'u0',
+        'pi',
+        'u1',
+        'rho',
+        'u2',
+        'sigmaf',
+        'u3',
+        'sigma',
+        'u4',
+        'tau',
+        'u5',
+        'upsilon',
+        'u6',
+        'phi',
+        'u7',
+        'chi',
+        'u8',
+        'psi',
+        'u9',
+        'omega',
+        'uh',
+        'thetasym',
+        'ui',
+        'upsih',
+        'um',
+        'piv',
+        '812',
+        'bull',
+        '816',
+        'hellip',
+        '81i',
+        'prime',
+        '81j',
+        'Prime',
+        '81u',
+        'oline',
+        '824',
+        'frasl',
+        '88o',
+        'weierp',
+        '88h',
+        'image',
+        '88s',
+        'real',
+        '892',
+        'trade',
+        '89l',
+        'alefsym',
+        '8cg',
+        'larr',
+        '8ch',
+        'uarr',
+        '8ci',
+        'rarr',
+        '8cj',
+        'darr',
+        '8ck',
+        'harr',
+        '8dl',
+        'crarr',
+        '8eg',
+        'lArr',
+        '8eh',
+        'uArr',
+        '8ei',
+        'rArr',
+        '8ej',
+        'dArr',
+        '8ek',
+        'hArr',
+        '8g0',
+        'forall',
+        '8g2',
+        'part',
+        '8g3',
+        'exist',
+        '8g5',
+        'empty',
+        '8g7',
+        'nabla',
+        '8g8',
+        'isin',
+        '8g9',
+        'notin',
+        '8gb',
+        'ni',
+        '8gf',
+        'prod',
+        '8gh',
+        'sum',
+        '8gi',
+        'minus',
+        '8gn',
+        'lowast',
+        '8gq',
+        'radic',
+        '8gt',
+        'prop',
+        '8gu',
+        'infin',
+        '8h0',
+        'ang',
+        '8h7',
+        'and',
+        '8h8',
+        'or',
+        '8h9',
+        'cap',
+        '8ha',
+        'cup',
+        '8hb',
+        'int',
+        '8hk',
+        'there4',
+        '8hs',
+        'sim',
+        '8i5',
+        'cong',
+        '8i8',
+        'asymp',
+        '8j0',
+        'ne',
+        '8j1',
+        'equiv',
+        '8j4',
+        'le',
+        '8j5',
+        'ge',
+        '8k2',
+        'sub',
+        '8k3',
+        'sup',
+        '8k4',
+        'nsub',
+        '8k6',
+        'sube',
+        '8k7',
+        'supe',
+        '8kl',
+        'oplus',
+        '8kn',
+        'otimes',
+        '8l5',
+        'perp',
+        '8m5',
+        'sdot',
+        '8o8',
+        'lceil',
+        '8o9',
+        'rceil',
+        '8oa',
+        'lfloor',
+        '8ob',
+        'rfloor',
+        '8p9',
+        'lang',
+        '8pa',
+        'rang',
+        '9ea',
+        'loz',
+        '9j0',
+        'spades',
+        '9j3',
+        'clubs',
+        '9j5',
+        'hearts',
+        '9j6',
+        'diams',
+        'ai',
+        'OElig',
+        'aj',
+        'oelig',
+        'b0',
+        'Scaron',
+        'b1',
+        'scaron',
+        'bo',
+        'Yuml',
+        'm6',
+        'circ',
+        'ms',
+        'tilde',
+        '802',
+        'ensp',
+        '803',
+        'emsp',
+        '809',
+        'thinsp',
+        '80c',
+        'zwnj',
+        '80d',
+        'zwj',
+        '80e',
+        'lrm',
+        '80f',
+        'rlm',
+        '80j',
+        'ndash',
+        '80k',
+        'mdash',
+        '80o',
+        'lsquo',
+        '80p',
+        'rsquo',
+        '80q',
+        'sbquo',
+        '80s',
+        'ldquo',
+        '80t',
+        'rdquo',
+        '80u',
+        'bdquo',
+        '810',
+        'dagger',
+        '811',
+        'Dagger',
+        '81g',
+        'permil',
+        '81p',
+        'lsaquo',
+        '81q',
+        'rsaquo',
+        '85c',
+        'euro'
+    ],
+
+         
+    /**
+     * Encodes the specified string using raw entities. This means only the required XML base entities will be encoded.
+     *
+     * @method encodeRaw
+     * @param {String} text Text to encode.
+     * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
+     * @return {String} Entity encoded text.
+     */
+    encodeRaw: function(text, attr)
+    {
+        var t = this;
+        return text.replace(attr ? this.attrsCharsRegExp : this.textCharsRegExp, function(chr) {
+            return t.baseEntities[chr] || chr;
+        });
+    },
+    /**
+     * Encoded the specified text with both the attributes and text entities. This function will produce larger text contents
+     * since it doesn't know if the context is within a attribute or text node. This was added for compatibility
+     * and is exposed as the DOMUtils.encode function.
+     *
+     * @method encodeAllRaw
+     * @param {String} text Text to encode.
+     * @return {String} Entity encoded text.
+     */
+    encodeAllRaw: function(text) {
+        var t = this;
+        return ('' + text).replace(this.rawCharsRegExp, function(chr) {
+            return t.baseEntities[chr] || chr;
+        });
+    },
+    /**
+     * Encodes the specified string using numeric entities. The core entities will be
+     * encoded as named ones but all non lower ascii characters will be encoded into numeric entities.
+     *
+     * @method encodeNumeric
+     * @param {String} text Text to encode.
+     * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
+     * @return {String} Entity encoded text.
+     */
+    encodeNumeric: function(text, attr) {
+        var t = this;
+        return text.replace(attr ? this.attrsCharsRegExp : this.textCharsRegExp, function(chr) {
+            // Multi byte sequence convert it to a single entity
+            if (chr.length > 1) {
+                return '&#' + (1024 * (chr.charCodeAt(0) - 55296) + (chr.charCodeAt(1) - 56320) + 65536) + ';';
+            }
+            return t.baseEntities[chr] || '&#' + chr.charCodeAt(0) + ';';
+        });
+    },
+    /**
+     * Encodes the specified string using named entities. The core entities will be encoded
+     * as named ones but all non lower ascii characters will be encoded into named entities.
+     *
+     * @method encodeNamed
+     * @param {String} text Text to encode.
+     * @param {Boolean} attr Optional flag to specify if the text is attribute contents.
+     * @param {Object} entities Optional parameter with entities to use.
+     * @return {String} Entity encoded text.
+     */
+    encodeNamed: function(text, attr, entities) {
+        var t = this;
+        entities = entities || this.namedEntities;
+        return text.replace(attr ? this.attrsCharsRegExp : this.textCharsRegExp, function(chr) {
+            return t.baseEntities[chr] || entities[chr] || chr;
+        });
+    },
+    /**
+     * Returns an encode function based on the name(s) and it's optional entities.
+     *
+     * @method getEncodeFunc
+     * @param {String} name Comma separated list of encoders for example named,numeric.
+     * @param {String} entities Optional parameter with entities to use instead of the built in set.
+     * @return {function} Encode function to be used.
+     */
+    getEncodeFunc: function(name, entities) {
+        entities = this.buildEntitiesLookup(entities) || this.namedEntities;
+        var t = this;
+        function encodeNamedAndNumeric(text, attr) {
+            return text.replace(attr ? t.attrsCharsRegExp : t.textCharsRegExp, function(chr) {
+                return t.baseEntities[chr] || entities[chr] || '&#' + chr.charCodeAt(0) + ';' || chr;
+            });
+        }
+
+        function encodeCustomNamed(text, attr) {
+            return t.encodeNamed(text, attr, entities);
+        }
+        // Replace + with , to be compatible with previous TinyMCE versions
+        name = this.makeMap(name.replace(/\+/g, ','));
+        // Named and numeric encoder
+        if (name.named && name.numeric) {
+            return this.encodeNamedAndNumeric;
+        }
+        // Named encoder
+        if (name.named) {
+            // Custom names
+            if (entities) {
+                return encodeCustomNamed;
+            }
+            return this.encodeNamed;
+        }
+        // Numeric
+        if (name.numeric) {
+            return this.encodeNumeric;
+        }
+        // Raw encoder
+        return this.encodeRaw;
+    },
+    /**
+     * Decodes the specified string, this will replace entities with raw UTF characters.
+     *
+     * @method decode
+     * @param {String} text Text to entity decode.
+     * @return {String} Entity decoded string.
+     */
+    decode: function(text)
+    {
+        var  t = this;
+        return text.replace(this.entityRegExp, function(all, numeric) {
+            if (numeric) {
+                numeric = 'x' === numeric.charAt(0).toLowerCase() ? parseInt(numeric.substr(1), 16) : parseInt(numeric, 10);
+                // Support upper UTF
+                if (numeric > 65535) {
+                    numeric -= 65536;
+                    return String.fromCharCode(55296 + (numeric >> 10), 56320 + (1023 & numeric));
+                }
+                return t.asciiMap[numeric] || String.fromCharCode(numeric);
+            }
+            return t.reverseEntities[all] || t.namedEntities[all] || t.nativeDecode(all);
+        });
+    },
+    nativeDecode : function (text) {
+        return text;
+    },
+    makeMap : function (items, delim, map) {
+		var i;
+		items = items || [];
+		delim = delim || ',';
+		if (typeof items == "string") {
+			items = items.split(delim);
+		}
+		map = map || {};
+		i = items.length;
+		while (i--) {
+			map[items[i]] = {};
+		}
+		return map;
+	}
+};
+    
+    
+    
+Roo.htmleditor.TidyEntities.init();
 /**
  * @class Roo.htmleditor.KeyEnter
  * Handle Enter press..
@@ -32769,10 +34043,18 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         
         this.el.removeClass(['fade','top','bottom', 'left', 'right','in',
                              'bs-tooltip-top','bs-tooltip-bottom', 'bs-tooltip-left', 'bs-tooltip-right']);
+
+        if(this.bindEl.attr('tooltip-class')) {
+            this.el.addClass(this.bindEl.attr('tooltip-class'));
+        }
         
         var placement = typeof this.placement == 'function' ?
             this.placement.call(this, this.el, on_el) :
             this.placement;
+        
+        if(this.bindEl.attr('tooltip-placement')) {
+            placement = this.bindEl.attr('tooltip-placement');
+        }
             
         var autoToken = /\s?auto?\s?/i;
         var autoPlace = autoToken.test(placement);
@@ -32862,6 +34144,9 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             return;
         }
         //this.el.setXY([0,0]);
+        if(this.bindEl.attr('tooltip-class')) {
+            this.el.removeClass(this.bindEl.attr('tooltip-class'));
+        }
         this.el.removeClass(['show', 'in']);
         //this.el.hide();
         

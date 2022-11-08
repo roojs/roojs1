@@ -245,10 +245,18 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         
         this.el.removeClass(['fade','top','bottom', 'left', 'right','in',
                              'bs-tooltip-top','bs-tooltip-bottom', 'bs-tooltip-left', 'bs-tooltip-right']);
+
+        if(this.bindEl.attr('tooltip-class')) {
+            this.el.addClass(this.bindEl.attr('tooltip-class'));
+        }
         
         var placement = typeof this.placement == 'function' ?
             this.placement.call(this, this.el, on_el) :
             this.placement;
+        
+        if(this.bindEl.attr('tooltip-placement')) {
+            placement = this.bindEl.attr('tooltip-placement');
+        }
             
         var autoToken = /\s?auto?\s?/i;
         var autoPlace = autoToken.test(placement);
@@ -338,6 +346,9 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             return;
         }
         //this.el.setXY([0,0]);
+        if(this.bindEl.attr('tooltip-class')) {
+            this.el.removeClass(this.bindEl.attr('tooltip-class'));
+        }
         this.el.removeClass(['show', 'in']);
         //this.el.hide();
         
