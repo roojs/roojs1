@@ -707,11 +707,11 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         if(typeof this.validator == "function"){
             var msg = this.validator(value);
-            if(msg !== true){
-                return false;
-            }
             if (typeof(msg) == 'string') {
                 this.invalidText = msg;
+            }
+            if(msg !== true){
+                return false;
             }
         }
         
