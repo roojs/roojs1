@@ -214,6 +214,14 @@
       "optvals" : []
     },
     {
+      "name" : "disableAutoSize",
+      "type" : "Boolean",
+      "desc" : "disable autoSize() and initCSS()",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "lazyLoad",
       "type" : "Boolean",
       "desc" : "auto load data while scrolling to the end (default false)",
