@@ -10003,7 +10003,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 cls : 'x-fcol-' + i,
                 style : '',
                 
-                html: config.footer
+                html: config.summaryFooter
             };
             
             footer.cn.push(c)
