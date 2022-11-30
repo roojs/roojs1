@@ -933,9 +933,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(ds.getCount() > 0){
             ds.data.each(function(d,rowIndex){
                 var row =  this.renderRow(cm, ds, rowIndex);
-
-                Roo.log("ROW");
-                Roo.log(row);
                 
                 tbody.createChild(row);
                 
