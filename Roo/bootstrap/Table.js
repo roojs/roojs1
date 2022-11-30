@@ -965,7 +965,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         }
 
-        if(!this.footerShow && this.summaryFooterShow) {
+        if(this.footerShow && this.summaryFooterShow) {
 
             for(var i = 0, len = cm.getColumnCount(); i < len; i++){
         
