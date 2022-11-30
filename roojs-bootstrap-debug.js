@@ -10063,7 +10063,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
             }
             
-            tfoot.createChild(row);
+            tfoot.createChild(tr);
         }
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
