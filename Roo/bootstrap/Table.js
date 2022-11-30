@@ -916,7 +916,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         };
 
         var cm = this.cm;
-        this.totalWidth = 0;
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             
