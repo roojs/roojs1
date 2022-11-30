@@ -915,6 +915,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             tag: 'tfoot',
             cn : []
         };
+
+        var cm = this.cm;
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             
