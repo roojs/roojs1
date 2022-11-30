@@ -981,6 +981,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     style: '',
                     html: cm.config[i].summaryFooter
                 };
+
+                tr.cn.push(td);
                 
             }
             
