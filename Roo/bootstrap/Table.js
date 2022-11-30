@@ -970,9 +970,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             };
 
             for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-        
-                var value = cm.config[i].summaryFooter;
-
                 var td = {
                     tag: 'td',
                     cls : ' x-fcol-' + i,
