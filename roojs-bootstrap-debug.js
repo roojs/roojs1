@@ -9422,9 +9422,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 cfg.cn.push(this.renderFooter());
             }
 
-            if(!this.footerShow && this.summaryFooterShow) {
-                cfg.cn.push(this.renderSummaryFooter());
-            }
             // where does this come from?
             //cfg.cls+=  ' TableGrid';
         }
@@ -9991,19 +9988,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             tag: 'tfoot',
             cn : []
         };
-
-        var cm = this.cm;
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-            
-            var config = cm.config[i];
             
             var c = {
                 tag: 'td',
                 cls : 'x-fcol-' + i,
                 style : '',
-                
-                html: config.summaryFooter
+                html: ''
             };
             
             footer.cn.push(c)
@@ -10068,6 +10060,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             if(this.footer.pageSize < total){
                 this.mainFoot.show();
+            }
+        }
+
+        if(!this.footerShow && this.summaryFooterShow) {
+
+            for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+        
+                var value = cm.config[i].summaryFooter;
+
+                Roo.log('value [' + i + '] : ' + value);
             }
         }
         
