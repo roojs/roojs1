@@ -989,6 +989,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 this.mainFoot.show();
             }
         }
+
+        if(!this.footerShow && this.summaryFooterShow) {
+
+            for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+        
+                var value = cm.config[i].summaryFooter;
+
+                Roo.log('value [' + i + '] : ' + value);
+            }
+        }
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
             e.on('mouseover', _this.onMouseover, _this);
