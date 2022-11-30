@@ -926,7 +926,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 cls : 'x-fcol-' + i,
                 style : '',
                 
-                html: cm.config[i].footer
+                html: config.footer
             };
             
             footer.cn.push(c)
