@@ -9418,12 +9418,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             cfg.cn.push(this.renderBody());
             
-            if(this.footerShow){
+            if(this.footerShow || this.summaryFooterShow){
                 cfg.cn.push(this.renderFooter());
-            }
-
-            if(!this.footerShow && this.summaryFooterShow) {
-                cfg.cn.push(this.renderSummaryFooter());
             }
 
             // where does this come from?
@@ -9985,32 +9981,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         return footer;
     },
-
-    renderSummaryFooter : function()
-    {
-        var footer = {
-            tag: 'tfoot',
-            cn : []
-        };
-
-        var cm = this.cm;
-        
-        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-            
-            var c = {
-                tag: 'td',
-                cls : 'x-fcol-' + i,
-                style : '',
-                html: ''
-            };
-            
-            footer.cn.push(c)
-        }
-        
-        return footer;
-    },
-    
-    
     
     onLoad : function()
     {
@@ -10040,9 +10010,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(ds.getCount() > 0){
             ds.data.each(function(d,rowIndex){
                 var row =  this.renderRow(cm, ds, rowIndex);
-
-                Roo.log("ROW");
-                Roo.log(row);
                 
                 tbody.createChild(row);
                 
@@ -10074,12 +10041,29 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 
         if(!this.footerShow && this.summaryFooterShow) {
 
+            var tr = {
+                tag : 'tr',
+                cn : []
+            };
+
             for(var i = 0, len = cm.getColumnCount(); i < len; i++){
         
                 var value = cm.config[i].summaryFooter;
 
                 Roo.log('value [' + i + '] : ' + value);
+
+                var td = {
+                    tag: 'td',
+                    cls : ' x-fcol-' + i,
+                    style: '',
+                    html: cm.config[i].summaryFooter
+                };
+
+                tr.cn.push(td);
+                
             }
+            
+            tfoot.createChild(row);
         }
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
