@@ -346,7 +346,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
 
             if(!this.footerShow && this.summaryFooterShow) {
-                cfg.cn.push(this.rendersummaryFooter());
+                cfg.cn.push(this.renderSummaryFooter());
             }
             // where does this come from?
             //cfg.cls+=  ' TableGrid';
