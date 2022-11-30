@@ -987,14 +987,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
             tfoot.createChild(row);
-            
-            var _this = this;
-            
-            if(row.cellObjects.length){
-                Roo.each(row.cellObjects, function(r){
-                    _this.renderCellObject(r);
-                })
-            }
         }
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
