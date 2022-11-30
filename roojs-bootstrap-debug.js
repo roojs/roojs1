@@ -10050,8 +10050,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
                 var value = cm.config[i].summaryFooter;
 
-                Roo.log('value [' + i + '] : ' + value);
-
                 var td = {
                     tag: 'td',
                     cls : ' x-fcol-' + i,
@@ -10063,6 +10061,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
             }
             
+            tfoot.dom.innerHTML = '';
+
             tfoot.createChild(tr);
         }
         
