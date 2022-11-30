@@ -973,15 +973,31 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
                 
             }, this);
+
             if(!this.footerShow && this.summaryFooterShow) {
                 var cellObjects = [];
+
+                for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+            
+                    var config = cm.config[i];
+
+                    cellObjects.push({
+                        container : id,
+                        cfg : config.summaryFooter 
+                    })
+                    
+                    var c = {
+                        tag: 'td',
+                        cls : 'x-fcol-' + i,
+                        style : '',
+                        
+                        html: ''
+                    };
+                    
+                    footer.cn.push(c)
+                }
     
                 var id = Roo.id();
-    
-                cellObjects.push({
-                    container : id,
-                    cfg : value 
-                })
             }
         } else if (this.empty_results.length) {
             this.el.mask(this.empty_results, 'no-spinner');
