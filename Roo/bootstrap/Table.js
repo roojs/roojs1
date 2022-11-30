@@ -967,11 +967,27 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 
         if(!this.footerShow && this.summaryFooterShow) {
 
+            var row = {
+                tag : 'tr',
+                cn : []
+            };
+            
+            tfoot.createChild(row);
+            
+            var _this = this;
+            
+            if(row.cellObjects.length){
+                Roo.each(row.cellObjects, function(r){
+                    _this.renderCellObject(r);
+                })
+            }
+
             for(var i = 0, len = cm.getColumnCount(); i < len; i++){
         
                 var value = cm.config[i].summaryFooter;
 
                 Roo.log('value [' + i + '] : ' + value);
+                
             }
         }
         
