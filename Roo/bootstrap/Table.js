@@ -908,32 +908,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         return footer;
     },
-
-    renderSummaryFooter : function()
-    {
-        var footer = {
-            tag: 'tfoot',
-            cn : []
-        };
-
-        var cm = this.cm;
-        
-        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-            
-            var c = {
-                tag: 'td',
-                cls : 'x-fcol-' + i,
-                style : '',
-                html: ''
-            };
-            
-            footer.cn.push(c)
-        }
-        
-        return footer;
-    },
-    
-    
     
     onLoad : function()
     {
