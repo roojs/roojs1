@@ -344,7 +344,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(this.footerShow){
                 cfg.cn.push(this.renderFooter());
             }
-            
+
             // where does this come from?
             //cfg.cls+=  ' TableGrid';
         }
@@ -922,7 +922,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 tag: 'td',
                 cls : 'x-fcol-' + i,
                 style : '',
-                
                 html: ''
             };
             
