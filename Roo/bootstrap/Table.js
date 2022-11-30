@@ -341,12 +341,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             cfg.cn.push(this.renderBody());
             
-            if(this.footerShow){
+            if(this.footerShow || this.summaryFooterShow){
                 cfg.cn.push(this.renderFooter());
-            }
-
-            if(!this.footerShow && this.summaryFooterShow) {
-                cfg.cn.push(this.renderSummaryFooter());
             }
 
             // where does this come from?
