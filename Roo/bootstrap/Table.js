@@ -967,10 +967,25 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 
         if(!this.footerShow && this.summaryFooterShow) {
 
-            var row = {
+            var tr = {
                 tag : 'tr',
                 cn : []
             };
+
+            for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+        
+                var value = cm.config[i].summaryFooter;
+
+                Roo.log('value [' + i + '] : ' + value);
+
+                var td = {
+                    tag: 'td',
+                    cls : ' x-fcol-' + i,
+                    style: '',
+                    html: cm.config[i].summaryFooter
+                };
+                
+            }
             
             tfoot.createChild(row);
             
@@ -980,14 +995,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 Roo.each(row.cellObjects, function(r){
                     _this.renderCellObject(r);
                 })
-            }
-
-            for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-        
-                var value = cm.config[i].summaryFooter;
-
-                Roo.log('value [' + i + '] : ' + value);
-                
             }
         }
         
