@@ -9157,6 +9157,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  *                also adds table-responsive (see bootstrap docs for details)
  * @cfg {Boolean} loadMask (true|false) default false
  * @cfg {Boolean} footerShow (true|false) generate tfoot, default true
+ * @cfg {Boolean} summaryFooterShow (true|false) generate tfoot for summary, default false
  * @cfg {Boolean} headerShow (true|false) generate thead, default true
  * @cfg {Boolean} rowSelection (true|false) default false
  * @cfg {Boolean} cellSelection (true|false) default false
@@ -9341,6 +9342,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     store : false,
     loadMask : false,
     footerShow : true,
+    summaryFooterShow : false,
     headerShow : true,
     enableColumnResize: true,
     disableAutoSize: false,
@@ -9418,6 +9420,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             if(this.footerShow){
                 cfg.cn.push(this.renderFooter());
+            }
+
+            if(!this.footerShow && this.summaryFooterShow) {
+                cfg.cn.push(this.renderSummaryFooter());
             }
             // where does this come from?
             //cfg.cls+=  ' TableGrid';
@@ -9975,6 +9981,33 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
             ]
         };
+        
+        return footer;
+    },
+
+    renderSummaryFooter : function()
+    {
+        var footer = {
+            tag: 'tfoot',
+            cn : []
+        };
+
+        var cm = this.cm;
+        
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+            
+            var config = cm.config[i];
+            
+            var c = {
+                tag: 'td',
+                cls : 'x-fcol-' + i,
+                style : '',
+                
+                html: config.footer
+            };
+            
+            footer.cn.push(c)
+        }
         
         return footer;
     },
@@ -12940,11 +12973,11 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         if(typeof this.validator == "function"){
             var msg = this.validator(value);
-            if(msg !== true){
-                return false;
-            }
             if (typeof(msg) == 'string') {
                 this.invalidText = msg;
+            }
+            if(msg !== true){
+                return false;
             }
         }
         
