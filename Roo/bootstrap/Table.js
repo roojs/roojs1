@@ -344,10 +344,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(this.footerShow){
                 cfg.cn.push(this.renderFooter());
             }
-
-            if(!this.footerShow && this.summaryFooterShow) {
-                cfg.cn.push(this.renderSummaryFooter());
-            }
+            
             // where does this come from?
             //cfg.cls+=  ' TableGrid';
         }
@@ -977,6 +974,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
                 
             }, this);
+            if(!this.footerShow && this.summaryFooterShow) {
+                var cellObjects = [];
+    
+                var id = Roo.id();
+    
+                cellObjects.push({
+                    container : id,
+                    cfg : value 
+                })
+            }
         } else if (this.empty_results.length) {
             this.el.mask(this.empty_results, 'no-spinner');
         }
