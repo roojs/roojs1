@@ -246,9 +246,17 @@
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'fade'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">,
                              </span><span class="jsdoc-string">'bs-tooltip-top'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'bs-tooltip-bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'bs-tooltip-left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'bs-tooltip-right'</span><span class="jsdoc-syntax">]);
 
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bindEl.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip-class'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bindEl.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip-class'</span><span class="jsdoc-syntax">));
+        }
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.placement </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'function' </span><span class="jsdoc-syntax">?
             </span><span class="jsdoc-var">this.placement.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">on_el</span><span class="jsdoc-syntax">) :
             </span><span class="jsdoc-var">this.placement</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bindEl.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip-placement'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bindEl.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip-placement'</span><span class="jsdoc-syntax">);
+        }
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">autoToken </span><span class="jsdoc-syntax">= /\s?auto?\s?/i;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">autoPlace </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">autoToken.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">);
@@ -338,6 +346,9 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-comment">//this.el.setXY([0,0]);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bindEl.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip-class'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bindEl.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip-class'</span><span class="jsdoc-syntax">));
+        }
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">]);
         </span><span class="jsdoc-comment">//this.el.hide();
 

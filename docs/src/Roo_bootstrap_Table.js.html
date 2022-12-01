@@ -88,6 +88,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  * @cfg {Boolean} lazyLoad  auto load data while scrolling to the end (default false)
  * @cfg {Boolean} auto_hide_footer  auto hide footer if only one page (default false)
  * @cfg {Boolean} enableColumnResize default true if columns can be resized = needs scrollBody to be set to work (drag/drop)
+ * @cfg {Boolean} disableAutoSize disable autoSize() and initCSS()
  *
  * 
  * @cfg {Number} minColumnWidth default 50 pixels minimum column width 
@@ -265,6 +266,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
     </span><span class="jsdoc-var">footerShow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">headerShow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">enableColumnResize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">disableAutoSize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">rowSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">cellSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -426,7 +428,9 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
 
     </span><span class="jsdoc-var">initCSS </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disableAutoSize</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">styles </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-var">this.CSS.removeStyleSheet</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-cssrules'</span><span class="jsdoc-syntax">);
@@ -1430,6 +1434,9 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
      */
     </span><span class="jsdoc-var">autoSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disableAutoSize</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-comment">//var ctr = Roo.get(this.container.dom.parentElement);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">);
 

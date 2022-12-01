@@ -289,7 +289,13 @@ Roo.extend(Roo.form.Action.Submit, Roo.form.Action, {
         }
         var ret = false;
         try {
-            ret = Roo.decode(response.responseText);
+            var rt = response.responseText;
+            if (rt.match(/^\<!--\[CDATA\[/)) {
+                rt = rt.replace(/^\<!--\[CDATA\[/,'');
+                rt = rt.replace(/\]\]--\>$/,'');
+            }
+            
+            ret = Roo.decode(rt);
         } catch (e) {
             ret = {
                 success: false,

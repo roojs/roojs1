@@ -289,7 +289,13 @@
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">response.responseText</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rt.match</span><span class="jsdoc-syntax">(/^\&lt;!--\[CDATA\[/)) {
+                </span><span class="jsdoc-var">rt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rt.replace</span><span class="jsdoc-syntax">(/^\&lt;!--\[CDATA\[/,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">rt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rt.replace</span><span class="jsdoc-syntax">(/\]\]--\&gt;$/,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+            }
+
+            </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rt</span><span class="jsdoc-syntax">);
         } </span><span class="jsdoc-keyword">catch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">success</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
