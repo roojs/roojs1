@@ -80,6 +80,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  *                also adds table-responsive (see bootstrap docs for details)
  * @cfg {Boolean} loadMask (true|false) default false
  * @cfg {Boolean} footerShow (true|false) generate tfoot, default true
+ * @cfg {Boolean} summaryFooterShow (true|false) generate tfoot for summary, default false
  * @cfg {Boolean} headerShow (true|false) generate thead, default true
  * @cfg {Boolean} rowSelection (true|false) default false
  * @cfg {Boolean} cellSelection (true|false) default false
@@ -264,6 +265,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     store : false,
     loadMask : false,
     footerShow : true,
+    summaryFooterShow : false,
     headerShow : true,
     enableColumnResize: true,
     disableAutoSize: false,
@@ -339,9 +341,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             cfg.cn.push(this.renderBody());
             
-            if(this.footerShow){
+            if(this.footerShow || this.summaryFooterShow){
                 cfg.cn.push(this.renderFooter());
             }
+
             // where does this come from?
             //cfg.cls+=  ' TableGrid';
         }
@@ -902,8 +905,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         return footer;
     },
     
-    
-    
     onLoad : function()
     {
 //        Roo.log('ds onload');
@@ -959,6 +960,29 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(this.footer.pageSize < total){
                 this.mainFoot.show();
             }
+        }
+
+        if(!this.footerShow && this.summaryFooterShow) {
+
+            var tr = {
+                tag : 'tr',
+                cn : []
+            };
+
+            for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+                var td = {
+                    tag: 'td',
+                    cls : ' x-fcol-' + i,
+                    html: cm.config[i].summaryFooter
+                };
+
+                tr.cn.push(td);
+                
+            }
+            
+            tfoot.dom.innerHTML = '';
+
+            tfoot.createChild(tr);
         }
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
