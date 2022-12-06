@@ -341,7 +341,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             cfg.cn.push(this.renderBody());
             
-            if(this.footerShow || this.summaryFooterShow){
+            if(this.footerShow || this.footerColumns){
                 cfg.cn.push(this.renderFooter());
             }
 
