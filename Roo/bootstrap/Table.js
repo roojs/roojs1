@@ -970,10 +970,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             };
 
             for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+                var footer = typeof(cm.config[i].footer) == "function" ? cm.config[i].footer(ds, cm) : cm.config[i].footer;
                 var td = {
                     tag: 'td',
                     cls : ' x-fcol-' + i,
-                    html: cm.config[i].summaryFooter
+                    html: footer
                 };
 
                 tr.cn.push(td);
