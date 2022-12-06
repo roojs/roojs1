@@ -10047,7 +10047,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             };
 
             for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-                var footer = typeof(cm.config[i].footer) == "function" ? cm.config[i].footer(ds, cm) : cm.config[i].footer;
+                var footer = typeof(cm.config[i].footer) == "function" ? cm.config[i].footer(ds, cm.config[i]) : cm.config[i].footer;
                 var td = {
                     tag: 'td',
                     cls : ' x-fcol-' + i,
