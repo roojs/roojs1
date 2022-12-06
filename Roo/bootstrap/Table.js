@@ -962,9 +962,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         }
 
-        Roo.log("FOOTER COLUMNS");
-        Roo.log(this);
-
         if(!this.footerShow && this.footerColumns) {
 
             var tr = {
