@@ -962,7 +962,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         }
 
-        if(!this.footerShow && this.summaryFooterShow) {
+        if(!this.footerShow && this.footerColumns) {
 
             var tr = {
                 tag : 'tr',
