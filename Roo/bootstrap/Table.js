@@ -80,7 +80,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  *                also adds table-responsive (see bootstrap docs for details)
  * @cfg {Boolean} loadMask (true|false) default false
  * @cfg {Boolean} footerShow (true|false) generate tfoot, default true
- * @cfg {Boolean} footerColumns (true|false) generate tfoot with columns, default false
+ * @cfg {Boolean} footerRow (true|false) generate tfoot with columns, default false
  * @cfg {Boolean} headerShow (true|false) generate thead, default true
  * @cfg {Boolean} rowSelection (true|false) default false
  * @cfg {Boolean} cellSelection (true|false) default false
@@ -265,7 +265,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     store : false,
     loadMask : false,
     footerShow : true,
-    footerColumns : false,
+    footerRow : false,
     headerShow : true,
     enableColumnResize: true,
     disableAutoSize: false,
@@ -341,7 +341,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             cfg.cn.push(this.renderBody());
             
-            if(this.footerShow || this.footerColumns){
+            if(this.footerShow || this.footerRow){
                 cfg.cn.push(this.renderFooter());
             }
 
@@ -951,7 +951,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var tfoot = this.el.select('tfoot', true).first();
         
-        if(this.footerShow && !this.footerColumns && this.auto_hide_footer && this.mainFoot){
+        if(this.footerShow && !this.footerRow && this.auto_hide_footer && this.mainFoot){
             
             this.mainFoot.setVisibilityMode(Roo.Element.DISPLAY).hide();
             
@@ -962,7 +962,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         }
 
-        if(!this.footerShow && this.footerColumns) {
+        if(!this.footerShow && this.footerRow) {
 
             var tr = {
                 tag : 'tr',
