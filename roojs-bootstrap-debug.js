@@ -9157,7 +9157,7 @@ Currently the Table  uses multiple headers to try and handle XL / Medium etc... 
  *                also adds table-responsive (see bootstrap docs for details)
  * @cfg {Boolean} loadMask (true|false) default false
  * @cfg {Boolean} footerShow (true|false) generate tfoot, default true
- * @cfg {Boolean} summaryFooterShow (true|false) generate tfoot for summary, default false
+ * @cfg {Boolean} footerRow (true|false) generate tfoot with columns of values, default false
  * @cfg {Boolean} headerShow (true|false) generate thead, default true
  * @cfg {Boolean} rowSelection (true|false) default false
  * @cfg {Boolean} cellSelection (true|false) default false
@@ -9342,7 +9342,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     store : false,
     loadMask : false,
     footerShow : true,
-    summaryFooterShow : false,
+    footerRow : false,
     headerShow : true,
     enableColumnResize: true,
     disableAutoSize: false,
@@ -9418,7 +9418,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             cfg.cn.push(this.renderBody());
             
-            if(this.footerShow || this.summaryFooterShow){
+            if(this.footerShow || this.footerRow){
                 cfg.cn.push(this.renderFooter());
             }
 
@@ -10028,7 +10028,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var tfoot = this.el.select('tfoot', true).first();
         
-        if(this.footerShow && this.auto_hide_footer && this.mainFoot){
+        if(this.footerShow && !this.footerRow && this.auto_hide_footer && this.mainFoot){
             
             this.mainFoot.setVisibilityMode(Roo.Element.DISPLAY).hide();
             
@@ -10039,7 +10039,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         }
 
-        if(!this.footerShow && this.summaryFooterShow) {
+        if(!this.footerShow && this.footerRow) {
 
             var tr = {
                 tag : 'tr',
@@ -10047,14 +10047,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             };
 
             for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-        
-                var value = cm.config[i].summaryFooter;
-
+                var footer = typeof(cm.config[i].footer) == "function" ? cm.config[i].footer(ds, cm.config[i]) : cm.config[i].footer;
                 var td = {
                     tag: 'td',
                     cls : ' x-fcol-' + i,
-                    style: '',
-                    html: cm.config[i].summaryFooter
+                    html: footer
                 };
 
                 tr.cn.push(td);
