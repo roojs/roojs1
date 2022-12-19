@@ -23973,6 +23973,7 @@ Roo.apply(Roo.bootstrap.form.DateField,  {
  * @class Roo.bootstrap.form.TimeField
  * @extends Roo.bootstrap.form.Input
  * Bootstrap DateField class
+ * @cfg {Number} minuteStep the minutes goes up/down by a fixed number, default 1
  * 
  * 
  * @constructor
@@ -24015,6 +24016,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
      * valid according to {@link Date#parseDate} (defaults to 'H:i').
      */
     format : "H:i",
+    minuteStep : 1,
 
     getAutoCreate : function()
     {
@@ -24395,14 +24397,14 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     onIncrementMinutes: function()
     {
         Roo.log('onIncrementMinutes');
-        this.time = this.time.add(Date.MINUTE, 1);
+        this.time = this.time.add(Date.MINUTE, this.minuteStep);
         this.update();
     },
     
     onDecrementMinutes: function()
     {
         Roo.log('onDecrementMinutes');
-        this.time = this.time.add(Date.MINUTE, -1);
+        this.time = this.time.add(Date.MINUTE, -1 * this.minuteStep);
         this.update();
     },
     
