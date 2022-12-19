@@ -127,6 +127,16 @@ Roo.bootstrap.form.CheckBox
 Roo.bootstrap.form.Radio
 Roo.bootstrap.form.SecurePass
 
+
+Roo.rtf.namespace
+Roo.rtf.Hex
+Roo.rtf.Paragraph
+Roo.rtf.Span
+Roo.rtf.Group
+Roo.rtf.Document
+Roo.rtf.Ctrl
+Roo.rtf.Parser
+
 Roo.htmleditor.namespace
 Roo.htmleditor.Filter
 Roo.htmleditor.FilterAttributes
@@ -144,6 +154,7 @@ Roo.htmleditor.TidySerializer
 Roo.htmleditor.TidyWriter
 Roo.htmleditor.TidyEntities
 Roo.htmleditor.KeyEnter
+
 
 Roo.htmleditor.Block
 Roo.htmleditor.BlockFigure
