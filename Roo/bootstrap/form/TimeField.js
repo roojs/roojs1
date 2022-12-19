@@ -433,14 +433,14 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     onIncrementMinutes: function()
     {
         Roo.log('onIncrementMinutes');
-        this.time = this.time.add(Date.MINUTE, minuteStep);
+        this.time = this.time.add(Date.MINUTE, this.minuteStep);
         this.update();
     },
     
     onDecrementMinutes: function()
     {
         Roo.log('onDecrementMinutes');
-        this.time = this.time.add(Date.MINUTE, -1);
+        this.time = this.time.add(Date.MINUTE, -1 * this.minuteStep);
         this.update();
     },
     
