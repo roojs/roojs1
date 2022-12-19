@@ -1110,6 +1110,43 @@ pt.innerHTML=this.meterLabel+'&nbsp;'+this.pwdStrengths[B];this.errorMsg='';retu
 }var B=new Array(new this.CharacterSetChecks(this.kCapitalLetter),new this.CharacterSetChecks(this.kSmallLetter),new this.CharacterSetChecks(this.kDigit),new this.CharacterSetChecks(this.kPunctuation));for(var C=0;C<A.length;++C){for(var D=0;D<B.length;++D){if(!B[D].fResult&&this.isctype(A.charAt(C),B[D].type)){B[D].fResult=true;
 break;}}}var E=0;for(var D=0;D<B.length;++D){if(B[D].fResult){++E;}}if(E<nb){return false;}return true;},ClientSideStrongPassword:function(A){return this.IsLongEnough(A,8)&&this.SpansEnoughCharacterSets(A,3);},ClientSideMediumPassword:function(A){return this.IsLongEnough(A,7)&&this.SpansEnoughCharacterSets(A,2);
 },ClientSideWeakPassword:function(A){return this.IsLongEnough(A,6)||!this.IsLongEnough(A,0);}});
+// Roo/rtf/namespace.js
+Roo.rtf={};
+// Roo/rtf/Hex.js
+Roo.rtf.Hex=function(A){this.hexstr=A;};
+// Roo/rtf/Paragraph.js
+Roo.rtf.Paragraph=function(A){this.content=[];};
+// Roo/rtf/Span.js
+Roo.rtf.Span=function(A){this.value=A.value;};
+// Roo/rtf/Group.js
+Roo.rtf.Group=function(A){this.content=[];this.cn=[];};Roo.rtf.Group.prototype={ignorable:false,content:false,cn:false,addContent:function(A){this.content.push(A);},addChild:function(cn){this.cn.push(cn);},toDataURL:function(){var A=false;switch(true){case this.content.filter(function(a){return a.value=='pngblip'}
+).length>0:A="image/png";break;case this.content.filter(function(a){return a.value=='jpegblip'}).length>0:A="image/jpeg";break;default:return 'about:blank';}var B=this.content[this.content.length-1].value;return 'data:'+A+';base64,'+btoa(B.match(/\w{2}/g).map(function(a){return String.fromCharCode(parseInt(a,16));
+}).join(""));}};
+// Roo/rtf/Document.js
+Roo.rtf.Document=function(){this.rtlch=[];this.content=[];this.cn=[];};Roo.extend(Roo.rtf.Document,Roo.rtf.Group,{addChild:function(cn){this.cn.push(cn);switch(cn.type){case 'rtlch':case 'listtext':case 'shpinst':this.rtlch.push(cn);return;default:this[cn.type]=cn;
+}},getElementsByType:function(A){var B=[];this._getElementsByType(A,B,this.cn,'rtf');return B;},_getElementsByType:function(A,B,C,D){C.forEach(function(n,i){if(n.type==A){n.path=D+'/'+n.type+':'+i;B.push(n);}if(n.cn.length>0){this._getElementsByType(A,B,n.cn,D+'/'+n.type+':'+i);
+}},this);}});
+// Roo/rtf/Ctrl.js
+Roo.rtf.Ctrl=function(A){this.value=A.value;this.param=A.param;};
+// Roo/rtf/Parser.js
+Roo.rtf.Parser=function(A){this.text='';this.parserState=this.parseText;this.doc={};this.groupStack=[];this.hexStore=[];this.doc=false;this.groups=[];for(var ii=0;ii<A.length;++ii){++this.cpos;if(A[ii]==='\n'){++this.row;this.col=1;}else{++this.col;}this.parserState(A[ii]);
+}};Roo.rtf.Parser.prototype={text:'',controlWord:'',controlWordParam:'',hexChar:'',doc:false,group:false,groupStack:false,hexStore:false,cpos:0,row:1,col:1,push:function(el){var m='cmd'+el.type;if(typeof(this[m])=='undefined'){Roo.log('invalid cmd:'+el.type);
+return;}this[m](el);},flushHexStore:function(){if(this.hexStore.length<1){return;}var A=this.hexStore.map(function(B){return B.value;}).join('');this.group.addContent(new Roo.rtf.Hex(A));this.hexStore.splice(0)},cmdgroupstart:function(){this.flushHexStore();
+if(this.group){this.groupStack.push(this.group);}if(this.doc===false){this.group=this.doc=new Roo.rtf.Document();return;}this.group=new Roo.rtf.Group(this.group);},cmdignorable:function(){this.flushHexStore();this.group.ignorable=true;},cmdendparagraph:function(){this.flushHexStore();
+this.group.addContent(new Roo.rtf.Paragraph());},cmdgroupend:function(){this.flushHexStore();var A=this.group;this.group=this.groupStack.pop();if(this.group){this.group.addChild(A);}var B=this.group||this.doc;if(A.ignorable===false){this.groups.push(A);}}
+,cmdtext:function(A){this.flushHexStore();if(!this.group){return;}this.group.addContent(new Roo.rtf.Span(A));},cmdcontrolword:function(A){this.flushHexStore();if(!this.group.type){this.group.type=A.value;return;}this.group.addContent(new Roo.rtf.Ctrl(A));
+return;},cmdhexchar:function(A){this.hexStore.push(A);},cmderror:function(A){throw A.value;},parseText:function(c){if(c==='\\'){this.parserState=this.parseEscapes;}else if(c==='{'){this.emitStartGroup();}else if(c==='}'){this.emitEndGroup();}else if(c==='\x0A'||c==='\x0D'){}
+else{this.text+=c;}},parseEscapes:function(c){if(c==='\\'||c==='{'||c==='}'){this.text+=c;this.parserState=this.parseText;}else{this.parserState=this.parseControlSymbol;this.parseControlSymbol(c);}},parseControlSymbol:function(c){if(c==='~'){this.text+='\u00a0';
+this.parserState=this.parseText}else if(c==='-'){this.text+='\u00ad';}else if(c==='_'){this.text+='\u2011';}else if(c==='*'){this.emitIgnorable();this.parserState=this.parseText;}else if(c==="'"){this.parserState=this.parseHexChar;}else if(c==='|'){this.emitFormula();
+this.parserState=this.parseText;}else if(c===':'){this.emitIndexSubEntry();this.parserState=this.parseText;}else if(c==='\x0a'){this.emitEndParagraph();this.parserState=this.parseText;}else if(c==='\x0d'){this.emitEndParagraph();this.parserState=this.parseText;
+}else{this.parserState=this.parseControlWord;this.parseControlWord(c);}},parseHexChar:function(c){if(/^[A-Fa-f0-9]$/.test(c)){this.hexChar+=c;if(this.hexChar.length>=2){this.emitHexChar();this.parserState=this.parseText;}return;}this.emitError("Invalid character \""+c+"\" in hex literal.");
+this.parserState=this.parseText;},parseControlWord:function(c){if(c===' '){this.emitControlWord();this.parserState=this.parseText;}else if(/^[-\d]$/.test(c)){this.parserState=this.parseControlWordParam;this.controlWordParam+=c;}else if(/^[A-Za-z]$/.test(c)){this.controlWord+=c;
+}else{this.emitControlWord();this.parserState=this.parseText;this.parseText(c);}},parseControlWordParam:function(c){if(/^\d$/.test(c)){this.controlWordParam+=c;}else if(c===' '){this.emitControlWord();this.parserState=this.parseText;}else{this.emitControlWord();
+this.parserState=this.parseText;this.parseText(c);}},emitText:function(){if(this.text===''){return;}this.push({type:'text',value:this.text,pos:this.cpos,row:this.row,col:this.col});this.text=''},emitControlWord:function(){this.emitText();if(this.controlWord===''){}
+else{this.push({type:'controlword',value:this.controlWord,param:this.controlWordParam!==''&&Number(this.controlWordParam),pos:this.cpos,row:this.row,col:this.col});}this.controlWord='';this.controlWordParam='';},emitStartGroup:function(){this.emitText();this.push({type:'groupstart',pos:this.cpos,row:this.row,col:this.col}
+);},emitEndGroup:function(){this.emitText();this.push({type:'groupend',pos:this.cpos,row:this.row,col:this.col});},emitIgnorable:function(){this.emitText();this.push({type:'ignorable',pos:this.cpos,row:this.row,col:this.col});},emitHexChar:function(){this.emitText();
+this.push({type:'hexchar',value:this.hexChar,pos:this.cpos,row:this.row,col:this.col});this.hexChar=''},emitError:function(A){this.emitText();this.push({type:'error',value:A,row:this.row,col:this.col,char:this.cpos});},emitEndParagraph:function(){this.emitText();
+this.push({type:'endparagraph',pos:this.cpos,row:this.row,col:this.col});}};
 // Roo/htmleditor/namespace.js
 Roo.htmleditor={};
 // Roo/htmleditor/Filter.js
