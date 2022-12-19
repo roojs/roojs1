@@ -1015,7 +1015,7 @@ if(B!==true){return false;}}if(this.regex&&!this.regex.test(A)){return false;}if
 ,Roo.bootstrap.form.DateField.footer]}]},{tag:'div',cls:'datepicker-months',cn:[{tag:'table',cls:'table-condensed',cn:[Roo.bootstrap.form.DateField.head,Roo.bootstrap.form.DateField.content,Roo.bootstrap.form.DateField.footer]}]},{tag:'div',cls:'datepicker-years',cn:[{tag:'table',cls:'table-condensed',cn:[Roo.bootstrap.form.DateField.head,Roo.bootstrap.form.DateField.content,Roo.bootstrap.form.DateField.footer]}
 ]}]}});
 // Roo/bootstrap/form/TimeField.js
-Roo.bootstrap.form.TimeField=function(A){Roo.bootstrap.form.TimeField.superclass.constructor.call(this,A);this.addEvents({show:true,hide:true,select:true});};Roo.extend(Roo.bootstrap.form.TimeField,Roo.bootstrap.form.Input,{format:"H:i",minuteStep:1,getAutoCreate:function(){this.after='<i class="fa far fa-clock"></i>';
+Roo.bootstrap.form.TimeField=function(A){Roo.bootstrap.form.TimeField.superclass.constructor.call(this,A);this.addEvents({show:true,hide:true,select:true});};Roo.extend(Roo.bootstrap.form.TimeField,Roo.bootstrap.form.Input,{format:"H:i",getAutoCreate:function(){this.after='<i class="fa far fa-clock"></i>';
 return Roo.bootstrap.form.TimeField.superclass.getAutoCreate.call(this);},onRender:function(ct,A){Roo.bootstrap.form.TimeField.superclass.onRender.call(this,ct,A);this.pickerEl=Roo.get(document.body).createChild(Roo.bootstrap.form.TimeField.template);this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay='block';
 this.pop=this.picker().select('>.datepicker-time',true).first();this.pop.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay='block';this.picker().on('mousedown',this.onMousedown,this);this.picker().on('click',this.onClick,this);this.picker().addClass('datepicker-dropdown');
 this.fillTime();this.update();this.pop.select('.hours-up',true).first().on('click',this.onIncrementHours,this);this.pop.select('.hours-down',true).first().on('click',this.onDecrementHours,this);this.pop.select('.minutes-up',true).first().on('click',this.onIncrementMinutes,this);
@@ -1031,8 +1031,8 @@ A.push('top');}A.push('right');if((Roo.lib.Dom.getViewWidth()+Roo.get(document.b
 ).defer(200);B.picker().alignTo(B.inputEl(),"tr-br",[0,10],false);return;}if(c=='top'){B.picker().alignTo(B.inputEl(),"br-tr",[0,10],false);return;}});},onFocus:function(){Roo.bootstrap.form.TimeField.superclass.onFocus.call(this);this.show();},onBlur:function(){Roo.bootstrap.form.TimeField.superclass.onBlur.call(this);
 this.hide();},show:function(){this.picker().show();this.pop.show();this.update();this.place();this.fireEvent('show',this,this.date);},hide:function(){this.picker().hide();this.pop.hide();this.fireEvent('hide',this,this.date);},setTime:function(){this.hide();
 this.setValue(this.time.format(this.format));this.fireEvent('select',this,this.date);},onMousedown:function(e){e.stopPropagation();e.preventDefault();},onIncrementHours:function(){Roo.log('onIncrementHours');this.time=this.time.add(Date.HOUR,1);this.update();
-},onDecrementHours:function(){Roo.log('onDecrementHours');this.time=this.time.add(Date.HOUR,-1);this.update();},onIncrementMinutes:function(){Roo.log('onIncrementMinutes');this.time=this.time.add(Date.MINUTE,this.minuteStep);this.update();},onDecrementMinutes:function(){Roo.log('onDecrementMinutes');
-this.time=this.time.add(Date.MINUTE,-1*this.minuteStep);this.update();},onTogglePeriod:function(){Roo.log('onTogglePeriod');this.time=this.time.add(Date.HOUR,12);this.update();}});Roo.apply(Roo.bootstrap.form.TimeField,{template:{tag:'div',cls:'datepicker dropdown-menu',cn:[{tag:'div',cls:'datepicker-time',cn:[{tag:'table',cls:'table-condensed',cn:[{tag:'tbody',cn:[{tag:'tr',cn:[{tag:'td',colspan:'7'}
+},onDecrementHours:function(){Roo.log('onDecrementHours');this.time=this.time.add(Date.HOUR,-1);this.update();},onIncrementMinutes:function(){Roo.log('onIncrementMinutes');this.time=this.time.add(Date.MINUTE,1);this.update();},onDecrementMinutes:function(){Roo.log('onDecrementMinutes');
+this.time=this.time.add(Date.MINUTE,-1);this.update();},onTogglePeriod:function(){Roo.log('onTogglePeriod');this.time=this.time.add(Date.HOUR,12);this.update();}});Roo.apply(Roo.bootstrap.form.TimeField,{template:{tag:'div',cls:'datepicker dropdown-menu',cn:[{tag:'div',cls:'datepicker-time',cn:[{tag:'table',cls:'table-condensed',cn:[{tag:'tbody',cn:[{tag:'tr',cn:[{tag:'td',colspan:'7'}
 ]}]},{tag:'tfoot',cn:[{tag:'tr',cn:[{tag:'th',colspan:'7',cls:'',cn:[{tag:'button',cls:'btn btn-info ok',html:'OK'}]}]}]}]}]}]}});
 // Roo/bootstrap/form/MonthField.js
 Roo.bootstrap.form.MonthField=function(A){Roo.bootstrap.form.MonthField.superclass.constructor.call(this,A);this.addEvents({show:true,hide:true,select:true});};Roo.extend(Roo.bootstrap.form.MonthField,Roo.bootstrap.form.Input,{onRender:function(ct,A){Roo.bootstrap.form.MonthField.superclass.onRender.call(this,ct,A);
@@ -1110,6 +1110,43 @@ pt.innerHTML=this.meterLabel+'&nbsp;'+this.pwdStrengths[B];this.errorMsg='';retu
 }var B=new Array(new this.CharacterSetChecks(this.kCapitalLetter),new this.CharacterSetChecks(this.kSmallLetter),new this.CharacterSetChecks(this.kDigit),new this.CharacterSetChecks(this.kPunctuation));for(var C=0;C<A.length;++C){for(var D=0;D<B.length;++D){if(!B[D].fResult&&this.isctype(A.charAt(C),B[D].type)){B[D].fResult=true;
 break;}}}var E=0;for(var D=0;D<B.length;++D){if(B[D].fResult){++E;}}if(E<nb){return false;}return true;},ClientSideStrongPassword:function(A){return this.IsLongEnough(A,8)&&this.SpansEnoughCharacterSets(A,3);},ClientSideMediumPassword:function(A){return this.IsLongEnough(A,7)&&this.SpansEnoughCharacterSets(A,2);
 },ClientSideWeakPassword:function(A){return this.IsLongEnough(A,6)||!this.IsLongEnough(A,0);}});
+// Roo/rtf/namespace.js
+Roo.rtf={};
+// Roo/rtf/Hex.js
+Roo.rtf.Hex=function(A){this.hexstr=A;};
+// Roo/rtf/Paragraph.js
+Roo.rtf.Paragraph=function(A){this.content=[];};
+// Roo/rtf/Span.js
+Roo.rtf.Span=function(A){this.value=A.value;};
+// Roo/rtf/Group.js
+Roo.rtf.Group=function(A){this.content=[];this.cn=[];};Roo.rtf.Group.prototype={ignorable:false,content:false,cn:false,addContent:function(A){this.content.push(A);},addChild:function(cn){this.cn.push(cn);},toDataURL:function(){var A=false;switch(true){case this.content.filter(function(a){return a.value=='pngblip'}
+).length>0:A="image/png";break;case this.content.filter(function(a){return a.value=='jpegblip'}).length>0:A="image/jpeg";break;default:return 'about:blank';}var B=this.content[this.content.length-1].value;return 'data:'+A+';base64,'+btoa(B.match(/\w{2}/g).map(function(a){return String.fromCharCode(parseInt(a,16));
+}).join(""));}};
+// Roo/rtf/Document.js
+Roo.rtf.Document=function(){this.rtlch=[];this.content=[];this.cn=[];};Roo.extend(Roo.rtf.Document,Roo.rtf.Group,{addChild:function(cn){this.cn.push(cn);switch(cn.type){case 'rtlch':case 'listtext':case 'shpinst':this.rtlch.push(cn);return;default:this[cn.type]=cn;
+}},getElementsByType:function(A){var B=[];this._getElementsByType(A,B,this.cn,'rtf');return B;},_getElementsByType:function(A,B,C,D){C.forEach(function(n,i){if(n.type==A){n.path=D+'/'+n.type+':'+i;B.push(n);}if(n.cn.length>0){this._getElementsByType(A,B,n.cn,D+'/'+n.type+':'+i);
+}},this);}});
+// Roo/rtf/Ctrl.js
+Roo.rtf.Ctrl=function(A){this.value=A.value;this.param=A.param;};
+// Roo/rtf/Parser.js
+Roo.rtf.Parser=function(A){this.text='';this.parserState=this.parseText;this.doc={};this.groupStack=[];this.hexStore=[];this.doc=false;this.groups=[];for(var ii=0;ii<A.length;++ii){++this.cpos;if(A[ii]==='\n'){++this.row;this.col=1;}else{++this.col;}this.parserState(A[ii]);
+}};Roo.rtf.Parser.prototype={text:'',controlWord:'',controlWordParam:'',hexChar:'',doc:false,group:false,groupStack:false,hexStore:false,cpos:0,row:1,col:1,push:function(el){var m='cmd'+el.type;if(typeof(this[m])=='undefined'){Roo.log('invalid cmd:'+el.type);
+return;}this[m](el);},flushHexStore:function(){if(this.hexStore.length<1){return;}var A=this.hexStore.map(function(B){return B.value;}).join('');this.group.addContent(new Roo.rtf.Hex(A));this.hexStore.splice(0)},cmdgroupstart:function(){this.flushHexStore();
+if(this.group){this.groupStack.push(this.group);}if(this.doc===false){this.group=this.doc=new Roo.rtf.Document();return;}this.group=new Roo.rtf.Group(this.group);},cmdignorable:function(){this.flushHexStore();this.group.ignorable=true;},cmdendparagraph:function(){this.flushHexStore();
+this.group.addContent(new Roo.rtf.Paragraph());},cmdgroupend:function(){this.flushHexStore();var A=this.group;this.group=this.groupStack.pop();if(this.group){this.group.addChild(A);}var B=this.group||this.doc;if(A.ignorable===false){this.groups.push(A);}}
+,cmdtext:function(A){this.flushHexStore();if(!this.group){return;}this.group.addContent(new Roo.rtf.Span(A));},cmdcontrolword:function(A){this.flushHexStore();if(!this.group.type){this.group.type=A.value;return;}this.group.addContent(new Roo.rtf.Ctrl(A));
+return;},cmdhexchar:function(A){this.hexStore.push(A);},cmderror:function(A){throw A.value;},parseText:function(c){if(c==='\\'){this.parserState=this.parseEscapes;}else if(c==='{'){this.emitStartGroup();}else if(c==='}'){this.emitEndGroup();}else if(c==='\x0A'||c==='\x0D'){}
+else{this.text+=c;}},parseEscapes:function(c){if(c==='\\'||c==='{'||c==='}'){this.text+=c;this.parserState=this.parseText;}else{this.parserState=this.parseControlSymbol;this.parseControlSymbol(c);}},parseControlSymbol:function(c){if(c==='~'){this.text+='\u00a0';
+this.parserState=this.parseText}else if(c==='-'){this.text+='\u00ad';}else if(c==='_'){this.text+='\u2011';}else if(c==='*'){this.emitIgnorable();this.parserState=this.parseText;}else if(c==="'"){this.parserState=this.parseHexChar;}else if(c==='|'){this.emitFormula();
+this.parserState=this.parseText;}else if(c===':'){this.emitIndexSubEntry();this.parserState=this.parseText;}else if(c==='\x0a'){this.emitEndParagraph();this.parserState=this.parseText;}else if(c==='\x0d'){this.emitEndParagraph();this.parserState=this.parseText;
+}else{this.parserState=this.parseControlWord;this.parseControlWord(c);}},parseHexChar:function(c){if(/^[A-Fa-f0-9]$/.test(c)){this.hexChar+=c;if(this.hexChar.length>=2){this.emitHexChar();this.parserState=this.parseText;}return;}this.emitError("Invalid character \""+c+"\" in hex literal.");
+this.parserState=this.parseText;},parseControlWord:function(c){if(c===' '){this.emitControlWord();this.parserState=this.parseText;}else if(/^[-\d]$/.test(c)){this.parserState=this.parseControlWordParam;this.controlWordParam+=c;}else if(/^[A-Za-z]$/.test(c)){this.controlWord+=c;
+}else{this.emitControlWord();this.parserState=this.parseText;this.parseText(c);}},parseControlWordParam:function(c){if(/^\d$/.test(c)){this.controlWordParam+=c;}else if(c===' '){this.emitControlWord();this.parserState=this.parseText;}else{this.emitControlWord();
+this.parserState=this.parseText;this.parseText(c);}},emitText:function(){if(this.text===''){return;}this.push({type:'text',value:this.text,pos:this.cpos,row:this.row,col:this.col});this.text=''},emitControlWord:function(){this.emitText();if(this.controlWord===''){}
+else{this.push({type:'controlword',value:this.controlWord,param:this.controlWordParam!==''&&Number(this.controlWordParam),pos:this.cpos,row:this.row,col:this.col});}this.controlWord='';this.controlWordParam='';},emitStartGroup:function(){this.emitText();this.push({type:'groupstart',pos:this.cpos,row:this.row,col:this.col}
+);},emitEndGroup:function(){this.emitText();this.push({type:'groupend',pos:this.cpos,row:this.row,col:this.col});},emitIgnorable:function(){this.emitText();this.push({type:'ignorable',pos:this.cpos,row:this.row,col:this.col});},emitHexChar:function(){this.emitText();
+this.push({type:'hexchar',value:this.hexChar,pos:this.cpos,row:this.row,col:this.col});this.hexChar=''},emitError:function(A){this.emitText();this.push({type:'error',value:A,row:this.row,col:this.col,char:this.cpos});},emitEndParagraph:function(){this.emitText();
+this.push({type:'endparagraph',pos:this.cpos,row:this.row,col:this.col});}};
 // Roo/htmleditor/namespace.js
 Roo.htmleditor={};
 // Roo/htmleditor/Filter.js
