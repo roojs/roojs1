@@ -9,6 +9,7 @@
  * @class Roo.bootstrap.form.TimeField
  * @extends Roo.bootstrap.form.Input
  * Bootstrap DateField class
+ * @cfg {Number} minuteStep the minutes goes up/down by a fixed number, default 1
  * 
  * 
  * @constructor
