@@ -52,6 +52,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
      * valid according to {@link Date#parseDate} (defaults to 'H:i').
      */
     format : "H:i",
+    minuteStep : 1,
 
     getAutoCreate : function()
     {
