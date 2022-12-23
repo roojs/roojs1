@@ -31436,7 +31436,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
          
         
         e.preventDefault();
-        Roo.log("HTML EDITOR ON PASTEEE");
         this.owner.fireEvent('paste', this);
         return false;
         // default behaveiour should be our local cleanup paste? (optional?)
