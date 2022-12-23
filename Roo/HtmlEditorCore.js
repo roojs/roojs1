@@ -700,6 +700,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
          
         
         e.preventDefault();
+        this.owner.fireEvent('paste', this);
         return false;
         // default behaveiour should be our local cleanup paste? (optional?)
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
