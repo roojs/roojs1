@@ -96,6 +96,14 @@
       "optvals" : []
     },
     {
+      "name" : "minuteStep",
+      "type" : "Number",
+      "desc" : "the minutes goes up/down by a fixed number, default 1",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "xattr",
       "type" : "Object",
       "desc" : "extra attributes to add to 'element' (used by builder to store stuff.)",
@@ -285,14 +293,6 @@
       ]
     },
     {
-      "name" : "focusClass",
-      "type" : "String",
-      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
-      "memberOf" : "Roo.bootstrap.form.Input",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "size",
       "type" : "string",
       "desc" : "- (lg|sm) or leave empty..",
@@ -304,6 +304,14 @@
       "name" : "labellg",
       "type" : "Number",
       "desc" : "set the width of label (1-12)",
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "focusClass",
+      "type" : "String",
+      "desc" : "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
       "memberOf" : "Roo.bootstrap.form.Input",
       "isOptional" : false,
       "optvals" : []

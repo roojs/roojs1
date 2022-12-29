@@ -123,6 +123,17 @@
       "optvals" : []
     },
     {
+      "name" : "footerRow",
+      "type" : "Boolean",
+      "desc" : "e) generate tfoot with columns of values, default fal",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : [
+        "true",
+        "false"
+      ]
+    },
+    {
       "name" : "tooltip",
       "type" : "string",
       "desc" : "Text for the tooltip",
