@@ -700,6 +700,7 @@
 
 
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'paste'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">// default behaveiour should be our local cleanup paste? (optional?)
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..
