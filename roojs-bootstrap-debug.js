@@ -24411,7 +24411,9 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         Roo.log('onDecrementMinutes');
         Roo.log(this.time);
         Roo.log(this.time.format('i'));
-        Roo.log(Math.round((parseInt(this.time.format('i')) - this.minuteStep) / 5) * 5);
+        Roo.log(Math.round((parseInt(this.time.format('i')) - this.minuteStep) / this.minuteStep) * this.minuteStep);
+        Roo.log(Math.round((parseInt(this.time.format('i')) - this.minuteStep) / this.minuteStep) * this.minuteStep - parseInt(this.time.format('i')));
+        var minutesToSubtract = Math.round((parseInt(this.time.format('i')) - this.minuteStep) / this.minuteStep) * this.minuteStep - parseInt(this.time.format('i'));
         this.time = this.time.add(Date.MINUTE, -1 * this.minuteStep);
         this.update();
     },
