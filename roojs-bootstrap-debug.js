@@ -24397,10 +24397,6 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     onIncrementMinutes: function()
     {
         Roo.log('onIncrementMinutes');
-        Roo.log(this.time);
-        Roo.log(this.time.format('i'));
-        Roo.log(Math.round((parseInt(this.time.format('i')) + this.minuteStep) / this.minuteStep) * this.minuteStep);
-        Roo.log(Math.round((parseInt(this.time.format('i')) + this.minuteStep) / this.minuteStep) * this.minuteStep - parseInt(this.time.format('i')));
         var minutesToAdd = Math.round((parseInt(this.time.format('i')) + this.minuteStep) / this.minuteStep) * this.minuteStep - parseInt(this.time.format('i'));
         this.time = this.time.add(Date.MINUTE, minutesToAdd);
         this.update();
@@ -24409,10 +24405,6 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     onDecrementMinutes: function()
     {
         Roo.log('onDecrementMinutes');
-        Roo.log(this.time);
-        Roo.log(this.time.format('i'));
-        Roo.log(Math.round((parseInt(this.time.format('i')) - this.minuteStep) / this.minuteStep) * this.minuteStep);
-        Roo.log(parseInt(this.time.format('i')) - Math.round((parseInt(this.time.format('i')) - this.minuteStep) / this.minuteStep) * this.minuteStep);
         var minutesToSubtract = parseInt(this.time.format('i')) - Math.round((parseInt(this.time.format('i')) - this.minuteStep) / this.minuteStep) * this.minuteStep;
         this.time = this.time.add(Date.MINUTE, -1 * minutesToSubtract);
         this.update();
