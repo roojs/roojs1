@@ -9,7 +9,7 @@
  * @class Roo.bootstrap.form.TimeField
  * @extends Roo.bootstrap.form.Input
  * Bootstrap DateField class
- * @cfg {Number} minuteStep the minutes goes up/down by a fixed number, default 1
+ * @cfg {Number} minuteStep the minutes is always the multiple of a fixed number, default 1
  * 
  * 
  * @constructor
@@ -433,14 +433,16 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     onIncrementMinutes: function()
     {
         Roo.log('onIncrementMinutes');
-        this.time = this.time.add(Date.MINUTE, this.minuteStep);
+        var minutesToAdd = Math.round((parseInt(this.time.format('i')) + this.minuteStep) / this.minuteStep) * this.minuteStep - parseInt(this.time.format('i'));
+        this.time = this.time.add(Date.MINUTE, minutesToAdd);
         this.update();
     },
     
     onDecrementMinutes: function()
     {
         Roo.log('onDecrementMinutes');
-        this.time = this.time.add(Date.MINUTE, -1 * this.minuteStep);
+        var minutesToSubtract = parseInt(this.time.format('i')) - Math.round((parseInt(this.time.format('i')) - this.minuteStep) / this.minuteStep) * this.minuteStep;
+        this.time = this.time.add(Date.MINUTE, -1 * minutesToSubtract);
         this.update();
     },
     
