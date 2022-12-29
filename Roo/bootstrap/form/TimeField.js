@@ -450,7 +450,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         Roo.log(Math.round((parseInt(this.time.format('i')) - this.minuteStep) / this.minuteStep) * this.minuteStep);
         Roo.log(parseInt(this.time.format('i')) - Math.round((parseInt(this.time.format('i')) - this.minuteStep) / this.minuteStep) * this.minuteStep);
         var minutesToSubtract = parseInt(this.time.format('i')) - Math.round((parseInt(this.time.format('i')) - this.minuteStep) / this.minuteStep);
-        this.time = this.time.add(Date.MINUTE, -1 * this.minuteStep);
+        this.time = this.time.add(Date.MINUTE, -1 * minutesToSubtract);
         this.update();
     },
     
