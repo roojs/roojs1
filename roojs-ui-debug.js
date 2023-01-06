@@ -25462,10 +25462,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     owner : false,
     
      /**
-     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
-     *                        Roo.resizable.
+     * @cfg {String} css styling for resizing. (used on bootstrap only)
      */
-    resizable : false,
+    resize : false,
      /**
      * @cfg {Number} height (in pixels)
      */   
@@ -25598,17 +25597,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         this.frameId = Roo.id();
         
-         
-        
-        var iframe = this.owner.wrap.createChild({
+        var ifcfg = {
             tag: 'iframe',
             cls: 'form-control', // bootstrap..
             id: this.frameId,
             name: this.frameId,
             frameBorder : 'no',
             'src' : Roo.SSL_SECURE_URL ? Roo.SSL_SECURE_URL  :  "javascript:false"
-        }, this.el
-        );
+        };
+        if (this.resize) {
+            ifcfg.style = { resize : this.resize };
+        }
+        
+        var iframe = this.owner.wrap.createChild(ifcfg, this.el); 
         
         
         this.iframe = iframe.dom;
@@ -26066,6 +26067,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
          
         
         e.preventDefault();
+        this.owner.fireEvent('paste', this);
         return false;
         // default behaveiour should be our local cleanup paste? (optional?)
         // for simple editor - we want to hammer the paste and get rid of everything... - so over-rideable..

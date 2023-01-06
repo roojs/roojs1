@@ -44,10 +44,11 @@ Roo.example.Editor = new Roo.XComponent({
                                         },
                                         {
                                             xtype : 'HtmlEditor',
-                                            xns : Roo.bootstrap,
+                                            xns : Roo.bootstrap.form,
                                             name : 'thanks-email',
                                             width : 1000,
-                                            height : 1500,
+                                            height : 500,
+											resize : 'vertical',
                                             stylesheets : (function(){
                                                 var css = [];
                                                 

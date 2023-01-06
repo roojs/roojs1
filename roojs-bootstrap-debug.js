@@ -23979,7 +23979,7 @@ Roo.apply(Roo.bootstrap.form.DateField,  {
  * @class Roo.bootstrap.form.TimeField
  * @extends Roo.bootstrap.form.Input
  * Bootstrap DateField class
- * @cfg {Number} minuteStep the minutes goes up/down by a fixed number, default 1
+ * @cfg {Number} minuteStep the minutes is always the multiple of a fixed number, default 1
  * 
  * 
  * @constructor
@@ -30840,10 +30840,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     owner : false,
     
      /**
-     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
-     *                        Roo.resizable.
+     * @cfg {String} css styling for resizing. (used on bootstrap only)
      */
-    resizable : false,
+    resize : false,
      /**
      * @cfg {Number} height (in pixels)
      */   
@@ -30976,17 +30975,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         this.frameId = Roo.id();
         
-         
-        
-        var iframe = this.owner.wrap.createChild({
+        var ifcfg = {
             tag: 'iframe',
             cls: 'form-control', // bootstrap..
             id: this.frameId,
             name: this.frameId,
             frameBorder : 'no',
             'src' : Roo.SSL_SECURE_URL ? Roo.SSL_SECURE_URL  :  "javascript:false"
-        }, this.el
-        );
+        };
+        if (this.resize) {
+            ifcfg.style = { resize : this.resize };
+        }
+        
+        var iframe = this.owner.wrap.createChild(ifcfg, this.el); 
         
         
         this.iframe = iframe.dom;
@@ -32506,10 +32507,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
     btns : [],
    
      /**
-     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
-     *                        Roo.resizable.
+     * @cfg {String} resize  (none|both|horizontal|vertical) - css resize of element
      */
-    resizable : false,
+    resize : false,
      /**
      * @cfg {Number} height (in pixels)
      */   
@@ -32588,33 +32588,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
         
         this.editorcore.onRender(ct, position);
          
-        if (this.resizable) {
-            this.resizeEl = new Roo.Resizable(this.wrap, {
-                pinned : true,
-                wrap: true,
-                dynamic : true,
-                minHeight : this.height,
-                height: this.height,
-                handles : this.resizable,
-                width: this.width,
-                listeners : {
-                    resize : function(r, w, h) {
-                        _t.onResize(w,h); // -something
-                    }
-                }
-            });
-            
-        }
+         
         this.createToolbar(this);
        
         
-        if(!this.width && this.resizable){
-            this.setSize(this.wrap.getSize());
-        }
-        if (this.resizeEl) {
-            this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
-            // should trigger onReize..
-        }
+          
         
     },
 
@@ -32685,9 +32663,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
             //this.deferFocus();
         }
          
-        if(this.resizable){
-            this.setSize(this.wrap.getSize());
-        }
+        //if(this.resizable){
+        //    this.setSize(this.wrap.getSize());
+        //}
         
         this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
     },
