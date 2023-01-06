@@ -96,10 +96,9 @@
     </span><span class="jsdoc-var">owner </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
      </span><span class="jsdoc-comment">/**
-     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
-     *                        Roo.resizable.
+     * @cfg {String} css styling for resizing. (used on bootstrap only)
      */
-    </span><span class="jsdoc-var">resizable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
      </span><span class="jsdoc-comment">/**
      * @cfg {Number} height (in pixels)
      */
@@ -232,17 +231,19 @@
 
         </span><span class="jsdoc-var">this.frameId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
 
-
-
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">iframe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.owner.wrap.createChild</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ifcfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'iframe'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-control'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// bootstrap..
             </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">frameBorder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'no'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'src' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.SSL_SECURE_URL </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.SSL_SECURE_URL  </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-string">&quot;javascript:false&quot;
-        </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-var">this.el
-        </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-syntax">};
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ifcfg.style </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.resize </span><span class="jsdoc-syntax">};
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">iframe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.owner.wrap.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ifcfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
 
 
         </span><span class="jsdoc-var">this.iframe </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iframe.dom</span><span class="jsdoc-syntax">;

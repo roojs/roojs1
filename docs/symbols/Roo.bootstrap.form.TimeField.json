@@ -98,7 +98,7 @@
     {
       "name" : "minuteStep",
       "type" : "Number",
-      "desc" : "the minutes goes up/down by a fixed number, default 1",
+      "desc" : "the minutes is always the multiple of a fixed number, default 1",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []

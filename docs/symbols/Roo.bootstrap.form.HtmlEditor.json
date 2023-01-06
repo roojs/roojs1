@@ -129,14 +129,6 @@
       "optvals" : []
     },
     {
-      "name" : "resizable",
-      "type" : "String",
-      "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
-      "memberOf" : "",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "toolbars",
       "type" : "Array",
       "desc" : "Array of toolbars. - defaults to just the Standard one",
@@ -501,17 +493,15 @@
     },
     {
       "name" : "resize",
-      "type" : "string",
-      "desc" : "",
-      "memberOf" : "Roo.bootstrap.form.TextArea",
+      "type" : "String",
+      "desc" : "l) - css resize of eleme",
+      "memberOf" : "",
       "isOptional" : false,
       "optvals" : [
         "none",
         "both",
         "horizontal",
-        "vertical",
-        "inherit",
-        "initial"
+        "vertical"
       ]
     },
     {

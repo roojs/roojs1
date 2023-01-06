@@ -9,7 +9,7 @@
  * @class Roo.bootstrap.form.TimeField
  * @extends Roo.bootstrap.form.Input
  * Bootstrap DateField class
- * @cfg {Number} minuteStep the minutes goes up/down by a fixed number, default 1
+ * @cfg {Number} minuteStep the minutes is always the multiple of a fixed number, default 1
  * 
  * 
  * @constructor
@@ -433,14 +433,16 @@
     </span><span class="jsdoc-var">onIncrementMinutes</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onIncrementMinutes'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.MINUTE</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.minuteStep</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minutesToAdd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.round</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.time.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">)) + </span><span class="jsdoc-var">this.minuteStep</span><span class="jsdoc-syntax">) / </span><span class="jsdoc-var">this.minuteStep</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">this.minuteStep </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.time.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.MINUTE</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">minutesToAdd</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
     },
 
     </span><span class="jsdoc-var">onDecrementMinutes</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onDecrementMinutes'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.MINUTE</span><span class="jsdoc-syntax">, -1 * </span><span class="jsdoc-var">this.minuteStep</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minutesToSubtract </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.time.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">)) - </span><span class="jsdoc-var">Math.round</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.time.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">)) - </span><span class="jsdoc-var">this.minuteStep</span><span class="jsdoc-syntax">) / </span><span class="jsdoc-var">this.minuteStep</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">this.minuteStep</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.MINUTE</span><span class="jsdoc-syntax">, -1 * </span><span class="jsdoc-var">minutesToSubtract</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
     },
 

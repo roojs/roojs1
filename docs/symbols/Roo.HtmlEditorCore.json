@@ -91,6 +91,14 @@
       "optvals" : []
     },
     {
+      "name" : "css",
+      "type" : "String",
+      "desc" : "styling for resizing. (used on bootstrap only)",
+      "memberOf" : "",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "enableBlocks",
       "type" : "boolean",
       "desc" : "- default true - if the block editor (table and figure should be enabled)",
@@ -110,14 +118,6 @@
       "name" : "width",
       "type" : "Number",
       "desc" : "(in pixels)",
-      "memberOf" : "",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
-      "name" : "resizable",
-      "type" : "String",
-      "desc" : "'s' or 'se' or 'e' - wrapps the element in a\n                       Roo.resizable.",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []
