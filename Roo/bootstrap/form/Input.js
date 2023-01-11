@@ -273,7 +273,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
         var id = Roo.id();
         
@@ -402,6 +401,34 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 inputblock.cn.push(feedback);
             }
         };
+        
+        
+        
+        cfg = this.getAutoCreateLabel( cfg, inputblock );
+        
+       
+         
+        
+        if (this.parentType === 'Navbar' &&  this.parent().bar) {
+           cfg.cls += ' navbar-form';
+        }
+        
+        if (this.parentType === 'NavGroup' && !(Roo.bootstrap.version == 4 && this.parent().form)) {
+            // on BS4 we do this only if not form 
+            cfg.cls += ' navbar-form';
+            cfg.tag = 'li';
+        }
+        
+        return cfg;
+        
+    },
+    /**
+     * autocreate the label - also used by textara... ?? and others?
+     */
+    getAutoCreateLabel : function( cfg, inputblock )
+    {
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+       
         var indicator = {
             tag : 'i',
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
@@ -545,20 +572,10 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 
                 
         };
-        
-        if (this.parentType === 'Navbar' &&  this.parent().bar) {
-           cfg.cls += ' navbar-form';
-        }
-        
-        if (this.parentType === 'NavGroup' && !(Roo.bootstrap.version == 4 && this.parent().form)) {
-            // on BS4 we do this only if not form 
-            cfg.cls += ' navbar-form';
-            cfg.tag = 'li';
-        }
-        
         return cfg;
-        
     },
+    
+    
     /**
      * return the real input element.
      */

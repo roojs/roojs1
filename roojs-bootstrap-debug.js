@@ -12543,7 +12543,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
         var id = Roo.id();
         
@@ -12672,6 +12671,34 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 inputblock.cn.push(feedback);
             }
         };
+        
+        
+        
+        cfg = this.getAutoCreateLabel( cfg, inputblock );
+        
+       
+         
+        
+        if (this.parentType === 'Navbar' &&  this.parent().bar) {
+           cfg.cls += ' navbar-form';
+        }
+        
+        if (this.parentType === 'NavGroup' && !(Roo.bootstrap.version == 4 && this.parent().form)) {
+            // on BS4 we do this only if not form 
+            cfg.cls += ' navbar-form';
+            cfg.tag = 'li';
+        }
+        
+        return cfg;
+        
+    },
+    /**
+     * autocreate the label - also used by textara... ?? and others?
+     */
+    getAutoCreateLabel : function( cfg, inputblock )
+    {
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+       
         var indicator = {
             tag : 'i',
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
@@ -12815,20 +12842,10 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 
                 
         };
-        
-        if (this.parentType === 'Navbar' &&  this.parent().bar) {
-           cfg.cls += ' navbar-form';
-        }
-        
-        if (this.parentType === 'NavGroup' && !(Roo.bootstrap.version == 4 && this.parent().form)) {
-            // on BS4 we do this only if not form 
-            cfg.cls += ' navbar-form';
-            cfg.tag = 'li';
-        }
-        
         return cfg;
-        
     },
+    
+    
     /**
      * return the real input element.
      */
@@ -13517,74 +13534,10 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             
         }
         
-        if (align ==='left' && this.fieldLabel.length) {
-            cfg.cn = [
-                {
-                    tag: 'label',
-                    'for' :  id,
-                    cls : 'control-label',
-                    html : this.fieldLabel
-                },
-                {
-                    cls : "",
-                    cn: [
-                        inputblock
-                    ]
-                }
+        
+        cfg = this.getAutoCreateLabel( cfg, inputblock );
 
-            ];
-            
-            if(this.labelWidth > 12){
-                cfg.cn[0].style = "width: " + this.labelWidth + 'px';
-            }
-
-            if(this.labelWidth < 13 && this.labelmd == 0){
-                this.labelmd = this.labelWidth;
-            }
-
-            if(this.labellg > 0){
-                cfg.cn[0].cls += ' col-lg-' + this.labellg;
-                cfg.cn[1].cls += ' col-lg-' + (12 - this.labellg);
-            }
-
-            if(this.labelmd > 0){
-                cfg.cn[0].cls += ' col-md-' + this.labelmd;
-                cfg.cn[1].cls += ' col-md-' + (12 - this.labelmd);
-            }
-
-            if(this.labelsm > 0){
-                cfg.cn[0].cls += ' col-sm-' + this.labelsm;
-                cfg.cn[1].cls += ' col-sm-' + (12 - this.labelsm);
-            }
-
-            if(this.labelxs > 0){
-                cfg.cn[0].cls += ' col-xs-' + this.labelxs;
-                cfg.cn[1].cls += ' col-xs-' + (12 - this.labelxs);
-            }
-            
-        } else if ( this.fieldLabel.length) {
-            cfg.cn = [
-
-               {
-                   tag: 'label',
-                   //cls : 'input-group-addon',
-                   html : this.fieldLabel
-
-               },
-
-               inputblock
-
-           ];
-
-        } else {
-
-            cfg.cn = [
-
-                inputblock
-
-            ];
-                
-        }
+         
         
         if (this.disabled) {
             input.disabled=true;
