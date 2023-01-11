@@ -13953,12 +13953,14 @@ Roo.extend(Roo.bootstrap.form.TriggerField, Roo.bootstrap.form.Input,  {
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
             tooltip : 'This field is required'
         };
+        /*
         if (Roo.bootstrap.version == 4) {
             indicator = {
                 tag : 'i',
                 style : 'display:none'
             };
         }
+        */
         
         
         if (align ==='left' && this.fieldLabel.length) {
@@ -17317,12 +17319,14 @@ Roo.extend(Roo.bootstrap.form.ComboBox, Roo.bootstrap.form.TriggerField, {
             cls : 'roo-required-indicator ' + (this.indicatorpos == 'right'  ? 'right' : 'left') +'-indicator text-danger fa fa-lg fa-star',
             tooltip : 'This field is required'
         };
-        if (Roo.bootstrap.version == 4) {
+        /*
+         * why?
+          if (Roo.bootstrap.version == 4) {
             indicator = {
                 tag : 'i',
                 style : 'display:none'
             };
-        }
+        }*/
         if (align ==='left' && this.fieldLabel.length) {
             
             cfg.cls += ' roo-form-group-label-left'  + (Roo.bootstrap.version == 4 ? ' row' : '');
