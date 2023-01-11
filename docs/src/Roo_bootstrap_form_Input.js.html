@@ -273,7 +273,6 @@
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= (!</span><span class="jsdoc-var">this.labelAlign</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.parentLabelAlign</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.labelAlign</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
 
@@ -402,6 +401,34 @@
                 </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">);
             }
         };
+
+
+
+        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getAutoCreateLabel</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">);
+
+
+
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'Navbar' </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.bar</span><span class="jsdoc-syntax">) {
+           </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-form'</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'NavGroup' </span><span class="jsdoc-syntax">&amp;&amp; !(</span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">== 4 &amp;&amp; </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.form</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-comment">// on BS4 we do this only if not form 
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-form'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+
+    },
+    </span><span class="jsdoc-comment">/**
+     * autocreate the label - also used by textara... ?? and others?
+     */
+    </span><span class="jsdoc-var">getAutoCreateLabel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= (!</span><span class="jsdoc-var">this.labelAlign</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.parentLabelAlign</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.labelAlign</span><span class="jsdoc-syntax">;
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">indicator </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-required-indicator ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.indicatorpos </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'right'  </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'right' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">) +</span><span class="jsdoc-string">'-indicator text-danger fa fa-lg fa-star'</span><span class="jsdoc-syntax">,
@@ -545,20 +572,10 @@
 
 
         };
-
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'Navbar' </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.bar</span><span class="jsdoc-syntax">) {
-           </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-form'</span><span class="jsdoc-syntax">;
-        }
-
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parentType </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'NavGroup' </span><span class="jsdoc-syntax">&amp;&amp; !(</span><span class="jsdoc-var">Roo.bootstrap.version </span><span class="jsdoc-syntax">== 4 &amp;&amp; </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.form</span><span class="jsdoc-syntax">)) {
-            </span><span class="jsdoc-comment">// on BS4 we do this only if not form 
-            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-form'</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">;
-        }
-
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
-
     },
+
+
     </span><span class="jsdoc-comment">/**
      * return the real input element.
      */

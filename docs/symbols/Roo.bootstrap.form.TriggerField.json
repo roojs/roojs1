@@ -829,6 +829,25 @@
       "returns" : []
     },
     {
+      "name" : "getAutoCreateLabel",
+      "type" : "function",
+      "desc" : "autocreate the label - also used by textara... ?? and others?",
+      "sig" : "()\n{\n\n}",
+      "static" : false,
+      "memberOf" : "Roo.bootstrap.form.Input",
+      "isStatic" : false,
+      "isConstructor" : false,
+      "isPrivate" : false,
+      "example" : "",
+      "deprecated" : "",
+      "since" : "",
+      "see" : "",
+      "exceptions" : "",
+      "requires" : "",
+      "params" : [],
+      "returns" : []
+    },
+    {
       "name" : "validate",
       "type" : "function",
       "desc" : "Validates the field value",
