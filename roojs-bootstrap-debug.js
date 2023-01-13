@@ -27204,7 +27204,8 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
             parent = p.parentNode,
             doc = parent.ownerDocument,
             items = [];
-            
+         
+        //Roo.log("Parsing: " + p.innerText)    ;
         var listtype = 'ul';   
         while (ns) {
             if (ns.nodeType != 1) {
@@ -27212,22 +27213,33 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 continue;
             }
             if (!ns.className.match(/(MsoListParagraph|ql-indent-1)/i)) {
+                //Roo.log("Missing para r q1indent - got:" + ns.className);
                 break;
             }
             var spans = ns.getElementsByTagName('span');
+            
             if (ns.hasAttribute('style') && ns.getAttribute('style').match(/mso-list/)) {
                 items.push(ns);
                 ns = ns.nextSibling;
                 has_list = true;
-                if (spans.length && spans[0].hasAttribute('style')) {
-                    var  style = this.styleToObject(spans[0]);
-                    if (typeof(style['font-family']) != 'undefined' && !style['font-family'].match(/Symbol/)) {
-                        listtype = 'ol';
-                    }
+                if (!spans.length) {
+                    continue;
+                }
+                var ff = spans[0].style.fontFamily;
+                if (!spans[0].hasAttribute('style') && spans.length  > 1 && spans[1].hasAttribute('style')) {
+                    
+                    ff = spans[1].style.fontFamily;
+                }
+                    //var  style = this.styleToObject(spans[0]);
+                //Roo.log("got font family: " + ff);
+                if (typeof(ff) != 'undefined' && !ff.match(/Symbol/)) {
+                    listtype = 'ol';
                 }
                 
                 continue;
             }
+            //Roo.log("no mso-list?");
+            
             var spans = ns.getElementsByTagName('span');
             if (!spans.length) {
                 break;
