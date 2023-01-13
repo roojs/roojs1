@@ -32905,6 +32905,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
             }
         }),
         btn('list','insertunorderedlist',true);
+        btn('list-ol','insertorderedlist',true);
+
         btn('pencil', false,true, function(btn){
                 Roo.log(this);
                 this.toggleSourceEdit(btn.pressed);
