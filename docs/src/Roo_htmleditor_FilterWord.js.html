@@ -226,6 +226,7 @@
             </span><span class="jsdoc-var">doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parent.ownerDocument</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= [];
 
+        </span><span class="jsdoc-comment">//Roo.log(&quot;Parsing: &quot; + p.innerText)    ;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns.nodeType </span><span class="jsdoc-syntax">!= 1) {
@@ -233,22 +234,33 @@
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ns.className.match</span><span class="jsdoc-syntax">(/(MsoListParagraph|ql-indent-1)/i)) {
+                </span><span class="jsdoc-comment">//Roo.log(&quot;Missing para r q1indent - got:&quot; + ns.className);
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">spans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">);
+
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">ns.getAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/mso-list/)) {
                 </span><span class="jsdoc-var">items.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.nextSibling</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">has_list </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">spans.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)) {
-                    </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.styleToObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[0]);
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'font-family'</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'font-family'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.match</span><span class="jsdoc-syntax">(/Symbol/)) {
-                        </span><span class="jsdoc-var">listtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">;
-                    }
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.style.fontFamily</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">spans.length  </span><span class="jsdoc-syntax">&gt; 1 &amp;&amp; </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)) {
+
+                    </span><span class="jsdoc-var">ff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.style.fontFamily</span><span class="jsdoc-syntax">;
+                }
+                    </span><span class="jsdoc-comment">//var  style = this.styleToObject(spans[0]);
+                //Roo.log(&quot;got font family: &quot; + ff);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ff</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">ff.match</span><span class="jsdoc-syntax">(/Symbol/)) {
+                    </span><span class="jsdoc-var">listtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">;
                 }
 
                 </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
             }
+            </span><span class="jsdoc-comment">//Roo.log(&quot;no mso-list?&quot;);
+
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">spans </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
