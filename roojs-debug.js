@@ -505,15 +505,18 @@ Roo.factory(conf, Roo.data);
             return s.replace(/([.*+?^${}()|[\]\/\\])/g, "\\$1");
         },
 
-        // internal
-        callback : function(cb, scope, args, delay){
-            if(typeof cb == "function"){
-                if(delay){
-                    cb.defer(delay, scope, args || []);
-                }else{
-                    cb.apply(scope, args || []);
-                }
+        // internal (non-delayed, will get a return value..)
+        callback : function(cb, scope, args, delay)
+		{
+            if(typeof cb != "function"){
+				return false;
+			}
+			if(delay){
+				cb.defer(delay, scope, args || []);
+				return false
             }
+			return cb.apply(scope, args || []);
+
         },
 
         /**
