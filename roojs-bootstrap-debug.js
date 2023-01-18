@@ -26996,7 +26996,7 @@ Roo.htmleditor.FilterWord = function(cfg)
     this.replaceAname(cfg.node);
     // this is disabled as the removal is done by other filters;
    // this.walk(cfg.node);
-    
+    this.replaceImageTable(cfg.node);
     
 }
 
@@ -27350,9 +27350,63 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
         
         
         
+    },
+    
+    replaceImageTable : function(doc)
+    {
+         /*
+          <table cellpadding=0 cellspacing=0 align=left>
+  <tr>
+   <td width=423 height=0></td>
+  </tr>
+  <tr>
+   <td></td>
+   <td><img width=601 height=401
+   src="file:///C:/Users/Alan/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg"
+   v:shapes="Picture_x0020_2"></td>
+  </tr>
+ </table>
+ */
+        var imgs = Array.from(doc.getElementsByTagName('img'));
+        Roo.each(imgs, function(img) {
+            var td = img.parentNode;
+            if (td.nodeName !=  'TD') {
+                return;
+            }
+            var tr = td.parentNode;
+            if (tr.nodeName !=  'TR') {
+                return;
+            }
+            var tbody = tr.parentNode;
+            if (tbody.nodeName !=  'TBODY') {
+                return;
+            }
+            var table = tbody.parentNode;
+            if (table.nodeName !=  'TABLE') {
+                return;
+            }
+            // first row..
+            
+            if (table.getElementsByTagName('tr').length != 2) {
+                return;
+            }
+            if (table.getElementsByTagName('td').length != 3) {
+                return;
+            }
+            if (table.innerText.trim() != '') {
+                return;
+            }
+            var p = table.parentNode;
+            img.parentNode.removeChild(img);
+            p.insertBefore(img, table);
+            p.removeChild(table);
+            
+            
+            
+        });
+        
+      
     }
-    
-    
     
 });
 /**
