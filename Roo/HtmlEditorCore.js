@@ -609,6 +609,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
             var url = urlAPI.createObjectURL( cd.files[0]);
             this.insertAtCursor('<img src="' + url + '">');
+            var d = (new DOMParser().parseFromString('<img src="' + url + '">', 'text/html')).body;
             // is insert asycn?
             if (this.enableBlocks) {
                 
@@ -623,7 +624,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     
                 });
             }
-            
+            this.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
             return false;
         }
         if (cd.types.indexOf('text/html') < 0 ) {
