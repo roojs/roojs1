@@ -608,7 +608,22 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 (window.webkitURL && webkitURL);
     
             var url = urlAPI.createObjectURL( cd.files[0]);
-            this.insertAtCursor('<img src=" + url + ">');
+            this.insertAtCursor('<img src="' + url + '">');
+            // is insert asycn?
+            if (this.enableBlocks) {
+                
+                Array.from(d.getElementsByTagName('img')).forEach(function(img) {
+                    if (img.closest('figure')) { // assume!! that it's aready
+                        return;
+                    }
+                    var fig  = new Roo.htmleditor.BlockFigure({
+                        image_src  : img.src
+                    });
+                    fig.updateElement(img); // replace it..
+                    
+                });
+            }
+            
             return false;
         }
         if (cd.types.indexOf('text/html') < 0 ) {
