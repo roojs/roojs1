@@ -608,8 +608,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 (window.webkitURL && webkitURL);
     
             var url = urlAPI.createObjectURL( cd.files[0]);
-            this.insertAtCursor('<img src="' + url + '">');
-            var d = (new DOMParser().parseFromString('<img src="' + url + '">', 'text/html')).body;
+             var d = (new DOMParser().parseFromString('<img src="' + url + '">', 'text/html')).body;
             // is insert asycn?
             if (this.enableBlocks) {
                 
