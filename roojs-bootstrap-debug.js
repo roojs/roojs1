@@ -31375,7 +31375,24 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 (window.webkitURL && webkitURL);
     
             var url = urlAPI.createObjectURL( cd.files[0]);
-            this.insertAtCursor('<img src=" + url + ">');
+             var d = (new DOMParser().parseFromString('<img src="' + url + '">', 'text/html')).body;
+            // is insert asycn?
+            if (this.enableBlocks) {
+                
+                Array.from(d.getElementsByTagName('img')).forEach(function(img) {
+                    if (img.closest('figure')) { // assume!! that it's aready
+                        return;
+                    }
+                    var fig  = new Roo.htmleditor.BlockFigure({
+                        image_src  : img.src
+                    });
+                    fig.updateElement(img); // replace it..
+                    
+                });
+            }
+            this.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
+            e.preventDefault();
+            this.owner.fireEvent('paste', this);
             return false;
         }
         if (cd.types.indexOf('text/html') < 0 ) {
