@@ -624,6 +624,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 });
             }
             this.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
+             e.preventDefault();
+        this.owner.fireEvent('paste', this);
             return false;
         }
         if (cd.types.indexOf('text/html') < 0 ) {
