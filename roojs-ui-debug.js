@@ -26038,26 +26038,34 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var urlAPI = (window.createObjectURL && window) || 
                 (window.URL && URL.revokeObjectURL && URL) || 
                 (window.webkitURL && webkitURL);
-    
-            var url = urlAPI.createObjectURL( cd.files[0]);
-             var d = (new DOMParser().parseFromString('<img src="' + url + '">', 'text/html')).body;
-            // is insert asycn?
-            if (this.enableBlocks) {
+            
+            var r = new FileReader();
+            var t = this;
+            r.addEventListener('load',function()
+            {
                 
-                Array.from(d.getElementsByTagName('img')).forEach(function(img) {
-                    if (img.closest('figure')) { // assume!! that it's aready
-                        return;
-                    }
-                    var fig  = new Roo.htmleditor.BlockFigure({
-                        image_src  : img.src
-                    });
-                    fig.updateElement(img); // replace it..
+                var d = (new DOMParser().parseFromString('<img src="' + r.result+ '">', 'text/html')).body;
+                // is insert asycn?
+                if (t.enableBlocks) {
                     
-                });
-            }
-            this.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
+                    Array.from(d.getElementsByTagName('img')).forEach(function(img) {
+                        if (img.closest('figure')) { // assume!! that it's aready
+                            return;
+                        }
+                        var fig  = new Roo.htmleditor.BlockFigure({
+                            image_src  : img.src
+                        });
+                        fig.updateElement(img); // replace it..
+                        
+                    });
+                }
+                t.insertAtCursor(d.innerHTML.replace(/&nbsp;/g,' '));
+                t.owner.fireEvent('paste', this);
+            });
+            r.readAsDataURL(cd.files[0]);
+            
             e.preventDefault();
-            this.owner.fireEvent('paste', this);
+            
             return false;
         }
         if (cd.types.indexOf('text/html') < 0 ) {

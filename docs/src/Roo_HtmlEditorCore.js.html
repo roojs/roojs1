@@ -607,25 +607,33 @@
                 (</span><span class="jsdoc-var">window.URL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">URL.revokeObjectURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">URL</span><span class="jsdoc-syntax">) ||
                 (</span><span class="jsdoc-var">window.webkitURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">webkitURL</span><span class="jsdoc-syntax">);
 
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">urlAPI.createObjectURL</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cd.files</span><span class="jsdoc-syntax">[0]);
-             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">DOMParser</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.parseFromString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;img src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.body</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-comment">// is insert asycn?
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.enableBlocks</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FileReader</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">r.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+            {
 
-                </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-comment">// assume!! that it's aready
-                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                    }
-                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fig  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.BlockFigure</span><span class="jsdoc-syntax">({
-                        </span><span class="jsdoc-var">image_src  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">img.src
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">DOMParser</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.parseFromString</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;img src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">r.result</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.body</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-comment">// is insert asycn?
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.enableBlocks</span><span class="jsdoc-syntax">) {
+
+                    </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getElementsByTagName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">))</span><span class="jsdoc-var">.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img.closest</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-comment">// assume!! that it's aready
+                            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                        }
+                        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fig  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.htmleditor.BlockFigure</span><span class="jsdoc-syntax">({
+                            </span><span class="jsdoc-var">image_src  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">img.src
+                        </span><span class="jsdoc-syntax">});
+                        </span><span class="jsdoc-var">fig.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// replace it..
+
                     </span><span class="jsdoc-syntax">});
-                    </span><span class="jsdoc-var">fig.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">img</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// replace it..
+                }
+                </span><span class="jsdoc-var">t.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.innerHTML.replace</span><span class="jsdoc-syntax">(/&amp;nbsp;/g,</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">t.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'paste'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            });
+            </span><span class="jsdoc-var">r.readAsDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.files</span><span class="jsdoc-syntax">[0]);
 
-                </span><span class="jsdoc-syntax">});
-            }
-            </span><span class="jsdoc-var">this.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.innerHTML.replace</span><span class="jsdoc-syntax">(/&amp;nbsp;/g,</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">));
             </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">this.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'paste'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/html'</span><span class="jsdoc-syntax">) &lt; 0 ) {
