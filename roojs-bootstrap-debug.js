@@ -10335,7 +10335,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             var id = false;
             
             if(typeof(renderer) !== 'undefined'){
-                value = renderer(d.data[cm.getDataIndex(i)], false, d);
+                value = renderer.call(config, d.data[cm.getDataIndex(i)], false, d);
             }
             // if object are returned, then they are expected to be Roo.bootstrap.Component instances
             // and are rendered into the cells after the row is rendered - using the id for the element.
