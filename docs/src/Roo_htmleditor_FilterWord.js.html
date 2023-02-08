@@ -246,14 +246,19 @@
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
                 }
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.style.fontFamily</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">spans.length  </span><span class="jsdoc-syntax">&gt; 1 &amp;&amp; </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)) {
-
-                    </span><span class="jsdoc-var">ff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.style.fontFamily</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">se </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[0];
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">spans.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                    </span><span class="jsdoc-var">se </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">spans</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">se.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">)  &amp;&amp; </span><span class="jsdoc-var">se.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">se.style.fontFamily </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">ff </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">se.style.fontFamily</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    }
                 }
-                    </span><span class="jsdoc-comment">//var  style = this.styleToObject(spans[0]);
-                //Roo.log(&quot;got font family: &quot; + ff);
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ff</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">ff.match</span><span class="jsdoc-syntax">(/Symbol/)) {
+
+
+                </span><span class="jsdoc-comment">//Roo.log(&quot;got font family: &quot; + ff);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ff</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">ff.match</span><span class="jsdoc-syntax">(/(Symbol|Wingdings)/) &amp;&amp; </span><span class="jsdoc-string">&quot;·o&quot;</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">se.innerText.trim</span><span class="jsdoc-syntax">()) &lt; 0) {
                     </span><span class="jsdoc-var">listtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ol'</span><span class="jsdoc-syntax">;
                 }
 

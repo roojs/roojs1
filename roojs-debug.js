@@ -46392,14 +46392,19 @@ Roo.extend(Roo.htmleditor.FilterWord, Roo.htmleditor.Filter,
                 if (!spans.length) {
                     continue;
                 }
-                var ff = spans[0].style.fontFamily;
-                if (!spans[0].hasAttribute('style') && spans.length  > 1 && spans[1].hasAttribute('style')) {
-                    
-                    ff = spans[1].style.fontFamily;
+                var ff = '';
+                var se = spans[0];
+                for (var i = 0; i < spans.length;i++) {
+                    se = spans[i];
+                    if (se.hasAttribute('style')  && se.hasAttribute('style') && se.style.fontFamily != '') {
+                        ff = se.style.fontFamily;
+                        break;
+                    }
                 }
-                    //var  style = this.styleToObject(spans[0]);
+                 
+                    
                 //Roo.log("got font family: " + ff);
-                if (typeof(ff) != 'undefined' && !ff.match(/Symbol/)) {
+                if (typeof(ff) != 'undefined' && !ff.match(/(Symbol|Wingdings)/) && "·o".indexOf(se.innerText.trim()) < 0) {
                     listtype = 'ol';
                 }
                 
