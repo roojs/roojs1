@@ -105,7 +105,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
     
     
       /**
-     * @cfg {Array|boolean} toolbars Array of toolbars. - true for standard, and false for none.
+     * @cfg {Array|boolean} toolbars Array of toolbars, or names of toolbars. - true for standard, and false for none.
      */
     toolbars : true,
     
