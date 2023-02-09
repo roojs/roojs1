@@ -184,6 +184,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
                 t.xns = t.xns || Roo.bootstrap.form.HtmlEditorToolbar;
                 t = Roo.factory(t);
             }
+            this.toolbars[i] = t;
             this.toolbars[i].render(this.toolbarContainer());
         }, this);
         
