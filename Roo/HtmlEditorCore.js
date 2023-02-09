@@ -804,9 +804,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return; // we do not handle this.. (undo manager does..)
         }
         // clicking a 'block'?
-        if (e && e.type == 'mouseup') {
         
-        }
         // in theory this detects if the last element is not a br, then we try and do that.
         // its so clicking in space at bottom triggers adding a br and moving the cursor.
         if (e &&
