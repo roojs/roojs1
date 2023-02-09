@@ -181,6 +181,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
             }
             if (typeof(t) == 'object' && typeof(t.xtype) == 'string') {
                 t.editor = this;
+                t.xns = t.xns || Roo.bootstrap.form.HtmlEditorToolbar;
                 t = Roo.factory(t);
             }
             this.toolbars[i].render(this.toolbarContainer());
