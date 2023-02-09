@@ -169,7 +169,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
         }
         if (this.toolbars === true) {
             this.toolbars = [
-                new Roo.bootstrap.form.HtmlEditorToolbarStandard({editor: this} )
+                new Roo.bootstrap.form.HtmlEditorToolbar.Standard({editor: this} )
             ];
         }
         this.toolbars[0].render(this.toolbarContainer());
