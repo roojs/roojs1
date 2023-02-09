@@ -168,16 +168,16 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
             return;
         }
         if (this.toolbars === true) {
-            this.toolbars = [
-                new Roo.bootstrap.form.HtmlEditorToolbar.Standard({editor: this} )
-            ];
+            this.toolbars = [ 'Standard' ];
         }
         
         var ar = Array.from(this.toolbars);
         this.toolbars = [];
         ar.forEach(function(t,i) {
             if (typeof(t) == 'string') {
-                t = new Roo.bootstrap.form.HtmlEditorToolbar[t]({editor : this});
+                t = {
+                    xtype : t
+                };
             }
             if (typeof(t) == 'object' && typeof(t.xtype) == 'string') {
                 t.editor = this;
