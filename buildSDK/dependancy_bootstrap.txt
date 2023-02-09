@@ -163,6 +163,8 @@ Roo.htmleditor.BlockTd
 
 Roo.HtmlEditorCore
 Roo.bootstrap.form.HtmlEditor
+Roo.bootstrap.form.HtmlEditorToolbar.namespace
+
 Roo.bootstrap.form.HtmlEditorToolbar.Standard
 Roo.bootstrap.form.HtmlEditorToolbar.Context
 
