@@ -472,6 +472,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
             }
              e.setValue(this.selectedNode.getAttribute(e.attrname));
         }, this);
+        this.deleteBtn.show();
         this.show();
             
     }
