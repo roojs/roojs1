@@ -467,6 +467,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         }
         // based on attributes...
         this.active_group.forEach(function(e) {
+            if (typeof(e.attrname) == 'undefined') {
+                return;
+            }
              e.setValue(this.selectedNode.getAttribute(e.attrname));
         }, this);
         this.show();
