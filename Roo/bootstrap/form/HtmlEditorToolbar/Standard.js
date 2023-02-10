@@ -208,8 +208,16 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             sel = ev.target;
             
         }
-        
-        
+        var tn = sel.tagName.toUpperCase();
+        if (tn != 'A') {
+            var asel = sel.closest('A');
+            if (asel) {
+                sel = asel;
+            }
+        }
+        if (tn == 'A') {
+            btns.get('link').setActive(tn == 'A');
+        }
         
         
         
