@@ -175,7 +175,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
     editorcore : false,
     buttons : false,
     
-     
+    toolbars : false, // subtoolbars...
         
     onRender : function(ct, position)
     {
