@@ -180,7 +180,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
      * Protected method that will not generally be called directly. It triggers
      * a toolbar update by reading the markup state of the current selection in the editor.
      */
-    updateToolbar: function(){
+    updateToolbar: function(editor ,ev, sel){
 
         if(!this.editorcore.activated){
             this.editor.onFirstFocus(); // is this neeed?
@@ -199,6 +199,15 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         
         //btns[frameId + '-insertorderedlist').setActive(doc.queryCommandState('insertorderedlist'));
         btns.get('list').setActive(doc.queryCommandState('insertunorderedlist'));
+        
+        if (ev &&
+            (ev.type == 'mouseup' || ev.type == 'click' ) &&
+            ev.target && ev.target.tagName != 'BODY' ) { // && ev.target.tagName == 'IMG') {
+            // they have click on an image...
+            // let's see if we can change the selection...
+            sel = ev.target;
+            
+        }
         
         
         
