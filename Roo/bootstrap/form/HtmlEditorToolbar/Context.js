@@ -289,7 +289,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
     
     onDelete : function()
     {
-        var range = editorcore.createRange();
+        var range = this.editorcore.createRange();
         var selection = this.editorcore.getSelection();
         range.setStart(stn,0);
         range.setEnd(stn,0); 
