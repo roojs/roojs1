@@ -262,6 +262,46 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
            item.enable();
         });
     },
+    
+    onDelete : function()
+    {
+        var range = this.editorcore.createRange();
+        var selection = this.editorcore.getSelection();
+        var sn = this.selectedNode;
+        range.setStart(sn,0);
+        range.setEnd(sn,0); 
+        
+        
+        if (sn.hasAttribute('data-block')) {
+            var block = Roo.htmleditor.Block.factory(tb.selectedNode)
+            if (block) {
+                block.removeNode();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                this.updateToolbar(null, null, null);
+            }   
+             
+        }
+        if (!sn) {
+            return; // should not really happen..
+        }
+        if (sn && sn.tagName == 'BODY') {
+            return;
+        }
+        var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || sn.parentNode;
+        
+        // remove and keep parents.
+        a = new Roo.htmleditor.FilterKeepChildren({tag : false});
+        a.replaceTag(sn);
+        
+        selection.removeAllRanges();
+        selection.addRange(range);
+        this.editorcore.fireEditorEvent(false);
+        
+        
+    },
+    
+    
     toggleSourceEdit : function(sourceEditMode){
         
           
