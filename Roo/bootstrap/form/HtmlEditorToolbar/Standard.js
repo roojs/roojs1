@@ -161,7 +161,6 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         }
         
         
-        this.buildToolbarDelete();
          
         this.xtype = 'NavSimplebar'; // why?
         
@@ -170,7 +169,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             this.buttons.add(this.addxtypeChild(children[i]));
             
         }
-        
+        this.buildToolbarDelete();
+
         editor.on('editorevent', this.updateToolbar, this);
     },
     
