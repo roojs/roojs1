@@ -204,7 +204,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         this.editorcore.on('editorevent', this.updateToolbar, this);
         
     },
-    
+    onFirstFocus: function() {
+        this.el.hide();
+    },
     
     
     buildToolbarGroup: function(tlist, key )
