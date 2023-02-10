@@ -177,7 +177,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
     buttons : false,
     
     buttons_group : false, // subtoolbars...  - buttson?
-    
+    active_group : false,
     
     selectedNode : false,
     
@@ -330,6 +330,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
      */
     updateToolbar: function(editor ,ev, sel)
     {
+        var ty = this.constructor.superclass.types;
+        
         
         if (ev) {
             ev.stopEvent(); // se if we can stop this looping with mutiple events.
@@ -367,9 +369,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
           
         var ans = this.editorcore.getAllAncestors();
         
-        // pick
-        var ty = Roo.form.HtmlEditor.ToolbarContext.types;
-        
+               
         if (!sel) { 
             sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editorcore.doc.body;
             sel = sel ? sel : this.editorcore.doc.body;
@@ -391,21 +391,17 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         } else if (sel && sel.closest('[data-block]')) {
             
             db = sel.closest('[data-block]');
-            //var cepar = sel.closest('[contenteditable=true]');
-            //if (db && cepar && cepar.tagName != 'BODY') {
-            //   db = false; // we are inside an editable block.. = not sure how we are going to handle nested blocks!?
-            //}   
+             
         }
         
         
         var block = false;
-        //if (db && !sel.hasAttribute('contenteditable') && sel.getAttribute('contenteditable') != 'true' ) {
         if (db && this.editorcore.enableBlocks) {
             block = Roo.htmleditor.Block.factory(db);
             
             
             if (block) {
-                 db.className = (
+                db.className = (
                         db.classList.length > 0  ? db.className + ' ' : ''
                     )  + 'roo-ed-selection';
                  
@@ -413,31 +409,28 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
                 tn = 'BLOCK.' + db.getAttribute('data-block');
                 
                 //this.editorcore.selectNode(db);
-                if (typeof(this.toolbars[tn]) == 'undefined') {
-                   this.toolbars[tn] = this.buildToolbar( false  ,tn ,block.friendly_name, block);
+                if (typeof(this.buttons_group[tn]) == 'undefined') {
+                   this.buttons_group[tn] = this.buildBlockToolbar( block );
                 }
-                this.toolbars[tn].selectedNode = db;
+                this.selectedNode = db;
                 left_label = block.friendly_name;
                 ans = this.editorcore.getAllAncestors();
             }
-            
-                
+              
             
         }
         
         
-        if (this.tb.name == tn && lastSel == this.tb.selectedNode && ev !== false) {
+        if (this.active_group == tn && lastSel == this.selectedNode && ev !== false) {
             return; // no change?
         }
         
+        if (this.active_group) {
+            this.hideActiveGroup();
+        }
+        this.showActiveGroup(tn);
         
-          
-        this.tb.el.hide();
-        ///console.log("show: " + tn);
-        this.tb =  typeof(this.toolbars[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
         
-        this.tb.el.show();
-        // update name
         this.tb.items.first().el.innerHTML = left_label + ':&nbsp;';
         
         
