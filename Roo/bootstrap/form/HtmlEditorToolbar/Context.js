@@ -195,7 +195,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
           
         // disable everything...
         var ty = this.constructor.superclass.types;
-        this.toolbars = {};
+        this.button_groups = {};
         // block toolbars are built in updateToolbar when needed.
         for (var i in  ty) {
             this.button_groups[i] = this.buildToolbar(ty[i],i);
