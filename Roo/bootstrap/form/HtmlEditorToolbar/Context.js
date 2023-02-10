@@ -448,10 +448,10 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         // update attributes
         if (this.selectedNode.hasAttribute('data-block') ) {
             var block = Roo.htmleditor.Block.factory(this.selectedNode);
-            this.tb.fields.each(function(e) {
-                e.setValue(block[e.name]);
+            this.active_group.forEach(function(e) {
+                e.setValue(this.selectedNode.getAttribute(block[e.name]));
+            }, this);
                 
-            });
             return;
             
         }
