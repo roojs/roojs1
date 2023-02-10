@@ -192,7 +192,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         
           
         // disable everything...
-        var ty = this.constructor.superclass.types;
+        var ty = this.constructor.types;
         this.button_groups = {};
         // block toolbars are built in updateToolbar when needed.
         for (var i in  ty) {
@@ -330,7 +330,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
      */
     updateToolbar: function(editor ,ev, sel)
     {
-        var ty = this.constructor.superclass.types;
+        var ty = this.constructor.types;
         
         
         if (ev) {
@@ -421,7 +421,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         }
         
         
-        if (this.active_group.name == tn && lastSel == this.selectedNode && ev !== false) {
+        if ( this.active_group !== false && this.active_group.name == tn && lastSel == this.selectedNode && ev !== false) {
             return; // no change?
         }
         
