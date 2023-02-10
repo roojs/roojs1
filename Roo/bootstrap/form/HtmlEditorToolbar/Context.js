@@ -378,8 +378,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         }
         
         var tn = sel.tagName.toUpperCase();
-        var lastSel = this.tb.selectedNode;
-        this.tb.selectedNode = sel;
+        var lastSel = this.selectedNode;
+        this.selectedNode = sel;
         var left_label = tn;
         
         // ok see if we are editing a block?
