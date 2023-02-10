@@ -426,6 +426,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         
         if (tn == 'BODY') {
             this.deleteBtn.hide();
+            this.hide();
         }
         
         
@@ -433,6 +434,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
             this.hideActiveGroup();
         }
         this.showActiveGroup(tn);
+        this.show();
         this.deleteBtn.show();
         
     },
@@ -478,7 +480,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
             }
              e.setValue(this.selectedNode.getAttribute(e.attrname));
         }, this);
-        this.show();
+        
             
     }
     
