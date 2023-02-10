@@ -242,6 +242,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
                     xns : Roo.bootstrap.form,
                     cls : 'roo-htmleditor-context-entry-' + key + '-' + item.name,
                     name: '-roo-edit-' + item.name,
+                    attrname : item.name,
                     width: item.width,
                     //allowBlank:true,
                     value: '',
@@ -466,7 +467,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         }
         // based on attributes...
         this.active_group.forEach(function(e) {
-             e.setValue(this.selectedNode.getAttribute(e.attrname));
+             e.setValue(this.selectedNode.getAttribute(e.name));
         }, this);
         this.show();
             
