@@ -157,35 +157,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             }
         }
         
-        /*
-        var cog = {
-                xtype: 'Button',
-                size : 'sm',
-                xns: Roo.bootstrap,
-                glyphicon : 'cog',
-                //html : 'submit'
-                menu : {
-                    xtype: 'Menu',
-                    xns: Roo.bootstrap,
-                    items:  []
-                }
-        };
         
-        cog.menu.items.push({
-            xtype :'MenuItem',
-            xns: Roo.bootstrap,
-            html : Clean styles,
-            tagname : f,
-            listeners : {
-                click : function()
-                {
-                    editorcore.insertTag(this.tagname);
-                    editor.focus();
-                }
-            }
-            
-        });
-       */
         
          
        this.xtype = 'NavSimplebar';
