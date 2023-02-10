@@ -464,7 +464,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         
         this.active_group = this.button_groups[tn];
         
-         this.active_group.forEach(function(e) {
+        this.active_group.forEach(function(e) {
             e.show();
         });
         
