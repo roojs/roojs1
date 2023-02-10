@@ -199,7 +199,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
             this.button_groups[i] = this.buildToolbar(ty[i],i);
         }
         this.buildToolbarDelete();
-          this.el.hide();
+          this.hide();
         // the all the btns;
         this.editorcore.on('editorevent', this.updateToolbar, this);
         
