@@ -176,7 +176,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
     editorcore : false,
     buttons : false,
     
-    buttons : false, // subtoolbars...  - buttson?
+    buttons_group : false, // subtoolbars...  - buttson?
         
     onRender : function(ct, position)
     {
@@ -195,7 +195,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         this.toolbars = {};
         // block toolbars are built in updateToolbar when needed.
         for (var i in  ty) {
-            this.toolbars[i] = this.buildToolbar(ty[i],i);
+            this.buttons_group[i] = this.buildToolbar(ty[i],i);
         }
          
          
