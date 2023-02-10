@@ -427,6 +427,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         if (tn == 'BODY') {
             this.deleteBtn.hide();
             this.hide();
+            this.hideActiveGroup();
+            return;
+            
         }
         
         
