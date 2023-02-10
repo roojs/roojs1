@@ -215,9 +215,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 sel = asel;
             }
         }
-        if (tn == 'A') {
-            btns.get('link').setActive(tn == 'A');
-        }
+       
+        btns.get('link').setActive(tn == 'A');
+         
         
         
         
