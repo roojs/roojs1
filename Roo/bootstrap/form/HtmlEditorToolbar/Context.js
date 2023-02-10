@@ -322,6 +322,155 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         
         
     },
+    /**
+     * Protected method that will not generally be called directly. It triggers
+     * a toolbar update by reading the markup state of the current selection in the editor.
+     *
+     * Note you can force an update by calling on('editorevent', scope, false)
+     */
+    updateToolbar: function(editor ,ev, sel)
+    {
+        
+        if (ev) {
+            ev.stopEvent(); // se if we can stop this looping with mutiple events.
+        }
+        
+         
+        // capture mouse up - this is handy for selecting images..
+        // perhaps should go somewhere else...
+        if(!this.editorcore.activated){
+            this.editor.onFirstFocus();
+            return;
+        }
+        //Roo.log(ev ? ev.target : 'NOTARGET');
+        
+        
+        // http://developer.yahoo.com/yui/docs/simple-editor.js.html
+        // selectNode - might want to handle IE?
+         
+        if (ev &&
+            (ev.type == 'mouseup' || ev.type == 'click' ) &&
+            ev.target && ev.target.tagName != 'BODY' ) { // && ev.target.tagName == 'IMG') {
+            // they have click on an image...
+            // let's see if we can change the selection...
+            sel = ev.target;
+            
+            // this triggers looping?
+            //this.editorcore.selectNode(sel);
+             
+        }
+        
+        // this forces an id..
+        Array.from(this.editorcore.doc.body.querySelectorAll('.roo-ed-selection')).forEach(function(e) {
+            e.classList.remove('roo-ed-selection');
+        });
+          
+        var ans = this.editorcore.getAllAncestors();
+        
+        // pick
+        var ty = Roo.form.HtmlEditor.ToolbarContext.types;
+        
+        if (!sel) { 
+            sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editorcore.doc.body;
+            sel = sel ? sel : this.editorcore.doc.body;
+            sel = sel.tagName.length ? sel : this.editorcore.doc.body;
+            
+        }
+        
+        var tn = sel.tagName.toUpperCase();
+        var lastSel = this.tb.selectedNode;
+        this.tb.selectedNode = sel;
+        var left_label = tn;
+        
+        // ok see if we are editing a block?
+        
+        var db = false;
+        // you are not actually selecting the block.
+        if (sel && sel.hasAttribute('data-block')) {
+            db = sel;
+        } else if (sel && sel.closest('[data-block]')) {
+            
+            db = sel.closest('[data-block]');
+            //var cepar = sel.closest('[contenteditable=true]');
+            //if (db && cepar && cepar.tagName != 'BODY') {
+            //   db = false; // we are inside an editable block.. = not sure how we are going to handle nested blocks!?
+            //}   
+        }
+        
+        
+        var block = false;
+        //if (db && !sel.hasAttribute('contenteditable') && sel.getAttribute('contenteditable') != 'true' ) {
+        if (db && this.editorcore.enableBlocks) {
+            block = Roo.htmleditor.Block.factory(db);
+            
+            
+            if (block) {
+                 db.className = (
+                        db.classList.length > 0  ? db.className + ' ' : ''
+                    )  + 'roo-ed-selection';
+                 
+                 // since we removed it earlier... its not there..
+                tn = 'BLOCK.' + db.getAttribute('data-block');
+                
+                //this.editorcore.selectNode(db);
+                if (typeof(this.toolbars[tn]) == 'undefined') {
+                   this.toolbars[tn] = this.buildToolbar( false  ,tn ,block.friendly_name, block);
+                }
+                this.toolbars[tn].selectedNode = db;
+                left_label = block.friendly_name;
+                ans = this.editorcore.getAllAncestors();
+            }
+            
+                
+            
+        }
+        
+        
+        if (this.tb.name == tn && lastSel == this.tb.selectedNode && ev !== false) {
+            return; // no change?
+        }
+        
+        
+          
+        this.tb.el.hide();
+        ///console.log("show: " + tn);
+        this.tb =  typeof(this.toolbars[tn]) != 'undefined' ? this.toolbars[tn] : this.toolbars['*'];
+        
+        this.tb.el.show();
+        // update name
+        this.tb.items.first().el.innerHTML = left_label + ':&nbsp;';
+        
+        
+        // update attributes
+        if (block && this.tb.fields) {
+             
+            this.tb.fields.each(function(e) {
+                e.setValue(block[e.name]);
+            });
+            
+            
+        } else  if (this.tb.fields && this.tb.selectedNode) {
+            this.tb.fields.each( function(e) {
+                if (e.stylename) {
+                    e.setValue(this.tb.selectedNode.style[e.stylename]);
+                    return;
+                } 
+                e.setValue(this.tb.selectedNode.getAttribute(e.attrname));
+            }, this);
+            this.updateToolbarStyles(this.tb.selectedNode);  
+        }
+        
+        
+       
+        Roo.menu.MenuMgr.hideAll();
+
+        
+        
     
+        // update the footer
+        //
+        this.updateFooter(ans);
+             
+    },
     
 });
