@@ -199,28 +199,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         
         //btns[frameId + '-insertorderedlist').setActive(doc.queryCommandState('insertorderedlist'));
         btns.get('list').setActive(doc.queryCommandState('insertunorderedlist'));
-         /*
-        
-        var ans = this.editorcore.getAllAncestors();
-        if (this.formatCombo) {
-            
-            
-            var store = this.formatCombo.store;
-            this.formatCombo.setValue("");
-            for (var i =0; i < ans.length;i++) {
-                if (ans[i] && store.query('tag',ans[i].tagName.toLowerCase(), false).length) {
-                    // select it..
-                    this.formatCombo.setValue(ans[i].tagName.toLowerCase());
-                    break;
-                }
-            }
-        }
         
         
         
-        // hides menus... - so this cant be on a menu...
-        Roo.bootstrap.MenuMgr.hideAll();
-        */
+        
+        
         Roo.bootstrap.menu.Manager.hideAll();
         //this.editorsyncValue();
     },
