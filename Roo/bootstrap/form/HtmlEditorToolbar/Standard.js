@@ -177,12 +177,12 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
     buildToolbarDelete : function()
     {
         
-        this.addxtypeChild({
+       /* this.addxtypeChild({
             xtype : 'Element',
             xns : Roo.bootstrap,
             cls : 'roo-htmleditor-fill'
         });
-        
+        */
         this.deleteBtn = this.addxtypeChild({
             size : 'sm',
             xtype: 'Button',
