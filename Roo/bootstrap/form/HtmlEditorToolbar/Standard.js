@@ -245,7 +245,13 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
        
         btns.get('link').setActive(tn == 'A');
          
-        
+        if (tn.length && tn == 'BODY') {
+            this.deleteBtn.hide();
+            this.hide();
+            this.hideActiveGroup();
+            return;
+            
+        }
         
         
         Roo.bootstrap.menu.Manager.hideAll();
