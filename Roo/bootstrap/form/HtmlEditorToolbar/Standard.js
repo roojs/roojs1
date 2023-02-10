@@ -208,8 +208,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             sel = ev.target;
             
         }
-        var tn = sel.tagName.toUpperCase();
-        if (tn != 'A') {
+        var tn = sel && sel.tagName.toUpperCase();
+        if (sel && tn != 'A') {
             var asel = sel.closest('A');
             if (asel) {
                 sel = asel;
