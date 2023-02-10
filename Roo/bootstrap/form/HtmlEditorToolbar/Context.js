@@ -185,7 +185,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
     {
        // Roo.log("Call onRender: " + this.xtype);
         
-        Roo.bootstrap.form.HtmlEditorToolbar.Standard.superclass.onRender.call(this, ct, position);
+        this.constructor.superclass.onRender.call(this, ct, position);
        
         
          
@@ -194,7 +194,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
          
           
         // disable everything...
-        var ty = Roo.bootstrap.form.HtmlEditorToolbar.Context.types;
+        var ty = this.constructor.superclass.types;
         this.toolbars = {};
         // block toolbars are built in updateToolbar when needed.
         for (var i in  ty) {
