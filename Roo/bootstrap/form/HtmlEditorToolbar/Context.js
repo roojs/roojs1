@@ -259,7 +259,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         ret.forEach(function(e) {
             e.hide();
         });
-        
+        ret.name = key;
         
         return ret;
     },
@@ -421,7 +421,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         }
         
         
-        if (this.active_group == tn && lastSel == this.selectedNode && ev !== false) {
+        if (this.active_group.name == tn && lastSel == this.selectedNode && ev !== false) {
             return; // no change?
         }
         
@@ -430,8 +430,18 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         }
         this.showActiveGroup(tn);
         
-        
-        this.tb.items.first().el.innerHTML = left_label + ':&nbsp;';
+    },
+    hideActiveGroup : function()
+    {
+        if (this.active_group === false) {
+            return;
+        }
+        this.active_group.forEach(functione(e) {
+            e.hide();
+        });
+        this.active_group = false;
+    }
+       // this.tb.items.first().el.innerHTML = left_label + ':&nbsp;';
         
         
         // update attributes
@@ -444,10 +454,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
             
         } else  if (this.tb.fields && this.tb.selectedNode) {
             this.tb.fields.each( function(e) {
-                if (e.stylename) {
-                    e.setValue(this.tb.selectedNode.style[e.stylename]);
-                    return;
-                } 
+                 
                 e.setValue(this.tb.selectedNode.getAttribute(e.attrname));
             }, this);
             this.updateToolbarStyles(this.tb.selectedNode);  
@@ -455,14 +462,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         
         
        
-        Roo.menu.MenuMgr.hideAll();
+        //Roo.menu.MenuMgr.hideAll();
 
-        
-        
-    
-        // update the footer
-        //
-        this.updateFooter(ans);
+         
              
     },
     
