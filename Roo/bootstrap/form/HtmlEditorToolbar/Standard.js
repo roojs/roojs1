@@ -89,8 +89,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 xns: Roo.bootstrap,
                 //glyphicon : id,
                 fa: id,
-                cmd : id || cmd,
-                enableToggle:toggle !== false,
+                cmd : cmd, // why id || cmd
+                enableToggle: toggle !== false,
                 html : html || '',
                 pressed : toggle ? false : null,
                 listeners : {}
@@ -134,13 +134,13 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         });
         children.push(style);   
         
-        btn('bold',false,true);
-        btn('italic',false,true);
-        btn('align-left', 'justifyleft',true);
+        btn('bold',         false,true);
+        btn('italic',       false,true);
+        btn('align-left',   'justifyleft',true);
         btn('align-center', 'justifycenter',true);
         btn('align-right' , 'justifyright',true);
-        btn('link', false, false, function(btn) {
-            //Roo.log("create link?");
+        btn('link', false, true, function(btn) {
+            
             var url = prompt(this.createLinkText, this.defaultLinkValue);
             if(url && url != 'http:/'+'/'){
                 this.editorcore.relayCmd('createlink', url);
@@ -216,16 +216,14 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
 
         var btns = this.buttons; 
         var doc = this.editorcore.doc;
-        btns.get('bold').setActive(doc.queryCommandState('bold'));
-        btns.get('italic').setActive(doc.queryCommandState('italic'));
-        //btns.get('underline').setActive(doc.queryCommandState('underline'));
+        var hasToggle  = false;
+        btns.each(function(e) {
+            if (e.enableToggle && e.cmd) {
+                hasToggle = hasToggle  || doc.queryCommandState(e.cmd)
+                e.setActive(doc.queryCommandState(e.cmd));
+            }
+        }, this);
         
-        btns.get('align-left').setActive(doc.queryCommandState('justifyleft'));
-        btns.get('align-center').setActive(doc.queryCommandState('justifycenter'));
-        btns.get('align-right').setActive(doc.queryCommandState('justifyright'));
-        
-        //btns[frameId + '-insertorderedlist').setActive(doc.queryCommandState('insertorderedlist'));
-        btns.get('list').setActive(doc.queryCommandState('insertunorderedlist'));
         
         if (ev &&
             (ev.type == 'mouseup' || ev.type == 'click' ) &&
@@ -244,17 +242,19 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         }
        
         btns.get('link').setActive(tn == 'A');
-         
-        if (tn.length && tn == 'BODY') {
+        
+        Roo.bootstrap.menu.Manager.hideAll();
+        
+        // handle delete button..
+        if (hasToggle || (tn.length && tn == 'BODY')) {
             this.deleteBtn.hide();
-            
             return;
             
         }
         this.deleteBtn.show();
         
         
-        Roo.bootstrap.menu.Manager.hideAll();
+        
         //this.editorsyncValue();
     },
     onFirstFocus: function() {
