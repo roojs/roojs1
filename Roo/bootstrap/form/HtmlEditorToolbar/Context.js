@@ -78,7 +78,7 @@ Roo.bootstrap.form.HtmlEditorToolbar.Context.types = {
         
     ],
     
-    
+    /*
     'A' : [
         {
             name : 'name',
@@ -97,6 +97,7 @@ Roo.bootstrap.form.HtmlEditorToolbar.Context.types = {
         } // border?
         
     ],
+    */
     /*
     'INPUT' : [
         {
