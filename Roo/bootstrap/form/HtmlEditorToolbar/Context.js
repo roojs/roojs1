@@ -176,7 +176,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
     editorcore : false,
     buttons : false,
     
-    buttons_group : false, // subtoolbars...  - buttson?
+    button_groups : false, // subtoolbars...  - buttson?
     active_group : false,
     
     selectedNode : false,
@@ -198,7 +198,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         this.toolbars = {};
         // block toolbars are built in updateToolbar when needed.
         for (var i in  ty) {
-            this.buttons_group[i] = this.buildToolbar(ty[i],i);
+            this.button_groups[i] = this.buildToolbar(ty[i],i);
         }
         this.buildToolbarDelete();
          
@@ -409,8 +409,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
                 tn = 'BLOCK.' + db.getAttribute('data-block');
                 
                 //this.editorcore.selectNode(db);
-                if (typeof(this.buttons_group[tn]) == 'undefined') {
-                   this.buttons_group[tn] = this.buildBlockToolbar( block );
+                if (typeof(this.button_groups[tn]) == 'undefined') {
+                   this.button_groups[tn] = this.buildBlockToolbar( block );
                 }
                 this.selectedNode = db;
                 left_label = block.friendly_name;
@@ -436,29 +436,30 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         if (this.active_group === false) {
             return;
         }
-        this.active_group.forEach(functione(e) {
+        this.active_group.forEach(function(e) {
             e.hide();
         });
         this.active_group = false;
-    }
-       // this.tb.items.first().el.innerHTML = left_label + ':&nbsp;';
-        
+    },
+    showActiveGroup : function(tn)
+    {
+        this.active_group = this.button_groups[tn];
         
         // update attributes
         if (block && this.tb.fields) {
              
             this.tb.fields.each(function(e) {
                 e.setValue(block[e.name]);
+                
             });
+            return;
             
-            
-        } else  if (this.tb.fields && this.tb.selectedNode) {
-            this.tb.fields.each( function(e) {
-                 
-                e.setValue(this.tb.selectedNode.getAttribute(e.attrname));
-            }, this);
-            this.updateToolbarStyles(this.tb.selectedNode);  
         }
+        // based on attributes...
+        this.active_group.forEach(function(e) {
+             e.setValue(this.selectedNode.getAttribute(e.attrname));
+        }, this);
+            
         
         
        
