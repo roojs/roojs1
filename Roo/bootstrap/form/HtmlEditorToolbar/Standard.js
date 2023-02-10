@@ -247,11 +247,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
          
         if (tn.length && tn == 'BODY') {
             this.deleteBtn.hide();
-            this.hide();
-            this.hideActiveGroup();
+            
             return;
             
         }
+        this.deleteBtn.show();
         
         
         Roo.bootstrap.menu.Manager.hideAll();
