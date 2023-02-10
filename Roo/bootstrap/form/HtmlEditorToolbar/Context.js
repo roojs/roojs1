@@ -433,6 +433,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
     },
     hideActiveGroup : function()
     {
+        this.hide();
         if (this.active_group === false) {
             return;
         }
@@ -463,7 +464,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         this.active_group.forEach(function(e) {
              e.setValue(this.selectedNode.getAttribute(e.attrname));
         }, this);
-            
+        this.show();
             
     }
     
