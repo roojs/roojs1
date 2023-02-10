@@ -189,9 +189,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
        
         
          
-        var fid = editorcore.frameId;
-        var etb = this;
-         
+        
           
         // disable everything...
         var ty = this.constructor.superclass.types;
