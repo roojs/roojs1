@@ -175,7 +175,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
     editorcore : false,
     buttons : false,
     
-    toolbars : false, // subtoolbars...
+    buttons : false, // subtoolbars...  - buttson?
         
     onRender : function(ct, position)
     {
@@ -188,8 +188,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         var fid = editorcore.frameId;
         var etb = this;
          
-        // create a new element.
-         
+          
         // disable everything...
         var ty = Roo.bootstrap.form.HtmlEditorToolbar.Context.types;
         this.toolbars = {};
@@ -197,18 +196,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         for (var i in  ty) {
             this.toolbars[i] = this.buildToolbar(ty[i],i);
         }
-        
-    
-        editor.on('hide', function( ) { this.footer.hide() }, this);
-        editor.on('show', function( ) { this.footer.show() }, this);
-        
          
-        this.rendered = true;
-        
+         
         // the all the btns;
-        editor.on('editorevent', this.updateToolbar, this);
-        // other toolbars need to implement this..
-        //editor.on('editmodechange', this.updateToolbar, this);
+        this.editorcore.on('editorevent', this.updateToolbar, this);
+        
     },
     
 });
