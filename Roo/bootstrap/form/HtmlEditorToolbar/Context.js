@@ -443,6 +443,10 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
     },
     showActiveGroup : function(tn)
     {
+        if (typeof(this.button_groups[tn]) == 'undefined') {
+            return;
+        }
+        
         this.active_group = this.button_groups[tn];
         
         // update attributes
