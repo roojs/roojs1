@@ -196,7 +196,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         this.button_groups = {};
         // block toolbars are built in updateToolbar when needed.
         for (var i in  ty) {
-            this.button_groups[i] = this.buildToolbar(ty[i],i);
+            this.button_groups[i] = this.buildToolbarGroup(ty[i],i);
         }
         this.buildToolbarDelete();
           this.hide();
