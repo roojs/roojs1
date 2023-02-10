@@ -357,9 +357,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
             // they have click on an image...
             // let's see if we can change the selection...
             sel = ev.target;
-            
-            // this triggers looping?
-            //this.editorcore.selectNode(sel);
+           
              
         }
         
@@ -426,10 +424,16 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
             return; // no change?
         }
         
+        if (tn == 'BODY') {
+            this.deleteBtn.hide();
+        }
+        
+        
         if (this.active_group) {
             this.hideActiveGroup();
         }
         this.showActiveGroup(tn);
+        this.deleteBtn.show();
         
     },
     hideActiveGroup : function()
@@ -445,7 +449,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
     },
     showActiveGroup : function(tn)
     {
+        
         if (typeof(this.button_groups[tn]) == 'undefined') {
+            
             return;
         }
         
@@ -472,7 +478,6 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
             }
              e.setValue(this.selectedNode.getAttribute(e.attrname));
         }, this);
-        this.deleteBtn.show();
         this.show();
             
     }
