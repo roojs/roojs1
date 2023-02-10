@@ -276,7 +276,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
             xns: Roo.bootstrap,
             fa: 'trash',
             listeners : {
-                click : this.onDelete.delegate(this)
+                click : this.onDelete.createDelegate(this)
             }
         });
         this.deleteBtn.hide();     
