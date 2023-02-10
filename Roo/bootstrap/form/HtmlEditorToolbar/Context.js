@@ -291,10 +291,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
     {
         var range = this.editorcore.createRange();
         var selection = this.editorcore.getSelection();
-        range.setStart(stn,0);
-        range.setEnd(stn,0); 
-        
         var sn = this.selectedNode;
+        range.setStart(sn,0);
+        range.setEnd(sn,0); 
+        
+        
         if (sn.hasAttribute('data-block')) {
             var block = Roo.htmleditor.Block.factory(tb.selectedNode)
             if (block) {
