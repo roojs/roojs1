@@ -64,6 +64,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         'div','span'
     ],
     
+    
+    deleteBtn: false,
+    
     onRender : function(ct, position)
     {
        // Roo.log("Call onRender: " + this.xtype);
@@ -170,6 +173,30 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         
         editor.on('editorevent', this.updateToolbar, this);
     },
+    
+    buildToolbarDelete : function()
+    {
+        
+        this.addxtypeChild({
+            xtype : 'Element',
+            xns : Roo.bootstrap,
+            cls : 'roo-htmleditor-fill'
+        });
+        
+        this.deleteBtn = this.addxtypeChild({
+            size : 'sm',
+            xtype: 'Button',
+            xns: Roo.bootstrap,
+            fa: 'trash',
+            listeners : {
+                click : this.onDelete.createDelegate(this)
+            }
+        });
+        this.deleteBtn.hide();     
+        
+    },
+    
+    
     onBtnClick : function(id)
     {
        this.editorcore.relayCmd(id);
