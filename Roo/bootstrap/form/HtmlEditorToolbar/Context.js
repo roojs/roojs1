@@ -168,6 +168,7 @@ Roo.bootstrap.form.HtmlEditorToolbar.Context.types = {
         // empty.
     ]
 
+};
 
 Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simplebar,  {
     
