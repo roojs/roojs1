@@ -37490,6 +37490,11 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
 	/**
 	 * @cfg {Roo.Toolbar} toolbar a toolbar for buttons etc.
 	 */
+	 
+	 /**
+	 * @cfg {Roo.PagingToolbar} footer the paging toolbar
+	 */
+	
 	/**
      * @cfg {String} ddGroup - drag drop group.
      */
