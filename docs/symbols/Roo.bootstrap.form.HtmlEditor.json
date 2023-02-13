@@ -130,8 +130,8 @@
     },
     {
       "name" : "toolbars",
-      "type" : "Array",
-      "desc" : "Array of toolbars. - defaults to just the Standard one",
+      "type" : "Array|boolean",
+      "desc" : "Array of toolbars, or names of toolbars. - true for standard, and false for none.",
       "memberOf" : "",
       "isOptional" : false,
       "optvals" : []

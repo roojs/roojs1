@@ -1378,7 +1378,7 @@
       "name" : "loadexception",
       "type" : "function",
       "desc" : "Fires if an exception occurs in the Proxy during loading.\nCalled with the signature of the Proxy's \"loadexception\" event.\nIf you return Json { data: [] , success: false, .... } then this will be thrown with the following args",
-      "sig" : "function (, return, load, jsonData)\n{\n\n}",
+      "sig" : "function (, ret, opts, jsonData)\n{\n\n}",
       "memberOf" : "Roo.data.Store",
       "example" : "",
       "deprecated" : "",
@@ -1392,15 +1392,15 @@
           "isOptional" : false
         },
         {
-          "name" : "return",
+          "name" : "ret",
           "type" : "Object",
-          "desc" : "from JsonData.reader() - success, totalRecords, records",
+          "desc" : "return data from JsonData.reader() - success, totalRecords, records",
           "isOptional" : false
         },
         {
-          "name" : "load",
+          "name" : "opts",
           "type" : "Object",
-          "desc" : "options",
+          "desc" : "- load Options",
           "isOptional" : false
         },
         {

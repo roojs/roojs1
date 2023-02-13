@@ -147,8 +147,8 @@ Roo.data.Store = function(config){
          * If you return Json { data: [] , success: false, .... } then this will be thrown with the following args
          * 
          * @param {Proxy} 
-         * @param {Object} return from JsonData.reader() - success, totalRecords, records
-         * @param {Object} load options 
+         * @param {Object} ret return data from JsonData.reader() - success, totalRecords, records
+         * @param {Object} opts - load Options
          * @param {Object} jsonData from your request (normally this contains the Exception)
          */
         loadexception : true
