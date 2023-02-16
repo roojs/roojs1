@@ -33634,7 +33634,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
                 }
                 this.selectedNode = db;
                 left_label = block.friendly_name;
-                ans = this.editorcore.getAllAncestors();
+                 
             }
               
             
