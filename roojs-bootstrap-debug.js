@@ -33015,7 +33015,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             Roo.bootstrap.MessageBox.show({
                 title : "Add / Edit Link URL",
                 msg : "Enter the URL for the link",
-                buttons: Roo.bootstrap.MessageBox..OKCANCEL,
+                buttons: Roo.bootstrap.MessageBox.OKCANCEL,
                 minWidth: 250,
                 scope : this,
                 prompt:true,
