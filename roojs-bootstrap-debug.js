@@ -33010,34 +33010,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         btn('align-right' , 'justifyright',true);
         btn('link', false, true, this.onLinkClick);
         
-        function(btn) {
-            var url = this.selectedNode && this.selectedNode.tagName.toUpperCase() == 'A' ?
-                    this.selectedNode.getAttribute('href') : '';
-                
-            Roo.bootstrap.MessageBox.show({
-                title : "Add / Edit Link URL",
-                msg : "Enter the URL for the link",
-                buttons: Roo.bootstrap.MessageBox.OKCANCEL,
-                minWidth: 250,
-                scope : this,
-                prompt:true,
-                multiline: false,
-                modal : true,
-                value : url,
-                fn:  function(pressed, newurl) {
-                    if (pressed != 'ok') {
-                        return;
-                    }
-                    if (url != '') {
-                        this.selectedNode.setAttribute('href', newurl);
-                        return;
-                    }
-                    if(newurl && newurl .match(/http(s):\/\/.+/)) {
-                        this.editorcore.relayCmd('createlink', newurl);
-                    }
-                }
-            });
-        });
+        
         btn('image', false, true, function() {
             
         });
@@ -33098,6 +33071,36 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
        this.editorcore.focus();
     },
     
+    onLinkClick : function(btn) {
+        var url = this.selectedNode && this.selectedNode.tagName.toUpperCase() == 'A' ?
+                this.selectedNode.getAttribute('href') : '';
+            
+        Roo.bootstrap.MessageBox.show({
+            title : "Add / Edit Link URL",
+            msg : "Enter the URL for the link",
+            buttons: Roo.bootstrap.MessageBox.OKCANCEL,
+            minWidth: 250,
+            scope : this,
+            prompt:true,
+            multiline: false,
+            modal : true,
+            value : url,
+            fn:  function(pressed, newurl) {
+                if (pressed != 'ok') {
+                    this.editorcore.focus();
+                    return;
+                }
+                if (url != '') {
+                    this.selectedNode.setAttribute('href', newurl);
+                    return;
+                }
+                if(newurl && newurl .match(/http(s):\/\/.+/)) {
+                    this.editorcore.relayCmd('createlink', newurl);
+                }
+                this.editorcore.focus();
+            }
+        });
+    },
     /**
      * Protected method that will not generally be called directly. It triggers
      * a toolbar update by reading the markup state of the current selection in the editor.
