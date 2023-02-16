@@ -48496,7 +48496,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 }
             },
             
-            
+             
             {
                 xtype : 'Button',
                 text: 'Hide Caption',
@@ -50846,6 +50846,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 break;
             case 'bold':
             case 'italic':
+            case 'underline':                
                 // if there is no selection, then we insert, and set the curson inside it..
                 this.execCmd('styleWithCSS', false); 
                 break;
