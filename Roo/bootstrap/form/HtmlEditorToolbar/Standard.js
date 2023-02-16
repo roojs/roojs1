@@ -340,6 +340,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 selection.removeAllRanges();
                 selection.addRange(range);
                 this.updateToolbar(null, null, null);
+                this.editorcore.fireEditorEvent(false);
+                return;
             }   
              
         }
