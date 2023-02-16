@@ -139,6 +139,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         
         btn('bold',         false,true);
         btn('italic',       false,true);
+        btn('underline',       false,true);
         btn('align-left',   'justifyleft',true);
         btn('align-center', 'justifycenter',true);
         btn('align-right' , 'justifyright',true);
