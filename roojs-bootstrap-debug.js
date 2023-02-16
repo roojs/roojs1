@@ -33165,11 +33165,10 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             }
         }
        
-        btns.get('link').setActive(tn == 'A');
+        btns.get('link').setActive(tn == 'A' && this.selectedNode.hasAttribute('href'));
         
         Roo.bootstrap.menu.Manager.hideAll();
-        
-        
+         
         
         Array.from(this.editorcore.doc.body.querySelectorAll('.roo-ed-selection')).forEach(function(e) {
             e.classList.remove('roo-ed-selection');

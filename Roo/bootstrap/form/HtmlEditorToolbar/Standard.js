@@ -297,7 +297,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             }
         }
        
-        btns.get('link').setActive(tn == 'A');
+        btns.get('link').setActive(tn == 'A' && this.selectedNode.hasAttribute('href'));
         
         Roo.bootstrap.menu.Manager.hideAll();
          
