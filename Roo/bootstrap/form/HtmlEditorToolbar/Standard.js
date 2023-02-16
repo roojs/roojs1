@@ -137,9 +137,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         });
         children.push(style);   
         
-        btn('bold',         false,true);
-        btn('italic',       false,true);
-        btn('underline',       false,true);
+        btn('bold',         'bold',true);
+        btn('italic',       'italic',true);
+        btn('underline',     'underline',true);
         btn('align-left',   'justifyleft',true);
         btn('align-center', 'justifycenter',true);
         btn('align-right' , 'justifyright',true);
@@ -331,7 +331,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         var hasToggle  = false;
         btns.each(function(e) {
             if (e.enableToggle && e.cmd) {
-                hasToggle = hasToggle  || (['align-left', 'align-right', 'align-center', 'image' , 'link'].indexOf(e.btnid) < 0 && doc.queryCommandState(e.cmd));
+                hasToggle = hasToggle  || (['align-left', 'align-right', 'align-center', 'image' , 'link', 'underline'].indexOf(e.btnid) < 0 && doc.queryCommandState(e.cmd));
                 e.setActive(doc.queryCommandState(e.cmd));
             }
         }, this);
@@ -393,6 +393,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
        
         btns.get('link').setActive(tn == 'A' && this.selectedNode.hasAttribute('href'));
         btns.get('image').setActive(tn == 'IMG' || this.editorcore.enableBlocks && tn == 'FIGURE');
+        btns.get('underline').setActive(tn == 'U' || sel.closest('u'));
+        
         Roo.bootstrap.menu.Manager.hideAll();
          
         

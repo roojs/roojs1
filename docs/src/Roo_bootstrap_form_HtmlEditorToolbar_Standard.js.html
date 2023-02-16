@@ -90,6 +90,7 @@
                 </span><span class="jsdoc-comment">//glyphicon : id,
                 </span><span class="jsdoc-var">btnid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">fa</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-html-editor-btn-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cmd</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// why id || cmd
                 </span><span class="jsdoc-var">enableToggle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
@@ -110,6 +111,7 @@
                 </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">xns</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">fa </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'font'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-html-editor-font-chooser'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-comment">//html : 'submit'
                 </span><span class="jsdoc-var">menu </span><span class="jsdoc-syntax">: {
                     </span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Menu'</span><span class="jsdoc-syntax">,
@@ -137,6 +139,7 @@
 
         </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bold'</span><span class="jsdoc-syntax">,         </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'italic'</span><span class="jsdoc-syntax">,       </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'underline'</span><span class="jsdoc-syntax">,       </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'align-left'</span><span class="jsdoc-syntax">,   </span><span class="jsdoc-string">'justifyleft'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'align-center'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'justifycenter'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'align-right' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'justifyright'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
@@ -328,7 +331,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hasToggle  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">btns.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.enableToggle </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.cmd</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">hasToggle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hasToggle  </span><span class="jsdoc-syntax">|| ([</span><span class="jsdoc-string">'align-left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'align-right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'align-center'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.btnid</span><span class="jsdoc-syntax">) &lt; 0 &amp;&amp; </span><span class="jsdoc-var">doc.queryCommandState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.cmd</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">hasToggle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hasToggle  </span><span class="jsdoc-syntax">|| ([</span><span class="jsdoc-string">'align-left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'align-right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'align-center'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'image' </span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.btnid</span><span class="jsdoc-syntax">) &lt; 0 &amp;&amp; </span><span class="jsdoc-var">doc.queryCommandState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.cmd</span><span class="jsdoc-syntax">));
                 </span><span class="jsdoc-var">e.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.queryCommandState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.cmd</span><span class="jsdoc-syntax">));
             }
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -389,7 +392,7 @@
         }
 
         </span><span class="jsdoc-var">btns.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'A' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.selectedNode.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">));
-
+        </span><span class="jsdoc-var">btns.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'image'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'IMG' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.editorcore.enableBlocks </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">tn </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'FIGURE'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">Roo.bootstrap.menu.Manager.hideAll</span><span class="jsdoc-syntax">();
 
 
