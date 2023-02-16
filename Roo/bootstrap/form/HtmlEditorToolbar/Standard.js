@@ -334,7 +334,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         
         
         if (sn.hasAttribute('data-block')) {
-            var block = Roo.htmleditor.Block.factory(tb.selectedNode);
+            var block = Roo.htmleditor.Block.factory(this.selectedNode);
             if (block) {
                 block.removeNode();
                 selection.removeAllRanges();
