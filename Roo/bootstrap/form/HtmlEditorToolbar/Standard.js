@@ -261,7 +261,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             
         }
         
-        var tn = sel.tagName.toUpperCase();
+        var   = sel.tagName.toUpperCase();
         var lastSel = this.selectedNode;
         this.selectedNode = sel;
          
