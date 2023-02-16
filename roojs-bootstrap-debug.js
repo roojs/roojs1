@@ -33262,7 +33262,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
        
         btns.get('link').setActive(tn == 'A' && this.selectedNode.hasAttribute('href'));
         btns.get('image').setActive(tn == 'IMG' || this.editorcore.enableBlocks && tn == 'FIGURE');
-        btns.get('underline').setActive(tn == 'U' || sel.closest('u'));
+        btns.get('underline').setActive(tn == 'U' || sel.closest('u') ? true : false);
         
         Roo.bootstrap.menu.Manager.hideAll();
          
