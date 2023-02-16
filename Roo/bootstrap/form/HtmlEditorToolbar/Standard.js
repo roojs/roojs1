@@ -289,7 +289,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         
         // highlight the 'a'..
         var tn = sel && sel.tagName.toUpperCase() || '';
-        if (sel && tn != 'A') {
+        if (!block && sel && tn != 'A') {
             var asel = sel.closest('A');
             if (asel) {
                 sel = asel;
