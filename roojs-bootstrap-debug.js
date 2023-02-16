@@ -33009,11 +33009,20 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         btn('align-center', 'justifycenter',true);
         btn('align-right' , 'justifyright',true);
         btn('link', false, true, function(btn) {
-            
-            Roo.bootstrap.MessageBox.prompt(
-                "Add / Edit Link URL",
-                "Enter the URL for the link",
-                function(pressed, url) {
+            var url = this.selectedNode && this.selectedNode.tagName.toUpperCase() == 'A' ?
+                    this.selectedNode.getAttribute('url') : '';
+                
+            Roo.bootstrap.MessageBox.show({
+                title : "Add / Edit Link URL",
+                msg : "Enter the URL for the link",
+                buttons: this.OKCANCEL,
+                minWidth: 250,
+                scope : scope,
+                prompt:true,
+                multiline: false,
+                modal : true,
+                value : url,
+                fn:  function(pressed, url) {
                     if (pressed != 'ok') {
                         return;
                     }
@@ -33022,7 +33031,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                         this.editorcore.relayCmd('createlink', url);
                     }
                 }
-            );
+            });
         });
         btn('list','insertunorderedlist',true);
         btn('list-ol','insertorderedlist',true);
@@ -33111,6 +33120,43 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             sel = ev.target;
             
         }
+        
+        var ans = this.editorcore.getAllAncestors();
+        if (!sel) { 
+            sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editorcore.doc.body;
+            sel = sel ? sel : this.editorcore.doc.body;
+            sel = sel.tagName.length ? sel : this.editorcore.doc.body;
+            
+        }
+        
+        var tn = sel.tagName.toUpperCase();
+        var lastSel = this.selectedNode;
+        this.selectedNode = sel;
+         
+        // ok see if we are editing a block?
+        
+        var db = false;
+        // you are not actually selecting the block.
+        if (sel && sel.hasAttribute('data-block')) {
+            db = sel;
+        } else if (sel && sel.closest('[data-block]')) {
+            db = sel.closest('[data-block]');
+        }
+        
+       
+        var block = false;
+        if (db && this.editorcore.enableBlocks) {
+            block = Roo.htmleditor.Block.factory(db);
+            
+            if (block) {
+                db.className = (
+                        db.classList.length > 0  ? db.className + ' ' : ''
+                    )  + 'roo-ed-selection';
+                this.selectedNode = db;
+            }
+        }
+        
+        // highlight the 'a'..
         var tn = sel && sel.tagName.toUpperCase() || '';
         if (sel && tn != 'A') {
             var asel = sel.closest('A');
