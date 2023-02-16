@@ -710,11 +710,6 @@
                 "name" : "Roo.bootstrap.form.HtmlEditorToolbar",
                 "cn" : [
                   {
-                    "name" : "Roo.bootstrap.form.HtmlEditorToolbar.Context",
-                    "cn" : [],
-                    "is_class" : true
-                  },
-                  {
                     "name" : "Roo.bootstrap.form.HtmlEditorToolbar.Standard",
                     "cn" : [],
                     "is_class" : true
