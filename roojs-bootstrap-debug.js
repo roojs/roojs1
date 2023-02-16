@@ -33031,7 +33031,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                         return;
                     }
                     if(newurl && newurl .match(/http(s):\/\/.+/)) {
-                        this.editorcore.relayCmd('createlink', newurl );
+                        this.editorcore.relayCmd('createlink', newurl);
                     }
                 }
             });
@@ -33153,7 +33153,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             if (block) {
                 db.className = (
                         db.classList.length > 0  ? db.className + ' ' : ''
-                    )  + 'roo-ed-selection';
+                    )  + ' roo-ed-selection';
                 sel = this.selectedNode = db;
             }
         }

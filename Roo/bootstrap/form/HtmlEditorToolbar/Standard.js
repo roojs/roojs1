@@ -283,9 +283,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             block = Roo.htmleditor.Block.factory(db);
             
             if (block) {
-                db.className = (
-                        db.classList.length > 0  ? db.className + ' ' : ''
-                    )  + ' roo-ed-selection';
+                db.className =  (db.classList.length > 0  ? db.className + ' ' : '') +
+                    ' roo-ed-selection';
                 sel = this.selectedNode = db;
             }
         }
