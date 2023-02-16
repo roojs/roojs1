@@ -33129,7 +33129,6 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             
         }
         
-        var tn = sel.tagName.toUpperCase();
         var lastSel = this.selectedNode;
         this.selectedNode = sel;
          
@@ -33152,7 +33151,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 db.className = (
                         db.classList.length > 0  ? db.className + ' ' : ''
                     )  + 'roo-ed-selection';
-                this.selectedNode = db;
+                sel = this.selectedNode = db;
             }
         }
         
