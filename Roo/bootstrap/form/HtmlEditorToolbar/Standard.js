@@ -43,7 +43,7 @@ Roo.bootstrap.form.HtmlEditorToolbar.Standard = function(config)
     this.editor = config.editor;
     this.editorcore = config.editor.editorcore;
     
-    this.buttons   = new Roo.util.MixedCollection(false, function(o) { return o.cmd; });
+    this.buttons   = new Roo.util.MixedCollection(false, function(o) { return o.btnid; });
     
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
        var editor= this.editor;
        
        var children = [];
-       var btn = function(id,cmd , toggle, handler, html){
+       var btn = function(id, cmd , toggle, handler, html){
        
             var  event = toggle ? 'toggle' : 'click';
        
@@ -88,6 +88,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 xtype: 'Button',
                 xns: Roo.bootstrap,
                 //glyphicon : id,
+                btnid : id,
                 fa: id,
                 cmd : cmd, // why id || cmd
                 enableToggle: toggle !== false,
@@ -219,7 +220,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         var hasToggle  = false;
         btns.each(function(e) {
             if (e.enableToggle && e.cmd) {
-                hasToggle = hasToggle  || doc.queryCommandState(e.cmd)
+                hasToggle = hasToggle  || doc.queryCommandState(e.cmd);
                 e.setActive(doc.queryCommandState(e.cmd));
             }
         }, this);
@@ -273,7 +274,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         
         
         if (sn.hasAttribute('data-block')) {
-            var block = Roo.htmleditor.Block.factory(tb.selectedNode)
+            var block = Roo.htmleditor.Block.factory(tb.selectedNode);
             if (block) {
                 block.removeNode();
                 selection.removeAllRanges();
