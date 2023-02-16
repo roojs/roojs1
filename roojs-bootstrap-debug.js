@@ -33106,7 +33106,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         var hasToggle  = false;
         btns.each(function(e) {
             if (e.enableToggle && e.cmd) {
-                hasToggle = hasToggle  || (['align-left', 'align-right', 'align-center'].indexOf(e.cmd) < 0 && doc.queryCommandState(e.cmd));
+                hasToggle = hasToggle  || (['align-left', 'align-right', 'align-center'].indexOf(e.btnid) < 0 && doc.queryCommandState(e.cmd));
                 e.setActive(doc.queryCommandState(e.cmd));
             }
         }, this);
