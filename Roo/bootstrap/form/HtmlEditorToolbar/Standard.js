@@ -149,7 +149,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 msg : "Enter the URL for the link",
                 buttons: this.OKCANCEL,
                 minWidth: 250,
-                scope : scope,
+                scope : this,
                 prompt:true,
                 multiline: false,
                 modal : true,
