@@ -154,13 +154,16 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 multiline: false,
                 modal : true,
                 value : url,
-                fn:  function(pressed, url) {
+                fn:  function(pressed, newurl) {
                     if (pressed != 'ok') {
                         return;
                     }
-                    
-                    if(url && url.match(/http(s):\/\/.+/)) {
-                        this.editorcore.relayCmd('createlink', url);
+                    if (url != '') {
+                        this.selectedNode.setAttribute('href', newurl);
+                        return;
+                    }
+                    if(newurl && newurl .match(/http(s):\/\/.+/)) {
+                        this.editorcore.relayCmd('createlink', newurl );
                     }
                 }
             });
