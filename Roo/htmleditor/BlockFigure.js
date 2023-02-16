@@ -227,7 +227,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 }
             },
             
-            
+             
             {
                 xtype : 'Button',
                 text: 'Hide Caption',
