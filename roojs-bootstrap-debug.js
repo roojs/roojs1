@@ -29330,7 +29330,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 }
             },
             
-            
+             
             {
                 xtype : 'Button',
                 text: 'Hide Caption',
@@ -31680,6 +31680,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 break;
             case 'bold':
             case 'italic':
+            case 'underline':                
                 // if there is no selection, then we insert, and set the curson inside it..
                 this.execCmd('styleWithCSS', false); 
                 break;
@@ -32958,6 +32959,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 //glyphicon : id,
                 btnid : id,
                 fa: id,
+                cls : 'roo-html-editor-btn-' + id,
                 cmd : cmd, // why id || cmd
                 enableToggle: toggle !== false,
                 html : html || '',
@@ -32978,6 +32980,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 size : 'sm',
                 xns: Roo.bootstrap,
                 fa : 'font',
+                cls : 'roo-html-editor-font-chooser',
                 //html : 'submit'
                 menu : {
                     xtype: 'Menu',
@@ -33003,8 +33006,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         });
         children.push(style);   
         
-        btn('bold',         false,true);
-        btn('italic',       false,true);
+        btn('bold',         'bold',true);
+        btn('italic',       'italic',true);
+        btn('underline',     'underline',true);
         btn('align-left',   'justifyleft',true);
         btn('align-center', 'justifycenter',true);
         btn('align-right' , 'justifyright',true);
@@ -33197,7 +33201,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         var hasToggle  = false;
         btns.each(function(e) {
             if (e.enableToggle && e.cmd) {
-                hasToggle = hasToggle  || (['align-left', 'align-right', 'align-center'].indexOf(e.btnid) < 0 && doc.queryCommandState(e.cmd));
+                hasToggle = hasToggle  || (['align-left', 'align-right', 'align-center', 'image' , 'link', 'underline'].indexOf(e.btnid) < 0 && doc.queryCommandState(e.cmd));
                 e.setActive(doc.queryCommandState(e.cmd));
             }
         }, this);
@@ -33258,6 +33262,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         }
        
         btns.get('link').setActive(tn == 'A' && this.selectedNode.hasAttribute('href'));
+        btns.get('image').setActive(tn == 'IMG' || this.editorcore.enableBlocks && tn == 'FIGURE');
+        btns.get('underline').setActive(tn == 'U' || sel.closest('u') ? true : false);
         
         Roo.bootstrap.menu.Manager.hideAll();
          

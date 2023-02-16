@@ -381,8 +381,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         var tn = sel.tagName.toUpperCase();
         var lastSel = this.selectedNode;
         this.selectedNode = sel;
-        var left_label = tn;
-        
+         
         // ok see if we are editing a block?
         
         var db = false;
@@ -395,7 +394,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
              
         }
         
-        
+       
         var block = false;
         if (db && this.editorcore.enableBlocks) {
             block = Roo.htmleditor.Block.factory(db);
@@ -414,7 +413,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
                    this.button_groups[tn] = this.buildBlockToolbar( block );
                 }
                 this.selectedNode = db;
-                left_label = block.friendly_name;
+               
                  
             }
               
