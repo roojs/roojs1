@@ -33010,7 +33010,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         btn('align-right' , 'justifyright',true);
         btn('link', false, true, function(btn) {
             var url = this.selectedNode && this.selectedNode.tagName.toUpperCase() == 'A' ?
-                    this.selectedNode.getAttribute('url') : '';
+                    this.selectedNode.getAttribute('href') : '';
                 
             Roo.bootstrap.MessageBox.show({
                 title : "Add / Edit Link URL",
