@@ -105,9 +105,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
     
     
       /**
-     * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
+     * @cfg {Array|boolean} toolbars Array of toolbars, or names of toolbars. - true for standard, and false for none.
      */
-    toolbars : false,
+    toolbars : true,
     
      /**
     * @cfg {Array} buttons Array of toolbar's buttons. - defaults to empty
@@ -160,26 +160,35 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
      * add custom toolbar buttons.
      * @param {HtmlEditor} editor
      */
-    createToolbar : function(){
-        Roo.log('renewing');
-        Roo.log("create toolbars");
+    createToolbar : function()
+    {
+        //Roo.log('renewing');
+        //Roo.log("create toolbars");
+        if (this.toolbars === false) {
+            return;
+        }
+        if (this.toolbars === true) {
+            this.toolbars = [ 'Standard' ];
+        }
         
-        this.toolbars = [ new Roo.bootstrap.form.HtmlEditorToolbarStandard({editor: this} ) ];
-        this.toolbars[0].render(this.toolbarContainer());
+        var ar = Array.from(this.toolbars);
+        this.toolbars = [];
+        ar.forEach(function(t,i) {
+            if (typeof(t) == 'string') {
+                t = {
+                    xtype : t
+                };
+            }
+            if (typeof(t) == 'object' && typeof(t.xtype) == 'string') {
+                t.editor = this;
+                t.xns = t.xns || Roo.bootstrap.form.HtmlEditorToolbar;
+                t = Roo.factory(t);
+            }
+            this.toolbars[i] = t;
+            this.toolbars[i].render(this.toolbarContainer());
+        }, this);
         
-        return;
         
-//        if (!editor.toolbars || !editor.toolbars.length) {
-//            editor.toolbars = [ new Roo.bootstrap.form.HtmlEditorToolbarStandard() ]; // can be empty?
-//        }
-//        
-//        for (var i =0 ; i < editor.toolbars.length;i++) {
-//            editor.toolbars[i] = Roo.factory(
-//                    typeof(editor.toolbars[i]) == 'string' ?
-//                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
-//                Roo.bootstrap.form.HtmlEditor);
-//            editor.toolbars[i].init(editor);
-//        }
     },
 
      

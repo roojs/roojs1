@@ -105,9 +105,9 @@
 
 
       </span><span class="jsdoc-comment">/**
-     * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
+     * @cfg {Array|boolean} toolbars Array of toolbars, or names of toolbars. - true for standard, and false for none.
      */
-    </span><span class="jsdoc-var">toolbars </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">toolbars </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
 
      </span><span class="jsdoc-comment">/**
     * @cfg {Array} buttons Array of toolbar's buttons. - defaults to empty
@@ -160,27 +160,36 @@
      * add custom toolbar buttons.
      * @param {HtmlEditor} editor
      */
-    </span><span class="jsdoc-var">createToolbar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'renewing'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;create toolbars&quot;</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">createToolbar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-comment">//Roo.log('renewing');
+        //Roo.log(&quot;create toolbars&quot;);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-string">'Standard' </span><span class="jsdoc-syntax">];
+        }
 
-        </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditorToolbarStandard</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">} ) ];
-        </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbarContainer</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Array.from</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">ar.forEach</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">xtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">t
+                </span><span class="jsdoc-syntax">};
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.xtype</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">t.editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">t.xns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t.xns </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditorToolbar</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbarContainer</span><span class="jsdoc-syntax">());
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
 
-</span><span class="jsdoc-comment">//        if (!editor.toolbars || !editor.toolbars.length) {
-//            editor.toolbars = [ new Roo.bootstrap.form.HtmlEditorToolbarStandard() ]; // can be empty?
-//        }
-//        
-//        for (var i =0 ; i &lt; editor.toolbars.length;i++) {
-//            editor.toolbars[i] = Roo.factory(
-//                    typeof(editor.toolbars[i]) == 'string' ?
-//                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
-//                Roo.bootstrap.form.HtmlEditor);
-//            editor.toolbars[i].init(editor);
-//        }
-    </span><span class="jsdoc-syntax">},
+    },
 
 
     </span><span class="jsdoc-comment">// private

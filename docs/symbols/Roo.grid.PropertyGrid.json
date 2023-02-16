@@ -158,17 +158,17 @@
       "optvals" : []
     },
     {
-      "name" : "enableColumnHide",
+      "name" : "enableColumnMove",
       "type" : "Boolean",
-      "desc" : "True to enable hiding of columns with the header context menu. Default is true.",
+      "desc" : "True to enable drag and drop reorder of columns. Default is true.",
       "memberOf" : "Roo.grid.Grid",
       "isOptional" : false,
       "optvals" : []
     },
     {
-      "name" : "enableColumnMove",
+      "name" : "enableColumnHide",
       "type" : "Boolean",
-      "desc" : "True to enable drag and drop reorder of columns. Default is true.",
+      "desc" : "True to enable hiding of columns with the header context menu. Default is true.",
       "memberOf" : "Roo.grid.Grid",
       "isOptional" : false,
       "optvals" : []
@@ -185,6 +185,14 @@
       "name" : "ddGroup",
       "type" : "String",
       "desc" : "- drag drop group.",
+      "memberOf" : "Roo.grid.Grid",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "footer",
+      "type" : "Roo.PagingToolbar",
+      "desc" : "the paging toolbar",
       "memberOf" : "Roo.grid.Grid",
       "isOptional" : false,
       "optvals" : []

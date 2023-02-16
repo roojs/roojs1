@@ -17,7 +17,10 @@ Roo.bootstrap.version = ( function() {
 })(); Roo.bootstrap.menu = Roo.bootstrap.menu || {};
 Roo.bootstrap.nav = {};
 
-Roo.bootstrap.form = {};Roo.bootstrap.panel = {};Roo.bootstrap.layout = {};/*
+Roo.bootstrap.form = {};Roo.bootstrap.panel = {};Roo.bootstrap.layout = {};
+Roo.htmleditor = {};
+Roo.namespace('Roo.bootstrap.form.HtmlEditorToolbar');
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
@@ -15173,8 +15176,8 @@ Roo.data.Store = function(config){
          * If you return Json { data: [] , success: false, .... } then this will be thrown with the following args
          * 
          * @param {Proxy} 
-         * @param {Object} return from JsonData.reader() - success, totalRecords, records
-         * @param {Object} load options 
+         * @param {Object} ret return data from JsonData.reader() - success, totalRecords, records
+         * @param {Object} opts - load Options
          * @param {Object} jsonData from your request (normally this contains the Exception)
          */
         loadexception : true
@@ -16180,24 +16183,24 @@ Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
     // thse are take from connection...
     
     /**
-     * @cfg {String} url (Optional) The default URL to be used for requests to the server. (defaults to undefined)
+     * @cfg {String} url  The default URL to be used for requests to the server. (defaults to undefined)
      */
     /**
-     * @cfg {Object} extraParams (Optional) An object containing properties which are used as
+     * @cfg {Object} extraParams  An object containing properties which are used as
      * extra parameters to each request made by this object. (defaults to undefined)
      */
     /**
-     * @cfg {Object} defaultHeaders (Optional) An object containing request headers which are added
+     * @cfg {Object} defaultHeaders   An object containing request headers which are added
      *  to each request made by this object. (defaults to undefined)
      */
     /**
-     * @cfg {String} method (Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+     * @cfg {String} method (GET|POST)  The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
      */
     /**
-     * @cfg {Number} timeout (Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)
+     * @cfg {Number} timeout The timeout in milliseconds to be used for requests. (defaults to 30000)
      */
      /**
-     * @cfg {Boolean} autoAbort (Optional) Whether this request should abort any pending requests. (defaults to false)
+     * @cfg {Boolean} autoAbort Whether this request should abort any pending requests. (defaults to false)
      * @type Boolean
      */
   
@@ -26491,9 +26494,7 @@ Roo.rtf.Parser.prototype = {
         });
     }
      
-} ;
-Roo.htmleditor = {};
- 
+} ; 
 /**
  * @class Roo.htmleditor.Filter
  * Base Class for filtering htmleditor stuff. - do not use this directly - extend it.
@@ -31575,6 +31576,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (e && (e.ctrlKey || e.metaKey) && e.keyCode === 90) {
             return; // we do not handle this.. (undo manager does..)
         }
+        // clicking a 'block'?
+        
         // in theory this detects if the last element is not a br, then we try and do that.
         // its so clicking in space at bottom triggers adding a br and moving the cursor.
         if (e &&
@@ -32550,9 +32553,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
     
     
       /**
-     * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
+     * @cfg {Array|boolean} toolbars Array of toolbars, or names of toolbars. - true for standard, and false for none.
      */
-    toolbars : false,
+    toolbars : true,
     
      /**
     * @cfg {Array} buttons Array of toolbar's buttons. - defaults to empty
@@ -32605,26 +32608,35 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
      * add custom toolbar buttons.
      * @param {HtmlEditor} editor
      */
-    createToolbar : function(){
-        Roo.log('renewing');
-        Roo.log("create toolbars");
+    createToolbar : function()
+    {
+        //Roo.log('renewing');
+        //Roo.log("create toolbars");
+        if (this.toolbars === false) {
+            return;
+        }
+        if (this.toolbars === true) {
+            this.toolbars = [ 'Standard' ];
+        }
         
-        this.toolbars = [ new Roo.bootstrap.form.HtmlEditorToolbarStandard({editor: this} ) ];
-        this.toolbars[0].render(this.toolbarContainer());
+        var ar = Array.from(this.toolbars);
+        this.toolbars = [];
+        ar.forEach(function(t,i) {
+            if (typeof(t) == 'string') {
+                t = {
+                    xtype : t
+                };
+            }
+            if (typeof(t) == 'object' && typeof(t.xtype) == 'string') {
+                t.editor = this;
+                t.xns = t.xns || Roo.bootstrap.form.HtmlEditorToolbar;
+                t = Roo.factory(t);
+            }
+            this.toolbars[i] = t;
+            this.toolbars[i].render(this.toolbarContainer());
+        }, this);
         
-        return;
         
-//        if (!editor.toolbars || !editor.toolbars.length) {
-//            editor.toolbars = [ new Roo.bootstrap.form.HtmlEditorToolbarStandard() ]; // can be empty?
-//        }
-//        
-//        for (var i =0 ; i < editor.toolbars.length;i++) {
-//            editor.toolbars[i] = Roo.factory(
-//                    typeof(editor.toolbars[i]) == 'string' ?
-//                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
-//                Roo.bootstrap.form.HtmlEditor);
-//            editor.toolbars[i].init(editor);
-//        }
     },
 
      
@@ -32855,9 +32867,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
    
    
       
-Roo.namespace('Roo.bootstrap.form.HtmlEditor');
 /**
- * @class Roo.bootstrap.form.HtmlEditorToolbarStandard
+ * @class Roo.bootstrap.form.HtmlEditorToolbar.Standard
  * @parent Roo.bootstrap.form.HtmlEditor
  * @extends Roo.bootstrap.nav.Simplebar
  * Basic Toolbar
@@ -32868,7 +32879,7 @@ Roo.namespace('Roo.bootstrap.form.HtmlEditor');
  new Roo.bootstrap.form.HtmlEditor({
     ....
     toolbars : [
-        new Roo.bootstrap.form.HtmlEditorToolbarStandard({
+        new Roo.bootstrap.form.HtmlEditorToolbar.Standard({
             disable : { fonts: 1 , format: 1, ..., ... , ...],
             btns : [ .... ]
         })
@@ -32883,7 +32894,7 @@ Roo.namespace('Roo.bootstrap.form.HtmlEditor');
  * .x-html-editor-tb .x-edit-none .x-btn-text { background: none; }
  */
  
-Roo.bootstrap.form.HtmlEditorToolbarStandard = function(config)
+Roo.bootstrap.form.HtmlEditorToolbar.Standard = function(config)
 {
     
     Roo.apply(this, config);
@@ -32895,17 +32906,17 @@ Roo.bootstrap.form.HtmlEditorToolbarStandard = function(config)
         colors : true,
         specialElements : true
     });
-    Roo.bootstrap.form.HtmlEditorToolbarStandard.superclass.constructor.call(this, config);
+    Roo.bootstrap.form.HtmlEditorToolbar.Standard.superclass.constructor.call(this, config);
     
     this.editor = config.editor;
     this.editorcore = config.editor.editorcore;
     
-    this.buttons   = new Roo.util.MixedCollection(false, function(o) { return o.cmd; });
+    this.buttons   = new Roo.util.MixedCollection(false, function(o) { return o.btnid; });
     
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
 }
-Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simplebar,  {
+Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simplebar,  {
      
     bar : true,
     
@@ -32921,11 +32932,14 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
         'div','span'
     ],
     
+    
+    deleteBtn: false,
+    
     onRender : function(ct, position)
     {
        // Roo.log("Call onRender: " + this.xtype);
         
-       Roo.bootstrap.form.HtmlEditorToolbarStandard.superclass.onRender.call(this, ct, position);
+       Roo.bootstrap.form.HtmlEditorToolbar.Standard.superclass.onRender.call(this, ct, position);
        Roo.log(this.el);
        this.el.dom.style.marginBottom = '0';
        var _this = this;
@@ -32933,7 +32947,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
        var editor= this.editor;
        
        var children = [];
-       var btn = function(id,cmd , toggle, handler, html){
+       var btn = function(id, cmd , toggle, handler, html){
        
             var  event = toggle ? 'toggle' : 'click';
        
@@ -32942,9 +32956,10 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
                 xtype: 'Button',
                 xns: Roo.bootstrap,
                 //glyphicon : id,
+                btnid : id,
                 fa: id,
-                cmd : id || cmd,
-                enableToggle:toggle !== false,
+                cmd : cmd, // why id || cmd
+                enableToggle: toggle !== false,
                 html : html || '',
                 pressed : toggle ? false : null,
                 listeners : {}
@@ -32988,18 +33003,15 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
         });
         children.push(style);   
         
-        btn('bold',false,true);
-        btn('italic',false,true);
-        btn('align-left', 'justifyleft',true);
+        btn('bold',         false,true);
+        btn('italic',       false,true);
+        btn('align-left',   'justifyleft',true);
         btn('align-center', 'justifycenter',true);
         btn('align-right' , 'justifyright',true);
-        btn('link', false, false, function(btn) {
-            //Roo.log("create link?");
-            var url = prompt(this.createLinkText, this.defaultLinkValue);
-            if(url && url != 'http:/'+'/'){
-                this.editorcore.relayCmd('createlink', url);
-            }
-        }),
+        btn('link', false, true, this.onLinkClick);
+        
+        
+        btn('image', false, true, this.onImageClick);
         btn('list','insertunorderedlist',true);
         btn('list-ol','insertorderedlist',true);
 
@@ -33014,58 +33026,165 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
             }
         }
         
-        /*
-        var cog = {
-                xtype: 'Button',
-                size : 'sm',
-                xns: Roo.bootstrap,
-                glyphicon : 'cog',
-                //html : 'submit'
-                menu : {
-                    xtype: 'Menu',
-                    xns: Roo.bootstrap,
-                    items:  []
-                }
-        };
-        
-        cog.menu.items.push({
-            xtype :'MenuItem',
-            xns: Roo.bootstrap,
-            html : Clean styles,
-            tagname : f,
-            listeners : {
-                click : function()
-                {
-                    editorcore.insertTag(this.tagname);
-                    editor.focus();
-                }
-            }
-            
-        });
-       */
         
          
-       this.xtype = 'NavSimplebar';
+        this.xtype = 'NavSimplebar'; // why?
         
         for(var i=0;i< children.length;i++) {
             
             this.buttons.add(this.addxtypeChild(children[i]));
             
         }
-        
+        this.buildToolbarDelete();
+
         editor.on('editorevent', this.updateToolbar, this);
     },
+    
+    buildToolbarDelete : function()
+    {
+        
+       /* this.addxtypeChild({
+            xtype : 'Element',
+            xns : Roo.bootstrap,
+            cls : 'roo-htmleditor-fill'
+        });
+        */
+        this.deleteBtn = this.addxtypeChild({
+            size : 'sm',
+            xtype: 'Button',
+            xns: Roo.bootstrap,
+            fa: 'trash',
+            listeners : {
+                click : this.onDelete.createDelegate(this)
+            }
+        });
+        this.deleteBtn.hide();     
+        
+    },
+    
+    onImageClick : function()
+    {
+        if (this.input) {
+            this.input.un('change', this.onFileSelected, this);
+        }
+        this.input = Roo.get(document.body).createChild({ 
+          tag: 'input', 
+          type : 'file', 
+          style : 'display:none', 
+          multiple: 'multiple'
+       });
+        this.input.on('change', this.onFileSelected, this);
+        this.input.dom.click();
+    },
+    
+    onFileSelected : function(e)
+    {
+         e.preventDefault();
+        
+        if(typeof(this.input.dom.files) == 'undefined' || !this.input.dom.files.length){
+            return;
+        }
+    
+         
+        this.addFiles(Array.prototype.slice.call(this.input.dom.files));
+    },
+    
+    addFiles : function(far) {
+
+        if (!far.length) {
+            return;
+        }
+        
+        var f = far.pop();
+        
+        if (!f.type.match(/^image/)) {
+            this.addFiles(far);
+            return;
+        }
+         
+        var sn = this.selectedNode;
+        
+        var bl = sn  && this.editorcore.enableBlocks ? Roo.htmleditor.Block.factory(sn) : false;
+        
+        var editor =  this.editorcore;
+        
+        var reader = new FileReader();
+        reader.addEventListener('load', (function() {
+            if (bl) {
+                bl.image_src = reader.result;
+                //bl.caption = f.name;
+                bl.updateElement(sn);
+                editor.owner.fireEvent('editorevent', editor, false);
+                // we only do the first file!! and replace.
+                return;
+            }
+            if (this.editorcore.enableBlocks) {
+                var fig = new Roo.htmleditor.BlockFigure({
+                    image_src :  reader.result,
+                    caption : '',
+                    caption_display : 'none'  //default to hide captions..
+                 });
+                editor.insertAtCursor(fig.toHTML());
+                editor.owner.fireEvent('editorevent', editor, false);
+                return;
+            }
+            // just a standard img..
+            if (sn && sn.tagName.toUpperCase() == 'IMG') {
+                sn.src = reader.result;
+                editor.owner.fireEvent('editorevent', editor, false);
+                return;
+            }
+            editor.insertAtCursor('<img src="' + reader.result +'">');
+            editor.owner.fireEvent('editorevent', editor, false);
+            
+        }).createDelegate(this));
+        reader.readAsDataURL(f);
+        
+    
+     },
+    
+    
     onBtnClick : function(id)
     {
        this.editorcore.relayCmd(id);
        this.editorcore.focus();
     },
     
+    onLinkClick : function(btn) {
+        var url = this.selectedNode && this.selectedNode.tagName.toUpperCase() == 'A' ?
+                this.selectedNode.getAttribute('href') : '';
+            
+        Roo.bootstrap.MessageBox.show({
+            title : "Add / Edit Link URL",
+            msg : "Enter the URL for the link",
+            buttons: Roo.bootstrap.MessageBox.OKCANCEL,
+            minWidth: 250,
+            scope : this,
+            prompt:true,
+            multiline: false,
+            modal : true,
+            value : url,
+            fn:  function(pressed, newurl) {
+                if (pressed != 'ok') {
+                    this.editorcore.focus();
+                    return;
+                }
+                if (url != '') {
+                    this.selectedNode.setAttribute('href', newurl);
+                    return;
+                }
+                if(newurl && newurl .match(/http(s):\/\/.+/)) {
+                    this.editorcore.relayCmd('createlink', newurl);
+                }
+                this.editorcore.focus();
+            }
+        });
+    },
     /**
      * Protected method that will not generally be called directly. It triggers
      * a toolbar update by reading the markup state of the current selection in the editor.
      */
-    updateToolbar: function(){
+    updateToolbar: function(editor ,ev, sel){
 
         if(!this.editorcore.activated){
             this.editor.onFirstFocus(); // is this neeed?
@@ -33074,39 +33193,87 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
 
         var btns = this.buttons; 
         var doc = this.editorcore.doc;
-        btns.get('bold').setActive(doc.queryCommandState('bold'));
-        btns.get('italic').setActive(doc.queryCommandState('italic'));
-        //btns.get('underline').setActive(doc.queryCommandState('underline'));
+        var hasToggle  = false;
+        btns.each(function(e) {
+            if (e.enableToggle && e.cmd) {
+                hasToggle = hasToggle  || (['align-left', 'align-right', 'align-center'].indexOf(e.btnid) < 0 && doc.queryCommandState(e.cmd));
+                e.setActive(doc.queryCommandState(e.cmd));
+            }
+        }, this);
         
-        btns.get('align-left').setActive(doc.queryCommandState('justifyleft'));
-        btns.get('align-center').setActive(doc.queryCommandState('justifycenter'));
-        btns.get('align-right').setActive(doc.queryCommandState('justifyright'));
         
-        //btns[frameId + '-insertorderedlist').setActive(doc.queryCommandState('insertorderedlist'));
-        btns.get('list').setActive(doc.queryCommandState('insertunorderedlist'));
-         /*
+        if (ev &&
+            (ev.type == 'mouseup' || ev.type == 'click' ) &&
+            ev.target && ev.target.tagName != 'BODY' ) { // && ev.target.tagName == 'IMG') {
+            // they have click on an image...
+            // let's see if we can change the selection...
+            sel = ev.target;
+            
+        }
         
         var ans = this.editorcore.getAllAncestors();
-        if (this.formatCombo) {
+        if (!sel) { 
+            sel = ans.length ? (ans[0] ?  ans[0]  : ans[1]) : this.editorcore.doc.body;
+            sel = sel ? sel : this.editorcore.doc.body;
+            sel = sel.tagName.length ? sel : this.editorcore.doc.body;
             
+        }
+        
+        var lastSel = this.selectedNode;
+        this.selectedNode = sel;
+         
+        // ok see if we are editing a block?
+        
+        var db = false;
+        // you are not actually selecting the block.
+        if (sel && sel.hasAttribute('data-block')) {
+            db = sel;
+        } else if (sel && sel.closest('[data-block]')) {
+            db = sel.closest('[data-block]');
+        }
+        
+        Array.from(this.editorcore.doc.body.querySelectorAll('.roo-ed-selection')).forEach(function(e) {
+            e.classList.remove('roo-ed-selection');
+        });
+        
+        var block = false;
+        if (db && this.editorcore.enableBlocks) {
+            block = Roo.htmleditor.Block.factory(db);
             
-            var store = this.formatCombo.store;
-            this.formatCombo.setValue("");
-            for (var i =0; i < ans.length;i++) {
-                if (ans[i] && store.query('tag',ans[i].tagName.toLowerCase(), false).length) {
-                    // select it..
-                    this.formatCombo.setValue(ans[i].tagName.toLowerCase());
-                    break;
-                }
+            if (block) {
+                db.className =  (db.classList.length > 0  ? db.className + ' ' : '') +
+                    ' roo-ed-selection';
+                sel = this.selectedNode = db;
             }
         }
         
+        // highlight the 'a'..
+        var tn = sel && sel.tagName.toUpperCase() || '';
+        if (!block && sel && tn != 'A') {
+            var asel = sel.closest('A');
+            if (asel) {
+                sel = asel;
+            }
+        }
+       
+        btns.get('link').setActive(tn == 'A' && this.selectedNode.hasAttribute('href'));
         
-        
-        // hides menus... - so this cant be on a menu...
-        Roo.bootstrap.MenuMgr.hideAll();
-        */
         Roo.bootstrap.menu.Manager.hideAll();
+         
+        
+        
+        
+        
+        // handle delete button..
+        if (hasToggle || (tn.length && tn == 'BODY')) {
+            this.deleteBtn.hide();
+            return;
+            
+        }
+        this.deleteBtn.show();
+        
+        
+        
         //this.editorsyncValue();
     },
     onFirstFocus: function() {
@@ -33114,6 +33281,49 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbarStandard, Roo.bootstrap.nav.Simpl
            item.enable();
         });
     },
+    
+    onDelete : function()
+    {
+        var range = this.editorcore.createRange();
+        var selection = this.editorcore.getSelection();
+        var sn = this.selectedNode;
+        range.setStart(sn,0);
+        range.setEnd(sn,0); 
+        
+        
+        if (sn.hasAttribute('data-block')) {
+            var block = Roo.htmleditor.Block.factory(this.selectedNode);
+            if (block) {
+                sn = block.removeNode();
+                sn.parentNode.removeChild(sn);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                this.updateToolbar(null, null, null);
+                this.editorcore.fireEditorEvent(false);
+                return;
+            }   
+             
+        }
+        if (!sn) {
+            return; // should not really happen..
+        }
+        if (sn && sn.tagName == 'BODY') {
+            return;
+        }
+        var stn =  sn.childNodes[0] || sn.nextSibling || sn.previousSibling || sn.parentNode;
+        
+        // remove and keep parents.
+        a = new Roo.htmleditor.FilterKeepChildren({tag : false});
+        a.replaceTag(sn);
+        
+        selection.removeAllRanges();
+        selection.addRange(range);
+        this.editorcore.fireEditorEvent(false);
+        
+        
+    },
+    
+    
     toggleSourceEdit : function(sourceEditMode){
         
           

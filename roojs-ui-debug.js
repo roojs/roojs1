@@ -481,8 +481,8 @@ Roo.data.Store = function(config){
          * If you return Json { data: [] , success: false, .... } then this will be thrown with the following args
          * 
          * @param {Proxy} 
-         * @param {Object} return from JsonData.reader() - success, totalRecords, records
-         * @param {Object} load options 
+         * @param {Object} ret return data from JsonData.reader() - success, totalRecords, records
+         * @param {Object} opts - load Options
          * @param {Object} jsonData from your request (normally this contains the Exception)
          */
         loadexception : true
@@ -1488,24 +1488,24 @@ Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
     // thse are take from connection...
     
     /**
-     * @cfg {String} url (Optional) The default URL to be used for requests to the server. (defaults to undefined)
+     * @cfg {String} url  The default URL to be used for requests to the server. (defaults to undefined)
      */
     /**
-     * @cfg {Object} extraParams (Optional) An object containing properties which are used as
+     * @cfg {Object} extraParams  An object containing properties which are used as
      * extra parameters to each request made by this object. (defaults to undefined)
      */
     /**
-     * @cfg {Object} defaultHeaders (Optional) An object containing request headers which are added
+     * @cfg {Object} defaultHeaders   An object containing request headers which are added
      *  to each request made by this object. (defaults to undefined)
      */
     /**
-     * @cfg {String} method (Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+     * @cfg {String} method (GET|POST)  The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
      */
     /**
-     * @cfg {Number} timeout (Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)
+     * @cfg {Number} timeout The timeout in milliseconds to be used for requests. (defaults to 30000)
      */
      /**
-     * @cfg {Boolean} autoAbort (Optional) Whether this request should abort any pending requests. (defaults to false)
+     * @cfg {Boolean} autoAbort Whether this request should abort any pending requests. (defaults to false)
      * @type Boolean
      */
   
@@ -26240,6 +26240,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (e && (e.ctrlKey || e.metaKey) && e.keyCode === 90) {
             return; // we do not handle this.. (undo manager does..)
         }
+        // clicking a 'block'?
+        
         // in theory this detects if the last element is not a br, then we try and do that.
         // its so clicking in space at bottom triggers adding a br and moving the cursor.
         if (e &&
@@ -37488,6 +37490,11 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
 	/**
 	 * @cfg {Roo.Toolbar} toolbar a toolbar for buttons etc.
 	 */
+	 
+	 /**
+	 * @cfg {Roo.PagingToolbar} footer the paging toolbar
+	 */
+	
 	/**
      * @cfg {String} ddGroup - drag drop group.
      */

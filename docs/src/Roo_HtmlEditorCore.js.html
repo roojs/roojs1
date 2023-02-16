@@ -803,7 +803,9 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">e.ctrlKey </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e.metaKey</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">e.keyCode </span><span class="jsdoc-syntax">=== 90) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// we do not handle this.. (undo manager does..)
         </span><span class="jsdoc-syntax">}
-        </span><span class="jsdoc-comment">// in theory this detects if the last element is not a br, then we try and do that.
+        </span><span class="jsdoc-comment">// clicking a 'block'?
+
+        // in theory this detects if the last element is not a br, then we try and do that.
         // its so clicking in space at bottom triggers adding a br and moving the cursor.
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">&amp;&amp;
             </span><span class="jsdoc-var">e.target.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BODY' </span><span class="jsdoc-syntax">&amp;&amp;
