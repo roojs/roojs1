@@ -33036,6 +33036,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 }
             });
         });
+        btn('image', false, true, function() {
+            
+        });
         btn('list','insertunorderedlist',true);
         btn('list-ol','insertorderedlist',true);
 
