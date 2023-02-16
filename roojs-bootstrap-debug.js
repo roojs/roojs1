@@ -33008,7 +33008,9 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         btn('align-left',   'justifyleft',true);
         btn('align-center', 'justifycenter',true);
         btn('align-right' , 'justifyright',true);
-        btn('link', false, true, function(btn) {
+        btn('link', false, true, this.onLinkClick);
+        
+        function(btn) {
             var url = this.selectedNode && this.selectedNode.tagName.toUpperCase() == 'A' ?
                     this.selectedNode.getAttribute('href') : '';
                 
