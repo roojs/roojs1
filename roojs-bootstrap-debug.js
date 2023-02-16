@@ -33011,9 +33011,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         btn('link', false, true, this.onLinkClick);
         
         
-        btn('image', false, true, function() {
-            
-        });
+        btn('image', false, true, this.onImageClick);
         btn('list','insertunorderedlist',true);
         btn('list-ol','insertorderedlist',true);
 
@@ -33063,6 +33061,87 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         this.deleteBtn.hide();     
         
     },
+    
+    onImageClick : function()
+    {
+        if (this.input) {
+            this.input.un('change', this.onFileSelected, this);
+        }
+        this.input = Roo.get(document.body).createChild({ 
+          tag: 'input', 
+          type : 'file', 
+          style : 'display:none', 
+          multiple: 'multiple'
+       });
+        this.input.on('change', this.onFileSelected, this);
+        this.input.dom.click();
+    },
+    
+    onFileSelected : function(e)
+    {
+         e.preventDefault();
+        
+        if(typeof(this.input.dom.files) == 'undefined' || !this.input.dom.files.length){
+            return;
+        }
+    
+         
+        this.addFiles(Array.prototype.slice.call(this.input.dom.files));
+    },
+    
+    addFiles : function(far) {
+
+        if (!far.length) {
+            return;
+        }
+        
+        var f = far.pop();
+        
+        if (!f.type.match(/^image/)) {
+            this.addFiles(far);
+            return;
+        }
+         
+        var sn = this.selectedNode;
+        
+        var bl = sn  && this.editorcore.enableBlocks ? Roo.htmleditor.Block.factory(sn) : false;
+        
+        var editor =  this.editorcore;
+        
+        var reader = new FileReader();
+        reader.addEventListener('load', (function() {
+            if (bl) {
+                bl.image_src = reader.result;
+                //bl.caption = f.name;
+                bl.updateElement(sn);
+                editor.owner.fireEvent('editorevent', editor, false);
+                // we only do the first file!! and replace.
+                return;
+            }
+            if (this.editorcore.enableBlocks) {
+                var fig = new Roo.htmleditor.BlockFigure({
+                    image_src :  reader.result,
+                    caption : '',
+                    caption_display : 'none'  //default to hide captions..
+                 });
+                editor.insertAtCursor(fig.toHTML());
+                editor.owner.fireEvent('editorevent', editor, false);
+                return;
+            }
+            // just a standard img..
+            if (sn && sn.tagName.toUpperCase() == 'IMG') {
+                sn.src = reader.result;
+                editor.owner.fireEvent('editorevent', editor, false);
+                return;
+            }
+            editor.insertAtCursor('<img src="' + reader.result +'">');
+            editor.owner.fireEvent('editorevent', editor, false);
+            
+        }).createDelegate(this));
+        reader.readAsDataURL(f);
+        
+    
+     },
     
     
     onBtnClick : function(id)
