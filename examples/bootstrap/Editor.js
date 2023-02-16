@@ -49,7 +49,7 @@ Roo.example.Editor = new Roo.XComponent({
                                             width : 1000,
                                             height : 500,
 											resize : 'vertical',
-											toolbars : [ 'Standard', 'Context' ],
+											//toolbars : [ 'Standard', 'Context' ],
                                             stylesheets : (function(){
                                                 var css = [];
                                                 
