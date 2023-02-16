@@ -298,7 +298,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
         
         
         if (sn.hasAttribute('data-block')) {
-            var block = Roo.htmleditor.Block.factory(tb.selectedNode)
+            var block = Roo.htmleditor.Block.factory(tb.selectedNode);
             if (block) {
                 block.removeNode();
                 selection.removeAllRanges();
@@ -415,7 +415,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Context, Roo.bootstrap.nav.Simpl
                 }
                 this.selectedNode = db;
                 left_label = block.friendly_name;
-                ans = this.editorcore.getAllAncestors();
+                 
             }
               
             
