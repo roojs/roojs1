@@ -33010,11 +33010,20 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         btn('align-right' , 'justifyright',true);
         btn('link', false, true, function(btn) {
             
-            var url = prompt(this.createLinkText, this.defaultLinkValue);
-            if(url && url != 'http:/'+'/'){
-                this.editorcore.relayCmd('createlink', url);
-            }
-        }),
+            Roo.bootstrap.MessageBox.prompt(
+                "Add / Edit Link URL",
+                "Enter the URL for the link",
+                function(pressed, url) {
+                    if (pressed != 'ok') {
+                        return;
+                    }
+                    
+                    if(url && url.match(/http(s):\/\/.+/)) {
+                        this.editorcore.relayCmd('createlink', url);
+                    }
+                }
+            );
+        });
         btn('list','insertunorderedlist',true);
         btn('list-ol','insertorderedlist',true);
 
@@ -33113,6 +33122,13 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         btns.get('link').setActive(tn == 'A');
         
         Roo.bootstrap.menu.Manager.hideAll();
+        
+        
+        
+        Array.from(this.editorcore.doc.body.querySelectorAll('.roo-ed-selection')).forEach(function(e) {
+            e.classList.remove('roo-ed-selection');
+        });
+        
         
         // handle delete button..
         if (hasToggle || (tn.length && tn == 'BODY')) {
