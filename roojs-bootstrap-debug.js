@@ -29330,7 +29330,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
                 }
             },
             
-             
+              
             {
                 xtype : 'Button',
                 text: 'Hide Caption',
@@ -33057,8 +33057,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             size : 'sm',
             xtype: 'Button',
             xns: Roo.bootstrap,
-            fa: 'eraser',
-            tooltip : "Clear Formating / Delete",
+            fa: 'trash',
             listeners : {
                 click : this.onDelete.createDelegate(this)
             }
