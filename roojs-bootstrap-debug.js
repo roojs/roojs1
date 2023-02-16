@@ -33204,7 +33204,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         if (sn.hasAttribute('data-block')) {
             var block = Roo.htmleditor.Block.factory(this.selectedNode);
             if (block) {
-                block.removeNode();
+                sn = block.removeNode();
+                sn.parentNode.removeChild(sn);
                 selection.removeAllRanges();
                 selection.addRange(range);
                 this.updateToolbar(null, null, null);
