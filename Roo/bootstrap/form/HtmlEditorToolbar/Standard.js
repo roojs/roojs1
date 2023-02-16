@@ -185,7 +185,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             size : 'sm',
             xtype: 'Button',
             xns: Roo.bootstrap,
-            fa: 'trash',
+            fa: 'eraser',
+            tooltip : "Clear Formating / Delete",
             listeners : {
                 click : this.onDelete.createDelegate(this)
             }
