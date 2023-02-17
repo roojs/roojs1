@@ -108,6 +108,7 @@ Roo.bootstrap.form.HtmlEditor = function(config){
             * Fires when press user pastes into the editor
             * @param {Roo.HtmlEditorCore} this
             */
+            paste: true,
             /**
             * @event imageadd
             * Fires when on any editor when an image is added (excluding paste)
