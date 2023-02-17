@@ -249,8 +249,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 bl.image_src = reader.result;
                 //bl.caption = f.name;
                 bl.updateElement(sn);
-                editor.owner.fireEvent('editorevent', editor.owner, false);
-                editor.owner.fireEvent('imageupdate', editor.owner, false);
+                editor.owner.fireEvent('editorevent', editor.owner, sn);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn);
                 // we only do the first file!! and replace.
                 return;
             }
@@ -269,8 +269,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             // just a standard img..
             if (sn && sn.tagName.toUpperCase() == 'IMG') {
                 sn.src = reader.result;
-                editor.owner.fireEvent('editorevent', editor.owner, false);
-                editor.owner.fireEvent('imageupdate', editor.owner, false);
+                editor.owner.fireEvent('editorevent', editor.owner, sn);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn);
                 return;
             }
             editor.insertAtCursor('<img src="' + reader.result +'">');
