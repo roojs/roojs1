@@ -96,8 +96,30 @@ Roo.bootstrap.form.HtmlEditor = function(config){
              * preview the saved version of htmlEditor
              * @param {HtmlEditor} this
              */
-            savedpreview: true
-            
+            savedpreview: true,
+             /**
+            * @event stylesheetsclick
+            * Fires when press the Sytlesheets button
+            * @param {Roo.HtmlEditorCore} this
+            */
+            stylesheetsclick: true,
+            /**
+            * @event paste
+            * Fires when press user pastes into the editor
+            * @param {Roo.HtmlEditorCore} this
+            */
+            /**
+            * @event imageadd
+            * Fires when on any editor when an image is added (excluding paste)
+            * @param {Roo.HtmlEditorCore} this
+            */
+           imageadd: true ,
+            /**
+            * @event imagedelete
+            * Fires when on any editor when an image is deleted
+            * @param {Roo.HtmlEditorCore} this
+            */
+           imagedelete: true  
         });
 };
 
