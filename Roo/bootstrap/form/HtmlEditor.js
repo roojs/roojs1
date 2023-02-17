@@ -26,21 +26,21 @@ Roo.bootstrap.form.HtmlEditor = function(config){
             /**
              * @event initialize
              * Fires when the editor is fully initialized (including the iframe)
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             initialize: true,
             /**
              * @event activate
              * Fires when the editor is first receives the focus. Any insertion must wait
              * until after this event.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             activate: true,
              /**
              * @event beforesync
              * Fires before the textarea is updated with content from the editor iframe. Return false
              * to cancel the sync.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             beforesync: true,
@@ -48,53 +48,53 @@ Roo.bootstrap.form.HtmlEditor = function(config){
              * @event beforepush
              * Fires before the iframe editor is updated with content from the textarea. Return false
              * to cancel the push.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             beforepush: true,
              /**
              * @event sync
              * Fires when the textarea is updated with content from the editor iframe.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             sync: true,
              /**
              * @event push
              * Fires when the iframe editor is updated with content from the textarea.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             push: true,
              /**
              * @event editmodechange
              * Fires when the editor switches edit modes
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {Boolean} sourceEdit True if source edit, false if standard editing.
              */
             editmodechange: true,
             /**
              * @event editorevent
              * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             editorevent: true,
             /**
              * @event firstfocus
              * Fires when on first focus - needed by toolbars..
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             firstfocus: true,
             /**
              * @event autosave
              * Auto save the htmlEditor value as a file into Events
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             autosave: true,
             /**
              * @event savedpreview
              * preview the saved version of htmlEditor
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             savedpreview: true,
              /**
@@ -112,13 +112,19 @@ Roo.bootstrap.form.HtmlEditor = function(config){
             /**
             * @event imageadd
             * Fires when on any editor when an image is added (excluding paste)
-            * @param {Roo.HtmlEditorCore} this
+            * @param {RRoo.bootstrap.form.HtmlEditor} this
             */
            imageadd: true ,
             /**
+            * @event imageupdated
+            * Fires when on any editor when an image is changed (excluding paste)
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            */
+           imageupdated: true ,
+           /**
             * @event imagedelete
             * Fires when on any editor when an image is deleted
-            * @param {Roo.HtmlEditorCore} this
+            * @param {Roo.bootstrap.form.HtmlEditor} this
             */
            imagedelete: true  
         });
