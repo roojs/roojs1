@@ -270,7 +270,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 return;
             }
             editor.insertAtCursor('<img src="' + reader.result +'">');
-            editor.owner.fireEvent('editorevent', editor, false);
+            editor.owner.fireEvent('editorevent', editor.owner, false);
+            editor.owner.fireEvent('imageadd', editor.owner, false);
             
         }).createDelegate(this));
         reader.readAsDataURL(f);
