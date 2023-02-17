@@ -97,6 +97,7 @@ Roo.bootstrap.form.HtmlEditor = function(config){
              * @param {HtmlEditor} this
              */
             savedpreview: true
+            
         });
 };
 
