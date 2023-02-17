@@ -113,18 +113,21 @@ Roo.bootstrap.form.HtmlEditor = function(config){
             * @event imageadd
             * Fires when on any editor when an image is added (excluding paste)
             * @param {Roo.bootstrap.form.HtmlEditor} this
+            * @param {DomElement} img could also be a figure if blocks are enabled
             */
            imageadd: true ,
             /**
             * @event imageupdated
             * Fires when on any editor when an image is changed (excluding paste)
             * @param {Roo.bootstrap.form.HtmlEditor} this
+            * @param {DomElement} img could also be a figure if blocks are enabled
             */
            imageupdate: true ,
            /**
             * @event imagedelete
             * Fires when on any editor when an image is deleted
             * @param {Roo.bootstrap.form.HtmlEditor} this
+            * @param {DomElement} img could also be a figure if blocks are enabled
             */
            imagedelete: true  
         });
