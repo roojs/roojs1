@@ -231,6 +231,7 @@
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">far.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fire_add</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageadd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
             }
@@ -255,6 +256,7 @@
                 </span><span class="jsdoc-var">bl.image_src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">reader.result</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-comment">//bl.caption = f.name;
                 </span><span class="jsdoc-var">bl.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageupdate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-comment">// we only do the first file!! and replace.
@@ -273,6 +275,7 @@
             </span><span class="jsdoc-comment">// just a standard img..
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sn.tagName.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'IMG'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">sn.src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">reader.result</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageupdate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -445,6 +448,7 @@
                 </span><span class="jsdoc-var">selection.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">this.updateToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.tagName.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'FIGURE'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-var">this.editor.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imagedelete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
                 }
 
@@ -469,6 +473,7 @@
         </span><span class="jsdoc-var">selection.removeAllRanges</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">selection.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.tagName.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'IMG&quot;'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.editor.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imagedelete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
         }
 
