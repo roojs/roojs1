@@ -249,7 +249,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 bl.image_src = reader.result;
                 //bl.caption = f.name;
                 bl.updateElement(sn);
-                editor.owner.fireEvent('editorevent', editor, false);
+                editor.owner.fireEvent('editorevent', editor.owner, false);
+                editor.owner.fireEvent('imageupdate', editor.owner, false);
                 // we only do the first file!! and replace.
                 return;
             }
@@ -260,13 +261,15 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                     caption_display : 'none'  //default to hide captions..
                  });
                 editor.insertAtCursor(fig.toHTML());
-                editor.owner.fireEvent('editorevent', editor, false);
+                editor.owner.fireEvent('editorevent', editor.owner, false);
+                editor.owner.fireEvent('imageadd', editor.owner, false);
                 return;
             }
             // just a standard img..
             if (sn && sn.tagName.toUpperCase() == 'IMG') {
                 sn.src = reader.result;
-                editor.owner.fireEvent('editorevent', editor, false);
+                editor.owner.fireEvent('editorevent', editor.owner, false);
+                editor.owner.fireEvent('imageupdate', editor.owner, false);
                 return;
             }
             editor.insertAtCursor('<img src="' + reader.result +'">');
