@@ -33134,6 +33134,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
   
         if (!far.length) {
             if (fire_add) {
+                this.editor.syncValue();
                 editor.owner.fireEvent('editorevent', editor.owner, false);
                 editor.owner.fireEvent('imageadd', editor.owner, false);
             }
@@ -33158,6 +33159,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 bl.image_src = reader.result;
                 //bl.caption = f.name;
                 bl.updateElement(sn);
+                this.editor.syncValue();
                 editor.owner.fireEvent('editorevent', editor.owner, false);
                 editor.owner.fireEvent('imageupdate', editor.owner, sn);
                 // we only do the first file!! and replace.
@@ -33176,6 +33178,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             // just a standard img..
             if (sn && sn.tagName.toUpperCase() == 'IMG') {
                 sn.src = reader.result;
+                this.editor.syncValue();
                 editor.owner.fireEvent('editorevent', editor.owner, false);
                 editor.owner.fireEvent('imageupdate', editor.owner, sn);
                 return;
@@ -33348,6 +33351,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 selection.addRange(range);
                 this.updateToolbar(null, null, null);
                 if (sn.tagName.toUpperCase() == 'FIGURE') {
+                    this.editor.syncValue();
                     this.editor.fireEvent('imagedelete', this.editor, sn);
                 }
                 
@@ -33372,6 +33376,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         selection.removeAllRanges();
         selection.addRange(range);
         if (sn.tagName.toUpperCase() == 'IMG"') {
+            this.editor.syncValue();
             this.editor.fireEvent('imagedelete', this.editor, sn);
         }
         
