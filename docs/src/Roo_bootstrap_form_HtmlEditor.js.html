@@ -16,31 +16,26 @@
  */
 
 </span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
-    </span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditor.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [];
-    }
 
-    </span><span class="jsdoc-var">this.editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.HtmlEditorCore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">owner </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">} , </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">));
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-comment">/**
              * @event initialize
              * Fires when the editor is fully initialized (including the iframe)
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             </span><span class="jsdoc-var">initialize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-comment">/**
              * @event activate
              * Fires when the editor is first receives the focus. Any insertion must wait
              * until after this event.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             </span><span class="jsdoc-var">activate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
              </span><span class="jsdoc-comment">/**
              * @event beforesync
              * Fires before the textarea is updated with content from the editor iframe. Return false
              * to cancel the sync.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             </span><span class="jsdoc-var">beforesync</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
@@ -48,56 +43,95 @@
              * @event beforepush
              * Fires before the iframe editor is updated with content from the textarea. Return false
              * to cancel the push.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             </span><span class="jsdoc-var">beforepush</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
              </span><span class="jsdoc-comment">/**
              * @event sync
              * Fires when the textarea is updated with content from the editor iframe.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             </span><span class="jsdoc-var">sync</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
              </span><span class="jsdoc-comment">/**
              * @event push
              * Fires when the iframe editor is updated with content from the textarea.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             </span><span class="jsdoc-var">push</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
              </span><span class="jsdoc-comment">/**
              * @event editmodechange
              * Fires when the editor switches edit modes
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {Boolean} sourceEdit True if source edit, false if standard editing.
              */
             </span><span class="jsdoc-var">editmodechange</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-comment">/**
              * @event editorevent
              * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             </span><span class="jsdoc-var">editorevent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-comment">/**
              * @event firstfocus
              * Fires when on first focus - needed by toolbars..
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             </span><span class="jsdoc-var">firstfocus</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-comment">/**
              * @event autosave
              * Auto save the htmlEditor value as a file into Events
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             </span><span class="jsdoc-var">autosave</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-comment">/**
              * @event savedpreview
              * preview the saved version of htmlEditor
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
-            </span><span class="jsdoc-var">savedpreview</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
-        </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">savedpreview</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+             </span><span class="jsdoc-comment">/**
+            * @event stylesheetsclick
+            * Fires when press the Sytlesheets button
+            * @param {Roo.HtmlEditorCore} this
+            */
+            </span><span class="jsdoc-var">stylesheetsclick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+            * @event paste
+            * Fires when press user pastes into the editor
+            * @param {Roo.HtmlEditorCore} this
+            */
+            </span><span class="jsdoc-var">paste</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+            * @event imageadd
+            * Fires when on any editor when an image is added (excluding paste)
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            */
+           </span><span class="jsdoc-var">imageadd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+            * @event imageupdated
+            * Fires when on any editor when an image is changed (excluding paste)
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            * @param {HTMLElement} img could also be a figure if blocks are enabled
+            */
+           </span><span class="jsdoc-var">imageupdate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-comment">/**
+            * @event imagedelete
+            * Fires when on any editor when an image is deleted
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            * @param {HTMLElement} img could also be a figure if blocks are enabled
+            */
+           </span><span class="jsdoc-var">imagedelete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">Roo.bootstrap.form.HtmlEditor.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [];
+    }
+
+    </span><span class="jsdoc-var">this.editorcore </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.HtmlEditorCore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">owner </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">} , </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">));
+
 };
 
 

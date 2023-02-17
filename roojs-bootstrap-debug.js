@@ -30845,7 +30845,7 @@ Roo.HtmlEditorCore = function(config){
          * @param {Roo.HtmlEditorCore} this
          */
         editorevent: true 
-         
+        
         
     });
     
@@ -32465,31 +32465,26 @@ Roo.HtmlEditorCore.cblack= [
  */
 
 Roo.bootstrap.form.HtmlEditor = function(config){
-    Roo.bootstrap.form.HtmlEditor.superclass.constructor.call(this, config);
-    if (!this.toolbars) {
-        this.toolbars = [];
-    }
-    
-    this.editorcore = new Roo.HtmlEditorCore(Roo.apply({ owner : this} , config));
+
     this.addEvents({
             /**
              * @event initialize
              * Fires when the editor is fully initialized (including the iframe)
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             initialize: true,
             /**
              * @event activate
              * Fires when the editor is first receives the focus. Any insertion must wait
              * until after this event.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             activate: true,
              /**
              * @event beforesync
              * Fires before the textarea is updated with content from the editor iframe. Return false
              * to cancel the sync.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             beforesync: true,
@@ -32497,56 +32492,95 @@ Roo.bootstrap.form.HtmlEditor = function(config){
              * @event beforepush
              * Fires before the iframe editor is updated with content from the textarea. Return false
              * to cancel the push.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             beforepush: true,
              /**
              * @event sync
              * Fires when the textarea is updated with content from the editor iframe.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             sync: true,
              /**
              * @event push
              * Fires when the iframe editor is updated with content from the textarea.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {String} html
              */
             push: true,
              /**
              * @event editmodechange
              * Fires when the editor switches edit modes
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              * @param {Boolean} sourceEdit True if source edit, false if standard editing.
              */
             editmodechange: true,
             /**
              * @event editorevent
              * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             editorevent: true,
             /**
              * @event firstfocus
              * Fires when on first focus - needed by toolbars..
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             firstfocus: true,
             /**
              * @event autosave
              * Auto save the htmlEditor value as a file into Events
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
             autosave: true,
             /**
              * @event savedpreview
              * preview the saved version of htmlEditor
-             * @param {HtmlEditor} this
+             * @param {Roo.bootstrap.form.HtmlEditor} this
              */
-            savedpreview: true
-        });
+            savedpreview: true,
+             /**
+            * @event stylesheetsclick
+            * Fires when press the Sytlesheets button
+            * @param {Roo.HtmlEditorCore} this
+            */
+            stylesheetsclick: true,
+            /**
+            * @event paste
+            * Fires when press user pastes into the editor
+            * @param {Roo.HtmlEditorCore} this
+            */
+            paste: true,
+            /**
+            * @event imageadd
+            * Fires when on any editor when an image is added (excluding paste)
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            */
+           imageadd: true ,
+            /**
+            * @event imageupdated
+            * Fires when on any editor when an image is changed (excluding paste)
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            * @param {HTMLElement} img could also be a figure if blocks are enabled
+            */
+           imageupdate: true ,
+           /**
+            * @event imagedelete
+            * Fires when on any editor when an image is deleted
+            * @param {Roo.bootstrap.form.HtmlEditor} this
+            * @param {HTMLElement} img could also be a figure if blocks are enabled
+            */
+           imagedelete: true  
+    });
+    Roo.bootstrap.form.HtmlEditor.superclass.constructor.call(this, config);
+    if (!this.toolbars) {
+        this.toolbars = [];
+    }
+    
+    this.editorcore = new Roo.HtmlEditorCore(Roo.apply({ owner : this} , config));
+    
 };
 
 
@@ -33090,19 +33124,26 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         }
     
          
-        this.addFiles(Array.prototype.slice.call(this.input.dom.files));
+        this.addFiles(Array.prototype.slice.call(this.input.dom.files), false);
     },
     
-    addFiles : function(far) {
+    addFiles : function(far, fire_add) {
 
+         
+        var editor =  this.editorcore;
+  
         if (!far.length) {
+            if (fire_add) {
+                editor.owner.fireEvent('editorevent', editor.owner, false);
+                editor.owner.fireEvent('imageadd', editor.owner, false);
+            }
             return;
         }
         
         var f = far.pop();
         
         if (!f.type.match(/^image/)) {
-            this.addFiles(far);
+            this.addFiles(far, fire_add);
             return;
         }
          
@@ -33110,7 +33151,6 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         
         var bl = sn  && this.editorcore.enableBlocks ? Roo.htmleditor.Block.factory(sn) : false;
         
-        var editor =  this.editorcore;
         
         var reader = new FileReader();
         reader.addEventListener('load', (function() {
@@ -33118,7 +33158,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 bl.image_src = reader.result;
                 //bl.caption = f.name;
                 bl.updateElement(sn);
-                editor.owner.fireEvent('editorevent', editor, false);
+                editor.owner.fireEvent('editorevent', editor.owner, false);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn);
                 // we only do the first file!! and replace.
                 return;
             }
@@ -33129,17 +33170,18 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                     caption_display : 'none'  //default to hide captions..
                  });
                 editor.insertAtCursor(fig.toHTML());
-                editor.owner.fireEvent('editorevent', editor, false);
+                this.addFiles(far, true);
                 return;
             }
             // just a standard img..
             if (sn && sn.tagName.toUpperCase() == 'IMG') {
                 sn.src = reader.result;
-                editor.owner.fireEvent('editorevent', editor, false);
+                editor.owner.fireEvent('editorevent', editor.owner, false);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn);
                 return;
             }
             editor.insertAtCursor('<img src="' + reader.result +'">');
-            editor.owner.fireEvent('editorevent', editor, false);
+            this.addFiles(far, true);
             
         }).createDelegate(this));
         reader.readAsDataURL(f);
@@ -33305,6 +33347,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 selection.removeAllRanges();
                 selection.addRange(range);
                 this.updateToolbar(null, null, null);
+                if (sn.tagName.toUpperCase() == 'FIGURE') {
+                    this.editor.fireEvent('imagedelete', this.editor, sn);
+                }
+                
+                this.selectedNode = false;
                 this.editorcore.fireEditorEvent(false);
                 return;
             }   
@@ -33324,6 +33371,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         
         selection.removeAllRanges();
         selection.addRange(range);
+        if (sn.tagName.toUpperCase() == 'IMG"') {
+            this.editor.fireEvent('imagedelete', this.editor, sn);
+        }
+        
+        this.selectedNode = false;
         this.editorcore.fireEditorEvent(false);
         
         

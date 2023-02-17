@@ -27334,7 +27334,19 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             * Fires when press user pastes into the editor
             * @param {Roo.HtmlEditorCore} this
             */
-            paste: true 
+            paste: true,
+             /**
+            * @event imageadd
+            * Fires when on any editor when an image is added (excluding paste)
+            * @param {Roo.HtmlEditorCore} this
+            */
+           imageadd: true ,
+            /**
+            * @event imagedelete
+            * Fires when on any editor when an image is deleted
+            * @param {Roo.HtmlEditorCore} this
+            */
+           imagedelete: true  
         });
         this.defaultAutoCreate =  {
             tag: "textarea",

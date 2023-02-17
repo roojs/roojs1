@@ -221,19 +221,26 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         }
     
          
-        this.addFiles(Array.prototype.slice.call(this.input.dom.files));
+        this.addFiles(Array.prototype.slice.call(this.input.dom.files), false);
     },
     
-    addFiles : function(far) {
+    addFiles : function(far, fire_add) {
 
+         
+        var editor =  this.editorcore;
+  
         if (!far.length) {
+            if (fire_add) {
+                editor.owner.fireEvent('editorevent', editor.owner, false);
+                editor.owner.fireEvent('imageadd', editor.owner, false);
+            }
             return;
         }
         
         var f = far.pop();
         
         if (!f.type.match(/^image/)) {
-            this.addFiles(far);
+            this.addFiles(far, fire_add);
             return;
         }
          
@@ -241,7 +248,6 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         
         var bl = sn  && this.editorcore.enableBlocks ? Roo.htmleditor.Block.factory(sn) : false;
         
-        var editor =  this.editorcore;
         
         var reader = new FileReader();
         reader.addEventListener('load', (function() {
@@ -249,7 +255,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 bl.image_src = reader.result;
                 //bl.caption = f.name;
                 bl.updateElement(sn);
-                editor.owner.fireEvent('editorevent', editor, false);
+                editor.owner.fireEvent('editorevent', editor.owner, false);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn);
                 // we only do the first file!! and replace.
                 return;
             }
@@ -260,17 +267,18 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                     caption_display : 'none'  //default to hide captions..
                  });
                 editor.insertAtCursor(fig.toHTML());
-                editor.owner.fireEvent('editorevent', editor, false);
+                this.addFiles(far, true);
                 return;
             }
             // just a standard img..
             if (sn && sn.tagName.toUpperCase() == 'IMG') {
                 sn.src = reader.result;
-                editor.owner.fireEvent('editorevent', editor, false);
+                editor.owner.fireEvent('editorevent', editor.owner, false);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn);
                 return;
             }
             editor.insertAtCursor('<img src="' + reader.result +'">');
-            editor.owner.fireEvent('editorevent', editor, false);
+            this.addFiles(far, true);
             
         }).createDelegate(this));
         reader.readAsDataURL(f);
@@ -436,6 +444,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 selection.removeAllRanges();
                 selection.addRange(range);
                 this.updateToolbar(null, null, null);
+                if (sn.tagName.toUpperCase() == 'FIGURE') {
+                    this.editor.fireEvent('imagedelete', this.editor, sn);
+                }
+                
+                this.selectedNode = false;
                 this.editorcore.fireEditorEvent(false);
                 return;
             }   
@@ -455,6 +468,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         
         selection.removeAllRanges();
         selection.addRange(range);
+        if (sn.tagName.toUpperCase() == 'IMG"') {
+            this.editor.fireEvent('imagedelete', this.editor, sn);
+        }
+        
+        this.selectedNode = false;
         this.editorcore.fireEditorEvent(false);
         
         

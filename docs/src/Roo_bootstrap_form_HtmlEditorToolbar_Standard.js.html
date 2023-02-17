@@ -221,19 +221,26 @@
         }
 
 
-        </span><span class="jsdoc-var">this.addFiles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Array.prototype.slice.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.input.dom.files</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.addFiles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Array.prototype.slice.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.input.dom.files</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
     },
 
-    </span><span class="jsdoc-var">addFiles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">addFiles </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fire_add</span><span class="jsdoc-syntax">) {
+
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.editorcore</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">far.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fire_add</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageadd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            }
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">far.pop</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">f.type.match</span><span class="jsdoc-syntax">(/^image/)) {
-            </span><span class="jsdoc-var">this.addFiles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.addFiles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fire_add</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
 
@@ -241,7 +248,6 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn  </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.editorcore.enableBlocks </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">Roo.htmleditor.Block.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">editor </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.editorcore</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FileReader</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">reader.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
@@ -249,7 +255,8 @@
                 </span><span class="jsdoc-var">bl.image_src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">reader.result</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-comment">//bl.caption = f.name;
                 </span><span class="jsdoc-var">bl.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageupdate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-comment">// we only do the first file!! and replace.
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
@@ -260,17 +267,18 @@
                     </span><span class="jsdoc-var">caption_display </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'  </span><span class="jsdoc-comment">//default to hide captions..
                  </span><span class="jsdoc-syntax">});
                 </span><span class="jsdoc-var">editor.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fig.toHTML</span><span class="jsdoc-syntax">());
-                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.addFiles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-comment">// just a standard img..
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sn.tagName.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'IMG'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">sn.src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">reader.result</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageupdate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-var">editor.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;img src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">reader.result </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;'</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.addFiles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">far</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
 
         })</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-var">reader.readAsDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">);
@@ -436,6 +444,11 @@
                 </span><span class="jsdoc-var">selection.removeAllRanges</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">selection.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">this.updateToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.tagName.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'FIGURE'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.editor.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imagedelete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+                }
+
+                </span><span class="jsdoc-var">this.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">this.editorcore.fireEditorEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
@@ -455,6 +468,11 @@
 
         </span><span class="jsdoc-var">selection.removeAllRanges</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">selection.addRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">range</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn.tagName.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'IMG&quot;'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.editor.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imagedelete'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editor</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">this.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.editorcore.fireEditorEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
 
 

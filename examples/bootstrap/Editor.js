@@ -63,6 +63,15 @@ Roo.example.Editor = new Roo.XComponent({
                                                 render : function (_self)
                                                 {
                                                     _this.previewPanel = _self;
+                                                },
+                                                imageadd : function(a) {
+                                                    Roo.log(['imageadd', a])
+                                                },
+                                                imageupdate : function(a,b) {
+                                                    Roo.log(['imageupdate', a,b])
+                                                },
+                                                imagedelete : function(a,b) {
+                                                    Roo.log(['imagedelete', a,b])
                                                 }
                                             }
                                         }
