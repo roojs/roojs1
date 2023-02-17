@@ -263,6 +263,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 editor.insertAtCursor(fig.toHTML());
                 editor.owner.fireEvent('editorevent', editor.owner, false);
                 editor.owner.fireEvent('imageadd', editor.owner, false);
+                this.addFiles(far);
                 return;
             }
             // just a standard img..
@@ -275,6 +276,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             editor.insertAtCursor('<img src="' + reader.result +'">');
             editor.owner.fireEvent('editorevent', editor.owner, false);
             editor.owner.fireEvent('imageadd', editor.owner, false);
+            this.addFiles(far);
             
         }).createDelegate(this));
         reader.readAsDataURL(f);
