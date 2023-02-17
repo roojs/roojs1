@@ -112,7 +112,7 @@ Roo.bootstrap.form.HtmlEditor = function(config){
             /**
             * @event imageadd
             * Fires when on any editor when an image is added (excluding paste)
-            * @param {RRoo.bootstrap.form.HtmlEditor} this
+            * @param {Roo.bootstrap.form.HtmlEditor} this
             */
            imageadd: true ,
             /**
@@ -120,7 +120,7 @@ Roo.bootstrap.form.HtmlEditor = function(config){
             * Fires when on any editor when an image is changed (excluding paste)
             * @param {Roo.bootstrap.form.HtmlEditor} this
             */
-           imageupdated: true ,
+           imageupdate: true ,
            /**
             * @event imagedelete
             * Fires when on any editor when an image is deleted
