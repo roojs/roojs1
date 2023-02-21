@@ -31374,8 +31374,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
         
         // check what type of paste - if it's an image, then handle it differently.
-        if (cd.files && cd.files.length > 0) {
-            // pasting images?
+        if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
+            // pasting images? 
             var urlAPI = (window.createObjectURL && window) || 
                 (window.URL && URL.revokeObjectURL && URL) || 
                 (window.webkitURL && webkitURL);
