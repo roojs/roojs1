@@ -282,6 +282,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     {
         
         this.time = (typeof(this.time) === 'undefined') ? new Date() : this.time;
+        //var minutesToAdd = Math.round((parseInt(this.time.format('i')) + this.minuteStep) / this.minuteStep) * this.minuteStep - parseInt(this.time.format('i'));
         
         this.fill();
     },
