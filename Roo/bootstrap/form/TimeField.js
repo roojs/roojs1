@@ -283,9 +283,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         
         if(typeof(this.time) === 'undefined') {
             this.time = new Date();
-            Roo.log(this.time);
             this.time = this.time.add(Date.MINUTE, Math.round(parseInt(this.time.format('i')) / this.minuteStep) * this.minuteStep - parseInt(this.time.format('i')));
-            Roo.log(this.time);
         }
         this.time = (typeof(this.time) === 'undefined') ? new Date() : this.time;
         
