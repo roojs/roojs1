@@ -864,6 +864,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         if(this.rendered){
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
             Roo.log('VALIDATE ON SET VALUE');
+            Roo.log(this.name);
             this.validate();
         }
     },
