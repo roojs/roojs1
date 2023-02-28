@@ -13657,8 +13657,6 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
         }
 
-        Roo.log('ALLOW BLANK');
-        Roo.log(this.allowBlank);
         if(this.disabled || this.allowBlank){
             return;
         }
