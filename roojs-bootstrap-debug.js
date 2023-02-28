@@ -12955,11 +12955,12 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     validate : function(){
         //if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
         if(this.disabled || this.validateValue(this.getRawValue())){
-            Roo.log(this.name);
-            Roo.log('MARK INVALID');
             this.markValid();
             return true;
         }
+
+        Roo.log(this.name);
+        Roo.log('MARK INVALID');
         
         this.markInvalid();
         return false;
