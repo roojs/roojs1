@@ -13051,6 +13051,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         this.hasFocus = false;
         if(this.validationEvent !== false && this.validateOnBlur && this.validationEvent != "blur"){
+            Roo.log("VALIDATE ON BLUR");
             this.validate();
         }
         var v = this.getValue();
@@ -13074,6 +13075,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      */
     reset : function(){
         this.setValue(this.originalValue);
+        Roo.log("VALIDATE ON RESET");
         this.validate();
     },
      /**
@@ -13136,6 +13138,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         this.value = v;
         if(this.rendered){
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            Roo.log('VALIDATE ON SET VALUE');
             this.validate();
         }
     },
