@@ -727,8 +727,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             if (typeof(msg) == 'string') {
                 this.invalidText = msg;
             }
-            Roo.log('validateValue');
-            Roo.log(msg);
             if(msg !== true){
                 return false;
             }
