@@ -260,7 +260,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
         }
 
-        if(this.disabled || this.allowBlank){
+        if(this.disabled){
             return;
         }
         
