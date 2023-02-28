@@ -778,7 +778,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         this.hasFocus = false;
         if(this.validationEvent !== false && this.validateOnBlur && this.validationEvent != "blur"){
-            Roo.log("VALIDATE ON BLUR");
             this.validate();
         }
         var v = this.getValue();
