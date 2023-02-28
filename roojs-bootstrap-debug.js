@@ -13000,6 +13000,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             if (typeof(msg) == 'string') {
                 this.invalidText = msg;
             }
+            Roo.log('validateValue');
+            Roo.log(msg);
             if(msg !== true){
                 return false;
             }
@@ -13050,9 +13052,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             //this.el.removeClass(this.focusClass);
         }
         this.hasFocus = false;
-        Roo.log('ONBLUR');
         if(this.validationEvent !== false && this.validateOnBlur && this.validationEvent != "blur"){
-            Roo.log('VALIDATE');
             this.validate();
         }
         var v = this.getValue();
