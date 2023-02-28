@@ -802,7 +802,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      */
     reset : function(){
         this.setValue(this.originalValue);
-        Roo.log("VALIDATE ON RESET");
         this.validate();
     },
      /**
