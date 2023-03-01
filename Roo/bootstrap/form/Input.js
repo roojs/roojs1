@@ -835,6 +835,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * @param {Mixed} value The value to set
      */
     setRawValue : function(v){
+        Roo.log(this.name);
+        Roo.log(v);
         return this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
     },
     
