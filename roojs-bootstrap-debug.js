@@ -31162,8 +31162,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             
             var html = div.innerHTML;
-            Roo.log('sync value');
-            Roo.log(html);
             
             //?? tidy?
             if (this.autoClean) {
@@ -31179,6 +31177,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'rowspan',
                             'data-display',
                             'data-width',
+                            'data-caption',
                             'start' ,
                             'style',
                             // youtube embed.
