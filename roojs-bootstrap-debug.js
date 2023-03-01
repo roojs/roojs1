@@ -31162,6 +31162,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             
             var html = div.innerHTML;
+            Roo.log('sync value');
+            Roo.log(html);
             
             //?? tidy?
             if (this.autoClean) {
