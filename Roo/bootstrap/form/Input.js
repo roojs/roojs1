@@ -862,12 +862,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     setValue : function(v){
         this.value = v;
         if(this.rendered){
-            if(this.name == 'release_content') {
-                Roo.log(this.name);
-                Roo.log(v);
-                Roo.log('adsad');
-                Roo.log(this.inputEl());
-            }
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
         }
