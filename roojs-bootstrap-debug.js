@@ -13089,10 +13089,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      */
     getValue : function(){
         var v = this.inputEl().getValue();
-        if(this.name == 'release_content') {
-            Roo.log('GET VALUE');
-            Roo.log(v);
-        }
         return v;
     },
     /**
