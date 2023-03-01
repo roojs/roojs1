@@ -322,7 +322,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var ret =   {
             tag: 'figure',
             'data-block' : 'Figure',
-            'data-width' : this.width, 
+            'data-width' : this.width,
+            'data-caption' : this.caption, 
             contenteditable : 'false',
             
             style : {
@@ -395,6 +396,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         this.image_src = this.getVal(node, 'img', 'src');
          
         this.align = this.getVal(node, 'figure', 'align');
+        
+        /// not really used - as hidden captions do not store the content here..
         var figcaption = this.getVal(node, 'figcaption', false);
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
@@ -402,6 +405,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         
 
         this.caption_display = this.getVal(node, 'figcaption', 'data-display');
+        var dc = this.getVal(node, 'figcaption', 'data-caption');
+        if (dc && dc.length) {
+            this.caption = dc;
+        }
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
