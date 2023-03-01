@@ -13088,9 +13088,11 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getValue : function(){
-        
         var v = this.inputEl().getValue();
-        
+        if(this.name == 'release_content') {
+            Roo.log('GET VALUE');
+            Roo.log(v);
+        }
         return v;
     },
     /**
