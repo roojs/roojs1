@@ -405,7 +405,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         
 
         this.caption_display = this.getVal(node, 'figcaption', 'data-display');
-        var dc = this.getVal(node, 'figure', 'data-caption');
+        var dc = this.getVal(node, 'figcaption', 'data-caption');
         if (dc && dc.length) {
             this.caption = dc;
         }
