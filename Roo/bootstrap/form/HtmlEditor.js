@@ -351,8 +351,6 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
 //    clearInvalid : Roo.emptyFn,
 
     setValue : function(v){
-        Roo.log(this.name);
-        Roo.log(v);
         Roo.bootstrap.form.HtmlEditor.superclass.setValue.call(this, v);
         this.editorcore.pushValue();
     },
