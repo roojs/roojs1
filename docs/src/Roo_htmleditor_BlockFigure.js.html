@@ -323,6 +323,7 @@
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'data-block' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Figure'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-string">'data-width' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'data-caption' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.caption</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">contenteditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'false'</span><span class="jsdoc-syntax">,
 
             </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: {
@@ -395,6 +396,8 @@
         </span><span class="jsdoc-var">this.image_src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'figure'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'align'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">/// not really used - as hidden captions do not store the content here..
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">figcaption </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'figcaption'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">figcaption </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.caption </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">figcaption</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'html'</span><span class="jsdoc-syntax">);
@@ -402,6 +405,10 @@
 
 
         </span><span class="jsdoc-var">this.caption_display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'figcaption'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-display'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'figcaption'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-caption'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dc </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">dc.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.caption </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dc</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-comment">//this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getVal</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'data-width'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//this.margin = this.getVal(node, 'figure', 'style', 'margin');
