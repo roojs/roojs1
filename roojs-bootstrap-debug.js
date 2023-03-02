@@ -13088,9 +13088,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getValue : function(){
-        
         var v = this.inputEl().getValue();
-        
         return v;
     },
     /**
@@ -13657,7 +13655,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
         }
 
-        if(this.disabled || this.allowBlank){
+        if(this.disabled){
             return;
         }
         
@@ -24210,7 +24208,11 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     
     update: function()
     {
-        
+        // default minute is a multiple of minuteStep
+        if(typeof(this.time) === 'undefined') {
+            this.time = new Date();
+            this.time = this.time.add(Date.MINUTE, Math.round(parseInt(this.time.format('i')) / this.minuteStep) * this.minuteStep - parseInt(this.time.format('i')));
+        }
         this.time = (typeof(this.time) === 'undefined') ? new Date() : this.time;
         
         this.fill();
@@ -29508,7 +29510,7 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         
 
         this.caption_display = this.getVal(node, 'figcaption', 'data-display');
-        var dc = this.getVal(node, 'figcaption', 'data-caption');
+        var dc = this.getVal(node, true, 'data-caption');
         if (dc && dc.length) {
             this.caption = dc;
         }
@@ -31175,6 +31177,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'rowspan',
                             'data-display',
                             'data-width',
+                            'data-caption',
                             'start' ,
                             'style',
                             // youtube embed.
