@@ -176,7 +176,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         cn.parentType = this.xtype; //??
         cn.parentId = this.id;
 
-        Roo.log(cn);
+        Roo.log(cn.el);
         
         cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
         if (typeof(cn.container_method) == 'string') {
