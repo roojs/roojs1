@@ -17013,9 +17013,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
      * @param {String/HTMLElement/Element} container (optional) The element this component should be rendered into. If it is being applied to existing markup, this should be left off.
      */
     render : function(container, position){
-        Roo.log('render');
-        Roo.log(this.xtype);
-        Roo.log(this.rendered);
+        
         if(this.rendered){
             return this;
         }
