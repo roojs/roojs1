@@ -389,14 +389,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
         var cn = this;
         
-        Roo.log('ADDXTYPE');
         cn = Roo.factory(tree);
         //Roo.log(['addxtype', cn]);
            
         cn.parentType = this.xtype; //??
         cn.parentId = this.id;
-
-        Roo.log(cn.el);
         
         cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
         if (typeof(cn.container_method) == 'string') {
@@ -465,7 +462,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     addxtypeChild : function (tree, cntr, is_body)
     {
         Roo.debug && Roo.log('addxtypeChild:' + cntr);
-        Roo.log('ADDXTYPECHILD');
         var cn = this;
         cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
         
@@ -486,7 +482,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
            
             cn = Roo.factory(tree);
-            Roo.log(cn.el);
            
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
@@ -512,15 +507,12 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 // at present the only work around for this is to nest flexy:if elements in another element that is always rendered.
                 
                 
-                Roo.log(echild);
-                Roo.log(cn);
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                   
                   
                   
                     cn.el = echild;
-                    Roo.log(cn.el);
                   //  Roo.log("GOT");
                     //echild.dom.removeAttribute('xtype');
                 } else {
