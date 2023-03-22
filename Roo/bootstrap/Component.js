@@ -243,6 +243,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
         Roo.debug && Roo.log('addxtypeChild:' + cntr);
         Roo.log('ADDXTYPECHILD');
+        Roo.log(tree);
         var cn = this;
         cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
         
