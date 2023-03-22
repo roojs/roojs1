@@ -387,7 +387,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
     addxtype  : function(tree,cntr)
     {
-        Roo.log('ADDXTYPE: ' + this.xtype);
+        if(tree.xtype == 'Img') {
+            Roo.log('ADDXTYPE: ' + tree.xtype);
+        }
         var cn = this;
         
         cn = Roo.factory(tree);
@@ -463,8 +465,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     addxtypeChild : function (tree, cntr, is_body)
     {
         Roo.debug && Roo.log('addxtypeChild:' + cntr);
-        Roo.log('ADDXTYPECHILD: ' + this.xtype);
-        Roo.log(this.el);
         var cn = this;
         cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
         
