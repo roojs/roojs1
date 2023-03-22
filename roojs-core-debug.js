@@ -17014,7 +17014,8 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
      */
     render : function(container, position){
         Roo.log('render');
-        Roo.log(this);
+        Roo.log(this.xtype);
+        Roo.log(this.rendered);
         if(this.rendered){
             return this;
         }
