@@ -167,7 +167,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
     addxtype  : function(tree,cntr)
     {
-        if(tree.xtype == 'Img') {
+        if(tree.test == 'test') {
             Roo.log('ADDXTYPE: ' + tree.xtype);
         }
         var cn = this;
