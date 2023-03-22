@@ -484,6 +484,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
            
             cn = Roo.factory(tree);
+
+            Roo.log(cn);
            
             cn.parentType = this.xtype; //??
             cn.parentId = this.id;
