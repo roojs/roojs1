@@ -195,7 +195,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         // do not try and build conditional elements 
         if ((has_flexy_each || has_flexy_if || this.can_build_overlaid == false ) && build_from_html) {
-            Roo.log('RETURN');
             return false;
         }
         
@@ -205,6 +204,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
             
             var echild =self_cntr_el ? self_cntr_el.child('>*[name=' + tree.name + ']') : false;
+
+            Roo.log('ECHILD');
+            Roo.log(echild);
                 
             if(echild){
                 return this.addxtypeChild(Roo.apply({}, tree),cntr);
