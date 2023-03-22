@@ -169,7 +169,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
      */
     render : function(container, position){
         Roo.log('render');
-        Roo.log(this.xtype);
+        Roo.log('render ' + this.xtype);
         Roo.log(this.rendered);
         if(this.rendered){
             return this;
