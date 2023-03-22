@@ -298,6 +298,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                   
                   
                     cn.el = echild;
+                    Roo.log(cn.el);
                   //  Roo.log("GOT");
                     //echild.dom.removeAttribute('xtype');
                 } else {
