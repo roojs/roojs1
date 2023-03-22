@@ -328,6 +328,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     return cn;
                 }
                 */
+               Roo.log('RENDER');
+               Roo.log(cn);
                 cn.render && cn.render(this[cntr](true));
                 
              }
