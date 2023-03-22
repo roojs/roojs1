@@ -349,6 +349,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if(this.name){
             cfg.name = this.name;
         }
+
+        Roo.log(this);
+        Roo.log('ONRENDER');
         
         this.el = ct.createChild(cfg, position);
         
