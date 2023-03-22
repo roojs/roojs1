@@ -462,7 +462,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     addxtypeChild : function (tree, cntr, is_body)
     {
         Roo.debug && Roo.log('addxtypeChild:' + cntr);
-        Roo.log('ADDXTYPECHILD:' + cntr);
         var cn = this;
         cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
         
@@ -549,6 +548,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     return cn;
                 }
                 */
+               Roo.log('RENDER');
+               Roo.log(cn);
                 cn.render && cn.render(this[cntr](true));
                 
              }
