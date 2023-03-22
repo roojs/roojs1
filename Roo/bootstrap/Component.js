@@ -195,6 +195,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         // do not try and build conditional elements 
         if ((has_flexy_each || has_flexy_if || this.can_build_overlaid == false ) && build_from_html) {
+            Roo.log('RETURN');
             return false;
         }
         
