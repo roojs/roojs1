@@ -223,9 +223,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         // with the sam eelement.. - which might be buggy..
         while (true) {
             var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-            Roo.log('COMPONENT WHILE');
-            Roo.log(echild);
-            Roo.log(cn);
+            
             if (!echild) {
                 break;
             }
