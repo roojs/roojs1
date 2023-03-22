@@ -129,13 +129,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if(this.name){
             cfg.name = this.name;
         }
-
-        Roo.log('ONRENDER: ' + this.xtype);
-        Roo.log(this.el);
         
         this.el = ct.createChild(cfg, position);
-
-        Roo.log(this.el);
         
         if (this.tooltip) {
             this.tooltipEl().attr('tooltip', this.tooltip);
