@@ -292,6 +292,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 // at present the only work around for this is to nest flexy:if elements in another element that is always rendered.
                 
                 
+                Roo.log(echild);
+                Roo.log(cn);
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                   
