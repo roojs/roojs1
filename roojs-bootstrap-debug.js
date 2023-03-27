@@ -580,7 +580,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (!skip_children) {    
             for(var i =0;i < items.length;i++) {
               //  Roo.log(['add child', items[i]]);
-                nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+                nitems.push(cn.addxtype(items[i].xns == false ? items[i] : Roo.apply({}, items[i])));
             }
         }
         
@@ -32581,6 +32581,7 @@ Roo.bootstrap.form.HtmlEditor = function(config){
             * Fires when on any editor when an image is deleted
             * @param {Roo.bootstrap.form.HtmlEditor} this
             * @param {HTMLElement} img could also be a figure if blocks are enabled
+            * @param {HTMLElement} oldSrc source of image being replaced
             */
            imagedelete: true  
     });
@@ -33166,12 +33167,13 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         var reader = new FileReader();
         reader.addEventListener('load', (function() {
             if (bl) {
+                var oldSrc = bl.image_src;
                 bl.image_src = reader.result;
                 //bl.caption = f.name;
                 bl.updateElement(sn);
                 this.editor.syncValue();
                 editor.owner.fireEvent('editorevent', editor.owner, false);
-                editor.owner.fireEvent('imageupdate', editor.owner, sn);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn, oldSrc);
                 // we only do the first file!! and replace.
                 return;
             }
@@ -33187,10 +33189,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             }
             // just a standard img..
             if (sn && sn.tagName.toUpperCase() == 'IMG') {
+                var oldSrc = sn.src;
                 sn.src = reader.result;
                 this.editor.syncValue();
                 editor.owner.fireEvent('editorevent', editor.owner, false);
-                editor.owner.fireEvent('imageupdate', editor.owner, sn);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn, oldSrc);
                 return;
             }
             editor.insertAtCursor('<img src="' + reader.result +'">');
