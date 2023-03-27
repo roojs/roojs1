@@ -259,7 +259,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 bl.updateElement(sn);
                 this.editor.syncValue();
                 editor.owner.fireEvent('editorevent', editor.owner, false);
-                editor.owner.fireEvent('imageupdate', editor.owner, sn);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn, oldSrc);
                 // we only do the first file!! and replace.
                 return;
             }
@@ -279,7 +279,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 sn.src = reader.result;
                 this.editor.syncValue();
                 editor.owner.fireEvent('editorevent', editor.owner, false);
-                editor.owner.fireEvent('imageupdate', editor.owner, sn);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn, oldSrc);
                 return;
             }
             editor.insertAtCursor('<img src="' + reader.result +'">');
