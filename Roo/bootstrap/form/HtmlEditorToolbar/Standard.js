@@ -253,13 +253,13 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         var reader = new FileReader();
         reader.addEventListener('load', (function() {
             if (bl) {
-                var oldSn = sn;
+                var oldSrc = bl.image_src;
                 bl.image_src = reader.result;
                 //bl.caption = f.name;
                 bl.updateElement(sn);
                 this.editor.syncValue();
                 editor.owner.fireEvent('editorevent', editor.owner, false);
-                editor.owner.fireEvent('imageupdate', editor.owner, sn, oldSn);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn, oldSrc);
                 // we only do the first file!! and replace.
                 return;
             }
@@ -275,11 +275,11 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             }
             // just a standard img..
             if (sn && sn.tagName.toUpperCase() == 'IMG') {
-                var oldSn = sn;
+                var oldSrc = sn.src;
                 sn.src = reader.result;
                 this.editor.syncValue();
                 editor.owner.fireEvent('editorevent', editor.owner, false);
-                editor.owner.fireEvent('imageupdate', editor.owner, sn, oldSn);
+                editor.owner.fireEvent('imageupdate', editor.owner, sn, oldSrc);
                 return;
             }
             editor.insertAtCursor('<img src="' + reader.result +'">');
