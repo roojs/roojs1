@@ -253,6 +253,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
         var reader = new FileReader();
         reader.addEventListener('load', (function() {
             if (bl) {
+                var oldSrc = bl.image_src;
                 bl.image_src = reader.result;
                 //bl.caption = f.name;
                 bl.updateElement(sn);
@@ -274,6 +275,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
             }
             // just a standard img..
             if (sn && sn.tagName.toUpperCase() == 'IMG') {
+                var oldSrc = sn.src;
                 sn.src = reader.result;
                 this.editor.syncValue();
                 editor.owner.fireEvent('editorevent', editor.owner, false);
