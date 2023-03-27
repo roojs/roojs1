@@ -32581,7 +32581,7 @@ Roo.bootstrap.form.HtmlEditor = function(config){
             * Fires when on any editor when an image is deleted
             * @param {Roo.bootstrap.form.HtmlEditor} this
             * @param {HTMLElement} img could also be a figure if blocks are enabled
-            * @param {HTMLElement} oldImg image being replaced (could also be a figure if blocks are enabled)
+            * @param {HTMLElement} oldSrc source of image being replaced
             */
            imagedelete: true  
     });
