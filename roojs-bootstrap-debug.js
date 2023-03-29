@@ -33241,6 +33241,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                     this.editorcore.relayCmd('createlink', newurl);
                 }
                 this.editorcore.focus();
+                this.editor.syncValue();
             },
             cls : 'pub-error'
         });
