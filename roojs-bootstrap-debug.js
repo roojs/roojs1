@@ -33242,7 +33242,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 }
                 this.editorcore.focus();
             },
-            cls : 'pub-email'
+            cls : 'pub-error'
         });
     },
     /**
