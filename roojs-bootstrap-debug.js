@@ -33235,14 +33235,13 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 }
                 if (url != '') {
                     this.selectedNode.setAttribute('href', newurl);
+                    this.editor.syncValue();
                     return;
                 }
                 if(newurl && newurl .match(/http(s):\/\/.+/)) {
                     this.editorcore.relayCmd('createlink', newurl);
                 }
                 this.editorcore.focus();
-                Roo.log("SYNC VALUE");
-                this.editor.syncValue();
             },
             cls : 'pub-error'
         });
