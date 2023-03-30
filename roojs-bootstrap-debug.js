@@ -13074,7 +13074,9 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      */
     reset : function(){
         this.setValue(this.originalValue);
-        this.validate();
+        // this.validate();
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.inputEl().removeClass(['is-valid', 'is-invalid']);
     },
      /**
      * Returns the name of the field
@@ -32643,6 +32645,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
     tbContainer : false,
     
     bodyCls : '',
+
+    linkDialogCls : '',
     
     toolbarContainer :function() {
         return this.wrap.select('.x-html-editor-tb',true).first();
@@ -33233,13 +33237,15 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 }
                 if (url != '') {
                     this.selectedNode.setAttribute('href', newurl);
+                    this.editor.syncValue();
                     return;
                 }
                 if(newurl && newurl .match(/http(s):\/\/.+/)) {
                     this.editorcore.relayCmd('createlink', newurl);
                 }
                 this.editorcore.focus();
-            }
+            },
+            cls : this.editorcore.linkDialogCls
         });
     },
     /**
