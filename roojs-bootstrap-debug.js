@@ -32645,6 +32645,8 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
     tbContainer : false,
     
     bodyCls : '',
+
+    linkDialogCls : '',
     
     toolbarContainer :function() {
         return this.wrap.select('.x-html-editor-tb',true).first();
@@ -33243,7 +33245,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 }
                 this.editorcore.focus();
             },
-            cls : 'pub-error'
+            cls : this.editorcore.linkDialogCls
         });
     },
     /**
