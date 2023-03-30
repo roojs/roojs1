@@ -185,7 +185,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditor, Roo.bootstrap.form.TextArea,  {
     
     bodyCls : '',
 
-    linkBoxCls : '',
+    linkDialogCls : '',
     
     toolbarContainer :function() {
         return this.wrap.select('.x-html-editor-tb',true).first();

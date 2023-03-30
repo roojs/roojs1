@@ -327,7 +327,7 @@ Roo.extend(Roo.bootstrap.form.HtmlEditorToolbar.Standard, Roo.bootstrap.nav.Simp
                 }
                 this.editorcore.focus();
             },
-            cls : 'pub-error'
+            cls : linkDialogCls
         });
     },
     /**
