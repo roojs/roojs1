@@ -13219,6 +13219,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
         }
         
         if(this.indicator){
@@ -13232,7 +13233,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         
            
         if(this.allowBlank && !this.getRawValue().length){
-            this.el.select('.form-control-feedback', true).first().update('');
             return;
         }
         if (Roo.bootstrap.version == 3) {
@@ -13248,8 +13248,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
-
-                feedback.update('');
             }
             
         }
@@ -13275,6 +13273,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass(
                     [this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
         }
 
         if(this.disabled){
@@ -13282,7 +13281,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         if(this.allowBlank && !this.getRawValue().length){
-            this.el.select('.form-control-feedback', true).first().update('');
             return;
         }
         
