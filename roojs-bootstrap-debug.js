@@ -13232,7 +13232,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         
            
         if(this.allowBlank && !this.getRawValue().length){
-            feedback.update(this.invalidText);
+            this.el.select('.form-control-feedback', true).first().update('');
             return;
         }
         if (Roo.bootstrap.version == 3) {
@@ -13282,7 +13282,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         if(this.allowBlank && !this.getRawValue().length){
-            feedback.update(this.invalidText);
+            this.el.select('.form-control-feedback', true).first().update('');
             return;
         }
         
