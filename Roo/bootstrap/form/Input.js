@@ -1028,9 +1028,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 
                 this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
 
-                Roo.log('UPDATE INVALID TEXT');
-                Roo.log(feedback);
-                Roo.log(this.invalidText);
                 feedback.update(this.invalidText);
                 
             }
