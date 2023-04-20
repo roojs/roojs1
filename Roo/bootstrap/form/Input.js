@@ -934,11 +934,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * Mark this field as valid
      */
     markValid : function()
-    {
-        if(this.name == 'release_social_website') {
-            Roo.log('MARK VALID');
-        }
-        
+    {   
         if(!this.el  || this.preventMark){ // not rendered...
             return;
         }
