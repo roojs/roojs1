@@ -343,6 +343,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             
         Roo.log('HAS FEEDBACK');
         Roo.log(this.hasFeedback);
+        Roo.log(this.name);
         if(this.hasFeedback && this.inputType != 'hidden'){
             
             inputblock = {
