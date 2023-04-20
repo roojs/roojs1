@@ -341,6 +341,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             cls: 'glyphicon form-control-feedback'
         };
             
+        Roo.log('HAS FEEDBACK');
+        Roo.log(this.hasFeedback);
         if(this.hasFeedback && this.inputType != 'hidden'){
             
             inputblock = {
