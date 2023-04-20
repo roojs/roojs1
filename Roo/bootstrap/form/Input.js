@@ -396,7 +396,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 });
             }
             
-            if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+            if(this.hasFeedback && this.inputType != 'hidden'){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
