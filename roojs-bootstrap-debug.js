@@ -13241,7 +13241,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             this.inputEl().addClass('is-valid');
         }
 
-        if(this.hasFeedback && this.inputType != 'hidden' && (this.getValue().length || this.forceFeedback)){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
@@ -13303,6 +13303,10 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
+                if(this.name == 'release_social_website') {
+                    Roo.log('ADD FEEDBACK CLASS');
+                    Roo.log(this.invalidFeedbackClass);
+                }
                 this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
 
                 feedback.update(this.invalidText);
