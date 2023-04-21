@@ -295,8 +295,12 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
-                if(this.getValue().length || this.forceFeedback){
-                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+
+                feedback.update(this.invalidText);
+
+                if(!this.allowBlank && !this.getRawValue().length){
+                    feedback.update(this.blankText);
                 }
                 
             }
