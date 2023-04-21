@@ -92,7 +92,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         
         var inputblock = input;
         
-        if(this.hasFeedback && !this.allowBlank){
+        if(this.hasFeedback){
             
             var feedback = {
                 tag: 'span',
