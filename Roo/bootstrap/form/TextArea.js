@@ -179,12 +179,14 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         this.el.removeClass( this.validClass);
         this.inputEl().removeClass('is-invalid');
          
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
+
+                feedback.update('');
             }
             
         }
