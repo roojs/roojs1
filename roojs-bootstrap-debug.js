@@ -13303,6 +13303,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
+                Roo.log(this.name);
                 if(this.name == 'release_social_website') {
                     Roo.log('ADD FEEDBACK CLASS');
                     Roo.log(this.invalidFeedbackClass);
