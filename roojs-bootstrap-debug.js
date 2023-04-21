@@ -13497,7 +13497,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         
         var inputblock = input;
         
-        if(this.hasFeedback && !this.allowBlank){
+        if(this.hasFeedback){
             
             var feedback = {
                 tag: 'span',
@@ -13530,7 +13530,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             
             inputblock.cn.push(input);
             
-            if(this.hasFeedback && !this.allowBlank){
+            if(this.hasFeedback){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
