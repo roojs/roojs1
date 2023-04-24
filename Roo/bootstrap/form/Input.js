@@ -341,7 +341,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             cls: 'glyphicon form-control-feedback'
         };
             
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             inputblock = {
                 cls : 'has-feedback',
@@ -396,7 +396,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 });
             }
             
-            if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+            if(this.hasFeedback && this.inputType != 'hidden'){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
@@ -910,12 +910,14 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         
         this.el.removeClass([this.invalidClass, 'is-invalid']);
         
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
+
+                feedback.update('');
             }
             
         }
@@ -932,7 +934,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      * Mark this field as valid
      */
     markValid : function()
-    {
+    {   
         if(!this.el  || this.preventMark){ // not rendered...
             return;
         }
@@ -944,6 +946,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
         }
         
         if(this.indicator){
@@ -965,7 +968,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             this.inputEl().addClass('is-valid');
         }
 
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
@@ -997,6 +1000,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass(
                     [this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
         }
 
         if(this.disabled){
@@ -1019,15 +1023,19 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         
         
         
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
-                if(this.getValue().length || this.forceFeedback){
-                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+
+                feedback.update(this.invalidText);
+
+                if(!this.allowBlank && !this.getRawValue().length){
+                    feedback.update(this.blankText);
                 }
                 
             }

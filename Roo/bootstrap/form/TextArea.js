@@ -92,7 +92,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         
         var inputblock = input;
         
-        if(this.hasFeedback && !this.allowBlank){
+        if(this.hasFeedback){
             
             var feedback = {
                 tag: 'span',
@@ -125,7 +125,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             
             inputblock.cn.push(input);
             
-            if(this.hasFeedback && !this.allowBlank){
+            if(this.hasFeedback){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
@@ -179,12 +179,14 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         this.el.removeClass( this.validClass);
         this.inputEl().removeClass('is-invalid');
          
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
+
+                feedback.update('');
             }
             
         }
@@ -208,6 +210,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
         }
 
         if(this.disabled || this.allowBlank){
@@ -227,7 +230,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         }
         
         
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
@@ -258,6 +261,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
             
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            feedback.update('');
         }
 
         if(this.disabled){
@@ -284,15 +288,19 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         }
         
         // fixme ... this may be depricated need to test..
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+        if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
-                if(this.getValue().length || this.forceFeedback){
-                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+
+                feedback.update(this.invalidText);
+
+                if(!this.allowBlank && !this.getRawValue().length){
+                    feedback.update(this.blankText);
                 }
                 
             }
