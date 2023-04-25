@@ -253,12 +253,13 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FileReader</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">reader.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bl</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oldSrc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bl.image_src</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">bl.image_src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">reader.result</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-comment">//bl.caption = f.name;
                 </span><span class="jsdoc-var">bl.updateElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageupdate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageupdate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oldSrc</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-comment">// we only do the first file!! and replace.
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
@@ -274,10 +275,11 @@
             }
             </span><span class="jsdoc-comment">// just a standard img..
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">sn.tagName.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'IMG'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">oldSrc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sn.src</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">sn.src </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">reader.result</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editorevent'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageupdate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">editor.owner.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'imageupdate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor.owner</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oldSrc</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
             </span><span class="jsdoc-var">editor.insertAtCursor</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&lt;img src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">reader.result </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;'</span><span class="jsdoc-syntax">);
@@ -317,14 +319,16 @@
                 }
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">this.selectedNode.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'href'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newurl</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.editor.syncValue</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                 }
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newurl </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">newurl .match</span><span class="jsdoc-syntax">(/http(s):\/\/.+/)) {
                     </span><span class="jsdoc-var">this.editorcore.relayCmd</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'createlink'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newurl</span><span class="jsdoc-syntax">);
                 }
                 </span><span class="jsdoc-var">this.editorcore.focus</span><span class="jsdoc-syntax">();
-            }
-        });
+            },
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.editorcore.linkDialogCls
+        </span><span class="jsdoc-syntax">});
     },
     </span><span class="jsdoc-comment">/**
      * Protected method that will not generally be called directly. It triggers

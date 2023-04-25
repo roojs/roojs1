@@ -341,7 +341,7 @@
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'glyphicon form-control-feedback'
         </span><span class="jsdoc-syntax">};
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">){
 
             </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'has-feedback'</span><span class="jsdoc-syntax">,
@@ -396,7 +396,7 @@
                 </span><span class="jsdoc-syntax">});
             }
 
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">inputblock.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' has-feedback'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">);
             }
@@ -801,7 +801,9 @@
      */
     </span><span class="jsdoc-var">reset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.originalValue</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">// this.validate();
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'is-valid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'is-invalid'</span><span class="jsdoc-syntax">]);
     },
      </span><span class="jsdoc-comment">/**
      * Returns the name of the field
@@ -815,9 +817,7 @@
      * @return {Mixed} value The field value
      */
     </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getValue</span><span class="jsdoc-syntax">();
-
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-comment">/**
@@ -910,12 +910,14 @@
 
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'is-invalid'</span><span class="jsdoc-syntax">]);
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">){
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">feedback </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-var">feedback.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
             }
 
         }
@@ -944,6 +946,7 @@
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validFeedbackClass</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">feedback.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
         }
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indicator</span><span class="jsdoc-syntax">){
@@ -965,7 +968,7 @@
             </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'is-valid'</span><span class="jsdoc-syntax">);
         }
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.forceFeedback</span><span class="jsdoc-syntax">)){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">){
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">feedback </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
 
@@ -997,6 +1000,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(
                     [</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validFeedbackClass</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">feedback.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
         }
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
@@ -1019,15 +1023,19 @@
 
 
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">){
 
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">feedback </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
 
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validFeedbackClass</span><span class="jsdoc-syntax">]);
 
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.forceFeedback</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">]);
+                </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">]);
+
+                </span><span class="jsdoc-var">feedback.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidText</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">feedback.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.blankText</span><span class="jsdoc-syntax">);
                 }
 
             }

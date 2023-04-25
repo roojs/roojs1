@@ -122,6 +122,7 @@
             * Fires when on any editor when an image is deleted
             * @param {Roo.bootstrap.form.HtmlEditor} this
             * @param {HTMLElement} img could also be a figure if blocks are enabled
+            * @param {HTMLElement} oldSrc source of image being replaced
             */
            </span><span class="jsdoc-var">imagedelete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
@@ -183,6 +184,8 @@
     </span><span class="jsdoc-var">tbContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">bodyCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">linkDialogCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">toolbarContainer </span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.wrap.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.x-html-editor-tb'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();

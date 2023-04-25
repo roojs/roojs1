@@ -1967,7 +1967,7 @@
       "name" : "imagedelete",
       "type" : "function",
       "desc" : "Fires when on any editor when an image is deleted",
-      "sig" : "function (_self, img)\n{\n\n}",
+      "sig" : "function (_self, img, oldSrc)\n{\n\n}",
       "memberOf" : "",
       "example" : "",
       "deprecated" : "",
@@ -1984,6 +1984,12 @@
           "name" : "img",
           "type" : "HTMLElement",
           "desc" : "could also be a figure if blocks are enabled",
+          "isOptional" : false
+        },
+        {
+          "name" : "oldSrc",
+          "type" : "HTMLElement",
+          "desc" : "source of image being replaced",
           "isOptional" : false
         }
       ],
