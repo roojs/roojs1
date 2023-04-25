@@ -70,7 +70,7 @@ Roo.bootstrap.panel.Content = function( config){
                     {
                         tag : 'iframe',
                         style : 'border: 0px',
-                        src : 'about:blank'
+                        src : 'data:text/html,%3Cbody%3E%3C%2Fbody%3E'
                     }
                 ];
             }
