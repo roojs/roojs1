@@ -31400,6 +31400,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         // even pasting into a 'email version' of this widget will have to clean up that mess.
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
+
+        Roo.log('PASTE EVENT');
+        Roo.log(cd);
         
         // check what type of paste - if it's an image, then handle it differently.
         if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
@@ -45336,7 +45339,7 @@ Roo.bootstrap.panel.Content = function( config){
                     {
                         tag : 'iframe',
                         style : 'border: 0px',
-                        src : 'about:blank'
+                        src : 'data:text/html,%3Cbody%3E%3C%2Fbody%3E'
                     }
                 ];
             }
