@@ -12949,15 +12949,16 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     },
     onPasswordClick : function(e) 
     {
-        Roo.log(e);
-        Roo.log(e.getPageX());
-        Roo.log(this.inputEl().getX());
-        Roo.log(this.inputEl().getWidth());
-        if(this.inputEl().attr('type') == 'password') {
-            this.inputEl().attr('type', 'text');
+        var input = this.inputEl();
+        
+        if(e.getPageX() < input.getX() + input.getWidth() - 30) {
+            return;
+        }
+        if(input.attr('type') == 'password') {
+            input.attr('type', 'text');
         }
         else {
-            this.inputEl().attr('type', 'password');
+            input.attr('type', 'password');
         }
     },
     filterValidation : function(e){
