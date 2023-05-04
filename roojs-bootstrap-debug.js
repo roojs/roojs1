@@ -12951,8 +12951,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     {
         Roo.log(e);
         Roo.log(e.getPageX());
-        Roo.log(e.getPageY());
-        Roo.log(e.getXY());
+        Roo.log(this.inputEl.getX());
         Roo.log(this.inputEl().getWidth());
         if(this.inputEl().attr('type') == 'password') {
             this.inputEl().attr('type', 'text');
