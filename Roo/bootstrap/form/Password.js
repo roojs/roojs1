@@ -22,6 +22,8 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
     {   
         Roo.bootstrap.form.Password.superclass.initEvents.call(this);
 
+        this.el.addClass('form-password');
+
         this.inputEl().addClass('password-hidden');
 
         this.inputEl().on('click', this.onPasswordClick, this);
