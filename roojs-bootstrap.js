@@ -1112,6 +1112,9 @@ pt.innerHTML=this.meterLabel+'&nbsp;'+this.pwdStrengths[B];this.errorMsg='';retu
 }var B=new Array(new this.CharacterSetChecks(this.kCapitalLetter),new this.CharacterSetChecks(this.kSmallLetter),new this.CharacterSetChecks(this.kDigit),new this.CharacterSetChecks(this.kPunctuation));for(var C=0;C<A.length;++C){for(var D=0;D<B.length;++D){if(!B[D].fResult&&this.isctype(A.charAt(C),B[D].type)){B[D].fResult=true;
 break;}}}var E=0;for(var D=0;D<B.length;++D){if(B[D].fResult){++E;}}if(E<nb){return false;}return true;},ClientSideStrongPassword:function(A){return this.IsLongEnough(A,8)&&this.SpansEnoughCharacterSets(A,3);},ClientSideMediumPassword:function(A){return this.IsLongEnough(A,7)&&this.SpansEnoughCharacterSets(A,2);
 },ClientSideWeakPassword:function(A){return this.IsLongEnough(A,6)||!this.IsLongEnough(A,0);}});
+// Roo/bootstrap/form/Password.js
+Roo.bootstrap.form.Password=function(A){Roo.bootstrap.form.Password.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.form.NumberField,Roo.bootstrap.form.Input,{getAutoCreate:function(){var A=Roo.bootstrap.form.NumberField.superclass.getAutoCreate.call(this);
+return A;},initEvents:function(){Roo.bootstrap.form.NumberField.superclass.initEvents.call(this);}});
 // Roo/rtf/namespace.js
 Roo.rtf={};
 // Roo/rtf/Hex.js
