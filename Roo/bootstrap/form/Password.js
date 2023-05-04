@@ -17,6 +17,8 @@ Roo.bootstrap.form.Password = function(config){
 
 Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
 
+    inputType : 'password',
+    
     initEvents : function()
     {   
         Roo.bootstrap.form.Password.superclass.initEvents.call(this);
