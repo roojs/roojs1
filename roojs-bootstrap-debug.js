@@ -12560,7 +12560,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             id : id,
             type : this.inputType,
             value : this.value,
-            cls : 'form-control' + (this.inputType == 'password' ? ' password-hidden' : ''),
+            cls : 'form-control',
             placeholder : this.placeholder || '',
             autocomplete : this.autocomplete || 'new-password'
         };
@@ -12942,30 +12942,30 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         
         this.inputEl().on('change', this.onChange, this);
 
-        if(this.inputType == 'password') {
-            this.inputEl().on('click', this.onPasswordClick, this);
-        }
+        // if(this.inputType == 'password') {
+        //     this.inputEl().on('click', this.onPasswordClick, this);
+        // }
         
     },
-    onPasswordClick : function(e) 
-    {
-        var input = this.inputEl();
+    // onPasswordClick : function(e) 
+    // {
+    //     var input = this.inputEl();
 
-        if(e.getPageX() < input.getX() + input.getWidth() - 30) {
-            return;
-        }
+    //     if(e.getPageX() < input.getX() + input.getWidth() - 30) {
+    //         return;
+    //     }
 
-        input.removeClass(['password-visible', 'password-hidden']);
+    //     input.removeClass(['password-visible', 'password-hidden']);
 
-        if(input.attr('type') == 'password') {
-            input.attr('type', 'text');
-            input.addClass('password-visible');
-        }
-        else {
-            input.attr('type', 'password');
-            input.addClass('password-hidden');
-        }
-    },
+    //     if(input.attr('type') == 'password') {
+    //         input.attr('type', 'text');
+    //         input.addClass('password-visible');
+    //     }
+    //     else {
+    //         input.attr('type', 'password');
+    //         input.addClass('password-hidden');
+    //     }
+    // },
     filterValidation : function(e){
         if(!e.isNavKeyPress()){
             this.validationTask.delay(this.validationDelay);
