@@ -677,12 +677,9 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     onPasswordClick : function(e) 
     {
         var input = this.inputEl();
-        Roo.log(e);
-        Roo.log(e.getPageX());
-        Roo.log(input.getX());
-        Roo.log(input.getWidth());
+        
         if(e.getPageX() < input.getX() + input.getWidth() - 30) {
-
+            return;
         }
         if(input.attr('type') == 'password') {
             input.attr('type', 'text');
