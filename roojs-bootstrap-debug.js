@@ -26048,8 +26048,9 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
  */
 
 Roo.bootstrap.form.Password = function(config){
-    config.inputType = 'password'; // only accept 'password' as input type
     Roo.bootstrap.form.Password.superclass.constructor.call(this, config);
+
+    this.inputType = 'password';
 };
 
 Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
