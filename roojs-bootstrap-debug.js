@@ -12946,9 +12946,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             
             var feedback = this.el.select('.form-control-feedback', true).first();
 
-            Roo.log('AAA');
             if(feedback) {
-                Roo.log('BBB');
                 feedback.hide();
             }
         }
