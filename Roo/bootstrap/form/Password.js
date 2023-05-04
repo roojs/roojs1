@@ -46,5 +46,5 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
             input.attr('type', 'password');
             input.addClass('password-hidden');
         }
-    },
+    }
 });
