@@ -12941,7 +12941,16 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         this.inputEl().on('change', this.onChange, this);
+
+        if(this.inputType == 'password') {
+            this.inputEl().on('click', this.onPasswordClick, this);
+        }
         
+    },
+    onPasswordClick : function(e) 
+    {
+        Roo.log('ON PASSWORD CLICK');
+        Roo.log(e);
     },
     filterValidation : function(e){
         if(!e.isNavKeyPress()){
@@ -45336,7 +45345,7 @@ Roo.bootstrap.panel.Content = function( config){
                     {
                         tag : 'iframe',
                         style : 'border: 0px',
-                        src : 'about:blank'
+                        src : 'data:text/html,%3Cbody%3E%3C%2Fbody%3E'
                     }
                 ];
             }
