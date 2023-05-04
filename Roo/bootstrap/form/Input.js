@@ -287,7 +287,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             id : id,
             type : this.inputType,
             value : this.value,
-            cls : 'form-control',
+            cls : 'form-control' + this.inputType == 'password' ? ' password-hidden' : '',
             placeholder : this.placeholder || '',
             autocomplete : this.autocomplete || 'new-password'
         };

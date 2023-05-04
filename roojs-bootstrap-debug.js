@@ -12560,7 +12560,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             id : id,
             type : this.inputType,
             value : this.value,
-            cls : 'form-control',
+            cls : 'form-control' + this.inputType == 'password' ? ' password-hidden' : '',
             placeholder : this.placeholder || '',
             autocomplete : this.autocomplete || 'new-password'
         };
@@ -12955,13 +12955,15 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             return;
         }
 
-        input.removeClass(['password-hidden', 'password-hidden']);
+        input.removeClass(['password-visible', 'password-hidden']);
 
         if(input.attr('type') == 'password') {
             input.attr('type', 'text');
+            input.addClass('password-visible');
         }
         else {
             input.attr('type', 'password');
+            input.addClass('password-hidden');
         }
     },
     filterValidation : function(e){
