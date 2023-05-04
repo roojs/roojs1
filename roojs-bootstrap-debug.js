@@ -12954,11 +12954,16 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         if(e.getPageX() < input.getX() + input.getWidth() - 30) {
             return;
         }
+
+        input.removeClass(['password-hidden', 'password-hidden']);
+
         if(input.attr('type') == 'password') {
             input.attr('type', 'text');
+            input.addClass('password-shown');
         }
         else {
             input.attr('type', 'password');
+            input.addClass('password-hidden');
         }
     },
     filterValidation : function(e){
