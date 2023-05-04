@@ -12946,7 +12946,11 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             
             var feedback = this.el.select('.form-control-feedback', true).first();
 
-            feedback.hide();
+            Roo.log('AAA');
+            if(feedback) {
+                Roo.log('BBB');
+                feedback.hide();
+            }
         }
 
 
@@ -13222,7 +13226,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
 
                 feedback.update('');
-                Roo.log('CLEAR INVALID');
                 feedback.hide();
             }
             
