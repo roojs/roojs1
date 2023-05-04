@@ -12949,8 +12949,10 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     },
     onPasswordClick : function(e) 
     {
-        Roo.log('ON PASSWORD CLICK');
-        Roo.log(e);
+        this.inputEl().attr('type', 'password');
+        if(this.inputEl().attr('type') == 'password') {
+            this.inputEl().attr('type', 'text');
+        }
     },
     filterValidation : function(e){
         if(!e.isNavKeyPress()){
