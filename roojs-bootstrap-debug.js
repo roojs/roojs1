@@ -12942,6 +12942,14 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         
         this.inputEl().on('change', this.onChange, this);
 
+        if(this.hasFeedback && this.inputType != 'hidden'){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+
+            feedback.hide();
+        }
+
+
         // if(this.inputType == 'password') {
         //     this.inputEl().on('click', this.onPasswordClick, this);
         // }
