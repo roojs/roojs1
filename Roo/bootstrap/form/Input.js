@@ -327,7 +327,9 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             input.cls += ' input-' + this.size;
         }
 
-        
+        if (this.inputType == 'password') {
+            
+        }
         
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
