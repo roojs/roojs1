@@ -20,8 +20,6 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
     {
         var cfg = Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);
         
-        Roo.log('GET AUTO CREATE');
-        Roo.log(cfg);
         return cfg;
     },
 
