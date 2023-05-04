@@ -676,15 +676,19 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     },
     onPasswordClick : function(e) 
     {
+        var input = this.inputEl();
         Roo.log(e);
         Roo.log(e.getPageX());
-        Roo.log(this.inputEl().getX());
-        Roo.log(this.inputEl().getWidth());
-        if(this.inputEl().attr('type') == 'password') {
-            this.inputEl().attr('type', 'text');
+        Roo.log(input.getX());
+        Roo.log(input.getWidth());
+        if(e.getPageX() < input.getX() + input.getWidth() - 30) {
+
+        }
+        if(input.attr('type') == 'password') {
+            input.attr('type', 'text');
         }
         else {
-            this.inputEl().attr('type', 'password');
+            input.attr('type', 'password');
         }
     },
     filterValidation : function(e){
