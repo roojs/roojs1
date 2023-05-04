@@ -326,6 +326,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         if (this.size) {
             input.cls += ' input-' + this.size;
         }
+
+        
         
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
