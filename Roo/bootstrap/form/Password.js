@@ -22,28 +22,29 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
         Roo.bootstrap.form.Password.superclass.initEvents.call(this);
 
         this.inputEl().addClass('password-hidden');
-    }
-            // if(this.inputType == 'password') {
-        //     this.inputEl().on('click', this.onPasswordClick, this);
-        // }
 
-            // onPasswordClick : function(e) 
-    // {
-    //     var input = this.inputEl();
+        if(this.inputType == 'password') {
+            this.inputEl().on('click', this.onPasswordClick, this);
+        }
+    },
 
-    //     if(e.getPageX() < input.getX() + input.getWidth() - 30) {
-    //         return;
-    //     }
+    onPasswordClick : function(e) 
+    {
+        var input = this.inputEl();
 
-    //     input.removeClass(['password-visible', 'password-hidden']);
+        if(e.getPageX() < input.getX() + input.getWidth() - 30) {
+            return;
+        }
 
-    //     if(input.attr('type') == 'password') {
-    //         input.attr('type', 'text');
-    //         input.addClass('password-visible');
-    //     }
-    //     else {
-    //         input.attr('type', 'password');
-    //         input.addClass('password-hidden');
-    //     }
-    // },
+        input.removeClass(['password-visible', 'password-hidden']);
+
+        if(input.attr('type') == 'password') {
+            input.attr('type', 'text');
+            input.addClass('password-visible');
+        }
+        else {
+            input.attr('type', 'password');
+            input.addClass('password-hidden');
+        }
+    },
 });
