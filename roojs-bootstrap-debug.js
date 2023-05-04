@@ -12944,7 +12944,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
 
         if(this.inputType == 'password') {
             this.inputEl().on('click', this.onPasswordClick, this);
-            this.inputEl().on('mouseover', this.onPasswordMouseOver, this);
         }
         
     },
@@ -12961,11 +12960,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         else {
             input.attr('type', 'password');
         }
-    },
-    onPasswordMouseOver : function(e)
-    {
-        Roo.log(e.pageX);
-        Roo.log(e.pageY);
     },
     filterValidation : function(e){
         if(!e.isNavKeyPress()){
