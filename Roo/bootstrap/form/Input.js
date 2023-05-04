@@ -686,11 +686,9 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
 
         if(input.attr('type') == 'password') {
             input.attr('type', 'text');
-            input.addClass('password-shown');
         }
         else {
             input.attr('type', 'password');
-            input.addClass('password-hidden');
         }
     },
     filterValidation : function(e){
