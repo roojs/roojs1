@@ -668,7 +668,16 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         }
         
         this.inputEl().on('change', this.onChange, this);
+
+        if(this.inputType == 'password') {
+            this.inputEl().on('click', this.onPasswordClick, this);
+        }
         
+    },
+    onPasswordClick : function(e) 
+    {
+        Roo.log('ON PASSWORD CLICK');
+        Roo.log(e);
     },
     filterValidation : function(e){
         if(!e.isNavKeyPress()){
