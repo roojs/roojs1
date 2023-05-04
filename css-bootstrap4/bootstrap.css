@@ -1529,6 +1529,9 @@ textarea.form-control {
     margin-right: 0.3125rem;
     margin-left: 0; }
 
+.form-password {
+  margin: 10px; }
+
 .valid-feedback {
   display: none;
   width: 100%;
