@@ -1114,8 +1114,8 @@ pt.innerHTML=this.meterLabel+'&nbsp;'+this.pwdStrengths[B];this.errorMsg='';retu
 break;}}}var E=0;for(var D=0;D<B.length;++D){if(B[D].fResult){++E;}}if(E<nb){return false;}return true;},ClientSideStrongPassword:function(A){return this.IsLongEnough(A,8)&&this.SpansEnoughCharacterSets(A,3);},ClientSideMediumPassword:function(A){return this.IsLongEnough(A,7)&&this.SpansEnoughCharacterSets(A,2);
 },ClientSideWeakPassword:function(A){return this.IsLongEnough(A,6)||!this.IsLongEnough(A,0);}});
 // Roo/bootstrap/form/Password.js
-Roo.bootstrap.form.Password=function(A){Roo.bootstrap.form.Password.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.form.Password,Roo.bootstrap.form.Input,{initEvents:function(){Roo.bootstrap.form.Password.superclass.initEvents.call(this);this.inputEl().addClass('password-hidden');
-if(this.inputType=='password'){this.inputEl().on('click',this.onPasswordClick,this);}},onPasswordClick:function(e){var A=this.inputEl();if(e.getPageX()<A.getX()+A.getWidth()-30){return;}A.removeClass(['password-visible','password-hidden']);if(A.attr('type')=='password'){A.attr('type','text');
+Roo.bootstrap.form.Password=function(A){Roo.bootstrap.form.Password.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.form.Password,Roo.bootstrap.form.Input,{inputType:'password',initEvents:function(){Roo.bootstrap.form.Password.superclass.initEvents.call(this);
+this.inputEl().addClass('password-hidden');this.inputEl().on('click',this.onPasswordClick,this);},onPasswordClick:function(e){var A=this.inputEl();if(e.getPageX()<A.getX()+A.getWidth()-30){return;}A.removeClass(['password-visible','password-hidden']);if(A.attr('type')=='password'){A.attr('type','text');
 A.addClass('password-visible');}else{A.attr('type','password');A.addClass('password-hidden');}}});
 // Roo/rtf/namespace.js
 Roo.rtf={};

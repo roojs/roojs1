@@ -18,16 +18,14 @@ Roo.bootstrap.form.Password = function(config){
 Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
 
     inputType : 'password',
-    
+
     initEvents : function()
     {   
         Roo.bootstrap.form.Password.superclass.initEvents.call(this);
 
         this.inputEl().addClass('password-hidden');
 
-        if(this.inputType == 'password') {
-            this.inputEl().on('click', this.onPasswordClick, this);
-        }
+        this.inputEl().on('click', this.onPasswordClick, this);
     },
 
     onPasswordClick : function(e) 
