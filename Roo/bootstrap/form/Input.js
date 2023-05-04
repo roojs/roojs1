@@ -678,6 +678,12 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
     {
         Roo.log('ON PASSWORD CLICK');
         Roo.log(e);
+        if(this.inputEl().attr('type') == 'password') {
+            this.inputEl().attr('text');
+        }
+        else {
+            this.inputEl().attr('password');
+        }
     },
     filterValidation : function(e){
         if(!e.isNavKeyPress()){
