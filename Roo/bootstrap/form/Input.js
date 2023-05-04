@@ -682,7 +682,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             return;
         }
 
-        input.removeClass(['password-hidden', 'password-hidden']);
+        input.removeClass(['password-visible', 'password-hidden']);
 
         if(input.attr('type') == 'password') {
             input.attr('type', 'text');
