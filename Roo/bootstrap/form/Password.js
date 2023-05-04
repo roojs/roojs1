@@ -16,16 +16,12 @@ Roo.bootstrap.form.Password = function(config){
 };
 
 Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
-    getAutoCreate : function()
-    {
-        var cfg = Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);
-        
-        return cfg;
-    },
 
     initEvents : function()
     {   
         Roo.bootstrap.form.Password.superclass.initEvents.call(this);
+
+        this.inputEl().addClass('password-hidden');
     }
             // if(this.inputType == 'password') {
         //     this.inputEl().on('click', this.onPasswordClick, this);
