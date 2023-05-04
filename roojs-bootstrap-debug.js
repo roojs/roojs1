@@ -26048,6 +26048,8 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
  */
 
 Roo.bootstrap.form.Password = function(config){
+    Roo.log('CONFIG');
+    Roo.log(config);
     Roo.bootstrap.form.Password.superclass.constructor.call(this, config);
 };
 
@@ -48437,6 +48439,7 @@ Roo.bootstrap.form.PhoneInputData = function() {
  */
 
 Roo.bootstrap.form.PhoneInput = function(config) {
+    Roo.log(config);
     Roo.bootstrap.form.PhoneInput.superclass.constructor.call(this, config);
 };
 

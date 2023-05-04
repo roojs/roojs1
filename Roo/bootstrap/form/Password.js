@@ -12,6 +12,8 @@
  */
 
 Roo.bootstrap.form.Password = function(config){
+    Roo.log('CONFIG');
+    Roo.log(config);
     Roo.bootstrap.form.Password.superclass.constructor.call(this, config);
 };
 
