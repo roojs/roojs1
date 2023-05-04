@@ -26065,9 +26065,7 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
     {   
         Roo.bootstrap.form.Password.superclass.initEvents.call(this);
     }
-});
-
-        // if(this.inputType == 'password') {
+            // if(this.inputType == 'password') {
         //     this.inputEl().on('click', this.onPasswordClick, this);
         // }
 
@@ -26089,7 +26087,8 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
     //         input.attr('type', 'password');
     //         input.addClass('password-hidden');
     //     }
-    // },Roo.rtf = {}; // namespace
+    // },
+});Roo.rtf = {}; // namespace
 Roo.rtf.Hex = function(hex)
 {
     this.hexstr = hex;

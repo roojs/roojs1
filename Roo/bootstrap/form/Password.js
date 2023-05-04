@@ -29,9 +29,7 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
     {   
         Roo.bootstrap.form.Password.superclass.initEvents.call(this);
     }
-});
-
-        // if(this.inputType == 'password') {
+            // if(this.inputType == 'password') {
         //     this.inputEl().on('click', this.onPasswordClick, this);
         // }
 
@@ -54,3 +52,4 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
     //         input.addClass('password-hidden');
     //     }
     // },
+});
