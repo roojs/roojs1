@@ -26056,6 +26056,8 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
     {
         var cfg = Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);
         
+        Roo.log('GET AUTO CREATE');
+        Roo.log(cfg);
         return cfg;
     },
 
@@ -26063,7 +26065,31 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
     {   
         Roo.bootstrap.form.Password.superclass.initEvents.call(this);
     }
-});Roo.rtf = {}; // namespace
+});
+
+        // if(this.inputType == 'password') {
+        //     this.inputEl().on('click', this.onPasswordClick, this);
+        // }
+
+            // onPasswordClick : function(e) 
+    // {
+    //     var input = this.inputEl();
+
+    //     if(e.getPageX() < input.getX() + input.getWidth() - 30) {
+    //         return;
+    //     }
+
+    //     input.removeClass(['password-visible', 'password-hidden']);
+
+    //     if(input.attr('type') == 'password') {
+    //         input.attr('type', 'text');
+    //         input.addClass('password-visible');
+    //     }
+    //     else {
+    //         input.attr('type', 'password');
+    //         input.addClass('password-hidden');
+    //     }
+    // },Roo.rtf = {}; // namespace
 Roo.rtf.Hex = function(hex)
 {
     this.hexstr = hex;

@@ -1115,7 +1115,7 @@ break;}}}var E=0;for(var D=0;D<B.length;++D){if(B[D].fResult){++E;}}if(E<nb){ret
 },ClientSideWeakPassword:function(A){return this.IsLongEnough(A,6)||!this.IsLongEnough(A,0);}});
 // Roo/bootstrap/form/Password.js
 Roo.bootstrap.form.Password=function(A){Roo.bootstrap.form.Password.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.form.Password,Roo.bootstrap.form.Input,{getAutoCreate:function(){var A=Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);
-return A;},initEvents:function(){Roo.bootstrap.form.Password.superclass.initEvents.call(this);}});
+Roo.log('GET AUTO CREATE');Roo.log(A);return A;},initEvents:function(){Roo.bootstrap.form.Password.superclass.initEvents.call(this);}});
 // Roo/rtf/namespace.js
 Roo.rtf={};
 // Roo/rtf/Hex.js
