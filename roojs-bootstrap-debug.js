@@ -26054,11 +26054,11 @@ Roo.bootstrap.form.Password = function(config){
 
 Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
 
-    inputType : 'password',
-
     initEvents : function()
     {   
         Roo.bootstrap.form.Password.superclass.initEvents.call(this);
+
+        this.el.addClass('form-password');
 
         this.inputEl().addClass('password-hidden');
 
@@ -48438,7 +48438,6 @@ Roo.bootstrap.form.PhoneInputData = function() {
  */
 
 Roo.bootstrap.form.PhoneInput = function(config) {
-    Roo.log(config);
     Roo.bootstrap.form.PhoneInput.superclass.constructor.call(this, config);
 };
 
