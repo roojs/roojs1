@@ -941,6 +941,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
 
                 feedback.update('');
+                Roo.log('CLEAR INVALID');
                 feedback.hide();
             }
             
