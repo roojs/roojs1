@@ -20,6 +20,7 @@
  */
 
 Roo.bootstrap.form.PhoneInput = function(config) {
+    Roo.log(config);
     Roo.bootstrap.form.PhoneInput.superclass.constructor.call(this, config);
 };
 
