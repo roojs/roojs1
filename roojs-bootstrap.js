@@ -1113,8 +1113,8 @@ pt.innerHTML=this.meterLabel+'&nbsp;'+this.pwdStrengths[B];this.errorMsg='';retu
 break;}}}var E=0;for(var D=0;D<B.length;++D){if(B[D].fResult){++E;}}if(E<nb){return false;}return true;},ClientSideStrongPassword:function(A){return this.IsLongEnough(A,8)&&this.SpansEnoughCharacterSets(A,3);},ClientSideMediumPassword:function(A){return this.IsLongEnough(A,7)&&this.SpansEnoughCharacterSets(A,2);
 },ClientSideWeakPassword:function(A){return this.IsLongEnough(A,6)||!this.IsLongEnough(A,0);}});
 // Roo/bootstrap/form/Password.js
-Roo.bootstrap.form.Password=function(A){Roo.bootstrap.form.Password.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.form.NumberField,Roo.bootstrap.form.Input,{getAutoCreate:function(){var A=Roo.bootstrap.form.NumberField.superclass.getAutoCreate.call(this);
-return A;},initEvents:function(){Roo.bootstrap.form.NumberField.superclass.initEvents.call(this);}});
+Roo.bootstrap.form.Password=function(A){Roo.bootstrap.form.Password.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.form.Password,Roo.bootstrap.form.Input,{getAutoCreate:function(){var A=Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);
+return A;},initEvents:function(){Roo.bootstrap.form.Password.superclass.initEvents.call(this);}});
 // Roo/rtf/namespace.js
 Roo.rtf={};
 // Roo/rtf/Hex.js
