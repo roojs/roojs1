@@ -646,8 +646,8 @@
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parser </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.rtf.Parser</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cd.getData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'text/rtf'</span><span class="jsdoc-syntax">));
             </span><span class="jsdoc-var">images </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parser.doc </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">parser.doc.getElementsByType</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pict'</span><span class="jsdoc-syntax">) : [];
         }
-        </span><span class="jsdoc-comment">//Roo.log(images);
-        //Roo.log(imgs);
+        </span><span class="jsdoc-comment">// Roo.log(images);
+        // Roo.log(imgs);
         // fixme..
         </span><span class="jsdoc-var">images </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">images.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">g.path.match</span><span class="jsdoc-syntax">(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }) </span><span class="jsdoc-comment">// ignore headers/footers etc.
                        </span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">g.toDataURL</span><span class="jsdoc-syntax">(); })
