@@ -1535,10 +1535,10 @@ textarea.form-control {
   background-position: right calc(0.375em + 0.1875rem) center;
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem); }
 
-.form-password .password-hidden {
+.form-password .password-visible {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYBAMAAAASWSDLAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAnUExURUdwTDExMTAwMDExMTMzMzExMTExMTAwMDAwMDIyMjIyMjAwMDIyMtDcR4EAAAAMdFJOUwDfIO86ksUQf1ivcKwSZ8wAAABaSURBVBjTY2AYcMB4Bg4EUDlMMtZgFezNBxUY2GXOSDgwMDA1nzlWwMB6cOKZw2lpNmcyZQIYmI0YvEAaljAoA/UoMLAedXGJCQCxQKYfYWDwMYBZJQDBlAMAlfIjX/5EzDQAAAAASUVORK5CYII=") !important; }
 
-.form-password .password-visible {
+.form-password .password-hidden {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYBAMAAAASWSDLAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAtUExURUdwTDAwMDAwMDExMTExMTExMTExMTIyMjExMTAwMDAwMDIyMjIyMjAwMDIyMm633p8AAAAOdFJOUwAgEN9BwKGQzzB/YO9gZ/nLrQAAAK1JREFUGNOdzzEKwkAUhOF1QcUUsiBaiVikDnqBLSy0E71AULAOFp4jeALxJIIXEc0mEhH+M/jW6AF0qvmqN0+pPzOz5ebbu0jWVW9ZD2fe6FBMwpSz7zXLUQ+buKGggVO6MClbwYCn0ixO5IKETAU8IgoBXGcJeRsEMdkB8oi7YM6zDqMLN0GTshYXxrISaMtWm6C6o/qUkzBmrD4T/LZ9tbTnsfz+ME3d7of3X1WUUZSrxwjQAAAAAElFTkSuQmCC") !important; }
 
 .valid-feedback {
