@@ -13335,8 +13335,9 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                     feedback.update(this.blankText);
                 }
 
-                Roo.log('VALUE: ' + feedback.dom.innerHTML);
-                feedback.show();
+                if(feedback.dom.innerHTML) {
+                    feedback.show();
+                }
                 
             }
             
