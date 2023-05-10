@@ -302,10 +302,6 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
                 if(!this.allowBlank && !this.getRawValue().length){
                     feedback.update(this.blankText);
                 }
-
-                if(feedback.dom.innerHTML) {
-                    feedback.show();
-                }
                 
             }
             
