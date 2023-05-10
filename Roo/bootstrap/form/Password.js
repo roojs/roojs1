@@ -41,6 +41,11 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
         this.inputEl().on('click', this.onPasswordClick, this);
     },
 
+    toggleEl: function()
+    {
+        return this.el.select('button.password-toggle',true).first();
+    }
+
     onPasswordClick : function(e) 
     {
         var input = this.inputEl();
