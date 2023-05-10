@@ -49,16 +49,17 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
     onToggleClick : function(e) 
     {
         var input = this.inputEl();
-        
-        input.removeClass(['password-visible', 'password-hidden']);
+        var toggle = this.toggleEl();
+
+        toggle.removeClass(['password-visible', 'password-hidden']);
 
         if(input.attr('type') == 'password') {
             input.attr('type', 'text');
-            input.addClass('password-visible');
+            toggle.addClass('password-visible');
         }
         else {
             input.attr('type', 'password');
-            input.addClass('password-hidden');
+            toggle.addClass('password-hidden');
         }
     }
 });
