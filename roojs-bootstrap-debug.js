@@ -13335,10 +13335,12 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                     feedback.update(this.blankText);
                 }
 
-                feedback.show();
-                if(!feedback.dom.innerHTML) {
-                    feedback.hide();
+                if(feedback.dom.innerHTML) {
+                    feedback.show();
                 }
+                // if(!feedback.dom.innerHTML) {
+                //     feedback.hide();
+                // }
                 
             }
             
