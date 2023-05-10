@@ -252,6 +252,11 @@ textarea.form-control {
 }
 
 .form-password {
+  .password-toggle {
+    width: 48px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
   input {
     padding-right: calc(1.5em + 0.75rem);
     background-repeat: no-repeat;
