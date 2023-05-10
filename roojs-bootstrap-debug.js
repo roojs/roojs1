@@ -26060,6 +26060,7 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
         Roo.bootstrap.form.SecurePass.superclass.onRender.call(this, ct, position);
         Roo.log('ON RENDER');
         Roo.log(this.el);
+        Roo.log(this.el.select('input.form-control', true));
     },
 
     initEvents : function()
