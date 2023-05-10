@@ -1062,6 +1062,10 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                     feedback.update(this.blankText);
                 }
 
+                if(msg) {
+                    feedback.update(msg);
+                }
+
                 feedback.show();
                 
             }
