@@ -26,7 +26,7 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
             xtype : 'Button'
         };
 
-        Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);
+        return Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);
     },
 
     initEvents : function()
