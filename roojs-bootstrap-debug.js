@@ -26055,11 +26055,14 @@ Roo.bootstrap.form.Password = function(config){
 
 Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
 
-    onRender: function (ct, position)
+    getAutoCreate : function()
     {
-        Roo.bootstrap.form.SecurePass.superclass.onRender.call(this, ct, position);
-        Roo.log('ON RENDER');
-        Roo.log(this.inputEl());
+        this.after = {
+            xns : Roo.bootstrap,
+            xtype : 'Button'
+        };
+
+        Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);
     },
 
     initEvents : function()
