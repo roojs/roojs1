@@ -38,33 +38,31 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
 
         this.toggleEl().addClass('password-hidden');
 
-        this.toggleEl().on('click', this.onToggleClick, this);
-
-        // this.inputEl().on('click', this.onPasswordClick, this);
+        this.toggleEl().on('click', this.onToggleClick, this);;
     },
 
     toggleEl: function()
     {
         return this.el.select('button.password-toggle',true).first();
+    },
+
+    onToggleClick : function(e) 
+    {
+        var input = this.inputEl();
+
+        if(e.getPageX() < input.getX() + input.getWidth() - 30) {
+            return;
+        }
+
+        input.removeClass(['password-visible', 'password-hidden']);
+
+        if(input.attr('type') == 'password') {
+            input.attr('type', 'text');
+            input.addClass('password-visible');
+        }
+        else {
+            input.attr('type', 'password');
+            input.addClass('password-hidden');
+        }
     }
-
-    // onPasswordClick : function(e) 
-    // {
-    //     var input = this.inputEl();
-
-    //     if(e.getPageX() < input.getX() + input.getWidth() - 30) {
-    //         return;
-    //     }
-
-    //     input.removeClass(['password-visible', 'password-hidden']);
-
-    //     if(input.attr('type') == 'password') {
-    //         input.attr('type', 'text');
-    //         input.addClass('password-visible');
-    //     }
-    //     else {
-    //         input.attr('type', 'password');
-    //         input.addClass('password-hidden');
-    //     }
-    // }
 });
