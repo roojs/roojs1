@@ -1115,7 +1115,7 @@ break;}}}var E=0;for(var D=0;D<B.length;++D){if(B[D].fResult){++E;}}if(E<nb){ret
 },ClientSideWeakPassword:function(A){return this.IsLongEnough(A,6)||!this.IsLongEnough(A,0);}});
 // Roo/bootstrap/form/Password.js
 Roo.bootstrap.form.Password=function(A){Roo.bootstrap.form.Password.superclass.constructor.call(this,A);this.inputType='password';};Roo.extend(Roo.bootstrap.form.Password,Roo.bootstrap.form.Input,{getAutoCreate:function(){this.after={xns:Roo.bootstrap,xtype:'Button'}
-;Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);},initEvents:function(){Roo.bootstrap.form.Password.superclass.initEvents.call(this);this.el.addClass('form-password');this.inputEl().addClass('password-hidden');this.inputEl().on('click',this.onPasswordClick,this);
+;return Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);},initEvents:function(){Roo.bootstrap.form.Password.superclass.initEvents.call(this);this.el.addClass('form-password');this.inputEl().addClass('password-hidden');this.inputEl().on('click',this.onPasswordClick,this);
 },onPasswordClick:function(e){var A=this.inputEl();if(e.getPageX()<A.getX()+A.getWidth()-30){return;}A.removeClass(['password-visible','password-hidden']);if(A.attr('type')=='password'){A.attr('type','text');A.addClass('password-visible');}else{A.attr('type','password');
 A.addClass('password-hidden');}}});
 // Roo/rtf/namespace.js
