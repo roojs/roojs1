@@ -13338,9 +13338,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 if(feedback.dom.innerHTML) {
                     feedback.show();
                 }
-                // if(!feedback.dom.innerHTML) {
-                //     feedback.hide();
-                // }
                 
             }
             
