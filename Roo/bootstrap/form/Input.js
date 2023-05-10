@@ -813,6 +813,18 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
         // this.validate();
         this.el.removeClass([this.invalidClass, this.validClass]);
         this.inputEl().removeClass(['is-valid', 'is-invalid']);
+
+        if(this.hasFeedback && this.inputType != 'hidden'){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+            
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                feedback.update('');
+                feedback.hide();
+            }
+            
+        }
     },
      /**
      * Returns the name of the field
