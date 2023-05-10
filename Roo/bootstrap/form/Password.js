@@ -23,7 +23,8 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
     {
         this.after = {
             xns : Roo.bootstrap,
-            xtype : 'Button'
+            xtype : 'Button',
+            text : 'ABC'
         };
 
         return Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);
