@@ -28,8 +28,7 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
         });
 
         this.toggle = this.wrap.createChild({
-            xns : Roo.bootstrap,
-            xtype : 'Button',
+            tag : 'Button',
             cls : 'password-toggle'
         });
     },
