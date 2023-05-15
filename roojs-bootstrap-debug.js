@@ -26069,22 +26069,21 @@ Roo.bootstrap.form.Password = function(config){
 
 Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
 
-    getAutoCreate : function()
+    onRender : function(ct, position)
     {
-        this.after = {
-            xns : Roo.bootstrap,
-            xtype : 'Button',
-            cls : 'password-toggle'
-        };
-
-        return Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);
-    },
-
-    initEvents : function()
-    {   
-        Roo.bootstrap.form.Password.superclass.initEvents.call(this);
+        Roo.bootstrap.form.SecurePass.superclass.onRender.call(this, ct, position);
 
         this.el.addClass('form-password');
+
+        this.wrap = this.inputEl().wrap({
+            cls : 'password-wrap'
+        });
+
+        this.toggle = this.wrap.createChild({
+            tag : 'Button',
+            cls : 'password-toggle'
+        });
+
 
         this.toggleEl().addClass('password-hidden');
 
