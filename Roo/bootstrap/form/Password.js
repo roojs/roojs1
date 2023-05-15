@@ -30,6 +30,11 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
         return Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);
     },
 
+    onRender : function(ct, position)
+    {
+        Roo.bootstrap.form.SecurePass.superclass.onRender.call(this, ct, position);
+    },
+
     initEvents : function()
     {   
         Roo.bootstrap.form.Password.superclass.initEvents.call(this);
