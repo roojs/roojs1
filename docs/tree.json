@@ -743,6 +743,11 @@
                 "is_class" : true
               },
               {
+                "name" : "Roo.bootstrap.form.Password",
+                "cn" : [],
+                "is_class" : true
+              },
+              {
                 "name" : "Roo.bootstrap.form.PhoneInput",
                 "cn" : [],
                 "is_class" : true
