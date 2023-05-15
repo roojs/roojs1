@@ -34,7 +34,7 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
     {
         Roo.bootstrap.form.SecurePass.superclass.onRender.call(this, ct, position);
 
-        this.inputEl().wrap({
+        this.wrap = this.inputEl().wrap({
             cls : 'password-wrap'
         });
     },
