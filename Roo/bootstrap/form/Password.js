@@ -19,17 +19,6 @@ Roo.bootstrap.form.Password = function(config){
 
 Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
 
-    getAutoCreate : function()
-    {
-        this.after = {
-            xns : Roo.bootstrap,
-            xtype : 'Button',
-            cls : 'password-toggle'
-        };
-
-        return Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);
-    },
-
     onRender : function(ct, position)
     {
         Roo.bootstrap.form.SecurePass.superclass.onRender.call(this, ct, position);
