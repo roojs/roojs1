@@ -39,6 +39,8 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
 
         this.el.addClass('form-password');
 
+        Roo.log(this.toggleEl());
+
         // this.toggleEl().addClass('password-hidden');
 
         // this.toggleEl().on('click', this.onToggleClick, this);;
