@@ -37,6 +37,12 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
         this.wrap = this.inputEl().wrap({
             cls : 'password-wrap'
         });
+
+        this.toggle = this.wrap.createChild({
+            xns : Roo.bootstrap,
+            xtype : 'Button',
+            cls : 'password-toggle'
+        });
     },
 
     initEvents : function()
