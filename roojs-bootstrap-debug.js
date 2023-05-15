@@ -26073,6 +26073,8 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
     {
         Roo.bootstrap.form.SecurePass.superclass.onRender.call(this, ct, position);
 
+        this.el.addClass('form-password');
+
         this.wrap = this.inputEl().wrap({
             cls : 'password-wrap'
         });
@@ -26081,21 +26083,11 @@ Roo.extend(Roo.bootstrap.form.Password, Roo.bootstrap.form.Input, {
             tag : 'Button',
             cls : 'password-toggle'
         });
-    },
 
-    initEvents : function()
-    {   
-        Roo.bootstrap.form.Password.superclass.initEvents.call(this);
 
-        this.el.addClass('form-password');
+        this.toggleEl().addClass('password-hidden');
 
-        Roo.log(this.toggleEl());
-
-        Roo.log('AAAA');
-
-        // this.toggleEl().addClass('password-hidden');
-
-        // this.toggleEl().on('click', this.onToggleClick, this);;
+        this.toggleEl().on('click', this.onToggleClick, this);;
     },
 
     toggleEl: function()
