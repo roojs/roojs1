@@ -1115,10 +1115,10 @@ pt.innerHTML=this.meterLabel+'&nbsp;'+this.pwdStrengths[B];this.errorMsg='';retu
 break;}}}var E=0;for(var D=0;D<B.length;++D){if(B[D].fResult){++E;}}if(E<nb){return false;}return true;},ClientSideStrongPassword:function(A){return this.IsLongEnough(A,8)&&this.SpansEnoughCharacterSets(A,3);},ClientSideMediumPassword:function(A){return this.IsLongEnough(A,7)&&this.SpansEnoughCharacterSets(A,2);
 },ClientSideWeakPassword:function(A){return this.IsLongEnough(A,6)||!this.IsLongEnough(A,0);}});
 // Roo/bootstrap/form/Password.js
-Roo.bootstrap.form.Password=function(A){Roo.bootstrap.form.Password.superclass.constructor.call(this,A);this.inputType='password';};Roo.extend(Roo.bootstrap.form.Password,Roo.bootstrap.form.Input,{getAutoCreate:function(){this.after={xns:Roo.bootstrap,xtype:'Button',cls:'password-toggle'}
-;return Roo.bootstrap.form.Password.superclass.getAutoCreate.call(this);},initEvents:function(){Roo.bootstrap.form.Password.superclass.initEvents.call(this);this.el.addClass('form-password');this.toggleEl().addClass('password-hidden');this.toggleEl().on('click',this.onToggleClick,this);
-;},toggleEl:function(){return this.el.select('button.password-toggle',true).first();},onToggleClick:function(e){var A=this.inputEl();var B=this.toggleEl();B.removeClass(['password-visible','password-hidden']);if(A.attr('type')=='password'){A.attr('type','text');
-B.addClass('password-visible');}else{A.attr('type','password');B.addClass('password-hidden');}}});
+Roo.bootstrap.form.Password=function(A){Roo.bootstrap.form.Password.superclass.constructor.call(this,A);this.inputType='password';};Roo.extend(Roo.bootstrap.form.Password,Roo.bootstrap.form.Input,{onRender:function(ct,A){Roo.bootstrap.form.SecurePass.superclass.onRender.call(this,ct,A);
+this.wrap=this.inputEl().wrap({cls:'password-wrap'});this.toggle=this.wrap.createChild({xns:Roo.bootstrap,xtype:'Button',cls:'password-toggle'});},initEvents:function(){Roo.bootstrap.form.Password.superclass.initEvents.call(this);this.el.addClass('form-password');
+this.toggleEl().addClass('password-hidden');this.toggleEl().on('click',this.onToggleClick,this);;},toggleEl:function(){return this.el.select('button.password-toggle',true).first();},onToggleClick:function(e){var A=this.inputEl();var B=this.toggleEl();B.removeClass(['password-visible','password-hidden']);
+if(A.attr('type')=='password'){A.attr('type','text');B.addClass('password-visible');}else{A.attr('type','password');B.addClass('password-hidden');}}});
 // Roo/rtf/namespace.js
 Roo.rtf={};
 // Roo/rtf/Hex.js
