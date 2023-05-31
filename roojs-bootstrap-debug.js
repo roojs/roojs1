@@ -13620,6 +13620,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
                 this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
 
                 feedback.update('');
+                feedback.hide();
             }
             
         }
@@ -13644,6 +13645,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
             feedback.update('');
+            feedback.hide();
         }
 
         if(this.disabled || this.allowBlank){
@@ -13695,6 +13697,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
         if(feedback){
             this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
             feedback.update('');
+            feedback.hide();
         }
 
         if(this.disabled){
@@ -13734,6 +13737,10 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
 
                 if(!this.allowBlank && !this.getRawValue().length){
                     feedback.update(this.blankText);
+                }
+
+                if(feedback.dom.innerHTML) {
+                    feedback.show();
                 }
                 
             }
