@@ -187,6 +187,7 @@ Roo.extend(Roo.bootstrap.form.TextArea, Roo.bootstrap.form.Input,  {
                 this.el.select('.form-control-feedback', true).first().removeClass(this.invalidFeedbackClass);
 
                 feedback.update('');
+                feedback.hide();
             }
             
         }
