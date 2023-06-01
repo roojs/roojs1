@@ -19,6 +19,7 @@ Roo.form.VTypes = function(){
     var alphanum = /^[a-zA-Z0-9_]+$/;
     var email = /^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,24}$/;
     var url = /(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
+    var urlWeb = /((https?):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i
 
     // All these messages and functions are configurable
     return {
@@ -49,8 +50,11 @@ Roo.form.VTypes = function(){
         },
         /**
          * The funciton used to validate URLs (only allow schemes 'https' and 'http')
-         * @param {String} value The URL
+         * @param {String} v The URL
          */
+        urlWeb : function(v) {
+
+        },
         /**
          * The error text to display when the url validation function returns false
          * @type String
