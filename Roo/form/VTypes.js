@@ -53,7 +53,7 @@ Roo.form.VTypes = function(){
          * @param {String} v The URL
          */
         urlWeb : function(v) {
-
+            return urlWeb.test(v);
         },
         /**
          * The error text to display when the url validation function returns false
