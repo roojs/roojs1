@@ -48,6 +48,10 @@ Roo.form.VTypes = function(){
             return url.test(v);
         },
         /**
+         * The funciton used to validate URLs (only allow schemes 'https' and 'http')
+         * @param {String} value The URL
+         */
+        /**
          * The error text to display when the url validation function returns false
          * @type String
          */
