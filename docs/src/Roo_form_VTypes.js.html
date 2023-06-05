@@ -18,7 +18,8 @@
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">alpha </span><span class="jsdoc-syntax">= /^[a-zA-Z_]+$/;
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">alphanum </span><span class="jsdoc-syntax">= /^[a-zA-Z0-9_]+$/;
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">email </span><span class="jsdoc-syntax">= /^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,24}$/;
-    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">= /(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&amp;#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">= /^(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&amp;#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">urlWeb </span><span class="jsdoc-syntax">= /^((https?):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&amp;#;`~=%!]*)(\.\w{2,})?)*\/?)/i
 
     </span><span class="jsdoc-comment">// All these messages and functions are configurable
     </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
@@ -46,6 +47,13 @@
          */
         </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">url.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        },
+        </span><span class="jsdoc-comment">/**
+         * The funciton used to validate URLs (only allow schemes 'https' and 'http')
+         * @param {String} v The URL
+         */
+        </span><span class="jsdoc-var">urlWeb </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">urlWeb.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
         },
         </span><span class="jsdoc-comment">/**
          * The error text to display when the url validation function returns false
