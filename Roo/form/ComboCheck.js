@@ -86,6 +86,10 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         // this is disabled, as it retriggers setvalue on blur
         return;
     },
+    doForce : function() {
+        // no idea what this did, but it blanks out our values.
+        return;
+    },
     onViewOver : function(e, t){
         // do nothing...
         return;
