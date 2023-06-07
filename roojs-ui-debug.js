@@ -18637,7 +18637,7 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
     {
         Roo.form.ComboBox.superclass.onRender.call(this, ct, position);
         
-	if(this.hiddenName){
+		if(this.hiddenName){
             this.hiddenField = this.el.insertSibling({tag:'input', type:'hidden', name: this.hiddenName, id:  (this.hiddenId||this.hiddenName)},
                     'before', true);
             this.hiddenField.value =
@@ -19518,7 +19518,8 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
      */
     seperator : ',',
     
-    // private the array of items that are displayed..
+    
+	// private the array of items that are displayed..
     items  : false,
     // private - the hidden field el.
     hiddenEl : false,
@@ -19612,8 +19613,10 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
             // add to list
             
         }, this);
-        
-        
+         
+	
+	
+	    
     },
     
     
@@ -19847,7 +19850,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
     cb: false,
     displayField : false,
     tipField : false,
-    
+     
     
     defaultAutoCreate : {
         tag: 'div',
@@ -24089,7 +24092,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         var ret =   {
             tag: 'figure',
             'data-block' : 'Figure',
-            'data-width' : this.width, 
+            'data-width' : this.width,
+            'data-caption' : this.caption, 
             contenteditable : 'false',
             
             style : {
@@ -24162,6 +24166,8 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         this.image_src = this.getVal(node, 'img', 'src');
          
         this.align = this.getVal(node, 'figure', 'align');
+        
+        /// not really used - as hidden captions do not store the content here..
         var figcaption = this.getVal(node, 'figcaption', false);
         if (figcaption !== '') {
             this.caption = this.getVal(figcaption, 'i', 'html');
@@ -24169,6 +24175,10 @@ Roo.extend(Roo.htmleditor.BlockFigure, Roo.htmleditor.Block, {
         
 
         this.caption_display = this.getVal(node, 'figcaption', 'data-display');
+        var dc = this.getVal(node, true, 'data-caption');
+        if (dc && dc.length) {
+            this.caption = dc;
+        }
         //this.text_align = this.getVal(node, 'figcaption', 'style','text-align');
         this.width = this.getVal(node, true, 'data-width');
         //this.margin = this.getVal(node, 'figure', 'style', 'margin');
@@ -25509,7 +25519,7 @@ Roo.HtmlEditorCore = function(config){
          * @param {Roo.HtmlEditorCore} this
          */
         editorevent: true 
-         
+        
         
     });
     
@@ -25832,6 +25842,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                             'rowspan',
                             'data-display',
                             'data-width',
+                            'data-caption',
                             'start' ,
                             'style',
                             // youtube embed.
@@ -26038,8 +26049,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var cd = (e.browserEvent.clipboardData || window.clipboardData);
         
         // check what type of paste - if it's an image, then handle it differently.
-        if (cd.files && cd.files.length > 0) {
-            // pasting images?
+        if (cd.files && cd.files.length > 0 && cd.types.indexOf('text/html') < 0) {
+            // pasting images? 
             var urlAPI = (window.createObjectURL && window) || 
                 (window.URL && URL.revokeObjectURL && URL) || 
                 (window.webkitURL && webkitURL);
@@ -26082,8 +26093,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var parser = new Roo.rtf.Parser(cd.getData('text/rtf'));
             images = parser.doc ? parser.doc.getElementsByType('pict') : [];
         }
-        //Roo.log(images);
-        //Roo.log(imgs);
+        // Roo.log(images);
+        // Roo.log(imgs);
         // fixme..
         images = images.filter(function(g) { return !g.path.match(/^rtf\/(head|pgdsctbl|listtable|footerf)/); }) // ignore headers/footers etc.
                        .map(function(g) { return g.toDataURL(); })
@@ -27334,19 +27345,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             * Fires when press user pastes into the editor
             * @param {Roo.HtmlEditorCore} this
             */
-            paste: true,
-             /**
-            * @event imageadd
-            * Fires when on any editor when an image is added (excluding paste)
-            * @param {Roo.HtmlEditorCore} this
-            */
-           imageadd: true ,
-            /**
-            * @event imagedelete
-            * Fires when on any editor when an image is deleted
-            * @param {Roo.HtmlEditorCore} this
-            */
-           imagedelete: true  
+            paste: true 
+            
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
@@ -31471,7 +31471,8 @@ Roo.form.VTypes = function(){
     var alpha = /^[a-zA-Z_]+$/;
     var alphanum = /^[a-zA-Z0-9_]+$/;
     var email = /^([\w]+)(.[\w]+)*@([\w-]+\.){1,5}([A-Za-z]){2,24}$/;
-    var url = /(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
+    var url = /^(((https?)|(ftp)):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
+    var urlWeb = /^((https?):\/\/([\-\w]+\.)+\w{2,3}(\/[%\-\w]+(\.\w{2,})?)*(([\w\-\.\?\\\/+@&#;`~=%!]*)(\.\w{2,})?)*\/?)/i;
 
     // All these messages and functions are configurable
     return {
@@ -31499,6 +31500,13 @@ Roo.form.VTypes = function(){
          */
         url : function(v){
             return url.test(v);
+        },
+        /**
+         * The funciton used to validate URLs (only allow schemes 'https' and 'http')
+         * @param {String} v The URL
+         */
+        urlWeb : function(v) {
+            return urlWeb.test(v);
         },
         /**
          * The error text to display when the url validation function returns false
@@ -32410,11 +32418,16 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         this.view.singleSelect = false;
         this.view.multiSelect = true;
         this.view.toggleSelect = true;
-        this.pageTb.add(new Roo.Toolbar.Fill(), {
+        this.pageTb.add(new Roo.Toolbar.Fill(),{
             
+            text: 'Select All',
+            handler: function() {
+                _t.selectAll();
+            }
+        },
+        {
             text: 'Done',
-            handler: function()
-            {
+            handler: function() {
                 _t.collapse();
             }
         });
@@ -32452,7 +32465,17 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         return false;
     },
     
-    
+    selectAll : function()
+    {
+        var sels = [];
+        this.store.each(function(r,i) {
+            sels.push(i);
+        });
+        this.view.select(sels);
+        this.collapse();
+        return false;
+
+    },
     
     onSelect : function(record, index){
        // Roo.log("onselect Called");

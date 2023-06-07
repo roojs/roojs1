@@ -221,7 +221,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             * Fires when press user pastes into the editor
             * @param {Roo.HtmlEditorCore} this
             */
-            paste: true,
+            paste: true 
             
         });
         this.defaultAutoCreate =  {
