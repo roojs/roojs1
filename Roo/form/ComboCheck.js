@@ -81,6 +81,11 @@ Roo.extend(Roo.form.ComboCheck, Roo.form.ComboBox, {
         });
     },
     
+    cleanLeadingSpace : function(e)
+    {
+        // this is disabled, as it retriggers setvalue on blur
+        return;
+    },
     onViewOver : function(e, t){
         // do nothing...
         return;
