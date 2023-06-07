@@ -99,7 +99,8 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
      */
     seperator : ',',
     
-    // private the array of items that are displayed..
+    
+	// private the array of items that are displayed..
     items  : false,
     // private - the hidden field el.
     hiddenEl : false,
@@ -193,8 +194,10 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
             // add to list
             
         }, this);
-        
-        
+         
+	
+	
+	    
     },
     
     
@@ -428,7 +431,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
     cb: false,
     displayField : false,
     tipField : false,
-    
+     
     
     defaultAutoCreate : {
         tag: 'div',
