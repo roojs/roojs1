@@ -16048,6 +16048,9 @@ Roo.extend(Roo.form.Field, Roo.BoxComponent,  {
     /**
      * @cfg {String} fieldLabel Label to use when rendering a form.
      */
+	/**
+     * @cfg {String} labelSeparator the ':' after a field label (default :)  = set it to empty string to hide the field label.
+     */
        /**
      * @cfg {String} qtip Mouse over tip
      */
