@@ -363,3 +363,13 @@ Roo.bootstrap.form.SecurePass.error = {
     LNInPwd: "Your password can't contain your last name. Please type a different password.",
     TooWeak: "Your password is Too Weak."
 };
+
+Roo.bootstrap.form.SecurePass.meterLabel = "Password strength:";
+Roo.bootstrap.form.SecurePass.pwdStrengths = ["Too Weak", "Weak", "Medium", "Strong"];
+Roo.bootstrap.form.SecurePass.meterClass = [
+    "roo-password-meter-tooweak", 
+    "roo-password-meter-weak", 
+    "roo-password-meter-medium", 
+    "roo-password-meter-strong", 
+    "roo-password-meter-grey"
+];
