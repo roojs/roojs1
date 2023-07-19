@@ -162,8 +162,8 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         
         //var pm = this.trigger.child('div/div/div').dom;
         var pm = this.trigger.child('div/div');
-        pm.removeClass(this.meterClass);
-        pm.addClass(this.meterClass[strength]);
+        pm.removeClass(Roo.bootstrap.form.SecurePass.meterClass);
+        pm.addClass(Roo.bootstrap.form.SecurePass.meterClass[strength]);
                 
         
         var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
@@ -179,7 +179,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         this._lastPwd = '';
         
         var pm = this.trigger.child('div/div');
-        pm.removeClass(this.meterClass);
+        pm.removeClass(Roo.bootstrap.form.SecurePass.meterClass);
         pm.addClass('roo-password-meter-grey');        
         
         
@@ -248,8 +248,8 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         //var pm = this.trigger.child('div/div/div').dom;
         
         var pm = this.trigger.child('div/div');
-        pm.removeClass(this.meterClass);
-        pm.addClass(this.meterClass[strength]);
+        pm.removeClass(Roo.bootstrap.form.SecurePass.meterClass);
+        pm.addClass(Roo.bootstrap.form.SecurePass.meterClass[strength]);
                 
         var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
                 
@@ -354,7 +354,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
           
 });
 
-Roo.bootstrap.form.SecurePass.error = {
+Roo.bootstrap.form.SecurePass.errors = {
     PwdEmpty: "Please type a password, and then retype it to confirm.",
     PwdShort: "Your password must be at least 6 characters long. Please type a different password.",
     PwdLong: "Your password can't contain more than 16 characters. Please type a different password.",
