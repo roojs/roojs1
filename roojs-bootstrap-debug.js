@@ -25721,6 +25721,7 @@ Roo.extend(Roo.bootstrap.form.Radio, Roo.bootstrap.Component, {
  * @class Roo.bootstrap.form.SecurePass
  * @extends Roo.bootstrap.form.Input
  * Bootstrap SecurePass class
+ * @cfg {Number} minimumStrength invalid if the strength of the password input is less than the minimum strength (from 0 to 3) (default 2)
  *
  * 
  * @constructor
@@ -25734,8 +25735,8 @@ Roo.bootstrap.form.SecurePass = function (config) {
 }
 
 Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
+    minimumStrength : 2,
     // private
-    
     meterWidth: 300, 
     imageRoot: '/',  
     // private
@@ -25895,8 +25896,9 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         }
 
         
-        if (strength < 2) {
+        if (strength < this.minimumStrength) {
             this.invalidText = Roo.bootstrap.form.SecurePass.errors.TooWeak;
+            return false;
         }
         
         
