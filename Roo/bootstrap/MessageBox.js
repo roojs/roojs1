@@ -558,6 +558,13 @@ Roo.Msg.show({
     };
 }();
 
+Roo.bootstrap.MessageBox.buttonText = {
+    ok : "OK",
+    cancel : "Cancel",
+    yes : "Yes",
+    no : "No"
+};
+
 /**
  * Shorthand for {@link Roo.MessageBox}
  */
