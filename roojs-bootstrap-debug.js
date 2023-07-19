@@ -13292,7 +13292,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      */
     markInvalid : function(msg)
     {
-        Roo.log('MARK INVALID');
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
@@ -13334,13 +13333,9 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
-                Roo.log('MARK');
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
                 this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
-
-                Roo.log(msg);
-                Roo.log(feedback);
 
                 feedback.update(typeof(msg) == 'undefined' ? this.invalidText : msg);
 
@@ -25916,8 +25911,8 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
                 return true;
             }
 
-            this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdEmpty);
-            this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdEmpty;
+            // this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdEmpty);
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdEmpty;
             return false;
         }
         
@@ -25931,7 +25926,6 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
             return false;
         }
         if (value.length < 6) {
-            Roo.log(Roo.bootstrap.form.SecurePass.errors);
             this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdShort);
             this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdShort;
             return false;
