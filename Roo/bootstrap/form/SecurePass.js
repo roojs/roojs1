@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
      * ['Weak', 'Medium', 'Strong'])
      */
     // private    
-    pwdStrengths: false,    
+    // pwdStrengths: false,    
     // private
     strength: 0,
     // private
