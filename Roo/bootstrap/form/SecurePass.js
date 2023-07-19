@@ -141,6 +141,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
     // private
     checkStrength: function ()
     {
+        Roo.log('CHECK STRENGTH');
         var pwd = this.inputEl().getValue();
         if (pwd == this._lastPwd) {
             return;
