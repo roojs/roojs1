@@ -22,8 +22,8 @@ Roo.bootstrap.form.SecurePass = function (config) {
 }
 
 Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
+    minimumStrength : 2,
     // private
-    
     meterWidth: 300, 
     imageRoot: '/',  
     // private
