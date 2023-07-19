@@ -60,14 +60,14 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
     
     meterWidth: 300,
     errorMsg :'',    
-    errors: false,
+    // errors: false,
     imageRoot: '/',
     /**
      * @cfg {String/Object} Label for the strength meter (defaults to
      * 'Password strength:')
      */
     // private
-    meterLabel: '',
+    // meterLabel: '',
     /**
      * @cfg {String/Object} pwdStrengths A pwdStrengths spec, or true for a default spec (defaults to
      * ['Weak', 'Medium', 'Strong'])
@@ -168,7 +168,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         
         var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
                 
-        pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
+        pt.innerHTML = Roo.bootstrap.form.SecurePass.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         
         this._lastPwd = pwd;
     },
@@ -253,7 +253,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
                 
         var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
                 
-        pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
+        pt.innerHTML = Roo.bootstrap.form.SecurePass.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
         
         this.errorMsg = ''; 
         return true;
