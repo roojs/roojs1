@@ -151,7 +151,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
                 return true;
             }
 
-            this.invalid = Roo.bootstrap.form.SecurePass.errors.PwdEmpty;
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdEmpty;
             return false;
         }
         
@@ -160,8 +160,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         }
         
         if (!value.match(/[\x21-\x7e]+/)) {
-            this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdBadChar);
-            this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdBadChar;
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdBadChar;
             return false;
         }
         if (value.length < 6) {
