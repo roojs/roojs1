@@ -709,6 +709,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      */
     validateValue : function(value)
     {
+        Roo.log('INPUT VALIDATE VALUE');
         if(this.getVisibilityEl().hasClass('hidden')){
             return true;
         }
