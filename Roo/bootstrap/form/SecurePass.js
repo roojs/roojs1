@@ -200,8 +200,8 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
                 return true;
             }
 
-            this.markInvalid(this.errors.PwdEmpty);
-            this.errorMsg = this.errors.PwdEmpty;
+            this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdEmpty);
+            this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdEmpty;
             return false;
         }
         
@@ -210,18 +210,18 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         }
         
         if (!value.match(/[\x21-\x7e]+/)) {
-            this.markInvalid(this.errors.PwdBadChar);
-            this.errorMsg = this.errors.PwdBadChar;
+            this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdBadChar);
+            this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdBadChar;
             return false;
         }
         if (value.length < 6) {
-            this.markInvalid(this.errors.PwdShort);
-            this.errorMsg = this.errors.PwdShort;
+            this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdShort);
+            this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdShort;
             return false;
         }
         if (value.length > 16) {
-            this.markInvalid(this.errors.PwdLong);
-            this.errorMsg = this.errors.PwdLong;
+            this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdLong);
+            this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdLong;
             return false;
         }
         var strength;
@@ -237,8 +237,8 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
 
         
         if (strength < 2) {
-            //this.markInvalid(this.errors.TooWeak);
-            this.errorMsg = this.errors.TooWeak;
+            //this.markInvalid(Roo.bootstrap.form.SecurePass.errors.TooWeak);
+            this.errorMsg = Roo.bootstrap.form.SecurePass.errors.TooWeak;
             //return false;
         }
         
