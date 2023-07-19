@@ -9,7 +9,7 @@
  * @class Roo.bootstrap.form.SecurePass
  * @extends Roo.bootstrap.form.Input
  * Bootstrap SecurePass class
- * @cfg {Number} minimumStrength invalid if the strength of the password input is less than the minimum strength (from 0 to 3)
+ * @cfg {Number} minimumStrength invalid if the strength of the password input is less than the minimum strength (from 0 to 3) (default 2)
  *
  * 
  * @constructor
