@@ -199,8 +199,8 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
                 return true;
             }
 
-            // this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdEmpty);
-            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdEmpty;
+            this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdEmpty);
+            this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdEmpty;
             return false;
         }
         
@@ -215,6 +215,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         }
         if (value.length < 6) {
             // this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdShort);
+            // this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdShort;
             this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdShort;
             return false;
         }
