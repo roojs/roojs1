@@ -542,22 +542,21 @@ Roo.Msg.show({
          * for setting a different minimum width than text-only dialogs may need (defaults to 250)
          * @type Number
          */
-        minProgressWidth : 250
+        minProgressWidth : 250,
+        /**
+         * An object containing the default button text strings that can be overriden for localized language support.
+         * Supported properties are: ok, cancel, yes and no.
+         * Customize the default text like so: Roo.MessageBox.buttonText.yes = "S?";
+         * @type Object
+         */
+        buttonText : {
+            ok : "OK",
+            cancel : "Cancel",
+            yes : "Yes",
+            no : "No"
+        }
     };
 }();
-
-/**
- * An object containing the default button text strings that can be overriden for localized language support.
- * Supported properties are: ok, cancel, yes and no.
- * Customize the default text like so: Roo.MessageBox.buttonText.yes = "S?";
- * @type Object
- */
-Roo.bootstrap.MessageBox.buttonText = {
-    ok : "OK",
-    cancel : "Cancel",
-    yes : "Yes",
-    no : "No"
-};
 
 /**
  * Shorthand for {@link Roo.MessageBox}
