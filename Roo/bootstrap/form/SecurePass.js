@@ -184,8 +184,9 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         }
 
         
-        if (strength < 2) {
+        if (strength < this.minimumStrength) {
             this.invalidText = Roo.bootstrap.form.SecurePass.errors.TooWeak;
+            return false;
         }
         
         
