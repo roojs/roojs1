@@ -12990,6 +12990,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
      */
     validateValue : function(value)
     {
+        Roo.log('INPUT VALIDATE VALUE');
         if(this.getVisibilityEl().hasClass('hidden')){
             return true;
         }
@@ -25854,6 +25855,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
     // private
     checkStrength: function ()
     {
+        Roo.log('CHECK STRENGTH');
         var pwd = this.inputEl().getValue();
         if (pwd == this._lastPwd) {
             return;
@@ -25906,6 +25908,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         if (!Roo.bootstrap.form.SecurePass.superclass.validateValue.call(this, value)) {
             return false;
         }
+        Roo.log('SECURE PASS VALIDATE VALUE');
         if (value.length == 0) {
             if (this.allowBlank) {
                 this.clearInvalid();

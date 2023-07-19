@@ -194,6 +194,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         if (!Roo.bootstrap.form.SecurePass.superclass.validateValue.call(this, value)) {
             return false;
         }
+        Roo.log('SECURE PASS VALIDATE VALUE');
         if (value.length == 0) {
             if (this.allowBlank) {
                 this.clearInvalid();
