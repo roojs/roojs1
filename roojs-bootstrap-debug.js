@@ -13337,7 +13337,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 
                 this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
 
-                feedback.update(this.invalidText);
+                feedback.update(typeof(msg) == 'undefined' ? this.invalidText : msg);
 
                 if(!this.allowBlank && !this.getRawValue().length){
                     feedback.update(this.blankText);
