@@ -214,8 +214,8 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
             return false;
         }
         if (value.length < 6) {
-            this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdShort);
-            this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdShort;
+            // this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdShort);
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdShort;
             return false;
         }
         if (value.length > 16) {
