@@ -168,7 +168,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         
         var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
                 
-        pt.innerHTML = Roo.bootstrap.form.SecurePass.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
+        pt.innerHTML = Roo.bootstrap.form.SecurePass.meterLabel + '&nbsp;' + Roo.bootstrap.form.SecurePass.pwdStrengths[strength];
         
         this._lastPwd = pwd;
     },
@@ -253,7 +253,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
                 
         var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
                 
-        pt.innerHTML = Roo.bootstrap.form.SecurePass.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
+        pt.innerHTML = Roo.bootstrap.form.SecurePass.meterLabel + '&nbsp;' + Roo.bootstrap.form.SecurePass.pwdStrengths[strength];
         
         this.errorMsg = ''; 
         return true;
