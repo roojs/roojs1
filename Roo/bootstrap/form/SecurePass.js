@@ -22,36 +22,10 @@ Roo.bootstrap.form.SecurePass = function (config) {
 }
 
 Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
-    /**
-     * @cfg {String/Object} errors A Error spec, or true for a default spec (defaults to
-     * {
-     *  PwdEmpty: "Please type a password, and then retype it to confirm.",
-     *  PwdShort: "Your password must be at least 6 characters long. Please type a different password.",
-     *  PwdLong: "Your password can't contain more than 16 characters. Please type a different password.",
-     *  PwdBadChar: "The password contains characters that aren't allowed. Please type a different password.",
-     *  IDInPwd: "Your password can't include the part of your ID. Please type a different password.",
-     *  FNInPwd: "Your password can't contain your first name. Please type a different password.",
-     *  LNInPwd: "Your password can't contain your last name. Please type a different password."
-     * })
-     */
     // private
     
-    meterWidth: 300,
-    errorMsg :'',    
-    // errors: false,
-    imageRoot: '/',
-    /**
-     * @cfg {String/Object} Label for the strength meter (defaults to
-     * 'Password strength:')
-     */
-    // private
-    // meterLabel: '',
-    /**
-     * @cfg {String/Object} pwdStrengths A pwdStrengths spec, or true for a default spec (defaults to
-     * ['Weak', 'Medium', 'Strong'])
-     */
-    // private    
-    // pwdStrengths: false,    
+    meterWidth: 300, 
+    imageRoot: '/',  
     // private
     strength: 0,
     // private
@@ -177,8 +151,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
                 return true;
             }
 
-            this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdEmpty);
-            this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdEmpty;
+            this.invalid = Roo.bootstrap.form.SecurePass.errors.PwdEmpty;
             return false;
         }
         
@@ -192,14 +165,11 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
             return false;
         }
         if (value.length < 6) {
-            // this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdShort);
-            // this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdShort;
             this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdShort;
             return false;
         }
         if (value.length > 16) {
-            this.markInvalid(Roo.bootstrap.form.SecurePass.errors.PwdLong);
-            this.errorMsg = Roo.bootstrap.form.SecurePass.errors.PwdLong;
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdLong;
             return false;
         }
         var strength;
