@@ -13337,7 +13337,7 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
                 
                 this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
 
-                feedback.update(this.invalidText);
+                feedback.update(typeof(msg) == 'undefined' ? this.invalidText : msg);
 
                 if(!this.allowBlank && !this.getRawValue().length){
                     feedback.update(this.blankText);
@@ -25721,6 +25721,7 @@ Roo.extend(Roo.bootstrap.form.Radio, Roo.bootstrap.Component, {
  * @class Roo.bootstrap.form.SecurePass
  * @extends Roo.bootstrap.form.Input
  * Bootstrap SecurePass class
+ * @cfg {Number} minimumStrength invalid if the strength of the password input is less than the minimum strength (from 0 to 3) (default 2)
  *
  * 
  * @constructor
@@ -25729,63 +25730,15 @@ Roo.extend(Roo.bootstrap.form.Radio, Roo.bootstrap.Component, {
  */
  
 Roo.bootstrap.form.SecurePass = function (config) {
-    // these go here, so the translation tool can replace them..
-    this.errors = {
-        PwdEmpty: "Please type a password, and then retype it to confirm.",
-        PwdShort: "Your password must be at least 6 characters long. Please type a different password.",
-        PwdLong: "Your password can't contain more than 16 characters. Please type a different password.",
-        PwdBadChar: "The password contains characters that aren't allowed. Please type a different password.",
-        IDInPwd: "Your password can't include the part of your ID. Please type a different password.",
-        FNInPwd: "Your password can't contain your first name. Please type a different password.",
-        LNInPwd: "Your password can't contain your last name. Please type a different password.",
-        TooWeak: "Your password is Too Weak."
-    },
-    this.meterLabel = "Password strength:";
-    this.pwdStrengths = ["Too Weak", "Weak", "Medium", "Strong"];
-    this.meterClass = [
-        "roo-password-meter-tooweak", 
-        "roo-password-meter-weak", 
-        "roo-password-meter-medium", 
-        "roo-password-meter-strong", 
-        "roo-password-meter-grey"
-    ];
-    
-    this.errors = {};
     
     Roo.bootstrap.form.SecurePass.superclass.constructor.call(this, config);
 }
 
 Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
-    /**
-     * @cfg {String/Object} errors A Error spec, or true for a default spec (defaults to
-     * {
-     *  PwdEmpty: "Please type a password, and then retype it to confirm.",
-     *  PwdShort: "Your password must be at least 6 characters long. Please type a different password.",
-     *  PwdLong: "Your password can't contain more than 16 characters. Please type a different password.",
-     *  PwdBadChar: "The password contains characters that aren't allowed. Please type a different password.",
-     *  IDInPwd: "Your password can't include the part of your ID. Please type a different password.",
-     *  FNInPwd: "Your password can't contain your first name. Please type a different password.",
-     *  LNInPwd: "Your password can't contain your last name. Please type a different password."
-     * })
-     */
+    minimumStrength : 2,
     // private
-    
-    meterWidth: 300,
-    errorMsg :'',    
-    errors: false,
-    imageRoot: '/',
-    /**
-     * @cfg {String/Object} Label for the strength meter (defaults to
-     * 'Password strength:')
-     */
-    // private
-    meterLabel: '',
-    /**
-     * @cfg {String/Object} pwdStrengths A pwdStrengths spec, or true for a default spec (defaults to
-     * ['Weak', 'Medium', 'Strong'])
-     */
-    // private    
-    pwdStrengths: false,    
+    meterWidth: 300, 
+    imageRoot: '/',  
     // private
     strength: 0,
     // private
@@ -25873,13 +25826,13 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         
         //var pm = this.trigger.child('div/div/div').dom;
         var pm = this.trigger.child('div/div');
-        pm.removeClass(this.meterClass);
-        pm.addClass(this.meterClass[strength]);
+        pm.removeClass(Roo.bootstrap.form.SecurePass.meterClass);
+        pm.addClass(Roo.bootstrap.form.SecurePass.meterClass[strength]);
                 
         
         var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
                 
-        pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
+        pt.innerHTML = Roo.bootstrap.form.SecurePass.meterLabel + '&nbsp;' + Roo.bootstrap.form.SecurePass.pwdStrengths[strength];
         
         this._lastPwd = pwd;
     },
@@ -25890,7 +25843,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         this._lastPwd = '';
         
         var pm = this.trigger.child('div/div');
-        pm.removeClass(this.meterClass);
+        pm.removeClass(Roo.bootstrap.form.SecurePass.meterClass);
         pm.addClass('roo-password-meter-grey');        
         
         
@@ -25911,8 +25864,7 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
                 return true;
             }
 
-            this.markInvalid(this.errors.PwdEmpty);
-            this.errorMsg = this.errors.PwdEmpty;
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdEmpty;
             return false;
         }
         
@@ -25921,18 +25873,15 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         }
         
         if (!value.match(/[\x21-\x7e]+/)) {
-            this.markInvalid(this.errors.PwdBadChar);
-            this.errorMsg = this.errors.PwdBadChar;
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdBadChar;
             return false;
         }
         if (value.length < 6) {
-            this.markInvalid(this.errors.PwdShort);
-            this.errorMsg = this.errors.PwdShort;
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdShort;
             return false;
         }
         if (value.length > 16) {
-            this.markInvalid(this.errors.PwdLong);
-            this.errorMsg = this.errors.PwdLong;
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.PwdLong;
             return false;
         }
         var strength;
@@ -25947,10 +25896,9 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         }
 
         
-        if (strength < 2) {
-            //this.markInvalid(this.errors.TooWeak);
-            this.errorMsg = this.errors.TooWeak;
-            //return false;
+        if (strength < this.minimumStrength) {
+            this.invalidText = Roo.bootstrap.form.SecurePass.errors.TooWeak;
+            return false;
         }
         
         
@@ -25959,14 +25907,13 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         //var pm = this.trigger.child('div/div/div').dom;
         
         var pm = this.trigger.child('div/div');
-        pm.removeClass(this.meterClass);
-        pm.addClass(this.meterClass[strength]);
+        pm.removeClass(Roo.bootstrap.form.SecurePass.meterClass);
+        pm.addClass(Roo.bootstrap.form.SecurePass.meterClass[strength]);
                 
         var pt = this.trigger.child('/div').child('>*[class=roo-password-meter-text]').dom;        
                 
-        pt.innerHTML = this.meterLabel + '&nbsp;' + this.pwdStrengths[strength];
-        
-        this.errorMsg = ''; 
+        pt.innerHTML = Roo.bootstrap.form.SecurePass.meterLabel + '&nbsp;' + Roo.bootstrap.form.SecurePass.pwdStrengths[strength];
+
         return true;
     },
     // private
@@ -26063,7 +26010,28 @@ Roo.extend(Roo.bootstrap.form.SecurePass, Roo.bootstrap.form.Input, {
         return this.IsLongEnough(pwd, 6) || !this.IsLongEnough(pwd, 0);
     }
           
-});/**
+});
+
+Roo.bootstrap.form.SecurePass.errors = {
+    PwdEmpty: "Please type a password, and then retype it to confirm.",
+    PwdShort: "Your password must be at least 6 characters long. Please type a different password.",
+    PwdLong: "Your password can't contain more than 16 characters. Please type a different password.",
+    PwdBadChar: "The password contains characters that aren't allowed. Please type a different password.",
+    IDInPwd: "Your password can't include the part of your ID. Please type a different password.",
+    FNInPwd: "Your password can't contain your first name. Please type a different password.",
+    LNInPwd: "Your password can't contain your last name. Please type a different password.",
+    TooWeak: "Your password is Too Weak."
+};
+
+Roo.bootstrap.form.SecurePass.meterLabel = "Password strength:";
+Roo.bootstrap.form.SecurePass.pwdStrengths = ["Too Weak", "Weak", "Medium", "Strong"];
+Roo.bootstrap.form.SecurePass.meterClass = [
+    "roo-password-meter-tooweak", 
+    "roo-password-meter-weak", 
+    "roo-password-meter-medium", 
+    "roo-password-meter-strong", 
+    "roo-password-meter-grey"
+];/**
  * @class Roo.bootstrap.form.Password
  * @extends Roo.bootstrap.form.Input
  * Bootstrap Password class
