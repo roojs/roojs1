@@ -145,6 +145,21 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             today: "Today"
         };
+
+        for(var i = 0; i < 7; i++) {
+            
+            Roo.log(new Intl.DateTimeFormat(Publisher.authUser.lang.replace('_', '-'), {
+                weekday : 'long'
+            }).format(new Date(2020, 0, 5 + i)));
+
+            Roo.log(new Intl.DateTimeFormat(Publisher.authUser.lang.replace('_', '-'), {
+                weekday : 'short'
+            }).format(new Date(2020, 0, 5 + i)));
+
+            Roo.log(new Intl.DateTimeFormat(Publisher.authUser.lang.replace('_', '-'), {
+                weekday : 'narrow'
+            }).format(new Date(2020, 0, 5 + i)));
+        }
         
         this.language = this.language || 'en';
         this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : this.language.split('-')[0];
