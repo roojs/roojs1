@@ -31119,6 +31119,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // private
     onRender : function(ct, position)
     {
+        Roo.log('HTMLEDITORCORE ON RENDER');
         var _t = this;
         //Roo.HtmlEditorCore.superclass.onRender.call(this, ct, position);
         this.el = this.owner.inputEl ? this.owner.inputEl() : this.owner.el;
