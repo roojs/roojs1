@@ -539,6 +539,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     // private
     initEditor : function(){
+        Roo.log('HTMLEDITOR INITEDITOR');
         //console.log("INIT EDITOR");
         this.assignDocWin();
         
