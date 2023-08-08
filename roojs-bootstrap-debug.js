@@ -23432,9 +23432,9 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     {
         Roo.bootstrap.form.DateField.superclass.onBlur.call(this);
         
-        var d = this.inputEl().getValue();
+        // var d = this.inputEl().getValue();
         
-        this.setValue(d);
+        // this.setValue(d);
                 
         this.hidePopup();
     },
