@@ -547,20 +547,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     formatDate : function(date, fmt)
     {   
-        if(!date || !(date instanceof Date)) {
-            return date;
-        }
-
-        switch(this.language) {
-            case 'zh_CN':
-                return new Intl.DateTimeFormat('zh-CN', {
-                    year : 'numeric',
-                    month : 'long',
-                    day : 'numeric'
-                }).format(date);
-            default:
-                return date.dateFormat(fmt || this.format);
-        }
+        return (!date || !(date instanceof Date)) ?
+        date : date.dateFormat(fmt || this.format);
     },
     
     onFocus : function()
