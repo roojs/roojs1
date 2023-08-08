@@ -134,7 +134,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
     setDateTranslation: function(lang) 
     {
-        Roo.bootstrap.form.DateField.dates['zh_CN'] = {
+        Roo.bootstrap.form.DateField.dates[lang] = {
             days: [],
             daysShort: [],
             daysMin: [],
@@ -143,7 +143,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             today: "Today"
         };
 
-        lang = this.language.replace('_', '-');
+        locale = lang.replace('_', '-');
 
         for(var i = 0; i < 7; i++) {
             var date = new Date(2020, 0, 5 + i);
