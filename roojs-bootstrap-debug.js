@@ -22868,7 +22868,6 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  * 
  * @cfg {Boolean} keyboardNavigation default true
  * @cfg {String} language default en
- * @cfg {Boolean} useIso default false
  * 
  * @constructor
  * Create a new DateField
@@ -22949,13 +22948,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     _events: [],
     
     singleMode : false,
-
-    /**
-     * @cfg {Boolean} useIso
-     * if enabled, then the date field will use a hidden field to store the 
-     * real value as iso formated date. default (false)
-     */
-    useIso : false,
 
     hiddenField : false,
     
@@ -23076,22 +23068,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     break;
             }
         }
-
-        if(this.useIso) {
-            Roo.log('USE ISO');
-
-            Roo.log(this.inputEl());
-            this.hiddenField = this.inputEl().insertSibling(
-                {tag : 'input', type : 'hidden', name : this.name},
-                'before',
-                true
-            );
-            this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
-            Roo.log('VALUE');
-            Roo.log(this.value);
-            this.hiddenField.value = this.value ? this.formatDate(this.value, 'Y-m-d') : '';
-            this.hiddenName = this.name;
-        }
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.DateField.template);
         
@@ -23145,6 +23121,15 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         if(this.isInline) {
             this.showPopup();
         }
+
+        this.hiddenField = this.inputEl().insertSibling(
+            {tag : 'input', type : 'hidden', name : this.name},
+            'before',
+            true
+        );
+        this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
+        Roo.log('DATE');
+        Roo.log(this.date);
     },
     
     picker : function()
