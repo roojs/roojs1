@@ -282,7 +282,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             true
         );
         this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
-        this.hiddenField.value = this.date ? this.date.dateFormat('Y-m-d');
+        Roo.log(this.date);
     },
     
     picker : function()
