@@ -657,7 +657,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     getValue: function()
     {
-        return this.formatDate(this.date);
+        return this.hiddenField.value;
     },
     
     fireKey: function(e)
