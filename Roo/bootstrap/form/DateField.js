@@ -626,7 +626,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
             v = this.formatDate(d);
 
-            this.hiddenField.value = v;
+            this.hiddenField.value = d.dateFormat('Y-m-d');
             this.value = v;
             if(this.rendered){
                 this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
