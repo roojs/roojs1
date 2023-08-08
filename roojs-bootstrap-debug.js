@@ -22873,7 +22873,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  * Create a new DateField
  * @param {Object} config The config object
  */
-
+ 
 Roo.bootstrap.form.DateField = function(config){
     Roo.bootstrap.form.DateField.superclass.constructor.call(this, config);
      this.addEvents({
@@ -22977,11 +22977,55 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             this.date = d;
             this.setValue(this.formatDate(this.date));
     },
+
+    setDateTranslation: function(lang) 
+    {
+        Roo.bootstrap.form.DateField.dates[lang] = {
+            days: [],
+            daysShort: [],
+            daysMin: [],
+            months: [],
+            monthsShort: [],
+            today: "Today"
+        };
+
+        locale = lang.replace('_', '-');
+
+        for(var i = 0; i < 7; i++) {
+            var date = new Date(2020, 0, 5 + i);
+
+            Roo.bootstrap.form.DateField.dates[lang]['days'].push(new Intl.DateTimeFormat(locale, {
+                weekday : 'long'
+            }).format(date));
+
+            Roo.bootstrap.form.DateField.dates[lang]['daysShort'].push(new Intl.DateTimeFormat(locale, {
+                weekday : 'short'
+            }).format(date));
+
+            Roo.bootstrap.form.DateField.dates[lang]['daysMin'].push(new Intl.DateTimeFormat(locale, {
+                weekday : 'narrow'
+            }).format(date));
+        }
+
+        for(var i = 0; i < 12; i++) {
+            var date = new Date(2020, i);
+
+            Roo.bootstrap.form.DateField.dates[lang]['months'].push(new Intl.DateTimeFormat(locale, {
+                month : 'long'
+            }).format(date));
+
+            Roo.bootstrap.form.DateField.dates[lang]['monthsShort'].push(new Intl.DateTimeFormat(locale, {
+                month : 'short'
+            }).format(date));
+        }
+    },
         
     onRender: function(ct, position)
     {
         
         Roo.bootstrap.form.DateField.superclass.onRender.call(this, ct, position);
+
+        this.setDateTranslation('zh_CN');
         
         this.language = this.language || 'en';
         this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : this.language.split('-')[0];
