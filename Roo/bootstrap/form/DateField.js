@@ -647,6 +647,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 this.validate();
             }
 
+            Roo.log(this.value)
+
             this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
 
             this.update();
@@ -658,6 +660,10 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     getValue: function()
     {
         return this.hiddenField.value;
+    },
+
+    getRawValue : function(){
+        return this.getValue();
     },
     
     fireKey: function(e)
