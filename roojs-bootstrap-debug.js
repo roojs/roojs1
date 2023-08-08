@@ -12975,8 +12975,6 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             this.markValid();
             return true;
         }
-
-        Roo.log('INVALID');
         
         this.markInvalid();
         return false;
@@ -23477,7 +23475,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
     setValue: function(v)
     {
-        Roo.log('SET VALUE: ' + v);
         if(this.fireEvent('beforeselect', this, v) !== false){
             var d = new Date(this.parseDate(v) ).clearTime();
         
@@ -23506,6 +23503,10 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     getValue: function()
     {
         return this.hiddenField.value;
+    },
+
+    getRawValue : function(){
+        return this.getValue();
     },
     
     fireKey: function(e)

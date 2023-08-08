@@ -629,7 +629,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
     setValue: function(v)
     {
-        Roo.log('SET VALUE: ' + v);
         if(this.fireEvent('beforeselect', this, v) !== false){
             var d = new Date(this.parseDate(v) ).clearTime();
         
@@ -646,8 +645,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
                 this.validate();
             }
-
-            Roo.log(this.value)
 
             this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
 
