@@ -23079,7 +23079,16 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
         if(this.useIso) {
             Roo.log('USE ISO');
-            Roo.log(this.el);
+
+            Roo.log(this.inputEl());
+            this.hiddenField = this.inputEl().insertSibling(
+                {tag : 'input', type : 'hidden', name : this.name},
+                'before',
+                true
+            );
+            this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
+            this.hiddenField.value = this.value ? this.formatDate(this.value, 'Y-m-d') : '';
+            this.hiddenName = this.name;
         }
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.DateField.template);
