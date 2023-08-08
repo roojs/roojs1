@@ -638,10 +638,10 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 return;
             }
 
-            v = this.translateDate(d);
-
             this.hiddenField.value = d.dateFormat('Y-m-d');
             this.value = hiddenField.value;
+
+            v = this.translateDate(d);
             if(this.rendered){
                 this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
                 this.validate();
