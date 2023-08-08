@@ -23129,6 +23129,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         );
         this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
         this.hiddenField.value = this.date.dateFormat('Y-m-d');
+
     },
     
     picker : function()
@@ -23387,7 +23388,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             return value;
         }
         var v = Date.parseDate(value, this.format);
-        if (!v && (this.useIso || value.match(/^(\d{4})-0?(\d+)-0?(\d+)/))) {
+        if (!v && (value.match(/^(\d{4})-0?(\d+)-0?(\d+)/))) {
             v = Date.parseDate(value, 'Y-m-d');
         }
         if(!v && this.altFormats){
@@ -23405,6 +23406,20 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     {   
         return (!date || !(date instanceof Date)) ?
         date : date.dateFormat(fmt || this.format);
+    },
+
+    translateDate : function(date)
+    {
+        switch(this.language) {
+            case 'zh_CN':
+                return new Intl.DateTimeFormat('zh-CN', {
+                    year : 'numeric',
+                    month : 'long',
+                    day : 'numeric'
+                }).format(date);
+            default :
+                return this.formatDate(date);
+        }
     },
     
     onFocus : function()
@@ -23469,11 +23484,10 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 return;
             }
 
-            v = this.formatDate(d);
+            this.hiddenField.value = d.dateFormat('Y-m-d');
+            this.value = hiddenField.value;
 
-
-
-            this.value = v;
+            v = this.translateDate(d);
             if(this.rendered){
                 this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
                 this.validate();
@@ -23489,7 +23503,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     getValue: function()
     {
-        return this.formatDate(this.date);
+        return this.hiddenField.value;
     },
     
     fireKey: function(e)
