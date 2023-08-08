@@ -104,6 +104,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     singleMode : false,
 
     hiddenField : false,
+
+    hiddenName : '',
     
     UTCDate: function()
     {
