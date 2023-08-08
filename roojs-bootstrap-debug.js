@@ -22868,6 +22868,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  * 
  * @cfg {Boolean} keyboardNavigation default true
  * @cfg {String} language default en
+ * @cfg {Boolean} useIso default false
  * 
  * @constructor
  * Create a new DateField
@@ -22948,6 +22949,15 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     _events: [],
     
     singleMode : false,
+
+    /**
+     * @cfg {Boolean} useIso
+     * if enabled, then the date field will use a hidden field to store the 
+     * real value as iso formated date. default (false)
+     */
+    useIso : false,
+
+    hiddenField : false,
     
     UTCDate: function()
     {
@@ -23065,6 +23075,11 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     this.viewMode = 0;
                     break;
             }
+        }
+
+        if(this.useIso) {
+            Roo.log('USE ISO');
+            Roo.log(this.el);
         }
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.DateField.template);
@@ -23461,7 +23476,13 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
             v = this.formatDate(d);
 
-            Roo.bootstrap.form.DateField.superclass.setValue.call(this, v);
+
+
+            this.value = v;
+            if(this.rendered){
+                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+                this.validate();
+            }
 
             this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
 
