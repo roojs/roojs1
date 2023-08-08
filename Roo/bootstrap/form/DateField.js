@@ -650,6 +650,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 break;
             case 37: // left
             case 39: // right
+                Roo.log('FIRE KEY 37 / 39');
+                Roo.log(e.keyCode);
                 if (!this.keyboardNavigation) {
                     break;
                 }
