@@ -131,7 +131,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     setUTCDate: function(d) {
             this.date = d;
-            this.setValue(this.formatDate(this.date));
+            this.setValue(this.date);
     },
 
     setDatesTranslation: function(lang) 
