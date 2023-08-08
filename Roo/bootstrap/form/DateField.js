@@ -233,7 +233,13 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
         if(this.useIso) {
             Roo.log('USE ISO');
-            Roo.log(this.el);
+
+            Roo.log(this.inputEl());
+            this.hiddenField = this.inputEl().insertSibling(
+                {tag : 'input', type : 'hidden', name : this.name},
+                'before',
+                true
+            )
         }
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.DateField.template);
