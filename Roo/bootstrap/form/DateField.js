@@ -222,6 +222,14 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     break;
             }
         }
+
+        this.hiddenField = this.inputEl().insertSibling(
+            {tag : 'input', type : 'hidden', name : this.name},
+            'before',
+            true
+        );
+        this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
+        this.hiddenField.value = this.value ? this.formatDate(this.value, 'Y-m-d') : '';
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.DateField.template);
         
@@ -275,15 +283,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         if(this.isInline) {
             this.showPopup();
         }
-
-        this.hiddenField = this.inputEl().insertSibling(
-            {tag : 'input', type : 'hidden', name : this.name},
-            'before',
-            true
-        );
-        this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
-        Roo.log('DATE');
-        Roo.log(this.date);
     },
     
     picker : function()
@@ -558,20 +557,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     formatDate : function(date, fmt)
     {   
-        if(!date || !(date instanceof Date)) {
-            return date;
-        }
-
-        switch(this.language) {
-            case 'zh_CN' :
-                return new Intl.DateTimeFormat('zh-CN', {
-                    year : 'numeric',
-                    month : 'long',
-                    day : 'numeric'
-                }).format(date);
-            default :
-                return date.dateFormat(fmt || this.format);
-        }
+        return (!date || !(date instanceof Date)) ?
+        date : date.dateFormat(fmt || this.format);
     },
     
     onFocus : function()
