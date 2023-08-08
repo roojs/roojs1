@@ -239,7 +239,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 {tag : 'input', type : 'hidden', name : this.name},
                 'before',
                 true
-            )
+            );
+            this.hiddenField.value = this.value ? this.formatDate(this.value, 'Y-m-d') : '';
         }
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.DateField.template);
