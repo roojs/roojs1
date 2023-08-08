@@ -283,7 +283,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         );
         this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
         this.hiddenField.value = this.date.dateFormat('Y-m-d');
-        
+
     },
     
     picker : function()
@@ -538,6 +538,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     parseDate : function(value)
     {
+        /*
         if(!value || value instanceof Date){
             return value;
         }
@@ -554,6 +555,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             }
         }
         return v;
+        */
+       return Date.parseDate(value, 'Y-m-d');
     },
     
     formatDate : function(date, fmt)
