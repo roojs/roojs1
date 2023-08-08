@@ -553,7 +553,11 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
         switch(this.language) {
             case 'zh_CN':
-                break;
+                return new Intl.DateTimeFormat('zh-CN', {
+                    year : 'numeric',
+                    month : 'long',
+                    day : 'numeric'
+                }).format(date);
             default:
                 return date.dateFormat(fmt || this.format);
         }
