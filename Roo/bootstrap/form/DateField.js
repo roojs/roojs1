@@ -556,7 +556,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         }
         return v;
         */
-       return Date.parseDate(value, 'Y-m-d');
+        return Date.parseDate(value, 'Y-m-d');
     },
     
     formatDate : function(date, fmt)
