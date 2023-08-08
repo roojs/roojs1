@@ -138,27 +138,40 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         Roo.bootstrap.form.DateField.superclass.onRender.call(this, ct, position);
 
         Roo.bootstrap.form.DateField.dates['zh_CN'] = {
-            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-            daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            days: [],
+            daysShort: [],
+            daysMin: [],
+            months: [],
+            monthsShort: [],
             today: "Today"
         };
 
         for(var i = 0; i < 7; i++) {
-            
-            Roo.log(new Intl.DateTimeFormat(Publisher.authUser.lang.replace('_', '-'), {
+            var date = new Date(2020, 0, 5 + i);
+
+            o['days'].push(new Intl.DateTimeFormat(lang, {
                 weekday : 'long'
-            }).format(new Date(2020, 0, 5 + i)));
+            }).format(date));
 
-            Roo.log(new Intl.DateTimeFormat(Publisher.authUser.lang.replace('_', '-'), {
+            o['daysShort'].push(new Intl.DateTimeFormat(lang, {
                 weekday : 'short'
-            }).format(new Date(2020, 0, 5 + i)));
+            }).format(date));
 
-            Roo.log(new Intl.DateTimeFormat(Publisher.authUser.lang.replace('_', '-'), {
+            o['daysMin'].push(new Intl.DateTimeFormat(lang, {
                 weekday : 'narrow'
-            }).format(new Date(2020, 0, 5 + i)));
+            }).format(date));
+        }
+
+        for(var i = 0; i < 12; i++) {
+            var date = new Date(2020, i);
+
+            o['months'].push(new Intl.DateTimeFormat(lang, {
+                month : 'long'
+            }).format(date));
+
+            o['monthsShort'].push(new Intl.DateTimeFormat(lang, {
+                month : 'short'
+            }).format(date));
         }
         
         this.language = this.language || 'en';
