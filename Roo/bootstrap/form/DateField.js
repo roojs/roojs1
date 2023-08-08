@@ -110,6 +110,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
      * real value as iso formated date. default (false)
      */
     useIso : false,
+
+    hiddenField : false,
     
     UTCDate: function()
     {
