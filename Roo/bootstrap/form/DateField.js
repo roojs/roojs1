@@ -585,10 +585,11 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     onBlur : function()
     {
         Roo.bootstrap.form.DateField.superclass.onBlur.call(this);
-        
-        // var d = this.inputEl().getValue();
-        
-        // this.setValue(d);
+
+        if(this.format == 'Y-m-d' && !this.readOnly) {
+            var d = this.inputEl().getValue();
+            this.setValue(d);
+        }
                 
         this.hidePopup();
     },
