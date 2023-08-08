@@ -149,15 +149,15 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         for(var i = 0; i < 7; i++) {
             var date = new Date(2020, 0, 5 + i);
 
-            o['days'].push(new Intl.DateTimeFormat(lang, {
+            Roo.bootstrap.form.DateField.dates['zh_CN']['days'].push(new Intl.DateTimeFormat(lang, {
                 weekday : 'long'
             }).format(date));
 
-            o['daysShort'].push(new Intl.DateTimeFormat(lang, {
+            Roo.bootstrap.form.DateField.dates['zh_CN']['daysShort'].push(new Intl.DateTimeFormat(lang, {
                 weekday : 'short'
             }).format(date));
 
-            o['daysMin'].push(new Intl.DateTimeFormat(lang, {
+            Roo.bootstrap.form.DateField.dates['zh_CN']['daysMin'].push(new Intl.DateTimeFormat(lang, {
                 weekday : 'narrow'
             }).format(date));
         }
@@ -165,14 +165,16 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         for(var i = 0; i < 12; i++) {
             var date = new Date(2020, i);
 
-            o['months'].push(new Intl.DateTimeFormat(lang, {
+            Roo.bootstrap.form.DateField.dates['zh_CN']['months'].push(new Intl.DateTimeFormat(lang, {
                 month : 'long'
             }).format(date));
 
-            o['monthsShort'].push(new Intl.DateTimeFormat(lang, {
+            Roo.bootstrap.form.DateField.dates['zh_CN']['monthsShort'].push(new Intl.DateTimeFormat(lang, {
                 month : 'short'
             }).format(date));
         }
+
+        Roo.log(Roo.bootstrap.form.DateField.dates);
         
         this.language = this.language || 'en';
         this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : this.language.split('-')[0];
