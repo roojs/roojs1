@@ -137,6 +137,12 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         
         Roo.bootstrap.form.DateField.superclass.onRender.call(this, ct, position);
 
+        Roo.log(Roo.bootstrap.form.DateField.dates);
+        
+        this.language = this.language || 'en';
+        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : this.language.split('-')[0];
+        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : "en";
+
         Roo.bootstrap.form.DateField.dates['zh_CN'] = {
             days: [],
             daysShort: [],
@@ -173,12 +179,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 month : 'short'
             }).format(date));
         }
-
-        Roo.log(Roo.bootstrap.form.DateField.dates);
-        
-        this.language = this.language || 'en';
-        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : this.language.split('-')[0];
-        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : "en";
         
         this.isRTL = Roo.bootstrap.form.DateField.dates[this.language].rtl || false;
         this.format = this.format || 'm/d/y';
