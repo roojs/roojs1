@@ -694,6 +694,8 @@ Roo.extend(Roo.bootstrap.form.Input, Roo.bootstrap.Component,  {
             this.markValid();
             return true;
         }
+
+        Roo.log('INVALID');
         
         this.markInvalid();
         return false;
