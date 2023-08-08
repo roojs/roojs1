@@ -627,7 +627,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             v = this.formatDate(d);
 
             this.hiddenField.value = d.dateFormat('Y-m-d');
-            Roo.bootstrap.form.DateField.superclass.setValue.call(this, '');
+            Roo.bootstrap.form.DateField.superclass.setValue.call(this, v);
 
             this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
 
