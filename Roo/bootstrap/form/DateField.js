@@ -222,14 +222,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     break;
             }
         }
-
-        this.hiddenField = this.inputEl().insertSibling(
-            {tag : 'input', type : 'hidden', name : this.name},
-            'before',
-            true
-        );
-        this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
-        this.hiddenField.value = this.date ? this.date.dateFormat('Y-m-d');
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.DateField.template);
         
