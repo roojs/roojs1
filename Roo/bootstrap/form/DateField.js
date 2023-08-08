@@ -567,7 +567,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     year : 'numeric',
                     month : 'long',
                     day : 'numeric'
-                }).format(new Date(r.publish_dt_real))
+                }).format(date)
             default :
                 return date.dateFormat(fmt || this.format);
         }
