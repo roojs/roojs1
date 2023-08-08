@@ -574,7 +574,9 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         
         var d = this.inputEl().getValue();
         
-        this.setValue(this.parseDate(d));
+        var date = this.parseDate(d);
+        
+        this.setValue(typeof(date) == 'undefined' ? '' : date);
                 
         this.hidePopup();
     },
