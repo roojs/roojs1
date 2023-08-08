@@ -561,6 +561,11 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         return (!date || !(date instanceof Date)) ?
         date : date.dateFormat(fmt || this.format);
     },
+
+    translateDate : function()
+    {
+
+    },
     
     onFocus : function()
     {
