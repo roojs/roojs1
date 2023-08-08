@@ -275,6 +275,14 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         if(this.isInline) {
             this.showPopup();
         }
+
+        this.hiddenField = this.inputEl().insertSibling(
+            {tag : 'input', type : 'hidden', name : this.name},
+            'before',
+            true
+        );
+        this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
+        this.hiddenField.value = this.date ? this.date.dateFormat('Y-m-d');
     },
     
     picker : function()
