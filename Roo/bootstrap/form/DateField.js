@@ -547,16 +547,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     formatDate : function(date, fmt)
     {   
-        if(!date || !(date instanceof Date)) {
-            return date;
-        }
-
-        switch(this.language) {
-            case 'zh_CN':
-                break;
-            default:
-                return date.dateFormat(fmt || this.format);
-        }
         return (!date || !(date instanceof Date)) ?
         date : date.dateFormat(fmt || this.format);
     },
@@ -660,7 +650,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 break;
             case 37: // left
             case 39: // right
-                Roo.log(e.keyCode);
                 if (!this.keyboardNavigation) {
                     break;
                 }
