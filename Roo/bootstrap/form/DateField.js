@@ -103,6 +103,13 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     _events: [],
     
     singleMode : false,
+
+    /**
+     * @cfg {Boolean} useIso
+     * if enabled, then the date field will use a hidden field to store the 
+     * real value as iso formated date. default (false)
+     */
+    useIso : false,
     
     UTCDate: function()
     {
