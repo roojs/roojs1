@@ -131,7 +131,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     setUTCDate: function(d) {
             this.date = d;
-            this.setValue(this.date);
+            this.setValue(this.formatDate(this.date));
     },
 
     setDatesTranslation: function(lang) 
@@ -574,9 +574,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         
         var d = this.inputEl().getValue();
         
-        var date = this.parseDate(d);
-        
-        this.setValue(typeof(date) == 'undefined' ? '' : date);
+        this.setValue(d);
                 
         this.hidePopup();
     },
