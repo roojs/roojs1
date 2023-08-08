@@ -22,6 +22,7 @@
  * 
  * @cfg {Boolean} keyboardNavigation default true
  * @cfg {String} language default en
+ * @cfg {Boolean} useIso default false
  * 
  * @constructor
  * Create a new DateField
@@ -615,7 +616,13 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
             v = this.formatDate(d);
 
-            Roo.bootstrap.form.DateField.superclass.setValue.call(this, v);
+
+
+            this.value = v;
+            if(this.rendered){
+                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+                this.validate();
+            }
 
             this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
 
