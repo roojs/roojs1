@@ -230,6 +230,11 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     break;
             }
         }
+
+        if(this.useIso) {
+            Roo.log('USE ISO');
+            Roo.log(this.el);
+        }
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.DateField.template);
         
