@@ -561,6 +561,20 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         return (!date || !(date instanceof Date)) ?
         date : date.dateFormat(fmt || this.format);
     },
+
+    translateDate : function(date)
+    {
+        switch(this.language) {
+            case 'zh_CN':
+                return new Intl.DateTimeFormat('zh-CN', {
+                    year : 'numeric',
+                    month : 'long',
+                    day : 'numeric'
+                }).format(date);
+            default :
+                return this.formatDate(date);
+        }
+    },
     
     onFocus : function()
     {
