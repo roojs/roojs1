@@ -98,7 +98,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
             true
         );
         this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
-        this.hiddenField.value = this.date.dateFormat('h:i');
+        this.hiddenField.value = this.time.dateFormat('h:i');
 
     },
     
