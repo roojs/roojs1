@@ -449,7 +449,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
                     hour12 : true
                 }).format(time);
             default :
-                return this.time.format(this.format);
+                return time.format(this.format);
         }
     },
 
