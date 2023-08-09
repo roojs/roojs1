@@ -536,18 +536,12 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             return value;
         }
         var v = Date.parseDate(value, this.format);
-        if (!v && (value.match(/^(\d{4})-0?(\d+)-0?(\d+)/))) {
+
+        if(typeof(v) == 'undefined') {
             v = Date.parseDate(value, 'Y-m-d');
         }
-        if(!v && this.altFormats){
-            if(!this.altFormatsArray){
-                this.altFormatsArray = this.altFormats.split("|");
-            }
-            for(var i = 0, len = this.altFormatsArray.length; i < len && !v; i++){
-                v = Date.parseDate(value, this.altFormatsArray[i]);
-            }
-        }
-        return v;
+
+        return (typeof(v) == 'undefined') ? false : v;
     },
     
     formatDate : function(date, fmt)
