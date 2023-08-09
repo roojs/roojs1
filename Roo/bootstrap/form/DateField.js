@@ -860,7 +860,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     {
         this.startDate = startDate || -Infinity;
         if (this.startDate !== -Infinity) {
-            this.startDate = this.parseDate(this.startDate);
+            var date = this.parseDate(this.startDate);
+            this.startDate = date ? date : -Infinity;
         }
         this.update();
         this.updateNavArrows();
