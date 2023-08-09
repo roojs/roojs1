@@ -24151,9 +24151,6 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     format : "H:i",
     minuteStep : 1,
     language : 'en',
-    okText : {
-        en : "OK"
-    },
     getAutoCreate : function()
     {
         this.after = '<i class="fa far fa-clock"></i>';
@@ -24187,8 +24184,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.pop.select('.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
         this.pop.select('button.period', true).first().on('click', this.onTogglePeriod, this);
         this.pop.select('button.ok', true).first().on('click', this.setTime, this);
-        Roo.log(this);
-        // this.pop.select('button.ok', true).first().dom.innerHTML = this.okText[this.language];
+        this.pop.select('button.ok', true).first().dom.innerHTML = Roo.bootstrap.form.TimeField.okText[this.language];
 
     },
     
@@ -24560,6 +24556,11 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     }
     
    
+});
+Roo.apply(Roo.bootstrap.form.TimeField,  {
+    okText : {
+        en : "OK"
+    }
 });
 
 Roo.apply(Roo.bootstrap.form.TimeField,  {
