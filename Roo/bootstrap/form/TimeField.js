@@ -463,10 +463,6 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
  
 
 Roo.apply(Roo.bootstrap.form.TimeField,  {
-
-    buttonText : {
-        ok : "OK"
-    },
   
     template : {
         tag: 'div',
