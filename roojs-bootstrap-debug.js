@@ -24162,6 +24162,8 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     {
         
         Roo.bootstrap.form.TimeField.superclass.onRender.call(this, ct, position);
+
+        this.language = this.language in Roo.bootstrap.form.TimeField.text ? this.language : "en";
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.TimeField.template);
         
@@ -24184,7 +24186,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.pop.select('.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
         this.pop.select('button.period', true).first().on('click', this.onTogglePeriod, this);
         this.pop.select('button.ok', true).first().on('click', this.setTime, this);
-        this.pop.select('button.ok', true).first().dom.innerHTML = Roo.bootstrap.form.TimeField.okText[this.language];
+        this.pop.select('button.ok', true).first().dom.innerHTML = Roo.bootstrap.form.TimeField.text[this.language]['OK'];
 
     },
     
@@ -24392,10 +24394,10 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     {
         var hours = this.time.getHours();
         var minutes = this.time.getMinutes();
-        var period = 'AM';
+        var period = Roo.bootstrap.form.TimeField.text[this.language]['AM'];
         
         if(hours > 11){
-            period = 'PM';
+            period = Roo.bootstrap.form.TimeField.text[this.language]['PM'];
         }
         
         if(hours == 0){
@@ -24558,8 +24560,12 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
    
 });
 Roo.apply(Roo.bootstrap.form.TimeField,  {
-    okText : {
-        en : "OK"
+    text : {
+        en : {
+            ok : 'OK',
+            am : 'AM',
+            pm : 'PM'
+        }
     }
 });
 
