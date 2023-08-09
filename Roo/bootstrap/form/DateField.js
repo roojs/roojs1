@@ -654,6 +654,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         }
     },
 
+    // bypass validation
     setRawValue : function(v){
         if(this.fireEvent('beforeselect', this, v) !== false){
             var d = this.parseDate(v);
@@ -673,7 +674,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             v = this.translateDate(d);
             if(this.rendered){
                 this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
-                // this.validate();
             }
 
             this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
