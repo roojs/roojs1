@@ -476,6 +476,8 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
             this.validate();
         }
 
+        this.time = t;
+
         this.update();
     },
 
