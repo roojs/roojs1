@@ -66,8 +66,6 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         
         Roo.bootstrap.form.TimeField.superclass.onRender.call(this, ct, position);
 
-        this.setTranslation('zh_CN');
-
         this.language = this.language in Roo.bootstrap.form.TimeField.periodText ? this.language : "en";
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.TimeField.template);
@@ -97,7 +95,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
 
     setTranslation: function(lang) 
     {
-        
+
     },
     
     fireKey: function(e){
