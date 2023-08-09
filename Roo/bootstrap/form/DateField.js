@@ -70,12 +70,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
      * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
      */
     format : "m/d/y",
-    // /**
-    //  * @cfg {String} altFormats
-    //  * Multiple date formats separated by "|" to try when parsing a user input value and it doesn't match the defined
-    //  * format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').
-    //  */
-    // altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
     
     weekStart : 0,
     
