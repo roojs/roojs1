@@ -23474,7 +23474,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             var d = this.parseDate(v);
 
             if(!d) {
-                this.date = this.viewDate = '';
+                this.date = this.viewDate = this.hiddenField.value ==  '';
                 Roo.bootstrap.form.DateField.superclass.setValue.call(this, '');
                 return;
             }
