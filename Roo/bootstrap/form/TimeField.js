@@ -92,11 +92,6 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.pop.select('button.ok', true).first().dom.innerHTML = Roo.bootstrap.form.TimeField.okText;
 
     },
-
-    setTranslation: function(lang) 
-    {
-
-    },
     
     fireKey: function(e){
         if (!this.picker().isVisible()){
@@ -473,6 +468,10 @@ Roo.apply(Roo.bootstrap.form.TimeField,  {
         en : {
             am : 'AM',
             pm : 'PM'
+        },
+        zh_CN : {
+            am : '上午',
+            pm : '下午'
         }
     }
 });
