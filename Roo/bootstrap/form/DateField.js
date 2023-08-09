@@ -846,7 +846,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     this.date = this.UTCDate(year, month, day,0,0,0,0);
                     this.viewDate = this.UTCDate(year, month, Math.min(28, day),0,0,0,0);
 //                    this.fill();
-                    //Roo.log(this.formatDate(this.date));
                     this.setValue(this.date);
                     this.hidePopup();
                 }
