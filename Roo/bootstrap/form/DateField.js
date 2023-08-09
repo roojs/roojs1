@@ -630,7 +630,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
     setValue: function(v)
     {
-        Roo.log('SET VALUE: ' + v);
+        Roo.log('SET VALUE:');
+        Roo.log(v);
         if(this.fireEvent('beforeselect', this, v) !== false){
             var d = new Date(this.parseDate(v) ).clearTime();
         
