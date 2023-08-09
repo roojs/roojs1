@@ -508,7 +508,7 @@ Roo.apply(Roo.bootstrap.form.TimeField,  {
                                             {
                                                 tag: 'button',
                                                 cls: 'btn btn-info ok',
-                                                html: 'OK'
+                                                html: this.buttonText.ok
                                             }
                                         ]
                                     }
