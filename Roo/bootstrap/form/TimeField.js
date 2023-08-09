@@ -469,12 +469,14 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
 
         this.value = this.hiddenField.value = t.dateFormat('H:i:s');
 
-        var v = this.time.format(this.format);
+        v = this.translateTime(t);
 
         if(this.rendered){
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
             this.validate();
         }
+
+        this.update();
     },
 
     getValue: function()
