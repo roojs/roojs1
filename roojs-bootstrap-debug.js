@@ -23420,7 +23420,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     {
         Roo.bootstrap.form.DateField.superclass.onBlur.call(this);
 
-        if(this.format == 'Y-m-d' && !this.readOnly) {
+        if(!this.readOnly) {
             var d = this.inputEl().getValue();
             this.setValue(d);
         }
@@ -23464,8 +23464,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
     setValue: function(v)
     {
-        Roo.log('SET VALUE:');
-        Roo.log(v);
         if(this.fireEvent('beforeselect', this, v) !== false){
             var d = this.parseDate(v);
 
