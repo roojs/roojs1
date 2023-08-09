@@ -444,6 +444,15 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     {
         var t = this.parseTime(v);
 
+        if(!t) {
+            this.time = this.viewDate = this.value = this.hiddenField.value =  '';
+            if(this.rendered){
+                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+                this.validate();
+            }
+            return;
+        }
+
         this.value = this.hiddenField.value =  '';
         var v = this.time.format(this.format);
     },
