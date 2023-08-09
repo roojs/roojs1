@@ -650,6 +650,10 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             this.fireEvent('select', this, this.date);
         }
     },
+
+    setRawValue : function(v){
+        return this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+    },
     
     getValue: function()
     {
