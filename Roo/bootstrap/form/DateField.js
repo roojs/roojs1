@@ -580,6 +580,9 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             if(date) {
                 this.setValue(date);
             }
+            else {
+                this.setValue(this.getValue());
+            }
         }
                 
         this.hidePopup();
