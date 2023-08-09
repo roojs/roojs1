@@ -686,7 +686,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     getValue: function()
     {
-        return this.hiddenField.value;
+        return this.value;
     },
 
     getRawValue : function(){
