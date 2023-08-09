@@ -95,8 +95,9 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
 
     },
 
-    setTranslation: function(lang) {
-
+    setTranslation: function(lang) 
+    {
+        
     },
     
     fireKey: function(e){
