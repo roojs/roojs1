@@ -56,7 +56,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     language : 'en',
     okText : {
         en : "OK"
-    }
+    },
     getAutoCreate : function()
     {
         this.after = '<i class="fa far fa-clock"></i>';

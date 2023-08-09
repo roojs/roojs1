@@ -24151,6 +24151,9 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     format : "H:i",
     minuteStep : 1,
     language : 'en',
+    okText : {
+        en : "OK"
+    },
     getAutoCreate : function()
     {
         this.after = '<i class="fa far fa-clock"></i>';
@@ -24557,11 +24560,6 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     }
     
    
-});
-Roo.apply(Roo.bootstrap.form.TimeField,  {
-    okText : {
-        en : "OK"
-    }
 });
 
 Roo.apply(Roo.bootstrap.form.TimeField,  {
