@@ -23475,7 +23475,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             if(!d) {
                 this.date = this.viewDate = this.value = this.hiddenField.value =  '';
                 if(this.rendered){
-                    this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+                    this.inputEl().dom.value = '';
                     this.validate();
                 }
                 return;
@@ -24556,7 +24556,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         if(!t) {
             this.time = this.value = this.hiddenField.value =  '';
             if(this.rendered){
-                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+                this.inputEl().dom.value = '';
                 this.validate();
             }
             return;
