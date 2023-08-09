@@ -532,8 +532,11 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     parseDate : function(value)
     {
-        if(!value || value instanceof Date){
+        if(!value) {
             return false;
+        }
+        if(value instanceof Date){
+            return value;
         }
         var v = Date.parseDate(value, this.format);
 
