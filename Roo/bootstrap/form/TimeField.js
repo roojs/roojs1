@@ -463,7 +463,6 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
  
 
 Roo.apply(Roo.bootstrap.form.TimeField,  {
-  
     template : {
         tag: 'div',
         cls: 'datepicker dropdown-menu',
@@ -504,7 +503,7 @@ Roo.apply(Roo.bootstrap.form.TimeField,  {
                                             {
                                                 tag: 'button',
                                                 cls: 'btn btn-info ok',
-                                                html: "OK"
+                                                html: Roo.bootstrap.form.TimeField.buttonText.ok
                                             }
                                         ]
                                     }
