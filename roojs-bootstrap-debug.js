@@ -24163,8 +24163,6 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         
         Roo.bootstrap.form.TimeField.superclass.onRender.call(this, ct, position);
 
-        Roo.log(this.language);
-
         this.language = this.language in Roo.bootstrap.form.TimeField.periodText ? this.language : "en";
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.TimeField.template);
@@ -24396,10 +24394,10 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     {
         var hours = this.time.getHours();
         var minutes = this.time.getMinutes();
-        var period = Roo.bootstrap.form.TimeField.periodText[this.language]['AM'];
+        var period = Roo.bootstrap.form.TimeField.periodText[this.language]['am'];
         
         if(hours > 11){
-            period = Roo.bootstrap.form.TimeField.periodText[this.language]['PM'];
+            period = Roo.bootstrap.form.TimeField.periodText[this.language]['pm'];
         }
         
         if(hours == 0){
