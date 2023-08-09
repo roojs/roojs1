@@ -625,13 +625,15 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         Roo.log('SET VALUE:');
         Roo.log(v);
         if(this.fireEvent('beforeselect', this, v) !== false){
-            var d = new Date(this.parseDate(v) ).clearTime();
-        
-            if(isNaN(d.getTime())){
+            var d = this.parseDate(v);
+
+            if(!d) {
                 this.date = this.viewDate = '';
                 Roo.bootstrap.form.DateField.superclass.setValue.call(this, '');
                 return;
             }
+
+            d = new Date(d).clearTime();
 
             this.value = this.hiddenField.value = d.dateFormat('Y-m-d');
 
