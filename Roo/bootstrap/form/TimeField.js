@@ -92,6 +92,14 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.pop.select('button.ok', true).first().on('click', this.setTime, this);
         this.pop.select('button.ok', true).first().dom.innerHTML = Roo.bootstrap.form.TimeField.okText;
 
+        this.hiddenField = this.inputEl().insertSibling(
+            {tag : 'input', type : 'hidden', name : this.name},
+            'before',
+            true
+        );
+        this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
+        this.hiddenField.value = this.date.dateFormat('h:i');
+
     },
     
     fireKey: function(e){
