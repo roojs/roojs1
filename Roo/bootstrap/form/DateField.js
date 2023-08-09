@@ -574,7 +574,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     {
         Roo.bootstrap.form.DateField.superclass.onBlur.call(this);
 
-        if(!this.readOnly) {
+        if(this.format == 'Y-m-d' && !this.readOnly) {
             var d = this.inputEl().getValue();
             this.setValue(d);
         }
