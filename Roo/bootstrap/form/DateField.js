@@ -530,7 +530,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         this.picker().setTop(this.inputEl().getBottom()).setLeft(this.inputEl().getLeft());
     },
     
-    // false : fail
+    // return false when it fails
     parseDate : function(value)
     {
         if(!value) {
