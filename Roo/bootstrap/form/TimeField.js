@@ -295,10 +295,10 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     {
         var hours = this.time.getHours();
         var minutes = this.time.getMinutes();
-        var period = 'AM';
+        var period = Roo.bootstrap.form.TimeField.periodText[this.language]['AM'];
         
         if(hours > 11){
-            period = 'PM';
+            period = Roo.bootstrap.form.TimeField.periodText[this.language]['PM'];
         }
         
         if(hours == 0){
