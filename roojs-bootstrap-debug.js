@@ -24185,7 +24185,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.pop.select('button.period', true).first().on('click', this.onTogglePeriod, this);
         this.pop.select('button.ok', true).first().on('click', this.setTime, this);
         Roo.log(Roo.bootstrap.form.TimeField);
-        this.pop.select('button.ok', true).first().dom.innerHTML = Roo.bootstrap.form.TimeField.okText[this.language];
+        this.pop.select('button.ok', true).first().dom.innerHTML = Roo.bootstrap.form.TimeField.okText;
 
     },
     
