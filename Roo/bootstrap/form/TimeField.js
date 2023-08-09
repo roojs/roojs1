@@ -461,7 +461,9 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
    
 });
 Roo.apply(Roo.bootstrap.form.TimeField,  {
-    okText : "OK"
+    okText : {
+        en : "OK"
+    }
 });
 
 Roo.apply(Roo.bootstrap.form.TimeField,  {
