@@ -23422,7 +23422,10 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
         if(!this.readOnly) {
             var d = this.inputEl().getValue();
-            this.setValue(d);
+            var date = this.parseDate(d);
+            if(date) {
+                this.setValue(date);
+            }
         }
                 
         this.hidePopup();
