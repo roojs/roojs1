@@ -426,6 +426,20 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         
     },
 
+    // return false when it fails
+    parseTime : function(value)
+    {
+        if(!value) {
+            return false;
+        }
+        if(value instanceof Date){
+            return value;
+        }
+        var v = Date.parseDate(value, 'H:i:s');
+
+        return (typeof(v) == 'undefined') ? false : v;
+    },
+
     setValue: function(v)
     {
         this.value = this.hiddenField.value =  '';
