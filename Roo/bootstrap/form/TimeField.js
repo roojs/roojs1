@@ -460,7 +460,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         if(!t) {
             this.time = this.value = this.hiddenField.value =  '';
             if(this.rendered){
-                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+                this.inputEl().dom.value = '';
                 this.validate();
             }
             return;
