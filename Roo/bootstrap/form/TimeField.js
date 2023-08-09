@@ -463,15 +463,12 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
    
 });
 Roo.apply(Roo.bootstrap.form.TimeField,  {
-    okText : {
-        en : "OK"
-    },
-
-    periodText : {
+    text : {
         en : {
+            ok : 'OK',
             am : 'AM',
             pm : 'PM'
-        } 
+        }
     }
 });
 
