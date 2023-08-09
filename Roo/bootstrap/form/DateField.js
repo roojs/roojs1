@@ -652,7 +652,31 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     },
 
     setRawValue : function(v){
-        return this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+        if(this.fireEvent('beforeselect', this, v) !== false){
+            var d = this.parseDate(v);
+
+            if(!d) {
+                this.date = this.viewDate = this.value = this.hiddenField.value =  '';
+                Roo.bootstrap.form.DateField.superclass.setValue.call(this, '');
+                return;
+            }
+
+            d = new Date(d).clearTime();
+
+            this.value = this.hiddenField.value = d.dateFormat('Y-m-d');
+
+            v = this.translateDate(d);
+            if(this.rendered){
+                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+                // this.validate();
+            }
+
+            this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
+
+            this.update();
+
+            this.fireEvent('select', this, this.date);
+        }
     },
     
     getValue: function()
