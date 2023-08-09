@@ -131,7 +131,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     setUTCDate: function(d) {
             this.date = d;
-            this.setValue(this.formatDate(this.date));
+            this.setValue(this.date);
     },
 
     setDatesTranslation: function(lang) 
@@ -705,7 +705,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 if (this.dateWithinRange(newDate)){
                     this.date = newDate;
                     this.viewDate = newViewDate;
-                    this.setValue(this.formatDate(this.date));
+                    this.setValue(this.date);
 //                    this.update();
                     e.preventDefault();
                     dateChanged = true;
@@ -732,19 +732,19 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 if (this.dateWithinRange(newDate)){
                     this.date = newDate;
                     this.viewDate = newViewDate;
-                    this.setValue(this.formatDate(this.date));
+                    this.setValue(this.date);
 //                    this.update();
                     e.preventDefault();
                     dateChanged = true;
                 }
                 break;
             case 13: // enter
-                this.setValue(this.formatDate(this.date));
+                this.setValue(this.date);
                 this.hidePopup();
                 e.preventDefault();
                 break;
             case 9: // tab
-                this.setValue(this.formatDate(this.date));
+                this.setValue(this.date);
                 this.hidePopup();
                 break;
             case 16: // shift
@@ -798,7 +798,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                         var date = new Date();
                         this.date = this.UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
 //                        this.fill()
-                        this.setValue(this.formatDate(this.date));
+                        this.setValue(this.date);
                         
                         this.hidePopup();
                         break;
@@ -819,7 +819,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     }
                     
                     if(this.singleMode){
-                        this.setValue(this.formatDate(this.viewDate));
+                        this.setValue(this.viewDate);
                         this.hidePopup();
                         return;
                     }
@@ -856,7 +856,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     this.viewDate = this.UTCDate(year, month, Math.min(28, day),0,0,0,0);
 //                    this.fill();
                     //Roo.log(this.formatDate(this.date));
-                    this.setValue(this.formatDate(this.date));
+                    this.setValue(this.date);
                     this.hidePopup();
                 }
                 break;
