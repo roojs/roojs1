@@ -23474,8 +23474,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             var d = this.parseDate(v);
 
             if(!d) {
-                this.date = this.viewDate = this.hiddenField.value ==  '';
-                Roo.log('SET EMPTY');
+                this.date = this.viewDate = this.hiddenField.value =  '';
                 Roo.bootstrap.form.DateField.superclass.setValue.call(this, '');
                 return;
             }
@@ -23858,9 +23857,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         if(this.getVisibilityEl().hasClass('hidden')){
             return true;
         }
-
-        Roo.log('VALUE');
-        Roo.log(value);
         
         if(value.length < 1)  {
             if(this.allowBlank){
