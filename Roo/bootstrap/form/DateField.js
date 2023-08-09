@@ -276,7 +276,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             true
         );
         this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
-        this.hiddenField.value = this.date.dateFormat('Y-m-d');
+        this.value = this.hiddenField.value = this.date.dateFormat('Y-m-d');
 
     },
     
