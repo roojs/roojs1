@@ -1012,6 +1012,9 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         if(this.getVisibilityEl().hasClass('hidden')){
             return true;
         }
+
+        Roo.log('VALUE');
+        Roo.log(value);
         
         if(value.length < 1)  {
             if(this.allowBlank){
