@@ -54,9 +54,6 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     format : "H:i",
     minuteStep : 1,
     language : 'en',
-    buttonText : {
-        ok : "OK"
-    },
 
     getAutoCreate : function()
     {
