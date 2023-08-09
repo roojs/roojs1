@@ -481,6 +481,31 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.update();
     },
 
+    setRawValue: function(v)
+    {
+        var t = this.parseTime(v);
+
+        if(!t) {
+            this.time = this.value = this.hiddenField.value =  '';
+            if(this.rendered){
+                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            }
+            return;
+        }
+
+        this.value = this.hiddenField.value = t.dateFormat('H:i:s');
+
+        v = this.translateTime(t);
+
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+        }
+
+        this.time = t;
+
+        this.update();
+    },
+
     getValue: function()
     {
         return this.value;
