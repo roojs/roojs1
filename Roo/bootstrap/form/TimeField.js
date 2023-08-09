@@ -453,7 +453,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
             return;
         }
 
-        this.value = this.hiddenField.value = d.dateFormat('Y-m-d');
+        this.value = this.hiddenField.value = t.dateFormat('H:i:s');
 
         this.value = this.hiddenField.value =  '';
         var v = this.time.format(this.format);
