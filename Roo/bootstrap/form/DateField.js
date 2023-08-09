@@ -539,11 +539,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         if(value instanceof Date){
             return value;
         }
-        var v = Date.parseDate(value, this.format);
-
-        if(typeof(v) == 'undefined') {
-            v = Date.parseDate(value, 'Y-m-d');
-        }
+        var v = Date.parseDate(value, 'Y-m-d');
 
         return (typeof(v) == 'undefined') ? false : v;
     },
