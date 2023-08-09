@@ -66,7 +66,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         
         Roo.bootstrap.form.TimeField.superclass.onRender.call(this, ct, position);
 
-        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : "en";
+        this.language = this.language in Roo.bootstrap.form.TimeField.text ? this.language : "en";
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.form.TimeField.template);
         
