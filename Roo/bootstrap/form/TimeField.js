@@ -440,6 +440,20 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         return (typeof(v) == 'undefined') ? false : v;
     },
 
+    translateTime : function(date)
+    {
+        switch(this.language) {
+            case 'zh_CN':
+                return new Intl.DateTimeFormat('zh-CN', {
+                    hour : 'numeric',
+                    minute : 'numeric',
+                    hour12 : true
+                }).format(date);
+            default :
+                return this.formatDate(date);
+        }
+    },
+
     setValue: function(v)
     {
         var t = this.parseTime(v);
@@ -455,8 +469,12 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
 
         this.value = this.hiddenField.value = t.dateFormat('H:i:s');
 
-        this.value = this.hiddenField.value =  '';
         var v = this.time.format(this.format);
+
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
+        }
     },
 
     getValue: function()
