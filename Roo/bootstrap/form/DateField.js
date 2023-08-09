@@ -629,6 +629,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
             if(!d) {
                 this.date = this.viewDate = this.hiddenField.value ==  '';
+                Roo.log('SET EMPTY');
                 Roo.bootstrap.form.DateField.superclass.setValue.call(this, '');
                 return;
             }
