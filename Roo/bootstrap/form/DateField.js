@@ -639,6 +639,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
             v = this.translateDate(d);
             if(this.rendered){
+                Roo.log('SET EMPTY');
                 this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
                 this.validate();
             }
