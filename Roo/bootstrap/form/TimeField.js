@@ -94,6 +94,10 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.pop.select('button.ok', true).first().dom.innerHTML = Roo.bootstrap.form.TimeField.okText;
 
     },
+
+    setTranslation: function(lang) {
+
+    },
     
     fireKey: function(e){
         if (!this.picker().isVisible()){
