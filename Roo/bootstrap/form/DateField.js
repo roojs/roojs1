@@ -1043,7 +1043,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             return false;
         }
         
-        if(typeof(this.parseDate(value)) == 'undefined'){
+        if(!this.parseDate(value)){
             return false;
         }
         
