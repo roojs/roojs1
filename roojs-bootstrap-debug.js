@@ -23122,7 +23122,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             true
         );
         this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
-        this.hiddenField.value = this.date.dateFormat('Y-m-d');
+        this.value = this.hiddenField.value = this.date.dateFormat('Y-m-d');
 
     },
     
@@ -23532,7 +23532,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
     
     getValue: function()
     {
-        return this.hiddenField.value;
+        return this.value;
     },
 
     getRawValue : function(){
@@ -24195,7 +24195,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
             true
         );
         this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
-        this.hiddenField.value = this.time.dateFormat('h:i');
+        this.value = this.hiddenField.value = this.time.dateFormat('H:i:s');
 
     },
     
@@ -24516,16 +24516,96 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     setTime : function()
     {
         this.hide();
-        this.setValue(this.time.format(this.format));
+        this.setValue(this.time);
         
         this.fireEvent('select', this, this.date);
         
         
     },
 
+    // return false when it fails
+    parseTime : function(value)
+    {
+        if(!value) {
+            return false;
+        }
+        if(value instanceof Date){
+            return value;
+        }
+        var v = Date.parseDate(value, 'H:i:s');
+
+        return (typeof(v) == 'undefined') ? false : v;
+    },
+
+    translateTime : function(time)
+    {
+        switch(this.language) {
+            case 'zh_CN':
+                return new Intl.DateTimeFormat('zh-CN', {
+                    hour : 'numeric',
+                    minute : 'numeric',
+                    hour12 : true
+                }).format(time);
+            default :
+                return this.time.format(this.format);
+        }
+    },
+
+    setValue: function(v)
+    {
+        var t = this.parseTime(v);
+
+        if(!t) {
+            this.time = this.value = this.hiddenField.value =  '';
+            if(this.rendered){
+                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+                this.validate();
+            }
+            return;
+        }
+
+        this.value = this.hiddenField.value = t.dateFormat('H:i:s');
+
+        v = this.translateTime(t);
+
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            this.validate();
+        }
+
+        this.time = t;
+
+        this.update();
+    },
+
+    setRawValue: function(v)
+    {
+        var t = this.parseTime(v);
+
+        if(!t) {
+            this.time = this.value = this.hiddenField.value =  '';
+            if(this.rendered){
+                this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+            }
+            return;
+        }
+
+        this.value = this.hiddenField.value = t.dateFormat('H:i:s');
+
+        v = this.translateTime(t);
+
+        if(this.rendered){
+            this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
+        }
+
+        this.time = t;
+
+        this.update();
+    },
+
     getValue: function()
     {
-        return this.hiddenField.value;
+        return this.value;
     },
 
     getRawValue : function(){
