@@ -24565,6 +24565,10 @@ Roo.apply(Roo.bootstrap.form.TimeField,  {
         en : {
             am : 'AM',
             pm : 'PM'
+        },
+        zh_CN : {
+            am : '上午',
+            pm : '下午'
         }
     }
 });
