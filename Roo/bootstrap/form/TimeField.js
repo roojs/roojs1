@@ -416,6 +416,15 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         
         
     },
+
+    getValue: function()
+    {
+        return this.hiddenField.value;
+    },
+
+    getRawValue : function(){
+        return this.getValue();
+    },
     
     onMousedown: function(e){
         e.stopPropagation();
