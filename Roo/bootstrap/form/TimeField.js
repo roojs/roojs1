@@ -87,7 +87,8 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.pop.select('.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
         this.pop.select('button.period', true).first().on('click', this.onTogglePeriod, this);
         this.pop.select('button.ok', true).first().on('click', this.setTime, this);
-        this.pop.select('button.ok', true).first().dom.innerHTML = this.okText[this.language];
+        Roo.log(this);
+        // this.pop.select('button.ok', true).first().dom.innerHTML = this.okText[this.language];
 
     },
     
