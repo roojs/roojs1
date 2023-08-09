@@ -24500,7 +24500,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.update();
         this.place();
         
-        this.fireEvent('show', this, this.date);
+        this.fireEvent('show', this, this.time);
     },
     
     hide : function()
@@ -24508,7 +24508,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.picker().hide();
         this.pop.hide();
         
-        this.fireEvent('hide', this, this.date);
+        this.fireEvent('hide', this, this.time);
     },
     
     setTime : function()
@@ -24516,7 +24516,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.hide();
         this.setValue(this.time);
         
-        this.fireEvent('select', this, this.date);
+        this.fireEvent('select', this, this.time);
         
         
     },
@@ -24545,7 +24545,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
                     hour12 : true
                 }).format(time);
             default :
-                return this.time.format(this.format);
+                return time.format(this.format);
         }
     },
 
