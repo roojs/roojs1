@@ -98,7 +98,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
             true
         );
         this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
-        this.hiddenField.value = this.time.dateFormat('h:i');
+        this.hiddenField.value = this.time.dateFormat('H:i:s');
 
     },
     
@@ -424,6 +424,12 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.fireEvent('select', this, this.date);
         
         
+    },
+
+    setValue: function(v)
+    {
+        this.value = this.hiddenField.value =  '';
+        var v = this.time.format(this.format);
     },
 
     getValue: function()
