@@ -24151,6 +24151,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     format : "H:i",
     minuteStep : 1,
     language : 'en',
+    hiddenField : false,
     getAutoCreate : function()
     {
         this.after = '<i class="fa far fa-clock"></i>';
@@ -24187,6 +24188,14 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.pop.select('button.period', true).first().on('click', this.onTogglePeriod, this);
         this.pop.select('button.ok', true).first().on('click', this.setTime, this);
         this.pop.select('button.ok', true).first().dom.innerHTML = Roo.bootstrap.form.TimeField.okText;
+
+        this.hiddenField = this.inputEl().insertSibling(
+            {tag : 'input', type : 'hidden', name : this.name},
+            'before',
+            true
+        );
+        this.inputEl().dom.setAttribute('name', this.name + '____hidden___');
+        this.hiddenField.value = this.time.dateFormat('h:i');
 
     },
     
@@ -24512,6 +24521,15 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         this.fireEvent('select', this, this.date);
         
         
+    },
+
+    getValue: function()
+    {
+        return this.hiddenField.value;
+    },
+
+    getRawValue : function(){
+        return this.getValue();
     },
     
     onMousedown: function(e){
