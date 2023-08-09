@@ -24557,7 +24557,9 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
    
 });
 Roo.apply(Roo.bootstrap.form.TimeField,  {
-    okText : "OK"
+    okText : {
+        en : "OK"
+    }
 });
 
 Roo.apply(Roo.bootstrap.form.TimeField,  {
@@ -24601,7 +24603,7 @@ Roo.apply(Roo.bootstrap.form.TimeField,  {
                                             {
                                                 tag: 'button',
                                                 cls: 'btn btn-info ok',
-                                                html: Roo.bootstrap.form.TimeField.okText
+                                                html: Roo.bootstrap.form.TimeField.okText[Roo.bootstrap.form.TimeField.language]
                                             }
                                         ]
                                     }
