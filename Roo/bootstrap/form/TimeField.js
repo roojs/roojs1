@@ -440,11 +440,12 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         return (typeof(v) == 'undefined') ? false : v;
     },
 
-    setValue: function(v)
-    {
-        this.value = this.hiddenField.value =  '';
-        var v = this.time.format(this.format);
-    },
+    // setValue: function(v)
+    // {
+
+    //     this.value = this.hiddenField.value =  '';
+    //     var v = this.time.format(this.format);
+    // },
 
     getValue: function()
     {
