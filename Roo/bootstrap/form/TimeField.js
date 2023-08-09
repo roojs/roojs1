@@ -440,7 +440,7 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
         return (typeof(v) == 'undefined') ? false : v;
     },
 
-    translateTime : function(date)
+    translateTime : function(time)
     {
         switch(this.language) {
             case 'zh_CN':
@@ -448,9 +448,9 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
                     hour : 'numeric',
                     minute : 'numeric',
                     hour12 : true
-                }).format(date);
+                }).format(time);
             default :
-                return this.formatDate(date);
+                return this.time.format(this.format);
         }
     },
 
