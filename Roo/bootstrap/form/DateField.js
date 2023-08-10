@@ -141,6 +141,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
         var locale = lang.replace('_', '-');
 
+        var latinRegex = new RegExp('[A-Za-z]')
+
         // fill days
         for(var i = 0; i < 7; i++) {
             var date = new Date(2020, 0, 5 + i);
@@ -157,7 +159,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 weekday : 'narrow'
             }).format(date);
 
-            if(day.test(/[A-Za-z]+/)) {
+            if(day.matches(/[A-Za-z]+/)) {
                 dayShort = 
             }
 
