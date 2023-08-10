@@ -257,6 +257,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         }
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
+            Roo.log('ELEMENT');
+            Roo.log(v);
             if(!this.calendarWeeks){
                 v.remove();
                 return;

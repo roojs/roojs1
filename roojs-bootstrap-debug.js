@@ -23041,9 +23041,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         Roo.bootstrap.form.DateField.superclass.onRender.call(this, ct, position);
 
         this.translateDates(this.language);
-
-        Roo.log(Roo.bootstrap.form.DateField.dates);
-        Roo.log(Roo.bootstrap.form.DateField.todayText);
         
         this.isRTL = Roo.bootstrap.form.DateField.dates[this.language].rtl || false;
         this.format = this.format || 'm/d/y';
@@ -23106,12 +23103,14 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         }
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
+            Roo.log('ELEMENT');
+            Roo.log(v);
             if(!this.calendarWeeks){
                 v.remove();
                 return;
             }
             
-            v.dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].today;
+            v.dom.innerHTML = Roo.bootstrap.form.DateField.todayText;
             v.attr('colspan', function(i, val){
                 return parseInt(val) + 1;
             });
