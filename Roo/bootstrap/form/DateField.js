@@ -163,22 +163,10 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 dayShort = day.substring(0, 3);
                 dayMin = day.substring(0, 2);
             }
-
-            translation['days'].push(new Intl.DateTimeFormat(locale, {
-                weekday : 'long'
-            }).format(date));
-
-            if(translation['day'][i].matches(/[A-Za-z]+/)) {
-
-            }
-
-            translation['daysShort'].push(new Intl.DateTimeFormat(locale, {
-                weekday : 'short'
-            }).format(date));
-
-            translation['daysMin'].push(new Intl.DateTimeFormat(locale, {
-                weekday : 'narrow'
-            }).format(date));
+            
+            translation['days'] = day;
+            translation['daysShort'] = dayShort;
+            translation['daysMin'] = dayMin;
         }
 
         // fill months
