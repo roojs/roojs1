@@ -186,7 +186,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             }
 
             translation.months.push(month);
-            translation/monthsShort.push(monthShort);
+            translation.monthsShort.push(monthShort);
         }
     },
         
