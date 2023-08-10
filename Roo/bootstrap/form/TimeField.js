@@ -292,11 +292,11 @@ Roo.extend(Roo.bootstrap.form.TimeField, Roo.bootstrap.form.Input,  {
     update: function()
     {
         // default minute is a multiple of minuteStep
-        if(typeof(this.time) === 'undefined') {
+        if(typeof(this.time) === 'undefined' || this.time.length == 0) {
             this.time = new Date();
             this.time = this.time.add(Date.MINUTE, Math.round(parseInt(this.time.format('i')) / this.minuteStep) * this.minuteStep - parseInt(this.time.format('i')));
         }
-        this.time = (typeof(this.time) === 'undefined') ? new Date() : this.time;
+        this.time = (typeof(this.time) === 'undefined' || this.time.length == 0) ? new Date() : this.time;
         
         this.fill();
     },
