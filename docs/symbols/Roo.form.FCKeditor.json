@@ -214,6 +214,14 @@
       "optvals" : []
     },
     {
+      "name" : "labelSeparator",
+      "type" : "String",
+      "desc" : "the ':' after a field label (default :)  = set it to empty string to hide the field label.",
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "cls",
       "type" : "String",
       "desc" : "A CSS class to apply to the field's underlying element.",
@@ -254,14 +262,6 @@
       "optvals" : []
     },
     {
-      "name" : "validationEvent",
-      "type" : "String/Boolean",
-      "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
-      "memberOf" : "Roo.form.Field",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "autoCreate",
       "type" : "String/Object",
       "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"textarea\", style: \"width:300px;height:60px;\", autocomplete: \"off\"})",
@@ -298,6 +298,14 @@
       "type" : "Number",
       "desc" : "The minimum height to allow when grow = true (defaults to 60)",
       "memberOf" : "Roo.form.TextArea",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "validationEvent",
+      "type" : "String/Boolean",
+      "desc" : "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
+      "memberOf" : "Roo.form.Field",
       "isOptional" : false,
       "optvals" : []
     },

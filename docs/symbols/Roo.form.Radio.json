@@ -133,6 +133,14 @@
       "optvals" : []
     },
     {
+      "name" : "labelSeparator",
+      "type" : "String",
+      "desc" : "the ':' after a field label (default :)  = set it to empty string to hide the field label.",
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "tabIndex",
       "type" : "Number",
       "desc" : "The tabIndex for this field. Note this only applies to fields that are rendered, not those which are built via applyTo (defaults to undefined).",
@@ -253,17 +261,17 @@
       "optvals" : []
     },
     {
-      "name" : "name",
+      "name" : "qtip",
       "type" : "String",
-      "desc" : "The field's HTML name attribute.",
+      "desc" : "Mouse over tip",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
       "optvals" : []
     },
     {
-      "name" : "qtip",
+      "name" : "name",
       "type" : "String",
-      "desc" : "Mouse over tip",
+      "desc" : "The field's HTML name attribute.",
       "memberOf" : "Roo.form.Field",
       "isOptional" : false,
       "optvals" : []

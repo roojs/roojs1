@@ -221,6 +221,14 @@
       "optvals" : []
     },
     {
+      "name" : "labelSeparator",
+      "type" : "String",
+      "desc" : "the ':' after a field label (default :)  = set it to empty string to hide the field label.",
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "hiddenName",
       "type" : "String",
       "desc" : "The hidden name of the field, often contains an comma seperated list of names",
@@ -261,14 +269,6 @@
       "optvals" : []
     },
     {
-      "name" : "autoCreate",
-      "type" : "String/Object",
-      "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"20\", autocomplete: \"off\"})",
-      "memberOf" : "Roo.form.Field",
-      "isOptional" : false,
-      "optvals" : []
-    },
-    {
       "name" : "maskRe",
       "type" : "String",
       "desc" : "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
@@ -297,6 +297,14 @@
       "type" : "Number",
       "desc" : "The minimum width to allow when grow = true (defaults to 30)",
       "memberOf" : "Roo.form.TextField",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
+      "name" : "autoCreate",
+      "type" : "String/Object",
+      "desc" : "A DomHelper element spec, or true for a default element spec (defaults to\n{tag: \"input\", type: \"text\", size: \"20\", autocomplete: \"off\"})",
+      "memberOf" : "Roo.form.Field",
       "isOptional" : false,
       "optvals" : []
     },

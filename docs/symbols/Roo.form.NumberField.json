@@ -269,6 +269,14 @@
       "optvals" : []
     },
     {
+      "name" : "labelSeparator",
+      "type" : "String",
+      "desc" : "the ':' after a field label (default :)  = set it to empty string to hide the field label.",
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "fieldClass",
       "type" : "String",
       "desc" : "The default CSS class for the field (defaults to \"x-form-field x-form-num-field\")",

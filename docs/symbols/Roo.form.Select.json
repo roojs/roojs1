@@ -374,6 +374,14 @@
       "optvals" : []
     },
     {
+      "name" : "labelSeparator",
+      "type" : "String",
+      "desc" : "the ':' after a field label (default :)  = set it to empty string to hide the field label.",
+      "memberOf" : "Roo.form.Field",
+      "isOptional" : false,
+      "optvals" : []
+    },
+    {
       "name" : "validateOnBlur",
       "type" : "Boolean",
       "desc" : "Whether the field should validate when it loses focus (defaults to true).",

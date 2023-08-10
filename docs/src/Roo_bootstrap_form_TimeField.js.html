@@ -53,7 +53,8 @@
      */
     </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;H:i&quot;</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">minuteStep </span><span class="jsdoc-syntax">: 1,
-
+    </span><span class="jsdoc-var">language </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'en'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">hiddenField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.after </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;fa far fa-clock&quot;&gt;&lt;/i&gt;'</span><span class="jsdoc-syntax">;
@@ -65,6 +66,8 @@
     {
 
         </span><span class="jsdoc-var">Roo.bootstrap.form.TimeField.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.language </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.language </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">Roo.bootstrap.form.TimeField.periodText </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.language </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;en&quot;</span><span class="jsdoc-syntax">;
 
         </span><span class="jsdoc-var">this.pickerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.form.TimeField.template</span><span class="jsdoc-syntax">);
 
@@ -87,6 +90,14 @@
         </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.minutes-down'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDecrementMinutes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'button.period'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTogglePeriod</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'button.ok'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.setTime</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'button.ok'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.form.TimeField.okText</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.hiddenField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.insertSibling</span><span class="jsdoc-syntax">(
+            {</span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">},
+            </span><span class="jsdoc-string">'before'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'____hidden___'</span><span class="jsdoc-syntax">);
 
     },
 
@@ -294,10 +305,10 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hours </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.getHours</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minutes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.getMinutes</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">period </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'AM'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">period </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.form.TimeField.periodText</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">][</span><span class="jsdoc-string">'am'</span><span class="jsdoc-syntax">];
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hours </span><span class="jsdoc-syntax">&gt; 11){
-            </span><span class="jsdoc-var">period </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'PM'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">period </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.form.TimeField.periodText</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">][</span><span class="jsdoc-string">'pm'</span><span class="jsdoc-syntax">];
         }
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hours </span><span class="jsdoc-syntax">== 0){
@@ -393,7 +404,7 @@
         </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.place</span><span class="jsdoc-syntax">();
 
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.time</span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -401,17 +412,106 @@
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.pop.hide</span><span class="jsdoc-syntax">();
 
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.time</span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-var">setTime </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.time.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.time</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.time</span><span class="jsdoc-syntax">);
 
 
+    },
+
+    </span><span class="jsdoc-comment">// return false when it fails
+    </span><span class="jsdoc-var">parseTime </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'H:i:s'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">translateTime </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">time</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'zh_CN'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Intl.DateTimeFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'zh-CN'</span><span class="jsdoc-syntax">, {
+                    </span><span class="jsdoc-var">hour </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'numeric'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">minute </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'numeric'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">hour12 </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+                </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">time</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">default </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">time.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">setValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseTime</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t.dateFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'H:i:s'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.translateTime</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+        }
+
+        </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">setRawValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseTime</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t.dateFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'H:i:s'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.translateTime</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
+    },
+
+    </span><span class="jsdoc-var">getValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getRawValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
     },
 
     </span><span class="jsdoc-var">onMousedown</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
@@ -459,10 +559,21 @@
 
 
 });
-
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.form.TimeField</span><span class="jsdoc-syntax">,  {
+    </span><span class="jsdoc-var">okText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'OK'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">periodText </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-var">en </span><span class="jsdoc-syntax">: {
+            </span><span class="jsdoc-var">am </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'AM'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">pm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'PM'
+        </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-var">zh_CN </span><span class="jsdoc-syntax">: {
+            </span><span class="jsdoc-var">am </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'上午'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">pm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'下午'
+        </span><span class="jsdoc-syntax">}
+    }
+});
 
 </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.form.TimeField</span><span class="jsdoc-syntax">,  {
-
     </span><span class="jsdoc-var">template </span><span class="jsdoc-syntax">: {
         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'datepicker dropdown-menu'</span><span class="jsdoc-syntax">,
@@ -503,7 +614,7 @@
                                             {
                                                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
                                                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-info ok'</span><span class="jsdoc-syntax">,
-                                                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'OK'
+                                                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;OK&quot; </span><span class="jsdoc-comment">// this is overridden on construciton
                                             </span><span class="jsdoc-syntax">}
                                         ]
                                     }

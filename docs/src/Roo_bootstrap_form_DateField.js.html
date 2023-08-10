@@ -70,12 +70,6 @@
      * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
      */
     </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;m/d/y&quot;</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-comment">/**
-     * @cfg {String} altFormats
-     * Multiple date formats separated by &quot;|&quot; to try when parsing a user input value and it doesn't match the defined
-     * format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').
-     */
-    </span><span class="jsdoc-var">altFormats </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d&quot;</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">weekStart </span><span class="jsdoc-syntax">: 0,
 
@@ -103,6 +97,8 @@
 
     </span><span class="jsdoc-var">singleMode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
+    </span><span class="jsdoc-var">hiddenField </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
     </span><span class="jsdoc-var">UTCDate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.UTC.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">));
@@ -129,7 +125,69 @@
 
     </span><span class="jsdoc-var">setUTCDate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">translateDates</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">translation </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.form.DateField.dates</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">lang</span><span class="jsdoc-syntax">] = {
+            </span><span class="jsdoc-var">days</span><span class="jsdoc-syntax">: [],
+            </span><span class="jsdoc-var">daysShort</span><span class="jsdoc-syntax">: [],
+            </span><span class="jsdoc-var">daysMin</span><span class="jsdoc-syntax">: [],
+            </span><span class="jsdoc-var">months</span><span class="jsdoc-syntax">: [],
+            </span><span class="jsdoc-var">monthsShort</span><span class="jsdoc-syntax">: []
+        };
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">locale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">lang.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'_'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">is_latin </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-string">'zh-hk'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'zh-cn'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'jp'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'ko' </span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">locale.toLowerCase</span><span class="jsdoc-syntax">()) &lt; 0;
+
+
+        </span><span class="jsdoc-comment">// fill days
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; 7; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(2020, 0, 5 + </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">day </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Intl.DateTimeFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">locale</span><span class="jsdoc-syntax">, {
+                </span><span class="jsdoc-var">weekday </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'long'
+            </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dayShort </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Intl.DateTimeFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">locale</span><span class="jsdoc-syntax">, {
+                </span><span class="jsdoc-var">weekday </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'short'
+            </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dayMin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Intl.DateTimeFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">locale</span><span class="jsdoc-syntax">, {
+                </span><span class="jsdoc-var">weekday </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'narrow'
+            </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">is_latin</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">dayShort </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">day.substring</span><span class="jsdoc-syntax">(0, 3);
+                </span><span class="jsdoc-var">dayMin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">day.substring</span><span class="jsdoc-syntax">(0, 2);
+            }
+
+            </span><span class="jsdoc-var">translation.days.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">day</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">translation.daysShort.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dayShort</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">translation.daysMin.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dayMin</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-comment">// fill months
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; 12; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(2020, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Intl.DateTimeFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">locale</span><span class="jsdoc-syntax">, {
+                </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'long'
+            </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">monthShort </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Intl.DateTimeFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">locale</span><span class="jsdoc-syntax">, {
+                </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'short'
+            </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">is_latin</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">monthShort </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">month.substring</span><span class="jsdoc-syntax">(0, 3);
+            }
+
+            </span><span class="jsdoc-var">translation.months.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">month</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">translation</span><span class="jsdoc-syntax">/</span><span class="jsdoc-var">monthsShort.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">monthShort</span><span class="jsdoc-syntax">);
+        }
     },
 
     </span><span class="jsdoc-var">onRender</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
@@ -137,9 +195,7 @@
 
         </span><span class="jsdoc-var">Roo.bootstrap.form.DateField.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-var">this.language </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.language </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'en'</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.language </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.language </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">Roo.bootstrap.form.DateField.dates </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.language </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.language.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">)[0];
-        </span><span class="jsdoc-var">this.language </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.language </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">Roo.bootstrap.form.DateField.dates </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.language </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;en&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.translateDates</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-var">this.isRTL </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.form.DateField.dates</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.rtl </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.format </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.format </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'m/d/y'</span><span class="jsdoc-syntax">;
@@ -202,15 +258,7 @@
         }
 
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot th.today'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.calendarWeeks</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">v.remove</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-            }
-
-            </span><span class="jsdoc-var">v.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.form.DateField.dates</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.today</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">v.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">) + 1;
-            });
+            </span><span class="jsdoc-var">v.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.form.DateField.todayText</span><span class="jsdoc-syntax">;
         });
 
 
@@ -229,6 +277,14 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isInline</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.showPopup</span><span class="jsdoc-syntax">();
         }
+
+        </span><span class="jsdoc-var">this.hiddenField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.insertSibling</span><span class="jsdoc-syntax">(
+            {</span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">},
+            </span><span class="jsdoc-string">'before'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'name'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'____hidden___'</span><span class="jsdoc-syntax">);
+
     },
 
     </span><span class="jsdoc-var">picker </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -247,14 +303,6 @@
 
             ]
         };
-
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.calendarWeeks</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">dow.cn.push</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'cw'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;nbsp;'
-            </span><span class="jsdoc-syntax">})
-        }
 
         </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dowCnt </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.weekStart </span><span class="jsdoc-syntax">+ 7) {
             </span><span class="jsdoc-var">dow.cn.push</span><span class="jsdoc-syntax">({
@@ -315,12 +363,6 @@
 
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;.datepicker-days thead th.switch'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.form.DateField.dates</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.months</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">month</span><span class="jsdoc-syntax">]+</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">;
 
-</span><span class="jsdoc-comment">//        this.picker().select('&gt;tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.form.DateField.dates[this.language].today;
-
-//        this.picker.select('&gt;tfoot th.today').
-//						.text(dates[this.language].today)
-//						.toggle(this.todayBtn !== false);
-
         </span><span class="jsdoc-var">this.updateNavArrows</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.fillMonths</span><span class="jsdoc-syntax">();
 
@@ -354,26 +396,6 @@
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: []
                 };
-
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.calendarWeeks</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-comment">// ISO 8601: First week contains first thursday.
-                    // ISO also states week starts on Monday, but we can be more abstract here.
-                    </span><span class="jsdoc-keyword">var
-                    </span><span class="jsdoc-comment">// Start of current week: based on weekstart/current date
-                    </span><span class="jsdoc-var">ws </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(+</span><span class="jsdoc-var">prevMonth </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.weekStart </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">prevMonth.getUTCDay</span><span class="jsdoc-syntax">() - 7) % 7 * 864e5),
-                    </span><span class="jsdoc-comment">// Thursday of this week
-                    </span><span class="jsdoc-var">th </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(+</span><span class="jsdoc-var">ws </span><span class="jsdoc-syntax">+ (7 + 4 - </span><span class="jsdoc-var">ws.getUTCDay</span><span class="jsdoc-syntax">()) % 7 * 864e5),
-                    </span><span class="jsdoc-comment">// First Thursday of year, year from thursday
-                    </span><span class="jsdoc-var">yth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(+(</span><span class="jsdoc-var">yth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.UTCDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">th.getUTCFullYear</span><span class="jsdoc-syntax">(), 0, 1)) + (7 + 4 - </span><span class="jsdoc-var">yth.getUTCDay</span><span class="jsdoc-syntax">())%7*864e5),
-                    </span><span class="jsdoc-comment">// Calendar week: ms between thursdays, div ms per day, div 7 days
-                    </span><span class="jsdoc-var">calWeek </span><span class="jsdoc-syntax">=  (</span><span class="jsdoc-var">th </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">yth</span><span class="jsdoc-syntax">) / 864e5 / 7 + 1;
-
-                    </span><span class="jsdoc-var">fillMonths.cn.push</span><span class="jsdoc-syntax">({
-                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'cw'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">calWeek
-                    </span><span class="jsdoc-syntax">});
-                }
             }
 
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">prevMonth.getUTCFullYear</span><span class="jsdoc-syntax">() &lt; </span><span class="jsdoc-var">year </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">prevMonth.getUTCFullYear</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-var">year </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">prevMonth.getUTCMonth</span><span class="jsdoc-syntax">() &lt; </span><span class="jsdoc-var">month</span><span class="jsdoc-syntax">)) {
@@ -481,30 +503,38 @@
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBottom</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getLeft</span><span class="jsdoc-syntax">());
     },
 
+    </span><span class="jsdoc-comment">// return false when it fails
     </span><span class="jsdoc-var">parseDate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">value </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.useIso </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">value.match</span><span class="jsdoc-syntax">(/^(\d{4})-0?(\d+)-0?(\d+)/))) {
-            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'Y-m-d'</span><span class="jsdoc-syntax">);
-        }
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.altFormats</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.altFormatsArray</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.altFormatsArray </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.altFormats.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;|&quot;</span><span class="jsdoc-syntax">);
-            }
-            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.altFormatsArray.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-                </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.altFormatsArray</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
-            }
-        }
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'Y-m-d'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-var">formatDate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fmt</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">|| !(</span><span class="jsdoc-var">date </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">)) ?
         </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">date.dateFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fmt </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">translateDate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'zh_CN'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Intl.DateTimeFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'zh-CN'</span><span class="jsdoc-syntax">, {
+                    </span><span class="jsdoc-var">year </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'numeric'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'long'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">day </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'numeric'
+                </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">default </span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">);
+        }
     },
 
     </span><span class="jsdoc-var">onFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -517,9 +547,16 @@
     {
         </span><span class="jsdoc-var">Roo.bootstrap.form.DateField.superclass.onBlur.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getValue</span><span class="jsdoc-syntax">();
-
-        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.readOnly</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getValue</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">());
+            }
+        }
 
         </span><span class="jsdoc-var">this.hidePopup</span><span class="jsdoc-syntax">();
     },
@@ -561,17 +598,56 @@
     </span><span class="jsdoc-var">setValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeselect'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) )</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
 
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getTime</span><span class="jsdoc-syntax">())){
-                </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.viewDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">Roo.bootstrap.form.DateField.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.viewDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+                }
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
 
-            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">();
 
-            </span><span class="jsdoc-var">Roo.bootstrap.form.DateField.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.dateFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Y-m-d'</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.translateDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+            }
+
+            </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getTime</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">d.getTimezoneOffset</span><span class="jsdoc-syntax">()*60000);
+
+            </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">// bypass validation
+    </span><span class="jsdoc-var">setRawValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeselect'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.viewDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+                }
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.hiddenField.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.dateFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Y-m-d'</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.translateDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
+            }
 
             </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getTime</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">d.getTimezoneOffset</span><span class="jsdoc-syntax">()*60000);
 
@@ -583,7 +659,11 @@
 
     </span><span class="jsdoc-var">getValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getRawValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
     },
 
     </span><span class="jsdoc-var">fireKey</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
@@ -626,7 +706,7 @@
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dateWithinRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newDate</span><span class="jsdoc-syntax">)){
                     </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">newDate</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-var">this.viewDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">newViewDate</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
+                    </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
 </span><span class="jsdoc-comment">//                    this.update();
                     </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-var">dateChanged </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
@@ -653,19 +733,19 @@
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dateWithinRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newDate</span><span class="jsdoc-syntax">)){
                     </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">newDate</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-var">this.viewDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">newViewDate</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
+                    </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
 </span><span class="jsdoc-comment">//                    this.update();
                     </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-var">dateChanged </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
                 }
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">13: </span><span class="jsdoc-comment">// enter
-                </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">this.hidePopup</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">9: </span><span class="jsdoc-comment">// tab
-                </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">this.hidePopup</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">16: </span><span class="jsdoc-comment">// shift
@@ -719,7 +799,7 @@
                         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">();
                         </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.UTCDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date.getFullYear</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">date.getMonth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">date.getDate</span><span class="jsdoc-syntax">(), 0, 0, 0);
 </span><span class="jsdoc-comment">//                        this.fill()
-                        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
+                        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
 
                         </span><span class="jsdoc-var">this.hidePopup</span><span class="jsdoc-syntax">();
                         </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
@@ -740,7 +820,7 @@
                     }
 
                     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.singleMode</span><span class="jsdoc-syntax">){
-                        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.viewDate</span><span class="jsdoc-syntax">));
+                        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.viewDate</span><span class="jsdoc-syntax">);
                         </span><span class="jsdoc-var">this.hidePopup</span><span class="jsdoc-syntax">();
                         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                     }
@@ -776,8 +856,7 @@
                     </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.UTCDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">month</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">day</span><span class="jsdoc-syntax">,0,0,0,0);
                     </span><span class="jsdoc-var">this.viewDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.UTCDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">month</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(28, </span><span class="jsdoc-var">day</span><span class="jsdoc-syntax">),0,0,0,0);
 </span><span class="jsdoc-comment">//                    this.fill();
-                    //Roo.log(this.formatDate(this.date));
-                    </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
+                    </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">this.hidePopup</span><span class="jsdoc-syntax">();
                 }
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
@@ -788,7 +867,8 @@
     {
         </span><span class="jsdoc-var">this.startDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">startDate </span><span class="jsdoc-syntax">|| -</span><span class="jsdoc-var">Infinity</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startDate </span><span class="jsdoc-syntax">!== -</span><span class="jsdoc-var">Infinity</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.startDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startDate</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startDate</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.startDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">: -</span><span class="jsdoc-var">Infinity</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.updateNavArrows</span><span class="jsdoc-syntax">();
@@ -798,7 +878,8 @@
     {
         </span><span class="jsdoc-var">this.endDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">endDate </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Infinity</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.endDate </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">Infinity</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.endDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.endDate</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.endDate</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.endDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Infinity</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.updateNavArrows</span><span class="jsdoc-syntax">();
@@ -967,7 +1048,7 @@
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)){
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
 
@@ -1053,16 +1134,9 @@
         ]
     },
 
-    </span><span class="jsdoc-var">dates</span><span class="jsdoc-syntax">:{
-        </span><span class="jsdoc-var">en</span><span class="jsdoc-syntax">: {
-            </span><span class="jsdoc-var">days</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">&quot;Sunday&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Monday&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Tuesday&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Wednesday&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Thursday&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Friday&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Saturday&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Sunday&quot;</span><span class="jsdoc-syntax">],
-            </span><span class="jsdoc-var">daysShort</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">&quot;Sun&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Mon&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Tue&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Wed&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Thu&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Fri&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Sat&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Sun&quot;</span><span class="jsdoc-syntax">],
-            </span><span class="jsdoc-var">daysMin</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">&quot;Su&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Mo&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Tu&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;We&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Th&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Fr&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Sa&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Su&quot;</span><span class="jsdoc-syntax">],
-            </span><span class="jsdoc-var">months</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">&quot;January&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;February&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;March&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;April&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;May&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;June&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;July&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;August&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;September&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;October&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;November&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;December&quot;</span><span class="jsdoc-syntax">],
-            </span><span class="jsdoc-var">monthsShort</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">&quot;Jan&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Feb&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Mar&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Apr&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;May&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Jun&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Jul&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Aug&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Sep&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Oct&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Nov&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;Dec&quot;</span><span class="jsdoc-syntax">],
-            </span><span class="jsdoc-var">today</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Today&quot;
-        </span><span class="jsdoc-syntax">}
-    },
+    </span><span class="jsdoc-var">dates </span><span class="jsdoc-syntax">: {},
+
+    </span><span class="jsdoc-var">todayText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Today&quot;</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-var">modes</span><span class="jsdoc-syntax">: [
     {
