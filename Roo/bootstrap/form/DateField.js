@@ -159,8 +159,9 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 weekday : 'narrow'
             }).format(date);
 
-            if(day.matches(/[A-Za-z]+/)) {
-                dayShort = 
+            if(latinRegex.test(day)) {
+                dayShort = day.substring(0, 3);
+                dayMin = day.substring(0, 2);
             }
 
             translation['days'].push(new Intl.DateTimeFormat(locale, {
