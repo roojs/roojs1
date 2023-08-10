@@ -135,8 +135,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             daysShort: [],
             daysMin: [],
             months: [],
-            monthsShort: [],
-            today: "Today"
+            monthsShort: []
         };
 
         var locale = lang.replace('_', '-');
