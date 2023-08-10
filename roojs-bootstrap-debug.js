@@ -23021,11 +23021,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         
         Roo.bootstrap.form.DateField.superclass.onRender.call(this, ct, position);
 
-        this.setDatesTranslation('zh_CN');
-        
-        this.language = this.language || 'en';
-        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : this.language.split('-')[0];
-        this.language = this.language in Roo.bootstrap.form.DateField.dates ? this.language : "en";
+        this.setDatesTranslation(this.language);
         
         this.isRTL = Roo.bootstrap.form.DateField.dates[this.language].rtl || false;
         this.format = this.format || 'm/d/y';
@@ -24007,14 +24003,14 @@ Roo.apply(Roo.bootstrap.form.DateField,  {
     },
     
     dates:{
-        en: {
-            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-            daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            today: "Today"
-        }
+        // en: {
+        //     days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        //     daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        //     daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+        //     months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        //     monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        //     today: "Today"
+        // }
     },
     
     modes: [
