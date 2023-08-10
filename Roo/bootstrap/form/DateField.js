@@ -145,6 +145,10 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         for(var i = 0; i < 7; i++) {
             var date = new Date(2020, 0, 5 + i);
 
+            var days = new Intl.DateTimeFormat(locale, {
+                weekday : 'long'
+            }).format(date);
+
             translation[lang]['days'].push(new Intl.DateTimeFormat(locale, {
                 weekday : 'long'
             }).format(date));
