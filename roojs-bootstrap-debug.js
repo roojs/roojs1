@@ -23010,9 +23010,9 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 dayMin = day.substring(0, 2);
             }
             
-            translation['days'] = day;
-            translation['daysShort'] = dayShort;
-            translation['daysMin'] = dayMin;
+            translation['days'].push(day);
+            translation['daysShort'].push(dayShort);
+            translation['daysMin'].push(dayMin);
         }
 
         // fill months
@@ -23031,8 +23031,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                 monthShort = month.substring(0, 3);
             }
 
-            translation['months'] = month;
-            translation['monthsShort'] = monthShort;
+            translation['months'].push(month);
+            translation['monthsShort'].push(monthShort);
         }
     },
         
