@@ -258,9 +258,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
             v.dom.innerHTML = Roo.bootstrap.form.DateField.todayText;
-            v.attr('colspan', function(i, val){
-                return parseInt(val) + 1;
-            });
         });
 			
         
