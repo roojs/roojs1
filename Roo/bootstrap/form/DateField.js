@@ -128,7 +128,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             this.setValue(this.date);
     },
 
-    setTranslation: function(lang) 
+    translateDates: function(lang) 
     {
         var translation = Roo.bootstrap.form.DateField.dates[lang] = {
             days: [],
@@ -187,7 +187,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         
         Roo.bootstrap.form.DateField.superclass.onRender.call(this, ct, position);
 
-        this.setTranslation(this.language);
+        this.translateDates(this.language);
 
         Roo.log(Roo.bootstrap.form.DateField.dates);
         
