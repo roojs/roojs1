@@ -257,15 +257,15 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
         }
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
-            Roo.log('ELEMENT');
-            Roo.log(v);
-            Roo.log(this);
-            if(!this.calendarWeeks){
-                v.remove();
-                return;
-            }
+            // Roo.log('ELEMENT');
+            // Roo.log(v);
+            // Roo.log(this);
+            // if(!this.calendarWeeks){
+            //     v.remove();
+            //     return;
+            // }
             
-            Roo.log('EDIT');
+            // Roo.log('EDIT');
             v.dom.innerHTML = Roo.bootstrap.form.DateField.todayText;
             v.attr('colspan', function(i, val){
                 return parseInt(val) + 1;
