@@ -196,7 +196,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
         this.translateDates(this.language);
 
-        Roo.log(Roo.bootstrap.form.DateField);
+        Roo.log(Roo.bootstrap.form.DateField.dates);
+        Roo.log(Roo.bootstrap.form.DateField.todayText);
         
         this.isRTL = Roo.bootstrap.form.DateField.dates[this.language].rtl || false;
         this.format = this.format || 'm/d/y';
