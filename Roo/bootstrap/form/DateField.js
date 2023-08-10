@@ -415,26 +415,6 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
                     tag: 'tr',
                     cn: []
                 };
-                
-                if(this.calendarWeeks){
-                    // ISO 8601: First week contains first thursday.
-                    // ISO also states week starts on Monday, but we can be more abstract here.
-                    var
-                    // Start of current week: based on weekstart/current date
-                    ws = new Date(+prevMonth + (this.weekStart - prevMonth.getUTCDay() - 7) % 7 * 864e5),
-                    // Thursday of this week
-                    th = new Date(+ws + (7 + 4 - ws.getUTCDay()) % 7 * 864e5),
-                    // First Thursday of year, year from thursday
-                    yth = new Date(+(yth = this.UTCDate(th.getUTCFullYear(), 0, 1)) + (7 + 4 - yth.getUTCDay())%7*864e5),
-                    // Calendar week: ms between thursdays, div ms per day, div 7 days
-                    calWeek =  (th - yth) / 864e5 / 7 + 1;
-                    
-                    fillMonths.cn.push({
-                        tag: 'td',
-                        cls: 'cw',
-                        html: calWeek
-                    });
-                }
             }
             
             if (prevMonth.getUTCFullYear() < year || (prevMonth.getUTCFullYear() == year && prevMonth.getUTCMonth() < month)) {
