@@ -130,8 +130,9 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
     setDatesTranslation: function(lang) 
     {
-        var translation = Roo.bootstrap.form.DateField.dates;
-        translation[lang] = {
+        var translation = Roo.bootstrap.form.DateField.dates[lang];
+        
+        translation = {
             days: [],
             daysShort: [],
             daysMin: [],
@@ -148,6 +149,8 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             var days = new Intl.DateTimeFormat(locale, {
                 weekday : 'long'
             }).format(date);
+
+            if(days)
 
             translation[lang]['days'].push(new Intl.DateTimeFormat(locale, {
                 weekday : 'long'
