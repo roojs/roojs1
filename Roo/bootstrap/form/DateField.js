@@ -141,6 +141,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
 
         var locale = lang.replace('_', '-');
 
+        // fill days
         for(var i = 0; i < 7; i++) {
             var date = new Date(2020, 0, 5 + i);
 
@@ -167,6 +168,7 @@ Roo.extend(Roo.bootstrap.form.DateField, Roo.bootstrap.form.Input,  {
             }).format(date));
         }
 
+        // fill months
         for(var i = 0; i < 12; i++) {
             var date = new Date(2020, i);
 
